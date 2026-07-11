@@ -160,8 +160,8 @@ def _competency_grid(cols: list[CompetencyColumn], occs) -> str:
     so the shared core reads across the top rows and the distinctions fall below.
     Headers carry the occupation TITLE over the SOC code. Generalizes to N columns
     (1–4): equal-width via table-layout:fixed, header colors cycle the palette.
-    NOTE: build_docx's cmpgrid is still 3-column — a non-3-SOC report needs that
-    second renderer generalized too (the docx-drift trap)."""
+    build_docx's cmpgrid mirrors this (its column count is derived from the widest
+    row); export.sh's verify_docx pass gates link parity so a docx-drift can't ship."""
     if not cols:
         return ""
     title = {o.soc: o.title for o in occs}
@@ -326,16 +326,22 @@ def _crosswalk_svg(programs, occs: list[LensOccupation]) -> str:
             f'<text x="20" y="{y + 21:.0f}" font-size="14" font-weight="700" fill="#22304e">'
             f'{_esc(p.college.replace(" College", ""))}</text>'
         )
+        # full program name — compress to the badge width only if it would overflow
+        # (never truncate: the docx native-table crosswalk reads this text verbatim,
+        # so a [:44] clip would cut the Word program link mid-word too).
+        navail = LBOX_W - 28
+        ntlen = (f' textLength="{navail}" lengthAdjust="spacingAndGlyphs"'
+                 if len(name) * 12.5 * 0.56 > navail else "")
         if url:
             parts.append(
                 f'<a href="{_esc(url)}" target="_blank" rel="noopener">'
                 f'<text x="20" y="{y + 39:.0f}" font-size="12.5" fill="#2e6cb0" '
-                f'text-decoration="underline">{_esc(name[:44])}</text></a>'
+                f'text-decoration="underline"{ntlen}>{_esc(name)}</text></a>'
             )
         else:
             parts.append(
-                f'<text x="20" y="{y + 39:.0f}" font-size="12.5" fill="#3a4a6b">'
-                f'{_esc(name[:44])}</text>'
+                f'<text x="20" y="{y + 39:.0f}" font-size="12.5" fill="#3a4a6b"{ntlen}>'
+                f'{_esc(name)}</text>'
             )
         # full CIP — compress to the badge width only if it would overflow (never truncate / stretch)
         avail = LBOX_W - 28

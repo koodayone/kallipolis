@@ -934,16 +934,20 @@ def _generated_report_html(slug: str) -> str:
                              abilities=c.get("abilities", []), technology=c.get("technology", []))
             for soc, c in d["competencies"].items()
         ]
-    # Partner selection: an explicit def.programs override wins (incl. strategic
-    # adds); else the partnership rule (size ∪ charter-strongest) computed live.
+    # Partner selection (drives BOTH the crosswalk and the trend tables): an explicit
+    # def.programs override wins (incl. strategic adds); else the size-∪-charter rule.
+    # Applied even WITHOUT a charter — "BACCC breadth by size" is the norm — so a plain
+    # member report shows the award-proven partner set (one strongest program per
+    # college, ≥ the floor), not every 0-award program that happens to feed the SOC.
     if d.get("programs"):
         over["programs"] = [tuple(x) for x in d["programs"]]
-    elif charter:
+    else:
         from partnerships.report import select_partner_programs
         over["programs"] = sorted(select_partner_programs(
             lens.programs, charter, min_awards=int(d.get("partner_min_awards", 50))))
-        chosen_colleges = {c for c, _ in over["programs"]}
-        over["charter_gaps"] = tuple(c for c in charter if c not in chosen_colleges)
+        if charter:
+            chosen_colleges = {c for c, _ in over["programs"]}
+            over["charter_gaps"] = tuple(c for c in charter if c not in chosen_colleges)
     if over:
         spec = dataclasses.replace(spec, **over)
     return build_report_html(member, play, spec, lens=lens)

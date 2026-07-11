@@ -45,28 +45,36 @@ A new title reuses this harness **only if its HTML follows the same contract.**
 
 ## Pipeline
 
+The canonical flow is **def-driven**: a saved report definition
+(`backend/partnerships/saved_reports/{slug}.json`) → verified `.docx` + `.pdf`, one command:
+
 ```bash
 cd tools/report-render
-SRC=../../research/swp-strategy/svamp-pathway-49-9041-doc.html
-
-# 1. (optional) live edit-and-show — autosaves the browser edits back to SRC
-python3 docserver.py "$SRC" 8787      # open http://localhost:8787/
-
-# 2. raster the SVG crosswalk for embedding (writes /tmp/crosswalk.png)
-node shoot_xwalk_png.cjs "file://$PWD/$SRC?clean"
-
-# 3. build the native .docx (reads /tmp/crosswalk.png)
-python3 build_docx.py "$SRC" ../../research/swp-strategy/OUT.docx
-
-# 4. build the PDF anchor
-node shoot_pdf.cjs "file://$PWD/$SRC?clean" ../../research/swp-strategy/OUT.pdf
-
-# review screenshot any time
-node shoot_doc.cjs "file://$PWD/$SRC"        # writes /tmp/doc.png
+./export.sh svamp-industrial-machinery-mechanic          # → out/{slug}.docx + .pdf
+./export.sh foothill-manufacturing-technician ~/Desktop  # 2nd arg overrides the out dir
 ```
 
-All scripts take argv overrides; bare defaults reproduce the
-"Manufacturing Technician" build.
+`export.sh` renders the backend's clean `?raw=1` HTML, builds the docx + PDF, and **gates** on
+`verify_docx.py` (link parity — every HTML link must survive into the Word doc; a drop fails the
+build). It refuses to run while a `{slug}.edited.html` shadows the def (the def is truth —
+consolidate + revert first). Needs a running backend (`API_BASE`, default `http://localhost:8000`).
+Artifacts land in `out/` (gitignored). Exits non-zero on: missing def, edited.html present, backend
+down, or a real link drop.
+
+The lower-level steps `export.sh` orchestrates (for debugging, or rendering a hand-authored HTML
+that follows the CSS contract):
+
+```bash
+SRC=out/svamp-industrial-machinery-mechanic.html
+node shoot_xwalk_png.cjs "file://$PWD/$SRC" /tmp/crosswalk.png  # raster crosswalk (fallback net only)
+python3 build_docx.py "$SRC" /tmp/OUT.docx /tmp/crosswalk.png   # native .docx
+node shoot_pdf.cjs "file://$PWD/$SRC" /tmp/OUT.pdf              # PDF anchor
+python3 verify_docx.py "$SRC" /tmp/OUT.docx                     # link-parity check
+node shoot_doc.cjs "file://$PWD/$SRC"                           # review screenshot → /tmp/doc.png
+```
+
+`generate.sh <member> <title> <sector> <socs> …` is the legacy ad-hoc path (renders from the
+query-param proposer endpoint, no saved def). All scripts take argv overrides.
 
 ## Deps
 
@@ -74,10 +82,10 @@ All scripts take argv overrides; bare defaults reproduce the
 - Playwright + Chromium, resolved from `atlas/node_modules` (already installed
   for the atlas frontend).
 
-## Not yet built: the adapter
+## The adapter (now built)
 
-This harness renders a hand-authored HTML. To make "give me a title → get a
-report" real, the missing piece is a generator that emits this HTML from a
-`backend/partnerships/dossier.py` projection (grounded SOCs, demand, supply,
-employers) instead of hand-typed numbers. That adapter belongs next to
-`dossier.py`, not here.
+This harness once rendered only hand-authored HTML. The backend's
+`partnerships.report.build_report_html` (filled by `propose_spec` from the L1 lens) now **is**
+the generator — "give me a (member, role) → get a report" is real via the saved-report definition
+and `export.sh`. The crosswalk renders as a native, clickable Word table (no rasterization); the
+`/tmp/crosswalk.png` raster survives only as a parse-failure fallback for `build_docx.py`.

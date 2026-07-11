@@ -67,7 +67,12 @@ Open the endpoint; edit prose directly (⌘S saves to `{slug}.edited.html`; link
 diff before reverting (the alignment-note lesson).
 
 ### Phase 5 — Finalize
-`?raw=1` is the clean docx-render input. Commit the def + the program-name cache.
+`tools/report-render/export.sh {slug}` → the verified `.docx` + `.pdf` deliverable: it renders the clean
+`?raw=1` HTML, builds the native-crosswalk docx + the Playwright PDF, and **gates** on a link-parity check
+(the docx-drift defense — a dropped link fails the build). **Precondition: the def is truth** — consolidate
+any `{slug}.edited.html` into the def and revert first; export.sh refuses while an `edited.html` shadows the
+def (`?raw=1` would serve the stale edit). Artifacts land in `tools/report-render/out/` (gitignored).
+Commit the def + the program-name cache — **never** the binaries (regenerable from the def via `export.sh`).
 
 ## The def schema (the single source of truth)
 Scaffolded (Phase 1): `member, title, sector, socs, author, date` (+ `partnership, partner_min_awards`).
@@ -94,4 +99,6 @@ rendered by `report._linkify`); `programs` (explicit `[[college,top6],…]` part
   (`shoot_pdf.cjs`, zero maintenance). `.docx` (`tools/report-render/build_docx.py`) is a *second*
   renderer that re-parses the HTML and maps elements **by CSS class** — so any new section or link
   pattern needs a matching handler there, or it is silently dropped/flattened in the Word doc.
-  After adding a section/link, regenerate the docx and diff the hyperlink count.
+  `tools/report-render/verify_docx.py` now automates the hyperlink-parity diff and **gates** `export.sh`
+  (a dropped link fails the build, and it warns on a lost `<h1>` heading) — so the trap can no longer
+  ship silently. A new *section* still needs its build_docx handler; after adding one, eyeball the docx.

@@ -1472,7 +1472,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1502,7 +1527,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1532,7 +1582,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -1577,7 +1652,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1607,7 +1707,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1637,7 +1762,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -1701,7 +1851,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1731,7 +1906,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -1776,7 +1976,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1806,7 +2031,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -1870,7 +2120,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1900,7 +2175,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -1945,7 +2245,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1975,7 +2300,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -2025,7 +2375,32 @@
                 ],
                 "name": "Real Estate",
                 "top6": "051100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 158,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 41973,
+                    "wage_after_5": 53521,
+                    "wage_before": 38311,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 168,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 51528,
+                    "wage_after_5": 57286,
+                    "wage_before": 50963,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 360,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 54390,
+                    "wage_after_5": 62165,
+                    "wage_before": 40907,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "41-9022",
@@ -2070,7 +2445,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2100,7 +2500,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2130,7 +2555,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -2175,7 +2625,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2205,7 +2680,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2235,7 +2735,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -2285,7 +2810,32 @@
                 ],
                 "name": "Real Estate",
                 "top6": "051100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 158,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 41973,
+                    "wage_after_5": 53521,
+                    "wage_before": 38311,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 168,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 51528,
+                    "wage_after_5": 57286,
+                    "wage_before": 50963,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 360,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 54390,
+                    "wage_after_5": 62165,
+                    "wage_before": 40907,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2360,7 +2910,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2390,7 +2965,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2420,7 +3020,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -2465,7 +3090,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2495,7 +3145,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2525,7 +3200,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -2589,7 +3289,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -2634,7 +3359,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -2684,7 +3434,32 @@
                 ],
                 "name": "Real Estate",
                 "top6": "051100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 158,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 41973,
+                    "wage_after_5": 53521,
+                    "wage_before": 38311,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 168,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 51528,
+                    "wage_after_5": 57286,
+                    "wage_before": 50963,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 360,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 54390,
+                    "wage_after_5": 62165,
+                    "wage_before": 40907,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2759,7 +3534,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -2804,7 +3604,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -2854,7 +3679,32 @@
                 ],
                 "name": "Real Estate",
                 "top6": "051100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 158,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 41973,
+                    "wage_after_5": 53521,
+                    "wage_before": 38311,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 168,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 51528,
+                    "wage_after_5": 57286,
+                    "wage_before": 50963,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 360,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 54390,
+                    "wage_after_5": 62165,
+                    "wage_before": 40907,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "41-9022",
@@ -2899,7 +3749,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2929,7 +3804,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2959,7 +3859,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -3004,7 +3929,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -3034,7 +3984,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -3064,7 +4039,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -3114,7 +4114,32 @@
                 ],
                 "name": "Real Estate",
                 "top6": "051100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 158,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 41973,
+                    "wage_after_5": 53521,
+                    "wage_before": 38311,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 168,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 51528,
+                    "wage_after_5": 57286,
+                    "wage_before": 50963,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 360,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 54390,
+                    "wage_after_5": 62165,
+                    "wage_before": 40907,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "41-9022",
@@ -3159,7 +4184,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -3204,7 +4254,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -3254,7 +4329,32 @@
                 ],
                 "name": "Real Estate",
                 "top6": "051100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 158,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 41973,
+                    "wage_after_5": 53521,
+                    "wage_before": 38311,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 168,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 51528,
+                    "wage_after_5": 57286,
+                    "wage_before": 50963,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 360,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 54390,
+                    "wage_after_5": 62165,
+                    "wage_before": 40907,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "41-9022",
@@ -3299,7 +4399,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -3329,7 +4454,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -3374,7 +4524,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -3404,7 +4579,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -3454,7 +4654,32 @@
                 ],
                 "name": "Real Estate",
                 "top6": "051100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 158,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 41973,
+                    "wage_after_5": 53521,
+                    "wage_before": 38311,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 168,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 51528,
+                    "wage_after_5": 57286,
+                    "wage_before": 50963,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 360,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 54390,
+                    "wage_after_5": 62165,
+                    "wage_before": 40907,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "41-9022",
@@ -3499,7 +4724,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -3529,7 +4779,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -3574,7 +4849,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -3604,7 +4904,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -3668,7 +4993,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -3698,7 +5048,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -3728,7 +5103,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -3773,7 +5173,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -3803,7 +5228,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -3833,7 +5283,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -3897,7 +5372,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -3942,7 +5442,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -3992,7 +5517,32 @@
                 ],
                 "name": "Real Estate",
                 "top6": "051100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 158,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 41973,
+                    "wage_after_5": 53521,
+                    "wage_before": 38311,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 168,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 51528,
+                    "wage_after_5": 57286,
+                    "wage_before": 50963,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 360,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 54390,
+                    "wage_after_5": 62165,
+                    "wage_before": 40907,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "41-9022",
@@ -4037,7 +5587,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -4067,7 +5642,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -4112,7 +5712,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -4142,7 +5767,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -4206,7 +5856,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -4236,7 +5911,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -4266,7 +5966,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -4311,7 +6036,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -4341,7 +6091,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -4371,7 +6146,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -4435,7 +6235,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -4465,7 +6290,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -4495,7 +6345,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -4540,7 +6415,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -4570,7 +6470,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -4600,7 +6525,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -4664,7 +6614,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -4694,7 +6669,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -4724,7 +6724,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -4769,7 +6794,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -4799,7 +6849,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -4829,7 +6904,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -4879,7 +6979,32 @@
                 ],
                 "name": "Real Estate",
                 "top6": "051100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 158,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 41973,
+                    "wage_after_5": 53521,
+                    "wage_before": 38311,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 168,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 51528,
+                    "wage_after_5": 57286,
+                    "wage_before": 50963,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 360,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 54390,
+                    "wage_after_5": 62165,
+                    "wage_before": 40907,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -4954,7 +7079,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -4984,7 +7134,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -5014,7 +7189,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -5059,7 +7259,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -5089,7 +7314,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -5119,7 +7369,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -5183,7 +7458,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -5213,7 +7513,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -5243,7 +7568,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -5288,7 +7638,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -5318,7 +7693,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -5348,7 +7748,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -5412,7 +7837,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -5457,7 +7907,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -5507,7 +7982,32 @@
                 ],
                 "name": "Real Estate",
                 "top6": "051100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 158,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 41973,
+                    "wage_after_5": 53521,
+                    "wage_before": 38311,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 168,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 51528,
+                    "wage_after_5": 57286,
+                    "wage_before": 50963,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 360,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 54390,
+                    "wage_after_5": 62165,
+                    "wage_before": 40907,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "41-9022",
@@ -5552,7 +8052,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -5582,7 +8107,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -5612,7 +8162,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -5657,7 +8232,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -5687,7 +8287,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -5717,7 +8342,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -5767,7 +8417,32 @@
                 ],
                 "name": "Real Estate",
                 "top6": "051100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 158,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 41973,
+                    "wage_after_5": 53521,
+                    "wage_before": 38311,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 168,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 51528,
+                    "wage_after_5": 57286,
+                    "wage_before": 50963,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 360,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 54390,
+                    "wage_after_5": 62165,
+                    "wage_before": 40907,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "41-9022",
@@ -5812,7 +8487,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -5842,7 +8542,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -5887,7 +8612,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -5917,7 +8667,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -5967,7 +8742,32 @@
                 ],
                 "name": "Real Estate",
                 "top6": "051100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 158,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 41973,
+                    "wage_after_5": 53521,
+                    "wage_before": 38311,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 168,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 51528,
+                    "wage_after_5": 57286,
+                    "wage_before": 50963,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 360,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 54390,
+                    "wage_after_5": 62165,
+                    "wage_before": 40907,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "41-9022",
@@ -6012,7 +8812,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6042,7 +8867,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6072,7 +8922,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -6117,7 +8992,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6147,7 +9047,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6177,7 +9102,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -6227,7 +9177,32 @@
                 ],
                 "name": "Real Estate",
                 "top6": "051100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 158,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 41973,
+                    "wage_after_5": 53521,
+                    "wage_before": 38311,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 168,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 51528,
+                    "wage_after_5": 57286,
+                    "wage_before": 50963,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 360,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 54390,
+                    "wage_after_5": 62165,
+                    "wage_before": 40907,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "41-9022",
@@ -6272,7 +9247,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6302,7 +9302,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6332,7 +9357,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -6377,7 +9427,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6407,7 +9482,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6437,7 +9537,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -6487,7 +9612,32 @@
                 ],
                 "name": "Real Estate",
                 "top6": "051100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 158,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 41973,
+                    "wage_after_5": 53521,
+                    "wage_before": 38311,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 168,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 51528,
+                    "wage_after_5": 57286,
+                    "wage_before": 50963,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 360,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 54390,
+                    "wage_after_5": 62165,
+                    "wage_before": 40907,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "41-9022",
@@ -6532,7 +9682,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6562,7 +9737,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -6607,7 +9807,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6637,7 +9862,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",
@@ -6687,7 +9937,32 @@
                 ],
                 "name": "Real Estate",
                 "top6": "051100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 158,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 41973,
+                    "wage_after_5": 53521,
+                    "wage_before": 38311,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 168,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 51528,
+                    "wage_after_5": 57286,
+                    "wage_before": 50963,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 360,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 54390,
+                    "wage_after_5": 62165,
+                    "wage_before": 40907,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "41-9022",
@@ -6732,7 +10007,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6762,7 +10062,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6792,7 +10117,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6011",
@@ -6837,7 +10187,32 @@
                 ],
                 "name": "Business and Commerce, General",
                 "top6": "050100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47704,
+                    "wage_after_5": 61806,
+                    "wage_before": 32690,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 187,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48456,
+                    "wage_after_5": 60006,
+                    "wage_before": 35306,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 46510,
+                    "wage_after_5": 54143,
+                    "wage_before": 29665,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6867,7 +10242,32 @@
                 ],
                 "name": "Management Development and Supervision",
                 "top6": "050630",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68487,
+                    "wage_after_5": 76614,
+                    "wage_before": 47347,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 132,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83918,
+                    "wage_after_5": 93306,
+                    "wage_before": 71588,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 80978,
+                    "wage_after_5": 83944,
+                    "wage_before": 60680,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6897,7 +10297,32 @@
                 ],
                 "name": "Office Technology/Office Computer Applications",
                 "top6": "051400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6014",

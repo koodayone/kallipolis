@@ -4694,7 +4694,32 @@
                 ],
                 "name": "Health Occupations, General",
                 "top6": "120100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 136,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 51841,
+                    "wage_after_5": 70922,
+                    "wage_before": 23080,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 46920,
+                    "wage_after_5": 64996,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 49,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 38680,
+                    "wage_after_5": 50438,
+                    "wage_before": 33893,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -4724,7 +4749,24 @@
                 ],
                 "name": "Community Health Care Worker",
                 "top6": "126100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 28,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34159,
+                    "wage_after_5": 70063,
+                    "wage_before": 36043,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 12,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 61661,
+                    "wage_after_5": null,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "21-1094",
@@ -4956,7 +4998,32 @@
                 ],
                 "name": "Health Occupations, General",
                 "top6": "120100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 136,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 51841,
+                    "wage_after_5": 70922,
+                    "wage_before": 23080,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 46920,
+                    "wage_after_5": 64996,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 49,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 38680,
+                    "wage_after_5": 50438,
+                    "wage_before": 33893,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -4986,7 +5053,24 @@
                 ],
                 "name": "Community Health Care Worker",
                 "top6": "126100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 28,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34159,
+                    "wage_after_5": 70063,
+                    "wage_before": 36043,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 12,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 61661,
+                    "wage_after_5": null,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "21-1094",
@@ -5045,7 +5129,24 @@
                 ],
                 "name": "Registered Nursing",
                 "top6": "123010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 7042,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 106936,
+                    "wage_after_5": 119366,
+                    "wage_before": 27372,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 419,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 101600,
+                    "wage_after_5": 108676,
+                    "wage_before": 24628,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1141",
@@ -5120,7 +5221,16 @@
                 ],
                 "name": "Dental Hygienist",
                 "top6": "124020",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 236,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 80849,
+                    "wage_after_5": 86385,
+                    "wage_before": 29034,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1292",
@@ -5165,7 +5275,32 @@
                 ],
                 "name": "Radiologic Technology",
                 "top6": "122500",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 751,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 97436,
+                    "wage_after_5": 115545,
+                    "wage_before": 22896,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 261,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 104337,
+                    "wage_after_5": 120912,
+                    "wage_before": 17777,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 69,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 86887,
+                    "wage_after_5": 114781,
+                    "wage_before": 27393,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2034",
@@ -5324,7 +5459,24 @@
                 ],
                 "name": "Dental Assistant",
                 "top6": "124010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 105,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 42794,
+                    "wage_after_5": 52155,
+                    "wage_before": 21414,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 256,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 38024,
+                    "wage_after_5": 44676,
+                    "wage_before": 18332,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9091",
@@ -5369,7 +5521,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -5399,7 +5576,24 @@
                 ],
                 "name": "Clinical Medical Assisting",
                 "top6": "120810",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 45,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 30705,
+                    "wage_after_5": 45312,
+                    "wage_before": 16625,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 143,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 36917,
+                    "wage_after_5": 43692,
+                    "wage_before": 15298,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9092",
@@ -5444,7 +5638,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6013",
@@ -5494,7 +5713,24 @@
                 ],
                 "name": "Community Health Care Worker",
                 "top6": "126100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 28,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34159,
+                    "wage_after_5": 70063,
+                    "wage_before": 36043,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 12,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 61661,
+                    "wage_after_5": null,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "21-1094",
@@ -5581,7 +5817,32 @@
                 ],
                 "name": "Radiologic Technology",
                 "top6": "122500",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 751,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 97436,
+                    "wage_after_5": 115545,
+                    "wage_before": 22896,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 261,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 104337,
+                    "wage_after_5": 120912,
+                    "wage_before": 17777,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 69,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 86887,
+                    "wage_after_5": 114781,
+                    "wage_before": 27393,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2034",
@@ -5668,7 +5929,16 @@
                 ],
                 "name": "Health Information Coding",
                 "top6": "122310",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 142,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 58155,
+                    "wage_after_5": 71003,
+                    "wage_before": 45860,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2072",
@@ -5713,7 +5983,16 @@
                 ],
                 "name": "Health Information Coding",
                 "top6": "122310",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 142,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 58155,
+                    "wage_after_5": 71003,
+                    "wage_before": 45860,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-9021",
@@ -5786,7 +6065,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -5816,7 +6120,24 @@
                 ],
                 "name": "Clinical Medical Assisting",
                 "top6": "120810",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 45,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 30705,
+                    "wage_after_5": 45312,
+                    "wage_before": 16625,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 143,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 36917,
+                    "wage_after_5": 43692,
+                    "wage_before": 15298,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -5846,7 +6167,24 @@
                 ],
                 "name": "Administrative Medical Assisting",
                 "top6": "120820",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 47,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38287,
+                    "wage_after_5": 49443,
+                    "wage_before": 21286,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 155,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37048,
+                    "wage_after_5": 47209,
+                    "wage_before": 22047,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9092",
@@ -5891,7 +6229,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -5921,7 +6284,24 @@
                 ],
                 "name": "Administrative Medical Assisting",
                 "top6": "120820",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 47,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38287,
+                    "wage_after_5": 49443,
+                    "wage_before": 21286,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 155,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37048,
+                    "wage_after_5": 47209,
+                    "wage_before": 22047,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -5951,7 +6331,16 @@
                 ],
                 "name": "Health Information Coding",
                 "top6": "122310",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 142,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 58155,
+                    "wage_after_5": 71003,
+                    "wage_before": 45860,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6013",
@@ -6001,7 +6390,32 @@
                 ],
                 "name": "Health Occupations, General",
                 "top6": "120100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 136,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 51841,
+                    "wage_after_5": 70922,
+                    "wage_before": 23080,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 46920,
+                    "wage_after_5": 64996,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 49,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 38680,
+                    "wage_after_5": 50438,
+                    "wage_before": 33893,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6031,7 +6445,24 @@
                 ],
                 "name": "Community Health Care Worker",
                 "top6": "126100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 28,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34159,
+                    "wage_after_5": 70063,
+                    "wage_before": 36043,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 12,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 61661,
+                    "wage_after_5": null,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "21-1094",
@@ -6090,7 +6521,16 @@
                 ],
                 "name": "Nursing",
                 "top6": "123000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 62,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 105722,
+                    "wage_after_5": 120188,
+                    "wage_before": 24556,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6120,7 +6560,24 @@
                 ],
                 "name": "Registered Nursing",
                 "top6": "123010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 7042,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 106936,
+                    "wage_after_5": 119366,
+                    "wage_before": 27372,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 419,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 101600,
+                    "wage_after_5": 108676,
+                    "wage_before": 24628,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1141",
@@ -6165,7 +6622,16 @@
                 ],
                 "name": "Dental Hygienist",
                 "top6": "124020",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 236,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 80849,
+                    "wage_after_5": 86385,
+                    "wage_before": 29034,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1292",
@@ -6252,7 +6718,16 @@
                 ],
                 "name": "Nursing",
                 "top6": "123000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 62,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 105722,
+                    "wage_after_5": 120188,
+                    "wage_before": 24556,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2061",
@@ -6353,7 +6828,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6383,7 +6883,24 @@
                 ],
                 "name": "Clinical Medical Assisting",
                 "top6": "120810",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 45,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 30705,
+                    "wage_after_5": 45312,
+                    "wage_before": 16625,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 143,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 36917,
+                    "wage_after_5": 43692,
+                    "wage_before": 15298,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9092",
@@ -6428,7 +6945,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6013",
@@ -6478,7 +7020,32 @@
                 ],
                 "name": "Health Occupations, General",
                 "top6": "120100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 136,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 51841,
+                    "wage_after_5": 70922,
+                    "wage_before": 23080,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 46920,
+                    "wage_after_5": 64996,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 49,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 38680,
+                    "wage_after_5": 50438,
+                    "wage_before": 33893,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6508,7 +7075,24 @@
                 ],
                 "name": "Community Health Care Worker",
                 "top6": "126100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 28,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34159,
+                    "wage_after_5": 70063,
+                    "wage_before": 36043,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 12,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 61661,
+                    "wage_after_5": null,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "21-1094",
@@ -6567,7 +7151,16 @@
                 ],
                 "name": "Nursing",
                 "top6": "123000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 62,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 105722,
+                    "wage_after_5": 120188,
+                    "wage_before": 24556,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6597,7 +7190,24 @@
                 ],
                 "name": "Registered Nursing",
                 "top6": "123010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 7042,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 106936,
+                    "wage_after_5": 119366,
+                    "wage_before": 27372,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 419,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 101600,
+                    "wage_after_5": 108676,
+                    "wage_before": 24628,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1141",
@@ -6656,7 +7266,32 @@
                 ],
                 "name": "Radiologic Technology",
                 "top6": "122500",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 751,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 97436,
+                    "wage_after_5": 115545,
+                    "wage_before": 22896,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 261,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 104337,
+                    "wage_after_5": 120912,
+                    "wage_before": 17777,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 69,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 86887,
+                    "wage_after_5": 114781,
+                    "wage_before": 27393,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6731,7 +7366,24 @@
                 ],
                 "name": "Pharmacy Technology",
                 "top6": "122100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 133,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 37191,
+                    "wage_after_5": 47319,
+                    "wage_before": 17959,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 36743,
+                    "wage_after_5": 47004,
+                    "wage_before": 21079,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2052",
@@ -6790,7 +7442,16 @@
                 ],
                 "name": "Nursing",
                 "top6": "123000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 62,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 105722,
+                    "wage_after_5": 120188,
+                    "wage_before": 24556,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6820,7 +7481,24 @@
                 ],
                 "name": "Licensed Vocational Nursing",
                 "top6": "123020",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 130,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 55172,
+                    "wage_after_5": 68863,
+                    "wage_before": 22996,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 218,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 54811,
+                    "wage_after_5": 65226,
+                    "wage_before": 23703,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2061",
@@ -6865,7 +7543,16 @@
                 ],
                 "name": "Hospital and Health Care Administration",
                 "top6": "120200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 60,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 56791,
+                    "wage_after_5": 78491,
+                    "wage_before": 19472,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6895,7 +7582,24 @@
                 ],
                 "name": "Health Information Technology",
                 "top6": "122300",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 316,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 59081,
+                    "wage_after_5": 71179,
+                    "wage_before": 48916,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 80,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 59940,
+                    "wage_after_5": 76675,
+                    "wage_before": 30571,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -6925,7 +7629,16 @@
                 ],
                 "name": "Health Information Coding",
                 "top6": "122310",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 142,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 58155,
+                    "wage_after_5": 71003,
+                    "wage_before": 45860,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2072",
@@ -6970,7 +7683,16 @@
                 ],
                 "name": "Hospital and Health Care Administration",
                 "top6": "120200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 60,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 56791,
+                    "wage_after_5": 78491,
+                    "wage_before": 19472,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -7000,7 +7722,24 @@
                 ],
                 "name": "Health Information Technology",
                 "top6": "122300",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 316,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 59081,
+                    "wage_after_5": 71179,
+                    "wage_before": 48916,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 80,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 59940,
+                    "wage_after_5": 76675,
+                    "wage_before": 30571,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -7030,7 +7769,16 @@
                 ],
                 "name": "Health Information Coding",
                 "top6": "122310",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 142,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 58155,
+                    "wage_after_5": 71003,
+                    "wage_before": 45860,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-9021",
@@ -7089,7 +7837,24 @@
                 ],
                 "name": "Dental Assistant",
                 "top6": "124010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 105,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 42794,
+                    "wage_after_5": 52155,
+                    "wage_before": 21414,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 256,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 38024,
+                    "wage_after_5": 44676,
+                    "wage_before": 18332,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9091",
@@ -7134,7 +7899,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -7164,7 +7954,24 @@
                 ],
                 "name": "Administrative Medical Assisting",
                 "top6": "120820",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 47,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38287,
+                    "wage_after_5": 49443,
+                    "wage_before": 21286,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 155,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37048,
+                    "wage_after_5": 47209,
+                    "wage_before": 22047,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -7239,7 +8046,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -7269,7 +8101,24 @@
                 ],
                 "name": "Administrative Medical Assisting",
                 "top6": "120820",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 47,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38287,
+                    "wage_after_5": 49443,
+                    "wage_before": 21286,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 155,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37048,
+                    "wage_after_5": 47209,
+                    "wage_before": 22047,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -7329,7 +8178,16 @@
                 ],
                 "name": "Health Information Coding",
                 "top6": "122310",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 142,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 58155,
+                    "wage_after_5": 71003,
+                    "wage_before": 45860,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6013",
@@ -7533,7 +8391,24 @@
                 ],
                 "name": "Dental Assistant",
                 "top6": "124010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 105,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 42794,
+                    "wage_after_5": 52155,
+                    "wage_before": 21414,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 256,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 38024,
+                    "wage_after_5": 44676,
+                    "wage_before": 18332,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9091",
@@ -7639,7 +8514,16 @@
                 ],
                 "name": "Nursing",
                 "top6": "123000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 62,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 105722,
+                    "wage_after_5": 120188,
+                    "wage_before": 24556,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -7669,7 +8553,24 @@
                 ],
                 "name": "Registered Nursing",
                 "top6": "123010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 7042,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 106936,
+                    "wage_after_5": 119366,
+                    "wage_before": 27372,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 419,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 101600,
+                    "wage_after_5": 108676,
+                    "wage_before": 24628,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1141",
@@ -7770,7 +8671,16 @@
                 ],
                 "name": "Nursing",
                 "top6": "123000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 62,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 105722,
+                    "wage_after_5": 120188,
+                    "wage_before": 24556,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2061",
@@ -7857,7 +8767,24 @@
                 ],
                 "name": "Dental Assistant",
                 "top6": "124010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 105,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 42794,
+                    "wage_after_5": 52155,
+                    "wage_before": 21414,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 256,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 38024,
+                    "wage_after_5": 44676,
+                    "wage_before": 18332,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9091",
@@ -7902,7 +8829,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -7932,7 +8884,24 @@
                 ],
                 "name": "Clinical Medical Assisting",
                 "top6": "120810",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 45,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 30705,
+                    "wage_after_5": 45312,
+                    "wage_before": 16625,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 143,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 36917,
+                    "wage_after_5": 43692,
+                    "wage_before": 15298,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -7962,7 +8931,24 @@
                 ],
                 "name": "Administrative Medical Assisting",
                 "top6": "120820",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 47,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38287,
+                    "wage_after_5": 49443,
+                    "wage_before": 21286,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 155,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37048,
+                    "wage_after_5": 47209,
+                    "wage_before": 22047,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9092",
@@ -8007,7 +8993,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -8037,7 +9048,24 @@
                 ],
                 "name": "Administrative Medical Assisting",
                 "top6": "120820",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 47,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38287,
+                    "wage_after_5": 49443,
+                    "wage_before": 21286,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 155,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37048,
+                    "wage_after_5": 47209,
+                    "wage_before": 22047,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6013",
@@ -8115,7 +9143,24 @@
                 ],
                 "name": "Registered Nursing",
                 "top6": "123010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 7042,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 106936,
+                    "wage_after_5": 119366,
+                    "wage_before": 27372,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 419,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 101600,
+                    "wage_after_5": 108676,
+                    "wage_before": 24628,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1141",
@@ -8333,7 +9378,24 @@
                 ],
                 "name": "Dental Assistant",
                 "top6": "124010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 105,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 42794,
+                    "wage_after_5": 52155,
+                    "wage_before": 21414,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 256,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 38024,
+                    "wage_after_5": 44676,
+                    "wage_before": 18332,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9091",
@@ -8411,7 +9473,32 @@
                 ],
                 "name": "Health Occupations, General",
                 "top6": "120100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 136,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 51841,
+                    "wage_after_5": 70922,
+                    "wage_before": 23080,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 46920,
+                    "wage_after_5": 64996,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 49,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 38680,
+                    "wage_after_5": 50438,
+                    "wage_before": 33893,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "21-1094",
@@ -8470,7 +9557,24 @@
                 ],
                 "name": "Registered Nursing",
                 "top6": "123010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 7042,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 106936,
+                    "wage_after_5": 119366,
+                    "wage_before": 27372,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 419,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 101600,
+                    "wage_after_5": 108676,
+                    "wage_before": 24628,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1141",
@@ -8641,7 +9745,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9092",
@@ -8686,7 +9815,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6013",
@@ -8764,7 +9918,16 @@
                 ],
                 "name": "Nursing",
                 "top6": "123000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 62,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 105722,
+                    "wage_after_5": 120188,
+                    "wage_before": 24556,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -8794,7 +9957,24 @@
                 ],
                 "name": "Registered Nursing",
                 "top6": "123010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 7042,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 106936,
+                    "wage_after_5": 119366,
+                    "wage_before": 27372,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 419,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 101600,
+                    "wage_after_5": 108676,
+                    "wage_before": 24628,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1141",
@@ -8895,7 +10075,16 @@
                 ],
                 "name": "Nursing",
                 "top6": "123000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 62,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 105722,
+                    "wage_after_5": 120188,
+                    "wage_before": 24556,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2061",
@@ -8996,7 +10185,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -9026,7 +10240,24 @@
                 ],
                 "name": "Clinical Medical Assisting",
                 "top6": "120810",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 45,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 30705,
+                    "wage_after_5": 45312,
+                    "wage_before": 16625,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 143,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 36917,
+                    "wage_after_5": 43692,
+                    "wage_before": 15298,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -9056,7 +10287,24 @@
                 ],
                 "name": "Administrative Medical Assisting",
                 "top6": "120820",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 47,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38287,
+                    "wage_after_5": 49443,
+                    "wage_before": 21286,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 155,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37048,
+                    "wage_after_5": 47209,
+                    "wage_before": 22047,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9092",
@@ -9101,7 +10349,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -9131,7 +10404,24 @@
                 ],
                 "name": "Administrative Medical Assisting",
                 "top6": "120820",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 47,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38287,
+                    "wage_after_5": 49443,
+                    "wage_before": 21286,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 155,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37048,
+                    "wage_after_5": 47209,
+                    "wage_before": 22047,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6013",
@@ -9181,7 +10471,32 @@
                 ],
                 "name": "Health Occupations, General",
                 "top6": "120100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 136,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 51841,
+                    "wage_after_5": 70922,
+                    "wage_before": 23080,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 46920,
+                    "wage_after_5": 64996,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 49,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 38680,
+                    "wage_after_5": 50438,
+                    "wage_before": 33893,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -9211,7 +10526,24 @@
                 ],
                 "name": "Community Health Care Worker",
                 "top6": "126100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 28,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34159,
+                    "wage_after_5": 70063,
+                    "wage_before": 36043,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 12,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 61661,
+                    "wage_after_5": null,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "21-1094",
@@ -9284,7 +10616,16 @@
                 ],
                 "name": "Dental Hygienist",
                 "top6": "124020",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 236,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 80849,
+                    "wage_after_5": 86385,
+                    "wage_before": 29034,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1292",
@@ -9427,7 +10768,24 @@
                 ],
                 "name": "Dental Assistant",
                 "top6": "124010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 105,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 42794,
+                    "wage_after_5": 52155,
+                    "wage_before": 21414,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 256,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 38024,
+                    "wage_after_5": 44676,
+                    "wage_before": 18332,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9091",
@@ -9533,7 +10891,16 @@
                 ],
                 "name": "Nursing",
                 "top6": "123000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 62,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 105722,
+                    "wage_after_5": 120188,
+                    "wage_before": 24556,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -9563,7 +10930,24 @@
                 ],
                 "name": "Registered Nursing",
                 "top6": "123010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 7042,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 106936,
+                    "wage_after_5": 119366,
+                    "wage_before": 27372,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 419,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 101600,
+                    "wage_after_5": 108676,
+                    "wage_before": 24628,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1141",
@@ -9664,7 +11048,16 @@
                 ],
                 "name": "Nursing",
                 "top6": "123000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 62,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 105722,
+                    "wage_after_5": 120188,
+                    "wage_before": 24556,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2061",
@@ -9798,7 +11191,32 @@
                 ],
                 "name": "Health Occupations, General",
                 "top6": "120100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 136,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 51841,
+                    "wage_after_5": 70922,
+                    "wage_before": 23080,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 46920,
+                    "wage_after_5": 64996,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 49,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 38680,
+                    "wage_after_5": 50438,
+                    "wage_before": 33893,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -9828,7 +11246,24 @@
                 ],
                 "name": "Community Health Care Worker",
                 "top6": "126100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 28,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34159,
+                    "wage_after_5": 70063,
+                    "wage_before": 36043,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 12,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 61661,
+                    "wage_after_5": null,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "21-1094",
@@ -9873,7 +11308,24 @@
                 ],
                 "name": "Respiratory Care/Therapy",
                 "top6": "121000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 648,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 87457,
+                    "wage_after_5": 96733,
+                    "wage_before": 28040,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 185,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 75095,
+                    "wage_after_5": 86357,
+                    "wage_before": 23813,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1126",
@@ -9932,7 +11384,16 @@
                 ],
                 "name": "Dental Hygienist",
                 "top6": "124020",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 236,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 80849,
+                    "wage_after_5": 86385,
+                    "wage_before": 29034,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1292",
@@ -9977,7 +11438,32 @@
                 ],
                 "name": "Radiologic Technology",
                 "top6": "122500",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 751,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 97436,
+                    "wage_after_5": 115545,
+                    "wage_before": 22896,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 261,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 104337,
+                    "wage_after_5": 120912,
+                    "wage_before": 17777,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 69,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 86887,
+                    "wage_after_5": 114781,
+                    "wage_before": 27393,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2034",
@@ -10022,7 +11508,24 @@
                 ],
                 "name": "Pharmacy Technology",
                 "top6": "122100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 133,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 37191,
+                    "wage_after_5": 47319,
+                    "wage_before": 17959,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 36743,
+                    "wage_after_5": 47004,
+                    "wage_before": 21079,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2052",
@@ -10137,7 +11640,24 @@
                 ],
                 "name": "Dental Assistant",
                 "top6": "124010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 105,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 42794,
+                    "wage_after_5": 52155,
+                    "wage_before": 21414,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 256,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 38024,
+                    "wage_after_5": 44676,
+                    "wage_before": 18332,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9091",
@@ -10215,7 +11735,32 @@
                 ],
                 "name": "Health Occupations, General",
                 "top6": "120100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 136,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 51841,
+                    "wage_after_5": 70922,
+                    "wage_before": 23080,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 46920,
+                    "wage_after_5": 64996,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 49,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 38680,
+                    "wage_after_5": 50438,
+                    "wage_before": 33893,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "21-1094",
@@ -10274,7 +11819,16 @@
                 ],
                 "name": "Nursing",
                 "top6": "123000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 62,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 105722,
+                    "wage_after_5": 120188,
+                    "wage_before": 24556,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -10304,7 +11858,24 @@
                 ],
                 "name": "Registered Nursing",
                 "top6": "123010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 7042,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 106936,
+                    "wage_after_5": 119366,
+                    "wage_before": 27372,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 419,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 101600,
+                    "wage_after_5": 108676,
+                    "wage_before": 24628,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1141",
@@ -10405,7 +11976,16 @@
                 ],
                 "name": "Nursing",
                 "top6": "123000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 62,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 105722,
+                    "wage_after_5": 120188,
+                    "wage_before": 24556,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -10435,7 +12015,24 @@
                 ],
                 "name": "Licensed Vocational Nursing",
                 "top6": "123020",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 130,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 55172,
+                    "wage_after_5": 68863,
+                    "wage_before": 22996,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 218,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 54811,
+                    "wage_after_5": 65226,
+                    "wage_before": 23703,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2061",
@@ -10770,7 +12367,32 @@
                 ],
                 "name": "Health Occupations, General",
                 "top6": "120100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 136,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 51841,
+                    "wage_after_5": 70922,
+                    "wage_before": 23080,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 46920,
+                    "wage_after_5": 64996,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 49,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 38680,
+                    "wage_after_5": 50438,
+                    "wage_before": 33893,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "21-1094",
@@ -10969,7 +12591,24 @@
                 ],
                 "name": "Administrative Medical Assisting",
                 "top6": "120820",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 47,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38287,
+                    "wage_after_5": 49443,
+                    "wage_before": 21286,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 155,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37048,
+                    "wage_after_5": 47209,
+                    "wage_before": 22047,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9092",
@@ -11014,7 +12653,24 @@
                 ],
                 "name": "Administrative Medical Assisting",
                 "top6": "120820",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 47,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38287,
+                    "wage_after_5": 49443,
+                    "wage_before": 21286,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 155,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37048,
+                    "wage_after_5": 47209,
+                    "wage_before": 22047,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6013",
@@ -11092,7 +12748,24 @@
                 ],
                 "name": "Registered Nursing",
                 "top6": "123010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 7042,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 106936,
+                    "wage_after_5": 119366,
+                    "wage_before": 27372,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 419,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 101600,
+                    "wage_after_5": 108676,
+                    "wage_before": 24628,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1141",
@@ -11193,7 +12866,24 @@
                 ],
                 "name": "Licensed Vocational Nursing",
                 "top6": "123020",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 130,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 55172,
+                    "wage_after_5": 68863,
+                    "wage_before": 22996,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 218,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 54811,
+                    "wage_after_5": 65226,
+                    "wage_before": 23703,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2061",
@@ -11327,7 +13017,32 @@
                 ],
                 "name": "Health Occupations, General",
                 "top6": "120100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 136,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 51841,
+                    "wage_after_5": 70922,
+                    "wage_before": 23080,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 46920,
+                    "wage_after_5": 64996,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 49,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 38680,
+                    "wage_after_5": 50438,
+                    "wage_before": 33893,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -11357,7 +13072,24 @@
                 ],
                 "name": "Community Health Care Worker",
                 "top6": "126100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 28,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34159,
+                    "wage_after_5": 70063,
+                    "wage_before": 36043,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 12,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 61661,
+                    "wage_after_5": null,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "21-1094",
@@ -11416,7 +13148,24 @@
                 ],
                 "name": "Registered Nursing",
                 "top6": "123010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 7042,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 106936,
+                    "wage_after_5": 119366,
+                    "wage_before": 27372,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 419,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 101600,
+                    "wage_after_5": 108676,
+                    "wage_before": 24628,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1141",
@@ -11475,7 +13224,32 @@
                 ],
                 "name": "Radiologic Technology",
                 "top6": "122500",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 751,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 97436,
+                    "wage_after_5": 115545,
+                    "wage_before": 22896,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 261,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 104337,
+                    "wage_after_5": 120912,
+                    "wage_before": 17777,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 69,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 86887,
+                    "wage_after_5": 114781,
+                    "wage_before": 27393,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2034",
@@ -11618,7 +13392,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -11648,7 +13447,24 @@
                 ],
                 "name": "Clinical Medical Assisting",
                 "top6": "120810",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 45,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 30705,
+                    "wage_after_5": 45312,
+                    "wage_before": 16625,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 143,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 36917,
+                    "wage_after_5": 43692,
+                    "wage_before": 15298,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -11678,7 +13494,24 @@
                 ],
                 "name": "Administrative Medical Assisting",
                 "top6": "120820",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 47,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38287,
+                    "wage_after_5": 49443,
+                    "wage_before": 21286,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 155,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37048,
+                    "wage_after_5": 47209,
+                    "wage_before": 22047,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9092",
@@ -11723,7 +13556,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -11753,7 +13611,24 @@
                 ],
                 "name": "Administrative Medical Assisting",
                 "top6": "120820",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 47,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38287,
+                    "wage_after_5": 49443,
+                    "wage_before": 21286,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 155,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37048,
+                    "wage_after_5": 47209,
+                    "wage_before": 22047,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6013",
@@ -11803,7 +13678,32 @@
                 ],
                 "name": "Health Occupations, General",
                 "top6": "120100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 136,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 51841,
+                    "wage_after_5": 70922,
+                    "wage_before": 23080,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 46920,
+                    "wage_after_5": 64996,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 49,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 38680,
+                    "wage_after_5": 50438,
+                    "wage_before": 33893,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -11833,7 +13733,24 @@
                 ],
                 "name": "Community Health Care Worker",
                 "top6": "126100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 28,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34159,
+                    "wage_after_5": 70063,
+                    "wage_before": 36043,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 12,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 61661,
+                    "wage_after_5": null,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "21-1094",
@@ -11892,7 +13809,16 @@
                 ],
                 "name": "Nursing",
                 "top6": "123000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 62,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 105722,
+                    "wage_after_5": 120188,
+                    "wage_before": 24556,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -11922,7 +13848,24 @@
                 ],
                 "name": "Registered Nursing",
                 "top6": "123010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 7042,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 106936,
+                    "wage_after_5": 119366,
+                    "wage_before": 27372,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 419,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 101600,
+                    "wage_after_5": 108676,
+                    "wage_before": 24628,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1141",
@@ -11995,7 +13938,24 @@
                 ],
                 "name": "Pharmacy Technology",
                 "top6": "122100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 133,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 37191,
+                    "wage_after_5": 47319,
+                    "wage_before": 17959,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 36743,
+                    "wage_after_5": 47004,
+                    "wage_before": 21079,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2052",
@@ -12040,7 +14000,24 @@
                 ],
                 "name": "Psychiatric Technician",
                 "top6": "123900",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 122,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 80784,
+                    "wage_after_5": 86707,
+                    "wage_before": 26985,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 242,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83845,
+                    "wage_after_5": 85223,
+                    "wage_before": 29661,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2053",
@@ -12085,7 +14062,16 @@
                 ],
                 "name": "Nursing",
                 "top6": "123000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 62,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 105722,
+                    "wage_after_5": 120188,
+                    "wage_before": 24556,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -12115,7 +14101,24 @@
                 ],
                 "name": "Licensed Vocational Nursing",
                 "top6": "123020",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 130,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 55172,
+                    "wage_after_5": 68863,
+                    "wage_before": 22996,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 218,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 54811,
+                    "wage_after_5": 65226,
+                    "wage_before": 23703,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2061",
@@ -12263,7 +14266,24 @@
                 ],
                 "name": "Respiratory Care/Therapy",
                 "top6": "121000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 648,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 87457,
+                    "wage_after_5": 96733,
+                    "wage_before": 28040,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 185,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 75095,
+                    "wage_after_5": 86357,
+                    "wage_before": 23813,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1126",
@@ -12308,7 +14328,16 @@
                 ],
                 "name": "Nursing",
                 "top6": "123000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 62,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 105722,
+                    "wage_after_5": 120188,
+                    "wage_before": 24556,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -12338,7 +14367,24 @@
                 ],
                 "name": "Registered Nursing",
                 "top6": "123010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 7042,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 106936,
+                    "wage_after_5": 119366,
+                    "wage_before": 27372,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 419,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 101600,
+                    "wage_after_5": 108676,
+                    "wage_before": 24628,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1141",
@@ -12425,7 +14471,24 @@
                 ],
                 "name": "Psychiatric Technician",
                 "top6": "123900",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 122,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 80784,
+                    "wage_after_5": 86707,
+                    "wage_before": 26985,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 242,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 83845,
+                    "wage_after_5": 85223,
+                    "wage_before": 29661,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2053",
@@ -12470,7 +14533,16 @@
                 ],
                 "name": "Nursing",
                 "top6": "123000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 62,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 105722,
+                    "wage_after_5": 120188,
+                    "wage_before": 24556,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -12500,7 +14572,24 @@
                 ],
                 "name": "Licensed Vocational Nursing",
                 "top6": "123020",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 130,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 55172,
+                    "wage_after_5": 68863,
+                    "wage_before": 22996,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 218,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 54811,
+                    "wage_after_5": 65226,
+                    "wage_before": 23703,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2061",
@@ -12634,7 +14723,32 @@
                 ],
                 "name": "Health Occupations, General",
                 "top6": "120100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 136,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 51841,
+                    "wage_after_5": 70922,
+                    "wage_before": 23080,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 46920,
+                    "wage_after_5": 64996,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 49,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 38680,
+                    "wage_after_5": 50438,
+                    "wage_before": 33893,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "21-1094",
@@ -12679,7 +14793,24 @@
                 ],
                 "name": "Respiratory Care/Therapy",
                 "top6": "121000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 648,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 87457,
+                    "wage_after_5": 96733,
+                    "wage_before": 28040,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 185,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 75095,
+                    "wage_after_5": 86357,
+                    "wage_before": 23813,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1126",
@@ -12724,7 +14855,24 @@
                 ],
                 "name": "Registered Nursing",
                 "top6": "123010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 7042,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 106936,
+                    "wage_after_5": 119366,
+                    "wage_before": 27372,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 419,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 101600,
+                    "wage_after_5": 108676,
+                    "wage_before": 24628,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1141",
@@ -12797,7 +14945,24 @@
                 ],
                 "name": "Pharmacy Technology",
                 "top6": "122100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 133,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 37191,
+                    "wage_after_5": 47319,
+                    "wage_before": 17959,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 36743,
+                    "wage_after_5": 47004,
+                    "wage_before": 21079,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2052",
@@ -12898,7 +15063,16 @@
                 ],
                 "name": "Physical Therapist Assistant",
                 "top6": "122200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 183,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 60567,
+                    "wage_after_5": 63845,
+                    "wage_before": 24248,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-2021",
@@ -12957,7 +15131,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9092",
@@ -13002,7 +15201,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6013",
@@ -13052,7 +15276,32 @@
                 ],
                 "name": "Health Occupations, General",
                 "top6": "120100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 136,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 51841,
+                    "wage_after_5": 70922,
+                    "wage_before": 23080,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 46920,
+                    "wage_after_5": 64996,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 49,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 38680,
+                    "wage_after_5": 50438,
+                    "wage_before": 33893,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "21-1094",
@@ -13195,7 +15444,16 @@
                 ],
                 "name": "Health Information Coding",
                 "top6": "122310",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 142,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 58155,
+                    "wage_after_5": 71003,
+                    "wage_before": 45860,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2072",
@@ -13240,7 +15498,16 @@
                 ],
                 "name": "Health Information Coding",
                 "top6": "122310",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 142,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 58155,
+                    "wage_after_5": 71003,
+                    "wage_before": 45860,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-9021",
@@ -13299,7 +15566,24 @@
                 ],
                 "name": "Dental Assistant",
                 "top6": "124010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 105,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 42794,
+                    "wage_after_5": 52155,
+                    "wage_before": 21414,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 256,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 38024,
+                    "wage_after_5": 44676,
+                    "wage_before": 18332,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9091",
@@ -13344,7 +15628,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -13374,7 +15683,24 @@
                 ],
                 "name": "Clinical Medical Assisting",
                 "top6": "120810",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 45,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 30705,
+                    "wage_after_5": 45312,
+                    "wage_before": 16625,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 143,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 36917,
+                    "wage_after_5": 43692,
+                    "wage_before": 15298,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -13404,7 +15730,24 @@
                 ],
                 "name": "Administrative Medical Assisting",
                 "top6": "120820",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 47,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38287,
+                    "wage_after_5": 49443,
+                    "wage_before": 21286,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 155,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37048,
+                    "wage_after_5": 47209,
+                    "wage_before": 22047,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9092",
@@ -13449,7 +15792,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -13479,7 +15847,24 @@
                 ],
                 "name": "Administrative Medical Assisting",
                 "top6": "120820",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 47,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38287,
+                    "wage_after_5": 49443,
+                    "wage_before": 21286,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 155,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37048,
+                    "wage_after_5": 47209,
+                    "wage_before": 22047,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -13509,7 +15894,16 @@
                 ],
                 "name": "Health Information Coding",
                 "top6": "122310",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 142,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 58155,
+                    "wage_after_5": 71003,
+                    "wage_before": 45860,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6013",
@@ -13559,7 +15953,32 @@
                 ],
                 "name": "Health Occupations, General",
                 "top6": "120100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 136,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 51841,
+                    "wage_after_5": 70922,
+                    "wage_before": 23080,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 46920,
+                    "wage_after_5": 64996,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 49,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 38680,
+                    "wage_after_5": 50438,
+                    "wage_before": 33893,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -13589,7 +16008,24 @@
                 ],
                 "name": "Community Health Care Worker",
                 "top6": "126100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 28,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34159,
+                    "wage_after_5": 70063,
+                    "wage_before": 36043,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 12,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 61661,
+                    "wage_after_5": null,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "21-1094",
@@ -13648,7 +16084,24 @@
                 ],
                 "name": "Registered Nursing",
                 "top6": "123010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 7042,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 106936,
+                    "wage_after_5": 119366,
+                    "wage_before": 27372,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 419,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 101600,
+                    "wage_after_5": 108676,
+                    "wage_before": 24628,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1141",
@@ -13723,7 +16176,16 @@
                 ],
                 "name": "Dental Hygienist",
                 "top6": "124020",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 236,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 80849,
+                    "wage_after_5": 86385,
+                    "wage_before": 29034,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1292",
@@ -13768,7 +16230,32 @@
                 ],
                 "name": "Radiologic Technology",
                 "top6": "122500",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 751,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 97436,
+                    "wage_after_5": 115545,
+                    "wage_before": 22896,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 261,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 104337,
+                    "wage_after_5": 120912,
+                    "wage_before": 17777,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 69,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 86887,
+                    "wage_after_5": 114781,
+                    "wage_before": 27393,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2034",
@@ -13813,7 +16300,24 @@
                 ],
                 "name": "Pharmacy Technology",
                 "top6": "122100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 133,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 37191,
+                    "wage_after_5": 47319,
+                    "wage_before": 17959,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 173,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 36743,
+                    "wage_after_5": 47004,
+                    "wage_before": 21079,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2052",
@@ -13958,7 +16462,24 @@
                 ],
                 "name": "Dental Assistant",
                 "top6": "124010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 105,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 42794,
+                    "wage_after_5": 52155,
+                    "wage_before": 21414,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 256,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 38024,
+                    "wage_after_5": 44676,
+                    "wage_before": 18332,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9091",
@@ -14003,7 +16524,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9092",
@@ -14048,7 +16594,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6013",
@@ -14098,7 +16669,32 @@
                 ],
                 "name": "Health Occupations, General",
                 "top6": "120100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 136,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 51841,
+                    "wage_after_5": 70922,
+                    "wage_before": 23080,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 46920,
+                    "wage_after_5": 64996,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 49,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 38680,
+                    "wage_after_5": 50438,
+                    "wage_before": 33893,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "21-1094",
@@ -14143,7 +16739,24 @@
                 ],
                 "name": "Respiratory Care/Therapy",
                 "top6": "121000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 648,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 87457,
+                    "wage_after_5": 96733,
+                    "wage_before": 28040,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 185,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 75095,
+                    "wage_after_5": 86357,
+                    "wage_before": 23813,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1126",
@@ -14328,7 +16941,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9092",
@@ -14373,7 +17011,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6013",
@@ -14423,7 +17086,32 @@
                 ],
                 "name": "Health Occupations, General",
                 "top6": "120100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 136,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 51841,
+                    "wage_after_5": 70922,
+                    "wage_before": 23080,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 46920,
+                    "wage_after_5": 64996,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 49,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 38680,
+                    "wage_after_5": 50438,
+                    "wage_before": 33893,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "21-1094",
@@ -14482,7 +17170,24 @@
                 ],
                 "name": "Registered Nursing",
                 "top6": "123010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 7042,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 106936,
+                    "wage_after_5": 119366,
+                    "wage_before": 27372,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 419,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 101600,
+                    "wage_after_5": 108676,
+                    "wage_before": 24628,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-1141",
@@ -14653,7 +17358,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9092",
@@ -14698,7 +17428,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6013",
@@ -14748,7 +17503,32 @@
                 ],
                 "name": "Health Occupations, General",
                 "top6": "120100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 136,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 51841,
+                    "wage_after_5": 70922,
+                    "wage_before": 23080,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 46920,
+                    "wage_after_5": 64996,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 49,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 38680,
+                    "wage_after_5": 50438,
+                    "wage_before": 33893,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "21-1094",
@@ -14919,7 +17699,24 @@
                 ],
                 "name": "Orthopedic Assistant",
                 "top6": "121400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 18,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 47372,
+                    "wage_after_5": 62164,
+                    "wage_before": 14929,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 32,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 52672,
+                    "wage_after_5": 74195,
+                    "wage_before": 16896,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-2021",
@@ -14978,7 +17775,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -15008,7 +17830,24 @@
                 ],
                 "name": "Clinical Medical Assisting",
                 "top6": "120810",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 45,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 30705,
+                    "wage_after_5": 45312,
+                    "wage_before": 16625,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 143,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 36917,
+                    "wage_after_5": 43692,
+                    "wage_before": 15298,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -15038,7 +17877,24 @@
                 ],
                 "name": "Administrative Medical Assisting",
                 "top6": "120820",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 47,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38287,
+                    "wage_after_5": 49443,
+                    "wage_before": 21286,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 155,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37048,
+                    "wage_after_5": 47209,
+                    "wage_before": 22047,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "31-9092",
@@ -15083,7 +17939,32 @@
                 ],
                 "name": "Medical Assisting",
                 "top6": "120800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 234,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38657,
+                    "wage_after_5": 50211,
+                    "wage_before": 18140,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 356,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37944,
+                    "wage_after_5": 47096,
+                    "wage_before": 17099,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 133,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37009,
+                    "wage_after_5": 41812,
+                    "wage_before": 19722,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -15113,7 +17994,24 @@
                 ],
                 "name": "Administrative Medical Assisting",
                 "top6": "120820",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 47,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 38287,
+                    "wage_after_5": 49443,
+                    "wage_before": 21286,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 155,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37048,
+                    "wage_after_5": 47209,
+                    "wage_before": 22047,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "43-6013",

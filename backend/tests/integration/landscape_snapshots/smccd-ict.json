@@ -1177,7 +1177,32 @@
                 ],
                 "name": "Information Technology, General",
                 "top6": "070100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 53,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68214,
+                    "wage_after_5": 76449,
+                    "wage_before": 26901,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 14,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 59804,
+                    "wage_after_5": null,
+                    "wage_before": 33235,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 59,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 49277,
+                    "wage_after_5": 63879,
+                    "wage_before": 26937,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1201,7 +1226,32 @@
                 ],
                 "name": "Computer Information Systems",
                 "top6": "070200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 336,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 48190,
+                    "wage_after_5": 62938,
+                    "wage_before": 31485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 121,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48510,
+                    "wage_after_5": 59543,
+                    "wage_before": 30128,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 43128,
+                    "wage_after_5": 70841,
+                    "wage_before": 30350,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1225,7 +1275,24 @@
                 ],
                 "name": "Computer Software Development",
                 "top6": "070700",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 26,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 51620,
+                    "wage_after_5": 89562,
+                    "wage_before": 17430,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 29,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 54239,
+                    "wage_after_5": 105859,
+                    "wage_before": 16865,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1249,7 +1316,32 @@
                 ],
                 "name": "Computer Programming",
                 "top6": "070710",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 230,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45800,
+                    "wage_after_5": 75985,
+                    "wage_before": 20501,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 207,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60521,
+                    "wage_after_5": 73039,
+                    "wage_before": 28105,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 87,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64762,
+                    "wage_after_5": 85925,
+                    "wage_before": 39056,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1273,7 +1365,24 @@
                 ],
                 "name": "Database Design and Administration",
                 "top6": "070720",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 100955,
+                    "wage_after_5": 110031,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 20,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 69902,
+                    "wage_after_5": 87849,
+                    "wage_before": 90016,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1297,7 +1406,32 @@
                 ],
                 "name": "Computer Infrastructure and Support",
                 "top6": "070800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 111,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68873,
+                    "wage_after_5": 92796,
+                    "wage_before": 35610,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 50,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 67923,
+                    "wage_after_5": 99194,
+                    "wage_before": 45197,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 33,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 63658,
+                    "wage_after_5": 95243,
+                    "wage_before": 54810,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1321,7 +1455,32 @@
                 ],
                 "name": "Computer Networking",
                 "top6": "070810",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 354,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 64056,
+                    "wage_after_5": 77649,
+                    "wage_before": 27853,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 301,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60251,
+                    "wage_after_5": 73630,
+                    "wage_before": 35170,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 169,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 65119,
+                    "wage_after_5": 81462,
+                    "wage_before": 43563,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "15-1231",
@@ -1360,7 +1519,32 @@
                 ],
                 "name": "Computer Information Systems",
                 "top6": "070200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 336,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 48190,
+                    "wage_after_5": 62938,
+                    "wage_before": 31485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 121,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48510,
+                    "wage_after_5": 59543,
+                    "wage_before": 30128,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 43128,
+                    "wage_after_5": 70841,
+                    "wage_before": 30350,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1384,7 +1568,24 @@
                 ],
                 "name": "Database Design and Administration",
                 "top6": "070720",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 100955,
+                    "wage_after_5": 110031,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 20,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 69902,
+                    "wage_after_5": 87849,
+                    "wage_before": 90016,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1408,7 +1609,32 @@
                 ],
                 "name": "Computer Infrastructure and Support",
                 "top6": "070800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 111,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68873,
+                    "wage_after_5": 92796,
+                    "wage_before": 35610,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 50,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 67923,
+                    "wage_after_5": 99194,
+                    "wage_before": 45197,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 33,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 63658,
+                    "wage_after_5": 95243,
+                    "wage_before": 54810,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1432,7 +1658,32 @@
                 ],
                 "name": "Computer Networking",
                 "top6": "070810",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 354,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 64056,
+                    "wage_after_5": 77649,
+                    "wage_before": 27853,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 301,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60251,
+                    "wage_after_5": 73630,
+                    "wage_before": 35170,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 169,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 65119,
+                    "wage_after_5": 81462,
+                    "wage_before": 43563,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "15-1232",
@@ -1471,7 +1722,32 @@
                 ],
                 "name": "Information Technology, General",
                 "top6": "070100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 53,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68214,
+                    "wage_after_5": 76449,
+                    "wage_before": 26901,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 14,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 59804,
+                    "wage_after_5": null,
+                    "wage_before": 33235,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 59,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 49277,
+                    "wage_after_5": 63879,
+                    "wage_before": 26937,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1495,7 +1771,32 @@
                 ],
                 "name": "Computer Information Systems",
                 "top6": "070200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 336,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 48190,
+                    "wage_after_5": 62938,
+                    "wage_before": 31485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 121,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48510,
+                    "wage_after_5": 59543,
+                    "wage_before": 30128,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 43128,
+                    "wage_after_5": 70841,
+                    "wage_before": 30350,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1519,7 +1820,24 @@
                 ],
                 "name": "Computer Software Development",
                 "top6": "070700",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 26,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 51620,
+                    "wage_after_5": 89562,
+                    "wage_before": 17430,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 29,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 54239,
+                    "wage_after_5": 105859,
+                    "wage_before": 16865,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1543,7 +1861,32 @@
                 ],
                 "name": "Computer Programming",
                 "top6": "070710",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 230,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45800,
+                    "wage_after_5": 75985,
+                    "wage_before": 20501,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 207,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60521,
+                    "wage_after_5": 73039,
+                    "wage_before": 28105,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 87,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64762,
+                    "wage_after_5": 85925,
+                    "wage_before": 39056,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1567,7 +1910,32 @@
                 ],
                 "name": "Computer Infrastructure and Support",
                 "top6": "070800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 111,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68873,
+                    "wage_after_5": 92796,
+                    "wage_before": 35610,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 50,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 67923,
+                    "wage_after_5": 99194,
+                    "wage_before": 45197,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 33,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 63658,
+                    "wage_after_5": 95243,
+                    "wage_before": 54810,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1591,7 +1959,32 @@
                 ],
                 "name": "Computer Networking",
                 "top6": "070810",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 354,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 64056,
+                    "wage_after_5": 77649,
+                    "wage_before": 27853,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 301,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60251,
+                    "wage_after_5": 73630,
+                    "wage_before": 35170,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 169,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 65119,
+                    "wage_after_5": 81462,
+                    "wage_before": 43563,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "15-1244",
@@ -1630,7 +2023,32 @@
                 ],
                 "name": "Digital Media",
                 "top6": "061400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 112,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 32026,
+                    "wage_after_5": 42968,
+                    "wage_before": 14818,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 67,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 26407,
+                    "wage_after_5": 42700,
+                    "wage_before": 15461,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 31788,
+                    "wage_after_5": 49541,
+                    "wage_before": 11220,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1654,7 +2072,32 @@
                 ],
                 "name": "Information Technology, General",
                 "top6": "070100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 53,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68214,
+                    "wage_after_5": 76449,
+                    "wage_before": 26901,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 14,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 59804,
+                    "wage_after_5": null,
+                    "wage_before": 33235,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 59,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 49277,
+                    "wage_after_5": 63879,
+                    "wage_before": 26937,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1678,7 +2121,32 @@
                 ],
                 "name": "Computer Information Systems",
                 "top6": "070200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 336,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 48190,
+                    "wage_after_5": 62938,
+                    "wage_before": 31485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 121,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48510,
+                    "wage_after_5": 59543,
+                    "wage_before": 30128,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 43128,
+                    "wage_after_5": 70841,
+                    "wage_before": 30350,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1702,7 +2170,24 @@
                 ],
                 "name": "Computer Software Development",
                 "top6": "070700",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 26,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 51620,
+                    "wage_after_5": 89562,
+                    "wage_before": 17430,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 29,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 54239,
+                    "wage_after_5": 105859,
+                    "wage_before": 16865,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1726,7 +2211,32 @@
                 ],
                 "name": "Computer Programming",
                 "top6": "070710",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 230,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45800,
+                    "wage_after_5": 75985,
+                    "wage_before": 20501,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 207,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60521,
+                    "wage_after_5": 73039,
+                    "wage_before": 28105,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 87,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64762,
+                    "wage_after_5": 85925,
+                    "wage_before": 39056,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1750,7 +2260,32 @@
                 ],
                 "name": "Computer Networking",
                 "top6": "070810",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 354,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 64056,
+                    "wage_after_5": 77649,
+                    "wage_before": 27853,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 301,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60251,
+                    "wage_after_5": 73630,
+                    "wage_before": 35170,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 169,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 65119,
+                    "wage_after_5": 81462,
+                    "wage_before": 43563,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "15-1254",
@@ -1789,7 +2324,32 @@
                 ],
                 "name": "Digital Media",
                 "top6": "061400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 112,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 32026,
+                    "wage_after_5": 42968,
+                    "wage_before": 14818,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 67,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 26407,
+                    "wage_after_5": 42700,
+                    "wage_before": 15461,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 31788,
+                    "wage_after_5": 49541,
+                    "wage_before": 11220,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1813,7 +2373,32 @@
                 ],
                 "name": "Information Technology, General",
                 "top6": "070100",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 53,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68214,
+                    "wage_after_5": 76449,
+                    "wage_before": 26901,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 14,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 59804,
+                    "wage_after_5": null,
+                    "wage_before": 33235,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 59,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 49277,
+                    "wage_after_5": 63879,
+                    "wage_before": 26937,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1837,7 +2422,32 @@
                 ],
                 "name": "Computer Information Systems",
                 "top6": "070200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 336,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 48190,
+                    "wage_after_5": 62938,
+                    "wage_before": 31485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 121,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48510,
+                    "wage_after_5": 59543,
+                    "wage_before": 30128,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 43128,
+                    "wage_after_5": 70841,
+                    "wage_before": 30350,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1861,7 +2471,24 @@
                 ],
                 "name": "Computer Software Development",
                 "top6": "070700",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 26,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 51620,
+                    "wage_after_5": 89562,
+                    "wage_before": 17430,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 29,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 54239,
+                    "wage_after_5": 105859,
+                    "wage_before": 16865,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1885,7 +2512,32 @@
                 ],
                 "name": "Computer Programming",
                 "top6": "070710",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 230,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45800,
+                    "wage_after_5": 75985,
+                    "wage_before": 20501,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 207,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60521,
+                    "wage_after_5": 73039,
+                    "wage_before": 28105,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 87,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64762,
+                    "wage_after_5": 85925,
+                    "wage_before": 39056,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1909,7 +2561,32 @@
                 ],
                 "name": "Computer Infrastructure and Support",
                 "top6": "070800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 111,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68873,
+                    "wage_after_5": 92796,
+                    "wage_before": 35610,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 50,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 67923,
+                    "wage_after_5": 99194,
+                    "wage_before": 45197,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 33,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 63658,
+                    "wage_after_5": 95243,
+                    "wage_before": 54810,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1933,7 +2610,32 @@
                 ],
                 "name": "Computer Networking",
                 "top6": "070810",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 354,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 64056,
+                    "wage_after_5": 77649,
+                    "wage_before": 27853,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 301,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60251,
+                    "wage_after_5": 73630,
+                    "wage_before": 35170,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 169,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 65119,
+                    "wage_after_5": 81462,
+                    "wage_before": 43563,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "15-1255",
@@ -1972,7 +2674,32 @@
                 ],
                 "name": "Commercial Music",
                 "top6": "100500",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 100,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 40483,
+                    "wage_after_5": 43376,
+                    "wage_before": 15605,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37123,
+                    "wage_after_5": 42276,
+                    "wage_before": 16348,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 45,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 30113,
+                    "wage_after_5": 43152,
+                    "wage_before": 13491,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1996,7 +2723,32 @@
                 ],
                 "name": "Applied Photography",
                 "top6": "101200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 116,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 27613,
+                    "wage_after_5": 48089,
+                    "wage_before": 19555,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 125,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 31143,
+                    "wage_after_5": 34575,
+                    "wage_before": 18150,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 35,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 41603,
+                    "wage_after_5": 49384,
+                    "wage_before": 39223,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "27-4011",
@@ -2040,7 +2792,32 @@
                 ],
                 "name": "Computer Information Systems",
                 "top6": "070200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 336,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 48190,
+                    "wage_after_5": 62938,
+                    "wage_before": 31485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 121,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48510,
+                    "wage_after_5": 59543,
+                    "wage_before": 30128,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 43128,
+                    "wage_after_5": 70841,
+                    "wage_before": 30350,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2064,7 +2841,32 @@
                 ],
                 "name": "Computer Programming",
                 "top6": "070710",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 230,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45800,
+                    "wage_after_5": 75985,
+                    "wage_before": 20501,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 207,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60521,
+                    "wage_after_5": 73039,
+                    "wage_before": 28105,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 87,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64762,
+                    "wage_after_5": 85925,
+                    "wage_before": 39056,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2088,7 +2890,24 @@
                 ],
                 "name": "Database Design and Administration",
                 "top6": "070720",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 100955,
+                    "wage_after_5": 110031,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 20,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 69902,
+                    "wage_after_5": 87849,
+                    "wage_before": 90016,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2112,7 +2931,32 @@
                 ],
                 "name": "Computer Infrastructure and Support",
                 "top6": "070800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 111,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68873,
+                    "wage_after_5": 92796,
+                    "wage_before": 35610,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 50,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 67923,
+                    "wage_after_5": 99194,
+                    "wage_before": 45197,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 33,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 63658,
+                    "wage_after_5": 95243,
+                    "wage_before": 54810,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2136,7 +2980,32 @@
                 ],
                 "name": "Computer Networking",
                 "top6": "070810",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 354,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 64056,
+                    "wage_after_5": 77649,
+                    "wage_before": 27853,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 301,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60251,
+                    "wage_after_5": 73630,
+                    "wage_before": 35170,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 169,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 65119,
+                    "wage_after_5": 81462,
+                    "wage_before": 43563,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2160,7 +3029,32 @@
                 ],
                 "name": "Computer Support",
                 "top6": "070820",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 21,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45047,
+                    "wage_after_5": 63026,
+                    "wage_before": 13545,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 33,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 59090,
+                    "wage_after_5": 74959,
+                    "wage_before": 18334,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 38,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 44462,
+                    "wage_after_5": 52268,
+                    "wage_before": 20547,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "15-1231",
@@ -2199,7 +3093,32 @@
                 ],
                 "name": "Computer Information Systems",
                 "top6": "070200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 336,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 48190,
+                    "wage_after_5": 62938,
+                    "wage_before": 31485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 121,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48510,
+                    "wage_after_5": 59543,
+                    "wage_before": 30128,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 43128,
+                    "wage_after_5": 70841,
+                    "wage_before": 30350,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2223,7 +3142,24 @@
                 ],
                 "name": "Database Design and Administration",
                 "top6": "070720",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 100955,
+                    "wage_after_5": 110031,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 20,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 69902,
+                    "wage_after_5": 87849,
+                    "wage_before": 90016,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2247,7 +3183,32 @@
                 ],
                 "name": "Computer Infrastructure and Support",
                 "top6": "070800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 111,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68873,
+                    "wage_after_5": 92796,
+                    "wage_before": 35610,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 50,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 67923,
+                    "wage_after_5": 99194,
+                    "wage_before": 45197,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 33,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 63658,
+                    "wage_after_5": 95243,
+                    "wage_before": 54810,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2271,7 +3232,32 @@
                 ],
                 "name": "Computer Networking",
                 "top6": "070810",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 354,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 64056,
+                    "wage_after_5": 77649,
+                    "wage_before": 27853,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 301,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60251,
+                    "wage_after_5": 73630,
+                    "wage_before": 35170,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 169,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 65119,
+                    "wage_after_5": 81462,
+                    "wage_before": 43563,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2295,7 +3281,32 @@
                 ],
                 "name": "Computer Support",
                 "top6": "070820",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 21,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45047,
+                    "wage_after_5": 63026,
+                    "wage_before": 13545,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 33,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 59090,
+                    "wage_after_5": 74959,
+                    "wage_before": 18334,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 38,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 44462,
+                    "wage_after_5": 52268,
+                    "wage_before": 20547,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "15-1232",
@@ -2334,7 +3345,32 @@
                 ],
                 "name": "Computer Information Systems",
                 "top6": "070200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 336,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 48190,
+                    "wage_after_5": 62938,
+                    "wage_before": 31485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 121,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48510,
+                    "wage_after_5": 59543,
+                    "wage_before": 30128,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 43128,
+                    "wage_after_5": 70841,
+                    "wage_before": 30350,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2358,7 +3394,32 @@
                 ],
                 "name": "Computer Programming",
                 "top6": "070710",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 230,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45800,
+                    "wage_after_5": 75985,
+                    "wage_before": 20501,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 207,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60521,
+                    "wage_after_5": 73039,
+                    "wage_before": 28105,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 87,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64762,
+                    "wage_after_5": 85925,
+                    "wage_before": 39056,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2382,7 +3443,32 @@
                 ],
                 "name": "Computer Infrastructure and Support",
                 "top6": "070800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 111,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68873,
+                    "wage_after_5": 92796,
+                    "wage_before": 35610,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 50,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 67923,
+                    "wage_after_5": 99194,
+                    "wage_before": 45197,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 33,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 63658,
+                    "wage_after_5": 95243,
+                    "wage_before": 54810,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2406,7 +3492,32 @@
                 ],
                 "name": "Computer Networking",
                 "top6": "070810",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 354,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 64056,
+                    "wage_after_5": 77649,
+                    "wage_before": 27853,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 301,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60251,
+                    "wage_after_5": 73630,
+                    "wage_before": 35170,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 169,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 65119,
+                    "wage_after_5": 81462,
+                    "wage_before": 43563,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2430,7 +3541,32 @@
                 ],
                 "name": "Computer Support",
                 "top6": "070820",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 21,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45047,
+                    "wage_after_5": 63026,
+                    "wage_before": 13545,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 33,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 59090,
+                    "wage_after_5": 74959,
+                    "wage_before": 18334,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 38,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 44462,
+                    "wage_after_5": 52268,
+                    "wage_before": 20547,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "15-1244",
@@ -2469,7 +3605,32 @@
                 ],
                 "name": "Digital Media",
                 "top6": "061400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 112,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 32026,
+                    "wage_after_5": 42968,
+                    "wage_before": 14818,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 67,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 26407,
+                    "wage_after_5": 42700,
+                    "wage_before": 15461,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 31788,
+                    "wage_after_5": 49541,
+                    "wage_before": 11220,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2493,7 +3654,32 @@
                 ],
                 "name": "Computer Information Systems",
                 "top6": "070200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 336,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 48190,
+                    "wage_after_5": 62938,
+                    "wage_before": 31485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 121,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48510,
+                    "wage_after_5": 59543,
+                    "wage_before": 30128,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 43128,
+                    "wage_after_5": 70841,
+                    "wage_before": 30350,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2517,7 +3703,32 @@
                 ],
                 "name": "Computer Programming",
                 "top6": "070710",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 230,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45800,
+                    "wage_after_5": 75985,
+                    "wage_before": 20501,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 207,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60521,
+                    "wage_after_5": 73039,
+                    "wage_before": 28105,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 87,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64762,
+                    "wage_after_5": 85925,
+                    "wage_before": 39056,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2541,7 +3752,32 @@
                 ],
                 "name": "Computer Networking",
                 "top6": "070810",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 354,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 64056,
+                    "wage_after_5": 77649,
+                    "wage_before": 27853,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 301,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60251,
+                    "wage_after_5": 73630,
+                    "wage_before": 35170,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 169,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 65119,
+                    "wage_after_5": 81462,
+                    "wage_before": 43563,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "15-1254",
@@ -2580,7 +3816,32 @@
                 ],
                 "name": "Digital Media",
                 "top6": "061400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 112,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 32026,
+                    "wage_after_5": 42968,
+                    "wage_before": 14818,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 67,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 26407,
+                    "wage_after_5": 42700,
+                    "wage_before": 15461,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 31788,
+                    "wage_after_5": 49541,
+                    "wage_before": 11220,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2604,7 +3865,32 @@
                 ],
                 "name": "Computer Information Systems",
                 "top6": "070200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 336,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 48190,
+                    "wage_after_5": 62938,
+                    "wage_before": 31485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 121,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48510,
+                    "wage_after_5": 59543,
+                    "wage_before": 30128,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 43128,
+                    "wage_after_5": 70841,
+                    "wage_before": 30350,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2628,7 +3914,32 @@
                 ],
                 "name": "Computer Programming",
                 "top6": "070710",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 230,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45800,
+                    "wage_after_5": 75985,
+                    "wage_before": 20501,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 207,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60521,
+                    "wage_after_5": 73039,
+                    "wage_before": 28105,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 87,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64762,
+                    "wage_after_5": 85925,
+                    "wage_before": 39056,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2652,7 +3963,32 @@
                 ],
                 "name": "Computer Infrastructure and Support",
                 "top6": "070800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 111,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68873,
+                    "wage_after_5": 92796,
+                    "wage_before": 35610,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 50,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 67923,
+                    "wage_after_5": 99194,
+                    "wage_before": 45197,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 33,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 63658,
+                    "wage_after_5": 95243,
+                    "wage_before": 54810,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2676,7 +4012,32 @@
                 ],
                 "name": "Computer Networking",
                 "top6": "070810",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 354,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 64056,
+                    "wage_after_5": 77649,
+                    "wage_before": 27853,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 301,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60251,
+                    "wage_after_5": 73630,
+                    "wage_before": 35170,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 169,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 65119,
+                    "wage_after_5": 81462,
+                    "wage_before": 43563,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2700,7 +4061,32 @@
                 ],
                 "name": "Graphic Art and Design",
                 "top6": "103000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 276,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 35083,
+                    "wage_after_5": 47092,
+                    "wage_before": 18480,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 179,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 43206,
+                    "wage_after_5": 52841,
+                    "wage_before": 21815,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 60,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 31440,
+                    "wage_after_5": 39555,
+                    "wage_before": 14629,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "15-1255",
@@ -2739,7 +4125,32 @@
                 ],
                 "name": "Commercial Music",
                 "top6": "100500",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 100,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 40483,
+                    "wage_after_5": 43376,
+                    "wage_before": 15605,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37123,
+                    "wage_after_5": 42276,
+                    "wage_before": 16348,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 45,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 30113,
+                    "wage_after_5": 43152,
+                    "wage_before": 13491,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2763,7 +4174,32 @@
                 ],
                 "name": "Applied Photography",
                 "top6": "101200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 116,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 27613,
+                    "wage_after_5": 48089,
+                    "wage_before": 19555,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 125,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 31143,
+                    "wage_after_5": 34575,
+                    "wage_before": 18150,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 35,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 41603,
+                    "wage_after_5": 49384,
+                    "wage_before": 39223,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "27-4011",
@@ -2807,7 +4243,32 @@
                 ],
                 "name": "Computer Programming",
                 "top6": "070710",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 230,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45800,
+                    "wage_after_5": 75985,
+                    "wage_before": 20501,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 207,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60521,
+                    "wage_after_5": 73039,
+                    "wage_before": 28105,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 87,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64762,
+                    "wage_after_5": 85925,
+                    "wage_before": 39056,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2831,7 +4292,24 @@
                 ],
                 "name": "Database Design and Administration",
                 "top6": "070720",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 100955,
+                    "wage_after_5": 110031,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 20,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 69902,
+                    "wage_after_5": 87849,
+                    "wage_before": 90016,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2855,7 +4333,32 @@
                 ],
                 "name": "Computer Infrastructure and Support",
                 "top6": "070800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 111,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68873,
+                    "wage_after_5": 92796,
+                    "wage_before": 35610,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 50,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 67923,
+                    "wage_after_5": 99194,
+                    "wage_before": 45197,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 33,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 63658,
+                    "wage_after_5": 95243,
+                    "wage_before": 54810,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "15-1231",
@@ -2894,7 +4397,24 @@
                 ],
                 "name": "Database Design and Administration",
                 "top6": "070720",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 15,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 100955,
+                    "wage_after_5": 110031,
+                    "wage_before": null,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 20,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 69902,
+                    "wage_after_5": 87849,
+                    "wage_before": 90016,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2918,7 +4438,32 @@
                 ],
                 "name": "Computer Infrastructure and Support",
                 "top6": "070800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 111,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68873,
+                    "wage_after_5": 92796,
+                    "wage_before": 35610,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 50,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 67923,
+                    "wage_after_5": 99194,
+                    "wage_before": 45197,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 33,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 63658,
+                    "wage_after_5": 95243,
+                    "wage_before": 54810,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "15-1232",
@@ -2957,7 +4502,32 @@
                 ],
                 "name": "Computer Programming",
                 "top6": "070710",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 230,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45800,
+                    "wage_after_5": 75985,
+                    "wage_before": 20501,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 207,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60521,
+                    "wage_after_5": 73039,
+                    "wage_before": 28105,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 87,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64762,
+                    "wage_after_5": 85925,
+                    "wage_before": 39056,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2981,7 +4551,32 @@
                 ],
                 "name": "Computer Infrastructure and Support",
                 "top6": "070800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 111,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68873,
+                    "wage_after_5": 92796,
+                    "wage_before": 35610,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 50,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 67923,
+                    "wage_after_5": 99194,
+                    "wage_before": 45197,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 33,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 63658,
+                    "wage_after_5": 95243,
+                    "wage_before": 54810,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "15-1244",
@@ -3020,7 +4615,32 @@
                 ],
                 "name": "Digital Media",
                 "top6": "061400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 112,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 32026,
+                    "wage_after_5": 42968,
+                    "wage_before": 14818,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 67,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 26407,
+                    "wage_after_5": 42700,
+                    "wage_before": 15461,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 31788,
+                    "wage_after_5": 49541,
+                    "wage_before": 11220,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -3044,7 +4664,32 @@
                 ],
                 "name": "Website Design and Development",
                 "top6": "061430",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 37,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45516,
+                    "wage_after_5": 76171,
+                    "wage_before": 26074,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 32,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 42657,
+                    "wage_after_5": 54313,
+                    "wage_before": 15795,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 23,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 40530,
+                    "wage_after_5": 53172,
+                    "wage_before": 21240,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -3068,7 +4713,32 @@
                 ],
                 "name": "Computer Programming",
                 "top6": "070710",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 230,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45800,
+                    "wage_after_5": 75985,
+                    "wage_before": 20501,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 207,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60521,
+                    "wage_after_5": 73039,
+                    "wage_before": 28105,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 87,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64762,
+                    "wage_after_5": 85925,
+                    "wage_before": 39056,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "15-1254",
@@ -3107,7 +4777,32 @@
                 ],
                 "name": "Digital Media",
                 "top6": "061400",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 112,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 32026,
+                    "wage_after_5": 42968,
+                    "wage_before": 14818,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 67,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 26407,
+                    "wage_after_5": 42700,
+                    "wage_before": 15461,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 31788,
+                    "wage_after_5": 49541,
+                    "wage_before": 11220,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -3131,7 +4826,32 @@
                 ],
                 "name": "Multimedia",
                 "top6": "061410",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 115,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 28138,
+                    "wage_after_5": 42909,
+                    "wage_before": 19432,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 89,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 28158,
+                    "wage_after_5": 41817,
+                    "wage_before": 18614,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 17,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 36474,
+                    "wage_after_5": 42240,
+                    "wage_before": 23245,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -3155,7 +4875,32 @@
                 ],
                 "name": "Website Design and Development",
                 "top6": "061430",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 37,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45516,
+                    "wage_after_5": 76171,
+                    "wage_before": 26074,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 32,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 42657,
+                    "wage_after_5": 54313,
+                    "wage_before": 15795,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 23,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 40530,
+                    "wage_after_5": 53172,
+                    "wage_before": 21240,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -3179,7 +4924,32 @@
                 ],
                 "name": "Computer Graphics and Digital Imagery",
                 "top6": "061460",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 64,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 33283,
+                    "wage_after_5": 43733,
+                    "wage_before": 14711,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 41167,
+                    "wage_after_5": 45782,
+                    "wage_before": 23614,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 27,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 45087,
+                    "wage_after_5": null,
+                    "wage_before": 15854,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -3203,7 +4973,32 @@
                 ],
                 "name": "Computer Programming",
                 "top6": "070710",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 230,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45800,
+                    "wage_after_5": 75985,
+                    "wage_before": 20501,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 207,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60521,
+                    "wage_after_5": 73039,
+                    "wage_before": 28105,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 87,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64762,
+                    "wage_after_5": 85925,
+                    "wage_before": 39056,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -3227,7 +5022,32 @@
                 ],
                 "name": "Computer Infrastructure and Support",
                 "top6": "070800",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 111,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 68873,
+                    "wage_after_5": 92796,
+                    "wage_before": 35610,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 50,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 67923,
+                    "wage_after_5": 99194,
+                    "wage_before": 45197,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 33,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 63658,
+                    "wage_after_5": 95243,
+                    "wage_before": 54810,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "15-1255",

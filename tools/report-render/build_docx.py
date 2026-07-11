@@ -393,6 +393,8 @@ def add_footer(div):
 
 
 def add_image():
+    if not os.path.exists(XWALK):
+        return  # no rasterized crosswalk on hand → rely on add_xwalk_legend's link caption
     p = para(4, 4); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p.add_run().add_picture(XWALK, width=Inches(CONTENT_W))
 

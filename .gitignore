@@ -81,3 +81,7 @@ backend/logs/
 backend/employers/cache/
 backend/employers/employers.pre-*.json
 backend/employers/bay_website_review.json
+
+# Report-render deliverables (.html/.docx/.pdf/.png) from export.sh — regenerable
+# from the saved def; never source-of-truth, and not baked into the backend image.
+tools/report-render/out/

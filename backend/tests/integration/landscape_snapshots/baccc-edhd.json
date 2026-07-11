@@ -1856,7 +1856,16 @@
                 ],
                 "name": "Educational Aide (Teacher Assistant)",
                 "top6": "080200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 19,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 20551,
+                    "wage_after_5": 32502,
+                    "wage_before": 8742,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "25-9044",
@@ -1948,7 +1957,16 @@
                 ],
                 "name": "Educational Aide (Teacher Assistant)",
                 "top6": "080200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 19,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 20551,
+                    "wage_after_5": 32502,
+                    "wage_before": 8742,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "25-9044",
@@ -2007,7 +2025,24 @@
                 ],
                 "name": "Fitness Trainer",
                 "top6": "083520",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 30476,
+                    "wage_after_5": 37520,
+                    "wage_before": 19460,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 41,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 17309,
+                    "wage_after_5": 27848,
+                    "wage_before": 18267,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2101,7 +2136,16 @@
                 ],
                 "name": "Educational Aide (Teacher Assistant)",
                 "top6": "080200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 19,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 20551,
+                    "wage_after_5": 32502,
+                    "wage_before": 8742,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "25-9044",
@@ -2193,7 +2237,16 @@
                 ],
                 "name": "Educational Aide (Teacher Assistant)",
                 "top6": "080200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 19,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 20551,
+                    "wage_after_5": 32502,
+                    "wage_before": 8742,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "25-9044",
@@ -2252,7 +2305,24 @@
                 ],
                 "name": "Fitness Trainer",
                 "top6": "083520",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 30476,
+                    "wage_after_5": 37520,
+                    "wage_before": 19460,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 41,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 17309,
+                    "wage_after_5": 27848,
+                    "wage_before": 18267,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2332,7 +2402,32 @@
                 ],
                 "name": "Library Technician (Aide)",
                 "top6": "160200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 58,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 41489,
+                    "wage_after_5": 48743,
+                    "wage_before": 23973,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 109,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 40263,
+                    "wage_after_5": 48771,
+                    "wage_before": 29126,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 24,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 44297,
+                    "wage_after_5": 66156,
+                    "wage_before": 43391,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "25-4031",
@@ -2391,7 +2486,16 @@
                 ],
                 "name": "Legal and Community Interpretation",
                 "top6": "214000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 34,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37040,
+                    "wage_after_5": 50010,
+                    "wage_before": 37319,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "27-3091",
@@ -2436,7 +2540,24 @@
                 ],
                 "name": "Fitness Trainer",
                 "top6": "083520",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 30476,
+                    "wage_after_5": 37520,
+                    "wage_before": 19460,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 41,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 17309,
+                    "wage_after_5": 27848,
+                    "wage_before": 18267,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2680,7 +2801,24 @@
                 ],
                 "name": "Fitness Trainer",
                 "top6": "083520",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 30476,
+                    "wage_after_5": 37520,
+                    "wage_before": 19460,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 41,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 17309,
+                    "wage_after_5": 27848,
+                    "wage_before": 18267,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2774,7 +2912,16 @@
                 ],
                 "name": "Educational Aide (Teacher Assistant)",
                 "top6": "080200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 19,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 20551,
+                    "wage_after_5": 32502,
+                    "wage_before": 8742,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "25-9044",
@@ -2880,7 +3027,16 @@
                 ],
                 "name": "Legal and Community Interpretation",
                 "top6": "214000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 34,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37040,
+                    "wage_after_5": 50010,
+                    "wage_before": 37319,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "27-3091",
@@ -2975,7 +3131,32 @@
                 ],
                 "name": "Library Technician (Aide)",
                 "top6": "160200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 58,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 41489,
+                    "wage_after_5": 48743,
+                    "wage_before": 23973,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 109,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 40263,
+                    "wage_after_5": 48771,
+                    "wage_before": 29126,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 24,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 44297,
+                    "wage_after_5": 66156,
+                    "wage_before": 43391,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "25-4031",
@@ -3048,7 +3229,24 @@
                 ],
                 "name": "Fitness Trainer",
                 "top6": "083520",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 30476,
+                    "wage_after_5": 37520,
+                    "wage_before": 19460,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 41,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 17309,
+                    "wage_after_5": 27848,
+                    "wage_before": 18267,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -3142,7 +3340,16 @@
                 ],
                 "name": "Educational Aide (Teacher Assistant)",
                 "top6": "080200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 19,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 20551,
+                    "wage_after_5": 32502,
+                    "wage_before": 8742,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "25-9044",
@@ -3187,7 +3394,16 @@
                 ],
                 "name": "Legal and Community Interpretation",
                 "top6": "214000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 34,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37040,
+                    "wage_after_5": 50010,
+                    "wage_before": 37319,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "27-3091",
@@ -3293,7 +3509,24 @@
                 ],
                 "name": "Fitness Trainer",
                 "top6": "083520",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 30476,
+                    "wage_after_5": 37520,
+                    "wage_before": 19460,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 41,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 17309,
+                    "wage_after_5": 27848,
+                    "wage_before": 18267,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "39-9031",
@@ -3385,7 +3618,24 @@
                 ],
                 "name": "Fitness Trainer",
                 "top6": "083520",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 30476,
+                    "wage_after_5": 37520,
+                    "wage_before": 19460,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 41,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 17309,
+                    "wage_after_5": 27848,
+                    "wage_before": 18267,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "39-9031",
@@ -3449,7 +3699,16 @@
                 ],
                 "name": "Educational Aide (Teacher Assistant)",
                 "top6": "080200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 19,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 20551,
+                    "wage_after_5": 32502,
+                    "wage_before": 8742,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "25-9044",
@@ -3494,7 +3753,16 @@
                 ],
                 "name": "Legal and Community Interpretation",
                 "top6": "214000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 34,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37040,
+                    "wage_after_5": 50010,
+                    "wage_before": 37319,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "27-3091",
@@ -3539,7 +3807,24 @@
                 ],
                 "name": "Fitness Trainer",
                 "top6": "083520",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 30476,
+                    "wage_after_5": 37520,
+                    "wage_before": 19460,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 41,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 17309,
+                    "wage_after_5": 27848,
+                    "wage_before": 18267,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "39-9031",
@@ -3631,7 +3916,24 @@
                 ],
                 "name": "Fitness Trainer",
                 "top6": "083520",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 30476,
+                    "wage_after_5": 37520,
+                    "wage_before": 19460,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 41,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 17309,
+                    "wage_after_5": 27848,
+                    "wage_before": 18267,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "39-9031",
@@ -3723,7 +4025,24 @@
                 ],
                 "name": "Fitness Trainer",
                 "top6": "083520",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 30476,
+                    "wage_after_5": 37520,
+                    "wage_before": 19460,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 41,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 17309,
+                    "wage_after_5": 27848,
+                    "wage_before": 18267,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "39-9031",
@@ -3787,7 +4106,16 @@
                 ],
                 "name": "Educational Aide (Teacher Assistant)",
                 "top6": "080200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 19,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 20551,
+                    "wage_after_5": 32502,
+                    "wage_before": 8742,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "25-9044",
@@ -3907,7 +4235,24 @@
                 ],
                 "name": "Fitness Trainer",
                 "top6": "083520",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 30476,
+                    "wage_after_5": 37520,
+                    "wage_before": 19460,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 41,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 17309,
+                    "wage_after_5": 27848,
+                    "wage_before": 18267,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "39-9031",
@@ -4046,7 +4391,24 @@
                 ],
                 "name": "Sign Language Interpreting",
                 "top6": "085010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 109,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 28810,
+                    "wage_after_5": 40594,
+                    "wage_before": 18832,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 99,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 31922,
+                    "wage_after_5": 39990,
+                    "wage_before": 20252,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "27-3091",
@@ -4091,7 +4453,24 @@
                 ],
                 "name": "Fitness Trainer",
                 "top6": "083520",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 30476,
+                    "wage_after_5": 37520,
+                    "wage_before": 19460,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 41,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 17309,
+                    "wage_after_5": 27848,
+                    "wage_before": 18267,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "39-9031",
@@ -4155,7 +4534,16 @@
                 ],
                 "name": "Educational Aide (Teacher Assistant)",
                 "top6": "080200",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 19,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 20551,
+                    "wage_after_5": 32502,
+                    "wage_before": 8742,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "25-9044",
@@ -4261,7 +4649,24 @@
                 ],
                 "name": "Sign Language Interpreting",
                 "top6": "085010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 109,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 28810,
+                    "wage_after_5": 40594,
+                    "wage_before": 18832,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 99,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 31922,
+                    "wage_after_5": 39990,
+                    "wage_before": 20252,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "27-3091",
@@ -4306,7 +4711,24 @@
                 ],
                 "name": "Fitness Trainer",
                 "top6": "083520",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 30476,
+                    "wage_after_5": 37520,
+                    "wage_before": 19460,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 41,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 17309,
+                    "wage_after_5": 27848,
+                    "wage_before": 18267,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -4475,7 +4897,24 @@
                 ],
                 "name": "Sign Language Interpreting",
                 "top6": "085010",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 109,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 28810,
+                    "wage_after_5": 40594,
+                    "wage_before": 18832,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 99,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 31922,
+                    "wage_after_5": 39990,
+                    "wage_before": 20252,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "27-3091",
@@ -4520,7 +4959,24 @@
                 ],
                 "name": "Fitness Trainer",
                 "top6": "083520",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 30476,
+                    "wage_after_5": 37520,
+                    "wage_before": 19460,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 41,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 17309,
+                    "wage_after_5": 27848,
+                    "wage_before": 18267,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "39-9031",
@@ -4612,7 +5068,24 @@
                 ],
                 "name": "Fitness Trainer",
                 "top6": "083520",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 30476,
+                    "wage_after_5": 37520,
+                    "wage_before": 19460,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 41,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 17309,
+                    "wage_after_5": 27848,
+                    "wage_before": 18267,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
