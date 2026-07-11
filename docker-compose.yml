@@ -61,6 +61,13 @@ services:
       # link target). Defaults to the deployed atlas; override to a local atlas
       # (e.g. http://localhost:3001) for a fully-local two-windows loop.
       - KALLIPOLIS_ATLAS_URL=${KALLIPOLIS_ATLAS_URL:-https://preview.kallipolis.us}
+      # OAuth (resource-server mode). Empty by default => OAuth OFF, the /mcp-oauth
+      # endpoint is not mounted, and the bearer-gated /mcp is unaffected. Set all
+      # three to turn on the OAuth endpoint (issuer = the WorkOS AuthKit domain,
+      # audience = this server's OAuth MCP URL). See mcp_server.auth.
+      - MCP_OAUTH_ISSUER=${MCP_OAUTH_ISSUER:-}
+      - MCP_OAUTH_AUDIENCE=${MCP_OAUTH_AUDIENCE:-}
+      - MCP_OAUTH_JWKS_URL=${MCP_OAUTH_JWKS_URL:-}
     depends_on:
       neo4j:
         condition: service_healthy

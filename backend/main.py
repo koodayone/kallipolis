@@ -14,8 +14,8 @@ from partnerships.api import router as partnerships_router
 from analytics.api import router as analytics_router
 from ontology.schema import init_schema, close_driver
 from ontology.timing import set_request_context
-from contextlib import asynccontextmanager
-from mcp_server.server import mcp as mcp_server
+from contextlib import AsyncExitStack, asynccontextmanager
+from mcp_server.server import mcp as mcp_server, build_oauth_mcp
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -26,10 +26,21 @@ logger = logging.getLogger(__name__)
 # schema init/teardown that previously lived in on_event handlers.
 mcp_app = mcp_server.streamable_http_app()
 
+# Optional OAuth-protected endpoint (this app is the resource server; WorkOS is
+# the authorization server). Built only when MCP_OAUTH_* env is set, so nothing
+# changes until we switch it on. Mounted at /mcp-oauth alongside the bearer-gated
+# /mcp for the claude.ai handshake test; its host-root discovery doc (RFC 9728) is
+# routed to the mounted location by Caddy.
+_oauth_mcp = build_oauth_mcp()
+oauth_app = _oauth_mcp.streamable_http_app() if _oauth_mcp else None
+
 
 @asynccontextmanager
 async def lifespan(app: "FastAPI"):
-    async with mcp_server.session_manager.run():
+    async with AsyncExitStack() as stack:
+        await stack.enter_async_context(mcp_server.session_manager.run())
+        if _oauth_mcp is not None:
+            await stack.enter_async_context(_oauth_mcp.session_manager.run())
         logger.info("Initializing Neo4j schema and seed data...")
         init_schema()
         logger.info("Startup complete.")
@@ -84,6 +95,8 @@ app.include_router(analytics_router, prefix="/analytics", tags=["Analytics"])
 # include_router with a prefix=) is invisible to the vocabulary_alignment audit
 # and needs no product doc — mcp_server is shared infrastructure, not an ontology unit.
 app.mount("/mcp", mcp_app)
+if oauth_app is not None:
+    app.mount("/mcp-oauth", oauth_app)
 
 
 @app.get("/health")

@@ -104,11 +104,14 @@ def _form_description(form_id: str) -> str:
 
 # ── Tier 0 ────────────────────────────────────────────────────────────────
 
-@mcp.tool(description=(
+_LIST_SCOPES_DESC = (
     "Tier 0 — list the canonical member×sector universe the system knows. "
     "Match the user's institution to a canonical member id (the consumer, you, "
     "resolves fuzzy names — there is no server-side matcher), then call orient. "
-    "Optional 'filter' substring narrows by member or sector name/id."))
+    "Optional 'filter' substring narrows by member or sector name/id.")
+
+
+@mcp.tool(description=_LIST_SCOPES_DESC)
 def list_scopes(filter: str = "") -> ScopeList:
     f = filter.strip().lower()
     scopes = []
@@ -119,11 +122,14 @@ def list_scopes(filter: str = "") -> ScopeList:
     return ScopeList(count=len(scopes), scopes=scopes)
 
 
-@mcp.tool(description=(
+_ORIENT_DESC = (
     "Tier 0 — orient to an institution: validate the member, present the sectors "
     "that are live for it, the four analytical forms available, and — honestly — "
     "the limits of what the data can assert. Call this before analysis to ground "
-    "the scope and steer toward high-value questions."))
+    "the scope and steer toward high-value questions.")
+
+
+@mcp.tool(description=_ORIENT_DESC)
 def orient(member: str, sector: str = "") -> OrientResult:
     sects = S.sectors_for_member(member)
     if not sects:
@@ -176,3 +182,30 @@ def analyze_employer_shed(member: str, sector: str, soc: str = "") -> AnalysisEn
 @mcp.prompt(name="start-here", description="Guided onboarding: orient to your institution and find high-value questions.")
 def start_here() -> str:
     return START_HERE_PROMPT
+
+
+_START_HERE_DESC = "Guided onboarding: orient to your institution and find high-value questions."
+
+
+def build_oauth_mcp():
+    """A second, OAuth-protected FastMCP with the SAME six tools + prompt — used to
+    stand up an OAuth resource-server endpoint (WorkOS as the authorization server)
+    alongside the bearer-gated ``mcp``, so we can prove the claude.ai handshake
+    without disturbing the working endpoint. Returns None when OAuth env is unset
+    (so importing this module never forces OAuth on)."""
+    from mcp_server.auth import auth_settings_from_env, verifier_from_env
+    settings = auth_settings_from_env()
+    if settings is None:
+        return None
+    m = FastMCP("Kallipolis", instructions=WORLDVIEW, stateless_http=True,
+                streamable_http_path="/",
+                transport_security=TransportSecuritySettings(enable_dns_rebinding_protection=False),
+                auth=settings, token_verifier=verifier_from_env())
+    m.tool(description=_LIST_SCOPES_DESC)(list_scopes)
+    m.tool(description=_ORIENT_DESC)(orient)
+    m.tool(description=_form_description("gap"))(analyze_gap)
+    m.tool(description=_form_description("coverage"))(analyze_coverage)
+    m.tool(description=_form_description("pathway"))(analyze_pathway)
+    m.tool(description=_form_description("employer_shed"))(analyze_employer_shed)
+    m.prompt(name="start-here", description=_START_HERE_DESC)(start_here)
+    return m
