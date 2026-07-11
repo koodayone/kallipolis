@@ -14,6 +14,8 @@ from __future__ import annotations
 
 from typing import Optional
 
+from pydantic import BaseModel
+
 from mcp.server.fastmcp import FastMCP
 from mcp.server.transport_security import TransportSecuritySettings
 
@@ -47,6 +49,47 @@ _LIMITS = {
 }
 
 
+# ── Tier 0 structured response models (so the model receives structuredContent,
+#    not just JSON-as-text — parity with the Tier 1 AnalysisEnvelope) ──
+
+class ScopeEntry(BaseModel):
+    id: str
+    member_id: str
+    member_label: str
+    member_kind: str
+    sector_id: str
+    sector_label: str
+
+
+class ScopeList(BaseModel):
+    count: int
+    scopes: list[ScopeEntry]
+
+
+class SectorOption(BaseModel):
+    sector_id: str
+    sector_label: str
+    instance: str
+
+
+class FormInfo(BaseModel):
+    form: str
+    question: str
+    guardrail: str
+
+
+class OrientResult(BaseModel):
+    resolved: bool
+    member: str
+    member_label: str = ""
+    member_kind: str = ""
+    available_sectors: list[SectorOption] = []
+    forms: list[FormInfo] = []
+    limits: dict[str, str] = {}
+    suggested_first_questions: list[str] = []
+    message: str = ""
+
+
 def _opt(v: str) -> Optional[str]:
     v = (v or "").strip()
     return v or None
@@ -66,14 +109,14 @@ def _form_description(form_id: str) -> str:
     "Match the user's institution to a canonical member id (the consumer, you, "
     "resolves fuzzy names — there is no server-side matcher), then call orient. "
     "Optional 'filter' substring narrows by member or sector name/id."))
-def list_scopes(filter: str = "") -> dict:
+def list_scopes(filter: str = "") -> ScopeList:
     f = filter.strip().lower()
     scopes = []
     for e in S.scope_catalog():
         hay = f"{e['member_id']} {e['member_label']} {e['sector_id']} {e['sector_label']}".lower()
         if not f or f in hay:
-            scopes.append({k: e[k] for k in _SCOPE_KEYS})
-    return {"count": len(scopes), "scopes": scopes}
+            scopes.append(ScopeEntry(**{k: e[k] for k in _SCOPE_KEYS}))
+    return ScopeList(count=len(scopes), scopes=scopes)
 
 
 @mcp.tool(description=(
@@ -81,32 +124,29 @@ def list_scopes(filter: str = "") -> dict:
     "that are live for it, the four analytical forms available, and — honestly — "
     "the limits of what the data can assert. Call this before analysis to ground "
     "the scope and steer toward high-value questions."))
-def orient(member: str, sector: str = "") -> dict:
+def orient(member: str, sector: str = "") -> OrientResult:
     sects = S.sectors_for_member(member)
     if not sects:
-        return {
-            "resolved": False,
-            "member": member,
-            "message": (f"No member '{member}' in the universe. Call list_scopes and match "
-                        f"the institution to a canonical member id (e.g. 'foothill', 'smccd', 'svamp')."),
-        }
+        return OrientResult(
+            resolved=False, member=member,
+            message=(f"No member '{member}' in the universe. Call list_scopes and match "
+                     f"the institution to a canonical member id (e.g. 'foothill', 'smccd', 'svamp')."))
     head = sects[0]
-    return {
-        "resolved": True,
-        "member": head["member_id"],
-        "member_label": head["member_label"],
-        "member_kind": head["member_kind"],
-        "available_sectors": [{"sector_id": e["sector_id"], "sector_label": e["sector_label"],
-                               "instance": e["id"]} for e in sects],
-        "forms": [{"form": fid, "question": C.FORMS[fid].question,
-                   "guardrail": C.FORMS[fid].guardrail} for fid in C.FORMS],
-        "limits": _LIMITS,
-        "suggested_first_questions": [
+    return OrientResult(
+        resolved=True,
+        member=head["member_id"],
+        member_label=head["member_label"],
+        member_kind=head["member_kind"],
+        available_sectors=[SectorOption(sector_id=e["sector_id"], sector_label=e["sector_label"],
+                                        instance=e["id"]) for e in sects],
+        forms=[FormInfo(form=fid, question=C.FORMS[fid].question, guardrail=C.FORMS[fid].guardrail)
+               for fid in C.FORMS],
+        limits=_LIMITS,
+        suggested_first_questions=[
             f"Where are the biggest supply–demand gaps for {head['member_label']} in a sector?",
             "Which colleges cover the in-demand occupations in that sector?",
             "Who are the regional employers to convene around a gapped occupation?",
-        ],
-    }
+        ])
 
 
 # ── Tier 1 (order frozen for cache stability) ─────────────────────────────
