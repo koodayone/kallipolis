@@ -15,6 +15,7 @@ from __future__ import annotations
 from typing import Optional
 
 from mcp.server.fastmcp import FastMCP
+from mcp.server.transport_security import TransportSecuritySettings
 
 from mcp_server import catalog as C
 from mcp_server import forms as F
@@ -24,8 +25,16 @@ from mcp_server.worldview import START_HERE_PROMPT, WORLDVIEW
 
 # streamable_http_path="/" so the app serves at its mount root: mounted at
 # "/mcp" in main.py, the MCP endpoint is exactly /mcp (not /mcp/mcp).
+#
+# transport_security: FastMCP's DNS-rebinding protection defaults to trusting only
+# localhost, so it 421s the real Host header when the server runs behind Caddy
+# (api.kallipolis.us). The endpoint is bearer-gated by the reverse proxy — a
+# trusted boundary — and read-only, so the protection is redundant here; disable
+# it rather than pin a brittle proxy-host allow-list.
 mcp = FastMCP("Kallipolis", instructions=WORLDVIEW, stateless_http=True,
-              streamable_http_path="/")
+              streamable_http_path="/",
+              transport_security=TransportSecuritySettings(
+                  enable_dns_rebinding_protection=False))
 
 _SCOPE_KEYS = ("id", "member_id", "member_label", "member_kind", "sector_id", "sector_label")
 
