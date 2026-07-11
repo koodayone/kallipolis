@@ -10,12 +10,52 @@ from __future__ import annotations
 
 import csv
 import logging
+import re
 from pathlib import Path
 from functools import lru_cache
 
 logger = logging.getLogger(__name__)
 
 _DATA_DIR = Path(__file__).parent
+
+
+# ── COE publication vintage (source-derived) ────────────────────────────
+# The qualifier triple (source · granularity · vintage) that grounds every
+# figure needs the *temporal edition* of the COE data. That vintage is a
+# file-level fact carried in the CSV column names ("2024 Jobs", "2020-2021"…)
+# which the row loaders below discard. It is parsed here once and exported so
+# consumers (e.g. the MCP provenance layer) can state it honestly rather than
+# reconstruct it or, worse, omit it. No behavior change to the loaders.
+
+def _read_header(filename: str) -> list[str]:
+    with open(_DATA_DIR / filename, newline="", encoding="utf-8") as f:
+        return [c.strip() for c in next(csv.reader(f))]
+
+
+def _derive_demand_vintage() -> str:
+    base = window = None
+    for col in _read_header("occupational_demand_coe.csv"):
+        m = re.match(r"(\d{4})\s+Jobs$", col)
+        if m:
+            base = m.group(1)
+        m = re.search(r"(\d{4})\s*-\s*(\d{4})", col)
+        if m and "Change" in col:
+            window = f"{m.group(1)}–{m.group(2)}"
+    if base and window:
+        return f"COE occupational demand — {base} base-year employment, {window} projection"
+    return "COE occupational demand — vintage unavailable"
+
+
+def _derive_supply_vintage() -> str:
+    years = [c for c in _read_header("supply_by_top.csv") if re.fullmatch(r"\d{4}-\d{4}", c)]
+    if years:
+        return f"COE projected completions — {len(years)}-yr avg, {years[0]}→{years[-1]}"
+    return "COE projected completions — vintage unavailable"
+
+
+COE_DEMAND_VINTAGE: str = _derive_demand_vintage()
+COE_SUPPLY_VINTAGE: str = _derive_supply_vintage()
+
 
 # ── College name normalization ──────────────────────────────────────────
 # Supply CSV uses short names ("Foothill", "Deanza"); Neo4j uses full names
