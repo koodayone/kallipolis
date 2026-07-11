@@ -14,14 +14,36 @@ from partnerships.api import router as partnerships_router
 from analytics.api import router as analytics_router
 from ontology.schema import init_schema, close_driver
 from ontology.timing import set_request_context
+from contextlib import asynccontextmanager
+from mcp_server.server import mcp as mcp_server
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+# The MCP server rides this app in-process. Build its Streamable-HTTP ASGI app
+# and run its session manager inside the app lifespan — a mounted sub-app's
+# lifespan is NOT started by Starlette, so we start it here, alongside the Neo4j
+# schema init/teardown that previously lived in on_event handlers.
+mcp_app = mcp_server.streamable_http_app()
+
+
+@asynccontextmanager
+async def lifespan(app: "FastAPI"):
+    async with mcp_server.session_manager.run():
+        logger.info("Initializing Neo4j schema and seed data...")
+        init_schema()
+        logger.info("Startup complete.")
+        try:
+            yield
+        finally:
+            close_driver()
+
 
 app = FastAPI(
     title="Kallipolis Atlas API",
     description="Institutional intelligence API for California Community College program coordinators",
     version="0.1.0",
+    lifespan=lifespan,
 )
 
 cors_origins = [
@@ -51,24 +73,17 @@ async def attribute_neo4j_queries(request: Request, call_next):
         set_request_context("")
 
 
-@app.on_event("startup")
-async def startup():
-    logger.info("Initializing Neo4j schema and seed data...")
-    init_schema()
-    logger.info("Startup complete.")
-
-
-@app.on_event("shutdown")
-async def shutdown():
-    close_driver()
-
-
 app.include_router(students_router, prefix="/students", tags=["Students"])
 app.include_router(courses_router, prefix="/courses", tags=["Courses"])
 app.include_router(occupations_router, prefix="/occupations", tags=["Occupations"])
 app.include_router(employers_router, prefix="/employers", tags=["Employers"])
 app.include_router(partnerships_router, prefix="/partnerships", tags=["Partnerships"])
 app.include_router(analytics_router, prefix="/analytics", tags=["Analytics"])
+
+# The MCP server (Streamable-HTTP), mounted in-process at /mcp. A bare mount (not
+# include_router with a prefix=) is invisible to the vocabulary_alignment audit
+# and needs no product doc — mcp_server is shared infrastructure, not an ontology unit.
+app.mount("/mcp", mcp_app)
 
 
 @app.get("/health")

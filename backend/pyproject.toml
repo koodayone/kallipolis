@@ -15,6 +15,7 @@ testpaths = [
     "partnerships",
     "ontology",
     "llm",
+    "mcp_server",
 ]
 
 # Filename pattern for test file discovery. pytest's default.
