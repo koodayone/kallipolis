@@ -57,6 +57,10 @@ services:
       # landscape without prod graph data never routes there. See
       # partnerships.landscape.routable_specs.
       - KALLIPOLIS_DRAFT_LANDSCAPES=${KALLIPOLIS_DRAFT_LANDSCAPES:-0}
+      # Dashboard base the MCP server points its view-links at (the "two windows"
+      # link target). Defaults to the deployed atlas; override to a local atlas
+      # (e.g. http://localhost:3001) for a fully-local two-windows loop.
+      - KALLIPOLIS_ATLAS_URL=${KALLIPOLIS_ATLAS_URL:-https://preview.kallipolis.us}
     depends_on:
       neo4j:
         condition: service_healthy
