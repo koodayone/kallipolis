@@ -48,6 +48,11 @@ _ALLOWED_TOP_LEVEL_DIRS = frozenset({
     # Shared infrastructure
     "ontology",
     "llm",
+    # The MCP server (backend/mcp_server/) — a read-only Model Context Protocol
+    # adapter over the landscape engine. Named mcp_server (not mcp) so it does
+    # not shadow the installed `mcp` SDK on sys.path. Not an ontology unit: no
+    # product doc altitude. Kept in sync with vocabulary_alignment's non_feature.
+    "mcp_server",
     # Orchestration and utilities
     "pipeline",
     "tests",

@@ -135,7 +135,7 @@ def _list_backend_feature_dirs(repo_root: Path) -> set[str]:
     # operational infrastructure, not ontology units. Kept in sync with
     # backend_layout._ALLOWED_TOP_LEVEL_DIRS.)
     non_feature = {
-        "ontology", "llm", "pipeline", "tests", "scripts", "docs",
+        "ontology", "llm", "mcp_server", "pipeline", "tests", "scripts", "docs",
         "analytics", "logs",
         "__pycache__",
     }
