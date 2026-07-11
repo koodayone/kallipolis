@@ -1,0 +1,44 @@
+# Reference copy of the production reverse-proxy config that lives at
+# /etc/caddy/Caddyfile on the api.kallipolis.us VM. Caddy is NOT part of the
+# git-pull deploy loop — changes here must be applied to the VM by hand and
+# `sudo systemctl reload caddy`. See docs/architecture/deployment.md.
+
+{
+	email ops@kallipolis.us
+}
+
+api.kallipolis.us {
+	encode gzip
+	log {
+		output file /var/log/caddy/access.log {
+			roll_size 50mb
+			roll_keep 10
+			roll_keep_for 90d
+		}
+		format json
+	}
+
+	# Authless MCP — open pilot (public data, open-access posture). The former
+	# bearer gate here was removed so any practitioner can add
+	# https://api.kallipolis.us/mcp as a no-auth custom connector.
+	@mcp path /mcp /mcp/*
+	handle @mcp {
+		reverse_proxy 127.0.0.1:8000 {
+			flush_interval -1
+		}
+	}
+
+	# OAuth protected-resource metadata (RFC 9728) for the dormant /mcp-oauth
+	# endpoint — banked for the future private-data phase. Exact issuer, no slash.
+	@prm path /.well-known/oauth-protected-resource/mcp-oauth
+	handle @prm {
+		header Content-Type application/json
+		respond `{"resource":"https://api.kallipolis.us/mcp-oauth","authorization_servers":["https://kind-veil-69-staging.authkit.app"]}` 200
+	}
+
+	handle {
+		reverse_proxy 127.0.0.1:8000 {
+			flush_interval -1
+		}
+	}
+}

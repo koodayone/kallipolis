@@ -26,9 +26,15 @@ The VM is a single `e2-medium` Compute Engine instance in `us-central1-a` with a
 
 ## TLS termination and reverse proxy
 
-Caddy 2.11 on the VM reverse-proxies `api.kallipolis.us` to `http://127.0.0.1:8000` and provisions Let's Encrypt certificates automatically via the HTTP-01 challenge on first request. The Caddyfile is three lines of directive plus a global `email` block at `/etc/caddy/Caddyfile`. Cert renewal happens on Caddy's own schedule without intervention.
+Caddy 2.11 on the VM reverse-proxies `api.kallipolis.us` to `http://127.0.0.1:8000` and provisions Let's Encrypt certificates automatically via the HTTP-01 challenge on first request. Cert renewal happens on Caddy's own schedule without intervention. The live config is `/etc/caddy/Caddyfile` on the VM; a reference copy is tracked at `Caddyfile` in the repo root. Caddy is not part of the git-pull deploy loop, so the two are kept in sync by hand — an edit to the tracked copy is applied to the VM and followed by `sudo systemctl reload caddy`.
 
-The `reverse_proxy` directive sets `X-Forwarded-Proto: https` on upstream requests, and uvicorn is launched with `--proxy-headers --forwarded-allow-ips=*` so FastAPI's automatic trailing-slash redirects use the correct scheme. Without that flag, uvicorn constructs redirect URLs with `http://` (the scheme it directly sees) and the browser refuses to follow the scheme downgrade from an HTTPS page.
+The `reverse_proxy` directive sets `X-Forwarded-Proto: https` on upstream requests, and uvicorn is launched with `--proxy-headers --forwarded-allow-ips=*` so FastAPI's automatic trailing-slash redirects use the correct scheme. Without that flag, uvicorn constructs redirect URLs with `http://` (the scheme it directly sees) and the browser refuses to follow the scheme downgrade from an HTTPS page. Every proxied route carries `flush_interval -1` to disable response buffering, which the MCP endpoint's streaming transport requires.
+
+### MCP endpoint routing
+
+The MCP server mounted in-process by `backend/main.py` is reached at `/mcp`, and Caddy routes it **authlessly**: the `/mcp` path proxies straight to the backend with no auth gate, so any MCP client — including a claude.ai custom connector — connects by URL alone. This matches the preview's open-access, public-data posture; the endpoint is read-only over public institutional data, so there is nothing to gate.
+
+An OAuth resource-server variant is deployed **dormant** at `/mcp-oauth` for the eventual private-data phase. Caddy serves its RFC 9728 protected-resource metadata statically at `/.well-known/oauth-protected-resource/mcp-oauth`, hand-authored so the declared authorization-server issuer matches the identity provider's exactly (a trailing slash there breaks the client's issuer check). Nothing routes through it in the current posture; the token verifier lives at `backend/mcp_server/auth.py` for when it does.
 
 ## Secrets handling
 
