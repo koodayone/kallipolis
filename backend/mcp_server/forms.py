@@ -38,7 +38,7 @@ from mcp_server.envelope import (
     QualifiedValue,
     Row,
 )
-from mcp_server.scope import coordinate_of, gate_envelope, scope_for
+from mcp_server.scope import coordinate_of, find_scope, gate_envelope, scope_for, sectors_for_member
 
 _TOP_N = 8  # progressive-disclosure row cap (summary-first; drill on request)
 
@@ -385,9 +385,158 @@ def analyze_employer_shed(member: str, sector: str, *, soc: Optional[str] = None
     )
 
 
+# ── occupation profile (occupation-first entry; sector-agnostic) ───────────
+
+_OCC_EMP_N = 3  # top employers surfaced inline; the full shed is a next-move
+
+
+def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
+    """The regional picture of one occupation, entered from the institution (which
+    supplies the region), not a sector. Composes: regional demand (openings, wage,
+    employment, growth) · the region's crosswalk feeders + COE projected supply
+    (regional total and the member's share) + the gap · the top regional employers
+    · the sector(s) the occupation belongs to. Sector-agnostic — feeders come from
+    the raw TOP→SOC crosswalk over the region's offered programs, not a sector's
+    scoped TOP set."""
+    from partnerships.members import region_member
+    from partnerships.graph_reads import regional_demand
+    from partnerships.sectors import SECTORS
+    from ontology.crosswalks import load_top_titles, top6_to_soc
+    from ontology.regions import COE_REGION_DISPLAY
+    from ontology.schema import get_driver
+    from ontology.supply import get_coe_supply
+
+    sects = sectors_for_member(member)
+    if not sects:
+        return gate_envelope("occupation_profile", member, "",
+                             reason=f"No institution matching {member!r}. Establish it first.")
+    resolved = scope_for(member, sects[0]["sector_id"])
+    if resolved is None:
+        return gate_envelope("occupation_profile", member, "",
+                             reason=f"Could not resolve institution {member!r}.")
+    spec0, entry = resolved
+    region = spec0.resolve_region()
+    region_disp = COE_REGION_DISPLAY.get(region, region)
+    member_colleges = list(spec0.colleges)
+    region_colleges = list(region_member(region).colleges)
+
+    with get_driver().session() as session:
+        demand = regional_demand(session, region, [occupation]).get(occupation, {})
+        if not demand:
+            return gate_envelope(
+                "occupation_profile", member, "", marker="unavailable",
+                reason=f"No regional demand data for occupation {occupation!r} in {region_disp}.")
+        edu_row = session.run(
+            "MATCH (o:Occupation {soc_code:$s}) RETURN o.education_level AS e", s=occupation).single()
+        prog_rows = session.run(
+            "MATCH (p:Program) WHERE p.college IN $colleges "
+            "RETURN p.college AS college, collect(DISTINCT p.top6) AS tops",
+            colleges=region_colleges).data()
+        emp_rows = session.run(
+            "MATCH (r:Region {name:$region})<-[:IN_MARKET]-(e:Employer)-[h:HIRES_FOR]->"
+            "(o:Occupation {soc_code:$s}) "
+            "RETURN coalesce(e.display_name, e.name) AS name, h.pct_total AS pct "
+            "ORDER BY pct DESC LIMIT $n", region=region, s=occupation, n=_OCC_EMP_N).data()
+
+    education = edu_row["e"] if edu_row else None
+    college_tops = {r["college"]: set(r["tops"] or []) for r in prog_rows}
+    region_top6s = set().union(*college_tops.values()) if college_tops else set()
+    soc_map = top6_to_soc(list(region_top6s))
+    feeding = {t for t in region_top6s if occupation in soc_map.get(t, set())}
+
+    def _supply(colleges: list[str]) -> float:
+        total = 0.0
+        for c in colleges:
+            fset = college_tops.get(c, set()) & feeding
+            if fset:
+                total += get_coe_supply(fset, c)[1]
+        return round(total, 1)
+
+    regional_supply = _supply(region_colleges)
+    member_supply = _supply(member_colleges)
+    openings = demand.get("annual_openings")
+    gap = int(round((openings or 0) - regional_supply))
+    in_sectors = [SECTORS[sid].label for sid in SECTORS if occupation in set(SECTORS[sid].socs)]
+
+    region_g = _regional(region_disp)
+    region_supply_g = f"regional ({region_disp}) — all colleges"
+    inst_g = _institutional(entry, len(member_colleges))
+    titles = load_top_titles()
+
+    summary = {
+        "occupation_title": QualifiedValue.ok(demand.get("title") or occupation,
+                                              source="coe", granularity=f"SOC {occupation}"),
+        "typical_education": (P.q("typical_education", education, granularity=f"SOC {occupation}")
+                              if education else
+                              P.q("typical_education", None, granularity=f"SOC {occupation}",
+                                  status="unavailable")),
+        "annual_openings": P.q("annual_openings", openings, granularity=region_g, unit="openings/yr"),
+        "annual_wage": P.q("annual_wage", demand.get("annual_wage"), granularity=region_g,
+                           unit="USD/yr (occ. median)"),
+        "regional_employment": P.q("regional_employment", demand.get("employment"),
+                                   granularity=region_g, unit="jobs"),
+        "growth_rate": P.q("growth_rate", demand.get("growth_rate"), granularity=region_g, unit="5-yr %"),
+        "regional_supply": P.q("projected_supply", regional_supply, granularity=region_supply_g,
+                               unit="completions/yr"),
+        "member_supply": P.q("projected_supply", member_supply, granularity=inst_g, unit="completions/yr"),
+        "gap": P.q("gap", gap, granularity=f"{region_g} − {region_supply_g}", unit="openings/yr",
+                   vintage=_GAP_VINTAGE),
+    }
+    if emp_rows:
+        summary["top_employers"] = QualifiedValue.ok(
+            ", ".join(e["name"] for e in emp_rows), source="graph_bls",
+            granularity=f"regional ({region_disp}) — top {len(emp_rows)} by OES staffing share")
+
+    feeder_counts: dict[str, int] = {}
+    for c, tops in college_tops.items():
+        for t in tops & feeding:
+            feeder_counts[t] = feeder_counts.get(t, 0) + 1
+    rows = [Row(label=f"{t} {titles.get(t, '')}".strip(),
+                values={"colleges_offering": _derived(n, unit="colleges", granularity=region_supply_g)})
+            for t, n in sorted(feeder_counts.items(), key=lambda kv: kv[1], reverse=True)[:_TOP_N]]
+
+    # A resolvable coordinate for the view-link + next-moves: the occupation's own
+    # sector that the member runs, else the member's first live sector.
+    member_sids = {e["sector_id"] for e in sects}
+    occ_sids = [sid for sid in SECTORS if occupation in set(SECTORS[sid].socs)]
+    nav_sid = next((sid for sid in occ_sids if sid in member_sids), sects[0]["sector_id"])
+    nav_entry = find_scope(entry["member_id"], nav_sid) or entry
+    coord = coordinate_of(nav_entry, soc=occupation)
+    coord.region = region_disp
+
+    licensed = ["Regional demand for the occupation vs total regional projected completions feeding it."]
+    licensed.append(
+        f"Classified in the {', '.join(in_sectors)} sector(s), by the region's sector definitions."
+        if in_sectors else
+        "Not classified as middle-skill in the region's sector definitions.")
+
+    return AnalysisEnvelope(
+        form="occupation_profile", coordinate=coord,
+        data=DataBlock(summary=summary, rows=rows),
+        framing=_framing("occupation_profile",
+                         [C.SAL_LOSSY_CROSSWALK] if len(feeding) >= 4 else []),
+        licensing=_licensing("occupation_profile", licensed=licensed),
+        next_moves=[
+            NextMove(form="employer_shed", coordinate=coord,
+                     rationale="See the full set of regional employers hiring for this occupation."),
+            NextMove(form="gap", coordinate=coordinate_of(nav_entry),
+                     rationale="See the whole supply–demand gap for this sector."),
+        ],
+        view_link=V.view_link("occupation_profile", instance_id=nav_entry["id"],
+                              member_id=nav_entry["member_id"], sector_id=nav_entry["sector_id"],
+                              soc=occupation),
+        provenance=P.build_provenance(
+            ["annual_openings", "annual_wage", "growth_rate", "regional_employment",
+             "projected_supply", "gap"],
+            scope_granularity=f"demand {region_g}; supply {region_supply_g}; member share {inst_g}",
+            vintages={"demand": P.COE_DEMAND_VINTAGE, "projected_supply": P.COE_SUPPLY_VINTAGE}),
+    )
+
+
 FORM_FUNCS = {
     "gap": analyze_gap,
     "coverage": analyze_coverage,
     "pathway": analyze_pathway,
     "employer_shed": analyze_employer_shed,
+    "occupation_profile": occupation_profile,
 }

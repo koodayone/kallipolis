@@ -31,6 +31,7 @@ AUTHORITY_BY_FIELD: dict[str, str] = {
     "annual_wage": "coe",
     "growth_rate": "coe",
     "regional_employment": "coe",
+    "typical_education": "coe",     # BLS entry-level education, carried in the COE demand file
     # supply — the Distinguish pair, kept as deliberately separate keys
     "projected_supply": "coe",     # COE projected completions (the gap denominator)
     "actual_awards": "datamart",   # DataMart actual completions (ground truth)
