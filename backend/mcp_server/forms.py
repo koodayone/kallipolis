@@ -10,6 +10,7 @@ corroborating dashboard view-link. No engine logic is reimplemented.
 """
 from __future__ import annotations
 
+import dataclasses
 from typing import Optional
 
 from partnerships.landscape_build import build_landscape
@@ -19,6 +20,7 @@ from partnerships.landscape_programs import (
     build_program_report,
     build_programs_landscape,
 )
+from partnerships.members import region_member
 from partnerships.resolve import resolve
 
 from mcp_server import catalog as C
@@ -95,32 +97,56 @@ def analyze_gap(member: str, sector: str, *, soc: Optional[str] = None) -> Analy
         return gate_envelope("gap", member, sector,
                              reason=f"No live coordinate for ({member!r}, {sector!r}).")
     spec, entry = resolved
-    land = build_landscape(resolve(spec))
-    region_g, inst_g = _regional(land.region_display), _institutional(entry, land.aggregate.n_colleges)
+    resolved_spec = resolve(spec)
+    land = build_landscape(resolved_spec)
+    agg = land.aggregate
+
+    # Match the grain: a regional gap compares regional demand against TOTAL
+    # regional supply — every college in the member's COE region — not the
+    # member's supply alone (else one college is asked to satisfy a whole
+    # region's openings). The member's own supply is surfaced separately as its
+    # share. Same supply DEFINITION as the member number (build_landscape /
+    # course-aligned TOPs); only the college axis widens — a frozen-spec twin,
+    # memoized like any other landscape.
+    region_land = build_landscape(dataclasses.replace(
+        resolved_spec, colleges=region_member(resolved_spec.resolve_region()).colleges))
+    region_agg = region_land.aggregate
+
+    region_g = _regional(land.region_display)
+    inst_g = _institutional(entry, agg.n_colleges)
+    region_supply_g = f"regional ({land.region_display}) — Σ {region_agg.n_colleges} colleges"
     awards_v = _awards_window(land.award_years)
 
-    # Aggregate per-college cells into per-SOC rows (openings regional; supply Σ; awards Σ).
+    # Per-SOC: member supply Σ over the member's colleges; regional supply Σ over
+    # every college in the region; gap = regional openings − regional supply.
     per_soc: dict[str, dict] = {}
     for col in land.colleges:
         for cell in col.cells:
             r = per_soc.setdefault(cell.soc_code, {"title": cell.title,
                                                    "openings": cell.annual_openings,
-                                                   "supply": 0.0, "actual": 0})
-            r["supply"] += cell.supply
+                                                   "member_supply": 0.0, "actual": 0})
+            r["member_supply"] += cell.supply
             r["actual"] += cell.awards_recent
             if r["openings"] is None:
                 r["openings"] = cell.annual_openings
-    for r in per_soc.values():
-        r["gap"] = int(round((r["openings"] or 0) - r["supply"]))
+    region_supply_by_soc: dict[str, float] = {}
+    for col in region_land.colleges:
+        for cell in col.cells:
+            region_supply_by_soc[cell.soc_code] = \
+                region_supply_by_soc.get(cell.soc_code, 0.0) + cell.supply
+    for s, r in per_soc.items():
+        r["regional_supply"] = region_supply_by_soc.get(s, 0.0)
+        r["gap"] = int(round((r["openings"] or 0) - r["regional_supply"]))
 
-    agg = land.aggregate
     summary = {
         "regional_demand": P.q("annual_openings", agg.regional_demand_total,
                                granularity=region_g, unit="openings/yr"),
-        "projected_supply": P.q("projected_supply", round(agg.combined_supply_total, 1),
-                                granularity=inst_g, unit="completions/yr"),
-        "gap": P.q("gap", agg.gap, granularity=f"{region_g} − {inst_g}",
-                   unit="openings/yr", vintage=_GAP_VINTAGE),
+        "regional_supply": P.q("projected_supply", round(region_agg.combined_supply_total, 1),
+                               granularity=region_supply_g, unit="completions/yr"),
+        "member_supply": P.q("projected_supply", round(agg.combined_supply_total, 1),
+                             granularity=inst_g, unit="completions/yr"),
+        "gap": P.q("gap", int(round(agg.regional_demand_total - region_agg.combined_supply_total)),
+                   granularity=f"{region_g} − {region_supply_g}", unit="openings/yr", vintage=_GAP_VINTAGE),
         "actual_awards": P.q("actual_awards", agg.combined_awards,
                              granularity=inst_g, unit="awards", vintage=awards_v),
     }
@@ -131,8 +157,9 @@ def analyze_gap(member: str, sector: str, *, soc: Optional[str] = None) -> Analy
     window = items if soc is not None else items[:_TOP_N]
     rows = [Row(label=f"{s} {r['title']}", values={
         "regional_demand": P.q("annual_openings", r["openings"], granularity=region_g, unit="openings/yr"),
-        "projected_supply": P.q("projected_supply", round(r["supply"], 1), granularity=inst_g, unit="completions/yr"),
-        "gap": P.q("gap", r["gap"], granularity="regional − institutional", unit="openings/yr", vintage=_GAP_VINTAGE),
+        "regional_supply": P.q("projected_supply", round(r["regional_supply"], 1), granularity=region_supply_g, unit="completions/yr"),
+        "member_supply": P.q("projected_supply", round(r["member_supply"], 1), granularity=inst_g, unit="completions/yr"),
+        "gap": P.q("gap", r["gap"], granularity="regional openings − regional supply", unit="openings/yr", vintage=_GAP_VINTAGE),
         "actual_awards": P.q("actual_awards", r["actual"], granularity=inst_g, unit="awards", vintage=awards_v),
     }) for s, r in window]
     more = None
@@ -150,14 +177,15 @@ def analyze_gap(member: str, sector: str, *, soc: Optional[str] = None) -> Analy
         data=DataBlock(summary=summary, rows=rows, more=more),
         framing=_framing("gap", salience),
         licensing=_licensing("gap",
-                             licensed=["Regional annual openings vs institutional projected completions, per occupation."],
-                             not_licensed=["Regional demand is the whole COE region — not member-specific."]),
+                             licensed=["Regional annual openings vs total regional projected completions, per occupation.",
+                                       "member_supply is this member's own share of that regional supply."],
+                             not_licensed=["Regional supply sums colleges with aligned curriculum (course-routed TOPs) for the occupation; a college that confers in a feeding program without a tagged course can be undercounted."]),
         next_moves=C.build_next_moves("gap", entry, soc=soc),
         view_link=V.view_link("gap", instance_id=spec.id, member_id=entry["member_id"],
                               sector_id=entry["sector_id"], soc=soc),
         provenance=P.build_provenance(
             ["annual_openings", "projected_supply", "actual_awards", "gap"],
-            scope_granularity=f"demand {region_g}; supply {inst_g}",
+            scope_granularity=f"demand {region_g}; supply {region_supply_g}; member share {inst_g}",
             vintages={"demand": P.COE_DEMAND_VINTAGE, "projected_supply": P.COE_SUPPLY_VINTAGE,
                       "actual_awards": awards_v}),
     )

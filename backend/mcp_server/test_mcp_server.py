@@ -142,9 +142,13 @@ def test_gap_adapter(member, sector):
     env = F.analyze_gap(member, sector)
     assert env.form == "gap" and not env.licensing.gates
     assert_bound(env)
-    # Distinguish: the gap's two supplies are separate, differently-sourced keys
-    assert env.data.summary["projected_supply"].source == "coe"
+    # Distinguish: regional supply, the member's share, and actual awards are
+    # separate, differently-sourced keys. Grain: the gap denominator is REGIONAL,
+    # so total regional supply always covers ≥ the member's own share.
+    assert env.data.summary["regional_supply"].source == "coe"
+    assert env.data.summary["member_supply"].source == "coe"
     assert env.data.summary["actual_awards"].source == "datamart"
+    assert env.data.summary["regional_supply"].value >= env.data.summary["member_supply"].value
     # view_link resolves and every next-move coordinate re-validates in the catalog
     assert env.view_link.url and "lens=occupations" in env.view_link.url
     for m in env.next_moves:
