@@ -46,7 +46,7 @@ AUTHORITY_BY_FIELD: dict[str, str] = {
     "wage_before": "datamart",
     "wage_after_2": "datamart",
     "wage_after_5": "datamart",
-    # employer shed
+    # regional employers
     "employer_relevance": "graph_bls",
     "candidate_employers": "graph_bls",
     # computed

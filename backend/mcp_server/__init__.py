@@ -2,7 +2,7 @@
 
 A thin framing layer over the deterministic landscape engine
 (``partnerships.landscape_*`` builders). It exposes Tier 0 orientation and the
-Tier 1 four-form analysis catalog (gap · coverage · pathway · employer shed) as
+Tier 1 four-form analysis catalog (gap · coverage · pathway · regional employers) as
 MCP tools, re-shaping the engine's typed outputs into a provenance-carrying
 response envelope and pointing the user to the corroborating dashboard view.
 

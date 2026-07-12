@@ -4,7 +4,7 @@ Tool set (fixed, deterministically ordered — the client caches the tool prefix
 so the order and descriptions are frozen):
 
   Tier 0   list_scopes · orient
-  Tier 1   analyze_gap · analyze_coverage · analyze_pathway · analyze_employer_shed
+  Tier 1   analyze_gap · analyze_coverage · analyze_pathway · analyze_regional_employers
 
 Each analyze tool wraps its ``forms`` adapter; its description IS its behavioral
 spec (the practitioner question + the load-bearing guardrail). The server-level
@@ -115,8 +115,9 @@ _ROUTING: dict[str, str] = {
             "right for a gaps-only view."),
     "pathway": ("For one named occupation you want the whole picture on, occupation_profile "
                 "consolidates demand, supply, feeders, and employers in one call."),
-    "employer_shed": ("For one named occupation you want the whole picture on, occupation_profile "
-                      "consolidates it in one call; this tool stays right for the full employer shed."),
+    "regional_employers": ("For one named occupation you want the whole picture on, occupation_profile "
+                      "consolidates it in one call; this tool stays right for a full ranking of the "
+                      "regional employers hiring for the occupation."),
 }
 
 
@@ -220,9 +221,9 @@ def analyze_pathway(member: str, sector: str, program: str = "", occupation: str
     return F.analyze_pathway(member, sector, program=_opt(program), occupation=_opt(occupation))
 
 
-@mcp.tool(name="regional_employers", description=_form_description("employer_shed"))
-def analyze_employer_shed(member: str, sector: str, soc: str = "") -> AnalysisEnvelope:
-    return F.analyze_employer_shed(member, sector, soc=_opt(soc))
+@mcp.tool(name="regional_employers", description=_form_description("regional_employers"))
+def analyze_regional_employers(member: str, sector: str, soc: str = "") -> AnalysisEnvelope:
+    return F.analyze_regional_employers(member, sector, soc=_opt(soc))
 
 
 @mcp.tool(name="occupation_profile", description=_form_description("occupation_profile", needs_sector=False))
@@ -259,7 +260,7 @@ def build_oauth_mcp():
     m.tool(name="supply_demand_gaps", description=_form_description("gap"))(analyze_gap)
     m.tool(name="program_coverage", description=_form_description("coverage"))(analyze_coverage)
     m.tool(name="program_pathways", description=_form_description("pathway"))(analyze_pathway)
-    m.tool(name="regional_employers", description=_form_description("employer_shed"))(analyze_employer_shed)
+    m.tool(name="regional_employers", description=_form_description("regional_employers"))(analyze_regional_employers)
     m.tool(name="occupation_profile", description=_form_description("occupation_profile", needs_sector=False))(occupation_profile)
     m.prompt(name="start-here", description=_START_HERE_DESC)(start_here)
     return m
