@@ -64,6 +64,22 @@ FORMS: dict[str, Form] = {
             "The TOP→CIP→SOC crosswalk is many-to-many; the fan-out is surfaced, never "
             "collapsed into a single per-program number (which would double-count)."),
     ),
+    "occupation_profile": Form(
+        id="occupation_profile",
+        question="What is the whole picture for this occupation — demand, who trains for it, who hires?",
+        meaning=(
+            "An occupation profile is the regional picture of one occupation: its "
+            "demand (openings, median wage, employment, projected growth), the "
+            "programs across the region that feed it, the total regional projected "
+            "supply and the gap, the top regional employers, and the sector it "
+            "belongs to. The region is derived from the institution; the occupation, "
+            "not a sector, is the entry point."),
+        guardrail=(
+            "Demand is the regional occupational signal, not graduates' earnings. "
+            "Supply is COE PROJECTED completions across the region, not actual "
+            "awards. The program→occupation crosswalk is many-to-many, so a feeding "
+            "program 'can lead to' the occupation, it is not exclusive to it."),
+    ),
     "employer_shed": Form(
         id="employer_shed",
         question="Which regional employers hire for this occupation — who could the member convene?",

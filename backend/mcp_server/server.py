@@ -177,6 +177,11 @@ def analyze_employer_shed(member: str, sector: str, soc: str = "") -> AnalysisEn
     return F.analyze_employer_shed(member, sector, soc=_opt(soc))
 
 
+@mcp.tool(name="occupation_profile", description=_form_description("occupation_profile"))
+def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
+    return F.occupation_profile(member, occupation)
+
+
 # ── Prompt ────────────────────────────────────────────────────────────────
 
 @mcp.prompt(name="start-here", description="Guided onboarding: orient to your institution and find high-value questions.")
@@ -207,5 +212,6 @@ def build_oauth_mcp():
     m.tool(name="program_coverage", description=_form_description("coverage"))(analyze_coverage)
     m.tool(name="program_pathways", description=_form_description("pathway"))(analyze_pathway)
     m.tool(name="regional_employers", description=_form_description("employer_shed"))(analyze_employer_shed)
+    m.tool(name="occupation_profile", description=_form_description("occupation_profile"))(occupation_profile)
     m.prompt(name="start-here", description=_START_HERE_DESC)(start_here)
     return m
