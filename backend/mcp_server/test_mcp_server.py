@@ -21,7 +21,7 @@ Coverage:
   - build_next_moves emits the catalog adjacency edges, carrying soc/top6
   - gate_envelope routes an unresolved coordinate back to Tier 0
   - an AnalysisEnvelope serializes byte-identically twice (determinism)
-  - [graph] analyze_gap/coverage/pathway/employer_shed over svamp + smccd-adm:
+  - [graph] analyze_gap/coverage/pathway/regional_employers over svamp + smccd-adm:
     Bind (recursive), Distinguish, view_link route, next_moves re-validate,
     and byte-identical determinism
 """
@@ -107,8 +107,8 @@ def test_view_link_routes():
 
 def test_next_moves_are_catalog_edges():
     entry = next(e for e in S.scope_catalog() if e["id"] == "svamp")
-    # next-move `form` is the CALLABLE tool name (regional_employers), not the internal
-    # form-id (employer_shed) — the model routes to it directly.
+    # next-move `form` is the CALLABLE tool name (the pathway edge surfaces as "program_pathways"),
+    # not the internal form-id — the model routes to it directly.
     moves = {m.form: m for m in C.build_next_moves("gap", entry, soc="49-9041")}
     assert "regional_employers" in moves and moves["regional_employers"].coordinate.soc == "49-9041"
     cov = {m.form: m for m in C.build_next_moves("coverage", entry, top6="095000")}
@@ -124,8 +124,8 @@ def test_gate_envelope_routes_to_tier0():
 
 def test_next_moves_name_callable_tools():
     """Routing integrity — the sibling of cross-tool value integrity. Every next-move names
-    a tool the model can actually call; the internal form-ids ("gap", "employer_shed",
-    "orient") are NOT the registered names, so every construction site must translate.
+    a tool the model can actually call; internal form-ids like "gap"/"coverage"/"orient" are
+    NOT their registered tool names, so every construction site must translate.
     Guards the exact break behind the live 'Unknown tool' snag. Skips where the mcp SDK
     (server registration) isn't importable."""
     try:
@@ -198,8 +198,8 @@ def test_coverage_and_employer_adapters(member, sector):
     assert_bound(cov)
     assert "panel=programs.coverage" in cov.view_link.url
 
-    shed = F.analyze_employer_shed(member, sector)
-    assert shed.form == "employer_shed"
+    shed = F.analyze_regional_employers(member, sector)
+    assert shed.form == "regional_employers"
     assert_bound(shed)
     assert "lens=employers" in shed.view_link.url
 

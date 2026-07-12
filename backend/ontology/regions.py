@@ -154,7 +154,7 @@ COE_REGION_TO_COUNTIES: dict[str, list[str]] = {
 
 
 # County centroids (approx lat/lng) for the Bay COE region — order the greedy
-# expansion of a district's employer shed (home county → nearest county within
+# expansion of a district's employer pool (home county → nearest county within
 # the region) when the home county is too thin for a sector. Bay-only for now
 # (the loaded region); counties without a centroid sort last.
 _COUNTY_CENTROID: dict[str, tuple[float, float]] = {
@@ -168,7 +168,7 @@ _COUNTY_CENTROID: dict[str, tuple[float, float]] = {
 
 
 def counties_by_proximity(home: tuple[str, ...], region: str) -> list[str]:
-    """The region's counties ordered for greedy employer-shed expansion: the
+    """The region's counties ordered for greedy employer-pool expansion: the
     home county/ies first (distance 0), then the rest by centroid distance to
     the nearest home county. Counties without a centroid sort last (stable).
     Used to widen a thin (district × sector) employer map to the nearest real

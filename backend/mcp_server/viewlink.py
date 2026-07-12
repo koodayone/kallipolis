@@ -28,7 +28,7 @@ _FORM_LENS: dict[str, tuple[str, Optional[str]]] = {
     "coverage": ("programs", "programs.coverage"),
     "pathway_program": ("programs", None),
     "pathway_occupation": ("occupations", None),
-    "employer_shed": ("employers", None),
+    "regional_employers": ("employers", None),
 }
 
 

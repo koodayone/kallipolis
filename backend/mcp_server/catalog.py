@@ -80,13 +80,13 @@ FORMS: dict[str, Form] = {
             "awards. The program→occupation crosswalk is many-to-many, so a feeding "
             "program 'can lead to' the occupation, it is not exclusive to it."),
     ),
-    "employer_shed": Form(
-        id="employer_shed",
+    "regional_employers": Form(
+        id="regional_employers",
         question="Which regional employers hire for this occupation — who could the member convene?",
         meaning=(
-            "The employer shed ranks regional employers by BLS OES staffing share for the "
-            "target occupations — how prominently each employer's industry hires the role. "
-            "It surfaces candidate partners, not a hiring roster."),
+            "Ranks regional employers by how prominently each employer's industry staffs the "
+            "target occupations (BLS OES staffing share). It surfaces candidate partners the "
+            "member could convene — not a hiring roster."),
         guardrail=(
             "Ranked by OES industry staffing share; OES-suppressed cells are dropped (not "
             "marked), and the shortlist ('shown') is not the whole candidate pool ('total')."),
@@ -96,7 +96,7 @@ FORMS: dict[str, Form] = {
 
 # ── Form-id → public tool name ────────────────────────────────────────────
 # A next-move is a CALL TARGET: the model routes to it, so its `form` must be a
-# name it can actually invoke. The internal form-ids ("gap", "employer_shed", …)
+# name it can actually invoke. The internal form-ids ("gap", "regional_employers", …)
 # are NOT the registered MCP tool names ("supply_demand_gaps", "regional_employers",
 # …) — this map translates. server.py registers each tool under the same public
 # name (a coherence test pins TOOL_NAME.values() == the registered names, so the two
@@ -107,7 +107,7 @@ TOOL_NAME: dict[str, str] = {
     "gap": "supply_demand_gaps",
     "coverage": "program_coverage",
     "pathway": "program_pathways",
-    "employer_shed": "regional_employers",
+    "regional_employers": "regional_employers",
     "occupation_profile": "occupation_profile",
 }
 
@@ -133,14 +133,14 @@ EDGES: dict[str, list[Edge]] = {
         Edge("pathway", ("top6",), "Trace the selected program to the occupations it prepares for."),
     ],
     "gap": [
-        Edge("employer_shed", ("soc",), "Identify regional employers to convene around the gapped occupation."),
+        Edge("regional_employers", ("soc",), "Identify regional employers to convene around the gapped occupation."),
         Edge("pathway", ("soc",), "See which programs feed the gapped occupation."),
     ],
     "pathway": [
         Edge("coverage", (), "Return to who covers this sector across the member's colleges."),
-        Edge("employer_shed", ("soc",), "Find regional employers hiring for this occupation."),
+        Edge("regional_employers", ("soc",), "Find regional employers hiring for this occupation."),
     ],
-    "employer_shed": [
+    "regional_employers": [
         Edge("gap", (), "Quantify the supply–demand gap these employers face."),
         Edge("coverage", (), "See which colleges cover the occupations these employers hire."),
     ],

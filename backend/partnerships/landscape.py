@@ -131,7 +131,7 @@ class LandscapeSpec:
     # which is a curated SOC-breadth set, not a size-ranked one).
     top_n: int | None = None
 
-    # ── Employer-shed expansion (greedy county → region) ──────────────────
+    # ── Employer-pool expansion (greedy county → region) ──────────────────
     # When a (member × sector) map has fewer than `employer_threshold` viable
     # firms in the home county/ies, widen the shed to the NEAREST counties
     # within the COE region (counties_by_proximity) until the threshold is met —

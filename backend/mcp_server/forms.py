@@ -383,12 +383,12 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
     )
 
 
-# ── employer shed ─────────────────────────────────────────────────────────
+# ── regional employers ─────────────────────────────────────────────────────
 
-def analyze_employer_shed(member: str, sector: str, *, soc: Optional[str] = None) -> AnalysisEnvelope:
+def analyze_regional_employers(member: str, sector: str, *, soc: Optional[str] = None) -> AnalysisEnvelope:
     resolved = scope_for(member, sector)
     if resolved is None:
-        return gate_envelope("employer_shed", member, sector,
+        return gate_envelope("regional_employers", member, sector,
                              reason=f"No live coordinate for ({member!r}, {sector!r}).")
     spec, entry = resolved
     er = build_landscape_employers(resolve(spec))
@@ -408,19 +408,19 @@ def analyze_employer_shed(member: str, sector: str, *, soc: Optional[str] = None
                                   granularity=region_g, unit="Σ OES staffing share"),
         "occupations_hired": _derived(e.soc_count, unit="target SOCs", granularity="BLS OES"),
     }) for e in ranked[:_TOP_N]]
-    more = _drill("employer_shed", entry, remaining=len(ranked) - _TOP_N, soc=soc) if len(ranked) > _TOP_N else None
+    more = _drill("regional_employers", entry, remaining=len(ranked) - _TOP_N, soc=soc) if len(ranked) > _TOP_N else None
 
     coord = coordinate_of(entry, soc=soc)
     coord.region = er.region_display
     return AnalysisEnvelope(
-        form="employer_shed", coordinate=coord,
+        form="regional_employers", coordinate=coord,
         data=DataBlock(summary=summary, rows=rows, more=more),
-        framing=_framing("employer_shed", []),
-        licensing=_licensing("employer_shed",
+        framing=_framing("regional_employers", []),
+        licensing=_licensing("regional_employers",
                              licensed=["Regional employers ranked by OES staffing share for the target occupations."],
                              not_licensed=["'shown' is a geocoded shortlist, not the whole candidate pool ('total')."]),
-        next_moves=C.build_next_moves("employer_shed", entry, soc=soc),
-        view_link=V.view_link("employer_shed", instance_id=spec.id, member_id=entry["member_id"],
+        next_moves=C.build_next_moves("regional_employers", entry, soc=soc),
+        view_link=V.view_link("regional_employers", instance_id=spec.id, member_id=entry["member_id"],
                               sector_id=entry["sector_id"]),
         provenance=P.build_provenance(
             ["candidate_employers", "employer_relevance"],
@@ -560,7 +560,7 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
                          [C.SAL_LOSSY_CROSSWALK] if len(feeding) >= 4 else []),
         licensing=_licensing("occupation_profile", licensed=licensed),
         next_moves=[   # form = the callable tool name the model routes to, not the internal id
-            NextMove(form=C.tool_name("employer_shed"), coordinate=coord,
+            NextMove(form=C.tool_name("regional_employers"), coordinate=coord,
                      rationale="See the full set of regional employers hiring for this occupation."),
             NextMove(form=C.tool_name("gap"), coordinate=coordinate_of(nav_entry),
                      rationale="See the whole supply–demand gap for this sector."),
@@ -580,6 +580,6 @@ FORM_FUNCS = {
     "gap": analyze_gap,
     "coverage": analyze_coverage,
     "pathway": analyze_pathway,
-    "employer_shed": analyze_employer_shed,
+    "regional_employers": analyze_regional_employers,
     "occupation_profile": occupation_profile,
 }
