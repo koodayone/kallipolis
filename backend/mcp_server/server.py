@@ -70,6 +70,7 @@ class SectorOption(BaseModel):
     sector_id: str
     sector_label: str
     instance: str
+    program_count: int = 0   # distinct feeding TOP6 programs the member runs in this sector
 
 
 class FormInfo(BaseModel):
@@ -83,8 +84,8 @@ class OrientResult(BaseModel):
     member: str
     member_label: str = ""
     member_kind: str = ""
+    region: str = ""
     available_sectors: list[SectorOption] = []
-    forms: list[FormInfo] = []
     limits: dict[str, str] = {}
     suggested_first_questions: list[str] = []
     message: str = ""
@@ -131,27 +132,26 @@ _ORIENT_DESC = (
 
 @mcp.tool(name="institution_overview", description=_ORIENT_DESC)
 def orient(member: str, sector: str = "") -> OrientResult:
-    sects = S.sectors_for_member(member)
-    if not sects:
+    port = S.member_portfolio(member)
+    if port is None:
         return OrientResult(
             resolved=False, member=member,
             message=(f"No institution matching '{member}'. List the known institutions and "
                      f"match this one to a canonical id (e.g. 'foothill', 'smccd', 'svamp')."))
-    head = sects[0]
     return OrientResult(
         resolved=True,
-        member=head["member_id"],
-        member_label=head["member_label"],
-        member_kind=head["member_kind"],
-        available_sectors=[SectorOption(sector_id=e["sector_id"], sector_label=e["sector_label"],
-                                        instance=e["id"]) for e in sects],
-        forms=[FormInfo(form=fid, question=C.FORMS[fid].question, guardrail=C.FORMS[fid].guardrail)
-               for fid in C.FORMS],
+        member=port["member_id"],
+        member_label=port["member_label"],
+        member_kind=port["member_kind"],
+        region=port["region"],
+        available_sectors=[SectorOption(sector_id=s["sector_id"], sector_label=s["sector_label"],
+                                        instance=s["instance"], program_count=s["program_count"])
+                           for s in port["sectors"]],
         limits=_LIMITS,
         suggested_first_questions=[
-            f"Where are the biggest supply–demand gaps for {head['member_label']} in a sector?",
-            "Which colleges cover the in-demand occupations in that sector?",
-            "Who are the regional employers to convene around a gapped occupation?",
+            f"Which of {port['member_label']}'s sectors has the widest supply–demand gap?",
+            "What does one of my programs prepare students for, and who hires for those roles?",
+            "How does my institution compare to other colleges covering the same programs?",
         ])
 
 
