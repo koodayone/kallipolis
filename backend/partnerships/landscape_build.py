@@ -46,6 +46,7 @@ from partnerships.graph_reads import regional_demand
 from partnerships.landscape import (
     LandscapeSpec, SVAMP_SPEC, _term_excluded, _term_sort_key,
 )
+from partnerships.quantities import gap as compute_gap
 
 # ── Scope ─────────────────────────────────────────────────────────────────
 # The SVAMP scope now lives as SVAMP_SPEC in landscape.py — the single source,
@@ -516,7 +517,7 @@ def _assemble_landscape(
             ) if latest_year else 0
 
             annual_openings = demand.get("annual_openings")
-            gap = int(round((annual_openings or 0) - supply))
+            gap = compute_gap(annual_openings, supply)
             cells.append(LandscapeCell(
                 soc_code=soc,
                 title=demand.get("title") or soc,
@@ -548,7 +549,7 @@ def _assemble_landscape(
     aggregate = LandscapeAggregate(
         regional_demand_total=regional_demand_total,
         combined_supply_total=round(combined_supply_total, 2),
-        gap=int(round(regional_demand_total - combined_supply_total)),
+        gap=compute_gap(regional_demand_total, combined_supply_total),
         candidate_employers=candidate_employers,
         occupations_taught=len(socs_taught),
         combined_awards=combined_awards,

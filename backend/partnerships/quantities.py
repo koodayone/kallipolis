@@ -112,6 +112,14 @@ def supply_over_socs(colleges, socs, *, years: tuple[str, ...] | None = None) ->
     return round(sum(aw.get(t, 0) for t in fs) / len(yrs), 1)
 
 
+def gap(demand, supply) -> int:
+    """THE single gap expression: annual regional openings − annual supply, rounded to a
+    whole opening. Openings and supply are each treated as 0 when absent, so a SOC with
+    demand but no supply reports the full opening count (not a crash), and vice-versa.
+    Every surface that reports a gap composes this, so the arithmetic can't drift."""
+    return int(round((demand or 0) - (supply or 0)))
+
+
 def vintage(years: tuple[str, ...]) -> str:
     """The honest vintage string for a supply window — stated, not faked."""
     if len(years) == 1:
