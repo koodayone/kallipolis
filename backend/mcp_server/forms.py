@@ -80,11 +80,37 @@ def _licensing(form_id: str, *, licensed=None, not_licensed=None, gates=None) ->
 
 def _drill(form: str, entry: dict, *, remaining: int,
            soc: Optional[str] = None, top6: Optional[str] = None) -> More:
+    tool = C.tool_name(form)   # the drill pointer is a call target — public tool name, not the form-id
     return More(
         remaining=remaining,
         drill=NextMove(
-            form=form, coordinate=coordinate_of(entry, soc=soc, top6=top6),
-            rationale=f"{remaining} more rows; re-call {form} scoped to one row to drill in."),
+            form=tool, coordinate=coordinate_of(entry, soc=soc, top6=top6),
+            rationale=f"{remaining} more rows; re-call {tool} scoped to one row to drill in."),
+    )
+
+
+def _empty_member_sector(form: str, entry: dict, region_display: str) -> AnalysisEnvelope:
+    """A VALID coordinate whose member-anchored SOC universe is empty: the member runs no
+    active program feeding this sector's qualifying middle-skill occupations, so a generated
+    landscape has nothing to show. Surface an explicit marker — NEVER 0-readable 'no demand'
+    (the region may well have unmet demand here; this view is scoped to what the member already
+    serves, not greenfield occupations). Routes back to orient to pick a served sector."""
+    coord = coordinate_of(entry)
+    coord.region = region_display
+    reason = (f"{entry['member_label']} runs no active program feeding this sector's qualifying "
+              f"middle-skill occupations, so a member-anchored {form} view is empty. The region "
+              f"may still have unmet demand in this sector — this view is scoped to occupations "
+              f"the member already serves, not greenfield ones.")
+    return AnalysisEnvelope(
+        form=form, coordinate=coord,
+        framing=_framing(form, [C.SAL_MEMBER_ANCHORED]),
+        licensing=_licensing(form,
+                             gates=[Gate(field="member_supply", marker="unavailable",
+                                         reason=reason)]),
+        next_moves=[NextMove(form=C.tool_name("orient"), coordinate=coord,
+                             rationale="See which sectors this member actually runs programs in.")],
+        view_link=V.view_link(form, instance_id=entry["id"], member_id=entry["member_id"],
+                              sector_id=entry["sector_id"]),
     )
 
 
@@ -130,6 +156,9 @@ def analyze_gap(member: str, sector: str, *, soc: Optional[str] = None) -> Analy
     for r in per_soc.values():
         r["gap"] = int(round((r["openings"] or 0) - r["regional_supply"]))
 
+    if not per_soc:   # member serves no qualifying occupation here — gate, never 0-readable
+        return _empty_member_sector("gap", entry, land.region_display)
+
     socs = list(per_soc)
     agg_region_supply = CAN.supply_over_socs(region_colleges, socs)
     summary = {
@@ -161,6 +190,8 @@ def analyze_gap(member: str, sector: str, *, soc: Optional[str] = None) -> Analy
         more = _drill("gap", entry, remaining=len(items) - _TOP_N, soc=items[_TOP_N][0])
 
     salience = [C.SAL_PROJECTED_NOT_ACTUAL]
+    if getattr(resolved_spec, "soc_rule", None) and resolved_spec.soc_rule.active:
+        salience.append(C.SAL_MEMBER_ANCHORED)   # generated view: only occupations the member serves
     if 0 < agg.combined_awards < 5 * max(1, agg.n_colleges):
         salience.append(C.SAL_SMALL_N)
 
@@ -194,6 +225,8 @@ def analyze_coverage(member: str, sector: str) -> AnalysisEnvelope:
                              reason=f"No live coordinate for ({member!r}, {sector!r}).")
     spec, entry = resolved
     pl = build_programs_landscape(resolve(spec))
+    if not pl.tops:   # member offers no program in this sector — gate, never 0-readable
+        return _empty_member_sector("coverage", entry, pl.region_display)
     inst_g = _institutional(entry, pl.n_colleges)
     awards_v = (f"DataMart awards — {pl.latest_award_year}" if pl.latest_award_year
                 else "DataMart awards — vintage unavailable")
