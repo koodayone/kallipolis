@@ -148,4 +148,5 @@ SAL_SMALL_N = (
 SAL_STALE_VINTAGE = (
     "stale-vintage: some figures predate the current cycle; state their as-of.")
 SAL_PROJECTED_NOT_ACTUAL = (
-    "supply=projected≠actual: the gap uses COE projected completions, not actual awards.")
+    "supply=3yr-avg: supply is a 3-year average of CO-approved completions (DataMart); "
+    "the single most recent year (latest_year_supply) can run above or below it.")

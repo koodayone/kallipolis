@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Iterable, Optional
 
-from ontology.supply import COE_DEMAND_VINTAGE, COE_SUPPLY_VINTAGE
+from ontology.supply import COE_DEMAND_VINTAGE
 from partnerships.lens import FIELD_AUTHORITY as _LENS_FIELD_AUTHORITY
 from partnerships.lens import SOURCES as _LENS_SOURCES
 
@@ -32,8 +32,11 @@ AUTHORITY_BY_FIELD: dict[str, str] = {
     "growth_rate": "coe",
     "regional_employment": "coe",
     "typical_education": "coe",     # BLS entry-level education, carried in the COE demand file
-    # supply — the Distinguish pair, kept as deliberately separate keys
-    "projected_supply": "coe",     # COE projected completions (the gap denominator)
+    # supply — the Distinguish pair, kept as deliberately separate keys. Both are now
+    # DataMart completions (COE's supply IS DataMart CO-approved completions); they differ
+    # by window: projected_supply = 3-yr avg (COE's annual-projection method), latest = 1 yr.
+    "projected_supply": "datamart",     # 3-yr-avg DataMart completions, COE annual-projection method
+    "latest_year_supply": "datamart",   # the single most recent year — a trend complement
     "actual_awards": "datamart",   # DataMart actual completions (ground truth)
     "enrollment": "datamart",
     # coverage
@@ -59,9 +62,8 @@ def authority_of(field: str) -> str:
 
 def default_vintage(field: str) -> str:
     """The file-level vintage where it is a fixed publication fact. Data-derived
-    vintages (award-year window, wage cohort) are passed per call instead."""
-    if field == "projected_supply":
-        return COE_SUPPLY_VINTAGE
+    vintages (award-year window, supply window, wage cohort) are passed per call —
+    including supply, which is now a DataMart completions window, not the COE file."""
     src = AUTHORITY_BY_FIELD.get(field)
     if src == "coe":
         return COE_DEMAND_VINTAGE

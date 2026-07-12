@@ -4,7 +4,8 @@ These tests pin the response-envelope invariants that make the MCP server
 trustworthy rather than merely plausible — Bind (every fact is a QualifiedValue,
 never a bare number), Gate (a non-ok status forces value None; an unresolved
 coordinate returns an explicit marker), and Distinguish (projected_supply and
-actual_awards are separate, differently-sourced keys) — plus provenance never
+latest_year_supply are separate keys — one DataMart source, distinct windows) —
+plus provenance never
 invented (source read from the engine's lens map), the deterministic view-link
 mapping, the catalog adjacency edges, and byte-stable serialization. The
 graph-free tests always run; the four adapters run against the live graph when
@@ -13,7 +14,8 @@ NEO4J_URI is reachable and skip otherwise.
 Coverage:
   - QualifiedValue.gated forces value None (Gate)
   - provenance.q attaches source from lens.FIELD_AUTHORITY and never invents one
-  - projected_supply (coe) and actual_awards (datamart) are Distinguished
+  - projected_supply and latest_year_supply are Distinguished by window (both datamart)
+  - the four supply/gap tools agree at a coordinate (cross-tool referential integrity)
   - scope_catalog degrades to the 23 pinned instances without a graph
   - view_link maps each form to the right pinned/generated route + lens
   - build_next_moves emits the catalog adjacency edges, carrying soc/top6
@@ -73,11 +75,16 @@ def test_provenance_source_from_lens_never_invented():
     assert P.q("nonexistent_field", 1, granularity="x").source == ""
 
 
-def test_distinguish_projected_vs_actual():
-    sup = P.q("projected_supply", 12.0, granularity="inst")
-    act = P.q("actual_awards", 8, granularity="inst")
-    assert sup.source == "coe" and act.source == "datamart"
-    assert P.COE_SUPPLY_VINTAGE in sup.vintage
+def test_distinguish_supply_windows():
+    """Distinguish (post-canonical): projected_supply (3-yr avg) and latest_year_supply
+    (single latest year) are separate keys with the SAME DataMart source — the model must
+    track the WINDOW, not a source disagreement. COE's published supply IS DataMart
+    CO-approved completions, so both come from datamart; actual_awards stays a distinct key."""
+    for field in ("projected_supply", "latest_year_supply", "actual_awards"):
+        assert P.q(field, 1.0, granularity="inst").source == "datamart"
+    proj = P.q("projected_supply", 12.0, granularity="inst", vintage="3-yr avg (…2024-2025)")
+    latest = P.q("latest_year_supply", 8.0, granularity="inst", vintage="2024-2025")
+    assert proj.vintage != latest.vintage      # distinct windows, carried per call
 
 
 def test_scope_catalog_pinned_only():
@@ -142,12 +149,12 @@ def test_gap_adapter(member, sector):
     env = F.analyze_gap(member, sector)
     assert env.form == "gap" and not env.licensing.gates
     assert_bound(env)
-    # Distinguish: regional supply, the member's share, and actual awards are
-    # separate, differently-sourced keys. Grain: the gap denominator is REGIONAL,
-    # so total regional supply always covers ≥ the member's own share.
-    assert env.data.summary["regional_supply"].source == "coe"
-    assert env.data.summary["member_supply"].source == "coe"
-    assert env.data.summary["actual_awards"].source == "datamart"
+    # Distinguish: regional supply, the member's share, and the latest-year trend are
+    # separate keys (all DataMart completions now, via the canonical resolver). Grain:
+    # the gap denominator is REGIONAL, so regional supply always covers ≥ the member share.
+    assert env.data.summary["regional_supply"].source == "datamart"
+    assert env.data.summary["member_supply"].source == "datamart"
+    assert env.data.summary["latest_year_supply"].source == "datamart"
     assert env.data.summary["regional_supply"].value >= env.data.summary["member_supply"].value
     # view_link resolves and every next-move coordinate re-validates in the catalog
     assert env.view_link.url and "lens=occupations" in env.view_link.url
@@ -191,3 +198,29 @@ def test_out_of_scope_gates_not_zero():
     env = F.analyze_gap("does-not-exist", "adm")
     assert env.licensing.gates and env.licensing.gates[0].marker == "out-of-scope"
     assert not env.data.summary        # explicit gate, never a zero-filled answer
+
+
+@requires_graph
+def test_cross_tool_referential_integrity():
+    """Referential integrity — the gate-tests' sibling. A named quantity at a resolved
+    coordinate is ONE value no matter which tool serves it, and gap = regional_demand −
+    regional_supply everywhere. Fixture: deanza/adm/51-4041, the divergence that motivated
+    the canonical resolver (was gap 440 / pathway 458 / occupation_profile −3972)."""
+    m, sec, soc = "deanza", "adm", "51-4041"
+    g = F.analyze_gap(m, sec, soc=soc).data.rows[0].values
+    p = F.analyze_pathway(m, sec, occupation=soc).data.summary
+    o = F.occupation_profile(m, soc).data.summary
+    # (a) same-named quantities are value-identical across every tool that serves them
+    for key in ("member_supply", "regional_supply", "gap"):
+        vals = {g[key].value, p[key].value, o[key].value}
+        assert len(vals) == 1, f"{key} disagrees across tools: {vals}"
+    # (b) regional demand agrees too — the gap/pathway framing names it regional_demand,
+    #     the occupation_profile raw-demand vector names it annual_openings: one number.
+    demand = lambda d: (d.get("regional_demand") or d["annual_openings"]).value
+    assert len({demand(g), demand(p), demand(o)}) == 1, "regional demand disagrees across tools"
+    # (c) gap = regional demand − regional supply, exactly, in every tool
+    for v in (g, p, o):
+        assert v["gap"].value == int(round((demand(v) or 0) - v["regional_supply"].value))
+    # (d) all supply resolves through the one canonical DataMart source
+    assert {g["regional_supply"].source, p["regional_supply"].source,
+            o["regional_supply"].source} == {"datamart"}
