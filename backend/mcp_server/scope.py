@@ -100,6 +100,56 @@ def sectors_for_member(member_id: str) -> list[dict]:
     return [e for e in scope_catalog() if e["member_id"] == member_id]
 
 
+def member_portfolio(member_id: str) -> Optional[dict]:
+    """The cheap shaped summary ``institution_overview`` grounds on: the member's
+    live sectors, each with the count of distinct feeding TOP6 programs the member
+    runs, plus its region. One Program query for the member's TOP6s; each sector's
+    candidate TOP set is graph-free (crosswalk-derived), intersected in memory — so
+    this stays snappy even for a 26-college consortium. Enumeration (the programs
+    themselves) stays behind the per-sector drills: the overview grounds, it does
+    not list."""
+    sects = sectors_for_member(member_id)
+    if not sects:
+        return None
+    first = scope_for(member_id, sects[0]["sector_id"])
+    if first is None:
+        return None
+    spec0 = first[0]
+    from ontology.regions import COE_REGION_DISPLAY
+    from ontology.schema import get_driver
+    from partnerships.landscape_programs import relevant_tops
+    with get_driver().session() as session:
+        rows = session.run(
+            "MATCH (p:Program) WHERE p.college IN $colleges RETURN DISTINCT p.top6 AS top6",
+            colleges=list(spec0.colleges),
+        ).data()
+    member_tops = {r["top6"] for r in rows}
+    sectors: list[dict] = []
+    for e in sects:
+        resolved = scope_for(member_id, e["sector_id"])
+        if resolved is None:
+            continue
+        cand = set(relevant_tops(resolved[0]).keys())
+        sectors.append({
+            "sector_id": e["sector_id"],
+            "sector_label": e["sector_label"],
+            "instance": e["id"],
+            "program_count": len(member_tops & cand),
+        })
+    try:
+        region = COE_REGION_DISPLAY.get(spec0.resolve_region(), "")
+    except Exception:
+        region = ""
+    head = sects[0]
+    return {
+        "member_id": head["member_id"],
+        "member_label": head["member_label"],
+        "member_kind": head["member_kind"],
+        "region": region,
+        "sectors": sectors,
+    }
+
+
 def scope_for(member_id: str, sector_id: str) -> Optional[tuple[LandscapeSpec, dict]]:
     """Resolve (member, sector) → (LandscapeSpec, catalog entry), or None if the
     coordinate is not in the universe. Thin over ``registry.spec_for`` — the
