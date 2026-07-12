@@ -75,7 +75,7 @@ class LandscapeEmployersResult(BaseModel):
 
 
 @lru_cache(maxsize=512)
-def build_landscape_employers(spec: LandscapeSpec = SVAMP_SPEC) -> LandscapeEmployersResult:
+def build_landscape_employers(spec: LandscapeSpec) -> LandscapeEmployersResult:
     """The geocoded regional-employer map for a landscape. Result-memoized —
     deterministic per resolved spec; refresh on a graph data load via restart."""
     region = spec.resolve_region()

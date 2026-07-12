@@ -12,7 +12,7 @@ offers ≥1 feeding program for the sector. This is the one graph-dependent step
 sector level; this confirms the member actually offers one).
 
 Lives outside `landscape.py` to keep that module graph-free and to avoid the
-`landscape ↔ svamp_programs` import cycle. The dynamic API route family in
+`landscape ↔ landscape_programs` import cycle. The dynamic API route family in
 `api.py` calls `spec_for` + `has_supply`; the pinned instances keep their
 explicit routes, so this is purely additive.
 """
@@ -75,7 +75,7 @@ def has_supply(spec: LandscapeSpec) -> bool:
     """The publish gate: does a member college offer ≥1 program feeding the
     sector? `relevant_tops` is the crosswalk-candidate set (graph-free); this
     confirms the member actually runs one of those TOP6 programs."""
-    # Imported lazily: svamp_programs / ontology.timing use py3.10+ unions, and
+    # Imported lazily: landscape_programs / ontology.timing use py3.10+ unions, and
     # deferring keeps this module importable under the host's py3.9 so the
     # resolver unit tests (spec_for / _parse) run without a graph.
     from ontology.schema import get_driver

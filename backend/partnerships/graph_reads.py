@@ -83,7 +83,7 @@ def program_names(session, tops: Sequence[str]) -> dict[str, str]:
 def program_award_series(session, colleges: Sequence[str], tops: Sequence[str]) -> list[dict]:
     """Per ``(college, top6, academic_year)`` award counts — the full supply
     series behind the report's award-trend table. Same read as
-    svamp_programs.build_programs_landscape, centralized so the trend numbers in
+    landscape_programs.build_programs_landscape, centralized so the trend numbers in
     the report can't drift from the dashboard. Rows: ``{college, top6, year, awards}``."""
     if not colleges or not tops:
         return []

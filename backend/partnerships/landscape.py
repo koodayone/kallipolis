@@ -33,7 +33,7 @@ to scope one surface to a single member (the crosswalk's per-college taught
 marking is the first such case). To keep the two from colliding — a member
 loop named `for college in colleges` silently rebinds the scope argument to
 the last member — institutional sums are owned by named pure helpers
-(svamp_programs._consortium_supply is the model), and any inline member loop
+(landscape_programs._consortium_supply is the model), and any inline member loop
 iterates `member`, never `college`. The name `college` is reserved for the
 scope argument alone.
 """

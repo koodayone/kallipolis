@@ -15,7 +15,7 @@ the target SOCs, so a dental office surfaces for the dental cluster and a
 restaurant does not (it has no — or negligible — staffing-pattern weight there).
 
 This is the single source of truth, replacing three divergent implementations:
-  - svamp_employers ranked by firm size + a coarse swp_sectors tag,
+  - landscape_employers ranked by firm size + a coarse swp_sectors tag,
   - dossier read e.display_name (91% null) / e.naics_title (absent) and sorted by
     e.size_rank (19% present), producing null-name garbage,
   - opportunity computed the same share from the OES CSV at request time.
@@ -37,7 +37,7 @@ class RankedEmployer:
     soc_count: int                    # # of target SOCs this employer hires for
     soc_pct: dict[str, float]         # {soc -> pct_total} over the target SOCs
     size_rank: int = 0                # EDD size band; tiebreaker only, never primary
-    # Geo / detail — populated only when with_geo=True (svamp_employers' map):
+    # Geo / detail — populated only when with_geo=True (landscape_employers' map):
     county: str | None = None
     lat: float | None = None
     lng: float | None = None

@@ -18,7 +18,7 @@ The three rule dimensions:
                      supply metric and supply is the current year's completers, so
                      enrollment-only AND dormant (older-year-only) programs aren't
                      realized supply. The same gate runs at the program grain in
-                     svamp_programs.relevant_tops (such programs never enter the
+                     landscape_programs.relevant_tops (such programs never enter the
                      matrix/treemap).
 """
 

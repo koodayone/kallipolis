@@ -1,10 +1,10 @@
-"""The MCP server — six task-shaped tools + the guided-onboarding prompt.
+"""The MCP server — seven task-shaped tools + the guided-onboarding prompt.
 
 Tool set (fixed, deterministically ordered — the client caches the tool prefix,
 so the order and descriptions are frozen):
 
   Tier 0   list_scopes · orient
-  Tier 1   analyze_gap · analyze_coverage · analyze_pathway · analyze_regional_employers
+  Tier 1   analyze_gap · analyze_coverage · analyze_pathway · analyze_regional_employers · occupation_profile
 
 Each analyze tool wraps its ``forms`` adapter; its description IS its behavioral
 spec (the practitioner question + the load-bearing guardrail). The server-level
