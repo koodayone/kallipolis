@@ -174,3 +174,7 @@ SAL_STALE_VINTAGE = (
 SAL_PROJECTED_NOT_ACTUAL = (
     "supply=3yr-avg: supply is a 3-year average of CO-approved completions (DataMart); "
     "the single most recent year (latest_year_supply) can run above or below it.")
+SAL_MEMBER_ANCHORED = (
+    "member-anchored: a generated member×sector view covers only occupations the member "
+    "already serves with an active program — it does NOT surface greenfield demand in "
+    "occupations the member does not yet serve. Absence here is not absence of regional demand.")

@@ -142,6 +142,8 @@ def test_next_moves_name_callable_tools():
             assert mv.form in registered, f"{cur} next-move names non-tool {mv.form!r}"
     gate = S.gate_envelope("gap", "bogus", "adm", reason="x")   # the Tier-0 recovery route
     assert {mv.form for mv in gate.next_moves} <= registered
+    for cur in ("gap", "coverage", "pathway"):   # the progressive-disclosure drill is a call target too
+        assert F._drill(cur, entry, remaining=9).drill.form in registered, f"{cur} drill names non-tool"
 
 
 def test_envelope_serializes_deterministically():
@@ -222,6 +224,20 @@ def test_out_of_scope_gates_not_zero():
     env = F.analyze_gap("does-not-exist", "adm")
     assert env.licensing.gates and env.licensing.gates[0].marker == "out-of-scope"
     assert not env.data.summary        # explicit gate, never a zero-filled answer
+
+
+@requires_graph
+def test_empty_member_sector_gates_not_zero():
+    """A member with no active program in a sector (De Anza / retail) must GATE with an
+    explicit marker — never a 0-readable 'no demand'. The Bay has retail middle-skill demand
+    (Food Service Managers, Chefs); this member-anchored view is scoped to what De Anza serves,
+    so it must SAY so, not report gap=0."""
+    for fn, name in ((F.analyze_gap, "gap"), (F.analyze_coverage, "coverage")):
+        env = fn("deanza", "retail")
+        g = env.licensing.gates
+        assert g and g[0].marker == "unavailable" and "greenfield" in g[0].reason, name
+        assert not env.data.summary, f"{name} returned zero-filled data instead of a gate"
+        assert {m.form for m in env.next_moves} <= {"institution_overview"}
 
 
 @requires_graph
