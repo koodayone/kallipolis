@@ -96,6 +96,10 @@ class More(BaseModel):
 class Row(BaseModel):
     label: str
     values: dict[str, QualifiedValue] = Field(default_factory=dict)
+    # Optional college-grain breakdown (Defect 2): a count is never emitted without a
+    # nameable underlying set. Top-N named colleges inline; the row's count field gives the
+    # total, so the remainder is disclosed, not hidden.
+    roster: list["Row"] = Field(default_factory=list)
 
 
 class DataBlock(BaseModel):

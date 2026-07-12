@@ -264,3 +264,32 @@ def test_cross_tool_referential_integrity():
     # (d) all supply resolves through the one canonical DataMart source
     assert {g["regional_supply"].source, p["regional_supply"].source,
             o["regional_supply"].source} == {"datamart"}
+
+
+@requires_graph
+def test_offering_referential_integrity():
+    """Defect-1 sibling for `colleges_offering`: a supporting program's college count agrees
+    across tools, and no count is emitted without a nameable roster. BACCC == the Bay region,
+    so occupation_profile (regional) and program_pathways (consortium) must show the SAME
+    supporting programs + counts for a SOC; program_coverage's row for that TOP must match too."""
+    soc, top = "29-1141", "123010"
+    o = {r.label.split()[0]: r for r in F.occupation_profile("baccc", soc).data.rows}
+    p = {r.label.split()[0]: r for r in F.analyze_pathway("baccc", "health", occupation=soc).data.rows}
+    c = {r.label.split()[0]: r for r in F.analyze_coverage("baccc", "health").data.rows}
+    # (1) same supporting-program TOP set for the SOC (the 123000 divergence is gone)
+    assert set(o) == set(p), f"supporting programs disagree: {set(o)} vs {set(p)}"
+    assert top in o and top in c
+    cwp = lambda row: row.values["colleges_with_program"].value
+    assert cwp(o[top]) == cwp(p[top]) == cwp(c[top]), "colleges_with_program disagrees across tools"
+    # (2) no count without a nameable set — a roster is present and never exceeds the total
+    for row in (o[top], p[top], c[top]):
+        assert row.roster, "a count was emitted with no roster"
+        assert 0 < len(row.roster) <= cwp(row)
+        assert all(cell.values["actual_awards"].value is not None for cell in row.roster)  # never dropped
+    # (3) roster awards sum to the aggregate (full roster, past the inline cap)
+    from mcp_server import canonical as CAN
+    from partnerships.members import region_member
+    from partnerships.resolve import resolve
+    cols = region_member(resolve(S.scope_for("baccc", "health")[0]).resolve_region()).colleges
+    full = CAN.college_roster(cols, top)
+    assert sum(cell.awards for cell in full) == p[top].values["actual_awards"].value

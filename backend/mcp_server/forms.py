@@ -114,6 +114,20 @@ def _empty_member_sector(form: str, entry: dict, region_display: str) -> Analysi
     )
 
 
+_ROSTER_N = 12   # named colleges inline per program; the count field discloses any remainder
+
+
+def _program_roster(colleges, top6: str, granularity: str) -> list[Row]:
+    """Top-N named colleges offering a program (Defect 2) — label + Covered/Partial/Gap class
+    + latest-year awards, from the ONE canonical roster. A college with blank DataMart awards
+    stays in the roster (its class shows the absence) rather than silently dropping the way
+    OES-suppressed employers do; the row's count field discloses any remainder beyond top-N."""
+    return [Row(label=cell.college, values={
+        "coverage": QualifiedValue.ok(cell.coverage, source="datamart", granularity=granularity),
+        "actual_awards": P.q("actual_awards", cell.awards, granularity=granularity, unit="awards (latest yr)"),
+    }) for cell in CAN.college_roster(colleges, top6)[:_ROSTER_N]]
+
+
 # ── gap ───────────────────────────────────────────────────────────────────
 
 def analyze_gap(member: str, sector: str, *, soc: Optional[str] = None) -> AnalysisEnvelope:
@@ -224,7 +238,9 @@ def analyze_coverage(member: str, sector: str) -> AnalysisEnvelope:
         return gate_envelope("coverage", member, sector,
                              reason=f"No live coordinate for ({member!r}, {sector!r}).")
     spec, entry = resolved
-    pl = build_programs_landscape(resolve(spec))
+    rspec = resolve(spec)
+    member_colleges = list(rspec.colleges)
+    pl = build_programs_landscape(rspec)
     if not pl.tops:   # member offers no program in this sector — gate, never 0-readable
         return _empty_member_sector("coverage", entry, pl.region_display)
     inst_g = _institutional(entry, pl.n_colleges)
@@ -254,9 +270,12 @@ def analyze_coverage(member: str, sector: str) -> AnalysisEnvelope:
     rows = [Row(label=f"{t.top6} {t.name}", values={
         "actual_awards": P.q("actual_awards", t.awards_total, granularity=inst_g, unit="awards", vintage=awards_v),
         "enrollment": P.q("enrollment", t.enrollment_total, granularity=inst_g, unit="enrolled"),
-        "colleges_offering": _derived(t.n_colleges_offering, unit="colleges", granularity=inst_g),
+        "colleges_with_program": _derived(CAN.colleges_with_program(member_colleges, t.top6),
+                                          unit="colleges", granularity=inst_g),
+        "colleges_actively_awarding": _derived(CAN.colleges_actively_awarding(member_colleges, t.top6),
+                                               unit="colleges (latest yr)", granularity=inst_g),
         "occupations_fed": _derived(t.soc_count, unit="SOCs", granularity="TOP→CIP→SOC crosswalk"),
-    }) for t in tops[:_TOP_N]]
+    }, roster=_program_roster(member_colleges, t.top6, inst_g)) for t in tops[:_TOP_N]]
     more = _drill("coverage", entry, remaining=len(tops) - _TOP_N) if len(tops) > _TOP_N else None
 
     coord = coordinate_of(entry)
@@ -360,8 +379,11 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
     rows = [Row(label=f"{t.top6} {t.name}", values={
         "actual_awards": P.q("actual_awards", t.awards_total, granularity=inst_g, unit="awards"),
         "enrollment": P.q("enrollment", t.enrollment_total, granularity=inst_g, unit="enrolled"),
-        "colleges_offering": _derived(t.n_colleges_offering, unit="colleges", granularity=inst_g),
-    }) for t in tops[:_TOP_N]]
+        "colleges_with_program": _derived(CAN.colleges_with_program(member_colleges, t.top6),
+                                          unit="colleges", granularity=inst_g),
+        "colleges_actively_awarding": _derived(CAN.colleges_actively_awarding(member_colleges, t.top6),
+                                               unit="colleges (latest yr)", granularity=inst_g),
+    }, roster=_program_roster(member_colleges, t.top6, inst_g)) for t in tops[:_TOP_N]]
     more = _drill("pathway", entry, remaining=len(tops) - _TOP_N, soc=occupation) if len(tops) > _TOP_N else None
     salience = [C.SAL_PROJECTED_NOT_ACTUAL, C.SAL_LOSSY_CROSSWALK] if len(occ.feeding_tops) >= 4 else [C.SAL_PROJECTED_NOT_ACTUAL]
     coord = coordinate_of(entry, soc=occupation)
@@ -472,10 +494,6 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
                 reason=f"No regional demand data for occupation {occupation!r} in {region_disp}.")
         edu_row = session.run(
             "MATCH (o:Occupation {soc_code:$s}) RETURN o.education_level AS e", s=occupation).single()
-        prog_rows = session.run(
-            "MATCH (p:Program) WHERE p.college IN $colleges "
-            "RETURN p.college AS college, collect(DISTINCT p.top6) AS tops",
-            colleges=region_colleges).data()
         emp_rows = session.run(
             "MATCH (r:Region {name:$region})<-[:IN_MARKET]-(e:Employer)-[h:HIRES_FOR]->"
             "(o:Occupation {soc_code:$s}) "
@@ -483,12 +501,10 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
             "ORDER BY pct DESC LIMIT $n", region=region, s=occupation, n=_OCC_EMP_N).data()
 
     education = edu_row["e"] if edu_row else None
-    college_tops = {r["college"]: set(r["tops"] or []) for r in prog_rows}
     # Supply + feeders resolve through the ONE canonical resolver — is_vocational
     # crosswalk feeders (excludes non-CTE noise like Liberal Arts → Machinists) and
     # DataMart 3-yr-avg completions, coherent with the gap/pathway tools.
     recent, latest = CAN.recent_award_years(), CAN.recent_award_years(1)
-    feeding = CAN.feeders(region_colleges, occupation)
     regional_supply = CAN.supply(region_colleges, occupation)
     member_supply = CAN.supply(member_colleges, occupation)
     latest_supply = CAN.supply(member_colleges, occupation, years=latest)
@@ -530,13 +546,19 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
             ", ".join(e["name"] for e in emp_rows), source="graph_bls",
             granularity=f"regional ({region_disp}) — top {len(emp_rows)} by OES staffing share")
 
-    feeder_counts: dict[str, int] = {}
-    for c, tops in college_tops.items():
-        for t in tops & feeding:
-            feeder_counts[t] = feeder_counts.get(t, 0) + 1
-    rows = [Row(label=f"{t} {titles.get(t, '')}".strip(),
-                values={"colleges_offering": _derived(n, unit="colleges", granularity=region_supply_g)})
-            for t, n in sorted(feeder_counts.items(), key=lambda kv: kv[1], reverse=True)[:_TOP_N]]
+    # Supporting programs = the SOC's ACTIVE feeders — is_vocational crosswalk feeders that
+    # awarded a completer in the latest year (matches program_pathways' builder gate, so a
+    # dormant program on the books like 123000 Nursing is excluded here exactly as it is there).
+    # Counts are PROGRAM-grain via the ONE canonical roster (fixes the course-based undercount).
+    supporting = sorted(CAN.active_feeders(region_colleges, occupation),
+                        key=lambda t: (-CAN.colleges_actively_awarding(region_colleges, t),
+                                       -CAN.colleges_with_program(region_colleges, t), t))
+    rows = [Row(label=f"{t} {titles.get(t, '')}".strip(), values={
+                "colleges_with_program": _derived(CAN.colleges_with_program(region_colleges, t),
+                                                  unit="colleges", granularity=region_supply_g),
+                "colleges_actively_awarding": _derived(CAN.colleges_actively_awarding(region_colleges, t),
+                                                       unit="colleges (latest yr)", granularity=region_supply_g),
+            }, roster=_program_roster(region_colleges, t, region_supply_g)) for t in supporting[:_TOP_N]]
 
     # A resolvable coordinate for the view-link + next-moves: the occupation's own
     # sector that the member runs, else the member's first live sector.
@@ -557,7 +579,7 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
         form="occupation_profile", coordinate=coord,
         data=DataBlock(summary=summary, rows=rows),
         framing=_framing("occupation_profile",
-                         [C.SAL_LOSSY_CROSSWALK] if len(feeding) >= 4 else []),
+                         [C.SAL_LOSSY_CROSSWALK] if len(supporting) >= 4 else []),
         licensing=_licensing("occupation_profile", licensed=licensed),
         next_moves=[   # form = the callable tool name the model routes to, not the internal id
             NextMove(form=C.tool_name("regional_employers"), coordinate=coord,

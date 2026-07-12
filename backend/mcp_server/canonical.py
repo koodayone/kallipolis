@@ -24,10 +24,12 @@ Caches are process-lifetime (refresh on a graph reload), matching landscape_buil
 """
 from __future__ import annotations
 
+from dataclasses import dataclass
 from functools import lru_cache
 
 from ontology.crosswalks import is_vocational, top6_to_soc
 from ontology.schema import get_driver
+from partnerships.landscape_build import _term_excluded
 
 _SUPPLY_YEARS = 3   # COE's annual-projection method is a 3-year mean
 
@@ -109,3 +111,83 @@ def vintage(years: tuple[str, ...]) -> str:
     if len(years) == 1:
         return f"DataMart completions — {years[0]}"
     return f"{len(years)}-yr avg DataMart completions ({years[-1]}…{years[0]})"
+
+
+# ── OFFERING — the college roster for a program (referential integrity, layer 2) ──
+# `colleges_offering` disagreed across tools because occupation_profile counted Program
+# NODES while the builders counted 09 COURSES (a demonstrable undercount — colleges that
+# award a credential but have no course records were dropped). One canonical roster here,
+# program-grain, matching the dashboard's coverage-matrix classification (covered = enrolled
+# AND awarded; partial = one; gap = on the books but neither). Every tool composes it, so the
+# count and the named set agree.
+
+@dataclass(frozen=True)
+class CollegeCell:
+    """One (college × program) supply cell — the roster atom. `college` IS the display label;
+    `awards` is the latest reported year, matching the coverage-matrix cell."""
+    college: str
+    has_program: bool
+    enrolled: bool
+    awards: int
+
+    @property
+    def coverage(self) -> str:
+        if self.enrolled and self.awards > 0:
+            return "covered"
+        if self.enrolled or self.awards > 0:
+            return "partial"
+        return "gap"     # on the books but no current activity (dormant)
+
+
+@lru_cache(maxsize=1024)
+def _top_roster(colleges: tuple[str, ...], top6: str, latest: str) -> tuple[CollegeCell, ...]:
+    """Per-college supply cells for ONE program over the colleges — THE canonical roster.
+    Program-grain: a Program node + latest-year awards + enrollment presence (same non-excluded
+    terms as the coverage matrix). Computed once, so every tool's roster and count agree."""
+    with get_driver().session() as s:
+        prog = {r["c"] for r in s.run(
+            "MATCH (p:Program) WHERE p.college IN $c AND p.top6=$t RETURN DISTINCT p.college AS c",
+            c=list(colleges), t=top6).data()}
+        aw = {r["c"]: r["n"] for r in s.run(
+            "MATCH (p:Program)-[a:AWARDED]->(ay:AcademicYear) "
+            "WHERE p.college IN $c AND p.top6=$t AND ay.year=$y "
+            "RETURN p.college AS c, toInteger(sum(coalesce(a.count,0))) AS n",
+            c=list(colleges), t=top6, y=latest).data()}
+        en_rows = s.run(
+            "MATCH (p:Program)-[e:ENROLLED]->(term:Term) "
+            "WHERE p.college IN $c AND p.top6=$t "
+            "RETURN p.college AS c, term.term AS term, toInteger(coalesce(e.count,0)) AS n",
+            c=list(colleges), t=top6).data()
+    enrolled = {r["c"] for r in en_rows if r["n"] > 0 and r["term"] and not _term_excluded(r["term"])}
+    cols = prog | enrolled | set(aw)
+    cells = [CollegeCell(college=c, has_program=c in prog, enrolled=c in enrolled, awards=aw.get(c, 0))
+             for c in cols]
+    cells.sort(key=lambda x: (-x.awards, x.college))
+    return tuple(cells)
+
+
+def college_roster(colleges, top6: str) -> tuple[CollegeCell, ...]:
+    """The canonical per-college roster for a program, sorted by awards — includes any college
+    with a program, enrollment, or awards (never silently dropped, unlike OES suppression)."""
+    yrs = recent_award_years(1)
+    return _top_roster(tuple(sorted(set(colleges))), top6, yrs[0] if yrs else "")
+
+
+def colleges_with_program(colleges, top6: str) -> int:
+    """Program-grain count of colleges offering a program (a Program node exists) — the
+    canonical replacement for the course-based n_colleges_offering undercount."""
+    return sum(1 for c in college_roster(colleges, top6) if c.has_program)
+
+
+def colleges_actively_awarding(colleges, top6: str) -> int:
+    """Colleges producing completers in the latest year — the stricter 'active' count."""
+    return sum(1 for c in college_roster(colleges, top6) if c.awards > 0)
+
+
+def active_feeders(colleges, soc: str) -> frozenset[str]:
+    """A SOC's supporting programs WITH CURRENT SUPPLY — is_vocational crosswalk feeders that
+    awarded a completer in the latest year. Mirrors the builders' `_awarded_tops` gate, so
+    occupation_profile's supporting-program set matches program_pathways/program_coverage
+    (a program on the books but dormant, e.g. 123000 Nursing, is excluded here as it is there)."""
+    return frozenset(t for t in feeders(colleges, soc)
+                     if colleges_actively_awarding(colleges, t) > 0)
