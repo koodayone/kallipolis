@@ -264,14 +264,13 @@ class LandscapeOccupationReport(BaseModel):
 # ── Scope ─────────────────────────────────────────────────────────────────
 
 
-def relevant_tops(spec: LandscapeSpec = SVAMP_SPEC) -> dict[str, set[str]]:
-    """The SVAMP program universe: {top6 -> the SVAMP SOCs it feeds} for every
-    TOP6 in DIVISION 09 (Engineering & Industrial Technologies — see
-    svamp.SVAMP_TOP_DIVISION) whose TOP-CIP-SOC crosswalk intersects the twelve
-    SVAMP SOCs, minus the director's-mandate exclusions (both applied via
-    is_svamp_top). The filters are scope on the faithful crosswalk (the
-    crosswalk is never edited), reflecting the consortium's programmatic
-    domain per the SVAMP director."""
+def relevant_tops(spec: LandscapeSpec) -> dict[str, set[str]]:
+    """The instance's program universe: {top6 -> the spec's SOCs each feeds} for every
+    TOP6 whose TOP-CIP-SOC crosswalk intersects ``spec.socs`` AND is in the spec's scoped
+    program set (``spec.in_scope`` — the CTE/vocational gate plus any per-instance excluded
+    TOPs, and a home-division prefix for curated instances). For rule-bearing (generated)
+    specs an awards gate is applied on top: a TOP with no latest-year completer in any member
+    college is dropped. The filters are scope on the faithful crosswalk (never edited)."""
     all_top6 = list(_load_top_to_cip().keys())
     targets = set(spec.socs)
     universe = {
@@ -315,7 +314,7 @@ def _awarded_tops(spec: LandscapeSpec, tops) -> set[str]:
 # ── Builders (I/O) ──────────────────────────────────────────────────────────
 
 
-def build_programs_landscape(spec: LandscapeSpec = SVAMP_SPEC) -> ProgramsLandscape:
+def build_programs_landscape(spec: LandscapeSpec) -> ProgramsLandscape:
     colleges = list(spec.colleges)
     region = spec.resolve_region()
     universe = relevant_tops(spec)
@@ -368,7 +367,7 @@ def build_programs_landscape(spec: LandscapeSpec = SVAMP_SPEC) -> ProgramsLandsc
     )
 
 
-def build_program_report(top6: str, college: str | None = None, *, spec: LandscapeSpec = SVAMP_SPEC) -> ProgramReport:
+def build_program_report(top6: str, college: str | None = None, *, spec: LandscapeSpec) -> ProgramReport:
     """The TOP6 program report. `college=None` ⇒ the consortium-aggregated view
     (per-college series across all members). `college` set ⇒ the targeted
     (college, TOP) slice: award / enrollment / curriculum scoped to that one
@@ -473,7 +472,7 @@ def _build_program_crosswalk(
 
 
 def build_landscape_occupation(
-    soc: str, *, spec: LandscapeSpec = SVAMP_SPEC, college: str | None = None,
+    soc: str, *, spec: LandscapeSpec, college: str | None = None,
     include_employers: bool = True,
 ) -> LandscapeOccupationReport:
     """Consortium aggregated-occupation report for one SOC — the dual of

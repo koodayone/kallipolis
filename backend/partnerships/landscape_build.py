@@ -49,7 +49,7 @@ from partnerships.landscape import LandscapeSpec, SVAMP_SPEC
 # The SVAMP scope now lives as SVAMP_SPEC in landscape.py — the single source,
 # alongside the other landscape instances (SMCCD, …). The module-level names
 # below remain as back-compat aliases for the existing importers
-# (svamp_programs, svamp_employers, the tests); the builders in this file read
+# (landscape_programs, landscape_employers, the tests); the builders in this file read
 # from `spec`, not from these names.
 
 SVAMP_COLLEGES: list[str] = list(SVAMP_SPEC.colleges)
@@ -112,7 +112,7 @@ AWARD_YEARS_SHOWN: int = 5
 # non-engineering feeders it legitimately links (e.g. Commercial Music →
 # 17-3029, CIS → 17-3023) and transfer majors simply fall out of the
 # consortium's workforce view. Enforced consortium-wide: the Programs lens
-# universe (svamp_programs.relevant_tops), this landscape's per-cell supply /
+# universe (landscape_programs.relevant_tops), this landscape's per-cell supply /
 # awards / coverage, and the occupation drill report's curriculum pathway
 # (build_opportunity_report's top_prefix + cte_only) all restrict to 09xx CTE
 # TOPs. DEMAND and the candidate-employer set are NOT scoped — they are
@@ -135,7 +135,7 @@ SVAMP_MANDATE_EXCLUDED_TOPS: frozenset[str] = SVAMP_SPEC.excluded_tops
 
 def is_svamp_top(top6: str | None) -> bool:
     """True iff a TOP6 is in SVAMP's scoped program universe. Back-compat alias
-    for SVAMP_SPEC.in_scope (svamp_programs and the tests import this name); see
+    for SVAMP_SPEC.in_scope (landscape_programs and the tests import this name); see
     LandscapeSpec.in_scope for the predicate — configured TOP division + CTE
     family test, minus the director's mandate exclusions."""
     return SVAMP_SPEC.in_scope(top6)
@@ -272,15 +272,15 @@ def _build_executive_summary(spec: LandscapeSpec, region_display: str, agg: "Lan
 
 def _resolve_region() -> str:
     """The shared COE region for the SVAMP consortium. Back-compat wrapper for
-    SVAMP_SPEC.resolve_region (svamp_employers imports this name); the
+    SVAMP_SPEC.resolve_region (landscape_employers imports this name); the
     one-region assertion lives in LandscapeSpec.resolve_region."""
     return SVAMP_SPEC.resolve_region()
 
 
 def _soc_feeding_tops(spec: LandscapeSpec) -> dict[str, set[str]]:
     """{target SOC -> the in-scope TOP6 programs that crosswalk to it}. The
-    inverse of svamp_programs.relevant_tops (kept local to avoid a svamp ↔
-    svamp_programs import cycle; both apply the same division + CTE-family scope
+    inverse of landscape_programs.relevant_tops (kept local to avoid a svamp ↔
+    landscape_programs import cycle; both apply the same division + CTE-family scope
     to the faithful TOP-CIP-SOC crosswalk, which is never edited). Drives the
     per-cell activity coverage: a SOC is fed by these programs regardless of
     whether any course is tagged to their code (the 095630 parent-code seam)."""

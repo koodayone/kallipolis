@@ -71,7 +71,6 @@ class Coordinate(BaseModel):
     sector: str = ""
     sector_label: str = ""
     region: Optional[str] = None
-    college: Optional[str] = None   # a single-college drill, if any
     soc: Optional[str] = None
     top6: Optional[str] = None
 
