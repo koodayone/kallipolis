@@ -111,7 +111,7 @@ _LIST_SCOPES_DESC = (
     "substring narrows by institution or sector name.")
 
 
-@mcp.tool(description=_LIST_SCOPES_DESC)
+@mcp.tool(name="list_institutions", description=_LIST_SCOPES_DESC)
 def list_scopes(filter: str = "") -> ScopeList:
     f = filter.strip().lower()
     scopes = []
@@ -129,14 +129,14 @@ _ORIENT_DESC = (
     "steer toward high-value questions.")
 
 
-@mcp.tool(description=_ORIENT_DESC)
+@mcp.tool(name="institution_overview", description=_ORIENT_DESC)
 def orient(member: str, sector: str = "") -> OrientResult:
     sects = S.sectors_for_member(member)
     if not sects:
         return OrientResult(
             resolved=False, member=member,
-            message=(f"No member '{member}' in the universe. Call list_scopes and match "
-                     f"the institution to a canonical member id (e.g. 'foothill', 'smccd', 'svamp')."))
+            message=(f"No institution matching '{member}'. List the known institutions and "
+                     f"match this one to a canonical id (e.g. 'foothill', 'smccd', 'svamp')."))
     head = sects[0]
     return OrientResult(
         resolved=True,
@@ -157,22 +157,22 @@ def orient(member: str, sector: str = "") -> OrientResult:
 
 # ── Tier 1 (order frozen for cache stability) ─────────────────────────────
 
-@mcp.tool(description=_form_description("gap"))
+@mcp.tool(name="supply_demand_gaps", description=_form_description("gap"))
 def analyze_gap(member: str, sector: str, soc: str = "") -> AnalysisEnvelope:
     return F.analyze_gap(member, sector, soc=_opt(soc))
 
 
-@mcp.tool(description=_form_description("coverage"))
+@mcp.tool(name="program_coverage", description=_form_description("coverage"))
 def analyze_coverage(member: str, sector: str) -> AnalysisEnvelope:
     return F.analyze_coverage(member, sector)
 
 
-@mcp.tool(description=_form_description("pathway"))
+@mcp.tool(name="program_pathways", description=_form_description("pathway"))
 def analyze_pathway(member: str, sector: str, program: str = "", occupation: str = "") -> AnalysisEnvelope:
     return F.analyze_pathway(member, sector, program=_opt(program), occupation=_opt(occupation))
 
 
-@mcp.tool(description=_form_description("employer_shed"))
+@mcp.tool(name="regional_employers", description=_form_description("employer_shed"))
 def analyze_employer_shed(member: str, sector: str, soc: str = "") -> AnalysisEnvelope:
     return F.analyze_employer_shed(member, sector, soc=_opt(soc))
 
@@ -201,11 +201,11 @@ def build_oauth_mcp():
                 streamable_http_path="/",
                 transport_security=TransportSecuritySettings(enable_dns_rebinding_protection=False),
                 auth=settings, token_verifier=verifier_from_env())
-    m.tool(description=_LIST_SCOPES_DESC)(list_scopes)
-    m.tool(description=_ORIENT_DESC)(orient)
-    m.tool(description=_form_description("gap"))(analyze_gap)
-    m.tool(description=_form_description("coverage"))(analyze_coverage)
-    m.tool(description=_form_description("pathway"))(analyze_pathway)
-    m.tool(description=_form_description("employer_shed"))(analyze_employer_shed)
+    m.tool(name="list_institutions", description=_LIST_SCOPES_DESC)(list_scopes)
+    m.tool(name="institution_overview", description=_ORIENT_DESC)(orient)
+    m.tool(name="supply_demand_gaps", description=_form_description("gap"))(analyze_gap)
+    m.tool(name="program_coverage", description=_form_description("coverage"))(analyze_coverage)
+    m.tool(name="program_pathways", description=_form_description("pathway"))(analyze_pathway)
+    m.tool(name="regional_employers", description=_form_description("employer_shed"))(analyze_employer_shed)
     m.prompt(name="start-here", description=_START_HERE_DESC)(start_here)
     return m
