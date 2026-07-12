@@ -135,6 +135,28 @@ def vintage(years: tuple[str, ...]) -> str:
 # AND awarded; partial = one; gap = on the books but neither). Every tool composes it, so the
 # count and the named set agree.
 
+def coverage(enrolled: bool, awards: int, *, awards_only: bool = False) -> str:
+    """Classify one (college × program) cell — THE single coverage predicate.
+
+    Default (SVAMP, ruleless): covered = enrolled AND awarding; partial = either signal
+    alone; gap = neither. ``awards_only=True`` (rule-bearing instances — BACCC, sector-derived
+    SMCCD): a cell enrolled but not yet AWARDING is a gap, not partial (no completer = no
+    supply); a cell awarding but no longer enrolled stays partial (real-but-thinning supply).
+    Enrollment then only upgrades an awarding cell partial→covered, never creates partial alone."""
+    has_award = awards > 0
+    if awards_only:
+        if has_award and enrolled:
+            return "covered"
+        if has_award:
+            return "partial"
+        return "gap"
+    if enrolled and has_award:
+        return "covered"
+    if enrolled or has_award:
+        return "partial"
+    return "gap"
+
+
 @dataclass(frozen=True)
 class CollegeCell:
     """One (college × program) supply cell — the roster atom. `college` IS the display label;
@@ -146,11 +168,8 @@ class CollegeCell:
 
     @property
     def coverage(self) -> str:
-        if self.enrolled and self.awards > 0:
-            return "covered"
-        if self.enrolled or self.awards > 0:
-            return "partial"
-        return "gap"     # on the books but no current activity (dormant)
+        # ruleless (roster context): enrolled-OR-awarded classification
+        return coverage(self.enrolled, self.awards)
 
 
 @lru_cache(maxsize=1024)

@@ -249,11 +249,17 @@ def analyze_coverage(member: str, sector: str) -> AnalysisEnvelope:
 
     covered = partial = uncovered = 0
     if pl.matrix:
+        # One coverage predicate (quantities.coverage). NOTE: this preserves the current
+        # ruleless (enrolled-OR-awarded) classification. On rule-bearing instances (BACCC,
+        # sector-derived SMCCD) the dashboard matrix uses awards_only — an enrolled-but-not-
+        # awarding cell is a gap, not partial — and this MCP count still diverges from it.
+        # Passing awards_only=pl.matrix.coverage_awards_only closes that gap; deferred to the
+        # S7 sign-off because it moves the reported counts on those instances.
         for c in pl.matrix.cells:
-            has_award, has_enroll = c.awards > 0, c.enrolled
-            if has_award and has_enroll:
+            cls = CAN.coverage(c.enrolled, c.awards)
+            if cls == "covered":
                 covered += 1
-            elif has_award or has_enroll:
+            elif cls == "partial":
                 partial += 1
             else:
                 uncovered += 1
