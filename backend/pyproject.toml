@@ -5,8 +5,9 @@
 # feature-local by definition.
 #
 # The default `python -m pytest` command (no path argument) discovers the
-# colocated unit tests below. To run integration tests, invoke them
-# explicitly: `python -m pytest tests/integration/`.
+# colocated unit tests below plus the eval harness (evals/, graph-backed
+# characterization goldens — skip without a reachable Neo4j, run in CI). To
+# run integration tests, invoke them explicitly: `python -m pytest tests/integration/`.
 testpaths = [
     "students",
     "courses",
@@ -16,6 +17,7 @@ testpaths = [
     "ontology",
     "llm",
     "mcp_server",
+    "evals",
 ]
 
 # Filename pattern for test file discovery. pytest's default.

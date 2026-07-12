@@ -137,6 +137,8 @@ def _list_backend_feature_dirs(repo_root: Path) -> set[str]:
     non_feature = {
         "ontology", "llm", "mcp_server", "pipeline", "tests", "scripts", "docs",
         "analytics", "logs",
+        # evals = the graph-seed correctness harness (see backend_layout).
+        "evals",
         "__pycache__",
     }
     result: set[str] = set()

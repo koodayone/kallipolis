@@ -58,6 +58,11 @@ _ALLOWED_TOP_LEVEL_DIRS = frozenset({
     "tests",
     "scripts",
     "docs",
+    # The eval harness (backend/evals/) — the committed graph seed + its loader
+    # that make the @requires_graph correctness invariants RUN in CI instead of
+    # skipping. Correctness infrastructure, not an ontology unit: no product doc
+    # altitude. Kept in sync with vocabulary_alignment's non_feature set.
+    "evals",
     # Operational infrastructure — the page-view beacon (analytics/api.py)
     # and the rotating log directory it creates at runtime. Not ontology
     # units: no product doc altitude exists for them. Kept in sync with
@@ -69,6 +74,9 @@ _ALLOWED_TOP_LEVEL_DIRS = frozenset({
 _ALLOWED_TOP_LEVEL_FILES = frozenset({
     "__init__.py",
     "main.py",
+    # pytest's root bootstrap — must live at the package root (backend/) so it
+    # applies to every test dir. Guards against unsupported Python (PEP-604).
+    "conftest.py",
     "README.md",
     "Dockerfile",
     "requirements.txt",

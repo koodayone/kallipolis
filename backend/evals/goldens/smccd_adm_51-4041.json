@@ -1,0 +1,22 @@
+{
+ "builder": {
+  "annual_openings": 510,
+  "consortium_supply": 0.0,
+  "feeding_tops": [],
+  "gap": 510
+ },
+ "canonical": {
+  "active_feeders": [],
+  "feeders": [],
+  "rosters": {},
+  "sector_supply_over_socs": 19.3,
+  "supply_1yr": 0.0,
+  "supply_3yr": 0.0
+ },
+ "colleges_n": 3,
+ "in_scope": true,
+ "member": "smccd",
+ "sector": "adm",
+ "soc": "51-4041",
+ "socs_n": 4
+}

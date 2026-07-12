@@ -1,0 +1,37 @@
+{
+ "builder": {
+  "annual_openings": 510,
+  "consortium_supply": 52.33,
+  "feeding_tops": [
+   "095630"
+  ],
+  "gap": 458
+ },
+ "canonical": {
+  "active_feeders": [
+   "095630"
+  ],
+  "feeders": [
+   "095630"
+  ],
+  "rosters": {
+   "095630": {
+    "colleges_with_program": [
+     "De Anza College"
+    ],
+    "n_active": 1,
+    "n_covered": 0,
+    "n_with_program": 1
+   }
+  },
+  "sector_supply_over_socs": 124.0,
+  "supply_1yr": 6.0,
+  "supply_3yr": 3.3
+ },
+ "colleges_n": 5,
+ "in_scope": true,
+ "member": "svamp",
+ "sector": "adm",
+ "soc": "51-4041",
+ "socs_n": 12
+}
