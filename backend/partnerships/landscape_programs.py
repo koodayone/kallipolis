@@ -52,11 +52,11 @@ from partnerships.opportunity import _gather_partnership_opportunities
 from partnerships.opportunity_narrative import build_occupational_demand
 from partnerships.landscape_build import (
     AWARD_YEARS_SHOWN,
-    _term_excluded,
-    _term_sort_key,
     LandscapeWage,
 )
-from partnerships.landscape import LandscapeSpec, SVAMP_SPEC
+from partnerships.landscape import (
+    LandscapeSpec, SVAMP_SPEC, _term_excluded, _term_sort_key,
+)
 
 
 # ── Response shapes ───────────────────────────────────────────────────────

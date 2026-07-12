@@ -29,7 +29,7 @@ from functools import lru_cache
 
 from ontology.crosswalks import is_vocational, top6_to_soc
 from ontology.schema import get_driver
-from partnerships.landscape_build import _term_excluded
+from partnerships.landscape import _term_excluded
 
 _SUPPLY_YEARS = 3   # COE's annual-projection method is a 3-year mean
 

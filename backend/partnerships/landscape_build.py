@@ -43,7 +43,9 @@ from ontology.supply import get_coe_supply
 from ontology.programs import get_wage_outcomes
 
 from partnerships.graph_reads import regional_demand
-from partnerships.landscape import LandscapeSpec, SVAMP_SPEC
+from partnerships.landscape import (
+    LandscapeSpec, SVAMP_SPEC, _term_excluded, _term_sort_key,
+)
 
 # ── Scope ─────────────────────────────────────────────────────────────────
 # The SVAMP scope now lives as SVAMP_SPEC in landscape.py — the single source,
@@ -55,42 +57,9 @@ from partnerships.landscape import LandscapeSpec, SVAMP_SPEC
 SVAMP_COLLEGES: list[str] = list(SVAMP_SPEC.colleges)
 SVAMP_SOCS: list[str] = list(SVAMP_SPEC.socs)
 
-# Enrollment terms are NOT a fixed list: the course-section exports span ~5
-# years and colleges run different calendars (quarter vs. semester), so the
-# term axis is the chronologically-sorted union of whatever Term nodes exist,
-# computed per landscape (mirroring award_years). This orders "Season YYYY"
-# labels: Winter < Spring < Summer < Fall within a year.
-_SEASON_ORDER = {"Winter": 0, "Spring": 1, "Summer": 2, "Fall": 3}
-
-# Seasons excluded from the enrollment trend. Summer enrollment is
-# structurally low (fewer offerings, shorter term), so it reads as noise on the
-# trend rather than signal; the data stays in the graph and can be re-included
-# by clearing this set.
-_ENROLLMENT_EXCLUDE_SEASONS = {"Summer"}
-
-# Specific terms excluded from the enrollment trend. The two DataMart
-# course-section exports cover different windows — credit runs Winter 2021 →
-# Fall 2025, noncredit runs Fall 2020 → Winter 2026 — so these boundary terms
-# carry only ONE family and the blended total is structurally incomplete
-# there. The data stays in the graph; drop a term from this set when the
-# narrower export is re-pulled to cover it.
-_ENROLLMENT_EXCLUDE_TERMS = {"Fall 2020", "Winter 2026"}
-
-
-def _term_excluded(term: str) -> bool:
-    """True for terms the enrollment trend omits — excluded seasons (Summer)
-    and the export-boundary terms only one credit family covers."""
-    return term in _ENROLLMENT_EXCLUDE_TERMS or term.split()[0] in _ENROLLMENT_EXCLUDE_SEASONS
-
-
-def _term_sort_key(term: str) -> tuple[int, int]:
-    parts = term.split()
-    season = parts[0] if parts else ""
-    try:
-        year = int(parts[-1])
-    except (ValueError, IndexError):
-        year = 0
-    return (year, _SEASON_ORDER.get(season, 9))
+# The enrollment-term axis helpers (_term_excluded, _term_sort_key + their
+# exclusion sets) now live in landscape.py, beneath the builders, so canonical
+# and the builders share one rule without a cycle. Imported above.
 
 # Canonical PCAH Strong Workforce sector these occupations sit under. Passed
 # as the leaf report's sector hint so the drill-down renders in the same
