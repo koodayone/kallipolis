@@ -61,9 +61,17 @@ class ScopeEntry(BaseModel):
     sector_label: str
 
 
+class InstitutionSummary(BaseModel):
+    member_id: str
+    member_label: str
+    member_kind: str
+    sectors: list[str] = []   # sector labels this institution is live in
+
+
 class ScopeList(BaseModel):
     count: int
-    scopes: list[ScopeEntry]
+    institutions: list[InstitutionSummary] = []   # default (no filter): one row per institution
+    scopes: list[ScopeEntry] = []                 # filtered: detailed member×sector rows
 
 
 class SectorOption(BaseModel):
@@ -96,30 +104,70 @@ def _opt(v: str) -> Optional[str]:
     return v or None
 
 
-def _form_description(form_id: str) -> str:
+# One-sentence routing hints where a tool overlaps another — kept out of the form
+# meanings (which are response framing) so they steer tool SELECTION only.
+_ROUTING: dict[str, str] = {
+    "occupation_profile": ("Reach for this when the question is about one occupation and you "
+                           "want the whole picture at once; for a single dimension in depth "
+                           "(just the gap, just employers, just feeders), use that specific tool."),
+    "gap": ("For one named occupation you want the whole picture on, occupation_profile gives "
+            "demand, supply, feeders, and employers in one call; the soc filter here stays "
+            "right for a gaps-only view."),
+    "pathway": ("For one named occupation you want the whole picture on, occupation_profile "
+                "consolidates demand, supply, feeders, and employers in one call."),
+    "employer_shed": ("For one named occupation you want the whole picture on, occupation_profile "
+                      "consolidates it in one call; this tool stays right for the full employer shed."),
+}
+
+
+def _form_description(form_id: str, *, needs_sector: bool = True) -> str:
+    """A form tool's description = its behavioral spec. ``needs_sector`` picks the gate
+    line so it always matches the tool's actual schema — occupation_profile takes no
+    sector, so its gate must not claim one."""
     f = C.FORMS[form_id]
-    return (f"{f.question}\n\n{f.meaning}\n\nGuardrail: {f.guardrail}\n\n"
-            f"Needs an established institution and sector first; if that isn't set yet, this "
-            f"returns an explicit 'not in scope' marker rather than guessing.")
+    gate = ("Needs an established institution and sector first; if that isn't set yet, this "
+            "returns an explicit 'not in scope' marker rather than guessing."
+            if needs_sector else
+            "Needs an established institution — the region is derived from it, and the "
+            "occupation (not a sector) is the entry point; an unresolvable institution "
+            "returns an explicit 'not in scope' marker, not a guess.")
+    parts = [f.question, f.meaning, f"Guardrail: {f.guardrail}"]
+    if form_id in _ROUTING:
+        parts.append(_ROUTING[form_id])
+    parts.append(gate)
+    return "\n\n".join(parts)
 
 
 # ── Tier 0 ────────────────────────────────────────────────────────────────
 
 _LIST_SCOPES_DESC = (
-    "List the institutions the system knows — colleges, districts, and consortia — and "
-    "the sectors live for each, so you can match the practitioner's institution to one "
-    "(you resolve the fuzzy name; there is no server-side matcher). Optional 'filter' "
-    "substring narrows by institution or sector name.")
+    "List the institutions the system knows — colleges, districts, and consortia — each "
+    "with the sectors it is live in, so you can match the practitioner's institution to one "
+    "(you resolve the fuzzy name; there is no server-side matcher). Pass a 'filter' substring "
+    "(institution or sector name) to get the detailed member×sector rows for the matches.")
 
 
 @mcp.tool(name="list_institutions", description=_LIST_SCOPES_DESC)
 def list_scopes(filter: str = "") -> ScopeList:
     f = filter.strip().lower()
-    scopes = []
-    for e in S.scope_catalog():
-        hay = f"{e['member_id']} {e['member_label']} {e['sector_id']} {e['sector_label']}".lower()
-        if not f or f in hay:
-            scopes.append(ScopeEntry(**{k: e[k] for k in _SCOPE_KEYS}))
+    if not f:
+        # Default: one row per institution (id/label/kind + its live sectors) — enough to
+        # resolve a fuzzy name, ~8x lighter than the full member×sector cross-product. The
+        # detailed rows are reachable via a filter.
+        by_member: dict[str, dict] = {}
+        for e in S.scope_catalog():
+            m = by_member.setdefault(e["member_id"], {
+                "member_id": e["member_id"], "member_label": e["member_label"],
+                "member_kind": e["member_kind"], "sectors": set()})
+            m["sectors"].add(e["sector_label"])
+        insts = sorted(
+            (InstitutionSummary(member_id=m["member_id"], member_label=m["member_label"],
+                                member_kind=m["member_kind"], sectors=sorted(m["sectors"]))
+             for m in by_member.values()),
+            key=lambda i: (i.member_kind, i.member_id))
+        return ScopeList(count=len(insts), institutions=insts)
+    scopes = [ScopeEntry(**{k: e[k] for k in _SCOPE_KEYS}) for e in S.scope_catalog()
+              if f in f"{e['member_id']} {e['member_label']} {e['sector_id']} {e['sector_label']}".lower()]
     return ScopeList(count=len(scopes), scopes=scopes)
 
 
@@ -177,7 +225,7 @@ def analyze_employer_shed(member: str, sector: str, soc: str = "") -> AnalysisEn
     return F.analyze_employer_shed(member, sector, soc=_opt(soc))
 
 
-@mcp.tool(name="occupation_profile", description=_form_description("occupation_profile"))
+@mcp.tool(name="occupation_profile", description=_form_description("occupation_profile", needs_sector=False))
 def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
     return F.occupation_profile(member, occupation)
 
@@ -212,6 +260,6 @@ def build_oauth_mcp():
     m.tool(name="program_coverage", description=_form_description("coverage"))(analyze_coverage)
     m.tool(name="program_pathways", description=_form_description("pathway"))(analyze_pathway)
     m.tool(name="regional_employers", description=_form_description("employer_shed"))(analyze_employer_shed)
-    m.tool(name="occupation_profile", description=_form_description("occupation_profile"))(occupation_profile)
+    m.tool(name="occupation_profile", description=_form_description("occupation_profile", needs_sector=False))(occupation_profile)
     m.prompt(name="start-here", description=_START_HERE_DESC)(start_here)
     return m
