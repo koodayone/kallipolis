@@ -107,17 +107,41 @@ def test_view_link_routes():
 
 def test_next_moves_are_catalog_edges():
     entry = next(e for e in S.scope_catalog() if e["id"] == "svamp")
+    # next-move `form` is the CALLABLE tool name (regional_employers), not the internal
+    # form-id (employer_shed) — the model routes to it directly.
     moves = {m.form: m for m in C.build_next_moves("gap", entry, soc="49-9041")}
-    assert "employer_shed" in moves and moves["employer_shed"].coordinate.soc == "49-9041"
+    assert "regional_employers" in moves and moves["regional_employers"].coordinate.soc == "49-9041"
     cov = {m.form: m for m in C.build_next_moves("coverage", entry, top6="095000")}
-    assert cov["pathway"].coordinate.top6 == "095000"
+    assert cov["program_pathways"].coordinate.top6 == "095000"
 
 
 def test_gate_envelope_routes_to_tier0():
     env = S.gate_envelope("gap", "bogus", "adm", reason="unknown member")
     assert env.licensing.gates[0].marker == "out-of-scope"
-    assert {m.form for m in env.next_moves} == {"orient", "list_scopes"}
+    assert {m.form for m in env.next_moves} == {"institution_overview", "list_institutions"}
     assert not env.data.summary            # Gate ⇒ no data
+
+
+def test_next_moves_name_callable_tools():
+    """Routing integrity — the sibling of cross-tool value integrity. Every next-move names
+    a tool the model can actually call; the internal form-ids ("gap", "employer_shed",
+    "orient") are NOT the registered names, so every construction site must translate.
+    Guards the exact break behind the live 'Unknown tool' snag. Skips where the mcp SDK
+    (server registration) isn't importable."""
+    try:
+        import asyncio
+        from mcp_server.server import mcp
+    except ModuleNotFoundError:
+        pytest.skip("mcp SDK not installed")
+    registered = {t.name for t in asyncio.run(mcp.list_tools())}
+    # the map is the single source of truth for tool names — it must equal registration
+    assert set(C.TOOL_NAME.values()) == registered, "TOOL_NAME drifted from registered tools"
+    entry = next(e for e in S.scope_catalog() if e["id"] == "svamp")
+    for cur in C.EDGES:                    # every adjacency edge's target is callable
+        for mv in C.build_next_moves(cur, entry, soc="49-9041", top6="095000"):
+            assert mv.form in registered, f"{cur} next-move names non-tool {mv.form!r}"
+    gate = S.gate_envelope("gap", "bogus", "adm", reason="x")   # the Tier-0 recovery route
+    assert {mv.form for mv in gate.next_moves} <= registered
 
 
 def test_envelope_serializes_deterministically():

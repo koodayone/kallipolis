@@ -94,6 +94,30 @@ FORMS: dict[str, Form] = {
 }
 
 
+# ── Form-id → public tool name ────────────────────────────────────────────
+# A next-move is a CALL TARGET: the model routes to it, so its `form` must be a
+# name it can actually invoke. The internal form-ids ("gap", "employer_shed", …)
+# are NOT the registered MCP tool names ("supply_demand_gaps", "regional_employers",
+# …) — this map translates. server.py registers each tool under the same public
+# name (a coherence test pins TOOL_NAME.values() == the registered names, so the two
+# can never drift). Includes the two Tier-0 ids the gate routes back to.
+TOOL_NAME: dict[str, str] = {
+    "list_scopes": "list_institutions",
+    "orient": "institution_overview",
+    "gap": "supply_demand_gaps",
+    "coverage": "program_coverage",
+    "pathway": "program_pathways",
+    "employer_shed": "regional_employers",
+    "occupation_profile": "occupation_profile",
+}
+
+
+def tool_name(form_id: str) -> str:
+    """The registered public MCP tool name for a form-id (fail-fast on an unmapped id
+    so a new form/edge can't silently emit a non-callable next-move)."""
+    return TOOL_NAME[form_id]
+
+
 # ── The adjacency graph (§5.2: next-moves = catalog edges) ────────────────
 
 @dataclass(frozen=True)
@@ -134,7 +158,7 @@ def build_next_moves(current_form: str, entry: dict, *,
             soc=soc if "soc" in edge.carries else None,
             top6=top6 if "top6" in edge.carries else None,
         )
-        moves.append(NextMove(form=edge.target, coordinate=coord, rationale=edge.rationale))
+        moves.append(NextMove(form=tool_name(edge.target), coordinate=coord, rationale=edge.rationale))
     return moves
 
 

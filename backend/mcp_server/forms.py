@@ -526,10 +526,10 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
         framing=_framing("occupation_profile",
                          [C.SAL_LOSSY_CROSSWALK] if len(feeding) >= 4 else []),
         licensing=_licensing("occupation_profile", licensed=licensed),
-        next_moves=[
-            NextMove(form="employer_shed", coordinate=coord,
+        next_moves=[   # form = the callable tool name the model routes to, not the internal id
+            NextMove(form=C.tool_name("employer_shed"), coordinate=coord,
                      rationale="See the full set of regional employers hiring for this occupation."),
-            NextMove(form="gap", coordinate=coordinate_of(nav_entry),
+            NextMove(form=C.tool_name("gap"), coordinate=coordinate_of(nav_entry),
                      rationale="See the whole supply–demand gap for this sector."),
         ],
         view_link=V.view_link("occupation_profile", instance_id=nav_entry["id"],
