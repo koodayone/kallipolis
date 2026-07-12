@@ -29,15 +29,17 @@ class Form:
 FORMS: dict[str, Form] = {
     "gap": Form(
         id="gap",
-        question="Where does regional demand outrun what this member produces?",
+        question="Where does regional demand outrun what the region's colleges produce?",
         meaning=(
-            "A supply–demand gap is regional annual openings minus institutional "
-            "projected completions, per occupation. Positive means the region hires "
-            "more than the member's programs are projected to complete."),
+            "A supply–demand gap is regional annual openings minus the whole region's "
+            "projected completions, per occupation — regional demand against regional "
+            "supply. The institution's own completions are its share of that regional "
+            "supply. Positive means the region hires more than its colleges are projected "
+            "to complete."),
         guardrail=(
-            "'Supply' here is COE PROJECTED completions (the gap denominator), not "
-            "actual DataMart awards; the two are distinct figures and must never be "
-            "conflated."),
+            "'Supply' is COE PROJECTED completions (the gap denominator), not actual "
+            "DataMart awards — never conflate them. The gap is REGIONAL; the institution's "
+            "own supply is a separate figure (its share), never the gap itself."),
     ),
     "coverage": Form(
         id="coverage",

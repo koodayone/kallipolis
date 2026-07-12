@@ -98,17 +98,17 @@ def _opt(v: str) -> Optional[str]:
 def _form_description(form_id: str) -> str:
     f = C.FORMS[form_id]
     return (f"{f.question}\n\n{f.meaning}\n\nGuardrail: {f.guardrail}\n\n"
-            f"Requires a resolved (member, sector) coordinate — call orient first if unsure; "
-            f"an unresolved coordinate returns an explicit gate, not a guess.")
+            f"Needs an established institution and sector first; if that isn't set yet, this "
+            f"returns an explicit 'not in scope' marker rather than guessing.")
 
 
 # ── Tier 0 ────────────────────────────────────────────────────────────────
 
 _LIST_SCOPES_DESC = (
-    "Tier 0 — list the canonical member×sector universe the system knows. "
-    "Match the user's institution to a canonical member id (the consumer, you, "
-    "resolves fuzzy names — there is no server-side matcher), then call orient. "
-    "Optional 'filter' substring narrows by member or sector name/id.")
+    "List the institutions the system knows — colleges, districts, and consortia — and "
+    "the sectors live for each, so you can match the practitioner's institution to one "
+    "(you resolve the fuzzy name; there is no server-side matcher). Optional 'filter' "
+    "substring narrows by institution or sector name.")
 
 
 @mcp.tool(description=_LIST_SCOPES_DESC)
@@ -123,10 +123,10 @@ def list_scopes(filter: str = "") -> ScopeList:
 
 
 _ORIENT_DESC = (
-    "Tier 0 — orient to an institution: validate the member, present the sectors "
-    "that are live for it, the four analytical forms available, and — honestly — "
-    "the limits of what the data can assert. Call this before analysis to ground "
-    "the scope and steer toward high-value questions.")
+    "Ground yourself in an institution before analyzing: confirm it is known, see "
+    "which sectors are live for it, the kinds of questions you can answer about it, "
+    "and — honestly — the limits of what the data can say. Do this first, and let it "
+    "steer toward high-value questions.")
 
 
 @mcp.tool(description=_ORIENT_DESC)
