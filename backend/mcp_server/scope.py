@@ -163,12 +163,12 @@ def scope_for(member_id: str, sector_id: str) -> Optional[tuple[LandscapeSpec, d
     return spec, entry
 
 
-def coordinate_of(entry: dict, *, college: Optional[str] = None,
-                  soc: Optional[str] = None, top6: Optional[str] = None) -> Coordinate:
+def coordinate_of(entry: dict, *, soc: Optional[str] = None,
+                  top6: Optional[str] = None) -> Coordinate:
     return Coordinate(
         member=entry["member_id"], member_label=entry["member_label"],
         sector=entry["sector_id"], sector_label=entry["sector_label"],
-        region=entry.get("region"), college=college, soc=soc, top6=top6,
+        region=entry.get("region"), soc=soc, top6=top6,
     )
 
 

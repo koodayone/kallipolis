@@ -470,7 +470,6 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
     from ontology.crosswalks import load_top_titles, top6_to_soc
     from ontology.regions import COE_REGION_DISPLAY
     from ontology.schema import get_driver
-    from ontology.supply import get_coe_supply
 
     sects = sectors_for_member(member)
     if not sects:
