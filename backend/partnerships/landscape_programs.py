@@ -57,7 +57,7 @@ from partnerships.landscape_build import (
 from partnerships.landscape import (
     LandscapeSpec, SVAMP_SPEC, _term_excluded, _term_sort_key,
 )
-from partnerships.quantities import gap as compute_gap
+from partnerships.quantities import gap as compute_gap, supply_fn_graph
 
 
 # ── Response shapes ───────────────────────────────────────────────────────
@@ -593,12 +593,14 @@ def build_landscape_occupation(
 def _consortium_supply(
     feeding: list[str],
     colleges: tuple[str, ...] | list[str],
-    supply_fn: Callable[[set[str], str], tuple[list, float]] = get_coe_supply,
+    supply_fn: Callable[[set[str], str], tuple[list, float]] = supply_fn_graph,
 ) -> float:
-    """Σ over member colleges of COE-projected completions for the SOC's
+    """Σ over member colleges of DataMart 3-yr-avg completions for the SOC's
     feeding TOPs — the per-SOC slice of the consortium supply (institutional,
-    additive). Pure (supply_fn injectable) so the institutional-sum invariant
-    is unit-testable without a graph, mirroring svamp._assemble_landscape.
+    additive). Resolves through the one canonical store (quantities.supply_fn_graph,
+    S3), which replaced the COE-CSV get_coe_supply so this equals the MCP's supply.
+    Pure (supply_fn injectable) so the institutional-sum invariant is unit-testable
+    without a graph, mirroring svamp._assemble_landscape.
 
     Owning the member iteration HERE is the point: it keeps the loop variable
     out of any builder that also carries a single-college `college` scope
@@ -608,7 +610,9 @@ def _consortium_supply(
     feeding_set = set(feeding)
     if not feeding_set:
         return 0.0
-    return sum(supply_fn(feeding_set, member)[1] for member in colleges)
+    # Round ONCE over the member sum (supply_fn returns unrounded per-college figures), so this
+    # equals the aggregate quantities.supply over the same colleges+feeders to the decimal.
+    return round(sum(supply_fn(feeding_set, member)[1] for member in colleges), 1)
 
 
 def _crosswalk_taught_scope(

@@ -112,6 +112,37 @@ def supply_over_socs(colleges, socs, *, years: tuple[str, ...] | None = None) ->
     return round(sum(aw.get(t, 0) for t in fs) / len(yrs), 1)
 
 
+def _tops_avg(colleges, tops, years: tuple[str, ...] | None) -> float:
+    """UNROUNDED annual awards over tops+colleges. Callers that SUM per-college (the builders'
+    seam) must sum this and round ONCE — summing per-college ``round(x, 1)`` values otherwise
+    accumulates rounding and breaks referential integrity against the aggregate ``supply()``."""
+    yrs = years if years is not None else recent_award_years()
+    if not tops or not yrs:
+        return 0.0
+    aw = _awarded_by_top(tuple(sorted(set(colleges))), tuple(yrs))
+    return sum(aw.get(t, 0) for t in tops) / len(yrs)
+
+
+def supply_over_tops(colleges, tops, *, years: tuple[str, ...] | None = None) -> float:
+    """Annual supply over an EXPLICIT set of feeder TOP6s — the builders' basis (they resolve
+    feeders via ``LandscapeSpec.in_scope``, a richer rule than the sector crosswalk, so they
+    pass their own tops rather than a SOC). Graph awards over those tops+colleges, averaged
+    over the window. The store-level twin of ``supply``/``supply_over_socs``; every supply
+    figure — per-SOC, per-sector, or per-feeder-set — resolves through this same query."""
+    return round(_tops_avg(colleges, tops, years), 1)
+
+
+def supply_fn_graph(tops, college: str) -> tuple[list, float]:
+    """Adapter matching the builders' ``supply_fn`` seam signature ``(tops, college) ->
+    (estimates, total)``, backed by the graph instead of the COE CSV. The estimates list is
+    empty — both seam consumers (landscape_build's per-college loop, _consortium_supply's
+    member sum) read only the total. Returns the UNROUNDED per-college figure so the caller's
+    sum, rounded once, equals the aggregate ``supply()`` exactly (referential integrity).
+    This repoints the dashboard/report supply onto the one canonical store (S3): the builders
+    sum per-college graph supply exactly as they summed per-college COE completions."""
+    return [], _tops_avg([college], set(tops), None)
+
+
 def gap(demand, supply) -> int:
     """THE single gap expression: annual regional openings − annual supply, rounded to a
     whole opening. Openings and supply are each treated as 0 when absent, so a SOC with
