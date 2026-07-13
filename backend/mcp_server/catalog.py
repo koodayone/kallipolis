@@ -91,6 +91,23 @@ FORMS: dict[str, Form] = {
             "Ranked by OES industry staffing share; OES-suppressed cells are dropped (not "
             "marked), and the shortlist ('shown') is not the whole candidate pool ('total')."),
     ),
+    "unmet_demand": Form(
+        id="unmet_demand",
+        question="Which in-demand occupations does the region hire for that this member graduates no one into?",
+        meaning=(
+            "Greenfield demand is the set of occupations the member's region demands but the "
+            "member itself supplies zero completers for — regional demand with no local "
+            "pipeline. It is filtered to community-college-servable education levels, a "
+            "living-wage floor, and a meaningful-openings floor, then ranked by opportunity "
+            "(annual openings × median wage). It is the complement of the member-anchored gap "
+            "view: that view is scoped to occupations the member already serves; this one "
+            "surfaces exactly the ones it does not."),
+        guardrail=(
+            "Zero member supply is a verifiable graph fact (no completer feeds the occupation), "
+            "not a judgment that the member SHOULD launch it. Demand is COE PROJECTED openings; "
+            "the quality thresholds (servable education, wage ≥ $50k, ≥ 100 openings/yr) are "
+            "explicit filters, not a score, and feasibility, cost, and mission fit are out of scope."),
+    ),
 }
 
 
@@ -109,6 +126,7 @@ TOOL_NAME: dict[str, str] = {
     "pathway": "program_pathways",
     "regional_employers": "regional_employers",
     "occupation_profile": "occupation_profile",
+    "unmet_demand": "unmet_demand",
 }
 
 
@@ -143,6 +161,10 @@ EDGES: dict[str, list[Edge]] = {
     "regional_employers": [
         Edge("gap", (), "Quantify the supply–demand gap these employers face."),
         Edge("coverage", (), "See which colleges cover the occupations these employers hire."),
+    ],
+    "unmet_demand": [
+        Edge("occupation_profile", ("soc",),
+             "Drill into a surfaced greenfield occupation — its full demand, who trains for it, who hires."),
     ],
 }
 

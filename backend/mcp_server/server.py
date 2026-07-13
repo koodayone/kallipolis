@@ -1,10 +1,10 @@
-"""The MCP server — seven task-shaped tools + the guided-onboarding prompt.
+"""The MCP server — eight task-shaped tools + the guided-onboarding prompt.
 
 Tool set (fixed, deterministically ordered — the client caches the tool prefix,
 so the order and descriptions are frozen):
 
   Tier 0   list_scopes · orient
-  Tier 1   analyze_gap · analyze_coverage · analyze_pathway · analyze_regional_employers · occupation_profile
+  Tier 1   analyze_gap · analyze_coverage · analyze_pathway · analyze_regional_employers · occupation_profile · unmet_demand
 
 Each analyze tool wraps its ``forms`` adapter; its description IS its behavioral
 spec (the practitioner question + the load-bearing guardrail). The server-level
@@ -123,15 +123,21 @@ _ROUTING: dict[str, str] = {
 
 def _form_description(form_id: str, *, needs_sector: bool = True) -> str:
     """A form tool's description = its behavioral spec. ``needs_sector`` picks the gate
-    line so it always matches the tool's actual schema — occupation_profile takes no
-    sector, so its gate must not claim one."""
+    line so it always matches the tool's actual schema — occupation_profile and
+    unmet_demand take no sector, so their gate must not claim one (and unmet_demand takes
+    no occupation either, so its gate must not name an occupation entry point)."""
     f = C.FORMS[form_id]
-    gate = ("Needs an established institution and sector first; if that isn't set yet, this "
-            "returns an explicit 'not in scope' marker rather than guessing."
-            if needs_sector else
-            "Needs an established institution — the region is derived from it, and the "
-            "occupation (not a sector) is the entry point; an unresolvable institution "
-            "returns an explicit 'not in scope' marker, not a guess.")
+    if needs_sector:
+        gate = ("Needs an established institution and sector first; if that isn't set yet, this "
+                "returns an explicit 'not in scope' marker rather than guessing.")
+    elif form_id == "occupation_profile":
+        gate = ("Needs an established institution — the region is derived from it, and the "
+                "occupation (not a sector) is the entry point; an unresolvable institution "
+                "returns an explicit 'not in scope' marker, not a guess.")
+    else:
+        gate = ("Needs only an established institution — the region is derived from it and is the "
+                "sole input (no sector, no occupation); an unresolvable institution returns an "
+                "explicit 'not in scope' marker, not a guess.")
     parts = [f.question, f.meaning, f"Guardrail: {f.guardrail}"]
     if form_id in _ROUTING:
         parts.append(_ROUTING[form_id])
@@ -231,6 +237,11 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
     return F.occupation_profile(member, occupation)
 
 
+@mcp.tool(name="unmet_demand", description=_form_description("unmet_demand", needs_sector=False))
+def unmet_demand(member: str) -> AnalysisEnvelope:
+    return F.unmet_demand(member)
+
+
 # ── Prompt ────────────────────────────────────────────────────────────────
 
 @mcp.prompt(name="start-here", description="Guided onboarding: orient to your institution and find high-value questions.")
@@ -242,7 +253,7 @@ _START_HERE_DESC = "Guided onboarding: orient to your institution and find high-
 
 
 def build_oauth_mcp():
-    """A second, OAuth-protected FastMCP with the SAME six tools + prompt — used to
+    """A second, OAuth-protected FastMCP with the SAME eight tools + prompt — used to
     stand up an OAuth resource-server endpoint (WorkOS as the authorization server)
     alongside the bearer-gated ``mcp``, so we can prove the claude.ai handshake
     without disturbing the working endpoint. Returns None when OAuth env is unset
@@ -262,5 +273,6 @@ def build_oauth_mcp():
     m.tool(name="program_pathways", description=_form_description("pathway"))(analyze_pathway)
     m.tool(name="regional_employers", description=_form_description("regional_employers"))(analyze_regional_employers)
     m.tool(name="occupation_profile", description=_form_description("occupation_profile", needs_sector=False))(occupation_profile)
+    m.tool(name="unmet_demand", description=_form_description("unmet_demand", needs_sector=False))(unmet_demand)
     m.prompt(name="start-here", description=_START_HERE_DESC)(start_here)
     return m

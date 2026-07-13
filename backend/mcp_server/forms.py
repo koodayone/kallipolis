@@ -603,10 +603,156 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
     )
 
 
+# ── unmet demand (greenfield gaps; member-scoped, sector-agnostic) ─────────
+
+# The quality-demand gate — three explicit, legible, tunable judgment thresholds. A
+# greenfield occupation (member supply == 0) is surfaced ONLY if it clears ALL THREE.
+_CC_SERVABLE_EDUCATION = frozenset({           # BLS entry-level education a community college can
+    "High school diploma or equivalent",       # actually credential into — the middle-skill band.
+    "Postsecondary nondegree award",           # EXCLUDES Bachelor's/Master's/Doctoral (out of a CC's
+    "Some college, no degree",                 # award authority) and "No formal educational
+    "Associate's degree",                      # credential" (nothing to launch a program for).
+})
+_WAGE_FLOOR = 50_000     # living-wage floor (USD/yr, occ. median) — screens out low-wage demand.
+_OPENINGS_FLOOR = 100    # meaningful-demand floor (annual regional openings) — screens out thin demand.
+
+
+def unmet_demand(member: str) -> AnalysisEnvelope:
+    """Greenfield high-opportunity gaps: the occupations the member's region DEMANDS but
+    the member supplies ZERO completers for — regional demand with no local pipeline.
+    Sector-agnostic (the region is derived from the institution, exactly as
+    occupation_profile does it); filtered to community-college-servable education
+    (_CC_SERVABLE_EDUCATION), a living-wage floor (_WAGE_FLOOR) and a meaningful-openings
+    floor (_OPENINGS_FLOOR), then ranked by opportunity (annual openings × median wage).
+    The complement of the member-anchored gap view: gap is scoped to occupations the
+    member already serves, this surfaces exactly the ones it does not."""
+    from ontology.regions import COE_REGION_DISPLAY
+    from ontology.schema import get_driver
+
+    # Resolve member → region + colleges WITHOUT a sector (occupation_profile's path):
+    # any live sector suffices to obtain the spec, from which the region and the member's
+    # colleges derive. An institution that matches no coordinate gates back to Tier 0.
+    sects = sectors_for_member(member)
+    if not sects:
+        return gate_envelope("unmet_demand", member, "",
+                             reason=f"No institution matching {member!r}. Establish it first.")
+    resolved = scope_for(member, sects[0]["sector_id"])
+    if resolved is None:
+        return gate_envelope("unmet_demand", member, "",
+                             reason=f"Could not resolve institution {member!r}.")
+    spec0, entry = resolved
+    region = spec0.resolve_region()
+    region_disp = COE_REGION_DISPLAY.get(region, region)
+    member_colleges = list(spec0.colleges)
+
+    with get_driver().session() as session:
+        demand_rows = session.run(
+            "MATCH (rg:Region {name:$region})-[d:DEMANDS]->(o:Occupation) "
+            "RETURN o.soc_code AS soc, o.title AS title, o.education_level AS edu, "
+            "d.annual_openings AS openings, d.annual_wage AS wage, d.growth_rate AS growth",
+            region=region).data()
+
+    recent = CAN.recent_award_years()
+    supply_v = CAN.vintage(recent)
+    region_g = _regional(region_disp)
+    inst_g = _institutional(entry, len(member_colleges))
+
+    # Greenfield + quality gate. Supply resolves through the ONE canonical resolver
+    # (CAN.supply): member supply == 0 ⇔ no completer over the occupation's is_vocational
+    # feeders feeds it — the same function the gap tool uses, so no sibling tool can disagree
+    # about zero-supply. An occupation the member already supplies (>0) is not greenfield.
+    survivors: list[dict] = []
+    for r in demand_rows:
+        if CAN.supply(member_colleges, r["soc"]) != 0:
+            continue
+        if r["edu"] not in _CC_SERVABLE_EDUCATION:
+            continue
+        if (r["wage"] or 0) < _WAGE_FLOOR:
+            continue
+        if (r["openings"] or 0) < _OPENINGS_FLOOR:
+            continue
+        survivors.append(r)
+    survivors.sort(key=lambda r: (r["openings"] or 0) * (r["wage"] or 0), reverse=True)
+    n_unmet = len(survivors)
+
+    coord = coordinate_of(entry)
+    coord.region = region_disp
+
+    summary = {
+        "n_unmet": _derived(n_unmet, unit="occupations",
+                            granularity=f"{region_g} demand unserved by {inst_g}"),
+        "member_colleges": _derived(len(member_colleges), unit="colleges", granularity=inst_g),
+    }
+
+    rows = [Row(label=f"{r['soc']} {r['title']}", values={
+        "annual_openings": P.q("annual_openings", r["openings"], granularity=region_g, unit="openings/yr"),
+        "annual_wage": P.q("annual_wage", r["wage"], granularity=region_g, unit="USD/yr (occ. median)"),
+        "growth_rate": (P.q("growth_rate", r["growth"], granularity=region_g, unit="5-yr %")
+                        if r["growth"] is not None else
+                        P.q("growth_rate", None, granularity=region_g, unit="5-yr %", status="unavailable")),
+        "typical_education": P.q("typical_education", r["edu"], granularity=f"SOC {r['soc']}"),
+        # member_supply resolves through CAN.supply — 0 by the greenfield gate, stated (not
+        # hardcoded) so the zero is self-evidently the resolver's, not an invented number.
+        "member_supply": P.q("projected_supply", CAN.supply(member_colleges, r["soc"]),
+                             granularity=inst_g, unit="completions/yr", vintage=supply_v),
+    }) for r in survivors[:_TOP_N]]
+
+    more = None
+    if n_unmet > _TOP_N:
+        # unmet_demand cannot be re-scoped to one row (it is member-only), so the drill points
+        # at occupation_profile for the first occupation past the cap — the callable entry to
+        # any surfaced greenfield role.
+        nxt = survivors[_TOP_N]["soc"]
+        more = More(
+            remaining=n_unmet - _TOP_N,
+            drill=NextMove(form=C.tool_name("occupation_profile"),
+                           coordinate=coordinate_of(entry, soc=nxt),
+                           rationale=(f"{n_unmet - _TOP_N} more greenfield occupations; "
+                                      f"occupation_profile on any surfaced SOC drills into one.")))
+
+    if n_unmet == 0:
+        licensed = [f"No community-college-servable, living-wage (≥ ${_WAGE_FLOOR:,}), "
+                    f"meaningful-demand (≥ {_OPENINGS_FLOOR} openings/yr) occupation the "
+                    f"{region_disp} region demands is currently unserved by "
+                    f"{entry['member_label']}: every quality greenfield role already has local "
+                    f"supply, or none clears the thresholds. This is an explicit empty result, "
+                    f"not a claim the region has no unmet demand at other education/wage levels."]
+    else:
+        licensed = ["The occupations this member's region demands that the member currently "
+                    "graduates no completers for, filtered to community-college-servable "
+                    f"education, living-wage (≥ ${_WAGE_FLOOR:,}), and meaningful-demand "
+                    f"(≥ {_OPENINGS_FLOOR} openings/yr) roles, ranked by opportunity "
+                    "(annual openings × median wage)."]
+    not_licensed = ["It does not assert the member SHOULD launch these — only that regional "
+                    "demand exists and the member's own supply is zero; feasibility, cost, "
+                    "and mission fit are out of scope.",
+                    "'member supply == 0' is a 3-yr-average DataMart figure over the occupation's "
+                    "is_vocational feeders — a program with enrollment but no completer in the "
+                    "window reads as zero here, and locally-approved certificates are excluded."]
+
+    top_soc = survivors[0]["soc"] if survivors else None
+    return AnalysisEnvelope(
+        form="unmet_demand", coordinate=coord,
+        data=DataBlock(summary=summary, rows=rows, more=more),
+        framing=_framing("unmet_demand", [C.SAL_PROJECTED_NOT_ACTUAL, C.SAL_LOSSY_CROSSWALK]),
+        licensing=_licensing("unmet_demand", licensed=licensed, not_licensed=not_licensed),
+        next_moves=C.build_next_moves("unmet_demand", entry, soc=top_soc),
+        # No dashboard view corroborates a region-wide greenfield list — view_link returns an
+        # explicit 'unavailable' marker (unmet_demand is unmapped in viewlink), never a broken link.
+        view_link=V.view_link("unmet_demand", instance_id=entry["id"],
+                              member_id=entry["member_id"], sector_id=entry["sector_id"]),
+        provenance=P.build_provenance(
+            ["annual_openings", "annual_wage", "growth_rate", "typical_education", "projected_supply"],
+            scope_granularity=f"demand {region_g}; supply {inst_g}",
+            vintages={"demand": P.COE_DEMAND_VINTAGE, "projected_supply": supply_v}),
+    )
+
+
 FORM_FUNCS = {
     "gap": analyze_gap,
     "coverage": analyze_coverage,
     "pathway": analyze_pathway,
     "regional_employers": analyze_regional_employers,
     "occupation_profile": occupation_profile,
+    "unmet_demand": unmet_demand,
 }

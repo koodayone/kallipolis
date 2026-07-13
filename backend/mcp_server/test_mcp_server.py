@@ -24,6 +24,9 @@ Coverage:
   - [graph] analyze_gap/coverage/pathway/regional_employers over svamp + smccd-adm:
     Bind (recursive), Distinguish, view_link route, next_moves re-validate,
     and byte-identical determinism
+  - [graph] unmet_demand greenfield invariant: every surfaced occupation has member
+    supply == 0 (verified independently through CAN.supply) AND clears the quality gate
+    (CC-servable education, wage ≥ $50k, ≥ 100 openings/yr), ranked by opportunity
 """
 from __future__ import annotations
 
@@ -31,6 +34,7 @@ import os
 
 import pytest
 
+from mcp_server import canonical as CAN
 from mcp_server import catalog as C
 from mcp_server import forms as F
 from mcp_server import provenance as P
@@ -264,6 +268,48 @@ def test_cross_tool_referential_integrity():
     # (d) all supply resolves through the one canonical DataMart source
     assert {g["regional_supply"].source, p["regional_supply"].source,
             o["regional_supply"].source} == {"datamart"}
+
+
+@requires_graph
+@pytest.mark.parametrize("member", ["svamp", "smccd"])
+def test_unmet_demand_greenfield_invariant(member):
+    """The greenfield invariant — the whole point of unmet_demand: every surfaced occupation is
+    one the member's REGION demands but the member supplies ZERO completers for, re-verified
+    independently through the canonical resolver (CAN.supply == 0), AND clears the quality gate
+    (CC-servable education, wage ≥ $50k, ≥ 100 openings/yr). Proves the tool can never surface an
+    occupation the member already serves, and never a below-threshold role."""
+    env = F.unmet_demand(member)
+    assert env.form == "unmet_demand" and not env.licensing.gates
+    assert_bound(env)
+    # coordinate: member echoed, region derived, no soc (a region-wide list, not one occupation)
+    assert env.coordinate.member == member and env.coordinate.region and env.coordinate.soc is None
+    # no dashboard corroborates a region-wide greenfield list — an honest 'unavailable' marker,
+    # never a fabricated link
+    assert env.view_link.status == "unavailable" and env.view_link.url is None
+    # resolve the member's colleges the SAME way the form does, to re-verify supply independently
+    sects = S.sectors_for_member(member)
+    spec0, _ = S.scope_for(member, sects[0]["sector_id"])
+    member_colleges = list(spec0.colleges)
+    assert env.data.rows, "expected at least one greenfield occupation for the fixture members"
+    for row in env.data.rows:
+        soc = row.label.split()[0]
+        # (a) greenfield: member supply is ZERO through the canonical resolver (the invariant)
+        assert CAN.supply(member_colleges, soc) == 0, f"{soc} is NOT greenfield for {member}"
+        # (b) the row states that zero too (Distinguish: it's projected_supply, member share)
+        assert row.values["member_supply"].value == 0
+        # (c) quality gate: living-wage, meaningful-demand, CC-servable education
+        assert row.values["annual_wage"].value >= F._WAGE_FLOOR
+        assert row.values["annual_openings"].value >= F._OPENINGS_FLOOR
+        assert row.values["typical_education"].value in F._CC_SERVABLE_EDUCATION
+    # ranked by opportunity (annual openings × median wage), descending
+    opp = [r.values["annual_openings"].value * r.values["annual_wage"].value for r in env.data.rows]
+    assert opp == sorted(opp, reverse=True)
+    # n_unmet is the pre-truncation count; the top-N rows never exceed it
+    assert env.data.summary["n_unmet"].value >= len(env.data.rows)
+    # provenance carried once, spanning demand (coe) + supply (datamart)
+    assert {s.id for s in env.provenance.sources} >= {"coe", "datamart"}
+    # the next-move drills into a surfaced occupation via occupation_profile, carrying its SOC
+    assert any(m.form == "occupation_profile" and m.coordinate.soc for m in env.next_moves)
 
 
 @requires_graph
