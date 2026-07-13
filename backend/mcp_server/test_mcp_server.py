@@ -301,6 +301,10 @@ def test_unmet_demand_greenfield_invariant(member):
         assert row.values["annual_wage"].value >= F._WAGE_FLOOR
         assert row.values["annual_openings"].value >= F._OPENINGS_FLOOR
         assert row.values["typical_education"].value in F._CC_SERVABLE_EDUCATION
+        # (d) not a promotion role — a CC can't launch a program for supervisor/manager SOCs, so
+        # greenfield never suggests a curriculum that can't exist (same exclusion as the gap view)
+        from partnerships.sectors import PROMOTION_SOCS
+        assert soc not in PROMOTION_SOCS, f"{soc} is a promotion role, not a greenfield opportunity"
     # ranked by opportunity (annual openings × median wage), descending
     opp = [r.values["annual_openings"].value * r.values["annual_wage"].value for r in env.data.rows]
     assert opp == sorted(opp, reverse=True)

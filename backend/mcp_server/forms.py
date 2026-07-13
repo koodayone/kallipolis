@@ -605,8 +605,9 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
 
 # ── unmet demand (greenfield gaps; member-scoped, sector-agnostic) ─────────
 
-# The quality-demand gate — three explicit, legible, tunable judgment thresholds. A
-# greenfield occupation (member supply == 0) is surfaced ONLY if it clears ALL THREE.
+# The quality-demand gate — three explicit, legible, tunable judgment thresholds (plus the
+# PROMOTION_SOCS not-trainable exclusion the gap view already applies). A greenfield
+# occupation (member supply == 0, not a promotion role) is surfaced ONLY if it clears ALL THREE.
 _CC_SERVABLE_EDUCATION = frozenset({           # BLS entry-level education a community college can
     "High school diploma or equivalent",       # actually credential into — the middle-skill band.
     "Postsecondary nondegree award",           # EXCLUDES Bachelor's/Master's/Doctoral (out of a CC's
@@ -628,6 +629,7 @@ def unmet_demand(member: str) -> AnalysisEnvelope:
     member already serves, this surfaces exactly the ones it does not."""
     from ontology.regions import COE_REGION_DISPLAY
     from ontology.schema import get_driver
+    from partnerships.sectors import PROMOTION_SOCS
 
     # Resolve member → region + colleges WITHOUT a sector (occupation_profile's path):
     # any live sector suffices to obtain the spec, from which the region and the member's
@@ -665,6 +667,10 @@ def unmet_demand(member: str) -> AnalysisEnvelope:
     for r in demand_rows:
         if CAN.supply(member_colleges, r["soc"]) != 0:
             continue
+        if r["soc"] in PROMOTION_SOCS:
+            continue    # supervisor/manager/promotion roles are reached by experience, not a
+                        # program a CC can launch — excluded exactly as the member gap view does,
+                        # so "greenfield" never suggests a curriculum that can't exist.
         if r["edu"] not in _CC_SERVABLE_EDUCATION:
             continue
         if (r["wage"] or 0) < _WAGE_FLOOR:
