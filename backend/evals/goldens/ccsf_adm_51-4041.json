@@ -1,12 +1,16 @@
 {
  "builder": {
   "annual_openings": 510,
-  "consortium_supply": 0.0,
-  "feeding_tops": [],
-  "gap": 510
+  "consortium_supply": 1.7,
+  "feeding_tops": [
+   "095630"
+  ],
+  "gap": 508
  },
  "canonical": {
-  "active_feeders": [],
+  "active_feeders": [
+   "095630"
+  ],
   "feeders": [
    "095630"
   ],
@@ -15,19 +19,19 @@
     "colleges_with_program": [
      "City College of San Francisco"
     ],
-    "n_active": 0,
-    "n_covered": 0,
+    "n_active": 1,
+    "n_covered": 1,
     "n_with_program": 1
    }
   },
-  "sector_supply_over_socs": 3.3,
-  "supply_1yr": 0.0,
-  "supply_3yr": 0.0
+  "sector_supply_over_socs": 47.0,
+  "supply_1yr": 3.0,
+  "supply_3yr": 1.7
  },
  "colleges_n": 1,
  "in_scope": true,
  "member": "ccsf",
  "sector": "adm",
  "soc": "51-4041",
- "socs_n": 4
+ "socs_n": 5
 }

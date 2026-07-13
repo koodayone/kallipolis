@@ -80,13 +80,22 @@ def main():
 
         # ── edges (endpoints by natural key) ──
         edges = {
+            # SUM over the award_type / credit_type edge-key so the seed carries ONE edge per
+            # (program, year|term) with the total — the graph keys AWARDED by award_type and
+            # ENROLLED by credit_type (multiple edges each), but the seed loader MERGEs on the
+            # endpoints alone, which would otherwise collapse to a single arbitrary edge and
+            # undercount. Every supply/coverage query already sums count, so the total is faithful.
             "AWARDED": rows(
                 "MATCH (p:Program)-[r:AWARDED]->(ay:AcademicYear) WHERE p.college IN $c AND p.top6 IN $t "
-                "RETURN p.college AS f_college, p.top6 AS f_top6, ay.year AS t_year, properties(r) AS props",
+                "WITH p.college AS f_college, p.top6 AS f_top6, ay.year AS t_year, "
+                "toInteger(sum(coalesce(r.count,0))) AS cnt "
+                "RETURN f_college, f_top6, t_year, {count: cnt} AS props",
                 c=colleges, t=tops),
             "ENROLLED": rows(
                 "MATCH (p:Program)-[r:ENROLLED]->(tm:Term) WHERE p.college IN $c AND p.top6 IN $t "
-                "RETURN p.college AS f_college, p.top6 AS f_top6, tm.term AS t_term, properties(r) AS props",
+                "WITH p.college AS f_college, p.top6 AS f_top6, tm.term AS t_term, "
+                "toInteger(sum(coalesce(r.count,0))) AS cnt "
+                "RETURN f_college, f_top6, t_term, {count: cnt} AS props",
                 c=colleges, t=tops),
             "DEMANDS": rows(
                 "MATCH (rg:Region)-[r:DEMANDS]->(o:Occupation) WHERE o.soc_code IN $s "

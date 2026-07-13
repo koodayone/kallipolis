@@ -151,8 +151,12 @@ PROFILES = {
         "dir": "program_awards",
         "kind": "awards",
         "time_key": year_key,
-        "floor": "Annual 2021-2022",
-        "award_type": "Chancellor's Office Approved Awards",
+        # All Awards (not just Chancellor's-Office-Approved): a locally-approved
+        # certificate graduate still enters the workforce, and this matches the
+        # scope of COE's published supply_by_top.csv — so the graph becomes the
+        # fresh, complete supply source. Floor extended to recover 2020-2021.
+        "floor": "Annual 2020-2021",
+        "award_type": "All Awards",
     },
 }
 

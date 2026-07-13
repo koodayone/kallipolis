@@ -46,7 +46,7 @@ from partnerships.graph_reads import regional_demand
 from partnerships.landscape import (
     LandscapeSpec, SVAMP_SPEC, _term_excluded, _term_sort_key,
 )
-from partnerships.quantities import gap as compute_gap
+from partnerships.quantities import gap as compute_gap, supply_fn_graph
 
 # ── Scope ─────────────────────────────────────────────────────────────────
 # The SVAMP scope now lives as SVAMP_SPEC in landscape.py — the single source,
@@ -418,7 +418,7 @@ def _assemble_landscape(
     demand_by_soc: dict[str, dict],
     align_by_college: dict[str, dict[str, dict]],
     candidate_employers: int,
-    supply_fn: Callable[[set[str], str], tuple[list, float]] = get_coe_supply,
+    supply_fn: Callable[[set[str], str], tuple[list, float]] = supply_fn_graph,
     program_data: dict[tuple[str, str], dict] | None = None,
     wage_fn: Callable[[str], list] = get_wage_outcomes,
     soc_feeding: dict[str, set[str]] | None = None,
@@ -429,7 +429,9 @@ def _assemble_landscape(
 
     Separated from the I/O so the regional-vs-institutional aggregation
     invariant is unit-testable without a graph. `supply_fn` is injectable for
-    the same reason; in production it is `get_coe_supply`.
+    the same reason; in production it is `quantities.supply_fn_graph` (DataMart
+    3-yr-avg completions — the one canonical supply store, S3), which replaced
+    the COE-CSV `get_coe_supply` so this figure equals the MCP's supply.
 
     - Regional demand is taken ONCE per SOC from `demand_by_soc` and summed
       across the 12 occupations — never multiplied by the college count.
