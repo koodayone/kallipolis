@@ -979,189 +979,162 @@
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": false,
-          "teaches": false,
           "top6": "120100"
         },
         {
           "awards": 5,
           "college": "Skyline College",
           "enrolled": false,
-          "teaches": false,
           "top6": "120100"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "120100"
         },
         {
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": false,
-          "teaches": false,
           "top6": "120800"
         },
         {
           "awards": 0,
           "college": "Skyline College",
           "enrolled": true,
-          "teaches": true,
           "top6": "120800"
         },
         {
           "awards": 31,
           "college": "Ca\u00f1ada College",
           "enrolled": true,
-          "teaches": false,
           "top6": "120800"
         },
         {
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": false,
-          "teaches": false,
           "top6": "120820"
         },
         {
           "awards": 0,
           "college": "Skyline College",
           "enrolled": false,
-          "teaches": false,
           "top6": "120820"
         },
         {
           "awards": 7,
           "college": "Ca\u00f1ada College",
           "enrolled": true,
-          "teaches": false,
           "top6": "120820"
         },
         {
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": false,
-          "teaches": false,
           "top6": "120900"
         },
         {
           "awards": 3,
           "college": "Skyline College",
           "enrolled": false,
-          "teaches": false,
           "top6": "120900"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "120900"
         },
         {
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": false,
-          "teaches": false,
           "top6": "121000"
         },
         {
           "awards": 42,
           "college": "Skyline College",
           "enrolled": true,
-          "teaches": false,
           "top6": "121000"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "121000"
         },
         {
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": false,
-          "teaches": false,
           "top6": "122310"
         },
         {
           "awards": 0,
           "college": "Skyline College",
           "enrolled": false,
-          "teaches": false,
           "top6": "122310"
         },
         {
           "awards": 12,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "122310"
         },
         {
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": false,
-          "teaches": false,
           "top6": "122500"
         },
         {
           "awards": 0,
           "college": "Skyline College",
           "enrolled": false,
-          "teaches": false,
           "top6": "122500"
         },
         {
           "awards": 6,
           "college": "Ca\u00f1ada College",
           "enrolled": true,
-          "teaches": false,
           "top6": "122500"
         },
         {
           "awards": 48,
           "college": "College of San Mateo",
           "enrolled": true,
-          "teaches": true,
           "top6": "123010"
         },
         {
           "awards": 0,
           "college": "Skyline College",
           "enrolled": false,
-          "teaches": false,
           "top6": "123010"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "123010"
         },
         {
           "awards": 27,
           "college": "College of San Mateo",
           "enrolled": true,
-          "teaches": true,
           "top6": "124010"
         },
         {
           "awards": 0,
           "college": "Skyline College",
           "enrolled": false,
-          "teaches": false,
           "top6": "124010"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "124010"
         }
       ],
@@ -1179,7 +1152,6 @@
       {
         "awards_total": 48,
         "enrollment_total": 420,
-        "n_colleges_offering": 1,
         "name": "Registered Nursing",
         "soc_count": 1,
         "top6": "123010"
@@ -1187,7 +1159,6 @@
       {
         "awards_total": 42,
         "enrollment_total": 283,
-        "n_colleges_offering": 0,
         "name": "Respiratory Care/Therapy",
         "soc_count": 1,
         "top6": "121000"
@@ -1195,7 +1166,6 @@
       {
         "awards_total": 31,
         "enrollment_total": 30,
-        "n_colleges_offering": 1,
         "name": "Medical Assisting",
         "soc_count": 2,
         "top6": "120800"
@@ -1203,7 +1173,6 @@
       {
         "awards_total": 27,
         "enrollment_total": 195,
-        "n_colleges_offering": 1,
         "name": "Dental Assistant",
         "soc_count": 1,
         "top6": "124010"
@@ -1211,7 +1180,6 @@
       {
         "awards_total": 12,
         "enrollment_total": 0,
-        "n_colleges_offering": 0,
         "name": "Health Information Coding",
         "soc_count": 3,
         "top6": "122310"
@@ -1219,7 +1187,6 @@
       {
         "awards_total": 7,
         "enrollment_total": 123,
-        "n_colleges_offering": 0,
         "name": "Administrative Medical Assisting",
         "soc_count": 2,
         "top6": "120820"
@@ -1227,7 +1194,6 @@
       {
         "awards_total": 6,
         "enrollment_total": 132,
-        "n_colleges_offering": 0,
         "name": "Radiologic Technology",
         "soc_count": 1,
         "top6": "122500"
@@ -1235,7 +1201,6 @@
       {
         "awards_total": 5,
         "enrollment_total": 0,
-        "n_colleges_offering": 0,
         "name": "Health Occupations, General",
         "soc_count": 1,
         "top6": "120100"
@@ -1243,7 +1208,6 @@
       {
         "awards_total": 3,
         "enrollment_total": 0,
-        "n_colleges_offering": 0,
         "name": "Hospital Central Service Technician",
         "soc_count": 1,
         "top6": "120900"

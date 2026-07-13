@@ -545,63 +545,54 @@
           "awards": 6,
           "college": "College of San Mateo",
           "enrolled": true,
-          "teaches": true,
           "top6": "130600"
         },
         {
           "awards": 0,
           "college": "Skyline College",
           "enrolled": true,
-          "teaches": true,
           "top6": "130600"
         },
         {
           "awards": 1,
           "college": "Ca\u00f1ada College",
           "enrolled": true,
-          "teaches": true,
           "top6": "130600"
         },
         {
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": false,
-          "teaches": false,
           "top6": "130700"
         },
         {
           "awards": 2,
           "college": "Skyline College",
           "enrolled": true,
-          "teaches": true,
           "top6": "130700"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "130700"
         },
         {
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": false,
-          "teaches": false,
           "top6": "130710"
         },
         {
           "awards": 27,
           "college": "Skyline College",
           "enrolled": true,
-          "teaches": true,
           "top6": "130710"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "130710"
         }
       ],
@@ -619,7 +610,6 @@
       {
         "awards_total": 27,
         "enrollment_total": 290,
-        "n_colleges_offering": 1,
         "name": "Restaurant and Food Services and Management",
         "soc_count": 1,
         "top6": "130710"
@@ -627,7 +617,6 @@
       {
         "awards_total": 7,
         "enrollment_total": 315,
-        "n_colleges_offering": 3,
         "name": "Nutrition, Foods, and Culinary Arts",
         "soc_count": 1,
         "top6": "130600"
@@ -635,7 +624,6 @@
       {
         "awards_total": 2,
         "enrollment_total": 658,
-        "n_colleges_offering": 1,
         "name": "Hospitality",
         "soc_count": 1,
         "top6": "130700"
