@@ -12,19 +12,30 @@ stacks import DOWN into it without a cycle: the resolvers need ``LandscapeSpec.i
 not stay in ``mcp_server`` where the builders can't reach them. ``mcp_server.canonical`` is a
 thin back-compat shim re-exporting this module.
 
-SUPPLY — the definition (settled 2026-07-11):
-  DataMart CO-approved completions across the SOC's feeders, averaged over a year
-  window. A feeder is a TOP6 program that (a) the colleges offer, (b) cross-walks to
-  the SOC, and (c) is ``is_vocational`` (CTE) — the last clause excludes non-CTE
-  crosswalk noise (e.g. Liberal Arts 490100 → Machinists). The default window is the
-  most recent 3 award years (``projected_supply`` — COE's annual-projection *method*);
-  the single latest year is ``latest_year_supply``. COE's published supply IS DataMart
-  CO-approved completions (verified identical where the data is complete), so serving
-  it from DataMart is a freshness + coherence choice, not a disagreement about the
-  number — and the recent-3-year window sidesteps the graph's under-loaded 2020-21 year
-  (task #23). Member (member colleges) and regional (region colleges) supply differ
-  only by ``colleges``; the two windows only by ``years``; feeder rule and query are
-  identical, so no two callers can disagree.
+SUPPLY — the definition (settled 2026-07-11; store corrected 2026-07-12):
+  DataMart award completions across the SOC's feeders, averaged over a year window.
+  A feeder is a TOP6 program that (a) the colleges offer, (b) cross-walks to the SOC,
+  and (c) is ``is_vocational`` (CTE) — the last clause excludes non-CTE crosswalk noise
+  (e.g. Liberal Arts 490100 → Machinists). The default window is the most recent 3 award
+  years (``projected_supply``); the single latest year is ``latest_year_supply``.
+
+  COE's own method, reconstructed on better data: COE's published "Annual Projected
+  Supply" (supply_by_top.csv) is literally a trailing 3-yr average of DataMart completion
+  columns — the SAME method — but frozen on 2020–2023 and covering "All Awards". The
+  DataMart program-awards export now matches that scope (award_type "All Awards", not the
+  earlier "Chancellor's Office Approved" filter, which under-counted) and runs fresh
+  through 2024-25. Where the export is complete the graph equals COE completion-for-
+  completion (~96% of COE's cells; the residual is COE-snapshot staleness + adult-ed
+  entities outside our 115-CCC universe — see ``evals/completeness_audit.py``). So serving
+  supply from the graph is a freshness + coherence choice, not a disagreement about the
+  number. The recent-3 window also sidesteps 2020-21 (never scraped before the fix).
+
+  Member (member colleges) and regional (region colleges) supply differ only by
+  ``colleges``; the two windows only by ``years``. NOTE: a member-scoped figure that must
+  match a dashboard builder resolves the feeder set through ``LandscapeSpec.in_scope`` /
+  ``relevant_tops`` (which also resolves the TOP parent/child crosswalk granularity, e.g.
+  RN = 123010 not the general 123000) — that precise crosswalk is a partnerships concern,
+  tracked separately from this store-level resolver.
 
 Caches are process-lifetime (refresh on a graph reload), matching landscape_build.
 """
