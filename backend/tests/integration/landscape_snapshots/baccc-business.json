@@ -606,728 +606,624 @@
           "awards": 5,
           "college": "Berkeley City College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 62,
           "college": "Cabrillo College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 187,
           "college": "Chabot College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 22,
           "college": "City College of San Francisco",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 0,
           "college": "College of Alameda",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 23,
           "college": "College of Marin",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 0,
           "college": "Contra Costa College",
           "enrolled": false,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 0,
           "college": "De Anza College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 73,
           "college": "Diablo Valley College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 0,
           "college": "Evergreen Valley College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 0,
           "college": "Foothill College",
           "enrolled": false,
-          "teaches": false,
           "top6": "050100"
         },
         {
           "awards": 26,
           "college": "Gavilan College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 0,
           "college": "Laney College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 8,
           "college": "Las Positas College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 0,
           "college": "Los Medanos College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 0,
           "college": "Merritt College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 2,
           "college": "Mission College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 0,
           "college": "Napa Valley College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 141,
           "college": "Ohlone College",
           "enrolled": false,
-          "teaches": false,
           "top6": "050100"
         },
         {
           "awards": 0,
           "college": "San Jose City College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 26,
           "college": "Santa Rosa Junior College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 0,
           "college": "Skyline College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 0,
           "college": "Solano Community College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 0,
           "college": "West Valley College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050100"
         },
         {
           "awards": 0,
           "college": "Berkeley City College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050630"
         },
         {
           "awards": 0,
           "college": "Cabrillo College",
           "enrolled": false,
-          "teaches": false,
           "top6": "050630"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "050630"
         },
         {
           "awards": 46,
           "college": "Chabot College",
           "enrolled": false,
-          "teaches": false,
           "top6": "050630"
         },
         {
           "awards": 32,
           "college": "City College of San Francisco",
           "enrolled": true,
-          "teaches": true,
           "top6": "050630"
         },
         {
           "awards": 0,
           "college": "College of Alameda",
           "enrolled": false,
-          "teaches": false,
           "top6": "050630"
         },
         {
           "awards": 0,
           "college": "College of Marin",
           "enrolled": false,
-          "teaches": true,
           "top6": "050630"
         },
         {
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": true,
-          "teaches": true,
           "top6": "050630"
         },
         {
           "awards": 0,
           "college": "Contra Costa College",
           "enrolled": false,
-          "teaches": false,
           "top6": "050630"
         },
         {
           "awards": 0,
           "college": "De Anza College",
           "enrolled": false,
-          "teaches": false,
           "top6": "050630"
         },
         {
           "awards": 0,
           "college": "Diablo Valley College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050630"
         },
         {
           "awards": 0,
           "college": "Evergreen Valley College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050630"
         },
         {
           "awards": 0,
           "college": "Foothill College",
           "enrolled": false,
-          "teaches": false,
           "top6": "050630"
         },
         {
           "awards": 0,
           "college": "Gavilan College",
           "enrolled": false,
-          "teaches": true,
           "top6": "050630"
         },
         {
           "awards": 28,
           "college": "Laney College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050630"
         },
         {
           "awards": 1,
           "college": "Las Positas College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050630"
         },
         {
           "awards": 10,
           "college": "Los Medanos College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050630"
         },
         {
           "awards": 0,
           "college": "Merritt College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050630"
         },
         {
           "awards": 0,
           "college": "Mission College",
           "enrolled": true,
-          "teaches": false,
           "top6": "050630"
         },
         {
           "awards": 0,
           "college": "Napa Valley College",
           "enrolled": false,
-          "teaches": false,
           "top6": "050630"
         },
         {
           "awards": 7,
           "college": "Ohlone College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050630"
         },
         {
           "awards": 0,
           "college": "San Jose City College",
           "enrolled": false,
-          "teaches": false,
           "top6": "050630"
         },
         {
           "awards": 0,
           "college": "Santa Rosa Junior College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050630"
         },
         {
           "awards": 0,
           "college": "Skyline College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050630"
         },
         {
           "awards": 0,
           "college": "Solano Community College",
           "enrolled": false,
-          "teaches": true,
           "top6": "050630"
         },
         {
           "awards": 0,
           "college": "West Valley College",
           "enrolled": true,
-          "teaches": true,
           "top6": "050630"
         },
         {
           "awards": 0,
           "college": "Berkeley City College",
           "enrolled": false,
-          "teaches": false,
           "top6": "051100"
         },
         {
           "awards": 0,
           "college": "Cabrillo College",
           "enrolled": false,
-          "teaches": false,
           "top6": "051100"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "051100"
         },
         {
           "awards": 12,
           "college": "Chabot College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051100"
         },
         {
           "awards": 25,
           "college": "City College of San Francisco",
           "enrolled": true,
-          "teaches": true,
           "top6": "051100"
         },
         {
           "awards": 0,
           "college": "College of Alameda",
           "enrolled": false,
-          "teaches": false,
           "top6": "051100"
         },
         {
           "awards": 4,
           "college": "College of Marin",
           "enrolled": true,
-          "teaches": false,
           "top6": "051100"
         },
         {
           "awards": 34,
           "college": "College of San Mateo",
           "enrolled": true,
-          "teaches": true,
           "top6": "051100"
         },
         {
           "awards": 14,
           "college": "Contra Costa College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051100"
         },
         {
           "awards": 104,
           "college": "De Anza College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051100"
         },
         {
           "awards": 2,
           "college": "Diablo Valley College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051100"
         },
         {
           "awards": 0,
           "college": "Evergreen Valley College",
           "enrolled": false,
-          "teaches": false,
           "top6": "051100"
         },
         {
           "awards": 0,
           "college": "Foothill College",
           "enrolled": false,
-          "teaches": false,
           "top6": "051100"
         },
         {
           "awards": 7,
           "college": "Gavilan College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051100"
         },
         {
           "awards": 0,
           "college": "Laney College",
           "enrolled": false,
-          "teaches": false,
           "top6": "051100"
         },
         {
           "awards": 0,
           "college": "Las Positas College",
           "enrolled": false,
-          "teaches": false,
           "top6": "051100"
         },
         {
           "awards": 0,
           "college": "Los Medanos College",
           "enrolled": false,
-          "teaches": false,
           "top6": "051100"
         },
         {
           "awards": 9,
           "college": "Merritt College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051100"
         },
         {
           "awards": 0,
           "college": "Mission College",
           "enrolled": false,
-          "teaches": false,
           "top6": "051100"
         },
         {
           "awards": 0,
           "college": "Napa Valley College",
           "enrolled": false,
-          "teaches": false,
           "top6": "051100"
         },
         {
           "awards": 2,
           "college": "Ohlone College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051100"
         },
         {
           "awards": 4,
           "college": "San Jose City College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051100"
         },
         {
           "awards": 23,
           "college": "Santa Rosa Junior College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051100"
         },
         {
           "awards": 0,
           "college": "Skyline College",
           "enrolled": true,
-          "teaches": false,
           "top6": "051100"
         },
         {
           "awards": 11,
           "college": "Solano Community College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051100"
         },
         {
           "awards": 4,
           "college": "West Valley College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051100"
         },
         {
           "awards": 0,
           "college": "Berkeley City College",
           "enrolled": false,
-          "teaches": false,
           "top6": "051400"
         },
         {
           "awards": 25,
           "college": "Cabrillo College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051400"
         },
         {
           "awards": 8,
           "college": "Ca\u00f1ada College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051400"
         },
         {
           "awards": 1,
           "college": "Chabot College",
           "enrolled": true,
-          "teaches": false,
           "top6": "051400"
         },
         {
           "awards": 4,
           "college": "City College of San Francisco",
           "enrolled": true,
-          "teaches": true,
           "top6": "051400"
         },
         {
           "awards": 0,
           "college": "College of Alameda",
           "enrolled": false,
-          "teaches": true,
           "top6": "051400"
         },
         {
           "awards": 0,
           "college": "College of Marin",
           "enrolled": false,
-          "teaches": true,
           "top6": "051400"
         },
         {
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": true,
-          "teaches": true,
           "top6": "051400"
         },
         {
           "awards": 4,
           "college": "Contra Costa College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051400"
         },
         {
           "awards": 0,
           "college": "De Anza College",
           "enrolled": false,
-          "teaches": false,
           "top6": "051400"
         },
         {
           "awards": 0,
           "college": "Diablo Valley College",
           "enrolled": false,
-          "teaches": false,
           "top6": "051400"
         },
         {
           "awards": 1,
           "college": "Evergreen Valley College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051400"
         },
         {
           "awards": 0,
           "college": "Foothill College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051400"
         },
         {
           "awards": 4,
           "college": "Gavilan College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051400"
         },
         {
           "awards": 3,
           "college": "Laney College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051400"
         },
         {
           "awards": 0,
           "college": "Las Positas College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051400"
         },
         {
           "awards": 0,
           "college": "Los Medanos College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051400"
         },
         {
           "awards": 0,
           "college": "Merritt College",
           "enrolled": false,
-          "teaches": true,
           "top6": "051400"
         },
         {
           "awards": 4,
           "college": "Mission College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051400"
         },
         {
           "awards": 0,
           "college": "Napa Valley College",
           "enrolled": false,
-          "teaches": false,
           "top6": "051400"
         },
         {
           "awards": 0,
           "college": "Ohlone College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051400"
         },
         {
           "awards": 5,
           "college": "San Jose City College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051400"
         },
         {
           "awards": 52,
           "college": "Santa Rosa Junior College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051400"
         },
         {
           "awards": 3,
           "college": "Skyline College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051400"
         },
         {
           "awards": 3,
           "college": "Solano Community College",
           "enrolled": true,
-          "teaches": false,
           "top6": "051400"
         },
         {
           "awards": 0,
           "college": "West Valley College",
           "enrolled": true,
-          "teaches": true,
           "top6": "051400"
         }
       ],
@@ -1368,7 +1264,6 @@
       {
         "awards_total": 575,
         "enrollment_total": 10040,
-        "n_colleges_offering": 24,
         "name": "Business and Commerce, General",
         "soc_count": 2,
         "top6": "050100"
@@ -1376,7 +1271,6 @@
       {
         "awards_total": 255,
         "enrollment_total": 3087,
-        "n_colleges_offering": 13,
         "name": "Real Estate",
         "soc_count": 1,
         "top6": "051100"
@@ -1384,7 +1278,6 @@
       {
         "awards_total": 124,
         "enrollment_total": 647,
-        "n_colleges_offering": 16,
         "name": "Management Development and Supervision",
         "soc_count": 2,
         "top6": "050630"
@@ -1392,7 +1285,6 @@
       {
         "awards_total": 117,
         "enrollment_total": 3925,
-        "n_colleges_offering": 20,
         "name": "Office Technology/Office Computer Applications",
         "soc_count": 2,
         "top6": "051400"

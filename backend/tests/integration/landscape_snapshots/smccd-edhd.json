@@ -545,42 +545,36 @@
           "awards": 23,
           "college": "College of San Mateo",
           "enrolled": true,
-          "teaches": true,
           "top6": "083520"
         },
         {
           "awards": 0,
           "college": "Skyline College",
           "enrolled": false,
-          "teaches": false,
           "top6": "083520"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "083520"
         },
         {
           "awards": 1,
           "college": "College of San Mateo",
           "enrolled": false,
-          "teaches": true,
           "top6": "083560"
         },
         {
           "awards": 0,
           "college": "Skyline College",
           "enrolled": false,
-          "teaches": false,
           "top6": "083560"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "083560"
         }
       ],
@@ -598,7 +592,6 @@
       {
         "awards_total": 23,
         "enrollment_total": 99,
-        "n_colleges_offering": 1,
         "name": "Fitness Trainer",
         "soc_count": 1,
         "top6": "083520"
@@ -606,7 +599,6 @@
       {
         "awards_total": 1,
         "enrollment_total": 0,
-        "n_colleges_offering": 1,
         "name": "Coaching",
         "soc_count": 1,
         "top6": "083560"

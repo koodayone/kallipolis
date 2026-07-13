@@ -649,63 +649,54 @@
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": true,
-          "teaches": false,
           "top6": "093400"
         },
         {
           "awards": 4,
           "college": "Skyline College",
           "enrolled": true,
-          "teaches": false,
           "top6": "093400"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "093400"
         },
         {
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": false,
-          "teaches": false,
           "top6": "094610"
         },
         {
           "awards": 1,
           "college": "Skyline College",
           "enrolled": true,
-          "teaches": true,
           "top6": "094610"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "094610"
         },
         {
           "awards": 1,
           "college": "College of San Mateo",
           "enrolled": true,
-          "teaches": false,
           "top6": "095220"
         },
         {
           "awards": 0,
           "college": "Skyline College",
           "enrolled": false,
-          "teaches": false,
           "top6": "095220"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "095220"
         }
       ],
@@ -723,7 +714,6 @@
       {
         "awards_total": 4,
         "enrollment_total": 130,
-        "n_colleges_offering": 0,
         "name": "Electronics and Electric Technology",
         "soc_count": 2,
         "top6": "093400"
@@ -731,7 +721,6 @@
       {
         "awards_total": 1,
         "enrollment_total": 236,
-        "n_colleges_offering": 0,
         "name": "Electrical",
         "soc_count": 2,
         "top6": "095220"
@@ -739,7 +728,6 @@
       {
         "awards_total": 1,
         "enrollment_total": 23,
-        "n_colleges_offering": 1,
         "name": "Energy Systems Technology",
         "soc_count": 3,
         "top6": "094610"

@@ -663,63 +663,54 @@
           "awards": 45,
           "college": "College of San Mateo",
           "enrolled": true,
-          "teaches": true,
           "top6": "210500"
         },
         {
           "awards": 15,
           "college": "Skyline College",
           "enrolled": true,
-          "teaches": true,
           "top6": "210500"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "210500"
         },
         {
           "awards": 5,
           "college": "College of San Mateo",
           "enrolled": true,
-          "teaches": false,
           "top6": "210550"
         },
         {
           "awards": 0,
           "college": "Skyline College",
           "enrolled": false,
-          "teaches": false,
           "top6": "210550"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "210550"
         },
         {
           "awards": 29,
           "college": "College of San Mateo",
           "enrolled": true,
-          "teaches": true,
           "top6": "213300"
         },
         {
           "awards": 0,
           "college": "Skyline College",
           "enrolled": false,
-          "teaches": false,
           "top6": "213300"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "213300"
         }
       ],
@@ -737,7 +728,6 @@
       {
         "awards_total": 60,
         "enrollment_total": 481,
-        "n_colleges_offering": 2,
         "name": "Administration of Justice",
         "soc_count": 3,
         "top6": "210500"
@@ -745,7 +735,6 @@
       {
         "awards_total": 29,
         "enrollment_total": 221,
-        "n_colleges_offering": 1,
         "name": "Fire Technology",
         "soc_count": 1,
         "top6": "213300"
@@ -753,7 +742,6 @@
       {
         "awards_total": 5,
         "enrollment_total": 10,
-        "n_colleges_offering": 0,
         "name": "Police Academy",
         "soc_count": 1,
         "top6": "210550"

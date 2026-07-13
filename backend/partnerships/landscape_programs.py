@@ -73,7 +73,6 @@ class TopSummary(BaseModel):
     name: str
     awards_total: int = 0          # Σ latest award-year awards across colleges
     enrollment_total: int = 0      # Σ latest term enrollment across colleges
-    n_colleges_offering: int = 0   # # member colleges with ≥1 course for this TOP
     soc_count: int = 0
 
 
@@ -83,14 +82,12 @@ class ProgramCoverageCell(BaseModel):
     `enrolled` = the college has ENROLLED enrollment under this TOP; `awards` =
     its latest-award-year credentials (0 if none). The frontend derives the
     coverage level from the pair — covered = enrolled & awards (a full pipeline),
-    partial = one signal but not the other, gap = neither. `teaches` (≥1 tagged
-    09 course) is retained as the catalog signal that drives `n_colleges_offering`
-    but no longer gates the cell — a program can confer (095630) or enroll
-    (095200) without a course tagged to its own code, owing to the parent-code
-    tagging seam, and still belongs on the supply grid."""
+    partial = one signal but not the other, gap = neither. A program can confer
+    (095630) or enroll (095200) without a course tagged to its own code, owing to
+    the parent-code tagging seam, and still belongs on the supply grid — catalog
+    presence never gates the cell."""
     college: str
     top6: str
-    teaches: bool = False
     enrolled: bool = False
     awards: int = 0
 
@@ -344,17 +341,6 @@ def build_programs_landscape(spec: LandscapeSpec) -> ProgramsLandscape:
             """,
             colleges=colleges, tops=tops,
         ).data()
-        # Per-(college, TOP) course counts — drives both n_colleges_offering
-        # and the coverage matrix (teaches = n > 0). 09-scoped via `tops`.
-        course_rows = session.run(
-            """
-            MATCH (c:Course)
-            WHERE c.college IN $colleges AND c.top_code IN $tops
-            RETURN c.college AS college, c.top_code AS top6,
-                   count(DISTINCT c.code) AS n
-            """,
-            colleges=colleges, tops=tops,
-        ).data()
 
     return _assemble_landscape(
         region=region,
@@ -363,7 +349,6 @@ def build_programs_landscape(spec: LandscapeSpec) -> ProgramsLandscape:
         titles=titles,
         awards_rows=awards_rows,
         enroll_rows=enroll_rows,
-        coverage_rows=course_rows,
         spec=spec,
     )
 
@@ -678,7 +663,6 @@ def _assemble_landscape(
     titles: dict[str, str],
     awards_rows: list[dict],
     enroll_rows: list[dict],
-    coverage_rows: list[dict] | None = None,
     *,
     spec: LandscapeSpec = SVAMP_SPEC,
 ) -> ProgramsLandscape:
@@ -711,14 +695,6 @@ def _assemble_landscape(
     for (top6, _term), c in per_top_term.items():
         enroll_total[top6] = max(enroll_total.get(top6, 0), c)
 
-    # Per-(college, TOP) coverage → n_colleges_offering + the coverage matrix.
-    coverage_rows = coverage_rows or []
-    teaches: set[tuple[str, str]] = {
-        (r["college"], r["top6"]) for r in coverage_rows if (r.get("n") or 0) > 0
-    }
-    n_colleges_by_top: dict[str, int] = {}
-    for _c, _t in teaches:
-        n_colleges_by_top[_t] = n_colleges_by_top.get(_t, 0) + 1
     # Per-(college, TOP) latest-year awards for the matrix cells.
     awards_cell: dict[tuple[str, str], int] = {}
     for r in awards_rows:
@@ -741,7 +717,6 @@ def _assemble_landscape(
             name=titles.get(top6) or top6,
             awards_total=awards_total.get(top6, 0),
             enrollment_total=enroll_total.get(top6, 0),
-            n_colleges_offering=n_colleges_by_top.get(top6, 0),
             soc_count=len(socs),
         )
         for top6, socs in universe.items()
@@ -756,7 +731,6 @@ def _assemble_landscape(
         ProgramCoverageCell(
             college=college,
             top6=top6,
-            teaches=(college, top6) in teaches,
             enrolled=(college, top6) in enrolled_cell,
             awards=awards_cell.get((college, top6), 0),
         )
@@ -962,16 +936,12 @@ def _assemble_occupation(
     enroll_peak: dict[str, int] = {}
     for (top6, _term), c in per_top_term.items():
         enroll_peak[top6] = max(enroll_peak.get(top6, 0), c)
-    colleges_by_top: dict[str, set] = {}
-    for r in course_rows:
-        colleges_by_top.setdefault(r["top6"], set()).add(r["college"])
 
     feeding_tops = [
         TopSummary(
             top6=t, name=titles.get(t) or t,
             awards_total=awards_total.get(t, 0),
             enrollment_total=enroll_peak.get(t, 0),
-            n_colleges_offering=len(colleges_by_top.get(t, set())),
             soc_count=len(universe.get(t, set())),
         )
         for t in feeding

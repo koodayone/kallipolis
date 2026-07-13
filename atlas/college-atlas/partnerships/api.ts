@@ -379,18 +379,15 @@ export type ApiSvampTopSummary = {
   name: string;
   awards_total: number;
   enrollment_total: number;
-  n_colleges_offering: number;
   soc_count: number;
 };
 
 // Per-(college, TOP) supply coverage — the dual of the occupations grid cell.
 // Keyed on activity, not catalog presence: covered = enrolled && awards>0 (full
-// pipeline); partial = one signal but not the other; gap = neither. `teaches`
-// (≥1 tagged course) is retained as context but no longer gates the cell.
+// pipeline); partial = one signal but not the other; gap = neither.
 export type ApiProgramCoverageCell = {
   college: string;
   top6: string;
-  teaches: boolean;
   enrolled: boolean;
   awards: number;
 };

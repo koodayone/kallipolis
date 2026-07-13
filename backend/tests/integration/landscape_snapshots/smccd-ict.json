@@ -795,231 +795,198 @@
           "awards": 32,
           "college": "College of San Mateo",
           "enrolled": true,
-          "teaches": true,
           "top6": "061400"
         },
         {
           "awards": 1,
           "college": "Skyline College",
           "enrolled": true,
-          "teaches": true,
           "top6": "061400"
         },
         {
           "awards": 1,
           "college": "Ca\u00f1ada College",
           "enrolled": true,
-          "teaches": true,
           "top6": "061400"
         },
         {
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": false,
-          "teaches": false,
           "top6": "061410"
         },
         {
           "awards": 0,
           "college": "Skyline College",
           "enrolled": false,
-          "teaches": false,
           "top6": "061410"
         },
         {
           "awards": 13,
           "college": "Ca\u00f1ada College",
           "enrolled": true,
-          "teaches": true,
           "top6": "061410"
         },
         {
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": false,
-          "teaches": false,
           "top6": "061460"
         },
         {
           "awards": 0,
           "college": "Skyline College",
           "enrolled": false,
-          "teaches": false,
           "top6": "061460"
         },
         {
           "awards": 5,
           "college": "Ca\u00f1ada College",
           "enrolled": true,
-          "teaches": true,
           "top6": "061460"
         },
         {
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": true,
-          "teaches": false,
           "top6": "070200"
         },
         {
           "awards": 10,
           "college": "Skyline College",
           "enrolled": false,
-          "teaches": false,
           "top6": "070200"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "070200"
         },
         {
           "awards": 46,
           "college": "College of San Mateo",
           "enrolled": false,
-          "teaches": true,
           "top6": "070700"
         },
         {
           "awards": 0,
           "college": "Skyline College",
           "enrolled": false,
-          "teaches": false,
           "top6": "070700"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "070700"
         },
         {
           "awards": 18,
           "college": "College of San Mateo",
           "enrolled": true,
-          "teaches": true,
           "top6": "070710"
         },
         {
           "awards": 0,
           "college": "Skyline College",
           "enrolled": true,
-          "teaches": true,
           "top6": "070710"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": true,
-          "teaches": true,
           "top6": "070710"
         },
         {
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": true,
-          "teaches": false,
           "top6": "070800"
         },
         {
           "awards": 4,
           "college": "Skyline College",
           "enrolled": true,
-          "teaches": false,
           "top6": "070800"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": true,
-          "teaches": true,
           "top6": "070800"
         },
         {
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": true,
-          "teaches": true,
           "top6": "070810"
         },
         {
           "awards": 21,
           "college": "Skyline College",
           "enrolled": false,
-          "teaches": false,
           "top6": "070810"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "070810"
         },
         {
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": false,
-          "teaches": false,
           "top6": "070820"
         },
         {
           "awards": 2,
           "college": "Skyline College",
           "enrolled": false,
-          "teaches": false,
           "top6": "070820"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "070820"
         },
         {
           "awards": 2,
           "college": "College of San Mateo",
           "enrolled": true,
-          "teaches": true,
           "top6": "100500"
         },
         {
           "awards": 0,
           "college": "Skyline College",
           "enrolled": true,
-          "teaches": false,
           "top6": "100500"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "100500"
         },
         {
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": false,
-          "teaches": false,
           "top6": "103000"
         },
         {
           "awards": 8,
           "college": "Skyline College",
           "enrolled": true,
-          "teaches": true,
           "top6": "103000"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "103000"
         }
       ],
@@ -1037,7 +1004,6 @@
       {
         "awards_total": 46,
         "enrollment_total": 0,
-        "n_colleges_offering": 1,
         "name": "Computer Software Development",
         "soc_count": 4,
         "top6": "070700"
@@ -1045,7 +1011,6 @@
       {
         "awards_total": 34,
         "enrollment_total": 946,
-        "n_colleges_offering": 3,
         "name": "Digital Media",
         "soc_count": 2,
         "top6": "061400"
@@ -1053,7 +1018,6 @@
       {
         "awards_total": 21,
         "enrollment_total": 34,
-        "n_colleges_offering": 1,
         "name": "Computer Networking",
         "soc_count": 5,
         "top6": "070810"
@@ -1061,7 +1025,6 @@
       {
         "awards_total": 18,
         "enrollment_total": 855,
-        "n_colleges_offering": 3,
         "name": "Computer Programming",
         "soc_count": 4,
         "top6": "070710"
@@ -1069,7 +1032,6 @@
       {
         "awards_total": 13,
         "enrollment_total": 139,
-        "n_colleges_offering": 1,
         "name": "Multimedia",
         "soc_count": 1,
         "top6": "061410"
@@ -1077,7 +1039,6 @@
       {
         "awards_total": 10,
         "enrollment_total": 38,
-        "n_colleges_offering": 0,
         "name": "Computer Information Systems",
         "soc_count": 5,
         "top6": "070200"
@@ -1085,7 +1046,6 @@
       {
         "awards_total": 8,
         "enrollment_total": 66,
-        "n_colleges_offering": 1,
         "name": "Graphic Art and Design",
         "soc_count": 1,
         "top6": "103000"
@@ -1093,7 +1053,6 @@
       {
         "awards_total": 5,
         "enrollment_total": 46,
-        "n_colleges_offering": 1,
         "name": "Computer Graphics and Digital Imagery",
         "soc_count": 1,
         "top6": "061460"
@@ -1101,7 +1060,6 @@
       {
         "awards_total": 4,
         "enrollment_total": 227,
-        "n_colleges_offering": 1,
         "name": "Computer Infrastructure and Support",
         "soc_count": 4,
         "top6": "070800"
@@ -1109,7 +1067,6 @@
       {
         "awards_total": 2,
         "enrollment_total": 31,
-        "n_colleges_offering": 1,
         "name": "Commercial Music",
         "soc_count": 1,
         "top6": "100500"
@@ -1117,7 +1074,6 @@
       {
         "awards_total": 2,
         "enrollment_total": 0,
-        "n_colleges_offering": 0,
         "name": "Computer Support",
         "soc_count": 3,
         "top6": "070820"

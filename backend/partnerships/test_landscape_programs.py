@@ -92,15 +92,10 @@ def test_landscape_awards_total_summed_across_colleges_latest_year_only():
             {"college": "De Anza College", "top6": "095600", "year": "2023-2024", "awards": 99},
         ],
         enroll_rows=[],
-        coverage_rows=[
-            {"college": "De Anza College", "top6": "095600", "n": 3},
-            {"college": "Ohlone College", "top6": "095600", "n": 2},
-        ],
     )
     t = land.tops[0]
     assert t.awards_total == 15          # 10 + 5 latest year (not the older 99)
     assert t.soc_count == 1              # crosswalk cardinality, not demand
-    assert t.n_colleges_offering == 2    # derived from coverage_rows
 
 
 def test_landscape_coverage_matrix_keys_on_activity_per_cell():
@@ -119,10 +114,6 @@ def test_landscape_coverage_matrix_keys_on_activity_per_cell():
         enroll_rows=[
             {"college": "De Anza College", "top6": "095600", "term": "Fall 2024", "count": 50},
             {"college": "Ohlone College", "top6": "095600", "term": "Fall 2024", "count": 30},
-        ],
-        coverage_rows=[
-            {"college": "De Anza College", "top6": "095600", "n": 3},
-            {"college": "Ohlone College", "top6": "095600", "n": 2},
         ],
     )
     cells = {(c.college, c.top6): c for c in land.matrix.cells}

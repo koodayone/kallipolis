@@ -545,21 +545,18 @@
           "awards": 0,
           "college": "College of San Mateo",
           "enrolled": false,
-          "teaches": false,
           "top6": "094800"
         },
         {
           "awards": 119,
           "college": "Skyline College",
           "enrolled": true,
-          "teaches": true,
           "top6": "094800"
         },
         {
           "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "teaches": false,
           "top6": "094800"
         }
       ],
@@ -577,7 +574,6 @@
       {
         "awards_total": 119,
         "enrollment_total": 410,
-        "n_colleges_offering": 1,
         "name": "Automotive Technology",
         "soc_count": 1,
         "top6": "094800"
