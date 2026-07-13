@@ -168,7 +168,7 @@ def analyze_gap(member: str, sector: str, *, soc: Optional[str] = None) -> Analy
             if r["openings"] is None:
                 r["openings"] = cell.annual_openings
     for r in per_soc.values():
-        r["gap"] = int(round((r["openings"] or 0) - r["regional_supply"]))
+        r["gap"] = CAN.gap(r["openings"], r["regional_supply"])
 
     if not per_soc:   # member serves no qualifying occupation here — gate, never 0-readable
         return _empty_member_sector("gap", entry, land.region_display)
@@ -249,11 +249,17 @@ def analyze_coverage(member: str, sector: str) -> AnalysisEnvelope:
 
     covered = partial = uncovered = 0
     if pl.matrix:
+        # One coverage predicate (quantities.coverage). NOTE: this preserves the current
+        # ruleless (enrolled-OR-awarded) classification. On rule-bearing instances (BACCC,
+        # sector-derived SMCCD) the dashboard matrix uses awards_only — an enrolled-but-not-
+        # awarding cell is a gap, not partial — and this MCP count still diverges from it.
+        # Passing awards_only=pl.matrix.coverage_awards_only closes that gap; deferred to the
+        # S7 sign-off because it moves the reported counts on those instances.
         for c in pl.matrix.cells:
-            has_award, has_enroll = c.awards > 0, c.enrolled
-            if has_award and has_enroll:
+            cls = CAN.coverage(c.enrolled, c.awards)
+            if cls == "covered":
                 covered += 1
-            elif has_award or has_enroll:
+            elif cls == "partial":
                 partial += 1
             else:
                 uncovered += 1
@@ -370,7 +376,7 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
         "annual_wage": P.q("annual_wage", occ.annual_wage, granularity=region_g, unit="USD/yr (occ. median)"),
         "regional_supply": P.q("projected_supply", regional_supply, granularity=region_supply_g, unit="completions/yr", vintage=supply_v),
         "member_supply": P.q("projected_supply", member_supply, granularity=inst_g, unit="completions/yr", vintage=supply_v),
-        "gap": P.q("gap", int(round((occ.annual_openings or 0) - regional_supply)),
+        "gap": P.q("gap", CAN.gap(occ.annual_openings, regional_supply),
                    granularity=f"{region_g} − {region_supply_g}", unit="openings/yr", vintage=gap_v),
         "latest_year_supply": P.q("latest_year_supply", CAN.supply(member_colleges, occupation, years=latest),
                                   granularity=inst_g, unit="completions", vintage=latest_v),
@@ -508,7 +514,7 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
     member_supply = CAN.supply(member_colleges, occupation)
     latest_supply = CAN.supply(member_colleges, occupation, years=latest)
     openings = demand.get("annual_openings")
-    gap = int(round((openings or 0) - regional_supply))
+    gap = CAN.gap(openings, regional_supply)
     in_sectors = [SECTORS[sid].label for sid in SECTORS if occupation in set(SECTORS[sid].socs)]
 
     region_g = _regional(region_disp)

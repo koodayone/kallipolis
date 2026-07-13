@@ -52,11 +52,12 @@ from partnerships.opportunity import _gather_partnership_opportunities
 from partnerships.opportunity_narrative import build_occupational_demand
 from partnerships.landscape_build import (
     AWARD_YEARS_SHOWN,
-    _term_excluded,
-    _term_sort_key,
     LandscapeWage,
 )
-from partnerships.landscape import LandscapeSpec, SVAMP_SPEC
+from partnerships.landscape import (
+    LandscapeSpec, SVAMP_SPEC, _term_excluded, _term_sort_key,
+)
+from partnerships.quantities import gap as compute_gap
 
 
 # ── Response shapes ───────────────────────────────────────────────────────
@@ -1030,7 +1031,7 @@ def _assemble_occupation(
         growth_rate=growth_rate,
         employment=employment,
         consortium_supply=round(consortium_supply, 2),
-        gap=int(round((annual_openings or 0) - consortium_supply)),
+        gap=compute_gap(annual_openings, consortium_supply),
         award_years=award_years,
         enrollment_terms=enrollment_terms,
         feeding_tops=feeding_tops,
