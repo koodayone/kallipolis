@@ -33,8 +33,8 @@ AUTHORITY_BY_FIELD: dict[str, str] = {
     "regional_employment": "coe",
     "typical_education": "coe",     # BLS entry-level education, carried in the COE demand file
     # supply — the Distinguish pair, kept as deliberately separate keys. Both are now
-    # DataMart completions (COE's supply IS DataMart CO-approved completions); they differ
-    # by window: projected_supply = 3-yr avg (COE's annual-projection method), latest = 1 yr.
+    # DataMart completions (All Awards; COE's supply is the same completions on its own
+    # annual-projection method); they differ by window: projected_supply = 3-yr avg, latest = 1 yr.
     "projected_supply": "datamart",     # 3-yr-avg DataMart completions, COE annual-projection method
     "latest_year_supply": "datamart",   # the single most recent year — a trend complement
     "actual_awards": "datamart",   # DataMart actual completions (ground truth)

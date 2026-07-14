@@ -218,7 +218,7 @@ def analyze_gap(member: str, sector: str, *, soc: Optional[str] = None) -> Analy
         licensing=_licensing("gap",
                              licensed=["Regional annual openings vs total regional completions feeding the occupation, per occupation.",
                                        "member_supply is this member's own share of that regional supply."],
-                             not_licensed=["Supply is a 3-yr average of CO-approved completions (DataMart) over the occupation's CTE feeder programs — it excludes locally-approved certificates and is not the single most recent year (latest_year_supply)."]),
+                             not_licensed=["Supply is a 3-yr average of DataMart completions (All Awards) over the occupation's CTE feeder programs — a multi-year projection, not the single most recent year (latest_year_supply)."]),
         next_moves=C.build_next_moves("gap", entry, soc=soc),
         view_link=V.view_link("gap", instance_id=spec.id, member_id=entry["member_id"],
                               sector_id=entry["sector_id"], soc=soc),

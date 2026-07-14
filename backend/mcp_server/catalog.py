@@ -37,8 +37,10 @@ FORMS: dict[str, Form] = {
             "supply. Positive means the region hires more than its colleges are projected "
             "to complete."),
         guardrail=(
-            "'Supply' is COE PROJECTED completions (the gap denominator), not actual "
-            "DataMart awards — never conflate them. The gap is REGIONAL; the institution's "
+            "'Supply' is projected completions — COE's Annual Projected Supply method (a "
+            "trailing 3-year average of DataMart completions), reconstructed on current "
+            "DataMart data; it is the gap denominator, read as a projection rather than one "
+            "year's raw count (see latest_year_supply). The gap is REGIONAL; the institution's "
             "own supply is a separate figure (its share), never the gap itself."),
     ),
     "coverage": Form(
@@ -76,9 +78,11 @@ FORMS: dict[str, Form] = {
             "not a sector, is the entry point."),
         guardrail=(
             "Demand is the regional occupational signal, not graduates' earnings. "
-            "Supply is COE PROJECTED completions across the region, not actual "
-            "awards. The program→occupation crosswalk is many-to-many, so a feeding "
-            "program 'can lead to' the occupation, it is not exclusive to it."),
+            "Supply is projected completions across the region — COE's Annual Projected "
+            "Supply method (a 3-year average of DataMart completions), reconstructed on "
+            "current DataMart data; read it as a projection, not one year's raw count. "
+            "The program→occupation crosswalk is many-to-many, so a feeding program 'can "
+            "lead to' the occupation, it is not exclusive to it."),
     ),
     "regional_employers": Form(
         id="regional_employers",
@@ -194,7 +198,7 @@ SAL_SMALL_N = (
 SAL_STALE_VINTAGE = (
     "stale-vintage: some figures predate the current cycle; state their as-of.")
 SAL_PROJECTED_NOT_ACTUAL = (
-    "supply=3yr-avg: supply is a 3-year average of CO-approved completions (DataMart); "
+    "supply=3yr-avg: supply is a 3-year average of DataMart completions (All Awards); "
     "the single most recent year (latest_year_supply) can run above or below it.")
 SAL_MEMBER_ANCHORED = (
     "member-anchored: a generated member×sector view covers only occupations the member "

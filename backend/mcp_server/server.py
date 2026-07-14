@@ -6,9 +6,12 @@ so the order and descriptions are frozen):
   Tier 0   list_scopes · orient
   Tier 1   analyze_gap · analyze_coverage · analyze_pathway · analyze_regional_employers · occupation_profile · unmet_demand
 
-Each analyze tool wraps its ``forms`` adapter; its description IS its behavioral
-spec (the practitioner question + the load-bearing guardrail). The server-level
-``instructions`` carry the worldview preamble. Read-only; stateless HTTP.
+Each tool's description IS its behavioral spec: the shared ``DOCTRINE`` (voice +
+the intent-gated reading rules + the navigation offer) prepended to the tool's own
+spec — for an analyze tool, its practitioner question + load-bearing guardrail.
+Prepending DOCTRINE to every description puts the reading contract on the one
+channel every client injects; the server-level ``instructions`` (advisory) carry
+the same doctrine as a preamble but load-bear nothing. Read-only; stateless HTTP.
 """
 from __future__ import annotations
 
@@ -23,7 +26,7 @@ from mcp_server import catalog as C
 from mcp_server import forms as F
 from mcp_server import scope as S
 from mcp_server.envelope import AnalysisEnvelope
-from mcp_server.worldview import START_HERE_PROMPT, WORLDVIEW
+from mcp_server.worldview import DOCTRINE, START_HERE_PROMPT, WORLDVIEW
 
 # streamable_http_path="/" so the app serves at its mount root: mounted at
 # "/mcp" in main.py, the MCP endpoint is exactly /mcp (not /mcp/mcp).
@@ -121,6 +124,13 @@ _ROUTING: dict[str, str] = {
 }
 
 
+def _prime(desc: str) -> str:
+    """Prepend the shared DOCTRINE to a tool description. Tool descriptions are the
+    one priming channel every client injects, so this is where the reading contract
+    must ride to reach the model on every call — not the advisory ``instructions``."""
+    return f"{DOCTRINE}\n\n{desc}"
+
+
 def _form_description(form_id: str, *, needs_sector: bool = True) -> str:
     """A form tool's description = its behavioral spec. ``needs_sector`` picks the gate
     line so it always matches the tool's actual schema — occupation_profile and
@@ -142,7 +152,7 @@ def _form_description(form_id: str, *, needs_sector: bool = True) -> str:
     if form_id in _ROUTING:
         parts.append(_ROUTING[form_id])
     parts.append(gate)
-    return "\n\n".join(parts)
+    return _prime("\n\n".join(parts))
 
 
 # ── Tier 0 ────────────────────────────────────────────────────────────────
@@ -154,7 +164,7 @@ _LIST_SCOPES_DESC = (
     "(institution or sector name) to get the detailed member×sector rows for the matches.")
 
 
-@mcp.tool(name="list_institutions", description=_LIST_SCOPES_DESC)
+@mcp.tool(name="list_institutions", description=_prime(_LIST_SCOPES_DESC))
 def list_scopes(filter: str = "") -> ScopeList:
     f = filter.strip().lower()
     if not f:
@@ -185,7 +195,7 @@ _ORIENT_DESC = (
     "steer toward high-value questions.")
 
 
-@mcp.tool(name="institution_overview", description=_ORIENT_DESC)
+@mcp.tool(name="institution_overview", description=_prime(_ORIENT_DESC))
 def orient(member: str, sector: str = "") -> OrientResult:
     port = S.member_portfolio(member)
     if port is None:
@@ -266,8 +276,8 @@ def build_oauth_mcp():
                 streamable_http_path="/",
                 transport_security=TransportSecuritySettings(enable_dns_rebinding_protection=False),
                 auth=settings, token_verifier=verifier_from_env())
-    m.tool(name="list_institutions", description=_LIST_SCOPES_DESC)(list_scopes)
-    m.tool(name="institution_overview", description=_ORIENT_DESC)(orient)
+    m.tool(name="list_institutions", description=_prime(_LIST_SCOPES_DESC))(list_scopes)
+    m.tool(name="institution_overview", description=_prime(_ORIENT_DESC))(orient)
     m.tool(name="supply_demand_gaps", description=_form_description("gap"))(analyze_gap)
     m.tool(name="program_coverage", description=_form_description("coverage"))(analyze_coverage)
     m.tool(name="program_pathways", description=_form_description("pathway"))(analyze_pathway)
