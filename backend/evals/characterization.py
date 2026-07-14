@@ -37,6 +37,13 @@ GOLDEN_COORDS = [
 ]
 GOLDENS_DIR = Path(__file__).parent / "goldens"
 
+# The comparison engine's ranked output — (member, sector, unit_type, criterion). A behavioral
+# snapshot so ANY change to a ranking, a criterion's value, or the registry trips the golden diff.
+COMPARE_GOLDEN_COORDS = [
+    ("svamp", "adm", "program", "addressable_gap"),
+    ("smccd", "adm", "program", "supply_share"),
+]
+
 
 def _roster_summary(colleges, top6: str) -> dict:
     """The canonical per-college roster, reduced to the counts + named set that diverged in
@@ -93,6 +100,25 @@ def golden_path(member: str, sector: str, soc: str) -> Path:
     return GOLDENS_DIR / f"{member}_{sector}_{soc}.json"
 
 
+def capture_compare(member: str, sector: str, unit_type: str, criterion: str) -> dict:
+    """The comparison engine's ranked output, reduced to {ranked labels, {label: {criterion: value}}}
+    — a behavioral snapshot that any ranking/criterion/registry change trips."""
+    from mcp_server import forms as F
+    env = F.compare(member, unit_type=unit_type, criterion=criterion, sector=sector)
+    base = {"member": member, "sector": sector, "unit_type": unit_type, "criterion": criterion}
+    if env.licensing.gates:
+        return {**base, "gated": True}
+    return {
+        **base, "gated": False,
+        "ranked": [r.label for r in env.data.rows],
+        "values": {r.label: {k: qv.value for k, qv in r.values.items()} for r in env.data.rows},
+    }
+
+
+def compare_golden_path(member: str, sector: str, unit_type: str, criterion: str) -> Path:
+    return GOLDENS_DIR / f"compare_{member}_{sector}_{unit_type}_{criterion}.json"
+
+
 def main():
     GOLDENS_DIR.mkdir(exist_ok=True)
     for coord in GOLDEN_COORDS:
@@ -101,6 +127,10 @@ def main():
         c, b = data.get("canonical", {}), data.get("builder", {})
         print(f"  {'_'.join(coord):26} canon.supply={c.get('supply_3yr')!s:>7}  "
               f"builder.supply={b.get('consortium_supply')!s:>7}  builder.gap={b.get('gap')}")
+    for coord in COMPARE_GOLDEN_COORDS:
+        data = capture_compare(*coord)
+        compare_golden_path(*coord).write_text(json.dumps(data, indent=1, sort_keys=True) + "\n")
+        print(f"  compare {'_'.join(coord):34} ranked={data.get('ranked', 'GATED')}")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,31 @@
+{
+ "criterion": "supply_share",
+ "gated": false,
+ "member": "smccd",
+ "ranked": [
+  "094610 Energy Systems Technology",
+  "093400 Electronics and Electric Technology"
+ ],
+ "sector": "adm",
+ "unit_type": "program",
+ "values": {
+  "093400 Electronics and Electric Technology": {
+   "addressable_demand": 1170,
+   "addressable_gap": -556,
+   "award_trend": 0.41,
+   "completions": 9.7,
+   "enrollment": 57.0,
+   "enrollment_trend": 1.45,
+   "supply_share": 0.048
+  },
+  "094610 Energy Systems Technology": {
+   "addressable_demand": 1000,
+   "addressable_gap": -706,
+   "award_trend": 0.09,
+   "completions": 11.0,
+   "enrollment": 6.0,
+   "enrollment_trend": 0.0,
+   "supply_share": 0.295
+  }
+ }
+}

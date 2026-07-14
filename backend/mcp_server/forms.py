@@ -39,6 +39,7 @@ from mcp_server.envelope import (
     QualifiedValue,
     Row,
 )
+from mcp_server.compare import compare
 from mcp_server.scope import coordinate_of, find_scope, gate_envelope, scope_for, sectors_for_member
 
 _TOP_N = 8  # progressive-disclosure row cap (summary-first; drill on request)
@@ -1048,6 +1049,7 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
 FORM_FUNCS = {
     "member_portfolio": member_portfolio,
     "sector_overview": sector_overview,
+    "compare": compare,
     "gap": analyze_gap,
     "coverage": analyze_coverage,
     "pathway": analyze_pathway,

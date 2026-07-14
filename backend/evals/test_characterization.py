@@ -11,7 +11,14 @@ import os
 
 import pytest
 
-from evals.characterization import GOLDEN_COORDS, capture, golden_path
+from evals.characterization import (
+    COMPARE_GOLDEN_COORDS,
+    GOLDEN_COORDS,
+    capture,
+    capture_compare,
+    compare_golden_path,
+    golden_path,
+)
 
 
 def _graph_available() -> bool:
@@ -38,6 +45,22 @@ def test_characterization_golden(coord):
     got = capture(*coord)
     assert got == want, (
         f"characterization drift at {'_'.join(coord)} — if intended, refresh the goldens: "
+        f"`python -m evals.characterization`")
+
+
+@requires_graph
+@pytest.mark.parametrize("coord", COMPARE_GOLDEN_COORDS, ids=lambda c: "_".join(c))
+def test_compare_golden(coord):
+    """The comparison engine's ranked output must reproduce exactly — any change to a ranking, a
+    criterion's value, or the registry is caught here (refresh with `python -m evals.characterization`
+    if intended)."""
+    path = compare_golden_path(*coord)
+    assert path.exists(), (
+        f"missing golden {path.name} — generate it with `python -m evals.characterization`")
+    want = json.loads(path.read_text())
+    got = capture_compare(*coord)
+    assert got == want, (
+        f"compare characterization drift at {'_'.join(coord)} — if intended, refresh the goldens: "
         f"`python -m evals.characterization`")
 
 

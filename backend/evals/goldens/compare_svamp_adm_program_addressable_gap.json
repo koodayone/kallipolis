@@ -1,0 +1,91 @@
+{
+ "criterion": "addressable_gap",
+ "gated": false,
+ "member": "svamp",
+ "ranked": [
+  "095630 Machining and Machine Tools",
+  "093500 Electro-Mechanical Technology",
+  "093440 Electrical Systems and Power Transmission",
+  "093430 Telecommunications Technology",
+  "095600 Manufacturing and Industrial Technology",
+  "093420 Industrial Electronics",
+  "094500 Industrial Systems Technology and Maintenance",
+  "095670 Industrial and Occupational Safety and Health"
+ ],
+ "sector": "adm",
+ "unit_type": "program",
+ "values": {
+  "093420 Industrial Electronics": {
+   "addressable_demand": 600,
+   "addressable_gap": 0,
+   "award_trend": null,
+   "completions": 0.0,
+   "enrollment": 0.0,
+   "enrollment_trend": null,
+   "supply_share": 0.0
+  },
+  "093430 Telecommunications Technology": {
+   "addressable_demand": 430,
+   "addressable_gap": 27,
+   "award_trend": null,
+   "completions": 0.0,
+   "enrollment": 0.0,
+   "enrollment_trend": null,
+   "supply_share": null
+  },
+  "093440 Electrical Systems and Power Transmission": {
+   "addressable_demand": 560,
+   "addressable_gap": 147,
+   "award_trend": null,
+   "completions": 0.0,
+   "enrollment": 0.0,
+   "enrollment_trend": null,
+   "supply_share": 0.0
+  },
+  "093500 Electro-Mechanical Technology": {
+   "addressable_demand": 1260,
+   "addressable_gap": 733,
+   "award_trend": 1.89,
+   "completions": 5.3,
+   "enrollment": 84.7,
+   "enrollment_trend": 1.24,
+   "supply_share": 0.546
+  },
+  "094500 Industrial Systems Technology and Maintenance": {
+   "addressable_demand": 1930,
+   "addressable_gap": -78,
+   "award_trend": 1.89,
+   "completions": 9.0,
+   "enrollment": 14.0,
+   "enrollment_trend": 4.15,
+   "supply_share": 0.25
+  },
+  "095600 Manufacturing and Industrial Technology": {
+   "addressable_demand": 1980,
+   "addressable_gap": 8,
+   "award_trend": 2.46,
+   "completions": 31.3,
+   "enrollment": 461.3,
+   "enrollment_trend": 1.64,
+   "supply_share": 0.41
+  },
+  "095630 Machining and Machine Tools": {
+   "addressable_demand": 1610,
+   "addressable_gap": 967,
+   "award_trend": 1.12,
+   "completions": 43.7,
+   "enrollment": 0.0,
+   "enrollment_trend": null,
+   "supply_share": 0.281
+  },
+  "095670 Industrial and Occupational Safety and Health": {
+   "addressable_demand": 250,
+   "addressable_gap": -136,
+   "award_trend": null,
+   "completions": 0.0,
+   "enrollment": 0.0,
+   "enrollment_trend": null,
+   "supply_share": 0.0
+  }
+ }
+}

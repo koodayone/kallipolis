@@ -46,14 +46,14 @@ from functools import lru_cache
 
 from ontology.crosswalks import is_vocational, top6_to_soc
 from ontology.schema import get_driver
-from partnerships.landscape import _term_excluded
+from partnerships.landscape import _term_excluded, _term_sort_key
 
 _SUPPLY_YEARS = 3   # COE's annual-projection method is a 3-year mean
 
 SUPPLY_SOURCE = "datamart"   # supply is now DataMart completions, COE's averaging method
 
 
-@lru_cache(maxsize=1)
+@lru_cache(maxsize=8)   # n∈{1,3} callers — maxsize=1 would thrash between the two windows
 def recent_award_years(n: int = _SUPPLY_YEARS) -> tuple[str, ...]:
     """The n most recent award years in the graph (descending) — the window supply
     averages over. Fully-loaded years only in practice (2020-21 is under-loaded, #23)."""
@@ -141,6 +141,63 @@ def supply_over_tops(colleges, tops, *, years: tuple[str, ...] | None = None) ->
     over the window. The store-level twin of ``supply``/``supply_over_socs``; every supply
     figure — per-SOC, per-sector, or per-feeder-set — resolves through this same query."""
     return round(_tops_avg(colleges, tops, years), 1)
+
+
+# ── Enrollment (the leading-indicator twin of the award functions above) ──────
+_ENROLL_TERMS = 3   # trailing window (in same-season terms) the enrollment trend averages over
+
+
+@lru_cache(maxsize=1)
+def _enrollment_terms() -> tuple[str, ...]:
+    """Distinct non-excluded enrollment terms, most-recent first. Term strings ("Fall 2025")
+    do NOT sort lexically, so order by ``_term_sort_key`` (year, season) — the SAME term axis /
+    exclusions (Summer + export-boundary terms) the builders' enrollment trend uses."""
+    with get_driver().session() as s:
+        terms = [r["t"] for r in s.run("MATCH (t:Term) RETURN DISTINCT t.term AS t").data()]
+    return tuple(sorted((t for t in terms if t and not _term_excluded(t)),
+                        key=_term_sort_key, reverse=True))
+
+
+def recent_enrollment_terms(n: int = _ENROLL_TERMS) -> tuple[str, ...]:
+    """The n most-recent non-excluded enrollment terms."""
+    return _enrollment_terms()[:n]
+
+
+def same_season_terms(anchor: str | None = None) -> tuple[str, ...]:
+    """Non-excluded terms sharing the anchor's season (default: the latest term), most-recent
+    first — the seasonally-aligned window the enrollment trend compares WITHIN (Fall vs Falls),
+    so a Fall↔Spring comparison never reads as a spurious trend the way a mixed-season ratio would."""
+    allt = _enrollment_terms()
+    if not allt:
+        return ()
+    season = (anchor or allt[0]).split()[0]
+    return tuple(t for t in allt if t.split()[0] == season)
+
+
+@lru_cache(maxsize=512)
+def _enrolled_by_top(colleges: tuple[str, ...], terms: tuple[str, ...]) -> dict[str, int]:
+    """{top6 -> total ENROLLED count} over the colleges and terms, once. The enrollment twin of
+    ``_awarded_by_top`` (sums the ``(:Program)-[:ENROLLED]->(:Term)`` edge count)."""
+    if not terms:
+        return {}
+    with get_driver().session() as s:
+        rows = s.run(
+            "MATCH (p:Program)-[e:ENROLLED]->(t:Term) "
+            "WHERE p.college IN $c AND t.term IN $terms "
+            "RETURN p.top6 AS top6, toInteger(sum(coalesce(e.count, 0))) AS n",
+            c=list(colleges), terms=list(terms)).data()
+    return {r["top6"]: r["n"] for r in rows}
+
+
+def enrollment_over_tops(colleges, tops, *, terms: tuple[str, ...] | None = None) -> float:
+    """Average per-term enrollment over a set of TOP6s — Σ ENROLLED count ÷ term count. The
+    enrollment twin of ``supply_over_tops`` (Σ awards ÷ year count); every enrollment figure
+    resolves through this one query."""
+    ts = terms if terms is not None else recent_enrollment_terms()
+    if not tops or not ts:
+        return 0.0
+    en = _enrolled_by_top(tuple(sorted(set(colleges))), tuple(ts))
+    return round(sum(en.get(t, 0) for t in tops) / len(ts), 1)
 
 
 def supply_fn_graph(tops, college: str) -> tuple[list, float]:

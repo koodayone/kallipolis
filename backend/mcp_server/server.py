@@ -1,10 +1,10 @@
-"""The MCP server — ten task-shaped tools + the guided-onboarding prompt.
+"""The MCP server — eleven task-shaped tools + the guided-onboarding prompt.
 
 Tool set (fixed, deterministically ordered — the client caches the tool prefix,
 so the order and descriptions are frozen):
 
   Tier 0   list_scopes · orient
-  Tier 1   member_portfolio · sector_overview · analyze_gap · analyze_coverage · analyze_pathway · analyze_regional_employers · occupation_profile · unmet_demand
+  Tier 1   member_portfolio · sector_overview · compare · analyze_gap · analyze_coverage · analyze_pathway · analyze_regional_employers · occupation_profile · unmet_demand
 
 Each tool's description IS its behavioral spec: the shared ``DOCTRINE`` (voice +
 the intent-gated reading rules + the navigation offer) prepended to the tool's own
@@ -25,6 +25,7 @@ from mcp.server.transport_security import TransportSecuritySettings
 from mcp_server import catalog as C
 from mcp_server import forms as F
 from mcp_server import scope as S
+from mcp_server.compare import REGISTRY as _COMPARE_REGISTRY
 from mcp_server.envelope import AnalysisEnvelope
 from mcp_server.worldview import DOCTRINE, START_HERE_PROMPT, WORLDVIEW
 
@@ -164,6 +165,23 @@ def _form_description(form_id: str, *, needs_sector: bool = True) -> str:
     return _prime("\n\n".join(parts))
 
 
+def _compare_description() -> str:
+    """The compare tool's description — the criteria MENU is generated from the REGISTRY, so the
+    surface auto-updates the moment a criterion or unit type is added (data, not code)."""
+    f = C.FORMS["compare"]
+    menu = "\n".join(f"  {ut}s — rank by: " + ", ".join(crits)
+                     for ut, crits in _COMPARE_REGISTRY.items())
+    parts = [
+        f.question, f.meaning, f"Criteria you can rank by:\n{menu}", f"Guardrail: {f.guardrail}",
+        ("Reach for this to RANK a member's programs against each other by a specific measure "
+         "(biggest, fastest-growing, most under-supplied) — typically after sector_overview has "
+         "shown the portfolio; drill a ranked program with program_pathways."),
+        ("Needs an established institution and sector; an unknown unit_type or criterion returns the "
+         "valid menu rather than guessing."),
+    ]
+    return _prime("\n\n".join(parts))
+
+
 # ── Tier 0 ────────────────────────────────────────────────────────────────
 
 _LIST_SCOPES_DESC = (
@@ -241,6 +259,12 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
     return F.sector_overview(member, sector)
 
 
+@mcp.tool(name="compare", description=_compare_description())
+def compare(member: str, unit_type: str = "program", criterion: str = "addressable_demand",
+            sector: str = "") -> AnalysisEnvelope:
+    return F.compare(member, unit_type=unit_type, criterion=criterion, sector=sector)
+
+
 @mcp.tool(name="supply_demand_gaps", description=_form_description("gap"))
 def analyze_gap(member: str, sector: str, soc: str = "") -> AnalysisEnvelope:
     return F.analyze_gap(member, sector, soc=_opt(soc))
@@ -299,6 +323,7 @@ def build_oauth_mcp():
     m.tool(name="institution_overview", description=_prime(_ORIENT_DESC))(orient)
     m.tool(name="member_portfolio", description=_form_description("member_portfolio", needs_sector=False))(member_portfolio)
     m.tool(name="sector_overview", description=_form_description("sector_overview"))(sector_overview)
+    m.tool(name="compare", description=_compare_description())(compare)
     m.tool(name="supply_demand_gaps", description=_form_description("gap"))(analyze_gap)
     m.tool(name="program_coverage", description=_form_description("coverage"))(analyze_coverage)
     m.tool(name="program_pathways", description=_form_description("pathway"))(analyze_pathway)
