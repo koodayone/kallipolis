@@ -10,8 +10,9 @@ a sector, a college, or a region — is one view of a single relation:
 
 This document formalizes that construct so that every form in the MCP conversational layer is an
 *instantiation* of it rather than an independent feature — and so that its expressiveness and its
-defensibility come from the same mechanism. Companion to `PLAN-PROMPT-epistemic-self-sufficiency.md`
-and the canonical reading doctrine in `docs/domain/epistemic-contract.md`.
+defensibility come from the same mechanism. It is the analytical substrate the
+[MCP server](./mcp-server.md) exposes; the surface-agnostic reading doctrine it relies on is
+[the epistemic contract](../domain/epistemic-contract.md).
 
 ## The essence
 

@@ -2,7 +2,7 @@
 
 The MCP server is the conversational surface of the Kallipolis intelligence layer. It exposes the ontology to a frontier model through the Model Context Protocol, so that a practitioner can reach the same supply-and-demand analysis the dashboard shows by asking for it in plain language. It is read-only, stateless, and public, mounted in-process at `/mcp` (`backend/main.py`). The code lives in `backend/mcp_server/`.
 
-This document is the single account of how that surface works: the principle it is built on, the analytical construct it exposes, the catalog of forms and the descent that walks them, the response envelope that keeps every figure defensible, and the tools as shipped. It draws on two companions for the parts that are not specific to the conversational surface — the analytical substrate in [the supply–demand construct](../../research/mcp-server/supply-demand-construct.md), and the surface-agnostic reading doctrine in [the epistemic contract](../domain/epistemic-contract.md) — and summarizes each here rather than restating it.
+This document is the single account of how that surface works: the principle it is built on, the analytical construct it exposes, the catalog of forms and the descent that walks them, the response envelope that keeps every figure defensible, and the tools as shipped. It draws on two companions for the parts that are not specific to the conversational surface — the analytical substrate in [the supply–demand construct](./supply-demand-construct.md), and the surface-agnostic reading doctrine in [the epistemic contract](../domain/epistemic-contract.md) — and summarizes each here rather than restating it.
 
 ## The essence
 
@@ -16,7 +16,7 @@ Every analysis the server performs is one view of a single relation: institution
 
 The crosswalk is many-to-many, and that is by design — a program genuinely prepares graduates for several occupations, and an occupation is genuinely served by several programs. Because these projections are pools, not exclusive assignments, they are summed at full value and carry no epistemic penalty. Summing across is also the authority's own method: it is how the Centers of Excellence compute projected supply, so matching it is what keeps the numbers corroborated rather than divergent. A sector bounds the projection to authority-backed edges, which is what makes it defensible — across sectors the crosswalk is noise, within a sector it is a coherent mapping.
 
-This construct is the substrate of the whole intelligence layer, not the MCP server alone. It is realized in `backend/partnerships/quantities.py`, the single computation layer beneath both the dashboard builders and the MCP forms. The conversational surface is one consumer of it. The full formalism — the crosswalk operator, the two computation regimes, the qualifier and comparison operators — is [the supply–demand construct](../../research/mcp-server/supply-demand-construct.md).
+This construct is the substrate of the whole intelligence layer, not the MCP server alone. It is realized in `backend/partnerships/quantities.py`, the single computation layer beneath both the dashboard builders and the MCP forms. The conversational surface is one consumer of it. The full formalism — the crosswalk operator, the two computation regimes, the qualifier and comparison operators — is [the supply–demand construct](./supply-demand-construct.md).
 
 ## The catalog: forms and coordinates
 
