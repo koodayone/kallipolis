@@ -16,10 +16,13 @@ never flattened onto the Program node:
 AcademicYear / Term are shared across all programs (a handful of nodes),
 uniquely indexed so MERGE is a seek, not a scan.
 
-Wages carry NO college dimension in the DataMart export and per-college
-cohorts would be small-n suppressed, so wages are modeled at the TOP6 grain as
-read-time reference data (mirroring supply.py / get_coe_supply over
-supply_by_top.csv) via `get_wage_outcomes`, NOT as per-college graph edges.
+Wages carry NO college dimension in the DataMart export and per-college cohorts
+would be small-n suppressed, so they are modeled at the TOP6 grain — statewide
+and pooled, never per-college. Two representations, one source (this CSV):
+`get_wage_outcomes` serves them as read-time reference data (the report/dashboard
+path, mirroring supply.py / get_coe_supply), and `load_program_wage_outcomes`
+materializes the SAME records as statewide `ProgramWageOutcome` nodes so the
+comparison engine can rank a member's programs by a graph-backed wage criterion.
 Display-only, never summed (medians are non-additive).
 
 Data: DataMart MIS exports (Chancellor's Office) for ALL catalog colleges,
@@ -375,4 +378,59 @@ def load_programs(driver: Driver) -> dict:
         "colleges": sorted({p["college"] for p in prog_rows}),
     }
     logger.info("load_programs: %s", stats)
+    return stats
+
+
+def load_program_wage_outcomes(driver: Driver) -> dict:
+    """Idempotent, additive: materialize the pooled statewide graduate-wage cohorts
+    (`get_wage_outcomes`' CSV, one record per (top6, recipient_type)) as
+    `ProgramWageOutcome` nodes, and link `HAS_WAGE_OUTCOME` from every per-college
+    `Program` of that TOP6 to the ONE shared node.
+
+    Wages have no college dimension, so the node is statewide (`scope`
+    "statewide_pooled") and shared: all of a TOP6's per-college Programs point at the
+    same node, so the pooling is visible in the graph as one node with many incoming
+    edges — no per-college wage precision is manufactured, and the graph-backed
+    comparison criterion reads BY TOP6 (never per college). Self-scoping like
+    `load_programs`: nodes are created only for TOP6s some loaded college offers, and
+    edges attach only to Programs present in the graph, so it is a no-op for TOP6s
+    outside the loaded set. Runs after `load_programs` (Program nodes must exist).
+
+    The CSV stays the source of truth the report/dashboard read via
+    `get_wage_outcomes`; this loads the SAME records into the graph for `compare`."""
+    idx = _wage_index()
+    with driver.session() as session:
+        graph_tops = {r["t"] for r in session.run(
+            "MATCH (p:Program) RETURN DISTINCT p.top6 AS t").data()}
+    node_rows = [
+        {"top6": top6, "scope": "statewide_pooled", **rec}
+        for top6, recs in idx.items() if top6 in graph_tops for rec in recs
+    ]
+
+    with driver.session() as session:
+        session.run(
+            """
+            UNWIND $rows AS w
+            MERGE (o:ProgramWageOutcome {top6: w.top6, recipient_type: w.recipient_type})
+            SET o.wage_before = w.wage_before, o.wage_after_2 = w.wage_after_2,
+                o.wage_after_5 = w.wage_after_5, o.n = w.n, o.window = w.window,
+                o.scope = w.scope
+            """, rows=node_rows)
+        # Every per-college Program of a TOP6 links to ALL of that TOP6's wage cohorts
+        # (the shared statewide nodes). Index seek on the (top6, recipient_type)
+        # constraint's leading key, so this is a lookup per Program, not a scan.
+        edges = session.run(
+            """
+            MATCH (p:Program)
+            MATCH (o:ProgramWageOutcome {top6: p.top6})
+            MERGE (p)-[:HAS_WAGE_OUTCOME]->(o)
+            RETURN count(*) AS edges
+            """).single()["edges"]
+
+    stats = {
+        "wage_nodes": len(node_rows),
+        "wage_top6": len({r["top6"] for r in node_rows}),
+        "has_wage_outcome_edges": edges,
+    }
+    logger.info("load_program_wage_outcomes: %s", stats)
     return stats

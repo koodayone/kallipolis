@@ -10,7 +10,7 @@ Every figure Kallipolis surfaces carries three qualifiers — its **source**, it
 
 A figure is not a bare number. It is a number plus three things:
 
-- **Source** — the institutional authority responsible for that kind of evidence: demand and wage from the Centers of Excellence, program supply and enrollment from DataMart, employer relevance from federal staffing patterns. The [data authorities](./data-authorities.md) document names them.
+- **Source** — the institutional authority responsible for that kind of evidence: occupational demand and its labor-market wage from the Centers of Excellence; program supply, enrollment, and graduate wage outcomes from DataMart; employer relevance from federal staffing patterns. (The occupation's demand wage and the program's graduate-cohort wage outcome are different figures from different authorities.) The [data authorities](./data-authorities.md) document names them.
 - **Granularity** — the scope the figure describes. A wage pooled statewide at the program-type grain is a different fact from one college's own graduates' earnings; a regional openings count is a different fact from one institution's hiring.
 - **Vintage** — the period the figure is as of. A projection built on a trailing window is a different fact from the most recent single year.
 

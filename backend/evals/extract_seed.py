@@ -68,6 +68,11 @@ def main():
             "AcademicYear": [r["props"] for r in rows("MATCH (n:AcademicYear) RETURN properties(n) AS props")],
             "Term": [r["props"] for r in rows("MATCH (n:Term) RETURN properties(n) AS props")],
             "Region": [r["props"] for r in rows("MATCH (n:Region) RETURN properties(n) AS props")],
+            # Statewide pooled graduate-wage cohorts for the scope's TOP6s (all recipient
+            # types). Keyed by top6 only, so ONE set per TOP6 regardless of colleges.
+            "ProgramWageOutcome": [r["props"] for r in rows(
+                "MATCH (w:ProgramWageOutcome) WHERE w.top6 IN $t RETURN properties(w) AS props "
+                "ORDER BY w.top6, w.recipient_type", t=tops)],
         }
         # employer subset: top-N per SOC by HIRES_FOR relevance
         emp_names = {r["name"] for r in rows(
@@ -107,6 +112,12 @@ def main():
             "IN_MARKET": rows(
                 "MATCH (e:Employer)-[r:IN_MARKET]->(rg:Region) WHERE e.name IN $e "
                 "RETURN e.name AS f_emp, rg.name AS t_region, properties(r) AS props", e=list(emp_names)),
+            "HAS_WAGE_OUTCOME": rows(
+                "MATCH (p:Program)-[:HAS_WAGE_OUTCOME]->(w:ProgramWageOutcome) "
+                "WHERE p.college IN $c AND p.top6 IN $t "
+                "RETURN p.college AS f_college, p.top6 AS f_top6, w.top6 AS t_top6, "
+                "w.recipient_type AS t_recipient_type, {} AS props "
+                "ORDER BY f_college, f_top6, t_recipient_type", c=colleges, t=tops),
         }
 
     payload = json.dumps({"nodes": nodes, "edges": edges}, sort_keys=True).encode()

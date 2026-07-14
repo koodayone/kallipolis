@@ -247,6 +247,54 @@ def vintage(years: tuple[str, ...]) -> str:
     return f"{len(years)}-yr avg DataMart completions ({years[-1]}…{years[0]})"
 
 
+# ── Wage outcomes — the pooled statewide graduate-wage cohort (graph-backed) ──
+# Read from the ProgramWageOutcome nodes (loaded by ontology.programs), NOT the CSV:
+# the comparison engine composes ONLY canonical graph resolvers. Wages are statewide
+# and pooled at the TOP6 grain (no college dimension), so these resolve BY TOP6 — a
+# member's own-graduate wage is never manufactured.
+
+def _wage_selection_key(rec: dict) -> tuple:
+    """The deterministic pick order across a TOP6's recipient-type cohorts: the LARGEST
+    award cohort first (max Total Awards n), tiebreak higher 2-yr wage, then recipient
+    type ascending. Picks ONE natively-measured median — never a weighted blend across
+    recipient types (that would be a composite: a program wage invented by averaging a
+    finer grain). The oracle in test_compare re-derives this same key from the CSV."""
+    return (-(rec.get("n") or 0), -(rec.get("wage_after_2") or 0), rec.get("recipient_type") or "")
+
+
+@lru_cache(maxsize=1024)
+def _wage_records(top6: str) -> tuple[dict, ...]:
+    """A TOP6's pooled statewide graduate-wage cohorts from the graph, most-representative
+    first (``_wage_selection_key``). Empty tuple if the program reports no cohort."""
+    with get_driver().session() as s:
+        rows = s.run(
+            "MATCH (w:ProgramWageOutcome {top6: $t}) "
+            "RETURN w.recipient_type AS recipient_type, w.wage_before AS wage_before, "
+            "w.wage_after_2 AS wage_after_2, w.wage_after_5 AS wage_after_5, "
+            "w.n AS n, w.window AS window",
+            t=top6).data()
+    return tuple(sorted(rows, key=_wage_selection_key))
+
+
+def program_wage_outcome(top6: str) -> dict | None:
+    """THE representative graduate-wage record for a TOP6 program (statewide, pooled) —
+    its largest award cohort per ``_wage_selection_key``, or None if none is reported.
+    Every wage criterion composes this ONE resolver, so a program's lift and its 2-/5-yr
+    levels are read from the SAME cohort (internally consistent) and cannot drift."""
+    recs = _wage_records(top6)
+    return dict(recs[0]) if recs else None
+
+
+@lru_cache(maxsize=1)
+def wage_window() -> str:
+    """The pooled award-cohort window the wage medians span (uniform across the DataMart
+    export) — the wage criterion's vintage. '' when no wage outcomes are loaded."""
+    with get_driver().session() as s:
+        row = s.run("MATCH (w:ProgramWageOutcome) WHERE w.window IS NOT NULL "
+                    "RETURN w.window AS win LIMIT 1").single()
+    return (row["win"] if row else "") or ""
+
+
 # ── OFFERING — the college roster for a program (referential integrity, layer 2) ──
 # `colleges_offering` disagreed across tools because occupation_profile counted Program
 # NODES while the builders counted 09 COURSES (a demonstrable undercount — colleges that

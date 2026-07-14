@@ -16,7 +16,10 @@
    "completions": 9.7,
    "enrollment": 57.0,
    "enrollment_trend": 1.45,
-   "supply_share": 0.048
+   "supply_share": 0.048,
+   "wage_after_2": 69631,
+   "wage_after_5": 84558,
+   "wage_lift": 27146
   },
   "094610 Energy Systems Technology": {
    "addressable_demand": 1000,
@@ -25,7 +28,10 @@
    "completions": 11.0,
    "enrollment": 6.0,
    "enrollment_trend": 0.0,
-   "supply_share": 0.295
+   "supply_share": 0.295,
+   "wage_after_2": 54002,
+   "wage_after_5": 111606,
+   "wage_lift": 36754
   }
  }
 }

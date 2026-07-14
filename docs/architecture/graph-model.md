@@ -1,10 +1,10 @@
 # Graph Model
 
-The Kallipolis ontology is implemented as a Neo4j property graph with seven node types — the six analytical and structural types plus the **Program** node — two shared time-dimension nodes (AcademicYear, Term), and the relationship set described below. This document describes the schema — what each node type represents, what each relationship encodes, and how the supply-demand chain is realized in actual graph structure.
+The Kallipolis ontology is implemented as a Neo4j property graph with eight substantive node types — five on the curriculum side (College, District, Department, Course, Program) and three on the industry side (Region, Occupation, Employer) — two shared time-dimension nodes (AcademicYear, Term), one statewide program-reference node (ProgramWageOutcome), and the relationship set described below. This document describes the schema — what each node type represents, what each relationship encodes, and how the supply-demand chain is realized in actual graph structure.
 
 ## The node types
 
-Four node types live on the curriculum side, three on the industry side, plus two shared time-dimension nodes. Each substantive type corresponds to a concept in the product section.
+Five node types live on the curriculum side, three on the industry side, plus two shared time-dimension nodes and one statewide program-reference node. Each substantive type corresponds to a concept in the product section.
 
 ### Curriculum side
 
@@ -33,6 +33,14 @@ Shared, uniquely-indexed nodes that program measures attach to (measure-on-edge,
 | **AcademicYear** | year | `year UNIQUE` | An award year (e.g., `2024-2025`); the shared target of `AWARDED` edges. |
 | **Term** | term | `term UNIQUE` | An enrollment term (e.g., `Fall 2024`); the shared target of `ENROLLED` edges. |
 
+### Program-reference nodes
+
+A shared, statewide reference node the Program layer reads for graduate-wage outcomes. Unlike the time-dimension nodes, its measures live on the node (the wage medians are properties, not edge properties), because a wage outcome is a single pooled figure per program, not a per-(college, period) time series.
+
+| Node | Key properties | Constraint | What it represents |
+|---|---|---|---|
+| **ProgramWageOutcome** | top6, recipient_type, wage_before, wage_after_2, wage_after_5, n, window, scope | `(top6, recipient_type) UNIQUE` | A pooled, statewide graduate-wage cohort for a TOP6 program: the median wage 2 years before award (`wage_before`), 2 years after (`wage_after_2`), and 5 years after (`wage_after_5`), the cohort size (`n`), and the award-year `window`, split by `recipient_type` (degree vs. Chancellor's-Office vs. locally-approved certificate). The DataMart wage export carries no college dimension, so the node is statewide and `scope` is `"statewide_pooled"`; every per-college `Program` of the TOP6 shares the one node via `HAS_WAGE_OUTCOME`, and the graph-backed comparison criterion reads it BY TOP6 — no per-college wage precision is manufactured. Loaded from `wage_outcomes_summary.csv` by [`backend/ontology/programs.py`](../../backend/ontology/programs.py) (`load_program_wage_outcomes`); the same records serve the report/dashboard as read-time reference data via `get_wage_outcomes`. Display-only — the medians are non-additive and never summed. |
+
 The eight substantive node types map to the conceptual structure documented in the product section. Three of the four units of analysis — courses, occupations, employers — have a node type; the fourth, **students**, has no node in the current [non-PII configuration](../product/students.md) (its node and enrollment edges were removed). `Program` instantiates the TOP6 program that the curriculum side reports and funds on. The structural elements — colleges, districts, and departments on the curriculum side, regions on the industry side, and the AcademicYear/Term time dimensions — are containers. The bridge between curriculum and labor market is encoded directly as an edge between Course and Occupation, derived from the institutional TOP-CIP-SOC crosswalk; no internally-derived skill index sits between them.
 
 ## The relationships
@@ -55,6 +63,7 @@ Relationships encode the supply-demand logic of workforce development. Each one 
 | `HAS_PROGRAM` | Department → Program | — | A department (TOP4) contains a TOP6 program. Additive alongside `CONTAINS`: the Program node was introduced without reparenting the existing Department→Course hierarchy. Materialized by [`backend/ontology/programs.py`](../../backend/ontology/programs.py) where the TOP4 Department exists. |
 | `AWARDED` | Program → AcademicYear | count, award_type | Actual credentials a program awarded in a year, from Chancellor's Office DataMart MIS — institutional ground truth complementing COE-projected supply. One edge per award type. Institutional and summable across colleges. |
 | `ENROLLED` | Program → Term | count, credit_type | Section enrollment for a program in a term, from DataMart MIS — the leading-indicator enrollment trend. One edge per credit type. Institutional and summable across colleges. |
+| `HAS_WAGE_OUTCOME` | Program → ProgramWageOutcome | — | A per-college Program shares the ONE statewide, pooled `ProgramWageOutcome` for its TOP6. Every college offering the TOP6 points at the same node, so the statewide pooling is visible in structure — one node with many incoming edges — and no per-college wage precision is implied. The graduate-wage export has no college dimension, unlike the college-summable `AWARDED`/`ENROLLED` measures. Materialized by [`backend/ontology/programs.py`](../../backend/ontology/programs.py) (`load_program_wage_outcomes`). |
 
 The `IN_MARKET` relationship is overloaded: the same edge type connects both colleges and employers to their regional labor markets. This works because the semantics are the same in both cases — the entity operates within the region — even though the entities being connected are different node types.
 
@@ -92,15 +101,16 @@ The diagram shows the two halves of the graph meeting at `Occupation`. Read left
 The Program node attaches under Department, parallel to Course — additively, without disturbing the existing curriculum hierarchy or the `PREPARES_FOR` bridge:
 
 ```
-Department ──HAS_PROGRAM──▶ Program ──AWARDED──▶ AcademicYear
-                                   └──ENROLLED──▶ Term
+Department ──HAS_PROGRAM──▶ Program ──AWARDED──────────▶ AcademicYear
+                                   ├──ENROLLED─────────▶ Term
+                                   └──HAS_WAGE_OUTCOME──▶ ProgramWageOutcome
 ```
 
-`Program` instantiates the TOP6 program (the unit SWP funds and reports on), keyed per-college. Its measures are dimensioned time-series at different grains — annual awards, per-term enrollment — so they live on edges to shared `AcademicYear`/`Term` nodes rather than as scalar properties, mirroring how `DEMANDS` carries region-varying wage/employment on its edge. Awards are actual completions (DataMart ground truth, a complement to the COE-projected supply the partnership artifact already carries); enrollment is the leading-indicator trend.
+`Program` instantiates the TOP6 program (the unit SWP funds and reports on), keyed per-college. Its award and enrollment measures are dimensioned time-series at different grains — annual awards, per-term enrollment — so they live on edges to shared `AcademicYear`/`Term` nodes rather than as scalar properties, mirroring how `DEMANDS` carries region-varying wage/employment on its edge. Awards are actual completions (DataMart ground truth, a complement to the COE-projected supply the partnership artifact already carries); enrollment is the leading-indicator trend.
 
-**Wage outcomes are deliberately not in the graph.** The DataMart wage export has no college dimension and per-college cohorts are small-n suppressed, so wages are modeled at the TOP6 grain as read-time reference data (`get_wage_outcomes` over `wage_outcomes_summary.csv`, mirroring `supply.py` / `get_coe_supply`), displayed per program and never summed (medians are non-additive). Moving wages into the graph is a documented future step (see the `get_wage_outcomes` docstring).
+**Wage outcomes are modeled at the TOP6 grain, statewide and pooled.** The DataMart graduate-wage export has no college dimension and per-college cohorts would be small-n suppressed, so a wage outcome is a single pooled figure per TOP6 — not a per-college, per-period measure. It is reified as a shared `ProgramWageOutcome` node (one per `(top6, recipient_type)`, `scope` `"statewide_pooled"`) that every per-college `Program` of the TOP6 links to via `HAS_WAGE_OUTCOME`. Because the node is shared, the statewide pooling is visible in the graph structure, and the comparison engine's graph-backed wage criterion reads it BY TOP6 — never manufacturing a member's own-graduate wage. The identical records also serve the report/dashboard as read-time reference data (`get_wage_outcomes` over `wage_outcomes_summary.csv`); both representations load from the same CSV. Wages are display-only and never summed (medians are non-additive).
 
-The Program layer is consumed by the `/svamp` aggregated landscape ([`backend/partnerships/landscape_build.py`](../../backend/partnerships/landscape_build.py)); the per-(college, occupation) partnership reports do not read it.
+The Program layer is consumed by the `/svamp` aggregated landscape ([`backend/partnerships/landscape_build.py`](../../backend/partnerships/landscape_build.py)) and by the MCP comparison engine ([`backend/mcp_server/compare.py`](../../backend/mcp_server/compare.py), which ranks a member's programs by a wage criterion); the per-(college, occupation) partnership reports do not read it.
 
 ## The bridge logic
 

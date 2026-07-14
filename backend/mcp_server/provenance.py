@@ -54,6 +54,7 @@ AUTHORITY_BY_FIELD: dict[str, str] = {
     "supply_share": "derived",     # a program's completions ÷ the region's for the same program
     "award_trend": "derived",      # latest-year completions ÷ 3-yr-average completions
     "enrollment_trend": "derived",  # latest-term enrollment ÷ trailing same-season average
+    "wage_lift": "derived",        # median wage 2 yrs after award − 2 yrs before, same DataMart cohort
 }
 
 

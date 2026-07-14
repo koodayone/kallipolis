@@ -75,7 +75,7 @@ class SourceRef:
 SOURCES: dict[str, SourceRef] = {
     "onet": SourceRef("onet", "O*NET (U.S. Dept. of Labor)", "selects occupations + titles"),
     "coe": SourceRef("coe", "Centers of Excellence", "regional demand, wage, growth"),
-    "datamart": SourceRef("datamart", "CCCCO DataMart", "program supply (awards)"),
+    "datamart": SourceRef("datamart", "CCCCO DataMart", "program awards, enrollment, and graduate wage outcomes"),
     "graph_bls": SourceRef("graph_bls", "BLS OEWS staffing patterns", "employer relevance"),
 }
 

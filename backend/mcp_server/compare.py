@@ -53,6 +53,12 @@ from mcp_server.scope import coordinate_of, gate_envelope, scope_for
 _TOP_N = 8
 _ENROLL_WINDOW = 3   # prior same-season terms the enrollment trend averages over
 
+# The wage criteria are read from statewide-pooled TOP6 cohorts (no college dimension),
+# so their granularity is stated apart from the member-scoped "inst" grain — no member's
+# own-graduate wage is ever implied.
+_WAGE_GRAIN = ("statewide — pooled TOP6 award cohort (largest recipient type); "
+               "not this member's own graduates")
+
 
 # ── Criterion + registry ──────────────────────────────────────────────────
 
@@ -110,6 +116,7 @@ class CompareContext:
     enroll_v: str
     award_trend_v: str
     enroll_trend_v: str
+    wage_v: str
 
 
 def build_context(member: str, sector: str) -> Optional[CompareContext]:
@@ -131,6 +138,7 @@ def build_context(member: str, sector: str) -> Optional[CompareContext]:
     ss = CAN.same_season_terms()                     # same-season-as-latest terms, most recent first
     enroll_latest, enroll_recent = ss[:1], ss[1:1 + _ENROLL_WINDOW]
     supply_v, latest_v = CAN.vintage(recent_years), CAN.vintage(latest_years)
+    wage_win = CAN.wage_window()
     return CompareContext(
         spec=spec, entry=entry, rspec=rspec, member_colleges=member_colleges,
         region_colleges=region_colleges, sector_socs=sector_socs, demand_by_soc=demand_by_soc,
@@ -143,7 +151,8 @@ def build_context(member: str, sector: str) -> Optional[CompareContext]:
         enroll_v=(enroll_latest[0] if enroll_latest else "enrollment"),
         award_trend_v=f"{latest_v} ÷ {supply_v}",
         enroll_trend_v=(f"{enroll_latest[0]} ÷ prior {enroll_latest[0].split()[0]}s"
-                        if enroll_latest else ""))
+                        if enroll_latest else ""),
+        wage_v=(f"pooled graduate wages, award years {wage_win}" if wage_win else "pooled graduate wages"))
 
 
 # ── Program criteria — thin CAN.* compositions (referential integrity by construction) ──
@@ -187,6 +196,28 @@ def _c_enrollment_trend(ctx, u):
     return round(CAN.enrollment_over_tops(ctx.member_colleges, [u.top6], terms=ctx.enroll_latest) / base, 2)
 
 
+# Wage criteria — the measured graduate-wage outcome, read from the statewide-pooled
+# ProgramWageOutcome cohort (NOT a weighted blend of the program's occupations' OES wages,
+# which would be the composite _register forbids). All three read the SAME largest cohort
+# (one resolver), so a program's lift and its levels are internally consistent.
+
+def _c_wage_lift(ctx, u):
+    w = CAN.program_wage_outcome(u.top6)
+    if not w or w["wage_before"] is None or w["wage_after_2"] is None:
+        return None
+    return w["wage_after_2"] - w["wage_before"]
+
+
+def _c_wage_after_2(ctx, u):
+    w = CAN.program_wage_outcome(u.top6)
+    return w["wage_after_2"] if w else None
+
+
+def _c_wage_after_5(ctx, u):
+    w = CAN.program_wage_outcome(u.top6)
+    return w["wage_after_5"] if w else None
+
+
 _PROGRAM = _register({
     "addressable_demand": Criterion("addressable_demand", "Addressable demand", "openings/yr",
                                     "annual_openings", True, False, "region", _c_addressable_demand),
@@ -208,6 +239,15 @@ _PROGRAM = _register({
     "enrollment_trend": Criterion("enrollment_trend", "Enrollment trend (same-season)", "ratio",
                                   "enrollment_trend", True, False, "inst", _c_enrollment_trend,
                                   vintage=lambda ctx: ctx.enroll_trend_v),
+    "wage_lift": Criterion("wage_lift", "Wage lift (2-yr − pre-enrollment)", "$/yr",
+                           "wage_lift", True, False, "statewide", _c_wage_lift,
+                           vintage=lambda ctx: ctx.wage_v),
+    "wage_after_2": Criterion("wage_after_2", "Median wage, 2 yrs after award", "$/yr",
+                              "wage_after_2", True, False, "statewide", _c_wage_after_2,
+                              vintage=lambda ctx: ctx.wage_v),
+    "wage_after_5": Criterion("wage_after_5", "Median wage, 5 yrs after award", "$/yr",
+                              "wage_after_5", True, False, "statewide", _c_wage_after_5,
+                              vintage=lambda ctx: ctx.wage_v),
 })
 
 REGISTRY: dict[str, dict[str, Criterion]] = {"program": _PROGRAM}
@@ -222,6 +262,7 @@ def _grain(key: str, ctx: CompareContext) -> str:
     return {"region": ctx.region_g,
             "gap": f"{ctx.region_g} − {ctx.region_supply_g}",
             "share": f"{ctx.inst_g} ÷ {ctx.region_supply_g}",
+            "statewide": _WAGE_GRAIN,
             "inst": ctx.inst_g}.get(key, ctx.inst_g)
 
 
@@ -290,6 +331,12 @@ def compare(member: str, unit_type: str = "program", criterion: str = "addressab
     if crit == "enrollment_trend" and len(ctx.enroll_recent) < 2:
         salience.append("small-n-season: fewer than two prior same-season terms — read the "
                         "enrollment trend cautiously.")
+    if crit.startswith("wage"):
+        salience.append(
+            "statewide-pooled wage: these graduate-wage figures pool ALL California completers of the "
+            "program's largest award cohort statewide — not just this member's own graduates — and are "
+            "medians, never summed. They rank a program on the labor-market value of its credential, "
+            "independent of how many the member awards.")
 
     label = UNIT_LABEL[ut]
     rows = [Row(label=label(u), values={ck: _bind(c, v, ctx) for ck, (c, v) in vals.items()})
@@ -331,6 +378,8 @@ def compare(member: str, unit_type: str = "program", criterion: str = "addressab
                               sector_id=ctx.entry["sector_id"]),
         provenance=P.build_provenance(
             [c.field for c in crits.values()],
-            scope_granularity=f"demand {ctx.region_g}; supply {ctx.region_supply_g}; member {ctx.inst_g}",
-            vintages={"demand": P.COE_DEMAND_VINTAGE, "projected_supply": ctx.supply_v}),
+            scope_granularity=f"demand {ctx.region_g}; supply {ctx.region_supply_g}; member {ctx.inst_g}; "
+                              f"wage {_WAGE_GRAIN}",
+            vintages={"demand": P.COE_DEMAND_VINTAGE, "projected_supply": ctx.supply_v,
+                      "wage_outcomes": ctx.wage_v}),
     )
