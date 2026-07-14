@@ -54,7 +54,9 @@ def test_register_rejects_composite():
 
 def test_compare_gates_unknown():
     """Unknown unit_type / criterion returns an explicit marker enumerating the registry — the gate
-    fires before any graph resolution, so this is graph-free."""
+    fires before any graph resolution, so this is graph-free. Bare 'wage' is deliberately NOT a
+    criterion (wage is split into wage_lift / wage_after_2 / wage_after_5), so it still gates and the
+    reason enumerates the real menu — no silent guess at which wage figure the caller meant."""
     e1 = F.compare("svamp", unit_type="widget", criterion="x", sector="adm")
     assert e1.licensing.gates and "widget" in e1.licensing.gates[0].reason
     e2 = F.compare("svamp", unit_type="program", criterion="wage", sector="adm")
@@ -86,6 +88,24 @@ def _oracle(criterion, ctx, top6):
     if criterion == "enrollment_trend":
         base = CAN.enrollment_over_tops(m, [top6], terms=ctx.enroll_recent)
         return round(CAN.enrollment_over_tops(m, [top6], terms=ctx.enroll_latest) / base, 2) if base else None
+    if criterion in ("wage_lift", "wage_after_2", "wage_after_5"):
+        # The wage oracle reads the CSV (get_wage_outcomes) — the ORIGINAL source, independent
+        # of the ProgramWageOutcome graph nodes the criterion resolves through — so this also
+        # cross-checks the loader's CSV→graph fidelity, not just the compute wiring. The
+        # recipient-cohort selection MIRRORS partnerships.quantities._wage_selection_key.
+        from ontology.programs import get_wage_outcomes
+        recs = get_wage_outcomes(top6)
+        if not recs:
+            return None
+        w = sorted(recs, key=lambda x: (-(x["n"] or 0), -(x["wage_after_2"] or 0),
+                                        x["recipient_type"] or ""))[0]
+        if criterion == "wage_after_2":
+            return w["wage_after_2"]
+        if criterion == "wage_after_5":
+            return w["wage_after_5"]
+        if w["wage_before"] is None or w["wage_after_2"] is None:
+            return None
+        return w["wage_after_2"] - w["wage_before"]
     raise KeyError(criterion)
 
 

@@ -18,6 +18,7 @@ from partnerships.quantities import (  # noqa: F401  (re-export)
     feeders,
     gap,
     program_socs,
+    program_wage_outcome,
     recent_award_years,
     recent_enrollment_terms,
     same_season_terms,
@@ -25,6 +26,7 @@ from partnerships.quantities import (  # noqa: F401  (re-export)
     supply_over_socs,
     supply_over_tops,
     vintage,
+    wage_window,
 )
 
 __all__ = [
@@ -40,6 +42,7 @@ __all__ = [
     "feeders",
     "gap",
     "program_socs",
+    "program_wage_outcome",
     "recent_award_years",
     "recent_enrollment_terms",
     "same_season_terms",
@@ -47,4 +50,5 @@ __all__ = [
     "supply_over_socs",
     "supply_over_tops",
     "vintage",
+    "wage_window",
 ]

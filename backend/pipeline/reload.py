@@ -21,7 +21,7 @@ from courses.load import load_college, CollegeConfig
 from occupations.load import load_industry
 from employers.load import load_employers, cleanup_stale_employers
 from ontology.schema import get_driver, close_driver, init_schema
-from ontology.programs import load_programs
+from ontology.programs import load_programs, load_program_wage_outcomes
 from partnerships.compute import (
     materialize_partnership_alignment,
     materialize_occupation_pipeline,
@@ -220,6 +220,15 @@ def reload_region(region_key: str) -> None:
             load_programs(driver)
         except Exception as e:
             logger.error(f"load_programs failed: {e}; Program layer absent until rerun")
+
+        # Step 4b: Materialize statewide ProgramWageOutcome nodes (pooled TOP6
+        # graduate-wage cohorts) + HAS_WAGE_OUTCOME edges. After load_programs
+        # (Program nodes must exist). Additive and self-scoping; failure is
+        # non-fatal — the wage-backed comparison criteria gate cleanly if absent.
+        try:
+            load_program_wage_outcomes(driver)
+        except Exception as e:
+            logger.error(f"load_program_wage_outcomes failed: {e}; wage outcomes absent until rerun")
 
         # Step 5: Materialize PARTNERSHIP_ALIGNMENT and OCCUPATION_PIPELINE
         # edges. Must run after both load_courses (PREPARES_FOR exists) and

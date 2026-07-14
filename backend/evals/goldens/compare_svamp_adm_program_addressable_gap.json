@@ -22,7 +22,10 @@
    "completions": 0.0,
    "enrollment": 0.0,
    "enrollment_trend": null,
-   "supply_share": 0.0
+   "supply_share": 0.0,
+   "wage_after_2": 75405,
+   "wage_after_5": 81821,
+   "wage_lift": 42026
   },
   "093430 Telecommunications Technology": {
    "addressable_demand": 430,
@@ -31,7 +34,10 @@
    "completions": 0.0,
    "enrollment": 0.0,
    "enrollment_trend": null,
-   "supply_share": null
+   "supply_share": null,
+   "wage_after_2": 62006,
+   "wage_after_5": 77009,
+   "wage_lift": 32733
   },
   "093440 Electrical Systems and Power Transmission": {
    "addressable_demand": 560,
@@ -40,7 +46,10 @@
    "completions": 0.0,
    "enrollment": 0.0,
    "enrollment_trend": null,
-   "supply_share": 0.0
+   "supply_share": 0.0,
+   "wage_after_2": 127791,
+   "wage_after_5": 134808,
+   "wage_lift": 30954
   },
   "093500 Electro-Mechanical Technology": {
    "addressable_demand": 1260,
@@ -49,7 +58,10 @@
    "completions": 5.3,
    "enrollment": 84.7,
    "enrollment_trend": 1.24,
-   "supply_share": 0.546
+   "supply_share": 0.546,
+   "wage_after_2": null,
+   "wage_after_5": null,
+   "wage_lift": null
   },
   "094500 Industrial Systems Technology and Maintenance": {
    "addressable_demand": 1930,
@@ -58,7 +70,10 @@
    "completions": 9.0,
    "enrollment": 14.0,
    "enrollment_trend": 4.15,
-   "supply_share": 0.25
+   "supply_share": 0.25,
+   "wage_after_2": 78626,
+   "wage_after_5": 105182,
+   "wage_lift": 35410
   },
   "095600 Manufacturing and Industrial Technology": {
    "addressable_demand": 1980,
@@ -67,7 +82,10 @@
    "completions": 31.3,
    "enrollment": 461.3,
    "enrollment_trend": 1.64,
-   "supply_share": 0.41
+   "supply_share": 0.41,
+   "wage_after_2": 60922,
+   "wage_after_5": 72654,
+   "wage_lift": 24446
   },
   "095630 Machining and Machine Tools": {
    "addressable_demand": 1610,
@@ -76,7 +94,10 @@
    "completions": 43.7,
    "enrollment": 0.0,
    "enrollment_trend": null,
-   "supply_share": 0.281
+   "supply_share": 0.281,
+   "wage_after_2": 63040,
+   "wage_after_5": 72728,
+   "wage_lift": 20298
   },
   "095670 Industrial and Occupational Safety and Health": {
    "addressable_demand": 250,
@@ -85,7 +106,10 @@
    "completions": 0.0,
    "enrollment": 0.0,
    "enrollment_trend": null,
-   "supply_share": 0.0
+   "supply_share": 0.0,
+   "wage_after_2": null,
+   "wage_after_5": null,
+   "wage_lift": null
   }
  }
 }

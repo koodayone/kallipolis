@@ -135,6 +135,12 @@ def _create_constraints(session):
         "CREATE CONSTRAINT program_college_top6 IF NOT EXISTS FOR (n:Program) REQUIRE (n.college, n.top6) IS UNIQUE",
         "CREATE CONSTRAINT academic_year IF NOT EXISTS FOR (n:AcademicYear) REQUIRE n.year IS UNIQUE",
         "CREATE CONSTRAINT term_label IF NOT EXISTS FOR (n:Term) REQUIRE n.term IS UNIQUE",
+        # ProgramWageOutcome: a statewide, pooled graduate-wage cohort for a TOP6
+        # program — one node per (top6, recipient_type), NOT per-college (the DataMart
+        # wage export carries no college dimension). Every per-college Program of that
+        # top6 shares the ONE node via HAS_WAGE_OUTCOME, so the statewide pooling is
+        # visible in structure and no per-college wage precision is manufactured.
+        "CREATE CONSTRAINT program_wage_outcome_top6_recipient IF NOT EXISTS FOR (n:ProgramWageOutcome) REQUIRE (n.top6, n.recipient_type) IS UNIQUE",
     ]
     for constraint in constraints:
         session.run(constraint)

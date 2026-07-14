@@ -16,6 +16,7 @@ SEED = Path(__file__).parent / "seed.json.gz"
 NODE_KEYS = {
     "Program": ("college", "top6"), "Course": ("code", "college"), "Occupation": ("soc_code",),
     "AcademicYear": ("year",), "Term": ("term",), "Region": ("name",), "Employer": ("name",),
+    "ProgramWageOutcome": ("top6", "recipient_type"),
 }
 # edge type -> (from_label, {node_prop: seed_field}, to_label, {node_prop: seed_field})
 EDGE_SPEC = {
@@ -24,6 +25,8 @@ EDGE_SPEC = {
     "DEMANDS":  ("Region",   {"name": "f_region"},                      "Occupation",   {"soc_code": "t_soc"}),
     "HIRES_FOR":("Employer", {"name": "f_emp"},                         "Occupation",   {"soc_code": "t_soc"}),
     "IN_MARKET":("Employer", {"name": "f_emp"},                         "Region",       {"name": "t_region"}),
+    "HAS_WAGE_OUTCOME": ("Program", {"college": "f_college", "top6": "f_top6"},
+                         "ProgramWageOutcome", {"top6": "t_top6", "recipient_type": "t_recipient_type"}),
 }
 
 
