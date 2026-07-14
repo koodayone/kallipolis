@@ -81,7 +81,7 @@ def _soc_feeders(colleges: tuple[str, ...]) -> dict[str, frozenset[str]]:
 
 @lru_cache(maxsize=512)
 def _awarded_by_top(colleges: tuple[str, ...], years: tuple[str, ...]) -> dict[str, int]:
-    """{top6 -> total CO-approved completions} over the colleges and years, once."""
+    """{top6 -> total completions (All Awards)} over the colleges and years, once."""
     with get_driver().session() as s:
         rows = s.run(
             "MATCH (p:Program)-[a:AWARDED]->(ay:AcademicYear) "

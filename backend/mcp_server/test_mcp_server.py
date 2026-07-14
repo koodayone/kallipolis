@@ -82,8 +82,9 @@ def test_provenance_source_from_lens_never_invented():
 def test_distinguish_supply_windows():
     """Distinguish (post-canonical): projected_supply (3-yr avg) and latest_year_supply
     (single latest year) are separate keys with the SAME DataMart source — the model must
-    track the WINDOW, not a source disagreement. COE's published supply IS DataMart
-    CO-approved completions, so both come from datamart; actual_awards stays a distinct key."""
+    track the WINDOW, not a source disagreement. COE's published supply is the same DataMart
+    completions on its own annual-projection method, so both come from datamart; actual_awards
+    stays a distinct key."""
     for field in ("projected_supply", "latest_year_supply", "actual_awards"):
         assert P.q(field, 1.0, granularity="inst").source == "datamart"
     proj = P.q("projected_supply", 12.0, granularity="inst", vintage="3-yr avg (…2024-2025)")
@@ -155,6 +156,22 @@ def test_envelope_serializes_deterministically():
     assert env.model_dump_json() == env.model_dump_json()
 
 
+# The retired framing the All-Awards migration replaced: supply IS DataMart completions
+# (All Awards) on COE's projection method, so nothing may resurrect the 'projected COE vs
+# actual DataMart' contradiction or the earlier CO-approved scope. Static strings here;
+# the rendered-licensing counterpart is a graph test below.
+_RETIRED_SUPPLY_FRAMING = ("not actual DataMart awards", "CO-approved", "excludes locally-approved")
+
+
+def test_no_retired_supply_framing_in_catalog():
+    statics = [f.guardrail for f in C.FORMS.values()] + [
+        C.SAL_PROJECTED_NOT_ACTUAL, C.SAL_MEMBER_ANCHORED, C.SAL_LOSSY_CROSSWALK,
+        C.SAL_SMALL_N, C.SAL_STALE_VINTAGE]
+    for s in statics:
+        for phrase in _RETIRED_SUPPLY_FRAMING:
+            assert phrase not in s, f"retired supply framing {phrase!r} in: {s!r}"
+
+
 # ── live-graph: the adapters over real coordinates ────────────────────────
 
 def _graph_available() -> bool:
@@ -206,6 +223,31 @@ def test_coverage_and_employer_adapters(member, sector):
     assert shed.form == "regional_employers"
     assert_bound(shed)
     assert "lens=employers" in shed.view_link.url
+
+
+@requires_graph
+@pytest.mark.parametrize("member,sector", _COORDS)
+def test_navigable_forms_link_and_fresh_licensing(member, sector):
+    """Navigation + licensing-freshness invariant. Every form with a corroborating dashboard
+    view returns view_link.status == 'ok' with a URL — the deep-link DOCTRINE tells the model to
+    offer — and no rendered licensing string resurrects the retired supply framing. unmet_demand
+    alone has no single view and is 'unavailable' (pinned in its own greenfield test)."""
+    for env in (F.analyze_gap(member, sector),
+                F.analyze_coverage(member, sector),
+                F.analyze_regional_employers(member, sector)):
+        assert env.view_link.status == "ok" and env.view_link.url, env.form
+        for s in env.licensing.licensed + env.licensing.not_licensed:
+            assert not any(p in s for p in _RETIRED_SUPPLY_FRAMING), \
+                f"retired framing in {env.form} licensing: {s!r}"
+
+
+@requires_graph
+def test_entity_forms_view_link_ok():
+    """pathway + occupation_profile also corroborate to a dashboard view — pinned via the
+    referential-integrity fixture (deanza/adm/51-4041) where a valid occupation resolves."""
+    m, sec, soc = "deanza", "adm", "51-4041"
+    for env in (F.analyze_pathway(m, sec, occupation=soc), F.occupation_profile(m, soc)):
+        assert env.view_link.status == "ok" and env.view_link.url, env.form
 
 
 @requires_graph

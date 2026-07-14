@@ -31,6 +31,7 @@ Documents how the workforce development worldview manifests in the context of Ca
 - [Overview](./domain/overview.md) — The worldview, how it manifests in California Community Colleges, and how the four domain areas relate to the realization of the Kallipolis vision
 - [Strong Workforce Program](./domain/strong-workforce-program.md) — The funding and compliance structure through which the worldview is operationalized at scale, grounded in California Education Code Part 54.5 (sections 88820–88833)
 - [Data Authorities](./domain/data-authorities.md) — The institutional sources that ground every claim Kallipolis makes: DataMart for program awards and enrollment, college catalogs for courses, the Centers of Excellence for occupations, and the EDD Labor Market Information Division for employers
+- [The Epistemic Contract](./domain/epistemic-contract.md) — How to read the figures the authorities ground without overstating them: the source·granularity·vintage qualifier triple and the Bind / Gate / Distinguish obligations every Kallipolis surface honors
 - [California Community College System](./domain/california-community-college-system.md) — The 116-college, 2.2-million-student system whose state-level coordination and explicit workforce mandate give Kallipolis the architectural shape it has
 - [Glossary](./domain/glossary.md) — The vocabulary the worldview speaks in: institutional names, classification systems, and policy concepts that appear throughout the documentation
 
