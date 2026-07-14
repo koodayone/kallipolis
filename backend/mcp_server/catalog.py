@@ -146,6 +146,23 @@ FORMS: dict[str, Form] = {
             "and not summable across programs. Supply is a 3-year DataMart projection; the gap is "
             "REGIONAL; the member's supply is its share of the region's."),
     ),
+    "compare": Form(
+        id="compare",
+        question="How do this member's analogous units (its programs) rank against each other on a chosen measure?",
+        meaning=(
+            "Comparison ranks a set of analogous units — a member's programs (v1), later occupations "
+            "or colleges — by a chosen criterion, showing every unit's full profile sorted by that "
+            "axis. It is what turns a measure into a decision (which program is biggest, fastest-"
+            "growing, or most under-supplied). For programs, rank by: addressable_demand, "
+            "addressable_gap, completions, enrollment, supply_share, award_trend, or enrollment_trend."),
+        guardrail=(
+            "Every criterion is a plain sum-across pool (addressable demand, completions) or a native "
+            "ratio computed AT the program grain (supply share, the trends) — never a weighted "
+            "composite, and intensive attributes (wage, growth) are not program criteria at all. "
+            "'addressable_gap' is a program's addressable demand minus the REGIONAL supply into the "
+            "occupations it feeds — NOT the sector/occupation gap supply_demand_gaps reports. The "
+            "enrollment trend compares same-season terms (Fall vs Falls) to avoid a seasonal artifact."),
+    ),
 }
 
 
@@ -161,6 +178,7 @@ TOOL_NAME: dict[str, str] = {
     "orient": "institution_overview",
     "member_portfolio": "member_portfolio",
     "sector_overview": "sector_overview",
+    "compare": "compare",
     "gap": "supply_demand_gaps",
     "coverage": "program_coverage",
     "pathway": "program_pathways",

@@ -49,8 +49,11 @@ AUTHORITY_BY_FIELD: dict[str, str] = {
     # regional employers
     "employer_relevance": "graph_bls",
     "candidate_employers": "graph_bls",
-    # computed
+    # computed — ratios/differences of the above; no single institutional authority (like gap)
     "gap": "derived",              # regional openings − institutional projected completions
+    "supply_share": "derived",     # a program's completions ÷ the region's for the same program
+    "award_trend": "derived",      # latest-year completions ÷ 3-yr-average completions
+    "enrollment_trend": "derived",  # latest-term enrollment ÷ trailing same-season average
 }
 
 
