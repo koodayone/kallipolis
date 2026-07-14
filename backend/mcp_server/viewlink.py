@@ -23,6 +23,7 @@ _ATLAS_BASE = os.environ.get(
 
 # form → (lens, dashboard-only panel). Selection keys are added from the coordinate.
 _FORM_LENS: dict[str, tuple[str, Optional[str]]] = {
+    "sector_overview": ("occupations", None),
     "gap": ("occupations", None),
     "occupation_profile": ("occupations", None),
     "coverage": ("programs", "programs.coverage"),

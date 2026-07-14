@@ -324,35 +324,87 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
             next_moves=C.build_next_moves("pathway", entry))
 
     if program:
-        pr = build_program_report(program, None, spec=resolve(spec))
+        # Program-anchor drill. Occupations resolve through the CANONICAL crosswalk
+        # (CAN.program_socs = is_vocational top6_to_soc, sector-bounded) so the program's addressable
+        # demand here EQUALS the figure sector_overview shows for the same program — referential
+        # integrity. The occupations it feeds are ranked by DESIRABILITY (opportunity = openings ×
+        # median wage) with the regional gap for each. The natural descent is to a single occupation.
+        from ontology.regions import COE_REGION_DISPLAY
+        from ontology.schema import get_driver
+        from partnerships.graph_reads import regional_demand
+        from partnerships.sectors import SECTORS
+
+        rspec = resolve(spec)
+        pr = build_program_report(program, None, spec=rspec)   # program display name + bridging CIPs
+        member_colleges = list(rspec.colleges)
+        region = rspec.resolve_region()
+        region_colleges = list(region_member(region).colleges)
+        region_disp = COE_REGION_DISPLAY.get(region, region)
+        sector_socs = list(SECTORS[entry["sector_id"]].socs)
+        prog_socs = sorted(CAN.program_socs(program, within=sector_socs))
+        with get_driver().session() as session:
+            demand = regional_demand(session, region, prog_socs)
+        demand_by_soc = {s: (d.get("annual_openings") or 0) for s, d in demand.items()}
+        _, addressable = CAN.addressable_demand(program, sector_socs, demand_by_soc)
+        recent = CAN.recent_award_years()
+        supply_v = CAN.vintage(recent)
+        region_g = _regional(region_disp)
+        region_supply_g = f"regional ({region_disp}) — all {len(region_colleges)} colleges"
+        inst_g = _institutional(entry, len(member_colleges))
+        gap_v = f"{P.COE_DEMAND_VINTAGE} vs {supply_v}"
         n_cips = len(pr.crosswalk.cips) if pr.crosswalk else 0
         summary = {
             "program": QualifiedValue.ok(pr.name, source="datamart", granularity="TOP6 program"),
-            "occupations_fed": _derived(len(pr.occupations), unit="SOCs", granularity="TOP→CIP→SOC crosswalk"),
+            "member_supply": P.q("projected_supply", CAN.supply_over_tops(member_colleges, [program]),
+                                 granularity=inst_g, unit="completions/yr", vintage=supply_v),
+            "addressable_demand": P.q("annual_openings", addressable,
+                                      granularity=f"{region_g} — the occupations this program feeds", unit="openings/yr"),
+            "occupations_fed": _derived(len(prog_socs), unit="SOCs", granularity="TOP→CIP→SOC crosswalk (in sector)"),
             "bridging_cips": _derived(n_cips, unit="CIPs", granularity="TOP→CIP→SOC crosswalk"),
         }
-        occs = sorted(pr.occupations, key=lambda o: (o.annual_openings or 0), reverse=True)
-        rows = [Row(label=f"{o.soc_code} {o.title}", values={
-            "annual_openings": P.q("annual_openings", o.annual_openings, granularity=_regional(pr.region_display), unit="openings/yr"),
-            "annual_wage": P.q("annual_wage", o.annual_wage, granularity=_regional(pr.region_display), unit="USD/yr (occ. median)"),
-        }) for o in occs[:_TOP_N]]
-        more = _drill("pathway", entry, remaining=len(occs) - _TOP_N, top6=program) if len(occs) > _TOP_N else None
-        salience = [C.SAL_LOSSY_CROSSWALK] if len(pr.occupations) >= 4 else []
+        occ_rows = []
+        for soc in prog_socs:
+            d = demand.get(soc, {})
+            openings = d.get("annual_openings")
+            if not openings:
+                continue
+            occ_rows.append((soc, d.get("title") or soc, openings, d.get("annual_wage"),
+                             CAN.gap(openings, CAN.supply(region_colleges, soc))))
+        occ_rows.sort(key=lambda r: (r[2] or 0) * (r[3] or 0), reverse=True)
+        rows = [Row(label=f"{soc} {title}", values={
+            "annual_openings": P.q("annual_openings", openings, granularity=region_g, unit="openings/yr"),
+            "annual_wage": P.q("annual_wage", wage, granularity=region_g, unit="USD/yr (occ. median)"),
+            "gap": P.q("gap", g, granularity=f"{region_g} − {region_supply_g}", unit="openings/yr", vintage=gap_v),
+        }) for (soc, title, openings, wage, g) in occ_rows[:_TOP_N]]
+        more = _drill("pathway", entry, remaining=len(occ_rows) - _TOP_N, top6=program) if len(occ_rows) > _TOP_N else None
+        salience = [C.SAL_LOSSY_CROSSWALK] if len(prog_socs) >= 4 else []
+        top_occ = occ_rows[0] if occ_rows else None
+        next_moves = [
+            NextMove(form=C.tool_name("occupation_profile"),
+                     coordinate=coordinate_of(entry, soc=top_occ[0]) if top_occ else coordinate_of(entry, top6=program),
+                     rationale=(f"Drill into a desirable occupation — e.g. {top_occ[0]} {top_occ[1]} — its "
+                                f"full demand, who trains for it, and who hires." if top_occ else
+                                "Drill into one of these occupations for its full picture.")),
+            NextMove(form=C.tool_name("regional_employers"),
+                     coordinate=coordinate_of(entry, soc=top_occ[0]) if top_occ else coordinate_of(entry),
+                     rationale="See the regional employers hiring for these occupations."),
+        ]
         coord = coordinate_of(entry, top6=program)
-        coord.region = pr.region_display
+        coord.region = region_disp
         return AnalysisEnvelope(
             form="pathway", coordinate=coord,
             data=DataBlock(summary=summary, rows=rows, more=more),
             framing=_framing("pathway", salience),
             licensing=_licensing("pathway",
-                                 licensed=["The occupations this TOP6 program prepares students for, via the crosswalk."]),
-            next_moves=C.build_next_moves("pathway", entry, top6=program),
+                                 licensed=["The occupations this TOP6 program prepares students for, ranked by opportunity (openings × median wage), with the program's own supply and the regional gap for each.",
+                                           "Addressable demand is the sum-across pool the program competes for — a graduate is qualified for these occupations, not assigned to one."]),
+            next_moves=next_moves,
             view_link=V.view_link("pathway", instance_id=spec.id, member_id=entry["member_id"],
                                   sector_id=entry["sector_id"], top6=program),
             provenance=P.build_provenance(
-                ["annual_openings", "annual_wage"],
-                scope_granularity=_regional(pr.region_display),
-                vintages={"demand": P.COE_DEMAND_VINTAGE}),
+                ["annual_openings", "annual_wage", "projected_supply", "gap"],
+                scope_granularity=f"demand {region_g}; supply {region_supply_g}; member {inst_g}",
+                vintages={"demand": P.COE_DEMAND_VINTAGE, "projected_supply": supply_v}),
         )
 
     # occupation
@@ -754,7 +806,248 @@ def unmet_demand(member: str) -> AnalysisEnvelope:
     )
 
 
+# ── member portfolio (member-anchor orientation; the TOP of the descent) ───
+
+def member_portfolio(member: str) -> AnalysisEnvelope:
+    """The member-anchor orientation — the top of the descent, ONE call for the whole institution
+    across every sector it runs, so a portfolio question never has to loop a sector tool. Per
+    sector: total regional demand vs the region's projected completions, the member's own supply
+    and its share, and the gap (one row each) — plus an institution-wide total over the DEDUPED
+    union of all its sectors' occupations (an occupation in two sectors counted once). Pure
+    Regime-A sums; sector-WIDE per row. The per-sector and per-occupation views are turn-by-turn
+    drills the practitioner chooses (via next-moves), not steps taken here."""
+    from ontology.regions import COE_REGION_DISPLAY
+    from ontology.schema import get_driver
+    from partnerships.graph_reads import regional_demand
+    from partnerships.sectors import SECTORS
+
+    sects = sectors_for_member(member)
+    if not sects:
+        return gate_envelope("member_portfolio", member, "",
+                             reason=f"No institution matching {member!r}. Establish it first.")
+    resolved = scope_for(member, sects[0]["sector_id"])
+    if resolved is None:
+        return gate_envelope("member_portfolio", member, "",
+                             reason=f"Could not resolve institution {member!r}.")
+    spec0, entry = resolved
+    region = spec0.resolve_region()
+    region_disp = COE_REGION_DISPLAY.get(region, region)
+    member_colleges = list(spec0.colleges)
+    region_colleges = list(region_member(region).colleges)
+
+    # Each sector's occupations, and the DISTINCT union across sectors (Regime A across sectors too).
+    sector_socs = {e["sector_id"]: list(SECTORS[e["sector_id"]].socs) for e in sects}
+    all_socs = sorted({s for socs in sector_socs.values() for s in socs})
+
+    with get_driver().session() as session:
+        demand = regional_demand(session, region, all_socs)   # one query for the union
+
+    recent = CAN.recent_award_years()
+    supply_v = CAN.vintage(recent)
+    region_g = _regional(region_disp)
+    region_supply_g = f"regional ({region_disp}) — all {len(region_colleges)} colleges"
+    inst_g = _institutional(entry, len(member_colleges))
+    gap_v = f"{P.COE_DEMAND_VINTAGE} vs {supply_v}"
+
+    def demand_sum(socs):
+        return int(round(sum((demand.get(s, {}).get("annual_openings") or 0) for s in socs)))
+
+    total_demand = demand_sum(all_socs)
+    total_regional_supply = CAN.supply_over_socs(region_colleges, all_socs)
+    total_member_supply = CAN.supply_over_socs(member_colleges, all_socs)
+
+    summary = {
+        "sectors": _derived(len(sects), unit="sectors the member runs", granularity=inst_g),
+        "regional_demand": P.q("annual_openings", total_demand, granularity=f"{region_g}, all sectors", unit="openings/yr"),
+        "regional_supply": P.q("projected_supply", total_regional_supply, granularity=region_supply_g, unit="completions/yr", vintage=supply_v),
+        "member_supply": P.q("projected_supply", total_member_supply, granularity=inst_g, unit="completions/yr", vintage=supply_v),
+        "gap": P.q("gap", int(round(total_demand - total_regional_supply)),
+                   granularity=f"{region_g} − {region_supply_g}, all sectors", unit="openings/yr", vintage=gap_v),
+        "member_share_of_supply": (
+            _derived(round(total_member_supply / total_regional_supply, 3), unit="fraction of regional supply", granularity=inst_g)
+            if total_regional_supply else
+            QualifiedValue.gated("unavailable", unit="fraction of regional supply", granularity=inst_g)),
+    }
+
+    # Rows: one per sector, ranked by the sector's gap — the whole institution at a glance.
+    sect_rows = []
+    for e in sects:
+        socs = sector_socs[e["sector_id"]]
+        d = demand_sum(socs)
+        r_supply = CAN.supply_over_socs(region_colleges, socs)
+        m_supply = CAN.supply_over_socs(member_colleges, socs)
+        sect_rows.append((e["sector_label"], e["sector_id"], d, r_supply, m_supply, int(round(d - r_supply))))
+    sect_rows.sort(key=lambda t: t[5], reverse=True)
+    rows = [Row(label=label, values={
+        "regional_demand": P.q("annual_openings", d, granularity=region_g, unit="openings/yr"),
+        "regional_supply": P.q("projected_supply", r_supply, granularity=region_supply_g, unit="completions/yr", vintage=supply_v),
+        "member_supply": P.q("projected_supply", m_supply, granularity=inst_g, unit="completions/yr", vintage=supply_v),
+        "gap": P.q("gap", g, granularity="regional openings − regional supply", unit="openings/yr", vintage=gap_v),
+    }) for (label, sid, d, r_supply, m_supply, g) in sect_rows]
+
+    # Next-moves point the practitioner DOWN one level — the descent is theirs to walk, not taken here.
+    top = sect_rows[0] if sect_rows else None
+    top_entry = (find_scope(entry["member_id"], top[1]) or entry) if top else entry
+    next_moves = [
+        NextMove(form=C.tool_name("sector_overview"), coordinate=coordinate_of(top_entry),
+                 rationale=(f"Drill into the widest-gap sector ({top[0]}) — its occupations, supply, and gaps."
+                            if top else "Drill into a sector's occupations, supply, and gaps.")),
+        NextMove(form=C.tool_name("unmet_demand"), coordinate=coordinate_of(entry),
+                 rationale="See the high-opportunity occupations across the region the member serves no one into."),
+    ]
+
+    coord = coordinate_of(entry)
+    coord.region = region_disp
+    return AnalysisEnvelope(
+        form="member_portfolio", coordinate=coord,
+        data=DataBlock(summary=summary, rows=rows),
+        framing=_framing("member_portfolio", [C.SAL_PROJECTED_NOT_ACTUAL]),
+        licensing=_licensing("member_portfolio",
+                             licensed=["Each sector the member runs, one row: total regional demand vs the region's projected completions, the member's supply and its share, and the gap.",
+                                       "The institution-wide totals are summed over the DEDUPED union of the member's sectors' occupations, so an occupation in two sectors is counted once."]),
+        next_moves=next_moves,
+        # No single dashboard view corroborates a cross-sector portfolio — an honest 'unavailable'
+        # marker (member_portfolio is unmapped in viewlink); each sector row corroborates via its
+        # own sector_overview drill.
+        view_link=V.view_link("member_portfolio", instance_id=entry["id"],
+                              member_id=entry["member_id"], sector_id=entry["sector_id"]),
+        provenance=P.build_provenance(
+            ["annual_openings", "projected_supply", "gap"],
+            scope_granularity=f"demand {region_g}; supply {region_supply_g}; member share {inst_g}",
+            vintages={"demand": P.COE_DEMAND_VINTAGE, "projected_supply": supply_v}),
+    )
+
+
+# ── sector overview (sector-anchor orientation; the portfolio home base) ───
+
+def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
+    """The sector-anchor orientation view — the home base a portfolio conversation descends from,
+    PROGRAM-FORWARD because a practitioner's lever is the program, not the occupation. The summary
+    is the sector aggregate (total regional demand vs the region's projected completions, the
+    member's supply and its share); the rows are the member's PROGRAMS in the sector, each with its
+    completions (supply) and its addressable demand (the χ↑ sum-across pool of openings across the
+    occupations it feeds), ranked by that market. Occupations live in each program's addressable
+    demand and are reached by drilling a program. Pure Regime-A sums, no allocation — the CTE sector
+    is the crosswalk-closure of the PCAH classification, so the totals are defensible as summed
+    (COE's own method)."""
+    from ontology.regions import COE_REGION_DISPLAY
+    from ontology.schema import get_driver
+    from partnerships.graph_reads import regional_demand
+    from partnerships.sectors import SECTORS
+
+    resolved = scope_for(member, sector)
+    if resolved is None:
+        return gate_envelope("sector_overview", member, sector,
+                             reason=f"No live coordinate for ({member!r}, {sector!r}).")
+    spec, entry = resolved
+    rspec = resolve(spec)
+    region = rspec.resolve_region()
+    region_disp = COE_REGION_DISPLAY.get(region, region)
+    member_colleges = list(rspec.colleges)
+    region_colleges = list(region_member(region).colleges)
+    sector_socs = list(SECTORS[entry["sector_id"]].socs)
+    sector_label = SECTORS[entry["sector_id"]].label
+
+    with get_driver().session() as session:
+        demand = regional_demand(session, region, sector_socs)
+
+    recent, latest = CAN.recent_award_years(), CAN.recent_award_years(1)
+    supply_v = CAN.vintage(recent)
+    region_g = _regional(region_disp)
+    region_supply_g = f"regional ({region_disp}) — all {len(region_colleges)} colleges"
+    inst_g = _institutional(entry, len(member_colleges))
+    gap_v = f"{P.COE_DEMAND_VINTAGE} vs {supply_v}"
+
+    # Regime A — plain sums over DISTINCT occupations / programs (each counted once), no allocation.
+    total_demand = int(round(sum((d.get("annual_openings") or 0) for d in demand.values())))
+    regional_supply = CAN.supply_over_socs(region_colleges, sector_socs)
+    member_supply = CAN.supply_over_socs(member_colleges, sector_socs)
+    pl = build_programs_landscape(rspec)
+    member_programs = len(pl.tops)
+    demand_by_soc = {s: (d.get("annual_openings") or 0) for s, d in demand.items()}
+
+    summary = {
+        "regional_demand": P.q("annual_openings", total_demand, granularity=region_g, unit="openings/yr"),
+        "regional_supply": P.q("projected_supply", regional_supply, granularity=region_supply_g,
+                               unit="completions/yr", vintage=supply_v),
+        "member_supply": P.q("projected_supply", member_supply, granularity=inst_g,
+                             unit="completions/yr", vintage=supply_v),
+        "gap": P.q("gap", int(round(total_demand - regional_supply)),
+                   granularity=f"{region_g} − {region_supply_g}", unit="openings/yr", vintage=gap_v),
+        "member_share_of_supply": (
+            _derived(round(member_supply / regional_supply, 3), unit="fraction of regional supply",
+                     granularity=inst_g)
+            if regional_supply else
+            QualifiedValue.gated("unavailable", unit="fraction of regional supply", granularity=inst_g)),
+        "member_programs": _derived(member_programs, unit="TOP6 programs the member runs", granularity=inst_g),
+        "sector_occupations": _derived(len(sector_socs), unit="SOCs",
+                                       granularity=f"{sector_label} sector (PCAH)"),
+    }
+
+    # Rows: PROGRAM-FORWARD — the member's programs in the sector, each with its supply
+    # (completions) and its ADDRESSABLE DEMAND (the χ↑ sum-across pool of openings across the
+    # occupations it feeds), ranked by that market. The practitioner's lever is the program, so the
+    # program is the row and the decision object; occupations live in each program's addressable
+    # demand and are reached by drilling a program (program_pathways). All canonical, no allocation.
+    prog = []
+    for t in pl.tops:
+        occ_socs, addr = CAN.addressable_demand(t.top6, sector_socs, demand_by_soc)
+        prog.append((f"{t.top6} {t.name}", t.top6,
+                     CAN.supply_over_tops(member_colleges, [t.top6]), addr, len(occ_socs)))
+    prog.sort(key=lambda r: r[3], reverse=True)
+    rows = [Row(label=label, values={
+        "member_supply": P.q("projected_supply", p_supply, granularity=inst_g, unit="completions/yr", vintage=supply_v),
+        "addressable_demand": P.q("annual_openings", addr, granularity=f"{region_g} — the occupations this program feeds", unit="openings/yr"),
+        "occupations_fed": _derived(n_occ, unit="SOCs", granularity="TOP→CIP→SOC crosswalk"),
+        "colleges_with_program": _derived(CAN.colleges_with_program(member_colleges, top6), unit="colleges", granularity=inst_g),
+    }) for (label, top6, p_supply, addr, n_occ) in prog[:_TOP_N]]
+
+    more = None
+    if len(prog) > _TOP_N:
+        nxt = prog[_TOP_N][1]
+        more = More(remaining=len(prog) - _TOP_N,
+                    drill=NextMove(form=C.tool_name("pathway"),
+                                   coordinate=coordinate_of(entry, top6=nxt),
+                                   rationale=(f"{len(prog) - _TOP_N} more programs the member runs; "
+                                              f"program_pathways on any TOP6 drills into its occupations.")))
+
+    # Program-first descent: the primary next move is drilling a PROGRAM (the practitioner's lever),
+    # then the occupation-level gaps, then greenfield.
+    top_prog = prog[0] if prog else None
+    next_moves = [
+        NextMove(form=C.tool_name("pathway"),
+                 coordinate=coordinate_of(entry, top6=top_prog[1]) if top_prog else coordinate_of(entry),
+                 rationale=(f"Drill into a program — e.g. {top_prog[0]} — for the occupations it prepares "
+                            f"students for and their demand." if top_prog else
+                            "Drill into a program for the occupations it prepares students for.")),
+        NextMove(form=C.tool_name("gap"), coordinate=coordinate_of(entry),
+                 rationale="See the sector's occupation-level supply–demand gaps directly."),
+        NextMove(form=C.tool_name("unmet_demand"), coordinate=coordinate_of(entry),
+                 rationale="See high-opportunity occupations across the region the member serves no one into."),
+    ]
+
+    coord = coordinate_of(entry)
+    coord.region = region_disp
+    return AnalysisEnvelope(
+        form="sector_overview", coordinate=coord,
+        data=DataBlock(summary=summary, rows=rows, more=more),
+        framing=_framing("sector_overview", [C.SAL_PROJECTED_NOT_ACTUAL]),
+        licensing=_licensing("sector_overview",
+                             licensed=["The sector's total regional demand vs total regional projected completions with the member's supply and share (summary), then the member's PROGRAMS — each with its completions and its addressable demand (the openings across the occupations it feeds).",
+                                       "Program-forward: a program's addressable demand is a sum-across pool it competes for, shared with other programs, not exclusive — drill a program to see the occupations behind it."]),
+        next_moves=next_moves,
+        view_link=V.view_link("sector_overview", instance_id=spec.id, member_id=entry["member_id"],
+                              sector_id=entry["sector_id"]),
+        provenance=P.build_provenance(
+            ["annual_openings", "projected_supply", "gap"],
+            scope_granularity=f"demand {region_g}; supply {region_supply_g}; member share {inst_g}",
+            vintages={"demand": P.COE_DEMAND_VINTAGE, "projected_supply": supply_v}),
+    )
+
+
 FORM_FUNCS = {
+    "member_portfolio": member_portfolio,
+    "sector_overview": sector_overview,
     "gap": analyze_gap,
     "coverage": analyze_coverage,
     "pathway": analyze_pathway,

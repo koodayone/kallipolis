@@ -112,6 +112,40 @@ FORMS: dict[str, Form] = {
             "the quality thresholds (servable education, wage ≥ $50k, ≥ 100 openings/yr) are "
             "explicit filters, not a score, and feasibility, cost, and mission fit are out of scope."),
     ),
+    "member_portfolio": Form(
+        id="member_portfolio",
+        question="How is this whole institution doing across every sector it runs, against regional demand?",
+        meaning=(
+            "The member-anchor orientation — the top of the descent. One row per sector the member "
+            "runs: total regional demand across that sector's occupations vs the region's total "
+            "projected completions feeding them, the member's own supply and its share, and the gap "
+            "— plus an institution-wide total across all its sectors. It answers a whole-institution "
+            "portfolio question in ONE call; the per-sector (sector_overview) and per-occupation "
+            "(gap) views are drills the practitioner walks turn by turn, not steps taken here."),
+        guardrail=(
+            "All figures are plain sums; the institution-wide totals are over the DEDUPED union of "
+            "the member's sectors' occupations (an occupation in two sectors counted once), so they "
+            "are defensible as summed. Supply is a 3-year DataMart projection; the gap is REGIONAL; "
+            "the member's supply is its share of the region's."),
+    ),
+    "sector_overview": Form(
+        id="sector_overview",
+        question="How does this member's whole sector portfolio stack up against regional demand?",
+        meaning=(
+            "The sector-anchor orientation — the home base for a portfolio question, PROGRAM-FORWARD. "
+            "The summary is the sector aggregate (total regional demand vs the region's projected "
+            "completions, the member's supply and its share); the rows are the member's PROGRAMS in "
+            "the sector, each with its completions and its addressable demand (the openings across the "
+            "occupations it feeds), ranked by that market. It answers 'how is my [sector] doing, and "
+            "which program should I look at' — drill a program for its occupations, or the gap tool "
+            "for the occupation-level view."),
+        guardrail=(
+            "The aggregate figures are plain sums across the sector's DISTINCT occupations and feeder "
+            "programs, each counted once (defensible as COE's own method). A program's addressable "
+            "demand is a sum-across pool it COMPETES for — shared with other programs, not exclusive, "
+            "and not summable across programs. Supply is a 3-year DataMart projection; the gap is "
+            "REGIONAL; the member's supply is its share of the region's."),
+    ),
 }
 
 
@@ -125,6 +159,8 @@ FORMS: dict[str, Form] = {
 TOOL_NAME: dict[str, str] = {
     "list_scopes": "list_institutions",
     "orient": "institution_overview",
+    "member_portfolio": "member_portfolio",
+    "sector_overview": "sector_overview",
     "gap": "supply_demand_gaps",
     "coverage": "program_coverage",
     "pathway": "program_pathways",
@@ -150,6 +186,11 @@ class Edge:
 
 
 EDGES: dict[str, list[Edge]] = {
+    "sector_overview": [
+        Edge("gap", (), "Drill into the per-occupation supply–demand gaps the member already serves."),
+        Edge("unmet_demand", (), "Surface the sector's high-opportunity occupations the member serves no one into."),
+        Edge("coverage", (), "See which of the member's colleges cover which programs in the sector."),
+    ],
     "coverage": [
         Edge("gap", (), "Size the shortfall behind the coverage picture."),
         Edge("pathway", ("top6",), "Trace the selected program to the occupations it prepares for."),

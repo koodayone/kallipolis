@@ -1,10 +1,10 @@
-"""The MCP server — eight task-shaped tools + the guided-onboarding prompt.
+"""The MCP server — ten task-shaped tools + the guided-onboarding prompt.
 
 Tool set (fixed, deterministically ordered — the client caches the tool prefix,
 so the order and descriptions are frozen):
 
   Tier 0   list_scopes · orient
-  Tier 1   analyze_gap · analyze_coverage · analyze_pathway · analyze_regional_employers · occupation_profile · unmet_demand
+  Tier 1   member_portfolio · sector_overview · analyze_gap · analyze_coverage · analyze_pathway · analyze_regional_employers · occupation_profile · unmet_demand
 
 Each tool's description IS its behavioral spec: the shared ``DOCTRINE`` (voice +
 the intent-gated reading rules + the navigation offer) prepended to the tool's own
@@ -110,6 +110,15 @@ def _opt(v: str) -> Optional[str]:
 # One-sentence routing hints where a tool overlaps another — kept out of the form
 # meanings (which are response framing) so they steer tool SELECTION only.
 _ROUTING: dict[str, str] = {
+    "member_portfolio": ("Reach for this FIRST for a whole-INSTITUTION question spanning every "
+                         "sector — 'how am I doing overall', 'my whole portfolio', 'where should I "
+                         "focus across everything', 'which of my sectors is strongest or weakest'. "
+                         "ONE call covers all sectors at once — do NOT loop sector_overview to "
+                         "survey them. It is the top orientation home base."),
+    "sector_overview": ("Reach for this for ONE sector's supply–demand picture — 'how is my Health "
+                        "portfolio', 'my Advanced Manufacturing gaps', 'where am I best positioned in "
+                        "[sector]'. For ALL sectors at once, use member_portfolio (one call) rather "
+                        "than calling this once per sector. Drill from here into a single occupation."),
     "occupation_profile": ("Reach for this when the question is about one occupation and you "
                            "want the whole picture at once; for a single dimension in depth "
                            "(just the gap, just employers, just feeders), use that specific tool."),
@@ -222,6 +231,16 @@ def orient(member: str, sector: str = "") -> OrientResult:
 
 # ── Tier 1 (order frozen for cache stability) ─────────────────────────────
 
+@mcp.tool(name="member_portfolio", description=_form_description("member_portfolio", needs_sector=False))
+def member_portfolio(member: str) -> AnalysisEnvelope:
+    return F.member_portfolio(member)
+
+
+@mcp.tool(name="sector_overview", description=_form_description("sector_overview"))
+def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
+    return F.sector_overview(member, sector)
+
+
 @mcp.tool(name="supply_demand_gaps", description=_form_description("gap"))
 def analyze_gap(member: str, sector: str, soc: str = "") -> AnalysisEnvelope:
     return F.analyze_gap(member, sector, soc=_opt(soc))
@@ -278,6 +297,8 @@ def build_oauth_mcp():
                 auth=settings, token_verifier=verifier_from_env())
     m.tool(name="list_institutions", description=_prime(_LIST_SCOPES_DESC))(list_scopes)
     m.tool(name="institution_overview", description=_prime(_ORIENT_DESC))(orient)
+    m.tool(name="member_portfolio", description=_form_description("member_portfolio", needs_sector=False))(member_portfolio)
+    m.tool(name="sector_overview", description=_form_description("sector_overview"))(sector_overview)
     m.tool(name="supply_demand_gaps", description=_form_description("gap"))(analyze_gap)
     m.tool(name="program_coverage", description=_form_description("coverage"))(analyze_coverage)
     m.tool(name="program_pathways", description=_form_description("pathway"))(analyze_pathway)
