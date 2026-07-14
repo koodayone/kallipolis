@@ -162,6 +162,27 @@ def gap(demand, supply) -> int:
     return int(round((demand or 0) - (supply or 0)))
 
 
+def program_socs(program: str, within=None) -> frozenset:
+    """A program's (TOP6's) is_vocational crosswalk occupations (χ, TOP6→CIP→SOC), optionally
+    intersected with a bounding SOC set (a sector's occupations). The supply-side program
+    projected DOWN the crosswalk — the occupations a graduate of this program is qualified for."""
+    if not is_vocational(program):
+        return frozenset()
+    socs = top6_to_soc([program]).get(program, set())
+    return frozenset(socs & set(within)) if within is not None else frozenset(socs)
+
+
+def addressable_demand(program: str, sector_socs, demand_by_soc) -> tuple:
+    """A program's occupations within the sector and the sum-across pool of their regional
+    openings (χ↑) — the demand this program is qualified to compete for. ``demand_by_soc`` is
+    {soc: openings}, passed IN (this layer never fetches demand, exactly like ``gap``). The pool
+    is summed at FULL value (the crosswalk is a qualification classification, defensible as COE's
+    own method); it is a PER-PROGRAM figure and is never summed across programs, because the
+    fan-out means programs share occupations. Returns (occupations_in_sector, addressable_demand)."""
+    socs = program_socs(program, within=sector_socs)
+    return socs, int(round(sum((demand_by_soc.get(s) or 0) for s in socs)))
+
+
 def vintage(years: tuple[str, ...]) -> str:
     """The honest vintage string for a supply window — stated, not faked."""
     if len(years) == 1:

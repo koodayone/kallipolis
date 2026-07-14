@@ -232,13 +232,70 @@ def test_navigable_forms_link_and_fresh_licensing(member, sector):
     view returns view_link.status == 'ok' with a URL — the deep-link DOCTRINE tells the model to
     offer — and no rendered licensing string resurrects the retired supply framing. unmet_demand
     alone has no single view and is 'unavailable' (pinned in its own greenfield test)."""
-    for env in (F.analyze_gap(member, sector),
+    for env in (F.sector_overview(member, sector),
+                F.analyze_gap(member, sector),
                 F.analyze_coverage(member, sector),
                 F.analyze_regional_employers(member, sector)):
         assert env.view_link.status == "ok" and env.view_link.url, env.form
         for s in env.licensing.licensed + env.licensing.not_licensed:
             assert not any(p in s for p in _RETIRED_SUPPLY_FRAMING), \
                 f"retired framing in {env.form} licensing: {s!r}"
+
+
+@requires_graph
+@pytest.mark.parametrize("member,sector", _COORDS)
+def test_sector_overview_adapter(member, sector):
+    """The sector-anchor orientation view — sector-WIDE Regime-A aggregate. Not member-anchored:
+    it never gates on an empty portfolio, and its totals are plain sums — regional supply ≥ the
+    member's share, and the sector gap = regional demand − regional supply, exactly."""
+    env = F.sector_overview(member, sector)
+    assert env.form == "sector_overview" and not env.licensing.gates
+    assert_bound(env)
+    s = env.data.summary
+    assert s["regional_supply"].value >= s["member_supply"].value          # member ⊆ region
+    assert s["gap"].value == int(round(s["regional_demand"].value - s["regional_supply"].value))
+    if s["member_share_of_supply"].status == "ok":
+        assert 0 <= s["member_share_of_supply"].value <= 1
+    # the two sides are never conflated: supply is DataMart, demand is COE
+    assert s["regional_supply"].source == "datamart" and s["regional_demand"].source == "coe"
+    # PROGRAM-FORWARD: rows are the member's programs, each with its addressable demand
+    for r in env.data.rows:
+        assert {"member_supply", "addressable_demand", "occupations_fed"} <= set(r.values), r.label
+
+
+@requires_graph
+def test_program_addressable_demand_integrity():
+    """The same program's addressable demand is ONE number across sector_overview and pathway —
+    both resolve the program's occupations through the canonical crosswalk (CAN.program_socs), not
+    a sibling resolver, so the program view can never drift between the two tools."""
+    m, sec = "svamp", "adm"
+    so = F.sector_overview(m, sec)
+    if not so.data.rows:
+        pytest.skip("no programs in the fixture sector")
+    top6 = so.data.rows[0].label.split()[0]
+    so_addr = so.data.rows[0].values["addressable_demand"].value
+    pw = F.analyze_pathway(m, sec, program=top6)
+    assert pw.data.summary["addressable_demand"].value == so_addr, (
+        f"{top6} addressable demand drifts: sector_overview={so_addr} "
+        f"pathway={pw.data.summary['addressable_demand'].value}")
+
+
+@requires_graph
+@pytest.mark.parametrize("member", ["svamp", "smccd"])
+def test_member_portfolio_adapter(member):
+    """The member-anchor orientation — the whole institution across every sector in ONE call, so a
+    portfolio question never loops a sector tool. Rows = sectors; institution-wide totals are
+    Regime-A sums over the DEDUPED union of the member's sectors' occupations. No single dashboard
+    corroborates a cross-sector portfolio, so view_link is 'unavailable' (like unmet_demand)."""
+    env = F.member_portfolio(member)
+    assert env.form == "member_portfolio" and not env.licensing.gates
+    assert_bound(env)
+    s = env.data.summary
+    assert s["gap"].value == int(round(s["regional_demand"].value - s["regional_supply"].value))
+    assert s["regional_supply"].value >= s["member_supply"].value
+    assert s["sectors"].value == len(env.data.rows)          # one row per sector, no loop
+    assert env.view_link.status == "unavailable" and env.view_link.url is None
+    assert s["regional_supply"].source == "datamart" and s["regional_demand"].source == "coe"
 
 
 @requires_graph
