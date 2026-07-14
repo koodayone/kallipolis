@@ -82,6 +82,15 @@ mv "${BACKUP_DIR}/neo4j.dump" "${BACKUP_DIR}/${DUMP_NAME}"
 echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) restarting neo4j"
 docker compose up -d neo4j
 
+# 4b. Warm the page cache. The restart above emptied neo4j's off-heap
+# page cache; on the pd-standard (HDD) disk the first user query would
+# otherwise pay tens of seconds of random reads. Warm it now, off the
+# user's critical path (the graph is ~200MB into a 4GB cache, ~a few
+# seconds). Best-effort: a warmup failure must never fail the backup,
+# so `|| true` (and the script itself exits 0 on any internal error).
+echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) warming neo4j page cache"
+"${COMPOSE_DIR}/scripts/warmup-neo4j.sh" || true
+
 # 5. Upload to GCS (the VM's service account has bucket write access)
 echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) uploading to GCS"
 gsutil cp "${BACKUP_DIR}/${DUMP_NAME}" "${GCS_BUCKET}/${DUMP_NAME}"
