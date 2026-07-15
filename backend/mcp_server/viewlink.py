@@ -22,6 +22,9 @@ _ATLAS_BASE = os.environ.get(
     "KALLIPOLIS_ATLAS_URL", "https://preview.kallipolis.us").rstrip("/")
 
 # form → (lens, dashboard-only panel). Selection keys are added from the coordinate.
+# ``pathway`` and ``compare`` are unit-discriminated (resolved in ``view_link`` below): a program
+# comparison/pathway opens the programs lens, an occupation one the occupations lens, a college
+# comparison the coverage panel — mirroring each unit's own drill target.
 _FORM_LENS: dict[str, tuple[str, Optional[str]]] = {
     "sector_overview": ("occupations", None),
     "gap": ("occupations", None),
@@ -30,7 +33,21 @@ _FORM_LENS: dict[str, tuple[str, Optional[str]]] = {
     "pathway_program": ("programs", None),
     "pathway_occupation": ("occupations", None),
     "regional_employers": ("employers", None),
+    "compare_program": ("programs", None),
+    "compare_occupation": ("occupations", None),
+    "compare_college": ("programs", "programs.coverage"),
 }
+
+# Forms that DELIBERATELY have no dashboard view — an honest "unavailable" beats a link that
+# misrepresents the coordinate. Kept as a named set so the coherence test (``test_viewlink``) can
+# require every view-emitting form to be here OR in ``_FORM_LENS`` — a new tool cannot silently fall
+# through to "unavailable" (the exact gap that shipped ``compare`` with no corroborating view).
+INTENTIONALLY_UNMAPPED: frozenset = frozenset({
+    "unmet_demand",      # a region-wide greenfield list (occupations the member serves NO ONE into)
+                         # has no single landscape view — the landscape shows served occupations.
+    "member_portfolio",  # a cross-sector portfolio has no single per-sector view; each sector row
+                         # corroborates via its own sector_overview drill.
+})
 
 
 def _route_base(instance_id: str, member_id: str, sector_id: str) -> str:
@@ -41,12 +58,16 @@ def _route_base(instance_id: str, member_id: str, sector_id: str) -> str:
 
 def view_link(form: str, *, instance_id: str, member_id: str, sector_id: str,
               soc: Optional[str] = None, top6: Optional[str] = None,
-              college_key: Optional[str] = None,
-              employer: Optional[str] = None) -> ViewLink:
-    """Build the corroborating dashboard deep-link for a form at a coordinate."""
+              college_key: Optional[str] = None, employer: Optional[str] = None,
+              unit_type: Optional[str] = None) -> ViewLink:
+    """Build the corroborating dashboard deep-link for a form at a coordinate.
+    ``pathway`` and ``compare`` resolve to a unit-specific lens: ``top6`` picks the program leg of a
+    pathway; ``unit_type`` (program | occupation | college) picks the compare leg."""
     key = form
     if form == "pathway":
         key = "pathway_program" if top6 else "pathway_occupation"
+    elif form == "compare":
+        key = f"compare_{(unit_type or 'program').strip().lower()}"
     if key not in _FORM_LENS:
         return ViewLink(url=None, status="unavailable",
                         note=f"No dashboard view for form '{form}'.")
