@@ -32,10 +32,13 @@ def _graph() -> bool:
 
 requires_graph = pytest.mark.skipif(not _graph(), reason="no reachable Neo4j graph")
 
-# The dashboard builder rounds where the MCP path carries the unrounded 3-yr average, so the two
-# corroborate to within one completion. A divergence BEYOND that band is a real computation drift,
-# not rounding — and it breaks "verify with your own eyes." (Observed: a 0.7 rounding seam at
-# baccc/health; within band. Tighten the band toward 0 only once both surfaces round identically.)
+# The two surfaces corroborate to within one completion. The residual is NOT rounding: the MCP
+# resolves an occupation's feeder programs via the is_vocational TOP->SOC crosswalk, while the
+# dashboard builder uses the LandscapeSpec.in_scope rule — so where they disagree on a marginal
+# program, the supplies differ. (Observed: RN at baccc/health — the crosswalk counts TOP 123000,
+# generic Nursing, as an RN feeder; in_scope does not; a 0.7/yr difference.) A divergence BEYOND
+# this band is a gross computation drift. Tighten toward 0 only after the two feeder rules are
+# unified — a correctness decision (which programs feed an occupation), tracked as a substrate item.
 _CORROBORATION_BAND = 1.0
 
 
