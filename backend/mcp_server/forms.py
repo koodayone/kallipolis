@@ -38,6 +38,7 @@ from mcp_server.envelope import (
     NextMove,
     QualifiedValue,
     Row,
+    SortAxis,
 )
 from mcp_server.compare import compare
 from mcp_server.scope import coordinate_of, find_scope, gate_envelope, scope_for, sectors_for_member
@@ -371,7 +372,7 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
                 continue
             occ_rows.append((soc, d.get("title") or soc, openings, d.get("annual_wage"),
                              CAN.gap(openings, CAN.supply(region_colleges, soc))))
-        occ_rows.sort(key=lambda r: (r[2] or 0) * (r[3] or 0), reverse=True)
+        occ_rows.sort(key=lambda r: (r[2] or 0, r[3] or 0), reverse=True)   # by openings; wage breaks ties
         rows = [Row(label=f"{soc} {title}", values={
             "annual_openings": P.q("annual_openings", openings, granularity=region_g, unit="openings/yr"),
             "annual_wage": P.q("annual_wage", wage, granularity=region_g, unit="USD/yr (occ. median)"),
@@ -394,10 +395,12 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
         coord.region = region_disp
         return AnalysisEnvelope(
             form="pathway", coordinate=coord,
-            data=DataBlock(summary=summary, rows=rows, more=more),
+            data=DataBlock(summary=summary, rows=rows, more=more,
+                           sorted_by=SortAxis(key="annual_openings", label="Annual openings",
+                                              unit="openings/yr", direction="higher")),
             framing=_framing("pathway", salience),
             licensing=_licensing("pathway",
-                                 licensed=["The occupations this TOP6 program prepares students for, ranked by opportunity (openings × median wage), with the program's own supply and the regional gap for each.",
+                                 licensed=["The occupations this TOP6 program prepares students for, ranked by annual openings — with median wage and the regional gap shown alongside each — and the program's own supply.",
                                            "Addressable demand is the sum-across pool the program competes for — a graduate is qualified for these occupations, not assigned to one."]),
             next_moves=next_moves,
             view_link=V.view_link("pathway", instance_id=spec.id, member_id=entry["member_id"],
@@ -731,7 +734,7 @@ def unmet_demand(member: str) -> AnalysisEnvelope:
         if (r["openings"] or 0) < _OPENINGS_FLOOR:
             continue
         survivors.append(r)
-    survivors.sort(key=lambda r: (r["openings"] or 0) * (r["wage"] or 0), reverse=True)
+    survivors.sort(key=lambda r: (r["openings"] or 0, r["wage"] or 0), reverse=True)   # by openings; wage breaks ties
     n_unmet = len(survivors)
 
     coord = coordinate_of(entry)
@@ -780,8 +783,8 @@ def unmet_demand(member: str) -> AnalysisEnvelope:
         licensed = ["The occupations this member's region demands that the member currently "
                     "graduates no completers for, filtered to community-college-servable "
                     f"education, living-wage (≥ ${_WAGE_FLOOR:,}), and meaningful-demand "
-                    f"(≥ {_OPENINGS_FLOOR} openings/yr) roles, ranked by opportunity "
-                    "(annual openings × median wage)."]
+                    f"(≥ {_OPENINGS_FLOOR} openings/yr) roles, ranked by annual openings "
+                    "(median wage shown alongside each)."]
     not_licensed = ["It does not assert the member SHOULD launch these — only that regional "
                     "demand exists and the member's own supply is zero; feasibility, cost, "
                     "and mission fit are out of scope.",
@@ -792,7 +795,9 @@ def unmet_demand(member: str) -> AnalysisEnvelope:
     top_soc = survivors[0]["soc"] if survivors else None
     return AnalysisEnvelope(
         form="unmet_demand", coordinate=coord,
-        data=DataBlock(summary=summary, rows=rows, more=more),
+        data=DataBlock(summary=summary, rows=rows, more=more,
+                       sorted_by=SortAxis(key="annual_openings", label="Annual openings",
+                                          unit="openings/yr", direction="higher")),
         framing=_framing("unmet_demand", [C.SAL_PROJECTED_NOT_ACTUAL, C.SAL_LOSSY_CROSSWALK]),
         licensing=_licensing("unmet_demand", licensed=licensed, not_licensed=not_licensed),
         next_moves=C.build_next_moves("unmet_demand", entry, soc=top_soc),

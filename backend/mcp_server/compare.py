@@ -29,7 +29,7 @@ from typing import Callable, Optional
 from ontology.regions import COE_REGION_DISPLAY
 from ontology.schema import get_driver
 from partnerships.graph_reads import regional_demand
-from partnerships.landscape_programs import build_programs_landscape
+from partnerships.landscape_programs import build_programs_landscape, relevant_tops
 from partnerships.members import region_member
 from partnerships.resolve import resolve
 from partnerships.sectors import SECTORS
@@ -47,6 +47,7 @@ from mcp_server.envelope import (
     NextMove,
     QualifiedValue,
     Row,
+    SortAxis,
 )
 from mcp_server.scope import coordinate_of, gate_envelope, scope_for
 
@@ -102,6 +103,8 @@ class CompareContext:
     region_colleges: list
     sector_socs: list
     demand_by_soc: dict
+    soc_facts: dict          # {soc -> full DEMANDS row: title, openings, wage, growth, employment}
+    sector_tops: list        # the sector's candidate feeder programs (TOP6), for college enrollment
     recent_years: tuple
     latest_years: tuple
     enroll_latest: tuple
@@ -133,6 +136,7 @@ def build_context(member: str, sector: str) -> Optional[CompareContext]:
     with get_driver().session() as s:
         demand = regional_demand(s, region, sector_socs)
     demand_by_soc = {soc: (d.get("annual_openings") or 0) for soc, d in demand.items()}
+    sector_tops = sorted(relevant_tops(rspec).keys())   # the sector's candidate feeder programs
 
     recent_years, latest_years = CAN.recent_award_years(), CAN.recent_award_years(1)
     ss = CAN.same_season_terms()                     # same-season-as-latest terms, most recent first
@@ -142,6 +146,7 @@ def build_context(member: str, sector: str) -> Optional[CompareContext]:
     return CompareContext(
         spec=spec, entry=entry, rspec=rspec, member_colleges=member_colleges,
         region_colleges=region_colleges, sector_socs=sector_socs, demand_by_soc=demand_by_soc,
+        soc_facts=demand, sector_tops=sector_tops,
         recent_years=recent_years, latest_years=latest_years, enroll_latest=enroll_latest,
         enroll_recent=enroll_recent, region_disp=region_disp,
         region_g=f"regional ({region_disp})",
@@ -250,18 +255,153 @@ _PROGRAM = _register({
                               vintage=lambda ctx: ctx.wage_v),
 })
 
-REGISTRY: dict[str, dict[str, Criterion]] = {"program": _PROGRAM}
-PEER_SET: dict[str, Callable] = {"program": lambda ctx: build_programs_landscape(ctx.rspec).tops}
-UNIT_LABEL: dict[str, Callable] = {"program": lambda u: f"{u.top6} {u.name}"}
-_UNIT_ID: dict[str, Callable] = {"program": lambda u: u.top6}
+
+# ── Occupation criteria — rank the sector's demanded occupations by native measures ──
+# Demand facts (openings, wage, growth, employment) are the DEMANDS-edge values carried on the
+# context (soc_facts); supply/gap/share compose the SAME CAN.* resolvers the gap and occupation
+# forms use, so a SOC's figures match across tools. Wage/growth take DISTINCT field keys
+# (occ_median_wage / occ_growth_rate) — the occupation's regional OES signal, never a program's.
+
+@dataclass(frozen=True)
+class _OccUnit:
+    soc: str
+    title: str
+
+
+def _oc_openings(ctx, u):
+    return ctx.soc_facts.get(u.soc, {}).get("annual_openings")
+
+
+def _oc_wage(ctx, u):
+    return ctx.soc_facts.get(u.soc, {}).get("annual_wage")
+
+
+def _oc_growth(ctx, u):
+    return ctx.soc_facts.get(u.soc, {}).get("growth_rate")
+
+
+def _oc_employment(ctx, u):
+    return ctx.soc_facts.get(u.soc, {}).get("employment")
+
+
+def _oc_regional_supply(ctx, u):
+    return CAN.supply(ctx.region_colleges, u.soc)
+
+
+def _oc_supply_gap(ctx, u):
+    openings = ctx.soc_facts.get(u.soc, {}).get("annual_openings")
+    return CAN.gap(openings, CAN.supply(ctx.region_colleges, u.soc))
+
+
+def _oc_member_supply_share(ctx, u):
+    region = CAN.supply(ctx.region_colleges, u.soc)
+    if not region:
+        return None
+    return round(CAN.supply(ctx.member_colleges, u.soc) / region, 3)
+
+
+_OCCUPATION = _register({
+    "regional_openings": Criterion("regional_openings", "Regional openings", "openings/yr",
+                                   "annual_openings", True, False, "region", _oc_openings),
+    "median_wage": Criterion("median_wage", "Median wage (occupation)", "$/yr",
+                             "occ_median_wage", True, False, "region", _oc_wage),
+    "projected_growth": Criterion("projected_growth", "Projected growth (5-yr)", "%",
+                                  "occ_growth_rate", True, False, "region", _oc_growth),
+    "regional_employment": Criterion("regional_employment", "Regional employment", "jobs",
+                                     "regional_employment", True, False, "region", _oc_employment),
+    "regional_supply": Criterion("regional_supply", "Regional supply", "completions/yr",
+                                 "projected_supply", True, False, "region_supply", _oc_regional_supply,
+                                 vintage=lambda ctx: ctx.supply_v),
+    "supply_gap": Criterion("supply_gap", "Supply gap (regional)", "openings/yr",
+                            "gap", True, False, "gap", _oc_supply_gap,
+                            vintage=lambda ctx: ctx.gap_v),
+    "member_supply_share": Criterion("member_supply_share", "Member supply share", "fraction",
+                                     "supply_share", True, False, "share", _oc_member_supply_share,
+                                     vintage=lambda ctx: ctx.supply_v),
+})
+
+
+# ── College criteria — rank the region's colleges by their sector-scoped supply/coverage ──
+# Positioning, never competition: each college's completions into the sector's occupations, its
+# share of the region's output, and its enrollment in the sector's programs — all single-college
+# scoped through the SAME CAN.* resolvers, so a college's figure matches the coverage form/builders.
+# Share is the size-normalized headline (the default), so a small college is not buried by a big one.
+
+def _cl_sector_supply(ctx, u):
+    return CAN.supply_over_socs([u], ctx.sector_socs)
+
+
+def _cl_supply_share(ctx, u):
+    region = CAN.supply_over_socs(ctx.region_colleges, ctx.sector_socs)
+    if not region:
+        return None
+    return round(CAN.supply_over_socs([u], ctx.sector_socs) / region, 3)
+
+
+def _cl_sector_enrollment(ctx, u):
+    return CAN.enrollment_over_tops([u], ctx.sector_tops)
+
+
+_COLLEGE = _register({
+    "supply_share": Criterion("supply_share", "Supply share (of region's output)", "fraction",
+                              "supply_share", True, False, "college_share", _cl_supply_share,
+                              vintage=lambda ctx: ctx.supply_v),
+    "sector_supply": Criterion("sector_supply", "Sector supply (completions)", "completions/yr",
+                               "projected_supply", True, False, "college", _cl_sector_supply,
+                               vintage=lambda ctx: ctx.supply_v),
+    "sector_enrollment": Criterion("sector_enrollment", "Sector enrollment", "enrolled/term",
+                                   "enrollment", True, False, "college", _cl_sector_enrollment,
+                                   vintage=lambda ctx: ctx.enroll_v),
+})
+
+
+REGISTRY: dict[str, dict[str, Criterion]] = {
+    "program": _PROGRAM, "occupation": _OCCUPATION, "college": _COLLEGE}
+PEER_SET: dict[str, Callable] = {
+    "program": lambda ctx: build_programs_landscape(ctx.rspec).tops,
+    "occupation": lambda ctx: [_OccUnit(soc, f.get("title") or soc) for soc, f in ctx.soc_facts.items()],
+    "college": lambda ctx: list(ctx.region_colleges)}
+UNIT_LABEL: dict[str, Callable] = {
+    "program": lambda u: f"{u.top6} {u.name}",
+    "occupation": lambda u: f"{u.soc} {u.title}",
+    "college": lambda u: str(u)}
+_UNIT_ID: dict[str, Callable] = {
+    "program": lambda u: u.top6,
+    "occupation": lambda u: u.soc,
+    "college": lambda u: str(u)}
+
+
+@dataclass(frozen=True)
+class _UnitMeta:
+    """Per-unit-type surface metadata that generalizes the engine's once-program-only
+    seams: whether a sector is required, and how a ranked unit is drilled into."""
+
+    noun: str                    # singular unit noun, for messages
+    needs_sector: bool
+    drill_form: str              # internal form-id a ranked unit drills into
+    coord_key: Optional[str]     # coordinate_of kwarg carrying the unit id ("top6" | "soc" | None)
+    drill_hint: str              # what the drill reveals, for the next-move rationale
+
+
+_UNIT_META: dict[str, _UnitMeta] = {
+    "program": _UnitMeta("program", True, "pathway", "top6",
+                         "the occupations it feeds and their demand"),
+    "occupation": _UnitMeta("occupation", True, "occupation_profile", "soc",
+                            "its full regional demand, supply, and employers"),
+    "college": _UnitMeta("college", True, "coverage", None,
+                         "how the sector's programs are covered across the region's colleges"),
+}
 
 
 # ── binding + framing helpers (inline; compare.py does not import forms) ───
 
 def _grain(key: str, ctx: CompareContext) -> str:
     return {"region": ctx.region_g,
+            "region_supply": ctx.region_supply_g,
             "gap": f"{ctx.region_g} − {ctx.region_supply_g}",
             "share": f"{ctx.inst_g} ÷ {ctx.region_supply_g}",
+            "college": "institutional — a single college in the region",
+            "college_share": f"a single college ÷ {ctx.region_supply_g}",
             "statewide": _WAGE_GRAIN,
             "inst": ctx.inst_g}.get(key, ctx.inst_g)
 
@@ -283,7 +423,7 @@ def _licensing(*, licensed=None, not_licensed=None) -> Licensing:
 
 # ── the engine ─────────────────────────────────────────────────────────────
 
-def compare(member: str, unit_type: str = "program", criterion: str = "addressable_demand",
+def compare(member: str, unit_type: str = "program", criterion: str = "",
             sector: str = "") -> AnalysisEnvelope:
     """Rank the analogous units of ``unit_type`` by ``criterion``, showing every admissible criterion
     per unit (the full profile) sorted by the chosen one. v1: ``unit_type='program'`` ranks the
@@ -301,9 +441,9 @@ def compare(member: str, unit_type: str = "program", criterion: str = "addressab
         return gate_envelope("compare", member, sector, marker="unknown",
                              reason=(f"Unknown criterion {crit!r} for {ut}. Rank {ut}s by: "
                                      f"{', '.join(crits)}."))
-    if ut == "program" and not sector:
+    if _UNIT_META[ut].needs_sector and not sector:
         return gate_envelope("compare", member, sector, marker="unknown",
-                             reason="Comparing programs needs a sector (the program set is a member×sector).")
+                             reason=f"Comparing {ut}s needs a sector (the {ut} set is scoped to a member×sector).")
 
     ctx = build_context(member, sector)
     if ctx is None:
@@ -312,7 +452,8 @@ def compare(member: str, unit_type: str = "program", criterion: str = "addressab
     units = list(PEER_SET[ut](ctx))
     if not units:
         return gate_envelope("compare", member, sector, marker="unavailable",
-                             reason=f"{ctx.entry['member_label']} runs no programs in this sector to compare.")
+                             reason=(f"{ctx.entry['member_label']} has no {_UNIT_META[ut].noun}s in this "
+                                     f"sector to compare."))
 
     # Compute every criterion per unit (the full profile), then rank by the chosen one.
     computed = [(u, {ck: (c, c.compute(ctx, u)) for ck, c in crits.items()}) for u in units]
@@ -338,24 +479,27 @@ def compare(member: str, unit_type: str = "program", criterion: str = "addressab
             "medians, never summed. They rank a program on the labor-market value of its credential, "
             "independent of how many the member awards.")
 
+    meta = _UNIT_META[ut]
     label = UNIT_LABEL[ut]
+
+    def _drill_coord(u):
+        return coordinate_of(ctx.entry, **({meta.coord_key: uid(u)} if meta.coord_key else {}))
+
     rows = [Row(label=label(u), values={ck: _bind(c, v, ctx) for ck, (c, v) in vals.items()})
             for (u, vals) in computed[:_TOP_N]]
     more = None
     if len(computed) > _TOP_N:
         nxt = computed[_TOP_N][0]
         more = More(remaining=len(computed) - _TOP_N,
-                    drill=NextMove(form=C.tool_name("pathway"),
-                                   coordinate=coordinate_of(ctx.entry, top6=uid(nxt)),
-                                   rationale=(f"{len(computed) - _TOP_N} more {ut}s; program_pathways "
-                                              f"drills into any one's occupations.")))
+                    drill=NextMove(form=C.tool_name(meta.drill_form), coordinate=_drill_coord(nxt),
+                                   rationale=f"{len(computed) - _TOP_N} more {ut}s to compare."))
 
     top_u = computed[0][0] if computed else None
     next_moves = [
-        NextMove(form=C.tool_name("pathway"),
-                 coordinate=coordinate_of(ctx.entry, top6=uid(top_u)) if top_u else coordinate_of(ctx.entry),
-                 rationale=(f"Drill into {label(top_u)} — the occupations it feeds and their demand."
-                            if top_u else "Drill into a program.")),
+        NextMove(form=C.tool_name(meta.drill_form),
+                 coordinate=_drill_coord(top_u) if top_u else coordinate_of(ctx.entry),
+                 rationale=(f"Drill into {label(top_u)} — {meta.drill_hint}." if (top_u and meta.coord_key)
+                            else (f"See {meta.drill_hint}." if top_u else f"Drill into a {meta.noun}."))),
     ]
 
     coord = coordinate_of(ctx.entry)
@@ -366,7 +510,9 @@ def compare(member: str, unit_type: str = "program", criterion: str = "addressab
     }
     return AnalysisEnvelope(
         form="compare", coordinate=coord,
-        data=DataBlock(summary=summary, rows=rows, more=more),
+        data=DataBlock(summary=summary, rows=rows, more=more,
+                       sorted_by=SortAxis(key=sort_c.key, label=sort_c.label, unit=sort_c.unit,
+                                          direction="higher" if sort_c.higher_is_better else "lower")),
         framing=_framing(salience),
         licensing=_licensing(
             licensed=[f"The member's {ut}s in the sector, each with all comparison criteria, ranked by "

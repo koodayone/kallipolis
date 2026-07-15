@@ -32,6 +32,8 @@ AUTHORITY_BY_FIELD: dict[str, str] = {
     "growth_rate": "coe",
     "regional_employment": "coe",
     "typical_education": "coe",     # BLS entry-level education, carried in the COE demand file
+    "occ_median_wage": "coe",       # a SOC's regional OES median wage (demand-side) — NOT a program's graduate wage
+    "occ_growth_rate": "coe",       # a SOC's projected 5-yr growth (demand-side)
     # supply — the Distinguish pair, kept as deliberately separate keys. Both are now
     # DataMart completions (All Awards; COE's supply is the same completions on its own
     # annual-projection method); they differ by window: projected_supply = 3-yr avg, latest = 1 yr.

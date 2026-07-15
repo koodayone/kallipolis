@@ -148,25 +148,26 @@ FORMS: dict[str, Form] = {
     ),
     "compare": Form(
         id="compare",
-        question="How do this member's analogous units (its programs) rank against each other on a chosen measure?",
+        question="How do this member's analogous units — its programs, the sector's occupations, or the region's colleges — rank against each other on a chosen measure?",
         meaning=(
-            "Comparison ranks a set of analogous units — a member's programs (v1), later occupations "
-            "or colleges — by a chosen criterion, showing every unit's full profile sorted by that "
-            "axis. It is what turns a measure into a decision (which program is biggest, fastest-"
-            "growing, most under-supplied, or highest-earning). For programs, rank by: "
-            "addressable_demand, addressable_gap, completions, enrollment, supply_share, award_trend, "
-            "enrollment_trend, wage_lift, wage_after_2, or wage_after_5."),
+            "Comparison ranks a set of analogous units — a member's programs, the sector's occupations, "
+            "or the region's colleges — by a chosen criterion, showing every unit's full profile sorted "
+            "by that named axis. It is what turns a measure into a decision: which program is biggest or "
+            "fastest-growing, which occupation is most in-demand or highest-paying, which college leads "
+            "on supply. The axes admissible for each unit type are the criteria menu; rank by one and "
+            "name it — never by a blended 'score'."),
         guardrail=(
-            "Every criterion is a plain sum-across pool (addressable demand, completions), a native "
-            "ratio computed AT the program grain (supply share, the trends), or a directly-measured "
-            "graduate outcome (the wage figures) — never a weighted composite. A program 'wage' "
-            "blended from its occupations' OES wages, or an occupation growth rate carried down to a "
-            "program, WOULD be such a composite and is not a criterion; the admissible wage is the "
-            "measured, statewide-pooled graduate-wage cohort (its largest recipient type), not this "
-            "member's own graduates, and its medians are never summed. 'addressable_gap' is a "
-            "program's addressable demand minus the REGIONAL supply into the occupations it feeds — "
-            "NOT the sector/occupation gap supply_demand_gaps reports. The enrollment trend compares "
-            "same-season terms (Fall vs Falls) to avoid a seasonal artifact."),
+            "Every criterion is a plain count that adds up (openings, completions, employment), a ratio "
+            "measured AT the unit's own grain (supply share, the trends), or a directly-measured outcome "
+            "(the graduate-wage figures) — never a weighted composite. An occupation's median wage and "
+            "growth are native to the occupation (its regional OES signal); a PROGRAM 'wage' blended from "
+            "its occupations' wages, or a growth rate carried down to a program, WOULD be a composite and "
+            "is not a criterion. A program's graduate wage is the measured, statewide-pooled cohort (its "
+            "largest recipient type), not this member's own graduates, and medians are never summed. "
+            "'addressable_gap' is a program's addressable demand minus the REGIONAL supply into the "
+            "occupations it feeds — NOT the sector/occupation gap supply_demand_gaps reports. Trends "
+            "compare same-season terms to avoid a seasonal artifact; college figures are per single "
+            "college — positioning within the region, never a competitive ranking."),
     ),
 }
 
