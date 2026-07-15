@@ -14,8 +14,18 @@ TOOLS = {"list_institutions", "institution_overview", "member_portfolio", "secto
 
 # ── coverage / sufficiency (the algebra-coverage gate) ──
 def test_every_probe_invariant_is_a_law():
+    # A probe's invariant is a metamorphic/per-transcript LAW, or None for a pure-classification
+    # probe (graded by golden_traversal + the judge, no cross-transcript relation to assert).
     for p in SEMANTIC_PATHWAYS:
-        assert p["invariant"] in sc.LAWS, p["id"]
+        if p["invariant"] is not None:
+            assert p["invariant"] in sc.LAWS, p["id"]
+
+
+def test_classification_probes_carry_a_golden():
+    # A probe with no metamorphic law must still be gradeable — it carries a golden traversal.
+    for p in SEMANTIC_PATHWAYS:
+        if p["invariant"] is None:
+            assert p.get("golden"), p["id"]
 
 
 def test_golden_forms_are_real_tools():
@@ -44,10 +54,32 @@ def test_phase1_laws_have_coverage():
             assert name in exercised, name
 
 
+def test_phase2_active_laws_have_coverage():
+    # Flipping a law to "phase-2-active" makes the coverage gate REQUIRE a probe for it — the gate
+    # that keeps the two new laws honest (a law with no probe cannot silently ship as "done").
+    exercised = {p["invariant"] for p in SEMANTIC_PATHWAYS}
+    for name, law in sc.LAWS.items():
+        if law["status"].startswith("phase-2-active"):
+            assert name in exercised, name
+
+
 def test_named_seams_have_probes():
     seams = {p["seam"] for p in SEMANTIC_PATHWAYS}
-    assert {"two_demand", "grain_transitions"} <= seams
+    assert {"two_demand", "grain_transitions", "coordinate_identity", "forward_reverse",
+            "absence_zero", "comparison_class", "non_summable", "form_topup"} <= seams
     assert ONBOARDING_PATHWAYS   # S7 establish-before-analyze
+
+
+def test_form_topup_reaches_the_targeted_forms():
+    # form → golden: every analytical form the plan targets appears in at least one golden traversal,
+    # so no tool the practitioner can route to is left un-probed.
+    covered = set()
+    for p in SEMANTIC_PATHWAYS:
+        if p.get("golden"):
+            covered |= set(p["golden"]["forms"])
+    want = {"occupation_profile", "compare", "program_pathways", "supply_demand_gaps",
+            "sector_overview", "unmet_demand", "regional_employers", "member_portfolio"}
+    assert want <= covered, want - covered
 
 
 # ── functional: metamorphic runner ──
@@ -133,3 +165,118 @@ def test_coordinate_named():
     bad = {"turns": [_turn("The gap is 391.", [{"name": "x", "figures": {"gap": 391}}])]}
     assert sc.coordinate_named(good)["pass"] is True
     assert sc.coordinate_named(bad)["pass"] is False
+
+
+# ── functional: coordinate_identity (coordinate-AWARE metamorphic) ──
+_GID = "coordinate_identity_openings_51-4041"
+
+
+def _occ_tx(pid, soc, openings):
+    """occupation_profile anchored on `soc`, reporting its openings."""
+    return {"pathway_id": pid, "turns": [{"role": "analyst", "text": "...",
+            "tool_calls": [{"name": "occupation_profile",
+                            "args": {"member": "deanza", "occupation": soc},
+                            "figures": {"annual_openings": openings}}]}]}
+
+
+def _compare_row_tx(pid, soc, openings):
+    """A compare(occupation, regional_openings) call whose per-SOC row names `soc`'s openings."""
+    return {"pathway_id": pid, "turns": [{"role": "analyst", "text": "...",
+            "tool_calls": [{"name": "compare",
+                            "args": {"member": "deanza", "unit_type": "occupation",
+                                     "criterion": "regional_openings", "sector": "adm"},
+                            "figures": {f"{soc} Machinists regional_openings": openings,
+                                        "51-9161 CNC programmers regional_openings": 210}}]}]}
+
+
+def test_coordinate_identity_same_via_two_tools_passes():
+    grp = {"A": _occ_tx("a", "51-4041", 510), "B": _compare_row_tx("b", "51-4041", 510)}
+    assert sc.run_group(_GID, "coordinate_identity", grp)["pass"] is True
+
+
+def test_coordinate_identity_divergent_fails():
+    # B misroutes and reads the gap (466) as openings — a mis-scoped number at the same coordinate.
+    grp = {"A": _occ_tx("a", "51-4041", 510), "B": _compare_row_tx("b", "51-4041", 466)}
+    assert sc.run_group(_GID, "coordinate_identity", grp)["pass"] is False
+
+
+def test_coordinate_identity_does_not_collide_with_two_demand():
+    # Sector-grain demand (8,150 full vs 1,240 served) has NO SOC coordinate, so the coordinate-aware
+    # extractor stays silent → the group is INCOMPLETE (None), never a false ==-fail against S1.
+    def demand_tx(pid, val):
+        return {"pathway_id": pid, "turns": [{"role": "analyst", "text": "...",
+                "tool_calls": [{"name": "sector_overview", "args": {"member": "deanza", "sector": "adm"},
+                                "figures": {"sector demand": val}}]}]}
+    grp = {"A": demand_tx("a", 8150), "B": demand_tx("b", 1240)}
+    assert sc.run_group(_GID, "coordinate_identity", grp)["pass"] is None
+
+
+def test_coordinate_figure_matches_only_its_soc():
+    tx = _compare_row_tx("x", "51-4041", 510)
+    assert sc.coordinate_figure(tx, "51-4041") == 510
+    assert sc.coordinate_figure(tx, "51-9161") == 210
+    assert sc.coordinate_figure(tx, "29-1141") is None   # not named → no figure at that coordinate
+
+
+# ── functional: forward_reverse membership (⊇, never magnitude) ──
+def _fr_turn(text, name, args, figures=None):
+    return {"role": "analyst", "text": text,
+            "tool_calls": [{"name": name, "args": args, "figures": figures or {}}]}
+
+
+def test_forward_reverse_edge_corroborated_passes():
+    t = {"turns": [
+        _fr_turn("095630 prepares students for 51-4041 and 51-9161.",
+                 "program_pathways", {"member": "deanza", "sector": "adm", "program": "095630"},
+                 {"51-4041 Machinists": 510, "51-9161 CNC": 210}),
+        _fr_turn("Machinists are fed by 095630 and 095610.",
+                 "program_pathways", {"member": "deanza", "sector": "adm", "occupation": "51-4041"},
+                 {"095630 Machine Tool Tech": 23, "095610 Manufacturing": 5})]}
+    assert sc.forward_reverse_membership(t)["pass"] is True
+
+
+def test_forward_reverse_dropped_edge_fails():
+    # forward: 095630 → 51-4041, but reverse from 51-4041 omits 095630.
+    t = {"turns": [
+        _fr_turn("095630 prepares students for 51-4041.",
+                 "program_pathways", {"member": "deanza", "sector": "adm", "program": "095630"},
+                 {"51-4041 Machinists": 510}),
+        _fr_turn("Machinists are fed by 095610 only.",
+                 "program_pathways", {"member": "deanza", "sector": "adm", "occupation": "51-4041"},
+                 {"095610 Manufacturing": 5})]}
+    res = sc.forward_reverse_membership(t)
+    assert res["pass"] is False and res["detail"]["violations"]
+
+
+def test_forward_reverse_vacuous_when_no_reverse():
+    t = {"turns": [
+        _fr_turn("095630 prepares students for 51-4041.",
+                 "program_pathways", {"member": "deanza", "sector": "adm", "program": "095630"},
+                 {"51-4041 Machinists": 510})]}
+    res = sc.forward_reverse_membership(t)
+    assert res["pass"] is True and res["detail"]["edges_checked"] == 0
+
+
+# ── functional: absence vs zero ──
+def test_absence_gated_named_unknown_passes():
+    t = {"turns": [_turn("Graduate wages aren't available for this program — that figure is unknown.",
+                         [{"name": "compare", "args": {}, "figures": {"wage": None}, "gated": True}])]}
+    assert sc.absence_not_zero_language(t)["pass"] is True
+
+
+def test_absence_gated_read_as_zero_fails():
+    t = {"turns": [_turn("Graduate wages are $0 for this program.",
+                         [{"name": "compare", "args": {}, "figures": {"wage": None}, "gated": True}])]}
+    assert sc.absence_not_zero_language(t)["pass"] is False
+
+
+def test_absence_structural_zero_framed_passes():
+    t = {"turns": [_turn("You run no program feeding machinists, so there's nothing to report there.",
+                         [{"name": "occupation_profile", "args": {"occupation": "51-4041"},
+                           "figures": {"member_supply": None}}])]}
+    assert sc.absence_not_zero_language(t)["pass"] is True
+
+
+def test_absence_vacuous_when_all_populated():
+    t = {"turns": [_turn("The gap is 510.", [{"name": "x", "args": {}, "figures": {"gap": 510}}])]}
+    assert sc.absence_not_zero_language(t)["pass"] is True

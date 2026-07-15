@@ -26,28 +26,34 @@ import re
 from evals.conversational.checks import _analyst_turns
 
 # ── the machine-readable law manifest (the spec the doc + coverage test verify) ──
+# Each law names its RELATION, the MEASURE the metamorphic runner compares (None for the
+# per-transcript language/order/membership laws), the CHECK that grades it, and its build STATUS
+# (the coverage test requires a probe for every phase-1 and phase-2-active law).
 LAWS: dict[str, dict] = {
     "regional_invariance": {"relation": "==", "measure": "gap", "runs_on": "metamorphic",
-        "status": "phase-1",
+        "status": "phase-1", "check": "run_group",
         "doc": "An occupation's regional gap is invariant to which member anchors the query."},
     "grain_nesting": {"relation": "<=", "measure": "member_supply", "runs_on": "metamorphic",
-        "status": "phase-1",
+        "status": "phase-1", "check": "run_group",
         "doc": "A college's own supply into an occupation is ≤ its district's (the district pools it)."},
     "part_le_whole": {"relation": "<=", "measure": "demand", "runs_on": "per-transcript",
-        "status": "phase-1",
+        "status": "phase-1", "check": "surfaced_both_demands",
         "doc": "Served-occupations demand ≤ full-sector demand; addressable pools overlap, never sum."},
     "establish_before": {"relation": "order", "measure": None, "runs_on": "per-transcript",
-        "status": "phase-1 (onboarding)",
+        "status": "phase-1 (onboarding)", "check": "establish_order",
         "doc": "No scoped measure before the institution coordinate is established."},
+    # ── Phase 2 (active) ──
     "coordinate_identity": {"relation": "==", "measure": "openings", "runs_on": "metamorphic",
-        "status": "phase-2",
-        "doc": "A measure at a coordinate is one value however reached (tool-independent)."},
+        "status": "phase-2-active", "check": "run_group (coordinate-aware)", "coordinate_aware": True,
+        "doc": "A measure at a coordinate is one value however reached (tool-independent) — the "
+               "two-window invariant the dashboard/MCP unification is specified by."},
     "forward_reverse": {"relation": "subset", "measure": None, "runs_on": "per-transcript",
-        "status": "phase-2",
-        "doc": "If program P prepares occupation O, O's feeder set contains P — membership, not magnitude."},
+        "status": "phase-2-active", "check": "forward_reverse_membership",
+        "doc": "If program P prepares occupation O, O's feeder set contains P — membership, never "
+               "magnitude (the TOP→CIP→SOC crosswalk is many-to-many and lossy)."},
     "absence_not_zero": {"relation": "lang", "measure": None, "runs_on": "per-transcript",
-        "status": "phase-2",
-        "doc": "A gated/blank field is unknown, never 0; structural-0 (no program) ≠ unknown."},
+        "status": "phase-2-active", "check": "absence_not_zero_language",
+        "doc": "A gated/blank field is unknown, never 0; a structural 0 (no program) ≠ unknown."},
 }
 
 # Analytical forms (produce a scoped measure) vs orienting forms (establish the coordinate).
@@ -61,9 +67,26 @@ _GRAIN_FALLBACK = {"smccd": "district", "svamp": "consortium", "baccc": "consort
                    "ccsf": "college", "deanza": "college", "laney": "college"}
 
 
+# Entity codes carried on a call's args / figure labels — the coordinate a walk landed on.
+_SOC_RE = re.compile(r"\b\d{2}-\d{4}\b")     # SOC codes, e.g. 51-4041 (an occupation coordinate)
+_TOP6_RE = re.compile(r"\b\d{6}\b")          # TOP6 codes, e.g. 095630 (a program coordinate)
+
+
 def _tool(call: dict) -> str:
     """Bare form name — the analyst may report it with or without the mcp__ prefix."""
     return (call.get("name") or "").split("__")[-1]
+
+
+def _call_soc(call: dict) -> str | None:
+    """The SOC (occupation) coordinate a call is anchored on, from its args (soc | occupation)."""
+    a = call.get("args") or {}
+    return a.get("soc") or a.get("occupation")
+
+
+def _call_program(call: dict) -> str | None:
+    """The TOP6 (program) coordinate a call is anchored on, from its args (program | top6)."""
+    a = call.get("args") or {}
+    return a.get("program") or a.get("top6")
 
 
 def _calls(t: dict) -> list[dict]:
@@ -104,6 +127,39 @@ def _figure_by_key(t: dict, keyword: str) -> float | None:
     for c in _calls(t):
         for k, v in (c.get("figures") or {}).items():
             if keyword in k.lower():
+                try:
+                    val = float(v)
+                except (TypeError, ValueError):
+                    pass
+    return val
+
+
+# Synonyms a self-reported figure label may use for a coordinate's measure. Deliberately does NOT
+# include a bare "demand": a sector-grain demand figure (sector_overview / an aggregate gap) is a
+# DIFFERENT coordinate (it carries no SOC), so admitting "demand" would let coordinate_identity
+# collide with the two-demand seam. openings is per-occupation, always at a SOC coordinate.
+_MEASURE_SYNONYMS = {"openings": ("opening", "regional_openings")}
+
+
+def coordinate_figure(t: dict, soc: str, measure: str = "openings") -> float | None:
+    """The analyst's self-reported figure for ``measure`` AT the coordinate ``soc`` — matched by SOC
+    (from the call's own args, OR from a per-SOC row label in a multi-row call like ``compare``)
+    BEFORE any equality is asserted. This is what makes ``coordinate_identity`` coordinate-AWARE where
+    ``_figure_by_key`` is not: it will never read a *different* occupation's openings, and it stays
+    silent (returns None) on a coordinate-less sector-grain demand figure — so it cannot false-fire at
+    the two-demand seam (full-sector vs served demand are different coordinates, neither a SOC).
+    GUARDED — self-report; the CI port swaps in ``evals.characterization.capture`` (the two-window
+    oracle) to hard-gate."""
+    keys = _MEASURE_SYNONYMS.get(measure, (measure,))
+    val = None
+    for c in _calls(t):
+        csoc = _call_soc(c)
+        for k, v in (c.get("figures") or {}).items():
+            klow = k.lower()
+            at_soc = (csoc == soc) or (soc in k)     # call anchored on soc, OR the row names it
+            if not at_soc:
+                continue
+            if any(kw in klow for kw in keys):
                 try:
                     val = float(v)
                 except (TypeError, ValueError):
@@ -162,6 +218,81 @@ def surfaced_both_demands(t: dict) -> dict:
             "detail": {"full_sector_reading": bool(full_cue), "served_reading": bool(served_cue)}}
 
 
+def _named_socs(text: str, figures: dict | None) -> set[str]:
+    """SOC codes the analyst names in a turn — from prose AND from the call's figure/row labels."""
+    out = set(_SOC_RE.findall(text or ""))
+    for k in (figures or {}):
+        out |= set(_SOC_RE.findall(k))
+    return out
+
+
+def _named_tops(text: str, figures: dict | None) -> set[str]:
+    """TOP6 program codes the analyst names in a turn — from prose AND from figure/row labels."""
+    out = set(_TOP6_RE.findall(text or ""))
+    for k in (figures or {}):
+        out |= set(_TOP6_RE.findall(k))
+    return out
+
+
+def forward_reverse_membership(t: dict) -> dict:
+    """Set-membership (⊇), NEVER magnitude. If the analyst says program P prepares students for
+    occupation O (a FORWARD ``program_pathways`` anchored on P), and later reads O's programs in
+    REVERSE (``program_pathways`` / ``occupation_profile`` anchored on O), then O's feeder set must
+    CONTAIN P. The crosswalk is many-to-many and lossy, so we assert only the *edge's* bidirectional
+    presence — the analyst may legitimately compress (name 2 of 8 occupations), so we check only the
+    edges it actually asserted forward, and only where it went reverse on that occupation. A dropped
+    edge (forward said P→O; reverse from O omits P) is the inconsistency this catches."""
+    forward: list[tuple[str, set[str]]] = []     # (program P, {SOCs P prepares for})
+    reverse: dict[str, set[str]] = {}            # SOC O -> {feeder programs named}
+    for turn in _analyst_turns(t):
+        text = turn.get("text", "")
+        for c in (turn.get("tool_calls") or []):
+            if _tool(c) not in ("program_pathways", "pathway", "occupation_profile"):
+                continue
+            figs = c.get("figures")
+            prog, soc = _call_program(c), _call_soc(c)
+            if prog:                                      # forward: program → occupations
+                forward.append((prog, _named_socs(text, figs)))
+            elif soc:                                     # reverse: occupation → programs
+                reverse.setdefault(soc, set()).update(_named_tops(text, figs))
+    checked, violations = [], []
+    for prog, socs in forward:
+        for o in socs:
+            if o in reverse:                              # only where a reverse read corroborates
+                checked.append([prog, o])
+                if prog not in reverse[o]:
+                    violations.append({"program": prog, "occupation": o,
+                                       "reverse_feeders": sorted(reverse[o])})
+    detail = {"edges_checked": len(checked), "violations": violations}
+    if not checked:
+        detail["note"] = "no forward edge had a reverse read to corroborate (vacuous pass)"
+    return {"check": "forward_reverse_membership", "pass": not violations, "detail": detail}
+
+
+# Unknown-language cues: a value the tool did not return must read as unknown, never as 0.
+_UNKNOWN_LANG = re.compile(r"unknown|unavailable|not available|don'?t have|no data|not reported|"
+                           r"suppress|can'?t say|out of scope|isn'?t (?:tracked|available)", re.I)
+# Structural-zero cues: a real 0 (a verifiable no-program fact) named AS zero-with-a-reason.
+_STRUCTURAL_ZERO = re.compile(r"no (?:program|completer|pipeline)|none of (?:your|its)|"
+                              r"you (?:don'?t|do not) (?:run|offer|have)|graduates? no one", re.I)
+
+
+def absence_not_zero_language(t: dict) -> dict:
+    """A gated / blank figure is UNKNOWN, never 0; a structural 0 (a member with no program) is a
+    real zero that must be named WITH its reason (no program), distinct from unknown. Fires only when
+    the transcript actually carries an absent figure (a ``gated`` call, or a ``figures`` value of
+    None) — otherwise it passes vacuously, so it never penalizes a fully-populated answer."""
+    gated = any(c.get("gated") for c in _calls(t))
+    none_figs = any(v is None for c in _calls(t) for v in (c.get("figures") or {}).values())
+    if not (gated or none_figs):
+        return {"check": "absence_not_zero_language", "pass": True, "detail": "no absent figure"}
+    text = " ".join(x.get("text", "") for x in _analyst_turns(t))
+    ok = bool(_UNKNOWN_LANG.search(text) or _STRUCTURAL_ZERO.search(text))
+    return {"check": "absence_not_zero_language", "pass": ok,
+            "detail": {"gated": gated, "none_figures": none_figs,
+                       "named_as_unknown_or_structural": ok}}
+
+
 # ── metamorphic runner (the new primitive) ──
 def _apply(relation: str, a: float, b: float) -> bool:
     band = max(1.0, 0.02 * abs(a or b or 1))
@@ -173,16 +304,34 @@ def _apply(relation: str, a: float, b: float) -> bool:
 
 
 def run_group(group_id: str, invariant: str, by_role: dict[str, dict],
-              oracle=None) -> dict:
+              oracle=None, figure_fn=None) -> dict:
     """Apply a metamorphic law across a probe group's transcripts.
-    ``by_role`` maps role ('A','B') → transcript. ``oracle(role)`` optionally supplies the
-    figure from the seed instead of self-report (the CI hard-gate)."""
+    ``by_role`` maps role ('A','B') → transcript. ``oracle(role)`` optionally supplies the figure
+    from the seed instead of self-report (the CI hard-gate). ``figure_fn(transcript)`` overrides how
+    a role's figure is read — used for a coordinate-AWARE law that must match a coordinate before
+    comparing (auto-bound below from the group id for ``coordinate_identity``)."""
     law = LAWS[invariant]
     measure, relation = law["measure"], law["relation"]
+
+    # A coordinate-aware law (coordinate_identity) reads its measure only AT the group's coordinate,
+    # never by a bare keyword match — so a different occupation's figure, or a coordinate-less
+    # sector-grain demand figure, is never compared (the two-demand non-collision guard). The SOC is
+    # parsed from the group id (e.g. "coordinate_identity_openings_51-4041"), the convention the
+    # phase-1 groups already follow.
+    if figure_fn is None and law.get("coordinate_aware"):
+        # NB: a bare SOC pattern, NOT _SOC_RE — the group id joins on underscores
+        # ("coordinate_identity_openings_51-4041") and \b does not fire between "_" and a digit
+        # (both are word chars), so _SOC_RE would miss it and silently fall back to _figure_by_key.
+        m = re.search(r"\d{2}-\d{4}", group_id)
+        if m:
+            soc = m.group(0)
+            figure_fn = lambda t: coordinate_figure(t, soc, measure)
 
     def figure(role, t):
         if oracle is not None:
             return oracle(role)
+        if figure_fn is not None:
+            return figure_fn(t)
         return _figure_by_key(t, measure)
 
     a, b = by_role.get("A"), by_role.get("B")
@@ -198,14 +347,22 @@ def run_group(group_id: str, invariant: str, by_role: dict[str, dict],
             "detail": {"A": fa, "relation": relation, "B": fb}}
 
 
+# Seam-specific per-transcript checks, beyond the always-on golden_traversal + establish + coordinate.
+_SEAM_CHECKS: dict[str, list] = {
+    "two_demand": [surfaced_both_demands],
+    "forward_reverse": [forward_reverse_membership],
+    "absence_zero": [absence_not_zero_language],
+}
+
+
 # ── driver over a set of captured transcripts ──
 def run(transcript: dict, probe: dict | None = None) -> dict:
-    """Per-transcript checks for one probe's transcript (adversarial/golden probes)."""
+    """Per-transcript checks for one probe's transcript (adversarial/golden/per-transcript probes)."""
     results = []
     if probe is not None:
         results.append(golden_traversal(transcript, probe))
-        if probe.get("seam") == "two_demand":
-            results.append(surfaced_both_demands(transcript))
+        for chk in _SEAM_CHECKS.get(probe.get("seam"), []):
+            results.append(chk(transcript))
     results.append(establish_order(transcript))
     results.append(coordinate_named(transcript))
     return {"pathway_id": transcript.get("pathway_id"),
