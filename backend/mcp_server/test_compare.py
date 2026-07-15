@@ -271,10 +271,19 @@ def test_college_sector_supply_is_conservative(member, sector):
 
 
 @requires_graph
-def test_compare_view_link_unavailable():
-    """A comparison has no single dashboard view — view_link is 'unavailable', never a broken link."""
-    env = F.compare("svamp", unit_type="program", criterion="completions", sector="adm")
-    assert env.view_link.status == "unavailable" and env.view_link.url is None
+def test_compare_view_link_lands_on_the_unit_lens():
+    """A comparison's corroborating view opens the dashboard lens for the compared unit — the same
+    units the ranking shows, so a practitioner can reconstruct it (a coarser second window: the lens
+    opens on the set, not pre-sorted by the compare axis, disclosed in the note). The lens tracks
+    unit_type: programs → programs lens, occupations → occupations lens, colleges → the coverage
+    panel. Pure-string coherence + the regression guard live in mcp_server/test_viewlink.py."""
+    prog = F.compare("svamp", unit_type="program", criterion="completions", sector="adm")
+    assert prog.view_link.status == "ok" and "lens=programs" in (prog.view_link.url or "")
+    occ = F.compare("svamp", unit_type="occupation", criterion="regional_openings", sector="adm")
+    assert occ.view_link.status == "ok" and "lens=occupations" in (occ.view_link.url or "")
+    coll = F.compare("svamp", unit_type="college", criterion="supply_share", sector="adm")
+    if not coll.licensing.gates:
+        assert coll.view_link.status == "ok" and "panel=programs.coverage" in (coll.view_link.url or "")
 
 
 @requires_graph
