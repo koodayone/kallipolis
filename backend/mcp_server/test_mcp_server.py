@@ -26,7 +26,7 @@ Coverage:
     and byte-identical determinism
   - [graph] unmet_demand greenfield invariant: every surfaced occupation has member
     supply == 0 (verified independently through CAN.supply) AND clears the quality gate
-    (CC-servable education, wage ≥ $50k, ≥ 100 openings/yr), ranked by opportunity
+    (CC-servable education, wage ≥ $50k, ≥ 100 openings/yr), ranked by annual openings
 """
 from __future__ import annotations
 
@@ -404,9 +404,11 @@ def test_unmet_demand_greenfield_invariant(member):
         # greenfield never suggests a curriculum that can't exist (same exclusion as the gap view)
         from partnerships.sectors import PROMOTION_SOCS
         assert soc not in PROMOTION_SOCS, f"{soc} is a promotion role, not a greenfield opportunity"
-    # ranked by opportunity (annual openings × median wage), descending
-    opp = [r.values["annual_openings"].value * r.values["annual_wage"].value for r in env.data.rows]
-    assert opp == sorted(opp, reverse=True)
+    # ranked by annual openings (descending), median wage breaks ties — the decomposed NAMED axis,
+    # not a hidden openings×wage "opportunity" product; the axis is also named structurally.
+    assert env.data.sorted_by and env.data.sorted_by.key == "annual_openings"
+    ranks = [(r.values["annual_openings"].value, r.values["annual_wage"].value) for r in env.data.rows]
+    assert ranks == sorted(ranks, reverse=True)
     # n_unmet is the pre-truncation count; the top-N rows never exceed it
     assert env.data.summary["n_unmet"].value >= len(env.data.rows)
     # provenance carried once, spanning demand (coe) + supply (datamart)

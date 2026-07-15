@@ -101,10 +101,23 @@ class Row(BaseModel):
     roster: list["Row"] = Field(default_factory=list)
 
 
+class SortAxis(BaseModel):
+    """The named measure a ranked response is sorted by — surfaced structurally so
+    the axis is never only implied by row order or buried in prose. A fuzzy
+    predicate ("attractive") is resolved to one of these named axes and disclosed,
+    never collapsed into a hidden composite score."""
+
+    key: str
+    label: str
+    unit: str = ""
+    direction: Literal["higher", "lower"] = "higher"   # which end ranks first
+
+
 class DataBlock(BaseModel):
     summary: dict[str, QualifiedValue] = Field(default_factory=dict)
     rows: list[Row] = Field(default_factory=list)   # top-N salient only
     more: Optional[More] = None
+    sorted_by: Optional[SortAxis] = None   # the named axis rows are ranked by (rankings only)
 
 
 class Framing(BaseModel):

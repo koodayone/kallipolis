@@ -173,9 +173,10 @@ def _compare_description() -> str:
                      for ut, crits in _COMPARE_REGISTRY.items())
     parts = [
         f.question, f.meaning, f"Criteria you can rank by:\n{menu}", f"Guardrail: {f.guardrail}",
-        ("Reach for this to RANK a member's programs against each other by a specific measure "
-         "(biggest, fastest-growing, most under-supplied) — typically after sector_overview has "
-         "shown the portfolio; drill a ranked program with program_pathways."),
+        ("Reach for this to RANK a set of analogous units against each other by a named measure — a "
+         "member's programs, the sector's occupations, or the region's colleges (the unit_type). Map a "
+         "loose ask ('which occupations are attractive') to a named criterion, rank by it, and say "
+         "which; typically after sector_overview has framed the portfolio."),
         ("Needs an established institution and sector; an unknown unit_type or criterion returns the "
          "valid menu rather than guessing."),
     ]
@@ -260,7 +261,7 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
 
 
 @mcp.tool(name="compare", description=_compare_description())
-def compare(member: str, unit_type: str = "program", criterion: str = "addressable_demand",
+def compare(member: str, unit_type: str = "program", criterion: str = "",
             sector: str = "") -> AnalysisEnvelope:
     return F.compare(member, unit_type=unit_type, criterion=criterion, sector=sector)
 
