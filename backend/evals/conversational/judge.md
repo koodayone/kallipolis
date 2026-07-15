@@ -9,6 +9,12 @@ Judge only what code cannot. Do NOT re-litigate the deterministic checks (tracea
 routing, view-link, no-invented-score) — take those as given. Focus on the interpretive principles
 and the balances.
 
+**Substrate gate.** The pre-gate results include the substrate checks (traceability, cross-tool
+consistency, dashboard corroboration). **If any SUBSTRATE check failed, the model is relaying a
+number that is itself wrong or inconsistent — that is NOT a model failure.** Set `fix_layer` to the
+substrate layer, name it in `worst_failure`, and do not penalize the prose principles for a figure
+the substrate got wrong. DOCTRINE is the fix only for a prose failure on a sound substrate.
+
 ## Score each principle — pass / partial / fail, with one line of quoted evidence
 - **II. Say it plainly** — practitioner language, no internal machinery, no wall of caveats, concise.
   Would a busy dean understand it at a glance?
@@ -40,7 +46,8 @@ Report `balanced`, or `erred_<pole>`.
     "compelling_vs_honest": "balanced|erred_compelling|erred_honest"
   },
   "worst_failure": "the single most important thing to fix, one sentence",
-  "fix_points_at": "the constitution principle + a guess at the DOCTRINE/guardrail line to change"
+  "fix_layer": "data | computation (quantities.py) | envelope | guardrail | doctrine | model-nondeterminism",
+  "fix_points_at": "the specific resolver / envelope field / guardrail / DOCTRINE clause to change — 'doctrine' or 'model-nondeterminism' ONLY when the substrate was sound and the fault is purely the prose"
 }
 ```
 

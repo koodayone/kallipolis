@@ -5,6 +5,17 @@ Run this from a **fresh Claude Code session started after the DOCTRINE deploy.**
 conversation start, so only a fresh session primes the model-under-test with the *current* DOCTRINE;
 a stale session tests the old priming.
 
+## Tier A gates this — the substrate must be sound first
+Run the substrate property tests BEFORE any conversation:
+```
+pytest backend/evals/conversational/test_substrate.py \
+       backend/mcp_server/test_compare.py -k "referential or corroboration"
+```
+They assert the numbers are correct, consistent across tools, and consistent with the dashboard (the
+two-window invariant). **If any fail, stop and fix the computation / envelope / data — never grade
+prose on a broken substrate** (you'd tune the prompt against a wrong number). The loop below is
+meaningful only on a green Tier A.
+
 ## The loop — all on the subscription, no API key
 For each pathway in `pathways.py`:
 
