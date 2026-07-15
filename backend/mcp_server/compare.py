@@ -521,7 +521,7 @@ def compare(member: str, unit_type: str = "program", criterion: str = "",
                       "composite; a ranking is defensible because each figure traces to its authority."]),
         next_moves=next_moves,
         view_link=V.view_link("compare", instance_id=ctx.spec.id, member_id=ctx.entry["member_id"],
-                              sector_id=ctx.entry["sector_id"]),
+                              sector_id=ctx.entry["sector_id"], unit_type=ut),
         provenance=P.build_provenance(
             [c.field for c in crits.values()],
             scope_granularity=f"demand {ctx.region_g}; supply {ctx.region_supply_g}; member {ctx.inst_g}; "
