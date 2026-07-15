@@ -132,6 +132,32 @@ def _program_roster(colleges, top6: str, granularity: str) -> list[Row]:
 
 # ── gap ───────────────────────────────────────────────────────────────────
 
+def _unserved_occupation(entry: dict, soc: str, region_display: str) -> AnalysisEnvelope:
+    """A VALID member×sector coordinate whose requested occupation the member feeds no program
+    into: the member-anchored gap has no row for it. GATE rather than fall through to the
+    served-sector summary (which would misread a sector aggregate as this occupation's gap), and
+    route to occupation_profile — the region-derived view that gives the occupation's regional
+    demand and gap whether or not the member serves it (its member_supply is then a clean share,
+    possibly 0)."""
+    coord = coordinate_of(entry, soc=soc)
+    coord.region = region_display
+    reason = (f"{entry['member_label']} runs no active program feeding this occupation, so a "
+              f"member-anchored gap view has no row for it — the sector summary is NOT this "
+              f"occupation's figure. See occupation_profile for its regional demand and gap "
+              f"(region-derived; this member's own supply shows as its share, which may be 0).")
+    return AnalysisEnvelope(
+        form="gap", coordinate=coord,
+        framing=_framing("gap", [C.SAL_MEMBER_ANCHORED]),
+        licensing=_licensing("gap", gates=[Gate(field="gap", marker="unavailable", reason=reason)]),
+        next_moves=[NextMove(form=C.tool_name("occupation_profile"),
+                             coordinate=coordinate_of(entry, soc=soc),
+                             rationale="The occupation's regional demand, supply, and gap — "
+                                       "region-derived, not gated to what the member serves.")],
+        view_link=V.view_link("gap", instance_id=entry["id"], member_id=entry["member_id"],
+                              sector_id=entry["sector_id"], soc=soc),
+    )
+
+
 def analyze_gap(member: str, sector: str, *, soc: Optional[str] = None) -> AnalysisEnvelope:
     resolved = scope_for(member, sector)
     if resolved is None:
@@ -193,6 +219,8 @@ def analyze_gap(member: str, sector: str, *, soc: Optional[str] = None) -> Analy
     items = sorted(per_soc.items(), key=lambda kv: kv[1]["gap"], reverse=True)
     if soc is not None:
         items = [(s, r) for s, r in items if s == soc]
+        if not items:   # member serves this sector but no program feeding THIS occupation:
+            return _unserved_occupation(entry, soc, land.region_display)   # gate, don't fall to summary
     window = items if soc is not None else items[:_TOP_N]
     rows = [Row(label=f"{s} {r['title']}", values={
         "regional_demand": P.q("annual_openings", r["openings"], granularity=region_g, unit="openings/yr"),

@@ -242,6 +242,20 @@ def test_referential_integrity_occupation_with_gap(member, sector):
 
 
 @requires_graph
+def test_gap_soc_query_never_bare_summary():
+    """For a soc-filtered gap query, the response is either a member-anchored ROW (member serves the
+    occupation) or a GATE routing to occupation_profile (member doesn't) — NEVER a served-sector
+    summary under the occupation's coordinate. The misread Tier C caught: supply_demand_gaps(smccd,
+    adm, 51-4041) had returned the sector aggregate 422 as the machinists gap."""
+    env = F.analyze_gap("smccd", "adm", soc="51-4041")   # smccd serves adm; may not serve machinists
+    if env.licensing.gates:                               # unserved → gated, no misleading summary
+        assert not (env.data and env.data.summary), "a gated occupation must not ship a sector summary"
+        assert any(nm.form == "occupation_profile" for nm in env.next_moves), "gate must route to occupation_profile"
+    else:                                                 # served → a real occupation row, not a bare summary
+        assert env.data and env.data.rows, "a soc query that isn't gated must return the occupation's row"
+
+
+@requires_graph
 @pytest.mark.parametrize("member,sector", _COORDS)
 def test_college_sector_supply_is_conservative(member, sector):
     """Per-college sector supply is conservative: every region college's sector completions sum to
