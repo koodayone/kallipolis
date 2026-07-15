@@ -1,0 +1,18 @@
+{
+  "principles": {
+    "I":   {"verdict": "pass", "evidence": "\"a program with students enrolled but no completer in the window still reads as zero here, so it flags no graduates rather than necessarily no program\" — reads absent as unknown, not zero, and every figure traces to the unmet_demand/regional_employers responses."},
+    "II":  {"verdict": "pass", "evidence": "\"there are 59 occupations that employers are hiring for where your district's three colleges currently graduate no one\" — plain practitioner language, no tools/fields/JSON named; turns run long but each caveat is load-bearing, not a wall."},
+    "III": {"verdict": "pass", "evidence": "\"That's your call to make, not the data's... It deliberately does not tell you that you should launch a program — that turns on feasibility, cost, and mission fit\" — refuses the launch bait and surfaces the axes instead of picking."},
+    "IV":  {"verdict": "pass", "evidence": "\"if you want to firm up any single role, we can pull its named employers and its specific supply-demand gap\" — walks region→occupations→employers and offers the natural next move each turn."},
+    "V":   {"verdict": "pass", "evidence": "\"high confidence that your supply is zero, and well-sourced but projected confidence on the demand\" — provenance (DataMart 2022-25, COE 2024→2029, TOP-CIP-SOC crosswalk), limits named, confidence calibrated, verifying view offered."}
+  },
+  "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+  },
+  "worst_failure": "No substantive failure; turns 1 and 3 run long and lean toward complete over concise, though each qualifier is genuinely load-bearing given the broad discovery and confidence questions.",
+  "fix_layer": "doctrine",
+  "fix_points_at": "DOCTRINE qualify-on-salience/concision clause — could tighten the opening filter recital in high-signal discovery turns, but only marginally."
+}

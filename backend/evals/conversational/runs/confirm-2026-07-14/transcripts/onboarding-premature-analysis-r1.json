@@ -1,0 +1,81 @@
+{
+  "pathway_id": "onboarding-premature-analysis",
+  "turns": [
+    {
+      "role": "practitioner",
+      "text": "What's the supply-and-demand gap for welders in our region?"
+    },
+    {
+      "role": "analyst",
+      "text": "Happy to size that, but first I need to know which institution you're with, because \"our region\" is derived from your college, district, or consortium, and welding demand and supply are read against that region. When I tried to pull the welder gap without an institution set, the system sent me back to establish one first. Which college, district, or consortium do you represent?",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__supply_demand_gaps",
+          "args": {"member": "", "sector": "welding", "soc": "51-4121"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": true
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "We're the San Mateo County district."
+    },
+    {
+      "role": "analyst",
+      "text": "Got it, grounding in San Mateo County CCD, a Bay Area district. For welders (Welders, Cutters, Solderers, and Brazers), the regional picture is about 520 openings a year across the Bay Area against roughly 126 completions a year from the region's 26 colleges, leaving a gap of 394 openings a year. One thing to flag: your district runs no active welding program, so its own contribution to that supply is 0, the gap is a regional signal rather than something your current programs are feeding. Want me to look at the employers hiring welders regionally, or whether an adjacent Advanced Manufacturing program could support this role?",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__list_institutions",
+          "args": {"filter": "San Mateo"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__supply_demand_gaps",
+          "args": {"member": "smccd", "sector": "adm", "soc": "51-4121"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": true,
+          "gated": true
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__occupation_profile",
+          "args": {"member": "smccd", "occupation": "51-4121"},
+          "figures": {
+            "gap": 394,
+            "regional_annual_openings": 520,
+            "regional_supply": 126,
+            "member_supply": 0,
+            "regional_colleges": 26,
+            "district_colleges": 3
+          },
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "Is that our district's number or the whole region's?"
+    },
+    {
+      "role": "analyst",
+      "text": "The whole region's. The 394-opening gap is Bay Area-wide, regional openings minus the projected completions of all 26 colleges in the region. Your district's own piece is separate: San Mateo County CCD's three colleges completed 0 welders, so the district contributes nothing to that regional supply. There's no district-scoped welding gap of its own, because the district runs no welding program.",
+      "tool_calls": []
+    }
+  ]
+}

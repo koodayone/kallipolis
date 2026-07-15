@@ -1,0 +1,75 @@
+{
+  "pathway_id": "teach-the-ontology",
+  "turns": [
+    {
+      "role": "practitioner",
+      "text": "I'm new here — help me understand how to think about our programs and the job market."
+    },
+    {
+      "role": "analyst",
+      "text": "Welcome. The simplest way to hold it: you sit at San Mateo County CCD — a district in the Bay Area — and everything hangs off a chain. Your programs prepare students for occupations; those occupations carry regional demand — real openings employers are hiring for; and behind that demand are specific employers. Read it left to right and you go program to occupation to regional demand to employer; read it right to left and you can start from an in-demand job and ask which of your programs prepares people for it. The district runs programs across 11 sectors, and Advanced Manufacturing — the one you're focused on — carries 5 of them. So the practical questions become: what do our programs prepare students for, where does regional demand outrun what the region's colleges are producing, and who are the employers behind that demand. Two things to keep in mind about what's knowable here: wage figures are pooled statewide at the program level, not your own graduates' earnings; and where the state data is blank, that means unknown, not zero. Where would you like to start — tracing a program to the jobs it feeds, or finding the widest gap in the sector?",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {"sectors": 11, "adm_programs": 5},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "What actually connects a program to a job?"
+    },
+    {
+      "role": "analyst",
+      "text": "The connection isn't something we infer from course content — it's an external, authoritative crosswalk. Each program carries a state TOP code, which maps to federal CIP instructional codes, which map to SOC occupation codes. That TOP-to-CIP-to-SOC chain is the bridge from a program to the occupations it prepares students for. To make it concrete, take one of your Advanced Manufacturing programs — Electronics and Electric Technology, with 130 students enrolled and 4 awards last year across the district. Through 4 CIP codes it fans out to 8 occupations. Ranked by openings, the leading one is Electrical and Electronic Engineering Technologists and Technicians — about 430 openings a year in the Bay Area, median wage around $89,280. The program's own output is roughly 9.7 completions a year, against about 1,170 regional openings a year across all the occupations it feeds. One caveat that matters: that fan-out is wide, so the program-to-occupation match is approximate, not one-to-one — and that 1,170 is a pool a graduate is qualified for, not a job each one is assigned to. So the crosswalk tells you what connects a program to a job; it doesn't promise every graduate lands in the top occupation.",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__program_pathways",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": true
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__program_coverage",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {"electronics_enrollment": 130, "electronics_awards": 4},
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__program_pathways",
+          "args": {"member": "smccd", "sector": "adm", "program": "093400"},
+          "figures": {"occupations_fed": 8, "bridging_cips": 4, "member_supply": 9.7, "addressable_demand": 1170, "top_occupation_openings": 430, "top_occupation_wage": 89280},
+          "sorted_by": "annual_openings",
+          "view_link": true,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "What's the single most useful thing to look at first?"
+    },
+    {
+      "role": "analyst",
+      "text": "The single most useful first look is the supply-demand gap for the sector — regional openings set against what the region's colleges actually produce, occupation by occupation. It tells you where the market is short. Across Advanced Manufacturing, the Bay Area shows about 1,240 openings a year against roughly 818 completions a year from all 26 of the region's colleges — a net regional gap of about 422 openings a year. Your district's own share of that supply is about 28 completions a year, 15 in the most recent year. Of the four occupations this view covers, one stands out where demand clearly outruns supply: Industrial Machinery Mechanics — about 550 openings a year against roughly 159 completions region-wide, a shortfall of about 391 a year. Your district contributes about 11 of those completions a year, and just 1 in the latest year. The other three occupations here actually run in surplus — the region already completes more than it hires — so the gap sits squarely on that one occupation. Two things frame this: the gap is regional, and the supply side is a three-year average projection, not a single year's count. And this view is anchored to occupations you already serve with an active program, so it won't surface demand in occupations you don't yet offer — absence here isn't absence of regional demand.",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__supply_demand_gaps",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {"regional_demand": 1240, "regional_supply": 817.7, "member_supply": 28.3, "gap": 422, "latest_year_supply": 15, "regional_colleges": 26, "occupations_shown": 4, "imm_regional_demand": 550, "imm_regional_supply": 159.3, "imm_gap": 391, "imm_member_supply": 11, "imm_latest_year_supply": 1},
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        }
+      ]
+    }
+  ]
+}

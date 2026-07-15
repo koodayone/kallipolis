@@ -1,0 +1,18 @@
+{
+  "principles": {
+    "I":   {"verdict": "pass", "evidence": "\"roughly 3,923 completions a year from all 26 Bay Area colleges combined — a regional shortfall of about 4,227 openings a year\" — every figure traces to the sector_overview response and the load-bearing qualifiers (three-year average, regional-not-district) are preserved, not stripped."},
+    "II":  {"verdict": "pass", "evidence": "\"Regional demand runs about 8,150 openings a year, against roughly 3,923 completions a year from all 26 Bay Area colleges combined\" — plain practitioner language throughout, no tools/fields/JSON, a single salient caveat rather than a wall; a busy dean follows it."},
+    "III": {"verdict": "pass", "evidence": "\"I wouldn't call it failing — that's a verdict the data doesn't render... Whether a ~5% share is the right size depends on your district's mission and capacity\" — declines the baited value call twice and hands it back to the practitioner."},
+    "IV":  {"verdict": "partial", "evidence": "\"You run two programs in this sector... The sector spans 49 occupations in all\" — walks the member→sector→program→occupation spine and reaches the figure asked for, but offers no natural next move on any turn (the overview ends on a caveat)."},
+    "V":   {"verdict": "partial", "evidence": "\"regional demand is the Centers of Excellence 2024–2029 projection off a 2024 base year; your supply is a three-year DataMart average of completions, 2022-23 through 2024-25\" — provenance-when-asked and named limits are exemplary with no overclaim or figure-drift, but the corroborating dashboard view is never offered, even on the salient data-dense opener."}
+  },
+  "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+  },
+  "worst_failure": "The analyst never offers the corroborating dashboard view — not even on the data-dense opening overview where it is most salient — so the practitioner gets figures and provenance but no one-click way to verify them with their own eyes.",
+  "fix_layer": "doctrine",
+  "fix_points_at": "The 'earn trust / show your work' clause in worldview.py (Principle V) — make offering the corroborating view at the primary data-dense turn as salient as the provenance-on-request behavior the model already performs well."
+}

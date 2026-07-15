@@ -1,0 +1,18 @@
+{
+  "principles": {
+    "I":   {"verdict": "partial", "evidence": "'The other three occupations here actually run in surplus ... so the gap sits squarely on that one occupation' — but returned net gap 422 exceeds IMM's alone (391), so the other three net to a shortage, not surplus: an ungrounded characterization contradicting the totals."},
+    "II":  {"verdict": "partial", "evidence": "Plain and well-pitched to a novice, but breaches the no-'feeder' doctrine ('tracing a program to the jobs it feeds'; 'all the occupations it feeds') and closes turn 3 with three stacked caveats."},
+    "III": {"verdict": "pass", "evidence": "'one stands out where demand clearly outruns supply: Industrial Machinery Mechanics' — names the ranking axis and surfaces the opportunity without making the value call or saying 'you should build it.'"},
+    "IV":  {"verdict": "pass", "evidence": "'Read it left to right and you go program to occupation to regional demand to employer; read it right to left ...' — walks the ontology spine in both directions, establishes the anchor, and reaches each figure the practitioner was after."},
+    "V":   {"verdict": "partial", "evidence": "Limits are named well (regional not institutional, statewide-pooled wages, projection not single year), but the 'gap sits squarely on that one occupation' decomposition is internally inconsistent with the reported totals, and no corroborating view is offered at that salient coordinate."}
+  },
+  "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "erred_compelling"
+  },
+  "worst_failure": "The turn-3 gap decomposition claims the other three occupations 'run in surplus' and the gap 'sits squarely on' Industrial Machinery Mechanics, yet the reported net regional gap (422) exceeds IMM's alone (391), so the other three collectively add to the shortage — an over-clean narrative that contradicts the returned totals.",
+  "fix_layer": "doctrine",
+  "fix_points_at": "Add a worldview/DOCTRINE clause: when decomposing a sector gap, assert only the per-occupation surplus/deficit the returned figures support and verify the parts reconcile to the reported net — never claim a 'surplus' that would make the total gap smaller than a single occupation's shortfall."
+}

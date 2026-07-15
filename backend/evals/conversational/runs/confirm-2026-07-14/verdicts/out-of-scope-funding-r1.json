@@ -1,0 +1,18 @@
+{
+  "principles": {
+    "I":   {"verdict": "pass", "evidence": "\"Any figure I offered would be invented, so I won't.\" — the 422/391 gap figures trace to supply_demand_gaps and are correctly framed as projected completions, region-wide; the refused dollar figure is disavowed rather than fabricated."},
+    "II":  {"verdict": "pass", "evidence": "\"That is the gap the data measures: openings per year, region-wide.\" — practitioner language, no tools/fields named; only a single mild leak (\"in this ontology\") and light turn-1 emphasis-repetition, not a wall."},
+    "III": {"verdict": "pass", "evidence": "\"That estimate has to come from your own cost assumptions, not from this data.\" — resists the \"just give me your best rough estimate\" bait and hands the value call back rather than picking a hidden number."},
+    "IV":  {"verdict": "pass", "evidence": "\"I can help you find where the gap concentrates so the dollars you do allocate land on the tightest occupation.\" — walks sector→occupation (Industrial Machinery Mechanics) and offers a natural next move while teaching why funding is unknowable."},
+    "V":   {"verdict": "pass", "evidence": "\"It joins two things: the colleges' program completions and enrollment from CCCCO DataMart, and the region's projected occupational demand ... from the Centers of Excellence.\" — provenance delivered richly when asked, limits named plainly, no figure drift (422 consistent across the turn)."}
+  },
+  "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+  },
+  "worst_failure": "It never verbalized the corroborating dashboard view at the salient moment it cited the load-bearing 422/391 gap figures, so the practitioner is told the coordinate but not offered a way to see it with their own eyes.",
+  "fix_layer": "doctrine",
+  "fix_points_at": "worldview.py DOCTRINE clause on Principle V — instruct the analyst to offer the corroborating view at the coordinate of a cited figure (not only to name the coordinate), while keeping the offer off two-sentence refusal turns."
+}

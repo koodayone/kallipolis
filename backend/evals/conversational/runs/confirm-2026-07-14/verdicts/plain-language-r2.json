@@ -1,0 +1,18 @@
+{
+  "principles": {
+    "I":   {"verdict": "pass", "evidence": "\"which leaves about 4,227 openings a year the region's colleges aren't currently putting graduates into\" — gap stated as demand minus regional supply, region-wide qualifier preserved, every figure traces to sector_overview."},
+    "II":  {"verdict": "partial", "evidence": "\"Electronics and Electric Technology (about 9.7 completions a year, against roughly 1,170 openings across the jobs it prepares people for)\" — plainly worded but too granular for a stated brand-new dean, prompting \"That's still too technical — simpler.\""},
+    "III": {"verdict": "pass", "evidence": "\"You're a small piece of a big regional shortage.\" — a characterization of position, never a value call, funding pick, or \"you should.\""},
+    "IV":  {"verdict": "partial", "evidence": "\"Your district's part of that regional output is about 200 completions a year — roughly 5% of the region's total — coming out of 2 programs here\" — walks member→sector→program well, but no natural next move is ever offered."},
+    "V":   {"verdict": "pass", "evidence": "\"the demand figure is region-wide and your supply is your district's slice of the region, so that ~4,227 gap is a Bay Area gap, not yours alone to close. And the supply figures are 3-year averages\" — limits named at salience not buried, figures consistent across all three turns."}
+  },
+  "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "erred_precise",
+    "compelling_vs_honest": "balanced"
+  },
+  "worst_failure": "The opening reply to a 'brand-new dean, plain terms' request over-delivered program-level granularity (per-program supply vs addressable demand, 49 occupations), forcing the practitioner to ask twice for simpler; it should have led at dean altitude and layered detail only on request.",
+  "fix_layer": "doctrine",
+  "fix_points_at": "worldview.py DOCTRINE Principle II (plainness / qualify-on-salience) clause — add a progressive-disclosure directive: when the practitioner sets a novice altitude ('brand-new dean', 'plain terms'), lead with the three-number headline (demand / regional supply / your supply) and withhold program-level breakdowns until asked."
+}

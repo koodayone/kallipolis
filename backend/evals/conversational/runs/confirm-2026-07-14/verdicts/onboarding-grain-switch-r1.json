@@ -1,0 +1,20 @@
+{
+  "principles": {
+    "I":   {"verdict": "pass", "evidence": "\"the regional gap you're working against holds at 4,227 openings a year\" — regional≠institutional held exactly; footprint and share trace to returned figures (200.3, 0.051, 101, 0.026)."},
+    "II":  {"verdict": "pass", "evidence": "\"the demand figures are the Centers of Excellence 2024–2029 projection, and supply is a 3-year average of DataMart completions\" — two provenance notes, not a wall; practitioner language throughout, no tool/field names."},
+    "III": {"verdict": "pass", "evidence": "\"Want to go to the occupation level to see where the gaps concentrate?\" — offers next moves, makes no value call or recommendation."},
+    "IV":  {"verdict": "pass", "evidence": "\"Those two programs are Electronics and Electric Technology ... supporting 8 occupations ... and Energy Systems Technology ... 5 occupations\" — walks member→sector→program→occupation and teaches how grain interacts with regional vs member figures."},
+    "V":   {"verdict": "pass", "evidence": "\"the most recent single year can run higher or lower\" — volunteers a limit and provenance unasked, keeps the gap (4,227) and Skyline supply/share consistent across all three turns with no drift."}
+  },
+  "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+  },
+  "worst_failure": "On the figure-dense turns the analyst gives provenance but never explicitly offers the corroborating dashboard view, so the practitioner is never invited to verify the numbers with their own eyes at salience.",
+  "fix_layer": "doctrine",
+  "fix_points_at": "The DOCTRINE clause implementing Principle V's 'offer the view to verify with their own eyes' — surface the corroborating dashboard link on figure-dense turns where doing so would not break concision.",
+  "establishment": "pass",
+  "establishment_evidence": "\"let me switch the frame from Skyline alone to the whole district. San Mateo County CCD is the district-level view; it spans its colleges (Skyline is one of them)\" — grounds Skyline at college grain first, re-grounds to the district on the switch without a premature scoped measure, then explains the scope (district ⊇ college) doubles the footprint while the regional gap holds."
+}

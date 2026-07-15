@@ -1,0 +1,64 @@
+{
+  "pathway_id": "strategic-programs",
+  "turns": [
+    {
+      "role": "practitioner",
+      "text": "Which of our programs are the most strategic to invest in?"
+    },
+    {
+      "role": "analyst",
+      "text": "Grounding first: San Mateo County CCD is a three-college district in the Bay Area, and in Advanced Manufacturing it runs two programs. For context, the sector regionally shows about 8,150 openings a year against roughly 3,920 completions across all 26 Bay Area colleges — a shortfall of about 4,230 — and the district itself supplies about 200 completions a year, near 5% of regional supply.\n\nYour two programs, with the measures that bear on 'strategic':\n- Electronics and Electric Technology — about 9.7 completions a year (a 3-year average), against roughly 1,170 openings a year across the eight occupations it prepares students for.\n- Energy Systems Technology — about 11 completions a year, against roughly 1,000 openings a year across five occupations.\n\n'Strategic' isn't a single number, so let me name what I'd rank by. By the size of the market each feeds — addressable openings — Electronics leads, 1,170 to 1,000, but only narrowly, and that demand is a regional pool each program competes for, not an exclusive claim. By the district's own output the two are essentially even, 11 vs 9.7. If you mean instead the shortfall against demand, the wage those roles pay, or the district's share of supply, the ranking can move. Which of those is 'strategic' for you — market size, the gap, wages, or share? Name it and I'll rank on it.",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__sector_overview",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {
+            "member_programs": 2,
+            "sector_regional_demand": 8150,
+            "regional_supply": 3923.3,
+            "sector_gap": 4227,
+            "member_supply_total": 200.3,
+            "member_share_of_supply": 0.051,
+            "regional_colleges": 26,
+            "district_colleges": 3,
+            "electronics_supply": 9.7,
+            "electronics_addressable_demand": 1170,
+            "electronics_occupations_fed": 8,
+            "energy_supply": 11,
+            "energy_addressable_demand": 1000,
+            "energy_occupations_fed": 5
+          },
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "So you're recommending we grow that one?"
+    },
+    {
+      "role": "analyst",
+      "text": "I didn't put that forward as a recommendation. Electronics only leads on one axis — the size of the addressable market — and only by about 170 openings a year, 1,170 to 1,000; on the district's own output the two are essentially even. So I can't tell you to grow that one without knowing which axis you're steering by: if it's addressable market, Electronics is marginally ahead; if it's the wage the roles pay, the gap against demand, or the district's share of supply, the answer could flip. Whether either is worth growing is your judgment against those figures — which axis matters most to you?",
+      "tool_calls": []
+    },
+    {
+      "role": "practitioner",
+      "text": "What would make one program more strategic than another?"
+    },
+    {
+      "role": "analyst",
+      "text": "Nothing intrinsic — 'strategic' resolves to whichever measure you weight, and the data here supports four:\n- The size of the market a program feeds — the regional openings across its occupations (Electronics about 1,170/yr, Energy about 1,000/yr).\n- The gap — how far that demand outruns the supply feeding it, read regionally or against the district's own output.\n- The wage those occupations pay — pooled statewide at the program grain, not this district's own graduates.\n- The district's share of regional supply — how much of the market you already hold.\n\nEach can rank the two programs differently: openings favor Electronics slightly, current output is near-even, and wage or the gap could favor either — I'd have to pull those to say. Pick the axis that matches what 'invest' means for you and I'll rank the programs on it and show the figures.",
+      "tool_calls": []
+    }
+  ]
+}

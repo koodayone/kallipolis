@@ -1,0 +1,84 @@
+{
+  "pathway_id": "attractive-occupations",
+  "turns": [
+    {
+      "role": "practitioner",
+      "text": "Which occupations are attractive for us to focus on?"
+    },
+    {
+      "role": "analyst",
+      "text": "First, to ground us: you're the San Mateo County CCD, a three-college district in the Bay Area, and in Advanced Manufacturing your district currently supplies into four occupations. \"Attractive\" isn't a single number, so let me name the measure and give you the menu.\n\nIf \"attractive\" means where the region hires more than its colleges produce, the supply-demand gap, then among the four occupations you already serve only one clears that bar: Industrial Machinery Mechanics (SOC 49-9041), 550 regional openings a year against about 159 completions region-wide, a gap of roughly 391 openings; your district supplies 11 of those completions. The other three you serve are net-oversupplied region-wide, meaning the region's colleges already complete more than the region hires: Electro-Mechanical/Mechatronics Technicians (gap -333), Electrical and Electronic Engineering Technicians (-322), and Semiconductor Processing Technicians (-53).\n\nIf instead \"attractive\" means raw hiring volume, regional openings, the four rank: Industrial Machinery Mechanics (550), Electrical/Electronic Engineering Techs (430), Semiconductor Processing Techs (180), Mechatronics Techs (80).\n\nOne caveat on that view: it only covers occupations you already serve. Widening to occupations your district trains no one into, there are 59 such greenfield roles region-wide. But ranked by openings, the top of that list, drawn from all 59, sits outside Advanced Manufacturing: Customer Service Representatives (5,450 openings), Heavy/Tractor-Trailer Truck Drivers (3,680), and Nursing Assistants (3,570). The manufacturing-adjacent ones that surface are Maintenance and Repair Workers (3,340) and Inspectors/Testers/Sorters (1,680).\n\nSo the shortlist depends on your axis: the gap points to Industrial Machinery Mechanics; openings points there too but keeps Electrical/Electronic Techs in view; and greenfield opens a wider, cross-sector menu. Which axis matters most to you?",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__sector_overview",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {"district_colleges": 3, "regional_colleges": 26},
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__supply_demand_gaps",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {
+            "occupations_served": 4,
+            "imm_49_9041_regional_openings": 550,
+            "imm_49_9041_regional_supply": 159.3,
+            "imm_49_9041_member_supply": 11,
+            "imm_49_9041_gap": 391,
+            "ee_tech_17_3023_regional_openings": 430,
+            "ee_tech_17_3023_gap": -322,
+            "semiconductor_51_9141_regional_openings": 180,
+            "semiconductor_51_9141_gap": -53,
+            "mechatronics_17_3024_regional_openings": 80,
+            "mechatronics_17_3024_gap": -333
+          },
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__unmet_demand",
+          "args": {"member": "smccd"},
+          "figures": {
+            "n_unmet_occupations": 59,
+            "customer_service_reps_43_4051_openings": 5450,
+            "truck_drivers_53_3032_openings": 3680,
+            "nursing_assistants_31_1131_openings": 3570,
+            "maintenance_repair_49_9071_openings": 3340,
+            "inspectors_testers_51_9061_openings": 1680
+          },
+          "sorted_by": "annual_openings",
+          "view_link": false,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "Just tell me the single best one to go after."
+    },
+    {
+      "role": "analyst",
+      "text": "There isn't a single \"best\" independent of what you're optimizing for, so let me make it contingent rather than hand you a blended pick:\n\n- If your axis is the supply-demand gap, where the region hires more than its colleges produce, the one occupation you already serve that clears that bar is Industrial Machinery Mechanics, a gap of about 391 openings a year.\n- If your axis is raw regional hiring volume among what you serve, it's still Industrial Machinery Mechanics (550 openings), ahead of Electrical/Electronic Engineering Techs (430).\n- If your axis is greenfield scale, the biggest unserved demand regardless of sector, it's Customer Service Representatives (5,450 openings), which is outside Advanced Manufacturing.\n\nWithin Advanced Manufacturing the gap and the openings axes agree on Industrial Machinery Mechanics. If that's your axis, that's your pick. Which axis is yours?",
+      "tool_calls": []
+    },
+    {
+      "role": "practitioner",
+      "text": "Why rank them that way and not another?"
+    },
+    {
+      "role": "analyst",
+      "text": "Because \"attractive to focus on\" isn't self-defining, it's a choice among axes, and I named the two that fit your question best rather than inventing a score:\n\n- Gap (regional openings minus the region's projected completions) is the axis that says the region needs more of these than its colleges produce, the natural read of \"where to focus\" if the goal is unmet demand. Industrial Machinery Mechanics is the only served occupation with a positive gap.\n- Openings (raw regional hiring) is the axis if you care about market size regardless of current supply.\n\nI deliberately did not collapse them into one blended ranking, because a single number would hide that the axes can disagree and would have you trusting my weighting instead of yours.\n\nOther axes are legitimate and would reorder things: median wage, five-year growth, or your own district's share of regional supply. I led with gap and openings because your question was about where demand is; if your real axis is pay or momentum, tell me and I'll re-rank.\n\nOn where the order comes from, so you can weigh how far to trust it: the demand and openings figures are the Centers of Excellence regional projection, 2024 base-year employment projected across 2024-2029 for the Bay Area. The supply figures are CCCCO DataMart completions, a trailing three-year average (2022-23 through 2024-25) across each occupation's programs, which is why I call it projected supply rather than one year's count. The gap is those two differenced, so it inherits both. One caution on precision: these are small counts, so read the ordering as directional, not decimal-exact.",
+      "tool_calls": []
+    }
+  ]
+}
