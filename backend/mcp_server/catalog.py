@@ -41,7 +41,9 @@ FORMS: dict[str, Form] = {
             "trailing 3-year average of DataMart completions), reconstructed on current "
             "DataMart data; it is the gap denominator, read as a projection rather than one "
             "year's raw count (see latest_year_supply). The gap is REGIONAL; the institution's "
-            "own supply is a separate figure (its share), never the gap itself."),
+            "own supply is a separate figure (its share), never the gap itself. A member's "
+            "latest-year change moves its own share, not the regional gap — do not read a "
+            "regional trend from one institution's single year."),
     ),
     "coverage": Form(
         id="coverage",

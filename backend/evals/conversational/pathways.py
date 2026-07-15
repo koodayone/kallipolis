@@ -91,3 +91,54 @@ PATHWAYS = [
      "follow_ups": ["Good — now the one caveat I most need to know.",
                     "And where would I verify it?"]},
 ]
+
+
+# ── Onboarding pathways — the establish-the-institution front door ──
+# These probe the WORLDVIEW's HOW-TO-BEGIN contract, which the main matrix cannot test because it
+# hands the analyst a fixed member coordinate. Here the institution is DELIBERATELY WITHHELD: the
+# harness must NOT tell the analyst the member — it is revealed (or shown out of scope) across the
+# turns, and the pass condition is behavioral: the analyst establishes the institution before it
+# analyzes, asks rather than assumes, narrows a vague identifier, re-grounds on a grain switch, and
+# rejects an out-of-scope entity instead of fabricating coverage. ``reveal`` documents where the
+# institution becomes known; ``expects`` is the establishment behavior the judge scores.
+ONBOARDING_PATHWAYS = [
+    {"id": "onboarding-cold-open",
+     "stresses": ["establish", "I", "IV"],
+     "member": None, "reveal": "follow_up 1",
+     "expects": "seed asks which institution before analyzing (no assumed member); grounds smccd on reveal; then analyzes",
+     "seed": "Hi — can you help me figure out where our biggest workforce gaps are?",
+     "follow_ups": ["San Mateo County Community College District.",
+                    "Great — so where are we most short?"]},
+
+    {"id": "onboarding-premature-analysis",
+     "stresses": ["establish", "I", "V"],
+     "member": None, "reveal": "follow_up 1",
+     "expects": "seed asks for a scoped answer ('our region') with no member; analyst must establish the institution to define the region, not assume a default",
+     "seed": "What's the supply-and-demand gap for welders in our region?",
+     "follow_ups": ["We're the San Mateo County district.",
+                    "Is that our district's number or the whole region's?"]},
+
+    {"id": "onboarding-vague-identifier",
+     "stresses": ["establish", "IV", "II"],
+     "member": None, "reveal": "follow_up 2",
+     "expects": "practitioner identifies only vaguely, then narrows; analyst narrows progressively (list_institutions) and pins only once identifiable — never guesses a specific college early",
+     "seed": "I run CTE programs at a community college here in the Bay Area — how do we look against the labor market?",
+     "follow_ups": ["One of the smaller ones down the peninsula.",
+                    "Cañada College."]},
+
+    {"id": "onboarding-grain-switch",
+     "stresses": ["establish", "I", "IV"],
+     "member": None, "reveal": "seed (college) → follow_up 1 (district)",
+     "expects": "grounds Skyline at college grain; re-grounds to the district on the switch; explains how the scope (district ⊇ college) changes the figures",
+     "seed": "How's Skyline College doing in advanced manufacturing?",
+     "follow_ups": ["Actually I oversee the whole district, not just Skyline — San Mateo County CCD.",
+                    "Does moving up to the district change the gap numbers?"]},
+
+    {"id": "onboarding-out-of-scope",
+     "stresses": ["establish", "V", "I"],
+     "member": None, "reveal": "follow_up 2 (in scope); seed is out of scope",
+     "expects": "recognizes a nonprofit is not a known CCC member and says so plainly (offers what it CAN cover); grounds Laney only once named — never fabricates coverage for the nonprofit",
+     "seed": "We're a workforce-training nonprofit in Oakland — can you size our labor-market gaps?",
+     "follow_ups": ["So you can't help unless we're a community college?",
+                    "Okay — what about Laney College then?"]},
+]
