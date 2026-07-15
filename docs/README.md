@@ -34,6 +34,7 @@ Documents how the workforce development worldview manifests in the context of Ca
 - [The Epistemic Contract](./domain/epistemic-contract.md) — How to read the figures the authorities ground without overstating them: the source·granularity·vintage qualifier triple and the Bind / Gate / Distinguish obligations every Kallipolis surface honors
 - [California Community College System](./domain/california-community-college-system.md) — The 116-college, 2.2-million-student system whose state-level coordination and explicit workforce mandate give Kallipolis the architectural shape it has
 - [Glossary](./domain/glossary.md) — The vocabulary the worldview speaks in: institutional names, classification systems, and policy concepts that appear throughout the documentation
+- [The Generator Algebra](./domain/generator-algebra.md) — The typed graph a practitioner's question walks — objects, operations, and the invariant laws a correct walk preserves — the specification the semantic evaluation (Tier C) grades the analyst against
 
 ### [Architecture](./architecture/)
 How the system is built. The technical choices are downstream of the product framing rather than upstream of it. Same audience as the product and domain sections: written for mental model first, with the option of becoming engineering-onboarding material later.

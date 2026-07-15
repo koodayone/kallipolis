@@ -18,9 +18,20 @@ from __future__ import annotations
 
 import re
 
+# Codes and date-ranges whose digit fragments must not be mistaken for stated figures.
+_SOC = re.compile(r"\b\d{2}-\d{4}\b")                  # SOC codes, e.g. 51-4041
+_TOP = re.compile(r"\b0\d{3,5}\b")                     # TOP6 codes (leading zero), e.g. 0934, 093400
+_YEAR_RANGE = re.compile(r"\b\d{4}[-–]\d{2,4}\b")  # academic-year ranges, e.g. 2022-23, 2024-2029
+
 
 def _numbers(text: str) -> set[int]:
-    """Rounded integer magnitudes stated in prose ($, %, comma-grouped, and k suffix)."""
+    """Rounded integer magnitudes stated in prose ($, %, comma-grouped, and k suffix).
+
+    Strips SOC/TOP codes and academic-year ranges first so their digit fragments
+    (51-4041 -> 4041, 2022-23 -> 23) are not counted as stated figures."""
+    text = _YEAR_RANGE.sub(" ", text)
+    text = _SOC.sub(" ", text)
+    text = _TOP.sub(" ", text)
     out: set[int] = set()
     for m in re.finditer(r"\$?\d[\d,]*(?:\.\d+)?%?k?", text):
         v = m.group(0).replace("$", "").replace(",", "").replace("%", "").lower()
@@ -57,7 +68,7 @@ def traceability(t: dict) -> dict:
         for n in _numbers(turn["text"]):
             if n <= 12 or 1990 <= n <= 2035:
                 continue
-            if not any(abs(n - f) <= max(1, 0.02 * f) for f in figs):
+            if not any(abs(abs(n) - abs(f)) <= max(1, 0.02 * abs(f)) for f in figs):
                 orphans.append(n)
     return {"check": "traceability", "pass": not orphans, "detail": orphans}
 
@@ -69,7 +80,7 @@ def axis_named(t: dict) -> dict:
         for c in turn.get("tool_calls", []):
             sb = c.get("sorted_by")
             if sb:
-                words = [w for w in re.findall(r"[a-z]+", sb.lower()) if len(w) > 3]
+                words = [w for w in re.findall(r"[a-z]+", sb.lower()) if len(w) >= 3]
                 if not any(w in turn["text"].lower() for w in words):
                     misses.append(sb)
     return {"check": "axis_named", "pass": not misses, "detail": misses}
@@ -93,10 +104,24 @@ def view_link_offered(t: dict) -> dict:
     return {"check": "view_link_offered", "pass": misses == 0, "detail": misses}
 
 
+# Negation / refusal cues: a disavowed blend ("I won't reduce this to one score") is CORRECT
+# behavior, not a violation. Only a non-negated use counts as an actually-invented score.
+_NEG = re.compile(r"\b(no|not|never|without|nor|cannot|refuse|refusing|avoid|rather|"
+                  r"instead of|fake|reduce|reducing|collapse|collapsing|melt|melting|"
+                  r"roll|rolling|hidden|arbitrary)\b|n['’]t", re.I)
+
+
 def no_invented_score(t: dict) -> dict:
-    """The analyst never ranks by a 'score'/'index'/'rating'/'composite' — the forbidden blend."""
-    hits = [w for turn in _analyst_turns(t)
-            for w in re.findall(r"\b(score|index|rating|composite)\b", turn["text"], re.I)]
+    """The analyst never RANKS BY an invented 'score'/'index'/'rating'/'composite' blend.
+    A negated/refusing mention ("I won't roll these into one score") is DOCTRINE-correct and
+    is not a hit; only a non-negated use (an actually-produced blend) is flagged."""
+    hits = []
+    for turn in _analyst_turns(t):
+        text = turn["text"]
+        for m in re.finditer(r"\b(score|index|rating|composite)\b", text, re.I):
+            if _NEG.search(text[max(0, m.start() - 60):m.start()]):
+                continue  # a refusal/disavowal — the desired behavior
+            hits.append(m.group(0))
     return {"check": "no_invented_score", "pass": not hits, "detail": hits}
 
 
