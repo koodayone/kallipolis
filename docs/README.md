@@ -42,6 +42,8 @@ How the system is built. The technical choices are downstream of the product fra
 - [Graph Model](./architecture/graph-model.md) — The Neo4j schema: seven node types, nine relationships, and the institutional `PREPARES_FOR` edge that bridges curriculum to labor market through the TOP-CIP-SOC crosswalk
 - [Institutional Deference Evolution](./architecture/institutional-deference-evolution.md) — The architectural commitment to ground every analytical claim in a named institutional source, and the C-series of commits that progressively realized it
 - [AI Integration](./architecture/ai-integration.md) — Where Claude and Gemini are called, what each model is asked to do, and the constraints that make the integration principled and improvable
+- [The MCP Server](./architecture/mcp-server.md) — The conversational surface: a frontier model reasoning over the ontology through a bounded `{anchor × operation}` catalog of supply-and-demand forms, walked as a program-first descent and kept defensible by the response envelope
+- [Supply–Demand Construct](./architecture/supply-demand-construct.md) — The analytical substrate beneath both the dashboard and the MCP forms: supply against demand, projected across the TOP-CIP-SOC crosswalk and bounded by a sector, summed across pools the way the authority itself computes it
 - [Deployment](./architecture/deployment.md) — The preview deployment shape: static atlas on Cloudflare Pages, backend + Neo4j on a GCP VM behind Caddy, secrets in Secret Manager, nightly backups to Cloud Storage
 
 ### [Pipeline](./pipeline/)

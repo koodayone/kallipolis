@@ -10,8 +10,9 @@ a sector, a college, or a region — is one view of a single relation:
 
 This document formalizes that construct so that every form in the MCP conversational layer is an
 *instantiation* of it rather than an independent feature — and so that its expressiveness and its
-defensibility come from the same mechanism. Companion to `PLAN-PROMPT-epistemic-self-sufficiency.md`
-and the canonical reading doctrine in `docs/domain/epistemic-contract.md`.
+defensibility come from the same mechanism. It is the analytical substrate the
+[MCP server](./mcp-server.md) exposes; the surface-agnostic reading doctrine it relies on is
+[the epistemic contract](../domain/epistemic-contract.md).
 
 ## The essence
 
@@ -115,19 +116,20 @@ occupation is a gap to *ignore*. The relation becomes decision-grade only when q
 an education gate — it is *qualified* supply/demand. The construct's qualifiers must be as formalized
 as the gap itself.
 
-## 7. Comparison: the relational operators
+## 7. Comparison: across a reference set
 
 The practitioner's real questions are comparative — they set the member's relation against a
-reference set:
+reference set of peer institutions:
 
-- **Market share of supply** — member supply ÷ region supply, within a sector-occupation. "Are we a
-  significant supplier?"
-- **Supply concentration** — how few colleges supply a demand target. "Do only a couple of schools
-  serve this?"
-- **Competitive overlap** — which other colleges serve the same targets. "Who else is in this?"
+- **Supply share** — a member's supply ÷ the region's supply, within a program or occupation. "How
+  much of the region's output for this are we?" (Shipped as the `supply_share` criterion.)
+- **Cross-college coverage** — which colleges serve the same target, and how their supply and coverage
+  compare. "Who else provides this, and where do we stand?" (The `coverage` form and the college roster
+  already surface this; comparing colleges against each other generalizes it.)
 
-These are the **L2 synthesis forms**. They are not new primitives — they are the supply–demand
-relation evaluated across a member-set instead of a single anchor.
+These are the **cross-institution comparisons**. They are not new primitives — they are the supply–demand
+relation evaluated across a set of colleges instead of a single anchor. In a collaborative
+community-college system they express **positioning and coverage, never competition**.
 
 ## 8. The fan-out is not lossiness — it is a qualification classification, and you sum across
 
@@ -156,8 +158,8 @@ Matching the institutional method, not out-analyzing it, is what "defensible" me
 
 **Contestedness is a separate, cleanly-handled question.** An addressable pool is shared — other
 colleges' graduates compete for the same openings. That is not expressed by discounting the demand;
-it is exactly what the **comparison operators** (§7) express: market share (a member's supply ÷ the
-region's supply into an occupation) and concentration say *how much of the pool a member can capture*.
+it is exactly what the **cross-institution comparisons** (§7) express: supply share (a member's supply ÷
+the region's supply into an occupation) says *how much of the pool a member can capture*.
 So the construct carries two clean, fully-summed numbers — the pool (sum-across, COE-corroborated) and
 the share of it (the comparison) — never one muddied allocated figure.
 
@@ -196,7 +198,7 @@ regional; a college's supply is its share), **absent ≠ zero** (a suppressed ce
    occupation-anchor full view; unmet_demand = occupation-anchor with supply = 0, qualified;
    regional_employers = the demand side's detail. The **missing** cells are the roadmap — most
    importantly the **sector-anchor aggregate** (the orientation view, today present on the dashboard
-   but absent as a conversational form) and the **comparison operators** (market share, concentration).
+   but absent as a conversational form) and **cross-institution comparison** (supply share and coverage across colleges).
 3. **It educates by construction.** Because the sector-anchor view composes programs and occupations
    through the visible crosswalk, the practitioner learns the ontology's shape and its epistemic
    seams *by being oriented*. Pedagogy is a property of starting at the sector, not a separate mode.
