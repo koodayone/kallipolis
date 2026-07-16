@@ -28,10 +28,14 @@ Status = Literal["ok", "unavailable", "unknown", "out-of-scope"]
 
 
 class QualifiedValue(BaseModel):
-    """A datum bound to its qualifier triple (source · granularity · vintage).
+    """A datum bound to its qualifier stamp (source · granularity · vintage · predicate-version).
 
     Smart-union order keeps an int an int and a float a float, so an openings
     count never silently becomes 340.0. ``status != "ok"`` ⇒ ``value is None``.
+
+    ``predicate_version`` (K2) names the versioned predicate set the value was computed under,
+    so a figure stays reproducible after predicates evolve; ``parent_vintages`` (K4/CI-06) carries
+    a derived figure's parent windows. Both default empty (unstamped) until a phase populates them.
     """
 
     value: Optional[int | float | str] = None
@@ -40,6 +44,8 @@ class QualifiedValue(BaseModel):
     granularity: str = ""
     vintage: str = ""
     status: Status = "ok"
+    predicate_version: str = ""            # K2: the predicate set (partnerships.predicates) this value used
+    parent_vintages: tuple[str, ...] = ()  # K4/CI-06: a derived figure's parent vintages
 
     @model_validator(mode="after")
     def _gate_forces_null(self) -> "QualifiedValue":
@@ -50,21 +56,27 @@ class QualifiedValue(BaseModel):
 
     @classmethod
     def ok(cls, value: int | float | str, *, unit: str = "", source: str = "",
-           granularity: str = "", vintage: str = "") -> "QualifiedValue":
-        return cls(value=value, unit=unit, source=source,
-                   granularity=granularity, vintage=vintage, status="ok")
+           granularity: str = "", vintage: str = "", predicate_version: str = "") -> "QualifiedValue":
+        return cls(value=value, unit=unit, source=source, granularity=granularity,
+                   vintage=vintage, status="ok", predicate_version=predicate_version)
 
     @classmethod
     def gated(cls, status: Status, *, unit: str = "", source: str = "",
-              granularity: str = "", vintage: str = "") -> "QualifiedValue":
+              granularity: str = "", vintage: str = "", predicate_version: str = "") -> "QualifiedValue":
         """An explicit absence marker — value is None by construction."""
         return cls(value=None, unit=unit, source=source, granularity=granularity,
-                   vintage=vintage, status=status)
+                   vintage=vintage, status=status, predicate_version=predicate_version)
 
 
 class Coordinate(BaseModel):
     """The scope a response answered at — echoed on every envelope (R2), so the
-    provenance triple *is* the conversation's scope memory; no server session."""
+    provenance triple *is* the conversation's scope memory; no server session.
+
+    ``predicate_version`` is the address's K2 dimension: two figures at the same
+    member/sector/entity but a different predicate set are DIFFERENT coordinates (CI-02),
+    so a count difference that is really a predicate difference reads as such, not as drift.
+    (The ``entity``/``lens`` address dimensions of the kernel target are folded in with the
+    verb reshape — ``soc``/``top6`` stand in as the entity keys until then.)"""
 
     member: str
     member_label: str = ""
@@ -73,6 +85,7 @@ class Coordinate(BaseModel):
     region: Optional[str] = None
     soc: Optional[str] = None
     top6: Optional[str] = None
+    predicate_version: str = ""
 
 
 class NextMove(BaseModel):

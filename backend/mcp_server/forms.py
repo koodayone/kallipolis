@@ -21,6 +21,11 @@ from partnerships.landscape_programs import (
     build_programs_landscape,
 )
 from partnerships.members import region_member
+from partnerships.predicates import (
+    CC_SERVABLE_EDUCATION as _CC_SERVABLE_EDUCATION,
+    OPENINGS_FLOOR as _OPENINGS_FLOOR,
+    WAGE_FLOOR as _WAGE_FLOOR,
+)
 from partnerships.resolve import resolve
 
 from mcp_server import canonical as CAN
@@ -64,10 +69,12 @@ def _awards_window(award_years: list[str]) -> str:
     return f"DataMart awards — {award_years[0]}…{award_years[-1]}"
 
 
-def _derived(value, *, unit: str, granularity: str) -> QualifiedValue:
+def _derived(value, *, unit: str, granularity: str, predicate_version: str = "") -> QualifiedValue:
     """A structural count over the graph (member/program cardinality) — not an
-    institutional-authority fact, but still Bound so no bare number escapes."""
-    return QualifiedValue.ok(value, unit=unit, source="derived", granularity=granularity)
+    institutional-authority fact, but still Bound so no bare number escapes.
+    ``predicate_version`` (K2) stamps a count whose value depends on a registered predicate."""
+    return QualifiedValue.ok(value, unit=unit, source="derived", granularity=granularity,
+                             predicate_version=predicate_version)
 
 
 def _framing(form_id: str, salience: list[str]) -> Framing:
@@ -692,14 +699,8 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
 # The quality-demand gate — three explicit, legible, tunable judgment thresholds (plus the
 # PROMOTION_SOCS not-trainable exclusion the gap view already applies). A greenfield
 # occupation (member supply == 0, not a promotion role) is surfaced ONLY if it clears ALL THREE.
-_CC_SERVABLE_EDUCATION = frozenset({           # BLS entry-level education a community college can
-    "High school diploma or equivalent",       # actually credential into — the middle-skill band.
-    "Postsecondary nondegree award",           # EXCLUDES Bachelor's/Master's/Doctoral (out of a CC's
-    "Some college, no degree",                 # award authority) and "No formal educational
-    "Associate's degree",                      # credential" (nothing to launch a program for).
-})
-_WAGE_FLOOR = 50_000     # living-wage floor (USD/yr, occ. median) — screens out low-wage demand.
-_OPENINGS_FLOOR = 100    # meaningful-demand floor (annual regional openings) — screens out thin demand.
+# The greenfield gates (_CC_SERVABLE_EDUCATION / _WAGE_FLOOR / _OPENINGS_FLOOR) are the versioned
+# predicate set — imported at the top of this module from partnerships.predicates (K2 single home).
 
 
 def unmet_demand(member: str) -> AnalysisEnvelope:
