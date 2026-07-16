@@ -46,7 +46,7 @@ from mcp_server.envelope import (
     SortAxis,
 )
 from mcp_server.compare import compare
-from mcp_server.engine import select, select_member
+from mcp_server.engine import select, select_member, supply
 from mcp_server.scope import coordinate_of, find_scope, gate_envelope, scope_for, sectors_for_member
 
 _TOP_N = 8  # progressive-disclosure row cap (summary-first; drill on request)
@@ -195,9 +195,9 @@ def analyze_gap(member: str, sector: str, *, soc: Optional[str] = None) -> Analy
             if r is None:
                 r = per_soc[cell.soc_code] = {
                     "title": cell.title, "openings": cell.annual_openings,
-                    "member_supply": CAN.supply(member_colleges, cell.soc_code, spec=resolved_spec),
-                    "regional_supply": CAN.supply(region_colleges, cell.soc_code, spec=resolved_spec),
-                    "latest": CAN.supply(member_colleges, cell.soc_code, years=latest, spec=resolved_spec)}
+                    "member_supply": supply(sel, over="member", soc=cell.soc_code),
+                    "regional_supply": supply(sel, over="region", soc=cell.soc_code),
+                    "latest": supply(sel, over="member", soc=cell.soc_code, years=latest)}
             if r["openings"] is None:
                 r["openings"] = cell.annual_openings
     for r in per_soc.values():
@@ -993,8 +993,8 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
 
     # Regime A — plain sums over DISTINCT occupations / programs (each counted once), no allocation.
     total_demand = int(round(sum((d.get("annual_openings") or 0) for d in demand.values())))
-    regional_supply = CAN.supply_over_socs(region_colleges, sector_socs, spec=rspec)
-    member_supply = CAN.supply_over_socs(member_colleges, sector_socs, spec=rspec)
+    regional_supply = supply(sel, over="region")
+    member_supply = supply(sel, over="member")
     # The member's programs in the sector = registered ∩ in_scope (adjudication C: 'on-the-books' — the
     # member has a Program node for it and it is in the sector's scope), with the awards-active subset
     # (currently graduating) as a stamped complement. Both are stamped so the two meanings that drifted

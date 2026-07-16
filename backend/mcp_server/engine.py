@@ -21,6 +21,7 @@ from ontology.regions import COE_REGION_DISPLAY
 from partnerships.members import region_member
 from partnerships.resolve import resolve
 from partnerships.sectors import SECTORS
+from mcp_server import canonical as CAN
 from mcp_server.scope import scope_for, sectors_for_member
 
 
@@ -96,3 +97,21 @@ def select_member(member: str) -> Optional[Selection]:
         sector_socs=None,
         sector_label=None,
     )
+
+
+# ── aggregate: the measure family over a Selection (pure dispatch to the quantity kernel) ──
+# Small, named measure functions rather than a stringly-typed aggregate() — together they are the
+# `aggregate(subgraph, measure)` half of the engine. Each is a thin, single-birthplace composition over
+# the Selection's resolved scope, so a form states WHICH measure, never re-derives WHICH colleges/socs/
+# spec. `supply` is the measure the C seam was about — one call now decides it.
+
+def supply(sel: "Selection", *, over: str = "region", soc: Optional[str] = None,
+           socs: Optional[list] = None, years=None) -> float:
+    """Projected completions over the Selection's scope. `over` picks the college-set (region | member);
+    occupation-anchored over one `soc`, an explicit `socs`, or (default) the sector's occupation-set —
+    gated by the Selection's spec (the canonical in_scope feeder rule)."""
+    colleges = sel.region_colleges if over == "region" else sel.member_colleges
+    if soc is not None:
+        return CAN.supply(colleges, soc, spec=sel.spec, years=years)
+    return CAN.supply_over_socs(colleges, sel.sector_socs if socs is None else socs,
+                                spec=sel.spec, years=years)
