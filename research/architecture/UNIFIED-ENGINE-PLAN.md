@@ -114,11 +114,12 @@ four cycles stalled.
   exactly one place. Characterization-guarded. **Delivers the two goals — comprehensibility and
   coherence-by-construction — at zero number risk.** Could stop here and have won most of it.
 - **Phase B — Unify the rule + move selection into the graph (semantic; numbers CHANGE, signed-off).**
-  Collapse eligibility to the universal rule + `charter_excludes`; delete the forks; build the sector→
-  occupation / sector→program membership edges (retiring `home_divisions`), the per-edge crosswalk-quality
-  property (retiring `excluded_tops`), and the member `charter_excludes` (SVAMP). Numbers move (SVAMP drops
-  its 7 dormant programs; A′ collapses; any diverging member re-bases) — as ONE diff, regenerated goldens,
-  because it's now a single-location change.
+  Collapse eligibility to the universal rule + `charter_excludes` at the pinned 3-yr producing gate; extract
+  `Composition`; delete the forks; build the sector→occupation / sector→program membership edges (retiring
+  `home_divisions`), the per-edge crosswalk-quality property (retiring `excluded_tops`), and the member
+  charter (SVAMP). Numbers move — measured: SVAMP drops **3 zero-supply program rows** (supply-neutral),
+  SMCCD-adm gains **+1 program / +1 served SOC** from the window pin, A′ collapses — as ONE signed diff,
+  regenerated goldens, because it's now a single-location change. Sequenced B1–B4 under **Path forward** below.
 - **Phase C — DISSOLVED (investigated, recharacterized).** The mechanical "route the dashboard through
   `select`" is a **no-op**: the dashboard already resolves from the same `REGISTRY` that `select` reads, so
   `select().spec` IS the spec it already uses — routing changes nothing and does NOT make the corroboration
@@ -139,7 +140,9 @@ byte-for-byte by the Phase-0 characterization net; ~9 clean per-increment commit
 per-program/portfolio-total) are diminishing-returns polish — the structural win (one selection + the supply
 rule) is done. Phase C dissolved into Phase B.
 
-## Phase B — the curation redesign (problem statement)
+## Phase B — the curation redesign
+
+### Problem statement
 
 **Every WHAT must have exactly one denotation; where two denotations are both wanted, they are two named
 units — not one ambiguous word.** The sharpest, live instance: "sector" carries two denotations (full-PCAH
@@ -147,11 +150,168 @@ occupation-set vs rule-effective/served subset), which is why the dashboard and 
 Resolution shape: one **sector node** (its full occupation membership, explicit graph facts) + a
 **served/effective lens** (the derived reachable subset) — two labeled projections of one engine, each
 saying which set it is. Ties together with the eligibility decision (universal rule + SVAMP charter) and
-sector-as-node (explicit occupation + program membership). Phase-B because it moves live numbers (labeling/
-reconciling the dashboard's 1,240) — reserved from Phase A by the discipline.
+sector-as-node (explicit occupation + program membership). Phase-B because it moves live numbers — reserved
+from Phase A by the discipline.
+
+### Status — partial ship + a reverted over-reach (lesson banked)
+
+The **sector demand decomposition** (full / in-demand / served / effective) is live on the MCP
+`sector_overview` text surface, where numbers carry meaning with no chart to lean on: `smccd-adm` reads
+full 8,150/49 → in-demand 2,420/7 · served 1,930/13 → effective 1,240/4. A dashboard "ladder" restating the
+same split was built and then **reverted** — the demand treemap already *is* the demonstration (its tiles
+sum to the headline), so the ladder only re-cluttered a deliberately-narrowed view. **Durable rule: resolve
+a seam where meaning is carried by bare numbers (text / API), not where a visualization already carries it.**
+
+### Pressure-test (measured against the live graph, before any code)
+
+Grounding corrections to the summary above:
+- The demand/served **rule is already universal** (`_DEFAULT_RULE`; `_SECTOR_RULES` is empty). The "many
+  forks" was really **two**: the `vocational` mode flag and SVAMP's `soc_rule=None`.
+- `excluded_tops` is **already physically split** — 14 crosswalk-noise TOPs on the *sector*, 2 charter TOPs
+  on *SVAMP*, zero overlap.
+
+Measured verdicts (all hold):
+- **Program eligibility subtracts cleanly.** `is_vocational` explodes SVAMP's in-scope 67 → 271 (+204), but
+  crosswalk-intersected with its 12 occupations it collapses to **23 = 23** — zero sneak-ins, zero drops.
+  SVAMP's division-09 gate is provably **redundant** with crosswalk + noise-correction, so `top_divisions`
+  can delete.
+- **The charter is 3 load-bearing items.** Automotive, HVAC, **and** Biotech each `is_vocational` ∧ reach an
+  AM occupation → each would re-enter without explicit exclusion. Biotech was hidden by the division gate; the
+  charter grows 2 → 3 exactly when that gate drops.
+- **The occupation axis subtracts too.** SVAMP's 12 ⊆ the sector's 49 (0 additions).
+
+### The completers window — PINNED: 3 years
+
+Today the *producing gate* uses **latest-year-only** while the *supply measure* is a **3-year mean**
+(`_SUPPLY_YEARS = 3`) — so a program can be "supply-positive yet not-producing," and the gate flickers on
+biennial cycles. This is an incoherence, not a preference. **Pin condition 3 to the 3-year window** (align the
+gate with the measure). Scope: the *eligibility gate* only — `resolve`, `landscape_programs`,
+`quantities._soc_feeders`, `active_feeders` (~4 duplicated sites → collapse into one `is_producing(3yr)`
+predicate). The latest-year **"graduating this year"** reading stays 1-year as the stamped complement (the
+existing `on_the_books` / `graduating` dual).
+
+Re-measured SVAMP delta under the pin: **10 offered → 7 eligible (drops 3** — 092400 Engineering-Tech-General
+>3yr-stale; 095200 Construction-Crafts + 095420 Plastics never-graduated) — and **supply-neutral**: all three
+have 0 completers in the 3-year window → 0 supply, so no figure moves; only three dead rows drop. The pin also
+*saves* 093400 Electronics & Electric (0 latest, 1 in 3yr — the fragility, caught in a live program). **Blast
+radius is not SVAMP-local:** the shared gate change nudges every rule-bearing surface (SMCCD-adm +1 program /
++1 served SOC) — a signed diff, net-guarded. (An earlier note said "7 dormant"; that was the *retained* count
+recorded inverted — the measured casualty count is 3.)
+
+### SVAMP's occupation set is authored, not derived (the last pin, resolved)
+
+No lens reproduces the curated 12. It *contains* the rule's effective core (all 4) but overlays the
+director's judgment: **+8** below-threshold / single-college occupations (Machinists, Semiconductor, CNC×2,
+Calibration, Eng-Techs…) and **−Welders** (real Bay demand, deliberately out of charter). Under the 3-year
+window two of the "unserved" recover (Semiconductor, Calibration); **Machinists stays out for a real reason**
+— only one SVAMP college graduates them, so it fails the ≥2-college consortium floor. That is precisely the
+case where the director's local knowledge overrides the rule's signal. **Conclusion: the 12 is explicit
+authored membership, not a rule output — and that is fine, because it is a subset of the grounded 49
+(subtraction), so it feeds the one engine as data, never as a fork.**
+
+### The Composition — one authoring mechanism for every member
+
+The generalization (Dayone's): SVAMP is not special; it is the **first author** of a per-member composition
+that any consortium can supply. Every member's scope is one small object:
+
+```python
+@dataclass(frozen=True)
+class Composition:
+    """How a member narrows a sector to its charter — the ONLY per-member scope knobs. Each is a SELECTION
+    from a grounded universe, never a new fact or rule. None/empty ⇒ DERIVED by the universal lenses
+    (today's behavior); a value ⇒ AUTHORED. The engine is identical either way; provenance is implicit."""
+    occupations: tuple[str, ...] | None = None      # None → derived lens; tuple → authored ⊆ Sector.membership
+    program_excludes: frozenset[str] = frozenset()  # charter subtraction ⊆ Sector.vocational universe
+    program_includes: frozenset[str] = frozenset()  # (reserved, empty) additions ⊆ is_vocational; unused today
+```
+
+The 18-field `LandscapeSpec` sorts into four homes — a thin **Spec** (identity + WHO + employer config), a
+reference to the grounded **Sector** (full membership + the universal rule + crosswalk-noise + home-divisions
++ swp_tag), a small **Composition**, and a **deleted** pile (the forks):
+
+| current field(s) | → home |
+|---|---|
+| `id`, `name`, `accent`, `colleges`, `published`, `counties`, `top_n`, `employer_threshold`, `max_radius` | **Spec** |
+| `sector`(label), `swp_tag`, `home_divisions`; full membership half of `socs`; crosswalk-noise half of `excluded_tops` | **Sector** |
+| member subset of `socs`; charter half of `excluded_tops` | **Composition** |
+| `soc_rule` (→ one universal rule), `vocational`, `cte_only`, `top_divisions` | **DELETE (forks)** |
+
+**How the engine consumes it — identical for authored and derived:**
+
+```python
+def resolve_scope(colleges, sector_id, comp) -> ResolvedScope:
+    sector = SECTORS[sector_id]                 # grounded: .membership, .rule, .crosswalk_noise, .home_div
+    validate(comp, sector)                      # the guardrail (below)
+    eligible = {t for t in offered_programs(colleges)          # (1) ONE universal program rule…
+                if is_vocational(t) and t not in sector.crosswalk_noise
+                and t not in comp.program_excludes              #     …minus the AUTHORED charter
+                and is_producing(colleges, t, window=3)}        #     …at the pinned 3-yr gate
+    occ = comp.occupations if comp.occupations is not None \    # (2) authored subset, else…
+          else effective_lens(sector.membership, eligible, colleges)   #    …derived (today's effective set)
+    return ResolvedScope(colleges, occ, eligible, sector)
+```
+
+Everything downstream — `select → subgraph`, `aggregate → value`, and the in-demand/served/effective
+decomposition (now computed over `occ` as *annotations*: "of your 12, these 4 are in-market & served") — is
+identical whether `occ` was authored or derived. **That is the one-engine invariant made structural.**
+
+**The guardrail — why authoring can never become a fork:**
+
+```python
+def validate(comp, sector):
+    assert comp.occupations is None or set(comp.occupations) <= set(sector.membership)   # select, don't invent
+    assert comp.program_excludes <= sector.vocational_universe                            # subtract, don't invent
+    assert comp.program_includes <= is_vocational_universe()                              # grounded additions only
+```
+
+There is **no field** for a new rule, threshold, occupation, or edge — every authorable value is a subset of
+a grounded set, so the model *structurally cannot express a fork*. Authoring is expressively limited to
+**selection from grounded facts**. Two invariants this preserves: **one denotation** ("AM" always = its 49-
+occupation membership; a composition is a *labeled lens* over it, never a redefinition), and **transparency**
+(an authored scope is an editorial choice, so it is *disclosed* — the principled version of "show the
+narrowing," warranted for authored sets precisely because no chart derives them).
+
+SVAMP and SMCCD, in the new model:
+
+```python
+Spec("smccd-adm", colleges=SMCCD, sector_id="adm", composition=Composition())              # fully derived
+Spec("svamp", colleges=SVAMP, sector_id="adm", counties=("Santa Clara",),                  # authored, same shape
+     composition=Composition(occupations=_AM_12,
+                             program_excludes=frozenset({"094800","094600","043000"})))
+```
+
+SVAMP stops being a bespoke 18-field spec with `soc_rule=None` + `vocational=False`; it is the *same* thin
+Spec plus a two-field Composition. The forks are deleted; the difference is data.
 
 **Deleted throughout:** the stamp/`predicate_version` fields, any additivity-contract machinery, the
 coherence-contract manifest, and the bespoke-spec registry. The refactor's net line count goes down.
+
+## Path forward — sequencing to the realization
+
+The organizing rule still governs: **never move code and numbers in the same step.** Phase B splits into
+four moves, each shippable and guarded by the characterization net.
+
+- **B1 — `Composition` as data (structural; numbers UNCHANGED).** Introduce `Composition`; migrate every
+  member's scope onto it. Derived members (SMCCD, …) become `Composition()` (a pure rename, `occupations=None`).
+  SVAMP's authored 12 + charter become a `Composition`, but a quarantined legacy shim keeps the engine
+  computing SVAMP's *current* Mode-B numbers so output stays byte-identical. Outcome: one scope model, forks
+  removed from the spec *shape*, numbers unchanged. Net-guarded. This is the "move code" step.
+- **B2 — flip the universal rule (semantic; numbers CHANGE, ONE signed diff).** Remove the legacy shim: every
+  member runs `is_vocational` + the pinned 3-yr producing gate + charter. Numbers move exactly as measured —
+  SVAMP 10 → 7 programs (supply-neutral), SMCCD-adm +1 program / +1 served SOC, A′ collapses. Regenerate
+  goldens; director sign-off on SVAMP's 3 dropped rows (low-stakes — supply-neutral). This is the "move
+  numbers" step, isolated.
+- **B3 — selection into the graph (structural again; numbers UNCHANGED).** Move sector membership (occupation
+  + program) and crosswalk-noise onto graph edges/properties — the sector-as-node endgame. Bootstrap the edges
+  from the current computed sets so it is behavior-preserving; reconcile against an authority later. Net-guarded.
+- **B4 — sector node + authored-scope disclosure.** Sector as a first-class node entering the coordinate as a
+  WHAT-selector; surface the transparency disclosure for authored compositions ("tracks 12 of 49; −Welders;
+  +Machinists beyond the market signal").
+
+**Deferred, on purpose (no speculative tooling):** the self-serve *authoring UI*. Today the demand for
+authoring is **N = 1** (SVAMP); we author its composition from the director's charter as data. The model is
+fully general without the editor — add the editor when a second consortium actually needs to author
+(`N ≥ 2`). Generalize the substrate now (free); defer the tool until the need is felt.
 
 ## 6. Decisions locked (from the deliberation)
 
@@ -162,19 +322,32 @@ coherence-contract manifest, and the bespoke-spec registry. The refactor's net l
    a 3-item charter list — a genuine partnership scope, not a definition bug.
 4. Sector = a native ontology node with explicit dual (occupation + program) membership, entering the
    coordinate as a WHAT-selector — edges, not rules.
+5. Completers window = **3 years** for the eligibility gate (aligned with the supply mean); latest-year
+   survives only as the separate "graduating this year" annotation.
+6. Per-member scope = a **`Composition`** (authored occupation-subset + charter excludes/includes), validated
+   as **selection from grounded facts** — authoring can subtract/select, never invent a rule, threshold,
+   occupation, or edge. SVAMP is the first author; a self-serve authoring UI defers until a second consortium
+   needs one (`N ≥ 2`).
 
-## 7. Open questions (resolve before/within Phase B)
+## 7. Open questions
 
-- **Source of truth for sector→program membership.** The explicit edges have to come from somewhere:
-  bootstrap from the current computed `in_scope` sets, or source from an authority (CCCCO / regionalcte.org)?
-  Bootstrapping is faster and behavior-preserving; sourcing is more defensible. Likely: bootstrap, then
-  reconcile.
+**Resolved this round (measured, pre-code):**
+- ~~Completers window~~ → **pinned 3-year** (align gate with the supply mean; fixes the supply-positive-yet-
+  not-producing incoherence).
+- ~~SVAMP's occupation-set governance~~ → **authored membership** (no lens reproduces the 12; it is a valid
+  subtraction from the 49, consumed as data, not a fork).
+- ~~Dashboard scope in Phase A vs C~~ → **settled**: Phase A rewrote the MCP forms; the sector decomposition
+  shipped on the MCP text surface; the dashboard needs no ladder (its treemap already demonstrates the total).
+
+**Still open (resolve before/within their phase):**
+- **Source of truth for sector→program membership** (B3). Bootstrap from the current computed `in_scope`
+  sets, or source from an authority (CCCCO / regionalcte.org)? Likely: bootstrap, then reconcile.
 - **The exact MEASURE family.** Enumerate and freeze the operation set (sum/difference/classify/rank/
   neighbors/attribute) and confirm every current figure maps to one — no residual bespoke measures.
 - **Multi-region WHO.** Confirm `resolve_regions` handles demand summed over a region-set cleanly under the
   new `select`.
-- **Dashboard scope in Phase A vs C.** Whether Phase A rewrites only the MCP forms or also brings the
-  dashboard's build path onto `select` immediately (bigger blast radius, but closes the seam sooner).
+- **`derived` default semantics.** Whether `Composition(occupations=None)` resolves to today's `effective`
+  set or a richer decomposed default — a UX call, does not block B1/B2.
 
 ## 8. Risks and sizing
 
@@ -183,8 +356,11 @@ coherence-contract manifest, and the bespoke-spec registry. The refactor's net l
 - **Live prod, two surfaces.** MCP + dashboard share `quantities.py`, so they move together — but Phase B's
   number changes hit the live dashboard. Defensibility-sensitive: signed-off diffs, regenerated goldens,
   and awareness of any figure a stakeholder has already seen.
-- **Number changes are real** (SVAMP measured: ~2× swing on the seed, driven by the Automotive charter call
-  + the dormant-program drop). Understood and intended, but gated.
+- **Number changes are real but small and measured** (superseding an earlier unmeasured "~2× swing"
+  estimate). Program eligibility is byte-identical under the universal rule (23 = 23); the Automotive charter
+  is already applied today, so it moves nothing; the only movements are the 3-yr window pin (SVAMP −3
+  zero-supply rows, supply-neutral; SMCCD-adm +1/+1) — signed diff, regenerated goldens, director sign-off on
+  SVAMP's dropped rows.
 
 ## 9. Relationship to the rest
 
