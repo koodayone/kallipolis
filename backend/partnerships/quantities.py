@@ -63,17 +63,33 @@ def recent_award_years(n: int = _SUPPLY_YEARS) -> tuple[str, ...]:
 
 
 @lru_cache(maxsize=256)
-def _soc_feeders(colleges: tuple[str, ...]) -> dict[str, frozenset[str]]:
-    """{soc -> is_vocational feeder TOP6s these colleges offer that cross-walk to it},
-    computed once per college set so per-SOC feeder lookup is O(1). The one feeder rule."""
+def _soc_feeders(colleges: tuple[str, ...], spec=None) -> dict[str, frozenset[str]]:
+    """{soc -> feeder TOP6s these colleges offer that cross-walk to it}, computed once per
+    (college set, spec) so per-SOC feeder lookup is O(1). The one feeder rule.
+
+    Gated by ``spec.in_scope`` when a spec is given — the canonical rule (adjudication A:
+    is_vocational + excluded_tops + home-division + CTE-family; e.g. it excludes generic
+    Nursing 123000 in favor of 123010). Falls back to the legacy bare ``is_vocational`` gate
+    when spec is None; call sites are being migrated to pass spec, after which the fallback
+    (and the divergence it leaves) is removed. Does NOT yet apply the latest-year awards gate
+    that ``relevant_tops`` layers on for rule-bearing specs — added if the corroboration band
+    does not close on the in_scope gate alone (tracked in Phase 1)."""
     with get_driver().session() as s:
         offered = {r["t"] for r in s.run(
             "MATCH (p:Program) WHERE p.college IN $c RETURN DISTINCT p.top6 AS t",
             c=list(colleges)).data()}
+    # Awards gate (rule-bearing specs only): a program with no completer in the latest year is
+    # dormant supply — dropped, matching relevant_tops/_awarded_tops so the kernel and dashboard
+    # resolve one feeder set. Curated specs (SVAMP) carry no rule and keep the full in_scope set.
+    rule = getattr(spec, "soc_rule", None) if spec is not None else None
+    if rule is not None and getattr(rule, "active", False):
+        active = _awarded_by_top(colleges, tuple(recent_award_years(1)))
+        offered = {t for t in offered if active.get(t, 0) > 0}
     soc_map = top6_to_soc(list(offered))
+    gate = spec.in_scope if spec is not None else is_vocational
     out: dict[str, set] = {}
     for t in offered:
-        if is_vocational(t):
+        if gate(t):
             for soc in soc_map.get(t, set()):
                 out.setdefault(soc, set()).add(t)
     return {k: frozenset(v) for k, v in out.items()}
@@ -91,17 +107,19 @@ def _awarded_by_top(colleges: tuple[str, ...], years: tuple[str, ...]) -> dict[s
     return {r["t"]: r["n"] for r in rows}
 
 
-def feeders(colleges, soc: str) -> frozenset[str]:
-    """The SOC's is_vocational feeder TOP6s the colleges offer — the one feeder rule."""
-    return _soc_feeders(tuple(sorted(set(colleges)))).get(soc, frozenset())
+def feeders(colleges, soc: str, *, spec=None) -> frozenset[str]:
+    """The SOC's feeder TOP6s the colleges offer — the one feeder rule (in_scope when a spec is
+    given, adjudication A; legacy is_vocational otherwise)."""
+    return _soc_feeders(tuple(sorted(set(colleges))), spec).get(soc, frozenset())
 
 
-def supply(colleges, soc: str, *, years: tuple[str, ...] | None = None) -> float:
+def supply(colleges, soc: str, *, years: tuple[str, ...] | None = None, spec=None) -> float:
     """Canonical annual supply for a SOC over a set of colleges. THE single resolution
     path for every supply figure. Default window = most recent 3 years (projected_supply);
-    pass ``years=recent_award_years(1)`` for the latest year (latest_year_supply)."""
+    pass ``years=recent_award_years(1)`` for the latest year (latest_year_supply). ``spec``
+    selects the canonical in_scope feeder rule (adjudication A)."""
     yrs = years if years is not None else recent_award_years()
-    fs = feeders(colleges, soc)
+    fs = feeders(colleges, soc, spec=spec)
     if not fs or not yrs:
         return 0.0
     aw = _awarded_by_top(tuple(sorted(set(colleges))), tuple(yrs))
@@ -109,14 +127,15 @@ def supply(colleges, soc: str, *, years: tuple[str, ...] | None = None) -> float
     return round(total / len(yrs), 1)
 
 
-def supply_over_socs(colleges, socs, *, years: tuple[str, ...] | None = None) -> float:
+def supply_over_socs(colleges, socs, *, years: tuple[str, ...] | None = None, spec=None) -> float:
     """Aggregate supply over a SET of SOCs (a sector total). Feeders are DEDUPED across
     the SOCs — a TOP6 that feeds several occupations is counted once — so a sector total
-    never double-counts, unlike summing per-SOC supply."""
+    never double-counts, unlike summing per-SOC supply. ``spec`` selects the canonical
+    in_scope feeder rule (adjudication A)."""
     yrs = years if years is not None else recent_award_years()
     fs: set[str] = set()
     for soc in socs:
-        fs |= feeders(colleges, soc)
+        fs |= feeders(colleges, soc, spec=spec)
     if not fs or not yrs:
         return 0.0
     aw = _awarded_by_top(tuple(sorted(set(colleges))), tuple(yrs))
