@@ -119,9 +119,36 @@ four cycles stalled.
   property (retiring `excluded_tops`), and the member `charter_excludes` (SVAMP). Numbers move (SVAMP drops
   its 7 dormant programs; A′ collapses; any diverging member re-bases) — as ONE diff, regenerated goldens,
   because it's now a single-location change.
-- **Phase C — Dashboard onto the shared `select` (optional; the last seam).** The dashboard already shares
-  the measure; route its selection through the same `select`, at which point the dashboard⇄MCP corroboration
-  test becomes a theorem and is deleted.
+- **Phase C — DISSOLVED (investigated, recharacterized).** The mechanical "route the dashboard through
+  `select`" is a **no-op**: the dashboard already resolves from the same `REGISTRY` that `select` reads, so
+  `select().spec` IS the spec it already uses — routing changes nothing and does NOT make the corroboration
+  test a theorem. The investigation found instead a real, uncaught **dashboard⇄MCP divergence at the sector
+  aggregate**: the dashboard sums over `resolve(spec).socs` (rule-effective / served set — smccd-adm = 4
+  SOCs, demand 1,240) while `sector_overview` sums over `SECTORS[sid].socs` (full PCAH — 49 SOCs, demand
+  8,150). Same coordinate, ~5× apart, unlabeled, live. It is the diagnosis's **two-demand seam** across the
+  surface boundary — NOT a compute bug (both correct over different occupation-sets), and NOT caught by the
+  corroboration test (which checks per-occupation, never the sector aggregate). A **WHAT decision (Phase B /
+  curation)**, not a refactor.
+
+## Phase A — CLOSED
+
+All nine analytical forms resolve through `select`/`select_member` (the duplicated preamble that caused C is
+gone from the form layer); the C-relevant `supply` measure is the first `aggregate` function. Guarded
+byte-for-byte by the Phase-0 characterization net; ~9 clean per-increment commits (`f7f7b6d2`→`63512a31`);
+211 tests + net + Tier-A + 12 audit green throughout. The remaining `aggregate` measures (demand/gap/
+per-program/portfolio-total) are diminishing-returns polish — the structural win (one selection + the supply
+rule) is done. Phase C dissolved into Phase B.
+
+## Phase B — the curation redesign (problem statement)
+
+**Every WHAT must have exactly one denotation; where two denotations are both wanted, they are two named
+units — not one ambiguous word.** The sharpest, live instance: "sector" carries two denotations (full-PCAH
+occupation-set vs rule-effective/served subset), which is why the dashboard and `sector_overview` diverge.
+Resolution shape: one **sector node** (its full occupation membership, explicit graph facts) + a
+**served/effective lens** (the derived reachable subset) — two labeled projections of one engine, each
+saying which set it is. Ties together with the eligibility decision (universal rule + SVAMP charter) and
+sector-as-node (explicit occupation + program membership). Phase-B because it moves live numbers (labeling/
+reconciling the dashboard's 1,240) — reserved from Phase A by the discipline.
 
 **Deleted throughout:** the stamp/`predicate_version` fields, any additivity-contract machinery, the
 coherence-contract manifest, and the bespoke-spec registry. The refactor's net line count goes down.
