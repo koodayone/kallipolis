@@ -110,45 +110,39 @@ def effective_socs(spec: LandscapeSpec) -> tuple[str, ...]:
     # majority, not an outlier filter), so require membership > twice the floor.
     min_colleges = rule.min_colleges if len(spec.colleges) > 2 * rule.min_colleges else 1
 
-    kept = []
-    for soc in socs:
-        # INCLUDE_SOCS are curated below-floor admissions (sectors.INCLUDE_SOCS):
-        # they bypass the openings floor ONLY, still facing every gate below, so a
-        # premium multi-college occupation with thin raw openings is admitted but a
-        # loss of its supply still drops it.
-        if (
-            rule.min_openings
-            and (openings.get(soc) or 0) <= rule.min_openings
-            and soc not in INCLUDE_SOCS
-        ):
-            continue
-        # WAGE_EXEMPT_SOCS bypass the near-living-wage floor on explicit sector
-        # authority (sectors.WAGE_EXEMPT_SOCS) — its only exception, kept narrow
-        # because the floor is a quality principle, not a size proxy.
-        if (
-            rule.min_wage
-            and (wages.get(soc) or 0) < rule.min_wage
-            and soc not in WAGE_EXEMPT_SOCS
-        ):
-            continue
-        # Drop declining occupations (negative regional growth) — a shrinking
-        # field is poor program-investment strategy — unless structurally
-        # important enough to override (GROWTH_EXEMPT_SOCS, e.g. Eng Techs,
-        # Carpenters). Growth is a flag, not a hard cut, for those few.
+    # The effective set = trainable-sector-membership ∩ IN-DEMAND ∩ SERVED. The two gates are named and
+    # independent (order-free), so the decomposition is explicit and each is separately usable as a lens:
+    # `in_demand` asks "is there a real market?" (occupation × region — member-independent); `served` asks
+    # "is the member in it?" (member × sector). Their intersection is what the dashboard shows today; Phase
+    # B exposes each on its own so a small effective set reads as "small market" vs "I don't serve it".
+    def in_demand(soc: str) -> bool:
+        # Demand-quality gate. INCLUDE_SOCS = curated below-floor admissions (bypass the openings floor
+        # ONLY, still facing every other gate). WAGE_EXEMPT_SOCS bypass the near-living-wage floor on
+        # explicit sector authority. GROWTH_EXEMPT_SOCS keep a few declining-but-structural occupations.
+        if (rule.min_openings and (openings.get(soc) or 0) <= rule.min_openings
+                and soc not in INCLUDE_SOCS):
+            return False
+        if (rule.min_wage and (wages.get(soc) or 0) < rule.min_wage
+                and soc not in WAGE_EXEMPT_SOCS):
+            return False
         if (growth.get(soc) or 0) < 0 and soc not in GROWTH_EXEMPT_SOCS:
-            continue
+            return False
+        return True
+
+    def served(soc: str) -> bool:
+        # Member-engaged gate: the member offers a feeding program (reachable), actively graduates into it
+        # (active), and — for a genuine multi-college consortium — enough colleges produce it that there is
+        # a partnership to broker (the consortium floor; single-college occupations are self-contained and
+        # justified by demand alone, so out of scope for the consortium's coordination view).
         if rule.reachable_only and soc not in reachable:
-            continue
+            return False
         if rule.non_empty_only and soc not in active:
-            continue
-        # Consortium floor: an occupation must be produced by >= min_colleges
-        # distinct member colleges — a single-college occupation is self-contained
-        # (no multi-school partnership to broker) and already justified by demand
-        # alone, so it's out of scope for the consortium's coordination view.
+            return False
         if min_colleges > 1 and len(soc_colleges.get(soc, ())) < min_colleges:
-            continue
-        kept.append(soc)
-    return tuple(kept)
+            return False
+        return True
+
+    return tuple(soc for soc in socs if in_demand(soc) and served(soc))
 
 
 def resolve(spec: LandscapeSpec) -> LandscapeSpec:
