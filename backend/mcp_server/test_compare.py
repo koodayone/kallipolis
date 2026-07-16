@@ -220,6 +220,31 @@ def test_referential_integrity_with_sector_overview(member, sector):
 
 
 @requires_graph
+@pytest.mark.parametrize("member", ["smccd", "baccc"])
+def test_referential_integrity_portfolio_row_vs_sector_overview(member):
+    """A sector's regional supply and gap are ONE value across member_portfolio and sector_overview —
+    the member-anchor orientation's per-sector ROW equals its sector_overview DRILL, because both
+    resolve the sector's supply through the same canonical in_scope feeder rule. Guards Finding C
+    (the diagnosis's headline residual): a portfolio row and its own drill can no longer disagree on
+    a sector's supply/gap — the Tier-A coverage the 5 golden coords formerly missed."""
+    mp = F.member_portfolio(member)
+    assert not mp.licensing.gates and mp.data.rows
+    row_by_label = {r.label: r for r in mp.data.rows}
+    checked = 0
+    for e in F.sectors_for_member(member):
+        so = F.sector_overview(member, e["sector_id"])
+        row = row_by_label.get(e["sector_label"])
+        if so.licensing.gates or row is None:
+            continue
+        s = so.data.summary
+        assert row.values["regional_supply"].value == s["regional_supply"].value
+        assert row.values["member_supply"].value == s["member_supply"].value
+        assert row.values["gap"].value == s["gap"].value
+        checked += 1
+    assert checked > 0, "no sector shared between the portfolio and its sector drills"
+
+
+@requires_graph
 @pytest.mark.parametrize("member,sector", _COORDS)
 def test_referential_integrity_occupation_with_gap(member, sector):
     """An occupation's regional supply and gap are ONE value across compare and supply_demand_gaps —

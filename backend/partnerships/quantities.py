@@ -142,6 +142,25 @@ def supply_over_socs(colleges, socs, *, years: tuple[str, ...] | None = None, sp
     return round(sum(aw.get(t, 0) for t in fs) / len(yrs), 1)
 
 
+def supply_over_sector_specs(colleges, sector_specs, *, years: tuple[str, ...] | None = None) -> float:
+    """Portfolio supply across several ``(socs, spec)`` sectors: the DEDUPED union of every
+    sector's in_scope feeders (a TOP6 that feeds occupations in two sectors counted once), summed
+    once. The institution-wide birthplace that keeps ``member_portfolio``'s total on the SAME
+    feeder rule as its per-sector rows — each of which equals its ``sector_overview`` drill — so the
+    portfolio total and the sector drills speak with one voice. Each sector's ``spec`` selects the
+    canonical in_scope rule (adjudication A); ``spec=None`` for a sector falls back to is_vocational
+    for that sector alone."""
+    yrs = years if years is not None else recent_award_years()
+    fs: set[str] = set()
+    for socs, spec in sector_specs:
+        for soc in socs:
+            fs |= feeders(colleges, soc, spec=spec)
+    if not fs or not yrs:
+        return 0.0
+    aw = _awarded_by_top(tuple(sorted(set(colleges))), tuple(yrs))
+    return round(sum(aw.get(t, 0) for t in fs) / len(yrs), 1)
+
+
 def _tops_avg(colleges, tops, years: tuple[str, ...] | None) -> float:
     """UNROUNDED annual awards over tops+colleges. Callers that SUM per-college (the builders'
     seam) must sum this and round ONCE — summing per-college ``round(x, 1)`` values otherwise
