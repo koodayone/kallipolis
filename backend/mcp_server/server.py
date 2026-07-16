@@ -1,10 +1,12 @@
-"""The MCP server — eleven task-shaped tools + the guided-onboarding prompt.
+"""The MCP server — the coordinate-algebra verbs + the legacy task-shaped tools + the onboarding prompt.
 
-Tool set (fixed, deterministically ordered — the client caches the tool prefix,
-so the order and descriptions are frozen):
+Tool set (the client caches the tool prefix, so order and descriptions are frozen):
 
-  Tier 0   list_scopes · orient
-  Tier 1   member_portfolio · sector_overview · compare · analyze_gap · analyze_coverage · analyze_pathway · analyze_regional_employers · occupation_profile · unmet_demand
+  Verbs    orient · navigate · crosswalk · compare · sweep(reserved) — the coordinate-algebra surface
+  Legacy   list_scopes · institution_overview · member_portfolio · sector_overview · analyze_gap ·
+           analyze_coverage · analyze_pathway · analyze_regional_employers · occupation_profile · unmet_demand
+           (each dispatches to the same form its matching verb does; retired in Phase 5 once its verb
+           path passes CI against the tool's recorded outputs)
 
 Each tool's description IS its behavioral spec: the shared ``DOCTRINE`` (voice +
 the intent-gated reading rules + the navigation offer) prepended to the tool's own
@@ -15,6 +17,7 @@ the same doctrine as a preamble but load-bear nothing. Read-only; stateless HTTP
 """
 from __future__ import annotations
 
+import re
 from typing import Optional
 
 from pydantic import BaseModel
@@ -294,6 +297,65 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
 @mcp.tool(name="unmet_demand", description=_form_description("unmet_demand", needs_sector=False))
 def unmet_demand(member: str) -> AnalysisEnvelope:
     return F.unmet_demand(member)
+
+
+# ── The coordinate-algebra verbs (additive; the legacy tools above are retired in Phase 5) ──
+# One Coordinate ⟨member | sector | entity | lens | vintage | predicate-version⟩, five verbs. Each
+# verb takes a coordinate and dispatches into the SAME form functions the legacy tools call — one
+# kernel beneath, one surface above. `compare` (above) is already the verb; `sweep` is reserved.
+
+_SOC_RE = re.compile(r"^\d{2}-\d{4}$")   # an occupation entity, e.g. 51-4041
+
+_ORIENT_VERB_DESC = (
+    "orient(member) — fix the institutional frame before analyzing: resolve the institution, derive "
+    "its region, and return the top of the descent — the member's whole portfolio, one row per sector "
+    "with demand, supply, share, and gap. Start here, then navigate in.")
+_NAVIGATE_DESC = (
+    "navigate(to) — move within the institution's hierarchy: set or change the SECTOR, the ENTITY (an "
+    "occupation SOC), or the LENS (gaps · employers · greenfield), and get the canonical view at the "
+    "resulting coordinate. navigate(sector) is the sector view; navigate(entity=<soc>) the occupation; "
+    "navigate(lens=gaps|employers|greenfield) re-materializes the current address through another face.")
+_CROSSWALK_DESC = (
+    "crosswalk(across) — traverse the TOP→CIP→SOC bridge in either direction: a PROGRAM → the "
+    "occupations it prepares students for, or an OCCUPATION → the programs regionwide that feed it. "
+    "The mapping is lossy and many-to-many by design; the fan-out is surfaced, never collapsed.")
+_SWEEP_DESC = (
+    "sweep(over: vintage) — RESERVED. The time-series verb the coordinate algebra predicts: vary the "
+    "vintage while holding the rest of the coordinate fixed. Specified but not yet built — do not "
+    "simulate a time series by looping other verbs.")
+
+
+@mcp.tool(name="orient", description=_prime(_ORIENT_VERB_DESC))
+def orient_v(member: str) -> AnalysisEnvelope:
+    return F.member_portfolio(member)
+
+
+@mcp.tool(name="navigate", description=_prime(_NAVIGATE_DESC))
+def navigate(member: str, sector: str = "", entity: str = "", lens: str = "") -> AnalysisEnvelope:
+    entity, lens = entity.strip(), lens.strip().lower()
+    is_soc = bool(_SOC_RE.match(entity))
+    if lens == "greenfield":
+        return F.unmet_demand(member)
+    if lens == "employers":
+        return F.analyze_regional_employers(member, sector, soc=_opt(entity if is_soc else ""))
+    if is_soc and not sector:
+        return F.occupation_profile(member, entity)          # sector-agnostic occupation view
+    if is_soc:
+        return F.analyze_gap(member, sector, soc=entity)      # the occupation within its sector
+    if lens == "gaps":
+        return F.analyze_gap(member, sector)
+    return F.sector_overview(member, sector)                  # the sector's canonical view
+
+
+@mcp.tool(name="crosswalk", description=_prime(_CROSSWALK_DESC))
+def crosswalk(member: str, sector: str, program: str = "", occupation: str = "") -> AnalysisEnvelope:
+    return F.analyze_pathway(member, sector, program=_opt(program), occupation=_opt(occupation))
+
+
+@mcp.tool(name="sweep", description=_prime(_SWEEP_DESC))
+def sweep(member: str, sector: str = "") -> AnalysisEnvelope:
+    return S.gate_envelope("sweep", member, sector, marker="out-of-scope",
+                           reason="sweep(over: vintage) is a reserved verb — specified but not yet built.")
 
 
 # ── Prompt ────────────────────────────────────────────────────────────────

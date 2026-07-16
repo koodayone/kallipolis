@@ -139,8 +139,10 @@ def test_next_moves_name_callable_tools():
     except ModuleNotFoundError:
         pytest.skip("mcp SDK not installed")
     registered = {t.name for t in asyncio.run(mcp.list_tools())}
-    # the map is the single source of truth for tool names — it must equal registration
-    assert set(C.TOOL_NAME.values()) == registered, "TOOL_NAME drifted from registered tools"
+    # During the additive verb migration the 5 coordinate-algebra verbs are registered but are NOT
+    # next-move targets (next_moves still name the legacy tools), so the map's targets must all be
+    # registered (⊆), not equal. Post-Phase-5 (legacy tools retired) this returns to ==.
+    assert set(C.TOOL_NAME.values()) <= registered, "a TOOL_NAME target is not a registered tool"
     entry = next(e for e in S.scope_catalog() if e["id"] == "svamp")
     for cur in C.EDGES:                    # every adjacency edge's target is callable
         for mv in C.build_next_moves(cur, entry, soc="49-9041", top6="095000"):
