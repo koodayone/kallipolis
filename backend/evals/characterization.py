@@ -1,16 +1,19 @@
-"""Characterization goldens — freeze the CURRENT computed quantities at the golden
-coordinates, from BOTH code paths, so the Phase-2 computation-unification diff is legible.
+"""Characterization goldens — freeze the computed quantities at the golden coordinates, from
+BOTH code paths, so the dashboard⇄MCP corroboration is legible and any drift is a reviewable diff.
 
 For each (member, sector, soc) we capture the same figures two ways:
-  • builder  — the dashboard/report path (`build_landscape_occupation`): consortium_supply
-               (stale COE CSV via `get_coe_supply`) and gap = openings − consortium_supply.
-  • canonical — the MCP resolver path (`mcp_server.canonical`): supply (fresh DataMart graph,
-               COE's 3-yr averaging method), feeders, active_feeders, and the college roster.
+  • builder  — the dashboard/report path (`build_landscape_occupation`): consortium_supply and
+               gap = openings − consortium_supply.
+  • canonical — the MCP resolver path (`mcp_server.canonical` → `partnerships.quantities`): supply
+               (DataMart graph, COE's 3-yr averaging method), feeders, active_feeders, the roster.
 
-The two paths DIVERGE today (stale-sparse CSV vs fresh-complete graph, same method). That
-divergence is captured ON PURPOSE — these goldens are a behavioral snapshot, not an assertion
-of correctness (see research/architecture/EVALS-APPROACH.md). Phase 2 repoints the builder onto
-the canonical path; the golden diff is then exactly the set of corrected numbers, signed off.
+Both paths now resolve supply through the SAME graph resolver (`quantities.supply_fn_graph`, shipped
+as S3 — the builder no longer reads the COE CSV), so at the golden coordinates they agree by
+construction (`test_substrate.test_dashboard_mcp_corroboration`). The one residual is feeder-set
+granularity: `quantities.feeders` counts a general TOP as a feeder where the builder's
+`LandscapeSpec.in_scope` counts only the specific child (RN 29-1141: TOP 123000 vs 123010 → 688.7 vs
+688.0). That crosswalk-granularity call is the open substrate item (`SUBSTRATE-QUEUE.md #1`); closing
+it drives `_CORROBORATION_BAND` to 0.
 
 Refresh after an INTENDED change (regenerates goldens/*.json against the reachable graph — the
 seed in CI, or a socat-forwarded compose Neo4j locally):

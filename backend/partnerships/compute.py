@@ -361,6 +361,10 @@ def main():
             if args.all or not args.college:
                 colleges = _all_colleges(driver)
                 logger.info(f"Processing {len(colleges)} colleges")
+                # NB: this stays a per-college loop by design. Collapsing it into a single
+                # UNWIND-over-colleges query was benchmarked and REJECTED — it measured 1.5–6×
+                # SLOWER (output-identical). Neo4j is co-located with the backend, so per-call
+                # round-trips are ~free; don't import remote-DB N+1 intuition here.
                 for c in colleges:
                     if run_pa:
                         materialize_partnership_alignment(driver, c)
