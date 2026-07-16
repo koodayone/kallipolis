@@ -3,53 +3,53 @@
  "gated": false,
  "member": "svamp",
  "ranked": [
+  "095600 Manufacturing and Industrial Technology",
+  "094500 Industrial Systems Technology and Maintenance",
   "095630 Machining and Machine Tools",
   "093500 Electro-Mechanical Technology",
-  "093440 Electrical Systems and Power Transmission",
-  "093430 Telecommunications Technology",
-  "095600 Manufacturing and Industrial Technology",
-  "093420 Industrial Electronics",
-  "094500 Industrial Systems Technology and Maintenance",
-  "095670 Industrial and Occupational Safety and Health"
+  "093400 Electronics and Electric Technology",
+  "093410 Computer Electronics",
+  "094610 Energy Systems Technology",
+  "092400 Engineering Technology, General (requires Trigonometry)"
  ],
  "sector": "adm",
  "unit_type": "program",
  "values": {
-  "093420 Industrial Electronics": {
-   "addressable_demand": 600,
-   "addressable_gap": 0,
+  "092400 Engineering Technology, General (requires Trigonometry)": {
+   "addressable_demand": 1200,
+   "addressable_gap": 277,
    "award_trend": null,
    "completions": 0.0,
-   "enrollment": 0.0,
-   "enrollment_trend": null,
+   "enrollment": 22.0,
+   "enrollment_trend": 1.11,
    "supply_share": 0.0,
-   "wage_after_2": 75405,
-   "wage_after_5": 81821,
-   "wage_lift": 42026
+   "wage_after_2": 64498,
+   "wage_after_5": 88963,
+   "wage_lift": 38531
   },
-  "093430 Telecommunications Technology": {
-   "addressable_demand": 430,
-   "addressable_gap": 27,
+  "093400 Electronics and Electric Technology": {
+   "addressable_demand": 1170,
+   "addressable_gap": 463,
+   "award_trend": 0.0,
+   "completions": 0.3,
+   "enrollment": 113.3,
+   "enrollment_trend": 1.49,
+   "supply_share": 0.001,
+   "wage_after_2": 69631,
+   "wage_after_5": 84558,
+   "wage_lift": 27146
+  },
+  "093410 Computer Electronics": {
+   "addressable_demand": 1120,
+   "addressable_gap": 413,
    "award_trend": null,
    "completions": 0.0,
    "enrollment": 0.0,
    "enrollment_trend": null,
    "supply_share": null,
-   "wage_after_2": 62006,
-   "wage_after_5": 77009,
-   "wage_lift": 32733
-  },
-  "093440 Electrical Systems and Power Transmission": {
-   "addressable_demand": 560,
-   "addressable_gap": 147,
-   "award_trend": null,
-   "completions": 0.0,
-   "enrollment": 0.0,
-   "enrollment_trend": null,
-   "supply_share": 0.0,
-   "wage_after_2": 127791,
-   "wage_after_5": 134808,
-   "wage_lift": 30954
+   "wage_after_2": 43667,
+   "wage_after_5": 59650,
+   "wage_lift": 25603
   },
   "093500 Electro-Mechanical Technology": {
    "addressable_demand": 1260,
@@ -65,7 +65,7 @@
   },
   "094500 Industrial Systems Technology and Maintenance": {
    "addressable_demand": 1930,
-   "addressable_gap": -78,
+   "addressable_gap": 991,
    "award_trend": 1.89,
    "completions": 9.0,
    "enrollment": 14.0,
@@ -75,9 +75,21 @@
    "wage_after_5": 105182,
    "wage_lift": 35410
   },
+  "094610 Energy Systems Technology": {
+   "addressable_demand": 1000,
+   "addressable_gap": 312,
+   "award_trend": 1.15,
+   "completions": 26.0,
+   "enrollment": 92.7,
+   "enrollment_trend": 2.09,
+   "supply_share": 0.697,
+   "wage_after_2": 54002,
+   "wage_after_5": 111606,
+   "wage_lift": 36754
+  },
   "095600 Manufacturing and Industrial Technology": {
    "addressable_demand": 1980,
-   "addressable_gap": 8,
+   "addressable_gap": 1027,
    "award_trend": 2.46,
    "completions": 31.3,
    "enrollment": 461.3,
@@ -98,18 +110,6 @@
    "wage_after_2": 63040,
    "wage_after_5": 72728,
    "wage_lift": 20298
-  },
-  "095670 Industrial and Occupational Safety and Health": {
-   "addressable_demand": 250,
-   "addressable_gap": -136,
-   "award_trend": null,
-   "completions": 0.0,
-   "enrollment": 0.0,
-   "enrollment_trend": null,
-   "supply_share": 0.0,
-   "wage_after_2": null,
-   "wage_after_5": null,
-   "wage_lift": null
   }
  }
 }

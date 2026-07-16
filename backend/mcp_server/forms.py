@@ -21,6 +21,11 @@ from partnerships.landscape_programs import (
     build_programs_landscape,
 )
 from partnerships.members import region_member
+from partnerships.predicates import (
+    CC_SERVABLE_EDUCATION as _CC_SERVABLE_EDUCATION,
+    OPENINGS_FLOOR as _OPENINGS_FLOOR,
+    WAGE_FLOOR as _WAGE_FLOOR,
+)
 from partnerships.resolve import resolve
 
 from mcp_server import canonical as CAN
@@ -64,10 +69,12 @@ def _awards_window(award_years: list[str]) -> str:
     return f"DataMart awards — {award_years[0]}…{award_years[-1]}"
 
 
-def _derived(value, *, unit: str, granularity: str) -> QualifiedValue:
+def _derived(value, *, unit: str, granularity: str, predicate_version: str = "") -> QualifiedValue:
     """A structural count over the graph (member/program cardinality) — not an
-    institutional-authority fact, but still Bound so no bare number escapes."""
-    return QualifiedValue.ok(value, unit=unit, source="derived", granularity=granularity)
+    institutional-authority fact, but still Bound so no bare number escapes.
+    ``predicate_version`` (K2) stamps a count whose value depends on a registered predicate."""
+    return QualifiedValue.ok(value, unit=unit, source="derived", granularity=granularity,
+                             predicate_version=predicate_version)
 
 
 def _framing(form_id: str, salience: list[str]) -> Framing:
@@ -82,12 +89,11 @@ def _licensing(form_id: str, *, licensed=None, not_licensed=None, gates=None) ->
 
 def _drill(form: str, entry: dict, *, remaining: int,
            soc: Optional[str] = None, top6: Optional[str] = None) -> More:
-    tool = C.tool_name(form)   # the drill pointer is a call target — public tool name, not the form-id
+    tool = C.tool_name(form)   # the drill pointer is a call target — the verb, carrying the entity/lens
     return More(
         remaining=remaining,
-        drill=NextMove(
-            form=tool, coordinate=coordinate_of(entry, soc=soc, top6=top6),
-            rationale=f"{remaining} more rows; re-call {tool} scoped to one row to drill in."),
+        drill=C.as_move(form, coordinate_of(entry, soc=soc, top6=top6),
+                        f"{remaining} more rows; re-call {tool} scoped to one row to drill in."),
     )
 
 
@@ -109,8 +115,8 @@ def _empty_member_sector(form: str, entry: dict, region_display: str) -> Analysi
         licensing=_licensing(form,
                              gates=[Gate(field="member_supply", marker="unavailable",
                                          reason=reason)]),
-        next_moves=[NextMove(form=C.tool_name("orient"), coordinate=coord,
-                             rationale="See which sectors this member actually runs programs in.")],
+        next_moves=[C.as_move("orient", coord,
+                              "See which sectors this member actually runs programs in.")],
         view_link=V.view_link(form, instance_id=entry["id"], member_id=entry["member_id"],
                               sector_id=entry["sector_id"]),
     )
@@ -149,10 +155,9 @@ def _unserved_occupation(entry: dict, soc: str, region_display: str) -> Analysis
         form="gap", coordinate=coord,
         framing=_framing("gap", [C.SAL_MEMBER_ANCHORED]),
         licensing=_licensing("gap", gates=[Gate(field="gap", marker="unavailable", reason=reason)]),
-        next_moves=[NextMove(form=C.tool_name("occupation_profile"),
-                             coordinate=coordinate_of(entry, soc=soc),
-                             rationale="The occupation's regional demand, supply, and gap — "
-                                       "region-derived, not gated to what the member serves.")],
+        next_moves=[C.as_move("occupation_profile", coordinate_of(entry, soc=soc),
+                              "The occupation's regional demand, supply, and gap — "
+                              "region-derived, not gated to what the member serves.")],
         view_link=V.view_link("gap", instance_id=entry["id"], member_id=entry["member_id"],
                               sector_id=entry["sector_id"], soc=soc),
     )
@@ -190,9 +195,9 @@ def analyze_gap(member: str, sector: str, *, soc: Optional[str] = None) -> Analy
             if r is None:
                 r = per_soc[cell.soc_code] = {
                     "title": cell.title, "openings": cell.annual_openings,
-                    "member_supply": CAN.supply(member_colleges, cell.soc_code),
-                    "regional_supply": CAN.supply(region_colleges, cell.soc_code),
-                    "latest": CAN.supply(member_colleges, cell.soc_code, years=latest)}
+                    "member_supply": CAN.supply(member_colleges, cell.soc_code, spec=resolved_spec),
+                    "regional_supply": CAN.supply(region_colleges, cell.soc_code, spec=resolved_spec),
+                    "latest": CAN.supply(member_colleges, cell.soc_code, years=latest, spec=resolved_spec)}
             if r["openings"] is None:
                 r["openings"] = cell.annual_openings
     for r in per_soc.values():
@@ -202,17 +207,17 @@ def analyze_gap(member: str, sector: str, *, soc: Optional[str] = None) -> Analy
         return _empty_member_sector("gap", entry, land.region_display)
 
     socs = list(per_soc)
-    agg_region_supply = CAN.supply_over_socs(region_colleges, socs)
+    agg_region_supply = CAN.supply_over_socs(region_colleges, socs, spec=resolved_spec)
     summary = {
         "regional_demand": P.q("annual_openings", agg.regional_demand_total,
                                granularity=region_g, unit="openings/yr"),
         "regional_supply": P.q("projected_supply", agg_region_supply,
                                granularity=region_supply_g, unit="completions/yr", vintage=supply_v),
-        "member_supply": P.q("projected_supply", CAN.supply_over_socs(member_colleges, socs),
+        "member_supply": P.q("projected_supply", CAN.supply_over_socs(member_colleges, socs, spec=resolved_spec),
                              granularity=inst_g, unit="completions/yr", vintage=supply_v),
         "gap": P.q("gap", int(round(agg.regional_demand_total - agg_region_supply)),
                    granularity=f"{region_g} − {region_supply_g}", unit="openings/yr", vintage=gap_v),
-        "latest_year_supply": P.q("latest_year_supply", CAN.supply_over_socs(member_colleges, socs, years=latest),
+        "latest_year_supply": P.q("latest_year_supply", CAN.supply_over_socs(member_colleges, socs, years=latest, spec=resolved_spec),
                                   granularity=inst_g, unit="completions", vintage=latest_v),
     }
 
@@ -399,7 +404,7 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
             if not openings:
                 continue
             occ_rows.append((soc, d.get("title") or soc, openings, d.get("annual_wage"),
-                             CAN.gap(openings, CAN.supply(region_colleges, soc))))
+                             CAN.gap(openings, CAN.supply(region_colleges, soc, spec=rspec))))
         occ_rows.sort(key=lambda r: (r[2] or 0, r[3] or 0), reverse=True)   # by openings; wage breaks ties
         rows = [Row(label=f"{soc} {title}", values={
             "annual_openings": P.q("annual_openings", openings, granularity=region_g, unit="openings/yr"),
@@ -410,14 +415,14 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
         salience = [C.SAL_LOSSY_CROSSWALK] if len(prog_socs) >= 4 else []
         top_occ = occ_rows[0] if occ_rows else None
         next_moves = [
-            NextMove(form=C.tool_name("occupation_profile"),
-                     coordinate=coordinate_of(entry, soc=top_occ[0]) if top_occ else coordinate_of(entry, top6=program),
-                     rationale=(f"Drill into a desirable occupation — e.g. {top_occ[0]} {top_occ[1]} — its "
-                                f"full demand, who trains for it, and who hires." if top_occ else
-                                "Drill into one of these occupations for its full picture.")),
-            NextMove(form=C.tool_name("regional_employers"),
-                     coordinate=coordinate_of(entry, soc=top_occ[0]) if top_occ else coordinate_of(entry),
-                     rationale="See the regional employers hiring for these occupations."),
+            C.as_move("occupation_profile",
+                      coordinate_of(entry, soc=top_occ[0]) if top_occ else coordinate_of(entry, top6=program),
+                      (f"Drill into a desirable occupation — e.g. {top_occ[0]} {top_occ[1]} — its "
+                       f"full demand, who trains for it, and who hires." if top_occ else
+                       "Drill into one of these occupations for its full picture.")),
+            C.as_move("regional_employers",
+                      coordinate_of(entry, soc=top_occ[0]) if top_occ else coordinate_of(entry),
+                      "See the regional employers hiring for these occupations."),
         ]
         coord = coordinate_of(entry, top6=program)
         coord.region = region_disp
@@ -453,8 +458,8 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
     region_supply_g = f"regional ({occ.region_display}) — all {len(region_colleges)} colleges"
     supply_v, latest_v = CAN.vintage(recent), CAN.vintage(latest)
     gap_v = f"{P.COE_DEMAND_VINTAGE} vs {supply_v}"    # supply side now DataMart, not the COE window
-    regional_supply = CAN.supply(region_colleges, occupation)
-    member_supply = CAN.supply(member_colleges, occupation)
+    regional_supply = CAN.supply(region_colleges, occupation, spec=rspec)
+    member_supply = CAN.supply(member_colleges, occupation, spec=rspec)
     summary = {
         "regional_demand": P.q("annual_openings", occ.annual_openings, granularity=region_g, unit="openings/yr"),
         "annual_wage": P.q("annual_wage", occ.annual_wage, granularity=region_g, unit="USD/yr (occ. median)"),
@@ -462,7 +467,7 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
         "member_supply": P.q("projected_supply", member_supply, granularity=inst_g, unit="completions/yr", vintage=supply_v),
         "gap": P.q("gap", CAN.gap(occ.annual_openings, regional_supply),
                    granularity=f"{region_g} − {region_supply_g}", unit="openings/yr", vintage=gap_v),
-        "latest_year_supply": P.q("latest_year_supply", CAN.supply(member_colleges, occupation, years=latest),
+        "latest_year_supply": P.q("latest_year_supply", CAN.supply(member_colleges, occupation, years=latest, spec=rspec),
                                   granularity=inst_g, unit="completions", vintage=latest_v),
     }
     tops = sorted(occ.feeding_tops, key=lambda t: t.awards_total, reverse=True)
@@ -670,11 +675,11 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
         framing=_framing("occupation_profile",
                          [C.SAL_LOSSY_CROSSWALK] if len(supporting) >= 4 else []),
         licensing=_licensing("occupation_profile", licensed=licensed),
-        next_moves=[   # form = the callable tool name the model routes to, not the internal id
-            NextMove(form=C.tool_name("regional_employers"), coordinate=coord,
-                     rationale="See the full set of regional employers hiring for this occupation."),
-            NextMove(form=C.tool_name("gap"), coordinate=coordinate_of(nav_entry),
-                     rationale="See the whole supply–demand gap for this sector."),
+        next_moves=[   # form = the verb the model routes to; the coordinate carries entity/lens
+            C.as_move("regional_employers", coord,
+                      "See the full set of regional employers hiring for this occupation."),
+            C.as_move("gap", coordinate_of(nav_entry),
+                      "See the whole supply–demand gap for this sector."),
         ],
         view_link=V.view_link("occupation_profile", instance_id=nav_entry["id"],
                               member_id=nav_entry["member_id"], sector_id=nav_entry["sector_id"],
@@ -692,14 +697,8 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
 # The quality-demand gate — three explicit, legible, tunable judgment thresholds (plus the
 # PROMOTION_SOCS not-trainable exclusion the gap view already applies). A greenfield
 # occupation (member supply == 0, not a promotion role) is surfaced ONLY if it clears ALL THREE.
-_CC_SERVABLE_EDUCATION = frozenset({           # BLS entry-level education a community college can
-    "High school diploma or equivalent",       # actually credential into — the middle-skill band.
-    "Postsecondary nondegree award",           # EXCLUDES Bachelor's/Master's/Doctoral (out of a CC's
-    "Some college, no degree",                 # award authority) and "No formal educational
-    "Associate's degree",                      # credential" (nothing to launch a program for).
-})
-_WAGE_FLOOR = 50_000     # living-wage floor (USD/yr, occ. median) — screens out low-wage demand.
-_OPENINGS_FLOOR = 100    # meaningful-demand floor (annual regional openings) — screens out thin demand.
+# The greenfield gates (_CC_SERVABLE_EDUCATION / _WAGE_FLOOR / _OPENINGS_FLOOR) are the versioned
+# predicate set — imported at the top of this module from partnerships.predicates (K2 single home).
 
 
 def unmet_demand(member: str) -> AnalysisEnvelope:
@@ -795,10 +794,9 @@ def unmet_demand(member: str) -> AnalysisEnvelope:
         nxt = survivors[_TOP_N]["soc"]
         more = More(
             remaining=n_unmet - _TOP_N,
-            drill=NextMove(form=C.tool_name("occupation_profile"),
-                           coordinate=coordinate_of(entry, soc=nxt),
-                           rationale=(f"{n_unmet - _TOP_N} more greenfield occupations; "
-                                      f"occupation_profile on any surfaced SOC drills into one.")))
+            drill=C.as_move("occupation_profile", coordinate_of(entry, soc=nxt),
+                            (f"{n_unmet - _TOP_N} more greenfield occupations; "
+                             f"navigate to any surfaced SOC drills into one.")))
 
     if n_unmet == 0:
         licensed = [f"No community-college-servable, living-wage (≥ ${_WAGE_FLOOR:,}), "
@@ -923,11 +921,11 @@ def member_portfolio(member: str) -> AnalysisEnvelope:
     top = sect_rows[0] if sect_rows else None
     top_entry = (find_scope(entry["member_id"], top[1]) or entry) if top else entry
     next_moves = [
-        NextMove(form=C.tool_name("sector_overview"), coordinate=coordinate_of(top_entry),
-                 rationale=(f"Drill into the widest-gap sector ({top[0]}) — its occupations, supply, and gaps."
-                            if top else "Drill into a sector's occupations, supply, and gaps.")),
-        NextMove(form=C.tool_name("unmet_demand"), coordinate=coordinate_of(entry),
-                 rationale="See the high-opportunity occupations across the region the member serves no one into."),
+        C.as_move("sector_overview", coordinate_of(top_entry),
+                  (f"Drill into the widest-gap sector ({top[0]}) — its occupations, supply, and gaps."
+                   if top else "Drill into a sector's occupations, supply, and gaps.")),
+        C.as_move("unmet_demand", coordinate_of(entry),
+                  "See the high-opportunity occupations across the region the member serves no one into."),
     ]
 
     coord = coordinate_of(entry)
@@ -994,10 +992,18 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
 
     # Regime A — plain sums over DISTINCT occupations / programs (each counted once), no allocation.
     total_demand = int(round(sum((d.get("annual_openings") or 0) for d in demand.values())))
-    regional_supply = CAN.supply_over_socs(region_colleges, sector_socs)
-    member_supply = CAN.supply_over_socs(member_colleges, sector_socs)
-    pl = build_programs_landscape(rspec)
-    member_programs = len(pl.tops)
+    regional_supply = CAN.supply_over_socs(region_colleges, sector_socs, spec=rspec)
+    member_supply = CAN.supply_over_socs(member_colleges, sector_socs, spec=rspec)
+    # The member's programs in the sector = registered ∩ in_scope (adjudication C: 'on-the-books' — the
+    # member has a Program node for it and it is in the sector's scope), with the awards-active subset
+    # (currently graduating) as a stamped complement. Both are stamped so the two meanings that drifted
+    # across tools (registered-ever vs latest-year-active) are DECLARED, never one number that silently
+    # means different things. Fixes the former mislabel where a curated spec counted the whole in_scope
+    # crosswalk universe as "member programs".
+    from ontology.crosswalks import load_top_titles as _load_top_titles
+    _titles = _load_top_titles()
+    # The member's programs in the sector (adjudication C), one birthplace shared with institution_overview.
+    on_the_books, graduating = CAN.member_sector_programs(member_colleges, rspec)
     demand_by_soc = {s: (d.get("annual_openings") or 0) for s, d in demand.items()}
 
     summary = {
@@ -1013,7 +1019,10 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
                      granularity=inst_g)
             if regional_supply else
             QualifiedValue.gated("unavailable", unit="fraction of regional supply", granularity=inst_g)),
-        "member_programs": _derived(member_programs, unit="TOP6 programs the member runs", granularity=inst_g),
+        "member_programs": _derived(len(on_the_books), unit="TOP6 programs the member runs",
+                                    granularity=inst_g, predicate_version="on-the-books (registered ∩ in_scope)"),
+        "member_programs_active": _derived(len(graduating), unit="TOP6 programs currently graduating",
+                                           granularity=inst_g, predicate_version="awards-active (latest-year completer)"),
         "sector_occupations": _derived(len(sector_socs), unit="SOCs",
                                        granularity=f"{sector_label} sector (PCAH)"),
     }
@@ -1024,10 +1033,10 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
     # program is the row and the decision object; occupations live in each program's addressable
     # demand and are reached by drilling a program (program_pathways). All canonical, no allocation.
     prog = []
-    for t in pl.tops:
-        occ_socs, addr = CAN.addressable_demand(t.top6, sector_socs, demand_by_soc)
-        prog.append((f"{t.top6} {t.name}", t.top6,
-                     CAN.supply_over_tops(member_colleges, [t.top6]), addr, len(occ_socs)))
+    for top6 in on_the_books:
+        occ_socs, addr = CAN.addressable_demand(top6, sector_socs, demand_by_soc)
+        prog.append((f"{top6} {_titles.get(top6, top6)}", top6,
+                     CAN.supply_over_tops(member_colleges, [top6]), addr, len(occ_socs)))
     prog.sort(key=lambda r: r[3], reverse=True)
     rows = [Row(label=label, values={
         "member_supply": P.q("projected_supply", p_supply, granularity=inst_g, unit="completions/yr", vintage=supply_v),
@@ -1040,24 +1049,23 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
     if len(prog) > _TOP_N:
         nxt = prog[_TOP_N][1]
         more = More(remaining=len(prog) - _TOP_N,
-                    drill=NextMove(form=C.tool_name("pathway"),
-                                   coordinate=coordinate_of(entry, top6=nxt),
-                                   rationale=(f"{len(prog) - _TOP_N} more programs the member runs; "
-                                              f"program_pathways on any TOP6 drills into its occupations.")))
+                    drill=C.as_move("pathway", coordinate_of(entry, top6=nxt),
+                                    (f"{len(prog) - _TOP_N} more programs the member runs; "
+                                     f"crosswalk on any TOP6 drills into its occupations.")))
 
     # Program-first descent: the primary next move is drilling a PROGRAM (the practitioner's lever),
     # then the occupation-level gaps, then greenfield.
     top_prog = prog[0] if prog else None
     next_moves = [
-        NextMove(form=C.tool_name("pathway"),
-                 coordinate=coordinate_of(entry, top6=top_prog[1]) if top_prog else coordinate_of(entry),
-                 rationale=(f"Drill into a program — e.g. {top_prog[0]} — for the occupations it prepares "
-                            f"students for and their demand." if top_prog else
-                            "Drill into a program for the occupations it prepares students for.")),
-        NextMove(form=C.tool_name("gap"), coordinate=coordinate_of(entry),
-                 rationale="See the sector's occupation-level supply–demand gaps directly."),
-        NextMove(form=C.tool_name("unmet_demand"), coordinate=coordinate_of(entry),
-                 rationale="See high-opportunity occupations across the region the member serves no one into."),
+        C.as_move("pathway",
+                  coordinate_of(entry, top6=top_prog[1]) if top_prog else coordinate_of(entry),
+                  (f"Drill into a program — e.g. {top_prog[0]} — for the occupations it prepares "
+                   f"students for and their demand." if top_prog else
+                   "Drill into a program for the occupations it prepares students for.")),
+        C.as_move("gap", coordinate_of(entry),
+                  "See the sector's occupation-level supply–demand gaps directly."),
+        C.as_move("unmet_demand", coordinate_of(entry),
+                  "See high-opportunity occupations across the region the member serves no one into."),
     ]
 
     coord = coordinate_of(entry)

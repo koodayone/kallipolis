@@ -176,30 +176,57 @@ FORMS: dict[str, Form] = {
 
 # ── Form-id → public tool name ────────────────────────────────────────────
 # A next-move is a CALL TARGET: the model routes to it, so its `form` must be a
-# name it can actually invoke. The internal form-ids ("gap", "regional_employers", …)
-# are NOT the registered MCP tool names ("supply_demand_gaps", "regional_employers",
-# …) — this map translates. server.py registers each tool under the same public
-# name (a coherence test pins TOOL_NAME.values() == the registered names, so the two
-# can never drift). Includes the two Tier-0 ids the gate routes back to.
+# name it can actually invoke. Post-retirement the surface is the five VERBS (+ the
+# list helper): an internal form-id ("gap", "coverage", …) is reached by a verb whose
+# coordinate carries the entity/lens it dispatches on. This map names that verb; the
+# entity/lens are set by `as_move`. server.py registers each verb under the same name
+# (a coherence test pins TOOL_NAME.values() ⊆ the registered tools). Includes the two
+# Tier-0 ids the gate routes back to.
 TOOL_NAME: dict[str, str] = {
     "list_scopes": "list_institutions",
-    "orient": "institution_overview",
-    "member_portfolio": "member_portfolio",
-    "sector_overview": "sector_overview",
+    "orient": "orient",
+    "member_portfolio": "orient",
+    "sector_overview": "navigate",
     "compare": "compare",
-    "gap": "supply_demand_gaps",
-    "coverage": "program_coverage",
-    "pathway": "program_pathways",
-    "regional_employers": "regional_employers",
-    "occupation_profile": "occupation_profile",
-    "unmet_demand": "unmet_demand",
+    "gap": "navigate",
+    "coverage": "navigate",
+    "pathway": "crosswalk",
+    "regional_employers": "navigate",
+    "occupation_profile": "navigate",
+    "unmet_demand": "navigate",
 }
+
+# The lens a verb sets to reach a form-id's view (blank ⇒ dispatched by sector/entity alone).
+_LENS: dict[str, str] = {
+    "gap": "gaps",
+    "coverage": "coverage",
+    "regional_employers": "employers",
+    "unmet_demand": "greenfield",
+}
+# form-ids whose carried SOC rides the coordinate as the verb's entity (the occupation in focus).
+_SOC_ENTITY_FORMS = frozenset({"gap", "regional_employers", "occupation_profile"})
 
 
 def tool_name(form_id: str) -> str:
-    """The registered public MCP tool name for a form-id (fail-fast on an unmapped id
-    so a new form/edge can't silently emit a non-callable next-move)."""
+    """The registered VERB (or the list helper) that reaches a form-id's view — fail-fast on an
+    unmapped id so a new form/edge can't silently emit a non-callable next-move."""
     return TOOL_NAME[form_id]
+
+
+def as_move(form_id: str, coord: "Coordinate", rationale: str = "") -> NextMove:
+    """Route a next-move onto the verb surface: `form` = the verb that reaches the form-id's view,
+    and a COPY of the coordinate carries the entity/lens the verb dispatches on. The soc/top6 already
+    on the coordinate become the entity; occupation_profile is sector-agnostic, so its move drops the
+    sector — navigate(entity=<soc>) with no sector resolves to the occupation view."""
+    c = coord.model_copy()
+    c.lens = _LENS.get(form_id, "")
+    if form_id == "pathway":
+        c.entity = c.top6 or c.soc or ""          # crosswalk dispatches a program (TOP6) or an occupation (SOC)
+    elif form_id in _SOC_ENTITY_FORMS:
+        c.entity = c.soc or ""
+    if form_id == "occupation_profile" and c.entity:
+        c.sector, c.sector_label = "", ""         # sector-agnostic → navigate(entity) hits the occupation view
+    return NextMove(form=tool_name(form_id), coordinate=c, rationale=rationale)
 
 
 # ── The adjacency graph (§5.2: next-moves = catalog edges) ────────────────
@@ -251,7 +278,7 @@ def build_next_moves(current_form: str, entry: dict, *,
             soc=soc if "soc" in edge.carries else None,
             top6=top6 if "top6" in edge.carries else None,
         )
-        moves.append(NextMove(form=tool_name(edge.target), coordinate=coord, rationale=edge.rationale))
+        moves.append(as_move(edge.target, coord, edge.rationale))
     return moves
 
 

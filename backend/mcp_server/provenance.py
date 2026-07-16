@@ -79,17 +79,22 @@ def default_vintage(field: str) -> str:
 
 
 def q(field: str, value, *, granularity: str, unit: str = "",
-      vintage: Optional[str] = None, status: Status = "ok") -> QualifiedValue:
+      vintage: Optional[str] = None, status: Status = "ok",
+      predicate_version: str = "") -> QualifiedValue:
     """Build a QualifiedValue with source (never invented) + vintage attached.
 
     Pass an explicit ``vintage`` for data-derived windows (awards/wage);
     otherwise the file-level default is used. A non-ok ``status`` yields an
-    explicit epistemic marker (value None)."""
+    explicit epistemic marker (value None). ``predicate_version`` (K2) stamps the
+    versioned predicate set the value was computed under — passed by call sites whose
+    figure depends on a registered predicate; "" leaves it unstamped."""
     v = vintage if vintage is not None else default_vintage(field)
     src = authority_of(field)
     if status != "ok":
-        return QualifiedValue.gated(status, unit=unit, source=src, granularity=granularity, vintage=v)
-    return QualifiedValue.ok(value, unit=unit, source=src, granularity=granularity, vintage=v)
+        return QualifiedValue.gated(status, unit=unit, source=src, granularity=granularity,
+                                    vintage=v, predicate_version=predicate_version)
+    return QualifiedValue.ok(value, unit=unit, source=src, granularity=granularity,
+                             vintage=v, predicate_version=predicate_version)
 
 
 def source_refs(field_names: Iterable[str]) -> list[SourceRef]:

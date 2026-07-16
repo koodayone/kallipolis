@@ -112,18 +112,21 @@ def test_view_link_routes():
 
 def test_next_moves_are_catalog_edges():
     entry = next(e for e in S.scope_catalog() if e["id"] == "svamp")
-    # next-move `form` is the CALLABLE tool name (the pathway edge surfaces as "program_pathways"),
-    # not the internal form-id — the model routes to it directly.
+    # A next-move's `form` is the VERB the model routes to; the coordinate carries the entity/lens the
+    # verb dispatches on. gap → regional_employers (navigate·employers lens) + pathway (crosswalk), both
+    # carrying the soc; coverage → pathway (crosswalk) carrying the top6 as the entity.
     moves = {m.form: m for m in C.build_next_moves("gap", entry, soc="49-9041")}
-    assert "regional_employers" in moves and moves["regional_employers"].coordinate.soc == "49-9041"
+    assert moves["navigate"].coordinate.lens == "employers" and moves["navigate"].coordinate.entity == "49-9041"
+    assert moves["navigate"].coordinate.soc == "49-9041"
+    assert moves["crosswalk"].coordinate.entity == "49-9041"
     cov = {m.form: m for m in C.build_next_moves("coverage", entry, top6="095000")}
-    assert cov["program_pathways"].coordinate.top6 == "095000"
+    assert cov["crosswalk"].coordinate.top6 == "095000" and cov["crosswalk"].coordinate.entity == "095000"
 
 
 def test_gate_envelope_routes_to_tier0():
     env = S.gate_envelope("gap", "bogus", "adm", reason="unknown member")
     assert env.licensing.gates[0].marker == "out-of-scope"
-    assert {m.form for m in env.next_moves} == {"institution_overview", "list_institutions"}
+    assert {m.form for m in env.next_moves} == {"orient", "list_institutions"}
     assert not env.data.summary            # Gate ⇒ no data
 
 
@@ -139,8 +142,10 @@ def test_next_moves_name_callable_tools():
     except ModuleNotFoundError:
         pytest.skip("mcp SDK not installed")
     registered = {t.name for t in asyncio.run(mcp.list_tools())}
-    # the map is the single source of truth for tool names — it must equal registration
-    assert set(C.TOOL_NAME.values()) == registered, "TOOL_NAME drifted from registered tools"
+    # During the additive verb migration the 5 coordinate-algebra verbs are registered but are NOT
+    # next-move targets (next_moves still name the legacy tools), so the map's targets must all be
+    # registered (⊆), not equal. Post-Phase-5 (legacy tools retired) this returns to ==.
+    assert set(C.TOOL_NAME.values()) <= registered, "a TOOL_NAME target is not a registered tool"
     entry = next(e for e in S.scope_catalog() if e["id"] == "svamp")
     for cur in C.EDGES:                    # every adjacency edge's target is callable
         for mv in C.build_next_moves(cur, entry, soc="49-9041", top6="095000"):
@@ -340,7 +345,7 @@ def test_empty_member_sector_gates_not_zero():
         g = env.licensing.gates
         assert g and g[0].marker == "unavailable" and "greenfield" in g[0].reason, name
         assert not env.data.summary, f"{name} returned zero-filled data instead of a gate"
-        assert {m.form for m in env.next_moves} <= {"institution_overview"}
+        assert {m.form for m in env.next_moves} <= {"orient"}
 
 
 @requires_graph
@@ -413,8 +418,10 @@ def test_unmet_demand_greenfield_invariant(member):
     assert env.data.summary["n_unmet"].value >= len(env.data.rows)
     # provenance carried once, spanning demand (coe) + supply (datamart)
     assert {s.id for s in env.provenance.sources} >= {"coe", "datamart"}
-    # the next-move drills into a surfaced occupation via occupation_profile, carrying its SOC
-    assert any(m.form == "occupation_profile" and m.coordinate.soc for m in env.next_moves)
+    # the next-move drills into a surfaced occupation via navigate(entity=<soc>) — sector-agnostic,
+    # so the occupation view resolves (no sector on the coordinate)
+    assert any(m.form == "navigate" and m.coordinate.entity and not m.coordinate.sector
+               for m in env.next_moves)
 
 
 @requires_graph

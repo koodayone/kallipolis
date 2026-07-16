@@ -116,25 +116,21 @@ def member_portfolio(member_id: str) -> Optional[dict]:
         return None
     spec0 = first[0]
     from ontology.regions import COE_REGION_DISPLAY
-    from ontology.schema import get_driver
-    from partnerships.landscape_programs import relevant_tops
-    with get_driver().session() as session:
-        rows = session.run(
-            "MATCH (p:Program) WHERE p.college IN $colleges RETURN DISTINCT p.top6 AS top6",
-            colleges=list(spec0.colleges),
-        ).data()
-    member_tops = {r["top6"] for r in rows}
+    from partnerships.quantities import member_sector_programs
+    from partnerships.resolve import resolve
     sectors: list[dict] = []
     for e in sects:
         resolved = scope_for(member_id, e["sector_id"])
         if resolved is None:
             continue
-        cand = set(relevant_tops(resolved[0]).keys())
+        # resolve() so the sector's effective SOCs match what the figure tools compute at (CI-02).
+        on_the_books, graduating = member_sector_programs(spec0.colleges, resolve(resolved[0]))
         sectors.append({
             "sector_id": e["sector_id"],
             "sector_label": e["sector_label"],
             "instance": e["id"],
-            "program_count": len(member_tops & cand),
+            "program_count": len(on_the_books),        # on-the-books (registered ∩ in_scope, adjudication C)
+            "active_program_count": len(graduating),   # the currently-graduating subset
         })
     try:
         region = COE_REGION_DISPLAY.get(spec0.resolve_region(), "")
@@ -176,17 +172,17 @@ def gate_envelope(form: str, member_id: str, sector_id: str, *, reason: str,
                   marker: str = "out-of-scope") -> AnalysisEnvelope:
     """The emergent scope-first gate: a form called with an unresolvable
     coordinate returns an explicit marker and routes back to Tier 0."""
-    from mcp_server.catalog import tool_name  # lazy: catalog imports scope (avoid the cycle)
+    from mcp_server.catalog import as_move  # lazy: catalog imports scope (avoid the cycle)
     coord = Coordinate(member=member_id, sector=sector_id)
     return AnalysisEnvelope(
         form=form,
         coordinate=coord,
         licensing=Licensing(
             gates=[Gate(field="coordinate", marker=marker, reason=reason)]),
-        next_moves=[   # form = the callable tool name the model routes to, not the internal id
-            NextMove(form=tool_name("orient"), coordinate=coord,
-                     rationale="Establish which institution and sector before analysis."),
-            NextMove(form=tool_name("list_scopes"), coordinate=coord,
-                     rationale="See the member×sector coordinates the system knows."),
+        next_moves=[   # form = the verb the model routes to; the coordinate carries entity/lens
+            as_move("orient", coord,
+                    "Establish which institution and sector before analysis."),
+            as_move("list_scopes", coord,
+                    "See the member×sector coordinates the system knows."),
         ],
     )

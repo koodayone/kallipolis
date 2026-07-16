@@ -7,9 +7,10 @@ from evals.conversational import semantic_checks as sc
 from evals.conversational.semantic_pathways import SEMANTIC_PATHWAYS
 from evals.conversational.pathways import ONBOARDING_PATHWAYS
 
-TOOLS = {"list_institutions", "institution_overview", "member_portfolio", "sector_overview",
+TOOLS = {"orient", "navigate", "crosswalk", "compare", "list_institutions",
+         "institution_overview", "member_portfolio", "sector_overview",
          "program_coverage", "program_pathways", "occupation_profile", "supply_demand_gaps",
-         "unmet_demand", "regional_employers", "compare"}
+         "unmet_demand", "regional_employers"}
 
 
 # ── coverage / sufficiency (the algebra-coverage gate) ──

@@ -32,14 +32,14 @@ def _graph() -> bool:
 
 requires_graph = pytest.mark.skipif(not _graph(), reason="no reachable Neo4j graph")
 
-# The two surfaces corroborate to within one completion. The residual is NOT rounding: the MCP
-# resolves an occupation's feeder programs via the is_vocational TOP->SOC crosswalk, while the
-# dashboard builder uses the LandscapeSpec.in_scope rule — so where they disagree on a marginal
-# program, the supplies differ. (Observed: RN at baccc/health — the crosswalk counts TOP 123000,
-# generic Nursing, as an RN feeder; in_scope does not; a 0.7/yr difference.) A divergence BEYOND
-# this band is a gross computation drift. Tighten toward 0 only after the two feeder rules are
-# unified — a correctness decision (which programs feed an occupation), tracked as a substrate item.
-_CORROBORATION_BAND = 1.0
+# The two surfaces now resolve feeders through the ONE canonical rule — LandscapeSpec.in_scope plus
+# the latest-year awards gate (adjudication A of the coordinate-kernel migration), applied in the
+# kernel (quantities._soc_feeders) for the MCP path and in relevant_tops for the dashboard. The
+# former feeder-rule seam (is_vocational vs in_scope — up to 278/yr on some occupations, e.g. RN's
+# generic Nursing TOP 123000) is CLOSED: MCP supply == dashboard supply to rounding across the golden
+# set (which now includes the former divergers). This band is rounding-only; a divergence beyond it
+# reopens the seam and is a real computation drift.
+_CORROBORATION_BAND = 0.05
 
 
 @requires_graph

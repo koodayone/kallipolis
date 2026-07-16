@@ -1,10 +1,15 @@
-"""The MCP server — eleven task-shaped tools + the guided-onboarding prompt.
+"""The MCP server — the coordinate-algebra verbs + the list helper + the onboarding prompt.
 
-Tool set (fixed, deterministically ordered — the client caches the tool prefix,
-so the order and descriptions are frozen):
+Tool set (the client caches the tool prefix, so order and descriptions are frozen):
 
-  Tier 0   list_scopes · orient
-  Tier 1   member_portfolio · sector_overview · compare · analyze_gap · analyze_coverage · analyze_pathway · analyze_regional_employers · occupation_profile · unmet_demand
+  Verbs    orient · navigate · crosswalk · compare · sweep(reserved) — the coordinate-algebra surface
+  Helper   list_institutions — the registry the model resolves a fuzzy name against before orienting
+
+  The eleven task-shaped tools are retired: every view they served is now reached by a verb whose
+  coordinate carries the entity/lens it dispatches on (navigate re-materializes a sector, an occupation,
+  or the gaps/employers/greenfield/coverage lenses; crosswalk traverses a program↔occupation; orient
+  returns the member portfolio). The verbs dispatch into the SAME `forms` functions the tools called —
+  one kernel beneath, five verbs above.
 
 Each tool's description IS its behavioral spec: the shared ``DOCTRINE`` (voice +
 the intent-gated reading rules + the navigation offer) prepended to the tool's own
@@ -15,6 +20,7 @@ the same doctrine as a preamble but load-bear nothing. Read-only; stateless HTTP
 """
 from __future__ import annotations
 
+import re
 from typing import Optional
 
 from pydantic import BaseModel
@@ -44,14 +50,6 @@ mcp = FastMCP("Kallipolis", instructions=WORLDVIEW, stateless_http=True,
 
 _SCOPE_KEYS = ("id", "member_id", "member_label", "member_kind", "sector_id", "sector_label")
 
-# The evidence-honest capability landscape (§2) — what is NOT knowable, stated once.
-_LIMITS = {
-    "wages": "Pooled statewide at the TOP6 program grain for a single cohort — never a specific college's graduates.",
-    "spend_vs_gap": "Unavailable — no SWP allocation / NOVA spend data exists in the ontology.",
-    "eligibility": "Unavailable — no clock-hour / Workforce-Pell data exists in the ontology.",
-    "datamart_suppression": "Not preserved — a DataMart blank is unknown, not zero.",
-}
-
 
 # ── Tier 0 structured response models (so the model receives structuredContent,
 #    not just JSON-as-text — parity with the Tier 1 AnalysisEnvelope) ──
@@ -78,29 +76,10 @@ class ScopeList(BaseModel):
     scopes: list[ScopeEntry] = []                 # filtered: detailed member×sector rows
 
 
-class SectorOption(BaseModel):
-    sector_id: str
-    sector_label: str
-    instance: str
-    program_count: int = 0   # distinct feeding TOP6 programs the member runs in this sector
-
-
 class FormInfo(BaseModel):
     form: str
     question: str
     guardrail: str
-
-
-class OrientResult(BaseModel):
-    resolved: bool
-    member: str
-    member_label: str = ""
-    member_kind: str = ""
-    region: str = ""
-    available_sectors: list[SectorOption] = []
-    limits: dict[str, str] = {}
-    suggested_first_questions: list[str] = []
-    message: str = ""
 
 
 def _opt(v: str) -> Optional[str]:
@@ -108,61 +87,11 @@ def _opt(v: str) -> Optional[str]:
     return v or None
 
 
-# One-sentence routing hints where a tool overlaps another — kept out of the form
-# meanings (which are response framing) so they steer tool SELECTION only.
-_ROUTING: dict[str, str] = {
-    "member_portfolio": ("Reach for this FIRST for a whole-INSTITUTION question spanning every "
-                         "sector — 'how am I doing overall', 'my whole portfolio', 'where should I "
-                         "focus across everything', 'which of my sectors is strongest or weakest'. "
-                         "ONE call covers all sectors at once — do NOT loop sector_overview to "
-                         "survey them. It is the top orientation home base."),
-    "sector_overview": ("Reach for this for ONE sector's supply–demand picture — 'how is my Health "
-                        "portfolio', 'my Advanced Manufacturing gaps', 'where am I best positioned in "
-                        "[sector]'. For ALL sectors at once, use member_portfolio (one call) rather "
-                        "than calling this once per sector. Drill from here into a single occupation."),
-    "occupation_profile": ("Reach for this when the question is about one occupation and you "
-                           "want the whole picture at once; for a single dimension in depth "
-                           "(just the gap, just employers, just feeders), use that specific tool."),
-    "gap": ("For one named occupation you want the whole picture on, occupation_profile gives "
-            "demand, supply, feeders, and employers in one call; the soc filter here stays "
-            "right for a gaps-only view."),
-    "pathway": ("For one named occupation you want the whole picture on, occupation_profile "
-                "consolidates demand, supply, feeders, and employers in one call."),
-    "regional_employers": ("For one named occupation you want the whole picture on, occupation_profile "
-                      "consolidates it in one call; this tool stays right for a full ranking of the "
-                      "regional employers hiring for the occupation."),
-}
-
-
 def _prime(desc: str) -> str:
     """Prepend the shared DOCTRINE to a tool description. Tool descriptions are the
     one priming channel every client injects, so this is where the reading contract
     must ride to reach the model on every call — not the advisory ``instructions``."""
     return f"{DOCTRINE}\n\n{desc}"
-
-
-def _form_description(form_id: str, *, needs_sector: bool = True) -> str:
-    """A form tool's description = its behavioral spec. ``needs_sector`` picks the gate
-    line so it always matches the tool's actual schema — occupation_profile and
-    unmet_demand take no sector, so their gate must not claim one (and unmet_demand takes
-    no occupation either, so its gate must not name an occupation entry point)."""
-    f = C.FORMS[form_id]
-    if needs_sector:
-        gate = ("Needs an established institution and sector first; if that isn't set yet, this "
-                "returns an explicit 'not in scope' marker rather than guessing.")
-    elif form_id == "occupation_profile":
-        gate = ("Needs an established institution — the region is derived from it, and the "
-                "occupation (not a sector) is the entry point; an unresolvable institution "
-                "returns an explicit 'not in scope' marker, not a guess.")
-    else:
-        gate = ("Needs only an established institution — the region is derived from it and is the "
-                "sole input (no sector, no occupation); an unresolvable institution returns an "
-                "explicit 'not in scope' marker, not a guess.")
-    parts = [f.question, f.meaning, f"Guardrail: {f.guardrail}"]
-    if form_id in _ROUTING:
-        parts.append(_ROUTING[form_id])
-    parts.append(gate)
-    return _prime("\n\n".join(parts))
 
 
 def _compare_description() -> str:
@@ -176,7 +105,7 @@ def _compare_description() -> str:
         ("Reach for this to RANK a set of analogous units against each other by a named measure — a "
          "member's programs, the sector's occupations, or the region's colleges (the unit_type). Map a "
          "loose ask ('which occupations are attractive') to a named criterion, rank by it, and say "
-         "which; typically after sector_overview has framed the portfolio."),
+         "which; typically after navigate has framed the sector."),
         ("Needs an established institution and sector; an unknown unit_type or criterion returns the "
          "valid menu rather than guessing."),
     ]
@@ -216,49 +145,9 @@ def list_scopes(filter: str = "") -> ScopeList:
     return ScopeList(count=len(scopes), scopes=scopes)
 
 
-_ORIENT_DESC = (
-    "Ground yourself in an institution before analyzing: confirm it is known, see "
-    "which sectors are live for it, the kinds of questions you can answer about it, "
-    "and — honestly — the limits of what the data can say. Do this first, and let it "
-    "steer toward high-value questions.")
-
-
-@mcp.tool(name="institution_overview", description=_prime(_ORIENT_DESC))
-def orient(member: str, sector: str = "") -> OrientResult:
-    port = S.member_portfolio(member)
-    if port is None:
-        return OrientResult(
-            resolved=False, member=member,
-            message=(f"No institution matching '{member}'. List the known institutions and "
-                     f"match this one to a canonical id (e.g. 'foothill', 'smccd', 'svamp')."))
-    return OrientResult(
-        resolved=True,
-        member=port["member_id"],
-        member_label=port["member_label"],
-        member_kind=port["member_kind"],
-        region=port["region"],
-        available_sectors=[SectorOption(sector_id=s["sector_id"], sector_label=s["sector_label"],
-                                        instance=s["instance"], program_count=s["program_count"])
-                           for s in port["sectors"]],
-        limits=_LIMITS,
-        suggested_first_questions=[
-            f"Which of {port['member_label']}'s sectors has the widest supply–demand gap?",
-            "What does one of my programs prepare students for, and who hires for those roles?",
-            "How does my institution compare to other colleges covering the same programs?",
-        ])
-
-
-# ── Tier 1 (order frozen for cache stability) ─────────────────────────────
-
-@mcp.tool(name="member_portfolio", description=_form_description("member_portfolio", needs_sector=False))
-def member_portfolio(member: str) -> AnalysisEnvelope:
-    return F.member_portfolio(member)
-
-
-@mcp.tool(name="sector_overview", description=_form_description("sector_overview"))
-def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
-    return F.sector_overview(member, sector)
-
+# ── compare — the vary/by verb ───────────────────────────────────────────
+# (`compare`'s form function backs the ranking menu; the other form functions in `forms`
+# back the navigate/crosswalk/orient dispatch — the legacy per-task tools are retired.)
 
 @mcp.tool(name="compare", description=_compare_description())
 def compare(member: str, unit_type: str = "program", criterion: str = "",
@@ -266,34 +155,74 @@ def compare(member: str, unit_type: str = "program", criterion: str = "",
     return F.compare(member, unit_type=unit_type, criterion=criterion, sector=sector)
 
 
-@mcp.tool(name="supply_demand_gaps", description=_form_description("gap"))
-def analyze_gap(member: str, sector: str, soc: str = "") -> AnalysisEnvelope:
-    return F.analyze_gap(member, sector, soc=_opt(soc))
+# ── The coordinate-algebra verbs (the surface; the task-shaped tools are retired) ──
+# One Coordinate ⟨member | sector | entity | lens | vintage | predicate-version⟩, five verbs. Each
+# verb takes a coordinate and dispatches into the form functions in `forms` — one kernel beneath,
+# five verbs above. `compare` (above) is already the verb; `sweep` is reserved.
+
+_SOC_RE = re.compile(r"^\d{2}-\d{4}$")   # an occupation entity, e.g. 51-4041
+
+_ORIENT_VERB_DESC = (
+    "orient(member) — fix the institutional frame before analyzing: resolve the institution, derive "
+    "its region, and return the top of the descent — the member's whole portfolio, one row per sector "
+    "with demand, supply, share, and gap. Start here, then navigate in.")
+_NAVIGATE_DESC = (
+    "navigate(to) — move within the institution's hierarchy: set or change the SECTOR, the ENTITY (an "
+    "occupation SOC), or the LENS (gaps · employers · greenfield · coverage), and get the canonical view "
+    "at the resulting coordinate. navigate(sector) is the sector view; navigate(entity=<soc>) the "
+    "occupation; navigate(lens=gaps|employers|greenfield|coverage) re-materializes the current address "
+    "through another face (coverage = which of the member's colleges cover which programs).")
+_CROSSWALK_DESC = (
+    "crosswalk(across) — traverse the TOP→CIP→SOC bridge in either direction: a PROGRAM → the "
+    "occupations it prepares students for, or an OCCUPATION → the programs regionwide that feed it. "
+    "Pass the program (TOP6), the occupation (SOC), or a coordinate's entity= directly. "
+    "The mapping is lossy and many-to-many by design; the fan-out is surfaced, never collapsed.")
+_SWEEP_DESC = (
+    "sweep(over: vintage) — RESERVED. The time-series verb the coordinate algebra predicts: vary the "
+    "vintage while holding the rest of the coordinate fixed. Specified but not yet built — do not "
+    "simulate a time series by looping other verbs.")
 
 
-@mcp.tool(name="program_coverage", description=_form_description("coverage"))
-def analyze_coverage(member: str, sector: str) -> AnalysisEnvelope:
-    return F.analyze_coverage(member, sector)
+@mcp.tool(name="orient", description=_prime(_ORIENT_VERB_DESC))
+def orient_v(member: str) -> AnalysisEnvelope:
+    return F.member_portfolio(member)
 
 
-@mcp.tool(name="program_pathways", description=_form_description("pathway"))
-def analyze_pathway(member: str, sector: str, program: str = "", occupation: str = "") -> AnalysisEnvelope:
+@mcp.tool(name="navigate", description=_prime(_NAVIGATE_DESC))
+def navigate(member: str, sector: str = "", entity: str = "", lens: str = "") -> AnalysisEnvelope:
+    entity, lens = entity.strip(), lens.strip().lower()
+    is_soc = bool(_SOC_RE.match(entity))
+    if lens == "greenfield":
+        return F.unmet_demand(member)
+    if lens == "employers":
+        return F.analyze_regional_employers(member, sector, soc=_opt(entity if is_soc else ""))
+    if lens == "coverage":
+        return F.analyze_coverage(member, sector)            # which colleges cover which programs
+    if is_soc and not sector:
+        return F.occupation_profile(member, entity)          # sector-agnostic occupation view
+    if is_soc:
+        return F.analyze_gap(member, sector, soc=entity)      # the occupation within its sector
+    if lens == "gaps":
+        return F.analyze_gap(member, sector)
+    return F.sector_overview(member, sector)                  # the sector's canonical view
+
+
+@mcp.tool(name="crosswalk", description=_prime(_CROSSWALK_DESC))
+def crosswalk(member: str, sector: str, program: str = "", occupation: str = "",
+              entity: str = "") -> AnalysisEnvelope:
+    # `entity` is the coordinate's dispatch key: a SOC crosswalks as an occupation, a TOP6 as a program.
+    entity = entity.strip()
+    if entity and _SOC_RE.match(entity):
+        occupation = occupation or entity
+    elif entity:
+        program = program or entity
     return F.analyze_pathway(member, sector, program=_opt(program), occupation=_opt(occupation))
 
 
-@mcp.tool(name="regional_employers", description=_form_description("regional_employers"))
-def analyze_regional_employers(member: str, sector: str, soc: str = "") -> AnalysisEnvelope:
-    return F.analyze_regional_employers(member, sector, soc=_opt(soc))
-
-
-@mcp.tool(name="occupation_profile", description=_form_description("occupation_profile", needs_sector=False))
-def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
-    return F.occupation_profile(member, occupation)
-
-
-@mcp.tool(name="unmet_demand", description=_form_description("unmet_demand", needs_sector=False))
-def unmet_demand(member: str) -> AnalysisEnvelope:
-    return F.unmet_demand(member)
+@mcp.tool(name="sweep", description=_prime(_SWEEP_DESC))
+def sweep(member: str, sector: str = "") -> AnalysisEnvelope:
+    return S.gate_envelope("sweep", member, sector, marker="out-of-scope",
+                           reason="sweep(over: vintage) is a reserved verb — specified but not yet built.")
 
 
 # ── Prompt ────────────────────────────────────────────────────────────────
@@ -307,11 +236,11 @@ _START_HERE_DESC = "Guided onboarding: orient to your institution and find high-
 
 
 def build_oauth_mcp():
-    """A second, OAuth-protected FastMCP with the SAME eight tools + prompt — used to
-    stand up an OAuth resource-server endpoint (WorkOS as the authorization server)
-    alongside the bearer-gated ``mcp``, so we can prove the claude.ai handshake
-    without disturbing the working endpoint. Returns None when OAuth env is unset
-    (so importing this module never forces OAuth on)."""
+    """A second, OAuth-protected FastMCP with the SAME surface (the five verbs + list helper +
+    prompt) — used to stand up an OAuth resource-server endpoint (WorkOS as the authorization
+    server) alongside the bearer-gated ``mcp``, so we can prove the claude.ai handshake without
+    disturbing the working endpoint. Returns None when OAuth env is unset (so importing this
+    module never forces OAuth on)."""
     from mcp_server.auth import auth_settings_from_env, verifier_from_env
     settings = auth_settings_from_env()
     if settings is None:
@@ -321,15 +250,10 @@ def build_oauth_mcp():
                 transport_security=TransportSecuritySettings(enable_dns_rebinding_protection=False),
                 auth=settings, token_verifier=verifier_from_env())
     m.tool(name="list_institutions", description=_prime(_LIST_SCOPES_DESC))(list_scopes)
-    m.tool(name="institution_overview", description=_prime(_ORIENT_DESC))(orient)
-    m.tool(name="member_portfolio", description=_form_description("member_portfolio", needs_sector=False))(member_portfolio)
-    m.tool(name="sector_overview", description=_form_description("sector_overview"))(sector_overview)
+    m.tool(name="orient", description=_prime(_ORIENT_VERB_DESC))(orient_v)
+    m.tool(name="navigate", description=_prime(_NAVIGATE_DESC))(navigate)
+    m.tool(name="crosswalk", description=_prime(_CROSSWALK_DESC))(crosswalk)
     m.tool(name="compare", description=_compare_description())(compare)
-    m.tool(name="supply_demand_gaps", description=_form_description("gap"))(analyze_gap)
-    m.tool(name="program_coverage", description=_form_description("coverage"))(analyze_coverage)
-    m.tool(name="program_pathways", description=_form_description("pathway"))(analyze_pathway)
-    m.tool(name="regional_employers", description=_form_description("regional_employers"))(analyze_regional_employers)
-    m.tool(name="occupation_profile", description=_form_description("occupation_profile", needs_sector=False))(occupation_profile)
-    m.tool(name="unmet_demand", description=_form_description("unmet_demand", needs_sector=False))(unmet_demand)
+    m.tool(name="sweep", description=_prime(_SWEEP_DESC))(sweep)
     m.prompt(name="start-here", description=_START_HERE_DESC)(start_here)
     return m

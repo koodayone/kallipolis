@@ -63,17 +63,33 @@ def recent_award_years(n: int = _SUPPLY_YEARS) -> tuple[str, ...]:
 
 
 @lru_cache(maxsize=256)
-def _soc_feeders(colleges: tuple[str, ...]) -> dict[str, frozenset[str]]:
-    """{soc -> is_vocational feeder TOP6s these colleges offer that cross-walk to it},
-    computed once per college set so per-SOC feeder lookup is O(1). The one feeder rule."""
+def _soc_feeders(colleges: tuple[str, ...], spec=None) -> dict[str, frozenset[str]]:
+    """{soc -> feeder TOP6s these colleges offer that cross-walk to it}, computed once per
+    (college set, spec) so per-SOC feeder lookup is O(1). The one feeder rule.
+
+    Gated by ``spec.in_scope`` when a spec is given — the canonical rule (adjudication A:
+    is_vocational + excluded_tops + home-division + CTE-family; e.g. it excludes generic
+    Nursing 123000 in favor of 123010). Falls back to the legacy bare ``is_vocational`` gate
+    when spec is None; call sites are being migrated to pass spec, after which the fallback
+    (and the divergence it leaves) is removed. Does NOT yet apply the latest-year awards gate
+    that ``relevant_tops`` layers on for rule-bearing specs — added if the corroboration band
+    does not close on the in_scope gate alone (tracked in Phase 1)."""
     with get_driver().session() as s:
         offered = {r["t"] for r in s.run(
             "MATCH (p:Program) WHERE p.college IN $c RETURN DISTINCT p.top6 AS t",
             c=list(colleges)).data()}
+    # Awards gate (rule-bearing specs only): a program with no completer in the latest year is
+    # dormant supply — dropped, matching relevant_tops/_awarded_tops so the kernel and dashboard
+    # resolve one feeder set. Curated specs (SVAMP) carry no rule and keep the full in_scope set.
+    rule = getattr(spec, "soc_rule", None) if spec is not None else None
+    if rule is not None and getattr(rule, "active", False):
+        active = _awarded_by_top(colleges, tuple(recent_award_years(1)))
+        offered = {t for t in offered if active.get(t, 0) > 0}
     soc_map = top6_to_soc(list(offered))
+    gate = spec.in_scope if spec is not None else is_vocational
     out: dict[str, set] = {}
     for t in offered:
-        if is_vocational(t):
+        if gate(t):
             for soc in soc_map.get(t, set()):
                 out.setdefault(soc, set()).add(t)
     return {k: frozenset(v) for k, v in out.items()}
@@ -91,17 +107,19 @@ def _awarded_by_top(colleges: tuple[str, ...], years: tuple[str, ...]) -> dict[s
     return {r["t"]: r["n"] for r in rows}
 
 
-def feeders(colleges, soc: str) -> frozenset[str]:
-    """The SOC's is_vocational feeder TOP6s the colleges offer — the one feeder rule."""
-    return _soc_feeders(tuple(sorted(set(colleges)))).get(soc, frozenset())
+def feeders(colleges, soc: str, *, spec=None) -> frozenset[str]:
+    """The SOC's feeder TOP6s the colleges offer — the one feeder rule (in_scope when a spec is
+    given, adjudication A; legacy is_vocational otherwise)."""
+    return _soc_feeders(tuple(sorted(set(colleges))), spec).get(soc, frozenset())
 
 
-def supply(colleges, soc: str, *, years: tuple[str, ...] | None = None) -> float:
+def supply(colleges, soc: str, *, years: tuple[str, ...] | None = None, spec=None) -> float:
     """Canonical annual supply for a SOC over a set of colleges. THE single resolution
     path for every supply figure. Default window = most recent 3 years (projected_supply);
-    pass ``years=recent_award_years(1)`` for the latest year (latest_year_supply)."""
+    pass ``years=recent_award_years(1)`` for the latest year (latest_year_supply). ``spec``
+    selects the canonical in_scope feeder rule (adjudication A)."""
     yrs = years if years is not None else recent_award_years()
-    fs = feeders(colleges, soc)
+    fs = feeders(colleges, soc, spec=spec)
     if not fs or not yrs:
         return 0.0
     aw = _awarded_by_top(tuple(sorted(set(colleges))), tuple(yrs))
@@ -109,14 +127,15 @@ def supply(colleges, soc: str, *, years: tuple[str, ...] | None = None) -> float
     return round(total / len(yrs), 1)
 
 
-def supply_over_socs(colleges, socs, *, years: tuple[str, ...] | None = None) -> float:
+def supply_over_socs(colleges, socs, *, years: tuple[str, ...] | None = None, spec=None) -> float:
     """Aggregate supply over a SET of SOCs (a sector total). Feeders are DEDUPED across
     the SOCs — a TOP6 that feeds several occupations is counted once — so a sector total
-    never double-counts, unlike summing per-SOC supply."""
+    never double-counts, unlike summing per-SOC supply. ``spec`` selects the canonical
+    in_scope feeder rule (adjudication A)."""
     yrs = years if years is not None else recent_award_years()
     fs: set[str] = set()
     for soc in socs:
-        fs |= feeders(colleges, soc)
+        fs |= feeders(colleges, soc, spec=spec)
     if not fs or not yrs:
         return 0.0
     aw = _awarded_by_top(tuple(sorted(set(colleges))), tuple(yrs))
@@ -303,13 +322,14 @@ def wage_window() -> str:
 # AND awarded; partial = one; gap = on the books but neither). Every tool composes it, so the
 # count and the named set agree.
 
-def coverage(enrolled: bool, awards: int, *, awards_only: bool = False) -> str:
+def coverage(enrolled: bool, awards: int, *, awards_only: bool = True) -> str:
     """Classify one (college × program) cell — THE single coverage predicate.
 
-    Default (SVAMP, ruleless): covered = enrolled AND awarding; partial = either signal
-    alone; gap = neither. ``awards_only=True`` (rule-bearing instances — BACCC, sector-derived
-    SMCCD): a cell enrolled but not yet AWARDING is a gap, not partial (no completer = no
+    Canonical (adjudication D — awards_only, matching the dashboard): covered = enrolled AND
+    awarding; a cell enrolled but not yet AWARDING is a GAP, not partial (no completer = no
     supply); a cell awarding but no longer enrolled stays partial (real-but-thinning supply).
+    ``awards_only=False`` is the legacy 'ruleless' reading (enrolled OR awarded), retained only
+    for an explicit in-progress view — never the default now.
     Enrollment then only upgrades an awarding cell partial→covered, never creates partial alone."""
     has_award = awards > 0
     if awards_only:
@@ -336,7 +356,7 @@ class CollegeCell:
 
     @property
     def coverage(self) -> str:
-        # ruleless (roster context): enrolled-OR-awarded classification
+        # the canonical awards_only classification (adjudication D — enrolled-not-awarding is a gap)
         return coverage(self.enrolled, self.awards)
 
 
@@ -383,6 +403,32 @@ def colleges_with_program(colleges, top6: str) -> int:
 def colleges_actively_awarding(colleges, top6: str) -> int:
     """Colleges producing completers in the latest year — the stricter 'active' count."""
     return sum(1 for c in college_roster(colleges, top6) if c.awards > 0)
+
+
+@lru_cache(maxsize=64)
+def member_program_tops(colleges: tuple[str, ...]) -> frozenset[str]:
+    """The TOP6 programs these colleges have ON THE BOOKS (a Program node exists) — the registered-ever
+    set, before any in_scope or awards gate. A member 'runs' a program if it has a node for it; this is
+    the base for the on-the-books count (registered ∩ in_scope), distinct from its awards-active subset."""
+    with get_driver().session() as s:
+        rows = s.run("MATCH (p:Program) WHERE p.college IN $c RETURN DISTINCT p.top6 AS t",
+                     c=list(colleges)).data()
+    return frozenset(r["t"] for r in rows)
+
+
+def member_sector_programs(colleges, spec) -> tuple[list[str], list[str]]:
+    """The member's programs in a sector, in the two stamped readings of adjudication C.
+
+    on_the_books = the member's registered programs (a Program node exists) that are in the sector's
+    scope (``spec.in_scope``) AND crosswalk to at least one of the sector's occupations — a program the
+    member has on the books that prepares for the sector's jobs. graduating = the awards-active subset
+    (>0 completer in the latest year). ONE birthplace, so every tool reports the same counts (CI-02)."""
+    sec = set(spec.socs)
+    registered = sorted(member_program_tops(tuple(sorted(colleges))))
+    on_the_books = sorted(t for t, socs in top6_to_soc(registered).items()
+                          if (socs & sec) and spec.in_scope(t))
+    graduating = [t for t in on_the_books if colleges_actively_awarding(colleges, t) > 0]
+    return on_the_books, graduating
 
 
 def active_feeders(colleges, soc: str) -> frozenset[str]:

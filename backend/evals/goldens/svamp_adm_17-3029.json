@@ -1,0 +1,111 @@
+{
+ "builder": {
+  "annual_openings": 220,
+  "consortium_supply": 66.7,
+  "feeding_tops": [
+   "092400",
+   "093400",
+   "093410",
+   "093460",
+   "093480",
+   "094500",
+   "094610",
+   "095200",
+   "095420",
+   "095600",
+   "095650",
+   "095900"
+  ],
+  "gap": 153
+ },
+ "canonical": {
+  "active_feeders": [
+   "043000",
+   "094500",
+   "094600",
+   "094610",
+   "094800",
+   "095600"
+  ],
+  "feeders": [
+   "092400",
+   "093400",
+   "094500",
+   "094610",
+   "095200",
+   "095420",
+   "095600"
+  ],
+  "rosters": {
+   "092400": {
+    "colleges_with_program": [
+     "Evergreen Valley College",
+     "Ohlone College"
+    ],
+    "n_active": 0,
+    "n_covered": 0,
+    "n_with_program": 2
+   },
+   "093400": {
+    "colleges_with_program": [
+     "Ohlone College"
+    ],
+    "n_active": 0,
+    "n_covered": 0,
+    "n_with_program": 1
+   },
+   "094500": {
+    "colleges_with_program": [
+     "Foothill College"
+    ],
+    "n_active": 1,
+    "n_covered": 1,
+    "n_with_program": 1
+   },
+   "094610": {
+    "colleges_with_program": [
+     "De Anza College",
+     "Foothill College"
+    ],
+    "n_active": 2,
+    "n_covered": 1,
+    "n_with_program": 2
+   },
+   "095200": {
+    "colleges_with_program": [
+     "Foothill College"
+    ],
+    "n_active": 0,
+    "n_covered": 0,
+    "n_with_program": 1
+   },
+   "095420": {
+    "colleges_with_program": [
+     "Ohlone College"
+    ],
+    "n_active": 0,
+    "n_covered": 0,
+    "n_with_program": 1
+   },
+   "095600": {
+    "colleges_with_program": [
+     "De Anza College",
+     "Evergreen Valley College",
+     "Ohlone College"
+    ],
+    "n_active": 1,
+    "n_covered": 1,
+    "n_with_program": 3
+   }
+  },
+  "sector_supply_over_socs": 118.3,
+  "supply_1yr": 124.0,
+  "supply_3yr": 66.7
+ },
+ "colleges_n": 5,
+ "in_scope": true,
+ "member": "svamp",
+ "sector": "adm",
+ "soc": "17-3029",
+ "socs_n": 12
+}
