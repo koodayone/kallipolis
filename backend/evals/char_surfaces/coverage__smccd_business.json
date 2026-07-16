@@ -1,0 +1,69 @@
+{
+ "coordinate": {
+  "entity": "",
+  "lens": "",
+  "member": "smccd",
+  "member_label": "San Mateo County CCD",
+  "predicate_version": "",
+  "region": "Bay Area",
+  "sector": "business",
+  "sector_label": "Business & Entrepreneurship",
+  "soc": null,
+  "top6": null
+ },
+ "data": {
+  "more": null,
+  "rows": [],
+  "sorted_by": null,
+  "summary": {}
+ },
+ "form": "coverage",
+ "framing": {
+  "meaning": "Coverage classifies each (college, occupation) as Covered / Partial / Gap by whether a feeding program both enrolls and awards. It is the institutional legibility of the gap across the member's colleges.",
+  "salience": [
+   "member-anchored: a generated member\u00d7sector view covers only occupations the member already serves with an active program \u2014 it does NOT surface greenfield demand in occupations the member does not yet serve. Absence here is not absence of regional demand."
+  ]
+ },
+ "licensing": {
+  "gates": [
+   {
+    "field": "member_supply",
+    "marker": "unavailable",
+    "reason": "San Mateo County CCD runs no active program feeding this sector's qualifying middle-skill occupations, so a member-anchored coverage view is empty. The region may still have unmet demand in this sector \u2014 this view is scoped to occupations the member already serves, not greenfield ones."
+   }
+  ],
+  "licensed": [],
+  "not_licensed": [
+   "The Covered/Partial/Gap thresholds are an explicit classification (enrolled AND awarded = covered; exactly one = partial; neither = gap), not an implied score."
+  ]
+ },
+ "next_moves": [
+  {
+   "coordinate": {
+    "entity": "",
+    "lens": "",
+    "member": "smccd",
+    "member_label": "San Mateo County CCD",
+    "predicate_version": "",
+    "region": "Bay Area",
+    "sector": "business",
+    "sector_label": "Business & Entrepreneurship",
+    "soc": null,
+    "top6": null
+   },
+   "form": "orient",
+   "rationale": "See which sectors this member actually runs programs in."
+  }
+ ],
+ "provenance": {
+  "field_authority": {},
+  "scope_granularity": "",
+  "sources": [],
+  "vintages": {}
+ },
+ "view_link": {
+  "note": "Opens on the lens with a default selection (view state applies client-side); select the row above to corroborate the figure.",
+  "status": "ok",
+  "url": "https://preview.kallipolis.us/smccd-business?lens=programs&panel=programs.coverage"
+ }
+}

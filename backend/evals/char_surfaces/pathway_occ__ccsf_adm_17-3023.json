@@ -1,0 +1,312 @@
+{
+ "coordinate": {
+  "entity": "",
+  "lens": "",
+  "member": "ccsf",
+  "member_label": "City College of San Francisco",
+  "predicate_version": "",
+  "region": "Bay Area",
+  "sector": "adm",
+  "sector_label": "Advanced Manufacturing",
+  "soc": "17-3023",
+  "top6": null
+ },
+ "data": {
+  "more": null,
+  "rows": [
+   {
+    "label": "093400 Electronics and Electric Technology",
+    "roster": [
+     {
+      "label": "City College of San Francisco",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 92,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "actual_awards": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "awards",
+      "value": 92,
+      "vintage": ""
+     },
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (latest yr)",
+      "value": 1,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 1,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 147,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "092400 Engineering Technology, General (requires Trigonometry)",
+    "roster": [
+     {
+      "label": "City College of San Francisco",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 1,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "actual_awards": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "awards",
+      "value": 1,
+      "vintage": ""
+     },
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (latest yr)",
+      "value": 1,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 1,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 52,
+      "vintage": ""
+     }
+    }
+   }
+  ],
+  "sorted_by": null,
+  "summary": {
+   "annual_wage": {
+    "granularity": "regional (Bay Area)",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "coe",
+    "status": "ok",
+    "unit": "USD/yr (occ. median)",
+    "value": 89280,
+    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+   },
+   "gap": {
+    "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "derived",
+    "status": "ok",
+    "unit": "openings/yr",
+    "value": 27,
+    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+   },
+   "latest_year_supply": {
+    "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "datamart",
+    "status": "ok",
+    "unit": "completions",
+    "value": 93.0,
+    "vintage": "DataMart completions \u2014 2024-2025"
+   },
+   "member_supply": {
+    "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "datamart",
+    "status": "ok",
+    "unit": "completions/yr",
+    "value": 45.0,
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+   },
+   "regional_demand": {
+    "granularity": "regional (Bay Area)",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "coe",
+    "status": "ok",
+    "unit": "openings/yr",
+    "value": 430,
+    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+   },
+   "regional_supply": {
+    "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "datamart",
+    "status": "ok",
+    "unit": "completions/yr",
+    "value": 403.0,
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+   }
+  }
+ },
+ "form": "pathway",
+ "framing": {
+  "meaning": "A pathway is the institutional TOP\u2192CIP\u2192SOC crosswalk between a program and the occupations it prepares students for (or the reverse). The bridge is an external, authoritative mapping, not an internal skills index.",
+  "salience": [
+   "supply=3yr-avg: supply is a 3-year average of DataMart completions (All Awards); the single most recent year (latest_year_supply) can run above or below it."
+  ]
+ },
+ "licensing": {
+  "gates": [],
+  "licensed": [
+   "The programs that feed this occupation, the regional demand for it, and the regional supply gap.",
+   "member_supply is this member's share of that regional supply."
+  ],
+  "not_licensed": [
+   "The TOP\u2192CIP\u2192SOC crosswalk is many-to-many; the fan-out is surfaced, never collapsed into a single per-program number (which would double-count)."
+  ]
+ },
+ "next_moves": [
+  {
+   "coordinate": {
+    "entity": "",
+    "lens": "coverage",
+    "member": "ccsf",
+    "member_label": "City College of San Francisco",
+    "predicate_version": "",
+    "region": "Bay",
+    "sector": "adm",
+    "sector_label": "Advanced Manufacturing",
+    "soc": null,
+    "top6": null
+   },
+   "form": "navigate",
+   "rationale": "Return to who covers this sector across the member's colleges."
+  },
+  {
+   "coordinate": {
+    "entity": "17-3023",
+    "lens": "employers",
+    "member": "ccsf",
+    "member_label": "City College of San Francisco",
+    "predicate_version": "",
+    "region": "Bay",
+    "sector": "adm",
+    "sector_label": "Advanced Manufacturing",
+    "soc": "17-3023",
+    "top6": null
+   },
+   "form": "navigate",
+   "rationale": "Find regional employers hiring for this occupation."
+  }
+ ],
+ "provenance": {
+  "field_authority": {
+   "actual_awards": "datamart",
+   "annual_openings": "coe",
+   "annual_wage": "coe",
+   "gap": "derived",
+   "latest_year_supply": "datamart",
+   "projected_supply": "datamart"
+  },
+  "scope_granularity": "demand regional (Bay Area); supply regional (Bay Area) \u2014 all 26 colleges; member share institutional \u2014 college (\u03a3 1 colleges)",
+  "sources": [
+   {
+    "authority": "Centers of Excellence",
+    "id": "coe",
+    "role": "regional demand, wage, growth"
+   },
+   {
+    "authority": "CCCCO DataMart",
+    "id": "datamart",
+    "role": "program awards, enrollment, and graduate wage outcomes"
+   }
+  ],
+  "vintages": {
+   "demand": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection",
+   "latest_year_supply": "DataMart completions \u2014 2024-2025",
+   "projected_supply": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+  }
+ },
+ "view_link": {
+  "note": "",
+  "status": "ok",
+  "url": "https://preview.kallipolis.us/landscape/ccsf/adm?lens=occupations&soc=17-3023"
+ }
+}

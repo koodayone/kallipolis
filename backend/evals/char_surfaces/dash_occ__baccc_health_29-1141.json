@@ -1,0 +1,1648 @@
+{
+ "annual_openings": 5160,
+ "annual_wage": 190620,
+ "award_years": [
+  "2020-2021",
+  "2021-2022",
+  "2022-2023",
+  "2023-2024",
+  "2024-2025"
+ ],
+ "awards_by_college": [
+  {
+   "college": "Cabrillo College",
+   "vals": [
+    68,
+    45,
+    38,
+    47,
+    48
+   ]
+  },
+  {
+   "college": "Chabot College",
+   "vals": [
+    30,
+    23,
+    31,
+    0,
+    20
+   ]
+  },
+  {
+   "college": "City College of San Francisco",
+   "vals": [
+    80,
+    81,
+    84,
+    77,
+    67
+   ]
+  },
+  {
+   "college": "College of Marin",
+   "vals": [
+    41,
+    41,
+    42,
+    42,
+    40
+   ]
+  },
+  {
+   "college": "College of San Mateo",
+   "vals": [
+    50,
+    46,
+    51,
+    43,
+    48
+   ]
+  },
+  {
+   "college": "Contra Costa College",
+   "vals": [
+    35,
+    38,
+    34,
+    43,
+    38
+   ]
+  },
+  {
+   "college": "De Anza College",
+   "vals": [
+    49,
+    53,
+    37,
+    39,
+    49
+   ]
+  },
+  {
+   "college": "Evergreen Valley College",
+   "vals": [
+    73,
+    68,
+    65,
+    66,
+    64
+   ]
+  },
+  {
+   "college": "Gavilan College",
+   "vals": [
+    21,
+    18,
+    22,
+    20,
+    24
+   ]
+  },
+  {
+   "college": "Los Medanos College",
+   "vals": [
+    40,
+    1,
+    39,
+    39,
+    44
+   ]
+  },
+  {
+   "college": "Merritt College",
+   "vals": [
+    0,
+    41,
+    16,
+    21,
+    4
+   ]
+  },
+  {
+   "college": "Mission College",
+   "vals": [
+    28,
+    27,
+    28,
+    27,
+    30
+   ]
+  },
+  {
+   "college": "Napa Valley College",
+   "vals": [
+    42,
+    30,
+    46,
+    35,
+    46
+   ]
+  },
+  {
+   "college": "Ohlone College",
+   "vals": [
+    19,
+    51,
+    32,
+    30,
+    25
+   ]
+  },
+  {
+   "college": "Santa Rosa Junior College",
+   "vals": [
+    54,
+    106,
+    100,
+    97,
+    110
+   ]
+  },
+  {
+   "college": "Solano Community College",
+   "vals": [
+    89,
+    32,
+    35,
+    37,
+    44
+   ]
+  }
+ ],
+ "consortium_supply": 688.0,
+ "crosswalk": {
+  "cips": [],
+  "coverage_pct": 0.0,
+  "n_taught": 0,
+  "n_total": 0,
+  "tops": []
+ },
+ "curriculum_by_college": [
+  {
+   "college": "Berkeley City College",
+   "courses": []
+  },
+  {
+   "college": "Cabrillo College",
+   "courses": [
+    {
+     "code": "N12",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Maternal Health and Nursing Fundamentals I",
+     "top_code": "123010"
+    },
+    {
+     "code": "N16",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Basic Nursing Skills and Medications Laboratory I",
+     "top_code": "123010"
+    },
+    {
+     "code": "N17",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Pharmacology A",
+     "top_code": "123010"
+    },
+    {
+     "code": "N22",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Pediatric and Medical-Surgical Nursing II",
+     "top_code": "123010"
+    },
+    {
+     "code": "N26",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Advanced Nursing Skills and Medications Laboratory II",
+     "top_code": "123010"
+    },
+    {
+     "code": "N27",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Pharmacology B",
+     "top_code": "123010"
+    },
+    {
+     "code": "N32",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Geriatric and Medical-Surgical Nursing III",
+     "top_code": "123010"
+    },
+    {
+     "code": "N37",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Pharmacology C",
+     "top_code": "123010"
+    },
+    {
+     "code": "N409A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Global Citizenship",
+     "top_code": "123010"
+    },
+    {
+     "code": "N409B",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Global Partnership Experience",
+     "top_code": "123010"
+    },
+    {
+     "code": "N42",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Psychiatric and Nursing Care Management IV",
+     "top_code": "123010"
+    },
+    {
+     "code": "N47",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Pharmacology D",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS11",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Practice I",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS13",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Skills I",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS15",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Pharmacology I",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS18",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Professionalism I",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS21",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Practice II",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS23",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Skills II",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS25",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Pharmacology II",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS28",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Professionalism II",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS31",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Practice III",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS33",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Skills III",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS35",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Pharmacology III",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS38",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Professionalism III",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS41",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Practice IV",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS43",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Skills IV",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS45",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Pharmacology IV",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS48",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Professionalism IV",
+     "top_code": "123010"
+    }
+   ]
+  },
+  {
+   "college": "Ca\u00f1ada College",
+   "courses": []
+  },
+  {
+   "college": "Chabot College",
+   "courses": [
+    {
+     "code": "NURS70",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "LVN-RN Transition",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS70L",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Clinical Skills Practice and Assessment Lab",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS84",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Prescriptive Clinical Nursing Skills Practice",
+     "top_code": "123010"
+    }
+   ]
+  },
+  {
+   "college": "City College of San Francisco",
+   "courses": [
+    {
+     "code": "NURS50",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Fundamentals of Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS50A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Pharmacology in Nursing Part I",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS50B",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Pharmacology in Nursing Part II",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS50L",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Skills Lab",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS51",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Basic Medical-Surgical Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS51L",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Intermediate Nursing Skills",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS53",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Maternal Newborn Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS54",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Of Children",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS55",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Psychosocial Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS56",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Advanced Medical-Surgical Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS58",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Trends and Issues in Nursing",
+     "top_code": "123010"
+    }
+   ]
+  },
+  {
+   "college": "College of Alameda",
+   "courses": []
+  },
+  {
+   "college": "College of Marin",
+   "courses": []
+  },
+  {
+   "college": "College of San Mateo",
+   "courses": [
+    {
+     "code": "NURS211",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Introduction To Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS212",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Concepts Of Homeostasis",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS221",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Pediatric Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS222",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Perinatal and Reproductive Health Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS225",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Skills Lab II",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS232",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Medical/Surgical Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS235",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Skills Lab III",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS241",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Adv Medi/surg Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS242",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Leadership/mgmt In Nurs",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS245",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Skills Lab IV",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS610",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Basic Med Dosage Calculations",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS615",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Pharmacology for Nurses: Practical Applications",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS630",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Intro to Medical Terminology",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS666",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Careers Exploration in Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS816",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Open Lab for Nursing 211/212",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS817",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Open Lab for Nursing 221/222",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS818",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Open Lab for Nursing 231/232",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS819",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Open Lab for Nursing 241/242",
+     "top_code": "123010"
+    }
+   ]
+  },
+  {
+   "college": "Contra Costa College",
+   "courses": [
+    {
+     "code": "NURS210",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Fundamentals of Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS235",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Maternal-Child Health Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS236",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Developing Competency in Nursing Practice",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS255",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Intermediate Medical-Surgical and Psychiatric Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS256",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Developing Competency in Nursing Practice",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS275",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Gerontological/Medical-Surgical Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS276",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Developing Competency in Nursing Practice (C)",
+     "top_code": "123010"
+    }
+   ]
+  },
+  {
+   "college": "De Anza College",
+   "courses": [
+    {
+     "code": "NURS091A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Health Assessment",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS091B",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Fundamentals of Nursing/Sub-Acute",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS091P",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Pharmacology I",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS092",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Medical-Surgical Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS092L",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Medical-Surgical Nursing Clinical",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS092P",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Pharmacology II",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS093",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Reproductive Health Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS093A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Pediatric Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS093L",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Reproductive Health Nursing Clinical",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS094",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Gerontology Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS094A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Psychiatric/Mental Health Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS094L",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Gerontology Nursing Clinical",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS095",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Complex Health Challenges",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS095L",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Complex Health Challenges Clinical",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS096",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Leadership and Management in Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS096A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Concept Integration",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS096L",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Leadership and Management in Nursing Clinical",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS91AL",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Health Assessment Lab",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS91BL",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Fundamentals of Nursing/Sub-Acute Clinical",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS93AL",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Pediatric Nursing Clinical",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS93PL",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Pharmacology III Laboratory",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS94AL",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Psychiatric/Mental Health Nursing Clinical",
+     "top_code": "123010"
+    }
+   ]
+  },
+  {
+   "college": "Diablo Valley College",
+   "courses": []
+  },
+  {
+   "college": "Evergreen Valley College",
+   "courses": [
+    {
+     "code": "NURS010",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Fundamentals in the Medical-Surgical Setting",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS011A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing of the Childbearing Family",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS011B",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing of the Pediatric Family Unit",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS012",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Professional and Practice Principles in Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS013",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Care of Adults I",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS014A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Mental Health Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS014B",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Care of Adults II with Transition to Practice",
+     "top_code": "123010"
+    }
+   ]
+  },
+  {
+   "college": "Foothill College",
+   "courses": []
+  },
+  {
+   "college": "Gavilan College",
+   "courses": [
+    {
+     "code": "AH55",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Interactive and Mental Health Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "AH56",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Compensatory Nursing Practice",
+     "top_code": "123010"
+    }
+   ]
+  },
+  {
+   "college": "Laney College",
+   "courses": []
+  },
+  {
+   "college": "Las Positas College",
+   "courses": []
+  },
+  {
+   "college": "Los Medanos College",
+   "courses": []
+  },
+  {
+   "college": "Merritt College",
+   "courses": [
+    {
+     "code": "NURS011",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Professional and Theoretical Concepts",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS012",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Dosage Calculation",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS014",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nutrition in Nursing",
+     "top_code": "123010"
+    }
+   ]
+  },
+  {
+   "college": "Mission College",
+   "courses": [
+    {
+     "code": "RNB037",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Intermediate Clinical Practicum",
+     "top_code": "123010"
+    },
+    {
+     "code": "RNB042",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Leadership and Ethics",
+     "top_code": "123010"
+    },
+    {
+     "code": "RNB043",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Advanced Clinical Judgement/Simulation",
+     "top_code": "123010"
+    },
+    {
+     "code": "RNB044",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Advanced Medical Surgical Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "RNB045",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Pediatric Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "RNB047",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Advanced Clinical Practicum",
+     "top_code": "123010"
+    },
+    {
+     "code": "RNB049",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Clinical Preceptorship",
+     "top_code": "123010"
+    }
+   ]
+  },
+  {
+   "college": "Napa Valley College",
+   "courses": [
+    {
+     "code": "NURS151",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Fundamentals",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS153",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Maternal/Newborn Nursing Care",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS154",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Mental Health Nursing Care",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS155",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Pediatric Nursing Care",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS251",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Community and Acute Medical-Surgical Nursing Care I",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS252",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Care of Patients with Acute Illness II",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS253",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Capstone",
+     "top_code": "123010"
+    }
+   ]
+  },
+  {
+   "college": "Ohlone College",
+   "courses": [
+    {
+     "code": "NUR301A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Fundamentals and Care of Adults I",
+     "top_code": "123010"
+    },
+    {
+     "code": "NUR301B",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Role of the Nurse in Promoting Healthy Aging",
+     "top_code": "123010"
+    },
+    {
+     "code": "NUR303",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "The Nurse's Role in Caring for Women and Children",
+     "top_code": "123010"
+    },
+    {
+     "code": "NUR304",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Care of Adults II",
+     "top_code": "123010"
+    },
+    {
+     "code": "NUR306",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "The Nurse's Role in Behavioral Health",
+     "top_code": "123010"
+    },
+    {
+     "code": "NUR307A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "The Nurse's Role in Leadership",
+     "top_code": "123010"
+    },
+    {
+     "code": "NUR307B",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Transition to Practice",
+     "top_code": "123010"
+    }
+   ]
+  },
+  {
+   "college": "San Jose City College",
+   "courses": []
+  },
+  {
+   "college": "Santa Rosa Junior College",
+   "courses": [
+    {
+     "code": "NR751B",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Introduction to Medical Surgical Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NR751C",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Intermediate Medical Surgical Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NR751D",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Advanced Medical Surgical Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NR752A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Fundamentals of Professional Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NR752B",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Psychiatric Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NR752C",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Maternal Child Nursing",
+     "top_code": "123010"
+    }
+   ]
+  },
+  {
+   "college": "Skyline College",
+   "courses": []
+  },
+  {
+   "college": "Solano Community College",
+   "courses": [
+    {
+     "code": "NURS071A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Foundations of Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS071D",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Dosage Calculations",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS071S",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Skills Lab I",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS072B",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Maternal/Newborn Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS072P",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Pediatric Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS072S",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Skills Lab II",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS073A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Medical/Surgical Nursing II",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS073B",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Psychiatric and Mental Health Nursing",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS073S",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Skills Lab III",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS074A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Medical/Surgical Nursing III",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS074S",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nursing Skills Lab IV",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS111",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Medical Terminology",
+     "top_code": "123010"
+    },
+    {
+     "code": "NURS511",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Medical Terminology",
+     "top_code": "123010"
+    }
+   ]
+  },
+  {
+   "college": "West Valley College",
+   "courses": []
+  }
+ ],
+ "description": "Assess patient health problems and needs, develop and implement nursing care plans, and maintain medical records. Administer nursing care to ill, injured, convalescent, or disabled patients. May advise patients on health maintenance and disease prevention or provide case management. Licensing or registration required.",
+ "employment": 78730,
+ "enrollment_by_college": [
+  {
+   "college": "Cabrillo College",
+   "vals": [
+    null,
+    null,
+    257,
+    null,
+    264,
+    283,
+    null,
+    258,
+    267,
+    null,
+    273,
+    254,
+    null,
+    371,
+    402
+   ]
+  },
+  {
+   "college": "Chabot College",
+   "vals": [
+    null,
+    null,
+    212,
+    null,
+    112,
+    127,
+    null,
+    73,
+    30,
+    null,
+    51,
+    83,
+    null,
+    101,
+    159
+   ]
+  },
+  {
+   "college": "City College of San Francisco",
+   "vals": [
+    null,
+    null,
+    468,
+    null,
+    477,
+    445,
+    null,
+    435,
+    382,
+    null,
+    403,
+    384,
+    null,
+    408,
+    429
+   ]
+  },
+  {
+   "college": "College of Marin",
+   "vals": [
+    null,
+    null,
+    669,
+    null,
+    403,
+    571,
+    null,
+    347,
+    524,
+    null,
+    422,
+    536,
+    null,
+    384,
+    539
+   ]
+  },
+  {
+   "college": "College of San Mateo",
+   "vals": [
+    null,
+    null,
+    397,
+    null,
+    420,
+    388,
+    null,
+    405,
+    385,
+    null,
+    411,
+    419,
+    null,
+    414,
+    405
+   ]
+  },
+  {
+   "college": "Contra Costa College",
+   "vals": [
+    null,
+    null,
+    386,
+    null,
+    321,
+    364,
+    null,
+    385,
+    373,
+    null,
+    396,
+    415,
+    null,
+    433,
+    400
+   ]
+  },
+  {
+   "college": "De Anza College",
+   "vals": [
+    395,
+    376,
+    362,
+    345,
+    340,
+    334,
+    341,
+    363,
+    null,
+    401,
+    404,
+    406,
+    438,
+    430,
+    409
+   ]
+  },
+  {
+   "college": "Evergreen Valley College",
+   "vals": [
+    null,
+    237,
+    150,
+    null,
+    266,
+    227,
+    null,
+    298,
+    312,
+    null,
+    277,
+    292,
+    null,
+    287,
+    311
+   ]
+  },
+  {
+   "college": "Gavilan College",
+   "vals": [
+    null,
+    null,
+    19,
+    null,
+    18,
+    25,
+    null,
+    22,
+    23,
+    null,
+    20,
+    24,
+    null,
+    25,
+    22
+   ]
+  },
+  {
+   "college": "Los Medanos College",
+   "vals": [
+    null,
+    null,
+    185,
+    null,
+    169,
+    289,
+    null,
+    340,
+    303,
+    null,
+    370,
+    258,
+    null,
+    306,
+    273
+   ]
+  },
+  {
+   "college": "Merritt College",
+   "vals": [
+    null,
+    null,
+    240,
+    null,
+    251,
+    218,
+    null,
+    197,
+    122,
+    null,
+    107,
+    138,
+    null,
+    130,
+    126
+   ]
+  },
+  {
+   "college": "Mission College",
+   "vals": [
+    null,
+    116,
+    116,
+    null,
+    108,
+    100,
+    null,
+    112,
+    120,
+    null,
+    112,
+    112,
+    null,
+    116,
+    23
+   ]
+  },
+  {
+   "college": "Napa Valley College",
+   "vals": [
+    null,
+    null,
+    181,
+    null,
+    78,
+    173,
+    null,
+    109,
+    186,
+    null,
+    119,
+    193,
+    null,
+    192,
+    190
+   ]
+  },
+  {
+   "college": "Ohlone College",
+   "vals": [
+    null,
+    92,
+    135,
+    null,
+    16,
+    104,
+    null,
+    115,
+    110,
+    null,
+    49,
+    119,
+    null,
+    89,
+    142
+   ]
+  },
+  {
+   "college": "Santa Rosa Junior College",
+   "vals": [
+    null,
+    null,
+    322,
+    null,
+    298,
+    288,
+    null,
+    282,
+    322,
+    null,
+    331,
+    326,
+    null,
+    326,
+    333
+   ]
+  },
+  {
+   "college": "Solano Community College",
+   "vals": [
+    null,
+    null,
+    394,
+    null,
+    407,
+    435,
+    null,
+    435,
+    431,
+    null,
+    386,
+    423,
+    null,
+    407,
+    405
+   ]
+  }
+ ],
+ "enrollment_terms": [
+  "Winter 2021",
+  "Spring 2021",
+  "Fall 2021",
+  "Winter 2022",
+  "Spring 2022",
+  "Fall 2022",
+  "Winter 2023",
+  "Spring 2023",
+  "Fall 2023",
+  "Winter 2024",
+  "Spring 2024",
+  "Fall 2024",
+  "Winter 2025",
+  "Spring 2025",
+  "Fall 2025"
+ ],
+ "feeding_tops": [
+  {
+   "awards_total": 701,
+   "enrollment_total": 4568,
+   "name": "Registered Nursing",
+   "soc_count": 1,
+   "top6": "123010"
+  }
+ ],
+ "gap": 4472,
+ "growth_rate": 0.1,
+ "occupational_demand": "According to the Centers of Excellence for Labor Market Research, Registered Nurses (SOC 29-1141) earn a median annual wage of $190,620 with 5,160 annual openings in the Bay Area region. 78,730 workers are currently employed in the region with this occupational role, with projected employment growth of +6.3% over a 5-year time span.",
+ "partnership_opportunities": [],
+ "partnership_opportunities_narrative": "",
+ "region": "Bay",
+ "region_display": "Bay Area",
+ "sector": "Health",
+ "soc_code": "29-1141",
+ "title": "Registered Nurses"
+}

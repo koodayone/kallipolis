@@ -1,0 +1,43 @@
+{
+ "annual_openings": 510,
+ "annual_wage": 63130,
+ "award_years": [],
+ "awards_by_college": [],
+ "consortium_supply": 0.0,
+ "crosswalk": {
+  "cips": [],
+  "coverage_pct": 0.0,
+  "n_taught": 0,
+  "n_total": 0,
+  "tops": []
+ },
+ "curriculum_by_college": [
+  {
+   "college": "College of San Mateo",
+   "courses": []
+  },
+  {
+   "college": "Skyline College",
+   "courses": []
+  },
+  {
+   "college": "Ca\u00f1ada College",
+   "courses": []
+  }
+ ],
+ "description": "Set up and operate a variety of machine tools to produce precision parts and instruments out of metal. Includes precision instrument makers who fabricate, modify, or repair mechanical instruments. May also fabricate and modify parts to make or repair machine tools or maintain industrial machines, applying knowledge of mechanics, mathematics, metal properties, layout, and machining procedures.",
+ "employment": 4700,
+ "enrollment_by_college": [],
+ "enrollment_terms": [],
+ "feeding_tops": [],
+ "gap": 510,
+ "growth_rate": 0.0,
+ "occupational_demand": "According to the Centers of Excellence for Labor Market Research, Machinists (SOC 51-4041) earn a median annual wage of $63,130 with 510 annual openings in the Bay Area region. 4,700 workers are currently employed in the region with this occupational role, with projected employment growth of +2.8% over a 5-year time span.",
+ "partnership_opportunities": [],
+ "partnership_opportunities_narrative": "",
+ "region": "Bay",
+ "region_display": "Bay Area",
+ "sector": "Advanced Manufacturing",
+ "soc_code": "51-4041",
+ "title": "Machinists"
+}

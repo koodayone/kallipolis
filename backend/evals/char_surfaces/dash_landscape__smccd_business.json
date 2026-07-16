@@ -1,0 +1,50 @@
+{
+ "aggregate": {
+  "candidate_employers": 0,
+  "combined_awards": 0,
+  "combined_supply_total": 0.0,
+  "gap": 0,
+  "n_colleges": 3,
+  "n_occupations": 0,
+  "occupations_taught": 0,
+  "regional_demand_total": 0
+ },
+ "award_years": [
+  "2020-2021",
+  "2021-2022",
+  "2022-2023",
+  "2023-2024",
+  "2024-2025"
+ ],
+ "colleges": [
+  {
+   "cells": [],
+   "name": "College of San Mateo"
+  },
+  {
+   "cells": [],
+   "name": "Skyline College"
+  },
+  {
+   "cells": [],
+   "name": "Ca\u00f1ada College"
+  }
+ ],
+ "coverage_awards_only": true,
+ "enrollment_terms": [
+  "Fall 2021",
+  "Spring 2022",
+  "Fall 2022",
+  "Spring 2023",
+  "Fall 2023",
+  "Spring 2024",
+  "Fall 2024",
+  "Spring 2025",
+  "Fall 2025"
+ ],
+ "executive_summary": "This view examines the regional demand landscape across the 0 business & entrepreneurship occupations the San Mateo County CCD \u2014 Business & Entrepreneurship targets in the Bay Area regional labor market. Regional demand for these occupations totals 0 openings per year.",
+ "is_sector_priority": false,
+ "region": "Bay",
+ "region_display": "Bay Area",
+ "sector": "Business & Entrepreneurship"
+}

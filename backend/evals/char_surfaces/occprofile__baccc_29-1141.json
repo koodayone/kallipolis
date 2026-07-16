@@ -1,0 +1,554 @@
+{
+ "coordinate": {
+  "entity": "",
+  "lens": "",
+  "member": "baccc",
+  "member_label": "Bay Area Community College Consortium",
+  "predicate_version": "",
+  "region": "Bay Area",
+  "sector": "health",
+  "sector_label": "Health",
+  "soc": "29-1141",
+  "top6": null
+ },
+ "data": {
+  "more": null,
+  "rows": [
+   {
+    "label": "123010 Registered Nursing",
+    "roster": [
+     {
+      "label": "Santa Rosa Junior College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 110,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "City College of San Francisco",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 67,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Evergreen Valley College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 64,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "De Anza College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 49,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Cabrillo College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 48,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "College of San Mateo",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 48,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Napa Valley College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 46,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Los Medanos College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 44,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Solano Community College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 44,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "College of Marin",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 40,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Contra Costa College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 38,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Mission College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 30,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "colleges_actively_awarding": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (latest yr)",
+      "value": 16,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 16,
+      "vintage": ""
+     }
+    }
+   }
+  ],
+  "sorted_by": null,
+  "summary": {
+   "annual_openings": {
+    "granularity": "regional (Bay Area)",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "coe",
+    "status": "ok",
+    "unit": "openings/yr",
+    "value": 5160,
+    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+   },
+   "annual_wage": {
+    "granularity": "regional (Bay Area)",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "coe",
+    "status": "ok",
+    "unit": "USD/yr (occ. median)",
+    "value": 190620,
+    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+   },
+   "gap": {
+    "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "derived",
+    "status": "ok",
+    "unit": "openings/yr",
+    "value": 4471,
+    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+   },
+   "growth_rate": {
+    "granularity": "regional (Bay Area)",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "coe",
+    "status": "ok",
+    "unit": "5-yr %",
+    "value": 0.1,
+    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+   },
+   "latest_year_supply": {
+    "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "datamart",
+    "status": "ok",
+    "unit": "completions",
+    "value": 701.0,
+    "vintage": "DataMart completions \u2014 2024-2025"
+   },
+   "member_supply": {
+    "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "datamart",
+    "status": "ok",
+    "unit": "completions/yr",
+    "value": 688.7,
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+   },
+   "occupation_title": {
+    "granularity": "SOC 29-1141",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "coe",
+    "status": "ok",
+    "unit": "",
+    "value": "Registered Nurses",
+    "vintage": ""
+   },
+   "regional_employment": {
+    "granularity": "regional (Bay Area)",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "coe",
+    "status": "ok",
+    "unit": "jobs",
+    "value": 78730,
+    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+   },
+   "regional_supply": {
+    "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "datamart",
+    "status": "ok",
+    "unit": "completions/yr",
+    "value": 688.7,
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+   },
+   "top_employers": {
+    "granularity": "regional (Bay Area) \u2014 top 3 by OES staffing share",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "graph_bls",
+    "status": "ok",
+    "unit": "",
+    "value": "Seton Medical Center Coastside, Mills-Peninsula Medical Center, AHMC Seton Medical Center",
+    "vintage": ""
+   },
+   "typical_education": {
+    "granularity": "SOC 29-1141",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "coe",
+    "status": "ok",
+    "unit": "",
+    "value": "Bachelor's degree",
+    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+   }
+  }
+ },
+ "form": "occupation_profile",
+ "framing": {
+  "meaning": "An occupation profile is the regional picture of one occupation: its demand (openings, median wage, employment, projected growth), the programs across the region that feed it, the total regional projected supply and the gap, the top regional employers, and the sector it belongs to. The region is derived from the institution; the occupation, not a sector, is the entry point.",
+  "salience": []
+ },
+ "licensing": {
+  "gates": [],
+  "licensed": [
+   "Regional demand for the occupation vs total regional projected completions feeding it.",
+   "Classified in the Health sector(s), by the region's sector definitions."
+  ],
+  "not_licensed": [
+   "Demand is the regional occupational signal, not graduates' earnings. Supply is projected completions across the region \u2014 COE's Annual Projected Supply method (a 3-year average of DataMart completions), reconstructed on current DataMart data; read it as a projection, not one year's raw count. The program\u2192occupation crosswalk is many-to-many, so a feeding program 'can lead to' the occupation, it is not exclusive to it."
+  ]
+ },
+ "next_moves": [
+  {
+   "coordinate": {
+    "entity": "29-1141",
+    "lens": "employers",
+    "member": "baccc",
+    "member_label": "Bay Area Community College Consortium",
+    "predicate_version": "",
+    "region": "Bay Area",
+    "sector": "health",
+    "sector_label": "Health",
+    "soc": "29-1141",
+    "top6": null
+   },
+   "form": "navigate",
+   "rationale": "See the full set of regional employers hiring for this occupation."
+  },
+  {
+   "coordinate": {
+    "entity": "",
+    "lens": "gaps",
+    "member": "baccc",
+    "member_label": "Bay Area Community College Consortium",
+    "predicate_version": "",
+    "region": null,
+    "sector": "health",
+    "sector_label": "Health",
+    "soc": null,
+    "top6": null
+   },
+   "form": "navigate",
+   "rationale": "See the whole supply\u2013demand gap for this sector."
+  }
+ ],
+ "provenance": {
+  "field_authority": {
+   "annual_openings": "coe",
+   "annual_wage": "coe",
+   "gap": "derived",
+   "growth_rate": "coe",
+   "latest_year_supply": "datamart",
+   "projected_supply": "datamart",
+   "regional_employment": "coe"
+  },
+  "scope_granularity": "demand regional (Bay Area); supply regional (Bay Area) \u2014 all 26 colleges; member share institutional \u2014 consortium (\u03a3 26 colleges)",
+  "sources": [
+   {
+    "authority": "Centers of Excellence",
+    "id": "coe",
+    "role": "regional demand, wage, growth"
+   },
+   {
+    "authority": "CCCCO DataMart",
+    "id": "datamart",
+    "role": "program awards, enrollment, and graduate wage outcomes"
+   }
+  ],
+  "vintages": {
+   "demand": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection",
+   "latest_year_supply": "DataMart completions \u2014 2024-2025",
+   "projected_supply": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+  }
+ },
+ "view_link": {
+  "note": "",
+  "status": "ok",
+  "url": "https://preview.kallipolis.us/baccc-health?lens=occupations&soc=29-1141"
+ }
+}

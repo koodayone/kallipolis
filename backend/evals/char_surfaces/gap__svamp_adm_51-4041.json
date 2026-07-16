@@ -1,0 +1,211 @@
+{
+ "coordinate": {
+  "entity": "",
+  "lens": "",
+  "member": "svamp",
+  "member_label": "Silicon Valley Advanced Manufacturing Partnership",
+  "predicate_version": "",
+  "region": "Bay Area",
+  "sector": "adm",
+  "sector_label": "Advanced Manufacturing",
+  "soc": "51-4041",
+  "top6": null
+ },
+ "data": {
+  "more": null,
+  "rows": [
+   {
+    "label": "51-4041 Machinists",
+    "roster": [],
+    "values": {
+     "gap": {
+      "granularity": "regional openings \u2212 regional supply",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 355,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "latest_year_supply": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions",
+      "value": 49.0,
+      "vintage": "DataMart completions \u2014 2024-2025"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 43.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "regional_demand": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 510,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "regional_supply": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 155.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   }
+  ],
+  "sorted_by": null,
+  "summary": {
+   "gap": {
+    "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "derived",
+    "status": "ok",
+    "unit": "openings/yr",
+    "value": 1849,
+    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+   },
+   "latest_year_supply": {
+    "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "datamart",
+    "status": "ok",
+    "unit": "completions",
+    "value": 185.0,
+    "vintage": "DataMart completions \u2014 2024-2025"
+   },
+   "member_supply": {
+    "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "datamart",
+    "status": "ok",
+    "unit": "completions/yr",
+    "value": 118.3,
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+   },
+   "regional_demand": {
+    "granularity": "regional (Bay Area)",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "coe",
+    "status": "ok",
+    "unit": "openings/yr",
+    "value": 2700,
+    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+   },
+   "regional_supply": {
+    "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "datamart",
+    "status": "ok",
+    "unit": "completions/yr",
+    "value": 851.3,
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+   }
+  }
+ },
+ "form": "gap",
+ "framing": {
+  "meaning": "A supply\u2013demand gap is regional annual openings minus the whole region's projected completions, per occupation \u2014 regional demand against regional supply. The institution's own completions are its share of that regional supply. Positive means the region hires more than its colleges are projected to complete.",
+  "salience": [
+   "supply=3yr-avg: supply is a 3-year average of DataMart completions (All Awards); the single most recent year (latest_year_supply) can run above or below it."
+  ]
+ },
+ "licensing": {
+  "gates": [],
+  "licensed": [
+   "Regional annual openings vs total regional completions feeding the occupation, per occupation.",
+   "member_supply is this member's own share of that regional supply."
+  ],
+  "not_licensed": [
+   "'Supply' is projected completions \u2014 COE's Annual Projected Supply method (a trailing 3-year average of DataMart completions), reconstructed on current DataMart data; it is the gap denominator, read as a projection rather than one year's raw count (see latest_year_supply). The gap is REGIONAL; the institution's own supply is a separate figure (its share), never the gap itself. A member's latest-year change moves its own share, not the regional gap \u2014 do not read a regional trend from one institution's single year.",
+   "Supply is a 3-yr average of DataMart completions (All Awards) over the occupation's CTE feeder programs \u2014 a multi-year projection, not the single most recent year (latest_year_supply)."
+  ]
+ },
+ "next_moves": [
+  {
+   "coordinate": {
+    "entity": "51-4041",
+    "lens": "employers",
+    "member": "svamp",
+    "member_label": "Silicon Valley Advanced Manufacturing Partnership",
+    "predicate_version": "",
+    "region": null,
+    "sector": "adm",
+    "sector_label": "Advanced Manufacturing",
+    "soc": "51-4041",
+    "top6": null
+   },
+   "form": "navigate",
+   "rationale": "Identify regional employers to convene around the gapped occupation."
+  },
+  {
+   "coordinate": {
+    "entity": "51-4041",
+    "lens": "",
+    "member": "svamp",
+    "member_label": "Silicon Valley Advanced Manufacturing Partnership",
+    "predicate_version": "",
+    "region": null,
+    "sector": "adm",
+    "sector_label": "Advanced Manufacturing",
+    "soc": "51-4041",
+    "top6": null
+   },
+   "form": "crosswalk",
+   "rationale": "See which programs feed the gapped occupation."
+  }
+ ],
+ "provenance": {
+  "field_authority": {
+   "annual_openings": "coe",
+   "gap": "derived",
+   "latest_year_supply": "datamart",
+   "projected_supply": "datamart"
+  },
+  "scope_granularity": "demand regional (Bay Area); supply regional (Bay Area) \u2014 all 26 colleges; member share institutional \u2014 consortium (\u03a3 5 colleges)",
+  "sources": [
+   {
+    "authority": "Centers of Excellence",
+    "id": "coe",
+    "role": "regional demand, wage, growth"
+   },
+   {
+    "authority": "CCCCO DataMart",
+    "id": "datamart",
+    "role": "program awards, enrollment, and graduate wage outcomes"
+   }
+  ],
+  "vintages": {
+   "demand": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection",
+   "latest_year_supply": "DataMart completions \u2014 2024-2025",
+   "projected_supply": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+  }
+ },
+ "view_link": {
+  "note": "",
+  "status": "ok",
+  "url": "https://preview.kallipolis.us/svamp?lens=occupations&soc=51-4041"
+ }
+}

@@ -1,0 +1,112 @@
+{
+ "coordinate": {
+  "entity": "",
+  "lens": "",
+  "member": "deanza",
+  "member_label": "De Anza College",
+  "predicate_version": "",
+  "region": "Bay Area",
+  "sector": "adm",
+  "sector_label": "Advanced Manufacturing",
+  "soc": "17-3023",
+  "top6": null
+ },
+ "data": {
+  "more": null,
+  "rows": [],
+  "sorted_by": null,
+  "summary": {
+   "candidate_employers": {
+    "granularity": "regional (Bay Area)",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "graph_bls",
+    "status": "ok",
+    "unit": "employers",
+    "value": 124,
+    "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+   },
+   "shown": {
+    "granularity": "regional (Bay Area)",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "derived",
+    "status": "ok",
+    "unit": "employers plotted",
+    "value": 0,
+    "vintage": ""
+   }
+  }
+ },
+ "form": "regional_employers",
+ "framing": {
+  "meaning": "Ranks regional employers by how prominently each employer's industry staffs the target occupations (BLS OES staffing share). It surfaces candidate partners the member could convene \u2014 not a hiring roster.",
+  "salience": []
+ },
+ "licensing": {
+  "gates": [],
+  "licensed": [
+   "Regional employers ranked by OES staffing share for the target occupations."
+  ],
+  "not_licensed": [
+   "Ranked by OES industry staffing share; OES-suppressed cells are dropped (not marked), and the shortlist ('shown') is not the whole candidate pool ('total').",
+   "'shown' is a geocoded shortlist, not the whole candidate pool ('total')."
+  ]
+ },
+ "next_moves": [
+  {
+   "coordinate": {
+    "entity": "",
+    "lens": "gaps",
+    "member": "deanza",
+    "member_label": "De Anza College",
+    "predicate_version": "",
+    "region": "Bay",
+    "sector": "adm",
+    "sector_label": "Advanced Manufacturing",
+    "soc": null,
+    "top6": null
+   },
+   "form": "navigate",
+   "rationale": "Quantify the supply\u2013demand gap these employers face."
+  },
+  {
+   "coordinate": {
+    "entity": "",
+    "lens": "coverage",
+    "member": "deanza",
+    "member_label": "De Anza College",
+    "predicate_version": "",
+    "region": "Bay",
+    "sector": "adm",
+    "sector_label": "Advanced Manufacturing",
+    "soc": null,
+    "top6": null
+   },
+   "form": "navigate",
+   "rationale": "See which colleges cover the occupations these employers hire."
+  }
+ ],
+ "provenance": {
+  "field_authority": {
+   "candidate_employers": "graph_bls",
+   "employer_relevance": "graph_bls"
+  },
+  "scope_granularity": "regional (Bay Area)",
+  "sources": [
+   {
+    "authority": "BLS OEWS staffing patterns",
+    "id": "graph_bls",
+    "role": "employer relevance"
+   }
+  ],
+  "vintages": {
+   "employer_relevance": "BLS OEWS Industry-Occupation staffing matrix"
+  }
+ },
+ "view_link": {
+  "note": "Opens on the lens with a default selection (view state applies client-side); select the row above to corroborate the figure.",
+  "status": "ok",
+  "url": "https://preview.kallipolis.us/landscape/deanza/adm?lens=employers"
+ }
+}

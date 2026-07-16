@@ -1,0 +1,714 @@
+{
+ "employers": [
+  {
+   "description": "All FAB Precision Sheetmetal is an ISO 9001:2015 certified contract manufacturer specializing in sheet metal fabrication, precision machining, and rapid prototyping. They provide engineering support, assembly, and turnkey solutions from initial concepts to final products, serving clients in the Bay Area with a focus on quality and quick turnaround.",
+   "display_name": null,
+   "lat": 37.3,
+   "lng": -121.9,
+   "naics4": "3327",
+   "naics_title": "Machine Shops; Turned Product; and Screw, Nut, and Bolt Manufacturing",
+   "name": "All FAB Precision Sheetmetal",
+   "relevance": 22.1,
+   "sector": "Construction",
+   "size_class": null,
+   "size_rank": 0,
+   "soc_count": 2,
+   "soc_titles": {
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists"
+   },
+   "socs": [
+    "51-4041",
+    "17-3026"
+   ],
+   "website": "https://www.allfabprecision.com/"
+  },
+  {
+   "description": "Arm is a global semiconductor and software design company that develops and licenses CPU, GPU, and NPU architectures and IP. It serves diverse markets including cloud and data centers, autonomous machines, mobile and PC, and embedded IoT devices, with over 350 billion Arm-based chips shipped to date.",
+   "display_name": null,
+   "lat": 37.4,
+   "lng": -121.9,
+   "naics4": "3344",
+   "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
+   "name": "Arm",
+   "relevance": 12.7,
+   "sector": "Manufacturing",
+   "size_class": null,
+   "size_rank": 0,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "51-9141",
+    "17-3023",
+    "17-3026",
+    "51-4041",
+    "17-3024"
+   ],
+   "website": "https://www.arm.com/"
+  },
+  {
+   "description": "California Eastern Laboratories (CEL) provides short-range wireless solutions, including Zigbee, Bluetooth, and Wi-Fi, along with RF and optical components. With over 60 years of experience, CEL serves OEMs across various markets like building controls, smart energy, industrial, smart home, and medical, helping them achieve optimal product connectivity and rapid market entry.",
+   "display_name": null,
+   "lat": 37.4,
+   "lng": -122.0,
+   "naics4": "3344",
+   "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
+   "name": "California Eastern Lab",
+   "relevance": 12.7,
+   "sector": "Manufacturing",
+   "size_class": null,
+   "size_rank": 0,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "51-9141",
+    "17-3023",
+    "17-3026",
+    "51-4041",
+    "17-3024"
+   ],
+   "website": "https://www.cel.com/"
+  },
+  {
+   "description": "Cirexx International, founded in 1980, is a Silicon Valley-based electronic solutions company specializing in PCB layout, fabrication, and assembly. They provide quick-turn, high-reliability Flex, Rigid-Flex, RF/Microwave, HDI, and Rigid Circuit Boards for industries like military, aerospace, and medical, with all manufacturing in the USA.",
+   "display_name": null,
+   "lat": 37.4,
+   "lng": -121.9,
+   "naics4": "3344",
+   "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
+   "name": "Cirexx International",
+   "relevance": 12.7,
+   "sector": "Manufacturing",
+   "size_class": null,
+   "size_rank": 0,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "51-9141",
+    "17-3023",
+    "17-3026",
+    "51-4041",
+    "17-3024"
+   ],
+   "website": "https://www.cirexx.com/"
+  },
+  {
+   "description": "Coherent is a global leader in materials, networking, and lasers, harnessing photons to drive innovation. They provide advanced optical solutions, engineered materials, and high-precision laser technologies for datacenter, communications, and industrial markets, including manufacturing, research, and semiconductor equipment.",
+   "display_name": null,
+   "lat": 37.4,
+   "lng": -122.0,
+   "naics4": "3344",
+   "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
+   "name": "Coherent",
+   "relevance": 12.7,
+   "sector": "Wholesale",
+   "size_class": null,
+   "size_rank": 0,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "51-9141",
+    "17-3023",
+    "17-3026",
+    "51-4041",
+    "17-3024"
+   ],
+   "website": "https://www.coherent.com/"
+  },
+  {
+   "description": "Horizon Robotics is a leading provider of smart driving solutions for passenger vehicles, developing AI chips and integrated software/hardware for ADAS and autonomous driving. Serving global automotive OEMs and Tier 1 suppliers, it has shipped over 10 million Journey series units, with a presence in the Bay Area for computer programming services.",
+   "display_name": null,
+   "lat": 37.3,
+   "lng": -122.0,
+   "naics4": "3344",
+   "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
+   "name": "Horizon Robotics",
+   "relevance": 12.7,
+   "sector": "Professional Services",
+   "size_class": null,
+   "size_rank": 0,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "51-9141",
+    "17-3023",
+    "17-3026",
+    "51-4041",
+    "17-3024"
+   ],
+   "website": "https://www.horizon.auto/"
+  },
+  {
+   "description": "Jameco Electronics, headquartered in Belmont, CA since 1974, is an independent distributor of over 70,000 electronic components \u2014 spanning semiconductors, passives, interconnects, power supplies, test equipment, and electromechanical parts \u2014 sourced from more than 500 franchised brands. The company also sells under its own private labels (ValuePro, ReliaPro, BenchPro, KitPro) targeting engineers, educators, and electronics hobbyists. Warehouse, logistics, and technical sales roles are concentrated at the Shoreway Road facility in Belmont.",
+   "display_name": null,
+   "lat": 37.5,
+   "lng": -122.3,
+   "naics4": "3344",
+   "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
+   "name": "Jameco Electronics",
+   "relevance": 12.7,
+   "sector": "Manufacturing",
+   "size_class": "100-249 employees",
+   "size_rank": 6,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "51-9141",
+    "17-3023",
+    "17-3026",
+    "51-4041",
+    "17-3024"
+   ],
+   "website": "https://www.jameco.com/"
+  },
+  {
+   "description": "LeeMAH Electronics is a contract electronics manufacturer (EMS) founded in 1971, specializing in printed circuit board assembly (PCBA), custom cable assembly, and box-build manufacturing. They serve customers in transportation (rail, transit, EVs), aerospace and defense, medical devices, industrial instrumentation, and professional audio. Headquartered in Brisbane, California, the company holds AS-9100D, ISO 9001-2015, ITAR, and NASA compliance certifications and employs technicians in surface-mount and through-hole assembly, testing engineering, and quality assurance.",
+   "display_name": null,
+   "lat": 37.7,
+   "lng": -122.4,
+   "naics4": "3344",
+   "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
+   "name": "Leemah Electronics",
+   "relevance": 12.7,
+   "sector": "Manufacturing",
+   "size_class": "100-249 employees",
+   "size_rank": 6,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "51-9141",
+    "17-3023",
+    "17-3026",
+    "51-4041",
+    "17-3024"
+   ],
+   "website": "https://www.leemah.com/"
+  },
+  {
+   "description": "MASS Precision is a Silicon Valley-based metal fabrication and EMS solution provider, established in 1984, serving top OEMs and Tier 1 contract manufacturers globally. They specialize in design, prototyping, and full-scale production of metal and electro-mechanical assemblies, supporting New Product Introduction and high mix/low volume production.",
+   "display_name": null,
+   "lat": 37.4,
+   "lng": -121.9,
+   "naics4": "3329",
+   "naics_title": "Other Fabricated Metal Product Manufacturing",
+   "name": "MASS Precision",
+   "relevance": 7.5,
+   "sector": "Construction",
+   "size_class": null,
+   "size_rank": 0,
+   "soc_count": 4,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists"
+   },
+   "socs": [
+    "51-4041",
+    "17-3026",
+    "17-3023",
+    "17-3024"
+   ],
+   "website": "https://massprecision.com/"
+  },
+  {
+   "description": "Milgard Manufacturing, LLC produces custom, quality replacement, and energy-efficient windows and patio doors, including vinyl, fiberglass, and aluminum options. They serve homeowners, architects, contractors, and builders for both new construction and home improvement projects.",
+   "display_name": null,
+   "lat": 37.1,
+   "lng": -121.6,
+   "naics4": "3323",
+   "naics_title": "Architectural and Structural Metals Manufacturing",
+   "name": "Milgard Manufacturing",
+   "relevance": 7.5,
+   "sector": "Manufacturing",
+   "size_class": null,
+   "size_rank": 0,
+   "soc_count": 4,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists"
+   },
+   "socs": [
+    "51-4041",
+    "17-3026",
+    "17-3023",
+    "17-3024"
+   ],
+   "website": "https://www.milgard.com"
+  },
+  {
+   "description": "Rheem Manufacturing produces residential and commercial HVAC systems (air conditioners, furnaces, heat pumps, ductless mini-splits) and water heating equipment (tank, tankless, and heat pump water heaters, boilers, pool heaters) sold under brands including Rheem, Ruud, Richmond, and Eemax. Founded in 1925, the company serves contractors, plumbers, and commercial building operators across North America and globally. Manufacturing and field operations draw on sheet-metal fabrication, refrigeration systems, electromechanical assembly, and certified HVAC/plumbing trades workers.",
+   "display_name": null,
+   "lat": 37.5,
+   "lng": -122.2,
+   "naics4": "3334",
+   "naics_title": "Ventilation, Heating, Air-Conditioning, and Commercial Refrigeration Equipment Manufacturing",
+   "name": "Rheem Manufacturing",
+   "relevance": 6.1,
+   "sector": "Manufacturing",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 4,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists"
+   },
+   "socs": [
+    "51-4041",
+    "17-3026",
+    "17-3023",
+    "17-3024"
+   ],
+   "website": "https://www.rheem.com"
+  },
+  {
+   "description": "BAI, Inc. (Banner Aircraft International) is an aerospace and defense parts distributor supplying certified fasteners, bearings, electrical components, engine parts, and life support systems for military and commercial aircraft platforms including the F-15, F-16, and C-130. The company holds ISO 9001:2015 certification and FAA AC 00-56B compliance, and distributes components from authorized U.S. manufacturers to customers including the Japanese Ministry of Defense. With over 60 years of industry experience, BAI employs staff in logistics, quality assurance, and supply-chain operations supporting aerospace MRO and defense programs.",
+   "display_name": null,
+   "lat": 37.7,
+   "lng": -122.4,
+   "naics4": "3345",
+   "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
+   "name": "Bai",
+   "relevance": 4.5,
+   "sector": "Manufacturing",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "51-4041",
+    "17-3023",
+    "17-3026",
+    "17-3024",
+    "51-9141"
+   ],
+   "website": "https://www.bai-inc.com/"
+  },
+  {
+   "description": "Celldom develops the CloneXplorer Live Single-Cell Biology Platform, a microwell-array instrument that analyzes over 100,000 individual cells per plate in real time \u2014 measuring secreted proteins, morphology, gene expression, and cell-cell interactions simultaneously. The platform serves biopharmaceutical customers in T-cell potency testing, drug screening, and cell manufacturing quality control. Technical roles span biomedical engineering, computational image analysis, and platform software development.",
+   "display_name": null,
+   "lat": 37.5,
+   "lng": -122.3,
+   "naics4": "3345",
+   "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
+   "name": "Celldom",
+   "relevance": 4.5,
+   "sector": "Manufacturing",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "51-4041",
+    "17-3023",
+    "17-3026",
+    "17-3024",
+    "51-9141"
+   ],
+   "website": "https://www.celldom.com/"
+  },
+  {
+   "description": "Galvanize Therapeutics is a Redwood City medical device company that designs and manufactures pulsed electric field (PEF) ablation systems for soft-tissue surgery, with its flagship Aliya PEF Platform and the FDA-cleared Aliya EX Generator targeting lung tumors and COPD. The company also co-developed RheOx, a bronchoscopic PEF technology for interventional pulmonology. Engineering, regulatory affairs, clinical research, and commercial roles are based at its Redwood City headquarters.",
+   "display_name": null,
+   "lat": 37.5,
+   "lng": -122.3,
+   "naics4": "3345",
+   "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
+   "name": "Galvanize Therapeutics",
+   "relevance": 4.5,
+   "sector": "Manufacturing",
+   "size_class": "100-249 employees",
+   "size_rank": 6,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "51-4041",
+    "17-3023",
+    "17-3026",
+    "17-3024",
+    "51-9141"
+   ],
+   "website": "https://galvanizetx.com/"
+  },
+  {
+   "description": "GenRad (General Radar Corporation) designs and manufactures advanced phased-array radar systems, including the GFC AESA C-band multi-mission radar with digital beam-forming and a GaN front-end, and the Mark-IV millimeter-wave 3D imaging radar for autonomous vehicles and counter-drone applications. Founded in 2016 and based in Belmont, California, the company serves aerospace, defense, wind energy, and autonomous vehicle markets with a \"Radar-as-a-Service\" model. Development and production work draws on RF/microwave engineers, signal processing specialists, and embedded systems talent.",
+   "display_name": null,
+   "lat": 37.5,
+   "lng": -122.3,
+   "naics4": "3345",
+   "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
+   "name": "General Radar Corporation",
+   "relevance": 4.5,
+   "sector": "Manufacturing",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "51-4041",
+    "17-3023",
+    "17-3026",
+    "17-3024",
+    "51-9141"
+   ],
+   "website": "https://www.genrad.com/"
+  },
+  {
+   "description": "Northstar Photonics designs and manufactures integrated optic components and modules \u2014 including phase modulators, optical switches, and detector modules \u2014 for navigation and sensing applications in aerospace and defense. The company has operated since 2000, holds ISO 9001:2015 certification, and is ITAR registered, serving both domestic and international defense customers. All products are US-designed and manufactured, supporting roles in precision photonics assembly, test, and engineering.",
+   "display_name": null,
+   "lat": 37.5,
+   "lng": -122.2,
+   "naics4": "3345",
+   "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
+   "name": "Northstar Photonics",
+   "relevance": 4.5,
+   "sector": "Manufacturing",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "51-4041",
+    "17-3023",
+    "17-3026",
+    "17-3024",
+    "51-9141"
+   ],
+   "website": "https://www.northstarphotonics.com/"
+  },
+  {
+   "description": "Soleno Therapeutics is a biopharmaceutical company.",
+   "display_name": null,
+   "lat": 37.5,
+   "lng": -122.3,
+   "naics4": "3345",
+   "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
+   "name": "Soleno Therapeutics",
+   "relevance": 4.5,
+   "sector": "Manufacturing",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "51-4041",
+    "17-3023",
+    "17-3026",
+    "17-3024",
+    "51-9141"
+   ],
+   "website": "https://soleno.life/"
+  },
+  {
+   "description": "Elroy Air designs and manufactures the Chaparral, an autonomous electric-hybrid VTOL cargo aircraft built for uncrewed middle-mile logistics missions. The Chaparral carries a detachable cargo pod and has completed flight testing in partnership with the U.S. Air Force, NASA, FedEx, and Lockheed Martin. The company draws on engineers across aerospace, autonomy, defense systems, and advanced manufacturing.",
+   "display_name": null,
+   "lat": 37.7,
+   "lng": -122.4,
+   "naics4": "3364",
+   "naics_title": "Aerospace Product and Parts Manufacturing",
+   "name": "Elroy Air",
+   "relevance": 4.0,
+   "sector": "Manufacturing",
+   "size_class": "100-249 employees",
+   "size_rank": 6,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "51-4041",
+    "17-3026",
+    "17-3023",
+    "17-3024",
+    "51-9141"
+   ],
+   "website": "https://elroyair.com/"
+  },
+  {
+   "description": "Artio Medical is a medical device company.",
+   "display_name": null,
+   "lat": 37.5,
+   "lng": -122.2,
+   "naics4": "3391",
+   "naics_title": "Medical Equipment and Supplies Manufacturing",
+   "name": "Artio Medical",
+   "relevance": 3.4,
+   "sector": "Manufacturing",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 4,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists"
+   },
+   "socs": [
+    "51-4041",
+    "17-3026",
+    "17-3023",
+    "17-3024"
+   ],
+   "website": "https://www.artiomedical.com/"
+  },
+  {
+   "description": "Cutera designs and manufactures energy-based aesthetic medical devices sold to dermatologists and aesthetic medicine providers worldwide, with a product line spanning laser and radiofrequency platforms \u2014 including AviClear (FDA-cleared acne treatment), the excel V+ vascular laser, Secret RF microneedling systems, and the truBody body-contouring suite. The company is headquartered in Brisbane, California and employs engineers, regulatory affairs specialists, and field service technicians in the Bay Area. It operates across North America, Europe, and the Asia-Pacific region.",
+   "display_name": null,
+   "lat": 37.7,
+   "lng": -122.4,
+   "naics4": "3391",
+   "naics_title": "Medical Equipment and Supplies Manufacturing",
+   "name": "Cutera",
+   "relevance": 3.4,
+   "sector": "Manufacturing",
+   "size_class": "100-249 employees",
+   "size_rank": 6,
+   "soc_count": 4,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists"
+   },
+   "socs": [
+    "51-4041",
+    "17-3026",
+    "17-3023",
+    "17-3024"
+   ],
+   "website": "https://cutera.com/us-en/"
+  },
+  {
+   "description": "Intravu is a technology company.",
+   "display_name": null,
+   "lat": 37.5,
+   "lng": -122.2,
+   "naics4": "3391",
+   "naics_title": "Medical Equipment and Supplies Manufacturing",
+   "name": "Intravu",
+   "relevance": 3.4,
+   "sector": "Manufacturing",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 4,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists"
+   },
+   "socs": [
+    "51-4041",
+    "17-3026",
+    "17-3023",
+    "17-3024"
+   ],
+   "website": "https://www.intravu.com/"
+  },
+  {
+   "description": "Tosoh SMD is a manufacturer of thin film deposition materials.",
+   "display_name": null,
+   "lat": 37.7,
+   "lng": -122.4,
+   "naics4": "3391",
+   "naics_title": "Medical Equipment and Supplies Manufacturing",
+   "name": "Tosoh SMD",
+   "relevance": 3.4,
+   "sector": "Manufacturing",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 4,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists"
+   },
+   "socs": [
+    "51-4041",
+    "17-3026",
+    "17-3023",
+    "17-3024"
+   ],
+   "website": "https://www.tosohsmd.com/"
+  },
+  {
+   "description": "Aechelon Technology provides simulation and training solutions.",
+   "display_name": null,
+   "lat": 37.7,
+   "lng": -122.4,
+   "naics4": "3341",
+   "naics_title": "Computer and Peripheral Equipment Manufacturing",
+   "name": "Aechelon Technology",
+   "relevance": 2.3,
+   "sector": "Manufacturing",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "17-3023",
+    "17-3026",
+    "51-9141",
+    "51-4041",
+    "17-3024"
+   ],
+   "website": "https://aechelon.com/"
+  },
+  {
+   "description": "Silicon Valley Power is a municipal electric utility serving residents and businesses in Santa Clara, California. It provides reliable electric service, manages utility accounts, and promotes sustainability through rebates for energy efficiency, electric vehicles, and solar programs.",
+   "display_name": null,
+   "lat": 37.4,
+   "lng": -122.0,
+   "naics4": "2211",
+   "naics_title": "Electric Power Generation, Transmission and Distribution",
+   "name": "Silicon Valley Power",
+   "relevance": 1.4,
+   "sector": "Construction",
+   "size_class": null,
+   "size_rank": 0,
+   "soc_count": 4,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists"
+   },
+   "socs": [
+    "17-3023",
+    "51-4041",
+    "17-3024",
+    "17-3026"
+   ],
+   "website": "https://www.siliconvalleypower.com/"
+  },
+  {
+   "description": "DES is an integrated architecture, interior design, planning, and engineering firm founded in 1973 and headquartered in the San Francisco Bay Area, with over 170 employees across offices in Redwood City, San Francisco, Austin, and Monterey. The firm specializes in technology campuses, life science facilities, healthcare, and education projects, with notable clients including Google, Genentech, Cisco, and UC Irvine. Its in-house disciplines \u2014 architecture, landscape architecture, green building consulting, and digital graphics \u2014 draw architects, engineers, planners, and interior designers locally.",
+   "display_name": null,
+   "lat": 37.5,
+   "lng": -122.2,
+   "naics4": "5413",
+   "naics_title": "Architectural, Engineering, and Related Services",
+   "name": "DES Architects & Engineers",
+   "relevance": 1.3,
+   "sector": "Professional Services",
+   "size_class": "100-249 employees",
+   "size_rank": 6,
+   "soc_count": 4,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "51-4041": "Machinists"
+   },
+   "socs": [
+    "17-3023",
+    "17-3026",
+    "51-4041",
+    "17-3024"
+   ],
+   "website": "https://des-ae.com/"
+  }
+ ],
+ "region": "Bay",
+ "region_display": "Bay Area",
+ "sector": "Advanced Manufacturing",
+ "shed_counties": [
+  "Santa Clara",
+  "San Mateo"
+ ],
+ "shown": 25,
+ "total": 85
+}

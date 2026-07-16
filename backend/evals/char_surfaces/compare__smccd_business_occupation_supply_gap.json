@@ -1,0 +1,81 @@
+{
+ "coordinate": {
+  "entity": "",
+  "lens": "",
+  "member": "smccd",
+  "member_label": "",
+  "predicate_version": "",
+  "region": null,
+  "sector": "business",
+  "sector_label": "",
+  "soc": null,
+  "top6": null
+ },
+ "data": {
+  "more": null,
+  "rows": [],
+  "sorted_by": null,
+  "summary": {}
+ },
+ "form": "compare",
+ "framing": {
+  "meaning": "",
+  "salience": []
+ },
+ "licensing": {
+  "gates": [
+   {
+    "field": "coordinate",
+    "marker": "unavailable",
+    "reason": "San Mateo County CCD has no occupations in this sector to compare."
+   }
+  ],
+  "licensed": [],
+  "not_licensed": []
+ },
+ "next_moves": [
+  {
+   "coordinate": {
+    "entity": "",
+    "lens": "",
+    "member": "smccd",
+    "member_label": "",
+    "predicate_version": "",
+    "region": null,
+    "sector": "business",
+    "sector_label": "",
+    "soc": null,
+    "top6": null
+   },
+   "form": "orient",
+   "rationale": "Establish which institution and sector before analysis."
+  },
+  {
+   "coordinate": {
+    "entity": "",
+    "lens": "",
+    "member": "smccd",
+    "member_label": "",
+    "predicate_version": "",
+    "region": null,
+    "sector": "business",
+    "sector_label": "",
+    "soc": null,
+    "top6": null
+   },
+   "form": "list_institutions",
+   "rationale": "See the member\u00d7sector coordinates the system knows."
+  }
+ ],
+ "provenance": {
+  "field_authority": {},
+  "scope_granularity": "",
+  "sources": [],
+  "vintages": {}
+ },
+ "view_link": {
+  "note": "",
+  "status": "ok",
+  "url": null
+ }
+}

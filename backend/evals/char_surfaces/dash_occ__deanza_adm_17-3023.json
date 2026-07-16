@@ -1,0 +1,35 @@
+{
+ "annual_openings": 430,
+ "annual_wage": 89280,
+ "award_years": [],
+ "awards_by_college": [],
+ "consortium_supply": 0.0,
+ "crosswalk": {
+  "cips": [],
+  "coverage_pct": 0.0,
+  "n_taught": 0,
+  "n_total": 0,
+  "tops": []
+ },
+ "curriculum_by_college": [
+  {
+   "college": "De Anza College",
+   "courses": []
+  }
+ ],
+ "description": "Apply electrical and electronic theory and related knowledge, usually under the direction of engineering staff, to design, build, repair, adjust, and modify electrical components, circuitry, controls, and machinery for subsequent evaluation and use by engineering staff in making engineering design decisions.",
+ "employment": 4510,
+ "enrollment_by_college": [],
+ "enrollment_terms": [],
+ "feeding_tops": [],
+ "gap": 430,
+ "growth_rate": -0.0,
+ "occupational_demand": "According to the Centers of Excellence for Labor Market Research, Electrical and Electronic Engineering Technologists and Technicians (SOC 17-3023) earn a median annual wage of $89,280 with 430 annual openings in the Bay Area region. 4,510 workers are currently employed in the region with this occupational role, with projected employment growth of -0.6% over a 5-year time span.",
+ "partnership_opportunities": [],
+ "partnership_opportunities_narrative": "",
+ "region": "Bay",
+ "region_display": "Bay Area",
+ "sector": "Advanced Manufacturing",
+ "soc_code": "17-3023",
+ "title": "Electrical and Electronic Engineering Technologists and Technicians"
+}

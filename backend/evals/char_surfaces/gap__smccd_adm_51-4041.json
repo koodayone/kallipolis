@@ -1,0 +1,69 @@
+{
+ "coordinate": {
+  "entity": "",
+  "lens": "",
+  "member": "smccd",
+  "member_label": "San Mateo County CCD",
+  "predicate_version": "",
+  "region": "Bay Area",
+  "sector": "adm",
+  "sector_label": "Advanced Manufacturing",
+  "soc": "51-4041",
+  "top6": null
+ },
+ "data": {
+  "more": null,
+  "rows": [],
+  "sorted_by": null,
+  "summary": {}
+ },
+ "form": "gap",
+ "framing": {
+  "meaning": "A supply\u2013demand gap is regional annual openings minus the whole region's projected completions, per occupation \u2014 regional demand against regional supply. The institution's own completions are its share of that regional supply. Positive means the region hires more than its colleges are projected to complete.",
+  "salience": [
+   "member-anchored: a generated member\u00d7sector view covers only occupations the member already serves with an active program \u2014 it does NOT surface greenfield demand in occupations the member does not yet serve. Absence here is not absence of regional demand."
+  ]
+ },
+ "licensing": {
+  "gates": [
+   {
+    "field": "gap",
+    "marker": "unavailable",
+    "reason": "San Mateo County CCD runs no active program feeding this occupation, so a member-anchored gap view has no row for it \u2014 the sector summary is NOT this occupation's figure. See occupation_profile for its regional demand and gap (region-derived; this member's own supply shows as its share, which may be 0)."
+   }
+  ],
+  "licensed": [],
+  "not_licensed": [
+   "'Supply' is projected completions \u2014 COE's Annual Projected Supply method (a trailing 3-year average of DataMart completions), reconstructed on current DataMart data; it is the gap denominator, read as a projection rather than one year's raw count (see latest_year_supply). The gap is REGIONAL; the institution's own supply is a separate figure (its share), never the gap itself. A member's latest-year change moves its own share, not the regional gap \u2014 do not read a regional trend from one institution's single year."
+  ]
+ },
+ "next_moves": [
+  {
+   "coordinate": {
+    "entity": "51-4041",
+    "lens": "",
+    "member": "smccd",
+    "member_label": "San Mateo County CCD",
+    "predicate_version": "",
+    "region": null,
+    "sector": "",
+    "sector_label": "",
+    "soc": "51-4041",
+    "top6": null
+   },
+   "form": "navigate",
+   "rationale": "The occupation's regional demand, supply, and gap \u2014 region-derived, not gated to what the member serves."
+  }
+ ],
+ "provenance": {
+  "field_authority": {},
+  "scope_granularity": "",
+  "sources": [],
+  "vintages": {}
+ },
+ "view_link": {
+  "note": "",
+  "status": "ok",
+  "url": "https://preview.kallipolis.us/smccd-adm?lens=occupations&soc=51-4041"
+ }
+}

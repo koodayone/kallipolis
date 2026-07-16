@@ -1,0 +1,336 @@
+{
+ "coordinate": {
+  "entity": "",
+  "lens": "",
+  "member": "smccd",
+  "member_label": "San Mateo County CCD",
+  "predicate_version": "",
+  "region": "Bay Area",
+  "sector": "adm",
+  "sector_label": "Advanced Manufacturing",
+  "soc": null,
+  "top6": null
+ },
+ "data": {
+  "more": null,
+  "rows": [
+   {
+    "label": "093400 Electronics and Electric Technology",
+    "roster": [
+     {
+      "label": "Skyline College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 4,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "College of San Mateo",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "actual_awards": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "awards",
+      "value": 4,
+      "vintage": "DataMart awards \u2014 2024-2025"
+     },
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (latest yr)",
+      "value": 1,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 2,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 130,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 3,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "094610 Energy Systems Technology",
+    "roster": [
+     {
+      "label": "Skyline College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 1,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "actual_awards": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "awards",
+      "value": 1,
+      "vintage": "DataMart awards \u2014 2024-2025"
+     },
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (latest yr)",
+      "value": 1,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 1,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 23,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 1,
+      "vintage": ""
+     }
+    }
+   }
+  ],
+  "sorted_by": null,
+  "summary": {
+   "covered_cells": {
+    "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "datamart",
+    "status": "ok",
+    "unit": "college\u00d7program cells",
+    "value": 2,
+    "vintage": "DataMart awards \u2014 2024-2025"
+   },
+   "gap_cells": {
+    "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "datamart",
+    "status": "ok",
+    "unit": "college\u00d7program cells",
+    "value": 4,
+    "vintage": "DataMart awards \u2014 2024-2025"
+   },
+   "member_colleges": {
+    "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "derived",
+    "status": "ok",
+    "unit": "colleges",
+    "value": 3,
+    "vintage": ""
+   },
+   "partial_cells": {
+    "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "datamart",
+    "status": "ok",
+    "unit": "college\u00d7program cells",
+    "value": 0,
+    "vintage": "DataMart awards \u2014 2024-2025"
+   },
+   "programs": {
+    "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "derived",
+    "status": "ok",
+    "unit": "TOP6 programs",
+    "value": 2,
+    "vintage": ""
+   }
+  }
+ },
+ "form": "coverage",
+ "framing": {
+  "meaning": "Coverage classifies each (college, occupation) as Covered / Partial / Gap by whether a feeding program both enrolls and awards. It is the institutional legibility of the gap across the member's colleges.",
+  "salience": []
+ },
+ "licensing": {
+  "gates": [],
+  "licensed": [
+   "Covered / Partial / Gap classification of each (college, program) cell."
+  ],
+  "not_licensed": [
+   "The Covered/Partial/Gap thresholds are an explicit classification (enrolled AND awarded = covered; exactly one = partial; neither = gap), not an implied score.",
+   "A 'gap' cell is no realized supply \u2014 not a claim about need or intent."
+  ]
+ },
+ "next_moves": [
+  {
+   "coordinate": {
+    "entity": "",
+    "lens": "gaps",
+    "member": "smccd",
+    "member_label": "San Mateo County CCD",
+    "predicate_version": "",
+    "region": null,
+    "sector": "adm",
+    "sector_label": "Advanced Manufacturing",
+    "soc": null,
+    "top6": null
+   },
+   "form": "navigate",
+   "rationale": "Size the shortfall behind the coverage picture."
+  },
+  {
+   "coordinate": {
+    "entity": "",
+    "lens": "",
+    "member": "smccd",
+    "member_label": "San Mateo County CCD",
+    "predicate_version": "",
+    "region": null,
+    "sector": "adm",
+    "sector_label": "Advanced Manufacturing",
+    "soc": null,
+    "top6": null
+   },
+   "form": "crosswalk",
+   "rationale": "Trace the selected program to the occupations it prepares for."
+  }
+ ],
+ "provenance": {
+  "field_authority": {
+   "actual_awards": "datamart",
+   "coverage": "datamart",
+   "enrollment": "datamart"
+  },
+  "scope_granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+  "sources": [
+   {
+    "authority": "CCCCO DataMart",
+    "id": "datamart",
+    "role": "program awards, enrollment, and graduate wage outcomes"
+   }
+  ],
+  "vintages": {
+   "actual_awards": "DataMart awards \u2014 2024-2025"
+  }
+ },
+ "view_link": {
+  "note": "Opens on the lens with a default selection (view state applies client-side); select the row above to corroborate the figure.",
+  "status": "ok",
+  "url": "https://preview.kallipolis.us/smccd-adm?lens=programs&panel=programs.coverage"
+ }
+}
