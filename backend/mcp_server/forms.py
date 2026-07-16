@@ -997,8 +997,16 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
     total_demand = int(round(sum((d.get("annual_openings") or 0) for d in demand.values())))
     regional_supply = CAN.supply_over_socs(region_colleges, sector_socs, spec=rspec)
     member_supply = CAN.supply_over_socs(member_colleges, sector_socs, spec=rspec)
-    pl = build_programs_landscape(rspec)
-    member_programs = len(pl.tops)
+    # The member's programs in the sector = registered ∩ in_scope (adjudication C: 'on-the-books' — the
+    # member has a Program node for it and it is in the sector's scope), with the awards-active subset
+    # (currently graduating) as a stamped complement. Both are stamped so the two meanings that drifted
+    # across tools (registered-ever vs latest-year-active) are DECLARED, never one number that silently
+    # means different things. Fixes the former mislabel where a curated spec counted the whole in_scope
+    # crosswalk universe as "member programs".
+    from ontology.crosswalks import load_top_titles as _load_top_titles
+    _titles = _load_top_titles()
+    # The member's programs in the sector (adjudication C), one birthplace shared with institution_overview.
+    on_the_books, graduating = CAN.member_sector_programs(member_colleges, rspec)
     demand_by_soc = {s: (d.get("annual_openings") or 0) for s, d in demand.items()}
 
     summary = {
@@ -1014,7 +1022,10 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
                      granularity=inst_g)
             if regional_supply else
             QualifiedValue.gated("unavailable", unit="fraction of regional supply", granularity=inst_g)),
-        "member_programs": _derived(member_programs, unit="TOP6 programs the member runs", granularity=inst_g),
+        "member_programs": _derived(len(on_the_books), unit="TOP6 programs the member runs",
+                                    granularity=inst_g, predicate_version="on-the-books (registered ∩ in_scope)"),
+        "member_programs_active": _derived(len(graduating), unit="TOP6 programs currently graduating",
+                                           granularity=inst_g, predicate_version="awards-active (latest-year completer)"),
         "sector_occupations": _derived(len(sector_socs), unit="SOCs",
                                        granularity=f"{sector_label} sector (PCAH)"),
     }
@@ -1025,10 +1036,10 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
     # program is the row and the decision object; occupations live in each program's addressable
     # demand and are reached by drilling a program (program_pathways). All canonical, no allocation.
     prog = []
-    for t in pl.tops:
-        occ_socs, addr = CAN.addressable_demand(t.top6, sector_socs, demand_by_soc)
-        prog.append((f"{t.top6} {t.name}", t.top6,
-                     CAN.supply_over_tops(member_colleges, [t.top6]), addr, len(occ_socs)))
+    for top6 in on_the_books:
+        occ_socs, addr = CAN.addressable_demand(top6, sector_socs, demand_by_soc)
+        prog.append((f"{top6} {_titles.get(top6, top6)}", top6,
+                     CAN.supply_over_tops(member_colleges, [top6]), addr, len(occ_socs)))
     prog.sort(key=lambda r: r[3], reverse=True)
     rows = [Row(label=label, values={
         "member_supply": P.q("projected_supply", p_supply, granularity=inst_g, unit="completions/yr", vintage=supply_v),

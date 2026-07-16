@@ -404,6 +404,32 @@ def colleges_actively_awarding(colleges, top6: str) -> int:
     return sum(1 for c in college_roster(colleges, top6) if c.awards > 0)
 
 
+@lru_cache(maxsize=64)
+def member_program_tops(colleges: tuple[str, ...]) -> frozenset[str]:
+    """The TOP6 programs these colleges have ON THE BOOKS (a Program node exists) — the registered-ever
+    set, before any in_scope or awards gate. A member 'runs' a program if it has a node for it; this is
+    the base for the on-the-books count (registered ∩ in_scope), distinct from its awards-active subset."""
+    with get_driver().session() as s:
+        rows = s.run("MATCH (p:Program) WHERE p.college IN $c RETURN DISTINCT p.top6 AS t",
+                     c=list(colleges)).data()
+    return frozenset(r["t"] for r in rows)
+
+
+def member_sector_programs(colleges, spec) -> tuple[list[str], list[str]]:
+    """The member's programs in a sector, in the two stamped readings of adjudication C.
+
+    on_the_books = the member's registered programs (a Program node exists) that are in the sector's
+    scope (``spec.in_scope``) AND crosswalk to at least one of the sector's occupations — a program the
+    member has on the books that prepares for the sector's jobs. graduating = the awards-active subset
+    (>0 completer in the latest year). ONE birthplace, so every tool reports the same counts (CI-02)."""
+    sec = set(spec.socs)
+    registered = sorted(member_program_tops(tuple(sorted(colleges))))
+    on_the_books = sorted(t for t, socs in top6_to_soc(registered).items()
+                          if (socs & sec) and spec.in_scope(t))
+    graduating = [t for t in on_the_books if colleges_actively_awarding(colleges, t) > 0]
+    return on_the_books, graduating
+
+
 def active_feeders(colleges, soc: str) -> frozenset[str]:
     """A SOC's supporting programs WITH CURRENT SUPPLY — is_vocational crosswalk feeders that
     awarded a completer in the latest year. Mirrors the builders' `_awarded_tops` gate, so
