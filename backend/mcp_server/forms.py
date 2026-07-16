@@ -167,7 +167,7 @@ def analyze_gap(member: str, sector: str, *, soc: Optional[str] = None) -> Analy
     resolved = scope_for(member, sector)
     if resolved is None:
         return gate_envelope("gap", member, sector,
-                             reason=f"No live coordinate for ({member!r}, {sector!r}).")
+                             reason=f"No live coordinate for ({member!r}, {sector!r}). Confirm the member id and its live sectors via list_institutions.")
     spec, entry = resolved
     resolved_spec = resolve(spec)
     land = build_landscape(resolved_spec)   # SOC universe + regional demand (scope-invariant)
@@ -271,7 +271,7 @@ def analyze_coverage(member: str, sector: str) -> AnalysisEnvelope:
     resolved = scope_for(member, sector)
     if resolved is None:
         return gate_envelope("coverage", member, sector,
-                             reason=f"No live coordinate for ({member!r}, {sector!r}).")
+                             reason=f"No live coordinate for ({member!r}, {sector!r}). Confirm the member id and its live sectors via list_institutions.")
     spec, entry = resolved
     rspec = resolve(spec)
     member_colleges = list(rspec.colleges)
@@ -345,7 +345,7 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
     resolved = scope_for(member, sector)
     if resolved is None:
         return gate_envelope("pathway", member, sector,
-                             reason=f"No live coordinate for ({member!r}, {sector!r}).")
+                             reason=f"No live coordinate for ({member!r}, {sector!r}). Confirm the member id and its live sectors via list_institutions.")
     spec, entry = resolved
 
     if bool(program) == bool(occupation):   # both or neither
@@ -506,7 +506,7 @@ def analyze_regional_employers(member: str, sector: str, *, soc: Optional[str] =
     resolved = scope_for(member, sector)
     if resolved is None:
         return gate_envelope("regional_employers", member, sector,
-                             reason=f"No live coordinate for ({member!r}, {sector!r}).")
+                             reason=f"No live coordinate for ({member!r}, {sector!r}). Confirm the member id and its live sectors via list_institutions.")
     spec, entry = resolved
     er = build_landscape_employers(resolve(spec))
     region_g = _regional(er.region_display)
@@ -569,7 +569,7 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
     sects = sectors_for_member(member)
     if not sects:
         return gate_envelope("occupation_profile", member, "",
-                             reason=f"No institution matching {member!r}. Establish it first.")
+                             reason=f"No institution matching {member!r}. Use list_institutions (optionally with a name filter) to find its member id, then retry with that id — the tools take the id, not the display name.")
     resolved = scope_for(member, sects[0]["sector_id"])
     if resolved is None:
         return gate_envelope("occupation_profile", member, "",
@@ -720,7 +720,7 @@ def unmet_demand(member: str) -> AnalysisEnvelope:
     sects = sectors_for_member(member)
     if not sects:
         return gate_envelope("unmet_demand", member, "",
-                             reason=f"No institution matching {member!r}. Establish it first.")
+                             reason=f"No institution matching {member!r}. Use list_institutions (optionally with a name filter) to find its member id, then retry with that id — the tools take the id, not the display name.")
     resolved = scope_for(member, sects[0]["sector_id"])
     if resolved is None:
         return gate_envelope("unmet_demand", member, "",
@@ -764,8 +764,12 @@ def unmet_demand(member: str) -> AnalysisEnvelope:
     survivors.sort(key=lambda r: (r["openings"] or 0, r["wage"] or 0), reverse=True)   # by openings; wage breaks ties
     n_unmet = len(survivors)
 
+    # Greenfield is member-wide across ALL the member's sectors, so the coordinate carries NO sector —
+    # navigate(lens=greenfield) drops any sector it was handed (greenfield is not sector-scoped), and a
+    # sector on the coordinate would falsely imply the list was filtered to it (the diagnosis mislabel).
     coord = coordinate_of(entry)
     coord.region = region_disp
+    coord.sector, coord.sector_label = "", ""
 
     summary = {
         "n_unmet": _derived(n_unmet, unit="occupations",
@@ -856,7 +860,7 @@ def member_portfolio(member: str) -> AnalysisEnvelope:
     sects = sectors_for_member(member)
     if not sects:
         return gate_envelope("member_portfolio", member, "",
-                             reason=f"No institution matching {member!r}. Establish it first.")
+                             reason=f"No institution matching {member!r}. Use list_institutions (optionally with a name filter) to find its member id, then retry with that id — the tools take the id, not the display name.")
     resolved = scope_for(member, sects[0]["sector_id"])
     if resolved is None:
         return gate_envelope("member_portfolio", member, "",
@@ -870,6 +874,16 @@ def member_portfolio(member: str) -> AnalysisEnvelope:
     # Each sector's occupations, and the DISTINCT union across sectors (Regime A across sectors too).
     sector_socs = {e["sector_id"]: list(SECTORS[e["sector_id"]].socs) for e in sects}
     all_socs = sorted({s for socs in sector_socs.values() for s in socs})
+
+    # Each sector's canonical spec — the SAME in_scope feeder rule sector_overview resolves — so a
+    # per-sector row below EQUALS its sector_overview drill, and the institution-wide total shares
+    # that rule (one voice: the member-anchor orientation and the sector drill can't disagree on a
+    # sector's supply/gap). resolve() is cached per (member, sector).
+    sector_spec: dict = {}
+    for e in sects:
+        r = scope_for(member, e["sector_id"])
+        sector_spec[e["sector_id"]] = resolve(r[0]) if r else None
+    sector_specs = [(sector_socs[e["sector_id"]], sector_spec[e["sector_id"]]) for e in sects]
 
     with get_driver().session() as session:
         demand = regional_demand(session, region, all_socs)   # one query for the union
@@ -885,8 +899,8 @@ def member_portfolio(member: str) -> AnalysisEnvelope:
         return int(round(sum((demand.get(s, {}).get("annual_openings") or 0) for s in socs)))
 
     total_demand = demand_sum(all_socs)
-    total_regional_supply = CAN.supply_over_socs(region_colleges, all_socs)
-    total_member_supply = CAN.supply_over_socs(member_colleges, all_socs)
+    total_regional_supply = CAN.supply_over_sector_specs(region_colleges, sector_specs)
+    total_member_supply = CAN.supply_over_sector_specs(member_colleges, sector_specs)
 
     summary = {
         "sectors": _derived(len(sects), unit="sectors the member runs", granularity=inst_g),
@@ -906,8 +920,9 @@ def member_portfolio(member: str) -> AnalysisEnvelope:
     for e in sects:
         socs = sector_socs[e["sector_id"]]
         d = demand_sum(socs)
-        r_supply = CAN.supply_over_socs(region_colleges, socs)
-        m_supply = CAN.supply_over_socs(member_colleges, socs)
+        rspec_e = sector_spec[e["sector_id"]]
+        r_supply = CAN.supply_over_socs(region_colleges, socs, spec=rspec_e)
+        m_supply = CAN.supply_over_socs(member_colleges, socs, spec=rspec_e)
         sect_rows.append((e["sector_label"], e["sector_id"], d, r_supply, m_supply, int(round(d - r_supply))))
     sect_rows.sort(key=lambda t: t[5], reverse=True)
     rows = [Row(label=label, values={
@@ -970,7 +985,7 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
     resolved = scope_for(member, sector)
     if resolved is None:
         return gate_envelope("sector_overview", member, sector,
-                             reason=f"No live coordinate for ({member!r}, {sector!r}).")
+                             reason=f"No live coordinate for ({member!r}, {sector!r}). Confirm the member id and its live sectors via list_institutions.")
     spec, entry = resolved
     rspec = resolve(spec)
     region = rspec.resolve_region()

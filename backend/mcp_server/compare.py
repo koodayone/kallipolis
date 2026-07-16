@@ -423,6 +423,27 @@ def _licensing(*, licensed=None, not_licensed=None) -> Licensing:
 
 # ── the engine ─────────────────────────────────────────────────────────────
 
+# Loose-word aliases so a natural unit/criterion resolves to the registry token instead of gating —
+# the model reaches for the intuitive word first (eval-observed: 'gap', 'wage', 'sector',
+# 'institution'), and the resolution is transparent (the result's sorted_by names the resolved
+# criterion). DISCIPLINE: a loose word is aliased for a unit_type ONLY when it maps to a SINGLE
+# criterion there — an ambiguous word (program 'wage' → wage_lift/after_2/after_5; any 'supply' →
+# two share/level figures) is deliberately left to GATE and enumerate, never a silent guess among
+# several (the same rule test_compare_gates_unknown encodes).
+_UNIT_ALIAS = {"programs": "program", "occupations": "occupation", "occ": "occupation",
+               "colleges": "college", "school": "college", "schools": "college",
+               "institution": "college", "institutions": "college"}
+_CRIT_ALIAS = {
+    "gap": {"program": "addressable_gap", "occupation": "supply_gap"},   # each unit's only gap
+    "wage": {"occupation": "median_wage"},        # occupation's only wage; program's 3 wages stay gated
+    "wages": {"occupation": "median_wage"},
+    "openings": {"occupation": "regional_openings"},
+    "growth": {"occupation": "projected_growth"},
+    "employment": {"occupation": "regional_employment"},
+    "demand": {"program": "addressable_demand"},  # program's only demand figure
+}
+
+
 def compare(member: str, unit_type: str = "program", criterion: str = "",
             sector: str = "") -> AnalysisEnvelope:
     """Rank the analogous units of ``unit_type`` by ``criterion``, showing every admissible criterion
@@ -430,16 +451,20 @@ def compare(member: str, unit_type: str = "program", criterion: str = "",
     member's programs in a sector. An invalid unit_type/criterion returns an explicit marker whose
     reason enumerates the registry — the registry is the single source of truth for the surface."""
     ut = (unit_type or "program").strip().lower()
+    ut = _UNIT_ALIAS.get(ut, ut)
     crit = (criterion or "").strip().lower()
     if ut not in REGISTRY:
+        hint = (" There is no whole-sector unit — use orient for the member's sector portfolio."
+                if ut in ("sector", "sectors") else "")
         return gate_envelope("compare", member, sector, marker="unknown",
-                             reason=f"Unknown unit type {ut!r}. Comparable units: {', '.join(REGISTRY)}.")
+                             reason=f"Unknown unit type {unit_type!r}. Comparable units: {', '.join(REGISTRY)}.{hint}")
     crits = REGISTRY[ut]
     if not crit:
         crit = next(iter(crits))
+    crit = _CRIT_ALIAS.get(crit, {}).get(ut, crit)
     if crit not in crits:
         return gate_envelope("compare", member, sector, marker="unknown",
-                             reason=(f"Unknown criterion {crit!r} for {ut}. Rank {ut}s by: "
+                             reason=(f"Unknown criterion {criterion!r} for {ut}. Rank {ut}s by: "
                                      f"{', '.join(crits)}."))
     if _UNIT_META[ut].needs_sector and not sector:
         return gate_envelope("compare", member, sector, marker="unknown",
