@@ -36,7 +36,7 @@ from pydantic import BaseModel
 
 from partnerships.models import OpportunityReport, SectorIndex
 from partnerships.opportunity import build_opportunity_report, build_sector_index
-from partnerships.landscape_build import Landscape, build_landscape, sector_demand_decomposition
+from partnerships.landscape_build import Landscape, build_landscape
 from partnerships.landscape import REGISTRY, LandscapeSpec, routable_specs
 from partnerships.registry import has_supply, live_catalog, spec_for
 from partnerships.resolve import resolve
@@ -323,17 +323,6 @@ def get_partnership_opportunity(
 # new route code. All paths stay nested under the /partnerships router, so the
 # vocabulary_alignment / backend_layout audits (which scope to top-level
 # surfaces) are unaffected.
-def _landscape_response(spec: LandscapeSpec) -> Landscape:
-    """The landscape endpoint's payload: build over the RESOLVED (effective) spec, then attach the full
-    sector-demand decomposition read from the UNRESOLVED spec. The headline aggregate stays the narrowed
-    set (what the dashboard sums today); ``sector_demand`` carries the whole field beside it so the
-    two-demand seam is legible on the same surface the MCP sector view already decomposes. build_landscape
-    stays memoized and untouched — model_copy yields a fresh object, never mutating the cached one."""
-    land = build_landscape(resolve(spec))
-    sd = sector_demand_decomposition(spec)
-    return land.model_copy(update={"sector_demand": sd}) if sd is not None else land
-
-
 def _register_landscape_routes(spec: LandscapeSpec) -> None:
     sid = spec.id
 
@@ -342,7 +331,7 @@ def _register_landscape_routes(spec: LandscapeSpec) -> None:
     # Applied here so every endpoint for the instance stays consistent.
     def get_landscape():
         try:
-            return _landscape_response(spec)
+            return build_landscape(resolve(spec))
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e))
 
@@ -428,10 +417,7 @@ def get_landscape_index():
 # member offers a feeding program). It is registered LAST so the static routes
 # (/sectors, /opportunity) and the pinned literal routes win by match order; the
 # dynamic param route only catches what they don't.
-def _dynamic_spec(instance_id: str) -> LandscapeSpec:
-    """The UNRESOLVED (but cluster-expanded) spec for a generated instance. ``_resolved_dynamic_spec``
-    wraps it in resolve() for the endpoints that want the narrowed set; the landscape endpoint keeps the
-    unresolved spec so it can decompose the full sector demand."""
+def _resolved_dynamic_spec(instance_id: str) -> LandscapeSpec:
     spec = spec_for(instance_id)
     if spec is None:
         raise HTTPException(status_code=404, detail=f"Unknown landscape '{instance_id}'")
@@ -451,16 +437,12 @@ def _dynamic_spec(instance_id: str) -> LandscapeSpec:
         )
         if sector_id:
             spec = cluster_expanded_spec(spec, sector_id)
-    return spec
-
-
-def _resolved_dynamic_spec(instance_id: str) -> LandscapeSpec:
-    return resolve(_dynamic_spec(instance_id))
+    return resolve(spec)
 
 
 def get_dynamic_landscape(instance_id: str):
     try:
-        return _landscape_response(_dynamic_spec(instance_id))
+        return build_landscape(_resolved_dynamic_spec(instance_id))
     except HTTPException:
         raise
     except Exception as e:

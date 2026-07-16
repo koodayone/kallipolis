@@ -17,7 +17,7 @@ from pathlib import Path
 from mcp_server import forms as F
 from mcp_server.scope import scope_for
 from partnerships.resolve import resolve
-from partnerships.landscape_build import build_landscape, sector_demand_decomposition
+from partnerships.landscape_build import build_landscape
 from partnerships.landscape_programs import build_landscape_occupation
 from partnerships.landscape_employers import build_landscape_employers
 
@@ -87,9 +87,6 @@ def surfaces() -> dict:
         if r:
             spec = resolve(r[0])
             out[f"dash_landscape__{m}_{s}"] = lambda spec=spec: build_landscape(spec)
-            # The dashboard's full sector-demand decomposition (attached to the route response, read from
-            # the UNRESOLVED spec) — the same birthplace the MCP sector view projects; guards both agree.
-            out[f"dash_sectordemand__{m}_{s}"] = lambda raw=r[0]: sector_demand_decomposition(raw)
             out[f"dash_employers__{m}_{s}"] = lambda spec=spec: build_landscape_employers(spec)
             for soc in SOCS.get(s, []):
                 out[f"dash_occ__{m}_{s}_{soc}"] = (
