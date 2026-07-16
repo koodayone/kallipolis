@@ -89,12 +89,11 @@ def _licensing(form_id: str, *, licensed=None, not_licensed=None, gates=None) ->
 
 def _drill(form: str, entry: dict, *, remaining: int,
            soc: Optional[str] = None, top6: Optional[str] = None) -> More:
-    tool = C.tool_name(form)   # the drill pointer is a call target — public tool name, not the form-id
+    tool = C.tool_name(form)   # the drill pointer is a call target — the verb, carrying the entity/lens
     return More(
         remaining=remaining,
-        drill=NextMove(
-            form=tool, coordinate=coordinate_of(entry, soc=soc, top6=top6),
-            rationale=f"{remaining} more rows; re-call {tool} scoped to one row to drill in."),
+        drill=C.as_move(form, coordinate_of(entry, soc=soc, top6=top6),
+                        f"{remaining} more rows; re-call {tool} scoped to one row to drill in."),
     )
 
 
@@ -116,8 +115,8 @@ def _empty_member_sector(form: str, entry: dict, region_display: str) -> Analysi
         licensing=_licensing(form,
                              gates=[Gate(field="member_supply", marker="unavailable",
                                          reason=reason)]),
-        next_moves=[NextMove(form=C.tool_name("orient"), coordinate=coord,
-                             rationale="See which sectors this member actually runs programs in.")],
+        next_moves=[C.as_move("orient", coord,
+                              "See which sectors this member actually runs programs in.")],
         view_link=V.view_link(form, instance_id=entry["id"], member_id=entry["member_id"],
                               sector_id=entry["sector_id"]),
     )
@@ -156,10 +155,9 @@ def _unserved_occupation(entry: dict, soc: str, region_display: str) -> Analysis
         form="gap", coordinate=coord,
         framing=_framing("gap", [C.SAL_MEMBER_ANCHORED]),
         licensing=_licensing("gap", gates=[Gate(field="gap", marker="unavailable", reason=reason)]),
-        next_moves=[NextMove(form=C.tool_name("occupation_profile"),
-                             coordinate=coordinate_of(entry, soc=soc),
-                             rationale="The occupation's regional demand, supply, and gap — "
-                                       "region-derived, not gated to what the member serves.")],
+        next_moves=[C.as_move("occupation_profile", coordinate_of(entry, soc=soc),
+                              "The occupation's regional demand, supply, and gap — "
+                              "region-derived, not gated to what the member serves.")],
         view_link=V.view_link("gap", instance_id=entry["id"], member_id=entry["member_id"],
                               sector_id=entry["sector_id"], soc=soc),
     )
@@ -417,14 +415,14 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
         salience = [C.SAL_LOSSY_CROSSWALK] if len(prog_socs) >= 4 else []
         top_occ = occ_rows[0] if occ_rows else None
         next_moves = [
-            NextMove(form=C.tool_name("occupation_profile"),
-                     coordinate=coordinate_of(entry, soc=top_occ[0]) if top_occ else coordinate_of(entry, top6=program),
-                     rationale=(f"Drill into a desirable occupation — e.g. {top_occ[0]} {top_occ[1]} — its "
-                                f"full demand, who trains for it, and who hires." if top_occ else
-                                "Drill into one of these occupations for its full picture.")),
-            NextMove(form=C.tool_name("regional_employers"),
-                     coordinate=coordinate_of(entry, soc=top_occ[0]) if top_occ else coordinate_of(entry),
-                     rationale="See the regional employers hiring for these occupations."),
+            C.as_move("occupation_profile",
+                      coordinate_of(entry, soc=top_occ[0]) if top_occ else coordinate_of(entry, top6=program),
+                      (f"Drill into a desirable occupation — e.g. {top_occ[0]} {top_occ[1]} — its "
+                       f"full demand, who trains for it, and who hires." if top_occ else
+                       "Drill into one of these occupations for its full picture.")),
+            C.as_move("regional_employers",
+                      coordinate_of(entry, soc=top_occ[0]) if top_occ else coordinate_of(entry),
+                      "See the regional employers hiring for these occupations."),
         ]
         coord = coordinate_of(entry, top6=program)
         coord.region = region_disp
@@ -677,11 +675,11 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
         framing=_framing("occupation_profile",
                          [C.SAL_LOSSY_CROSSWALK] if len(supporting) >= 4 else []),
         licensing=_licensing("occupation_profile", licensed=licensed),
-        next_moves=[   # form = the callable tool name the model routes to, not the internal id
-            NextMove(form=C.tool_name("regional_employers"), coordinate=coord,
-                     rationale="See the full set of regional employers hiring for this occupation."),
-            NextMove(form=C.tool_name("gap"), coordinate=coordinate_of(nav_entry),
-                     rationale="See the whole supply–demand gap for this sector."),
+        next_moves=[   # form = the verb the model routes to; the coordinate carries entity/lens
+            C.as_move("regional_employers", coord,
+                      "See the full set of regional employers hiring for this occupation."),
+            C.as_move("gap", coordinate_of(nav_entry),
+                      "See the whole supply–demand gap for this sector."),
         ],
         view_link=V.view_link("occupation_profile", instance_id=nav_entry["id"],
                               member_id=nav_entry["member_id"], sector_id=nav_entry["sector_id"],
@@ -796,10 +794,9 @@ def unmet_demand(member: str) -> AnalysisEnvelope:
         nxt = survivors[_TOP_N]["soc"]
         more = More(
             remaining=n_unmet - _TOP_N,
-            drill=NextMove(form=C.tool_name("occupation_profile"),
-                           coordinate=coordinate_of(entry, soc=nxt),
-                           rationale=(f"{n_unmet - _TOP_N} more greenfield occupations; "
-                                      f"occupation_profile on any surfaced SOC drills into one.")))
+            drill=C.as_move("occupation_profile", coordinate_of(entry, soc=nxt),
+                            (f"{n_unmet - _TOP_N} more greenfield occupations; "
+                             f"navigate to any surfaced SOC drills into one.")))
 
     if n_unmet == 0:
         licensed = [f"No community-college-servable, living-wage (≥ ${_WAGE_FLOOR:,}), "
@@ -924,11 +921,11 @@ def member_portfolio(member: str) -> AnalysisEnvelope:
     top = sect_rows[0] if sect_rows else None
     top_entry = (find_scope(entry["member_id"], top[1]) or entry) if top else entry
     next_moves = [
-        NextMove(form=C.tool_name("sector_overview"), coordinate=coordinate_of(top_entry),
-                 rationale=(f"Drill into the widest-gap sector ({top[0]}) — its occupations, supply, and gaps."
-                            if top else "Drill into a sector's occupations, supply, and gaps.")),
-        NextMove(form=C.tool_name("unmet_demand"), coordinate=coordinate_of(entry),
-                 rationale="See the high-opportunity occupations across the region the member serves no one into."),
+        C.as_move("sector_overview", coordinate_of(top_entry),
+                  (f"Drill into the widest-gap sector ({top[0]}) — its occupations, supply, and gaps."
+                   if top else "Drill into a sector's occupations, supply, and gaps.")),
+        C.as_move("unmet_demand", coordinate_of(entry),
+                  "See the high-opportunity occupations across the region the member serves no one into."),
     ]
 
     coord = coordinate_of(entry)
@@ -1052,24 +1049,23 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
     if len(prog) > _TOP_N:
         nxt = prog[_TOP_N][1]
         more = More(remaining=len(prog) - _TOP_N,
-                    drill=NextMove(form=C.tool_name("pathway"),
-                                   coordinate=coordinate_of(entry, top6=nxt),
-                                   rationale=(f"{len(prog) - _TOP_N} more programs the member runs; "
-                                              f"program_pathways on any TOP6 drills into its occupations.")))
+                    drill=C.as_move("pathway", coordinate_of(entry, top6=nxt),
+                                    (f"{len(prog) - _TOP_N} more programs the member runs; "
+                                     f"crosswalk on any TOP6 drills into its occupations.")))
 
     # Program-first descent: the primary next move is drilling a PROGRAM (the practitioner's lever),
     # then the occupation-level gaps, then greenfield.
     top_prog = prog[0] if prog else None
     next_moves = [
-        NextMove(form=C.tool_name("pathway"),
-                 coordinate=coordinate_of(entry, top6=top_prog[1]) if top_prog else coordinate_of(entry),
-                 rationale=(f"Drill into a program — e.g. {top_prog[0]} — for the occupations it prepares "
-                            f"students for and their demand." if top_prog else
-                            "Drill into a program for the occupations it prepares students for.")),
-        NextMove(form=C.tool_name("gap"), coordinate=coordinate_of(entry),
-                 rationale="See the sector's occupation-level supply–demand gaps directly."),
-        NextMove(form=C.tool_name("unmet_demand"), coordinate=coordinate_of(entry),
-                 rationale="See high-opportunity occupations across the region the member serves no one into."),
+        C.as_move("pathway",
+                  coordinate_of(entry, top6=top_prog[1]) if top_prog else coordinate_of(entry),
+                  (f"Drill into a program — e.g. {top_prog[0]} — for the occupations it prepares "
+                   f"students for and their demand." if top_prog else
+                   "Drill into a program for the occupations it prepares students for.")),
+        C.as_move("gap", coordinate_of(entry),
+                  "See the sector's occupation-level supply–demand gaps directly."),
+        C.as_move("unmet_demand", coordinate_of(entry),
+                  "See high-opportunity occupations across the region the member serves no one into."),
     ]
 
     coord = coordinate_of(entry)

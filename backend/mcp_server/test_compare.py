@@ -251,7 +251,8 @@ def test_gap_soc_query_never_bare_summary():
     env = F.analyze_gap("smccd", "adm", soc="51-4041")   # smccd serves adm; may not serve machinists
     if env.licensing.gates:                               # unserved → gated, no misleading summary
         assert not (env.data and env.data.summary), "a gated occupation must not ship a sector summary"
-        assert any(nm.form == "occupation_profile" for nm in env.next_moves), "gate must route to occupation_profile"
+        assert any(nm.form == "navigate" and nm.coordinate.entity for nm in env.next_moves), \
+            "gate must route to the occupation view (navigate with an entity)"
     else:                                                 # served → a real occupation row, not a bare summary
         assert env.data and env.data.rows, "a soc query that isn't gated must return the occupation's row"
 

@@ -86,6 +86,8 @@ class Coordinate(BaseModel):
     soc: Optional[str] = None
     top6: Optional[str] = None
     predicate_version: str = ""
+    entity: str = ""   # the object in focus (an occupation SOC / a program TOP6) — a verb's dispatch key
+    lens: str = ""     # which face a verb materializes: gaps · employers · greenfield · coverage
 
 
 class NextMove(BaseModel):

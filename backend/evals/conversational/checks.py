@@ -87,11 +87,13 @@ def axis_named(t: dict) -> dict:
 
 
 def routing(t: dict) -> dict:
-    """A whole-institution ask should route (member_portfolio once), not loop sector_overview."""
+    """A whole-institution ask should route once (orient / member_portfolio), not loop the sector view
+    (legacy sector_overview, or navigate scoped to a sector)."""
     n = sum(1 for turn in _analyst_turns(t) for c in turn.get("tool_calls", [])
-            if c.get("name") == "sector_overview")
+            if (c.get("name") or "").split("__")[-1] in ("sector_overview", "navigate")
+            and (c.get("args") or {}).get("sector"))
     looped = "portfolio" in t.get("pathway_id", "") and n > 1
-    return {"check": "routing", "pass": not looped, "detail": {"sector_overview_calls": n}}
+    return {"check": "routing", "pass": not looped, "detail": {"sector_view_calls": n}}
 
 
 def view_link_offered(t: dict) -> dict:

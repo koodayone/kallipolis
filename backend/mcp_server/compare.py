@@ -491,15 +491,15 @@ def compare(member: str, unit_type: str = "program", criterion: str = "",
     if len(computed) > _TOP_N:
         nxt = computed[_TOP_N][0]
         more = More(remaining=len(computed) - _TOP_N,
-                    drill=NextMove(form=C.tool_name(meta.drill_form), coordinate=_drill_coord(nxt),
-                                   rationale=f"{len(computed) - _TOP_N} more {ut}s to compare."))
+                    drill=C.as_move(meta.drill_form, _drill_coord(nxt),
+                                    f"{len(computed) - _TOP_N} more {ut}s to compare."))
 
     top_u = computed[0][0] if computed else None
     next_moves = [
-        NextMove(form=C.tool_name(meta.drill_form),
-                 coordinate=_drill_coord(top_u) if top_u else coordinate_of(ctx.entry),
-                 rationale=(f"Drill into {label(top_u)} — {meta.drill_hint}." if (top_u and meta.coord_key)
-                            else (f"See {meta.drill_hint}." if top_u else f"Drill into a {meta.noun}."))),
+        C.as_move(meta.drill_form,
+                  _drill_coord(top_u) if top_u else coordinate_of(ctx.entry),
+                  (f"Drill into {label(top_u)} — {meta.drill_hint}." if (top_u and meta.coord_key)
+                   else (f"See {meta.drill_hint}." if top_u else f"Drill into a {meta.noun}."))),
     ]
 
     coord = coordinate_of(ctx.entry)

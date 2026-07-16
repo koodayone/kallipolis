@@ -172,17 +172,17 @@ def gate_envelope(form: str, member_id: str, sector_id: str, *, reason: str,
                   marker: str = "out-of-scope") -> AnalysisEnvelope:
     """The emergent scope-first gate: a form called with an unresolvable
     coordinate returns an explicit marker and routes back to Tier 0."""
-    from mcp_server.catalog import tool_name  # lazy: catalog imports scope (avoid the cycle)
+    from mcp_server.catalog import as_move  # lazy: catalog imports scope (avoid the cycle)
     coord = Coordinate(member=member_id, sector=sector_id)
     return AnalysisEnvelope(
         form=form,
         coordinate=coord,
         licensing=Licensing(
             gates=[Gate(field="coordinate", marker=marker, reason=reason)]),
-        next_moves=[   # form = the callable tool name the model routes to, not the internal id
-            NextMove(form=tool_name("orient"), coordinate=coord,
-                     rationale="Establish which institution and sector before analysis."),
-            NextMove(form=tool_name("list_scopes"), coordinate=coord,
-                     rationale="See the member×sector coordinates the system knows."),
+        next_moves=[   # form = the verb the model routes to; the coordinate carries entity/lens
+            as_move("orient", coord,
+                    "Establish which institution and sector before analysis."),
+            as_move("list_scopes", coord,
+                    "See the member×sector coordinates the system knows."),
         ],
     )

@@ -51,9 +51,12 @@ LAWS: dict[str, dict] = {
 }
 
 # Analytical forms (produce a scoped measure) vs orienting forms (establish the coordinate).
-_ORIENT = {"list_institutions", "institution_overview", "member_portfolio"}
-_ANALYZE = {"sector_overview", "supply_demand_gaps", "occupation_profile", "unmet_demand",
-            "compare", "program_pathways", "program_coverage", "regional_employers"}
+# Both the coordinate-algebra verbs (orient/navigate/crosswalk/compare) and the retired task-shaped
+# tool names are recognized — recorded fixtures pre-date the retirement; live transcripts use verbs.
+_ORIENT = {"list_institutions", "orient", "institution_overview", "member_portfolio"}
+_ANALYZE = {"navigate", "crosswalk", "compare",
+            "sector_overview", "supply_demand_gaps", "occupation_profile", "unmet_demand",
+            "program_pathways", "program_coverage", "regional_employers"}
 
 # Graph-free grain fallback for the eval's known members (avoids a neo4j dependency at import).
 _GRAIN_FALLBACK = {"smccd": "district", "svamp": "consortium", "baccc": "consortium",
@@ -88,11 +91,13 @@ def _call_grain(call: dict) -> str:
 
 
 def _call_direction(call: dict) -> str:
-    if _tool(call) == "program_pathways":
+    if _tool(call) in ("program_pathways", "crosswalk"):
         args = call.get("args") or {}
-        if args.get("program") or args.get("top6"):
+        ent = str(args.get("entity") or "")      # crosswalk's dispatch key: SOC "17-3027" vs TOP6 "095000"
+        is_soc = "-" in ent
+        if args.get("program") or args.get("top6") or (ent and not is_soc):
             return "forward"       # program → occupations
-        if args.get("soc") or args.get("occupation"):
+        if args.get("soc") or args.get("occupation") or is_soc:
             return "reverse"       # occupation → programs
     return "aggregate"
 
