@@ -192,6 +192,25 @@ class LandscapeAggregate(BaseModel):
     n_occupations: int
 
 
+class SectorDemand(BaseModel):
+    """The sector's regional DEMAND decomposed by lens — the two-demand seam made explicit. ONE
+    birthplace (``sector_demand_decomposition``) projected by both the dashboard aggregate and the MCP
+    sector view, so the two surfaces can never disagree on the split. Openings + occupation-count at
+    each grain:
+      full      — the sector's occupations (PCAH membership): "how big is the whole field?"
+      in_demand — full ∩ a real, quality market (regional openings + near-living-wage + non-declining)
+      served    — full ∩ what the member reaches with a program and actively graduates into
+      effective — in_demand ∩ served (the set the dashboard's headline demand sums today)"""
+    full_openings: int
+    full_occupations: int
+    in_demand_openings: int
+    in_demand_occupations: int
+    served_openings: int
+    served_occupations: int
+    effective_openings: int
+    effective_occupations: int
+
+
 class Landscape(BaseModel):
     region: str
     region_display: str
@@ -212,6 +231,10 @@ class Landscape(BaseModel):
     enrollment_terms: list[str] = []
     colleges: list[LandscapeCollege]
     aggregate: LandscapeAggregate
+    # The sector's regional demand decomposed by lens (full / in-demand / served / effective) — set on
+    # rule-bearing instances so the dashboard can show the whole field alongside the narrowed headline;
+    # None for curated/no-rule specs (nothing to decompose) and on the raw build (the route attaches it).
+    sector_demand: SectorDemand | None = None
     # True for rule-bearing instances (BACCC, sector-derived SMCCD): the coverage
     # cell is gated on AWARDS — an occupation a college only enrolls toward (no
     # completer) reads as a gap, not "partial". The curated SVAMP instance
@@ -572,4 +595,32 @@ def _assemble_landscape(
         colleges=colleges,
         aggregate=aggregate,
         coverage_awards_only=(spec.soc_rule is not None and spec.soc_rule.active),
+    )
+
+
+def sector_demand_decomposition(
+    spec: LandscapeSpec, demand_by_soc: dict[str, int] | None = None
+) -> SectorDemand | None:
+    """The sector's regional demand at each lens grain — the ONE birthplace both the dashboard aggregate
+    and the MCP sector view project (so the two-demand split is stated once, never re-derived apart).
+
+    Pass the UNRESOLVED spec: its ``.socs`` is the full sector set, and the lens gates narrow from there.
+    Returns None for a curated/no-rule spec (identity — every lens equals full, nothing to decompose).
+    ``demand_by_soc`` (a soc→openings map already in hand, e.g. the MCP form's) is summed directly to
+    avoid a redundant query; omit it and the full sector's demand is read here."""
+    rule = spec.soc_rule
+    if rule is None or not rule.active:
+        return None
+    from partnerships.resolve import sector_lenses
+    lenses = sector_lenses(spec)
+    if demand_by_soc is None:
+        with get_driver().session() as session:
+            demand = regional_demand(session, spec.resolve_region(), list(lenses["full"]))
+        demand_by_soc = {s: (d.get("annual_openings") or 0) for s, d in demand.items()}
+    openings = lambda socs: int(round(sum(demand_by_soc.get(s, 0) for s in socs)))
+    return SectorDemand(
+        full_openings=openings(lenses["full"]), full_occupations=len(lenses["full"]),
+        in_demand_openings=openings(lenses["in_demand"]), in_demand_occupations=len(lenses["in_demand"]),
+        served_openings=openings(lenses["served"]), served_occupations=len(lenses["served"]),
+        effective_openings=openings(lenses["effective"]), effective_occupations=len(lenses["effective"]),
     )

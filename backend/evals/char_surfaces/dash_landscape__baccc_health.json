@@ -13550,5 +13550,6 @@
  "is_sector_priority": true,
  "region": "Bay",
  "region_display": "Bay Area",
- "sector": "Health"
+ "sector": "Health",
+ "sector_demand": null
 }

@@ -837,5 +837,6 @@
  "is_sector_priority": true,
  "region": "Bay",
  "region_display": "Bay Area",
- "sector": "Advanced Manufacturing"
+ "sector": "Advanced Manufacturing",
+ "sector_demand": null
 }

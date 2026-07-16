@@ -13,7 +13,7 @@ from __future__ import annotations
 import dataclasses
 from typing import Optional
 
-from partnerships.landscape_build import build_landscape
+from partnerships.landscape_build import build_landscape, sector_demand_decomposition
 from partnerships.landscape_employers import build_landscape_employers
 from partnerships.landscape_programs import (
     build_landscape_occupation,
@@ -26,7 +26,7 @@ from partnerships.predicates import (
     OPENINGS_FLOOR as _OPENINGS_FLOOR,
     WAGE_FLOOR as _WAGE_FLOOR,
 )
-from partnerships.resolve import resolve, sector_lenses
+from partnerships.resolve import resolve
 
 from mcp_server import canonical as CAN
 from mcp_server import catalog as C
@@ -1032,19 +1032,17 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
     # ("is the member in it?" — reachable + actively graduating), each a subset of the full sector; the
     # dashboard's "effective" set is their intersection. Added where the sector RULE makes the split
     # meaningful; a curated spec (SVAMP) carries its charter as one authored set, so it is omitted.
-    if getattr(sel.raw_spec.soc_rule, "active", False):
-        _lenses = sector_lenses(sel.raw_spec)
+    _sd = sector_demand_decomposition(sel.raw_spec, demand_by_soc=demand_by_soc)
+    if _sd is not None:
         summary["in_demand_occupations"] = _derived(
-            len(_lenses["in_demand"]), unit="SOCs",
+            _sd.in_demand_occupations, unit="SOCs",
             granularity="in a real, quality market (regional openings + near-living-wage + non-declining)")
         summary["served_occupations"] = _derived(
-            len(_lenses["served"]), unit="SOCs",
+            _sd.served_occupations, unit="SOCs",
             granularity="the member reaches with a program and actively graduates into")
-        summary["in_demand_openings"] = P.q("annual_openings",
-            int(round(sum(demand_by_soc.get(s, 0) for s in _lenses["in_demand"]))),
+        summary["in_demand_openings"] = P.q("annual_openings", _sd.in_demand_openings,
             granularity=f"{region_g} — the in-demand occupations", unit="openings/yr")
-        summary["served_openings"] = P.q("annual_openings",
-            int(round(sum(demand_by_soc.get(s, 0) for s in _lenses["served"]))),
+        summary["served_openings"] = P.q("annual_openings", _sd.served_openings,
             granularity=f"{region_g} — the occupations the member serves", unit="openings/yr")
 
     # Rows: PROGRAM-FORWARD — the member's programs in the sector, each with its supply
