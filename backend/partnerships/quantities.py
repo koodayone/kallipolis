@@ -322,13 +322,14 @@ def wage_window() -> str:
 # AND awarded; partial = one; gap = on the books but neither). Every tool composes it, so the
 # count and the named set agree.
 
-def coverage(enrolled: bool, awards: int, *, awards_only: bool = False) -> str:
+def coverage(enrolled: bool, awards: int, *, awards_only: bool = True) -> str:
     """Classify one (college × program) cell — THE single coverage predicate.
 
-    Default (SVAMP, ruleless): covered = enrolled AND awarding; partial = either signal
-    alone; gap = neither. ``awards_only=True`` (rule-bearing instances — BACCC, sector-derived
-    SMCCD): a cell enrolled but not yet AWARDING is a gap, not partial (no completer = no
+    Canonical (adjudication D — awards_only, matching the dashboard): covered = enrolled AND
+    awarding; a cell enrolled but not yet AWARDING is a GAP, not partial (no completer = no
     supply); a cell awarding but no longer enrolled stays partial (real-but-thinning supply).
+    ``awards_only=False`` is the legacy 'ruleless' reading (enrolled OR awarded), retained only
+    for an explicit in-progress view — never the default now.
     Enrollment then only upgrades an awarding cell partial→covered, never creates partial alone."""
     has_award = awards > 0
     if awards_only:
@@ -355,7 +356,7 @@ class CollegeCell:
 
     @property
     def coverage(self) -> str:
-        # ruleless (roster context): enrolled-OR-awarded classification
+        # the canonical awards_only classification (adjudication D — enrolled-not-awarding is a gap)
         return coverage(self.enrolled, self.awards)
 
 
