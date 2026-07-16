@@ -26,7 +26,7 @@ from partnerships.predicates import (
     OPENINGS_FLOOR as _OPENINGS_FLOOR,
     WAGE_FLOOR as _WAGE_FLOOR,
 )
-from partnerships.resolve import resolve
+from partnerships.resolve import resolve, sector_lenses
 
 from mcp_server import canonical as CAN
 from mcp_server import catalog as C
@@ -1027,6 +1027,19 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
         "sector_occupations": _derived(len(sector_socs), unit="SOCs",
                                        granularity=f"{sector_label} sector (PCAH)"),
     }
+    # Phase B — the sector decomposed into legible WHATs, so a narrowed figure reads as WHY it's small:
+    # in_demand ("is there a market?" — regional openings + near-living-wage + non-declining) vs served
+    # ("is the member in it?" — reachable + actively graduating), each a subset of the full sector; the
+    # dashboard's "effective" set is their intersection. Added where the sector RULE makes the split
+    # meaningful; a curated spec (SVAMP) carries its charter as one authored set, so it is omitted.
+    if getattr(sel.raw_spec.soc_rule, "active", False):
+        _lenses = sector_lenses(sel.raw_spec)
+        summary["in_demand_occupations"] = _derived(
+            len(_lenses["in_demand"]), unit="SOCs",
+            granularity="in a real, quality market (regional openings + near-living-wage + non-declining)")
+        summary["served_occupations"] = _derived(
+            len(_lenses["served"]), unit="SOCs",
+            granularity="the member reaches with a program and actively graduates into")
 
     # Rows: PROGRAM-FORWARD — the member's programs in the sector, each with its supply
     # (completions) and its ADDRESSABLE DEMAND (the χ↑ sum-across pool of openings across the

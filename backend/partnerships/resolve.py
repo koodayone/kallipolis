@@ -41,13 +41,18 @@ from partnerships.sectors import (
 )
 
 
-def effective_socs(spec: LandscapeSpec) -> tuple[str, ...]:
-    """The spec's SOCs narrowed by its sector rule. Identity (full set) when the
-    spec has no active rule."""
+def sector_lenses(spec: LandscapeSpec) -> dict:
+    """The sector's occupation-set at each decomposed grain — the WHATs a surface can project:
+      full      — the sector's occupations (PCAH membership)
+      in_demand — full ∩ demand-quality (real openings, near-living-wage, non-declining): "is there a market?"
+      served    — full ∩ member-engaged (reachable, active, consortium-floor): "is the member in it?"
+      effective — in_demand ∩ served (the set the dashboard shows today)
+    Identity (every lens = full) for a curated/no-rule spec (e.g. SVAMP), trusted as authored."""
     rule = spec.soc_rule
+    full = tuple(spec.socs)
     socs = list(spec.socs)
     if rule is None or not rule.active:
-        return tuple(socs)   # curated/no-rule specs (e.g. SVAMP) trusted as authored
+        return {"full": full, "in_demand": full, "served": full, "effective": full}
 
     # Sector-derived instances only: drop 5+yr-experience occupations, "all other"
     # catch-all SOCs (non-specific roll-ups), and promotion/management roles
@@ -142,7 +147,16 @@ def effective_socs(spec: LandscapeSpec) -> tuple[str, ...]:
             return False
         return True
 
-    return tuple(soc for soc in socs if in_demand(soc) and served(soc))
+    in_demand_socs = tuple(soc for soc in socs if in_demand(soc))
+    served_socs = tuple(soc for soc in socs if served(soc))
+    effective = tuple(soc for soc in socs if in_demand(soc) and served(soc))
+    return {"full": full, "in_demand": in_demand_socs, "served": served_socs, "effective": effective}
+
+
+def effective_socs(spec: LandscapeSpec) -> tuple[str, ...]:
+    """The sector rule's effective set = in_demand ∩ served — the dashboard's current WHAT. A thin
+    projection of sector_lenses so the decomposition has one birthplace."""
+    return sector_lenses(spec)["effective"]
 
 
 def resolve(spec: LandscapeSpec) -> LandscapeSpec:

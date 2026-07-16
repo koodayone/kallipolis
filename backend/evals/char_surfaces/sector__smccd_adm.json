@@ -257,6 +257,16 @@
     "value": 5987,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
+   "in_demand_occupations": {
+    "granularity": "in a real, quality market (regional openings + near-living-wage + non-declining)",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "derived",
+    "status": "ok",
+    "unit": "SOCs",
+    "value": 7,
+    "vintage": ""
+   },
    "member_programs": {
     "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
     "parent_vintages": [],
@@ -325,6 +335,16 @@
     "status": "ok",
     "unit": "SOCs",
     "value": 49,
+    "vintage": ""
+   },
+   "served_occupations": {
+    "granularity": "the member reaches with a program and actively graduates into",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "derived",
+    "status": "ok",
+    "unit": "SOCs",
+    "value": 13,
     "vintage": ""
    }
   }
