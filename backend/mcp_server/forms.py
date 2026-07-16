@@ -46,7 +46,7 @@ from mcp_server.envelope import (
     SortAxis,
 )
 from mcp_server.compare import compare
-from mcp_server.engine import select
+from mcp_server.engine import select, select_member
 from mcp_server.scope import coordinate_of, find_scope, gate_envelope, scope_for, sectors_for_member
 
 _TOP_N = 8  # progressive-disclosure row cap (summary-first; drill on request)
@@ -716,18 +716,15 @@ def unmet_demand(member: str) -> AnalysisEnvelope:
     # Resolve member → region + colleges WITHOUT a sector (occupation_profile's path):
     # any live sector suffices to obtain the spec, from which the region and the member's
     # colleges derive. An institution that matches no coordinate gates back to Tier 0.
-    sects = sectors_for_member(member)
-    if not sects:
+    sel = select_member(member)
+    if sel is None:
         return gate_envelope("unmet_demand", member, "",
-                             reason=f"No institution matching {member!r}. Use list_institutions (optionally with a name filter) to find its member id, then retry with that id — the tools take the id, not the display name.")
-    resolved = scope_for(member, sects[0]["sector_id"])
-    if resolved is None:
-        return gate_envelope("unmet_demand", member, "",
-                             reason=f"Could not resolve institution {member!r}.")
-    spec0, entry = resolved
-    region = spec0.resolve_region()
-    region_disp = COE_REGION_DISPLAY.get(region, region)
-    member_colleges = list(spec0.colleges)
+                             reason=(f"No institution matching {member!r}. Use list_institutions (optionally with a name filter) to find its member id, then retry with that id — the tools take the id, not the display name."
+                                     if not sectors_for_member(member) else
+                                     f"Could not resolve institution {member!r}."))
+    entry, spec0 = sel.entry, sel.spec
+    region, region_disp = sel.region, sel.region_display
+    member_colleges = sel.member_colleges
 
     with get_driver().session() as session:
         demand_rows = session.run(
