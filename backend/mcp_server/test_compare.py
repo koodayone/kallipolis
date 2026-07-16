@@ -70,6 +70,7 @@ def _oracle(unit_type, criterion, ctx, uid):
     re-derivation, so a mis-wired compute callable (e.g. member↔region colleges) is caught. Keyed by
     (unit_type, criterion) because a criterion key (supply_share) can live on more than one unit."""
     m, r = ctx.member_colleges, ctx.region_colleges
+    s = ctx.rspec   # the canonical in_scope feeder rule (adjudication A) — the oracle must match it
 
     if unit_type == "program":
         top6 = uid
@@ -78,7 +79,7 @@ def _oracle(unit_type, criterion, ctx, uid):
         if criterion == "addressable_gap":
             socs = CAN.program_socs(top6, within=ctx.sector_socs)
             return CAN.gap(CAN.addressable_demand(top6, ctx.sector_socs, ctx.demand_by_soc)[1],
-                           CAN.supply_over_socs(r, socs))
+                           CAN.supply_over_socs(r, socs, spec=s))
         if criterion == "completions":
             return CAN.supply_over_tops(m, [top6])
         if criterion == "enrollment":
@@ -122,20 +123,20 @@ def _oracle(unit_type, criterion, ctx, uid):
         if criterion == "regional_employment":
             return f.get("employment")
         if criterion == "regional_supply":
-            return CAN.supply(r, soc)
+            return CAN.supply(r, soc, spec=s)
         if criterion == "supply_gap":
-            return CAN.gap(f.get("annual_openings"), CAN.supply(r, soc))
+            return CAN.gap(f.get("annual_openings"), CAN.supply(r, soc, spec=s))
         if criterion == "member_supply_share":
-            reg = CAN.supply(r, soc)
-            return round(CAN.supply(m, soc) / reg, 3) if reg else None
+            reg = CAN.supply(r, soc, spec=s)
+            return round(CAN.supply(m, soc, spec=s) / reg, 3) if reg else None
 
     if unit_type == "college":
         col = uid
         if criterion == "sector_supply":
-            return CAN.supply_over_socs([col], ctx.sector_socs)
+            return CAN.supply_over_socs([col], ctx.sector_socs, spec=s)
         if criterion == "supply_share":
-            reg = CAN.supply_over_socs(r, ctx.sector_socs)
-            return round(CAN.supply_over_socs([col], ctx.sector_socs) / reg, 3) if reg else None
+            reg = CAN.supply_over_socs(r, ctx.sector_socs, spec=s)
+            return round(CAN.supply_over_socs([col], ctx.sector_socs, spec=s) / reg, 3) if reg else None
         if criterion == "sector_enrollment":
             return CAN.enrollment_over_tops([col], ctx.sector_tops)
 
@@ -196,7 +197,7 @@ def test_criterion_battery(unit_type, criterion, member, sector):
             t6 = row.label.split()[0]
             socs = CAN.program_socs(t6, within=ctx.sector_socs)
             assert v == CAN.gap(CAN.addressable_demand(t6, ctx.sector_socs, ctx.demand_by_soc)[1],
-                                CAN.supply_over_socs(ctx.region_colleges, socs))
+                                CAN.supply_over_socs(ctx.region_colleges, socs, spec=ctx.rspec))
 
 
 @requires_graph

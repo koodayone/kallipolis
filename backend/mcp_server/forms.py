@@ -197,9 +197,9 @@ def analyze_gap(member: str, sector: str, *, soc: Optional[str] = None) -> Analy
             if r is None:
                 r = per_soc[cell.soc_code] = {
                     "title": cell.title, "openings": cell.annual_openings,
-                    "member_supply": CAN.supply(member_colleges, cell.soc_code),
-                    "regional_supply": CAN.supply(region_colleges, cell.soc_code),
-                    "latest": CAN.supply(member_colleges, cell.soc_code, years=latest)}
+                    "member_supply": CAN.supply(member_colleges, cell.soc_code, spec=resolved_spec),
+                    "regional_supply": CAN.supply(region_colleges, cell.soc_code, spec=resolved_spec),
+                    "latest": CAN.supply(member_colleges, cell.soc_code, years=latest, spec=resolved_spec)}
             if r["openings"] is None:
                 r["openings"] = cell.annual_openings
     for r in per_soc.values():
@@ -209,17 +209,17 @@ def analyze_gap(member: str, sector: str, *, soc: Optional[str] = None) -> Analy
         return _empty_member_sector("gap", entry, land.region_display)
 
     socs = list(per_soc)
-    agg_region_supply = CAN.supply_over_socs(region_colleges, socs)
+    agg_region_supply = CAN.supply_over_socs(region_colleges, socs, spec=resolved_spec)
     summary = {
         "regional_demand": P.q("annual_openings", agg.regional_demand_total,
                                granularity=region_g, unit="openings/yr"),
         "regional_supply": P.q("projected_supply", agg_region_supply,
                                granularity=region_supply_g, unit="completions/yr", vintage=supply_v),
-        "member_supply": P.q("projected_supply", CAN.supply_over_socs(member_colleges, socs),
+        "member_supply": P.q("projected_supply", CAN.supply_over_socs(member_colleges, socs, spec=resolved_spec),
                              granularity=inst_g, unit="completions/yr", vintage=supply_v),
         "gap": P.q("gap", int(round(agg.regional_demand_total - agg_region_supply)),
                    granularity=f"{region_g} − {region_supply_g}", unit="openings/yr", vintage=gap_v),
-        "latest_year_supply": P.q("latest_year_supply", CAN.supply_over_socs(member_colleges, socs, years=latest),
+        "latest_year_supply": P.q("latest_year_supply", CAN.supply_over_socs(member_colleges, socs, years=latest, spec=resolved_spec),
                                   granularity=inst_g, unit="completions", vintage=latest_v),
     }
 
@@ -406,7 +406,7 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
             if not openings:
                 continue
             occ_rows.append((soc, d.get("title") or soc, openings, d.get("annual_wage"),
-                             CAN.gap(openings, CAN.supply(region_colleges, soc))))
+                             CAN.gap(openings, CAN.supply(region_colleges, soc, spec=rspec))))
         occ_rows.sort(key=lambda r: (r[2] or 0, r[3] or 0), reverse=True)   # by openings; wage breaks ties
         rows = [Row(label=f"{soc} {title}", values={
             "annual_openings": P.q("annual_openings", openings, granularity=region_g, unit="openings/yr"),
@@ -460,8 +460,8 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
     region_supply_g = f"regional ({occ.region_display}) — all {len(region_colleges)} colleges"
     supply_v, latest_v = CAN.vintage(recent), CAN.vintage(latest)
     gap_v = f"{P.COE_DEMAND_VINTAGE} vs {supply_v}"    # supply side now DataMart, not the COE window
-    regional_supply = CAN.supply(region_colleges, occupation)
-    member_supply = CAN.supply(member_colleges, occupation)
+    regional_supply = CAN.supply(region_colleges, occupation, spec=rspec)
+    member_supply = CAN.supply(member_colleges, occupation, spec=rspec)
     summary = {
         "regional_demand": P.q("annual_openings", occ.annual_openings, granularity=region_g, unit="openings/yr"),
         "annual_wage": P.q("annual_wage", occ.annual_wage, granularity=region_g, unit="USD/yr (occ. median)"),
@@ -469,7 +469,7 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
         "member_supply": P.q("projected_supply", member_supply, granularity=inst_g, unit="completions/yr", vintage=supply_v),
         "gap": P.q("gap", CAN.gap(occ.annual_openings, regional_supply),
                    granularity=f"{region_g} − {region_supply_g}", unit="openings/yr", vintage=gap_v),
-        "latest_year_supply": P.q("latest_year_supply", CAN.supply(member_colleges, occupation, years=latest),
+        "latest_year_supply": P.q("latest_year_supply", CAN.supply(member_colleges, occupation, years=latest, spec=rspec),
                                   granularity=inst_g, unit="completions", vintage=latest_v),
     }
     tops = sorted(occ.feeding_tops, key=lambda t: t.awards_total, reverse=True)
@@ -995,8 +995,8 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
 
     # Regime A — plain sums over DISTINCT occupations / programs (each counted once), no allocation.
     total_demand = int(round(sum((d.get("annual_openings") or 0) for d in demand.values())))
-    regional_supply = CAN.supply_over_socs(region_colleges, sector_socs)
-    member_supply = CAN.supply_over_socs(member_colleges, sector_socs)
+    regional_supply = CAN.supply_over_socs(region_colleges, sector_socs, spec=rspec)
+    member_supply = CAN.supply_over_socs(member_colleges, sector_socs, spec=rspec)
     pl = build_programs_landscape(rspec)
     member_programs = len(pl.tops)
     demand_by_soc = {s: (d.get("annual_openings") or 0) for s, d in demand.items()}

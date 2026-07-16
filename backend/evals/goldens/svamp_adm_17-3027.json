@@ -1,0 +1,62 @@
+{
+ "builder": {
+  "annual_openings": 110,
+  "consortium_supply": 40.3,
+  "feeding_tops": [
+   "092400",
+   "094500",
+   "095600"
+  ],
+  "gap": 70
+ },
+ "canonical": {
+  "active_feeders": [
+   "094500",
+   "094800",
+   "095600"
+  ],
+  "feeders": [
+   "092400",
+   "094500",
+   "095600"
+  ],
+  "rosters": {
+   "092400": {
+    "colleges_with_program": [
+     "Evergreen Valley College",
+     "Ohlone College"
+    ],
+    "n_active": 0,
+    "n_covered": 0,
+    "n_with_program": 2
+   },
+   "094500": {
+    "colleges_with_program": [
+     "Foothill College"
+    ],
+    "n_active": 1,
+    "n_covered": 1,
+    "n_with_program": 1
+   },
+   "095600": {
+    "colleges_with_program": [
+     "De Anza College",
+     "Evergreen Valley College",
+     "Ohlone College"
+    ],
+    "n_active": 1,
+    "n_covered": 1,
+    "n_with_program": 3
+   }
+  },
+  "sector_supply_over_socs": 118.3,
+  "supply_1yr": 94.0,
+  "supply_3yr": 40.3
+ },
+ "colleges_n": 5,
+ "in_scope": true,
+ "member": "svamp",
+ "sector": "adm",
+ "soc": "17-3027",
+ "socs_n": 12
+}

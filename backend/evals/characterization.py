@@ -34,6 +34,11 @@ GOLDEN_COORDS = [
     ("smccd", "adm", "51-4041"),
     ("ccsf", "adm", "51-4041"),
     ("baccc", "health", "29-1141"), # test_offering_referential_integrity's coordinate
+    # The former dashboard⇄MCP feeder-rule divergers — added so the corroboration guard covers the
+    # seam itself, not just near-clean coords (were up to 278/yr; 0 after Phase 1's feeder unification).
+    ("svamp", "adm", "17-3027"),    # was MCP 256.3 vs dash 40.3
+    ("svamp", "adm", "17-3029"),    # was MCP 345.0 vs dash 66.7
+    ("smccd", "adm", "17-3023"),    # was MCP 10.0 vs dash 9.7 (the latest-year awards-gate residual)
 ]
 GOLDENS_DIR = Path(__file__).parent / "goldens"
 
@@ -67,12 +72,12 @@ def capture(member: str, sector: str, soc: str) -> dict:
     colleges = sorted(spec.colleges)
     socs = sorted(spec.socs)
 
-    # canonical (MCP) — fresh DataMart graph, COE's 3-yr method
-    feeders = sorted(CAN.feeders(colleges, soc))
+    # canonical (MCP) — the in_scope feeder rule (adjudication A), fresh DataMart graph, COE's 3-yr method
+    feeders = sorted(CAN.feeders(colleges, soc, spec=spec))
     canon = {
-        "supply_3yr": CAN.supply(colleges, soc),
-        "supply_1yr": CAN.supply(colleges, soc, years=CAN.recent_award_years(1)),
-        "sector_supply_over_socs": CAN.supply_over_socs(colleges, socs),
+        "supply_3yr": CAN.supply(colleges, soc, spec=spec),
+        "supply_1yr": CAN.supply(colleges, soc, years=CAN.recent_award_years(1), spec=spec),
+        "sector_supply_over_socs": CAN.supply_over_socs(colleges, socs, spec=spec),
         "feeders": feeders,
         "active_feeders": sorted(CAN.active_feeders(colleges, soc)),
         "rosters": {t: _roster_summary(colleges, t) for t in feeders},

@@ -169,7 +169,7 @@ def _c_addressable_demand(ctx, u):
 def _c_addressable_gap(ctx, u):
     addr = CAN.addressable_demand(u.top6, ctx.sector_socs, ctx.demand_by_soc)[1]
     socs = CAN.program_socs(u.top6, within=ctx.sector_socs)
-    return CAN.gap(addr, CAN.supply_over_socs(ctx.region_colleges, socs))
+    return CAN.gap(addr, CAN.supply_over_socs(ctx.region_colleges, socs, spec=ctx.rspec))
 
 
 def _c_completions(ctx, u):
@@ -285,19 +285,19 @@ def _oc_employment(ctx, u):
 
 
 def _oc_regional_supply(ctx, u):
-    return CAN.supply(ctx.region_colleges, u.soc)
+    return CAN.supply(ctx.region_colleges, u.soc, spec=ctx.rspec)
 
 
 def _oc_supply_gap(ctx, u):
     openings = ctx.soc_facts.get(u.soc, {}).get("annual_openings")
-    return CAN.gap(openings, CAN.supply(ctx.region_colleges, u.soc))
+    return CAN.gap(openings, CAN.supply(ctx.region_colleges, u.soc, spec=ctx.rspec))
 
 
 def _oc_member_supply_share(ctx, u):
-    region = CAN.supply(ctx.region_colleges, u.soc)
+    region = CAN.supply(ctx.region_colleges, u.soc, spec=ctx.rspec)
     if not region:
         return None
-    return round(CAN.supply(ctx.member_colleges, u.soc) / region, 3)
+    return round(CAN.supply(ctx.member_colleges, u.soc, spec=ctx.rspec) / region, 3)
 
 
 _OCCUPATION = _register({
@@ -328,14 +328,14 @@ _OCCUPATION = _register({
 # Share is the size-normalized headline (the default), so a small college is not buried by a big one.
 
 def _cl_sector_supply(ctx, u):
-    return CAN.supply_over_socs([u], ctx.sector_socs)
+    return CAN.supply_over_socs([u], ctx.sector_socs, spec=ctx.rspec)
 
 
 def _cl_supply_share(ctx, u):
-    region = CAN.supply_over_socs(ctx.region_colleges, ctx.sector_socs)
+    region = CAN.supply_over_socs(ctx.region_colleges, ctx.sector_socs, spec=ctx.rspec)
     if not region:
         return None
-    return round(CAN.supply_over_socs([u], ctx.sector_socs) / region, 3)
+    return round(CAN.supply_over_socs([u], ctx.sector_socs, spec=ctx.rspec) / region, 3)
 
 
 def _cl_sector_enrollment(ctx, u):
