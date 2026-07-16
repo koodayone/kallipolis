@@ -1040,6 +1040,12 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
         summary["served_occupations"] = _derived(
             len(_lenses["served"]), unit="SOCs",
             granularity="the member reaches with a program and actively graduates into")
+        summary["in_demand_openings"] = P.q("annual_openings",
+            int(round(sum(demand_by_soc.get(s, 0) for s in _lenses["in_demand"]))),
+            granularity=f"{region_g} — the in-demand occupations", unit="openings/yr")
+        summary["served_openings"] = P.q("annual_openings",
+            int(round(sum(demand_by_soc.get(s, 0) for s in _lenses["served"]))),
+            granularity=f"{region_g} — the occupations the member serves", unit="openings/yr")
 
     # Rows: PROGRAM-FORWARD — the member's programs in the sector, each with its supply
     # (completions) and its ADDRESSABLE DEMAND (the χ↑ sum-across pool of openings across the

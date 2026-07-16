@@ -267,6 +267,16 @@
     "value": 7,
     "vintage": ""
    },
+   "in_demand_openings": {
+    "granularity": "regional (Bay Area) \u2014 the in-demand occupations",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "coe",
+    "status": "ok",
+    "unit": "openings/yr",
+    "value": 2420,
+    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+   },
    "member_programs": {
     "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
     "parent_vintages": [],
@@ -346,6 +356,16 @@
     "unit": "SOCs",
     "value": 13,
     "vintage": ""
+   },
+   "served_openings": {
+    "granularity": "regional (Bay Area) \u2014 the occupations the member serves",
+    "parent_vintages": [],
+    "predicate_version": "",
+    "source": "coe",
+    "status": "ok",
+    "unit": "openings/yr",
+    "value": 1930,
+    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
    }
   }
  },
