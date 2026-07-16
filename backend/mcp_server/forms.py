@@ -46,6 +46,7 @@ from mcp_server.envelope import (
     SortAxis,
 )
 from mcp_server.compare import compare
+from mcp_server.engine import select
 from mcp_server.scope import coordinate_of, find_scope, gate_envelope, scope_for, sectors_for_member
 
 _TOP_N = 8  # progressive-disclosure row cap (summary-first; drill on request)
@@ -982,18 +983,14 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
     from partnerships.graph_reads import regional_demand
     from partnerships.sectors import SECTORS
 
-    resolved = scope_for(member, sector)
-    if resolved is None:
+    sel = select(member, sector)                            # the one resolution path (Phase A)
+    if sel is None:
         return gate_envelope("sector_overview", member, sector,
                              reason=f"No live coordinate for ({member!r}, {sector!r}). Confirm the member id and its live sectors via list_institutions.")
-    spec, entry = resolved
-    rspec = resolve(spec)
-    region = rspec.resolve_region()
-    region_disp = COE_REGION_DISPLAY.get(region, region)
-    member_colleges = list(rspec.colleges)
-    region_colleges = list(region_member(region).colleges)
-    sector_socs = list(SECTORS[entry["sector_id"]].socs)
-    sector_label = SECTORS[entry["sector_id"]].label
+    entry, rspec = sel.entry, sel.spec
+    region, region_disp = sel.region, sel.region_display
+    member_colleges, region_colleges = sel.member_colleges, sel.region_colleges
+    sector_socs, sector_label = sel.sector_socs, sel.sector_label
 
     with get_driver().session() as session:
         demand = regional_demand(session, region, sector_socs)
@@ -1093,7 +1090,7 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
                              licensed=["The sector's total regional demand vs total regional projected completions with the member's supply and share (summary), then the member's PROGRAMS — each with its completions and its addressable demand (the openings across the occupations it feeds).",
                                        "Program-forward: a program's addressable demand is a sum-across pool it competes for, shared with other programs, not exclusive — drill a program to see the occupations behind it."]),
         next_moves=next_moves,
-        view_link=V.view_link("sector_overview", instance_id=spec.id, member_id=entry["member_id"],
+        view_link=V.view_link("sector_overview", instance_id=sel.instance_id, member_id=entry["member_id"],
                               sector_id=entry["sector_id"]),
         provenance=P.build_provenance(
             ["annual_openings", "projected_supply", "gap"],
