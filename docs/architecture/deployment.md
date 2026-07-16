@@ -22,7 +22,7 @@ The backend runs under Docker Compose on the VM: `docker-compose.yml` at the rep
 
 ## VM specifics
 
-The VM is a single `e2-medium` Compute Engine instance in `us-central1-a` with a static external IP and a 40 GB standard persistent disk. DNS for `api.kallipolis.us` points at the static IP directly through Cloudflare DNS with the proxy disabled, so Caddy on the VM terminates TLS rather than Cloudflare's edge. Two systemd units — `kallipolis-env.service` and `kallipolis.service` — enforce boot-time ordering: the first materializes `/opt/kallipolis/.env` from Secret Manager, the second runs `docker compose up -d` against the repo at `/opt/kallipolis/`. SSH is through IAP only; no public port 22.
+The VM is a single `e2-standard-2` Compute Engine instance (2 vCPU / 8 GB) in `us-central1-a` with a static external IP and a 100 GB standard persistent disk (`pd-standard`). DNS for `api.kallipolis.us` points at the static IP directly through Cloudflare DNS with the proxy disabled, so Caddy on the VM terminates TLS rather than Cloudflare's edge. Two systemd units — `kallipolis-env.service` and `kallipolis.service` — enforce boot-time ordering: the first materializes `/opt/kallipolis/.env` from Secret Manager, the second runs `docker compose up -d` against the repo at `/opt/kallipolis/`. SSH is through IAP only; no public port 22.
 
 ## TLS termination and reverse proxy
 
@@ -82,7 +82,7 @@ Two important asymmetries:
 
 ### Nightly prod cron
 
-A root crontab entry on the VM fires the backup script at 09:15 UTC nightly. The script — `scripts/neo4j-backup.sh` in this repo, deployed to /opt/kallipolis/scripts/ via the standard git pull on the VM — stops the Neo4j container, dumps via a throwaway helper container into /opt/kallipolis/backups/, restarts Neo4j, and uploads the dump to `gs://kallipolis-backups-preview/neo4j-<UTC-timestamp>.dump`. The local copy is removed after a successful upload to keep the VM's 40 GB disk from filling. The GCS bucket has a 30-day nearline / 90-day delete lifecycle policy.
+A root crontab entry on the VM fires the backup script at 09:15 UTC nightly. The script — `scripts/neo4j-backup.sh` in this repo, deployed to /opt/kallipolis/scripts/ via the standard git pull on the VM — stops the Neo4j container, dumps via a throwaway helper container into /opt/kallipolis/backups/, restarts Neo4j, and uploads the dump to `gs://kallipolis-backups-preview/neo4j-<UTC-timestamp>.dump`. The local copy is removed after a successful upload to keep the VM's 100 GB disk from filling. The GCS bucket has a 30-day nearline / 90-day delete lifecycle policy.
 
 Logs land in `/var/log/kallipolis/neo4j-backup-<YYYY-MM>.log`. Failure handling: an EXIT trap in the script ensures Neo4j is brought back up even on dump failure, and writes a `FAILED` line to the log so non-success is obvious on next inspection.
 
