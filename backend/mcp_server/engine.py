@@ -32,6 +32,7 @@ class Selection:
     entry: dict                 # the scope-catalog entry
     instance_id: str            # the coordinate's instance id (raw spec.id) — for view_links
     spec: object                # the RESOLVED LandscapeSpec (awards-gate applied) — the forms' `rspec`
+    raw_spec: object            # the pre-resolve LandscapeSpec (before the awards-gate) — forms that keep both
     region: str
     region_display: str
     member_colleges: list
@@ -56,6 +57,7 @@ def select(member: str, sector: str) -> Optional[Selection]:
         entry=entry,
         instance_id=spec.id,
         spec=rspec,
+        raw_spec=spec,
         region=region,
         region_display=COE_REGION_DISPLAY.get(region, region),
         member_colleges=list(rspec.colleges),
@@ -85,6 +87,7 @@ def select_member(member: str) -> Optional[Selection]:
         entry=entry,
         instance_id=spec0.id,
         spec=spec0,
+        raw_spec=spec0,
         region=region,
         region_display=COE_REGION_DISPLAY.get(region, region),
         member_colleges=list(spec0.colleges),

@@ -49,6 +49,7 @@ from mcp_server.envelope import (
     Row,
     SortAxis,
 )
+from mcp_server.engine import select
 from mcp_server.scope import coordinate_of, gate_envelope, scope_for
 
 _TOP_N = 8
@@ -123,16 +124,13 @@ class CompareContext:
 
 
 def build_context(member: str, sector: str) -> Optional[CompareContext]:
-    resolved = scope_for(member, sector)
-    if resolved is None:
+    sel = select(member, sector)
+    if sel is None:
         return None
-    spec, entry = resolved
-    rspec = resolve(spec)
-    region = rspec.resolve_region()
-    region_disp = COE_REGION_DISPLAY.get(region, region)
-    member_colleges = list(rspec.colleges)
-    region_colleges = list(region_member(region).colleges)
-    sector_socs = list(SECTORS[entry["sector_id"]].socs)
+    entry, rspec = sel.entry, sel.spec
+    region, region_disp = sel.region, sel.region_display
+    member_colleges, region_colleges = sel.member_colleges, sel.region_colleges
+    sector_socs = sel.sector_socs
     with get_driver().session() as s:
         demand = regional_demand(s, region, sector_socs)
     demand_by_soc = {soc: (d.get("annual_openings") or 0) for soc, d in demand.items()}
@@ -144,7 +142,7 @@ def build_context(member: str, sector: str) -> Optional[CompareContext]:
     supply_v, latest_v = CAN.vintage(recent_years), CAN.vintage(latest_years)
     wage_win = CAN.wage_window()
     return CompareContext(
-        spec=spec, entry=entry, rspec=rspec, member_colleges=member_colleges,
+        spec=sel.raw_spec, entry=entry, rspec=rspec, member_colleges=member_colleges,
         region_colleges=region_colleges, sector_socs=sector_socs, demand_by_soc=demand_by_soc,
         soc_facts=demand, sector_tops=sector_tops,
         recent_years=recent_years, latest_years=latest_years, enroll_latest=enroll_latest,
