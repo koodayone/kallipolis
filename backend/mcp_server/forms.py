@@ -565,19 +565,16 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
     from ontology.regions import COE_REGION_DISPLAY
     from ontology.schema import get_driver
 
-    sects = sectors_for_member(member)
-    if not sects:
+    sel = select_member(member)
+    if sel is None:
         return gate_envelope("occupation_profile", member, "",
-                             reason=f"No institution matching {member!r}. Use list_institutions (optionally with a name filter) to find its member id, then retry with that id — the tools take the id, not the display name.")
-    resolved = scope_for(member, sects[0]["sector_id"])
-    if resolved is None:
-        return gate_envelope("occupation_profile", member, "",
-                             reason=f"Could not resolve institution {member!r}.")
-    spec0, entry = resolved
-    region = spec0.resolve_region()
-    region_disp = COE_REGION_DISPLAY.get(region, region)
-    member_colleges = list(spec0.colleges)
-    region_colleges = list(region_member(region).colleges)
+                             reason=(f"No institution matching {member!r}. Use list_institutions (optionally with a name filter) to find its member id, then retry with that id — the tools take the id, not the display name."
+                                     if not sectors_for_member(member) else
+                                     f"Could not resolve institution {member!r}."))
+    sects = sectors_for_member(member)      # the occupation's classifying sectors, used below
+    entry, spec0 = sel.entry, sel.spec
+    region, region_disp = sel.region, sel.region_display
+    member_colleges, region_colleges = sel.member_colleges, sel.region_colleges
 
     with get_driver().session() as session:
         demand = regional_demand(session, region, [occupation]).get(occupation, {})
@@ -853,19 +850,16 @@ def member_portfolio(member: str) -> AnalysisEnvelope:
     from partnerships.graph_reads import regional_demand
     from partnerships.sectors import SECTORS
 
+    sel = select_member(member)
+    if sel is None:
+        return gate_envelope("member_portfolio", member, "",
+                             reason=(f"No institution matching {member!r}. Use list_institutions (optionally with a name filter) to find its member id, then retry with that id — the tools take the id, not the display name."
+                                     if not sectors_for_member(member) else
+                                     f"Could not resolve institution {member!r}."))
     sects = sectors_for_member(member)
-    if not sects:
-        return gate_envelope("member_portfolio", member, "",
-                             reason=f"No institution matching {member!r}. Use list_institutions (optionally with a name filter) to find its member id, then retry with that id — the tools take the id, not the display name.")
-    resolved = scope_for(member, sects[0]["sector_id"])
-    if resolved is None:
-        return gate_envelope("member_portfolio", member, "",
-                             reason=f"Could not resolve institution {member!r}.")
-    spec0, entry = resolved
-    region = spec0.resolve_region()
-    region_disp = COE_REGION_DISPLAY.get(region, region)
-    member_colleges = list(spec0.colleges)
-    region_colleges = list(region_member(region).colleges)
+    entry, spec0 = sel.entry, sel.spec
+    region, region_disp = sel.region, sel.region_display
+    member_colleges, region_colleges = sel.member_colleges, sel.region_colleges
 
     # Each sector's occupations, and the DISTINCT union across sectors (Regime A across sectors too).
     sector_socs = {e["sector_id"]: list(SECTORS[e["sector_id"]].socs) for e in sects}
