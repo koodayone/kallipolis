@@ -4,7 +4,6 @@
   "lens": "",
   "member": "ccsf",
   "member_label": "City College of San Francisco",
-  "predicate_version": "",
   "region": "Bay Area",
   "sector": "adm",
   "sector_label": "Advanced Manufacturing",
@@ -24,7 +23,6 @@
        "actual_awards": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "awards (latest yr)",
@@ -34,7 +32,6 @@
        "coverage": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "",
@@ -48,7 +45,6 @@
      "actual_awards": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "awards",
@@ -58,7 +54,6 @@
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges (latest yr)",
@@ -68,7 +63,6 @@
      "colleges_with_program": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges",
@@ -78,7 +72,6 @@
      "enrollment": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled",
@@ -97,7 +90,6 @@
        "actual_awards": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "awards (latest yr)",
@@ -107,7 +99,6 @@
        "coverage": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "",
@@ -121,7 +112,6 @@
      "actual_awards": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "awards",
@@ -131,7 +121,6 @@
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges (latest yr)",
@@ -141,7 +130,6 @@
      "colleges_with_program": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges",
@@ -151,7 +139,6 @@
      "enrollment": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled",
@@ -170,7 +157,6 @@
        "actual_awards": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "awards (latest yr)",
@@ -180,7 +166,6 @@
        "coverage": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "",
@@ -194,7 +179,6 @@
      "actual_awards": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "awards",
@@ -204,7 +188,6 @@
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges (latest yr)",
@@ -214,7 +197,6 @@
      "colleges_with_program": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges",
@@ -224,7 +206,6 @@
      "enrollment": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled",
@@ -239,7 +220,6 @@
    "annual_wage": {
     "granularity": "regional (Bay Area)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "coe",
     "status": "ok",
     "unit": "USD/yr (occ. median)",
@@ -249,7 +229,6 @@
    "gap": {
     "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "derived",
     "status": "ok",
     "unit": "openings/yr",
@@ -259,7 +238,6 @@
    "latest_year_supply": {
     "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "datamart",
     "status": "ok",
     "unit": "completions",
@@ -269,7 +247,6 @@
    "member_supply": {
     "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
@@ -279,7 +256,6 @@
    "regional_demand": {
     "granularity": "regional (Bay Area)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
@@ -289,7 +265,6 @@
    "regional_supply": {
     "granularity": "regional (Bay Area) \u2014 all 26 colleges",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
@@ -322,7 +297,6 @@
     "lens": "coverage",
     "member": "ccsf",
     "member_label": "City College of San Francisco",
-    "predicate_version": "",
     "region": "Bay",
     "sector": "adm",
     "sector_label": "Advanced Manufacturing",
@@ -338,7 +312,6 @@
     "lens": "employers",
     "member": "ccsf",
     "member_label": "City College of San Francisco",
-    "predicate_version": "",
     "region": "Bay",
     "sector": "adm",
     "sector_label": "Advanced Manufacturing",

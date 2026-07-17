@@ -70,12 +70,10 @@ def _awards_window(award_years: list[str]) -> str:
     return f"DataMart awards — {award_years[0]}…{award_years[-1]}"
 
 
-def _derived(value, *, unit: str, granularity: str, predicate_version: str = "") -> QualifiedValue:
+def _derived(value, *, unit: str, granularity: str) -> QualifiedValue:
     """A structural count over the graph (member/program cardinality) — not an
-    institutional-authority fact, but still Bound so no bare number escapes.
-    ``predicate_version`` (K2) stamps a count whose value depends on a registered predicate."""
-    return QualifiedValue.ok(value, unit=unit, source="derived", granularity=granularity,
-                             predicate_version=predicate_version)
+    institutional-authority fact, but still Bound so no bare number escapes."""
+    return QualifiedValue.ok(value, unit=unit, source="derived", granularity=granularity)
 
 
 def _framing(form_id: str, salience: list[str]) -> Framing:
@@ -1021,9 +1019,9 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
             if regional_supply else
             QualifiedValue.gated("unavailable", unit="fraction of regional supply", granularity=inst_g)),
         "member_programs": _derived(len(on_the_books), unit="TOP6 programs the member runs",
-                                    granularity=inst_g, predicate_version="on-the-books (registered ∩ in_scope)"),
+                                    granularity=f"{inst_g} · on-the-books (registered ∩ in_scope)"),
         "member_programs_active": _derived(len(graduating), unit="TOP6 programs currently graduating",
-                                           granularity=inst_g, predicate_version="awards-active (latest-year completer)"),
+                                           granularity=f"{inst_g} · awards-active (latest-year completer)"),
         "sector_occupations": _derived(len(sector_socs), unit="SOCs",
                                        granularity=f"{sector_label} sector (PCAH)"),
     }

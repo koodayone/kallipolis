@@ -4,7 +4,6 @@
   "lens": "",
   "member": "skyline",
   "member_label": "Skyline College",
-  "predicate_version": "",
   "region": "Bay Area",
   "sector": "adm",
   "sector_label": "Advanced Manufacturing",
@@ -19,7 +18,6 @@
    "annual_wage": {
     "granularity": "regional (Bay Area)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "coe",
     "status": "ok",
     "unit": "USD/yr (occ. median)",
@@ -29,7 +27,6 @@
    "gap": {
     "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "derived",
     "status": "ok",
     "unit": "openings/yr",
@@ -39,7 +36,6 @@
    "latest_year_supply": {
     "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "datamart",
     "status": "ok",
     "unit": "completions",
@@ -49,7 +45,6 @@
    "member_supply": {
     "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
@@ -59,7 +54,6 @@
    "regional_demand": {
     "granularity": "regional (Bay Area)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
@@ -69,7 +63,6 @@
    "regional_supply": {
     "granularity": "regional (Bay Area) \u2014 all 26 colleges",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
@@ -102,7 +95,6 @@
     "lens": "coverage",
     "member": "skyline",
     "member_label": "Skyline College",
-    "predicate_version": "",
     "region": "Bay",
     "sector": "adm",
     "sector_label": "Advanced Manufacturing",
@@ -118,7 +110,6 @@
     "lens": "employers",
     "member": "skyline",
     "member_label": "Skyline College",
-    "predicate_version": "",
     "region": "Bay",
     "sector": "adm",
     "sector_label": "Advanced Manufacturing",

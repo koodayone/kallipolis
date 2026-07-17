@@ -4,7 +4,6 @@
   "lens": "",
   "member": "baccc",
   "member_label": "Bay Area Community College Consortium",
-  "predicate_version": "",
   "region": "Bay Area",
   "sector": "",
   "sector_label": "",
@@ -21,7 +20,6 @@
      "annual_openings": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -31,7 +29,6 @@
      "annual_wage": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "USD/yr (occ. median)",
@@ -41,7 +38,6 @@
      "growth_rate": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "5-yr %",
@@ -51,7 +47,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -61,7 +56,6 @@
      "typical_education": {
       "granularity": "SOC 21-1093",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "",
@@ -77,7 +71,6 @@
      "annual_openings": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -87,7 +80,6 @@
      "annual_wage": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "USD/yr (occ. median)",
@@ -97,7 +89,6 @@
      "growth_rate": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "5-yr %",
@@ -107,7 +98,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -117,7 +107,6 @@
      "typical_education": {
       "granularity": "SOC 53-2031",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "",
@@ -133,7 +122,6 @@
      "annual_openings": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -143,7 +131,6 @@
      "annual_wage": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "USD/yr (occ. median)",
@@ -153,7 +140,6 @@
      "growth_rate": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "5-yr %",
@@ -163,7 +149,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -173,7 +158,6 @@
      "typical_education": {
       "granularity": "SOC 51-5112",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "",
@@ -189,7 +173,6 @@
      "annual_openings": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -199,7 +182,6 @@
      "annual_wage": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "USD/yr (occ. median)",
@@ -209,7 +191,6 @@
      "growth_rate": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "5-yr %",
@@ -219,7 +200,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -229,7 +209,6 @@
      "typical_education": {
       "granularity": "SOC 29-2057",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "",
@@ -245,7 +224,6 @@
      "annual_openings": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -255,7 +233,6 @@
      "annual_wage": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "USD/yr (occ. median)",
@@ -265,7 +242,6 @@
      "growth_rate": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "5-yr %",
@@ -275,7 +251,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -285,7 +260,6 @@
      "typical_education": {
       "granularity": "SOC 29-2081",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "",
@@ -301,7 +275,6 @@
      "annual_openings": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -311,7 +284,6 @@
      "annual_wage": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "USD/yr (occ. median)",
@@ -321,7 +293,6 @@
      "growth_rate": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "5-yr %",
@@ -331,7 +302,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -341,7 +311,6 @@
      "typical_education": {
       "granularity": "SOC 51-9071",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "",
@@ -357,7 +326,6 @@
      "annual_openings": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -367,7 +335,6 @@
      "annual_wage": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "USD/yr (occ. median)",
@@ -377,7 +344,6 @@
      "growth_rate": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "5-yr %",
@@ -387,7 +353,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -397,7 +362,6 @@
      "typical_education": {
       "granularity": "SOC 31-2011",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "",
@@ -417,7 +381,6 @@
    "member_colleges": {
     "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "derived",
     "status": "ok",
     "unit": "colleges",
@@ -427,7 +390,6 @@
    "n_unmet": {
     "granularity": "regional (Bay Area) demand unserved by institutional \u2014 consortium (\u03a3 26 colleges)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "derived",
     "status": "ok",
     "unit": "occupations",
@@ -462,7 +424,6 @@
     "lens": "",
     "member": "baccc",
     "member_label": "Bay Area Community College Consortium",
-    "predicate_version": "",
     "region": null,
     "sector": "",
     "sector_label": "",

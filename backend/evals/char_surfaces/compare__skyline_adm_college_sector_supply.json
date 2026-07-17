@@ -4,7 +4,6 @@
   "lens": "",
   "member": "skyline",
   "member_label": "Skyline College",
-  "predicate_version": "",
   "region": "Bay Area",
   "sector": "adm",
   "sector_label": "Advanced Manufacturing",
@@ -19,7 +18,6 @@
      "lens": "coverage",
      "member": "skyline",
      "member_label": "Skyline College",
-     "predicate_version": "",
      "region": "Bay",
      "sector": "adm",
      "sector_label": "Advanced Manufacturing",
@@ -39,7 +37,6 @@
      "sector_enrollment": {
       "granularity": "institutional \u2014 a single college in the region",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
@@ -49,7 +46,6 @@
      "sector_supply": {
       "granularity": "institutional \u2014 a single college in the region",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -59,7 +55,6 @@
      "supply_share": {
       "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "fraction",
@@ -75,7 +70,6 @@
      "sector_enrollment": {
       "granularity": "institutional \u2014 a single college in the region",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
@@ -85,7 +79,6 @@
      "sector_supply": {
       "granularity": "institutional \u2014 a single college in the region",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -95,7 +88,6 @@
      "supply_share": {
       "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "fraction",
@@ -111,7 +103,6 @@
      "sector_enrollment": {
       "granularity": "institutional \u2014 a single college in the region",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
@@ -121,7 +112,6 @@
      "sector_supply": {
       "granularity": "institutional \u2014 a single college in the region",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -131,7 +121,6 @@
      "supply_share": {
       "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "fraction",
@@ -147,7 +136,6 @@
      "sector_enrollment": {
       "granularity": "institutional \u2014 a single college in the region",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
@@ -157,7 +145,6 @@
      "sector_supply": {
       "granularity": "institutional \u2014 a single college in the region",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -167,7 +154,6 @@
      "supply_share": {
       "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "fraction",
@@ -183,7 +169,6 @@
      "sector_enrollment": {
       "granularity": "institutional \u2014 a single college in the region",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
@@ -193,7 +178,6 @@
      "sector_supply": {
       "granularity": "institutional \u2014 a single college in the region",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -203,7 +187,6 @@
      "supply_share": {
       "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "fraction",
@@ -219,7 +202,6 @@
      "sector_enrollment": {
       "granularity": "institutional \u2014 a single college in the region",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
@@ -229,7 +211,6 @@
      "sector_supply": {
       "granularity": "institutional \u2014 a single college in the region",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -239,7 +220,6 @@
      "supply_share": {
       "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "fraction",
@@ -255,7 +235,6 @@
      "sector_enrollment": {
       "granularity": "institutional \u2014 a single college in the region",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
@@ -265,7 +244,6 @@
      "sector_supply": {
       "granularity": "institutional \u2014 a single college in the region",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -275,7 +253,6 @@
      "supply_share": {
       "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "fraction",
@@ -291,7 +268,6 @@
      "sector_enrollment": {
       "granularity": "institutional \u2014 a single college in the region",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
@@ -301,7 +277,6 @@
      "sector_supply": {
       "granularity": "institutional \u2014 a single college in the region",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -311,7 +286,6 @@
      "supply_share": {
       "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "fraction",
@@ -331,7 +305,6 @@
    "units_compared": {
     "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "derived",
     "status": "ok",
     "unit": "colleges",
@@ -364,7 +337,6 @@
     "lens": "coverage",
     "member": "skyline",
     "member_label": "Skyline College",
-    "predicate_version": "",
     "region": "Bay",
     "sector": "adm",
     "sector_label": "Advanced Manufacturing",

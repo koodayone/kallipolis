@@ -4,7 +4,6 @@
   "lens": "",
   "member": "smccd",
   "member_label": "San Mateo County CCD",
-  "predicate_version": "",
   "region": "Bay Area",
   "sector": "adm",
   "sector_label": "Advanced Manufacturing",
@@ -21,7 +20,6 @@
      "gap": {
       "granularity": "regional openings \u2212 regional supply",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -31,7 +29,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -41,7 +38,6 @@
      "regional_demand": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -51,7 +47,6 @@
      "regional_supply": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -67,7 +62,6 @@
      "gap": {
       "granularity": "regional openings \u2212 regional supply",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -77,7 +71,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -87,7 +80,6 @@
      "regional_demand": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -97,7 +89,6 @@
      "regional_supply": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -113,7 +104,6 @@
      "gap": {
       "granularity": "regional openings \u2212 regional supply",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -123,7 +113,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -133,7 +122,6 @@
      "regional_demand": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -143,7 +131,6 @@
      "regional_supply": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -159,7 +146,6 @@
      "gap": {
       "granularity": "regional openings \u2212 regional supply",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -169,7 +155,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -179,7 +164,6 @@
      "regional_demand": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -189,7 +173,6 @@
      "regional_supply": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -205,7 +188,6 @@
      "gap": {
       "granularity": "regional openings \u2212 regional supply",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -215,7 +197,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -225,7 +206,6 @@
      "regional_demand": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -235,7 +215,6 @@
      "regional_supply": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -251,7 +230,6 @@
      "gap": {
       "granularity": "regional openings \u2212 regional supply",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -261,7 +239,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -271,7 +248,6 @@
      "regional_demand": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -281,7 +257,6 @@
      "regional_supply": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -297,7 +272,6 @@
      "gap": {
       "granularity": "regional openings \u2212 regional supply",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -307,7 +281,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -317,7 +290,6 @@
      "regional_demand": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -327,7 +299,6 @@
      "regional_supply": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -343,7 +314,6 @@
      "gap": {
       "granularity": "regional openings \u2212 regional supply",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -353,7 +323,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -363,7 +332,6 @@
      "regional_demand": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -373,7 +341,6 @@
      "regional_supply": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -389,7 +356,6 @@
      "gap": {
       "granularity": "regional openings \u2212 regional supply",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -399,7 +365,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -409,7 +374,6 @@
      "regional_demand": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -419,7 +383,6 @@
      "regional_supply": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -435,7 +398,6 @@
      "gap": {
       "granularity": "regional openings \u2212 regional supply",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -445,7 +407,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -455,7 +416,6 @@
      "regional_demand": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -465,7 +425,6 @@
      "regional_supply": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -481,7 +440,6 @@
      "gap": {
       "granularity": "regional openings \u2212 regional supply",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -491,7 +449,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -501,7 +458,6 @@
      "regional_demand": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -511,7 +467,6 @@
      "regional_supply": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -526,7 +481,6 @@
    "gap": {
     "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges, all sectors",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "derived",
     "status": "ok",
     "unit": "openings/yr",
@@ -536,7 +490,6 @@
    "member_share_of_supply": {
     "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "derived",
     "status": "ok",
     "unit": "fraction of regional supply",
@@ -546,7 +499,6 @@
    "member_supply": {
     "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
@@ -556,7 +508,6 @@
    "regional_demand": {
     "granularity": "regional (Bay Area), all sectors",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
@@ -566,7 +517,6 @@
    "regional_supply": {
     "granularity": "regional (Bay Area) \u2014 all 26 colleges",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
@@ -576,7 +526,6 @@
    "sectors": {
     "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "derived",
     "status": "ok",
     "unit": "sectors the member runs",
@@ -609,7 +558,6 @@
     "lens": "",
     "member": "smccd",
     "member_label": "San Mateo County CCD",
-    "predicate_version": "",
     "region": null,
     "sector": "health",
     "sector_label": "Health",
@@ -625,7 +573,6 @@
     "lens": "greenfield",
     "member": "smccd",
     "member_label": "San Mateo County CCD",
-    "predicate_version": "",
     "region": null,
     "sector": "adm",
     "sector_label": "Advanced Manufacturing",

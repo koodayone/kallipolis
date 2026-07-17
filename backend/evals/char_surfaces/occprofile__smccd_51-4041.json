@@ -4,7 +4,6 @@
   "lens": "",
   "member": "smccd",
   "member_label": "San Mateo County CCD",
-  "predicate_version": "",
   "region": "Bay Area",
   "sector": "adm",
   "sector_label": "Advanced Manufacturing",
@@ -24,7 +23,6 @@
        "actual_awards": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "awards (latest yr)",
@@ -34,7 +32,6 @@
        "coverage": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "",
@@ -50,7 +47,6 @@
        "actual_awards": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "awards (latest yr)",
@@ -60,7 +56,6 @@
        "coverage": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "",
@@ -76,7 +71,6 @@
        "actual_awards": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "awards (latest yr)",
@@ -86,7 +80,6 @@
        "coverage": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "",
@@ -102,7 +95,6 @@
        "actual_awards": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "awards (latest yr)",
@@ -112,7 +104,6 @@
        "coverage": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "",
@@ -128,7 +119,6 @@
        "actual_awards": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "awards (latest yr)",
@@ -138,7 +128,6 @@
        "coverage": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "",
@@ -154,7 +143,6 @@
        "actual_awards": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "awards (latest yr)",
@@ -164,7 +152,6 @@
        "coverage": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "",
@@ -180,7 +167,6 @@
        "actual_awards": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "awards (latest yr)",
@@ -190,7 +176,6 @@
        "coverage": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "",
@@ -206,7 +191,6 @@
        "actual_awards": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "awards (latest yr)",
@@ -216,7 +200,6 @@
        "coverage": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "",
@@ -232,7 +215,6 @@
        "actual_awards": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "awards (latest yr)",
@@ -242,7 +224,6 @@
        "coverage": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "",
@@ -256,7 +237,6 @@
      "colleges_actively_awarding": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges (latest yr)",
@@ -266,7 +246,6 @@
      "colleges_with_program": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges",
@@ -281,7 +260,6 @@
    "annual_openings": {
     "granularity": "regional (Bay Area)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
@@ -291,7 +269,6 @@
    "annual_wage": {
     "granularity": "regional (Bay Area)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "coe",
     "status": "ok",
     "unit": "USD/yr (occ. median)",
@@ -301,7 +278,6 @@
    "gap": {
     "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "derived",
     "status": "ok",
     "unit": "openings/yr",
@@ -311,7 +287,6 @@
    "growth_rate": {
     "granularity": "regional (Bay Area)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "coe",
     "status": "ok",
     "unit": "5-yr %",
@@ -321,7 +296,6 @@
    "latest_year_supply": {
     "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "datamart",
     "status": "ok",
     "unit": "completions",
@@ -331,7 +305,6 @@
    "member_supply": {
     "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
@@ -341,7 +314,6 @@
    "occupation_title": {
     "granularity": "SOC 51-4041",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "coe",
     "status": "ok",
     "unit": "",
@@ -351,7 +323,6 @@
    "regional_employment": {
     "granularity": "regional (Bay Area)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "coe",
     "status": "ok",
     "unit": "jobs",
@@ -361,7 +332,6 @@
    "regional_supply": {
     "granularity": "regional (Bay Area) \u2014 all 26 colleges",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
@@ -371,7 +341,6 @@
    "top_employers": {
     "granularity": "regional (Bay Area) \u2014 top 3 by OES staffing share",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "graph_bls",
     "status": "ok",
     "unit": "",
@@ -381,7 +350,6 @@
    "typical_education": {
     "granularity": "SOC 51-4041",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "coe",
     "status": "ok",
     "unit": "",
@@ -412,7 +380,6 @@
     "lens": "employers",
     "member": "smccd",
     "member_label": "San Mateo County CCD",
-    "predicate_version": "",
     "region": "Bay Area",
     "sector": "adm",
     "sector_label": "Advanced Manufacturing",
@@ -428,7 +395,6 @@
     "lens": "gaps",
     "member": "smccd",
     "member_label": "San Mateo County CCD",
-    "predicate_version": "",
     "region": null,
     "sector": "adm",
     "sector_label": "Advanced Manufacturing",

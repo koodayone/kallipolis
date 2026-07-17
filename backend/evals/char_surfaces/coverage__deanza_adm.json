@@ -4,7 +4,6 @@
   "lens": "",
   "member": "deanza",
   "member_label": "De Anza College",
-  "predicate_version": "",
   "region": "Bay Area",
   "sector": "adm",
   "sector_label": "Advanced Manufacturing",
@@ -24,7 +23,6 @@
        "actual_awards": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "awards (latest yr)",
@@ -34,7 +32,6 @@
        "coverage": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "",
@@ -48,7 +45,6 @@
      "actual_awards": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "awards",
@@ -58,7 +54,6 @@
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges (latest yr)",
@@ -68,7 +63,6 @@
      "colleges_with_program": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges",
@@ -78,7 +72,6 @@
      "enrollment": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled",
@@ -88,7 +81,6 @@
      "occupations_fed": {
       "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "SOCs",
@@ -107,7 +99,6 @@
        "actual_awards": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "awards (latest yr)",
@@ -117,7 +108,6 @@
        "coverage": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "",
@@ -131,7 +121,6 @@
      "actual_awards": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "awards",
@@ -141,7 +130,6 @@
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges (latest yr)",
@@ -151,7 +139,6 @@
      "colleges_with_program": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges",
@@ -161,7 +148,6 @@
      "enrollment": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled",
@@ -171,7 +157,6 @@
      "occupations_fed": {
       "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "SOCs",
@@ -190,7 +175,6 @@
        "actual_awards": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "awards (latest yr)",
@@ -200,7 +184,6 @@
        "coverage": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "",
@@ -214,7 +197,6 @@
      "actual_awards": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "awards",
@@ -224,7 +206,6 @@
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges (latest yr)",
@@ -234,7 +215,6 @@
      "colleges_with_program": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges",
@@ -244,7 +224,6 @@
      "enrollment": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled",
@@ -254,7 +233,6 @@
      "occupations_fed": {
       "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "SOCs",
@@ -273,7 +251,6 @@
        "actual_awards": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "awards (latest yr)",
@@ -283,7 +260,6 @@
        "coverage": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
-        "predicate_version": "",
         "source": "datamart",
         "status": "ok",
         "unit": "",
@@ -297,7 +273,6 @@
      "actual_awards": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "awards",
@@ -307,7 +282,6 @@
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges (latest yr)",
@@ -317,7 +291,6 @@
      "colleges_with_program": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges",
@@ -327,7 +300,6 @@
      "enrollment": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled",
@@ -337,7 +309,6 @@
      "occupations_fed": {
       "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "SOCs",
@@ -352,7 +323,6 @@
    "covered_cells": {
     "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "datamart",
     "status": "ok",
     "unit": "college\u00d7program cells",
@@ -362,7 +332,6 @@
    "gap_cells": {
     "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "datamart",
     "status": "ok",
     "unit": "college\u00d7program cells",
@@ -372,7 +341,6 @@
    "member_colleges": {
     "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "derived",
     "status": "ok",
     "unit": "colleges",
@@ -382,7 +350,6 @@
    "partial_cells": {
     "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "datamart",
     "status": "ok",
     "unit": "college\u00d7program cells",
@@ -392,7 +359,6 @@
    "programs": {
     "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "derived",
     "status": "ok",
     "unit": "TOP6 programs",
@@ -423,7 +389,6 @@
     "lens": "gaps",
     "member": "deanza",
     "member_label": "De Anza College",
-    "predicate_version": "",
     "region": "Bay",
     "sector": "adm",
     "sector_label": "Advanced Manufacturing",
@@ -439,7 +404,6 @@
     "lens": "",
     "member": "deanza",
     "member_label": "De Anza College",
-    "predicate_version": "",
     "region": "Bay",
     "sector": "adm",
     "sector_label": "Advanced Manufacturing",

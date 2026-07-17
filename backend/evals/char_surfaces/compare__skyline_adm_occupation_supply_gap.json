@@ -4,7 +4,6 @@
   "lens": "",
   "member": "skyline",
   "member_label": "Skyline College",
-  "predicate_version": "",
   "region": "Bay Area",
   "sector": "adm",
   "sector_label": "Advanced Manufacturing",
@@ -19,7 +18,6 @@
      "lens": "",
      "member": "skyline",
      "member_label": "Skyline College",
-     "predicate_version": "",
      "region": "Bay",
      "sector": "",
      "sector_label": "",
@@ -39,7 +37,6 @@
      "median_wage": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "$/yr",
@@ -49,7 +46,6 @@
      "member_supply_share": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges) \u00f7 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "fraction",
@@ -59,7 +55,6 @@
      "projected_growth": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "%",
@@ -69,7 +64,6 @@
      "regional_employment": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "jobs",
@@ -79,7 +73,6 @@
      "regional_openings": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -89,7 +82,6 @@
      "regional_supply": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -99,7 +91,6 @@
      "supply_gap": {
       "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -115,7 +106,6 @@
      "median_wage": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "$/yr",
@@ -125,7 +115,6 @@
      "member_supply_share": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges) \u00f7 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "unavailable",
       "unit": "fraction",
@@ -135,7 +124,6 @@
      "projected_growth": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "%",
@@ -145,7 +133,6 @@
      "regional_employment": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "jobs",
@@ -155,7 +142,6 @@
      "regional_openings": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -165,7 +151,6 @@
      "regional_supply": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -175,7 +160,6 @@
      "supply_gap": {
       "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -191,7 +175,6 @@
      "median_wage": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "$/yr",
@@ -201,7 +184,6 @@
      "member_supply_share": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges) \u00f7 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "fraction",
@@ -211,7 +193,6 @@
      "projected_growth": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "%",
@@ -221,7 +202,6 @@
      "regional_employment": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "jobs",
@@ -231,7 +211,6 @@
      "regional_openings": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -241,7 +220,6 @@
      "regional_supply": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -251,7 +229,6 @@
      "supply_gap": {
       "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -267,7 +244,6 @@
      "median_wage": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "$/yr",
@@ -277,7 +253,6 @@
      "member_supply_share": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges) \u00f7 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "fraction",
@@ -287,7 +262,6 @@
      "projected_growth": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "%",
@@ -297,7 +271,6 @@
      "regional_employment": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "jobs",
@@ -307,7 +280,6 @@
      "regional_openings": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -317,7 +289,6 @@
      "regional_supply": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -327,7 +298,6 @@
      "supply_gap": {
       "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -343,7 +313,6 @@
      "median_wage": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "$/yr",
@@ -353,7 +322,6 @@
      "member_supply_share": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges) \u00f7 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "fraction",
@@ -363,7 +331,6 @@
      "projected_growth": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "%",
@@ -373,7 +340,6 @@
      "regional_employment": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "jobs",
@@ -383,7 +349,6 @@
      "regional_openings": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -393,7 +358,6 @@
      "regional_supply": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -403,7 +367,6 @@
      "supply_gap": {
       "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -419,7 +382,6 @@
      "median_wage": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "$/yr",
@@ -429,7 +391,6 @@
      "member_supply_share": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges) \u00f7 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "unavailable",
       "unit": "fraction",
@@ -439,7 +400,6 @@
      "projected_growth": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "%",
@@ -449,7 +409,6 @@
      "regional_employment": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "jobs",
@@ -459,7 +418,6 @@
      "regional_openings": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -469,7 +427,6 @@
      "regional_supply": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -479,7 +436,6 @@
      "supply_gap": {
       "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -495,7 +451,6 @@
      "median_wage": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "$/yr",
@@ -505,7 +460,6 @@
      "member_supply_share": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges) \u00f7 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "fraction",
@@ -515,7 +469,6 @@
      "projected_growth": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "%",
@@ -525,7 +478,6 @@
      "regional_employment": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "jobs",
@@ -535,7 +487,6 @@
      "regional_openings": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -545,7 +496,6 @@
      "regional_supply": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -555,7 +505,6 @@
      "supply_gap": {
       "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -571,7 +520,6 @@
      "median_wage": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "$/yr",
@@ -581,7 +529,6 @@
      "member_supply_share": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges) \u00f7 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "fraction",
@@ -591,7 +538,6 @@
      "projected_growth": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "%",
@@ -601,7 +547,6 @@
      "regional_employment": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "jobs",
@@ -611,7 +556,6 @@
      "regional_openings": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -621,7 +565,6 @@
      "regional_supply": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -631,7 +574,6 @@
      "supply_gap": {
       "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -651,7 +593,6 @@
    "units_compared": {
     "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "derived",
     "status": "ok",
     "unit": "occupations",
@@ -684,7 +625,6 @@
     "lens": "",
     "member": "skyline",
     "member_label": "Skyline College",
-    "predicate_version": "",
     "region": "Bay",
     "sector": "",
     "sector_label": "",

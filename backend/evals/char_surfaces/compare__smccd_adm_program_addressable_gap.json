@@ -4,7 +4,6 @@
   "lens": "",
   "member": "smccd",
   "member_label": "San Mateo County CCD",
-  "predicate_version": "",
   "region": "Bay Area",
   "sector": "adm",
   "sector_label": "Advanced Manufacturing",
@@ -21,7 +20,6 @@
      "addressable_demand": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -31,7 +29,6 @@
      "addressable_gap": {
       "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -41,7 +38,6 @@
      "award_trend": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "ratio",
@@ -51,7 +47,6 @@
      "completions": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -61,7 +56,6 @@
      "enrollment": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
@@ -71,7 +65,6 @@
      "enrollment_trend": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "ratio",
@@ -81,7 +74,6 @@
      "supply_share": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges) \u00f7 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "fraction",
@@ -91,7 +83,6 @@
      "wage_after_2": {
       "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "$/yr",
@@ -101,7 +92,6 @@
      "wage_after_5": {
       "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "$/yr",
@@ -111,7 +101,6 @@
      "wage_lift": {
       "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "$/yr",
@@ -127,7 +116,6 @@
      "addressable_demand": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -137,7 +125,6 @@
      "addressable_gap": {
       "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -147,7 +134,6 @@
      "award_trend": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "ratio",
@@ -157,7 +143,6 @@
      "completions": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -167,7 +152,6 @@
      "enrollment": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
@@ -177,7 +161,6 @@
      "enrollment_trend": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "ratio",
@@ -187,7 +170,6 @@
      "supply_share": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges) \u00f7 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "fraction",
@@ -197,7 +179,6 @@
      "wage_after_2": {
       "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "$/yr",
@@ -207,7 +188,6 @@
      "wage_after_5": {
       "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "$/yr",
@@ -217,7 +197,6 @@
      "wage_lift": {
       "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "$/yr",
@@ -233,7 +212,6 @@
      "addressable_demand": {
       "granularity": "regional (Bay Area)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -243,7 +221,6 @@
      "addressable_gap": {
       "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
@@ -253,7 +230,6 @@
      "award_trend": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "ratio",
@@ -263,7 +239,6 @@
      "completions": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -273,7 +248,6 @@
      "enrollment": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
@@ -283,7 +257,6 @@
      "enrollment_trend": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "unavailable",
       "unit": "ratio",
@@ -293,7 +266,6 @@
      "supply_share": {
       "granularity": "institutional \u2014 district (\u03a3 3 colleges) \u00f7 regional (Bay Area) \u2014 all 26 colleges",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "fraction",
@@ -303,7 +275,6 @@
      "wage_after_2": {
       "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "$/yr",
@@ -313,7 +284,6 @@
      "wage_after_5": {
       "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "$/yr",
@@ -323,7 +293,6 @@
      "wage_lift": {
       "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "$/yr",
@@ -343,7 +312,6 @@
    "units_compared": {
     "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "derived",
     "status": "ok",
     "unit": "programs",
@@ -376,7 +344,6 @@
     "lens": "",
     "member": "smccd",
     "member_label": "San Mateo County CCD",
-    "predicate_version": "",
     "region": null,
     "sector": "adm",
     "sector_label": "Advanced Manufacturing",

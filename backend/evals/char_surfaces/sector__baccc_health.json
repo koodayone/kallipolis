@@ -4,7 +4,6 @@
   "lens": "",
   "member": "baccc",
   "member_label": "Bay Area Community College Consortium",
-  "predicate_version": "",
   "region": "Bay Area",
   "sector": "health",
   "sector_label": "Health",
@@ -19,7 +18,6 @@
      "lens": "",
      "member": "baccc",
      "member_label": "Bay Area Community College Consortium",
-     "predicate_version": "",
      "region": null,
      "sector": "health",
      "sector_label": "Health",
@@ -39,7 +37,6 @@
      "addressable_demand": {
       "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -49,7 +46,6 @@
      "colleges_with_program": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges",
@@ -59,7 +55,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -69,7 +64,6 @@
      "occupations_fed": {
       "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "SOCs",
@@ -85,7 +79,6 @@
      "addressable_demand": {
       "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -95,7 +88,6 @@
      "colleges_with_program": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges",
@@ -105,7 +97,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -115,7 +106,6 @@
      "occupations_fed": {
       "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "SOCs",
@@ -131,7 +121,6 @@
      "addressable_demand": {
       "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -141,7 +130,6 @@
      "colleges_with_program": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges",
@@ -151,7 +139,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -161,7 +148,6 @@
      "occupations_fed": {
       "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "SOCs",
@@ -177,7 +163,6 @@
      "addressable_demand": {
       "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -187,7 +172,6 @@
      "colleges_with_program": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges",
@@ -197,7 +181,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -207,7 +190,6 @@
      "occupations_fed": {
       "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "SOCs",
@@ -223,7 +205,6 @@
      "addressable_demand": {
       "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -233,7 +214,6 @@
      "colleges_with_program": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges",
@@ -243,7 +223,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -253,7 +232,6 @@
      "occupations_fed": {
       "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "SOCs",
@@ -269,7 +247,6 @@
      "addressable_demand": {
       "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -279,7 +256,6 @@
      "colleges_with_program": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges",
@@ -289,7 +265,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -299,7 +274,6 @@
      "occupations_fed": {
       "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "SOCs",
@@ -315,7 +289,6 @@
      "addressable_demand": {
       "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -325,7 +298,6 @@
      "colleges_with_program": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges",
@@ -335,7 +307,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -345,7 +316,6 @@
      "occupations_fed": {
       "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "SOCs",
@@ -361,7 +331,6 @@
      "addressable_demand": {
       "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
@@ -371,7 +340,6 @@
      "colleges_with_program": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "colleges",
@@ -381,7 +349,6 @@
      "member_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
@@ -391,7 +358,6 @@
      "occupations_fed": {
       "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
       "parent_vintages": [],
-      "predicate_version": "",
       "source": "derived",
       "status": "ok",
       "unit": "SOCs",
@@ -406,7 +372,6 @@
    "gap": {
     "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "derived",
     "status": "ok",
     "unit": "openings/yr",
@@ -416,7 +381,6 @@
    "in_demand_occupations": {
     "granularity": "in a real, quality market (regional openings + near-living-wage + non-declining)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "derived",
     "status": "ok",
     "unit": "SOCs",
@@ -426,7 +390,6 @@
    "in_demand_openings": {
     "granularity": "regional (Bay Area) \u2014 the in-demand occupations",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
@@ -434,9 +397,8 @@
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
    },
    "member_programs": {
-    "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+    "granularity": "institutional \u2014 consortium (\u03a3 26 colleges) \u00b7 on-the-books (registered \u2229 in_scope)",
     "parent_vintages": [],
-    "predicate_version": "on-the-books (registered \u2229 in_scope)",
     "source": "derived",
     "status": "ok",
     "unit": "TOP6 programs the member runs",
@@ -444,9 +406,8 @@
     "vintage": ""
    },
    "member_programs_active": {
-    "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+    "granularity": "institutional \u2014 consortium (\u03a3 26 colleges) \u00b7 awards-active (latest-year completer)",
     "parent_vintages": [],
-    "predicate_version": "awards-active (latest-year completer)",
     "source": "derived",
     "status": "ok",
     "unit": "TOP6 programs currently graduating",
@@ -456,7 +417,6 @@
    "member_share_of_supply": {
     "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "derived",
     "status": "ok",
     "unit": "fraction of regional supply",
@@ -466,7 +426,6 @@
    "member_supply": {
     "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
@@ -476,7 +435,6 @@
    "regional_demand": {
     "granularity": "regional (Bay Area)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
@@ -486,7 +444,6 @@
    "regional_supply": {
     "granularity": "regional (Bay Area) \u2014 all 26 colleges",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
@@ -496,7 +453,6 @@
    "sector_occupations": {
     "granularity": "Health sector (PCAH)",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "derived",
     "status": "ok",
     "unit": "SOCs",
@@ -506,7 +462,6 @@
    "served_occupations": {
     "granularity": "the member reaches with a program and actively graduates into",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "derived",
     "status": "ok",
     "unit": "SOCs",
@@ -516,7 +471,6 @@
    "served_openings": {
     "granularity": "regional (Bay Area) \u2014 the occupations the member serves",
     "parent_vintages": [],
-    "predicate_version": "",
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
@@ -549,7 +503,6 @@
     "lens": "",
     "member": "baccc",
     "member_label": "Bay Area Community College Consortium",
-    "predicate_version": "",
     "region": null,
     "sector": "health",
     "sector_label": "Health",
@@ -565,7 +518,6 @@
     "lens": "gaps",
     "member": "baccc",
     "member_label": "Bay Area Community College Consortium",
-    "predicate_version": "",
     "region": null,
     "sector": "health",
     "sector_label": "Health",
@@ -581,7 +533,6 @@
     "lens": "greenfield",
     "member": "baccc",
     "member_label": "Bay Area Community College Consortium",
-    "predicate_version": "",
     "region": null,
     "sector": "health",
     "sector_label": "Health",
