@@ -44,7 +44,7 @@ from ontology.programs import get_wage_outcomes
 
 from partnerships.graph_reads import regional_demand
 from partnerships.landscape import (
-    LandscapeSpec, SVAMP_SPEC, _term_excluded, _term_sort_key,
+    LandscapeSpec, SVAMP_SPEC, _AM_EXCLUDED_TOPS, _term_excluded, _term_sort_key,
 )
 from partnerships.quantities import gap as compute_gap, supply_fn_graph
 
@@ -100,7 +100,10 @@ SVAMP_TOP_DIVISION: str = SVAMP_SPEC.top_divisions[0]
 # Boundary programs the director has NOT ruled on stay in (e.g. 094840
 # Alternative Fuels & Advanced Transportation, 094610 Energy Systems) — add
 # them here if the mandate later excludes them.
-SVAMP_MANDATE_EXCLUDED_TOPS: frozenset[str] = SVAMP_SPEC.excluded_tops
+# The director's-mandate charter (HVAC/Auto). Bound to the charter constant directly: SVAMP_SPEC.excluded_tops
+# now carries the AM sector's crosswalk-noise drops (the charter lives in the Composition), so this name — the
+# mandate — reads _AM_EXCLUDED_TOPS. The full out-of-scope set is SVAMP_SPEC.effective_program_excludes.
+SVAMP_MANDATE_EXCLUDED_TOPS: frozenset[str] = _AM_EXCLUDED_TOPS
 
 
 def is_svamp_top(top6: str | None) -> bool:

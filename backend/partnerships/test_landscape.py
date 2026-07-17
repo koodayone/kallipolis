@@ -19,6 +19,7 @@ Coverage:
   - draft disabled when unset/empty/off; enabled only for 1/true/yes/on
   - routable_specs filters a draft spec when disabled, includes it when enabled
   - a published spec routes regardless of the draft flag
+  - SVAMP's program-scope derives from the AM sector (crosswalk-noise leak regression guard)
 """
 
 import partnerships.landscape as landscape
@@ -80,3 +81,27 @@ def test_published_spec_routes_regardless_of_flag(monkeypatch):
     monkeypatch.setitem(landscape.REGISTRY, pub.id, pub)
     monkeypatch.setenv("KALLIPOLIS_DRAFT_LANDSCAPES", "0")
     assert pub.id in {s.id for s in routable_specs()}
+
+
+def test_svamp_program_scope_derives_from_am_sector():
+    """SVAMP is member×sector + Composition: its program-scope universe DERIVES from the AM sector, not a
+    hand-copy, so it can't drift from /smccd-adm. Regression guard for the crosswalk-noise leak — IT (070100…)
+    and Commercial Music (100500) bled into Advanced Manufacturing when SVAMP's cutover to vocational=True
+    dropped its division wall without picking up the sector's audited noise drops."""
+    from partnerships.landscape import SVAMP_SPEC
+    from partnerships.sectors import SECTORS
+    adm = SECTORS["adm"]
+    # Sector-scope fields come from the sector (one birthplace), never a literal re-listing.
+    assert SVAMP_SPEC.excluded_tops == adm.excluded_tops
+    assert SVAMP_SPEC.home_divisions == adm.home_divisions
+    # The effective out-of-scope set = the sector's crosswalk-noise ∪ SVAMP's charter (HVAC/Auto/Biotech).
+    assert SVAMP_SPEC.effective_program_excludes == (
+        frozenset(adm.excluded_tops) | frozenset({"094600", "094800", "043000"})
+    )
+    scope = set(SVAMP_SPEC.in_scope_tops())
+    # No audited AM crosswalk-noise survives the scope gate (the leak).
+    assert not (scope & adm.excluded_tops), sorted(scope & adm.excluded_tops)
+    # The charter still stays out; core AM stays in.
+    assert not SVAMP_SPEC.in_scope("094600")   # HVAC (charter)
+    assert not SVAMP_SPEC.in_scope("094800")   # Automotive (charter)
+    assert SVAMP_SPEC.in_scope("095630")       # Machining — core AM
