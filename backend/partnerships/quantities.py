@@ -41,6 +41,7 @@ Caches are process-lifetime (refresh on a graph reload), matching landscape_buil
 """
 from __future__ import annotations
 
+from collections import defaultdict
 from dataclasses import dataclass
 from functools import lru_cache
 
@@ -83,7 +84,7 @@ def _soc_feeders(colleges: tuple[str, ...], spec=None) -> dict[str, frozenset[st
     # resolve one feeder set. Curated specs (SVAMP) carry no rule and keep the full in_scope set.
     rule = getattr(spec, "soc_rule", None) if spec is not None else None
     if rule is not None and getattr(rule, "active", False):
-        offered = set(producing_tops(colleges, offered, years=recent_award_years(1)))
+        offered = set(producing_tops(colleges, offered))
     soc_map = top6_to_soc(list(offered))
     gate = spec.in_scope if spec is not None else is_vocational
     out: dict[str, set] = {}
@@ -106,16 +107,26 @@ def _awarded_by_top(colleges: tuple[str, ...], years: tuple[str, ...]) -> dict[s
     return {r["t"]: r["n"] for r in rows}
 
 
-def producing_tops(colleges, candidate_tops, *, years) -> frozenset[str]:
-    """The candidate TOP6s that are PRODUCING over ``years`` — >=1 completer at any member college. The
-    ONE eligibility gate the surfaces share: resolve()'s occupation-grain ``active_tops``, relevant_tops'
-    program-grain ``_awarded_tops``, and ``_soc_feeders``' supply-feeder gate all resolve here, so the
-    "which programs count" decision has a single home. Compat window today = the latest year (callers pass
-    ``recent_award_years(1)``), reproducing those three verbatim; Step 2 widens the window and unions in
-    enrollment in THIS one place. Award counts are non-negative, so sum-over-window > 0 is exactly "has an
-    awarded completer" (identical to the old per-edge ``count > 0`` gates)."""
-    aw = _awarded_by_top(tuple(sorted(set(colleges))), tuple(years))
-    return frozenset(t for t in candidate_tops if aw.get(t, 0) > 0)
+# The ACTIVE window (Step 2): a program counts as a supporting program if it produced completers in the last
+# 3 award years OR has enrolled students in a recent term. Enrollment makes a live-but-not-yet-graduating
+# program visible (future supply); only completers ever count toward SUPPLY — this gate decides visibility,
+# not quantity. One policy, ONE place: the whole eligibility surface widened here. Awards ⟂ enrollment come
+# from separate exports with holes both ways (a program can graduate with no enrollment on record, or enroll
+# with no awards yet), so it is a UNION — either signal keeps a program. The windows reuse the canonical
+# recent_award_years / recent_enrollment_terms helpers, so the gate sees the same terms the displayed series do.
+_ACTIVE_AWARD_YEARS = 3
+
+
+def producing_tops(colleges, candidate_tops) -> frozenset[str]:
+    """The candidate TOP6s that are ACTIVE — recent completers OR recent enrollment, at any member college.
+    The ONE eligibility gate: resolve()'s occupation-grain active set, relevant_tops' program-grain gate,
+    and ``_soc_feeders``' supply-feeder gate all resolve here, so "which programs count" has a single home.
+    Award counts are non-negative, so sum-over-window > 0 is exactly "has a completer"; enrollment is the
+    union partner (visibility only — supply stays completers-only downstream)."""
+    cs = tuple(sorted(set(colleges)))
+    aw = _awarded_by_top(cs, tuple(recent_award_years(_ACTIVE_AWARD_YEARS)))
+    en = _enrolled_by_top(cs, tuple(recent_enrollment_terms()))
+    return frozenset(t for t in candidate_tops if aw.get(t, 0) > 0 or en.get(t, 0) > 0)
 
 
 @lru_cache(maxsize=512)
@@ -130,17 +141,36 @@ def _awarded_by_top_college(colleges: tuple[str, ...], years: tuple[str, ...]) -
     return {(r["t"], r["col"]): r["n"] for r in rows}
 
 
-def producing_top_colleges(colleges, candidate_tops, *, years) -> dict[str, frozenset[str]]:
-    """{top6 -> the member colleges PRODUCING it over ``years``} — the per-college companion to
-    ``producing_tops``, for resolve()'s consortium floor (distinct producing colleges per occupation). Same
-    gate, same window, so active_tops and this stay consistent (a top produces overall iff >=1 college does).
-    Step 2 widens the window and adds enrollment here in lockstep with ``producing_tops``."""
-    bc = _awarded_by_top_college(tuple(sorted(set(colleges))), tuple(years))
-    out: dict[str, set] = {}
+@lru_cache(maxsize=512)
+def _enrolled_by_top_college(colleges: tuple[str, ...], terms: tuple[str, ...]) -> dict[tuple[str, str], int]:
+    """{(top6, college) -> enrollment over ``terms``} — the per-college enrollment grain (the college twin
+    of ``_enrolled_by_top``, for resolve()'s consortium floor)."""
+    if not terms:
+        return {}
+    with get_driver().session() as s:
+        rows = s.run(
+            "MATCH (p:Program)-[e:ENROLLED]->(t:Term) "
+            "WHERE p.college IN $c AND t.term IN $terms "
+            "RETURN p.top6 AS t, p.college AS col, toInteger(sum(coalesce(e.count, 0))) AS n",
+            c=list(colleges), terms=list(terms)).data()
+    return {(r["t"], r["col"]): r["n"] for r in rows}
+
+
+def producing_top_colleges(colleges, candidate_tops) -> dict[str, frozenset[str]]:
+    """{top6 -> the member colleges where it is ACTIVE (recent completers OR enrollment)} — the per-college
+    companion to ``producing_tops``, for resolve()'s consortium floor (distinct active colleges per
+    occupation). Same active windows + union definition, so the set and this stay consistent."""
+    cs = tuple(sorted(set(colleges)))
+    bc = _awarded_by_top_college(cs, tuple(recent_award_years(_ACTIVE_AWARD_YEARS)))
+    ec = _enrolled_by_top_college(cs, tuple(recent_enrollment_terms()))
     cand = set(candidate_tops)
+    out: dict[str, set] = defaultdict(set)
     for (t, col), n in bc.items():
         if t in cand and n > 0:
-            out.setdefault(t, set()).add(col)
+            out[t].add(col)
+    for (t, col), n in ec.items():
+        if t in cand and n > 0:
+            out[t].add(col)
     return {t: frozenset(c) for t, c in out.items()}
 
 
@@ -488,9 +518,9 @@ def member_sector_programs(colleges, spec) -> tuple[list[str], list[str]]:
 
 
 def active_feeders(colleges, soc: str) -> frozenset[str]:
-    """A SOC's supporting programs WITH CURRENT SUPPLY — is_vocational crosswalk feeders that
-    awarded a completer in the latest year. Mirrors the builders' `_awarded_tops` gate, so
-    occupation_profile's supporting-program set matches program_pathways/program_coverage
-    (a program on the books but dormant, e.g. 123000 Nursing, is excluded here as it is there)."""
-    return frozenset(t for t in feeders(colleges, soc)
-                     if colleges_actively_awarding(colleges, t) > 0)
+    """A SOC's ACTIVE supporting programs — is_vocational crosswalk feeders that are active (recent
+    completers OR recent enrollment). Resolves through the shared ``producing_tops`` gate, the same one
+    the builders' ``_awarded_tops`` and resolve()'s active set use, so occupation_profile's supporting-
+    program set matches program_pathways / program_coverage by construction (a program on the books but
+    fully dormant — no recent completers AND no enrollment — is excluded here as it is there)."""
+    return producing_tops(colleges, feeders(colleges, soc))

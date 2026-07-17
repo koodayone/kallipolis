@@ -127,6 +127,62 @@
     }
    },
    {
+    "label": "17-3023 Electrical and Electronic Engineering Technologists and Technicians",
+    "roster": [],
+    "values": {
+     "gap": {
+      "granularity": "regional openings \u2212 regional supply",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 27,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "latest_year_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions",
+      "value": 0.0,
+      "vintage": "DataMart completions \u2014 2024-2025"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "regional_demand": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 430,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "regional_supply": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 403.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
     "label": "17-3026 Industrial Engineering Technologists and Technicians",
     "roster": [],
     "values": {
@@ -181,6 +237,62 @@
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
+   },
+   {
+    "label": "17-3024 Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "roster": [],
+    "values": {
+     "gap": {
+      "granularity": "regional openings \u2212 regional supply",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": -333,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "latest_year_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions",
+      "value": 0.0,
+      "vintage": "DataMart completions \u2014 2024-2025"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "regional_demand": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 80,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "regional_supply": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 412.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
    }
   ],
   "sorted_by": null,
@@ -192,7 +304,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 777,
+    "value": 1079,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "latest_year_supply": {
@@ -222,7 +334,7 @@
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 1210,
+    "value": 1720,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
    },
    "regional_supply": {
@@ -232,7 +344,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 433.3,
+    "value": 640.7,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    }
   }

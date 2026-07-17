@@ -89,7 +89,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 249.7,
+      "value": 250.7,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "supply_share": {
@@ -125,7 +125,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 200.3,
+      "value": 215.7,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "supply_share": {
@@ -161,7 +161,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 198.7,
+      "value": 199.0,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "supply_share": {
@@ -197,7 +197,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 172.7,
+      "value": 173.0,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "supply_share": {
@@ -269,7 +269,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 142.7,
+      "value": 144.7,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "supply_share": {

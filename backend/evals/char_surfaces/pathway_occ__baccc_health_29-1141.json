@@ -372,6 +372,261 @@
       "vintage": ""
      }
     }
+   },
+   {
+    "label": "123000 Nursing",
+    "roster": [
+     {
+      "label": "Chabot College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "City College of San Francisco",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "College of Marin",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "De Anza College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Evergreen Valley College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Gavilan College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Mission College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Napa Valley College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "actual_awards": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "awards",
+      "value": 0,
+      "vintage": ""
+     },
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (latest yr)",
+      "value": 0,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 8,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 395,
+      "vintage": ""
+     }
+    }
    }
   ],
   "sorted_by": null,
@@ -393,7 +648,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 4472,
+    "value": 4471,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "latest_year_supply": {
@@ -413,7 +668,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 688.0,
+    "value": 688.7,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "regional_demand": {
@@ -433,7 +688,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 688.0,
+    "value": 688.7,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    }
   }

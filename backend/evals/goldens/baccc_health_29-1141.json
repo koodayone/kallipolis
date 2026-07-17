@@ -1,20 +1,38 @@
 {
  "builder": {
   "annual_openings": 5160,
-  "consortium_supply": 688.0,
+  "consortium_supply": 688.7,
   "feeding_tops": [
+   "123000",
    "123010"
   ],
-  "gap": 4472
+  "gap": 4471
  },
  "canonical": {
   "active_feeders": [
+   "123000",
    "123010"
   ],
   "feeders": [
+   "123000",
    "123010"
   ],
   "rosters": {
+   "123000": {
+    "colleges_with_program": [
+     "Chabot College",
+     "City College of San Francisco",
+     "College of Marin",
+     "De Anza College",
+     "Evergreen Valley College",
+     "Gavilan College",
+     "Mission College",
+     "Napa Valley College"
+    ],
+    "n_active": 0,
+    "n_covered": 0,
+    "n_with_program": 8
+   },
    "123010": {
     "colleges_with_program": [
      "Cabrillo College",
@@ -39,9 +57,9 @@
     "n_with_program": 16
    }
   },
-  "sector_supply_over_socs": 2230.7,
+  "sector_supply_over_socs": 2231.3,
   "supply_1yr": 701.0,
-  "supply_3yr": 688.0
+  "supply_3yr": 688.7
  },
  "colleges_n": 26,
  "in_scope": true,

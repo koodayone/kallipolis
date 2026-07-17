@@ -12,8 +12,235 @@
   "top6": null
  },
  "data": {
-  "more": null,
-  "rows": [],
+  "more": {
+   "drill": {
+    "coordinate": {
+     "entity": "17-3023",
+     "lens": "employers",
+     "member": "deanza",
+     "member_label": "De Anza College",
+     "predicate_version": "",
+     "region": "Bay",
+     "sector": "adm",
+     "sector_label": "Advanced Manufacturing",
+     "soc": "17-3023",
+     "top6": null
+    },
+    "form": "navigate",
+    "rationale": "16 more rows; re-call navigate scoped to one row to drill in."
+   },
+   "remaining": 16
+  },
+  "rows": [
+   {
+    "label": "MASS Precision",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 8.8,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Milgard Manufacturing",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 8.8,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Arm",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 8.3,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "California Eastern Lab",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 8.3,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Cirexx International",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 8.3,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Coherent",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 8.3,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Horizon Robotics",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 8.3,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Jameco Electronics",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 8.3,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   }
+  ],
   "sorted_by": null,
   "summary": {
    "candidate_employers": {
@@ -33,7 +260,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "employers plotted",
-    "value": 0,
+    "value": 24,
     "vintage": ""
    }
   }

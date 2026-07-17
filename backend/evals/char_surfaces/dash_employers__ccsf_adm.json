@@ -8,17 +8,19 @@
    "naics4": "3327",
    "naics_title": "Machine Shops; Turned Product; and Screw, Nut, and Bolt Manufacturing",
    "name": "All FAB Precision Sheetmetal",
-   "relevance": 22.1,
+   "relevance": 23.3,
    "sector": "Construction",
    "size_class": null,
    "size_rank": 0,
-   "soc_count": 2,
+   "soc_count": 3,
    "soc_titles": {
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists"
    },
    "socs": [
     "51-4041",
+    "49-9041",
     "17-3026"
    ],
    "website": "https://www.allfabprecision.com/"
@@ -31,15 +33,16 @@
    "naics4": "3344",
    "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
    "name": "Arm",
-   "relevance": 12.7,
+   "relevance": 14.5,
    "sector": "Manufacturing",
    "size_class": null,
    "size_rank": 0,
-   "soc_count": 5,
+   "soc_count": 6,
    "soc_titles": {
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists",
     "51-9141": "Semiconductor Processing Technicians"
    },
@@ -47,6 +50,7 @@
     "51-9141",
     "17-3023",
     "17-3026",
+    "49-9041",
     "51-4041",
     "17-3024"
    ],
@@ -60,15 +64,16 @@
    "naics4": "3344",
    "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
    "name": "California Eastern Lab",
-   "relevance": 12.7,
+   "relevance": 14.5,
    "sector": "Manufacturing",
    "size_class": null,
    "size_rank": 0,
-   "soc_count": 5,
+   "soc_count": 6,
    "soc_titles": {
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists",
     "51-9141": "Semiconductor Processing Technicians"
    },
@@ -76,6 +81,7 @@
     "51-9141",
     "17-3023",
     "17-3026",
+    "49-9041",
     "51-4041",
     "17-3024"
    ],
@@ -89,15 +95,16 @@
    "naics4": "3344",
    "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
    "name": "Cirexx International",
-   "relevance": 12.7,
+   "relevance": 14.5,
    "sector": "Manufacturing",
    "size_class": null,
    "size_rank": 0,
-   "soc_count": 5,
+   "soc_count": 6,
    "soc_titles": {
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists",
     "51-9141": "Semiconductor Processing Technicians"
    },
@@ -105,6 +112,7 @@
     "51-9141",
     "17-3023",
     "17-3026",
+    "49-9041",
     "51-4041",
     "17-3024"
    ],
@@ -118,15 +126,16 @@
    "naics4": "3344",
    "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
    "name": "Coherent",
-   "relevance": 12.7,
+   "relevance": 14.5,
    "sector": "Wholesale",
    "size_class": null,
    "size_rank": 0,
-   "soc_count": 5,
+   "soc_count": 6,
    "soc_titles": {
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists",
     "51-9141": "Semiconductor Processing Technicians"
    },
@@ -134,6 +143,7 @@
     "51-9141",
     "17-3023",
     "17-3026",
+    "49-9041",
     "51-4041",
     "17-3024"
    ],
@@ -147,15 +157,16 @@
    "naics4": "3344",
    "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
    "name": "Horizon Robotics",
-   "relevance": 12.7,
+   "relevance": 14.5,
    "sector": "Professional Services",
    "size_class": null,
    "size_rank": 0,
-   "soc_count": 5,
+   "soc_count": 6,
    "soc_titles": {
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists",
     "51-9141": "Semiconductor Processing Technicians"
    },
@@ -163,6 +174,7 @@
     "51-9141",
     "17-3023",
     "17-3026",
+    "49-9041",
     "51-4041",
     "17-3024"
    ],
@@ -176,15 +188,16 @@
    "naics4": "3344",
    "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
    "name": "Jameco Electronics",
-   "relevance": 12.7,
+   "relevance": 14.5,
    "sector": "Manufacturing",
    "size_class": "100-249 employees",
    "size_rank": 6,
-   "soc_count": 5,
+   "soc_count": 6,
    "soc_titles": {
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists",
     "51-9141": "Semiconductor Processing Technicians"
    },
@@ -192,6 +205,7 @@
     "51-9141",
     "17-3023",
     "17-3026",
+    "49-9041",
     "51-4041",
     "17-3024"
    ],
@@ -205,15 +219,16 @@
    "naics4": "3344",
    "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
    "name": "Leemah Electronics",
-   "relevance": 12.7,
+   "relevance": 14.5,
    "sector": "Manufacturing",
    "size_class": "100-249 employees",
    "size_rank": 6,
-   "soc_count": 5,
+   "soc_count": 6,
    "soc_titles": {
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists",
     "51-9141": "Semiconductor Processing Technicians"
    },
@@ -221,6 +236,7 @@
     "51-9141",
     "17-3023",
     "17-3026",
+    "49-9041",
     "51-4041",
     "17-3024"
    ],
@@ -234,19 +250,21 @@
    "naics4": "3329",
    "naics_title": "Other Fabricated Metal Product Manufacturing",
    "name": "MASS Precision",
-   "relevance": 7.5,
+   "relevance": 8.8,
    "sector": "Construction",
    "size_class": null,
    "size_rank": 0,
-   "soc_count": 4,
+   "soc_count": 5,
    "soc_titles": {
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists"
    },
    "socs": [
     "51-4041",
+    "49-9041",
     "17-3026",
     "17-3023",
     "17-3024"
@@ -261,19 +279,21 @@
    "naics4": "3323",
    "naics_title": "Architectural and Structural Metals Manufacturing",
    "name": "Milgard Manufacturing",
-   "relevance": 7.5,
+   "relevance": 8.8,
    "sector": "Manufacturing",
    "size_class": null,
    "size_rank": 0,
-   "soc_count": 4,
+   "soc_count": 5,
    "soc_titles": {
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists"
    },
    "socs": [
     "51-4041",
+    "49-9041",
     "17-3026",
     "17-3023",
     "17-3024"
@@ -288,24 +308,76 @@
    "naics4": "3334",
    "naics_title": "Ventilation, Heating, Air-Conditioning, and Commercial Refrigeration Equipment Manufacturing",
    "name": "Rheem Manufacturing",
-   "relevance": 6.1,
+   "relevance": 8.2,
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 4,
+   "soc_count": 5,
    "soc_titles": {
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists"
    },
    "socs": [
     "51-4041",
+    "49-9041",
     "17-3026",
     "17-3023",
     "17-3024"
    ],
    "website": "https://www.rheem.com"
+  },
+  {
+   "description": "San Benito Foods, located in Hollister, California, is a century-old manufacturer and co-packer of traditional and organic canned tomato products. They serve foodservice distributors and private label customers nationwide, processing fresh California tomatoes into over 100 different items, employing up to 500 during peak season.",
+   "display_name": null,
+   "lat": 36.8,
+   "lng": -121.4,
+   "naics4": "3114",
+   "naics_title": "Fruit and Vegetable Preserving and Specialty Food Manufacturing",
+   "name": "San Benito Foods",
+   "relevance": 5.1,
+   "sector": "Manufacturing",
+   "size_class": null,
+   "size_rank": 0,
+   "soc_count": 3,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics"
+   },
+   "socs": [
+    "49-9041",
+    "17-3026",
+    "17-3023"
+   ],
+   "website": "https://www.neiljonesfoodcompany.com/"
+  },
+  {
+   "description": "The Marzetti Company manufactures a variety of food products including sauces, dressings, dips, breads, and pastas. They serve both retail consumers with brands like Marzetti\u00ae and New York Bakery\u00ae, and foodservice partners such as Chick-fil-A\u00ae and Olive Garden\u00ae, bringing flavor and quality to kitchens.",
+   "display_name": null,
+   "lat": 37.4,
+   "lng": -121.9,
+   "naics4": "3114",
+   "naics_title": "Fruit and Vegetable Preserving and Specialty Food Manufacturing",
+   "name": "T Marzetti",
+   "relevance": 5.1,
+   "sector": "Manufacturing",
+   "size_class": null,
+   "size_rank": 0,
+   "soc_count": 3,
+   "soc_titles": {
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics"
+   },
+   "socs": [
+    "49-9041",
+    "17-3026",
+    "17-3023"
+   ],
+   "website": "https://www.marzetticompany.com/"
   },
   {
    "description": "BAI, Inc. (Banner Aircraft International) is an aerospace and defense parts distributor supplying certified fasteners, bearings, electrical components, engine parts, and life support systems for military and commercial aircraft platforms including the F-15, F-16, and C-130. The company holds ISO 9001:2015 certification and FAA AC 00-56B compliance, and distributes components from authorized U.S. manufacturers to customers including the Japanese Ministry of Defense. With over 60 years of industry experience, BAI employs staff in logistics, quality assurance, and supply-chain operations supporting aerospace MRO and defense programs.",
@@ -315,15 +387,16 @@
    "naics4": "3345",
    "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
    "name": "Bai",
-   "relevance": 4.5,
+   "relevance": 5.0,
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 5,
+   "soc_count": 6,
    "soc_titles": {
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists",
     "51-9141": "Semiconductor Processing Technicians"
    },
@@ -331,6 +404,7 @@
     "51-4041",
     "17-3023",
     "17-3026",
+    "49-9041",
     "17-3024",
     "51-9141"
    ],
@@ -344,15 +418,16 @@
    "naics4": "3345",
    "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
    "name": "Celldom",
-   "relevance": 4.5,
+   "relevance": 5.0,
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 5,
+   "soc_count": 6,
    "soc_titles": {
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists",
     "51-9141": "Semiconductor Processing Technicians"
    },
@@ -360,6 +435,7 @@
     "51-4041",
     "17-3023",
     "17-3026",
+    "49-9041",
     "17-3024",
     "51-9141"
    ],
@@ -373,15 +449,16 @@
    "naics4": "3345",
    "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
    "name": "Galvanize Therapeutics",
-   "relevance": 4.5,
+   "relevance": 5.0,
    "sector": "Manufacturing",
    "size_class": "100-249 employees",
    "size_rank": 6,
-   "soc_count": 5,
+   "soc_count": 6,
    "soc_titles": {
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists",
     "51-9141": "Semiconductor Processing Technicians"
    },
@@ -389,6 +466,7 @@
     "51-4041",
     "17-3023",
     "17-3026",
+    "49-9041",
     "17-3024",
     "51-9141"
    ],
@@ -402,15 +480,16 @@
    "naics4": "3345",
    "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
    "name": "General Radar Corporation",
-   "relevance": 4.5,
+   "relevance": 5.0,
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 5,
+   "soc_count": 6,
    "soc_titles": {
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists",
     "51-9141": "Semiconductor Processing Technicians"
    },
@@ -418,6 +497,7 @@
     "51-4041",
     "17-3023",
     "17-3026",
+    "49-9041",
     "17-3024",
     "51-9141"
    ],
@@ -431,15 +511,16 @@
    "naics4": "3345",
    "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
    "name": "Northstar Photonics",
-   "relevance": 4.5,
+   "relevance": 5.0,
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 5,
+   "soc_count": 6,
    "soc_titles": {
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists",
     "51-9141": "Semiconductor Processing Technicians"
    },
@@ -447,6 +528,7 @@
     "51-4041",
     "17-3023",
     "17-3026",
+    "49-9041",
     "17-3024",
     "51-9141"
    ],
@@ -460,15 +542,16 @@
    "naics4": "3345",
    "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
    "name": "Soleno Therapeutics",
-   "relevance": 4.5,
+   "relevance": 5.0,
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 5,
+   "soc_count": 6,
    "soc_titles": {
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists",
     "51-9141": "Semiconductor Processing Technicians"
    },
@@ -476,6 +559,7 @@
     "51-4041",
     "17-3023",
     "17-3026",
+    "49-9041",
     "17-3024",
     "51-9141"
    ],
@@ -489,20 +573,22 @@
    "naics4": "3364",
    "naics_title": "Aerospace Product and Parts Manufacturing",
    "name": "Elroy Air",
-   "relevance": 4.0,
+   "relevance": 4.9,
    "sector": "Manufacturing",
    "size_class": "100-249 employees",
    "size_rank": 6,
-   "soc_count": 5,
+   "soc_count": 6,
    "soc_titles": {
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists",
     "51-9141": "Semiconductor Processing Technicians"
    },
    "socs": [
     "51-4041",
+    "49-9041",
     "17-3026",
     "17-3023",
     "17-3024",
@@ -518,20 +604,22 @@
    "naics4": "3391",
    "naics_title": "Medical Equipment and Supplies Manufacturing",
    "name": "Artio Medical",
-   "relevance": 3.4,
+   "relevance": 4.1,
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 4,
+   "soc_count": 5,
    "soc_titles": {
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists"
    },
    "socs": [
     "51-4041",
     "17-3026",
+    "49-9041",
     "17-3023",
     "17-3024"
    ],
@@ -545,20 +633,22 @@
    "naics4": "3391",
    "naics_title": "Medical Equipment and Supplies Manufacturing",
    "name": "Cutera",
-   "relevance": 3.4,
+   "relevance": 4.1,
    "sector": "Manufacturing",
    "size_class": "100-249 employees",
    "size_rank": 6,
-   "soc_count": 4,
+   "soc_count": 5,
    "soc_titles": {
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists"
    },
    "socs": [
     "51-4041",
     "17-3026",
+    "49-9041",
     "17-3023",
     "17-3024"
    ],
@@ -572,20 +662,22 @@
    "naics4": "3391",
    "naics_title": "Medical Equipment and Supplies Manufacturing",
    "name": "Intravu",
-   "relevance": 3.4,
+   "relevance": 4.1,
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 4,
+   "soc_count": 5,
    "soc_titles": {
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists"
    },
    "socs": [
     "51-4041",
     "17-3026",
+    "49-9041",
     "17-3023",
     "17-3024"
    ],
@@ -599,34 +691,7 @@
    "naics4": "3391",
    "naics_title": "Medical Equipment and Supplies Manufacturing",
    "name": "Tosoh SMD",
-   "relevance": 3.4,
-   "sector": "Manufacturing",
-   "size_class": "50-99 employees",
-   "size_rank": 5,
-   "soc_count": 4,
-   "soc_titles": {
-    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
-    "17-3026": "Industrial Engineering Technologists and Technicians",
-    "51-4041": "Machinists"
-   },
-   "socs": [
-    "51-4041",
-    "17-3026",
-    "17-3023",
-    "17-3024"
-   ],
-   "website": "https://www.tosohsmd.com/"
-  },
-  {
-   "description": "Aechelon Technology provides simulation and training solutions.",
-   "display_name": null,
-   "lat": 37.7,
-   "lng": -122.4,
-   "naics4": "3341",
-   "naics_title": "Computer and Peripheral Equipment Manufacturing",
-   "name": "Aechelon Technology",
-   "relevance": 2.3,
+   "relevance": 4.1,
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
@@ -635,71 +700,46 @@
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
-    "51-4041": "Machinists",
-    "51-9141": "Semiconductor Processing Technicians"
+    "49-9041": "Industrial Machinery Mechanics",
+    "51-4041": "Machinists"
    },
    "socs": [
-    "17-3023",
-    "17-3026",
-    "51-9141",
     "51-4041",
+    "17-3026",
+    "49-9041",
+    "17-3023",
     "17-3024"
    ],
-   "website": "https://aechelon.com/"
+   "website": "https://www.tosohsmd.com/"
   },
   {
-   "description": "Silicon Valley Power is a municipal electric utility serving residents and businesses in Santa Clara, California. It provides reliable electric service, manages utility accounts, and promotes sustainability through rebates for energy efficiency, electric vehicles, and solar programs.",
+   "description": "A company providing packaging solutions.",
    "display_name": null,
-   "lat": 37.4,
-   "lng": -122.0,
-   "naics4": "2211",
-   "naics_title": "Electric Power Generation, Transmission and Distribution",
-   "name": "Silicon Valley Power",
-   "relevance": 1.4,
-   "sector": "Construction",
-   "size_class": null,
-   "size_rank": 0,
-   "soc_count": 4,
+   "lat": 37.6,
+   "lng": -122.3,
+   "naics4": "3261",
+   "naics_title": "Plastics Product Manufacturing",
+   "name": "Merrill's Packaging",
+   "relevance": 3.7,
+   "sector": "Manufacturing",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 5,
    "soc_titles": {
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
+    "49-9041": "Industrial Machinery Mechanics",
     "51-4041": "Machinists"
    },
    "socs": [
-    "17-3023",
-    "51-4041",
-    "17-3024",
-    "17-3026"
-   ],
-   "website": "https://www.siliconvalleypower.com/"
-  },
-  {
-   "description": "DES is an integrated architecture, interior design, planning, and engineering firm founded in 1973 and headquartered in the San Francisco Bay Area, with over 170 employees across offices in Redwood City, San Francisco, Austin, and Monterey. The firm specializes in technology campuses, life science facilities, healthcare, and education projects, with notable clients including Google, Genentech, Cisco, and UC Irvine. Its in-house disciplines \u2014 architecture, landscape architecture, green building consulting, and digital graphics \u2014 draw architects, engineers, planners, and interior designers locally.",
-   "display_name": null,
-   "lat": 37.5,
-   "lng": -122.2,
-   "naics4": "5413",
-   "naics_title": "Architectural, Engineering, and Related Services",
-   "name": "DES Architects & Engineers",
-   "relevance": 1.3,
-   "sector": "Professional Services",
-   "size_class": "100-249 employees",
-   "size_rank": 6,
-   "soc_count": 4,
-   "soc_titles": {
-    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
-    "17-3026": "Industrial Engineering Technologists and Technicians",
-    "51-4041": "Machinists"
-   },
-   "socs": [
-    "17-3023",
+    "49-9041",
     "17-3026",
     "51-4041",
+    "17-3023",
     "17-3024"
    ],
-   "website": "https://des-ae.com/"
+   "website": "https://merrills.com/"
   }
  ],
  "region": "Bay",
@@ -710,5 +750,5 @@
   "San Mateo"
  ],
  "shown": 25,
- "total": 85
+ "total": 124
 }

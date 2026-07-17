@@ -35,7 +35,6 @@ from partnerships.quantities import (
     member_program_tops,
     producing_top_colleges,
     producing_tops,
-    recent_award_years,
 )
 from partnerships.sectors import (
     ALL_OTHER_SOCS,
@@ -87,10 +86,9 @@ def sector_lenses(spec: LandscapeSpec) -> dict:
     # Transp. Security), so a row never shows all-empty latest cells. top_colleges gives the distinct
     # producing colleges per occupation for the min_colleges floor. Step 2 widens the window + unions
     # enrollment in those two helpers, in one place.
-    _win = recent_award_years(1)
     prog_tops = member_program_tops(tuple(spec.colleges))
-    active_tops = producing_tops(spec.colleges, prog_tops, years=_win)
-    top_colleges = producing_top_colleges(spec.colleges, prog_tops, years=_win)
+    active_tops = producing_tops(spec.colleges, prog_tops)
+    top_colleges = producing_top_colleges(spec.colleges, prog_tops)
 
     # SOC -> reachable / active via the spec's IN-SCOPE TOPs the member offers —
     # in_scope applies is_vocational, excluded_tops AND the home-division gate, so

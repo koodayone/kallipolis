@@ -3,11 +3,11 @@
   "candidate_employers": 146,
   "combined_awards": 61,
   "combined_supply_total": 0.0,
-  "gap": 1210,
+  "gap": 1720,
   "n_colleges": 1,
-  "n_occupations": 3,
+  "n_occupations": 5,
   "occupations_taught": 0,
-  "regional_demand_total": 1210
+  "regional_demand_total": 1720
  },
  "award_years": [
   "2020-2021",
@@ -19,6 +19,144 @@
  "colleges": [
   {
    "cells": [
+    {
+     "annual_openings": 430,
+     "annual_wage": 89280,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 0,
+     "gap": 430,
+     "growth_rate": -0.0,
+     "programs": [
+      {
+       "awards": [
+        1,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        142,
+        126,
+        175,
+        202,
+        179,
+        194,
+        204,
+        198,
+        180,
+        166,
+        212,
+        235,
+        151,
+        223
+       ],
+       "name": "Manufacturing and Industrial Technology",
+       "top6": "095600",
+       "wages": [
+        {
+         "n": 54,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 54092,
+         "wage_after_5": 73636,
+         "wage_before": 26272,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 85,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 60922,
+         "wage_after_5": 72654,
+         "wage_before": 36476,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 38,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 64897,
+         "wage_after_5": 75071,
+         "wage_before": 54280,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "17-3023",
+     "supply": 0.0,
+     "title": "Electrical and Electronic Engineering Technologists and Technicians"
+    },
+    {
+     "annual_openings": 80,
+     "annual_wage": 78280,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 0,
+     "gap": 80,
+     "growth_rate": -0.0,
+     "programs": [
+      {
+       "awards": [
+        1,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        142,
+        126,
+        175,
+        202,
+        179,
+        194,
+        204,
+        198,
+        180,
+        166,
+        212,
+        235,
+        151,
+        223
+       ],
+       "name": "Manufacturing and Industrial Technology",
+       "top6": "095600",
+       "wages": [
+        {
+         "n": 54,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 54092,
+         "wage_after_5": 73636,
+         "wage_before": 26272,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 85,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 60922,
+         "wage_after_5": 72654,
+         "wage_before": 36476,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 38,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 64897,
+         "wage_after_5": 75071,
+         "wage_before": 54280,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "17-3024",
+     "supply": 0.0,
+     "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
+    },
     {
      "annual_openings": 150,
      "annual_wage": 79950,
@@ -376,7 +514,7 @@
   "Spring 2025",
   "Fall 2025"
  ],
- "executive_summary": "This view examines the regional demand landscape across the 3 advanced manufacturing occupations the De Anza College \u2014 Advanced Manufacturing targets in the Bay Area regional labor market. Regional demand for these occupations totals 1,210 openings per year.",
+ "executive_summary": "This view examines the regional demand landscape across the 5 advanced manufacturing occupations the De Anza College \u2014 Advanced Manufacturing targets in the Bay Area regional labor market. Regional demand for these occupations totals 1,720 openings per year.",
  "is_sector_priority": true,
  "region": "Bay",
  "region_display": "Bay Area",

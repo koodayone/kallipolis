@@ -69,7 +69,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 8.7,
+      "value": 8.8,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -79,7 +79,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 3,
+      "value": 5,
       "vintage": ""
      }
     }
@@ -95,7 +95,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 8.7,
+      "value": 8.8,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -105,33 +105,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 3,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "Rheem Manufacturing",
-    "roster": [],
-    "values": {
-     "employer_relevance": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "graph_bls",
-      "status": "ok",
-      "unit": "\u03a3 OES staffing share",
-      "value": 7.7,
-      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
-     },
-     "occupations_hired": {
-      "granularity": "BLS OES",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "derived",
-      "status": "ok",
-      "unit": "target SOCs",
-      "value": 3,
+      "value": 5,
       "vintage": ""
      }
     }
@@ -147,7 +121,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 4.7,
+      "value": 8.3,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -157,7 +131,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 3,
+      "value": 5,
       "vintage": ""
      }
     }
@@ -173,7 +147,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 4.7,
+      "value": 8.3,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -183,7 +157,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 3,
+      "value": 5,
       "vintage": ""
      }
     }
@@ -199,7 +173,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 4.7,
+      "value": 8.3,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -209,7 +183,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 3,
+      "value": 5,
       "vintage": ""
      }
     }
@@ -225,7 +199,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 4.7,
+      "value": 8.3,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -235,7 +209,33 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 3,
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Horizon Robotics",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 8.3,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 5,
       "vintage": ""
      }
     }

@@ -27,9 +27,9 @@
      "top6": null
     },
     "form": "navigate",
-    "rationale": "11 more rows; re-call navigate scoped to one row to drill in."
+    "rationale": "14 more rows; re-call navigate scoped to one row to drill in."
    },
-   "remaining": 11
+   "remaining": 14
   },
   "rows": [
    {
@@ -2406,7 +2406,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "college\u00d7program cells",
-    "value": 398,
+    "value": 476,
     "vintage": "DataMart awards \u2014 2024-2025"
    },
    "member_colleges": {
@@ -2436,7 +2436,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "TOP6 programs",
-    "value": 19,
+    "value": 22,
     "vintage": ""
    }
   }

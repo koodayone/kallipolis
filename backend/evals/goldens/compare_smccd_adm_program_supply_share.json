@@ -4,11 +4,24 @@
  "member": "smccd",
  "ranked": [
   "094610 Energy Systems Technology",
-  "093400 Electronics and Electric Technology"
+  "093400 Electronics and Electric Technology",
+  "092400 Engineering Technology, General (requires Trigonometry)"
  ],
  "sector": "adm",
  "unit_type": "program",
  "values": {
+  "092400 Engineering Technology, General (requires Trigonometry)": {
+   "addressable_demand": 1200,
+   "addressable_gap": -741,
+   "award_trend": 0.0,
+   "completions": 0.3,
+   "enrollment": 0.0,
+   "enrollment_trend": null,
+   "supply_share": 0.004,
+   "wage_after_2": 64498,
+   "wage_after_5": 88963,
+   "wage_lift": 38531
+  },
   "093400 Electronics and Electric Technology": {
    "addressable_demand": 1170,
    "addressable_gap": -556,

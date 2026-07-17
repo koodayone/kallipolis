@@ -43,7 +43,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
-      "value": 133.7,
+      "value": 153.7,
       "vintage": "Fall 2025"
      },
      "sector_supply": {
@@ -79,7 +79,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
-      "value": 92.7,
+      "value": 295.7,
       "vintage": "Fall 2025"
      },
      "sector_supply": {
@@ -89,7 +89,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 249.7,
+      "value": 250.7,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "supply_share": {
@@ -125,7 +125,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 200.3,
+      "value": 215.7,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "supply_share": {
@@ -151,7 +151,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
-      "value": 70.0,
+      "value": 105.3,
       "vintage": "Fall 2025"
      },
      "sector_supply": {
@@ -161,7 +161,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 198.7,
+      "value": 199.0,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "supply_share": {
@@ -197,7 +197,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 172.7,
+      "value": 173.0,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "supply_share": {
@@ -223,7 +223,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
-      "value": 0.0,
+      "value": 121.7,
       "vintage": "Fall 2025"
      },
      "sector_supply": {
@@ -269,7 +269,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 142.7,
+      "value": 144.7,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "supply_share": {
@@ -295,7 +295,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
-      "value": 11.3,
+      "value": 34.7,
       "vintage": "Fall 2025"
      },
      "sector_supply": {

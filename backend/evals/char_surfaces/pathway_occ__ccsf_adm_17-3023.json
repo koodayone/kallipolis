@@ -159,6 +159,79 @@
       "vintage": ""
      }
     }
+   },
+   {
+    "label": "095600 Manufacturing and Industrial Technology",
+    "roster": [
+     {
+      "label": "City College of San Francisco",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "actual_awards": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "awards",
+      "value": 0,
+      "vintage": ""
+     },
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (latest yr)",
+      "value": 0,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 1,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 0,
+      "vintage": ""
+     }
+    }
    }
   ],
   "sorted_by": null,
@@ -200,7 +273,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 45.0,
+    "value": 45.3,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "regional_demand": {

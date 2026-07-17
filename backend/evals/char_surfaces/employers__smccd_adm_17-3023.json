@@ -27,9 +27,9 @@
      "top6": null
     },
     "form": "navigate",
-    "rationale": "15 more rows; re-call navigate scoped to one row to drill in."
+    "rationale": "16 more rows; re-call navigate scoped to one row to drill in."
    },
-   "remaining": 15
+   "remaining": 16
   },
   "rows": [
    {
@@ -43,7 +43,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 11.6,
+      "value": 13.7,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -53,7 +53,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 4,
+      "value": 5,
       "vintage": ""
      }
     }
@@ -69,7 +69,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 11.6,
+      "value": 13.7,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -79,59 +79,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 4,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "Merrill's Packaging",
-    "roster": [],
-    "values": {
-     "employer_relevance": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "graph_bls",
-      "status": "ok",
-      "unit": "\u03a3 OES staffing share",
-      "value": 2.6,
-      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
-     },
-     "occupations_hired": {
-      "granularity": "BLS OES",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "derived",
-      "status": "ok",
-      "unit": "target SOCs",
-      "value": 3,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "Rheem Manufacturing",
-    "roster": [],
-    "values": {
-     "employer_relevance": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "graph_bls",
-      "status": "ok",
-      "unit": "\u03a3 OES staffing share",
-      "value": 2.5,
-      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
-     },
-     "occupations_hired": {
-      "granularity": "BLS OES",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "derived",
-      "status": "ok",
-      "unit": "target SOCs",
-      "value": 3,
+      "value": 5,
       "vintage": ""
      }
     }
@@ -147,7 +95,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 2.4,
+      "value": 3.2,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -157,7 +105,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 4,
+      "value": 5,
       "vintage": ""
      }
     }
@@ -173,7 +121,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 2.4,
+      "value": 3.2,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -183,7 +131,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 4,
+      "value": 5,
       "vintage": ""
      }
     }
@@ -199,7 +147,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 2.4,
+      "value": 3.2,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -209,7 +157,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 4,
+      "value": 5,
       "vintage": ""
      }
     }
@@ -225,7 +173,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 2.4,
+      "value": 3.2,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -235,7 +183,59 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 4,
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Northstar Photonics",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 3.2,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Soleno Therapeutics",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 3.2,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 5,
       "vintage": ""
      }
     }
@@ -260,7 +260,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "employers plotted",
-    "value": 23,
+    "value": 24,
     "vintage": ""
    }
   }

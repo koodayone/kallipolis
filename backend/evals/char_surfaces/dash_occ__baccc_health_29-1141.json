@@ -22,9 +22,9 @@
   {
    "college": "Chabot College",
    "vals": [
-    30,
-    23,
     31,
+    24,
+    33,
     0,
     20
    ]
@@ -170,7 +170,7 @@
    ]
   }
  ],
- "consortium_supply": 688.0,
+ "consortium_supply": 688.7,
  "crosswalk": {
   "cips": [],
   "coverage_pct": 0.0,
@@ -493,6 +493,13 @@
      "learning_outcomes": [],
      "name": "Trends and Issues in Nursing",
      "top_code": "123010"
+    },
+    {
+     "code": "VOCN51D",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Pharmacology",
+     "top_code": "123000"
     }
    ]
   },
@@ -692,6 +699,13 @@
   {
    "college": "De Anza College",
    "courses": [
+    {
+     "code": "NURS050",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Career Opportunities in Nursing",
+     "top_code": "123000"
+    },
     {
      "code": "NURS091A",
      "description": "",
@@ -914,6 +928,13 @@
    "college": "Gavilan College",
    "courses": [
     {
+     "code": "AH30",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "First Aid and CPR",
+     "top_code": "123000"
+    },
+    {
      "code": "AH55",
      "description": "",
      "learning_outcomes": [],
@@ -926,6 +947,13 @@
      "learning_outcomes": [],
      "name": "Compensatory Nursing Practice",
      "top_code": "123010"
+    },
+    {
+     "code": "BIO11",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Nutrition",
+     "top_code": "123000"
     }
    ]
   },
@@ -970,6 +998,55 @@
   {
    "college": "Mission College",
    "courses": [
+    {
+     "code": "RNB020",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "RN Role Transition Theory",
+     "top_code": "123000"
+    },
+    {
+     "code": "RNB023",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Essential Clinical Judgement/Skills/Simulation",
+     "top_code": "123000"
+    },
+    {
+     "code": "RNB025",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Community Mental Health Nursing",
+     "top_code": "123000"
+    },
+    {
+     "code": "RNB027",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Essential Clinical Practicum",
+     "top_code": "123000"
+    },
+    {
+     "code": "RNB033",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Intermediate Clinical Judgement/Simulation",
+     "top_code": "123000"
+    },
+    {
+     "code": "RNB034",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Intermediate Medical Surgical Nursing",
+     "top_code": "123000"
+    },
+    {
+     "code": "RNB035",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Obstetric Nursing",
+     "top_code": "123000"
+    },
     {
      "code": "RNB037",
      "description": "",
@@ -1051,6 +1128,13 @@
      "learning_outcomes": [],
      "name": "Pediatric Nursing Care",
      "top_code": "123010"
+    },
+    {
+     "code": "NURS233",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Vocational Nursing 3",
+     "top_code": "123000"
     },
     {
      "code": "NURS251",
@@ -1339,13 +1423,13 @@
     445,
     null,
     435,
-    382,
+    405,
     null,
-    403,
-    384,
-    null,
+    431,
     408,
-    429
+    null,
+    435,
+    453
    ]
   },
   {
@@ -1355,16 +1439,16 @@
     null,
     669,
     null,
-    403,
+    482,
     571,
     null,
-    347,
+    409,
     524,
     null,
-    422,
+    466,
     536,
     null,
-    384,
+    422,
     539
    ]
   },
@@ -1411,41 +1495,41 @@
   {
    "college": "De Anza College",
    "vals": [
-    395,
-    376,
-    362,
-    345,
-    340,
-    334,
-    341,
-    363,
+    614,
+    517,
+    542,
+    514,
+    472,
+    525,
+    467,
+    499,
     null,
-    401,
-    404,
-    406,
-    438,
-    430,
-    409
+    547,
+    587,
+    590,
+    611,
+    576,
+    603
    ]
   },
   {
    "college": "Evergreen Valley College",
    "vals": [
     null,
-    237,
-    150,
+    304,
+    216,
     null,
-    266,
-    227,
+    346,
+    289,
     null,
-    298,
-    312,
+    378,
+    381,
     null,
-    277,
-    292,
+    361,
+    371,
     null,
-    287,
-    311
+    366,
+    396
    ]
   },
   {
@@ -1453,18 +1537,18 @@
    "vals": [
     null,
     null,
-    19,
+    20,
     null,
-    18,
+    30,
     25,
     null,
-    22,
+    34,
     23,
     null,
-    20,
-    24,
-    null,
+    42,
     25,
+    null,
+    32,
     22
    ]
   },
@@ -1513,10 +1597,10 @@
    "vals": [
     null,
     116,
-    116,
+    161,
     null,
-    108,
-    100,
+    130,
+    154,
     null,
     112,
     120,
@@ -1525,7 +1609,7 @@
     112,
     null,
     116,
-    23
+    115
    ]
   },
   {
@@ -1536,12 +1620,12 @@
     181,
     null,
     78,
-    173,
+    188,
     null,
-    109,
+    125,
     186,
     null,
-    119,
+    134,
     193,
     null,
     192,
@@ -1633,9 +1717,16 @@
    "name": "Registered Nursing",
    "soc_count": 1,
    "top6": "123010"
+  },
+  {
+   "awards_total": 0,
+   "enrollment_total": 395,
+   "name": "Nursing",
+   "soc_count": 2,
+   "top6": "123000"
   }
  ],
- "gap": 4472,
+ "gap": 4471,
  "growth_rate": 0.1,
  "occupational_demand": "According to the Centers of Excellence for Labor Market Research, Registered Nurses (SOC 29-1141) earn a median annual wage of $190,620 with 5,160 annual openings in the Bay Area region. 78,730 workers are currently employed in the region with this occupational role, with projected employment growth of +6.3% over a 5-year time span.",
  "partnership_opportunities": [],

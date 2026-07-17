@@ -1214,6 +1214,112 @@
       "vintage": ""
      }
     }
+   },
+   {
+    "label": "093410 Computer Electronics",
+    "roster": [
+     {
+      "label": "Chabot College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "colleges_actively_awarding": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (latest yr)",
+      "value": 0,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 1,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "093430 Telecommunications Technology",
+    "roster": [
+     {
+      "label": "Chabot College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "colleges_actively_awarding": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (latest yr)",
+      "value": 0,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 1,
+      "vintage": ""
+     }
+    }
    }
   ],
   "sorted_by": null,

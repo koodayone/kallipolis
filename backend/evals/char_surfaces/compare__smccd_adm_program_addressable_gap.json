@@ -225,6 +225,112 @@
       "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
      }
     }
+   },
+   {
+    "label": "092400 Engineering Technology, General (requires Trigonometry)",
+    "roster": [],
+    "values": {
+     "addressable_demand": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 1200,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "addressable_gap": {
+      "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": -741,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "award_trend": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "ratio",
+      "value": 0.0,
+      "vintage": "DataMart completions \u2014 2024-2025 \u00f7 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "completions": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled/term",
+      "value": 0.0,
+      "vintage": "Fall 2025"
+     },
+     "enrollment_trend": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "unavailable",
+      "unit": "ratio",
+      "value": null,
+      "vintage": "Fall 2025 \u00f7 prior Falls"
+     },
+     "supply_share": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges) \u00f7 regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "fraction",
+      "value": 0.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "wage_after_2": {
+      "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "$/yr",
+      "value": 64498,
+      "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
+     },
+     "wage_after_5": {
+      "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "$/yr",
+      "value": 88963,
+      "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
+     },
+     "wage_lift": {
+      "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "$/yr",
+      "value": 38531,
+      "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
+     }
+    }
    }
   ],
   "sorted_by": {
@@ -241,7 +347,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "programs",
-    "value": 2,
+    "value": 3,
     "vintage": ""
    }
   }

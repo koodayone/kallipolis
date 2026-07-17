@@ -14,13 +14,13 @@
    "vals": [
     9,
     23,
-    19,
+    20,
     23,
     93
    ]
   }
  ],
- "consortium_supply": 45.0,
+ "consortium_supply": 45.3,
  "crosswalk": {
   "cips": [],
   "coverage_pct": 0.0,
@@ -162,6 +162,13 @@
    "name": "Engineering Technology, General (requires Trigonometry)",
    "soc_count": 3,
    "top6": "092400"
+  },
+  {
+   "awards_total": 0,
+   "enrollment_total": 0,
+   "name": "Manufacturing and Industrial Technology",
+   "soc_count": 4,
+   "top6": "095600"
   }
  ],
  "gap": 385,

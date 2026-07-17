@@ -352,6 +352,241 @@
       "vintage": ""
      }
     }
+   },
+   {
+    "label": "123000 Nursing",
+    "roster": [
+     {
+      "label": "Chabot College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "City College of San Francisco",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "College of Marin",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "De Anza College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Evergreen Valley College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Gavilan College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Mission College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Napa Valley College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "predicate_version": "",
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "colleges_actively_awarding": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (latest yr)",
+      "value": 0,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 8,
+      "vintage": ""
+     }
+    }
    }
   ],
   "sorted_by": null,

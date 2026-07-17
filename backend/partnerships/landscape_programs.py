@@ -292,13 +292,11 @@ def relevant_tops(spec: LandscapeSpec) -> dict[str, set[str]]:
 
 def _awarded_tops(spec: LandscapeSpec, tops) -> set[str]:
     """TOP6s with >=1 awarded completer in the LATEST reported year, in any member
-    college — the supply gate's program grain. Matches resolve()'s active_tops and
-    the coverage-matrix's latest-year cells, so a kept TOP is exactly one with
-    current supply; a program last awarded in an older year is dormant and drops
-    (e.g. 210530 Industrial & Transportation Security, which last awarded a
-    completer in 2023-24). Delegates to the shared ``producing_tops`` gate (the one
-    home for "which programs count") — Step 2 widens its window and adds enrollment there."""
-    return set(producing_tops(spec.colleges, tops, years=recent_award_years(1)))
+    college — the supply gate's program grain. Matches resolve()'s active set and
+    the coverage matrix, so a kept TOP is exactly one that is ACTIVE (recent
+    completers or enrollment). Delegates to the shared ``producing_tops`` gate (the
+    one home for "which programs count") — the active window + enrollment live there."""
+    return set(producing_tops(spec.colleges, tops))
 
 
 # ── Builders (I/O) ──────────────────────────────────────────────────────────

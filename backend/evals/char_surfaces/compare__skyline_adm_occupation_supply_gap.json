@@ -51,9 +51,9 @@
       "parent_vintages": [],
       "predicate_version": "",
       "source": "derived",
-      "status": "unavailable",
+      "status": "ok",
       "unit": "fraction",
-      "value": null,
+      "value": 0.0,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "projected_growth": {
@@ -93,7 +93,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 0.0,
+      "value": 16.3,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "supply_gap": {
@@ -103,7 +103,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 1680,
+      "value": 1664,
       "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }

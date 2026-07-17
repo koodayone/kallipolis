@@ -254,7 +254,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 5987,
+    "value": 5971,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "in_demand_occupations": {
@@ -314,7 +314,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 85.7,
+    "value": 86.0,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "regional_demand": {
@@ -334,7 +334,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 2163.0,
+    "value": 2179.3,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "sector_occupations": {
@@ -354,7 +354,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "SOCs",
-    "value": 13,
+    "value": 14,
     "vintage": ""
    },
    "served_openings": {
@@ -364,7 +364,7 @@
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 1930,
+    "value": 2080,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
    }
   }

@@ -13,9 +13,9 @@
    "college": "College of San Mateo",
    "vals": [
     6,
-    17,
+    19,
     9,
-    6,
+    7,
     0
    ]
   },
@@ -30,7 +30,7 @@
    ]
   }
  ],
- "consortium_supply": 9.7,
+ "consortium_supply": 10.0,
  "crosswalk": {
   "cips": [],
   "coverage_pct": 0.0,
@@ -102,6 +102,13 @@
    "name": "Electronics and Electric Technology",
    "soc_count": 3,
    "top6": "093400"
+  },
+  {
+   "awards_total": 0,
+   "enrollment_total": 0,
+   "name": "Engineering Technology, General (requires Trigonometry)",
+   "soc_count": 3,
+   "top6": "092400"
   }
  ],
  "gap": 420,
