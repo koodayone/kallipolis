@@ -83,8 +83,7 @@ def _soc_feeders(colleges: tuple[str, ...], spec=None) -> dict[str, frozenset[st
     # resolve one feeder set. Curated specs (SVAMP) carry no rule and keep the full in_scope set.
     rule = getattr(spec, "soc_rule", None) if spec is not None else None
     if rule is not None and getattr(rule, "active", False):
-        active = _awarded_by_top(colleges, tuple(recent_award_years(1)))
-        offered = {t for t in offered if active.get(t, 0) > 0}
+        offered = set(producing_tops(colleges, offered, years=recent_award_years(1)))
     soc_map = top6_to_soc(list(offered))
     gate = spec.in_scope if spec is not None else is_vocational
     out: dict[str, set] = {}
@@ -105,6 +104,18 @@ def _awarded_by_top(colleges: tuple[str, ...], years: tuple[str, ...]) -> dict[s
             "RETURN p.top6 AS t, sum(coalesce(a.count, 0)) AS n",
             c=list(colleges), y=list(years)).data()
     return {r["t"]: r["n"] for r in rows}
+
+
+def producing_tops(colleges, candidate_tops, *, years) -> frozenset[str]:
+    """The candidate TOP6s that are PRODUCING over ``years`` — >=1 completer at any member college. The
+    ONE eligibility gate the surfaces share: resolve()'s occupation-grain ``active_tops``, relevant_tops'
+    program-grain ``_awarded_tops``, and ``_soc_feeders``' supply-feeder gate all resolve here, so the
+    "which programs count" decision has a single home. Compat window today = the latest year (callers pass
+    ``recent_award_years(1)``), reproducing those three verbatim; Step 2 widens the window and unions in
+    enrollment in THIS one place. Award counts are non-negative, so sum-over-window > 0 is exactly "has an
+    awarded completer" (identical to the old per-edge ``count > 0`` gates)."""
+    aw = _awarded_by_top(tuple(sorted(set(colleges))), tuple(years))
+    return frozenset(t for t in candidate_tops if aw.get(t, 0) > 0)
 
 
 def feeders(colleges, soc: str, *, spec=None) -> frozenset[str]:
