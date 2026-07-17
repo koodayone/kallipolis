@@ -230,6 +230,19 @@ def reload_region(region_key: str) -> None:
         except Exception as e:
             logger.error(f"load_program_wage_outcomes failed: {e}; wage outcomes absent until rerun")
 
+        # Step 4c: Materialize the sector / crosswalk / composition ontology — Sector, ProgramFamily,
+        # CROSSWALKS_TO (the crosswalk), Sector-COVERS->Occupation / Sector-SCOPES->ProgramFamily
+        # (membership), and each authored Composition's INCLUDES/EXCLUDES. The graph-native ontology the
+        # agent and cross-cutting views traverse; mirrors partnerships.sectors + the crosswalk. Additive and
+        # idempotent, after load_programs (Program/ProgramFamily) and load_industry_data (Occupation).
+        # Non-fatal — the engine still reads its ontology from code today (3b swaps that), so absence only
+        # costs the graph-native queries, not correctness.
+        try:
+            from ontology.sector_graph import load as load_sector_graph
+            load_sector_graph(driver)
+        except Exception as e:
+            logger.error(f"load_sector_graph failed: {e}; graph ontology absent until rerun")
+
         # Step 5: Materialize PARTNERSHIP_ALIGNMENT and OCCUPATION_PIPELINE
         # edges. Must run after both load_courses (PREPARES_FOR exists) and
         # load_industry_data (Employer / HIRES_FOR exist).
