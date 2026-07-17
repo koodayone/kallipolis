@@ -2,7 +2,19 @@
 
 Proves the property the whole authoring design rests on: a Composition can SELECT from the grounded universe
 (subset of the sector's occupations / vocational programs) but can never INVENT — an out-of-universe value
-is a ScopeError, so authoring structurally cannot express a fork. Graph-free (pure data)."""
+is a ScopeError, so authoring structurally cannot express a fork. Graph-free (pure data), except the two
+registered-spec checks which read the crosswalk/taxonomy.
+
+Coverage:
+  - Default Composition is derived (occupations=None), authored when occupations set
+  - validate() passes a subset of the sector membership + vocational universe
+  - validate() rejects an authored occupation outside the sector's membership (ScopeError)
+  - validate() rejects a charter exclude/include outside the vocational universe (ScopeError)
+  - Composition is frozen/hashable (safe as an lru_cache key / frozen-spec field)
+  - SVAMP's registered composition is authored, its charter is {HVAC, Auto, Biotech}, and it validates
+    against the live AM membership + vocational universe
+  - A rule-derived member (SMCCD-adm) carries the empty default Composition
+"""
 import pytest
 
 from partnerships.composition import Composition, ScopeError, validate
