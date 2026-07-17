@@ -45,6 +45,7 @@ from dataclasses import dataclass
 
 from ontology.crosswalks import _load_top_to_cip, is_cte_top4_family, is_vocational
 from ontology.regions import COLLEGE_COE_REGION
+from partnerships.composition import Composition
 from partnerships.sectors import SECTORS, Sector, SectorRule
 
 
@@ -152,6 +153,13 @@ class LandscapeSpec:
     # None for the curated AM instances (no SOC filtering). See landscape_for.
     soc_rule: SectorRule | None = None
 
+    # The per-member Composition — the authored narrowing (occupation subset + charter). Default = empty
+    # (derived; what most members use). SVAMP fills it in. The engine reads member scope through this; today
+    # its ``program_excludes`` MIRRORS the legacy charter in ``excluded_tops`` so the migration is byte-
+    # identical (in_scope consults both, idempotently). Step 2 makes it authoritative and retires the legacy
+    # fields. See partnerships/composition.py and research/architecture/UNIFIED-ENGINE-PLAN.md.
+    composition: Composition = Composition()
+
     # The exact COE/EDD `swp_sectors` tag the Employer nodes carry (Sector.swp_tag).
     # Diverges from the display `sector` ("&"/short form vs "and"/full COE name),
     # so the regional employer query matches on this, falling back to `sector`
@@ -208,11 +216,13 @@ class LandscapeSpec:
             return (
                 is_vocational(top6)
                 and top6 not in self.excluded_tops
+                and top6 not in self.composition.program_excludes
                 and (not self.home_divisions or top6[:2] in self.home_divisions)
             )
         return (
             any(top6.startswith(d) for d in self.top_divisions)
             and top6 not in self.excluded_tops
+            and top6 not in self.composition.program_excludes
             and (not self.cte_only or is_cte_top4_family(top6))
         )
 
@@ -392,6 +402,15 @@ SVAMP_SPEC = LandscapeSpec(
     counties=("Santa Clara",),  # SVAMP's shed — keeps the peninsula (SMCCD) out
     name="Silicon Valley Advanced Manufacturing Partnership",
     accent="#ff5a5a",
+    # SVAMP under the UNIVERSAL rule (Step 2b) — no fork left. It runs is_vocational (not the legacy division/
+    # CTE-family predicate) and the active program gate (soc_rule active), exactly like every other member.
+    # Its identity is pure Composition data: the 12 occupations are hand-picked (a subset of the AM sector's
+    # 49; resolve keeps them final because is_authored) and the charter sets Automotive/HVAC/Biotech out of
+    # scope. Net effect vs the old Mode-B: 13 in-scope program TYPES no member actively runs (0 awards AND 0
+    # enrollment) stop showing as empty rows — every figure (demand/supply/awards/gap/employers) unchanged.
+    vocational=True,
+    soc_rule=SECTORS["adm"].rule,
+    composition=Composition(occupations=_AM_SOCS, program_excludes=_AM_EXCLUDED_TOPS | {"043000"}),
 )
 
 # Instance #2+: the SMCCD member set's sector views — a `member × sector` row,

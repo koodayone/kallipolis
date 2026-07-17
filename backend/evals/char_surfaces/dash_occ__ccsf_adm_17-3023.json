@@ -1,0 +1,184 @@
+{
+ "annual_openings": 430,
+ "annual_wage": 89280,
+ "award_years": [
+  "2020-2021",
+  "2021-2022",
+  "2022-2023",
+  "2023-2024",
+  "2024-2025"
+ ],
+ "awards_by_college": [
+  {
+   "college": "City College of San Francisco",
+   "vals": [
+    9,
+    23,
+    20,
+    23,
+    93
+   ]
+  }
+ ],
+ "consortium_supply": 45.3,
+ "crosswalk": {
+  "cips": [],
+  "coverage_pct": 0.0,
+  "n_taught": 0,
+  "n_total": 0,
+  "tops": []
+ },
+ "curriculum_by_college": [
+  {
+   "college": "City College of San Francisco",
+   "courses": [
+    {
+     "code": "ELEC101",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Electronics I: Essentials of Electronics - Measurements and Passive Circuits",
+     "top_code": "093400"
+    },
+    {
+     "code": "ELEC102A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Electronics II: Active Analog Circuits and Practical Applications",
+     "top_code": "093400"
+    },
+    {
+     "code": "ELEC102B",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Electronics II: Digital Circuits and Practical Applications",
+     "top_code": "093400"
+    },
+    {
+     "code": "ELEC103A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Electronics III: Analog Circuits and Practical Applications",
+     "top_code": "093400"
+    },
+    {
+     "code": "ELEC103B",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Electronics III: Digital Circuit Interfaces and Programming",
+     "top_code": "093400"
+    },
+    {
+     "code": "ELEC104A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Electronics IV: Wireless and Industrial Communication Systems",
+     "top_code": "093400"
+    },
+    {
+     "code": "ELEC104B",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Electronics IV: Microcontroller Interfaces and Programming",
+     "top_code": "093400"
+    },
+    {
+     "code": "ENGN48L",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Introduction to Engineering and Technology - Laboratory",
+     "top_code": "092400"
+    },
+    {
+     "code": "ENVS91",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Applied Research in Sustainability",
+     "top_code": "092400"
+    },
+    {
+     "code": "ET139A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Engineering Plumbing Systems",
+     "top_code": "092400"
+    },
+    {
+     "code": "ET139B",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Plumbing System Design Fundamentals",
+     "top_code": "092400"
+    },
+    {
+     "code": "ET50",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Technical Mathematics",
+     "top_code": "092400"
+    }
+   ]
+  }
+ ],
+ "description": "Apply electrical and electronic theory and related knowledge, usually under the direction of engineering staff, to design, build, repair, adjust, and modify electrical components, circuitry, controls, and machinery for subsequent evaluation and use by engineering staff in making engineering design decisions.",
+ "employment": 4510,
+ "enrollment_by_college": [
+  {
+   "college": "City College of San Francisco",
+   "vals": [
+    102,
+    121,
+    80,
+    107,
+    95,
+    142,
+    159,
+    164,
+    113
+   ]
+  }
+ ],
+ "enrollment_terms": [
+  "Fall 2021",
+  "Spring 2022",
+  "Fall 2022",
+  "Spring 2023",
+  "Fall 2023",
+  "Spring 2024",
+  "Fall 2024",
+  "Spring 2025",
+  "Fall 2025"
+ ],
+ "feeding_tops": [
+  {
+   "awards_total": 92,
+   "enrollment_total": 147,
+   "name": "Electronics and Electric Technology",
+   "soc_count": 3,
+   "top6": "093400"
+  },
+  {
+   "awards_total": 1,
+   "enrollment_total": 52,
+   "name": "Engineering Technology, General (requires Trigonometry)",
+   "soc_count": 3,
+   "top6": "092400"
+  },
+  {
+   "awards_total": 0,
+   "enrollment_total": 0,
+   "name": "Manufacturing and Industrial Technology",
+   "soc_count": 4,
+   "top6": "095600"
+  }
+ ],
+ "gap": 385,
+ "growth_rate": -0.0,
+ "occupational_demand": "According to the Centers of Excellence for Labor Market Research, Electrical and Electronic Engineering Technologists and Technicians (SOC 17-3023) earn a median annual wage of $89,280 with 430 annual openings in the Bay Area region. 4,510 workers are currently employed in the region with this occupational role, with projected employment growth of -0.6% over a 5-year time span.",
+ "partnership_opportunities": [],
+ "partnership_opportunities_narrative": "",
+ "region": "Bay",
+ "region_display": "Bay Area",
+ "sector": "Advanced Manufacturing",
+ "soc_code": "17-3023",
+ "title": "Electrical and Electronic Engineering Technologists and Technicians"
+}

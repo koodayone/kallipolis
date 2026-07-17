@@ -1,0 +1,67 @@
+{
+ "coordinate": {
+  "entity": "",
+  "lens": "",
+  "member": "smccd",
+  "member_label": "San Mateo County CCD",
+  "region": "Bay Area",
+  "sector": "business",
+  "sector_label": "Business & Entrepreneurship",
+  "soc": null,
+  "top6": null
+ },
+ "data": {
+  "more": null,
+  "rows": [],
+  "sorted_by": null,
+  "summary": {}
+ },
+ "form": "gap",
+ "framing": {
+  "meaning": "A supply\u2013demand gap is regional annual openings minus the whole region's projected completions, per occupation \u2014 regional demand against regional supply. The institution's own completions are its share of that regional supply. Positive means the region hires more than its colleges are projected to complete.",
+  "salience": [
+   "member-anchored: a generated member\u00d7sector view covers only occupations the member already serves with an active program \u2014 it does NOT surface greenfield demand in occupations the member does not yet serve. Absence here is not absence of regional demand."
+  ]
+ },
+ "licensing": {
+  "gates": [
+   {
+    "field": "member_supply",
+    "marker": "unavailable",
+    "reason": "San Mateo County CCD runs no active program feeding this sector's qualifying middle-skill occupations, so a member-anchored gap view is empty. The region may still have unmet demand in this sector \u2014 this view is scoped to occupations the member already serves, not greenfield ones."
+   }
+  ],
+  "licensed": [],
+  "not_licensed": [
+   "'Supply' is projected completions \u2014 COE's Annual Projected Supply method (a trailing 3-year average of DataMart completions), reconstructed on current DataMart data; it is the gap denominator, read as a projection rather than one year's raw count (see latest_year_supply). The gap is REGIONAL; the institution's own supply is a separate figure (its share), never the gap itself. A member's latest-year change moves its own share, not the regional gap \u2014 do not read a regional trend from one institution's single year."
+  ]
+ },
+ "next_moves": [
+  {
+   "coordinate": {
+    "entity": "",
+    "lens": "",
+    "member": "smccd",
+    "member_label": "San Mateo County CCD",
+    "region": "Bay Area",
+    "sector": "business",
+    "sector_label": "Business & Entrepreneurship",
+    "soc": null,
+    "top6": null
+   },
+   "form": "orient",
+   "rationale": "See which sectors this member actually runs programs in."
+  }
+ ],
+ "provenance": {
+  "field_authority": {},
+  "scope_granularity": "",
+  "sources": [],
+  "vintages": {}
+ },
+ "view_link": {
+  "note": "Opens on the lens with a default selection (view state applies client-side); select the row above to corroborate the figure.",
+  "status": "ok",
+  "url": "https://preview.kallipolis.us/smccd-business?lens=occupations"
+ }
+}

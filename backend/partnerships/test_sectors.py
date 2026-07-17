@@ -100,7 +100,10 @@ class TestLandscapeComposition:
         from partnerships.landscape import REGISTRY
         assert REGISTRY["smccd-biotech"].vocational is True
         assert REGISTRY["smccd-health"].vocational is True
-        assert REGISTRY["svamp"].vocational is False  # SVAMP stays curated
+        # SVAMP now runs the UNIVERSAL rule (is_vocational + the active gate) like every other member — no
+        # fork. Its curation lives in the Composition (authored 12 occupations + charter), not vocational=False.
+        assert REGISTRY["svamp"].vocational is True
+        assert REGISTRY["svamp"].composition.is_authored is True
 
     def test_full_smccd_sector_row(self):
         from partnerships.landscape import REGISTRY

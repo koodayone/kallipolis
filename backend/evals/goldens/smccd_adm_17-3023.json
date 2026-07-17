@@ -1,20 +1,31 @@
 {
  "builder": {
   "annual_openings": 430,
-  "consortium_supply": 9.7,
+  "consortium_supply": 10.0,
   "feeding_tops": [
+   "092400",
    "093400"
   ],
   "gap": 420
  },
  "canonical": {
   "active_feeders": [
+   "092400",
    "093400"
   ],
   "feeders": [
+   "092400",
    "093400"
   ],
   "rosters": {
+   "092400": {
+    "colleges_with_program": [
+     "College of San Mateo"
+    ],
+    "n_active": 0,
+    "n_covered": 0,
+    "n_with_program": 1
+   },
    "093400": {
     "colleges_with_program": [
      "College of San Mateo",
@@ -25,14 +36,14 @@
     "n_with_program": 2
    }
   },
-  "sector_supply_over_socs": 20.7,
+  "sector_supply_over_socs": 21.0,
   "supply_1yr": 4.0,
-  "supply_3yr": 9.7
+  "supply_3yr": 10.0
  },
  "colleges_n": 3,
  "in_scope": true,
  "member": "smccd",
  "sector": "adm",
  "soc": "17-3023",
- "socs_n": 4
+ "socs_n": 5
 }

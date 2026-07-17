@@ -1,0 +1,547 @@
+{
+ "annual_openings": 430,
+ "annual_wage": 89280,
+ "award_years": [
+  "2020-2021",
+  "2021-2022",
+  "2022-2023",
+  "2023-2024",
+  "2024-2025"
+ ],
+ "awards_by_college": [
+  {
+   "college": "De Anza College",
+   "vals": [
+    1,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "college": "Foothill College",
+   "vals": [
+    0,
+    0,
+    0,
+    10,
+    17
+   ]
+  },
+  {
+   "college": "Ohlone College",
+   "vals": [
+    0,
+    4,
+    2,
+    16,
+    77
+   ]
+  }
+ ],
+ "consortium_supply": 40.7,
+ "crosswalk": {
+  "cips": [],
+  "coverage_pct": 0.0,
+  "n_taught": 0,
+  "n_total": 0,
+  "tops": []
+ },
+ "curriculum_by_college": [
+  {
+   "college": "De Anza College",
+   "courses": [
+    {
+     "code": "DMT077A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Special Projects in Manufacturing and CNC/Mastercam Certification Level 1",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT077B",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Special Projects in Manufacturing and CNC/Mastercam Certification Level 2",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT077C",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Special Projects in Manufacturing and CNC/Mastercam Certification Level 3",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT077D",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Special Projects In Manufacturing and CNC/NIMS Level 1",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT077E",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Special Projects In Manufacturing and CNC/NIMS Level 2",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT077F",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Special Projects In Manufacturing and CNC/NIMS Level 3",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT080",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Introduction to Machining and CNC Processes",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT082",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Advanced Conventional Machine Tools, Tool Design, Abrasive Machining",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT084A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Introduction to CNC Programming and Operation; Mill",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT084B",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CNC Programming and Operation; Intermediate Mill",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT084C",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CNC Lathes-Horizontal Mill-4th Axis Rotary-Programming Operations",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT087E",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CAD/CAM Programming Using Mastercam",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT087K",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CAD/CAM Based CNC Surface Contouring Programming Using Mastercam",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT087P",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CAD/CAM Based CNC 4 and 5 Axis Mill/Lathe Programming Using Mastercam",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT087Q",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CAD/CAM Based CNC 4 and 5 Axis Mill/Lathe Programming Using Mastercam",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT089A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CAM Based CNC Multi-Axis Programming Using NX",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT089B",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CAM Based CNC Multi-Axis Programming Using NX",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT089C",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CAM Based CNC Multi-Axis Programming Using NX",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT089D",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CAM Based CNC Multi-Axis Programming Using NX",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT089E",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CAM Based CNC Multi-Axis Programming Using NX",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT090",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Print Reading and Machine Shop Calculations",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT091",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Dimensional Metrology",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT092",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Applied GD&T (ASME Y14.5m); Coordinate Measuring Machines (CMM)",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT093",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Introduction to Quality Assurance",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT095",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Manufacturing Materials and Processes",
+     "top_code": "095600"
+    }
+   ]
+  },
+  {
+   "college": "Evergreen Valley College",
+   "courses": [
+    {
+     "code": "ENGR018",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Engineering Graphics and Computer-Aided Design",
+     "top_code": "092400"
+    },
+    {
+     "code": "MFGT101",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Introduction to Advanced Manufacturing",
+     "top_code": "095600"
+    },
+    {
+     "code": "MFGT102",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Math for Manufacturing",
+     "top_code": "095600"
+    },
+    {
+     "code": "MFGT103",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Introduction to Assembly",
+     "top_code": "095600"
+    },
+    {
+     "code": "MFGT201",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Fundamentals of Electronics for Manufacturing",
+     "top_code": "095600"
+    },
+    {
+     "code": "MFGT202",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Properties of Materials for Manufacturing",
+     "top_code": "095600"
+    },
+    {
+     "code": "MFGT203",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Data Analytics for Manufacturing and Quality Control",
+     "top_code": "095600"
+    }
+   ]
+  },
+  {
+   "college": "Foothill College",
+   "courses": [
+    {
+     "code": "ENGR061A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "INTRODUCTION TO SEMICONDUCTOR TECHNOLOGY",
+     "top_code": "094500"
+    },
+    {
+     "code": "ENGR101A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "ADVANCED MANUFACTURING",
+     "top_code": "094500"
+    }
+   ]
+  },
+  {
+   "college": "Mission College",
+   "courses": []
+  },
+  {
+   "college": "Ohlone College",
+   "courses": [
+    {
+     "code": "ENGI114",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "How Technology Works",
+     "top_code": "093400"
+    },
+    {
+     "code": "ENGI135",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Introduction to Robotics and Automated Systems",
+     "top_code": "093400"
+    },
+    {
+     "code": "ETEC106",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Electronics for Technology",
+     "top_code": "093400"
+    },
+    {
+     "code": "ETEC110",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Additive Manufacturing",
+     "top_code": "095600"
+    },
+    {
+     "code": "ETEC112",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Manufacturing Processes",
+     "top_code": "095600"
+    },
+    {
+     "code": "ETEC113",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Safety in Industry",
+     "top_code": "095600"
+    },
+    {
+     "code": "ETEC116",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Computer Assisted Machining Programming",
+     "top_code": "095600"
+    },
+    {
+     "code": "ETEC117",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Fabrication Techniques",
+     "top_code": "095600"
+    },
+    {
+     "code": "ETEC121",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Work-Based Project",
+     "top_code": "093400"
+    },
+    {
+     "code": "ETEC124",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Introduction to Internet of Things",
+     "top_code": "095600"
+    },
+    {
+     "code": "ETEC126",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Industrial Internet of Things-Industry Standard 4.0",
+     "top_code": "095600"
+    },
+    {
+     "code": "ETEC926",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Smart Manufacturing Fundamentals",
+     "top_code": "095600"
+    },
+    {
+     "code": "ETEC928",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Robotic Welding Fundamentals",
+     "top_code": "095600"
+    }
+   ]
+  }
+ ],
+ "description": "Apply electrical and electronic theory and related knowledge, usually under the direction of engineering staff, to design, build, repair, adjust, and modify electrical components, circuitry, controls, and machinery for subsequent evaluation and use by engineering staff in making engineering design decisions.",
+ "employment": 4510,
+ "enrollment_by_college": [
+  {
+   "college": "De Anza College",
+   "vals": [
+    142,
+    126,
+    175,
+    202,
+    179,
+    194,
+    204,
+    198,
+    null,
+    180,
+    166,
+    212,
+    235,
+    151,
+    223
+   ]
+  },
+  {
+   "college": "Evergreen Valley College",
+   "vals": [
+    null,
+    51,
+    43,
+    null,
+    33,
+    38,
+    null,
+    75,
+    67,
+    null,
+    98,
+    70,
+    null,
+    67,
+    61
+   ]
+  },
+  {
+   "college": "Foothill College",
+   "vals": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    16,
+    14,
+    16,
+    17,
+    3,
+    22
+   ]
+  },
+  {
+   "college": "Ohlone College",
+   "vals": [
+    null,
+    29,
+    68,
+    null,
+    44,
+    150,
+    null,
+    127,
+    573,
+    null,
+    451,
+    363,
+    null,
+    463,
+    590
+   ]
+  }
+ ],
+ "enrollment_terms": [
+  "Winter 2021",
+  "Spring 2021",
+  "Fall 2021",
+  "Winter 2022",
+  "Spring 2022",
+  "Fall 2022",
+  "Winter 2023",
+  "Spring 2023",
+  "Fall 2023",
+  "Winter 2024",
+  "Spring 2024",
+  "Fall 2024",
+  "Winter 2025",
+  "Spring 2025",
+  "Fall 2025"
+ ],
+ "feeding_tops": [
+  {
+   "awards_total": 77,
+   "enrollment_total": 646,
+   "name": "Manufacturing and Industrial Technology",
+   "soc_count": 7,
+   "top6": "095600"
+  },
+  {
+   "awards_total": 17,
+   "enrollment_total": 22,
+   "name": "Industrial Systems Technology and Maintenance",
+   "soc_count": 8,
+   "top6": "094500"
+  },
+  {
+   "awards_total": 0,
+   "enrollment_total": 195,
+   "name": "Electronics and Electric Technology",
+   "soc_count": 5,
+   "top6": "093400"
+  },
+  {
+   "awards_total": 0,
+   "enrollment_total": 33,
+   "name": "Engineering Technology, General (requires Trigonometry)",
+   "soc_count": 5,
+   "top6": "092400"
+  }
+ ],
+ "gap": 389,
+ "growth_rate": -0.0,
+ "occupational_demand": "According to the Centers of Excellence for Labor Market Research, Electrical and Electronic Engineering Technologists and Technicians (SOC 17-3023) earn a median annual wage of $89,280 with 430 annual openings in the Bay Area region. 4,510 workers are currently employed in the region with this occupational role, with projected employment growth of -0.6% over a 5-year time span.",
+ "partnership_opportunities": [],
+ "partnership_opportunities_narrative": "",
+ "region": "Bay",
+ "region_display": "Bay Area",
+ "sector": "Advanced Manufacturing",
+ "soc_code": "17-3023",
+ "title": "Electrical and Electronic Engineering Technologists and Technicians"
+}

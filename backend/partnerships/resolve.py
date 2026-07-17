@@ -29,8 +29,13 @@ from collections import defaultdict
 
 from ontology.crosswalks import top6_to_soc
 from ontology.schema import get_driver
-from partnerships.graph_reads import latest_academic_year, regional_demand
+from partnerships.graph_reads import regional_demand
 from partnerships.landscape import LandscapeSpec
+from partnerships.quantities import (
+    member_program_tops,
+    producing_top_colleges,
+    producing_tops,
+)
 from partnerships.sectors import (
     ALL_OTHER_SOCS,
     EXPERIENCE_5YR_SOCS,
@@ -41,13 +46,19 @@ from partnerships.sectors import (
 )
 
 
-def effective_socs(spec: LandscapeSpec) -> tuple[str, ...]:
-    """The spec's SOCs narrowed by its sector rule. Identity (full set) when the
-    spec has no active rule."""
+def sector_lenses(spec: LandscapeSpec) -> dict:
+    """The sector's occupation-set at each decomposed grain — the WHATs a surface can project:
+      full      — the sector's occupations (PCAH membership)
+      in_demand — full ∩ demand-quality (real openings, near-living-wage, non-declining): "is there a market?"
+      served    — full ∩ member-engaged (reachable, active, consortium-floor): "is the member in it?"
+      effective — in_demand ∩ served (the set the dashboard shows today)
+    Identity (every lens = full) for an AUTHORED spec (SVAMP's occupations are hand-picked = final) or a
+    no-rule spec, trusted as authored — the lenses derive a subset only when the occupations are derived."""
     rule = spec.soc_rule
+    full = tuple(spec.socs)
     socs = list(spec.socs)
-    if rule is None or not rule.active:
-        return tuple(socs)   # curated/no-rule specs (e.g. SVAMP) trusted as authored
+    if spec.composition.is_authored or rule is None or not rule.active:
+        return {"full": full, "in_demand": full, "served": full, "effective": full}
 
     # Sector-derived instances only: drop 5+yr-experience occupations, "all other"
     # catch-all SOCs (non-specific roll-ups), and promotion/management roles
@@ -67,28 +78,18 @@ def effective_socs(spec: LandscapeSpec) -> tuple[str, ...]:
         openings = {s: dr["annual_openings"] for s, dr in demand.items()}
         wages = {s: dr["annual_wage"] for s, dr in demand.items()}
         growth = {s: dr["growth_rate"] for s, dr in demand.items()}
-        latest = latest_academic_year(session)
-        progs = session.run(
-            "MATCH (p:Program) WHERE p.college IN $colleges "
-            "RETURN p.college AS college, p.top6 AS top6, "
-            "reduce(a=0, x IN [(p)-[r:AWARDED]->(ay:AcademicYear) WHERE ay.year = $latest "
-            "| r.count] | a + coalesce(x, 0)) AS aw",
-            colleges=list(spec.colleges), latest=latest,
-        ).data()
 
-    prog_tops = {r["top6"] for r in progs}
-    # "active" = the member offers a feeding program with AWARDS in the LATEST
-    # reported year — supply is the current year's completers, the same year the
-    # coverage-matrix cells display. A program that awarded in older years but
-    # nothing in the latest year is dormant (e.g. 210530 Industrial & Transp.
-    # Security), so it isn't counted and a row never shows all-empty latest cells.
-    active_tops = {r["top6"] for r in progs if (r["aw"] or 0) > 0}
-    # top6 -> member colleges actually awarding completers in it (latest year) —
-    # used to count distinct producing colleges per occupation for min_colleges.
-    top_colleges: dict[str, set[str]] = defaultdict(set)
-    for r in progs:
-        if (r["aw"] or 0) > 0:
-            top_colleges[r["top6"]].add(r["college"])
+    # The member's offered programs (reachability) and their PRODUCING subset both resolve through the
+    # shared gate (quantities.producing_tops / producing_top_colleges), so resolve, relevant_tops and
+    # _soc_feeders decide "which programs count" ONE way. "Producing" = a feeding program with AWARDS in the
+    # latest reported year — supply is the current year's completers, the same year the coverage-matrix cells
+    # display; a program that awarded only in older years is dormant and drops (e.g. 210530 Industrial &
+    # Transp. Security), so a row never shows all-empty latest cells. top_colleges gives the distinct
+    # producing colleges per occupation for the min_colleges floor. Step 2 widens the window + unions
+    # enrollment in those two helpers, in one place.
+    prog_tops = member_program_tops(tuple(spec.colleges))
+    active_tops = producing_tops(spec.colleges, prog_tops)
+    top_colleges = producing_top_colleges(spec.colleges, prog_tops)
 
     # SOC -> reachable / active via the spec's IN-SCOPE TOPs the member offers —
     # in_scope applies is_vocational, excluded_tops AND the home-division gate, so
@@ -110,51 +111,55 @@ def effective_socs(spec: LandscapeSpec) -> tuple[str, ...]:
     # majority, not an outlier filter), so require membership > twice the floor.
     min_colleges = rule.min_colleges if len(spec.colleges) > 2 * rule.min_colleges else 1
 
-    kept = []
-    for soc in socs:
-        # INCLUDE_SOCS are curated below-floor admissions (sectors.INCLUDE_SOCS):
-        # they bypass the openings floor ONLY, still facing every gate below, so a
-        # premium multi-college occupation with thin raw openings is admitted but a
-        # loss of its supply still drops it.
-        if (
-            rule.min_openings
-            and (openings.get(soc) or 0) <= rule.min_openings
-            and soc not in INCLUDE_SOCS
-        ):
-            continue
-        # WAGE_EXEMPT_SOCS bypass the near-living-wage floor on explicit sector
-        # authority (sectors.WAGE_EXEMPT_SOCS) — its only exception, kept narrow
-        # because the floor is a quality principle, not a size proxy.
-        if (
-            rule.min_wage
-            and (wages.get(soc) or 0) < rule.min_wage
-            and soc not in WAGE_EXEMPT_SOCS
-        ):
-            continue
-        # Drop declining occupations (negative regional growth) — a shrinking
-        # field is poor program-investment strategy — unless structurally
-        # important enough to override (GROWTH_EXEMPT_SOCS, e.g. Eng Techs,
-        # Carpenters). Growth is a flag, not a hard cut, for those few.
+    # The effective set = trainable-sector-membership ∩ IN-DEMAND ∩ SERVED. The two gates are named and
+    # independent (order-free), so the decomposition is explicit and each is separately usable as a lens:
+    # `in_demand` asks "is there a real market?" (occupation × region — member-independent); `served` asks
+    # "is the member in it?" (member × sector). Their intersection is what the dashboard shows today; Phase
+    # B exposes each on its own so a small effective set reads as "small market" vs "I don't serve it".
+    def in_demand(soc: str) -> bool:
+        # Demand-quality gate. INCLUDE_SOCS = curated below-floor admissions (bypass the openings floor
+        # ONLY, still facing every other gate). WAGE_EXEMPT_SOCS bypass the near-living-wage floor on
+        # explicit sector authority. GROWTH_EXEMPT_SOCS keep a few declining-but-structural occupations.
+        if (rule.min_openings and (openings.get(soc) or 0) <= rule.min_openings
+                and soc not in INCLUDE_SOCS):
+            return False
+        if (rule.min_wage and (wages.get(soc) or 0) < rule.min_wage
+                and soc not in WAGE_EXEMPT_SOCS):
+            return False
         if (growth.get(soc) or 0) < 0 and soc not in GROWTH_EXEMPT_SOCS:
-            continue
+            return False
+        return True
+
+    def served(soc: str) -> bool:
+        # Member-engaged gate: the member offers a feeding program (reachable), actively graduates into it
+        # (active), and — for a genuine multi-college consortium — enough colleges produce it that there is
+        # a partnership to broker (the consortium floor; single-college occupations are self-contained and
+        # justified by demand alone, so out of scope for the consortium's coordination view).
         if rule.reachable_only and soc not in reachable:
-            continue
+            return False
         if rule.non_empty_only and soc not in active:
-            continue
-        # Consortium floor: an occupation must be produced by >= min_colleges
-        # distinct member colleges — a single-college occupation is self-contained
-        # (no multi-school partnership to broker) and already justified by demand
-        # alone, so it's out of scope for the consortium's coordination view.
+            return False
         if min_colleges > 1 and len(soc_colleges.get(soc, ())) < min_colleges:
-            continue
-        kept.append(soc)
-    return tuple(kept)
+            return False
+        return True
+
+    in_demand_socs = tuple(soc for soc in socs if in_demand(soc))
+    served_socs = tuple(soc for soc in socs if served(soc))
+    effective = tuple(soc for soc in socs if in_demand(soc) and served(soc))
+    return {"full": full, "in_demand": in_demand_socs, "served": served_socs, "effective": effective}
+
+
+def effective_socs(spec: LandscapeSpec) -> tuple[str, ...]:
+    """The sector rule's effective set = in_demand ∩ served — the dashboard's current WHAT. A thin
+    projection of sector_lenses so the decomposition has one birthplace."""
+    return sector_lenses(spec)["effective"]
 
 
 def resolve(spec: LandscapeSpec) -> LandscapeSpec:
-    """Return spec with .socs narrowed to its sector rule's effective set
-    (sector-derived instances). Identity — and no graph access — for a curated/
-    no-rule spec (e.g. SVAMP), which is trusted as authored and never filtered."""
-    if spec.soc_rule is None or not spec.soc_rule.active:
+    """Return spec with .socs narrowed to its sector rule's effective set (sector-derived instances).
+    Identity — and no graph access — for an AUTHORED spec (SVAMP's occupations are the curation, never
+    filtered) or a no-rule spec. This branches on the Composition, not the rule, so an authored spec may
+    still carry an active rule (its programs run the universal gate; only its occupation set stays final)."""
+    if spec.composition.is_authored or spec.soc_rule is None or not spec.soc_rule.active:
         return spec
     return dataclasses.replace(spec, socs=effective_socs(spec))

@@ -1,0 +1,375 @@
+{
+ "coordinate": {
+  "entity": "",
+  "lens": "",
+  "member": "skyline",
+  "member_label": "Skyline College",
+  "region": "Bay Area",
+  "sector": "adm",
+  "sector_label": "Advanced Manufacturing",
+  "soc": null,
+  "top6": null
+ },
+ "data": {
+  "more": {
+   "drill": {
+    "coordinate": {
+     "entity": "",
+     "lens": "coverage",
+     "member": "skyline",
+     "member_label": "Skyline College",
+     "region": "Bay",
+     "sector": "adm",
+     "sector_label": "Advanced Manufacturing",
+     "soc": null,
+     "top6": null
+    },
+    "form": "navigate",
+    "rationale": "18 more colleges to compare."
+   },
+   "remaining": 18
+  },
+  "rows": [
+   {
+    "label": "Santa Rosa Junior College",
+    "roster": [],
+    "values": {
+     "sector_enrollment": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled/term",
+      "value": 103.3,
+      "vintage": "Fall 2025"
+     },
+     "sector_supply": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 277.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "supply_share": {
+      "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "fraction",
+      "value": 0.1,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "De Anza College",
+    "roster": [],
+    "values": {
+     "sector_enrollment": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled/term",
+      "value": 92.7,
+      "vintage": "Fall 2025"
+     },
+     "sector_supply": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 250.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "supply_share": {
+      "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "fraction",
+      "value": 0.1,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "Foothill College",
+    "roster": [],
+    "values": {
+     "sector_enrollment": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled/term",
+      "value": 0.0,
+      "vintage": "Fall 2025"
+     },
+     "sector_supply": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 215.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "supply_share": {
+      "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "fraction",
+      "value": 0.1,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "Chabot College",
+    "roster": [],
+    "values": {
+     "sector_enrollment": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled/term",
+      "value": 39.0,
+      "vintage": "Fall 2025"
+     },
+     "sector_supply": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 199.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "supply_share": {
+      "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "fraction",
+      "value": 0.1,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "City College of San Francisco",
+    "roster": [],
+    "values": {
+     "sector_enrollment": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled/term",
+      "value": 76.7,
+      "vintage": "Fall 2025"
+     },
+     "sector_supply": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 173.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "supply_share": {
+      "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "fraction",
+      "value": 0.1,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "Solano Community College",
+    "roster": [],
+    "values": {
+     "sector_enrollment": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled/term",
+      "value": 0.0,
+      "vintage": "Fall 2025"
+     },
+     "sector_supply": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 158.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "supply_share": {
+      "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "fraction",
+      "value": 0.1,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "Laney College",
+    "roster": [],
+    "values": {
+     "sector_enrollment": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled/term",
+      "value": 12.7,
+      "vintage": "Fall 2025"
+     },
+     "sector_supply": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 144.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "supply_share": {
+      "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "fraction",
+      "value": 0.1,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "San Jose City College",
+    "roster": [],
+    "values": {
+     "sector_enrollment": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled/term",
+      "value": 30.0,
+      "vintage": "Fall 2025"
+     },
+     "sector_supply": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 127.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "supply_share": {
+      "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "fraction",
+      "value": 0.1,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   }
+  ],
+  "sorted_by": {
+   "direction": "higher",
+   "key": "sector_supply",
+   "label": "Sector supply (completions)",
+   "unit": "completions/yr"
+  },
+  "summary": {
+   "units_compared": {
+    "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+    "parent_vintages": [],
+    "source": "derived",
+    "status": "ok",
+    "unit": "colleges",
+    "value": 26,
+    "vintage": ""
+   }
+  }
+ },
+ "form": "compare",
+ "framing": {
+  "meaning": "Comparison ranks a set of analogous units \u2014 a member's programs, the sector's occupations, or the region's colleges \u2014 by a chosen criterion, showing every unit's full profile sorted by that named axis. It is what turns a measure into a decision: which program is biggest or fastest-growing, which occupation is most in-demand or highest-paying, which college leads on supply. The axes admissible for each unit type are the criteria menu; rank by one and name it \u2014 never by a blended 'score'.",
+  "salience": [
+   "supply=3yr-avg: supply is a 3-year average of DataMart completions (All Awards); the single most recent year (latest_year_supply) can run above or below it."
+  ]
+ },
+ "licensing": {
+  "gates": [],
+  "licensed": [
+   "The member's colleges in the sector, each with all comparison criteria, ranked by sector supply (completions).",
+   "Every criterion is a plain sum-across pool or a native ratio \u2014 no weighting, no composite; a ranking is defensible because each figure traces to its authority."
+  ],
+  "not_licensed": [
+   "Every criterion is a plain count that adds up (openings, completions, employment), a ratio measured AT the unit's own grain (supply share, the trends), or a directly-measured outcome (the graduate-wage figures) \u2014 never a weighted composite. An occupation's median wage and growth are native to the occupation (its regional OES signal); a PROGRAM 'wage' blended from its occupations' wages, or a growth rate carried down to a program, WOULD be a composite and is not a criterion. A program's graduate wage is the measured, statewide-pooled cohort (its largest recipient type), not this member's own graduates, and medians are never summed. 'addressable_gap' is a program's addressable demand minus the REGIONAL supply into the occupations it feeds \u2014 NOT the sector/occupation gap supply_demand_gaps reports. Trends compare same-season terms to avoid a seasonal artifact; college figures are per single college \u2014 positioning within the region, never a competitive ranking."
+  ]
+ },
+ "next_moves": [
+  {
+   "coordinate": {
+    "entity": "",
+    "lens": "coverage",
+    "member": "skyline",
+    "member_label": "Skyline College",
+    "region": "Bay",
+    "sector": "adm",
+    "sector_label": "Advanced Manufacturing",
+    "soc": null,
+    "top6": null
+   },
+   "form": "navigate",
+   "rationale": "See how the sector's programs are covered across the region's colleges."
+  }
+ ],
+ "provenance": {
+  "field_authority": {
+   "enrollment": "datamart",
+   "projected_supply": "datamart",
+   "supply_share": "derived"
+  },
+  "scope_granularity": "demand regional (Bay Area); supply regional (Bay Area) \u2014 all 26 colleges; member institutional \u2014 college (\u03a3 1 colleges); wage statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
+  "sources": [
+   {
+    "authority": "CCCCO DataMart",
+    "id": "datamart",
+    "role": "program awards, enrollment, and graduate wage outcomes"
+   }
+  ],
+  "vintages": {
+   "demand": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection",
+   "projected_supply": "3-yr avg DataMart completions (2022-2023\u20262024-2025)",
+   "wage_outcomes": "pooled graduate wages, award years 2015-2016 to 2019-2020"
+  }
+ },
+ "view_link": {
+  "note": "Opens on the lens with a default selection (view state applies client-side); select the row above to corroborate the figure.",
+  "status": "ok",
+  "url": "https://preview.kallipolis.us/landscape/skyline/adm?lens=programs&panel=programs.coverage"
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "annual_openings": null,
+ "annual_wage": null,
+ "award_years": [],
+ "awards_by_college": [],
+ "consortium_supply": 0.0,
+ "crosswalk": {
+  "cips": [],
+  "coverage_pct": 0.0,
+  "n_taught": 0,
+  "n_total": 0,
+  "tops": []
+ },
+ "curriculum_by_college": [
+  {
+   "college": "College of San Mateo",
+   "courses": []
+  },
+  {
+   "college": "Skyline College",
+   "courses": []
+  },
+  {
+   "college": "Ca\u00f1ada College",
+   "courses": []
+  }
+ ],
+ "description": null,
+ "employment": null,
+ "enrollment_by_college": [],
+ "enrollment_terms": [],
+ "feeding_tops": [],
+ "gap": 0,
+ "growth_rate": null,
+ "occupational_demand": "According to the Centers of Excellence for Labor Market Research, no wage or openings figures are published for 43-4051 (SOC 43-4051) in the Bay Area region.",
+ "partnership_opportunities": [],
+ "partnership_opportunities_narrative": "",
+ "region": "Bay",
+ "region_display": "Bay Area",
+ "sector": "Business & Entrepreneurship",
+ "soc_code": "43-4051",
+ "title": "43-4051"
+}

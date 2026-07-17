@@ -57,7 +57,7 @@ from partnerships.landscape_build import (
 from partnerships.landscape import (
     LandscapeSpec, SVAMP_SPEC, _term_excluded, _term_sort_key,
 )
-from partnerships.quantities import gap as compute_gap, supply_fn_graph
+from partnerships.quantities import gap as compute_gap, producing_tops, recent_award_years, supply_fn_graph
 
 
 # ── Response shapes ───────────────────────────────────────────────────────
@@ -292,21 +292,11 @@ def relevant_tops(spec: LandscapeSpec) -> dict[str, set[str]]:
 
 def _awarded_tops(spec: LandscapeSpec, tops) -> set[str]:
     """TOP6s with >=1 awarded completer in the LATEST reported year, in any member
-    college — the supply gate's program grain. Matches resolve()'s active_tops and
-    the coverage-matrix's latest-year cells, so a kept TOP is exactly one with
-    current supply; a program last awarded in an older year is dormant and drops
-    (e.g. 210530 Industrial & Transportation Security, which last awarded a
-    completer in 2023-24)."""
-    with get_driver().session() as session:
-        latest = latest_academic_year(session)
-        rows = session.run(
-            "MATCH (p:Program)-[a:AWARDED]->(ay:AcademicYear) "
-            "WHERE p.college IN $colleges AND p.top6 IN $tops "
-            "AND ay.year = $latest AND coalesce(a.count, 0) > 0 "
-            "RETURN DISTINCT p.top6 AS top6",
-            colleges=list(spec.colleges), tops=list(tops), latest=latest,
-        ).data()
-    return {r["top6"] for r in rows}
+    college — the supply gate's program grain. Matches resolve()'s active set and
+    the coverage matrix, so a kept TOP is exactly one that is ACTIVE (recent
+    completers or enrollment). Delegates to the shared ``producing_tops`` gate (the
+    one home for "which programs count") — the active window + enrollment live there."""
+    return set(producing_tops(spec.colleges, tops))
 
 
 # ── Builders (I/O) ──────────────────────────────────────────────────────────

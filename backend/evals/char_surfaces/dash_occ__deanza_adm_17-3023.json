@@ -1,0 +1,263 @@
+{
+ "annual_openings": 430,
+ "annual_wage": 89280,
+ "award_years": [
+  "2020-2021"
+ ],
+ "awards_by_college": [
+  {
+   "college": "De Anza College",
+   "vals": [
+    1
+   ]
+  }
+ ],
+ "consortium_supply": 0.0,
+ "crosswalk": {
+  "cips": [],
+  "coverage_pct": 0.0,
+  "n_taught": 0,
+  "n_total": 0,
+  "tops": []
+ },
+ "curriculum_by_college": [
+  {
+   "college": "De Anza College",
+   "courses": [
+    {
+     "code": "DMT077A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Special Projects in Manufacturing and CNC/Mastercam Certification Level 1",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT077B",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Special Projects in Manufacturing and CNC/Mastercam Certification Level 2",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT077C",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Special Projects in Manufacturing and CNC/Mastercam Certification Level 3",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT077D",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Special Projects In Manufacturing and CNC/NIMS Level 1",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT077E",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Special Projects In Manufacturing and CNC/NIMS Level 2",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT077F",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Special Projects In Manufacturing and CNC/NIMS Level 3",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT080",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Introduction to Machining and CNC Processes",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT082",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Advanced Conventional Machine Tools, Tool Design, Abrasive Machining",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT084A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Introduction to CNC Programming and Operation; Mill",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT084B",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CNC Programming and Operation; Intermediate Mill",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT084C",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CNC Lathes-Horizontal Mill-4th Axis Rotary-Programming Operations",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT087E",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CAD/CAM Programming Using Mastercam",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT087K",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CAD/CAM Based CNC Surface Contouring Programming Using Mastercam",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT087P",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CAD/CAM Based CNC 4 and 5 Axis Mill/Lathe Programming Using Mastercam",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT087Q",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CAD/CAM Based CNC 4 and 5 Axis Mill/Lathe Programming Using Mastercam",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT089A",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CAM Based CNC Multi-Axis Programming Using NX",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT089B",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CAM Based CNC Multi-Axis Programming Using NX",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT089C",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CAM Based CNC Multi-Axis Programming Using NX",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT089D",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CAM Based CNC Multi-Axis Programming Using NX",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT089E",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "CAM Based CNC Multi-Axis Programming Using NX",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT090",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Print Reading and Machine Shop Calculations",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT091",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Dimensional Metrology",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT092",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Applied GD&T (ASME Y14.5m); Coordinate Measuring Machines (CMM)",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT093",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Introduction to Quality Assurance",
+     "top_code": "095600"
+    },
+    {
+     "code": "DMT095",
+     "description": "",
+     "learning_outcomes": [],
+     "name": "Manufacturing Materials and Processes",
+     "top_code": "095600"
+    }
+   ]
+  }
+ ],
+ "description": "Apply electrical and electronic theory and related knowledge, usually under the direction of engineering staff, to design, build, repair, adjust, and modify electrical components, circuitry, controls, and machinery for subsequent evaluation and use by engineering staff in making engineering design decisions.",
+ "employment": 4510,
+ "enrollment_by_college": [
+  {
+   "college": "De Anza College",
+   "vals": [
+    142,
+    126,
+    175,
+    202,
+    179,
+    194,
+    204,
+    198,
+    180,
+    166,
+    212,
+    235,
+    151,
+    223
+   ]
+  }
+ ],
+ "enrollment_terms": [
+  "Winter 2021",
+  "Spring 2021",
+  "Fall 2021",
+  "Winter 2022",
+  "Spring 2022",
+  "Fall 2022",
+  "Winter 2023",
+  "Spring 2023",
+  "Winter 2024",
+  "Spring 2024",
+  "Fall 2024",
+  "Winter 2025",
+  "Spring 2025",
+  "Fall 2025"
+ ],
+ "feeding_tops": [
+  {
+   "awards_total": 1,
+   "enrollment_total": 235,
+   "name": "Manufacturing and Industrial Technology",
+   "soc_count": 4,
+   "top6": "095600"
+  }
+ ],
+ "gap": 430,
+ "growth_rate": -0.0,
+ "occupational_demand": "According to the Centers of Excellence for Labor Market Research, Electrical and Electronic Engineering Technologists and Technicians (SOC 17-3023) earn a median annual wage of $89,280 with 430 annual openings in the Bay Area region. 4,510 workers are currently employed in the region with this occupational role, with projected employment growth of -0.6% over a 5-year time span.",
+ "partnership_opportunities": [],
+ "partnership_opportunities_narrative": "",
+ "region": "Bay",
+ "region_display": "Bay Area",
+ "sector": "Advanced Manufacturing",
+ "soc_code": "17-3023",
+ "title": "Electrical and Electronic Engineering Technologists and Technicians"
+}

@@ -26,7 +26,7 @@ from partnerships.predicates import (
     OPENINGS_FLOOR as _OPENINGS_FLOOR,
     WAGE_FLOOR as _WAGE_FLOOR,
 )
-from partnerships.resolve import resolve
+from partnerships.resolve import resolve, sector_lenses
 
 from mcp_server import canonical as CAN
 from mcp_server import catalog as C
@@ -46,6 +46,7 @@ from mcp_server.envelope import (
     SortAxis,
 )
 from mcp_server.compare import compare
+from mcp_server.engine import select, select_member, supply
 from mcp_server.scope import coordinate_of, find_scope, gate_envelope, scope_for, sectors_for_member
 
 _TOP_N = 8  # progressive-disclosure row cap (summary-first; drill on request)
@@ -69,12 +70,10 @@ def _awards_window(award_years: list[str]) -> str:
     return f"DataMart awards — {award_years[0]}…{award_years[-1]}"
 
 
-def _derived(value, *, unit: str, granularity: str, predicate_version: str = "") -> QualifiedValue:
+def _derived(value, *, unit: str, granularity: str) -> QualifiedValue:
     """A structural count over the graph (member/program cardinality) — not an
-    institutional-authority fact, but still Bound so no bare number escapes.
-    ``predicate_version`` (K2) stamps a count whose value depends on a registered predicate."""
-    return QualifiedValue.ok(value, unit=unit, source="derived", granularity=granularity,
-                             predicate_version=predicate_version)
+    institutional-authority fact, but still Bound so no bare number escapes."""
+    return QualifiedValue.ok(value, unit=unit, source="derived", granularity=granularity)
 
 
 def _framing(form_id: str, salience: list[str]) -> Framing:
@@ -164,12 +163,11 @@ def _unserved_occupation(entry: dict, soc: str, region_display: str) -> Analysis
 
 
 def analyze_gap(member: str, sector: str, *, soc: Optional[str] = None) -> AnalysisEnvelope:
-    resolved = scope_for(member, sector)
-    if resolved is None:
+    sel = select(member, sector)
+    if sel is None:
         return gate_envelope("gap", member, sector,
                              reason=f"No live coordinate for ({member!r}, {sector!r}). Confirm the member id and its live sectors via list_institutions.")
-    spec, entry = resolved
-    resolved_spec = resolve(spec)
+    entry, resolved_spec = sel.entry, sel.spec
     land = build_landscape(resolved_spec)   # SOC universe + regional demand (scope-invariant)
     agg = land.aggregate
 
@@ -178,8 +176,8 @@ def analyze_gap(member: str, sector: str, *, soc: Optional[str] = None) -> Analy
     # college in the member's COE region) is the gap denominator; the member's own supply
     # is its share; the latest single year is the trend. All come from the same function,
     # so no sibling tool can disagree. Demand + the SOC set come from the landscape.
-    region = resolved_spec.resolve_region()
-    member_colleges, region_colleges = resolved_spec.colleges, region_member(region).colleges
+    region = sel.region
+    member_colleges, region_colleges = sel.member_colleges, sel.region_colleges
     recent, latest = CAN.recent_award_years(), CAN.recent_award_years(1)
 
     region_g = _regional(land.region_display)
@@ -195,9 +193,9 @@ def analyze_gap(member: str, sector: str, *, soc: Optional[str] = None) -> Analy
             if r is None:
                 r = per_soc[cell.soc_code] = {
                     "title": cell.title, "openings": cell.annual_openings,
-                    "member_supply": CAN.supply(member_colleges, cell.soc_code, spec=resolved_spec),
-                    "regional_supply": CAN.supply(region_colleges, cell.soc_code, spec=resolved_spec),
-                    "latest": CAN.supply(member_colleges, cell.soc_code, years=latest, spec=resolved_spec)}
+                    "member_supply": supply(sel, over="member", soc=cell.soc_code),
+                    "regional_supply": supply(sel, over="region", soc=cell.soc_code),
+                    "latest": supply(sel, over="member", soc=cell.soc_code, years=latest)}
             if r["openings"] is None:
                 r["openings"] = cell.annual_openings
     for r in per_soc.values():
@@ -255,7 +253,7 @@ def analyze_gap(member: str, sector: str, *, soc: Optional[str] = None) -> Analy
                                        "member_supply is this member's own share of that regional supply."],
                              not_licensed=["Supply is a 3-yr average of DataMart completions (All Awards) over the occupation's CTE feeder programs — a multi-year projection, not the single most recent year (latest_year_supply)."]),
         next_moves=C.build_next_moves("gap", entry, soc=soc),
-        view_link=V.view_link("gap", instance_id=spec.id, member_id=entry["member_id"],
+        view_link=V.view_link("gap", instance_id=sel.instance_id, member_id=entry["member_id"],
                               sector_id=entry["sector_id"], soc=soc),
         provenance=P.build_provenance(
             ["annual_openings", "projected_supply", "latest_year_supply", "gap"],
@@ -268,13 +266,12 @@ def analyze_gap(member: str, sector: str, *, soc: Optional[str] = None) -> Analy
 # ── coverage ──────────────────────────────────────────────────────────────
 
 def analyze_coverage(member: str, sector: str) -> AnalysisEnvelope:
-    resolved = scope_for(member, sector)
-    if resolved is None:
+    sel = select(member, sector)
+    if sel is None:
         return gate_envelope("coverage", member, sector,
                              reason=f"No live coordinate for ({member!r}, {sector!r}). Confirm the member id and its live sectors via list_institutions.")
-    spec, entry = resolved
-    rspec = resolve(spec)
-    member_colleges = list(rspec.colleges)
+    entry, rspec = sel.entry, sel.spec
+    member_colleges = sel.member_colleges
     pl = build_programs_landscape(rspec)
     if not pl.tops:   # member offers no program in this sector — gate, never 0-readable
         return _empty_member_sector("coverage", entry, pl.region_display)
@@ -329,7 +326,7 @@ def analyze_coverage(member: str, sector: str) -> AnalysisEnvelope:
                              licensed=["Covered / Partial / Gap classification of each (college, program) cell."],
                              not_licensed=["A 'gap' cell is no realized supply — not a claim about need or intent."]),
         next_moves=C.build_next_moves("coverage", entry),
-        view_link=V.view_link("coverage", instance_id=spec.id, member_id=entry["member_id"],
+        view_link=V.view_link("coverage", instance_id=sel.instance_id, member_id=entry["member_id"],
                               sector_id=entry["sector_id"]),
         provenance=P.build_provenance(
             ["coverage", "actual_awards", "enrollment"],
@@ -342,11 +339,11 @@ def analyze_coverage(member: str, sector: str) -> AnalysisEnvelope:
 
 def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
                     occupation: Optional[str] = None) -> AnalysisEnvelope:
-    resolved = scope_for(member, sector)
-    if resolved is None:
+    sel = select(member, sector)
+    if sel is None:
         return gate_envelope("pathway", member, sector,
                              reason=f"No live coordinate for ({member!r}, {sector!r}). Confirm the member id and its live sectors via list_institutions.")
-    spec, entry = resolved
+    entry = sel.entry
 
     if bool(program) == bool(occupation):   # both or neither
         coord = coordinate_of(entry)
@@ -369,7 +366,7 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
         from partnerships.graph_reads import regional_demand
         from partnerships.sectors import SECTORS
 
-        rspec = resolve(spec)
+        rspec = sel.spec
         pr = build_program_report(program, None, spec=rspec)   # program display name + bridging CIPs
         member_colleges = list(rspec.colleges)
         region = rspec.resolve_region()
@@ -436,7 +433,7 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
                                  licensed=["The occupations this TOP6 program prepares students for, ranked by annual openings — with median wage and the regional gap shown alongside each — and the program's own supply.",
                                            "Addressable demand is the sum-across pool the program competes for — a graduate is qualified for these occupations, not assigned to one."]),
             next_moves=next_moves,
-            view_link=V.view_link("pathway", instance_id=spec.id, member_id=entry["member_id"],
+            view_link=V.view_link("pathway", instance_id=sel.instance_id, member_id=entry["member_id"],
                                   sector_id=entry["sector_id"], top6=program),
             provenance=P.build_provenance(
                 ["annual_openings", "annual_wage", "projected_supply", "gap"],
@@ -448,7 +445,7 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
     # supply/gap resolve through canonical.supply — coherent with analyze_gap (this tool
     # previously computed gap = regional − INSTITUTIONAL supply, the exact conflation the
     # gap description forbids; fixed here).
-    rspec = resolve(spec)
+    rspec = sel.spec
     occ = build_landscape_occupation(occupation, spec=rspec, college=None, include_employers=False)
     member_colleges = rspec.colleges
     region_colleges = region_member(rspec.resolve_region()).colleges
@@ -491,7 +488,7 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
                              licensed=["The programs that feed this occupation, the regional demand for it, and the regional supply gap.",
                                        "member_supply is this member's share of that regional supply."]),
         next_moves=C.build_next_moves("pathway", entry, soc=occupation),
-        view_link=V.view_link("pathway", instance_id=spec.id, member_id=entry["member_id"],
+        view_link=V.view_link("pathway", instance_id=sel.instance_id, member_id=entry["member_id"],
                               sector_id=entry["sector_id"], soc=occupation),
         provenance=P.build_provenance(
             ["annual_openings", "annual_wage", "projected_supply", "latest_year_supply", "actual_awards", "gap"],
@@ -503,12 +500,12 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
 # ── regional employers ─────────────────────────────────────────────────────
 
 def analyze_regional_employers(member: str, sector: str, *, soc: Optional[str] = None) -> AnalysisEnvelope:
-    resolved = scope_for(member, sector)
-    if resolved is None:
+    sel = select(member, sector)
+    if sel is None:
         return gate_envelope("regional_employers", member, sector,
                              reason=f"No live coordinate for ({member!r}, {sector!r}). Confirm the member id and its live sectors via list_institutions.")
-    spec, entry = resolved
-    er = build_landscape_employers(resolve(spec))
+    entry = sel.entry
+    er = build_landscape_employers(sel.spec)
     region_g = _regional(er.region_display)
 
     employers = er.employers
@@ -537,7 +534,7 @@ def analyze_regional_employers(member: str, sector: str, *, soc: Optional[str] =
                              licensed=["Regional employers ranked by OES staffing share for the target occupations."],
                              not_licensed=["'shown' is a geocoded shortlist, not the whole candidate pool ('total')."]),
         next_moves=C.build_next_moves("regional_employers", entry, soc=soc),
-        view_link=V.view_link("regional_employers", instance_id=spec.id, member_id=entry["member_id"],
+        view_link=V.view_link("regional_employers", instance_id=sel.instance_id, member_id=entry["member_id"],
                               sector_id=entry["sector_id"]),
         provenance=P.build_provenance(
             ["candidate_employers", "employer_relevance"],
@@ -566,19 +563,16 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
     from ontology.regions import COE_REGION_DISPLAY
     from ontology.schema import get_driver
 
-    sects = sectors_for_member(member)
-    if not sects:
+    sel = select_member(member)
+    if sel is None:
         return gate_envelope("occupation_profile", member, "",
-                             reason=f"No institution matching {member!r}. Use list_institutions (optionally with a name filter) to find its member id, then retry with that id — the tools take the id, not the display name.")
-    resolved = scope_for(member, sects[0]["sector_id"])
-    if resolved is None:
-        return gate_envelope("occupation_profile", member, "",
-                             reason=f"Could not resolve institution {member!r}.")
-    spec0, entry = resolved
-    region = spec0.resolve_region()
-    region_disp = COE_REGION_DISPLAY.get(region, region)
-    member_colleges = list(spec0.colleges)
-    region_colleges = list(region_member(region).colleges)
+                             reason=(f"No institution matching {member!r}. Use list_institutions (optionally with a name filter) to find its member id, then retry with that id — the tools take the id, not the display name."
+                                     if not sectors_for_member(member) else
+                                     f"Could not resolve institution {member!r}."))
+    sects = sectors_for_member(member)      # the occupation's classifying sectors, used below
+    entry, spec0 = sel.entry, sel.spec
+    region, region_disp = sel.region, sel.region_display
+    member_colleges, region_colleges = sel.member_colleges, sel.region_colleges
 
     with get_driver().session() as session:
         demand = regional_demand(session, region, [occupation]).get(occupation, {})
@@ -592,7 +586,7 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
             "MATCH (r:Region {name:$region})<-[:IN_MARKET]-(e:Employer)-[h:HIRES_FOR]->"
             "(o:Occupation {soc_code:$s}) "
             "RETURN coalesce(e.display_name, e.name) AS name, h.pct_total AS pct "
-            "ORDER BY pct DESC LIMIT $n", region=region, s=occupation, n=_OCC_EMP_N).data()
+            "ORDER BY pct DESC, name ASC LIMIT $n", region=region, s=occupation, n=_OCC_EMP_N).data()
 
     education = edu_row["e"] if edu_row else None
     # Supply + feeders resolve through the ONE canonical resolver — is_vocational
@@ -717,18 +711,15 @@ def unmet_demand(member: str) -> AnalysisEnvelope:
     # Resolve member → region + colleges WITHOUT a sector (occupation_profile's path):
     # any live sector suffices to obtain the spec, from which the region and the member's
     # colleges derive. An institution that matches no coordinate gates back to Tier 0.
-    sects = sectors_for_member(member)
-    if not sects:
+    sel = select_member(member)
+    if sel is None:
         return gate_envelope("unmet_demand", member, "",
-                             reason=f"No institution matching {member!r}. Use list_institutions (optionally with a name filter) to find its member id, then retry with that id — the tools take the id, not the display name.")
-    resolved = scope_for(member, sects[0]["sector_id"])
-    if resolved is None:
-        return gate_envelope("unmet_demand", member, "",
-                             reason=f"Could not resolve institution {member!r}.")
-    spec0, entry = resolved
-    region = spec0.resolve_region()
-    region_disp = COE_REGION_DISPLAY.get(region, region)
-    member_colleges = list(spec0.colleges)
+                             reason=(f"No institution matching {member!r}. Use list_institutions (optionally with a name filter) to find its member id, then retry with that id — the tools take the id, not the display name."
+                                     if not sectors_for_member(member) else
+                                     f"Could not resolve institution {member!r}."))
+    entry, spec0 = sel.entry, sel.spec
+    region, region_disp = sel.region, sel.region_display
+    member_colleges = sel.member_colleges
 
     with get_driver().session() as session:
         demand_rows = session.run(
@@ -857,19 +848,16 @@ def member_portfolio(member: str) -> AnalysisEnvelope:
     from partnerships.graph_reads import regional_demand
     from partnerships.sectors import SECTORS
 
+    sel = select_member(member)
+    if sel is None:
+        return gate_envelope("member_portfolio", member, "",
+                             reason=(f"No institution matching {member!r}. Use list_institutions (optionally with a name filter) to find its member id, then retry with that id — the tools take the id, not the display name."
+                                     if not sectors_for_member(member) else
+                                     f"Could not resolve institution {member!r}."))
     sects = sectors_for_member(member)
-    if not sects:
-        return gate_envelope("member_portfolio", member, "",
-                             reason=f"No institution matching {member!r}. Use list_institutions (optionally with a name filter) to find its member id, then retry with that id — the tools take the id, not the display name.")
-    resolved = scope_for(member, sects[0]["sector_id"])
-    if resolved is None:
-        return gate_envelope("member_portfolio", member, "",
-                             reason=f"Could not resolve institution {member!r}.")
-    spec0, entry = resolved
-    region = spec0.resolve_region()
-    region_disp = COE_REGION_DISPLAY.get(region, region)
-    member_colleges = list(spec0.colleges)
-    region_colleges = list(region_member(region).colleges)
+    entry, spec0 = sel.entry, sel.spec
+    region, region_disp = sel.region, sel.region_display
+    member_colleges, region_colleges = sel.member_colleges, sel.region_colleges
 
     # Each sector's occupations, and the DISTINCT union across sectors (Regime A across sectors too).
     sector_socs = {e["sector_id"]: list(SECTORS[e["sector_id"]].socs) for e in sects}
@@ -982,18 +970,14 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
     from partnerships.graph_reads import regional_demand
     from partnerships.sectors import SECTORS
 
-    resolved = scope_for(member, sector)
-    if resolved is None:
+    sel = select(member, sector)                            # the one resolution path (Phase A)
+    if sel is None:
         return gate_envelope("sector_overview", member, sector,
                              reason=f"No live coordinate for ({member!r}, {sector!r}). Confirm the member id and its live sectors via list_institutions.")
-    spec, entry = resolved
-    rspec = resolve(spec)
-    region = rspec.resolve_region()
-    region_disp = COE_REGION_DISPLAY.get(region, region)
-    member_colleges = list(rspec.colleges)
-    region_colleges = list(region_member(region).colleges)
-    sector_socs = list(SECTORS[entry["sector_id"]].socs)
-    sector_label = SECTORS[entry["sector_id"]].label
+    entry, rspec = sel.entry, sel.spec
+    region, region_disp = sel.region, sel.region_display
+    member_colleges, region_colleges = sel.member_colleges, sel.region_colleges
+    sector_socs, sector_label = sel.sector_socs, sel.sector_label
 
     with get_driver().session() as session:
         demand = regional_demand(session, region, sector_socs)
@@ -1007,8 +991,8 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
 
     # Regime A — plain sums over DISTINCT occupations / programs (each counted once), no allocation.
     total_demand = int(round(sum((d.get("annual_openings") or 0) for d in demand.values())))
-    regional_supply = CAN.supply_over_socs(region_colleges, sector_socs, spec=rspec)
-    member_supply = CAN.supply_over_socs(member_colleges, sector_socs, spec=rspec)
+    regional_supply = supply(sel, over="region")
+    member_supply = supply(sel, over="member")
     # The member's programs in the sector = registered ∩ in_scope (adjudication C: 'on-the-books' — the
     # member has a Program node for it and it is in the sector's scope), with the awards-active subset
     # (currently graduating) as a stamped complement. Both are stamped so the two meanings that drifted
@@ -1035,12 +1019,31 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
             if regional_supply else
             QualifiedValue.gated("unavailable", unit="fraction of regional supply", granularity=inst_g)),
         "member_programs": _derived(len(on_the_books), unit="TOP6 programs the member runs",
-                                    granularity=inst_g, predicate_version="on-the-books (registered ∩ in_scope)"),
+                                    granularity=f"{inst_g} · on-the-books (registered ∩ in_scope)"),
         "member_programs_active": _derived(len(graduating), unit="TOP6 programs currently graduating",
-                                           granularity=inst_g, predicate_version="awards-active (latest-year completer)"),
+                                           granularity=f"{inst_g} · awards-active (latest-year completer)"),
         "sector_occupations": _derived(len(sector_socs), unit="SOCs",
                                        granularity=f"{sector_label} sector (PCAH)"),
     }
+    # Phase B — the sector decomposed into legible WHATs, so a narrowed figure reads as WHY it's small:
+    # in_demand ("is there a market?" — regional openings + near-living-wage + non-declining) vs served
+    # ("is the member in it?" — reachable + actively graduating), each a subset of the full sector; the
+    # dashboard's "effective" set is their intersection. Added where the sector RULE makes the split
+    # meaningful; a curated spec (SVAMP) carries its charter as one authored set, so it is omitted.
+    if getattr(sel.raw_spec.soc_rule, "active", False):
+        _lenses = sector_lenses(sel.raw_spec)
+        summary["in_demand_occupations"] = _derived(
+            len(_lenses["in_demand"]), unit="SOCs",
+            granularity="in a real, quality market (regional openings + near-living-wage + non-declining)")
+        summary["served_occupations"] = _derived(
+            len(_lenses["served"]), unit="SOCs",
+            granularity="the member reaches with a program and actively graduates into")
+        summary["in_demand_openings"] = P.q("annual_openings",
+            int(round(sum(demand_by_soc.get(s, 0) for s in _lenses["in_demand"]))),
+            granularity=f"{region_g} — the in-demand occupations", unit="openings/yr")
+        summary["served_openings"] = P.q("annual_openings",
+            int(round(sum(demand_by_soc.get(s, 0) for s in _lenses["served"]))),
+            granularity=f"{region_g} — the occupations the member serves", unit="openings/yr")
 
     # Rows: PROGRAM-FORWARD — the member's programs in the sector, each with its supply
     # (completions) and its ADDRESSABLE DEMAND (the χ↑ sum-across pool of openings across the
@@ -1093,7 +1096,7 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
                              licensed=["The sector's total regional demand vs total regional projected completions with the member's supply and share (summary), then the member's PROGRAMS — each with its completions and its addressable demand (the openings across the occupations it feeds).",
                                        "Program-forward: a program's addressable demand is a sum-across pool it competes for, shared with other programs, not exclusive — drill a program to see the occupations behind it."]),
         next_moves=next_moves,
-        view_link=V.view_link("sector_overview", instance_id=spec.id, member_id=entry["member_id"],
+        view_link=V.view_link("sector_overview", instance_id=sel.instance_id, member_id=entry["member_id"],
                               sector_id=entry["sector_id"]),
         provenance=P.build_provenance(
             ["annual_openings", "projected_supply", "gap"],

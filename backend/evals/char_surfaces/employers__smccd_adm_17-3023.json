@@ -1,0 +1,317 @@
+{
+ "coordinate": {
+  "entity": "",
+  "lens": "",
+  "member": "smccd",
+  "member_label": "San Mateo County CCD",
+  "region": "Bay Area",
+  "sector": "adm",
+  "sector_label": "Advanced Manufacturing",
+  "soc": "17-3023",
+  "top6": null
+ },
+ "data": {
+  "more": {
+   "drill": {
+    "coordinate": {
+     "entity": "17-3023",
+     "lens": "employers",
+     "member": "smccd",
+     "member_label": "San Mateo County CCD",
+     "region": null,
+     "sector": "adm",
+     "sector_label": "Advanced Manufacturing",
+     "soc": "17-3023",
+     "top6": null
+    },
+    "form": "navigate",
+    "rationale": "16 more rows; re-call navigate scoped to one row to drill in."
+   },
+   "remaining": 16
+  },
+  "rows": [
+   {
+    "label": "Jameco Electronics",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 13.7,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Leemah Electronics",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 13.7,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Bai",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 3.2,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Celldom",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 3.2,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Galvanize Therapeutics",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 3.2,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "General Radar Corporation",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 3.2,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Northstar Photonics",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 3.2,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Soleno Therapeutics",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 3.2,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   }
+  ],
+  "sorted_by": null,
+  "summary": {
+   "candidate_employers": {
+    "granularity": "regional (Bay Area)",
+    "parent_vintages": [],
+    "source": "graph_bls",
+    "status": "ok",
+    "unit": "employers",
+    "value": 98,
+    "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+   },
+   "shown": {
+    "granularity": "regional (Bay Area)",
+    "parent_vintages": [],
+    "source": "derived",
+    "status": "ok",
+    "unit": "employers plotted",
+    "value": 24,
+    "vintage": ""
+   }
+  }
+ },
+ "form": "regional_employers",
+ "framing": {
+  "meaning": "Ranks regional employers by how prominently each employer's industry staffs the target occupations (BLS OES staffing share). It surfaces candidate partners the member could convene \u2014 not a hiring roster.",
+  "salience": []
+ },
+ "licensing": {
+  "gates": [],
+  "licensed": [
+   "Regional employers ranked by OES staffing share for the target occupations."
+  ],
+  "not_licensed": [
+   "Ranked by OES industry staffing share; OES-suppressed cells are dropped (not marked), and the shortlist ('shown') is not the whole candidate pool ('total').",
+   "'shown' is a geocoded shortlist, not the whole candidate pool ('total')."
+  ]
+ },
+ "next_moves": [
+  {
+   "coordinate": {
+    "entity": "",
+    "lens": "gaps",
+    "member": "smccd",
+    "member_label": "San Mateo County CCD",
+    "region": null,
+    "sector": "adm",
+    "sector_label": "Advanced Manufacturing",
+    "soc": null,
+    "top6": null
+   },
+   "form": "navigate",
+   "rationale": "Quantify the supply\u2013demand gap these employers face."
+  },
+  {
+   "coordinate": {
+    "entity": "",
+    "lens": "coverage",
+    "member": "smccd",
+    "member_label": "San Mateo County CCD",
+    "region": null,
+    "sector": "adm",
+    "sector_label": "Advanced Manufacturing",
+    "soc": null,
+    "top6": null
+   },
+   "form": "navigate",
+   "rationale": "See which colleges cover the occupations these employers hire."
+  }
+ ],
+ "provenance": {
+  "field_authority": {
+   "candidate_employers": "graph_bls",
+   "employer_relevance": "graph_bls"
+  },
+  "scope_granularity": "regional (Bay Area)",
+  "sources": [
+   {
+    "authority": "BLS OEWS staffing patterns",
+    "id": "graph_bls",
+    "role": "employer relevance"
+   }
+  ],
+  "vintages": {
+   "employer_relevance": "BLS OEWS Industry-Occupation staffing matrix"
+  }
+ },
+ "view_link": {
+  "note": "Opens on the lens with a default selection (view state applies client-side); select the row above to corroborate the figure.",
+  "status": "ok",
+  "url": "https://preview.kallipolis.us/smccd-adm?lens=employers"
+ }
+}

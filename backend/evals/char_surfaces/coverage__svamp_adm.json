@@ -1,0 +1,833 @@
+{
+ "coordinate": {
+  "entity": "",
+  "lens": "",
+  "member": "svamp",
+  "member_label": "Silicon Valley Advanced Manufacturing Partnership",
+  "region": "Bay Area",
+  "sector": "adm",
+  "sector_label": "Advanced Manufacturing",
+  "soc": null,
+  "top6": null
+ },
+ "data": {
+  "more": {
+   "drill": {
+    "coordinate": {
+     "entity": "",
+     "lens": "coverage",
+     "member": "svamp",
+     "member_label": "Silicon Valley Advanced Manufacturing Partnership",
+     "region": null,
+     "sector": "adm",
+     "sector_label": "Advanced Manufacturing",
+     "soc": null,
+     "top6": null
+    },
+    "form": "navigate",
+    "rationale": "2 more rows; re-call navigate scoped to one row to drill in."
+   },
+   "remaining": 2
+  },
+  "rows": [
+   {
+    "label": "095600 Manufacturing and Industrial Technology",
+    "roster": [
+     {
+      "label": "Ohlone College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 77,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "De Anza College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Evergreen Valley College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "actual_awards": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "awards",
+      "value": 77,
+      "vintage": "DataMart awards \u2014 2024-2025"
+     },
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (latest yr)",
+      "value": 1,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 3,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 646,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 7,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "095630 Machining and Machine Tools",
+    "roster": [
+     {
+      "label": "De Anza College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 49,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "partial",
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "actual_awards": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "awards",
+      "value": 49,
+      "vintage": "DataMart awards \u2014 2024-2025"
+     },
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (latest yr)",
+      "value": 1,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 1,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 0,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 4,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "094610 Energy Systems Technology",
+    "roster": [
+     {
+      "label": "Foothill College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 20,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "partial",
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "De Anza College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 10,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "actual_awards": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "awards",
+      "value": 30,
+      "vintage": "DataMart awards \u2014 2024-2025"
+     },
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (latest yr)",
+      "value": 2,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 2,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 147,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 3,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "094500 Industrial Systems Technology and Maintenance",
+    "roster": [
+     {
+      "label": "Foothill College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 17,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "actual_awards": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "awards",
+      "value": 17,
+      "vintage": "DataMart awards \u2014 2024-2025"
+     },
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (latest yr)",
+      "value": 1,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 1,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 22,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 8,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "093500 Electro-Mechanical Technology",
+    "roster": [
+     {
+      "label": "Mission College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 10,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "actual_awards": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "awards",
+      "value": 10,
+      "vintage": "DataMart awards \u2014 2024-2025"
+     },
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (latest yr)",
+      "value": 1,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 1,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 144,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 4,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "095690 Digital Fabrication Technician",
+    "roster": [
+     {
+      "label": "De Anza College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 2,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "partial",
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "actual_awards": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "awards",
+      "value": 2,
+      "vintage": "DataMart awards \u2014 2024-2025"
+     },
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (latest yr)",
+      "value": 1,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 1,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 0,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 1,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "093400 Electronics and Electric Technology",
+    "roster": [
+     {
+      "label": "Ohlone College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "actual_awards": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "awards",
+      "value": 0,
+      "vintage": "DataMart awards \u2014 2024-2025"
+     },
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (latest yr)",
+      "value": 0,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 1,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 195,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "095420 Plastics and Composites",
+    "roster": [
+     {
+      "label": "Ohlone College",
+      "roster": [],
+      "values": {
+       "actual_awards": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "awards (latest yr)",
+        "value": 0,
+        "vintage": ""
+       },
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "actual_awards": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "awards",
+      "value": 0,
+      "vintage": "DataMart awards \u2014 2024-2025"
+     },
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (latest yr)",
+      "value": 0,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 1,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 62,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 1,
+      "vintage": ""
+     }
+    }
+   }
+  ],
+  "sorted_by": null,
+  "summary": {
+   "covered_cells": {
+    "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+    "parent_vintages": [],
+    "source": "datamart",
+    "status": "ok",
+    "unit": "college\u00d7program cells",
+    "value": 4,
+    "vintage": "DataMart awards \u2014 2024-2025"
+   },
+   "gap_cells": {
+    "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+    "parent_vintages": [],
+    "source": "datamart",
+    "status": "ok",
+    "unit": "college\u00d7program cells",
+    "value": 43,
+    "vintage": "DataMart awards \u2014 2024-2025"
+   },
+   "member_colleges": {
+    "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+    "parent_vintages": [],
+    "source": "derived",
+    "status": "ok",
+    "unit": "colleges",
+    "value": 5,
+    "vintage": ""
+   },
+   "partial_cells": {
+    "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+    "parent_vintages": [],
+    "source": "datamart",
+    "status": "ok",
+    "unit": "college\u00d7program cells",
+    "value": 3,
+    "vintage": "DataMart awards \u2014 2024-2025"
+   },
+   "programs": {
+    "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+    "parent_vintages": [],
+    "source": "derived",
+    "status": "ok",
+    "unit": "TOP6 programs",
+    "value": 10,
+    "vintage": ""
+   }
+  }
+ },
+ "form": "coverage",
+ "framing": {
+  "meaning": "Coverage classifies each (college, occupation) as Covered / Partial / Gap by whether a feeding program both enrolls and awards. It is the institutional legibility of the gap across the member's colleges.",
+  "salience": []
+ },
+ "licensing": {
+  "gates": [],
+  "licensed": [
+   "Covered / Partial / Gap classification of each (college, program) cell."
+  ],
+  "not_licensed": [
+   "The Covered/Partial/Gap thresholds are an explicit classification (enrolled AND awarded = covered; exactly one = partial; neither = gap), not an implied score.",
+   "A 'gap' cell is no realized supply \u2014 not a claim about need or intent."
+  ]
+ },
+ "next_moves": [
+  {
+   "coordinate": {
+    "entity": "",
+    "lens": "gaps",
+    "member": "svamp",
+    "member_label": "Silicon Valley Advanced Manufacturing Partnership",
+    "region": null,
+    "sector": "adm",
+    "sector_label": "Advanced Manufacturing",
+    "soc": null,
+    "top6": null
+   },
+   "form": "navigate",
+   "rationale": "Size the shortfall behind the coverage picture."
+  },
+  {
+   "coordinate": {
+    "entity": "",
+    "lens": "",
+    "member": "svamp",
+    "member_label": "Silicon Valley Advanced Manufacturing Partnership",
+    "region": null,
+    "sector": "adm",
+    "sector_label": "Advanced Manufacturing",
+    "soc": null,
+    "top6": null
+   },
+   "form": "crosswalk",
+   "rationale": "Trace the selected program to the occupations it prepares for."
+  }
+ ],
+ "provenance": {
+  "field_authority": {
+   "actual_awards": "datamart",
+   "coverage": "datamart",
+   "enrollment": "datamart"
+  },
+  "scope_granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+  "sources": [
+   {
+    "authority": "CCCCO DataMart",
+    "id": "datamart",
+    "role": "program awards, enrollment, and graduate wage outcomes"
+   }
+  ],
+  "vintages": {
+   "actual_awards": "DataMart awards \u2014 2024-2025"
+  }
+ },
+ "view_link": {
+  "note": "Opens on the lens with a default selection (view state applies client-side); select the row above to corroborate the figure.",
+  "status": "ok",
+  "url": "https://preview.kallipolis.us/svamp?lens=programs&panel=programs.coverage"
+ }
+}

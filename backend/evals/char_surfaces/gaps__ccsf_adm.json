@@ -1,0 +1,454 @@
+{
+ "coordinate": {
+  "entity": "",
+  "lens": "",
+  "member": "ccsf",
+  "member_label": "City College of San Francisco",
+  "region": "Bay Area",
+  "sector": "adm",
+  "sector_label": "Advanced Manufacturing",
+  "soc": null,
+  "top6": null
+ },
+ "data": {
+  "more": null,
+  "rows": [
+   {
+    "label": "49-9041 Industrial Machinery Mechanics",
+    "roster": [],
+    "values": {
+     "gap": {
+      "granularity": "regional openings \u2212 regional supply",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 391,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "latest_year_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions",
+      "value": 0.0,
+      "vintage": "DataMart completions \u2014 2024-2025"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "regional_demand": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 550,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "regional_supply": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 159.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "51-4041 Machinists",
+    "roster": [],
+    "values": {
+     "gap": {
+      "granularity": "regional openings \u2212 regional supply",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 355,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "latest_year_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions",
+      "value": 3.0,
+      "vintage": "DataMart completions \u2014 2024-2025"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 1.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "regional_demand": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 510,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "regional_supply": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 155.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "17-3023 Electrical and Electronic Engineering Technologists and Technicians",
+    "roster": [],
+    "values": {
+     "gap": {
+      "granularity": "regional openings \u2212 regional supply",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 27,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "latest_year_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions",
+      "value": 93.0,
+      "vintage": "DataMart completions \u2014 2024-2025"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 45.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "regional_demand": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 430,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "regional_supply": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 403.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "51-9141 Semiconductor Processing Technicians",
+    "roster": [],
+    "values": {
+     "gap": {
+      "granularity": "regional openings \u2212 regional supply",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": -53,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "latest_year_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions",
+      "value": 92.0,
+      "vintage": "DataMart completions \u2014 2024-2025"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 44.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "regional_demand": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 180,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "regional_supply": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 232.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "17-3026 Industrial Engineering Technologists and Technicians",
+    "roster": [],
+    "values": {
+     "gap": {
+      "granularity": "regional openings \u2212 regional supply",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": -236,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "latest_year_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions",
+      "value": 4.0,
+      "vintage": "DataMart completions \u2014 2024-2025"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 2.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "regional_demand": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 150,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "regional_supply": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 386.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "17-3024 Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "roster": [],
+    "values": {
+     "gap": {
+      "granularity": "regional openings \u2212 regional supply",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": -333,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "latest_year_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions",
+      "value": 93.0,
+      "vintage": "DataMart completions \u2014 2024-2025"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 45.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "regional_demand": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 80,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "regional_supply": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 412.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   }
+  ],
+  "sorted_by": null,
+  "summary": {
+   "gap": {
+    "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
+    "parent_vintages": [],
+    "source": "derived",
+    "status": "ok",
+    "unit": "openings/yr",
+    "value": 1259,
+    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+   },
+   "latest_year_supply": {
+    "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+    "parent_vintages": [],
+    "source": "datamart",
+    "status": "ok",
+    "unit": "completions",
+    "value": 96.0,
+    "vintage": "DataMart completions \u2014 2024-2025"
+   },
+   "member_supply": {
+    "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+    "parent_vintages": [],
+    "source": "datamart",
+    "status": "ok",
+    "unit": "completions/yr",
+    "value": 47.0,
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+   },
+   "regional_demand": {
+    "granularity": "regional (Bay Area)",
+    "parent_vintages": [],
+    "source": "coe",
+    "status": "ok",
+    "unit": "openings/yr",
+    "value": 1900,
+    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+   },
+   "regional_supply": {
+    "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+    "parent_vintages": [],
+    "source": "datamart",
+    "status": "ok",
+    "unit": "completions/yr",
+    "value": 640.7,
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+   }
+  }
+ },
+ "form": "gap",
+ "framing": {
+  "meaning": "A supply\u2013demand gap is regional annual openings minus the whole region's projected completions, per occupation \u2014 regional demand against regional supply. The institution's own completions are its share of that regional supply. Positive means the region hires more than its colleges are projected to complete.",
+  "salience": [
+   "supply=3yr-avg: supply is a 3-year average of DataMart completions (All Awards); the single most recent year (latest_year_supply) can run above or below it.",
+   "member-anchored: a generated member\u00d7sector view covers only occupations the member already serves with an active program \u2014 it does NOT surface greenfield demand in occupations the member does not yet serve. Absence here is not absence of regional demand."
+  ]
+ },
+ "licensing": {
+  "gates": [],
+  "licensed": [
+   "Regional annual openings vs total regional completions feeding the occupation, per occupation.",
+   "member_supply is this member's own share of that regional supply."
+  ],
+  "not_licensed": [
+   "'Supply' is projected completions \u2014 COE's Annual Projected Supply method (a trailing 3-year average of DataMart completions), reconstructed on current DataMart data; it is the gap denominator, read as a projection rather than one year's raw count (see latest_year_supply). The gap is REGIONAL; the institution's own supply is a separate figure (its share), never the gap itself. A member's latest-year change moves its own share, not the regional gap \u2014 do not read a regional trend from one institution's single year.",
+   "Supply is a 3-yr average of DataMart completions (All Awards) over the occupation's CTE feeder programs \u2014 a multi-year projection, not the single most recent year (latest_year_supply)."
+  ]
+ },
+ "next_moves": [
+  {
+   "coordinate": {
+    "entity": "",
+    "lens": "employers",
+    "member": "ccsf",
+    "member_label": "City College of San Francisco",
+    "region": "Bay",
+    "sector": "adm",
+    "sector_label": "Advanced Manufacturing",
+    "soc": null,
+    "top6": null
+   },
+   "form": "navigate",
+   "rationale": "Identify regional employers to convene around the gapped occupation."
+  },
+  {
+   "coordinate": {
+    "entity": "",
+    "lens": "",
+    "member": "ccsf",
+    "member_label": "City College of San Francisco",
+    "region": "Bay",
+    "sector": "adm",
+    "sector_label": "Advanced Manufacturing",
+    "soc": null,
+    "top6": null
+   },
+   "form": "crosswalk",
+   "rationale": "See which programs feed the gapped occupation."
+  }
+ ],
+ "provenance": {
+  "field_authority": {
+   "annual_openings": "coe",
+   "gap": "derived",
+   "latest_year_supply": "datamart",
+   "projected_supply": "datamart"
+  },
+  "scope_granularity": "demand regional (Bay Area); supply regional (Bay Area) \u2014 all 26 colleges; member share institutional \u2014 college (\u03a3 1 colleges)",
+  "sources": [
+   {
+    "authority": "Centers of Excellence",
+    "id": "coe",
+    "role": "regional demand, wage, growth"
+   },
+   {
+    "authority": "CCCCO DataMart",
+    "id": "datamart",
+    "role": "program awards, enrollment, and graduate wage outcomes"
+   }
+  ],
+  "vintages": {
+   "demand": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection",
+   "latest_year_supply": "DataMart completions \u2014 2024-2025",
+   "projected_supply": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+  }
+ },
+ "view_link": {
+  "note": "Opens on the lens with a default selection (view state applies client-side); select the row above to corroborate the figure.",
+  "status": "ok",
+  "url": "https://preview.kallipolis.us/landscape/ccsf/adm?lens=occupations"
+ }
+}

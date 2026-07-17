@@ -1,0 +1,317 @@
+{
+ "coordinate": {
+  "entity": "",
+  "lens": "",
+  "member": "ccsf",
+  "member_label": "City College of San Francisco",
+  "region": "Bay Area",
+  "sector": "adm",
+  "sector_label": "Advanced Manufacturing",
+  "soc": "51-4041",
+  "top6": null
+ },
+ "data": {
+  "more": {
+   "drill": {
+    "coordinate": {
+     "entity": "51-4041",
+     "lens": "employers",
+     "member": "ccsf",
+     "member_label": "City College of San Francisco",
+     "region": "Bay",
+     "sector": "adm",
+     "sector_label": "Advanced Manufacturing",
+     "soc": "51-4041",
+     "top6": null
+    },
+    "form": "navigate",
+    "rationale": "15 more rows; re-call navigate scoped to one row to drill in."
+   },
+   "remaining": 15
+  },
+  "rows": [
+   {
+    "label": "All FAB Precision Sheetmetal",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 23.3,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 3,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Arm",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 14.5,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 6,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "California Eastern Lab",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 14.5,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 6,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Cirexx International",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 14.5,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 6,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Coherent",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 14.5,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 6,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Horizon Robotics",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 14.5,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 6,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Jameco Electronics",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 14.5,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 6,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Leemah Electronics",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 14.5,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 6,
+      "vintage": ""
+     }
+    }
+   }
+  ],
+  "sorted_by": null,
+  "summary": {
+   "candidate_employers": {
+    "granularity": "regional (Bay Area)",
+    "parent_vintages": [],
+    "source": "graph_bls",
+    "status": "ok",
+    "unit": "employers",
+    "value": 124,
+    "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+   },
+   "shown": {
+    "granularity": "regional (Bay Area)",
+    "parent_vintages": [],
+    "source": "derived",
+    "status": "ok",
+    "unit": "employers plotted",
+    "value": 23,
+    "vintage": ""
+   }
+  }
+ },
+ "form": "regional_employers",
+ "framing": {
+  "meaning": "Ranks regional employers by how prominently each employer's industry staffs the target occupations (BLS OES staffing share). It surfaces candidate partners the member could convene \u2014 not a hiring roster.",
+  "salience": []
+ },
+ "licensing": {
+  "gates": [],
+  "licensed": [
+   "Regional employers ranked by OES staffing share for the target occupations."
+  ],
+  "not_licensed": [
+   "Ranked by OES industry staffing share; OES-suppressed cells are dropped (not marked), and the shortlist ('shown') is not the whole candidate pool ('total').",
+   "'shown' is a geocoded shortlist, not the whole candidate pool ('total')."
+  ]
+ },
+ "next_moves": [
+  {
+   "coordinate": {
+    "entity": "",
+    "lens": "gaps",
+    "member": "ccsf",
+    "member_label": "City College of San Francisco",
+    "region": "Bay",
+    "sector": "adm",
+    "sector_label": "Advanced Manufacturing",
+    "soc": null,
+    "top6": null
+   },
+   "form": "navigate",
+   "rationale": "Quantify the supply\u2013demand gap these employers face."
+  },
+  {
+   "coordinate": {
+    "entity": "",
+    "lens": "coverage",
+    "member": "ccsf",
+    "member_label": "City College of San Francisco",
+    "region": "Bay",
+    "sector": "adm",
+    "sector_label": "Advanced Manufacturing",
+    "soc": null,
+    "top6": null
+   },
+   "form": "navigate",
+   "rationale": "See which colleges cover the occupations these employers hire."
+  }
+ ],
+ "provenance": {
+  "field_authority": {
+   "candidate_employers": "graph_bls",
+   "employer_relevance": "graph_bls"
+  },
+  "scope_granularity": "regional (Bay Area)",
+  "sources": [
+   {
+    "authority": "BLS OEWS staffing patterns",
+    "id": "graph_bls",
+    "role": "employer relevance"
+   }
+  ],
+  "vintages": {
+   "employer_relevance": "BLS OEWS Industry-Occupation staffing matrix"
+  }
+ },
+ "view_link": {
+  "note": "Opens on the lens with a default selection (view state applies client-side); select the row above to corroborate the figure.",
+  "status": "ok",
+  "url": "https://preview.kallipolis.us/landscape/ccsf/adm?lens=employers"
+ }
+}
