@@ -105,13 +105,17 @@ export default function LandscapeDashboardPrograms({ colleges, instance = "svamp
   const shownTopIds = new Set(lensTops.map((t) => t.top6));
   const totalSupply = lensTops.reduce((s, t) => s + (t.awards_total ?? 0), 0);
   // Coverage matrix inputs. Empty-column drop scoped to the SHOWN program rows: a
-  // college sharing none of the lens's programs is an all-gap column (noise), so
-  // drop it — the column-analog of the all-gap rows already filtered out. Awards-
-  // gated views only; curated SVAMP keeps every member.
-  const participating = land.coverage_awards_only
-    ? new Set((land.matrix?.cells ?? []).filter((c) => c.awards > 0 && shownTopIds.has(c.top6)).map((c) => c.college))
-    : null;
-  const shownColleges = participating ? colleges.filter((c) => participating.has(c.config.name)) : colleges;
+  // college with NO activity in the lens's programs — neither awards NOR enrollment
+  // — is an all-gap column (noise), so drop it. Enrollment counts as activity: a
+  // member enrolling students it hasn't yet graduated is a live opportunity, not
+  // noise, so it is never dropped. Universal — coverage_awards_only governs supply
+  // QUANTITY, never matrix visibility.
+  const participating = new Set(
+    (land.matrix?.cells ?? [])
+      .filter((c) => (c.awards > 0 || c.enrolled) && shownTopIds.has(c.top6))
+      .map((c) => c.college),
+  );
+  const shownColleges = colleges.filter((c) => participating.has(c.config.name));
   const cols = shownColleges.map((c) => ({ id: c.id, label: shortName(c.config.name), brand: c.config.brandColorLight }));
   // Consortium scale: the matrix takes a full-width row and the supply treemap
   // drops to its own row below — at consortium width the 2:1 top band starves the
@@ -135,11 +139,10 @@ export default function LandscapeDashboardPrograms({ colleges, instance = "svamp
     const cell = name ? cellByKey.get(name + "|" + rowId) : undefined;
     if (!cell) return "none";
     const enrolled = cell.enrolled, awarded = cell.awards > 0;
-    // Rule-bearing instances (BACCC, sector-derived SMCCD) gate coverage on
-    // awards: no completer ⇒ gap (enrollment alone isn't realized supply);
-    // awards ⇒ strong if currently enrolled, else partial (real-but-thinning
-    // supply). Curated instances keep enrolled-OR-awarded coverage.
-    if (land.coverage_awards_only) return awarded ? (enrolled ? "strong" : "partial") : "none";
+    // Coverage is a visibility read of the two signals (universal): both ⇒ strong
+    // (full pipeline), exactly one ⇒ partial (one of awards/enrollment missing),
+    // neither ⇒ gap. Enrollment is visibility, not realized supply — supply stays
+    // awards-only, but an enrolled-yet-ungraduated cell is shown, never hidden.
     if (enrolled && awarded) return "strong";
     return enrolled || awarded ? "partial" : "none";
   };
@@ -198,15 +201,11 @@ export default function LandscapeDashboardPrograms({ colleges, instance = "svamp
             selectedRow={top}
             selectedCol={collegeId}
             cornerLabel="↓ program · → college"
-            gapCellHint={land.coverage_awards_only ? "no awards here" : "no enrollment or awards here"}
-            legend={land.coverage_awards_only ? [
+            gapCellHint="no awards or enrollment here"
+            legend={[
               { k: "Covered", sub: "awards + enrollment", bg: "rgba(148,168,201,.92)", ring: true },
-              { k: "Partial", sub: "awards, no enrollment", bg: "rgba(148,168,201,.3)", ring: true },
-              { k: "Gap", sub: "no awards", bg: "rgba(255,255,255,.035)", ring: false },
-            ] : [
-              { k: "Covered", sub: "enrollment & awards", bg: "rgba(148,168,201,.92)", ring: true },
-              { k: "Partial", sub: "enrollment or awards", bg: "rgba(148,168,201,.3)", ring: true },
-              { k: "Gap", sub: "neither", bg: "rgba(255,255,255,.035)", ring: false },
+              { k: "Partial", sub: "missing awards or enrollment", bg: "rgba(148,168,201,.3)", ring: true },
+              { k: "Gap", sub: "no awards or enrollment", bg: "rgba(255,255,255,.035)", ring: false },
             ]}
             onSelect={selectCell}
             onSelectRow={selectConsortium}

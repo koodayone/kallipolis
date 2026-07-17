@@ -40,15 +40,13 @@ const DEMAND_ACCENT = "#c9a84c"; // demand reference gold
 
 type CollegeRef = { id: string; config: SchoolConfig };
 
-// Cell coverage level — activity-keyed. Rule-bearing instances (awardsOnly)
-// gate coverage on awards: a college that only enrolls toward an occupation (no
-// completer) reads as a gap, not "partial"; awards ⇒ strong if also enrolled,
-// else partial (real-but-thinning supply). Curated instances keep the report's
-// enrolled-OR-awarded coverage.
-function level(cell: ApiSvampCell | undefined, awardsOnly: boolean): "none" | "partial" | "strong" {
+// Cell coverage level — a visibility read of the two signals (universal): both ⇒
+// strong (full pipeline), exactly one ⇒ partial (one of awards/enrollment
+// missing), neither ⇒ gap. Enrollment is visibility, not realized supply — supply
+// stays awards-only, but an enrolled-yet-ungraduated cell is shown, never hidden.
+function level(cell: ApiSvampCell | undefined): "none" | "partial" | "strong" {
   if (!cell) return "none";
   const enrolled = cell.enrolled, awarded = cell.feeding_awards > 0;
-  if (awardsOnly) return awarded ? (enrolled ? "strong" : "partial") : "none";
   if (enrolled && awarded) return "strong";
   return enrolled || awarded ? "partial" : "none";
 }
@@ -182,12 +180,17 @@ export default function LandscapeDashboardOccupations({ colleges, instance = "sv
     : null;
   const shownDemandCells = possessedSocs ? refCells.filter((c) => possessedSocs.has(c.soc_code)) : refCells;
   const totalDemand = shownDemandCells.reduce((s, c) => s + (c.annual_openings ?? 0), 0);
-  // Empty-column drop, scoped to the shown occupations: a college supporting none of
-  // them is an all-gap column. Awards-gated views only; curated SVAMP keeps all.
-  const participating = land.coverage_awards_only
-    ? new Set(land.colleges.filter((col) => col.cells.some((c) => c.feeding_awards > 0 && (!possessedSocs || possessedSocs.has(c.soc_code)))).map((col) => col.name))
-    : null;
-  const shownColleges = participating ? colleges.filter((c) => participating.has(c.config.name)) : colleges;
+  // Empty-column drop, scoped to the shown occupations: a college with NO activity
+  // toward any of them — neither awards NOR enrollment — is an all-gap column, so
+  // drop it. Enrollment counts as activity (a member enrolling toward an occupation
+  // it hasn't yet graduated is a live opportunity), so it is never dropped.
+  // Universal — coverage_awards_only governs supply QUANTITY, never visibility.
+  const participating = new Set(
+    land.colleges
+      .filter((col) => col.cells.some((c) => (c.feeding_awards > 0 || c.enrolled) && (!possessedSocs || possessedSocs.has(c.soc_code))))
+      .map((col) => col.name),
+  );
+  const shownColleges = colleges.filter((c) => participating.has(c.config.name));
   const cols = shownColleges.map((c) => ({ id: c.id, label: shortName(c.config.name), brand: c.config.brandColorLight }));
   // Consortium scale: matrix takes a full-width row, the demand treemap drops
   // below. Keyed off the full MEMBER count, not the displayed count, so every
@@ -250,19 +253,15 @@ export default function LandscapeDashboardOccupations({ colleges, instance = "sv
             flush
             cols={cols}
             rows={rows}
-            level={(r, c) => level(cellOf(r, c), land.coverage_awards_only)}
+            level={(r, c) => level(cellOf(r, c))}
             selectedRow={soc}
             selectedCol={collegeId}
             cornerLabel={OCC_MATRIX_CORNER}
-            gapCellHint={land.coverage_awards_only ? "no awards here" : "no enrollment or awards here"}
-            legend={land.coverage_awards_only ? [
+            gapCellHint="no awards or enrollment here"
+            legend={[
               { k: "Covered", sub: "awards + enrollment", bg: "rgba(148,168,201,.92)", ring: true },
-              { k: "Partial", sub: "awards, no enrollment", bg: "rgba(148,168,201,.3)", ring: true },
-              { k: "Gap", sub: "no awards", bg: "rgba(255,255,255,.035)", ring: false },
-            ] : [
-              { k: "Covered", sub: "enrollment & awards", bg: "rgba(148,168,201,.92)", ring: true },
-              { k: "Partial", sub: "enrollment or awards", bg: "rgba(148,168,201,.3)", ring: true },
-              { k: "Gap", sub: "neither", bg: "rgba(255,255,255,.035)", ring: false },
+              { k: "Partial", sub: "missing awards or enrollment", bg: "rgba(148,168,201,.3)", ring: true },
+              { k: "Gap", sub: "no awards or enrollment", bg: "rgba(255,255,255,.035)", ring: false },
             ]}
             onSelect={selectCell}
             onSelectRow={selectConsortium}

@@ -196,6 +196,15 @@ class LandscapeSpec:
     employer_threshold: int = 0
     max_radius: int = 0
 
+    @property
+    def effective_program_excludes(self) -> frozenset[str]:
+        """Every program out of this instance's feeder universe, in ONE place: the sector-level crosswalk-
+        noise (``excluded_tops`` — e.g. IT / Commercial Music bleeding into Advanced Manufacturing) unioned
+        with the member's charter (``composition.program_excludes`` — e.g. SVAMP's HVAC / Automotive /
+        Biotech). Both scope consumers — ``in_scope`` and the programs landscape's per-occupation gather —
+        read this, so they cannot disagree about what is out of scope."""
+        return frozenset(self.excluded_tops) | self.composition.program_excludes
+
     def in_scope(self, top6: str | None) -> bool:
         """Whether a TOP6 is in this instance's scoped program universe.
 
@@ -215,14 +224,12 @@ class LandscapeSpec:
         if self.vocational:
             return (
                 is_vocational(top6)
-                and top6 not in self.excluded_tops
-                and top6 not in self.composition.program_excludes
+                and top6 not in self.effective_program_excludes
                 and (not self.home_divisions or top6[:2] in self.home_divisions)
             )
         return (
             any(top6.startswith(d) for d in self.top_divisions)
-            and top6 not in self.excluded_tops
-            and top6 not in self.composition.program_excludes
+            and top6 not in self.effective_program_excludes
             and (not self.cte_only or is_cte_top4_family(top6))
         )
 
@@ -396,20 +403,22 @@ SVAMP_SPEC = LandscapeSpec(
         "Ohlone College",
     ),
     socs=_AM_SOCS,
-    top_divisions=_AM_TOP_DIVISIONS,
-    excluded_tops=_AM_EXCLUDED_TOPS,
+    top_divisions=_AM_TOP_DIVISIONS,  # "09" — the per-occupation crosswalk gather's top_prefix (landscape_programs)
+    excluded_tops=SECTORS["adm"].excluded_tops,  # sector crosswalk-noise drops (parity with /smccd-adm); charter is in composition
     sector="Advanced Manufacturing",
     counties=("Santa Clara",),  # SVAMP's shed — keeps the peninsula (SMCCD) out
     name="Silicon Valley Advanced Manufacturing Partnership",
     accent="#ff5a5a",
-    # SVAMP under the UNIVERSAL rule (Step 2b) — no fork left. It runs is_vocational (not the legacy division/
-    # CTE-family predicate) and the active program gate (soc_rule active), exactly like every other member.
-    # Its identity is pure Composition data: the 12 occupations are hand-picked (a subset of the AM sector's
-    # 49; resolve keeps them final because is_authored) and the charter sets Automotive/HVAC/Biotech out of
-    # scope. Net effect vs the old Mode-B: 13 in-scope program TYPES no member actively runs (0 awards AND 0
-    # enrollment) stop showing as empty rows — every figure (demand/supply/awards/gap/employers) unchanged.
+    # SVAMP under the UNIVERSAL rule (Step 2b). It runs is_vocational + the active program gate, like every
+    # sector-derived member, and its program-scope universe DERIVES from the AM sector — excluded_tops (the
+    # sector's audited crosswalk-noise drops, e.g. IT / Commercial Music bleeding into AM), home_divisions and
+    # soc_rule all come from SECTORS["adm"], never a hand-copy, so SVAMP cannot drift from /smccd-adm. Its only
+    # per-member authoring is the Composition: the 12 hand-picked occupations (a subset of the AM sector's set;
+    # resolve keeps them final because is_authored) and the charter (Automotive / HVAC / Biotech), both applied
+    # via effective_program_excludes.
     vocational=True,
     soc_rule=SECTORS["adm"].rule,
+    home_divisions=SECTORS["adm"].home_divisions,  # AM has none today (uses excluded_tops); derived so it can't drift
     composition=Composition(occupations=_AM_SOCS, program_excludes=_AM_EXCLUDED_TOPS | {"043000"}),
 )
 

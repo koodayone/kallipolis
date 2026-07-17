@@ -518,7 +518,7 @@ def build_landscape_occupation(
         taught_college, soc,
         top_prefix=(spec.top_divisions[0] if spec.top_divisions else ""),
         union_colleges=union_colleges, cte_only=spec.cte_only,
-        exclude_tops=spec.excluded_tops,
+        exclude_tops=spec.effective_program_excludes,
     )
 
     report = _assemble_occupation(
