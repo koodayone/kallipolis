@@ -29,8 +29,14 @@ from collections import defaultdict
 
 from ontology.crosswalks import top6_to_soc
 from ontology.schema import get_driver
-from partnerships.graph_reads import latest_academic_year, regional_demand
+from partnerships.graph_reads import regional_demand
 from partnerships.landscape import LandscapeSpec
+from partnerships.quantities import (
+    member_program_tops,
+    producing_top_colleges,
+    producing_tops,
+    recent_award_years,
+)
 from partnerships.sectors import (
     ALL_OTHER_SOCS,
     EXPERIENCE_5YR_SOCS,
@@ -72,28 +78,19 @@ def sector_lenses(spec: LandscapeSpec) -> dict:
         openings = {s: dr["annual_openings"] for s, dr in demand.items()}
         wages = {s: dr["annual_wage"] for s, dr in demand.items()}
         growth = {s: dr["growth_rate"] for s, dr in demand.items()}
-        latest = latest_academic_year(session)
-        progs = session.run(
-            "MATCH (p:Program) WHERE p.college IN $colleges "
-            "RETURN p.college AS college, p.top6 AS top6, "
-            "reduce(a=0, x IN [(p)-[r:AWARDED]->(ay:AcademicYear) WHERE ay.year = $latest "
-            "| r.count] | a + coalesce(x, 0)) AS aw",
-            colleges=list(spec.colleges), latest=latest,
-        ).data()
 
-    prog_tops = {r["top6"] for r in progs}
-    # "active" = the member offers a feeding program with AWARDS in the LATEST
-    # reported year — supply is the current year's completers, the same year the
-    # coverage-matrix cells display. A program that awarded in older years but
-    # nothing in the latest year is dormant (e.g. 210530 Industrial & Transp.
-    # Security), so it isn't counted and a row never shows all-empty latest cells.
-    active_tops = {r["top6"] for r in progs if (r["aw"] or 0) > 0}
-    # top6 -> member colleges actually awarding completers in it (latest year) —
-    # used to count distinct producing colleges per occupation for min_colleges.
-    top_colleges: dict[str, set[str]] = defaultdict(set)
-    for r in progs:
-        if (r["aw"] or 0) > 0:
-            top_colleges[r["top6"]].add(r["college"])
+    # The member's offered programs (reachability) and their PRODUCING subset both resolve through the
+    # shared gate (quantities.producing_tops / producing_top_colleges), so resolve, relevant_tops and
+    # _soc_feeders decide "which programs count" ONE way. "Producing" = a feeding program with AWARDS in the
+    # latest reported year — supply is the current year's completers, the same year the coverage-matrix cells
+    # display; a program that awarded only in older years is dormant and drops (e.g. 210530 Industrial &
+    # Transp. Security), so a row never shows all-empty latest cells. top_colleges gives the distinct
+    # producing colleges per occupation for the min_colleges floor. Step 2 widens the window + unions
+    # enrollment in those two helpers, in one place.
+    _win = recent_award_years(1)
+    prog_tops = member_program_tops(tuple(spec.colleges))
+    active_tops = producing_tops(spec.colleges, prog_tops, years=_win)
+    top_colleges = producing_top_colleges(spec.colleges, prog_tops, years=_win)
 
     # SOC -> reachable / active via the spec's IN-SCOPE TOPs the member offers —
     # in_scope applies is_vocational, excluded_tops AND the home-division gate, so

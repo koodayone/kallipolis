@@ -118,6 +118,32 @@ def producing_tops(colleges, candidate_tops, *, years) -> frozenset[str]:
     return frozenset(t for t in candidate_tops if aw.get(t, 0) > 0)
 
 
+@lru_cache(maxsize=512)
+def _awarded_by_top_college(colleges: tuple[str, ...], years: tuple[str, ...]) -> dict[tuple[str, str], int]:
+    """{(top6, college) -> total completions} over the colleges and years, once — the per-college grain."""
+    with get_driver().session() as s:
+        rows = s.run(
+            "MATCH (p:Program)-[a:AWARDED]->(ay:AcademicYear) "
+            "WHERE p.college IN $c AND ay.year IN $y "
+            "RETURN p.top6 AS t, p.college AS col, sum(coalesce(a.count, 0)) AS n",
+            c=list(colleges), y=list(years)).data()
+    return {(r["t"], r["col"]): r["n"] for r in rows}
+
+
+def producing_top_colleges(colleges, candidate_tops, *, years) -> dict[str, frozenset[str]]:
+    """{top6 -> the member colleges PRODUCING it over ``years``} — the per-college companion to
+    ``producing_tops``, for resolve()'s consortium floor (distinct producing colleges per occupation). Same
+    gate, same window, so active_tops and this stay consistent (a top produces overall iff >=1 college does).
+    Step 2 widens the window and adds enrollment here in lockstep with ``producing_tops``."""
+    bc = _awarded_by_top_college(tuple(sorted(set(colleges))), tuple(years))
+    out: dict[str, set] = {}
+    cand = set(candidate_tops)
+    for (t, col), n in bc.items():
+        if t in cand and n > 0:
+            out.setdefault(t, set()).add(col)
+    return {t: frozenset(c) for t, c in out.items()}
+
+
 def feeders(colleges, soc: str, *, spec=None) -> frozenset[str]:
     """The SOC's feeder TOP6s the colleges offer — the one feeder rule (in_scope when a spec is
     given, adjudication A; legacy is_vocational otherwise)."""
