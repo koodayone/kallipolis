@@ -339,6 +339,106 @@ authoring is **N = 1** (SVAMP); we author its composition from the director's ch
 fully general without the editor — add the editor when a second consortium actually needs to author
 (`N ≥ 2`). Generalize the substrate now (free); defer the tool until the need is felt.
 
+## Step 3 — the graph ontology (design)
+
+Steps 1–2 cleaned the *engine*; Step 3 moves the *ontology it reads* from Python + CIP files into the graph,
+so the sector boundary, the crosswalk, and each member's authored scope become **facts the engine traverses**
+rather than logic it runs. The argument for doing it now is not elegance — it is the ceiling the code-based
+ontology puts on three things the roadmap points straight at: **agentic reasoning** (the MCP agent can only
+walk paths the verbs expose; a graph lets it answer questions no form anticipated), **new views** (a
+cross-sector leaderboard or greenfield map is a query, not a bespoke form), and **authoring** (a `Composition`
+in code needs a developer + deploy per edit; as graph edges the director self-serves, and "selection not
+invention" stops being a runtime check and becomes structurally impossible — an edge can only point to a node
+that exists). Foundations are cheapest to lay while the model is tiny (3 live sectors, ~97 occupations) and no
+authored user data exists yet to migrate.
+
+### Schema
+
+New nodes: **`Sector{id,label,swp_tag}`** (first-class; enters the coordinate as the WHAT-selector);
+**`ProgramFamily{top6,title,vocational}`** — the TOP-code program *type*, the grain the crosswalk and sector
+membership live at (`Program-[:INSTANCE_OF]->ProgramFamily`; `vocational` was `is_vocational`);
+**`Composition{member,sector}`** — a member×sector's authored narrowing (was the per-instance dataclass).
+
+New edges:
+- **`ProgramFamily-[:PREPARES_FOR]->Occupation`** — the faithful TOP→SOC crosswalk, materialized once (was
+  `top6_to_soc`, in CIP files). Never hand-edited.
+- **`Sector-[:CONTAINS]->Occupation`** — the sector's occupation membership (was `SECTORS[sid].socs`).
+- **`Sector-[:OFFERS]->ProgramFamily`** — the sector's *program* membership: `vocational` families that prepare
+  for a contained occupation, **minus the noise**, minus the home-division gate. Bootstrap verified exact
+  (adm: 56 vocational-reaching → drop 14 noise → 42 offered). This edge *is* the noise-correction — a spurious
+  family (Commercial Music for AM) simply has no `OFFERS` edge — which retires `excluded_tops` and the Step-2b
+  mirror entirely.
+- **`Composition-[:INCLUDES]->Occupation`** — the member's authored occupation subset (absent ⇒ derived, the
+  default). SVAMP's 12.
+- **`Composition-[:EXCLUDES{reason}]->ProgramFamily`** — the member's charter (SVAMP: Auto/HVAC/Biotech), each
+  with a stated, queryable reason.
+
+Eligibility becomes one traversal: a member×sector's supporting programs for an occupation = the colleges'
+`Program`s whose `ProgramFamily` the `Sector` `OFFERS` and that `PREPARES_FOR` the occupation, minus the
+`Composition`'s `EXCLUDES`, that are active (AWARDED/ENROLLED in window).
+
+### Two design calls (the ones with tension)
+
+1. **Noise is sector→program membership, not a universal crosswalk property.** An earlier note framed
+   `excluded_tops` as a per-crosswalk-edge quality flag. But the exclusions are *sector-relative* — Commercial
+   Music → 17-3023 is noise *for AM* (grads flow to media) yet a legitimate media program elsewhere. So the
+   correction lives on `Sector-[:OFFERS]->ProgramFamily` (a curated membership), not on the universal
+   `PREPARES_FOR` edge. The faithful crosswalk stays faithful; each sector says which of its links it counts.
+2. **`ProgramFamily` exists to de-duplicate the TOP6 grain** — a top6 offered at five colleges is one family,
+   one crosswalk edge, one OFFERS edge, not five.
+
+### Git-authoritative vs graph-authoritative (the line that makes this a foundation, not a cache)
+
+| fact | source of truth | in graph |
+|---|---|---|
+| crosswalk (`PREPARES_FOR`), `vocational` | **git** (CIP files, CCCCO taxonomy) | materialized, read-only |
+| demand / awards / enrollment | **data exports** (COE, DataMart) | materialized, read-only |
+| sector `CONTAINS` / `OFFERS` | **git** (bootstrapped from `in_scope`) | materialized, read-only |
+| **`Composition` INCLUDES/EXCLUDES** | **graph** (the director edits it) | **authoritative** |
+
+The value is the last row — the authored layer becomes editable data with a structural guardrail. Everything
+above is a queryable materialized view of reviewed git/exports. The trap avoided: materializing git-truth with
+*no* authoring layer would be a cache with a migration bill; the payoff is that authoring writes to the graph
+while institutional truth stays git-reviewed (a graph→git export keeps the authored layer auditable).
+
+### Phasing (byte-identical, then the value)
+
+- **3a — materialize (no read change; numbers unchanged).** A committed loader builds every node/edge above
+  *from the current code/files*, so the graph mirrors the code. Create the ~5% demand-less occupations as
+  hollow `Occupation` nodes (soc+title, demand=0 — correct). A reconciliation test asserts graph == code for
+  every sector / crosswalk / membership set.
+- **3b — swap the reads (byte-identical, char-net-guarded).** One read at a time: `SECTORS[sid].socs` → the
+  `CONTAINS` query; `in_scope` → the `OFFERS` traversal; `top6_to_soc` → `PREPARES_FOR`. At the end the engine
+  reads the ontology from the graph, and the Python sector/crosswalk logic (`in_scope`, `excluded_tops`,
+  `is_cte_top4_family`, `is_svamp_top`, the mirror) is deleted.
+- **3c — flip the authored layer (the value; ships with the authoring UI, deferred to N≥2).** `Composition`
+  becomes graph-authoritative: the director edits INCLUDES/EXCLUDES, the guardrail is structural, provenance
+  rides each edge, and a graph→git export keeps the audit trail. Numbers move only when someone authors.
+
+## Concluding the thread — the full closing map
+
+To *truly* conclude the unified-engine thread, not just Step 3:
+
+1. **Step 3 (above)** — the graph ontology. 3a/3b are byte-identical and retire the last Python sector/
+   crosswalk logic + the `excluded_tops` mirror + `SVAMP_MANDATE` alias + `is_svamp_top` / `is_cte_top4_family`.
+2. **Step 4 — sector as WHAT-selector + authored-scope disclosure.** With the sector a real node, finish it as
+   the coordinate's WHAT-selector, and build the disclosure surface for authored scopes ("tracks 12 of 49;
+   −Welders present-in-demand; +Machinists beyond the market signal") — the principled version of "show the
+   narrowing," warranted because the scope is authored.
+3. **The earned cleanup** — delete the coherence machinery the unification made unnecessary: the stamp /
+   `predicate_version` fields (threaded through `provenance`/`envelope`), any additivity-contract remnants, and
+   the corroboration test → now a *theorem* (identical coordinate ⇒ identical value, by construction; proven
+   live by the 640.7 convergence). Net line count goes **down** — the whole point.
+4. **Residues** — unify the member occupation set's two homes (`spec.socs` mirrors `composition.occupations`
+   today; make the Composition authoritative), and retire the vestigial `top_divisions` / `cte_only` fields.
+5. **Deferred beyond conclusion (own line, not blocking):** the self-serve authoring UI (N≥2), freezing the
+   MEASURE family (confirm every figure maps to sum/difference/classify/rank/neighbors/attribute), and
+   multi-region WHO.
+
+Done state: one engine over one graph-native ontology; coherence structural at both the engine and ontology
+layers; every consortium's view authored as data it cannot bend; the stamp/contract machinery deleted. The
+plan doc becomes the record, and the corroboration test becomes a comment that says "see the theorem."
+
 ## 6. Decisions locked (from the deliberation)
 
 1. Coordinate = `⟨WHO, WHAT, WHEN, MEASURE⟩`; region derived from WHO; WHAT is typed; MEASURE is a small
