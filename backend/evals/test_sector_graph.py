@@ -40,15 +40,15 @@ def test_ontology_materializes_faithfully():
 
 
 @requires_graph
-def test_offers_is_the_noise_corrected_boundary():
-    """The OFFERS edge-set IS the noise-correction: a vocational family that reaches an AM occupation but is
-    marked crosswalk-noise for AM (Commercial Music) is offered by NO sector for AM, so it never enters the
+def test_scopes_is_the_noise_corrected_boundary():
+    """The SCOPES edge-set IS the noise-correction: a vocational family that reaches an AM occupation but is
+    marked crosswalk-noise for AM (Commercial Music) is scoped into NO sector for AM, so it never enters the
     boundary — the graph fact that retires excluded_tops."""
     from ontology import sector_graph
     from partnerships.sectors import SECTORS
 
     sector_graph.load()
-    offers_adm = sector_graph.sector_offers("adm")
-    # 100500 Commercial Music crosswalks to an AM SOC but is adm crosswalk-noise → not offered.
+    scopes_adm = sector_graph.sector_scopes("adm")
+    # 100500 Commercial Music crosswalks to an AM SOC but is adm crosswalk-noise → not scoped in.
     assert "100500" in SECTORS["adm"].excluded_tops
-    assert "100500" not in offers_adm
+    assert "100500" not in scopes_adm

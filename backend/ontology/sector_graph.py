@@ -7,9 +7,13 @@ Python. It is ADDITIVE and idempotent (MERGE): it creates the ontology layer wit
 demand/awards/enrollment facts and without changing any read path, so numbers stay unchanged. ``reconcile``
 proves the graph matches the code — the gate that makes the 3b read-swap safe.
 
+Edge names are collision-free: ``PREPARES_FOR`` (Course->Occupation), ``CONTAINS`` (Department->Course) and
+``OFFERS`` (College->Course) are already taken by the course layer, so this ontology uses **COVERS**
+(Sector->Occupation), **SCOPES** (Sector->ProgramFamily) and **CROSSWALKS_TO** (ProgramFamily->Occupation).
+
 Boundary (see research/architecture/UNIFIED-ENGINE-PLAN.md, Step 3):
-  - git-authoritative, materialized READ-ONLY here: Sector, ProgramFamily(vocational), PREPARES_FOR
-    (crosswalk), Sector-CONTAINS->Occupation, Sector-OFFERS->ProgramFamily.
+  - git-authoritative, materialized READ-ONLY here: Sector, ProgramFamily(vocational), CROSSWALKS_TO
+    (crosswalk), Sector-COVERS->Occupation, Sector-SCOPES->ProgramFamily.
   - graph-authoritative LATER (3c, with the authoring UI): the Composition INCLUDES/EXCLUDES — bootstrapped
     from the registered specs here so the model is complete and reconcilable today.
 """
@@ -26,11 +30,11 @@ from partnerships.landscape import routable_specs
 from partnerships.sectors import SECTORS
 
 
-def sector_offers(sid: str) -> set[str]:
+def sector_scopes(sid: str) -> set[str]:
     """The sector's program membership = ``vocational`` families that cross-walk to one of the sector's
     occupations, minus the sector's crosswalk-noise (``excluded_tops``), minus the home-division gate.
     Member- and awards-independent — the canonical sector boundary that ``in_scope`` + ``relevant_tops``
-    derive per request today. This is the one place the OFFERS edge-set is defined; 3b reads it from the graph."""
+    derive per request today. This is the one place the SCOPES edge-set is defined; 3b reads it from the graph."""
     sec = SECTORS[sid]
     socs = set(sec.socs)
     hd = sec.home_divisions
@@ -55,16 +59,16 @@ def load(driver=None) -> dict:
         s.run("MATCH (p:Program) MATCH (pf:ProgramFamily {top6: p.top6}) MERGE (p)-[:INSTANCE_OF]->(pf)")
         # The crosswalk (only where the Occupation node exists — demand-less occ nodes arrive in 3b).
         s.run("UNWIND $rows AS r MATCH (pf:ProgramFamily {top6: r.top6}), (o:Occupation {soc_code: r.soc}) "
-              "MERGE (pf)-[:PREPARES_FOR]->(o)",
+              "MERGE (pf)-[:CROSSWALKS_TO]->(o)",
               rows=[{"top6": t, "soc": soc} for t, socs in xwalk.items() for soc in socs])
         # Sector occupation membership.
         s.run("UNWIND $rows AS r MATCH (x:Sector {id: r.sid}), (o:Occupation {soc_code: r.soc}) "
-              "MERGE (x)-[:CONTAINS]->(o)",
+              "MERGE (x)-[:COVERS]->(o)",
               rows=[{"sid": sid, "soc": soc} for sid, sec in SECTORS.items() for soc in sec.socs])
         # Sector program membership (the noise-corrected boundary).
         s.run("UNWIND $rows AS r MATCH (x:Sector {id: r.sid}), (pf:ProgramFamily {top6: r.top6}) "
-              "MERGE (x)-[:OFFERS]->(pf)",
-              rows=[{"sid": sid, "top6": t} for sid in SECTORS for t in sector_offers(sid)])
+              "MERGE (x)-[:SCOPES]->(pf)",
+              rows=[{"sid": sid, "top6": t} for sid in SECTORS for t in sector_scopes(sid)])
         # Compositions — one node per AUTHORED instance, bootstrapped from the spec (SVAMP today).
         for spec in routable_specs():
             comp = spec.composition
@@ -91,16 +95,16 @@ def counts(driver=None) -> dict:
         return {
             "Sector": q("MATCH (:Sector) RETURN count(*)"),
             "ProgramFamily": q("MATCH (:ProgramFamily) RETURN count(*)"),
-            "PREPARES_FOR": q("MATCH (:ProgramFamily)-[:PREPARES_FOR]->() RETURN count(*)"),
-            "CONTAINS": q("MATCH (:Sector)-[:CONTAINS]->() RETURN count(*)"),
-            "OFFERS": q("MATCH (:Sector)-[:OFFERS]->() RETURN count(*)"),
+            "CROSSWALKS_TO": q("MATCH (:ProgramFamily)-[:CROSSWALKS_TO]->() RETURN count(*)"),
+            "COVERS": q("MATCH (:Sector)-[:COVERS]->() RETURN count(*)"),
+            "SCOPES": q("MATCH (:Sector)-[:SCOPES]->() RETURN count(*)"),
             "Composition": q("MATCH (:Composition) RETURN count(*)"),
         }
 
 
 def reconcile(driver=None) -> list[str]:
     """Assert the graph ontology reproduces the code, returning a list of discrepancies (empty = faithful).
-    CONTAINS/PREPARES_FOR compare against the code sets INTERSECTED with occupations that have a node — the
+    COVERS/CROSSWALKS_TO compare against the code sets INTERSECTED with occupations that have a node — the
     demand-less remainder is reported separately as ``pending_hollow`` (created in 3b), not a discrepancy."""
     driver = driver or get_driver()
     diffs: list[str] = []
@@ -110,23 +114,21 @@ def reconcile(driver=None) -> list[str]:
         for sid, sec in SECTORS.items():
             want = set(sec.socs) & have_occ
             got = {r["x"] for r in s.run(
-                "MATCH (:Sector {id: $sid})-[:CONTAINS]->(o) RETURN o.soc_code AS x", sid=sid)}
+                "MATCH (:Sector {id: $sid})-[:COVERS]->(o) RETURN o.soc_code AS x", sid=sid)}
             if want != got:
-                diffs.append(f"CONTAINS[{sid}]: graph-code = {sorted(got - want)}, code-graph = {sorted(want - got)}")
+                diffs.append(f"COVERS[{sid}]: graph-code = {sorted(got - want)}, code-graph = {sorted(want - got)}")
             pending += len(set(sec.socs) - have_occ)
-            want_off = sector_offers(sid)
-            got_off = {r["x"] for r in s.run(
-                "MATCH (:Sector {id: $sid})-[:OFFERS]->(pf) RETURN pf.top6 AS x", sid=sid)}
-            if want_off != got_off:
-                diffs.append(f"OFFERS[{sid}]: graph-code = {sorted(got_off - want_off)}, code-graph = {sorted(want_off - got_off)}")
-        # crosswalk (a sample-safe full check over families that have a node on both ends)
+            want_sc = sector_scopes(sid)
+            got_sc = {r["x"] for r in s.run(
+                "MATCH (:Sector {id: $sid})-[:SCOPES]->(pf) RETURN pf.top6 AS x", sid=sid)}
+            if want_sc != got_sc:
+                diffs.append(f"SCOPES[{sid}]: graph-code = {sorted(got_sc - want_sc)}, code-graph = {sorted(want_sc - got_sc)}")
         xwalk = top6_to_soc(list(_load_top_to_cip()))
         want_pf = {(t, soc) for t, socs in xwalk.items() for soc in socs if soc in have_occ}
         got_pf = {(r["t"], r["s"]) for r in s.run(
-            "MATCH (pf:ProgramFamily)-[:PREPARES_FOR]->(o) RETURN pf.top6 AS t, o.soc_code AS s")}
+            "MATCH (pf:ProgramFamily)-[:CROSSWALKS_TO]->(o) RETURN pf.top6 AS t, o.soc_code AS s")}
         if want_pf != got_pf:
-            diffs.append(f"PREPARES_FOR: {len(got_pf - want_pf)} extra / {len(want_pf - got_pf)} missing edges")
-        # authored compositions
+            diffs.append(f"CROSSWALKS_TO: {len(got_pf - want_pf)} extra / {len(want_pf - got_pf)} missing edges")
         for spec in routable_specs():
             comp = spec.composition
             if comp.occupations is not None:
