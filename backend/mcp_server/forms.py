@@ -586,7 +586,7 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
             "MATCH (r:Region {name:$region})<-[:IN_MARKET]-(e:Employer)-[h:HIRES_FOR]->"
             "(o:Occupation {soc_code:$s}) "
             "RETURN coalesce(e.display_name, e.name) AS name, h.pct_total AS pct "
-            "ORDER BY pct DESC LIMIT $n", region=region, s=occupation, n=_OCC_EMP_N).data()
+            "ORDER BY pct DESC, name ASC LIMIT $n", region=region, s=occupation, n=_OCC_EMP_N).data()
 
     education = edu_row["e"] if edu_row else None
     # Supply + feeders resolve through the ONE canonical resolver — is_vocational
