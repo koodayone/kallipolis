@@ -52,3 +52,26 @@ def test_scopes_is_the_noise_corrected_boundary():
     # 100500 Commercial Music crosswalks to an AM SOC but is adm crosswalk-noise → not scoped in.
     assert "100500" in SECTORS["adm"].excluded_tops
     assert "100500" not in scopes_adm
+
+
+def test_home_sector_classification_and_partition():
+    """DataVista HOME classification (graph-free). Every family maps to a valid Sector id (or the
+    `global_trade` slug), and `home_sector` cleanly partitions a sector's crosswalk feeders into native vs
+    cross-sector vs unclassified — the derivation that lets the CCCCO-official lens + cross-sector disclosure
+    fall out of one property. Pins the AM partition + charter-home-derivation against silent DataVista drift."""
+    from ontology.sector_graph import home_sector_by_top6, sector_scopes
+    from partnerships.sectors import SECTORS
+
+    h = home_sector_by_top6()
+    assert len(h) == 274                                        # the full DataVista TOP-Codes-to-Sectors publication
+    assert all(sid in SECTORS or sid == "global_trade" for sid in h.values())
+
+    feeders = sector_scopes("adm")                             # crosswalk feeder set (unchanged; supply-side truth)
+    native = {t for t in feeders if h.get(t) == "adm"}         # officially AM — the CCCCO lens
+    cross = {t for t in feeders if t in h and h[t] != "adm"}   # feeds AM, home elsewhere (Electro-Mech → ecu, …)
+    uncl = {t for t in feeders if t not in h}                  # not in DataVista at all
+    assert (len(native), len(cross), len(uncl)) == (22, 19, 1)
+    assert "095690" in uncl                                    # Digital Fabrication — absent from the publication
+    # SVAMP's charter families are distant-home (never native to adm) → auto-flaggable, not a hand-list.
+    for charter in ("043000", "094600", "094800"):
+        assert h[charter] != "adm"

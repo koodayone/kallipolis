@@ -12,14 +12,19 @@ Edge names are collision-free: ``PREPARES_FOR`` (Course->Occupation), ``CONTAINS
 (Sector->Occupation), **SCOPES** (Sector->ProgramFamily) and **CROSSWALKS_TO** (ProgramFamily->Occupation).
 
 Boundary (see research/architecture/UNIFIED-ENGINE-PLAN.md, Step 3):
-  - git-authoritative, materialized READ-ONLY here: Sector, ProgramFamily(vocational), CROSSWALKS_TO
-    (crosswalk), Sector-COVERS->Occupation, Sector-SCOPES->ProgramFamily.
+  - git-authoritative, materialized READ-ONLY here: Sector, ProgramFamily(vocational, home_sector),
+    CROSSWALKS_TO (crosswalk), Sector-COVERS->Occupation, Sector-SCOPES->ProgramFamily. ``home_sector``
+    is the DataVista/PCAH HOME classification (which sector a family *belongs to*, CCCCO-authoritative,
+    1:1) — the classification layer, distinct from the SCOPES feeder set (which sector's occupations a
+    family *supplies*, crosswalk-derived). The two genuinely differ (a program feeds occupations across
+    sectors); keeping both, named, is deliberate.
   - graph-authoritative LATER (3c, with the authoring UI): the Composition INCLUDES/EXCLUDES — bootstrapped
     from the registered specs here so the model is complete and reconcilable today.
 """
 from __future__ import annotations
 
 from ontology.crosswalks import (
+    _load_pcah_cte_top6,
     _load_top_to_cip,
     _load_vocational_top6,
     load_top_titles,
@@ -28,6 +33,36 @@ from ontology.crosswalks import (
 from ontology.schema import get_driver
 from partnerships.landscape import routable_specs
 from partnerships.sectors import SECTORS
+
+
+# The DataVista / PCAH "Industry Sector or Occupational Cluster" name → our Sector id. DataVista (CCCCO)
+# is the authority for a program family's HOME sector (1:1). "global_trade" is a DataVista cluster we do
+# not analyze — kept as a slug so every classified family still resolves to a home; families absent from
+# the publication get home_sector = "unclassified".
+_DATAVISTA_TO_SID: dict[str, str] = {
+    "Advanced Manufacturing": "adm",
+    "Advanced Transportation and Logistics": "atl",
+    "Agriculture, Water and Environmental Technologies": "agwet",
+    "Business and Entrepreneurship": "business",
+    "Education and Human Development": "edhd",
+    "Energy, Construction and Utilities": "ecu",
+    "Global Trade": "global_trade",
+    "Health": "health",
+    "Information and Communication Technologies - Digital Media": "ict",
+    "Life Sciences - Biotechnology": "biotech",
+    "Public Safety": "public_safety",
+    "Retail, Hospitality and Tourism": "retail",
+    "Unassigned": "unassigned",
+}
+
+
+def home_sector_by_top6() -> dict[str, str]:
+    """{TOP6 → our Sector id} — a program family's authoritative HOME sector, from the DataVista (CCCCO
+    PCAH) "TOP Codes to Sectors" publication. This is the classification layer: which sector a program
+    *belongs to*, distinct from the crosswalk feeder set (which sector's occupations it *supplies*).
+    Reuses the existing ``_load_pcah_cte_top6`` reader; every DataVista cluster maps to a sid."""
+    return {t: _DATAVISTA_TO_SID[name] for t, name in _load_pcah_cte_top6().items()
+            if name in _DATAVISTA_TO_SID}
 
 
 def sector_scopes(sid: str) -> set[str]:
@@ -47,14 +82,16 @@ def load(driver=None) -> dict:
     driver = driver or get_driver()
     titles = load_top_titles()
     voc = _load_vocational_top6()
+    home = home_sector_by_top6()                           # {top6 -> our Sector id} (DataVista HOME classification)
     xwalk = top6_to_soc(list(_load_top_to_cip()))          # {top6 -> {soc}}, the faithful crosswalk
 
     with driver.session() as s:
         s.run("UNWIND $rows AS r MERGE (x:Sector {id: r.id}) SET x.label = r.label, x.swp_tag = r.swp_tag",
               rows=[{"id": sid, "label": sec.label, "swp_tag": sec.swp_tag} for sid, sec in SECTORS.items()])
         s.run("UNWIND $rows AS r MERGE (pf:ProgramFamily {top6: r.top6}) "
-              "SET pf.title = r.title, pf.vocational = r.voc",
-              rows=[{"top6": t, "title": titles.get(t, ""), "voc": t in voc} for t in titles])
+              "SET pf.title = r.title, pf.vocational = r.voc, pf.home_sector = r.home",
+              rows=[{"top6": t, "title": titles.get(t, ""), "voc": t in voc,
+                     "home": home.get(t, "unclassified")} for t in titles])
         # Each college's Program instance links to its family.
         s.run("MATCH (p:Program) MATCH (pf:ProgramFamily {top6: p.top6}) MERGE (p)-[:INSTANCE_OF]->(pf)")
         # The crosswalk (only where the Occupation node exists — demand-less occ nodes arrive in 3b).
@@ -98,6 +135,7 @@ def counts(driver=None) -> dict:
             "CROSSWALKS_TO": q("MATCH (:ProgramFamily)-[:CROSSWALKS_TO]->() RETURN count(*)"),
             "COVERS": q("MATCH (:Sector)-[:COVERS]->() RETURN count(*)"),
             "SCOPES": q("MATCH (:Sector)-[:SCOPES]->() RETURN count(*)"),
+            "home_sector": q("MATCH (pf:ProgramFamily) WHERE pf.home_sector <> 'unclassified' RETURN count(*)"),
             "Composition": q("MATCH (:Composition) RETURN count(*)"),
         }
 
@@ -129,6 +167,13 @@ def reconcile(driver=None) -> list[str]:
             "MATCH (pf:ProgramFamily)-[:CROSSWALKS_TO]->(o) RETURN pf.top6 AS t, o.soc_code AS s")}
         if want_pf != got_pf:
             diffs.append(f"CROSSWALKS_TO: {len(got_pf - want_pf)} extra / {len(want_pf - got_pf)} missing edges")
+        have_pf = {r["t"] for r in s.run("MATCH (pf:ProgramFamily) RETURN pf.top6 AS t")}
+        want_home = {t: sid for t, sid in home_sector_by_top6().items() if t in have_pf}
+        got_home = {r["t"]: r["h"] for r in s.run(
+            "MATCH (pf:ProgramFamily) WHERE pf.home_sector <> 'unclassified' RETURN pf.top6 AS t, pf.home_sector AS h")}
+        if want_home != got_home:
+            mism = sorted(t for t in set(want_home) | set(got_home) if want_home.get(t) != got_home.get(t))
+            diffs.append(f"home_sector: {len(mism)} families differ, e.g. {mism[:5]}")
         for spec in routable_specs():
             comp = spec.composition
             if comp.occupations is not None:

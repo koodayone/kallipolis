@@ -387,6 +387,34 @@ Eligibility becomes one traversal: a member×sector's supporting programs for an
 2. **`ProgramFamily` exists to de-duplicate the TOP6 grain** — a top6 offered at five colleges is one family,
    one crosswalk edge, one OFFERS edge, not five.
 
+**Edge-name note (shipped):** the schema above names `PREPARES_FOR`/`CONTAINS`/`OFFERS`; the course layer
+already owns those, so the ontology ships as **`CROSSWALKS_TO`** (ProgramFamily→Occupation), **`COVERS`**
+(Sector→Occupation), **`SCOPES`** (Sector→ProgramFamily).
+
+### HOME_SECTOR — the DataVista classification layer (added; rejected as the supply set)
+
+A third fact, distinct from both `COVERS` (occupation membership) and `SCOPES` (feeder set): the DataVista
+(CCCCO PCAH) "TOP Codes to Sectors" publication assigns each TOP6 exactly one **home sector** (1:1; 274
+families → 13 clusters). Materialized as **`ProgramFamily.home_sector`** (an our-Sector-id string, or
+`unclassified`), git-authoritative from the already-committed `TOP Codes to Sectors.xlsx` via the existing
+`_load_pcah_cte_top6` reader (already consumed by `opportunity.py`). A property, not an edge — one value per
+family.
+
+**Decision (measured): DataVista is the CLASSIFICATION authority, NOT the supply set.** Enshrining it as a
+sector's program membership was rejected: a program has one home but *feeds* occupations across sectors, so
+using it for supply drops legitimate cross-sector feeders. Measured across all sectors, **28% of feeder
+memberships would drop** (48% for AM) — e.g. Electro-Mechanical (093500) is home ECU yet trains AM's
+electro-mechanical techs. Concretely SVAMP-as-DataVista would **lose Mission College** (its only AM program
+is home-filed elsewhere) and ~23% of supply. Occupation supply is a fact tied to the occupation, not a
+classification choice — so the feeder `SCOPES` stays crosswalk-derived.
+
+**What `home_sector` buys, all from one property + a partition of `SCOPES` by home-match:** a strict
+**CCCCO-official lens** (`home_sector = sector`), **cross-sector-feeder disclosure** (`home_sector != sector`,
+labeled with its real home), **charter auto-derivation** (SVAMP's Biotech/HVAC/Auto are exactly distant-home
+feeders), and a **noise-audit signal** (12 of 14 AM noise codes are distant-home ICT/Business). AM partitions
+42 feeders → 22 native + 19 cross-sector + 1 unclassified (095690, absent from DataVista). Loaded + reconciled
+**FAITHFUL** in 3a; supply/colleges untouched.
+
 ### Git-authoritative vs graph-authoritative (the line that makes this a foundation, not a cache)
 
 | fact | source of truth | in graph |
