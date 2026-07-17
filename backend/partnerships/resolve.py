@@ -52,11 +52,12 @@ def sector_lenses(spec: LandscapeSpec) -> dict:
       in_demand — full ∩ demand-quality (real openings, near-living-wage, non-declining): "is there a market?"
       served    — full ∩ member-engaged (reachable, active, consortium-floor): "is the member in it?"
       effective — in_demand ∩ served (the set the dashboard shows today)
-    Identity (every lens = full) for a curated/no-rule spec (e.g. SVAMP), trusted as authored."""
+    Identity (every lens = full) for an AUTHORED spec (SVAMP's occupations are hand-picked = final) or a
+    no-rule spec, trusted as authored — the lenses derive a subset only when the occupations are derived."""
     rule = spec.soc_rule
     full = tuple(spec.socs)
     socs = list(spec.socs)
-    if rule is None or not rule.active:
+    if spec.composition.is_authored or rule is None or not rule.active:
         return {"full": full, "in_demand": full, "served": full, "effective": full}
 
     # Sector-derived instances only: drop 5+yr-experience occupations, "all other"
@@ -155,9 +156,10 @@ def effective_socs(spec: LandscapeSpec) -> tuple[str, ...]:
 
 
 def resolve(spec: LandscapeSpec) -> LandscapeSpec:
-    """Return spec with .socs narrowed to its sector rule's effective set
-    (sector-derived instances). Identity — and no graph access — for a curated/
-    no-rule spec (e.g. SVAMP), which is trusted as authored and never filtered."""
-    if spec.soc_rule is None or not spec.soc_rule.active:
+    """Return spec with .socs narrowed to its sector rule's effective set (sector-derived instances).
+    Identity — and no graph access — for an AUTHORED spec (SVAMP's occupations are the curation, never
+    filtered) or a no-rule spec. This branches on the Composition, not the rule, so an authored spec may
+    still carry an active rule (its programs run the universal gate; only its occupation set stays final)."""
+    if spec.composition.is_authored or spec.soc_rule is None or not spec.soc_rule.active:
         return spec
     return dataclasses.replace(spec, socs=effective_socs(spec))
