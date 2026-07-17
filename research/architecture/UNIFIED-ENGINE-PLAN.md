@@ -56,9 +56,14 @@ literally one sum; multi-region WHO derives a region *set*.
 
 ## 2. Eligibility (the one rule)
 
-> A program counts as supply toward an occupation when it is **(1) a workforce program** [`is_vocational`,
+> A program is a supporting program for an occupation when it is **(1) a workforce program** [`is_vocational`,
 > a program property] that **(2) genuinely prepares for that occupation** [a real crosswalk edge] and is
-> **(3) actually producing** [completers in the window] — **minus** the querying member's `charter_excludes`.
+> **(3) currently active** [completers **or** enrolled students in the window] — **minus** the querying
+> member's `charter_excludes`.
+>
+> Eligibility and supply are separate: condition 3 decides whether the program *appears*; **only completers
+> count toward the supply number.** Enrollment makes a live program visible (a Plastics program with 222
+> students is training people whether or not its first cohort has graduated) without ever inflating supply.
 
 The governing principle: **subtraction, not fork.** A per-member *exclusion* is a subtraction from one
 universal computation — it cannot make two members' numbers incomparable, so it preserves the single engine.
@@ -190,13 +195,33 @@ gate with the measure). Scope: the *eligibility gate* only — `resolve`, `lands
 predicate). The latest-year **"graduating this year"** reading stays 1-year as the stamped complement (the
 existing `on_the_books` / `graduating` dual).
 
-Re-measured SVAMP delta under the pin: **10 offered → 7 eligible (drops 3** — 092400 Engineering-Tech-General
->3yr-stale; 095200 Construction-Crafts + 095420 Plastics never-graduated) — and **supply-neutral**: all three
-have 0 completers in the 3-year window → 0 supply, so no figure moves; only three dead rows drop. The pin also
-*saves* 093400 Electronics & Electric (0 latest, 1 in 3yr — the fragility, caught in a live program). **Blast
-radius is not SVAMP-local:** the shared gate change nudges every rule-bearing surface (SMCCD-adm +1 program /
-+1 served SOC) — a signed diff, net-guarded. (An earlier note said "7 dormant"; that was the *retained* count
-recorded inverted — the measured casualty count is 3.)
+The window pin *saves* 093400 Electronics & Electric (0 latest-year, 1 in 3yr — the fragility, caught in a
+live program). Under awards-only the pin would still drop 3 SVAMP programs (092400, 095200, 095420) — but
+that number is a mirage: see the enrollment correction below, which is why condition 3 is *active*, not
+awards-only. (An earlier note said "7 dormant"; that was the *retained* count recorded inverted.)
+
+### Enrollment — condition 3 is "active," not "producing" (the correction that matters)
+
+The three programs an awards-only rule would drop are **not dead** — measured, they hold ~480 currently-
+enrolled students (Plastics 222 · Construction Crafts 139 · Engineering-Tech-General 121, all into 2025).
+Awards-only would erase live training capacity and read a being-addressed gap as unaddressed. So condition 3
+is **active = recent completers OR recent enrollment** (both at the 3-yr window); **supply stays completers-
+only**. Consequences:
+- **No lifecycle label.** "Enrolled, 0 recent completers" is ambiguous — genuinely new, *missing awards data*
+  (the exports have holes both ways: Machining shows 49 grads/yr but 0 enrollment on record), or stalled. We
+  can't tell, so we don't narrate it — we show the two grounded facts (enrolled N · completers M) and let the
+  reader judge. This also dissolves the "zombie program" worry: there is no claim to be wrong about.
+- **It's a union, not enrollment-first** — a program appears if *either* signal is present (so a
+  producing-but-not-enrollment-reported program like Machining is never erased).
+- **This is why enrollment is not scope creep but a requirement.** SVAMP shows enrolled programs today; an
+  awards-only universal rule would either *regress* SVAMP (lose the 480 students) or keep it *forked*. The
+  active rule lets SVAMP's behavior *become* the universal behavior — leveling up, not down.
+
+**Corrected blast radius.** SVAMP drops **0** programs (its 3 non-graduating ones have enrollment → shown
+active-not-graduating; only genuinely-dead rows, none AND no enrollment, would drop). The movement is the
+other direction: **rule-bearing instances (SMCCD, BACCC) — which today drop enrollment-only programs — gain
+"active-not-graduating" rows.** Supply numbers move nowhere. That measured, per-instance diff is Step 2's
+sign-off artifact.
 
 ### SVAMP's occupation set is authored, not derived (the last pin, resolved)
 
@@ -297,10 +322,11 @@ four moves, each shippable and guarded by the characterization net.
   computing SVAMP's *current* Mode-B numbers so output stays byte-identical. Outcome: one scope model, forks
   removed from the spec *shape*, numbers unchanged. Net-guarded. This is the "move code" step.
 - **B2 — flip the universal rule (semantic; numbers CHANGE, ONE signed diff).** Remove the legacy shim: every
-  member runs `is_vocational` + the pinned 3-yr producing gate + charter. Numbers move exactly as measured —
-  SVAMP 10 → 7 programs (supply-neutral), SMCCD-adm +1 program / +1 served SOC, A′ collapses. Regenerate
-  goldens; director sign-off on SVAMP's 3 dropped rows (low-stakes — supply-neutral). This is the "move
-  numbers" step, isolated.
+  member runs `is_vocational` + charter + the **active** gate (completers OR enrollment, 3-yr window); supply
+  stays completers-only. Numbers move as measured *before flipping*: SVAMP drops **0** programs (its 3
+  non-graduating ones stay, shown active-not-graduating), rule-bearing instances **gain** active-not-graduating
+  rows, supply figures unchanged, A′ collapses. Regenerate goldens; director sign-off on the new "active" rows
+  and SVAMP's status labels. This is the "move numbers" step, isolated.
 - **B3 — selection into the graph (structural again; numbers UNCHANGED).** Move sector membership (occupation
   + program) and crosswalk-noise onto graph edges/properties — the sector-as-node endgame. Bootstrap the edges
   from the current computed sets so it is behavior-preserving; reconcile against an authority later. Net-guarded.
@@ -328,6 +354,11 @@ fully general without the editor — add the editor when a second consortium act
    as **selection from grounded facts** — authoring can subtract/select, never invent a rule, threshold,
    occupation, or edge. SVAMP is the first author; a self-serve authoring UI defers until a second consortium
    needs one (`N ≥ 2`).
+7. Condition 3 = **active** (recent completers **OR** recent enrollment, 3-yr window), **not** completers-only;
+   **supply stays completers-only**, so eligibility (does it appear) and supply (the quantity) are separate.
+   No lifecycle label on enrollment-only programs — show the grounded facts (enrolled N · completers M), never
+   narrate new/missing-data/stalled. This levels SVAMP's enrollment-awareness UP to universal instead of
+   regressing it, which is what lets the fork delete cleanly.
 
 ## 7. Open questions
 
@@ -358,9 +389,10 @@ fully general without the editor — add the editor when a second consortium act
   and awareness of any figure a stakeholder has already seen.
 - **Number changes are real but small and measured** (superseding an earlier unmeasured "~2× swing"
   estimate). Program eligibility is byte-identical under the universal rule (23 = 23); the Automotive charter
-  is already applied today, so it moves nothing; the only movements are the 3-yr window pin (SVAMP −3
-  zero-supply rows, supply-neutral; SMCCD-adm +1/+1) — signed diff, regenerated goldens, director sign-off on
-  SVAMP's dropped rows.
+  is already applied today, so it moves nothing; **supply figures do not move at all** (supply stays
+  completers-only). The only movements are *which programs appear*: SVAMP drops 0 (the active gate keeps its
+  enrolled programs), and rule-bearing instances gain active-not-graduating rows. Signed diff, regenerated
+  goldens, director sign-off on the new rows + status labels.
 
 ## 9. Relationship to the rest
 
