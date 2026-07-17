@@ -44,3 +44,25 @@ def test_charter_include_outside_vocational_is_rejected():
 def test_frozen_is_hashable():
     # Frozen so it can be an lru_cache key / live on a frozen spec without a mutable-default footgun.
     assert hash(Composition(occupations=("11-1111",))) == hash(Composition(occupations=("11-1111",)))
+
+
+def test_svamp_registered_composition_is_authored_and_valid():
+    """The one live author today: SVAMP's Composition must be authored and pass the guardrail against the
+    real AM membership + vocational universe — its 12 ⊆ the sector's 49, its charter ⊆ vocational programs."""
+    from ontology.crosswalks import _load_vocational_top6
+    from partnerships.landscape import SVAMP_SPEC
+    from partnerships.sectors import SECTORS
+
+    comp = SVAMP_SPEC.composition
+    assert comp.is_authored                                    # SVAMP hand-picks its occupations
+    assert comp.program_excludes == frozenset({"094600", "094800"})   # charter: HVAC + Automotive
+    validate(comp, membership=SECTORS["adm"].socs, vocational_universe=_load_vocational_top6())
+
+
+def test_derived_members_carry_empty_composition():
+    """A rule-derived member (SMCCD-adm) carries the default empty Composition — occupations derived, no
+    charter — so the field is a no-op there and the migration is byte-identical."""
+    from partnerships.landscape import SMCCD_ADM_SPEC
+
+    assert SMCCD_ADM_SPEC.composition.is_authored is False
+    assert SMCCD_ADM_SPEC.composition.program_excludes == frozenset()
