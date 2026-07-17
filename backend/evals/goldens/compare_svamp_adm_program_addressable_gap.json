@@ -4,13 +4,13 @@
  "member": "svamp",
  "ranked": [
   "095600 Manufacturing and Industrial Technology",
-  "094500 Industrial Systems Technology and Maintenance",
   "095630 Machining and Machine Tools",
+  "094500 Industrial Systems Technology and Maintenance",
   "093500 Electro-Mechanical Technology",
   "093400 Electronics and Electric Technology",
-  "093410 Computer Electronics",
   "094610 Energy Systems Technology",
-  "092400 Engineering Technology, General (requires Trigonometry)"
+  "092400 Engineering Technology, General (requires Trigonometry)",
+  "095690 Digital Fabrication Technician"
  ],
  "sector": "adm",
  "unit_type": "program",
@@ -39,18 +39,6 @@
    "wage_after_5": 84558,
    "wage_lift": 27146
   },
-  "093410 Computer Electronics": {
-   "addressable_demand": 1120,
-   "addressable_gap": 413,
-   "award_trend": null,
-   "completions": 0.0,
-   "enrollment": 0.0,
-   "enrollment_trend": null,
-   "supply_share": null,
-   "wage_after_2": 43667,
-   "wage_after_5": 59650,
-   "wage_lift": 25603
-  },
   "093500 Electro-Mechanical Technology": {
    "addressable_demand": 1260,
    "addressable_gap": 733,
@@ -65,7 +53,7 @@
   },
   "094500 Industrial Systems Technology and Maintenance": {
    "addressable_demand": 1930,
-   "addressable_gap": 991,
+   "addressable_gap": 941,
    "award_trend": 1.89,
    "completions": 9.0,
    "enrollment": 14.0,
@@ -110,6 +98,18 @@
    "wage_after_2": 63040,
    "wage_after_5": 72728,
    "wage_lift": 20298
+  },
+  "095690 Digital Fabrication Technician": {
+   "addressable_demand": 150,
+   "addressable_gap": -236,
+   "award_trend": 0.74,
+   "completions": 2.7,
+   "enrollment": 0.0,
+   "enrollment_trend": null,
+   "supply_share": 1.0,
+   "wage_after_2": null,
+   "wage_after_5": null,
+   "wage_lift": null
   }
  }
 }

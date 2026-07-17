@@ -129,7 +129,8 @@
  "framing": {
   "meaning": "A supply\u2013demand gap is regional annual openings minus the whole region's projected completions, per occupation \u2014 regional demand against regional supply. The institution's own completions are its share of that regional supply. Positive means the region hires more than its colleges are projected to complete.",
   "salience": [
-   "supply=3yr-avg: supply is a 3-year average of DataMart completions (All Awards); the single most recent year (latest_year_supply) can run above or below it."
+   "supply=3yr-avg: supply is a 3-year average of DataMart completions (All Awards); the single most recent year (latest_year_supply) can run above or below it.",
+   "member-anchored: a generated member\u00d7sector view covers only occupations the member already serves with an active program \u2014 it does NOT surface greenfield demand in occupations the member does not yet serve. Absence here is not absence of regional demand."
   ]
  },
  "licensing": {

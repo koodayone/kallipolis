@@ -402,10 +402,15 @@ SVAMP_SPEC = LandscapeSpec(
     counties=("Santa Clara",),  # SVAMP's shed — keeps the peninsula (SMCCD) out
     name="Silicon Valley Advanced Manufacturing Partnership",
     accent="#ff5a5a",
-    # SVAMP is the first AUTHOR: its 12 occupations are hand-picked (a subset of the AM sector's 49) and its
-    # charter sets Automotive + HVAC outside scope. Today this mirrors socs / excluded_tops (byte-identical);
-    # Step 2 makes the Composition authoritative and retires soc_rule=None / vocational=False / the mirror.
-    composition=Composition(occupations=_AM_SOCS, program_excludes=_AM_EXCLUDED_TOPS),
+    # SVAMP under the UNIVERSAL rule (Step 2b) — no fork left. It runs is_vocational (not the legacy division/
+    # CTE-family predicate) and the active program gate (soc_rule active), exactly like every other member.
+    # Its identity is pure Composition data: the 12 occupations are hand-picked (a subset of the AM sector's
+    # 49; resolve keeps them final because is_authored) and the charter sets Automotive/HVAC/Biotech out of
+    # scope. Net effect vs the old Mode-B: 13 in-scope program TYPES no member actively runs (0 awards AND 0
+    # enrollment) stop showing as empty rows — every figure (demand/supply/awards/gap/employers) unchanged.
+    vocational=True,
+    soc_rule=SECTORS["adm"].rule,
+    composition=Composition(occupations=_AM_SOCS, program_excludes=_AM_EXCLUDED_TOPS | {"043000"}),
 )
 
 # Instance #2+: the SMCCD member set's sector views — a `member × sector` row,

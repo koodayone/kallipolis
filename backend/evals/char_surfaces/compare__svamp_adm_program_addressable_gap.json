@@ -15,7 +15,7 @@
   "more": {
    "drill": {
     "coordinate": {
-     "entity": "093440",
+     "entity": "095200",
      "lens": "",
      "member": "svamp",
      "member_label": "Silicon Valley Advanced Manufacturing Partnership",
@@ -24,12 +24,12 @@
      "sector": "adm",
      "sector_label": "Advanced Manufacturing",
      "soc": null,
-     "top6": "093440"
+     "top6": "095200"
     },
     "form": "crosswalk",
-    "rationale": "15 more programs to compare."
+    "rationale": "2 more programs to compare."
    },
-   "remaining": 15
+   "remaining": 2
   },
   "rows": [
    {
@@ -139,112 +139,6 @@
     }
    },
    {
-    "label": "094500 Industrial Systems Technology and Maintenance",
-    "roster": [],
-    "values": {
-     "addressable_demand": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "coe",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 1930,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     },
-     "addressable_gap": {
-      "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "derived",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 991,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "award_trend": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "derived",
-      "status": "ok",
-      "unit": "ratio",
-      "value": 1.9,
-      "vintage": "DataMart completions \u2014 2024-2025 \u00f7 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "completions": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 9.0,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "enrollment": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled/term",
-      "value": 14.0,
-      "vintage": "Fall 2025"
-     },
-     "enrollment_trend": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "derived",
-      "status": "ok",
-      "unit": "ratio",
-      "value": 4.2,
-      "vintage": "Fall 2025 \u00f7 prior Falls"
-     },
-     "supply_share": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges) \u00f7 regional (Bay Area) \u2014 all 26 colleges",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "derived",
-      "status": "ok",
-      "unit": "fraction",
-      "value": 0.2,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "wage_after_2": {
-      "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "datamart",
-      "status": "ok",
-      "unit": "$/yr",
-      "value": 78626,
-      "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
-     },
-     "wage_after_5": {
-      "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "datamart",
-      "status": "ok",
-      "unit": "$/yr",
-      "value": 105182,
-      "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
-     },
-     "wage_lift": {
-      "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "derived",
-      "status": "ok",
-      "unit": "$/yr",
-      "value": 35410,
-      "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
-     }
-    }
-   },
-   {
     "label": "095630 Machining and Machine Tools",
     "roster": [],
     "values": {
@@ -346,6 +240,112 @@
       "status": "ok",
       "unit": "$/yr",
       "value": 20298,
+      "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
+     }
+    }
+   },
+   {
+    "label": "094500 Industrial Systems Technology and Maintenance",
+    "roster": [],
+    "values": {
+     "addressable_demand": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 1930,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "addressable_gap": {
+      "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 941,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "award_trend": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "ratio",
+      "value": 1.9,
+      "vintage": "DataMart completions \u2014 2024-2025 \u00f7 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "completions": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 9.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled/term",
+      "value": 14.0,
+      "vintage": "Fall 2025"
+     },
+     "enrollment_trend": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "ratio",
+      "value": 4.2,
+      "vintage": "Fall 2025 \u00f7 prior Falls"
+     },
+     "supply_share": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges) \u00f7 regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "fraction",
+      "value": 0.2,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "wage_after_2": {
+      "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "$/yr",
+      "value": 78626,
+      "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
+     },
+     "wage_after_5": {
+      "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "$/yr",
+      "value": 105182,
+      "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
+     },
+     "wage_lift": {
+      "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "$/yr",
+      "value": 35410,
       "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
      }
     }
@@ -563,112 +563,6 @@
     }
    },
    {
-    "label": "093410 Computer Electronics",
-    "roster": [],
-    "values": {
-     "addressable_demand": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "coe",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 1120,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     },
-     "addressable_gap": {
-      "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "derived",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 413,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "award_trend": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "derived",
-      "status": "unavailable",
-      "unit": "ratio",
-      "value": null,
-      "vintage": "DataMart completions \u2014 2024-2025 \u00f7 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "completions": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 0.0,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "enrollment": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled/term",
-      "value": 0.0,
-      "vintage": "Fall 2025"
-     },
-     "enrollment_trend": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "derived",
-      "status": "unavailable",
-      "unit": "ratio",
-      "value": null,
-      "vintage": "Fall 2025 \u00f7 prior Falls"
-     },
-     "supply_share": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges) \u00f7 regional (Bay Area) \u2014 all 26 colleges",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "derived",
-      "status": "unavailable",
-      "unit": "fraction",
-      "value": null,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "wage_after_2": {
-      "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "datamart",
-      "status": "ok",
-      "unit": "$/yr",
-      "value": 43667,
-      "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
-     },
-     "wage_after_5": {
-      "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "datamart",
-      "status": "ok",
-      "unit": "$/yr",
-      "value": 59650,
-      "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
-     },
-     "wage_lift": {
-      "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
-      "parent_vintages": [],
-      "predicate_version": "",
-      "source": "derived",
-      "status": "ok",
-      "unit": "$/yr",
-      "value": 25603,
-      "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
-     }
-    }
-   },
-   {
     "label": "094610 Energy Systems Technology",
     "roster": [],
     "values": {
@@ -879,6 +773,112 @@
       "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
      }
     }
+   },
+   {
+    "label": "095690 Digital Fabrication Technician",
+    "roster": [],
+    "values": {
+     "addressable_demand": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 150,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "addressable_gap": {
+      "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": -236,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "award_trend": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "ratio",
+      "value": 0.7,
+      "vintage": "DataMart completions \u2014 2024-2025 \u00f7 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "completions": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 2.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled/term",
+      "value": 0.0,
+      "vintage": "Fall 2025"
+     },
+     "enrollment_trend": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "unavailable",
+      "unit": "ratio",
+      "value": null,
+      "vintage": "Fall 2025 \u00f7 prior Falls"
+     },
+     "supply_share": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges) \u00f7 regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "ok",
+      "unit": "fraction",
+      "value": 1.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "wage_after_2": {
+      "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "unavailable",
+      "unit": "$/yr",
+      "value": null,
+      "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
+     },
+     "wage_after_5": {
+      "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "datamart",
+      "status": "unavailable",
+      "unit": "$/yr",
+      "value": null,
+      "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
+     },
+     "wage_lift": {
+      "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
+      "parent_vintages": [],
+      "predicate_version": "",
+      "source": "derived",
+      "status": "unavailable",
+      "unit": "$/yr",
+      "value": null,
+      "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
+     }
+    }
    }
   ],
   "sorted_by": {
@@ -895,7 +895,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "programs",
-    "value": 23,
+    "value": 10,
     "vintage": ""
    }
   }

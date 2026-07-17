@@ -532,27 +532,6 @@
    "name": "Engineering Technology, General (requires Trigonometry)",
    "soc_count": 5,
    "top6": "092400"
-  },
-  {
-   "awards_total": 0,
-   "enrollment_total": 0,
-   "name": "Computer Electronics",
-   "soc_count": 4,
-   "top6": "093410"
-  },
-  {
-   "awards_total": 0,
-   "enrollment_total": 0,
-   "name": "Electrical Systems and Power Transmission",
-   "soc_count": 2,
-   "top6": "093440"
-  },
-  {
-   "awards_total": 0,
-   "enrollment_total": 0,
-   "name": "Telecommunications Technology",
-   "soc_count": 1,
-   "top6": "093430"
   }
  ],
  "gap": 389,

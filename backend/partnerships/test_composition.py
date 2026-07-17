@@ -55,7 +55,7 @@ def test_svamp_registered_composition_is_authored_and_valid():
 
     comp = SVAMP_SPEC.composition
     assert comp.is_authored                                    # SVAMP hand-picks its occupations
-    assert comp.program_excludes == frozenset({"094600", "094800"})   # charter: HVAC + Automotive
+    assert comp.program_excludes == frozenset({"094600", "094800", "043000"})   # charter: HVAC + Auto + Biotech
     validate(comp, membership=SECTORS["adm"].socs, vocational_universe=_load_vocational_top6())
 
 
