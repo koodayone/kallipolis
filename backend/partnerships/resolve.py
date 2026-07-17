@@ -27,7 +27,7 @@ from __future__ import annotations
 import dataclasses
 from collections import defaultdict
 
-from ontology.crosswalks import top6_to_soc
+from ontology.crosswalks import crosswalk_socs
 from ontology.schema import get_driver
 from partnerships.graph_reads import regional_demand
 from partnerships.landscape import LandscapeSpec
@@ -98,7 +98,7 @@ def sector_lenses(spec: LandscapeSpec) -> dict:
     reachable: set[str] = set()
     active: set[str] = set()
     soc_colleges: dict[str, set[str]] = defaultdict(set)
-    for top6, fed in top6_to_soc(voc).items():
+    for top6, fed in crosswalk_socs(voc).items():
         if top6 in prog_tops:
             reachable |= fed
         if top6 in active_tops:

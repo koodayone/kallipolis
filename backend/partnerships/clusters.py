@@ -40,7 +40,7 @@ from collections import defaultdict
 from dataclasses import dataclass, field
 from functools import lru_cache
 
-from ontology.crosswalks import top6_to_soc
+from ontology.crosswalks import crosswalk_socs
 from ontology.schema import get_driver
 from partnerships.graph_reads import latest_academic_year, regional_demand
 from partnerships.landscape import LandscapeSpec
@@ -180,7 +180,7 @@ def cluster_map(spec: LandscapeSpec) -> list[OccupationCluster]:
 
     # SOC -> the awarded in-scope TOPs that feed it (the cluster-graph edges).
     feeders_of = {
-        soc: {t for t in awarded if soc in top6_to_soc([t]).get(t, set())}
+        soc: {t for t in awarded if soc in crosswalk_socs([t]).get(t, set())}
         for soc in socs
     }
 

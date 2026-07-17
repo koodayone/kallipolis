@@ -36,7 +36,7 @@ from pydantic import BaseModel
 
 from ontology.crosswalks import (
     _load_top_to_cip,
-    top6_to_soc,
+    crosswalk_socs,
     load_top_titles,
     top6_to_cips_for_soc,
     load_cip_titles,
@@ -273,7 +273,7 @@ def relevant_tops(spec: LandscapeSpec) -> dict[str, set[str]]:
     targets = set(spec.socs)
     universe = {
         top6: (socs & targets)
-        for top6, socs in top6_to_soc(all_top6).items()
+        for top6, socs in crosswalk_socs(all_top6).items()
         if (socs & targets) and spec.in_scope(top6)
     }
     # Rule-bearing instances apply the supply gate at the PROGRAM grain too:

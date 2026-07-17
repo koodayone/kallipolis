@@ -45,7 +45,7 @@ from collections import defaultdict
 from dataclasses import dataclass
 from functools import lru_cache
 
-from ontology.crosswalks import is_vocational, top6_to_soc
+from ontology.crosswalks import is_vocational, crosswalk_socs
 from ontology.schema import get_driver
 from partnerships.landscape import _term_excluded, _term_sort_key
 
@@ -85,7 +85,7 @@ def _soc_feeders(colleges: tuple[str, ...], spec=None) -> dict[str, frozenset[st
     rule = getattr(spec, "soc_rule", None) if spec is not None else None
     if rule is not None and getattr(rule, "active", False):
         offered = set(producing_tops(colleges, offered))
-    soc_map = top6_to_soc(list(offered))
+    soc_map = crosswalk_socs(list(offered))
     gate = spec.in_scope if spec is not None else is_vocational
     out: dict[str, set] = {}
     for t in offered:
@@ -330,7 +330,7 @@ def program_socs(program: str, within=None) -> frozenset:
     projected DOWN the crosswalk — the occupations a graduate of this program is qualified for."""
     if not is_vocational(program):
         return frozenset()
-    socs = top6_to_soc([program]).get(program, set())
+    socs = crosswalk_socs([program]).get(program, set())
     return frozenset(socs & set(within)) if within is not None else frozenset(socs)
 
 
@@ -511,7 +511,7 @@ def member_sector_programs(colleges, spec) -> tuple[list[str], list[str]]:
     (>0 completer in the latest year). ONE birthplace, so every tool reports the same counts (CI-02)."""
     sec = set(spec.socs)
     registered = sorted(member_program_tops(tuple(sorted(colleges))))
-    on_the_books = sorted(t for t, socs in top6_to_soc(registered).items()
+    on_the_books = sorted(t for t, socs in crosswalk_socs(registered).items()
                           if (socs & sec) and spec.in_scope(t))
     graduating = [t for t in on_the_books if colleges_actively_awarding(colleges, t) > 0]
     return on_the_books, graduating

@@ -37,7 +37,7 @@ from ontology.regions import (
     COE_REGION_DISPLAY,
     COE_REGION_PRIORITY_SECTORS,
 )
-from ontology.crosswalks import top6_to_soc, _load_vocational_top6
+from ontology.crosswalks import crosswalk_socs, _load_vocational_top6
 from ontology.schema import get_driver
 from ontology.supply import get_coe_supply
 from ontology.programs import get_wage_outcomes
@@ -259,7 +259,7 @@ def _soc_feeding_tops(spec: LandscapeSpec) -> dict[str, set[str]]:
     whether any course is tagged to their code (the 095630 parent-code seam)."""
     targets = set(spec.socs)
     feed: dict[str, set[str]] = {soc: set() for soc in spec.socs}
-    for top6, socs in top6_to_soc(spec.in_scope_tops()).items():
+    for top6, socs in crosswalk_socs(spec.in_scope_tops()).items():
         inter = socs & targets
         if inter:
             for soc in inter:

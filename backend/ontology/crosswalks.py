@@ -462,7 +462,12 @@ def load_cip_titles() -> dict[str, str]:
 # ── Core functions ────────────────────────────────────────────────────────
 
 def top6_to_soc(top6_codes: list[str]) -> dict[str, set[str]]:
-    """Map TOP6 codes to SOC codes via TOP6→CIP→SOC chain.
+    """Map TOP6 codes to SOC codes via TOP6→CIP→SOC chain — the git/CSV SOURCE.
+
+    Composes the two Chancellor's-Office crosswalk files. This is the authoritative source that the graph
+    materializes (sector_graph.load → CROSSWALKS_TO) and that the loaders + graph-free callers read.
+    The ENGINE's runtime crosswalk read is ``crosswalk_socs`` (the graph, byte-identical by reconciliation);
+    keep using this one only where no graph is available or where you are *materializing* the graph.
 
     Returns: {top6: {soc_code, ...}} for each TOP6 that has a mapping.
     """
@@ -479,6 +484,41 @@ def top6_to_soc(top6_codes: list[str]) -> dict[str, set[str]]:
             result[top6] = socs
 
     return result
+
+
+_crosswalk_socs_cache: dict[str, set[str]] | None = None
+
+
+def crosswalk_socs(top6_codes: list[str]) -> dict[str, set[str]]:
+    """Graph-native TOP6→SOC crosswalk — the ENGINE's runtime read (3b read-swap).
+
+    Reads the materialized ``ProgramFamily-[:CROSSWALKS_TO]->Occupation`` edges instead of composing the
+    CSVs; byte-identical to ``top6_to_soc`` over the occupations the graph carries (proven by
+    ``sector_graph.reconcile``). The full map is cached on first call (like the CSV loaders), so per-request
+    cost is a dict lookup, not a query. ``top6_to_soc`` stays the git source for the loaders + graph-free
+    callers; this is where the engine reads it from the graph.
+
+    **Transitional fallback:** if the graph carries no ontology yet (un-reloaded prod, an ontology-free
+    test seed), the read yields an empty map and this delegates to ``top6_to_soc`` — byte-identical (graph
+    == CSV), so the code swap ships without first requiring a graph reload; each graph flips to the
+    graph-native path the moment it materializes the ontology. Drop the fallback once every graph loads it.
+    """
+    global _crosswalk_socs_cache
+    if _crosswalk_socs_cache is None:
+        m: dict[str, set[str]] = {}
+        try:
+            from ontology.schema import get_driver
+            with get_driver().session() as s:
+                for r in s.run("MATCH (pf:ProgramFamily)-[:CROSSWALKS_TO]->(o:Occupation) "
+                               "RETURN pf.top6 AS t, o.soc_code AS soc"):
+                    m.setdefault(r["t"], set()).add(r["soc"])
+        except Exception:
+            m = {}                                   # no graph (graph-free caller / test) → CSV below
+        _crosswalk_socs_cache = m
+    cache = _crosswalk_socs_cache
+    if not cache:                                    # graph absent or ontology not materialized → git source
+        return top6_to_soc(top6_codes)               #   (byte-identical; the broad catch is safe *because* of that)
+    return {t: cache[t] for t in top6_codes if t in cache}
 
 
 def top6_to_cips(top6: str) -> list[str]:

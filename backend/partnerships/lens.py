@@ -44,7 +44,7 @@ from dataclasses import dataclass, field
 from functools import lru_cache
 from typing import Sequence
 
-from ontology.crosswalks import top6_to_soc
+from ontology.crosswalks import crosswalk_socs
 from ontology.schema import get_driver
 from partnerships import members
 from partnerships.clusters import cluster_expanded_spec
@@ -255,7 +255,7 @@ def _project(
         top_by_college[r["top6"]].append((r["college"], r["n"]))
     awarded = sorted(top_by_college)
     # Which awarded programs feed each SOC (the partner-graph edges).
-    t2s = top6_to_soc(awarded) if awarded else {}
+    t2s = crosswalk_socs(awarded) if awarded else {}
     feeders_of = {soc: [t for t in awarded if soc in t2s.get(t, set())] for soc in socs}
 
     # Employers per SOC, derived from the single ranked read's per-SOC shares.
@@ -382,7 +382,7 @@ def build_lens(member_id: str, *, sector: str | None = None, play: Play | None =
     # The TOP6s feeding the scope's occupations — the program universe for the
     # supply-over-time series (graph-free crosswalk lookup).
     soc_set = set(socs)
-    t2s = top6_to_soc(list(in_scope)) if in_scope else {}
+    t2s = crosswalk_socs(list(in_scope)) if in_scope else {}
     top_socs = {t: (t2s.get(t, set()) & soc_set) for t in in_scope if t2s.get(t, set()) & soc_set}
 
     with get_driver().session() as s:

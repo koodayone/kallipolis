@@ -559,7 +559,7 @@ def occupation_profile(member: str, occupation: str) -> AnalysisEnvelope:
     from partnerships.members import region_member
     from partnerships.graph_reads import regional_demand
     from partnerships.sectors import SECTORS
-    from ontology.crosswalks import load_top_titles, top6_to_soc
+    from ontology.crosswalks import load_top_titles
     from ontology.regions import COE_REGION_DISPLAY
     from ontology.schema import get_driver
 
