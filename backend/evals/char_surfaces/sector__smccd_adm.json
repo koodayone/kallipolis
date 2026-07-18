@@ -308,11 +308,11 @@
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "sector_occupations": {
-    "granularity": "Advanced Manufacturing sector (PCAH)",
+    "granularity": "Advanced Manufacturing \u2014 45 CTE-addressable of 49 in the sector taxonomy",
     "parent_vintages": [],
     "source": "derived",
     "status": "ok",
-    "unit": "SOCs",
+    "unit": "CTE-addressable SOCs",
     "value": 45,
     "vintage": ""
    },

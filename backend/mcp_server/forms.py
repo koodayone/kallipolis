@@ -1038,8 +1038,13 @@ def sector_overview(member: str, sector: str) -> AnalysisEnvelope:
                                     granularity=f"{inst_g} · on-the-books (registered ∩ in_scope)"),
         "member_programs_active": _derived(len(graduating), unit="TOP6 programs currently graduating",
                                            granularity=f"{inst_g} · supply-active (recent completer)"),
-        "sector_occupations": _derived(len(sector_socs), unit="SOCs",
-                                       granularity=f"{sector_label} sector (PCAH)"),
+        # The two denotations, made legible: `sector_socs` is the CTE-ADDRESSABLE subset (what the
+        # member could realistically serve, and what every supply/gap figure above is scoped to);
+        # the sector taxonomy (COVERS) is larger. Naming both keeps the model from reading the
+        # addressable count as the whole sector.
+        "sector_occupations": _derived(len(sector_socs), unit="CTE-addressable SOCs",
+                                       granularity=f"{sector_label} — {len(sector_socs)} CTE-addressable "
+                                                   f"of {len(SECTORS[sel.sector_id].socs)} in the sector taxonomy"),
     }
     # Phase B — the sector decomposed into legible WHATs, so a narrowed figure reads as WHY it's small:
     # in_demand ("is there a market?" — regional openings + near-living-wage + non-declining) vs served

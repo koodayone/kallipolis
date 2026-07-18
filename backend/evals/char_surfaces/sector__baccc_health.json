@@ -451,11 +451,11 @@
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "sector_occupations": {
-    "granularity": "Health sector (PCAH)",
+    "granularity": "Health \u2014 38 CTE-addressable of 40 in the sector taxonomy",
     "parent_vintages": [],
     "source": "derived",
     "status": "ok",
-    "unit": "SOCs",
+    "unit": "CTE-addressable SOCs",
     "value": 38,
     "vintage": ""
    },
