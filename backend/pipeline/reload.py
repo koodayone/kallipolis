@@ -18,7 +18,7 @@ import time
 from pathlib import Path
 
 from courses.load import load_college, CollegeConfig
-from occupations.load import load_industry
+from occupations.load import load_industry, cleanup_stale_occupations
 from employers.load import load_employers, cleanup_stale_employers
 from ontology.schema import get_driver, close_driver, init_schema
 from ontology.programs import load_programs, load_program_wage_outcomes
@@ -150,6 +150,13 @@ def load_industry_data(driver) -> None:
         with open(coe_path) as f:
             coe_data = json.load(f)
 
+    # Prune Occupation nodes no longer in the set before loading. A no-op on a
+    # fresh DB (full reload starts from `docker compose down -v`); load-bearing
+    # for an incremental reload, where a re-grounded set that shrinks would
+    # otherwise leave stale nodes and their edges (DEMANDS / HIRES_FOR /
+    # PREPARES_FOR / CROSSWALKS_TO) behind. DETACH DELETE clears the edges too.
+    cleanup_stale_occupations(driver, [o["soc_code"] for o in occupations])
+
     stats = load_industry(driver, occupations, coe_data)
     logger.info(f"  Occupations: {stats.get('occupations', 0)}, "
                 f"Regions: {stats.get('regions', 0)}, "
@@ -160,7 +167,7 @@ def load_industry_data(driver) -> None:
     with open(emp_path) as f:
         employers = json.load(f)
 
-    cleanup_stale_employers(driver, [e["name"] for e in employers])
+    cleanup_stale_employers(driver, employers)
     emp_stats = load_employers(driver, employers)
     logger.info(f"  Employers: {emp_stats.get('employers', 0)}, "
                 f"HIRES_FOR: {emp_stats.get('hires_for', 0)}")
