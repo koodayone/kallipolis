@@ -56,6 +56,30 @@ def test_covers_read_swap_reproduces_code():
 
 
 @requires_graph
+def test_crosswalk_read_swap_matches_csv_on_our_universe():
+    """The 3b crosswalk read-swap: restricted to our node set, the graph read (``crosswalk_socs``)
+    reproduces the CSV crosswalk (``top6_to_soc``) exactly. That is the property every consumer relies on —
+    they all intersect the crosswalk with sector/spec SOCs, which are nodes — so the swap is byte-identical
+    whether the completeness gate reads the graph (complete) or falls back to the CSV (partial, e.g. the
+    seed). Corrects the earlier over-revert: the crosswalk's *analyzed* codomain is the curated node set,
+    which the full graph node-backs; edges into non-node SOCs are outside every computation we run."""
+    from ontology import sector_graph
+    from ontology.crosswalks import crosswalk_socs, top6_to_soc, _load_top_to_cip
+    import ontology.crosswalks as cw
+    from ontology.schema import get_driver
+
+    sector_graph.load()
+    cw._crosswalk_socs_cache = None                        # drop any cache captured before this load
+    tops = list(_load_top_to_cip().keys())
+    with get_driver().session() as s:
+        nodes = {r["x"] for r in s.run("MATCH (o:Occupation) RETURN o.soc_code AS x")}
+    graph, csv = crosswalk_socs(tops), top6_to_soc(tops)
+    for t in set(graph) | set(csv):
+        assert (graph.get(t, set()) & nodes) == (csv.get(t, set()) & nodes), \
+            f"crosswalk read-swap diverges (intersected with the node set) for TOP {t}"
+
+
+@requires_graph
 def test_scopes_is_the_noise_corrected_boundary():
     """The SCOPES edge-set IS the noise-correction: a vocational family that reaches an AM occupation but is
     marked crosswalk-noise for AM (Commercial Music) is scoped into NO sector for AM, so it never enters the

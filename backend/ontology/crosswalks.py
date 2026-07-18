@@ -490,24 +490,56 @@ def top6_to_soc(top6_codes: list[str]) -> dict[str, set[str]]:
     return result
 
 
-def crosswalk_socs(top6_codes: list[str]) -> dict[str, set[str]]:
-    """TOP6→SOC crosswalk for ``top6_codes`` — reads the CSV source of truth
-    (``top6_to_soc``, the composed TOP-CIP-SOC files).
+_crosswalk_socs_cache: dict[str, set[str]] | None = None
+_demand_socs_cache: set[str] | None = None
 
-    An earlier change (3b) read this from the graph's materialized
-    ``ProgramFamily-[:CROSSWALKS_TO]->Occupation`` edges. That was byte-identical to
-    the CSV ONLY while the graph held an Occupation node for every crosswalk target:
-    a graph edge cannot point at a node that does not exist, so the materializer
-    created ``CROSSWALKS_TO`` only where the Occupation node was present. The
-    occupation re-grounding pruned the node set to the COE middle-skill universe
-    (314), while the crosswalk's codomain is the FULL SOC universe — so the
-    materialized edges silently dropped every pruned target (~300 SOCs), turning the
-    graph read into a lossy projection of the crosswalk. The crosswalk is a pure
-    relation over more SOCs than we node-ify; its authority is the file, not a
-    node-constrained materialization. (Graph-native COVERS/SCOPES for sector
-    MEMBERSHIP stay valid — their codomain is ⊆ the node set.)
-    """
-    return top6_to_soc(top6_codes)
+
+def _demand_socs() -> set[str]:
+    """The occupation universe we analyze — the SOCs the COE middle-skill demand file tracks, which is
+    exactly the graph's Occupation-node set on a full load. Used to gate the graph-native crosswalk read."""
+    global _demand_socs_cache
+    if _demand_socs_cache is None:
+        with open(COE_DEMAND_PATH, newline="") as f:
+            _demand_socs_cache = {r["SOC"].strip() for r in csv.DictReader(f)}
+    return _demand_socs_cache
+
+
+def crosswalk_socs(top6_codes: list[str]) -> dict[str, set[str]]:
+    """TOP6→SOC crosswalk for ``top6_codes`` — the ENGINE's runtime read, graph-native (3b) over
+    ``ProgramFamily-[:CROSSWALKS_TO]->Occupation``, with a completeness-gated fallback to the CSV source
+    (``top6_to_soc``, the composed TOP-CIP-SOC files, still the git authority + materialization source).
+
+    The crosswalk's *file* codomain is the full SOC universe, but the codomain WE analyze is the curated
+    middle-skill occupation set — the graph's Occupation nodes. Every consumer intersects the result with
+    sector/spec SOCs, all of which are nodes, so the graph edges (which materialize the crosswalk exactly
+    where the Occupation node exists) reproduce the CSV for every computation we run — edges into non-node
+    SOCs are invisible. ``sector_graph.reconcile`` proves ``CROSSWALKS_TO == crosswalk ∩ nodes``.
+
+    **Completeness-gated fallback** (the gate ``sector_graph.sector_covers`` uses): read the graph only when
+    it node-backs the full occupation universe (``_demand_socs`` ⊆ graph). A PARTIAL graph — un-reloaded, or
+    the curated eval seed — would give a lossy crosswalk (missing edges into occupations it doesn't node-
+    back), so there the read delegates to the CSV. On a complete graph the read is byte-identical; on a
+    partial one it falls back. This is the corrected framing: the graph, restricted to our curated universe,
+    IS the whole crosswalk we use — a graph materialization is faithful when it node-backs its analyzed
+    codomain, and ours does."""
+    global _crosswalk_socs_cache
+    if _crosswalk_socs_cache is None:
+        m: dict[str, set[str]] = {}
+        complete = False
+        try:
+            from ontology.schema import get_driver
+            with get_driver().session() as s:
+                for r in s.run("MATCH (pf:ProgramFamily)-[:CROSSWALKS_TO]->(o:Occupation) "
+                               "RETURN pf.top6 AS t, o.soc_code AS soc"):
+                    m.setdefault(r["t"], set()).add(r["soc"])
+                have = {r["s"] for r in s.run("MATCH (o:Occupation) RETURN o.soc_code AS s")}
+                complete = _demand_socs() <= have          # full occupation universe node-backed?
+        except Exception:
+            complete = False                               # no graph (graph-free caller) → CSV below
+        _crosswalk_socs_cache = m if complete else {}      # partial graph → empty → CSV fallback
+    if not _crosswalk_socs_cache:                          # graph absent or universe incomplete → CSV source
+        return top6_to_soc(top6_codes)
+    return {t: _crosswalk_socs_cache[t] for t in top6_codes if t in _crosswalk_socs_cache}
 
 
 def top6_to_cips(top6: str) -> list[str]:
