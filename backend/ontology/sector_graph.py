@@ -32,7 +32,7 @@ from ontology.crosswalks import (
 )
 from ontology.schema import get_driver
 from partnerships.landscape import routable_specs
-from partnerships.sectors import SECTORS
+from partnerships.sectors import SECTORS, _load_sector_socs
 
 
 # The DataVista / PCAH "Industry Sector or Occupational Cluster" name → our Sector id. DataVista (CCCCO)
@@ -75,6 +75,43 @@ def sector_scopes(sid: str) -> set[str]:
     hd = sec.home_divisions
     reach = {t for t, ss in top6_to_soc(list(_load_vocational_top6())).items() if ss & socs}
     return {t for t in reach if t not in sec.excluded_tops and (not hd or t[:2] in hd)}
+
+
+_sector_covers_cache: dict[str, set[str]] | None = None
+
+
+def sector_covers(sid: str) -> set[str]:
+    """The sector's occupation membership, read from the graph's ``Sector-[:COVERS]->Occupation`` edges —
+    the 3b read-swap of ``SECTORS[sid].socs``. ``load`` materializes COVERS from that same code set, so
+    ``reconcile`` proves them equal; the full map caches on first read (one query, then dict lookups).
+
+    **Completeness-gated fallback:** the graph is authoritative for COVERS only when the occupation
+    codomain is FULLY node-backed — every sector SOC exists as an Occupation node. On the full production
+    graph that holds (``reconcile``'s ``pending_hollow`` is 0), so the read is graph-native and byte-
+    identical to ``socs``. On a PARTIAL graph — an un-reloaded graph or the curated eval seed (a
+    97-occupation subset) — COVERS is a lossy projection of sector membership (a sector whose occupations
+    aren't node-backed has no COVERS edges), so this delegates to the git source (``_load_sector_socs``).
+    This is the crosswalk lesson generalized: read a relation from the graph only when the graph carries
+    its full codomain; otherwise the file. The gate is what makes COVERS safe where the raw crosswalk was
+    not — COVERS's codomain is the sector occupation set, which the full graph node-backs completely."""
+    global _sector_covers_cache
+    if _sector_covers_cache is None:
+        m: dict[str, set[str]] = {}
+        complete = False
+        try:
+            with get_driver().session() as s:
+                for r in s.run("MATCH (x:Sector)-[:COVERS]->(o:Occupation) "
+                               "RETURN x.id AS sid, o.soc_code AS soc"):
+                    m.setdefault(r["sid"], set()).add(r["soc"])
+                have = {r["s"] for r in s.run("MATCH (o:Occupation) RETURN o.soc_code AS s")}
+                want = {s for sec in SECTORS.values() for s in sec.socs}
+                complete = want <= have                    # full ontology codomain present?
+        except Exception:
+            complete = False                               # no graph (graph-free caller) → CSV below
+        _sector_covers_cache = m if complete else {}       # partial graph → empty → CSV fallback
+    if not _sector_covers_cache:                           # graph absent or ontology incomplete → git source
+        return set(_load_sector_socs().get(sid, ()))
+    return set(_sector_covers_cache.get(sid, set()))
 
 
 def load(driver=None) -> dict:

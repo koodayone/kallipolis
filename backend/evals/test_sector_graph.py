@@ -40,6 +40,22 @@ def test_ontology_materializes_faithfully():
 
 
 @requires_graph
+def test_covers_read_swap_reproduces_code():
+    """The 3b COVERS read-swap: ``sector_covers`` reads the same sector membership the code holds
+    (``SECTORS[sid].socs``) — byte-identical, which is what makes routing ``addressable_socs`` through it
+    safe. The completeness gate keeps it faithful either way: graph-native when every sector SOC is node-
+    backed, else it delegates to the git source. (Guards the lesson the crosswalk read-swap taught — read a
+    relation from the graph only when the graph carries its full codomain.)"""
+    from ontology import sector_graph
+    from partnerships.sectors import SECTORS
+
+    sector_graph.load()
+    sector_graph._sector_covers_cache = None               # drop any cache captured before this load
+    for sid, sec in SECTORS.items():
+        assert sector_graph.sector_covers(sid) == set(sec.socs), f"COVERS read diverges from code for {sid}"
+
+
+@requires_graph
 def test_scopes_is_the_noise_corrected_boundary():
     """The SCOPES edge-set IS the noise-correction: a vocational family that reaches an AM occupation but is
     marked crosswalk-noise for AM (Commercial Music) is scoped into NO sector for AM, so it never enters the

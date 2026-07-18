@@ -102,19 +102,25 @@ class Sector:
 
     @property
     def addressable_socs(self) -> tuple[str, ...]:
-        """The SWP-addressable subset of `socs`: the sector occupations that have a
-        CTE crosswalk pathway (reachable from a PCAH-CTE TOP via TOP→CIP→SOC). The
+        """The SWP-addressable subset of the sector's occupations: those with a CTE
+        crosswalk pathway (reachable from a PCAH-CTE TOP via TOP→CIP→SOC). The
         non-reachable remainder are members of the occupation universe (COE middle-
         skill) with real regional demand but NO community-college program pathway in
-        the crosswalk — they belong to the sector taxonomically (`socs`) yet are not
-        Strong-Workforce program-building targets, so the demand / supply / gap
-        analysis reads this set, not the raw `socs`. Membership authority is the COE
-        middle-skill occupation set; addressability authority is the TOP-CIP-SOC
-        crosswalk. (Occupation→sector MEMBERSHIP lookups keep reading `socs`, the
-        taxonomy: an occupation still *belongs* to its sector even with no pathway.)"""
+        the crosswalk — they belong to the sector taxonomically yet are not Strong-
+        Workforce program-building targets, so the demand / supply / gap analysis
+        reads this set, not the raw membership. (Occupation→sector MEMBERSHIP lookups
+        keep reading `socs`: an occupation still *belongs* to its sector with no pathway.)
+
+        Sector membership is read from the graph's COVERS edges (the 3b read-swap,
+        `ontology.sector_graph.sector_covers`), which `sector_graph.load` materializes
+        from `socs` and `reconcile` proves equal; it falls back to `socs` when the graph
+        carries no ontology. `socs` is itself sorted, so `sorted(...)` here is byte-
+        identical to the earlier `socs ∩ cte_reachable`. Membership authority is the
+        graph (mirroring the COE middle-skill set); addressability is the CSV crosswalk."""
         from ontology.crosswalks import cte_reachable_socs
+        from ontology.sector_graph import sector_covers
         reachable = cte_reachable_socs()
-        return tuple(s for s in self.socs if s in reachable)
+        return tuple(sorted(s for s in sector_covers(self.id) if s in reachable))
 
 
 # id → (label, accent). SOCs join from sector_socs.csv by id; identity lives in
