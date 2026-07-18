@@ -248,6 +248,31 @@ def supply_over_tops(colleges, tops, *, years: tuple[str, ...] | None = None) ->
     return round(_tops_avg(colleges, tops, years), 1)
 
 
+def supply_estimates_by_top(colleges, soc: str, *, years: tuple[str, ...] | None = None,
+                            spec=None) -> list[dict]:
+    """Per-(feeder TOP, award_type) projected annual supply for a SOC over colleges — the
+    breakdown behind ``supply``. Each row: ``top_code``, ``award_type``, ``annual_projected_supply``
+    (award-type awards over the window ÷ window length). Its values sum to ``supply`` up to
+    projection rounding; the same is_vocational crosswalk feeders (``feeders``) the SOC's supply
+    total resolves over, so the detail table and the headline agree by construction."""
+    yrs = years if years is not None else recent_award_years()
+    fs = feeders(colleges, soc, spec=spec)
+    if not fs or not yrs:
+        return []
+    n = len(yrs)
+    with get_driver().session() as s:
+        rows = s.run(
+            "MATCH (p:Program)-[a:AWARDED]->(ay:AcademicYear) "
+            "WHERE p.college IN $c AND p.top6 IN $tops AND ay.year IN $y "
+            "RETURN p.top6 AS top, a.award_type AS award_type, "
+            "       toInteger(sum(coalesce(a.count, 0))) AS n",
+            c=list(colleges), tops=list(fs), y=list(yrs)).data()
+    return sorted(
+        ({"top_code": r["top"], "award_type": r["award_type"] or "",
+          "annual_projected_supply": round(r["n"] / n, 1)} for r in rows if r["n"]),
+        key=lambda e: (-e["annual_projected_supply"], e["top_code"], e["award_type"]))
+
+
 # ── Enrollment (the leading-indicator twin of the award functions above) ──────
 _ENROLL_TERMS = 3   # trailing window (in same-season terms) the enrollment trend averages over
 

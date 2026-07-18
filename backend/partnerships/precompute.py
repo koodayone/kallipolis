@@ -83,7 +83,14 @@ logger = logging.getLogger(__name__)
 #       matches the actual granularity of CCCCO PCAH's TOP→CIP
 #       crosswalk. Each TOP6's CIPs are bridged individually rather
 #       than rolled up to a 4-digit family.
-CACHE_SCHEMA_VERSION = 3
+#
+# v4: reconciled onto the canonical engine — sector membership is now the curated
+#   COVERS set (was an unfiltered PCAH TOP→CIP→SOC walk over the pre-re-grounding
+#   universe), and supply/gap come from the graph DataMart (canonical projected
+#   supply) instead of the COE supply_by_top.csv. Every cached report's occupation
+#   set AND its Workforce Gap change, so v3 caches are invalid; serving falls to
+#   live compute until the cache is regenerated.
+CACHE_SCHEMA_VERSION = 4
 
 # Default parallelism for the build. Neo4j queries are I/O-bound from
 # the Python side (GIL releases on bolt socket reads), so threads

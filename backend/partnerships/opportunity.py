@@ -40,7 +40,7 @@ from ontology.regions import (
     COLLEGE_COE_REGION,
 )
 from ontology.schema import get_driver
-from ontology.supply import get_coe_supply
+from partnerships import quantities as Q
 from partnerships.gather import (
     _gather_aligned_curriculum,
     _gather_curriculum_crosswalk,
@@ -184,27 +184,21 @@ def build_sector_index(college: str) -> SectorIndex:
         for r in rows
     }
 
-    # Per-SOC supply estimates — projected program-completions the COE
-    # publishes for the TOP6 codes the college's PREPARES_FOR-tagged
-    # courses route through. Keyed off the course-derived TOP set rather
-    # than the global TOP→CIP→SOC crosswalk so the index gap matches the
-    # per-SOC report's "Workforce Gap" figure exactly. (The crosswalk
-    # would over-attribute supply by including TOPs the college offers
-    # in unrelated programs whose courses are not tagged for SOC prep.)
+    # Per-SOC supply — the CANONICAL projected supply (Q.supply: 3-yr-avg DataMart
+    # completions over the SOC's is_vocational crosswalk feeders), so the index gap
+    # matches the dashboard, the MCP, and the per-SOC report's "Workforce Gap"
+    # exactly. (Was get_coe_supply over the COE supply_by_top.csv keyed on
+    # course-tagged TOPs — a different data source AND the course-tagged seam that
+    # under/over-counted; both are retired here.)
     has_supply_by_soc: dict[str, bool] = {}
     total_supply_by_soc: dict[str, float] = {}
     for r in regional_socs:
         soc = r["soc_code"]
         if soc in has_supply_by_soc:
             continue
-        related_tops = top_codes_by_soc.get(soc, set())
-        if not related_tops:
-            has_supply_by_soc[soc] = False
-            total_supply_by_soc[soc] = 0.0
-            continue
-        estimates, total_supply = get_coe_supply(related_tops, college)
-        has_supply_by_soc[soc] = len(estimates) > 0
-        total_supply_by_soc[soc] = total_supply
+        sup = Q.supply([college], soc)
+        total_supply_by_soc[soc] = sup
+        has_supply_by_soc[soc] = sup > 0
 
     # Build per-soc OpportunityRow once; same row instance can be reused
     # under multiple sectors.
@@ -374,8 +368,6 @@ def _build_swp_evidence(
     Mirrors _assemble_swp_evidence in generate.py but keyed off (college,
     soc) directly rather than running through an employer's hires set.
     """
-    from ontology.supply import get_coe_supply
-
     coe_region = COLLEGE_COE_REGION.get(college, "")
     cip_soc = _load_cip_to_soc()
     cips_for_soc = sorted([cip for cip, socs in cip_soc.items() if soc_code in socs])
@@ -392,33 +384,25 @@ def _build_swp_evidence(
     ]
     total_demand = annual_openings or 0
 
-    # TOP6 codes for the supply lookup come directly from the curriculum
-    # evidence's `via_top` — already correctly computed by
-    # _gather_aligned_curriculum from the PREPARES_FOR edges' `via_top`
-    # property. Previously this code path went through
-    # `lookup_top6(course_codes, college)` (MCF lookup), which silently
-    # returned an empty set for any college using non-MCF course codes
-    # (apprenticeships, college-specific renumbering, noncredit). The
-    # silent empty drop was producing zero-supply renderings for SOCs
-    # at colleges that genuinely had supply data — e.g. West Hills
-    # Lemoore × 49-9041 had supply 3.83 in supply_by_top.csv but the
-    # MCF lookup couldn't translate course codes like MM051D to a TOP6,
-    # so the SWP block claimed zero. Using via_top directly bypasses
-    # MCF entirely; the value was already computed upstream.
-    top6_codes: set[str] = set()
-    for dept_ev in curriculum_evidence:
-        top6_codes.update(dept_ev.get("via_top", []))
-    supply_data, total_supply = get_coe_supply(top6_codes, college)
+    # Supply — the CANONICAL projected supply (Q.supply: DataMart completions over the
+    # SOC's is_vocational crosswalk feeders), with its per-(feeder TOP, award-type)
+    # breakdown, so this report's Workforce Gap matches the dashboard, the MCP, and the
+    # sector index by construction. (Was get_coe_supply over the COE supply_by_top.csv
+    # keyed on the college's course-tagged via_top TOPs — a different data source and the
+    # course-tagged seam; both retired.)
+    from ontology.crosswalks import load_top_titles
+    titles = load_top_titles()
+    total_supply = Q.supply([college], soc_code)
     supply_estimates = [
         SupplyEstimate(
-            top_code=s["top_code"],
-            top_title=s["top_title"],
-            award_level=s["award_level"],
-            annual_projected_supply=s["annual_projected_supply"],
+            top_code=e["top_code"],
+            top_title=titles.get(e["top_code"], e["top_code"]),
+            award_level=e["award_type"],
+            annual_projected_supply=e["annual_projected_supply"],
         )
-        for s in supply_data
+        for e in Q.supply_estimates_by_top([college], soc_code)
     ]
-    gap = total_demand - total_supply
+    gap = int(round(total_demand - total_supply))   # whole openings, matching the sector index
 
     sources = InstitutionalSources(
         coe_region=coe_region,
