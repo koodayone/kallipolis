@@ -291,8 +291,11 @@ function ProgramsLens({ colleges, instance = "svamp" }: { colleges: CollegeRef[]
   if (err) return <div style={{ padding: "60px 0", color: GAP, fontFamily: MONO, fontSize: 13 }}>Failed to load programs: {err}</div>;
   if (!land) return <div style={{ display: "flex", justifyContent: "center", paddingTop: 80 }}><RisingSun style={{ width: 90, height: "auto", opacity: 0.4 }} /></div>;
 
-  const awardingPrograms = land.tops.filter((t) => t.awards_total > 0).length;
-  const totalAwards = land.tops.reduce((s, t) => s + t.awards_total, 0);
+  const awardingPrograms = land.tops.filter((t) => t.projected_supply > 0).length;
+  // The canonical projected annual supply (one round over the deduped feeder
+  // universe) — not a re-sum of the rounded tiles, so it matches the dashboard
+  // and the occupation landscape exactly.
+  const projectedSupply = land.total_supply;
   const wageWindow = report?.wages.find((w) => w.window)?.window ?? "";
 
   // Coverage-matrix inputs (dual of the occupations grid): cols = member
@@ -303,7 +306,7 @@ function ProgramsLens({ colleges, instance = "svamp" }: { colleges: CollegeRef[]
   const progCols = colleges.map((c) => ({ id: c.id, label: shortName(c.config.name), brand: c.config.brandColorLight }));
   const matrixCellByKey = new Map((land.matrix?.cells ?? []).map((c) => [c.college + "|" + c.top6, c]));
   const progRows = land.tops
-    .filter((t) => t.enrollment_total > 0 || t.awards_total > 0)
+    .filter((t) => t.enrollment_total > 0 || t.projected_supply > 0)
     .map((t) => ({ id: t.top6, label: t.name, sublabel: `TOP ${t.top6}`, title: t.name }));
   // Coverage keys on activity: covered = enrolled & awarded (full pipeline);
   // partial = one signal but not both; gap = this college does neither here.
@@ -312,7 +315,7 @@ function ProgramsLens({ colleges, instance = "svamp" }: { colleges: CollegeRef[]
     const cell = name ? matrixCellByKey.get(name + "|" + rowId) : undefined;
     if (!cell) return "none";
     const enrolled = cell.enrolled;
-    const awarded = cell.awards > 0;
+    const awarded = cell.projected > 0;
     if (enrolled && awarded) return "strong";
     return enrolled || awarded ? "partial" : "none";
   };
@@ -380,9 +383,9 @@ function ProgramsLens({ colleges, instance = "svamp" }: { colleges: CollegeRef[]
       )}
       <Section title="Consortium Program Supply" brandColor={ACCENT}>
         <Prose>
-          This view examines the consortium supply landscape across advanced manufacturing programs in TOP division 09 supporting the {inst.name}. In the latest reported year{land.latest_award_year ? ` (${land.latest_award_year})` : ""}, {awardingPrograms} of them awarded {totalAwards.toLocaleString()} credentials, preparing students for the 12 advanced manufacturing occupations via the TOP-CIP-SOC crosswalk.
+          This view examines the consortium supply landscape across advanced manufacturing programs in TOP division 09 supporting the {inst.name}. Across the recent award-year window{land.latest_award_year ? ` (through ${land.latest_award_year})` : ""}, {awardingPrograms} of these programs supply about {Math.round(projectedSupply).toLocaleString()} credentials a year, preparing students for the 12 advanced manufacturing occupations via the TOP-CIP-SOC crosswalk.
         </Prose>
-        <SupplyTreemap tops={land.tops} selectedTop={matrixCollegeId ? null : top} onSelect={(t) => { setTop(t); setMatrixCollegeId(null); }} accent={ACCENT} caption="Area is latest-year credentials awarded — click a program for the consortium view." />
+        <SupplyTreemap tops={land.tops} selectedTop={matrixCollegeId ? null : top} onSelect={(t) => { setTop(t); setMatrixCollegeId(null); }} accent={ACCENT} caption="Area is projected annual supply (3-year average) — click a program for the consortium view." />
         <CoverageMatrix
           cols={progCols}
           rows={progRows}
@@ -812,7 +815,7 @@ export default function LandscapeReport({ colleges, instance = "svamp" }: Props)
   // Programs lens applies to its coverage-matrix rows, so this count matches what
   // that lens shows. null until the programs landscape resolves.
   const activePrograms = programs
-    ? programs.tops.filter((t) => t.enrollment_total > 0 || t.awards_total > 0).length
+    ? programs.tops.filter((t) => t.enrollment_total > 0 || t.projected_supply > 0).length
     : null;
   const selCollege: ApiSvampCollege | undefined =
     data.colleges.find((c) => byName.get(c.name)?.id === selected) ?? data.colleges[0];

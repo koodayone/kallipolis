@@ -61,7 +61,7 @@ export default function LandscapeDashboardPrograms({ colleges, instance = "svamp
         // Default to the central school's own first program (Programs lens is
         // scoped to its programs; see possessedTops below).
         const poss = primaryCollege
-          ? new Set((d.matrix?.cells ?? []).filter((c) => c.college === primaryCollege && c.awards > 0).map((c) => c.top6))
+          ? new Set((d.matrix?.cells ?? []).filter((c) => c.college === primaryCollege && c.projected > 0).map((c) => c.top6))
           : null;
         const ownTops = poss ? d.tops.filter((t) => poss.has(t.top6)) : d.tops;
         const urlTop = u.top && ownTops.some((t) => t.top6 === u.top) ? u.top : null;
@@ -99,11 +99,16 @@ export default function LandscapeDashboardPrograms({ colleges, instance = "svamp
   // this occupation" view is the Occupations lens's job. Consortium instances
   // (primaryCollege == null) keep every program.
   const possessedTops = primaryCollege
-    ? new Set((land.matrix?.cells ?? []).filter((c) => c.college === primaryCollege && c.awards > 0).map((c) => c.top6))
+    ? new Set((land.matrix?.cells ?? []).filter((c) => c.college === primaryCollege && c.projected > 0).map((c) => c.top6))
     : null;
   const lensTops = possessedTops ? land.tops.filter((t) => possessedTops.has(t.top6)) : land.tops;
   const shownTopIds = new Set(lensTops.map((t) => t.top6));
-  const totalSupply = lensTops.reduce((s, t) => s + (t.awards_total ?? 0), 0);
+  // Consortium headline reads the backend's canonical projected total (one round
+  // over the deduped feeder universe — equals the occupation landscape's supply
+  // and the MCP); a single-college lens re-sums its scoped tiles' projected supply.
+  const totalSupply = possessedTops
+    ? lensTops.reduce((s, t) => s + (t.projected_supply ?? 0), 0)
+    : land.total_supply;
   // Coverage matrix inputs. Empty-column drop scoped to the SHOWN program rows: a
   // college with NO activity in the lens's programs — neither awards NOR enrollment
   // — is an all-gap column (noise), so drop it. Enrollment counts as activity: a
@@ -112,7 +117,7 @@ export default function LandscapeDashboardPrograms({ colleges, instance = "svamp
   // QUANTITY, never matrix visibility.
   const participating = new Set(
     (land.matrix?.cells ?? [])
-      .filter((c) => (c.awards > 0 || c.enrolled) && shownTopIds.has(c.top6))
+      .filter((c) => (c.projected > 0 || c.enrolled) && shownTopIds.has(c.top6))
       .map((c) => c.college),
   );
   const shownColleges = colleges.filter((c) => participating.has(c.config.name));
@@ -126,19 +131,20 @@ export default function LandscapeDashboardPrograms({ colleges, instance = "svamp
   const wide = colleges.length >= 12;
   const cellByKey = new Map((land.matrix?.cells ?? []).map((c) => [c.college + "|" + c.top6, c]));
   const rows = lensTops
-    .filter((t) => t.enrollment_total > 0 || t.awards_total > 0)
+    .filter((t) => t.enrollment_total > 0 || t.projected_supply > 0)
     .map((t) => ({ id: t.top6, label: t.name, sublabel: `TOP ${t.top6}`, title: t.name }));
-  // The central school's OWN supply across its programs (its cells' awards) —
-  // shown against the consortium total (totalSupply) so the coordinator sees their
-  // share of the regional supply in their programs.
+  // The central school's OWN projected supply across its programs (its cells'
+  // projected values) — shown against the consortium total (totalSupply, also
+  // projected) so the coordinator sees their share of the regional supply on one
+  // footing.
   const schoolSupply = primaryCollege
-    ? lensTops.reduce((s, t) => s + (cellByKey.get(primaryCollege + "|" + t.top6)?.awards ?? 0), 0)
+    ? lensTops.reduce((s, t) => s + (cellByKey.get(primaryCollege + "|" + t.top6)?.projected ?? 0), 0)
     : 0;
   const level = (rowId: string, colId: string): "none" | "partial" | "strong" => {
     const name = nameById.get(colId);
     const cell = name ? cellByKey.get(name + "|" + rowId) : undefined;
     if (!cell) return "none";
-    const enrolled = cell.enrolled, awarded = cell.awards > 0;
+    const enrolled = cell.enrolled, awarded = cell.projected > 0;
     // Coverage is a visibility read of the two signals (universal): both ⇒ strong
     // (full pipeline), exactly one ⇒ partial (one of awards/enrollment missing),
     // neither ⇒ gap. Enrollment is visibility, not realized supply — supply stays

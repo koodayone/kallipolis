@@ -720,8 +720,8 @@ export default function LandscapeDashboard({ instance = "svamp", identity }: { i
       .catch(() => {});
     getLandscapePrograms(instance)
       .then((x) => {
-        setActivePrograms(x.tops.filter((t) => t.enrollment_total > 0 || t.awards_total > 0).length);
-        const withAwards = new Set((x.matrix?.cells ?? []).filter((c) => c.awards > 0).map((c) => c.college));
+        setActivePrograms(x.tops.filter((t) => t.enrollment_total > 0 || t.projected_supply > 0).length);
+        const withAwards = new Set((x.matrix?.cells ?? []).filter((c) => c.projected > 0).map((c) => c.college));
         setParticipating({ n: withAwards.size, awardsOnly: x.coverage_awards_only });
       })
       .catch(() => {});

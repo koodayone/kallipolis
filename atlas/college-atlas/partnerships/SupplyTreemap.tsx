@@ -14,11 +14,12 @@ function hexA(hex: string, a: number) {
 
 /**
  * Supply hero + picker for the SVAMP Programs lens — the mirror of the
- * occupation DemandTreemap. Area = latest-year credentials awarded across the
- * consortium (supply IS awards/yr; enrollment is pipeline, not supply). Each
- * cell is a TOP6 program and is itself the picker (click → select); the selected
- * cell carries a white ring. Programs that awarded nothing in the latest year
- * have no area and so don't appear here.
+ * occupation DemandTreemap. Area = projected annual supply (3-year-average
+ * credentials awarded) across the consortium (supply IS awards/yr; enrollment is
+ * pipeline, not supply) — the same supply definition the occupation landscape and
+ * the MCP use. Each cell is a TOP6 program and is itself the picker (click →
+ * select); the selected cell carries a white ring. Programs that awarded nothing
+ * in the recent window have no area and so don't appear here.
  */
 export default function SupplyTreemap({
   tops, selectedTop, onSelect, accent = "#50c878", caption, fill = false,
@@ -38,8 +39,8 @@ export default function SupplyTreemap({
   const [hover, setHover] = useState<{ i: number; x: number; y: number } | null>(null);
   const { ref: boxRef, box } = useMeasuredBox(fill);
   const data = tops
-    .filter((t) => t.awards_total > 0)
-    .map((t) => ({ top: t.top6, name: t.name, v: t.awards_total, socs: t.soc_count }))
+    .filter((t) => t.projected_supply > 0)
+    .map((t) => ({ top: t.top6, name: t.name, v: t.projected_supply, socs: t.soc_count }))
     .sort((a, b) => b.v - a.v);
   const W = fill ? Math.max(box?.w ?? 0, 1) : 860;
   const H = fill ? Math.max(box?.h ?? 0, 1) : 300;
@@ -86,7 +87,7 @@ export default function SupplyTreemap({
     <div style={fill ? { display: "flex", flexDirection: "column", flex: 1, minHeight: 0 } : { marginTop: 14 }}>
       {data.length === 0 ? (
         <div style={{ fontFamily: FONT, fontSize: 13, color: "#9aa6bd", padding: "40px 0", textAlign: "center" }}>
-          No credentials were awarded in the latest year for these programs.
+          No credentials were awarded recently for these programs.
         </div>
       ) : fill ? (
         // Measured-space layout: svg pixels == layout units, so nothing
@@ -106,7 +107,7 @@ export default function SupplyTreemap({
       {/* Caption is report-only — the dashboard visualizes without prose. */}
       {!fill && (
         <div style={{ fontFamily: FONT, fontSize: 12.5, color: "#9aa6bd", marginTop: 10 }}>
-          {caption ?? "Area is latest-year credentials awarded across the consortium — click a program to open its report."}
+          {caption ?? "Area is projected annual supply (3-year average) across the consortium — click a program to open its report."}
         </div>
       )}
       {hd && hover && typeof document !== "undefined" && createPortal(
@@ -117,7 +118,7 @@ export default function SupplyTreemap({
           padding: "8px 11px", boxShadow: "0 6px 24px rgba(0,0,0,.4)", fontFamily: FONT,
         }}>
           <div style={{ fontSize: 12.5, fontWeight: 600, color: "#e8ecf4", marginBottom: 2 }}>{hd.name}</div>
-          <div style={{ fontFamily: MONO, fontSize: 11, color: accent, whiteSpace: "nowrap" }}>TOP {hd.top} · {hd.v.toLocaleString()} awards/yr · supports {hd.socs} occupation{hd.socs === 1 ? "" : "s"}</div>
+          <div style={{ fontFamily: MONO, fontSize: 11, color: accent, whiteSpace: "nowrap" }}>TOP {hd.top} · {hd.v.toLocaleString()}/yr projected · supports {hd.socs} occupation{hd.socs === 1 ? "" : "s"}</div>
         </div>,
         document.body,
       )}

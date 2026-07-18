@@ -371,25 +371,29 @@ export async function getLandscape(instance: string = "svamp"): Promise<ApiSvamp
 }
 
 // ── SVAMP Programs lens (supply-side, TOP6-centric) ───────────────────────
-// One TOP6 in the supply-treemap universe. awards_total / enrollment_total are
-// latest-period magnitudes summed across colleges (additive supply); soc_count
+// One TOP6 in the supply-treemap universe. projected_supply is THE supply measure
+// — projected annual supply (3-yr-avg awards summed across colleges), the same
+// definition the occupation landscape and the MCP use; the treemap sizes on it.
+// enrollment_total is the peak-term enrollment summed across colleges; soc_count
 // is the crosswalk cardinality (relationship, never demand).
 export type ApiSvampTopSummary = {
   top6: string;
   name: string;
-  awards_total: number;
+  projected_supply: number;
   enrollment_total: number;
   soc_count: number;
 };
 
 // Per-(college, TOP) supply coverage — the dual of the occupations grid cell.
-// Keyed on activity, not catalog presence: covered = enrolled && awards>0 (full
-// pipeline); partial = one signal but not the other; gap = neither.
+// Keyed on activity, not catalog presence: covered = enrolled && projected>0 (full
+// pipeline); partial = one signal but not the other; gap = neither. `projected` is
+// the college's 3-yr-avg projected annual supply — the supply signal and the
+// single-college lens's own-supply stat (on the same footing as the consortium).
 export type ApiProgramCoverageCell = {
   college: string;
   top6: string;
   enrolled: boolean;
-  awards: number;
+  projected: number;
 };
 export type ApiProgramCoverageMatrix = {
   colleges: string[];                  // SVAMP college order — matrix columns
@@ -402,6 +406,10 @@ export type ApiSvampProgramsLandscape = {
   latest_award_year: string | null;
   n_colleges: number;
   tops: ApiSvampTopSummary[];
+  // Canonical projected annual supply over the deduped feeder universe, summed
+  // once — equals the occupation landscape's combined_supply_total and the MCP
+  // member supply. The consortium header reads THIS, never a re-sum of the tiles.
+  total_supply: number;
   matrix: ApiProgramCoverageMatrix | null;   // per-(college, TOP) coverage grid
   // See ApiSvampLandscape.coverage_awards_only — awards-gated coverage cells.
   coverage_awards_only: boolean;
