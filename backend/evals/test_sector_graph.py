@@ -80,6 +80,24 @@ def test_crosswalk_read_swap_matches_csv_on_our_universe():
 
 
 @requires_graph
+def test_vocational_read_swap_reproduces_csv():
+    """The 3b is_vocational read-swap: on a graph carrying the ProgramFamily/vocational layer,
+    ``_vocational_top6_graph`` reads the same vocational set the CSV holds (``_load_vocational_top6``) —
+    byte-identical, since ``pf.vocational`` is materialized from that CSV. Completeness-gated: graph-native
+    when the full ProgramFamily universe is node-backed (the eval seed carries it in full, so this runs the
+    graph path here), else the CSV."""
+    from ontology import sector_graph
+    from ontology.crosswalks import _vocational_top6_graph, _load_vocational_top6
+    import ontology.crosswalks as cw
+
+    sector_graph.load()
+    cw._vocational_from_graph = None                       # drop any cache captured before this load
+    graph_voc = _vocational_top6_graph()
+    if graph_voc is not None:                              # complete graph → assert the graph-native read
+        assert graph_voc == _load_vocational_top6(), "vocational read-swap diverges from the CSV"
+
+
+@requires_graph
 def test_scopes_is_the_noise_corrected_boundary():
     """The SCOPES edge-set IS the noise-correction: a vocational family that reaches an AM occupation but is
     marked crosswalk-noise for AM (Commercial Music) is scoped into NO sector for AM, so it never enters the

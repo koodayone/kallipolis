@@ -370,19 +370,50 @@ def _load_vocational_top6() -> set[str]:
     return voc
 
 
+_vocational_from_graph: set[str] | None = None       # None = uncomputed; then the graph vocational set
+_vocational_graph_complete: bool = False
+
+
+def _vocational_top6_graph() -> set[str] | None:
+    """The vocational TOP6 set read from the graph's ``ProgramFamily.vocational`` — the 3b read-swap of
+    ``_load_vocational_top6``. Returns the graph set when the graph node-backs the full ProgramFamily
+    universe (every crosswalk TOP6 is a ProgramFamily), else None so the caller falls back to the CSV.
+    Cached. ``sector_graph.load`` materializes ``pf.vocational`` for every family from that same CSV,
+    all-or-nothing, so on any loaded graph — the full graph AND the eval seed, which both carry all 419
+    families — this is graph-native and byte-identical; a graph-free caller or un-reloaded graph falls back."""
+    global _vocational_from_graph, _vocational_graph_complete
+    if _vocational_from_graph is None:
+        g: set[str] = set()
+        complete = False
+        try:
+            from ontology.schema import get_driver
+            with get_driver().session() as s:
+                g = {r["t"] for r in s.run("MATCH (pf:ProgramFamily) WHERE pf.vocational RETURN pf.top6 AS t")}
+                pf = {r["t"] for r in s.run("MATCH (pf:ProgramFamily) RETURN pf.top6 AS t")}
+                complete = set(_load_top_to_cip().keys()) <= pf   # full ProgramFamily universe node-backed?
+        except Exception:
+            complete = False                                      # no graph (graph-free caller) → CSV below
+        _vocational_from_graph = g
+        _vocational_graph_complete = complete
+    return _vocational_from_graph if _vocational_graph_complete else None
+
+
 def is_vocational(top6: str | None) -> bool:
-    """True iff a TOP6 is a CTE (vocational) program per the CCCCO Taxonomy of
-    Programs manual (7th Ed) — the authoritative, TOP6-exact CTE gate.
+    """True iff a TOP6 is a CTE (vocational) program per the CCCCO Taxonomy of Programs manual (7th Ed) —
+    the authoritative, TOP6-exact CTE gate. Read graph-native (3b) from ``ProgramFamily.vocational`` when the
+    graph carries the ontology, else from the CSV git source (``_load_vocational_top6``); byte-identical
+    because the property is materialized from that CSV.
 
     Preferred over the two older tests for new CTE scoping:
-    - vs is_cte_top6 (PCAH sector file): ~99% the same set, but the manual is the
-      primary source and is current; the PCAH file lags and is really a
-      CTE→sector mapping rather than a CTE membership gate.
-    - vs is_cte_top4_family: exact, so it does NOT sweep in transfer siblings
-      (e.g. 083500 Physical Education, 220600 Geography, 061200 Film Studies),
-      which the TOP4-family heuristic over-includes.
+    - vs is_cte_top6 (PCAH sector file): ~99% the same set, but the manual is the primary source and is
+      current; the PCAH file lags and is really a CTE→sector mapping rather than a CTE membership gate.
+    - vs is_cte_top4_family: exact, so it does NOT sweep in transfer siblings (e.g. 083500 Physical
+      Education, 220600 Geography, 061200 Film Studies), which the TOP4-family heuristic over-includes.
     """
-    return bool(top6) and top6 in _load_vocational_top6()
+    if not top6:
+        return False
+    v = _vocational_top6_graph()
+    return top6 in (v if v is not None else _load_vocational_top6())
 
 
 def is_cte_top4_family(top6: str | None) -> bool:
