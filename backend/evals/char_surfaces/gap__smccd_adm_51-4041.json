@@ -28,7 +28,7 @@
    {
     "field": "gap",
     "marker": "unavailable",
-    "reason": "San Mateo County CCD runs no active program feeding this occupation, so a member-anchored gap view has no row for it \u2014 the sector summary is NOT this occupation's figure. See occupation_profile for its regional demand and gap (region-derived; this member's own supply shows as its share, which may be 0)."
+    "reason": "San Mateo County CCD runs no active program feeding Machinists (51-4041), so a member-anchored gap view has no row for it \u2014 the sector summary is NOT this occupation's figure. See occupation_profile for its regional demand and gap (region-derived; this member's own supply shows as its share, which may be 0)."
    }
   ],
   "licensed": [],

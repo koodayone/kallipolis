@@ -137,27 +137,47 @@ def _program_roster(colleges, top6: str, granularity: str) -> list[Row]:
 
 # ── gap ───────────────────────────────────────────────────────────────────
 
-def _unserved_occupation(entry: dict, soc: str, region_display: str) -> AnalysisEnvelope:
-    """A VALID member×sector coordinate whose requested occupation the member feeds no program
-    into: the member-anchored gap has no row for it. GATE rather than fall through to the
-    served-sector summary (which would misread a sector aggregate as this occupation's gap), and
-    route to occupation_profile — the region-derived view that gives the occupation's regional
-    demand and gap whether or not the member serves it (its member_supply is then a clean share,
-    possibly 0)."""
+def _unserved_occupation(entry: dict, soc: str, region_display: str, form: str = "gap") -> AnalysisEnvelope:
+    """A VALID member×sector coordinate whose requested occupation has no member-anchored row.
+    Two distinct reasons, made legible in the gate so the model never conflates them:
+      - OUT OF SECTOR: the occupation isn't one of this sector's occupations at all (it belongs to
+        another sector) — a coordinate mistake, not an absence. Name the sector it DOES belong to.
+      - IN SECTOR, UNSERVED: it is a sector occupation but the member feeds no program into it.
+    Either way GATE rather than fall through to the served-sector summary (which would misread a
+    sector aggregate as this occupation's gap), and route to occupation_profile — the region-derived
+    view that gives the occupation's demand and gap whether or not the member serves it."""
+    from partnerships.sectors import SECTORS
+    from ontology.schema import get_driver
+
+    sid = entry["sector_id"]
+    sector_label = SECTORS[sid].label if sid in SECTORS else sid
+    in_this_sector = sid in SECTORS and soc in set(SECTORS[sid].socs)
+    home = [SECTORS[s].label for s in SECTORS if s != sid and soc in set(SECTORS[s].socs)]
+    with get_driver().session() as s:
+        row = s.run("MATCH (o:Occupation {soc_code:$c}) RETURN o.title AS t", c=soc).single()
+    label = f"{(row['t'] if row and row['t'] else soc)} ({soc})"
+
     coord = coordinate_of(entry, soc=soc)
     coord.region = region_display
-    reason = (f"{entry['member_label']} runs no active program feeding this occupation, so a "
-              f"member-anchored gap view has no row for it — the sector summary is NOT this "
-              f"occupation's figure. See occupation_profile for its regional demand and gap "
-              f"(region-derived; this member's own supply shows as its share, which may be 0).")
+    if in_this_sector:
+        reason = (f"{entry['member_label']} runs no active program feeding {label}, so a "
+                  f"member-anchored gap view has no row for it — the sector summary is NOT this "
+                  f"occupation's figure. See occupation_profile for its regional demand and gap "
+                  f"(region-derived; this member's own supply shows as its share, which may be 0).")
+    else:
+        where = (f"classified under {', '.join(home)}" if home
+                 else "not classified into any modeled sector")
+        reason = (f"{label} is {where}, not {sector_label} — a coordinate mismatch, not an "
+                  f"absence. Query it under its own sector, or see occupation_profile for its "
+                  f"region-derived demand and gap.")
     return AnalysisEnvelope(
-        form="gap", coordinate=coord,
-        framing=_framing("gap", [C.SAL_MEMBER_ANCHORED]),
-        licensing=_licensing("gap", gates=[Gate(field="gap", marker="unavailable", reason=reason)]),
+        form=form, coordinate=coord,
+        framing=_framing(form, [C.SAL_MEMBER_ANCHORED]),
+        licensing=_licensing(form, gates=[Gate(field="gap", marker="unavailable", reason=reason)]),
         next_moves=[C.as_move("occupation_profile", coordinate_of(entry, soc=soc),
                               "The occupation's regional demand, supply, and gap — "
                               "region-derived, not gated to what the member serves.")],
-        view_link=V.view_link("gap", instance_id=entry["id"], member_id=entry["member_id"],
+        view_link=V.view_link(form, instance_id=entry["id"], member_id=entry["member_id"],
                               sector_id=entry["sector_id"], soc=soc),
     )
 
@@ -436,6 +456,13 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
         )
 
     # occupation
+    # Out-of-sector guard: a SOC that isn't one of this sector's occupations would be scored
+    # with the WRONG sector's feeder rule (rspec), yielding a plausible-but-wrong supply/gap
+    # (e.g. a nursing SOC under the adm rule). Gate it with the same coordinate-mismatch message
+    # analyze_gap emits, rather than resolve a number that reads real but isn't.
+    from partnerships.sectors import SECTORS
+    if occupation not in set(SECTORS[entry["sector_id"]].socs):
+        return _unserved_occupation(entry, occupation, sel.region_display, form="pathway")
     # supply/gap resolve through canonical.supply — coherent with analyze_gap (this tool
     # previously computed gap = regional − INSTITUTIONAL supply, the exact conflation the
     # gap description forbids; fixed here).
