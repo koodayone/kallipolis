@@ -40,9 +40,9 @@
  "enrollment_terms": [],
  "feeding_tops": [
   {
-   "awards_total": 49,
    "enrollment_total": 0,
    "name": "Machining and Machine Tools",
+   "projected_supply": 43.7,
    "soc_count": 2,
    "top6": "095630"
   }

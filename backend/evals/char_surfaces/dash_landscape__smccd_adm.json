@@ -2,11 +2,11 @@
  "aggregate": {
   "candidate_employers": 137,
   "combined_awards": 5,
-  "combined_supply_total": 0.0,
-  "gap": 1390,
+  "combined_supply_total": 21.0,
+  "gap": 1369,
   "n_colleges": 3,
   "n_occupations": 5,
-  "occupations_taught": 0,
+  "occupations_taught": 5,
   "regional_demand_total": 1390
  },
  "award_years": [
@@ -26,7 +26,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
-     "gap": 430,
+     "gap": 425,
      "growth_rate": -0.0,
      "programs": [
       {
@@ -121,7 +121,7 @@
       }
      ],
      "soc_code": "17-3023",
-     "supply": 0.0,
+     "supply": 5.3,
      "title": "Electrical and Electronic Engineering Technologists and Technicians"
     },
     {
@@ -131,7 +131,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
-     "gap": 80,
+     "gap": 75,
      "growth_rate": -0.0,
      "programs": [
       {
@@ -226,7 +226,7 @@
       }
      ],
      "soc_code": "17-3024",
-     "supply": 0.0,
+     "supply": 5.3,
      "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
     },
     {
@@ -331,7 +331,7 @@
       }
      ],
      "soc_code": "17-3026",
-     "supply": 0.0,
+     "supply": 0.3,
      "title": "Industrial Engineering Technologists and Technicians"
     },
     {
@@ -355,7 +355,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
-     "gap": 180,
+     "gap": 175,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -458,7 +458,7 @@
       }
      ],
      "soc_code": "51-9141",
-     "supply": 0.0,
+     "supply": 5.0,
      "title": "Semiconductor Processing Technicians"
     }
    ],
@@ -473,7 +473,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
-     "gap": 430,
+     "gap": 425,
      "growth_rate": -0.0,
      "programs": [
       {
@@ -576,7 +576,7 @@
       }
      ],
      "soc_code": "17-3023",
-     "supply": 0.0,
+     "supply": 4.7,
      "title": "Electrical and Electronic Engineering Technologists and Technicians"
     },
     {
@@ -586,7 +586,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
-     "gap": 80,
+     "gap": 75,
      "growth_rate": -0.0,
      "programs": [
       {
@@ -689,7 +689,7 @@
       }
      ],
      "soc_code": "17-3024",
-     "supply": 0.0,
+     "supply": 4.7,
      "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
     },
     {
@@ -763,7 +763,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 1,
-     "gap": 550,
+     "gap": 539,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -858,7 +858,7 @@
       }
      ],
      "soc_code": "49-9041",
-     "supply": 0.0,
+     "supply": 11.0,
      "title": "Industrial Machinery Mechanics"
     },
     {
@@ -868,7 +868,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
-     "gap": 180,
+     "gap": 175,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -922,7 +922,7 @@
       }
      ],
      "soc_code": "51-9141",
-     "supply": 0.0,
+     "supply": 4.7,
      "title": "Semiconductor Processing Technicians"
     }
    ],

@@ -22,7 +22,7 @@
     "colleges_with_program": [
      "College of San Mateo"
     ],
-    "n_active": 0,
+    "n_active": 1,
     "n_covered": 0,
     "n_with_program": 1
    },
@@ -31,8 +31,8 @@
      "College of San Mateo",
      "Skyline College"
     ],
-    "n_active": 1,
-    "n_covered": 1,
+    "n_active": 2,
+    "n_covered": 2,
     "n_with_program": 2
    }
   },

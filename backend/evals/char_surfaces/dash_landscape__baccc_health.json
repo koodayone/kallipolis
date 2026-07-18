@@ -2,11 +2,11 @@
  "aggregate": {
   "candidate_employers": 151,
   "combined_awards": 2279,
-  "combined_supply_total": 0.0,
-  "gap": 18410,
+  "combined_supply_total": 2231.3,
+  "gap": 16179,
   "n_colleges": 26,
   "n_occupations": 14,
-  "occupations_taught": 0,
+  "occupations_taught": 14,
   "regional_demand_total": 18410
  },
  "award_years": [
@@ -26,7 +26,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 29,
-     "gap": 320,
+     "gap": 260,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -133,7 +133,7 @@
       }
      ],
      "soc_code": "21-1094",
-     "supply": 0.0,
+     "supply": 60.3,
      "title": "Community Health Workers"
     },
     {
@@ -330,7 +330,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 22,
-     "gap": 320,
+     "gap": 305,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -437,7 +437,7 @@
       }
      ],
      "soc_code": "21-1094",
-     "supply": 0.0,
+     "supply": 15.0,
      "title": "Community Health Workers"
     },
     {
@@ -461,7 +461,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 48,
-     "gap": 5160,
+     "gap": 5116,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -513,7 +513,7 @@
       }
      ],
      "soc_code": "29-1141",
-     "supply": 0.0,
+     "supply": 44.3,
      "title": "Registered Nurses"
     },
     {
@@ -523,7 +523,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 20,
-     "gap": 440,
+     "gap": 410,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -597,7 +597,7 @@
       }
      ],
      "soc_code": "29-1292",
-     "supply": 0.0,
+     "supply": 30.3,
      "title": "Dental Hygienists"
     },
     {
@@ -607,7 +607,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 30,
-     "gap": 320,
+     "gap": 288,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -667,7 +667,7 @@
       }
      ],
      "soc_code": "29-2034",
-     "supply": 0.0,
+     "supply": 31.7,
      "title": "Radiologic Technologists and Technicians"
     },
     {
@@ -761,7 +761,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 1,
-     "gap": 1800,
+     "gap": 1778,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -843,7 +843,7 @@
       }
      ],
      "soc_code": "31-9091",
-     "supply": 0.0,
+     "supply": 22.3,
      "title": "Dental Assistants"
     },
     {
@@ -853,7 +853,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 44,
-     "gap": 4160,
+     "gap": 4108,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -960,7 +960,7 @@
       }
      ],
      "soc_code": "31-9092",
-     "supply": 0.0,
+     "supply": 52.0,
      "title": "Medical Assistants"
     },
     {
@@ -970,7 +970,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 44,
-     "gap": 2740,
+     "gap": 2688,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -1030,7 +1030,7 @@
       }
      ],
      "soc_code": "43-6013",
-     "supply": 0.0,
+     "supply": 52.0,
      "title": "Medical Secretaries and Administrative Assistants"
     }
    ],
@@ -1149,7 +1149,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 6,
-     "gap": 320,
+     "gap": 309,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -1209,7 +1209,7 @@
       }
      ],
      "soc_code": "29-2034",
-     "supply": 0.0,
+     "supply": 11.0,
      "title": "Radiologic Technologists and Technicians"
     },
     {
@@ -1261,7 +1261,7 @@
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 12,
-     "gap": 360,
+     "gap": 353,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -1305,7 +1305,7 @@
       }
      ],
      "soc_code": "29-2072",
-     "supply": 0.0,
+     "supply": 7.3,
      "title": "Medical Records Specialists"
     },
     {
@@ -1315,7 +1315,7 @@
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 12,
-     "gap": 90,
+     "gap": 83,
      "growth_rate": 0.2,
      "programs": [
       {
@@ -1359,7 +1359,7 @@
       }
      ],
      "soc_code": "29-9021",
-     "supply": 0.0,
+     "supply": 7.3,
      "title": "Health Information Technologists and Medical Registrars"
     },
     {
@@ -1397,7 +1397,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 38,
-     "gap": 4160,
+     "gap": 4128,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -1551,7 +1551,7 @@
       }
      ],
      "soc_code": "31-9092",
-     "supply": 0.0,
+     "supply": 31.7,
      "title": "Medical Assistants"
     },
     {
@@ -1561,7 +1561,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 50,
-     "gap": 2740,
+     "gap": 2701,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -1707,7 +1707,7 @@
       }
      ],
      "soc_code": "43-6013",
-     "supply": 0.0,
+     "supply": 39.0,
      "title": "Medical Secretaries and Administrative Assistants"
     }
    ],
@@ -1722,7 +1722,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 15,
-     "gap": 320,
+     "gap": 308,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -1829,7 +1829,7 @@
       }
      ],
      "soc_code": "21-1094",
-     "supply": 0.0,
+     "supply": 11.7,
      "title": "Community Health Workers"
     },
     {
@@ -1853,7 +1853,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 20,
-     "gap": 5160,
+     "gap": 5142,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -1944,7 +1944,7 @@
       }
      ],
      "soc_code": "29-1141",
-     "supply": 0.0,
+     "supply": 17.7,
      "title": "Registered Nurses"
     },
     {
@@ -1954,7 +1954,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 20,
-     "gap": 440,
+     "gap": 412,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -1998,7 +1998,7 @@
       }
      ],
      "soc_code": "29-1292",
-     "supply": 0.0,
+     "supply": 27.7,
      "title": "Dental Hygienists"
     },
     {
@@ -2050,7 +2050,7 @@
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 1430,
+     "gap": 1429,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -2094,7 +2094,7 @@
       }
      ],
      "soc_code": "29-2061",
-     "supply": 0.0,
+     "supply": 0.7,
      "title": "Licensed Practical and Licensed Vocational Nurses"
     },
     {
@@ -2160,7 +2160,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 21,
-     "gap": 4160,
+     "gap": 4139,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -2267,7 +2267,7 @@
       }
      ],
      "soc_code": "31-9092",
-     "supply": 0.0,
+     "supply": 21.3,
      "title": "Medical Assistants"
     },
     {
@@ -2277,7 +2277,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 21,
-     "gap": 2740,
+     "gap": 2719,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -2337,7 +2337,7 @@
       }
      ],
      "soc_code": "43-6013",
-     "supply": 0.0,
+     "supply": 21.3,
      "title": "Medical Secretaries and Administrative Assistants"
     }
    ],
@@ -2352,7 +2352,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 154,
-     "gap": 320,
+     "gap": 208,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -2459,7 +2459,7 @@
       }
      ],
      "soc_code": "21-1094",
-     "supply": 0.0,
+     "supply": 112.0,
      "title": "Community Health Workers"
     },
     {
@@ -2483,7 +2483,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 67,
-     "gap": 5160,
+     "gap": 5084,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -2574,7 +2574,7 @@
       }
      ],
      "soc_code": "29-1141",
-     "supply": 0.0,
+     "supply": 76.0,
      "title": "Registered Nurses"
     },
     {
@@ -2598,7 +2598,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 19,
-     "gap": 320,
+     "gap": 301,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -2688,7 +2688,7 @@
       }
      ],
      "soc_code": "29-2034",
-     "supply": 0.0,
+     "supply": 19.3,
      "title": "Radiologic Technologists and Technicians"
     },
     {
@@ -2698,7 +2698,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 22,
-     "gap": 820,
+     "gap": 798,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -2750,7 +2750,7 @@
       }
      ],
      "soc_code": "29-2052",
-     "supply": 0.0,
+     "supply": 21.7,
      "title": "Pharmacy Technicians"
     },
     {
@@ -2774,7 +2774,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 7,
-     "gap": 1430,
+     "gap": 1413,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -2865,7 +2865,7 @@
       }
      ],
      "soc_code": "29-2061",
-     "supply": 0.0,
+     "supply": 16.7,
      "title": "Licensed Practical and Licensed Vocational Nurses"
     },
     {
@@ -2875,7 +2875,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 63,
-     "gap": 360,
+     "gap": 307,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -3005,7 +3005,7 @@
       }
      ],
      "soc_code": "29-2072",
-     "supply": 0.0,
+     "supply": 53.3,
      "title": "Medical Records Specialists"
     },
     {
@@ -3015,7 +3015,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 63,
-     "gap": 90,
+     "gap": 37,
      "growth_rate": 0.2,
      "programs": [
       {
@@ -3145,7 +3145,7 @@
       }
      ],
      "soc_code": "29-9021",
-     "supply": 0.0,
+     "supply": 53.3,
      "title": "Health Information Technologists and Medical Registrars"
     },
     {
@@ -3169,7 +3169,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 15,
-     "gap": 1800,
+     "gap": 1784,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -3221,7 +3221,7 @@
       }
      ],
      "soc_code": "31-9091",
-     "supply": 0.0,
+     "supply": 15.7,
      "title": "Dental Assistants"
     },
     {
@@ -3231,7 +3231,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 44,
-     "gap": 4160,
+     "gap": 4104,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -3368,7 +3368,7 @@
       }
      ],
      "soc_code": "31-9092",
-     "supply": 0.0,
+     "supply": 55.7,
      "title": "Medical Assistants"
     },
     {
@@ -3378,7 +3378,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 54,
-     "gap": 2740,
+     "gap": 2678,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -3554,7 +3554,7 @@
       }
      ],
      "soc_code": "43-6013",
-     "supply": 0.0,
+     "supply": 62.3,
      "title": "Medical Secretaries and Administrative Assistants"
     }
    ],
@@ -3723,7 +3723,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 28,
-     "gap": 1800,
+     "gap": 1775,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -3775,7 +3775,7 @@
       }
      ],
      "soc_code": "31-9091",
-     "supply": 0.0,
+     "supply": 25.0,
      "title": "Dental Assistants"
     },
     {
@@ -3846,7 +3846,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 40,
-     "gap": 5160,
+     "gap": 5119,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -3937,7 +3937,7 @@
       }
      ],
      "soc_code": "29-1141",
-     "supply": 0.0,
+     "supply": 41.3,
      "title": "Registered Nurses"
     },
     {
@@ -4099,7 +4099,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 22,
-     "gap": 1800,
+     "gap": 1780,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -4151,7 +4151,7 @@
       }
      ],
      "soc_code": "31-9091",
-     "supply": 0.0,
+     "supply": 19.7,
      "title": "Dental Assistants"
     },
     {
@@ -4161,7 +4161,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 12,
-     "gap": 4160,
+     "gap": 4142,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -4315,7 +4315,7 @@
       }
      ],
      "soc_code": "31-9092",
-     "supply": 0.0,
+     "supply": 18.0,
      "title": "Medical Assistants"
     },
     {
@@ -4325,7 +4325,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 9,
-     "gap": 2740,
+     "gap": 2724,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -4432,7 +4432,7 @@
       }
      ],
      "soc_code": "43-6013",
-     "supply": 0.0,
+     "supply": 16.0,
      "title": "Medical Secretaries and Administrative Assistants"
     }
    ],
@@ -4475,7 +4475,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 48,
-     "gap": 5160,
+     "gap": 5113,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -4527,7 +4527,7 @@
       }
      ],
      "soc_code": "29-1141",
-     "supply": 0.0,
+     "supply": 47.3,
      "title": "Registered Nurses"
     },
     {
@@ -4680,7 +4680,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 27,
-     "gap": 1800,
+     "gap": 1780,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -4762,7 +4762,7 @@
       }
      ],
      "soc_code": "31-9091",
-     "supply": 0.0,
+     "supply": 20.3,
      "title": "Dental Assistants"
     },
     {
@@ -4805,7 +4805,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 3,
-     "gap": 320,
+     "gap": 314,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -4865,7 +4865,7 @@
       }
      ],
      "soc_code": "21-1094",
-     "supply": 0.0,
+     "supply": 5.7,
      "title": "Community Health Workers"
     },
     {
@@ -4889,7 +4889,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 38,
-     "gap": 5160,
+     "gap": 5122,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -4941,7 +4941,7 @@
       }
      ],
      "soc_code": "29-1141",
-     "supply": 0.0,
+     "supply": 38.3,
      "title": "Registered Nurses"
     },
     {
@@ -5125,7 +5125,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 6,
-     "gap": 4160,
+     "gap": 4149,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -5185,7 +5185,7 @@
       }
      ],
      "soc_code": "31-9092",
-     "supply": 0.0,
+     "supply": 11.3,
      "title": "Medical Assistants"
     },
     {
@@ -5195,7 +5195,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 6,
-     "gap": 2740,
+     "gap": 2729,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -5255,7 +5255,7 @@
       }
      ],
      "soc_code": "43-6013",
-     "supply": 0.0,
+     "supply": 11.3,
      "title": "Medical Secretaries and Administrative Assistants"
     }
    ],
@@ -5298,7 +5298,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 49,
-     "gap": 5160,
+     "gap": 5118,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -5389,7 +5389,7 @@
       }
      ],
      "soc_code": "29-1141",
-     "supply": 0.0,
+     "supply": 41.7,
      "title": "Registered Nurses"
     },
     {
@@ -5565,7 +5565,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 20,
-     "gap": 4160,
+     "gap": 4131,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -5719,7 +5719,7 @@
       }
      ],
      "soc_code": "31-9092",
-     "supply": 0.0,
+     "supply": 29.0,
      "title": "Medical Assistants"
     },
     {
@@ -5729,7 +5729,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 20,
-     "gap": 2740,
+     "gap": 2719,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -5836,7 +5836,7 @@
       }
      ],
      "soc_code": "43-6013",
-     "supply": 0.0,
+     "supply": 21.3,
      "title": "Medical Secretaries and Administrative Assistants"
     }
    ],
@@ -5851,7 +5851,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 34,
-     "gap": 320,
+     "gap": 293,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -5958,7 +5958,7 @@
       }
      ],
      "soc_code": "21-1094",
-     "supply": 0.0,
+     "supply": 27.0,
      "title": "Community Health Workers"
     },
     {
@@ -5996,7 +5996,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 20,
-     "gap": 440,
+     "gap": 421,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -6040,7 +6040,7 @@
       }
      ],
      "soc_code": "29-1292",
-     "supply": 0.0,
+     "supply": 19.0,
      "title": "Dental Hygienists"
     },
     {
@@ -6148,7 +6148,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 28,
-     "gap": 1800,
+     "gap": 1771,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -6200,7 +6200,7 @@
       }
      ],
      "soc_code": "31-9091",
-     "supply": 0.0,
+     "supply": 29.3,
      "title": "Dental Assistants"
     },
     {
@@ -6271,7 +6271,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 64,
-     "gap": 5160,
+     "gap": 5095,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -6362,7 +6362,7 @@
       }
      ],
      "soc_code": "29-1141",
-     "supply": 0.0,
+     "supply": 65.0,
      "title": "Registered Nurses"
     },
     {
@@ -6571,7 +6571,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 79,
-     "gap": 320,
+     "gap": 262,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -6678,7 +6678,7 @@
       }
      ],
      "soc_code": "21-1094",
-     "supply": 0.0,
+     "supply": 58.0,
      "title": "Community Health Workers"
     },
     {
@@ -6688,7 +6688,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 24,
-     "gap": 210,
+     "gap": 185,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -6740,7 +6740,7 @@
       }
      ],
      "soc_code": "29-1126",
-     "supply": 0.0,
+     "supply": 25.3,
      "title": "Respiratory Therapists"
     },
     {
@@ -6764,7 +6764,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 50,
-     "gap": 440,
+     "gap": 386,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -6808,7 +6808,7 @@
       }
      ],
      "soc_code": "29-1292",
-     "supply": 0.0,
+     "supply": 54.3,
      "title": "Dental Hygienists"
     },
     {
@@ -6818,7 +6818,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 26,
-     "gap": 320,
+     "gap": 299,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -6878,7 +6878,7 @@
       }
      ],
      "soc_code": "29-2034",
-     "supply": 0.0,
+     "supply": 21.0,
      "title": "Radiologic Technologists and Technicians"
     },
     {
@@ -6888,7 +6888,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 24,
-     "gap": 820,
+     "gap": 796,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -6940,7 +6940,7 @@
       }
      ],
      "soc_code": "29-2052",
-     "supply": 0.0,
+     "supply": 23.7,
      "title": "Pharmacy Technicians"
     },
     {
@@ -7020,7 +7020,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 25,
-     "gap": 1800,
+     "gap": 1780,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -7072,7 +7072,7 @@
       }
      ],
      "soc_code": "31-9091",
-     "supply": 0.0,
+     "supply": 20.3,
      "title": "Dental Assistants"
     },
     {
@@ -7115,7 +7115,7 @@
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 11,
-     "gap": 320,
+     "gap": 313,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -7175,7 +7175,7 @@
       }
      ],
      "soc_code": "21-1094",
-     "supply": 0.0,
+     "supply": 6.7,
      "title": "Community Health Workers"
     },
     {
@@ -7199,7 +7199,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 24,
-     "gap": 5160,
+     "gap": 5138,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -7290,7 +7290,7 @@
       }
      ],
      "soc_code": "29-1141",
-     "supply": 0.0,
+     "supply": 22.0,
      "title": "Registered Nurses"
     },
     {
@@ -7356,7 +7356,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 2,
-     "gap": 1430,
+     "gap": 1419,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -7447,7 +7447,7 @@
       }
      ],
      "soc_code": "29-2061",
-     "supply": 0.0,
+     "supply": 10.7,
      "title": "Licensed Practical and Licensed Vocational Nurses"
     },
     {
@@ -7747,7 +7747,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 11,
-     "gap": 320,
+     "gap": 310,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -7807,7 +7807,7 @@
       }
      ],
      "soc_code": "21-1094",
-     "supply": 0.0,
+     "supply": 10.3,
      "title": "Community Health Workers"
     },
     {
@@ -7971,7 +7971,7 @@
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 2,
-     "gap": 4160,
+     "gap": 4158,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -8023,7 +8023,7 @@
       }
      ],
      "soc_code": "31-9092",
-     "supply": 0.0,
+     "supply": 2.3,
      "title": "Medical Assistants"
     },
     {
@@ -8033,7 +8033,7 @@
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 2,
-     "gap": 2740,
+     "gap": 2738,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -8085,7 +8085,7 @@
       }
      ],
      "soc_code": "43-6013",
-     "supply": 0.0,
+     "supply": 2.3,
      "title": "Medical Secretaries and Administrative Assistants"
     }
    ],
@@ -8128,7 +8128,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 44,
-     "gap": 5160,
+     "gap": 5119,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -8180,7 +8180,7 @@
       }
      ],
      "soc_code": "29-1141",
-     "supply": 0.0,
+     "supply": 40.7,
      "title": "Registered Nurses"
     },
     {
@@ -8246,7 +8246,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 27,
-     "gap": 1430,
+     "gap": 1414,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -8298,7 +8298,7 @@
       }
      ],
      "soc_code": "29-2061",
-     "supply": 0.0,
+     "supply": 15.7,
      "title": "Licensed Practical and Licensed Vocational Nurses"
     },
     {
@@ -8397,7 +8397,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
-     "gap": 320,
+     "gap": 318,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -8504,7 +8504,7 @@
       }
      ],
      "soc_code": "21-1094",
-     "supply": 0.0,
+     "supply": 1.7,
      "title": "Community Health Workers"
     },
     {
@@ -8528,7 +8528,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
-     "gap": 5160,
+     "gap": 5146,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -8580,7 +8580,7 @@
       }
      ],
      "soc_code": "29-1141",
-     "supply": 0.0,
+     "supply": 13.7,
      "title": "Registered Nurses"
     },
     {
@@ -8604,7 +8604,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 20,
-     "gap": 320,
+     "gap": 304,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -8664,7 +8664,7 @@
       }
      ],
      "soc_code": "29-2034",
-     "supply": 0.0,
+     "supply": 16.3,
      "title": "Radiologic Technologists and Technicians"
     },
     {
@@ -8772,7 +8772,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 38,
-     "gap": 4160,
+     "gap": 4136,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -8926,7 +8926,7 @@
       }
      ],
      "soc_code": "31-9092",
-     "supply": 0.0,
+     "supply": 24.0,
      "title": "Medical Assistants"
     },
     {
@@ -8936,7 +8936,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 6,
-     "gap": 2740,
+     "gap": 2737,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -9043,7 +9043,7 @@
       }
      ],
      "soc_code": "43-6013",
-     "supply": 0.0,
+     "supply": 3.0,
      "title": "Medical Secretaries and Administrative Assistants"
     }
    ],
@@ -9058,7 +9058,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 5,
-     "gap": 320,
+     "gap": 318,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -9165,7 +9165,7 @@
       }
      ],
      "soc_code": "21-1094",
-     "supply": 0.0,
+     "supply": 2.0,
      "title": "Community Health Workers"
     },
     {
@@ -9189,7 +9189,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 30,
-     "gap": 5160,
+     "gap": 5132,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -9280,7 +9280,7 @@
       }
      ],
      "soc_code": "29-1141",
-     "supply": 0.0,
+     "supply": 28.3,
      "title": "Registered Nurses"
     },
     {
@@ -9380,7 +9380,7 @@
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 1,
-     "gap": 260,
+     "gap": 259,
      "growth_rate": 0.3,
      "programs": [
       {
@@ -9432,7 +9432,7 @@
       }
      ],
      "soc_code": "29-2053",
-     "supply": 0.0,
+     "supply": 0.7,
      "title": "Psychiatric Technicians"
     },
     {
@@ -9442,7 +9442,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 56,
-     "gap": 1430,
+     "gap": 1376,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -9533,7 +9533,7 @@
       }
      ],
      "soc_code": "29-2061",
-     "supply": 0.0,
+     "supply": 53.7,
      "title": "Licensed Practical and Licensed Vocational Nurses"
     },
     {
@@ -9646,7 +9646,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 21,
-     "gap": 210,
+     "gap": 192,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -9698,7 +9698,7 @@
       }
      ],
      "soc_code": "29-1126",
-     "supply": 0.0,
+     "supply": 18.3,
      "title": "Respiratory Therapists"
     },
     {
@@ -9708,7 +9708,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 46,
-     "gap": 5160,
+     "gap": 5118,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -9799,7 +9799,7 @@
       }
      ],
      "soc_code": "29-1141",
-     "supply": 0.0,
+     "supply": 42.3,
      "title": "Registered Nurses"
     },
     {
@@ -9851,7 +9851,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 15,
-     "gap": 260,
+     "gap": 236,
      "growth_rate": 0.3,
      "programs": [
       {
@@ -9903,7 +9903,7 @@
       }
      ],
      "soc_code": "29-2053",
-     "supply": 0.0,
+     "supply": 24.0,
      "title": "Psychiatric Technicians"
     },
     {
@@ -9913,7 +9913,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 14,
-     "gap": 1430,
+     "gap": 1421,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -10004,7 +10004,7 @@
       }
      ],
      "soc_code": "29-2061",
-     "supply": 0.0,
+     "supply": 9.0,
      "title": "Licensed Practical and Licensed Vocational Nurses"
     },
     {
@@ -10103,7 +10103,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
-     "gap": 320,
+     "gap": 319,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -10163,7 +10163,7 @@
       }
      ],
      "soc_code": "21-1094",
-     "supply": 0.0,
+     "supply": 1.0,
      "title": "Community Health Workers"
     },
     {
@@ -10173,7 +10173,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 12,
-     "gap": 210,
+     "gap": 196,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -10225,7 +10225,7 @@
       }
      ],
      "soc_code": "29-1126",
-     "supply": 0.0,
+     "supply": 14.3,
      "title": "Respiratory Therapists"
     },
     {
@@ -10235,7 +10235,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 25,
-     "gap": 5160,
+     "gap": 5131,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -10287,7 +10287,7 @@
       }
      ],
      "soc_code": "29-1141",
-     "supply": 0.0,
+     "supply": 29.0,
      "title": "Registered Nurses"
     },
     {
@@ -10443,7 +10443,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 17,
-     "gap": 300,
+     "gap": 281,
      "growth_rate": 0.2,
      "programs": [
       {
@@ -10487,7 +10487,7 @@
       }
      ],
      "soc_code": "31-2021",
-     "supply": 0.0,
+     "supply": 19.3,
      "title": "Physical Therapist Assistants"
     },
     {
@@ -10656,7 +10656,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 8,
-     "gap": 320,
+     "gap": 315,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -10716,7 +10716,7 @@
       }
      ],
      "soc_code": "21-1094",
-     "supply": 0.0,
+     "supply": 5.0,
      "title": "Community Health Workers"
     },
     {
@@ -10946,7 +10946,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 47,
-     "gap": 1800,
+     "gap": 1758,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -10998,7 +10998,7 @@
       }
      ],
      "soc_code": "31-9091",
-     "supply": 0.0,
+     "supply": 42.0,
      "title": "Dental Assistants"
     },
     {
@@ -11008,7 +11008,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 63,
-     "gap": 4160,
+     "gap": 4083,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -11162,7 +11162,7 @@
       }
      ],
      "soc_code": "31-9092",
-     "supply": 0.0,
+     "supply": 77.0,
      "title": "Medical Assistants"
     },
     {
@@ -11172,7 +11172,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 20,
-     "gap": 2740,
+     "gap": 2719,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -11318,7 +11318,7 @@
       }
      ],
      "soc_code": "43-6013",
-     "supply": 0.0,
+     "supply": 20.7,
      "title": "Medical Secretaries and Administrative Assistants"
     }
    ],
@@ -11333,7 +11333,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
-     "gap": 320,
+     "gap": 317,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -11440,7 +11440,7 @@
       }
      ],
      "soc_code": "21-1094",
-     "supply": 0.0,
+     "supply": 2.7,
      "title": "Community Health Workers"
     },
     {
@@ -11464,7 +11464,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 110,
-     "gap": 5160,
+     "gap": 5058,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -11516,7 +11516,7 @@
       }
      ],
      "soc_code": "29-1141",
-     "supply": 0.0,
+     "supply": 102.3,
      "title": "Registered Nurses"
     },
     {
@@ -11526,7 +11526,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 24,
-     "gap": 440,
+     "gap": 416,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -11600,7 +11600,7 @@
       }
      ],
      "soc_code": "29-1292",
-     "supply": 0.0,
+     "supply": 23.7,
      "title": "Dental Hygienists"
     },
     {
@@ -11610,7 +11610,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 35,
-     "gap": 320,
+     "gap": 283,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -11670,7 +11670,7 @@
       }
      ],
      "soc_code": "29-2034",
-     "supply": 0.0,
+     "supply": 37.0,
      "title": "Radiologic Technologists and Technicians"
     },
     {
@@ -11680,7 +11680,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 8,
-     "gap": 820,
+     "gap": 814,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -11732,7 +11732,7 @@
       }
      ],
      "soc_code": "29-2052",
-     "supply": 0.0,
+     "supply": 5.7,
      "title": "Pharmacy Technicians"
     },
     {
@@ -11860,7 +11860,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 17,
-     "gap": 1800,
+     "gap": 1784,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -11942,7 +11942,7 @@
       }
      ],
      "soc_code": "31-9091",
-     "supply": 0.0,
+     "supply": 16.3,
      "title": "Dental Assistants"
     },
     {
@@ -11952,7 +11952,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 27,
-     "gap": 4160,
+     "gap": 4133,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -12059,7 +12059,7 @@
       }
      ],
      "soc_code": "31-9092",
-     "supply": 0.0,
+     "supply": 26.7,
      "title": "Medical Assistants"
     },
     {
@@ -12069,7 +12069,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 27,
-     "gap": 2740,
+     "gap": 2713,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -12129,7 +12129,7 @@
       }
      ],
      "soc_code": "43-6013",
-     "supply": 0.0,
+     "supply": 26.7,
      "title": "Medical Secretaries and Administrative Assistants"
     }
    ],
@@ -12144,7 +12144,7 @@
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 5,
-     "gap": 320,
+     "gap": 316,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -12204,7 +12204,7 @@
       }
      ],
      "soc_code": "21-1094",
-     "supply": 0.0,
+     "supply": 4.0,
      "title": "Community Health Workers"
     },
     {
@@ -12214,7 +12214,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 42,
-     "gap": 210,
+     "gap": 179,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -12266,7 +12266,7 @@
       }
      ],
      "soc_code": "29-1126",
-     "supply": 0.0,
+     "supply": 31.0,
      "title": "Respiratory Therapists"
     },
     {
@@ -12621,7 +12621,7 @@
       }
      ],
      "soc_code": "21-1094",
-     "supply": 0.0,
+     "supply": 0.3,
      "title": "Community Health Workers"
     },
     {
@@ -12645,7 +12645,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 44,
-     "gap": 5160,
+     "gap": 5121,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -12697,7 +12697,7 @@
       }
      ],
      "soc_code": "29-1141",
-     "supply": 0.0,
+     "supply": 38.7,
      "title": "Registered Nurses"
     },
     {
@@ -12978,7 +12978,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 14,
-     "gap": 320,
+     "gap": 310,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -13038,7 +13038,7 @@
       }
      ],
      "soc_code": "21-1094",
-     "supply": 0.0,
+     "supply": 9.7,
      "title": "Community Health Workers"
     },
     {
@@ -13174,7 +13174,7 @@
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 5,
-     "gap": 300,
+     "gap": 293,
      "growth_rate": 0.2,
      "programs": [
       {
@@ -13226,7 +13226,7 @@
       }
      ],
      "soc_code": "31-2021",
-     "supply": 0.0,
+     "supply": 6.7,
      "title": "Physical Therapist Assistants"
     },
     {
@@ -13250,7 +13250,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 17,
-     "gap": 4160,
+     "gap": 4141,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -13404,7 +13404,7 @@
       }
      ],
      "soc_code": "31-9092",
-     "supply": 0.0,
+     "supply": 19.0,
      "title": "Medical Assistants"
     },
     {
@@ -13414,7 +13414,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 16,
-     "gap": 2740,
+     "gap": 2724,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -13521,7 +13521,7 @@
       }
      ],
      "soc_code": "43-6013",
-     "supply": 0.0,
+     "supply": 16.3,
      "title": "Medical Secretaries and Administrative Assistants"
     }
    ],

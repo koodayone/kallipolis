@@ -17,18 +17,33 @@
     "label": "095630 Machining and Machine Tools",
     "roster": [
      {
-      "label": "De Anza College",
+      "label": "Santa Rosa Junior College",
       "roster": [],
       "values": {
-       "actual_awards": {
+       "coverage": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
         "source": "datamart",
         "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 49,
+        "unit": "",
+        "value": "covered",
         "vintage": ""
        },
+       "projected_supply": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 47.7,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "De Anza College",
+      "roster": [],
+      "values": {
        "coverage": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
@@ -37,53 +52,14 @@
         "unit": "",
         "value": "partial",
         "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Santa Rosa Junior College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 39,
-        "vintage": ""
        },
-       "coverage": {
+       "projected_supply": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
         "source": "datamart",
         "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Laney College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 31,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
+        "unit": "completions/yr",
+        "value": 43.7,
         "vintage": ""
        }
       }
@@ -92,15 +68,6 @@
       "label": "Chabot College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 30,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
@@ -108,6 +75,39 @@
         "status": "ok",
         "unit": "",
         "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 21.7,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Laney College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 19.3,
         "vintage": ""
        }
       }
@@ -116,15 +116,6 @@
       "label": "San Jose City College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 10,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
@@ -133,53 +124,14 @@
         "unit": "",
         "value": "covered",
         "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "College of Marin",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 8,
-        "vintage": ""
        },
-       "coverage": {
+       "projected_supply": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
         "source": "datamart",
         "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "City College of San Francisco",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 3,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
+        "unit": "completions/yr",
+        "value": 14.0,
         "vintage": ""
        }
       }
@@ -188,15 +140,6 @@
       "label": "Napa Valley College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 2,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
@@ -205,6 +148,63 @@
         "unit": "",
         "value": "covered",
         "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 4.3,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "College of Marin",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 3.0,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "City College of San Francisco",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 1.7,
+        "vintage": ""
        }
       }
      },
@@ -212,15 +212,6 @@
       "label": "Diablo Valley College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 0,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "regional (Bay Area) \u2014 all 26 colleges",
         "parent_vintages": [],
@@ -228,6 +219,15 @@
         "status": "ok",
         "unit": "",
         "value": "gap",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 0.0,
         "vintage": ""
        }
       }
@@ -239,7 +239,7 @@
       "parent_vintages": [],
       "source": "derived",
       "status": "ok",
-      "unit": "colleges (latest yr)",
+      "unit": "colleges (recent)",
       "value": 8,
       "vintage": ""
      },
@@ -292,15 +292,6 @@
     "unit": "5-yr %",
     "value": 0.0,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-   },
-   "latest_year_supply": {
-    "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-    "parent_vintages": [],
-    "source": "datamart",
-    "status": "ok",
-    "unit": "completions",
-    "value": 49.0,
-    "vintage": "DataMart completions \u2014 2024-2025"
    },
    "member_supply": {
     "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
@@ -411,7 +402,6 @@
    "annual_wage": "coe",
    "gap": "derived",
    "growth_rate": "coe",
-   "latest_year_supply": "datamart",
    "projected_supply": "datamart",
    "regional_employment": "coe"
   },
@@ -430,7 +420,6 @@
   ],
   "vintages": {
    "demand": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection",
-   "latest_year_supply": "DataMart completions \u2014 2024-2025",
    "projected_supply": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
   }
  },

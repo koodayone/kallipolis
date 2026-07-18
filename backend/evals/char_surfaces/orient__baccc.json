@@ -538,7 +538,7 @@
  "framing": {
   "meaning": "The member-anchor orientation \u2014 the top of the descent. One row per sector the member runs: total regional demand across that sector's occupations vs the region's total projected completions feeding them, the member's own supply and its share, and the gap \u2014 plus an institution-wide total across all its sectors. It answers a whole-institution portfolio question in ONE call; the per-sector (sector_overview) and per-occupation (gap) views are drills the practitioner walks turn by turn, not steps taken here.",
   "salience": [
-   "supply=3yr-avg: supply is a 3-year average of DataMart completions (All Awards); the single most recent year (latest_year_supply) can run above or below it."
+   "supply=3yr-avg: supply is a 3-year average of DataMart completions (All Awards), a projection \u2014 any single year can run above or below it."
   ]
  },
  "licensing": {

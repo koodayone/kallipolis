@@ -64,32 +64,37 @@ from partnerships.quantities import gap as compute_gap, producing_tops, recent_a
 
 
 class TopSummary(BaseModel):
-    """One TOP6 in the supply treemap universe. `awards_total` /
-    `enrollment_total` are the latest-period magnitudes SUMMED across the five
-    colleges (additive supply). `soc_count` is the crosswalk cardinality — how
+    """One TOP6 in the supply treemap universe. `projected_supply` is THE supply
+    measure — awards over the recent-award-years window averaged to a year, summed
+    across colleges — the same 3-yr projection the occupation landscape and the MCP
+    use, so every surface sizes supply on one definition (not the single latest
+    year, which read high and diverged from every other supply surface).
+    `enrollment_total` is the peak-term enrollment SUMMED across colleges (a
+    leading indicator, term-scaled). `soc_count` is the crosswalk cardinality — how
     many of the twelve SVAMP SOCs this program feeds — a relationship measure,
     never a demand figure."""
     top6: str
     name: str
-    awards_total: int = 0          # Σ latest award-year awards across colleges
-    enrollment_total: int = 0      # Σ latest term enrollment across colleges
+    projected_supply: float = 0.0  # projected annual supply (3-yr-avg) Σ across colleges
+    enrollment_total: int = 0      # Σ peak-term enrollment across colleges
     soc_count: int = 0
 
 
 class ProgramCoverageCell(BaseModel):
     """One (college, TOP) cell of the supply coverage matrix — the dual of the
     occupations grid cell. The cell keys on *activity*, not catalog presence:
-    `enrolled` = the college has ENROLLED enrollment under this TOP; `awards` =
-    its latest-award-year credentials (0 if none). The frontend derives the
-    coverage level from the pair — covered = enrolled & awards (a full pipeline),
-    partial = one signal but not the other, gap = neither. A program can confer
-    (095630) or enroll (095200) without a course tagged to its own code, owing to
-    the parent-code tagging seam, and still belongs on the supply grid — catalog
+    `enrolled` = the college has ENROLLED enrollment under this TOP; `projected` =
+    its 3-yr-avg projected annual supply (the supply measure, summed for the single-
+    college lens's own-vs-consortium share). The frontend derives the coverage level
+    from the enrolled/projected pair — covered = enrolled & projected>0 (a full
+    pipeline), partial = one signal but not the other, gap = neither. A program can
+    confer (095630) or enroll (095200) without a course tagged to its own code, owing
+    to the parent-code tagging seam, and still belongs on the supply grid — catalog
     presence never gates the cell."""
     college: str
     top6: str
     enrolled: bool = False
-    awards: int = 0
+    projected: float = 0.0
 
 
 class ProgramCoverageMatrix(BaseModel):
@@ -104,6 +109,12 @@ class ProgramsLandscape(BaseModel):
     latest_award_year: str | None = None  # most recent reported award year (supply lead)
     n_colleges: int
     tops: list[TopSummary]
+    # THE canonical program-supply headline — projected annual supply over the
+    # DEDUPED feeder universe, summed once (not a re-sum of the per-TOP tiles,
+    # which each round independently and would drift). Equals the occupation
+    # landscape's combined_supply_total and the MCP member supply by construction:
+    # same window, same feeders, one round. This is the number the header reads.
+    total_supply: float = 0.0
     matrix: ProgramCoverageMatrix | None = None  # per-(college, TOP) coverage grid
     # True for rule-bearing instances (BACCC, sector-derived SMCCD): the coverage
     # cell is gated on AWARDS — enrollment without a completer is not realized
@@ -339,6 +350,7 @@ def build_programs_landscape(spec: LandscapeSpec) -> ProgramsLandscape:
         titles=titles,
         awards_rows=awards_rows,
         enroll_rows=enroll_rows,
+        award_years=recent_award_years(),
         spec=spec,
     )
 
@@ -539,6 +551,7 @@ def build_landscape_occupation(
         enroll_rows=enroll_rows,
         course_rows=course_rows,
         crosswalk=crosswalk,
+        award_years=recent_award_years(),
         spec=spec,
     )
     # Partnership Opportunities — regional employers hiring for this SOC. The
@@ -654,12 +667,19 @@ def _assemble_landscape(
     awards_rows: list[dict],
     enroll_rows: list[dict],
     *,
+    award_years: tuple[str, ...],
     spec: LandscapeSpec = SVAMP_SPEC,
 ) -> ProgramsLandscape:
-    """Size each relevant TOP by latest-period supply SUMMED across colleges.
+    """Size each relevant TOP by PROJECTED annual supply SUMMED across colleges.
 
-    awards_total = Σ over colleges of the latest reported award-year's awards
-    (annual conferred, mirroring the demand treemap's annual-openings sizing).
+    projected_supply = Σ over colleges of the program's awards over the recent-
+    award-years window, averaged to a year — the SAME 3-yr projection the occupation
+    supply (``supply``/``supply_over_socs``) and the MCP use. The single latest year
+    read ~55% high (185 vs 118 for SVAMP) and diverged from every other supply
+    surface; projecting unifies supply to ONE definition across the stack.
+    total_supply is that projection summed ONCE over the deduped feeder universe
+    (never a re-sum of the rounded per-TOP tiles), so the headline equals the
+    occupation landscape's combined_supply_total exactly.
     enrollment_total = the PEAK consortium term enrollment (max over terms of the
     across-colleges sum) — the single latest term is too sparsely reported to
     size by, whereas peak term is non-zero for any program with enrollment and
@@ -669,10 +689,21 @@ def _assemble_landscape(
     colleges = list(spec.colleges)
     latest_year = max((r["year"] for r in awards_rows if r["year"]), default=None)
 
-    awards_total: dict[str, int] = {}
+    # PROJECTED annual supply per TOP over the shared award-year window — Σ awards
+    # in-window ÷ window length, the store-level twin of ``supply_over_tops``. The
+    # window is passed in (the caller resolves recent_award_years) so this stays a
+    # pure function; dividing by len(window), not by the years that HAVE data,
+    # matches the canonical projection (a zero year still counts toward the average).
+    yrs = set(award_years)
+    n_yrs = len(award_years) or 1
+    proj_num: dict[str, int] = {}
     for r in awards_rows:
-        if r["year"] == latest_year:
-            awards_total[r["top6"]] = awards_total.get(r["top6"], 0) + (r["awards"] or 0)
+        if r["year"] in yrs:
+            proj_num[r["top6"]] = proj_num.get(r["top6"], 0) + (r["awards"] or 0)
+    projected: dict[str, float] = {t: round(v / n_yrs, 1) for t, v in proj_num.items()}
+    # Headline = one round over the whole deduped feeder universe (awards_rows are
+    # already scoped to it), NOT Σ of the per-TOP rounded tiles.
+    total_supply = round(sum(proj_num.values()) / n_yrs, 1)
 
     # Σ enrollment across colleges per (top, term), then peak term per top.
     per_top_term: dict[tuple[str, str], int] = {}
@@ -685,11 +716,15 @@ def _assemble_landscape(
     for (top6, _term), c in per_top_term.items():
         enroll_total[top6] = max(enroll_total.get(top6, 0), c)
 
-    # Per-(college, TOP) latest-year awards for the matrix cells.
-    awards_cell: dict[tuple[str, str], int] = {}
+    # Per-(college, TOP) PROJECTED annual supply — same 3-yr window as the tiles; the
+    # coverage signal (`projected > 0` ⟺ this college has a recent completer here) and
+    # the single-college lens's own-supply stat both read this.
+    cell_num: dict[tuple[str, str], int] = {}
     for r in awards_rows:
-        if r["year"] == latest_year:
-            awards_cell[(r["college"], r["top6"])] = r["awards"] or 0
+        if r["year"] in yrs:
+            k = (r["college"], r["top6"])
+            cell_num[k] = cell_num.get(k, 0) + (r["awards"] or 0)
+    cell_proj: dict[tuple[str, str], float] = {k: round(v / n_yrs, 1) for k, v in cell_num.items()}
     # Per-(college, TOP) enrollment presence — any non-excluded term with a
     # positive count. Drives the cell's "active pipeline" signal (same term
     # exclusion as enroll_total above, for consistency).
@@ -705,24 +740,25 @@ def _assemble_landscape(
         TopSummary(
             top6=top6,
             name=titles.get(top6) or top6,
-            awards_total=awards_total.get(top6, 0),
+            projected_supply=projected.get(top6, 0.0),
             enrollment_total=enroll_total.get(top6, 0),
             soc_count=len(socs),
         )
         for top6, socs in universe.items()
     ]
-    # Rank by supply (awards primary), then enrollment, then breadth — the
-    # treemap reads strongest-supply-first like the demand treemap.
-    tops.sort(key=lambda t: (-t.awards_total, -t.enrollment_total, -t.soc_count, t.top6))
+    # Rank by projected supply (the one supply measure), then enrollment, then
+    # breadth — the treemap reads strongest-supply-first like the demand treemap,
+    # and the MCP coverage surface inherits this order.
+    tops.sort(key=lambda t: (-t.projected_supply, -t.enrollment_total, -t.soc_count, t.top6))
 
     # Coverage matrix — one cell per (member college × relevant TOP), so gap
-    # cells (no enrollment, no awards) are present for the grid to render.
+    # cells (no enrollment, no supply) are present for the grid to render.
     cells = [
         ProgramCoverageCell(
             college=college,
             top6=top6,
             enrolled=(college, top6) in enrolled_cell,
-            awards=awards_cell.get((college, top6), 0),
+            projected=cell_proj.get((college, top6), 0.0),
         )
         for top6 in universe
         for college in colleges
@@ -736,6 +772,7 @@ def _assemble_landscape(
         latest_award_year=latest_year,
         n_colleges=len(colleges),
         tops=tops,
+        total_supply=total_supply,
         matrix=matrix,
         coverage_awards_only=(spec.soc_rule is not None and spec.soc_rule.active),
     )
@@ -898,13 +935,15 @@ def _assemble_occupation(
     course_rows: list[dict],
     crosswalk: dict,
     *,
+    award_years: tuple[str, ...],
     spec: LandscapeSpec = SVAMP_SPEC,
 ) -> LandscapeOccupationReport:
     """Pure assembly of the aggregated-occupation report (no I/O — supply and
     the crosswalk are computed in build_landscape_occupation and passed in).
 
     - feeding_tops: the SOC's 09 feeding TOPs, each summarized like the supply
-      treemap (awards summed across colleges latest year; peak-term enrollment).
+      treemap (projected_supply summed across colleges; peak-term enrollment) — the
+      projection over the same 3-yr window as the SOC's consortium_supply headline.
     - awards_by_college / enrollment_by_college: SUMMED over the feeding TOPs
       per college, aligned to the shared axes (the consortium's supply in the
       occupation's feeding programs). A feeding TOP that serves other SOCs
@@ -913,10 +952,16 @@ def _assemble_occupation(
     """
     colleges = list(spec.colleges)
     latest_year = max((r["year"] for r in awards_rows if r["year"]), default=None)
-    awards_total: dict[str, int] = {}
+    # Projected annual supply per feeding TOP (window passed in, kept pure) — the
+    # treemap sizes on the same supply definition as the occupation's
+    # consortium_supply headline.
+    yrs = set(award_years)
+    n_yrs = len(award_years) or 1
+    proj_num: dict[str, int] = {}
     for r in awards_rows:
-        if r["year"] == latest_year:
-            awards_total[r["top6"]] = awards_total.get(r["top6"], 0) + (r["awards"] or 0)
+        if r["year"] in yrs:
+            proj_num[r["top6"]] = proj_num.get(r["top6"], 0) + (r["awards"] or 0)
+    projected: dict[str, float] = {t: round(v / n_yrs, 1) for t, v in proj_num.items()}
     per_top_term: dict[tuple[str, str], int] = {}
     for r in enroll_rows:
         term = r["term"]
@@ -930,13 +975,13 @@ def _assemble_occupation(
     feeding_tops = [
         TopSummary(
             top6=t, name=titles.get(t) or t,
-            awards_total=awards_total.get(t, 0),
+            projected_supply=projected.get(t, 0.0),
             enrollment_total=enroll_peak.get(t, 0),
             soc_count=len(universe.get(t, set())),
         )
         for t in feeding
     ]
-    feeding_tops.sort(key=lambda x: (-x.awards_total, -x.enrollment_total, -x.soc_count, x.top6))
+    feeding_tops.sort(key=lambda x: (-x.projected_supply, -x.enrollment_total, -x.soc_count, x.top6))
 
     award_years = _award_years_axis({r["year"] for r in awards_rows if r["year"]})
     enrollment_terms = _enroll_terms_axis({r["term"] for r in enroll_rows if r["term"]})

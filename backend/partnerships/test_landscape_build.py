@@ -44,9 +44,10 @@ def _align_all_colleges_teach_first_soc():
             for c in SVAMP_COLLEGES}
 
 
-def _fake_supply(top_codes, college):
-    # Each taught (college, SOC) contributes exactly 10.0 of supply.
-    return [], 10.0
+def _fake_supply(tops, college):
+    # A college contributes 10.0 supply over any non-empty feeder set, 0 when it
+    # runs no feeder for the SOC — mirrors supply_fn_graph's empty-tops → 0.0.
+    return [], (10.0 if tops else 0.0)
 
 
 def _build():
@@ -57,6 +58,7 @@ def _build():
         align_by_college=_align_all_colleges_teach_first_soc(),
         candidate_employers=224,  # already-deduped regional union
         supply_fn=_fake_supply,
+        soc_feeding={SVAMP_SOCS[0]: {"010100"}},  # every college feeds the first SOC
     )
 
 
@@ -70,7 +72,8 @@ def test_regional_demand_counted_once_not_per_college():
 
 def test_supply_summed_across_colleges():
     land = _build()
-    # 5 colleges each teach 1 SOC at 10.0 supply -> 50.0 combined.
+    # Supply over the DEDUPED feeder union ({010100}) summed across 5 colleges at
+    # 10.0 each -> 50.0 — never a per-cell sum (which would double-count a shared feeder).
     assert land.aggregate.combined_supply_total == 50.0
 
 
@@ -108,7 +111,7 @@ def test_demand_identical_across_colleges_per_soc():
 
 def test_occupations_taught_counts_distinct_aligned_socs():
     land = _build()
-    # Only the first SOC is taught (by all colleges) -> 1 distinct taught occ.
+    # Only the first SOC has a producing feeder (supply > 0) -> 1 distinct taught occ.
     assert land.aggregate.occupations_taught == 1
 
 

@@ -37,15 +37,6 @@
       "label": "Santa Rosa Junior College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 110,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -53,6 +44,15 @@
         "status": "ok",
         "unit": "",
         "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 102.3,
         "vintage": ""
        }
       }
@@ -61,15 +61,6 @@
       "label": "City College of San Francisco",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 67,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -77,6 +68,15 @@
         "status": "ok",
         "unit": "",
         "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 76.0,
         "vintage": ""
        }
       }
@@ -85,15 +85,6 @@
       "label": "Evergreen Valley College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 64,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -102,53 +93,14 @@
         "unit": "",
         "value": "covered",
         "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "De Anza College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 49,
-        "vintage": ""
        },
-       "coverage": {
+       "projected_supply": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
         "source": "datamart",
         "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Cabrillo College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 48,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
+        "unit": "completions/yr",
+        "value": 65.0,
         "vintage": ""
        }
       }
@@ -157,15 +109,6 @@
       "label": "College of San Mateo",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 48,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -173,6 +116,39 @@
         "status": "ok",
         "unit": "",
         "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 47.3,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Cabrillo College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 44.3,
         "vintage": ""
        }
       }
@@ -181,15 +157,6 @@
       "label": "Napa Valley College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 46,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -197,23 +164,23 @@
         "status": "ok",
         "unit": "",
         "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 42.3,
         "vintage": ""
        }
       }
      },
      {
-      "label": "Los Medanos College",
+      "label": "De Anza College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 44,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -222,29 +189,14 @@
         "unit": "",
         "value": "covered",
         "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Solano Community College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 44,
-        "vintage": ""
        },
-       "coverage": {
+       "projected_supply": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
         "source": "datamart",
         "status": "ok",
-        "unit": "",
-        "value": "covered",
+        "unit": "completions/yr",
+        "value": 41.7,
         "vintage": ""
        }
       }
@@ -253,15 +205,6 @@
       "label": "College of Marin",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 40,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -269,6 +212,63 @@
         "status": "ok",
         "unit": "",
         "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 41.3,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Los Medanos College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 40.7,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Solano Community College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 38.7,
         "vintage": ""
        }
       }
@@ -277,15 +277,6 @@
       "label": "Contra Costa College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 38,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -293,23 +284,23 @@
         "status": "ok",
         "unit": "",
         "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 38.3,
         "vintage": ""
        }
       }
      },
      {
-      "label": "Mission College",
+      "label": "Ohlone College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 30,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -317,27 +308,27 @@
         "status": "ok",
         "unit": "",
         "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 29.0,
         "vintage": ""
        }
       }
      }
     ],
     "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 701,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
       "source": "derived",
       "status": "ok",
-      "unit": "colleges (latest yr)",
+      "unit": "colleges (recent)",
       "value": 16,
       "vintage": ""
      },
@@ -367,590 +358,15 @@
       "unit": "SOCs",
       "value": 1,
       "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "126100 Community Health Care Worker",
-    "roster": [
-     {
-      "label": "City College of San Francisco",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 151,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
      },
-     {
-      "label": "Berkeley City College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 29,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Cabrillo College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 22,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Foothill College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 19,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Diablo Valley College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 11,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Chabot College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 5,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Santa Rosa Junior College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 2,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Ca\u00f1ada College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 0,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "gap",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Merritt College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 0,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "gap",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Mission College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 0,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "gap",
-        "vintage": ""
-       }
-      }
-     }
-    ],
-    "values": {
-     "actual_awards": {
+     "projected_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
       "source": "datamart",
       "status": "ok",
-      "unit": "awards",
-      "value": 239,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
-     "colleges_actively_awarding": {
-      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges (latest yr)",
-      "value": 7,
-      "vintage": ""
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
-      "value": 10,
-      "vintage": ""
-     },
-     "enrollment": {
-      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled",
-      "value": 496,
-      "vintage": ""
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 1,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "124010 Dental Assistant",
-    "roster": [
-     {
-      "label": "San Jose City College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 47,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "College of Alameda",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 28,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Diablo Valley College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 28,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "College of San Mateo",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 27,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Foothill College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 25,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "College of Marin",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 22,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Santa Rosa Junior College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 17,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "City College of San Francisco",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 15,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Cabrillo College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 0,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "gap",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Contra Costa College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 0,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "gap",
-        "vintage": ""
-       }
-      }
-     }
-    ],
-    "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 209,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
-     "colleges_actively_awarding": {
-      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges (latest yr)",
-      "value": 8,
-      "vintage": ""
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
-      "value": 10,
-      "vintage": ""
-     },
-     "enrollment": {
-      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled",
-      "value": 1299,
-      "vintage": ""
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 1,
-      "vintage": ""
+      "unit": "completions/yr",
+      "value": 688.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    },
@@ -961,15 +377,6 @@
       "label": "Cabrillo College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 44,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -978,29 +385,14 @@
         "unit": "",
         "value": "covered",
         "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Ca\u00f1ada College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 31,
-        "vintage": ""
        },
-       "coverage": {
+       "projected_supply": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
         "source": "datamart",
         "status": "ok",
-        "unit": "",
-        "value": "covered",
+        "unit": "completions/yr",
+        "value": 52.0,
         "vintage": ""
        }
       }
@@ -1009,15 +401,6 @@
       "label": "City College of San Francisco",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 31,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -1025,6 +408,15 @@
         "status": "ok",
         "unit": "",
         "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 43.7,
         "vintage": ""
        }
       }
@@ -1033,15 +425,6 @@
       "label": "Santa Rosa Junior College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 27,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -1049,6 +432,39 @@
         "status": "ok",
         "unit": "",
         "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 26.7,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Ca\u00f1ada College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 24.3,
         "vintage": ""
        }
       }
@@ -1057,15 +473,6 @@
       "label": "Chabot College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 21,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -1073,6 +480,15 @@
         "status": "ok",
         "unit": "",
         "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 21.3,
         "vintage": ""
        }
       }
@@ -1081,15 +497,6 @@
       "label": "San Jose City College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 20,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -1098,29 +505,14 @@
         "unit": "",
         "value": "covered",
         "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "West Valley College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 7,
-        "vintage": ""
        },
-       "coverage": {
+       "projected_supply": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
         "source": "datamart",
         "status": "ok",
-        "unit": "",
-        "value": "covered",
+        "unit": "completions/yr",
+        "value": 20.7,
         "vintage": ""
        }
       }
@@ -1129,15 +521,6 @@
       "label": "Contra Costa College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 6,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -1145,6 +528,15 @@
         "status": "ok",
         "unit": "",
         "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 11.3,
         "vintage": ""
        }
       }
@@ -1153,15 +545,6 @@
       "label": "De Anza College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 5,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -1170,6 +553,39 @@
         "unit": "",
         "value": "covered",
         "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 8.0,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "West Valley College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 4.0,
+        "vintage": ""
        }
       }
      },
@@ -1177,22 +593,22 @@
       "label": "College of Marin",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 0,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
         "source": "datamart",
         "status": "ok",
         "unit": "",
-        "value": "gap",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 0.3,
         "vintage": ""
        }
       }
@@ -1201,15 +617,6 @@
       "label": "Merritt College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 0,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -1217,6 +624,15 @@
         "status": "ok",
         "unit": "",
         "value": "gap",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 0.0,
         "vintage": ""
        }
       }
@@ -1225,15 +641,6 @@
       "label": "Ohlone College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 0,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -1242,27 +649,27 @@
         "unit": "",
         "value": "gap",
         "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 0.0,
+        "vintage": ""
        }
       }
      }
     ],
     "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 192,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
       "source": "derived",
       "status": "ok",
-      "unit": "colleges (latest yr)",
-      "value": 9,
+      "unit": "colleges (recent)",
+      "value": 10,
       "vintage": ""
      },
      "colleges_with_program": {
@@ -1291,241 +698,25 @@
       "unit": "SOCs",
       "value": 2,
       "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 212.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    },
    {
-    "label": "120100 Health Occupations, General",
+    "label": "126100 Community Health Care Worker",
     "roster": [
-     {
-      "label": "Foothill College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 60,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Diablo Valley College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 23,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "West Valley College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 14,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Gavilan College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 11,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "partial",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Las Positas College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 11,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Chabot College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 10,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "San Jose City College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 8,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Mission College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 5,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Skyline College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 5,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "partial",
-        "vintage": ""
-       }
-      }
-     },
      {
       "label": "City College of San Francisco",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 3,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -1533,23 +724,23 @@
         "status": "ok",
         "unit": "",
         "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 109.7,
         "vintage": ""
        }
       }
      },
      {
-      "label": "Contra Costa College",
+      "label": "Berkeley City College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 3,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -1558,105 +749,14 @@
         "unit": "",
         "value": "covered",
         "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Santa Rosa Junior College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 2,
-        "vintage": ""
        },
-       "coverage": {
+       "projected_supply": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
         "source": "datamart",
         "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     }
-    ],
-    "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 156,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
-     "colleges_actively_awarding": {
-      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges (latest yr)",
-      "value": 13,
-      "vintage": ""
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
-      "value": 17,
-      "vintage": ""
-     },
-     "enrollment": {
-      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled",
-      "value": 1829,
-      "vintage": ""
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 1,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "122500 Radiologic Technology",
-    "roster": [
-     {
-      "label": "Santa Rosa Junior College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 35,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
+        "unit": "completions/yr",
+        "value": 60.3,
         "vintage": ""
        }
       }
@@ -1665,15 +765,6 @@
       "label": "Cabrillo College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 30,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -1681,6 +772,15 @@
         "status": "ok",
         "unit": "",
         "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 15.0,
         "vintage": ""
        }
       }
@@ -1689,15 +789,6 @@
       "label": "Foothill College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 26,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -1705,6 +796,63 @@
         "status": "ok",
         "unit": "",
         "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 13.3,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Diablo Valley College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 5.3,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Chabot College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 2.7,
         "vintage": ""
        }
       }
@@ -1713,15 +861,6 @@
       "label": "Merritt College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 20,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -1729,23 +868,23 @@
         "status": "ok",
         "unit": "",
         "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 1.7,
         "vintage": ""
        }
       }
      },
      {
-      "label": "City College of San Francisco",
+      "label": "Santa Rosa Junior College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 19,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -1753,6 +892,15 @@
         "status": "ok",
         "unit": "",
         "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 1.0,
         "vintage": ""
        }
       }
@@ -1761,44 +909,59 @@
       "label": "Ca\u00f1ada College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 6,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
         "source": "datamart",
         "status": "ok",
         "unit": "",
-        "value": "covered",
+        "value": "gap",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 0.0,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Mission College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 0.0,
         "vintage": ""
        }
       }
      }
     ],
     "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 136,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
       "source": "derived",
       "status": "ok",
-      "unit": "colleges (latest yr)",
-      "value": 6,
+      "unit": "colleges (recent)",
+      "value": 8,
       "vintage": ""
      },
      "colleges_with_program": {
@@ -1807,7 +970,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "colleges",
-      "value": 6,
+      "value": 10,
       "vintage": ""
      },
      "enrollment": {
@@ -1816,7 +979,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled",
-      "value": 1500,
+      "value": 496,
       "vintage": ""
      },
      "occupations_fed": {
@@ -1827,6 +990,307 @@
       "unit": "SOCs",
       "value": 1,
       "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 209.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "124010 Dental Assistant",
+    "roster": [
+     {
+      "label": "San Jose City College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 42.0,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Diablo Valley College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 29.3,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "College of Alameda",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 25.0,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "College of San Mateo",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 20.3,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Foothill College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 20.3,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "College of Marin",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 19.7,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Santa Rosa Junior College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 16.3,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "City College of San Francisco",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 15.7,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Cabrillo College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "partial",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 4.7,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Contra Costa College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 0.0,
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (recent)",
+      "value": 9,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 10,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 1299,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 1,
+      "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 193.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    },
@@ -1837,15 +1301,6 @@
       "label": "Foothill College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 50,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -1854,29 +1309,14 @@
         "unit": "",
         "value": "covered",
         "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Santa Rosa Junior College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 24,
-        "vintage": ""
        },
-       "coverage": {
+       "projected_supply": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
         "source": "datamart",
         "status": "ok",
-        "unit": "",
-        "value": "covered",
+        "unit": "completions/yr",
+        "value": 54.3,
         "vintage": ""
        }
       }
@@ -1885,15 +1325,6 @@
       "label": "Chabot College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 20,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -1901,6 +1332,39 @@
         "status": "ok",
         "unit": "",
         "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 27.7,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Santa Rosa Junior College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 23.7,
         "vintage": ""
        }
       }
@@ -1909,15 +1373,6 @@
       "label": "Diablo Valley College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 20,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -1925,6 +1380,15 @@
         "status": "ok",
         "unit": "",
         "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 19.0,
         "vintage": ""
        }
       }
@@ -1933,15 +1397,6 @@
       "label": "Cabrillo College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 19,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -1950,26 +1405,26 @@
         "unit": "",
         "value": "covered",
         "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 12.7,
+        "vintage": ""
        }
       }
      }
     ],
     "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 133,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
       "source": "derived",
       "status": "ok",
-      "unit": "colleges (latest yr)",
+      "unit": "colleges (recent)",
       "value": 5,
       "vintage": ""
      },
@@ -1999,6 +1454,551 @@
       "unit": "SOCs",
       "value": 1,
       "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 137.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "122500 Radiologic Technology",
+    "roster": [
+     {
+      "label": "Santa Rosa Junior College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 37.0,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Cabrillo College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 31.7,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Foothill College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 21.0,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "City College of San Francisco",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 19.3,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Merritt College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 16.3,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Ca\u00f1ada College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 11.0,
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (recent)",
+      "value": 6,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 6,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 1500,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 1,
+      "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 136.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "120100 Health Occupations, General",
+    "roster": [
+     {
+      "label": "Foothill College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 44.7,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Diablo Valley College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 21.7,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Las Positas College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 10.3,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "West Valley College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 9.7,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Chabot College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 9.0,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Gavilan College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "partial",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 6.7,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Contra Costa College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 5.7,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "San Jose City College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 5.0,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Skyline College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "partial",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 4.0,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "City College of San Francisco",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 2.3,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Mission College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 2.0,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Santa Rosa Junior College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 1.7,
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (recent)",
+      "value": 14,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 17,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 1829,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 1,
+      "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 124.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    },
@@ -2009,15 +2009,6 @@
       "label": "Mission College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 56,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -2026,53 +2017,14 @@
         "unit": "",
         "value": "covered",
         "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Los Medanos College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 27,
-        "vintage": ""
        },
-       "coverage": {
+       "projected_supply": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
         "source": "datamart",
         "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       }
-      }
-     },
-     {
-      "label": "Napa Valley College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 14,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "partial",
+        "unit": "completions/yr",
+        "value": 53.7,
         "vintage": ""
        }
       }
@@ -2081,15 +2033,6 @@
       "label": "City College of San Francisco",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 7,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -2097,6 +2040,39 @@
         "status": "ok",
         "unit": "",
         "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 16.7,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Los Medanos College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 15.7,
         "vintage": ""
        }
       }
@@ -2105,15 +2081,6 @@
       "label": "Gavilan College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 2,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -2122,6 +2089,39 @@
         "unit": "",
         "value": "covered",
         "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 10.7,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Napa Valley College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "partial",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 9.0,
+        "vintage": ""
        }
       }
      },
@@ -2129,15 +2129,6 @@
       "label": "Santa Rosa Junior College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 0,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
         "parent_vintages": [],
@@ -2146,26 +2137,26 @@
         "unit": "",
         "value": "gap",
         "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 0.0,
+        "vintage": ""
        }
       }
      }
     ],
     "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 106,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
       "parent_vintages": [],
       "source": "derived",
       "status": "ok",
-      "unit": "colleges (latest yr)",
+      "unit": "colleges (recent)",
       "value": 5,
       "vintage": ""
      },
@@ -2195,6 +2186,15 @@
       "unit": "SOCs",
       "value": 1,
       "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 105.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    }
@@ -2207,8 +2207,8 @@
     "source": "datamart",
     "status": "ok",
     "unit": "college\u00d7program cells",
-    "value": 88,
-    "vintage": "DataMart awards \u2014 2024-2025"
+    "value": 91,
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "gap_cells": {
     "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
@@ -2216,8 +2216,8 @@
     "source": "datamart",
     "status": "ok",
     "unit": "college\u00d7program cells",
-    "value": 476,
-    "vintage": "DataMart awards \u2014 2024-2025"
+    "value": 470,
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "member_colleges": {
     "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
@@ -2234,8 +2234,8 @@
     "source": "datamart",
     "status": "ok",
     "unit": "college\u00d7program cells",
-    "value": 8,
-    "vintage": "DataMart awards \u2014 2024-2025"
+    "value": 11,
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "programs": {
     "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
@@ -2297,9 +2297,9 @@
  ],
  "provenance": {
   "field_authority": {
-   "actual_awards": "datamart",
    "coverage": "datamart",
-   "enrollment": "datamart"
+   "enrollment": "datamart",
+   "projected_supply": "datamart"
   },
   "scope_granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
   "sources": [
@@ -2310,7 +2310,7 @@
    }
   ],
   "vintages": {
-   "actual_awards": "DataMart awards \u2014 2024-2025"
+   "projected_supply": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
   }
  },
  "view_link": {

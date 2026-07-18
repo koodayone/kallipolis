@@ -402,7 +402,7 @@
  "framing": {
   "meaning": "Greenfield demand is the set of occupations the member's region demands but the member itself supplies zero completers for \u2014 regional demand with no local pipeline. It is filtered to community-college-servable education levels, a living-wage floor, and a meaningful-openings floor, then ranked by opportunity (annual openings \u00d7 median wage). It is the complement of the member-anchored gap view: that view is scoped to occupations the member already serves; this one surfaces exactly the ones it does not.",
   "salience": [
-   "supply=3yr-avg: supply is a 3-year average of DataMart completions (All Awards); the single most recent year (latest_year_supply) can run above or below it.",
+   "supply=3yr-avg: supply is a 3-year average of DataMart completions (All Awards), a projection \u2014 any single year can run above or below it.",
    "lossy-crosswalk: the TOP\u2192CIP\u2192SOC fan-out is wide here, so program\u2194occupation alignment is approximate."
   ]
  },

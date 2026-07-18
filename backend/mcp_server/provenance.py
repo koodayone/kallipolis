@@ -34,12 +34,10 @@ AUTHORITY_BY_FIELD: dict[str, str] = {
     "typical_education": "coe",     # BLS entry-level education, carried in the COE demand file
     "occ_median_wage": "coe",       # a SOC's regional OES median wage (demand-side) — NOT a program's graduate wage
     "occ_growth_rate": "coe",       # a SOC's projected 5-yr growth (demand-side)
-    # supply — the Distinguish pair, kept as deliberately separate keys. Both are now
-    # DataMart completions (All Awards; COE's supply is the same completions on its own
-    # annual-projection method); they differ by window: projected_supply = 3-yr avg, latest = 1 yr.
+    # supply — the ONE program-supply measure: 3-yr-avg DataMart completions (All Awards; COE's
+    # supply is the same completions on its own annual-projection method). Every supply figure —
+    # dashboard total, treemap tile, per-college roster, member/regional supply — resolves here.
     "projected_supply": "datamart",     # 3-yr-avg DataMart completions, COE annual-projection method
-    "latest_year_supply": "datamart",   # the single most recent year — a trend complement
-    "actual_awards": "datamart",   # DataMart actual completions (ground truth)
     "enrollment": "datamart",
     # coverage
     "coverage": "datamart",

@@ -56,7 +56,7 @@ def _roster_summary(colleges, top6: str) -> dict:
     cells = CAN.college_roster(colleges, top6)
     return {
         "n_with_program": sum(1 for c in cells if c.has_program),
-        "n_active": sum(1 for c in cells if c.awards > 0),
+        "n_active": sum(1 for c in cells if c.projected > 0),
         "n_covered": sum(1 for c in cells if c.coverage == "covered"),
         "colleges_with_program": sorted(c.college for c in cells if c.has_program),
     }

@@ -20,15 +20,6 @@
       "label": "City College of San Francisco",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 92,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
@@ -37,26 +28,26 @@
         "unit": "",
         "value": "covered",
         "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 44.3,
+        "vintage": ""
        }
       }
      }
     ],
     "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 92,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
       "source": "derived",
       "status": "ok",
-      "unit": "colleges (latest yr)",
+      "unit": "colleges (recent)",
       "value": 1,
       "vintage": ""
      },
@@ -86,6 +77,15 @@
       "unit": "SOCs",
       "value": 3,
       "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 44.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    },
@@ -96,15 +96,6 @@
       "label": "City College of San Francisco",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 3,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
@@ -113,26 +104,26 @@
         "unit": "",
         "value": "covered",
         "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 1.7,
+        "vintage": ""
        }
       }
      }
     ],
     "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 3,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
       "source": "derived",
       "status": "ok",
-      "unit": "colleges (latest yr)",
+      "unit": "colleges (recent)",
       "value": 1,
       "vintage": ""
      },
@@ -162,6 +153,15 @@
       "unit": "SOCs",
       "value": 2,
       "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 1.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    },
@@ -172,15 +172,6 @@
       "label": "City College of San Francisco",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 1,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
@@ -189,26 +180,26 @@
         "unit": "",
         "value": "covered",
         "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 0.7,
+        "vintage": ""
        }
       }
      }
     ],
     "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 1,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
       "source": "derived",
       "status": "ok",
-      "unit": "colleges (latest yr)",
+      "unit": "colleges (recent)",
       "value": 1,
       "vintage": ""
      },
@@ -238,6 +229,91 @@
       "unit": "SOCs",
       "value": 3,
       "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "095600 Manufacturing and Industrial Technology",
+    "roster": [
+     {
+      "label": "City College of San Francisco",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "partial",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 0.3,
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (recent)",
+      "value": 1,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 1,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 0,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 4,
+      "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    },
@@ -248,15 +324,6 @@
       "label": "City College of San Francisco",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 0,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
@@ -265,26 +332,26 @@
         "unit": "",
         "value": "gap",
         "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 0.0,
+        "vintage": ""
        }
       }
      }
     ],
     "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 0,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
       "source": "derived",
       "status": "ok",
-      "unit": "colleges (latest yr)",
+      "unit": "colleges (recent)",
       "value": 0,
       "vintage": ""
      },
@@ -314,82 +381,15 @@
       "unit": "SOCs",
       "value": 1,
       "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "095600 Manufacturing and Industrial Technology",
-    "roster": [
-     {
-      "label": "City College of San Francisco",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 0,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "gap",
-        "vintage": ""
-       }
-      }
-     }
-    ],
-    "values": {
-     "actual_awards": {
+     },
+     "projected_supply": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
       "source": "datamart",
       "status": "ok",
-      "unit": "awards",
-      "value": 0,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
-     "colleges_actively_awarding": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges (latest yr)",
-      "value": 0,
-      "vintage": ""
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
-      "value": 1,
-      "vintage": ""
-     },
-     "enrollment": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled",
-      "value": 0,
-      "vintage": ""
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 4,
-      "vintage": ""
+      "unit": "completions/yr",
+      "value": 0.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    }
@@ -403,7 +403,7 @@
     "status": "ok",
     "unit": "college\u00d7program cells",
     "value": 3,
-    "vintage": "DataMart awards \u2014 2024-2025"
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "gap_cells": {
     "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
@@ -411,8 +411,8 @@
     "source": "datamart",
     "status": "ok",
     "unit": "college\u00d7program cells",
-    "value": 2,
-    "vintage": "DataMart awards \u2014 2024-2025"
+    "value": 1,
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "member_colleges": {
     "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
@@ -429,8 +429,8 @@
     "source": "datamart",
     "status": "ok",
     "unit": "college\u00d7program cells",
-    "value": 0,
-    "vintage": "DataMart awards \u2014 2024-2025"
+    "value": 1,
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "programs": {
     "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
@@ -492,9 +492,9 @@
  ],
  "provenance": {
   "field_authority": {
-   "actual_awards": "datamart",
    "coverage": "datamart",
-   "enrollment": "datamart"
+   "enrollment": "datamart",
+   "projected_supply": "datamart"
   },
   "scope_granularity": "institutional \u2014 college (\u03a3 1 colleges)",
   "sources": [
@@ -505,7 +505,7 @@
    }
   ],
   "vintages": {
-   "actual_awards": "DataMart awards \u2014 2024-2025"
+   "projected_supply": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
   }
  },
  "view_link": {

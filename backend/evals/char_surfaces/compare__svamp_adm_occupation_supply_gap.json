@@ -605,7 +605,7 @@
  "framing": {
   "meaning": "Comparison ranks a set of analogous units \u2014 a member's programs, the sector's occupations, or the region's colleges \u2014 by a chosen criterion, showing every unit's full profile sorted by that named axis. It is what turns a measure into a decision: which program is biggest or fastest-growing, which occupation is most in-demand or highest-paying, which college leads on supply. The axes admissible for each unit type are the criteria menu; rank by one and name it \u2014 never by a blended 'score'.",
   "salience": [
-   "supply=3yr-avg: supply is a 3-year average of DataMart completions (All Awards); the single most recent year (latest_year_supply) can run above or below it."
+   "supply=3yr-avg: supply is a 3-year average of DataMart completions (All Awards), a projection \u2014 any single year can run above or below it."
   ]
  },
  "licensing": {

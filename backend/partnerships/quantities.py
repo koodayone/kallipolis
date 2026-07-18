@@ -16,8 +16,8 @@ SUPPLY — the definition (settled 2026-07-11; store corrected 2026-07-12):
   DataMart award completions across the SOC's feeders, averaged over a year window.
   A feeder is a TOP6 program that (a) the colleges offer, (b) cross-walks to the SOC,
   and (c) is ``is_vocational`` (CTE) — the last clause excludes non-CTE crosswalk noise
-  (e.g. Liberal Arts 490100 → Machinists). The default window is the most recent 3 award
-  years (``projected_supply``); the single latest year is ``latest_year_supply``.
+  (e.g. Liberal Arts 490100 → Machinists). Supply is ONE measure: the projected annual
+  figure over the most recent 3 award years (``projected_supply``).
 
   COE's own method, reconstructed on better data: COE's published "Annual Projected
   Supply" (supply_by_top.csv) is literally a trailing 3-yr average of DataMart completion
@@ -182,9 +182,9 @@ def feeders(colleges, soc: str, *, spec=None) -> frozenset[str]:
 
 def supply(colleges, soc: str, *, years: tuple[str, ...] | None = None, spec=None) -> float:
     """Canonical annual supply for a SOC over a set of colleges. THE single resolution
-    path for every supply figure. Default window = most recent 3 years (projected_supply);
-    pass ``years=recent_award_years(1)`` for the latest year (latest_year_supply). ``spec``
-    selects the canonical in_scope feeder rule (adjudication A)."""
+    path for every supply figure — the projected annual figure over the most recent 3 award
+    years. ``years`` overrides the window (kept general); ``spec`` selects the canonical
+    in_scope feeder rule (adjudication A)."""
     yrs = years if years is not None else recent_award_years()
     fs = feeders(colleges, soc, spec=spec)
     if not fs or not yrs:
@@ -408,16 +408,17 @@ def wage_window() -> str:
 # AND awarded; partial = one; gap = on the books but neither). Every tool composes it, so the
 # count and the named set agree.
 
-def coverage(enrolled: bool, awards: int, *, awards_only: bool = True) -> str:
-    """Classify one (college × program) cell — THE single coverage predicate.
+def coverage(enrolled: bool, supply: float, *, awards_only: bool = True) -> str:
+    """Classify one (college × program) cell — THE single coverage predicate. ``supply`` is the
+    cell's projected annual supply (a completer in the recent window ⟺ supply > 0).
 
     Canonical (adjudication D — awards_only, matching the dashboard): covered = enrolled AND
-    awarding; a cell enrolled but not yet AWARDING is a GAP, not partial (no completer = no
-    supply); a cell awarding but no longer enrolled stays partial (real-but-thinning supply).
-    ``awards_only=False`` is the legacy 'ruleless' reading (enrolled OR awarded), retained only
+    supplying; a cell enrolled but with no completer is a GAP, not partial (no completer = no
+    supply); a cell supplying but no longer enrolled stays partial (real-but-thinning supply).
+    ``awards_only=False`` is the legacy 'ruleless' reading (enrolled OR supplying), retained only
     for an explicit in-progress view — never the default now.
-    Enrollment then only upgrades an awarding cell partial→covered, never creates partial alone."""
-    has_award = awards > 0
+    Enrollment then only upgrades a supplying cell partial→covered, never creates partial alone."""
+    has_award = supply > 0
     if awards_only:
         if has_award and enrolled:
             return "covered"
@@ -434,32 +435,35 @@ def coverage(enrolled: bool, awards: int, *, awards_only: bool = True) -> str:
 @dataclass(frozen=True)
 class CollegeCell:
     """One (college × program) supply cell — the roster atom. `college` IS the display label;
-    `awards` is the latest reported year, matching the coverage-matrix cell."""
+    `projected` is the projected annual supply (awards over the recent window ÷ window length),
+    the same supply measure as the coverage-matrix cell and the treemap."""
     college: str
     has_program: bool
     enrolled: bool
-    awards: int
+    projected: float
 
     @property
     def coverage(self) -> str:
-        # the canonical awards_only classification (adjudication D — enrolled-not-awarding is a gap)
-        return coverage(self.enrolled, self.awards)
+        # the canonical awards_only classification (adjudication D — enrolled-not-supplying is a gap)
+        return coverage(self.enrolled, self.projected)
 
 
 @lru_cache(maxsize=1024)
-def _top_roster(colleges: tuple[str, ...], top6: str, latest: str) -> tuple[CollegeCell, ...]:
+def _top_roster(colleges: tuple[str, ...], top6: str, years: tuple[str, ...]) -> tuple[CollegeCell, ...]:
     """Per-college supply cells for ONE program over the colleges — THE canonical roster.
-    Program-grain: a Program node + latest-year awards + enrollment presence (same non-excluded
-    terms as the coverage matrix). Computed once, so every tool's roster and count agree."""
+    Program-grain: a Program node + PROJECTED annual supply (awards over the window ÷ window
+    length) + enrollment presence (same non-excluded terms as the coverage matrix). Computed
+    once, so every tool's roster and count agree."""
+    n = len(years) or 1
     with get_driver().session() as s:
         prog = {r["c"] for r in s.run(
             "MATCH (p:Program) WHERE p.college IN $c AND p.top6=$t RETURN DISTINCT p.college AS c",
             c=list(colleges), t=top6).data()}
         aw = {r["c"]: r["n"] for r in s.run(
             "MATCH (p:Program)-[a:AWARDED]->(ay:AcademicYear) "
-            "WHERE p.college IN $c AND p.top6=$t AND ay.year=$y "
+            "WHERE p.college IN $c AND p.top6=$t AND ay.year IN $y "
             "RETURN p.college AS c, toInteger(sum(coalesce(a.count,0))) AS n",
-            c=list(colleges), t=top6, y=latest).data()}
+            c=list(colleges), t=top6, y=list(years)).data()}
         en_rows = s.run(
             "MATCH (p:Program)-[e:ENROLLED]->(term:Term) "
             "WHERE p.college IN $c AND p.top6=$t "
@@ -467,17 +471,18 @@ def _top_roster(colleges: tuple[str, ...], top6: str, latest: str) -> tuple[Coll
             c=list(colleges), t=top6).data()
     enrolled = {r["c"] for r in en_rows if r["n"] > 0 and r["term"] and not _term_excluded(r["term"])}
     cols = prog | enrolled | set(aw)
-    cells = [CollegeCell(college=c, has_program=c in prog, enrolled=c in enrolled, awards=aw.get(c, 0))
+    cells = [CollegeCell(college=c, has_program=c in prog, enrolled=c in enrolled,
+                         projected=round(aw.get(c, 0) / n, 1))
              for c in cols]
-    cells.sort(key=lambda x: (-x.awards, x.college))
+    cells.sort(key=lambda x: (-x.projected, x.college))
     return tuple(cells)
 
 
 def college_roster(colleges, top6: str) -> tuple[CollegeCell, ...]:
-    """The canonical per-college roster for a program, sorted by awards — includes any college
-    with a program, enrollment, or awards (never silently dropped, unlike OES suppression)."""
-    yrs = recent_award_years(1)
-    return _top_roster(tuple(sorted(set(colleges))), top6, yrs[0] if yrs else "")
+    """The canonical per-college roster for a program, sorted by projected supply — includes any
+    college with a program, enrollment, or recent supply (never silently dropped, unlike OES
+    suppression). Projected over the same recent-award-years window as every other supply figure."""
+    return _top_roster(tuple(sorted(set(colleges))), top6, recent_award_years())
 
 
 def colleges_with_program(colleges, top6: str) -> int:
@@ -487,8 +492,9 @@ def colleges_with_program(colleges, top6: str) -> int:
 
 
 def colleges_actively_awarding(colleges, top6: str) -> int:
-    """Colleges producing completers in the latest year — the stricter 'active' count."""
-    return sum(1 for c in college_roster(colleges, top6) if c.awards > 0)
+    """Colleges producing completers in the recent window — the stricter 'active' count (a college
+    with recent projected supply, vs merely offering the program)."""
+    return sum(1 for c in college_roster(colleges, top6) if c.projected > 0)
 
 
 @lru_cache(maxsize=64)
@@ -507,8 +513,9 @@ def member_sector_programs(colleges, spec) -> tuple[list[str], list[str]]:
 
     on_the_books = the member's registered programs (a Program node exists) that are in the sector's
     scope (``spec.in_scope``) AND crosswalk to at least one of the sector's occupations — a program the
-    member has on the books that prepares for the sector's jobs. graduating = the awards-active subset
-    (>0 completer in the latest year). ONE birthplace, so every tool reports the same counts (CI-02)."""
+    member has on the books that prepares for the sector's jobs. graduating = the supply-active subset
+    (>0 projected completer over the recent window). ONE birthplace, so every tool reports the same
+    counts (CI-02)."""
     sec = set(spec.socs)
     registered = sorted(member_program_tops(tuple(sorted(colleges))))
     on_the_books = sorted(t for t, socs in crosswalk_socs(registered).items()

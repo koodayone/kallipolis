@@ -10,8 +10,8 @@ behavioral spec. The three obligations are structural here:
 - **Gate** — a non-``ok`` ``status`` forces ``value=None`` (enforced by a
   validator). Absence is represented, never a zero the model could paper over.
 - **Distinguish** — conflatable quantities are separate *named* keys in the
-  ``summary``/``row`` dicts (e.g. ``projected_supply`` vs ``actual_awards``);
-  the schema never merges them.
+  ``summary``/``row`` dicts (e.g. ``projected_supply`` vs ``annual_openings`` —
+  supply vs demand); the schema never merges them.
 
 Everything is pure (no timestamps, no request ids) so serialization is
 byte-reproducible per coordinate.

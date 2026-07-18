@@ -438,7 +438,9 @@ def _assemble_landscape(
 
     - Regional demand is taken ONCE per SOC from `demand_by_soc` and summed
       across the 12 occupations — never multiplied by the college count.
-    - Supply is summed across every (college, SOC) cell (institutional).
+    - Supply is the DEDUPED-feeder consortium total (`quantities.supply_over_socs`
+      expressed through the `supply_fn` seam), NOT a per-cell sum — a TOP6 feeding
+      several SOCs is counted once, so the total equals the MCP's member supply.
     - `candidate_employers` is the pre-deduplicated regional union, passed
       through as-is (never a sum of per-cell counts).
     """
@@ -464,7 +466,6 @@ def _assemble_landscape(
         key=_term_sort_key,
     )
     colleges: list[LandscapeCollege] = []
-    combined_supply_total = 0.0
     socs_taught: set[str] = set()
     # DISTINCT (college, top6) programs in scope — combined_awards sums over
     # these once, never per-cell (a TOP6 serves multiple SOCs).
@@ -478,18 +479,19 @@ def _assemble_landscape(
             a = align.get(soc, {})
             course_count = (a.get("course_count") or 0)
             top_codes = {t for t in (a.get("top_codes") or []) if t}
-            # The SOC's full crosswalking program set (09∩CTE), independent of
-            # whether a course is tagged to each program's own code — the supply
-            # basis for both this cell's coverage and its program detail. A
-            # superset of the course-routed top_codes.
+            # The SOC's crosswalk feeder set (in_scope: is_vocational ∩ crosswalk-
+            # reaches-this-SOC ∩ not-excluded) — the ONE supply basis, independent of
+            # whether a course is tagged to each program's own code. A program that
+            # confers without a tagged course (095630 → Machinists) still supplies.
             feeding = soc_feeding.get(soc, set())
 
-            supply = 0.0
-            if top_codes:
-                _, supply = supply_fn(top_codes, college)
-            combined_supply_total += supply
-            if course_count > 0:
-                socs_taught.add(soc)
+            # Per-cell supply = this college's projected annual completions over the
+            # SOC's crosswalk feeders (NOT the course-routed top_codes, which silently
+            # dropped feeders with no tagged course). supply_fn returns the UNROUNDED
+            # per-college figure; the cell rounds for display, the aggregate sums once.
+            _, supply = supply_fn(feeding, college)
+            if supply > 0:
+                socs_taught.add(soc)   # trains for this SOC iff a feeder produces here
 
             # DataMart program actuals for the programs SUPPLYING this occupation
             # — routed off the feeding set (unioned with the course-routed
@@ -538,6 +540,20 @@ def _assemble_landscape(
                 programs=programs,
             ))
         colleges.append(LandscapeCollege(name=college, cells=cells))
+
+    # Consortium supply: projected annual completions over the DEDUPED union of the
+    # sector's crosswalk feeders — a TOP6 that feeds several SOCs is counted ONCE
+    # (summing per-cell supply double-counts it). This is quantities.supply_over_socs
+    # expressed through the injectable supply_fn seam: each college's UNROUNDED figure
+    # over the deduped feeders, summed and rounded once, so the aggregate equals the
+    # MCP's member supply and the programs-lens total exactly (the one-supply-number
+    # invariant). Per-cell supplies are correct but their sum ≠ this total, by design.
+    deduped_feeders: set[str] = set()
+    for soc in spec.socs:
+        deduped_feeders |= soc_feeding.get(soc, set())
+    combined_supply_total = round(
+        sum(supply_fn(deduped_feeders, college)[1] for college in spec.colleges), 1
+    )
 
     # Consortium awards: each scoped program counted once (institutional, but
     # de-duplicated across the SOCs a TOP6 serves), latest reported year only.

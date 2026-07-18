@@ -150,23 +150,23 @@
  ],
  "feeding_tops": [
   {
-   "awards_total": 92,
    "enrollment_total": 147,
    "name": "Electronics and Electric Technology",
+   "projected_supply": 44.3,
    "soc_count": 3,
    "top6": "093400"
   },
   {
-   "awards_total": 1,
    "enrollment_total": 52,
    "name": "Engineering Technology, General (requires Trigonometry)",
+   "projected_supply": 0.7,
    "soc_count": 3,
    "top6": "092400"
   },
   {
-   "awards_total": 0,
    "enrollment_total": 0,
    "name": "Manufacturing and Industrial Technology",
+   "projected_supply": 0.3,
    "soc_count": 4,
    "top6": "095600"
   }

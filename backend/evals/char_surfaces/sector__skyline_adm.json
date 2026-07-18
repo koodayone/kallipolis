@@ -179,7 +179,7 @@
     "vintage": ""
    },
    "member_programs_active": {
-    "granularity": "institutional \u2014 college (\u03a3 1 colleges) \u00b7 awards-active (latest-year completer)",
+    "granularity": "institutional \u2014 college (\u03a3 1 colleges) \u00b7 supply-active (recent completer)",
     "parent_vintages": [],
     "source": "derived",
     "status": "ok",
@@ -256,7 +256,7 @@
  "framing": {
   "meaning": "The sector-anchor orientation \u2014 the home base for a portfolio question, PROGRAM-FORWARD. The summary is the sector aggregate (total regional demand vs the region's projected completions, the member's supply and its share); the rows are the member's PROGRAMS in the sector, each with its completions and its addressable demand (the openings across the occupations it feeds), ranked by that market. It answers 'how is my [sector] doing, and which program should I look at' \u2014 drill a program for its occupations, or the gap tool for the occupation-level view.",
   "salience": [
-   "supply=3yr-avg: supply is a 3-year average of DataMart completions (All Awards); the single most recent year (latest_year_supply) can run above or below it."
+   "supply=3yr-avg: supply is a 3-year average of DataMart completions (All Awards), a projection \u2014 any single year can run above or below it."
   ]
  },
  "licensing": {

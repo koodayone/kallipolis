@@ -3,8 +3,8 @@
 These tests pin the response-envelope invariants that make the MCP server
 trustworthy rather than merely plausible — Bind (every fact is a QualifiedValue,
 never a bare number), Gate (a non-ok status forces value None; an unresolved
-coordinate returns an explicit marker), and Distinguish (projected_supply and
-latest_year_supply are separate keys — one DataMart source, distinct windows) —
+coordinate returns an explicit marker), and Distinguish (supply and demand are
+separate named keys — projected_supply from DataMart, annual_openings from COE) —
 plus provenance never
 invented (source read from the engine's lens map), the deterministic view-link
 mapping, the catalog adjacency edges, and byte-stable serialization. The
@@ -14,7 +14,7 @@ NEO4J_URI is reachable and skip otherwise.
 Coverage:
   - QualifiedValue.gated forces value None (Gate)
   - provenance.q attaches source from lens.FIELD_AUTHORITY and never invents one
-  - projected_supply and latest_year_supply are Distinguished by window (both datamart)
+  - supply and demand are Distinguished as separate keys (projected_supply vs annual_openings)
   - the four supply/gap tools agree at a coordinate (cross-tool referential integrity)
   - scope_catalog degrades to the 23 pinned instances without a graph
   - view_link maps each form to the right pinned/generated route + lens
@@ -74,22 +74,19 @@ def test_gate_forces_null():
 
 def test_provenance_source_from_lens_never_invented():
     assert P.q("annual_openings", 340, granularity="regional").source == "coe"
-    assert P.q("actual_awards", 8, granularity="inst").source == "datamart"
+    assert P.q("projected_supply", 8.0, granularity="inst").source == "datamart"
     # an unmapped field yields an empty source — surfaced, never guessed
     assert P.q("nonexistent_field", 1, granularity="x").source == ""
 
 
-def test_distinguish_supply_windows():
-    """Distinguish (post-canonical): projected_supply (3-yr avg) and latest_year_supply
-    (single latest year) are separate keys with the SAME DataMart source — the model must
-    track the WINDOW, not a source disagreement. COE's published supply is the same DataMart
-    completions on its own annual-projection method, so both come from datamart; actual_awards
-    stays a distinct key."""
-    for field in ("projected_supply", "latest_year_supply", "actual_awards"):
-        assert P.q(field, 1.0, granularity="inst").source == "datamart"
-    proj = P.q("projected_supply", 12.0, granularity="inst", vintage="3-yr avg (…2024-2025)")
-    latest = P.q("latest_year_supply", 8.0, granularity="inst", vintage="2024-2025")
-    assert proj.vintage != latest.vintage      # distinct windows, carried per call
+def test_distinguish_supply_from_demand():
+    """Distinguish (post-collapse): supply is ONE measure (projected_supply, 3-yr-avg DataMart
+    completions) and demand (annual_openings) is a separate named key with a DIFFERENT source
+    (COE) — the schema never merges the two, so the model can never read supply as demand or
+    vice-versa. (The former latest_year_supply / actual_awards split is gone: supply is one
+    number now.)"""
+    assert P.q("projected_supply", 12.0, granularity="inst").source == "datamart"
+    assert P.q("annual_openings", 340, granularity="regional").source == "coe"
 
 
 def test_scope_catalog_pinned_only():
@@ -201,12 +198,11 @@ def test_gap_adapter(member, sector):
     env = F.analyze_gap(member, sector)
     assert env.form == "gap" and not env.licensing.gates
     assert_bound(env)
-    # Distinguish: regional supply, the member's share, and the latest-year trend are
-    # separate keys (all DataMart completions now, via the canonical resolver). Grain:
-    # the gap denominator is REGIONAL, so regional supply always covers ≥ the member share.
+    # Distinguish: regional supply and the member's share are separate keys (both DataMart
+    # completions via the canonical resolver). Grain: the gap denominator is REGIONAL, so
+    # regional supply always covers ≥ the member share.
     assert env.data.summary["regional_supply"].source == "datamart"
     assert env.data.summary["member_supply"].source == "datamart"
-    assert env.data.summary["latest_year_supply"].source == "datamart"
     assert env.data.summary["regional_supply"].value >= env.data.summary["member_supply"].value
     # view_link resolves and every next-move coordinate re-validates in the catalog
     assert env.view_link.url and "lens=occupations" in env.view_link.url
@@ -444,11 +440,14 @@ def test_offering_referential_integrity():
     for row in (o[top], p[top], c[top]):
         assert row.roster, "a count was emitted with no roster"
         assert 0 < len(row.roster) <= cwp(row)
-        assert all(cell.values["actual_awards"].value is not None for cell in row.roster)  # never dropped
-    # (3) roster awards sum to the aggregate (full roster, past the inline cap)
+        assert all(cell.values["projected_supply"].value is not None for cell in row.roster)  # never dropped
+    # (3) the roster's projected supply reconciles with the aggregate within projection
+    # rounding — each per-college figure rounds to 0.1 and the aggregate rounds once, so the
+    # sums agree up to accumulated rounding; the point is no college is silently dropped.
     from mcp_server import canonical as CAN
     from partnerships.members import region_member
     from partnerships.resolve import resolve
     cols = region_member(resolve(S.scope_for("baccc", "health")[0]).resolve_region()).colleges
     full = CAN.college_roster(cols, top)
-    assert sum(cell.awards for cell in full) == p[top].values["actual_awards"].value
+    roster_sum = sum(cell.projected for cell in full)
+    assert abs(roster_sum - p[top].values["projected_supply"].value) <= 0.1 * len(full) + 0.1

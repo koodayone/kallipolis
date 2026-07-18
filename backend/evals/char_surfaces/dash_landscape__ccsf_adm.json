@@ -2,11 +2,11 @@
  "aggregate": {
   "candidate_employers": 146,
   "combined_awards": 96,
-  "combined_supply_total": 0.0,
-  "gap": 1900,
+  "combined_supply_total": 47.0,
+  "gap": 1853,
   "n_colleges": 1,
   "n_occupations": 6,
-  "occupations_taught": 0,
+  "occupations_taught": 6,
   "regional_demand_total": 1900
  },
  "award_years": [
@@ -26,7 +26,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 93,
-     "gap": 430,
+     "gap": 385,
      "growth_rate": -0.0,
      "programs": [
       {
@@ -170,7 +170,7 @@
       }
      ],
      "soc_code": "17-3023",
-     "supply": 0.0,
+     "supply": 45.3,
      "title": "Electrical and Electronic Engineering Technologists and Technicians"
     },
     {
@@ -180,7 +180,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 93,
-     "gap": 80,
+     "gap": 35,
      "growth_rate": -0.0,
      "programs": [
       {
@@ -324,7 +324,7 @@
       }
      ],
      "soc_code": "17-3024",
-     "supply": 0.0,
+     "supply": 45.3,
      "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
     },
     {
@@ -334,7 +334,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
-     "gap": 150,
+     "gap": 147,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -527,7 +527,7 @@
       }
      ],
      "soc_code": "17-3026",
-     "supply": 0.0,
+     "supply": 2.7,
      "title": "Industrial Engineering Technologists and Technicians"
     },
     {
@@ -591,7 +591,7 @@
       }
      ],
      "soc_code": "49-9041",
-     "supply": 0.0,
+     "supply": 0.3,
      "title": "Industrial Machinery Mechanics"
     },
     {
@@ -601,7 +601,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 3,
-     "gap": 510,
+     "gap": 508,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -655,7 +655,7 @@
       }
      ],
      "soc_code": "51-4041",
-     "supply": 0.0,
+     "supply": 1.7,
      "title": "Machinists"
     },
     {
@@ -665,7 +665,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 92,
-     "gap": 180,
+     "gap": 136,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -719,7 +719,7 @@
       }
      ],
      "soc_code": "51-9141",
-     "supply": 0.0,
+     "supply": 44.3,
      "title": "Semiconductor Processing Technicians"
     }
    ],

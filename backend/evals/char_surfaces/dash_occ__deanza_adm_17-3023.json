@@ -243,9 +243,9 @@
  ],
  "feeding_tops": [
   {
-   "awards_total": 1,
    "enrollment_total": 235,
    "name": "Manufacturing and Industrial Technology",
+   "projected_supply": 0.0,
    "soc_count": 4,
    "top6": "095600"
   }

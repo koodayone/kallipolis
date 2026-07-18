@@ -61,9 +61,9 @@
  ],
  "feeding_tops": [
   {
-   "awards_total": 4,
    "enrollment_total": 96,
    "name": "Electronics and Electric Technology",
+   "projected_supply": 4.7,
    "soc_count": 3,
    "top6": "093400"
   }

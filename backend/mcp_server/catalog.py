@@ -40,10 +40,9 @@ FORMS: dict[str, Form] = {
             "'Supply' is projected completions — COE's Annual Projected Supply method (a "
             "trailing 3-year average of DataMart completions), reconstructed on current "
             "DataMart data; it is the gap denominator, read as a projection rather than one "
-            "year's raw count (see latest_year_supply). The gap is REGIONAL; the institution's "
-            "own supply is a separate figure (its share), never the gap itself. A member's "
-            "latest-year change moves its own share, not the regional gap — do not read a "
-            "regional trend from one institution's single year."),
+            "year's raw count. The gap is REGIONAL; the institution's own supply is a separate "
+            "figure (its share), never the gap itself. A member's own supply moves its own "
+            "share, not the regional gap — do not read a regional trend from one institution."),
     ),
     "coverage": Form(
         id="coverage",
@@ -292,8 +291,8 @@ SAL_SMALL_N = (
 SAL_STALE_VINTAGE = (
     "stale-vintage: some figures predate the current cycle; state their as-of.")
 SAL_PROJECTED_NOT_ACTUAL = (
-    "supply=3yr-avg: supply is a 3-year average of DataMart completions (All Awards); "
-    "the single most recent year (latest_year_supply) can run above or below it.")
+    "supply=3yr-avg: supply is a 3-year average of DataMart completions (All Awards), a "
+    "projection — any single year can run above or below it.")
 SAL_MEMBER_ANCHORED = (
     "member-anchored: a generated member×sector view covers only occupations the member "
     "already serves with an active program — it does NOT surface greenfield demand in "

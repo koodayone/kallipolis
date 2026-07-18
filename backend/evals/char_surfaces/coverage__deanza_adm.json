@@ -20,15 +20,6 @@
       "label": "De Anza College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 49,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
@@ -37,26 +28,26 @@
         "unit": "",
         "value": "partial",
         "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 43.7,
+        "vintage": ""
        }
       }
      }
     ],
     "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 49,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
       "source": "derived",
       "status": "ok",
-      "unit": "colleges (latest yr)",
+      "unit": "colleges (recent)",
       "value": 1,
       "vintage": ""
      },
@@ -86,6 +77,15 @@
       "unit": "SOCs",
       "value": 2,
       "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 43.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    },
@@ -96,15 +96,6 @@
       "label": "De Anza College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 10,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
@@ -113,26 +104,26 @@
         "unit": "",
         "value": "covered",
         "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 15.3,
+        "vintage": ""
        }
       }
      }
     ],
     "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 10,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
       "source": "derived",
       "status": "ok",
-      "unit": "colleges (latest yr)",
+      "unit": "colleges (recent)",
       "value": 1,
       "vintage": ""
      },
@@ -162,6 +153,15 @@
       "unit": "SOCs",
       "value": 1,
       "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 15.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    },
@@ -172,15 +172,6 @@
       "label": "De Anza College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 2,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
@@ -189,26 +180,26 @@
         "unit": "",
         "value": "partial",
         "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 2.7,
+        "vintage": ""
        }
       }
      }
     ],
     "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 2,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
       "source": "derived",
       "status": "ok",
-      "unit": "colleges (latest yr)",
+      "unit": "colleges (recent)",
       "value": 1,
       "vintage": ""
      },
@@ -238,6 +229,15 @@
       "unit": "SOCs",
       "value": 1,
       "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 2.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    },
@@ -248,15 +248,6 @@
       "label": "De Anza College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 0,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
         "parent_vintages": [],
@@ -265,26 +256,26 @@
         "unit": "",
         "value": "gap",
         "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 0.0,
+        "vintage": ""
        }
       }
      }
     ],
     "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 0,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
       "parent_vintages": [],
       "source": "derived",
       "status": "ok",
-      "unit": "colleges (latest yr)",
+      "unit": "colleges (recent)",
       "value": 0,
       "vintage": ""
      },
@@ -314,6 +305,15 @@
       "unit": "SOCs",
       "value": 4,
       "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    }
@@ -327,7 +327,7 @@
     "status": "ok",
     "unit": "college\u00d7program cells",
     "value": 1,
-    "vintage": "DataMart awards \u2014 2024-2025"
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "gap_cells": {
     "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
@@ -336,7 +336,7 @@
     "status": "ok",
     "unit": "college\u00d7program cells",
     "value": 1,
-    "vintage": "DataMart awards \u2014 2024-2025"
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "member_colleges": {
     "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
@@ -354,7 +354,7 @@
     "status": "ok",
     "unit": "college\u00d7program cells",
     "value": 2,
-    "vintage": "DataMart awards \u2014 2024-2025"
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "programs": {
     "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
@@ -416,9 +416,9 @@
  ],
  "provenance": {
   "field_authority": {
-   "actual_awards": "datamart",
    "coverage": "datamart",
-   "enrollment": "datamart"
+   "enrollment": "datamart",
+   "projected_supply": "datamart"
   },
   "scope_granularity": "institutional \u2014 college (\u03a3 1 colleges)",
   "sources": [
@@ -429,7 +429,7 @@
    }
   ],
   "vintages": {
-   "actual_awards": "DataMart awards \u2014 2024-2025"
+   "projected_supply": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
   }
  },
  "view_link": {

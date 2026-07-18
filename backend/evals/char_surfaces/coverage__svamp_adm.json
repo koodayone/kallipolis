@@ -31,21 +31,88 @@
   },
   "rows": [
    {
+    "label": "095630 Machining and Machine Tools",
+    "roster": [
+     {
+      "label": "De Anza College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "partial",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 43.7,
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (recent)",
+      "value": 1,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 1,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 0,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 4,
+      "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 43.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
     "label": "095600 Manufacturing and Industrial Technology",
     "roster": [
      {
       "label": "Ohlone College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 77,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
         "parent_vintages": [],
@@ -54,6 +121,15 @@
         "unit": "",
         "value": "covered",
         "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 31.3,
+        "vintage": ""
        }
       }
      },
@@ -61,15 +137,6 @@
       "label": "De Anza College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 0,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
         "parent_vintages": [],
@@ -77,6 +144,15 @@
         "status": "ok",
         "unit": "",
         "value": "gap",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 0.0,
         "vintage": ""
        }
       }
@@ -85,15 +161,6 @@
       "label": "Evergreen Valley College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 0,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
         "parent_vintages": [],
@@ -102,26 +169,26 @@
         "unit": "",
         "value": "gap",
         "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 0.0,
+        "vintage": ""
        }
       }
      }
     ],
     "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 77,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
       "parent_vintages": [],
       "source": "derived",
       "status": "ok",
-      "unit": "colleges (latest yr)",
+      "unit": "colleges (recent)",
       "value": 1,
       "vintage": ""
      },
@@ -151,82 +218,15 @@
       "unit": "SOCs",
       "value": 7,
       "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "095630 Machining and Machine Tools",
-    "roster": [
-     {
-      "label": "De Anza College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 49,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "partial",
-        "vintage": ""
-       }
-      }
-     }
-    ],
-    "values": {
-     "actual_awards": {
+     },
+     "projected_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
       "parent_vintages": [],
       "source": "datamart",
       "status": "ok",
-      "unit": "awards",
-      "value": 49,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
-     "colleges_actively_awarding": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges (latest yr)",
-      "value": 1,
-      "vintage": ""
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
-      "value": 1,
-      "vintage": ""
-     },
-     "enrollment": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled",
-      "value": 0,
-      "vintage": ""
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 4,
-      "vintage": ""
+      "unit": "completions/yr",
+      "value": 31.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    },
@@ -234,42 +234,9 @@
     "label": "094610 Energy Systems Technology",
     "roster": [
      {
-      "label": "Foothill College",
-      "roster": [],
-      "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 20,
-        "vintage": ""
-       },
-       "coverage": {
-        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "partial",
-        "vintage": ""
-       }
-      }
-     },
-     {
       "label": "De Anza College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 10,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
         "parent_vintages": [],
@@ -278,26 +245,50 @@
         "unit": "",
         "value": "covered",
         "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 15.3,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Foothill College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "partial",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 10.7,
+        "vintage": ""
        }
       }
      }
     ],
     "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 30,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
       "parent_vintages": [],
       "source": "derived",
       "status": "ok",
-      "unit": "colleges (latest yr)",
+      "unit": "colleges (recent)",
       "value": 2,
       "vintage": ""
      },
@@ -327,6 +318,15 @@
       "unit": "SOCs",
       "value": 3,
       "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 26.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    },
@@ -337,15 +337,6 @@
       "label": "Foothill College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 17,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
         "parent_vintages": [],
@@ -354,26 +345,26 @@
         "unit": "",
         "value": "covered",
         "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 9.0,
+        "vintage": ""
        }
       }
      }
     ],
     "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 17,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
       "parent_vintages": [],
       "source": "derived",
       "status": "ok",
-      "unit": "colleges (latest yr)",
+      "unit": "colleges (recent)",
       "value": 1,
       "vintage": ""
      },
@@ -403,6 +394,15 @@
       "unit": "SOCs",
       "value": 8,
       "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 9.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    },
@@ -413,15 +413,6 @@
       "label": "Mission College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 10,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
         "parent_vintages": [],
@@ -430,26 +421,26 @@
         "unit": "",
         "value": "covered",
         "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 5.3,
+        "vintage": ""
        }
       }
      }
     ],
     "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 10,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
       "parent_vintages": [],
       "source": "derived",
       "status": "ok",
-      "unit": "colleges (latest yr)",
+      "unit": "colleges (recent)",
       "value": 1,
       "vintage": ""
      },
@@ -479,6 +470,15 @@
       "unit": "SOCs",
       "value": 4,
       "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 5.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    },
@@ -489,15 +489,6 @@
       "label": "De Anza College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 2,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
         "parent_vintages": [],
@@ -506,26 +497,26 @@
         "unit": "",
         "value": "partial",
         "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 2.7,
+        "vintage": ""
        }
       }
      }
     ],
     "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 2,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
       "parent_vintages": [],
       "source": "derived",
       "status": "ok",
-      "unit": "colleges (latest yr)",
+      "unit": "colleges (recent)",
       "value": 1,
       "vintage": ""
      },
@@ -555,6 +546,15 @@
       "unit": "SOCs",
       "value": 1,
       "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 2.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    },
@@ -565,44 +565,35 @@
       "label": "Ohlone College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 0,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
         "parent_vintages": [],
         "source": "datamart",
         "status": "ok",
         "unit": "",
-        "value": "gap",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 0.3,
         "vintage": ""
        }
       }
      }
     ],
     "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 0,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
       "parent_vintages": [],
       "source": "derived",
       "status": "ok",
-      "unit": "colleges (latest yr)",
-      "value": 0,
+      "unit": "colleges (recent)",
+      "value": 1,
       "vintage": ""
      },
      "colleges_with_program": {
@@ -631,6 +622,15 @@
       "unit": "SOCs",
       "value": 5,
       "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    },
@@ -641,15 +641,6 @@
       "label": "Ohlone College",
       "roster": [],
       "values": {
-       "actual_awards": {
-        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "awards (latest yr)",
-        "value": 0,
-        "vintage": ""
-       },
        "coverage": {
         "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
         "parent_vintages": [],
@@ -658,26 +649,26 @@
         "unit": "",
         "value": "gap",
         "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 0.0,
+        "vintage": ""
        }
       }
      }
     ],
     "values": {
-     "actual_awards": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "awards",
-      "value": 0,
-      "vintage": "DataMart awards \u2014 2024-2025"
-     },
      "colleges_actively_awarding": {
       "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
       "parent_vintages": [],
       "source": "derived",
       "status": "ok",
-      "unit": "colleges (latest yr)",
+      "unit": "colleges (recent)",
       "value": 0,
       "vintage": ""
      },
@@ -707,6 +698,15 @@
       "unit": "SOCs",
       "value": 1,
       "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    }
@@ -719,8 +719,8 @@
     "source": "datamart",
     "status": "ok",
     "unit": "college\u00d7program cells",
-    "value": 4,
-    "vintage": "DataMart awards \u2014 2024-2025"
+    "value": 5,
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "gap_cells": {
     "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
@@ -728,8 +728,8 @@
     "source": "datamart",
     "status": "ok",
     "unit": "college\u00d7program cells",
-    "value": 43,
-    "vintage": "DataMart awards \u2014 2024-2025"
+    "value": 42,
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "member_colleges": {
     "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
@@ -747,7 +747,7 @@
     "status": "ok",
     "unit": "college\u00d7program cells",
     "value": 3,
-    "vintage": "DataMart awards \u2014 2024-2025"
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "programs": {
     "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
@@ -809,9 +809,9 @@
  ],
  "provenance": {
   "field_authority": {
-   "actual_awards": "datamart",
    "coverage": "datamart",
-   "enrollment": "datamart"
+   "enrollment": "datamart",
+   "projected_supply": "datamart"
   },
   "scope_granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
   "sources": [
@@ -822,7 +822,7 @@
    }
   ],
   "vintages": {
-   "actual_awards": "DataMart awards \u2014 2024-2025"
+   "projected_supply": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
   }
  },
  "view_link": {

@@ -2,11 +2,11 @@
  "aggregate": {
   "candidate_employers": 146,
   "combined_awards": 61,
-  "combined_supply_total": 0.0,
-  "gap": 1720,
+  "combined_supply_total": 61.7,
+  "gap": 1658,
   "n_colleges": 1,
   "n_occupations": 5,
-  "occupations_taught": 0,
+  "occupations_taught": 3,
   "regional_demand_total": 1720
  },
  "award_years": [
@@ -164,7 +164,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 51,
-     "gap": 150,
+     "gap": 104,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -306,7 +306,7 @@
       }
      ],
      "soc_code": "17-3026",
-     "supply": 0.0,
+     "supply": 46.3,
      "title": "Industrial Engineering Technologists and Technicians"
     },
     {
@@ -316,7 +316,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 10,
-     "gap": 550,
+     "gap": 535,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -421,7 +421,7 @@
       }
      ],
      "soc_code": "49-9041",
-     "supply": 0.0,
+     "supply": 15.3,
      "title": "Industrial Machinery Mechanics"
     },
     {
@@ -431,7 +431,7 @@
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 49,
-     "gap": 510,
+     "gap": 466,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -490,7 +490,7 @@
       }
      ],
      "soc_code": "51-4041",
-     "supply": 0.0,
+     "supply": 43.7,
      "title": "Machinists"
     }
    ],

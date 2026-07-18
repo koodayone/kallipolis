@@ -2,11 +2,11 @@
  "aggregate": {
   "candidate_employers": 171,
   "combined_awards": 185,
-  "combined_supply_total": 0.0,
-  "gap": 2700,
+  "combined_supply_total": 118.3,
+  "gap": 2582,
   "n_colleges": 5,
   "n_occupations": 12,
-  "occupations_taught": 0,
+  "occupations_taught": 12,
   "regional_demand_total": 2700
  },
  "award_years": [
@@ -166,7 +166,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 51,
-     "gap": 150,
+     "gap": 104,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -311,7 +311,7 @@
       }
      ],
      "soc_code": "17-3026",
-     "supply": 0.0,
+     "supply": 46.3,
      "title": "Industrial Engineering Technologists and Technicians"
     },
     {
@@ -405,7 +405,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 10,
-     "gap": 220,
+     "gap": 205,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -512,7 +512,7 @@
       }
      ],
      "soc_code": "17-3029",
-     "supply": 0.0,
+     "supply": 15.3,
      "title": "Engineering Technologists and Technicians, Except Drafters, All Other"
     },
     {
@@ -522,7 +522,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 10,
-     "gap": 550,
+     "gap": 535,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -629,7 +629,7 @@
       }
      ],
      "soc_code": "49-9041",
-     "supply": 0.0,
+     "supply": 15.3,
      "title": "Industrial Machinery Mechanics"
     },
     {
@@ -639,7 +639,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 10,
-     "gap": 70,
+     "gap": 55,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -746,7 +746,7 @@
       }
      ],
      "soc_code": "49-9043",
-     "supply": 0.0,
+     "supply": 15.3,
      "title": "Maintenance Workers, Machinery"
     },
     {
@@ -756,7 +756,7 @@
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 49,
-     "gap": 510,
+     "gap": 466,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -816,7 +816,7 @@
       }
      ],
      "soc_code": "51-4041",
-     "supply": 0.0,
+     "supply": 43.7,
      "title": "Machinists"
     },
     {
@@ -840,7 +840,7 @@
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 49,
-     "gap": 300,
+     "gap": 256,
      "growth_rate": -0.0,
      "programs": [
       {
@@ -900,7 +900,7 @@
       }
      ],
      "soc_code": "51-9161",
-     "supply": 0.0,
+     "supply": 43.7,
      "title": "Computer Numerically Controlled Tool Operators"
     },
     {
@@ -910,7 +910,7 @@
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 49,
-     "gap": 60,
+     "gap": 16,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -970,7 +970,7 @@
       }
      ],
      "soc_code": "51-9162",
-     "supply": 0.0,
+     "supply": 43.7,
      "title": "Computer Numerically Controlled Tool Programmers"
     }
    ],
@@ -1785,7 +1785,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 17,
-     "gap": 430,
+     "gap": 421,
      "growth_rate": -0.0,
      "programs": [
       {
@@ -1837,7 +1837,7 @@
       }
      ],
      "soc_code": "17-3023",
-     "supply": 0.0,
+     "supply": 9.0,
      "title": "Electrical and Electronic Engineering Technologists and Technicians"
     },
     {
@@ -1847,7 +1847,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 17,
-     "gap": 80,
+     "gap": 71,
      "growth_rate": -0.0,
      "programs": [
       {
@@ -1899,7 +1899,7 @@
       }
      ],
      "soc_code": "17-3024",
-     "supply": 0.0,
+     "supply": 9.0,
      "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
     },
     {
@@ -1909,7 +1909,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 17,
-     "gap": 150,
+     "gap": 141,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -1961,7 +1961,7 @@
       }
      ],
      "soc_code": "17-3026",
-     "supply": 0.0,
+     "supply": 9.0,
      "title": "Industrial Engineering Technologists and Technicians"
     },
     {
@@ -1971,7 +1971,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 17,
-     "gap": 110,
+     "gap": 101,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -2023,7 +2023,7 @@
       }
      ],
      "soc_code": "17-3027",
-     "supply": 0.0,
+     "supply": 9.0,
      "title": "Mechanical Engineering Technologists and Technicians"
     },
     {
@@ -2033,7 +2033,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 17,
-     "gap": 40,
+     "gap": 31,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -2085,7 +2085,7 @@
       }
      ],
      "soc_code": "17-3028",
-     "supply": 0.0,
+     "supply": 9.0,
      "title": "Calibration Technologists and Technicians"
     },
     {
@@ -2095,7 +2095,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 37,
-     "gap": 220,
+     "gap": 200,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -2241,7 +2241,7 @@
       }
      ],
      "soc_code": "17-3029",
-     "supply": 0.0,
+     "supply": 19.7,
      "title": "Engineering Technologists and Technicians, Except Drafters, All Other"
     },
     {
@@ -2251,7 +2251,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 37,
-     "gap": 550,
+     "gap": 530,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -2350,7 +2350,7 @@
       }
      ],
      "soc_code": "49-9041",
-     "supply": 0.0,
+     "supply": 19.7,
      "title": "Industrial Machinery Mechanics"
     },
     {
@@ -2360,7 +2360,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 37,
-     "gap": 70,
+     "gap": 50,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -2459,7 +2459,7 @@
       }
      ],
      "soc_code": "49-9043",
-     "supply": 0.0,
+     "supply": 19.7,
      "title": "Maintenance Workers, Machinery"
     },
     {
@@ -2544,7 +2544,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 10,
-     "gap": 80,
+     "gap": 75,
      "growth_rate": -0.0,
      "programs": [
       {
@@ -2579,7 +2579,7 @@
       }
      ],
      "soc_code": "17-3024",
-     "supply": 0.0,
+     "supply": 5.3,
      "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
     },
     {
@@ -2645,7 +2645,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 10,
-     "gap": 550,
+     "gap": 545,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -2680,7 +2680,7 @@
       }
      ],
      "soc_code": "49-9041",
-     "supply": 0.0,
+     "supply": 5.3,
      "title": "Industrial Machinery Mechanics"
     },
     {
@@ -2690,7 +2690,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 10,
-     "gap": 70,
+     "gap": 65,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -2725,7 +2725,7 @@
       }
      ],
      "soc_code": "49-9043",
-     "supply": 0.0,
+     "supply": 5.3,
      "title": "Maintenance Workers, Machinery"
     },
     {
@@ -2749,7 +2749,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 10,
-     "gap": 180,
+     "gap": 175,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -2784,7 +2784,7 @@
       }
      ],
      "soc_code": "51-9141",
-     "supply": 0.0,
+     "supply": 5.3,
      "title": "Semiconductor Processing Technicians"
     },
     {
@@ -2827,7 +2827,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 77,
-     "gap": 430,
+     "gap": 398,
      "growth_rate": -0.0,
      "programs": [
       {
@@ -2989,7 +2989,7 @@
       }
      ],
      "soc_code": "17-3023",
-     "supply": 0.0,
+     "supply": 31.7,
      "title": "Electrical and Electronic Engineering Technologists and Technicians"
     },
     {
@@ -2999,7 +2999,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 77,
-     "gap": 80,
+     "gap": 48,
      "growth_rate": -0.0,
      "programs": [
       {
@@ -3161,7 +3161,7 @@
       }
      ],
      "soc_code": "17-3024",
-     "supply": 0.0,
+     "supply": 31.7,
      "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
     },
     {
@@ -3171,7 +3171,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 77,
-     "gap": 150,
+     "gap": 119,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -3278,7 +3278,7 @@
       }
      ],
      "soc_code": "17-3026",
-     "supply": 0.0,
+     "supply": 31.3,
      "title": "Industrial Engineering Technologists and Technicians"
     },
     {
@@ -3288,7 +3288,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 77,
-     "gap": 110,
+     "gap": 79,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -3395,7 +3395,7 @@
       }
      ],
      "soc_code": "17-3027",
-     "supply": 0.0,
+     "supply": 31.3,
      "title": "Mechanical Engineering Technologists and Technicians"
     },
     {
@@ -3465,7 +3465,7 @@
       }
      ],
      "soc_code": "17-3028",
-     "supply": 0.0,
+     "supply": 0.3,
      "title": "Calibration Technologists and Technicians"
     },
     {
@@ -3475,7 +3475,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 77,
-     "gap": 220,
+     "gap": 188,
      "growth_rate": 0.0,
      "programs": [
       {
@@ -3667,7 +3667,7 @@
       }
      ],
      "soc_code": "17-3029",
-     "supply": 0.0,
+     "supply": 31.7,
      "title": "Engineering Technologists and Technicians, Except Drafters, All Other"
     },
     {
@@ -3677,7 +3677,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 77,
-     "gap": 550,
+     "gap": 519,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -3737,7 +3737,7 @@
       }
      ],
      "soc_code": "49-9041",
-     "supply": 0.0,
+     "supply": 31.3,
      "title": "Industrial Machinery Mechanics"
     },
     {
@@ -3747,7 +3747,7 @@
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 77,
-     "gap": 70,
+     "gap": 39,
      "growth_rate": 0.1,
      "programs": [
       {
@@ -3807,7 +3807,7 @@
       }
      ],
      "soc_code": "49-9043",
-     "supply": 0.0,
+     "supply": 31.3,
      "title": "Maintenance Workers, Machinery"
     },
     {
@@ -3891,7 +3891,7 @@
       }
      ],
      "soc_code": "51-9141",
-     "supply": 0.0,
+     "supply": 0.3,
      "title": "Semiconductor Processing Technicians"
     },
     {

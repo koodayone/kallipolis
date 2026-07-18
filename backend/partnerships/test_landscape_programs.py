@@ -6,11 +6,16 @@ never summed across the SOCs a program feeds). These tests pin that on the pure
 assembly functions, with no graph or filesystem I/O.
 
 Coverage:
-  - Landscape: awards_total summed across colleges; latest-year only (not older)
+  - Landscape: projected_supply is THE supply measure — awards over the passed
+    award-year window ÷ window length, summed across colleges (the same supply
+    definition as the occupation landscape and the MCP); years outside the window
+    are excluded, and a zero year still counts toward the divisor
+  - Landscape: total_supply is that projection over the whole feeder universe,
+    rounded once (never a re-sum of the per-TOP tiles)
   - Landscape: coverage matrix keys on activity — per-(college, TOP) enrolled +
-    latest-year awards (covered = both, partial = one, gap = neither), with a
-    cell present for every member college and an awards-only program (no tagged
-    course / no enrollment) still reading partial rather than vanishing
+    projected>0 (covered = both, partial = one, gap = neither), with a cell present
+    for every member college and a supplying-only program (no tagged course / no
+    enrollment) still reading partial rather than vanishing
   - Report: each crosswalk SOC's demand taken once (not summed across SOCs, not
     multiplied by college count)
   - Report: awards series are per-college and additive to the consortium total
@@ -81,7 +86,10 @@ def test_crosswalk_taught_scope_consortium_union_vs_single_college():
     assert _crosswalk_taught_scope("Ohlone College", colleges) == ("Ohlone College", None)
 
 
-def test_landscape_awards_total_summed_across_colleges_latest_year_only():
+def test_landscape_projected_supply_over_window():
+    # projected_supply = in-window awards ((10 + 5) + 99 = 114) ÷ 3 window years =
+    # 38.0; the older 2019-2020 (1000) is outside the window and excluded; a zero
+    # year (2022-2023) still counts toward the divisor of 3.
     land = _assemble_landscape(
         region="Bay", region_display="Bay Area",
         universe={"095600": {"49-9041"}},
@@ -90,18 +98,21 @@ def test_landscape_awards_total_summed_across_colleges_latest_year_only():
             {"college": "De Anza College", "top6": "095600", "year": "2024-2025", "awards": 10},
             {"college": "Ohlone College", "top6": "095600", "year": "2024-2025", "awards": 5},
             {"college": "De Anza College", "top6": "095600", "year": "2023-2024", "awards": 99},
+            {"college": "De Anza College", "top6": "095600", "year": "2019-2020", "awards": 1000},
         ],
         enroll_rows=[],
+        award_years=("2024-2025", "2023-2024", "2022-2023"),
     )
     t = land.tops[0]
-    assert t.awards_total == 15          # 10 + 5 latest year (not the older 99)
+    assert t.projected_supply == 38.0    # (15 + 99) / 3 window years; older 1000 excluded
+    assert land.total_supply == 38.0     # headline = one round over the feeder universe
     assert t.soc_count == 1              # crosswalk cardinality, not demand
 
 
 def test_landscape_coverage_matrix_keys_on_activity_per_cell():
-    # Activity, not catalog: De Anza enrolled + conferring → covered; Ohlone
-    # enrolled, no awards → partial; Foothill confers but no enrollment (the
-    # 095630-style awards-only case) → partial, NOT gap; the rest → gap. Every
+    # Activity, not catalog: De Anza enrolled + supplying → covered; Ohlone
+    # enrolled, no supply → partial; Foothill supplies but no enrollment (the
+    # 095630-style supply-only case) → partial, NOT gap; the rest → gap. Every
     # member college gets a cell.
     land = _assemble_landscape(
         region="Bay", region_display="Bay Area",
@@ -115,17 +126,18 @@ def test_landscape_coverage_matrix_keys_on_activity_per_cell():
             {"college": "De Anza College", "top6": "095600", "term": "Fall 2024", "count": 50},
             {"college": "Ohlone College", "top6": "095600", "term": "Fall 2024", "count": 30},
         ],
+        award_years=("2024-2025", "2023-2024", "2022-2023"),
     )
     cells = {(c.college, c.top6): c for c in land.matrix.cells}
     assert len(land.matrix.cells) == len(SVAMP_COLLEGES)   # one cell per college
     deanza = cells[("De Anza College", "095600")]
-    assert (deanza.enrolled, deanza.awards > 0) == (True, True)    # covered
+    assert (deanza.enrolled, deanza.projected > 0) == (True, True)    # covered
     ohlone = cells[("Ohlone College", "095600")]
-    assert (ohlone.enrolled, ohlone.awards > 0) == (True, False)   # partial (enroll only)
+    assert (ohlone.enrolled, ohlone.projected > 0) == (True, False)   # partial (enroll only)
     foothill = cells[("Foothill College", "095600")]
-    assert (foothill.enrolled, foothill.awards > 0) == (False, True)  # partial (awards only)
+    assert (foothill.enrolled, foothill.projected > 0) == (False, True)  # partial (supply only)
     mission = cells[("Mission College", "095600")]
-    assert (mission.enrolled, mission.awards > 0) == (False, False)   # gap
+    assert (mission.enrolled, mission.projected > 0) == (False, False)   # gap
 
 
 def _report():
@@ -328,14 +340,15 @@ def test_occupation_gap_wage_and_feeding_supply():
              "name": "Intro", "description": "", "learning_outcomes": [], "top_code": "094800"},
         ],
         crosswalk={"tops": [], "cips": [], "n_taught": 0, "n_total": 0, "coverage_pct": 0.0},
+        award_years=("2024-2025", "2023-2024", "2022-2023"),
     )
     assert rep.gap == 180                  # 300 openings − 120 supply (occupation owns the gap)
     assert rep.annual_wage == 72000        # occupation-grain wage, not a program aggregate
     assert rep.employment == 15000         # regional current employment carried through
     fmap = {t.top6: t for t in rep.feeding_tops}
     assert set(fmap) == {"094800", "095600"}      # both 09 feeding TOPs
-    assert fmap["094800"].awards_total == 200
-    assert fmap["095600"].awards_total == 50      # 20 + 30 across colleges
+    assert fmap["094800"].projected_supply == 66.7  # 200 / 3 window years (projected)
+    assert fmap["095600"].projected_supply == 16.7  # (20 + 30) / 3 across colleges (projected)
     assert fmap["094800"].soc_count == 2          # serves >1 SOC; counted in full, not split
     aby = {s.college: sum(v or 0 for v in s.vals) for s in rep.awards_by_college}
     assert aby == {"De Anza College": 220, "Ohlone College": 30}   # Σ over feeding TOPs per college

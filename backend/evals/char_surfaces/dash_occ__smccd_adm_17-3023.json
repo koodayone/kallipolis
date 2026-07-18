@@ -97,16 +97,16 @@
  ],
  "feeding_tops": [
   {
-   "awards_total": 4,
    "enrollment_total": 130,
    "name": "Electronics and Electric Technology",
+   "projected_supply": 9.7,
    "soc_count": 3,
    "top6": "093400"
   },
   {
-   "awards_total": 0,
    "enrollment_total": 0,
    "name": "Engineering Technology, General (requires Trigonometry)",
+   "projected_supply": 0.3,
    "soc_count": 3,
    "top6": "092400"
   }
