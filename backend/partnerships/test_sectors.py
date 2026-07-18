@@ -63,9 +63,12 @@ class TestSectorRegistry:
         assert "51-4041" in SECTORS["adm"].socs        # Machinists
 
     def test_total_soc_rows(self):
-        # The full generated middle-skill set (no hand-deletions — ecu curation is
-        # now a declarative SectorRule applied at build time, not CSV row removal).
-        assert sum(len(v) for v in _load_sector_socs().values()) == 312
+        # sector_socs.csv is the baccc_sectors categorization of every occupation in
+        # the 314 middle-skill universe — so its row count equals the universe (all
+        # 314 sectored, 1:1, no orphans). (Was 312: the two "Below Middle Skill"
+        # driving occupations the universe keeps but the sector-file skill filter
+        # dropped were added back under atl.)
+        assert sum(len(v) for v in _load_sector_socs().values()) == 314
 
     def test_registry_and_data_agree(self):
         # Every registered sector has SOCs, and every data sector is registered.

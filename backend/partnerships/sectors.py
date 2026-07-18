@@ -12,9 +12,21 @@ crosswalk reaches to the sector's SOCs. So a sector is, fundamentally, a SOC set
 plus presentation identity — composed with a MemberSet (landscape.py) into a
 `member × sector` landscape instance whose id/route is "{member}-{sector}".
 
-Source of truth: data/sector_socs.csv is derived from ~/Desktop/cc_dataset/
-baccc_sectors/ (the per-sector COE crosstabs), Skill Level == "Middle Skill".
-non_cte_stem is intentionally absent — it has zero middle-skill SOCs.
+Source of truth + derivation (defensible, reproducible — not a hand-list):
+data/sector_socs.csv is the JOIN of two COE Bay Region publications —
+  - WHICH occupations: the middle-skill universe (ontology/occupational_demand_
+    middle_skill.csv, the 314 occupations occupations.json is generated from);
+  - WHICH sector: the per-sector crosstabs in ~/Desktop/cc_dataset/baccc_sectors/
+    (one file per CCCO sector; the files partition SOCs 1:1, so file == sector).
+For every occupation in the universe, its sector is the baccc_sectors file it
+appears in. This categorizes ALL 314 (verified: universe ⊆ baccc_sectors, files
+disjoint), so the sector set exactly covers the universe with no orphans. We do
+NOT re-apply the sector files' "Middle Skill" skill-level filter — the universe
+already scopes middle-skill, and re-filtering there dropped in-demand, CC-served
+occupations the universe keeps (e.g. School Bus / Shuttle Drivers, fed by the
+vocational Truck-and-Bus-Driving program, tagged "Below Middle Skill" in the
+sector file but present in the demand universe). non_cte_stem is intentionally
+absent — no universe occupation maps to it.
 """
 
 from __future__ import annotations
