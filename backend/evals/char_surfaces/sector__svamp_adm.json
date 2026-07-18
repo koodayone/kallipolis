@@ -375,7 +375,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 6989,
+    "value": 6879,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "in_demand_occupations": {
@@ -438,7 +438,7 @@
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 8150,
+    "value": 8040,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
    },
    "regional_supply": {
@@ -456,7 +456,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "SOCs",
-    "value": 49,
+    "value": 45,
     "vintage": ""
    },
    "served_occupations": {

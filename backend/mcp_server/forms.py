@@ -372,7 +372,7 @@ def analyze_pathway(member: str, sector: str, *, program: Optional[str] = None,
         region = rspec.resolve_region()
         region_colleges = list(region_member(region).colleges)
         region_disp = COE_REGION_DISPLAY.get(region, region)
-        sector_socs = list(SECTORS[entry["sector_id"]].socs)
+        sector_socs = list(SECTORS[entry["sector_id"]].addressable_socs)
         prog_socs = sorted(CAN.program_socs(program, within=sector_socs))
         with get_driver().session() as session:
             demand = regional_demand(session, region, prog_socs)
@@ -860,7 +860,7 @@ def member_portfolio(member: str) -> AnalysisEnvelope:
     member_colleges, region_colleges = sel.member_colleges, sel.region_colleges
 
     # Each sector's occupations, and the DISTINCT union across sectors (Regime A across sectors too).
-    sector_socs = {e["sector_id"]: list(SECTORS[e["sector_id"]].socs) for e in sects}
+    sector_socs = {e["sector_id"]: list(SECTORS[e["sector_id"]].addressable_socs) for e in sects}
     all_socs = sorted({s for socs in sector_socs.values() for s in socs})
 
     # Each sector's canonical spec — the SAME in_scope feeder rule sector_overview resolves — so a

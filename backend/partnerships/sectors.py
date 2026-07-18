@@ -100,6 +100,22 @@ class Sector:
     def socs(self) -> tuple[str, ...]:
         return _load_sector_socs().get(self.id, ())
 
+    @property
+    def addressable_socs(self) -> tuple[str, ...]:
+        """The SWP-addressable subset of `socs`: the sector occupations that have a
+        CTE crosswalk pathway (reachable from a PCAH-CTE TOP via TOP→CIP→SOC). The
+        non-reachable remainder are members of the occupation universe (COE middle-
+        skill) with real regional demand but NO community-college program pathway in
+        the crosswalk — they belong to the sector taxonomically (`socs`) yet are not
+        Strong-Workforce program-building targets, so the demand / supply / gap
+        analysis reads this set, not the raw `socs`. Membership authority is the COE
+        middle-skill occupation set; addressability authority is the TOP-CIP-SOC
+        crosswalk. (Occupation→sector MEMBERSHIP lookups keep reading `socs`, the
+        taxonomy: an occupation still *belongs* to its sector even with no pathway.)"""
+        from ontology.crosswalks import cte_reachable_socs
+        reachable = cte_reachable_socs()
+        return tuple(s for s in self.socs if s in reachable)
+
 
 # id → (label, accent). SOCs join from sector_socs.csv by id; identity lives in
 # code. Accents are placeholder industry colors pending design confirmation.

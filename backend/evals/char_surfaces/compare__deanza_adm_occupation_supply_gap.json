@@ -14,20 +14,20 @@
   "more": {
    "drill": {
     "coordinate": {
-     "entity": "51-9071",
+     "entity": "19-5012",
      "lens": "",
      "member": "deanza",
      "member_label": "De Anza College",
      "region": "Bay",
      "sector": "",
      "sector_label": "",
-     "soc": "51-9071",
+     "soc": "19-5012",
      "top6": null
     },
     "form": "navigate",
-    "rationale": "39 more occupations to compare."
+    "rationale": "37 more occupations to compare."
    },
-   "remaining": 39
+   "remaining": 37
   },
   "rows": [
    {
@@ -596,7 +596,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "occupations",
-    "value": 47,
+    "value": 45,
     "vintage": ""
    }
   }

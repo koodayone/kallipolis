@@ -64,7 +64,7 @@ def select(member: str, sector: str) -> Optional[Selection]:
         member_colleges=list(rspec.colleges),
         region_colleges=list(region_member(region).colleges),
         sector_id=sid,
-        sector_socs=list(SECTORS[sid].socs),
+        sector_socs=list(SECTORS[sid].addressable_socs),
         sector_label=SECTORS[sid].label,
     )
 
