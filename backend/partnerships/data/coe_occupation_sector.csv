@@ -1,0 +1,797 @@
+soc,sector_id,coe_skill_level,title
+17-2061,adm,Above Middle Skill,Computer Hardware Engineers
+17-2071,adm,Above Middle Skill,Electrical Engineers
+17-2112,adm,Above Middle Skill,Industrial Engineers
+17-2131,adm,Above Middle Skill,Materials Engineers
+17-2141,adm,Above Middle Skill,Mechanical Engineers
+17-3012,adm,Middle Skill,Electrical and Electronics Drafters
+17-3013,adm,Middle Skill,Mechanical Drafters
+17-3019,adm,Middle Skill,"Drafters, All Other"
+17-3023,adm,Middle Skill,Electrical and Electronic Engineering Technologists and Technicians
+17-3024,adm,Middle Skill,Electro-Mechanical and Mechatronics Technologists and Technicians
+17-3026,adm,Middle Skill,Industrial Engineering Technologists and Technicians
+17-3027,adm,Middle Skill,Mechanical Engineering Technologists and Technicians
+17-3028,adm,Middle Skill,Calibration Technologists and Technicians
+17-3029,adm,Middle Skill,"Engineering Technologists and Technicians, Except Drafters, All Other"
+19-2032,adm,Above Middle Skill,Materials Scientists
+19-5011,adm,Above Middle Skill,Occupational Health and Safety Specialists
+19-5012,adm,Middle Skill,Occupational Health and Safety Technicians
+27-1021,adm,Above Middle Skill,Commercial and Industrial Designers
+27-1027,adm,Above Middle Skill,Set and Exhibit Designers
+43-5111,adm,Below Middle Skill,"Weighers, Measurers, Checkers, and Samplers, Recordkeeping"
+49-2011,adm,Middle Skill,"Computer, Automated Teller, and Office Machine Repairers"
+49-2092,adm,Middle Skill,"Electric Motor, Power Tool, and Related Repairers"
+49-2094,adm,Middle Skill,"Electrical and Electronics Repairers, Commercial and Industrial Equipment"
+49-9012,adm,Middle Skill,"Control and Valve Installers and Repairers, Except Mechanical Door"
+49-9031,adm,Middle Skill,Home Appliance Repairers
+49-9041,adm,Middle Skill,Industrial Machinery Mechanics
+49-9043,adm,Middle Skill,"Maintenance Workers, Machinery"
+49-9044,adm,Middle Skill,Millwrights
+49-9063,adm,Middle Skill,Musical Instrument Repairers and Tuners
+49-9064,adm,Middle Skill,Watch and Clock Repairers
+49-9069,adm,Middle Skill,"Precision Instrument and Equipment Repairers, All Other"
+49-9091,adm,Below Middle Skill,"Coin, Vending, and Amusement Machine Servicers and Repairers"
+49-9094,adm,Middle Skill,Locksmiths and Safe Repairers
+51-1011,adm,Middle Skill,First-Line Supervisors of Production and Operating Workers
+51-2021,adm,Below Middle Skill,"Coil Winders, Tapers, and Finishers"
+51-2028,adm,Middle Skill,"Electrical, Electronic, and Electromechanical Assemblers, Except Coil Winders, Tapers, and Finishers"
+51-2031,adm,Below Middle Skill,Engine and Other Machine Assemblers
+51-2041,adm,Below Middle Skill,Structural Metal Fabricators and Fitters
+51-2051,adm,Below Middle Skill,Fiberglass Laminators and Fabricators
+51-2061,adm,Below Middle Skill,Timing Device Assemblers and Adjusters
+51-2098,adm,Below Middle Skill,Miscellaneous Assemblers and Fabricators
+51-3022,adm,Below Middle Skill,"Meat, Poultry, and Fish Cutters and Trimmers"
+51-3023,adm,Below Middle Skill,Slaughterers and Meat Packers
+51-3091,adm,Below Middle Skill,"Food and Tobacco Roasting, Baking, and Drying Machine Operators and Tenders"
+51-3092,adm,Below Middle Skill,Food Batchmakers
+51-3093,adm,Below Middle Skill,Food Cooking Machine Operators and Tenders
+51-3099,adm,Below Middle Skill,"Food Processing Workers, All Other"
+51-4021,adm,Below Middle Skill,"Extruding and Drawing Machine Setters, Operators, and Tenders, Metal and Plastic"
+51-4022,adm,Below Middle Skill,"Forging Machine Setters, Operators, and Tenders, Metal and Plastic"
+51-4023,adm,Below Middle Skill,"Rolling Machine Setters, Operators, and Tenders, Metal and Plastic"
+51-4031,adm,Middle Skill,"Cutting, Punching, and Press Machine Setters, Operators, and Tenders, Metal and Plastic"
+51-4032,adm,Middle Skill,"Drilling and Boring Machine Tool Setters, Operators, and Tenders, Metal and Plastic"
+51-4033,adm,Middle Skill,"Grinding, Lapping, Polishing, and Buffing Machine Tool Setters, Operators, and Tenders, Metal and Plastic"
+51-4034,adm,Middle Skill,"Lathe and Turning Machine Tool Setters, Operators, and Tenders, Metal and Plastic"
+51-4035,adm,Middle Skill,"Milling and Planing Machine Setters, Operators, and Tenders, Metal and Plastic"
+51-4041,adm,Middle Skill,Machinists
+51-4051,adm,Below Middle Skill,Metal-Refining Furnace Operators and Tenders
+51-4052,adm,Below Middle Skill,"Pourers and Casters, Metal"
+51-4061,adm,Below Middle Skill,"Model Makers, Metal and Plastic"
+51-4062,adm,Below Middle Skill,"Patternmakers, Metal and Plastic"
+51-4071,adm,Below Middle Skill,Foundry Mold and Coremakers
+51-4072,adm,Below Middle Skill,"Molding, Coremaking, and Casting Machine Setters, Operators, and Tenders, Metal and Plastic"
+51-4081,adm,Middle Skill,"Multiple Machine Tool Setters, Operators, and Tenders, Metal and Plastic"
+51-4111,adm,Middle Skill,Tool and Die Makers
+51-4121,adm,Middle Skill,"Welders, Cutters, Solderers, and Brazers"
+51-4122,adm,Middle Skill,"Welding, Soldering, and Brazing Machine Setters, Operators, and Tenders"
+51-4191,adm,Below Middle Skill,"Heat Treating Equipment Setters, Operators, and Tenders, Metal and Plastic"
+51-4192,adm,Below Middle Skill,"Layout Workers, Metal and Plastic"
+51-4193,adm,Below Middle Skill,"Plating Machine Setters, Operators, and Tenders, Metal and Plastic"
+51-4194,adm,Below Middle Skill,"Tool Grinders, Filers, and Sharpeners"
+51-4199,adm,Middle Skill,"Metal Workers and Plastic Workers, All Other"
+51-5111,adm,Middle Skill,Prepress Technicians and Workers
+51-5112,adm,Middle Skill,Printing Press Operators
+51-5113,adm,Below Middle Skill,Print Binding and Finishing Workers
+51-6031,adm,Below Middle Skill,Sewing Machine Operators
+51-6041,adm,Below Middle Skill,Shoe and Leather Workers and Repairers
+51-6042,adm,Below Middle Skill,Shoe Machine Operators and Tenders
+51-6051,adm,Below Middle Skill,"Sewers, Hand"
+51-6052,adm,Below Middle Skill,"Tailors, Dressmakers, and Custom Sewers"
+51-6061,adm,Below Middle Skill,Textile Bleaching and Dyeing Machine Operators and Tenders
+51-6062,adm,Below Middle Skill,"Textile Cutting Machine Setters, Operators, and Tenders"
+51-6063,adm,Below Middle Skill,"Textile Knitting and Weaving Machine Setters, Operators, and Tenders"
+51-6064,adm,Below Middle Skill,"Textile Winding, Twisting, and Drawing Out Machine Setters, Operators, and Tenders"
+51-6091,adm,Below Middle Skill,"Extruding and Forming Machine Setters, Operators, and Tenders, Synthetic and Glass Fibers"
+51-6092,adm,Below Middle Skill,Fabric and Apparel Patternmakers
+51-6099,adm,Below Middle Skill,"Textile, Apparel, and Furnishings Workers, All Other"
+51-7021,adm,Below Middle Skill,Furniture Finishers
+51-7031,adm,Middle Skill,"Model Makers, Wood"
+51-7032,adm,Middle Skill,"Patternmakers, Wood"
+51-7041,adm,Middle Skill,"Sawing Machine Setters, Operators, and Tenders, Wood"
+51-7042,adm,Middle Skill,"Woodworking Machine Setters, Operators, and Tenders, Except Sawing"
+51-7099,adm,Middle Skill,"Woodworkers, All Other"
+51-9012,adm,Below Middle Skill,"Separating, Filtering, Clarifying, Precipitating, and Still Machine Setters, Operators, and Tenders"
+51-9021,adm,Below Middle Skill,"Crushing, Grinding, and Polishing Machine Setters, Operators, and Tenders"
+51-9022,adm,Below Middle Skill,"Grinding and Polishing Workers, Hand"
+51-9023,adm,Below Middle Skill,"Mixing and Blending Machine Setters, Operators, and Tenders"
+51-9031,adm,Below Middle Skill,"Cutters and Trimmers, Hand"
+51-9032,adm,Below Middle Skill,"Cutting and Slicing Machine Setters, Operators, and Tenders"
+51-9041,adm,Below Middle Skill,"Extruding, Forming, Pressing, and Compacting Machine Setters, Operators, and Tenders"
+51-9051,adm,Below Middle Skill,"Furnace, Kiln, Oven, Drier, and Kettle Operators and Tenders"
+51-9061,adm,Middle Skill,"Inspectors, Testers, Sorters, Samplers, and Weighers"
+51-9071,adm,Middle Skill,Jewelers and Precious Stone and Metal Workers
+51-9083,adm,Middle Skill,Ophthalmic Laboratory Technicians
+51-9111,adm,Below Middle Skill,Packaging and Filling Machine Operators and Tenders
+51-9123,adm,Below Middle Skill,"Painting, Coating, and Decorating Workers"
+51-9124,adm,Below Middle Skill,"Coating, Painting, and Spraying Machine Setters, Operators, and Tenders"
+51-9141,adm,Middle Skill,Semiconductor Processing Technicians
+51-9161,adm,Middle Skill,Computer Numerically Controlled Tool Operators
+51-9162,adm,Middle Skill,Computer Numerically Controlled Tool Programmers
+51-9191,adm,Below Middle Skill,Adhesive Bonding Machine Operators and Tenders
+51-9192,adm,Below Middle Skill,"Cleaning, Washing, and Metal Pickling Equipment Operators and Tenders"
+51-9193,adm,Below Middle Skill,Cooling and Freezing Equipment Operators and Tenders
+51-9194,adm,Below Middle Skill,Etchers and Engravers
+51-9195,adm,Middle Skill,"Molders, Shapers, and Casters, Except Metal and Plastic"
+51-9196,adm,Below Middle Skill,"Paper Goods Machine Setters, Operators, and Tenders"
+51-9197,adm,Below Middle Skill,Tire Builders
+51-9198,adm,Below Middle Skill,Helpers--Production Workers
+51-9199,adm,Below Middle Skill,"Production Workers, All Other"
+53-7011,adm,Below Middle Skill,Conveyor Operators and Tenders
+53-7063,adm,Below Middle Skill,Machine Feeders and Offbearers
+53-7064,adm,Below Middle Skill,"Packers and Packagers, Hand"
+11-9013,agwet,Middle Skill,"Farmers, Ranchers, and Other Agricultural Managers"
+13-1074,agwet,Below Middle Skill,Farm Labor Contractors
+17-2021,agwet,Above Middle Skill,Agricultural Engineers
+17-2081,agwet,Above Middle Skill,Environmental Engineers
+17-2111,agwet,Above Middle Skill,"Health and Safety Engineers, Except Mining Safety Engineers and Inspectors"
+17-3025,agwet,Middle Skill,Environmental Engineering Technologists and Technicians
+19-1011,agwet,Above Middle Skill,Animal Scientists
+19-1012,agwet,Above Middle Skill,Food Scientists and Technologists
+19-1013,agwet,Above Middle Skill,Soil and Plant Scientists
+19-1023,agwet,Above Middle Skill,Zoologists and Wildlife Biologists
+19-1031,agwet,Above Middle Skill,Conservation Scientists
+19-1032,agwet,Above Middle Skill,Foresters
+19-4012,agwet,Middle Skill,Agricultural Technicians
+19-4013,agwet,Middle Skill,Food Science Technicians
+19-4071,agwet,Middle Skill,Forest and Conservation Technicians
+25-9021,agwet,Above Middle Skill,Farm and Home Management Educators
+27-1023,agwet,Middle Skill,Floral Designers
+29-1131,agwet,Above Middle Skill,Veterinarians
+29-2056,agwet,Middle Skill,Veterinary Technologists and Technicians
+31-9096,agwet,Middle Skill,Veterinary Assistants and Laboratory Animal Caretakers
+37-1012,agwet,Middle Skill,"First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+37-2021,agwet,Below Middle Skill,Pest Control Workers
+37-3011,agwet,Below Middle Skill,Landscaping and Groundskeeping Workers
+37-3012,agwet,Middle Skill,"Pesticide Handlers, Sprayers, and Applicators, Vegetation"
+37-3013,agwet,Below Middle Skill,Tree Trimmers and Pruners
+39-2011,agwet,Middle Skill,Animal Trainers
+39-2021,agwet,Below Middle Skill,Animal Caretakers
+45-1011,agwet,Middle Skill,"First-Line Supervisors of Farming, Fishing, and Forestry Workers"
+45-2011,agwet,Middle Skill,Agricultural Inspectors
+45-2021,agwet,Below Middle Skill,Animal Breeders
+45-2041,agwet,Below Middle Skill,"Graders and Sorters, Agricultural Products"
+45-2091,agwet,Below Middle Skill,Agricultural Equipment Operators
+45-2092,agwet,Below Middle Skill,"Farmworkers and Laborers, Crop, Nursery, and Greenhouse"
+45-2093,agwet,Below Middle Skill,"Farmworkers, Farm, Ranch, and Aquacultural Animals"
+45-2099,agwet,Below Middle Skill,"Agricultural Workers, All Other"
+45-3031,agwet,Below Middle Skill,Fishing and Hunting Workers
+45-4011,agwet,Middle Skill,Forest and Conservation Workers
+45-4021,agwet,Below Middle Skill,Fallers
+45-4022,agwet,Below Middle Skill,Logging Equipment Operators
+45-4023,agwet,Below Middle Skill,Log Graders and Scalers
+45-4029,agwet,Below Middle Skill,"Logging Workers, All Other"
+47-4041,agwet,Middle Skill,Hazardous Materials Removal Workers
+49-3041,agwet,Middle Skill,Farm Equipment Mechanics and Service Technicians
+53-7081,agwet,Below Middle Skill,Refuse and Recyclable Material Collectors
+11-3071,atl,Middle Skill,"Transportation, Storage, and Distribution Managers"
+13-1081,atl,Middle Skill,Logisticians
+17-3021,atl,Middle Skill,Aerospace Engineering and Operations Technologists and Technicians
+43-5011,atl,Middle Skill,Cargo and Freight Agents
+43-5021,atl,Below Middle Skill,Couriers and Messengers
+43-5032,atl,Below Middle Skill,"Dispatchers, Except Police, Fire, and Ambulance"
+43-5061,atl,Middle Skill,"Production, Planning, and Expediting Clerks"
+43-5071,atl,Below Middle Skill,"Shipping, Receiving, and Inventory Clerks"
+49-1011,atl,Middle Skill,"First-Line Supervisors of Mechanics, Installers, and Repairers"
+49-2091,atl,Middle Skill,Avionics Technicians
+49-2093,atl,Middle Skill,"Electrical and Electronics Installers and Repairers, Transportation Equipment"
+49-2096,atl,Middle Skill,"Electronic Equipment Installers and Repairers, Motor Vehicles"
+49-3011,atl,Middle Skill,Aircraft Mechanics and Service Technicians
+49-3021,atl,Middle Skill,Automotive Body and Related Repairers
+49-3022,atl,Below Middle Skill,Automotive Glass Installers and Repairers
+49-3023,atl,Middle Skill,Automotive Service Technicians and Mechanics
+49-3031,atl,Middle Skill,Bus and Truck Mechanics and Diesel Engine Specialists
+49-3042,atl,Middle Skill,"Mobile Heavy Equipment Mechanics, Except Engines"
+49-3043,atl,Middle Skill,Rail Car Repairers
+49-3051,atl,Middle Skill,Motorboat Mechanics and Service Technicians
+49-3052,atl,Middle Skill,Motorcycle Mechanics
+49-3053,atl,Middle Skill,Outdoor Power Equipment and Other Small Engine Mechanics
+49-3091,atl,Below Middle Skill,Bicycle Repairers
+49-3092,atl,Middle Skill,Recreational Vehicle Service Technicians
+49-3093,atl,Below Middle Skill,Tire Repairers and Changers
+49-9097,atl,Below Middle Skill,Signal and Track Switch Repairers
+51-2011,atl,Middle Skill,"Aircraft Structure, Surfaces, Rigging, and Systems Assemblers"
+51-6093,atl,Below Middle Skill,Upholsterers
+53-1041,atl,Middle Skill,Aircraft Cargo Handling Supervisors
+53-1047,atl,Middle Skill,"First-Line Supervisors of Transportation and Material Moving Workers, Except Aircraft Cargo Handling Supervisors"
+53-2011,atl,Above Middle Skill,"Airline Pilots, Copilots, and Flight Engineers"
+53-2012,atl,Middle Skill,Commercial Pilots
+53-2021,atl,Middle Skill,Air Traffic Controllers
+53-2022,atl,Middle Skill,Airfield Operations Specialists
+53-3031,atl,Below Middle Skill,Driver/Sales Workers
+53-3032,atl,Middle Skill,Heavy and Tractor-Trailer Truck Drivers
+53-3033,atl,Below Middle Skill,Light Truck Drivers
+53-3051,atl,Below Middle Skill,"Bus Drivers, School"
+53-3052,atl,Middle Skill,"Bus Drivers, Transit and Intercity"
+53-3053,atl,Below Middle Skill,Shuttle Drivers and Chauffeurs
+53-3054,atl,Below Middle Skill,Taxi Drivers
+53-3099,atl,Below Middle Skill,"Motor Vehicle Operators, All Other"
+53-4011,atl,Middle Skill,Locomotive Engineers
+53-4013,atl,Middle Skill,"Rail Yard Engineers, Dinkey Operators, and Hostlers"
+53-4022,atl,Middle Skill,"Railroad Brake, Signal, and Switch Operators and Locomotive Firers"
+53-4031,atl,Middle Skill,Railroad Conductors and Yardmasters
+53-4041,atl,Middle Skill,Subway and Streetcar Operators
+53-4099,atl,Middle Skill,"Rail Transportation Workers, All Other"
+53-5011,atl,Below Middle Skill,Sailors and Marine Oilers
+53-5021,atl,Middle Skill,"Captains, Mates, and Pilots of Water Vessels"
+53-5022,atl,Middle Skill,Motorboat Operators
+53-5031,atl,Middle Skill,Ship Engineers
+53-6011,atl,Below Middle Skill,Bridge and Lock Tenders
+53-6021,atl,Below Middle Skill,Parking Attendants
+53-6031,atl,Below Middle Skill,Automotive and Watercraft Service Attendants
+53-6032,atl,Below Middle Skill,Aircraft Service Attendants
+53-6041,atl,Below Middle Skill,Traffic Technicians
+53-6051,atl,Middle Skill,Transportation Inspectors
+53-6061,atl,Below Middle Skill,Passenger Attendants
+53-6099,atl,Below Middle Skill,"Transportation Workers, All Other"
+53-7021,atl,Middle Skill,Crane and Tower Operators
+53-7051,atl,Below Middle Skill,Industrial Truck and Tractor Operators
+53-7061,atl,Below Middle Skill,Cleaners of Vehicles and Equipment
+53-7062,atl,Below Middle Skill,"Laborers and Freight, Stock, and Material Movers, Hand"
+53-7065,atl,Below Middle Skill,Stockers and Order Fillers
+53-7072,atl,Below Middle Skill,"Pump Operators, Except Wellhead Pumpers"
+53-7121,atl,Below Middle Skill,"Tank Car, Truck, and Ship Loaders"
+53-7199,atl,Below Middle Skill,"Material Moving Workers, All Other"
+11-9121,biotech,Above Middle Skill,Natural Sciences Managers
+17-2031,biotech,Above Middle Skill,Bioengineers and Biomedical Engineers
+17-2041,biotech,Above Middle Skill,Chemical Engineers
+19-1029,biotech,Above Middle Skill,"Biological Scientists, All Other"
+19-4021,biotech,Middle Skill,Biological Technicians
+19-4031,biotech,Middle Skill,Chemical Technicians
+19-4099,biotech,Middle Skill,"Life, Physical, and Social Science Technicians, All Other"
+31-9097,biotech,Middle Skill,Phlebotomists
+49-9062,biotech,Middle Skill,Medical Equipment Repairers
+51-8091,biotech,Middle Skill,Chemical Plant and System Operators
+51-9011,biotech,Middle Skill,Chemical Equipment Operators and Tenders
+11-1011,business,Above Middle Skill,Chief Executives
+11-1021,business,Middle Skill,General and Operations Managers
+11-2011,business,Above Middle Skill,Advertising and Promotions Managers
+11-2021,business,Above Middle Skill,Marketing Managers
+11-2022,business,Above Middle Skill,Sales Managers
+11-2032,business,Above Middle Skill,Public Relations Managers
+11-2033,business,Above Middle Skill,Fundraising Managers
+11-3012,business,Middle Skill,Administrative Services Managers
+11-3013,business,Middle Skill,Facilities Managers
+11-3031,business,Above Middle Skill,Financial Managers
+11-3051,business,Above Middle Skill,Industrial Production Managers
+11-3061,business,Above Middle Skill,Purchasing Managers
+11-3111,business,Above Middle Skill,Compensation and Benefits Managers
+11-3121,business,Above Middle Skill,Human Resources Managers
+11-3131,business,Above Middle Skill,Training and Development Managers
+11-9072,business,Above Middle Skill,"Entertainment and Recreation Managers, Except Gambling"
+11-9141,business,Middle Skill,"Property, Real Estate, and Community Association Managers"
+11-9151,business,Above Middle Skill,Social and Community Service Managers
+11-9171,business,Middle Skill,Funeral Home Managers
+11-9179,business,Above Middle Skill,"Personal Service Managers, All Other"
+11-9199,business,Above Middle Skill,"Managers, All Other"
+13-1011,business,Above Middle Skill,"Agents and Business Managers of Artists, Performers, and Athletes"
+13-1028,business,Middle Skill,Buyers and Purchasing Agents
+13-1031,business,Middle Skill,"Claims Adjusters, Examiners, and Investigators"
+13-1032,business,Middle Skill,"Insurance Appraisers, Auto Damage"
+13-1051,business,Middle Skill,Cost Estimators
+13-1071,business,Above Middle Skill,Human Resources Specialists
+13-1075,business,Above Middle Skill,Labor Relations Specialists
+13-1082,business,Above Middle Skill,Project Management Specialists
+13-1111,business,Above Middle Skill,Management Analysts
+13-1131,business,Above Middle Skill,Fundraisers
+13-1141,business,Above Middle Skill,"Compensation, Benefits, and Job Analysis Specialists"
+13-1161,business,Above Middle Skill,Market Research Analysts and Marketing Specialists
+13-1199,business,Above Middle Skill,"Business Operations Specialists, All Other"
+13-2011,business,Above Middle Skill,Accountants and Auditors
+13-2028,business,Middle Skill,Property Appraisers and Assessors
+13-2031,business,Above Middle Skill,Budget Analysts
+13-2041,business,Above Middle Skill,Credit Analysts
+13-2051,business,Above Middle Skill,Financial and Investment Analysts
+13-2052,business,Above Middle Skill,Personal Financial Advisors
+13-2053,business,Above Middle Skill,Insurance Underwriters
+13-2054,business,Above Middle Skill,Financial Risk Specialists
+13-2061,business,Above Middle Skill,Financial Examiners
+13-2071,business,Above Middle Skill,Credit Counselors
+13-2072,business,Above Middle Skill,Loan Officers
+13-2081,business,Above Middle Skill,"Tax Examiners and Collectors, and Revenue Agents"
+13-2082,business,Middle Skill,Tax Preparers
+13-2099,business,Above Middle Skill,"Financial Specialists, All Other"
+15-2011,business,Above Middle Skill,Actuaries
+15-2031,business,Above Middle Skill,Operations Research Analysts
+19-3032,business,Above Middle Skill,Industrial-Organizational Psychologists
+23-2093,business,Middle Skill,"Title Examiners, Abstractors, and Searchers"
+27-3031,business,Above Middle Skill,Public Relations Specialists
+39-4011,business,Middle Skill,Embalmers
+39-4012,business,Below Middle Skill,Crematory Operators
+39-4021,business,Below Middle Skill,Funeral Attendants
+39-4031,business,Middle Skill,"Morticians, Undertakers, and Funeral Arrangers"
+39-5011,business,Middle Skill,Barbers
+39-5012,business,Middle Skill,"Hairdressers, Hairstylists, and Cosmetologists"
+39-5091,business,Middle Skill,"Makeup Artists, Theatrical and Performance"
+39-5092,business,Middle Skill,Manicurists and Pedicurists
+39-5093,business,Below Middle Skill,Shampooers
+39-5094,business,Middle Skill,Skincare Specialists
+39-9099,business,Below Middle Skill,"Personal Care and Service Workers, All Other"
+41-1012,business,Middle Skill,First-Line Supervisors of Non-Retail Sales Workers
+41-2011,business,Below Middle Skill,Cashiers
+41-2021,business,Below Middle Skill,Counter and Rental Clerks
+41-2022,business,Below Middle Skill,Parts Salespersons
+41-3011,business,Middle Skill,Advertising Sales Agents
+41-3021,business,Middle Skill,Insurance Sales Agents
+41-3031,business,Above Middle Skill,"Securities, Commodities, and Financial Services Sales Agents"
+41-3091,business,Below Middle Skill,"Sales Representatives of Services, Except Advertising, Insurance, Financial Services, and Travel"
+41-4011,business,Above Middle Skill,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products"
+41-4012,business,Middle Skill,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products"
+41-9012,business,Below Middle Skill,Models
+41-9021,business,Middle Skill,Real Estate Brokers
+41-9022,business,Middle Skill,Real Estate Sales Agents
+41-9031,business,Above Middle Skill,Sales Engineers
+41-9041,business,Below Middle Skill,Telemarketers
+41-9091,business,Below Middle Skill,"Door-to-Door Sales Workers, News and Street Vendors, and Related Workers"
+41-9099,business,Middle Skill,"Sales and Related Workers, All Other"
+43-1011,business,Middle Skill,First-Line Supervisors of Office and Administrative Support Workers
+43-2011,business,Below Middle Skill,"Switchboard Operators, Including Answering Service"
+43-3011,business,Middle Skill,Bill and Account Collectors
+43-3021,business,Below Middle Skill,Billing and Posting Clerks
+43-3031,business,Middle Skill,"Bookkeeping, Accounting, and Auditing Clerks"
+43-3051,business,Middle Skill,Payroll and Timekeeping Clerks
+43-3061,business,Middle Skill,Procurement Clerks
+43-3071,business,Middle Skill,Tellers
+43-3099,business,Below Middle Skill,"Financial Clerks, All Other"
+43-4011,business,Middle Skill,Brokerage Clerks
+43-4021,business,Below Middle Skill,Correspondence Clerks
+43-4041,business,Middle Skill,"Credit Authorizers, Checkers, and Clerks"
+43-4051,business,Middle Skill,Customer Service Representatives
+43-4071,business,Middle Skill,File Clerks
+43-4111,business,Below Middle Skill,"Interviewers, Except Eligibility and Loan"
+43-4121,business,Below Middle Skill,"Library Assistants, Clerical"
+43-4131,business,Middle Skill,Loan Interviewers and Clerks
+43-4141,business,Middle Skill,New Accounts Clerks
+43-4151,business,Middle Skill,Order Clerks
+43-4161,business,Middle Skill,"Human Resources Assistants, Except Payroll and Timekeeping"
+43-4171,business,Middle Skill,Receptionists and Information Clerks
+43-4199,business,Below Middle Skill,"Information and Record Clerks, All Other"
+43-6011,business,Middle Skill,Executive Secretaries and Executive Administrative Assistants
+43-6012,business,Middle Skill,Legal Secretaries and Administrative Assistants
+43-6014,business,Middle Skill,"Secretaries and Administrative Assistants, Except Legal, Medical, and Executive"
+43-9041,business,Middle Skill,Insurance Claims and Policy Processing Clerks
+43-9051,business,Below Middle Skill,"Mail Clerks and Mail Machine Operators, Except Postal Service"
+43-9061,business,Middle Skill,"Office Clerks, General"
+43-9071,business,Below Middle Skill,"Office Machine Operators, Except Computer"
+43-9111,business,Middle Skill,Statistical Assistants
+43-9199,business,Below Middle Skill,"Office and Administrative Support Workers, All Other"
+51-6011,business,Below Middle Skill,Laundry and Dry-Cleaning Workers
+51-6021,business,Below Middle Skill,"Pressers, Textile, Garment, and Related Materials"
+11-9021,ecu,Above Middle Skill,Construction Managers
+11-9041,ecu,Above Middle Skill,Architectural and Engineering Managers
+17-1011,ecu,Above Middle Skill,"Architects, Except Landscape and Naval"
+17-1012,ecu,Above Middle Skill,Landscape Architects
+17-1022,ecu,Above Middle Skill,Surveyors
+17-2051,ecu,Above Middle Skill,Civil Engineers
+17-2151,ecu,Above Middle Skill,"Mining and Geological Engineers, Including Mining Safety Engineers"
+17-2161,ecu,Above Middle Skill,Nuclear Engineers
+17-2171,ecu,Above Middle Skill,Petroleum Engineers
+17-3011,ecu,Middle Skill,Architectural and Civil Drafters
+17-3022,ecu,Middle Skill,Civil Engineering Technologists and Technicians
+17-3031,ecu,Middle Skill,Surveying and Mapping Technicians
+19-2041,ecu,Above Middle Skill,"Environmental Scientists and Specialists, Including Health"
+19-2042,ecu,Above Middle Skill,"Geoscientists, Except Hydrologists and Geographers"
+19-4042,ecu,Middle Skill,"Environmental Science and Protection Technicians, Including Health"
+19-4043,ecu,Middle Skill,"Geological Technicians, Except Hydrologic Technicians"
+19-4044,ecu,Middle Skill,Hydrologic Technicians
+19-4051,ecu,Middle Skill,Nuclear Technicians
+37-3019,ecu,Below Middle Skill,"Grounds Maintenance Workers, All Other"
+43-5041,ecu,Below Middle Skill,"Meter Readers, Utilities"
+47-1011,ecu,Middle Skill,First-Line Supervisors of Construction Trades and Extraction Workers
+47-2011,ecu,Middle Skill,Boilermakers
+47-2021,ecu,Middle Skill,Brickmasons and Blockmasons
+47-2022,ecu,Middle Skill,Stonemasons
+47-2031,ecu,Middle Skill,Carpenters
+47-2041,ecu,Below Middle Skill,Carpet Installers
+47-2042,ecu,Below Middle Skill,"Floor Layers, Except Carpet, Wood, and Hard Tiles"
+47-2043,ecu,Below Middle Skill,Floor Sanders and Finishers
+47-2044,ecu,Below Middle Skill,Tile and Stone Setters
+47-2051,ecu,Below Middle Skill,Cement Masons and Concrete Finishers
+47-2053,ecu,Middle Skill,Terrazzo Workers and Finishers
+47-2061,ecu,Below Middle Skill,Construction Laborers
+47-2071,ecu,Middle Skill,"Paving, Surfacing, and Tamping Equipment Operators"
+47-2072,ecu,Middle Skill,Pile Driver Operators
+47-2073,ecu,Middle Skill,Operating Engineers and Other Construction Equipment Operators
+47-2081,ecu,Below Middle Skill,Drywall and Ceiling Tile Installers
+47-2082,ecu,Below Middle Skill,Tapers
+47-2111,ecu,Middle Skill,Electricians
+47-2121,ecu,Middle Skill,Glaziers
+47-2131,ecu,Below Middle Skill,"Insulation Workers, Floor, Ceiling, and Wall"
+47-2132,ecu,Middle Skill,"Insulation Workers, Mechanical"
+47-2141,ecu,Below Middle Skill,"Painters, Construction and Maintenance"
+47-2142,ecu,Below Middle Skill,Paperhangers
+47-2151,ecu,Below Middle Skill,Pipelayers
+47-2152,ecu,Middle Skill,"Plumbers, Pipefitters, and Steamfitters"
+47-2161,ecu,Below Middle Skill,Plasterers and Stucco Masons
+47-2171,ecu,Middle Skill,Reinforcing Iron and Rebar Workers
+47-2181,ecu,Below Middle Skill,Roofers
+47-2211,ecu,Middle Skill,Sheet Metal Workers
+47-2221,ecu,Middle Skill,Structural Iron and Steel Workers
+47-2231,ecu,Middle Skill,Solar Photovoltaic Installers
+47-3011,ecu,Below Middle Skill,"Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters"
+47-3012,ecu,Below Middle Skill,Helpers--Carpenters
+47-3013,ecu,Below Middle Skill,Helpers--Electricians
+47-3014,ecu,Below Middle Skill,"Helpers--Painters, Paperhangers, Plasterers, and Stucco Masons"
+47-3015,ecu,Below Middle Skill,"Helpers--Pipelayers, Plumbers, Pipefitters, and Steamfitters"
+47-3016,ecu,Below Middle Skill,Helpers--Roofers
+47-3019,ecu,Below Middle Skill,"Helpers, Construction Trades, All Other"
+47-4011,ecu,Middle Skill,Construction and Building Inspectors
+47-4021,ecu,Middle Skill,Elevator and Escalator Installers and Repairers
+47-4031,ecu,Below Middle Skill,Fence Erectors
+47-4051,ecu,Below Middle Skill,Highway Maintenance Workers
+47-4061,ecu,Middle Skill,Rail-Track Laying and Maintenance Equipment Operators
+47-4071,ecu,Below Middle Skill,Septic Tank Servicers and Sewer Pipe Cleaners
+47-4098,ecu,Below Middle Skill,Miscellaneous Construction and Related Workers
+47-5011,ecu,Below Middle Skill,"Derrick Operators, Oil and Gas"
+47-5012,ecu,Below Middle Skill,"Rotary Drill Operators, Oil and Gas"
+47-5013,ecu,Below Middle Skill,"Service Unit Operators, Oil and Gas"
+47-5022,ecu,Below Middle Skill,"Excavating and Loading Machine and Dragline Operators, Surface Mining"
+47-5023,ecu,Middle Skill,"Earth Drillers, Except Oil and Gas"
+47-5032,ecu,Middle Skill,"Explosives Workers, Ordnance Handling Experts, and Blasters"
+47-5041,ecu,Below Middle Skill,Continuous Mining Machine Operators
+47-5043,ecu,Below Middle Skill,"Roof Bolters, Mining"
+47-5044,ecu,Below Middle Skill,"Loading and Moving Machine Operators, Underground Mining"
+47-5049,ecu,Below Middle Skill,"Underground Mining Machine Operators, All Other"
+47-5051,ecu,Below Middle Skill,"Rock Splitters, Quarry"
+47-5071,ecu,Below Middle Skill,"Roustabouts, Oil and Gas"
+47-5081,ecu,Below Middle Skill,Helpers--Extraction Workers
+47-5099,ecu,Below Middle Skill,"Extraction Workers, All Other"
+49-2021,ecu,Middle Skill,"Radio, Cellular, and Tower Equipment Installers and Repairers"
+49-2022,ecu,Middle Skill,"Telecommunications Equipment Installers and Repairers, Except Line Installers"
+49-2095,ecu,Middle Skill,"Electrical and Electronics Repairers, Powerhouse, Substation, and Relay"
+49-2098,ecu,Middle Skill,Security and Fire Alarm Systems Installers
+49-9011,ecu,Below Middle Skill,Mechanical Door Repairers
+49-9021,ecu,Middle Skill,"Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+49-9045,ecu,Middle Skill,"Refractory Materials Repairers, Except Brickmasons"
+49-9051,ecu,Middle Skill,Electrical Power-Line Installers and Repairers
+49-9071,ecu,Below Middle Skill,"Maintenance and Repair Workers, General"
+49-9081,ecu,Middle Skill,Wind Turbine Service Technicians
+49-9092,ecu,Middle Skill,Commercial Divers
+49-9095,ecu,Below Middle Skill,Manufactured Building and Mobile Home Installers
+49-9096,ecu,Below Middle Skill,Riggers
+49-9098,ecu,Below Middle Skill,"Helpers--Installation, Maintenance, and Repair Workers"
+49-9099,ecu,Middle Skill,"Installation, Maintenance, and Repair Workers, All Other"
+51-7011,ecu,Middle Skill,Cabinetmakers and Bench Carpenters
+51-8011,ecu,Middle Skill,Nuclear Power Reactor Operators
+51-8012,ecu,Middle Skill,Power Distributors and Dispatchers
+51-8013,ecu,Middle Skill,Power Plant Operators
+51-8021,ecu,Middle Skill,Stationary Engineers and Boiler Operators
+51-8031,ecu,Middle Skill,Water and Wastewater Treatment Plant and System Operators
+51-8092,ecu,Middle Skill,Gas Plant Operators
+51-8093,ecu,Below Middle Skill,"Petroleum Pump System Operators, Refinery Operators, and Gaugers"
+51-8099,ecu,Below Middle Skill,"Plant and System Operators, All Other"
+53-7031,ecu,Below Middle Skill,Dredge Operators
+53-7041,ecu,Below Middle Skill,Hoist and Winch Operators
+53-7071,ecu,Below Middle Skill,Gas Compressor and Gas Pumping Station Operators
+53-7073,ecu,Below Middle Skill,Wellhead Pumpers
+11-9031,edhd,Above Middle Skill,"Education and Childcare Administrators, Preschool and Daycare"
+11-9032,edhd,Above Middle Skill,"Education Administrators, Kindergarten through Secondary"
+11-9033,edhd,Above Middle Skill,"Education Administrators, Postsecondary"
+11-9039,edhd,Above Middle Skill,"Education Administrators, All Other"
+13-1151,edhd,Above Middle Skill,Training and Development Specialists
+19-3033,edhd,Above Middle Skill,Clinical and Counseling Psychologists
+19-3034,edhd,Above Middle Skill,School Psychologists
+19-4061,edhd,Middle Skill,Social Science Research Assistants
+21-1012,edhd,Above Middle Skill,"Educational, Guidance, and Career Counselors and Advisors"
+21-1013,edhd,Above Middle Skill,Marriage and Family Therapists
+21-1019,edhd,Above Middle Skill,"Counselors, All Other"
+21-1021,edhd,Above Middle Skill,"Child, Family, and School Social Workers"
+21-1099,edhd,Above Middle Skill,"Community and Social Service Specialists, All Other"
+21-2011,edhd,Above Middle Skill,Clergy
+21-2021,edhd,Above Middle Skill,"Directors, Religious Activities and Education"
+21-2099,edhd,Above Middle Skill,"Religious Workers, All Other"
+25-1099,edhd,Above Middle Skill,Postsecondary Teachers
+25-2011,edhd,Middle Skill,"Preschool Teachers, Except Special Education"
+25-2012,edhd,Middle Skill,"Kindergarten Teachers, Except Special Education"
+25-2021,edhd,Above Middle Skill,"Elementary School Teachers, Except Special Education"
+25-2022,edhd,Above Middle Skill,"Middle School Teachers, Except Special and Career/Technical Education"
+25-2023,edhd,Above Middle Skill,"Career/Technical Education Teachers, Middle School"
+25-2031,edhd,Above Middle Skill,"Secondary School Teachers, Except Special and Career/Technical Education"
+25-2032,edhd,Above Middle Skill,"Career/Technical Education Teachers, Secondary School"
+25-2051,edhd,Above Middle Skill,"Special Education Teachers, Preschool"
+25-2052,edhd,Above Middle Skill,"Special Education Teachers, Kindergarten and Elementary School"
+25-2057,edhd,Above Middle Skill,"Special Education Teachers, Middle School"
+25-2058,edhd,Above Middle Skill,"Special Education Teachers, Secondary School"
+25-2059,edhd,Above Middle Skill,"Special Education Teachers, All Other"
+25-3011,edhd,Above Middle Skill,"Adult Basic Education, Adult Secondary Education, and English as a Second Language Instructors"
+25-3021,edhd,Below Middle Skill,Self-Enrichment Teachers
+25-3031,edhd,Above Middle Skill,"Substitute Teachers, Short-Term"
+25-3041,edhd,Above Middle Skill,Tutors
+25-3099,edhd,Above Middle Skill,"Teachers and Instructors, All Other"
+25-4011,edhd,Above Middle Skill,Archivists
+25-4012,edhd,Above Middle Skill,Curators
+25-4013,edhd,Above Middle Skill,Museum Technicians and Conservators
+25-4022,edhd,Above Middle Skill,Librarians and Media Collections Specialists
+25-4031,edhd,Middle Skill,Library Technicians
+25-9031,edhd,Above Middle Skill,Instructional Coordinators
+25-9044,edhd,Middle Skill,"Teaching Assistants, Postsecondary"
+25-9045,edhd,Middle Skill,"Teaching Assistants, Except Postsecondary"
+25-9099,edhd,Above Middle Skill,"Educational Instruction and Library Workers, All Other"
+27-2022,edhd,Above Middle Skill,Coaches and Scouts
+27-3091,edhd,Middle Skill,Interpreters and Translators
+29-1129,edhd,Above Middle Skill,"Therapists, All Other"
+39-9011,edhd,Middle Skill,Childcare Workers
+39-9031,edhd,Middle Skill,Exercise Trainers and Group Fitness Instructors
+39-9041,edhd,Below Middle Skill,Residential Advisors
+43-4061,edhd,Below Middle Skill,"Eligibility Interviewers, Government Programs"
+11-9111,health,Above Middle Skill,Medical and Health Services Managers
+19-1041,health,Above Middle Skill,Epidemiologists
+19-1042,health,Above Middle Skill,"Medical Scientists, Except Epidemiologists"
+19-3039,health,Above Middle Skill,"Psychologists, All Other"
+21-1015,health,Above Middle Skill,Rehabilitation Counselors
+21-1018,health,Above Middle Skill,"Substance Abuse, Behavioral Disorder, and Mental Health Counselors"
+21-1022,health,Above Middle Skill,Healthcare Social Workers
+21-1023,health,Above Middle Skill,Mental Health and Substance Abuse Social Workers
+21-1029,health,Above Middle Skill,"Social Workers, All Other"
+21-1091,health,Above Middle Skill,Health Education Specialists
+21-1093,health,Middle Skill,Social and Human Service Assistants
+21-1094,health,Middle Skill,Community Health Workers
+29-1011,health,Above Middle Skill,Chiropractors
+29-1021,health,Above Middle Skill,"Dentists, General"
+29-1022,health,Above Middle Skill,Oral and Maxillofacial Surgeons
+29-1023,health,Above Middle Skill,Orthodontists
+29-1024,health,Above Middle Skill,Prosthodontists
+29-1029,health,Above Middle Skill,"Dentists, All Other Specialists"
+29-1031,health,Above Middle Skill,Dietitians and Nutritionists
+29-1041,health,Above Middle Skill,Optometrists
+29-1051,health,Above Middle Skill,Pharmacists
+29-1071,health,Above Middle Skill,Physician Assistants
+29-1081,health,Above Middle Skill,Podiatrists
+29-1122,health,Above Middle Skill,Occupational Therapists
+29-1123,health,Above Middle Skill,Physical Therapists
+29-1124,health,Middle Skill,Radiation Therapists
+29-1125,health,Above Middle Skill,Recreational Therapists
+29-1126,health,Middle Skill,Respiratory Therapists
+29-1127,health,Above Middle Skill,Speech-Language Pathologists
+29-1128,health,Above Middle Skill,Exercise Physiologists
+29-1141,health,Middle Skill,Registered Nurses
+29-1151,health,Above Middle Skill,Nurse Anesthetists
+29-1161,health,Above Middle Skill,Nurse Midwives
+29-1171,health,Above Middle Skill,Nurse Practitioners
+29-1181,health,Above Middle Skill,Audiologists
+29-1211,health,Above Middle Skill,Anesthesiologists
+29-1212,health,Above Middle Skill,Cardiologists
+29-1213,health,Above Middle Skill,Dermatologists
+29-1214,health,Above Middle Skill,Emergency Medicine Physicians
+29-1215,health,Above Middle Skill,Family Medicine Physicians
+29-1216,health,Above Middle Skill,General Internal Medicine Physicians
+29-1217,health,Above Middle Skill,Neurologists
+29-1218,health,Above Middle Skill,Obstetricians and Gynecologists
+29-1221,health,Above Middle Skill,"Pediatricians, General"
+29-1222,health,Above Middle Skill,"Physicians, Pathologists"
+29-1223,health,Above Middle Skill,Psychiatrists
+29-1224,health,Above Middle Skill,Radiologists
+29-1229,health,Above Middle Skill,"Physicians, All Other"
+29-1241,health,Above Middle Skill,"Ophthalmologists, Except Pediatric"
+29-1242,health,Above Middle Skill,"Orthopedic Surgeons, Except Pediatric"
+29-1243,health,Above Middle Skill,Pediatric Surgeons
+29-1249,health,Above Middle Skill,"Surgeons, All Other"
+29-1291,health,Above Middle Skill,Acupuncturists
+29-1292,health,Middle Skill,Dental Hygienists
+29-1299,health,Above Middle Skill,"Healthcare Diagnosing or Treating Practitioners, All Other"
+29-2018,health,Middle Skill,Clinical Laboratory Technologists and Technicians
+29-2031,health,Middle Skill,Cardiovascular Technologists and Technicians
+29-2032,health,Middle Skill,Diagnostic Medical Sonographers
+29-2033,health,Middle Skill,Nuclear Medicine Technologists
+29-2034,health,Middle Skill,Radiologic Technologists and Technicians
+29-2035,health,Middle Skill,Magnetic Resonance Imaging Technologists
+29-2036,health,Middle Skill,Medical Dosimetrists
+29-2051,health,Middle Skill,Dietetic Technicians
+29-2052,health,Middle Skill,Pharmacy Technicians
+29-2053,health,Middle Skill,Psychiatric Technicians
+29-2055,health,Middle Skill,Surgical Technologists
+29-2057,health,Middle Skill,Ophthalmic Medical Technicians
+29-2061,health,Middle Skill,Licensed Practical and Licensed Vocational Nurses
+29-2072,health,Middle Skill,Medical Records Specialists
+29-2081,health,Middle Skill,"Opticians, Dispensing"
+29-2091,health,Above Middle Skill,Orthotists and Prosthetists
+29-2092,health,Below Middle Skill,Hearing Aid Specialists
+29-2099,health,Middle Skill,"Health Technologists and Technicians, All Other"
+29-9021,health,Middle Skill,Health Information Technologists and Medical Registrars
+29-9091,health,Above Middle Skill,Athletic Trainers
+29-9092,health,Above Middle Skill,Genetic Counselors
+29-9093,health,Middle Skill,Surgical Assistants
+29-9099,health,Middle Skill,"Healthcare Practitioners and Technical Workers, All Other"
+31-1128,health,Middle Skill,Home Health and Personal Care Aides
+31-1131,health,Middle Skill,Nursing Assistants
+31-1132,health,Below Middle Skill,Orderlies
+31-1133,health,Middle Skill,Psychiatric Aides
+31-2011,health,Middle Skill,Occupational Therapy Assistants
+31-2012,health,Middle Skill,Occupational Therapy Aides
+31-2021,health,Middle Skill,Physical Therapist Assistants
+31-2022,health,Middle Skill,Physical Therapist Aides
+31-9011,health,Middle Skill,Massage Therapists
+31-9091,health,Middle Skill,Dental Assistants
+31-9092,health,Middle Skill,Medical Assistants
+31-9093,health,Middle Skill,Medical Equipment Preparers
+31-9094,health,Middle Skill,Medical Transcriptionists
+31-9095,health,Below Middle Skill,Pharmacy Aides
+31-9099,health,Middle Skill,"Healthcare Support Workers, All Other"
+43-6013,health,Middle Skill,Medical Secretaries and Administrative Assistants
+51-9081,health,Middle Skill,Dental Laboratory Technicians
+51-9082,health,Below Middle Skill,Medical Appliance Technicians
+11-3021,ict,Above Middle Skill,Computer and Information Systems Managers
+15-1211,ict,Above Middle Skill,Computer Systems Analysts
+15-1212,ict,Above Middle Skill,Information Security Analysts
+15-1221,ict,Above Middle Skill,Computer and Information Research Scientists
+15-1231,ict,Middle Skill,Computer Network Support Specialists
+15-1232,ict,Middle Skill,Computer User Support Specialists
+15-1241,ict,Middle Skill,Computer Network Architects
+15-1242,ict,Above Middle Skill,Database Administrators
+15-1243,ict,Above Middle Skill,Database Architects
+15-1244,ict,Middle Skill,Network and Computer Systems Administrators
+15-1251,ict,Above Middle Skill,Computer Programmers
+15-1252,ict,Above Middle Skill,Software Developers
+15-1253,ict,Above Middle Skill,Software Quality Assurance Analysts and Testers
+15-1254,ict,Middle Skill,Web Developers
+15-1255,ict,Middle Skill,Web and Digital Interface Designers
+15-1299,ict,Above Middle Skill,"Computer Occupations, All Other"
+17-1021,ict,Above Middle Skill,Cartographers and Photogrammetrists
+17-2072,ict,Above Middle Skill,"Electronics Engineers, Except Computer"
+27-1011,ict,Above Middle Skill,Art Directors
+27-1012,ict,Below Middle Skill,Craft Artists
+27-1013,ict,Above Middle Skill,"Fine Artists, Including Painters, Sculptors, and Illustrators"
+27-1014,ict,Above Middle Skill,Special Effects Artists and Animators
+27-1019,ict,Below Middle Skill,"Artists and Related Workers, All Other"
+27-1024,ict,Above Middle Skill,Graphic Designers
+27-1029,ict,Above Middle Skill,"Designers, All Other"
+27-2012,ict,Above Middle Skill,Producers and Directors
+27-2091,ict,Below Middle Skill,"Disc Jockeys, Except Radio"
+27-3011,ict,Above Middle Skill,Broadcast Announcers and Radio Disc Jockeys
+27-3023,ict,Above Middle Skill,"News Analysts, Reporters, and Journalists"
+27-3041,ict,Above Middle Skill,Editors
+27-3042,ict,Above Middle Skill,Technical Writers
+27-3043,ict,Above Middle Skill,Writers and Authors
+27-3099,ict,Below Middle Skill,"Media and Communication Workers, All Other"
+27-4011,ict,Middle Skill,Audio and Video Technicians
+27-4012,ict,Middle Skill,Broadcast Technicians
+27-4014,ict,Middle Skill,Sound Engineering Technicians
+27-4015,ict,Below Middle Skill,Lighting Technicians
+27-4021,ict,Middle Skill,Photographers
+27-4031,ict,Above Middle Skill,"Camera Operators, Television, Video, and Film"
+27-4032,ict,Above Middle Skill,Film and Video Editors
+27-4099,ict,Below Middle Skill,"Media and Communication Equipment Workers, All Other"
+39-3092,ict,Below Middle Skill,Costume Attendants
+43-2021,ict,Below Middle Skill,Telephone Operators
+43-2099,ict,Below Middle Skill,"Communications Equipment Operators, All Other"
+43-9021,ict,Middle Skill,Data Entry Keyers
+43-9022,ict,Middle Skill,Word Processors and Typists
+43-9031,ict,Middle Skill,Desktop Publishers
+43-9081,ict,Above Middle Skill,Proofreaders and Copy Markers
+49-2097,ict,Middle Skill,Audiovisual Equipment Installers and Repairers
+49-9052,ict,Middle Skill,Telecommunications Line Installers and Repairers
+49-9061,ict,Middle Skill,Camera and Photographic Equipment Repairers
+51-9151,ict,Below Middle Skill,Photographic Process Workers and Processing Machine Operators
+15-2021,non_cte_stem,Above Middle Skill,Mathematicians
+15-2041,non_cte_stem,Above Middle Skill,Statisticians
+15-2051,non_cte_stem,Above Middle Skill,Data Scientists
+15-2099,non_cte_stem,Above Middle Skill,"Mathematical Science Occupations, All Other"
+17-2011,non_cte_stem,Above Middle Skill,Aerospace Engineers
+17-2121,non_cte_stem,Above Middle Skill,Marine Engineers and Naval Architects
+17-2199,non_cte_stem,Above Middle Skill,"Engineers, All Other"
+19-1021,non_cte_stem,Above Middle Skill,Biochemists and Biophysicists
+19-1022,non_cte_stem,Above Middle Skill,Microbiologists
+19-1099,non_cte_stem,Above Middle Skill,"Life Scientists, All Other"
+19-2011,non_cte_stem,Above Middle Skill,Astronomers
+19-2012,non_cte_stem,Above Middle Skill,Physicists
+19-2021,non_cte_stem,Above Middle Skill,Atmospheric and Space Scientists
+19-2031,non_cte_stem,Above Middle Skill,Chemists
+19-2043,non_cte_stem,Above Middle Skill,Hydrologists
+19-2099,non_cte_stem,Above Middle Skill,"Physical Scientists, All Other"
+19-3011,non_cte_stem,Above Middle Skill,Economists
+19-3022,non_cte_stem,Above Middle Skill,Survey Researchers
+19-3041,non_cte_stem,Above Middle Skill,Sociologists
+19-3051,non_cte_stem,Above Middle Skill,Urban and Regional Planners
+19-3091,non_cte_stem,Above Middle Skill,Anthropologists and Archeologists
+19-3092,non_cte_stem,Above Middle Skill,Geographers
+19-3093,non_cte_stem,Above Middle Skill,Historians
+19-3094,non_cte_stem,Above Middle Skill,Political Scientists
+19-3099,non_cte_stem,Above Middle Skill,"Social Scientists and Related Workers, All Other"
+11-9161,public_safety,Above Middle Skill,Emergency Management Directors
+19-4092,public_safety,Middle Skill,Forensic Science Technicians
+21-1092,public_safety,Above Middle Skill,Probation Officers and Correctional Treatment Specialists
+29-2042,public_safety,Middle Skill,Emergency Medical Technicians
+29-2043,public_safety,Middle Skill,Paramedics
+33-1011,public_safety,Middle Skill,First-Line Supervisors of Correctional Officers
+33-1012,public_safety,Middle Skill,First-Line Supervisors of Police and Detectives
+33-1021,public_safety,Middle Skill,First-Line Supervisors of Firefighting and Prevention Workers
+33-1091,public_safety,Middle Skill,First-Line Supervisors of Security Workers
+33-1099,public_safety,Middle Skill,"First-Line Supervisors of Protective Service Workers, All Other"
+33-2011,public_safety,Middle Skill,Firefighters
+33-2021,public_safety,Middle Skill,Fire Inspectors and Investigators
+33-2022,public_safety,Middle Skill,Forest Fire Inspectors and Prevention Specialists
+33-3011,public_safety,Middle Skill,Bailiffs
+33-3012,public_safety,Middle Skill,Correctional Officers and Jailers
+33-3021,public_safety,Middle Skill,Detectives and Criminal Investigators
+33-3031,public_safety,Middle Skill,Fish and Game Wardens
+33-3041,public_safety,Below Middle Skill,Parking Enforcement Workers
+33-3051,public_safety,Middle Skill,Police and Sheriff's Patrol Officers
+33-3052,public_safety,Middle Skill,Transit and Railroad Police
+33-9031,public_safety,Middle Skill,Gambling Surveillance Officers and Gambling Investigators
+33-9032,public_safety,Middle Skill,Security Guards
+33-9091,public_safety,Below Middle Skill,Crossing Guards and Flaggers
+33-9092,public_safety,Below Middle Skill,"Lifeguards, Ski Patrol, and Other Recreational Protective Service Workers"
+33-9093,public_safety,Middle Skill,Transportation Security Screeners
+33-9094,public_safety,Below Middle Skill,School Bus Monitors
+33-9099,public_safety,Below Middle Skill,"Protective Service Workers, All Other"
+43-5031,public_safety,Middle Skill,Public Safety Telecommunicators
+53-3011,public_safety,Below Middle Skill,"Ambulance Drivers and Attendants, Except Emergency Medical Technicians"
+11-9051,retail,Middle Skill,Food Service Managers
+11-9071,retail,Middle Skill,Gambling Managers
+11-9081,retail,Middle Skill,Lodging Managers
+13-1121,retail,Above Middle Skill,"Meeting, Convention, and Event Planners"
+27-1022,retail,Above Middle Skill,Fashion Designers
+27-1025,retail,Above Middle Skill,Interior Designers
+27-1026,retail,Below Middle Skill,Merchandise Displayers and Window Trimmers
+27-2021,retail,Below Middle Skill,Athletes and Sports Competitors
+27-2023,retail,Below Middle Skill,"Umpires, Referees, and Other Sports Officials"
+35-1011,retail,Middle Skill,Chefs and Head Cooks
+35-1012,retail,Middle Skill,First-Line Supervisors of Food Preparation and Serving Workers
+35-2011,retail,Below Middle Skill,"Cooks, Fast Food"
+35-2012,retail,Below Middle Skill,"Cooks, Institution and Cafeteria"
+35-2013,retail,Middle Skill,"Cooks, Private Household"
+35-2014,retail,Below Middle Skill,"Cooks, Restaurant"
+35-2015,retail,Below Middle Skill,"Cooks, Short Order"
+35-2019,retail,Below Middle Skill,"Cooks, All Other"
+35-2021,retail,Below Middle Skill,Food Preparation Workers
+35-3011,retail,Below Middle Skill,Bartenders
+35-3023,retail,Below Middle Skill,Fast Food and Counter Workers
+35-3031,retail,Below Middle Skill,Waiters and Waitresses
+35-3041,retail,Below Middle Skill,"Food Servers, Nonrestaurant"
+35-9011,retail,Below Middle Skill,Dining Room and Cafeteria Attendants and Bartender Helpers
+35-9021,retail,Below Middle Skill,Dishwashers
+35-9031,retail,Below Middle Skill,"Hosts and Hostesses, Restaurant, Lounge, and Coffee Shop"
+35-9099,retail,Below Middle Skill,"Food Preparation and Serving Related Workers, All Other"
+37-1011,retail,Middle Skill,First-Line Supervisors of Housekeeping and Janitorial Workers
+37-2011,retail,Below Middle Skill,"Janitors and Cleaners, Except Maids and Housekeeping Cleaners"
+37-2012,retail,Below Middle Skill,Maids and Housekeeping Cleaners
+37-2019,retail,Below Middle Skill,"Building Cleaning Workers, All Other"
+39-1013,retail,Middle Skill,First-Line Supervisors of Gambling Services Workers
+39-1014,retail,Middle Skill,"First-Line Supervisors of Entertainment and Recreation Workers, Except Gambling Services"
+39-1022,retail,Middle Skill,First-Line Supervisors of Personal Service Workers
+39-3011,retail,Below Middle Skill,Gambling Dealers
+39-3012,retail,Below Middle Skill,Gambling and Sports Book Writers and Runners
+39-3019,retail,Below Middle Skill,"Gambling Service Workers, All Other"
+39-3021,retail,Below Middle Skill,Motion Picture Projectionists
+39-3031,retail,Below Middle Skill,"Ushers, Lobby Attendants, and Ticket Takers"
+39-3091,retail,Below Middle Skill,Amusement and Recreation Attendants
+39-3093,retail,Below Middle Skill,"Locker Room, Coatroom, and Dressing Room Attendants"
+39-3099,retail,Below Middle Skill,"Entertainment Attendants and Related Workers, All Other"
+39-6011,retail,Below Middle Skill,Baggage Porters and Bellhops
+39-6012,retail,Below Middle Skill,Concierges
+39-7018,retail,Middle Skill,Tour and Travel Guides
+39-9032,retail,Below Middle Skill,Recreation Workers
+41-1011,retail,Middle Skill,First-Line Supervisors of Retail Sales Workers
+41-2012,retail,Below Middle Skill,Gambling Change Persons and Booth Cashiers
+41-2031,retail,Below Middle Skill,Retail Salespersons
+41-3041,retail,Middle Skill,Travel Agents
+41-9011,retail,Below Middle Skill,Demonstrators and Product Promoters
+43-3041,retail,Below Middle Skill,Gambling Cage Workers
+43-4081,retail,Below Middle Skill,"Hotel, Motel, and Resort Desk Clerks"
+43-4181,retail,Middle Skill,Reservation and Transportation Ticket Agents and Travel Clerks
+51-3011,retail,Below Middle Skill,Bakers
+51-3021,retail,Below Middle Skill,Butchers and Meat Cutters
+53-2031,retail,Middle Skill,Flight Attendants
+11-1031,unassigned,Above Middle Skill,Legislators
+11-9131,unassigned,Middle Skill,Postmasters and Mail Superintendents
+13-1041,unassigned,Above Middle Skill,Compliance Officers
+23-1011,unassigned,Above Middle Skill,Lawyers
+23-1012,unassigned,Above Middle Skill,Judicial Law Clerks
+23-1021,unassigned,Above Middle Skill,"Administrative Law Judges, Adjudicators, and Hearing Officers"
+23-1022,unassigned,Above Middle Skill,"Arbitrators, Mediators, and Conciliators"
+23-1023,unassigned,Above Middle Skill,"Judges, Magistrate Judges, and Magistrates"
+23-2011,unassigned,Middle Skill,Paralegals and Legal Assistants
+23-2099,unassigned,Middle Skill,"Legal Support Workers, All Other"
+27-2011,unassigned,Middle Skill,Actors
+27-2031,unassigned,Below Middle Skill,Dancers
+27-2032,unassigned,Middle Skill,Choreographers
+27-2041,unassigned,Above Middle Skill,Music Directors and Composers
+27-2042,unassigned,Below Middle Skill,Musicians and Singers
+27-2099,unassigned,Below Middle Skill,"Entertainers and Performers, Sports and Related Workers, All Other"
+27-3092,unassigned,Middle Skill,Court Reporters and Simultaneous Captioners
+33-9011,unassigned,Below Middle Skill,Animal Control Workers
+33-9021,unassigned,Middle Skill,Private Detectives and Investigators
+43-4031,unassigned,Middle Skill,"Court, Municipal, and License Clerks"
+43-5051,unassigned,Below Middle Skill,Postal Service Clerks
+43-5052,unassigned,Below Middle Skill,Postal Service Mail Carriers
+43-5053,unassigned,Below Middle Skill,"Postal Service Mail Sorters, Processors, and Processing Machine Operators"

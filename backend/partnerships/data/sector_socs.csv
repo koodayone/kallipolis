@@ -90,7 +90,9 @@ atl,53-2012,Commercial Pilots
 atl,53-2021,Air Traffic Controllers
 atl,53-2022,Airfield Operations Specialists
 atl,53-3032,Heavy and Tractor-Trailer Truck Drivers
+atl,53-3051,"Bus Drivers, School"
 atl,53-3052,"Bus Drivers, Transit and Intercity"
+atl,53-3053,Shuttle Drivers and Chauffeurs
 atl,53-4011,Locomotive Engineers
 atl,53-4013,"Rail Yard Engineers, Dinkey Operators, and Hostlers"
 atl,53-4022,"Railroad Brake, Signal, and Switch Operators and Locomotive Firers"
@@ -102,8 +104,6 @@ atl,53-5022,Motorboat Operators
 atl,53-5031,Ship Engineers
 atl,53-6051,Transportation Inspectors
 atl,53-7021,Crane and Tower Operators
-atl,53-3051,"Bus Drivers, School"
-atl,53-3053,Shuttle Drivers and Chauffeurs
 biotech,19-4021,Biological Technicians
 biotech,19-4031,Chemical Technicians
 biotech,19-4099,"Life, Physical, and Social Science Technicians, All Other"

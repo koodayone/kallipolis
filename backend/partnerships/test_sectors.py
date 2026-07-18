@@ -70,6 +70,27 @@ class TestSectorRegistry:
         # dropped were added back under atl.)
         assert sum(len(v) for v in _load_sector_socs().values()) == 314
 
+    def test_sector_socs_is_the_universe_baccc_join(self):
+        # The defensible methodology, pinned: sector_socs.csv == the JOIN of the two
+        # COE authorities — every occupation in the middle-skill universe
+        # (occupations.json), categorized by its baccc_sectors sector (the committed
+        # coe_occupation_sector.csv map). Catches drift; regenerate the file with
+        # `python scripts/generate_sector_socs.py`. See scripts/generate_sector_socs.py
+        # for the full methodology.
+        import csv
+        import json
+        from pathlib import Path
+        base = Path(__file__).resolve().parent
+        universe = {o["soc_code"] for o in
+                    json.loads((base.parent / "occupations" / "occupations.json").read_text())}
+        with (base / "data" / "coe_occupation_sector.csv").open() as f:
+            soc_to_sector = {r["soc"]: r["sector_id"] for r in csv.DictReader(f)}
+        expected = {(soc_to_sector[s], s) for s in universe}   # each universe occ → its COE sector
+        actual = {(sid, s) for sid, socs in _load_sector_socs().items() for s in socs}
+        assert actual == expected, (
+            "sector_socs.csv diverges from the universe × baccc_sectors join — "
+            "run `python scripts/generate_sector_socs.py`")
+
     def test_registry_and_data_agree(self):
         # Every registered sector has SOCs, and every data sector is registered.
         data_ids = set(_load_sector_socs())
