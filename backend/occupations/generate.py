@@ -1,20 +1,20 @@
 """
-Generate occupations.json from COE (Centers of Excellence) data.
+Generate occupations.json from COE (Centers of Excellence) middle-skill data.
 
-COE is the sole data source for occupation demand metrics.
+COE is the sole data source for occupation demand metrics, and its middle-skill
+designation is the authoritative occupation universe. Community colleges target
+middle-skill occupations, so the occupation set is exactly the SOCs the COE
+middle-skill publication (ontology/occupational_demand_middle_skill.csv) tracks
+regional demand for — every SOC in that file becomes a node, with no derived
+filter applied here.
 
-The CTE scope filter is applied here (not at load time), so every row written
-to occupations.json is a row the graph will load. An occupation is included
-iff both of the following hold:
-
-  1. COE tracks regional demand for it (the SOC appears in the COE CSV).
-  2. A PCAH-classified CTE TOP6 code targets it (the SOC is reachable from
-     at least one TOP code in the Chancellor's Office *TOP Codes to Sectors*
-     file via the TOP6→CIP→SOC chain in ontology/crosswalks.py).
-
-This replaces an earlier BLS-entry-education proxy filter. See
-docs/product/occupations.md and docs/pipeline/occupation-generation.md for
-the product and pipeline framing.
+This replaces an earlier COE-∩-CTE-reachable filter, which had a two-sided
+error: it admitted non-middle-skill occupations reachable only by crosswalk
+over-reach (management and professional roles that are not CC targets), and it
+dropped middle-skill occupations the crosswalk could not reach (real regional
+demand with no CC pipeline). Grounding the occupation set on the COE middle-skill
+designation resolves both. See docs/product/occupations.md and
+docs/pipeline/occupation-generation.md for the product and pipeline framing.
 
 Usage:
     python -m occupations.generate
@@ -28,7 +28,7 @@ import logging
 import sys
 from pathlib import Path
 
-from ontology.crosswalks import COE_DEMAND_PATH, cte_reachable_socs
+from ontology.crosswalks import COE_DEMAND_PATH
 
 logger = logging.getLogger(__name__)
 
@@ -89,16 +89,12 @@ def _parse_row(row: dict) -> tuple[str, str, dict, dict]:
 
 def generate_from_coe(csv_path: Path) -> list[dict]:
     """Parse COE CSV and produce occupations list for the pipeline."""
-    cte_socs = cte_reachable_socs()
     occupations: dict[str, dict] = {}
 
     with open(csv_path, newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
             soc, region, shell, metrics = _parse_row(row)
-
-            if soc not in cte_socs:
-                continue
 
             if soc not in occupations:
                 occupations[soc] = shell
@@ -119,7 +115,7 @@ def generate_from_coe(csv_path: Path) -> list[dict]:
                     occ["description"] = prev["description"]
 
     result = sorted(occupations.values(), key=lambda o: o["soc_code"])
-    logger.info(f"Generated {len(result)} occupations in CTE scope (COE ∩ PCAH CTE)")
+    logger.info(f"Generated {len(result)} middle-skill occupations (COE designation)")
 
     regions = set()
     for occ in result:

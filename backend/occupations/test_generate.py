@@ -164,7 +164,10 @@ class TestGenerateFromCoe:
         # Current-scope degree programs — should be included
         ["15-1252", "CA", "Software Developers", "Bachelor's degree", "203000", "145000", "0.17", "15000"],
         ["29-1141", "CA", "Registered Nurses", "Bachelor's degree", "315000", "125000", "0.06", "22000"],
-        # Pre-engineering / pre-science — should be excluded (transfer-to-BS pathways)
+        # Degree-only roles — included too: generate applies NO education or
+        # crosswalk-reachability filter. The COE middle-skill publication is the
+        # authority for which SOCs appear, so curation lives upstream in the source
+        # file (in production it would not list these); generate is 1:1 with it.
         ["17-2051", "CA", "Civil Engineers", "Bachelor's degree", "40000", "110000", "0.04", "2500"],
         ["17-2141", "CA", "Mechanical Engineers", "Bachelor's degree", "30000", "105000", "0.03", "2000"],
         ["19-2011", "CA", "Astronomers", "Doctoral or professional degree", "200", "140000", "0.05", "15"],
@@ -178,20 +181,21 @@ class TestGenerateFromCoe:
             w.writerows(self.FIXTURE_ROWS)
         return csv_path
 
-    def test_includes_trades_excludes_pre_engineering(self, tmp_path):
+    def test_includes_every_source_soc(self, tmp_path):
+        """generate_from_coe is 1:1 with its source file: every SOC the COE
+        middle-skill publication tracks becomes a node, with no derived filter.
+        This replaces an earlier COE-∩-CTE-reachable filter, which both admitted
+        non-middle-skill occupations via crosswalk over-reach AND dropped
+        middle-skill occupations the crosswalk could not reach. Curation — which
+        occupations are middle-skill — is the COE designation, applied upstream in
+        the source file, not a reachability filter here. So even Bachelor's/Doctoral
+        rows in the input surface (production's source simply would not list them)."""
         csv_path = self._write_csv(tmp_path)
         result = generate_from_coe(csv_path)
         socs = {o["soc_code"] for o in result}
 
-        assert "47-2111" in socs, "Electricians should be in CTE scope"
-        assert "51-4121" in socs, "Welders should be in CTE scope"
-        assert "47-2152" in socs, "Plumbers should be in CTE scope"
-        assert "15-1252" in socs, "Software Developers should be in CTE scope"
-        assert "29-1141" in socs, "Registered Nurses should be in CTE scope"
-
-        assert "17-2051" not in socs, "Civil Engineers should be out of CTE scope"
-        assert "17-2141" not in socs, "Mechanical Engineers should be out of CTE scope"
-        assert "19-2011" not in socs, "Astronomers should be out of CTE scope"
+        assert socs == {r[0] for r in self.FIXTURE_ROWS}, \
+            "generate must return exactly the source file's SOCs — no derived filter"
 
     def test_preserves_education_level_on_surviving_rows(self, tmp_path):
         """education_level stays on the node as metadata even though it no longer gates inclusion."""

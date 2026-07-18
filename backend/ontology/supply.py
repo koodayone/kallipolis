@@ -2,7 +2,7 @@
 COE-grounded supply and demand lookups for SWP LMI context.
 
 Supply data: supply_by_top.csv (COE-published 3-year avg completions by TOP6 × college × award level)
-Demand data: occupational_demand_coe.csv (COE-published regional occupational projections by SOC)
+Demand data: occupational_demand_middle_skill.csv (COE-published middle-skill occupational projections by SOC)
 
 Both files are published by the California Community Colleges Centers of Excellence.
 """
@@ -34,7 +34,7 @@ def _read_header(filename: str) -> list[str]:
 
 def _derive_demand_vintage() -> str:
     base = window = None
-    for col in _read_header("occupational_demand_coe.csv"):
+    for col in _read_header("occupational_demand_middle_skill.csv"):
         m = re.match(r"(\d{4})\s+Jobs$", col)
         if m:
             base = m.group(1)
