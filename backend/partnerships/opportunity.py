@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import logging
 from collections import defaultdict
+from functools import lru_cache
 
 from ontology.crosswalks import (
     _load_cip_to_soc,
@@ -96,18 +97,28 @@ def _load_sector_to_top6() -> dict[str, list[str]]:
     return _sector_to_top6
 
 
+@lru_cache(maxsize=1)
+def _pcah_name_to_sid() -> dict[str, str]:
+    """PCAH SWP sector name -> engine sector id. The engine's ``Sector.swp_tag`` IS
+    the exact COE/EDD sector name (== the PCAH sector name), so it is the bridge.
+    'Global Trade' has no engine sector and maps to nothing (the engine doesn't
+    model it as a SWP sector)."""
+    from partnerships.sectors import SECTORS
+    return {s.swp_tag: sid for sid, s in SECTORS.items() if s.swp_tag}
+
+
 def _sector_socs(sector: str) -> set[str]:
-    """All SOCs reachable from the PCAH TOPs that belong to a sector,
-    via the TOP->CIP->SOC chain. Matches the institutional crosswalk
-    walk; no LLM, no heuristic."""
-    sector_to_top6 = _load_sector_to_top6()
-    top_to_cip = _load_top_to_cip()
-    cip_to_soc = _load_cip_to_soc()
-    socs: set[str] = set()
-    for top6 in sector_to_top6.get(sector, []):
-        for cip in top_to_cip.get(top6, set()):
-            socs.update(cip_to_soc.get(cip, set()))
-    return socs
+    """The sector's occupations — the CANONICAL curated membership (the engine's
+    ``Sector.socs`` / data/sector_socs.csv: middle-skill, re-grounded), bridged from
+    the PCAH sector name via ``swp_tag``. Reconciled onto the one engine so the
+    Partnerships view assigns occupations to sectors exactly as the dashboard and MCP
+    do. (Was an unfiltered PCAH TOP->CIP->SOC walk over the pre-re-grounding SOC
+    universe — 115 SOCs for AM vs the engine's 49, 42 of them no longer even nodes.)"""
+    from partnerships.sectors import SECTORS
+    sid = _pcah_name_to_sid().get(sector)
+    if sid is None or sid not in SECTORS:
+        return set()
+    return set(SECTORS[sid].socs)
 
 
 # ── Sector index ────────────────────────────────────────────────────────
