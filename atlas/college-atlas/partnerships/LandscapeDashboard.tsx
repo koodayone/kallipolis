@@ -711,13 +711,19 @@ export default function LandscapeDashboard({ instance = "svamp", identity }: { i
   // sector; the masthead then reads "N of M" so the consortium total stays
   // visible (no silent truncation). Curated SVAMP keeps all members.
   const [participating, setParticipating] = useState<{ n: number; awardsOnly: boolean } | null>(null);
+  // A generated instance can 404 (e.g. a stale index offering a landscape the
+  // route won't serve). getLandscape rejects on !ok; without this the failure was
+  // swallowed and collegesReady never flipped, so the loader spun forever. Resolve
+  // to a terminal "unavailable" state instead of hanging.
+  const [loadError, setLoadError] = useState(false);
   useEffect(() => {
+    setLoadError(false);
     getLandscape(instance)
       .then((x) => {
         setAgg({ colleges: x.aggregate.n_colleges, occupations: x.aggregate.n_occupations, region: x.region_display });
         setApiCollegeNames(x.colleges.map((c) => c.name));
       })
-      .catch(() => {});
+      .catch(() => setLoadError(true));
     getLandscapePrograms(instance)
       .then((x) => {
         setActivePrograms(x.tops.filter((t) => t.enrollment_total > 0 || t.projected_supply > 0).length);
@@ -821,7 +827,11 @@ export default function LandscapeDashboard({ instance = "svamp", identity }: { i
       <div style={{ display: "flex", flexDirection: "column", ...(employersFull ? { flex: 1, minHeight: 0, overflow: "hidden", padding: "12px 16px 16px" } : { padding: "0 16px 24px" }) }}>
         <ScopeAccentContext.Provider value={scopeAccentCtx}>
         <DashExpandContext.Provider value={expandCtx}>
-          {!collegesReady ? <LandscapeLoading />
+          {loadError ? (
+            <div style={{ padding: "80px 16px", textAlign: "center", color: "#5e6a83", fontFamily: FONT, fontSize: 13, letterSpacing: ".04em" }}>
+              This landscape isn’t available.
+            </div>
+          ) : !collegesReady ? <LandscapeLoading />
             : lens === "programs" ? <LandscapeDashboardPrograms colleges={colleges} instance={instance} primaryCollege={primaryCollege} />
             : lens === "occupations" ? <LandscapeDashboardOccupations colleges={colleges} instance={instance} primaryCollege={primaryCollege} />
             : <LandscapeDashboardEmployers colleges={colleges} stacked={employersSideBySide === false} instance={instance} />}
