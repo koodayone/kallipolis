@@ -9,7 +9,7 @@
   "active_feeders": [],
   "feeders": [],
   "rosters": {},
-  "sector_supply_over_socs": 21.0,
+  "sector_supply_over_socs": 86.0,
   "supply_1yr": 0.0,
   "supply_3yr": 0.0
  },
@@ -18,5 +18,5 @@
  "member": "smccd",
  "sector": "adm",
  "soc": "51-4041",
- "socs_n": 5
+ "socs_n": 14
 }

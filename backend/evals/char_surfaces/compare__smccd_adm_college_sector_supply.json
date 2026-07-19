@@ -40,7 +40,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
-      "value": 103.3,
+      "value": 349.7,
       "vintage": "Fall 2025"
      },
      "sector_supply": {
@@ -73,7 +73,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
-      "value": 92.7,
+      "value": 982.3,
       "vintage": "Fall 2025"
      },
      "sector_supply": {
@@ -139,7 +139,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
-      "value": 60.7,
+      "value": 324.0,
       "vintage": "Fall 2025"
      },
      "sector_supply": {
@@ -172,7 +172,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
-      "value": 92.3,
+      "value": 324.3,
       "vintage": "Fall 2025"
      },
      "sector_supply": {
@@ -205,7 +205,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
-      "value": 0.0,
+      "value": 466.0,
       "vintage": "Fall 2025"
      },
      "sector_supply": {

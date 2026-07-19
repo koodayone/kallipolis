@@ -25,9 +25,9 @@
      "top6": null
     },
     "form": "navigate",
-    "rationale": "14 more rows; re-call navigate scoped to one row to drill in."
+    "rationale": "17 more rows; re-call navigate scoped to one row to drill in."
    },
-   "remaining": 14
+   "remaining": 17
   },
   "rows": [
    {
@@ -1648,7 +1648,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "SOCs",
-      "value": 1,
+      "value": 4,
       "vintage": ""
      },
      "projected_supply": {
@@ -2207,7 +2207,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "college\u00d7program cells",
-    "value": 91,
+    "value": 96,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "gap_cells": {
@@ -2216,7 +2216,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "college\u00d7program cells",
-    "value": 470,
+    "value": 541,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "member_colleges": {
@@ -2234,7 +2234,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "college\u00d7program cells",
-    "value": 11,
+    "value": 13,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "programs": {
@@ -2243,7 +2243,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "TOP6 programs",
-    "value": 22,
+    "value": 25,
     "vintage": ""
    }
   }

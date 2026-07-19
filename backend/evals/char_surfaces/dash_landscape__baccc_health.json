@@ -1,13 +1,13 @@
 {
  "aggregate": {
-  "candidate_employers": 151,
-  "combined_awards": 2279,
-  "combined_supply_total": 2231.3,
-  "gap": 16179,
+  "candidate_employers": 169,
+  "combined_awards": 2374,
+  "combined_supply_total": 2331.7,
+  "gap": 20588,
   "n_colleges": 26,
-  "n_occupations": 14,
-  "occupations_taught": 14,
-  "regional_demand_total": 18410
+  "n_occupations": 20,
+  "occupations_taught": 20,
+  "regional_demand_total": 22920
  },
  "award_years": [
   "2020-2021",
@@ -28,6 +28,7 @@
      "feeding_awards": 29,
      "gap": 260,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -137,6 +138,21 @@
      "title": "Community Health Workers"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-1124",
+     "supply": 0.0,
+     "title": "Radiation Therapists"
+    },
+    {
      "annual_openings": 210,
      "annual_wage": 132040,
      "awards_recent": 0,
@@ -145,6 +161,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -159,6 +176,7 @@
      "feeding_awards": 0,
      "gap": 5160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1141",
      "supply": 0.0,
@@ -173,10 +191,26 @@
      "feeding_awards": 0,
      "gap": 440,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1292",
      "supply": 0.0,
      "title": "Dental Hygienists"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2033",
+     "supply": 0.0,
+     "title": "Nuclear Medicine Technologists"
     },
     {
      "annual_openings": 320,
@@ -187,10 +221,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2034",
      "supply": 0.0,
      "title": "Radiologic Technologists and Technicians"
+    },
+    {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 10,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2036",
+     "supply": 0.0,
+     "title": "Medical Dosimetrists"
     },
     {
      "annual_openings": 820,
@@ -201,6 +251,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2052",
      "supply": 0.0,
@@ -215,6 +266,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -229,6 +281,7 @@
      "feeding_awards": 0,
      "gap": 1430,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2061",
      "supply": 0.0,
@@ -243,6 +296,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -257,10 +311,41 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -271,10 +356,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -285,6 +386,7 @@
      "feeding_awards": 0,
      "gap": 1800,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9091",
      "supply": 0.0,
@@ -299,6 +401,7 @@
      "feeding_awards": 0,
      "gap": 4160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9092",
      "supply": 0.0,
@@ -313,6 +416,7 @@
      "feeding_awards": 0,
      "gap": 2740,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "43-6013",
      "supply": 0.0,
@@ -332,6 +436,7 @@
      "feeding_awards": 22,
      "gap": 305,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -441,6 +546,77 @@
      "title": "Community Health Workers"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 30,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 30,
+     "gap": -12,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        13,
+        25,
+        33,
+        32,
+        30
+       ],
+       "awards_recent": 30,
+       "enrollment": [
+        null,
+        null,
+        258,
+        null,
+        172,
+        172,
+        null,
+        136,
+        240,
+        null,
+        160,
+        234,
+        null,
+        142,
+        215
+       ],
+       "name": "Radiologic Technology",
+       "top6": "122500",
+       "wages": [
+        {
+         "n": 751,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 97436,
+         "wage_after_5": 115545,
+         "wage_before": 22896,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 261,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 104337,
+         "wage_after_5": 120912,
+         "wage_before": 17777,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 69,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 86887,
+         "wage_after_5": 114781,
+         "wage_before": 27393,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-1124",
+     "supply": 31.7,
+     "title": "Radiation Therapists"
+    },
+    {
      "annual_openings": 210,
      "annual_wage": 132040,
      "awards_recent": 0,
@@ -449,6 +625,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -463,6 +640,7 @@
      "feeding_awards": 48,
      "gap": 5116,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -525,6 +703,7 @@
      "feeding_awards": 20,
      "gap": 410,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -601,6 +780,77 @@
      "title": "Dental Hygienists"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 30,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 30,
+     "gap": -12,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        13,
+        25,
+        33,
+        32,
+        30
+       ],
+       "awards_recent": 30,
+       "enrollment": [
+        null,
+        null,
+        258,
+        null,
+        172,
+        172,
+        null,
+        136,
+        240,
+        null,
+        160,
+        234,
+        null,
+        142,
+        215
+       ],
+       "name": "Radiologic Technology",
+       "top6": "122500",
+       "wages": [
+        {
+         "n": 751,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 97436,
+         "wage_after_5": 115545,
+         "wage_before": 22896,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 261,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 104337,
+         "wage_after_5": 120912,
+         "wage_before": 17777,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 69,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 86887,
+         "wage_after_5": 114781,
+         "wage_before": 27393,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2033",
+     "supply": 31.7,
+     "title": "Nuclear Medicine Technologists"
+    },
+    {
      "annual_openings": 320,
      "annual_wage": 143870,
      "awards_recent": 30,
@@ -609,6 +859,7 @@
      "feeding_awards": 30,
      "gap": 288,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -671,6 +922,77 @@
      "title": "Radiologic Technologists and Technicians"
     },
     {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 30,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 30,
+     "gap": -22,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        13,
+        25,
+        33,
+        32,
+        30
+       ],
+       "awards_recent": 30,
+       "enrollment": [
+        null,
+        null,
+        258,
+        null,
+        172,
+        172,
+        null,
+        136,
+        240,
+        null,
+        160,
+        234,
+        null,
+        142,
+        215
+       ],
+       "name": "Radiologic Technology",
+       "top6": "122500",
+       "wages": [
+        {
+         "n": 751,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 97436,
+         "wage_after_5": 115545,
+         "wage_before": 22896,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 261,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 104337,
+         "wage_after_5": 120912,
+         "wage_before": 17777,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 69,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 86887,
+         "wage_after_5": 114781,
+         "wage_before": 27393,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2036",
+     "supply": 31.7,
+     "title": "Medical Dosimetrists"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -679,6 +1001,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2052",
      "supply": 0.0,
@@ -693,6 +1016,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -707,6 +1031,7 @@
      "feeding_awards": 0,
      "gap": 1430,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2061",
      "supply": 0.0,
@@ -721,6 +1046,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -735,10 +1061,41 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -749,10 +1106,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -763,6 +1136,7 @@
      "feeding_awards": 1,
      "gap": 1778,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -855,6 +1229,7 @@
      "feeding_awards": 44,
      "gap": 4108,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -972,6 +1347,7 @@
      "feeding_awards": 44,
      "gap": 2688,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -1047,6 +1423,7 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -1101,6 +1478,77 @@
      "title": "Community Health Workers"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 6,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 6,
+     "gap": 9,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        17,
+        15,
+        13,
+        14,
+        6
+       ],
+       "awards_recent": 6,
+       "enrollment": [
+        null,
+        null,
+        114,
+        null,
+        132,
+        104,
+        null,
+        104,
+        93,
+        null,
+        103,
+        92,
+        null,
+        119,
+        102
+       ],
+       "name": "Radiologic Technology",
+       "top6": "122500",
+       "wages": [
+        {
+         "n": 751,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 97436,
+         "wage_after_5": 115545,
+         "wage_before": 22896,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 261,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 104337,
+         "wage_after_5": 120912,
+         "wage_before": 17777,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 69,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 86887,
+         "wage_after_5": 114781,
+         "wage_before": 27393,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-1124",
+     "supply": 11.0,
+     "title": "Radiation Therapists"
+    },
+    {
      "annual_openings": 210,
      "annual_wage": 132040,
      "awards_recent": 0,
@@ -1109,6 +1557,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -1123,6 +1572,7 @@
      "feeding_awards": 0,
      "gap": 5160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1141",
      "supply": 0.0,
@@ -1137,10 +1587,82 @@
      "feeding_awards": 0,
      "gap": 440,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1292",
      "supply": 0.0,
      "title": "Dental Hygienists"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 6,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 6,
+     "gap": 9,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        17,
+        15,
+        13,
+        14,
+        6
+       ],
+       "awards_recent": 6,
+       "enrollment": [
+        null,
+        null,
+        114,
+        null,
+        132,
+        104,
+        null,
+        104,
+        93,
+        null,
+        103,
+        92,
+        null,
+        119,
+        102
+       ],
+       "name": "Radiologic Technology",
+       "top6": "122500",
+       "wages": [
+        {
+         "n": 751,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 97436,
+         "wage_after_5": 115545,
+         "wage_before": 22896,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 261,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 104337,
+         "wage_after_5": 120912,
+         "wage_before": 17777,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 69,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 86887,
+         "wage_after_5": 114781,
+         "wage_before": 27393,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2033",
+     "supply": 11.0,
+     "title": "Nuclear Medicine Technologists"
     },
     {
      "annual_openings": 320,
@@ -1151,6 +1673,7 @@
      "feeding_awards": 6,
      "gap": 309,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -1213,6 +1736,77 @@
      "title": "Radiologic Technologists and Technicians"
     },
     {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 6,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 6,
+     "gap": -1,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        17,
+        15,
+        13,
+        14,
+        6
+       ],
+       "awards_recent": 6,
+       "enrollment": [
+        null,
+        null,
+        114,
+        null,
+        132,
+        104,
+        null,
+        104,
+        93,
+        null,
+        103,
+        92,
+        null,
+        119,
+        102
+       ],
+       "name": "Radiologic Technology",
+       "top6": "122500",
+       "wages": [
+        {
+         "n": 751,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 97436,
+         "wage_after_5": 115545,
+         "wage_before": 22896,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 261,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 104337,
+         "wage_after_5": 120912,
+         "wage_before": 17777,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 69,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 86887,
+         "wage_after_5": 114781,
+         "wage_before": 27393,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2036",
+     "supply": 11.0,
+     "title": "Medical Dosimetrists"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -1221,6 +1815,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2052",
      "supply": 0.0,
@@ -1235,6 +1830,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -1249,6 +1845,7 @@
      "feeding_awards": 0,
      "gap": 1430,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2061",
      "supply": 0.0,
@@ -1263,6 +1860,7 @@
      "feeding_awards": 12,
      "gap": 353,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -1317,6 +1915,7 @@
      "feeding_awards": 12,
      "gap": 83,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -1363,6 +1962,36 @@
      "title": "Health Information Technologists and Medical Registrars"
     },
     {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
+    },
+    {
      "annual_openings": 300,
      "annual_wage": 95500,
      "awards_recent": 0,
@@ -1371,10 +2000,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -1385,6 +2030,7 @@
      "feeding_awards": 0,
      "gap": 1800,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9091",
      "supply": 0.0,
@@ -1399,6 +2045,7 @@
      "feeding_awards": 38,
      "gap": 4128,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -1563,6 +2210,7 @@
      "feeding_awards": 50,
      "gap": 2701,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -1724,6 +2372,7 @@
      "feeding_awards": 15,
      "gap": 308,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -1833,6 +2482,21 @@
      "title": "Community Health Workers"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-1124",
+     "supply": 0.0,
+     "title": "Radiation Therapists"
+    },
+    {
      "annual_openings": 210,
      "annual_wage": 132040,
      "awards_recent": 0,
@@ -1841,6 +2505,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -1855,6 +2520,7 @@
      "feeding_awards": 20,
      "gap": 5142,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -1956,6 +2622,7 @@
      "feeding_awards": 20,
      "gap": 412,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -2002,6 +2669,21 @@
      "title": "Dental Hygienists"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2033",
+     "supply": 0.0,
+     "title": "Nuclear Medicine Technologists"
+    },
+    {
      "annual_openings": 320,
      "annual_wage": 143870,
      "awards_recent": 0,
@@ -2010,10 +2692,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2034",
      "supply": 0.0,
      "title": "Radiologic Technologists and Technicians"
+    },
+    {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 10,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2036",
+     "supply": 0.0,
+     "title": "Medical Dosimetrists"
     },
     {
      "annual_openings": 820,
@@ -2024,6 +2722,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2052",
      "supply": 0.0,
@@ -2038,6 +2737,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -2052,6 +2752,7 @@
      "feeding_awards": 0,
      "gap": 1429,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -2106,6 +2807,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -2120,10 +2822,81 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 3569,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [
+      {
+       "awards": [
+        1,
+        1,
+        2,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+       ],
+       "name": "Nursing",
+       "top6": "123000",
+       "wages": [
+        {
+         "n": 62,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 105722,
+         "wage_after_5": 120188,
+         "wage_before": 24556,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "31-1131",
+     "supply": 0.7,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -2134,10 +2907,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -2148,6 +2937,7 @@
      "feeding_awards": 0,
      "gap": 1800,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9091",
      "supply": 0.0,
@@ -2162,6 +2952,7 @@
      "feeding_awards": 21,
      "gap": 4139,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -2279,6 +3070,7 @@
      "feeding_awards": 21,
      "gap": 2719,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -2354,6 +3146,7 @@
      "feeding_awards": 154,
      "gap": 208,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -2463,6 +3256,107 @@
      "title": "Community Health Workers"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 19,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 19,
+     "gap": 1,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        12,
+        22,
+        26,
+        13,
+        19
+       ],
+       "awards_recent": 19,
+       "enrollment": [
+        null,
+        null,
+        213,
+        null,
+        172,
+        203,
+        null,
+        169,
+        221,
+        null,
+        188,
+        208,
+        null,
+        189,
+        236
+       ],
+       "name": "Radiologic Technology",
+       "top6": "122500",
+       "wages": [
+        {
+         "n": 751,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 97436,
+         "wage_after_5": 115545,
+         "wage_before": 22896,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 261,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 104337,
+         "wage_after_5": 120912,
+         "wage_before": 17777,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 69,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 86887,
+         "wage_after_5": 114781,
+         "wage_before": 27393,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      },
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        9,
+        null,
+        10,
+        8,
+        null,
+        22,
+        10,
+        null,
+        11,
+        9,
+        null,
+        11,
+        12
+       ],
+       "name": "Radiation Therapy Technician",
+       "top6": "122600",
+       "wages": []
+      }
+     ],
+     "soc_code": "29-1124",
+     "supply": 19.3,
+     "title": "Radiation Therapists"
+    },
+    {
      "annual_openings": 210,
      "annual_wage": 132040,
      "awards_recent": 0,
@@ -2471,6 +3365,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -2485,6 +3380,7 @@
      "feeding_awards": 67,
      "gap": 5084,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -2586,10 +3482,82 @@
      "feeding_awards": 0,
      "gap": 440,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1292",
      "supply": 0.0,
      "title": "Dental Hygienists"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 19,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 19,
+     "gap": 1,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        12,
+        22,
+        26,
+        13,
+        19
+       ],
+       "awards_recent": 19,
+       "enrollment": [
+        null,
+        null,
+        213,
+        null,
+        172,
+        203,
+        null,
+        169,
+        221,
+        null,
+        188,
+        208,
+        null,
+        189,
+        236
+       ],
+       "name": "Radiologic Technology",
+       "top6": "122500",
+       "wages": [
+        {
+         "n": 751,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 97436,
+         "wage_after_5": 115545,
+         "wage_before": 22896,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 261,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 104337,
+         "wage_after_5": 120912,
+         "wage_before": 17777,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 69,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 86887,
+         "wage_after_5": 114781,
+         "wage_before": 27393,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2033",
+     "supply": 19.3,
+     "title": "Nuclear Medicine Technologists"
     },
     {
      "annual_openings": 320,
@@ -2600,6 +3568,7 @@
      "feeding_awards": 19,
      "gap": 301,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -2692,6 +3661,107 @@
      "title": "Radiologic Technologists and Technicians"
     },
     {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 19,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 19,
+     "gap": -9,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        12,
+        22,
+        26,
+        13,
+        19
+       ],
+       "awards_recent": 19,
+       "enrollment": [
+        null,
+        null,
+        213,
+        null,
+        172,
+        203,
+        null,
+        169,
+        221,
+        null,
+        188,
+        208,
+        null,
+        189,
+        236
+       ],
+       "name": "Radiologic Technology",
+       "top6": "122500",
+       "wages": [
+        {
+         "n": 751,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 97436,
+         "wage_after_5": 115545,
+         "wage_before": 22896,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 261,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 104337,
+         "wage_after_5": 120912,
+         "wage_before": 17777,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 69,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 86887,
+         "wage_after_5": 114781,
+         "wage_before": 27393,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      },
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        9,
+        null,
+        10,
+        8,
+        null,
+        22,
+        10,
+        null,
+        11,
+        9,
+        null,
+        11,
+        12
+       ],
+       "name": "Radiation Therapy Technician",
+       "top6": "122600",
+       "wages": []
+      }
+     ],
+     "soc_code": "29-2036",
+     "supply": 19.3,
+     "title": "Medical Dosimetrists"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 22,
@@ -2700,6 +3770,7 @@
      "feeding_awards": 22,
      "gap": 798,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -2762,6 +3833,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -2776,6 +3848,7 @@
      "feeding_awards": 7,
      "gap": 1413,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -2877,6 +3950,7 @@
      "feeding_awards": 63,
      "gap": 307,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -3017,6 +4091,7 @@
      "feeding_awards": 63,
      "gap": 37,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -3149,6 +4224,194 @@
      "title": "Health Information Technologists and Medical Registrars"
     },
     {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 7,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 7,
+     "gap": 3561,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        23,
+        null,
+        28,
+        24,
+        null,
+        27,
+        24
+       ],
+       "name": "Nursing",
+       "top6": "123000",
+       "wages": [
+        {
+         "n": 62,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 105722,
+         "wage_after_5": 120188,
+         "wage_before": 24556,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      },
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        2,
+        6
+       ],
+       "awards_recent": 6,
+       "enrollment": [
+        null,
+        null,
+        20,
+        null,
+        17,
+        27,
+        null,
+        29,
+        24,
+        null,
+        20,
+        24,
+        null,
+        32,
+        32
+       ],
+       "name": "Certified Nurse Assistant",
+       "top6": "123030",
+       "wages": [
+        {
+         "n": 155,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 37342,
+         "wage_after_5": 46536,
+         "wage_before": 21838,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      },
+      {
+       "awards": [
+        2,
+        37,
+        18,
+        0,
+        1
+       ],
+       "awards_recent": 1,
+       "enrollment": [
+        null,
+        null,
+        10,
+        null,
+        8,
+        7,
+        null,
+        10,
+        7,
+        null,
+        4,
+        11,
+        null,
+        5,
+        15
+       ],
+       "name": "Home Health Aide",
+       "top6": "123080",
+       "wages": [
+        {
+         "n": 20,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 36744,
+         "wage_after_5": 44473,
+         "wage_before": 12897,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "31-1131",
+     "supply": 9.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 1,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 1,
+     "gap": 64,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        2,
+        37,
+        18,
+        0,
+        1
+       ],
+       "awards_recent": 1,
+       "enrollment": [
+        null,
+        null,
+        10,
+        null,
+        8,
+        7,
+        null,
+        10,
+        7,
+        null,
+        4,
+        11,
+        null,
+        5,
+        15
+       ],
+       "name": "Home Health Aide",
+       "top6": "123080",
+       "wages": [
+        {
+         "n": 20,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 36744,
+         "wage_after_5": 44473,
+         "wage_before": 12897,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "31-1133",
+     "supply": 6.3,
+     "title": "Psychiatric Aides"
+    },
+    {
      "annual_openings": 300,
      "annual_wage": 95500,
      "awards_recent": 0,
@@ -3157,10 +4420,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -3171,6 +4450,7 @@
      "feeding_awards": 15,
      "gap": 1784,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -3233,6 +4513,7 @@
      "feeding_awards": 44,
      "gap": 4104,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -3380,6 +4661,7 @@
      "feeding_awards": 54,
      "gap": 2678,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -3571,10 +4853,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "21-1094",
      "supply": 0.0,
      "title": "Community Health Workers"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-1124",
+     "supply": 0.0,
+     "title": "Radiation Therapists"
     },
     {
      "annual_openings": 210,
@@ -3585,6 +4883,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -3599,6 +4898,7 @@
      "feeding_awards": 0,
      "gap": 5160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1141",
      "supply": 0.0,
@@ -3613,10 +4913,26 @@
      "feeding_awards": 0,
      "gap": 440,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1292",
      "supply": 0.0,
      "title": "Dental Hygienists"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2033",
+     "supply": 0.0,
+     "title": "Nuclear Medicine Technologists"
     },
     {
      "annual_openings": 320,
@@ -3627,10 +4943,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2034",
      "supply": 0.0,
      "title": "Radiologic Technologists and Technicians"
+    },
+    {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 10,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2036",
+     "supply": 0.0,
+     "title": "Medical Dosimetrists"
     },
     {
      "annual_openings": 820,
@@ -3641,6 +4973,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2052",
      "supply": 0.0,
@@ -3655,6 +4988,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -3669,6 +5003,7 @@
      "feeding_awards": 0,
      "gap": 1430,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2061",
      "supply": 0.0,
@@ -3683,6 +5018,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -3697,10 +5033,81 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        14,
+        null,
+        10,
+        17,
+        null,
+        18,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+       ],
+       "name": "Certified Nurse Assistant",
+       "top6": "123030",
+       "wages": [
+        {
+         "n": 155,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 37342,
+         "wage_after_5": 46536,
+         "wage_before": 21838,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -3711,10 +5118,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -3725,6 +5148,7 @@
      "feeding_awards": 28,
      "gap": 1775,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -3787,6 +5211,7 @@
      "feeding_awards": 0,
      "gap": 4160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9092",
      "supply": 0.0,
@@ -3801,6 +5226,7 @@
      "feeding_awards": 0,
      "gap": 2740,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "43-6013",
      "supply": 0.0,
@@ -3820,10 +5246,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "21-1094",
      "supply": 0.0,
      "title": "Community Health Workers"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-1124",
+     "supply": 0.0,
+     "title": "Radiation Therapists"
     },
     {
      "annual_openings": 210,
@@ -3834,6 +5276,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -3848,6 +5291,7 @@
      "feeding_awards": 40,
      "gap": 5119,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -3949,10 +5393,26 @@
      "feeding_awards": 0,
      "gap": 440,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1292",
      "supply": 0.0,
      "title": "Dental Hygienists"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2033",
+     "supply": 0.0,
+     "title": "Nuclear Medicine Technologists"
     },
     {
      "annual_openings": 320,
@@ -3963,10 +5423,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2034",
      "supply": 0.0,
      "title": "Radiologic Technologists and Technicians"
+    },
+    {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 10,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2036",
+     "supply": 0.0,
+     "title": "Medical Dosimetrists"
     },
     {
      "annual_openings": 820,
@@ -3977,6 +5453,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2052",
      "supply": 0.0,
@@ -3991,6 +5468,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -4005,6 +5483,7 @@
      "feeding_awards": 0,
      "gap": 1430,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -4059,6 +5538,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -4073,10 +5553,81 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        null,
+        null,
+        79,
+        null,
+        null,
+        62,
+        null,
+        null,
+        44,
+        null,
+        null,
+        38,
+        null
+       ],
+       "name": "Nursing",
+       "top6": "123000",
+       "wages": [
+        {
+         "n": 62,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 105722,
+         "wage_after_5": 120188,
+         "wage_before": 24556,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -4087,10 +5638,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -4101,6 +5668,7 @@
      "feeding_awards": 22,
      "gap": 1780,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -4163,6 +5731,7 @@
      "feeding_awards": 12,
      "gap": 4142,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -4327,6 +5896,7 @@
      "feeding_awards": 9,
      "gap": 2724,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -4449,10 +6019,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "21-1094",
      "supply": 0.0,
      "title": "Community Health Workers"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-1124",
+     "supply": 0.0,
+     "title": "Radiation Therapists"
     },
     {
      "annual_openings": 210,
@@ -4463,6 +6049,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -4477,6 +6064,7 @@
      "feeding_awards": 48,
      "gap": 5113,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -4539,6 +6127,7 @@
      "feeding_awards": 0,
      "gap": 440,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -4576,6 +6165,21 @@
      "title": "Dental Hygienists"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2033",
+     "supply": 0.0,
+     "title": "Nuclear Medicine Technologists"
+    },
+    {
      "annual_openings": 320,
      "annual_wage": 143870,
      "awards_recent": 0,
@@ -4584,10 +6188,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2034",
      "supply": 0.0,
      "title": "Radiologic Technologists and Technicians"
+    },
+    {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 10,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2036",
+     "supply": 0.0,
+     "title": "Medical Dosimetrists"
     },
     {
      "annual_openings": 820,
@@ -4598,6 +6218,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2052",
      "supply": 0.0,
@@ -4612,6 +6233,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -4626,6 +6248,7 @@
      "feeding_awards": 0,
      "gap": 1430,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2061",
      "supply": 0.0,
@@ -4640,6 +6263,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -4654,10 +6278,41 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -4668,10 +6323,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -4682,6 +6353,7 @@
      "feeding_awards": 27,
      "gap": 1780,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -4774,6 +6446,7 @@
      "feeding_awards": 0,
      "gap": 4160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9092",
      "supply": 0.0,
@@ -4788,6 +6461,7 @@
      "feeding_awards": 0,
      "gap": 2740,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "43-6013",
      "supply": 0.0,
@@ -4807,6 +6481,7 @@
      "feeding_awards": 3,
      "gap": 314,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -4869,6 +6544,21 @@
      "title": "Community Health Workers"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-1124",
+     "supply": 0.0,
+     "title": "Radiation Therapists"
+    },
+    {
      "annual_openings": 210,
      "annual_wage": 132040,
      "awards_recent": 0,
@@ -4877,6 +6567,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -4891,6 +6582,7 @@
      "feeding_awards": 38,
      "gap": 5122,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -4953,10 +6645,26 @@
      "feeding_awards": 0,
      "gap": 440,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1292",
      "supply": 0.0,
      "title": "Dental Hygienists"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2033",
+     "supply": 0.0,
+     "title": "Nuclear Medicine Technologists"
     },
     {
      "annual_openings": 320,
@@ -4967,10 +6675,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2034",
      "supply": 0.0,
      "title": "Radiologic Technologists and Technicians"
+    },
+    {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 10,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2036",
+     "supply": 0.0,
+     "title": "Medical Dosimetrists"
     },
     {
      "annual_openings": 820,
@@ -4981,6 +6705,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2052",
      "supply": 0.0,
@@ -4995,6 +6720,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -5009,6 +6735,7 @@
      "feeding_awards": 0,
      "gap": 1430,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2061",
      "supply": 0.0,
@@ -5023,6 +6750,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -5037,10 +6765,81 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        null,
+        null,
+        5,
+        null,
+        null,
+        8,
+        null,
+        null,
+        null,
+        11,
+        null,
+        6,
+        14
+       ],
+       "name": "Certified Nurse Assistant",
+       "top6": "123030",
+       "wages": [
+        {
+         "n": 155,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 37342,
+         "wage_after_5": 46536,
+         "wage_before": 21838,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -5051,10 +6850,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -5065,6 +6880,7 @@
      "feeding_awards": 0,
      "gap": 1800,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -5127,6 +6943,7 @@
      "feeding_awards": 6,
      "gap": 4149,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -5197,6 +7014,7 @@
      "feeding_awards": 6,
      "gap": 2729,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -5272,10 +7090,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "21-1094",
      "supply": 0.0,
      "title": "Community Health Workers"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-1124",
+     "supply": 0.0,
+     "title": "Radiation Therapists"
     },
     {
      "annual_openings": 210,
@@ -5286,6 +7120,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -5300,6 +7135,7 @@
      "feeding_awards": 49,
      "gap": 5118,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -5401,10 +7237,26 @@
      "feeding_awards": 0,
      "gap": 440,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1292",
      "supply": 0.0,
      "title": "Dental Hygienists"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2033",
+     "supply": 0.0,
+     "title": "Nuclear Medicine Technologists"
     },
     {
      "annual_openings": 320,
@@ -5415,10 +7267,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2034",
      "supply": 0.0,
      "title": "Radiologic Technologists and Technicians"
+    },
+    {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 10,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2036",
+     "supply": 0.0,
+     "title": "Medical Dosimetrists"
     },
     {
      "annual_openings": 820,
@@ -5429,6 +7297,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2052",
      "supply": 0.0,
@@ -5443,6 +7312,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -5457,6 +7327,7 @@
      "feeding_awards": 0,
      "gap": 1430,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -5511,6 +7382,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -5525,10 +7397,81 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        219,
+        141,
+        180,
+        169,
+        132,
+        191,
+        126,
+        136,
+        null,
+        146,
+        183,
+        184,
+        173,
+        146,
+        194
+       ],
+       "name": "Nursing",
+       "top6": "123000",
+       "wages": [
+        {
+         "n": 62,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 105722,
+         "wage_after_5": 120188,
+         "wage_before": 24556,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -5539,10 +7482,74 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        5,
+        7,
+        1,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+       ],
+       "name": "Massage Therapy",
+       "top6": "126200",
+       "wages": [
+        {
+         "n": 21,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 24324,
+         "wage_after_5": 41953,
+         "wage_before": 15507,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 32,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 22038,
+         "wage_after_5": 44670,
+         "wage_before": 13011,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "31-9011",
+     "supply": 0.3,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -5553,6 +7560,7 @@
      "feeding_awards": 0,
      "gap": 1800,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9091",
      "supply": 0.0,
@@ -5567,6 +7575,7 @@
      "feeding_awards": 20,
      "gap": 4131,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -5731,6 +7740,7 @@
      "feeding_awards": 20,
      "gap": 2719,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -5853,6 +7863,7 @@
      "feeding_awards": 34,
      "gap": 293,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -5962,6 +7973,21 @@
      "title": "Community Health Workers"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-1124",
+     "supply": 0.0,
+     "title": "Radiation Therapists"
+    },
+    {
      "annual_openings": 210,
      "annual_wage": 132040,
      "awards_recent": 0,
@@ -5970,6 +7996,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -5984,6 +8011,7 @@
      "feeding_awards": 0,
      "gap": 5160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1141",
      "supply": 0.0,
@@ -5998,6 +8026,7 @@
      "feeding_awards": 20,
      "gap": 421,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -6044,6 +8073,21 @@
      "title": "Dental Hygienists"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2033",
+     "supply": 0.0,
+     "title": "Nuclear Medicine Technologists"
+    },
+    {
      "annual_openings": 320,
      "annual_wage": 143870,
      "awards_recent": 0,
@@ -6052,10 +8096,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2034",
      "supply": 0.0,
      "title": "Radiologic Technologists and Technicians"
+    },
+    {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 10,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2036",
+     "supply": 0.0,
+     "title": "Medical Dosimetrists"
     },
     {
      "annual_openings": 820,
@@ -6066,6 +8126,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2052",
      "supply": 0.0,
@@ -6080,6 +8141,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -6094,6 +8156,7 @@
      "feeding_awards": 0,
      "gap": 1430,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2061",
      "supply": 0.0,
@@ -6108,6 +8171,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -6122,10 +8186,41 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -6136,10 +8231,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -6150,6 +8261,7 @@
      "feeding_awards": 28,
      "gap": 1771,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -6212,6 +8324,7 @@
      "feeding_awards": 0,
      "gap": 4160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9092",
      "supply": 0.0,
@@ -6226,6 +8339,7 @@
      "feeding_awards": 0,
      "gap": 2740,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "43-6013",
      "supply": 0.0,
@@ -6245,10 +8359,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "21-1094",
      "supply": 0.0,
      "title": "Community Health Workers"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-1124",
+     "supply": 0.0,
+     "title": "Radiation Therapists"
     },
     {
      "annual_openings": 210,
@@ -6259,6 +8389,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -6273,6 +8404,7 @@
      "feeding_awards": 64,
      "gap": 5095,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -6374,10 +8506,26 @@
      "feeding_awards": 0,
      "gap": 440,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1292",
      "supply": 0.0,
      "title": "Dental Hygienists"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2033",
+     "supply": 0.0,
+     "title": "Nuclear Medicine Technologists"
     },
     {
      "annual_openings": 320,
@@ -6388,10 +8536,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2034",
      "supply": 0.0,
      "title": "Radiologic Technologists and Technicians"
+    },
+    {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 10,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2036",
+     "supply": 0.0,
+     "title": "Medical Dosimetrists"
     },
     {
      "annual_openings": 820,
@@ -6402,6 +8566,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2052",
      "supply": 0.0,
@@ -6416,6 +8581,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -6430,6 +8596,7 @@
      "feeding_awards": 0,
      "gap": 1430,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -6484,6 +8651,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -6498,10 +8666,120 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        67,
+        66,
+        null,
+        80,
+        62,
+        null,
+        80,
+        69,
+        null,
+        84,
+        79,
+        null,
+        79,
+        85
+       ],
+       "name": "Nursing",
+       "top6": "123000",
+       "wages": [
+        {
+         "n": 62,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 105722,
+         "wage_after_5": 120188,
+         "wage_before": 24556,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      },
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        30,
+        null,
+        null,
+        30,
+        null,
+        null,
+        null,
+        29,
+        null,
+        32,
+        31,
+        null,
+        30,
+        30
+       ],
+       "name": "Certified Nurse Assistant",
+       "top6": "123030",
+       "wages": [
+        {
+         "n": 155,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 37342,
+         "wage_after_5": 46536,
+         "wage_before": 21838,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -6512,10 +8790,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -6526,6 +8820,7 @@
      "feeding_awards": 0,
      "gap": 1800,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9091",
      "supply": 0.0,
@@ -6540,6 +8835,7 @@
      "feeding_awards": 0,
      "gap": 4160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9092",
      "supply": 0.0,
@@ -6554,6 +8850,7 @@
      "feeding_awards": 0,
      "gap": 2740,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "43-6013",
      "supply": 0.0,
@@ -6573,6 +8870,7 @@
      "feeding_awards": 79,
      "gap": 262,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -6682,6 +8980,77 @@
      "title": "Community Health Workers"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 26,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 26,
+     "gap": -1,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        18,
+        23,
+        15,
+        22,
+        26
+       ],
+       "awards_recent": 26,
+       "enrollment": [
+        241,
+        159,
+        267,
+        242,
+        150,
+        262,
+        224,
+        202,
+        null,
+        259,
+        232,
+        328,
+        279,
+        247,
+        345
+       ],
+       "name": "Radiologic Technology",
+       "top6": "122500",
+       "wages": [
+        {
+         "n": 751,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 97436,
+         "wage_after_5": 115545,
+         "wage_before": 22896,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 261,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 104337,
+         "wage_after_5": 120912,
+         "wage_before": 17777,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 69,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 86887,
+         "wage_after_5": 114781,
+         "wage_before": 27393,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-1124",
+     "supply": 21.0,
+     "title": "Radiation Therapists"
+    },
+    {
      "annual_openings": 210,
      "annual_wage": 132040,
      "awards_recent": 24,
@@ -6690,6 +9059,7 @@
      "feeding_awards": 24,
      "gap": 185,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -6752,6 +9122,7 @@
      "feeding_awards": 0,
      "gap": 5160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1141",
      "supply": 0.0,
@@ -6766,6 +9137,7 @@
      "feeding_awards": 50,
      "gap": 386,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -6812,6 +9184,77 @@
      "title": "Dental Hygienists"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 26,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 26,
+     "gap": -1,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        18,
+        23,
+        15,
+        22,
+        26
+       ],
+       "awards_recent": 26,
+       "enrollment": [
+        241,
+        159,
+        267,
+        242,
+        150,
+        262,
+        224,
+        202,
+        null,
+        259,
+        232,
+        328,
+        279,
+        247,
+        345
+       ],
+       "name": "Radiologic Technology",
+       "top6": "122500",
+       "wages": [
+        {
+         "n": 751,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 97436,
+         "wage_after_5": 115545,
+         "wage_before": 22896,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 261,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 104337,
+         "wage_after_5": 120912,
+         "wage_before": 17777,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 69,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 86887,
+         "wage_after_5": 114781,
+         "wage_before": 27393,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2033",
+     "supply": 21.0,
+     "title": "Nuclear Medicine Technologists"
+    },
+    {
      "annual_openings": 320,
      "annual_wage": 143870,
      "awards_recent": 26,
@@ -6820,6 +9263,7 @@
      "feeding_awards": 26,
      "gap": 299,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -6882,6 +9326,77 @@
      "title": "Radiologic Technologists and Technicians"
     },
     {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 26,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 26,
+     "gap": -11,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        18,
+        23,
+        15,
+        22,
+        26
+       ],
+       "awards_recent": 26,
+       "enrollment": [
+        241,
+        159,
+        267,
+        242,
+        150,
+        262,
+        224,
+        202,
+        null,
+        259,
+        232,
+        328,
+        279,
+        247,
+        345
+       ],
+       "name": "Radiologic Technology",
+       "top6": "122500",
+       "wages": [
+        {
+         "n": 751,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 97436,
+         "wage_after_5": 115545,
+         "wage_before": 22896,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 261,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 104337,
+         "wage_after_5": 120912,
+         "wage_before": 17777,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 69,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 86887,
+         "wage_after_5": 114781,
+         "wage_before": 27393,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2036",
+     "supply": 21.0,
+     "title": "Medical Dosimetrists"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 24,
@@ -6890,6 +9405,7 @@
      "feeding_awards": 24,
      "gap": 796,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -6952,6 +9468,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -6966,6 +9483,7 @@
      "feeding_awards": 0,
      "gap": 1430,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2061",
      "supply": 0.0,
@@ -6980,6 +9498,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -6994,10 +9513,41 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -7008,10 +9558,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -7022,6 +9588,7 @@
      "feeding_awards": 25,
      "gap": 1780,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -7084,6 +9651,7 @@
      "feeding_awards": 0,
      "gap": 4160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9092",
      "supply": 0.0,
@@ -7098,6 +9666,7 @@
      "feeding_awards": 0,
      "gap": 2740,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "43-6013",
      "supply": 0.0,
@@ -7117,6 +9686,7 @@
      "feeding_awards": 11,
      "gap": 313,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -7179,6 +9749,21 @@
      "title": "Community Health Workers"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-1124",
+     "supply": 0.0,
+     "title": "Radiation Therapists"
+    },
+    {
      "annual_openings": 210,
      "annual_wage": 132040,
      "awards_recent": 0,
@@ -7187,6 +9772,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -7201,6 +9787,7 @@
      "feeding_awards": 24,
      "gap": 5138,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -7302,10 +9889,26 @@
      "feeding_awards": 0,
      "gap": 440,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1292",
      "supply": 0.0,
      "title": "Dental Hygienists"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2033",
+     "supply": 0.0,
+     "title": "Nuclear Medicine Technologists"
     },
     {
      "annual_openings": 320,
@@ -7316,10 +9919,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2034",
      "supply": 0.0,
      "title": "Radiologic Technologists and Technicians"
+    },
+    {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 10,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2036",
+     "supply": 0.0,
+     "title": "Medical Dosimetrists"
     },
     {
      "annual_openings": 820,
@@ -7330,6 +9949,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2052",
      "supply": 0.0,
@@ -7344,6 +9964,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -7358,6 +9979,7 @@
      "feeding_awards": 2,
      "gap": 1419,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -7459,6 +10081,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -7473,10 +10096,120 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        1,
+        null,
+        12,
+        null,
+        null,
+        12,
+        null,
+        null,
+        22,
+        1,
+        null,
+        7,
+        null
+       ],
+       "name": "Nursing",
+       "top6": "123000",
+       "wages": [
+        {
+         "n": 62,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 105722,
+         "wage_after_5": 120188,
+         "wage_before": 24556,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      },
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        19,
+        null,
+        22,
+        16,
+        null,
+        17,
+        16,
+        null,
+        30,
+        12,
+        null,
+        26,
+        28
+       ],
+       "name": "Certified Nurse Assistant",
+       "top6": "123030",
+       "wages": [
+        {
+         "n": 155,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 37342,
+         "wage_after_5": 46536,
+         "wage_before": 21838,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -7487,10 +10220,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -7501,6 +10250,7 @@
      "feeding_awards": 0,
      "gap": 1800,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9091",
      "supply": 0.0,
@@ -7515,6 +10265,7 @@
      "feeding_awards": 0,
      "gap": 4160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9092",
      "supply": 0.0,
@@ -7529,6 +10280,7 @@
      "feeding_awards": 0,
      "gap": 2740,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "43-6013",
      "supply": 0.0,
@@ -7548,10 +10300,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "21-1094",
      "supply": 0.0,
      "title": "Community Health Workers"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-1124",
+     "supply": 0.0,
+     "title": "Radiation Therapists"
     },
     {
      "annual_openings": 210,
@@ -7562,6 +10330,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -7576,6 +10345,7 @@
      "feeding_awards": 0,
      "gap": 5160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1141",
      "supply": 0.0,
@@ -7590,10 +10360,26 @@
      "feeding_awards": 0,
      "gap": 440,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1292",
      "supply": 0.0,
      "title": "Dental Hygienists"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2033",
+     "supply": 0.0,
+     "title": "Nuclear Medicine Technologists"
     },
     {
      "annual_openings": 320,
@@ -7604,10 +10390,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2034",
      "supply": 0.0,
      "title": "Radiologic Technologists and Technicians"
+    },
+    {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 10,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2036",
+     "supply": 0.0,
+     "title": "Medical Dosimetrists"
     },
     {
      "annual_openings": 820,
@@ -7618,6 +10420,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2052",
      "supply": 0.0,
@@ -7632,6 +10435,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -7646,6 +10450,7 @@
      "feeding_awards": 0,
      "gap": 1430,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2061",
      "supply": 0.0,
@@ -7660,6 +10465,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -7674,10 +10480,41 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -7688,10 +10525,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -7702,6 +10555,7 @@
      "feeding_awards": 0,
      "gap": 1800,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9091",
      "supply": 0.0,
@@ -7716,6 +10570,7 @@
      "feeding_awards": 0,
      "gap": 4160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9092",
      "supply": 0.0,
@@ -7730,6 +10585,7 @@
      "feeding_awards": 0,
      "gap": 2740,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "43-6013",
      "supply": 0.0,
@@ -7749,6 +10605,7 @@
      "feeding_awards": 11,
      "gap": 310,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -7811,6 +10668,21 @@
      "title": "Community Health Workers"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-1124",
+     "supply": 0.0,
+     "title": "Radiation Therapists"
+    },
+    {
      "annual_openings": 210,
      "annual_wage": 132040,
      "awards_recent": 0,
@@ -7819,6 +10691,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -7833,6 +10706,7 @@
      "feeding_awards": 0,
      "gap": 5160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1141",
      "supply": 0.0,
@@ -7847,10 +10721,26 @@
      "feeding_awards": 0,
      "gap": 440,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1292",
      "supply": 0.0,
      "title": "Dental Hygienists"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2033",
+     "supply": 0.0,
+     "title": "Nuclear Medicine Technologists"
     },
     {
      "annual_openings": 320,
@@ -7861,10 +10751,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2034",
      "supply": 0.0,
      "title": "Radiologic Technologists and Technicians"
+    },
+    {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 10,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2036",
+     "supply": 0.0,
+     "title": "Medical Dosimetrists"
     },
     {
      "annual_openings": 820,
@@ -7875,6 +10781,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2052",
      "supply": 0.0,
@@ -7889,6 +10796,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -7903,6 +10811,7 @@
      "feeding_awards": 0,
      "gap": 1430,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2061",
      "supply": 0.0,
@@ -7917,6 +10826,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -7931,10 +10841,41 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -7945,10 +10886,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -7959,6 +10916,7 @@
      "feeding_awards": 0,
      "gap": 1800,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9091",
      "supply": 0.0,
@@ -7973,6 +10931,7 @@
      "feeding_awards": 2,
      "gap": 4158,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -8035,6 +10994,7 @@
      "feeding_awards": 2,
      "gap": 2738,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -8102,10 +11062,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "21-1094",
      "supply": 0.0,
      "title": "Community Health Workers"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-1124",
+     "supply": 0.0,
+     "title": "Radiation Therapists"
     },
     {
      "annual_openings": 210,
@@ -8116,6 +11092,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -8130,6 +11107,7 @@
      "feeding_awards": 44,
      "gap": 5119,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -8192,10 +11170,26 @@
      "feeding_awards": 0,
      "gap": 440,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1292",
      "supply": 0.0,
      "title": "Dental Hygienists"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2033",
+     "supply": 0.0,
+     "title": "Nuclear Medicine Technologists"
     },
     {
      "annual_openings": 320,
@@ -8206,10 +11200,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2034",
      "supply": 0.0,
      "title": "Radiologic Technologists and Technicians"
+    },
+    {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 10,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2036",
+     "supply": 0.0,
+     "title": "Medical Dosimetrists"
     },
     {
      "annual_openings": 820,
@@ -8220,6 +11230,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2052",
      "supply": 0.0,
@@ -8234,6 +11245,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -8248,6 +11260,7 @@
      "feeding_awards": 27,
      "gap": 1414,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -8310,6 +11323,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -8324,10 +11338,41 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -8338,10 +11383,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -8352,6 +11413,7 @@
      "feeding_awards": 0,
      "gap": 1800,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9091",
      "supply": 0.0,
@@ -8366,6 +11428,7 @@
      "feeding_awards": 0,
      "gap": 4160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9092",
      "supply": 0.0,
@@ -8380,6 +11443,7 @@
      "feeding_awards": 0,
      "gap": 2740,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "43-6013",
      "supply": 0.0,
@@ -8399,6 +11463,7 @@
      "feeding_awards": 0,
      "gap": 318,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -8508,6 +11573,77 @@
      "title": "Community Health Workers"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 20,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 20,
+     "gap": 4,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        28,
+        31,
+        0,
+        29,
+        20
+       ],
+       "awards_recent": 20,
+       "enrollment": [
+        null,
+        null,
+        241,
+        null,
+        141,
+        240,
+        null,
+        159,
+        296,
+        null,
+        247,
+        334,
+        null,
+        273,
+        335
+       ],
+       "name": "Radiologic Technology",
+       "top6": "122500",
+       "wages": [
+        {
+         "n": 751,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 97436,
+         "wage_after_5": 115545,
+         "wage_before": 22896,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 261,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 104337,
+         "wage_after_5": 120912,
+         "wage_before": 17777,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 69,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 86887,
+         "wage_after_5": 114781,
+         "wage_before": 27393,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-1124",
+     "supply": 16.3,
+     "title": "Radiation Therapists"
+    },
+    {
      "annual_openings": 210,
      "annual_wage": 132040,
      "awards_recent": 0,
@@ -8516,6 +11652,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -8530,6 +11667,7 @@
      "feeding_awards": 4,
      "gap": 5146,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -8592,10 +11730,82 @@
      "feeding_awards": 0,
      "gap": 440,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1292",
      "supply": 0.0,
      "title": "Dental Hygienists"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 20,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 20,
+     "gap": 4,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        28,
+        31,
+        0,
+        29,
+        20
+       ],
+       "awards_recent": 20,
+       "enrollment": [
+        null,
+        null,
+        241,
+        null,
+        141,
+        240,
+        null,
+        159,
+        296,
+        null,
+        247,
+        334,
+        null,
+        273,
+        335
+       ],
+       "name": "Radiologic Technology",
+       "top6": "122500",
+       "wages": [
+        {
+         "n": 751,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 97436,
+         "wage_after_5": 115545,
+         "wage_before": 22896,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 261,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 104337,
+         "wage_after_5": 120912,
+         "wage_before": 17777,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 69,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 86887,
+         "wage_after_5": 114781,
+         "wage_before": 27393,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2033",
+     "supply": 16.3,
+     "title": "Nuclear Medicine Technologists"
     },
     {
      "annual_openings": 320,
@@ -8606,6 +11816,7 @@
      "feeding_awards": 20,
      "gap": 304,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -8668,6 +11879,77 @@
      "title": "Radiologic Technologists and Technicians"
     },
     {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 20,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 20,
+     "gap": -6,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        28,
+        31,
+        0,
+        29,
+        20
+       ],
+       "awards_recent": 20,
+       "enrollment": [
+        null,
+        null,
+        241,
+        null,
+        141,
+        240,
+        null,
+        159,
+        296,
+        null,
+        247,
+        334,
+        null,
+        273,
+        335
+       ],
+       "name": "Radiologic Technology",
+       "top6": "122500",
+       "wages": [
+        {
+         "n": 751,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 97436,
+         "wage_after_5": 115545,
+         "wage_before": 22896,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 261,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 104337,
+         "wage_after_5": 120912,
+         "wage_before": 17777,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 69,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 86887,
+         "wage_after_5": 114781,
+         "wage_before": 27393,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2036",
+     "supply": 16.3,
+     "title": "Medical Dosimetrists"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -8676,6 +11958,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2052",
      "supply": 0.0,
@@ -8690,6 +11973,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -8704,6 +11988,7 @@
      "feeding_awards": 0,
      "gap": 1430,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2061",
      "supply": 0.0,
@@ -8718,6 +12003,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -8732,10 +12018,41 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -8746,10 +12063,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -8760,6 +12093,7 @@
      "feeding_awards": 0,
      "gap": 1800,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9091",
      "supply": 0.0,
@@ -8774,6 +12108,7 @@
      "feeding_awards": 38,
      "gap": 4136,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -8938,6 +12273,7 @@
      "feeding_awards": 6,
      "gap": 2737,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -9060,6 +12396,7 @@
      "feeding_awards": 5,
      "gap": 318,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -9169,6 +12506,21 @@
      "title": "Community Health Workers"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-1124",
+     "supply": 0.0,
+     "title": "Radiation Therapists"
+    },
+    {
      "annual_openings": 210,
      "annual_wage": 132040,
      "awards_recent": 0,
@@ -9177,6 +12529,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -9191,6 +12544,7 @@
      "feeding_awards": 30,
      "gap": 5132,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -9292,10 +12646,26 @@
      "feeding_awards": 0,
      "gap": 440,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1292",
      "supply": 0.0,
      "title": "Dental Hygienists"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2033",
+     "supply": 0.0,
+     "title": "Nuclear Medicine Technologists"
     },
     {
      "annual_openings": 320,
@@ -9306,10 +12676,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2034",
      "supply": 0.0,
      "title": "Radiologic Technologists and Technicians"
+    },
+    {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 10,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2036",
+     "supply": 0.0,
+     "title": "Medical Dosimetrists"
     },
     {
      "annual_openings": 820,
@@ -9320,6 +12706,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -9382,6 +12769,7 @@
      "feeding_awards": 1,
      "gap": 259,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -9444,6 +12832,7 @@
      "feeding_awards": 56,
      "gap": 1376,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -9545,6 +12934,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -9559,10 +12949,168 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 0,
+     "gap": 3568,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        45,
+        null,
+        22,
+        54,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        92
+       ],
+       "name": "Nursing",
+       "top6": "123000",
+       "wages": [
+        {
+         "n": 62,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 105722,
+         "wage_after_5": 120188,
+         "wage_before": 24556,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      },
+      {
+       "awards": [
+        1,
+        73,
+        5,
+        1,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        152,
+        163,
+        null,
+        161,
+        159,
+        null,
+        131,
+        171,
+        null,
+        139,
+        185,
+        null,
+        187,
+        194
+       ],
+       "name": "Certified Nurse Assistant",
+       "top6": "123030",
+       "wages": [
+        {
+         "n": 155,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 37342,
+         "wage_after_5": 46536,
+         "wage_before": 21838,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "31-1131",
+     "supply": 2.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 1,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 1,
+     "gap": 69,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        1,
+        3,
+        1,
+        0,
+        1
+       ],
+       "awards_recent": 1,
+       "enrollment": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+       ],
+       "name": "Psychiatric Technician",
+       "top6": "123900",
+       "wages": [
+        {
+         "n": 122,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 80784,
+         "wage_after_5": 86707,
+         "wage_before": 26985,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 242,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 83845,
+         "wage_after_5": 85223,
+         "wage_before": 29661,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "31-1133",
+     "supply": 0.7,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -9573,10 +13121,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -9587,6 +13151,7 @@
      "feeding_awards": 0,
      "gap": 1800,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9091",
      "supply": 0.0,
@@ -9601,6 +13166,7 @@
      "feeding_awards": 0,
      "gap": 4160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9092",
      "supply": 0.0,
@@ -9615,6 +13181,7 @@
      "feeding_awards": 0,
      "gap": 2740,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "43-6013",
      "supply": 0.0,
@@ -9634,10 +13201,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "21-1094",
      "supply": 0.0,
      "title": "Community Health Workers"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-1124",
+     "supply": 0.0,
+     "title": "Radiation Therapists"
     },
     {
      "annual_openings": 210,
@@ -9648,6 +13231,7 @@
      "feeding_awards": 21,
      "gap": 192,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -9710,6 +13294,7 @@
      "feeding_awards": 46,
      "gap": 5118,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -9811,10 +13396,26 @@
      "feeding_awards": 0,
      "gap": 440,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1292",
      "supply": 0.0,
      "title": "Dental Hygienists"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2033",
+     "supply": 0.0,
+     "title": "Nuclear Medicine Technologists"
     },
     {
      "annual_openings": 320,
@@ -9825,10 +13426,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2034",
      "supply": 0.0,
      "title": "Radiologic Technologists and Technicians"
+    },
+    {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 10,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2036",
+     "supply": 0.0,
+     "title": "Medical Dosimetrists"
     },
     {
      "annual_openings": 820,
@@ -9839,6 +13456,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2052",
      "supply": 0.0,
@@ -9853,6 +13471,7 @@
      "feeding_awards": 15,
      "gap": 236,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -9915,6 +13534,7 @@
      "feeding_awards": 14,
      "gap": 1421,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -10016,6 +13636,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -10030,10 +13651,129 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        15,
+        null,
+        16,
+        null,
+        null,
+        15,
+        null,
+        null,
+        null,
+        null
+       ],
+       "name": "Nursing",
+       "top6": "123000",
+       "wages": [
+        {
+         "n": 62,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 105722,
+         "wage_after_5": 120188,
+         "wage_before": 24556,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 15,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 15,
+     "gap": 46,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        52,
+        39,
+        40,
+        17,
+        15
+       ],
+       "awards_recent": 15,
+       "enrollment": [
+        null,
+        null,
+        51,
+        null,
+        47,
+        50,
+        null,
+        30,
+        24,
+        null,
+        null,
+        28,
+        null,
+        13,
+        31
+       ],
+       "name": "Psychiatric Technician",
+       "top6": "123900",
+       "wages": [
+        {
+         "n": 122,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 80784,
+         "wage_after_5": 86707,
+         "wage_before": 26985,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 242,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 83845,
+         "wage_after_5": 85223,
+         "wage_before": 29661,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "31-1133",
+     "supply": 24.0,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -10044,10 +13784,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -10058,6 +13814,7 @@
      "feeding_awards": 0,
      "gap": 1800,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9091",
      "supply": 0.0,
@@ -10072,6 +13829,7 @@
      "feeding_awards": 0,
      "gap": 4160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9092",
      "supply": 0.0,
@@ -10086,6 +13844,7 @@
      "feeding_awards": 0,
      "gap": 2740,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "43-6013",
      "supply": 0.0,
@@ -10105,6 +13864,7 @@
      "feeding_awards": 0,
      "gap": 319,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -10167,6 +13927,21 @@
      "title": "Community Health Workers"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-1124",
+     "supply": 0.0,
+     "title": "Radiation Therapists"
+    },
+    {
      "annual_openings": 210,
      "annual_wage": 132040,
      "awards_recent": 12,
@@ -10175,6 +13950,7 @@
      "feeding_awards": 12,
      "gap": 196,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -10237,6 +14013,7 @@
      "feeding_awards": 25,
      "gap": 5131,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -10299,10 +14076,26 @@
      "feeding_awards": 0,
      "gap": 440,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1292",
      "supply": 0.0,
      "title": "Dental Hygienists"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2033",
+     "supply": 0.0,
+     "title": "Nuclear Medicine Technologists"
     },
     {
      "annual_openings": 320,
@@ -10313,10 +14106,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2034",
      "supply": 0.0,
      "title": "Radiologic Technologists and Technicians"
+    },
+    {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 10,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2036",
+     "supply": 0.0,
+     "title": "Medical Dosimetrists"
     },
     {
      "annual_openings": 820,
@@ -10327,6 +14136,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -10389,6 +14199,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -10403,6 +14214,7 @@
      "feeding_awards": 0,
      "gap": 1430,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2061",
      "supply": 0.0,
@@ -10417,6 +14229,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -10431,10 +14244,41 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -10445,6 +14289,7 @@
      "feeding_awards": 17,
      "gap": 281,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -10491,6 +14336,21 @@
      "title": "Physical Therapist Assistants"
     },
     {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
+    },
+    {
      "annual_openings": 1800,
      "annual_wage": 62350,
      "awards_recent": 0,
@@ -10499,6 +14359,7 @@
      "feeding_awards": 0,
      "gap": 1800,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9091",
      "supply": 0.0,
@@ -10513,6 +14374,7 @@
      "feeding_awards": 0,
      "gap": 4160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -10583,6 +14445,7 @@
      "feeding_awards": 0,
      "gap": 2740,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -10658,6 +14521,7 @@
      "feeding_awards": 8,
      "gap": 315,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -10720,6 +14584,21 @@
      "title": "Community Health Workers"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-1124",
+     "supply": 0.0,
+     "title": "Radiation Therapists"
+    },
+    {
      "annual_openings": 210,
      "annual_wage": 132040,
      "awards_recent": 0,
@@ -10728,6 +14607,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -10742,6 +14622,7 @@
      "feeding_awards": 0,
      "gap": 5160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1141",
      "supply": 0.0,
@@ -10756,10 +14637,26 @@
      "feeding_awards": 0,
      "gap": 440,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1292",
      "supply": 0.0,
      "title": "Dental Hygienists"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2033",
+     "supply": 0.0,
+     "title": "Nuclear Medicine Technologists"
     },
     {
      "annual_openings": 320,
@@ -10770,10 +14667,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2034",
      "supply": 0.0,
      "title": "Radiologic Technologists and Technicians"
+    },
+    {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 10,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2036",
+     "supply": 0.0,
+     "title": "Medical Dosimetrists"
     },
     {
      "annual_openings": 820,
@@ -10784,6 +14697,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2052",
      "supply": 0.0,
@@ -10798,6 +14712,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -10812,6 +14727,7 @@
      "feeding_awards": 0,
      "gap": 1430,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2061",
      "supply": 0.0,
@@ -10826,6 +14742,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -10880,6 +14797,7 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -10926,6 +14844,36 @@
      "title": "Health Information Technologists and Medical Registrars"
     },
     {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
+    },
+    {
      "annual_openings": 300,
      "annual_wage": 95500,
      "awards_recent": 0,
@@ -10934,10 +14882,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -10948,6 +14912,7 @@
      "feeding_awards": 47,
      "gap": 1758,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -11010,6 +14975,7 @@
      "feeding_awards": 63,
      "gap": 4083,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -11174,6 +15140,7 @@
      "feeding_awards": 20,
      "gap": 2719,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -11335,6 +15302,7 @@
      "feeding_awards": 4,
      "gap": 317,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -11444,6 +15412,77 @@
      "title": "Community Health Workers"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 35,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 35,
+     "gap": -17,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        17,
+        11,
+        43,
+        33,
+        35
+       ],
+       "awards_recent": 35,
+       "enrollment": [
+        null,
+        null,
+        213,
+        null,
+        260,
+        258,
+        null,
+        239,
+        260,
+        null,
+        286,
+        304,
+        null,
+        339,
+        253
+       ],
+       "name": "Radiologic Technology",
+       "top6": "122500",
+       "wages": [
+        {
+         "n": 751,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 97436,
+         "wage_after_5": 115545,
+         "wage_before": 22896,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 261,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 104337,
+         "wage_after_5": 120912,
+         "wage_before": 17777,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 69,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 86887,
+         "wage_after_5": 114781,
+         "wage_before": 27393,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-1124",
+     "supply": 37.0,
+     "title": "Radiation Therapists"
+    },
+    {
      "annual_openings": 210,
      "annual_wage": 132040,
      "awards_recent": 0,
@@ -11452,6 +15491,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -11466,6 +15506,7 @@
      "feeding_awards": 110,
      "gap": 5058,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -11528,6 +15569,7 @@
      "feeding_awards": 24,
      "gap": 416,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -11604,6 +15646,77 @@
      "title": "Dental Hygienists"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 35,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 35,
+     "gap": -17,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        17,
+        11,
+        43,
+        33,
+        35
+       ],
+       "awards_recent": 35,
+       "enrollment": [
+        null,
+        null,
+        213,
+        null,
+        260,
+        258,
+        null,
+        239,
+        260,
+        null,
+        286,
+        304,
+        null,
+        339,
+        253
+       ],
+       "name": "Radiologic Technology",
+       "top6": "122500",
+       "wages": [
+        {
+         "n": 751,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 97436,
+         "wage_after_5": 115545,
+         "wage_before": 22896,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 261,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 104337,
+         "wage_after_5": 120912,
+         "wage_before": 17777,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 69,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 86887,
+         "wage_after_5": 114781,
+         "wage_before": 27393,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2033",
+     "supply": 37.0,
+     "title": "Nuclear Medicine Technologists"
+    },
+    {
      "annual_openings": 320,
      "annual_wage": 143870,
      "awards_recent": 35,
@@ -11612,6 +15725,7 @@
      "feeding_awards": 35,
      "gap": 283,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -11674,6 +15788,77 @@
      "title": "Radiologic Technologists and Technicians"
     },
     {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 35,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 35,
+     "gap": -27,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        17,
+        11,
+        43,
+        33,
+        35
+       ],
+       "awards_recent": 35,
+       "enrollment": [
+        null,
+        null,
+        213,
+        null,
+        260,
+        258,
+        null,
+        239,
+        260,
+        null,
+        286,
+        304,
+        null,
+        339,
+        253
+       ],
+       "name": "Radiologic Technology",
+       "top6": "122500",
+       "wages": [
+        {
+         "n": 751,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 97436,
+         "wage_after_5": 115545,
+         "wage_before": 22896,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 261,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 104337,
+         "wage_after_5": 120912,
+         "wage_before": 17777,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 69,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 86887,
+         "wage_after_5": 114781,
+         "wage_before": 27393,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2036",
+     "supply": 37.0,
+     "title": "Medical Dosimetrists"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 8,
@@ -11682,6 +15867,7 @@
      "feeding_awards": 8,
      "gap": 814,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -11744,6 +15930,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -11758,6 +15945,7 @@
      "feeding_awards": 0,
      "gap": 1430,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -11820,6 +16008,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -11834,10 +16023,160 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 83,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 83,
+     "gap": 3490,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [
+      {
+       "awards": [
+        106,
+        80,
+        72,
+        83,
+        83
+       ],
+       "awards_recent": 83,
+       "enrollment": [
+        null,
+        null,
+        30,
+        null,
+        25,
+        25,
+        null,
+        28,
+        29,
+        null,
+        30,
+        27,
+        null,
+        30,
+        28
+       ],
+       "name": "Certified Nurse Assistant",
+       "top6": "123030",
+       "wages": [
+        {
+         "n": 155,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 37342,
+         "wage_after_5": 46536,
+         "wage_before": 21838,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      },
+      {
+       "awards": [
+        0,
+        1,
+        0,
+        1,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+       ],
+       "name": "Home Health Aide",
+       "top6": "123080",
+       "wages": [
+        {
+         "n": 20,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 36744,
+         "wage_after_5": 44473,
+         "wage_before": 12897,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "31-1131",
+     "supply": 79.7,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        0,
+        1,
+        0,
+        1,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+       ],
+       "name": "Home Health Aide",
+       "top6": "123080",
+       "wages": [
+        {
+         "n": 20,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 36744,
+         "wage_after_5": 44473,
+         "wage_before": 12897,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "31-1133",
+     "supply": 0.3,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -11848,10 +16187,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -11862,6 +16217,7 @@
      "feeding_awards": 17,
      "gap": 1784,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -11954,6 +16310,7 @@
      "feeding_awards": 27,
      "gap": 4133,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -12071,6 +16428,7 @@
      "feeding_awards": 27,
      "gap": 2713,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -12146,6 +16504,7 @@
      "feeding_awards": 5,
      "gap": 316,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -12208,6 +16567,21 @@
      "title": "Community Health Workers"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-1124",
+     "supply": 0.0,
+     "title": "Radiation Therapists"
+    },
+    {
      "annual_openings": 210,
      "annual_wage": 132040,
      "awards_recent": 42,
@@ -12216,6 +16590,7 @@
      "feeding_awards": 42,
      "gap": 179,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -12278,6 +16653,7 @@
      "feeding_awards": 0,
      "gap": 5160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1141",
      "supply": 0.0,
@@ -12292,10 +16668,26 @@
      "feeding_awards": 0,
      "gap": 440,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1292",
      "supply": 0.0,
      "title": "Dental Hygienists"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2033",
+     "supply": 0.0,
+     "title": "Nuclear Medicine Technologists"
     },
     {
      "annual_openings": 320,
@@ -12306,10 +16698,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2034",
      "supply": 0.0,
      "title": "Radiologic Technologists and Technicians"
+    },
+    {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 10,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2036",
+     "supply": 0.0,
+     "title": "Medical Dosimetrists"
     },
     {
      "annual_openings": 820,
@@ -12320,6 +16728,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2052",
      "supply": 0.0,
@@ -12334,6 +16743,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -12348,6 +16758,7 @@
      "feeding_awards": 0,
      "gap": 1430,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2061",
      "supply": 0.0,
@@ -12362,6 +16773,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -12376,10 +16788,41 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -12390,10 +16833,74 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 5,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 5,
+     "gap": 811,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        2,
+        21,
+        5
+       ],
+       "awards_recent": 5,
+       "enrollment": [
+        null,
+        null,
+        67,
+        null,
+        128,
+        86,
+        null,
+        122,
+        110,
+        null,
+        97,
+        110,
+        null,
+        161,
+        181
+       ],
+       "name": "Massage Therapy",
+       "top6": "126200",
+       "wages": [
+        {
+         "n": 21,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 24324,
+         "wage_after_5": 41953,
+         "wage_before": 15507,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 32,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 22038,
+         "wage_after_5": 44670,
+         "wage_before": 13011,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "31-9011",
+     "supply": 9.3,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -12404,6 +16911,7 @@
      "feeding_awards": 0,
      "gap": 1800,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9091",
      "supply": 0.0,
@@ -12418,6 +16926,7 @@
      "feeding_awards": 0,
      "gap": 4160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -12488,6 +16997,7 @@
      "feeding_awards": 0,
      "gap": 2740,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -12563,6 +17073,7 @@
      "feeding_awards": 1,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -12625,6 +17136,21 @@
      "title": "Community Health Workers"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-1124",
+     "supply": 0.0,
+     "title": "Radiation Therapists"
+    },
+    {
      "annual_openings": 210,
      "annual_wage": 132040,
      "awards_recent": 0,
@@ -12633,6 +17159,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -12647,6 +17174,7 @@
      "feeding_awards": 44,
      "gap": 5121,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -12709,10 +17237,26 @@
      "feeding_awards": 0,
      "gap": 440,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1292",
      "supply": 0.0,
      "title": "Dental Hygienists"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2033",
+     "supply": 0.0,
+     "title": "Nuclear Medicine Technologists"
     },
     {
      "annual_openings": 320,
@@ -12723,10 +17267,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2034",
      "supply": 0.0,
      "title": "Radiologic Technologists and Technicians"
+    },
+    {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 10,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2036",
+     "supply": 0.0,
+     "title": "Medical Dosimetrists"
     },
     {
      "annual_openings": 820,
@@ -12737,6 +17297,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2052",
      "supply": 0.0,
@@ -12751,6 +17312,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -12765,6 +17327,7 @@
      "feeding_awards": 0,
      "gap": 1430,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2061",
      "supply": 0.0,
@@ -12779,6 +17342,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -12793,10 +17357,81 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [
+      {
+       "awards": [
+        1,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+       ],
+       "name": "Certified Nurse Assistant",
+       "top6": "123030",
+       "wages": [
+        {
+         "n": 155,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 37342,
+         "wage_after_5": 46536,
+         "wage_before": 21838,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -12807,10 +17442,26 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
+    },
+    {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -12821,6 +17472,7 @@
      "feeding_awards": 0,
      "gap": 1800,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9091",
      "supply": 0.0,
@@ -12835,6 +17487,7 @@
      "feeding_awards": 0,
      "gap": 4160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -12905,6 +17558,7 @@
      "feeding_awards": 0,
      "gap": 2740,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -12980,6 +17634,7 @@
      "feeding_awards": 14,
      "gap": 310,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -13042,6 +17697,21 @@
      "title": "Community Health Workers"
     },
     {
+     "annual_openings": 20,
+     "annual_wage": 183360,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-1124",
+     "supply": 0.0,
+     "title": "Radiation Therapists"
+    },
+    {
      "annual_openings": 210,
      "annual_wage": 132040,
      "awards_recent": 0,
@@ -13050,6 +17720,7 @@
      "feeding_awards": 0,
      "gap": 210,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1126",
      "supply": 0.0,
@@ -13064,6 +17735,7 @@
      "feeding_awards": 0,
      "gap": 5160,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1141",
      "supply": 0.0,
@@ -13078,10 +17750,26 @@
      "feeding_awards": 0,
      "gap": 440,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-1292",
      "supply": 0.0,
      "title": "Dental Hygienists"
+    },
+    {
+     "annual_openings": 20,
+     "annual_wage": 162330,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 20,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2033",
+     "supply": 0.0,
+     "title": "Nuclear Medicine Technologists"
     },
     {
      "annual_openings": 320,
@@ -13092,10 +17780,26 @@
      "feeding_awards": 0,
      "gap": 320,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2034",
      "supply": 0.0,
      "title": "Radiologic Technologists and Technicians"
+    },
+    {
+     "annual_openings": 10,
+     "annual_wage": 146700,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 10,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2036",
+     "supply": 0.0,
+     "title": "Medical Dosimetrists"
     },
     {
      "annual_openings": 820,
@@ -13106,6 +17810,7 @@
      "feeding_awards": 0,
      "gap": 820,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2052",
      "supply": 0.0,
@@ -13120,6 +17825,7 @@
      "feeding_awards": 0,
      "gap": 260,
      "growth_rate": 0.3,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2053",
      "supply": 0.0,
@@ -13134,6 +17840,7 @@
      "feeding_awards": 0,
      "gap": 1430,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2061",
      "supply": 0.0,
@@ -13148,6 +17855,7 @@
      "feeding_awards": 0,
      "gap": 360,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-2072",
      "supply": 0.0,
@@ -13162,10 +17870,81 @@
      "feeding_awards": 0,
      "gap": 90,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [],
      "soc_code": "29-9021",
      "supply": 0.0,
      "title": "Health Information Technologists and Medical Registrars"
+    },
+    {
+     "annual_openings": 3570,
+     "annual_wage": 52770,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 3570,
+     "growth_rate": 0.1,
+     "in_demand": true,
+     "programs": [
+      {
+       "awards": [
+        0,
+        5,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+       ],
+       "name": "Certified Nurse Assistant",
+       "top6": "123030",
+       "wages": [
+        {
+         "n": 155,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 37342,
+         "wage_after_5": 46536,
+         "wage_before": 21838,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "31-1131",
+     "supply": 0.0,
+     "title": "Nursing Assistants"
+    },
+    {
+     "annual_openings": 70,
+     "annual_wage": 57990,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 70,
+     "growth_rate": 0.2,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-1133",
+     "supply": 0.0,
+     "title": "Psychiatric Aides"
     },
     {
      "annual_openings": 300,
@@ -13176,6 +17955,7 @@
      "feeding_awards": 5,
      "gap": 293,
      "growth_rate": 0.2,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -13230,6 +18010,21 @@
      "title": "Physical Therapist Assistants"
     },
     {
+     "annual_openings": 820,
+     "annual_wage": 44790,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 820,
+     "growth_rate": 0.1,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "31-9011",
+     "supply": 0.0,
+     "title": "Massage Therapists"
+    },
+    {
      "annual_openings": 1800,
      "annual_wage": 62350,
      "awards_recent": 0,
@@ -13238,6 +18033,7 @@
      "feeding_awards": 0,
      "gap": 1800,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "31-9091",
      "supply": 0.0,
@@ -13252,6 +18048,7 @@
      "feeding_awards": 17,
      "gap": 4141,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -13416,6 +18213,7 @@
      "feeding_awards": 16,
      "gap": 2724,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -13529,6 +18327,10 @@
   }
  ],
  "coverage_awards_only": true,
+ "demand_criteria": {
+  "min_openings": 250,
+  "min_wage": 50000
+ },
  "enrollment_terms": [
   "Winter 2021",
   "Spring 2021",
@@ -13546,7 +18348,7 @@
   "Spring 2025",
   "Fall 2025"
  ],
- "executive_summary": "This view examines the regional demand landscape across the 14 health occupations the Bay Area Community College Consortium \u2014 Health targets in the Bay Area regional labor market. Regional demand for these occupations totals 18,410 openings per year.",
+ "executive_summary": "This view examines the regional demand landscape across the 20 health occupations the Bay Area Community College Consortium \u2014 Health targets in the Bay Area regional labor market. Regional demand for these occupations totals 22,920 openings per year.",
  "is_sector_priority": true,
  "region": "Bay",
  "region_display": "Bay Area",

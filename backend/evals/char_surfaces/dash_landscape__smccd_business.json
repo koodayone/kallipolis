@@ -31,6 +31,10 @@
   }
  ],
  "coverage_awards_only": true,
+ "demand_criteria": {
+  "min_openings": 250,
+  "min_wage": 50000
+ },
  "enrollment_terms": [
   "Fall 2021",
   "Spring 2022",

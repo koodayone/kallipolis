@@ -40,7 +40,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
-      "value": 1291.7,
+      "value": 1319.7,
       "vintage": "Fall 2025"
      },
      "sector_supply": {
@@ -73,7 +73,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
-      "value": 998.3,
+      "value": 1017.7,
       "vintage": "Fall 2025"
      },
      "sector_supply": {
@@ -238,7 +238,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
-      "value": 662.7,
+      "value": 789.7,
       "vintage": "Fall 2025"
      },
      "sector_supply": {

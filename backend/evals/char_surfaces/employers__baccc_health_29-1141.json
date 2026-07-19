@@ -55,7 +55,7 @@
     }
    },
    {
-    "label": "AHMC Seton Medical Center",
+    "label": "21st Century Hospice Care",
     "roster": [],
     "values": {
      "employer_relevance": {
@@ -64,7 +64,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 44.3,
+      "value": 57.5,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -73,13 +73,13 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 14,
+      "value": 13,
       "vintage": ""
      }
     }
    },
    {
-    "label": "AHMC Seton Medical Center Coastside",
+    "label": "Brookside Skilled Nursing",
     "roster": [],
     "values": {
      "employer_relevance": {
@@ -88,7 +88,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 44.3,
+      "value": 57.5,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -97,13 +97,13 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 14,
+      "value": 13,
       "vintage": ""
      }
     }
    },
    {
-    "label": "Kaiser Permanente",
+    "label": "Pacifica Nursing & Rehab Center",
     "roster": [],
     "values": {
      "employer_relevance": {
@@ -112,7 +112,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 44.3,
+      "value": 57.5,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -121,13 +121,13 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 14,
+      "value": 13,
       "vintage": ""
      }
     }
    },
    {
-    "label": "Menlo Park VA Medical Center",
+    "label": "Pathways Hospice",
     "roster": [],
     "values": {
      "employer_relevance": {
@@ -136,7 +136,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 44.3,
+      "value": 57.5,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -145,13 +145,13 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 14,
+      "value": 13,
       "vintage": ""
      }
     }
    },
    {
-    "label": "Mills-Peninsula Medical Center",
+    "label": "St Francis Heights Convalescent",
     "roster": [],
     "values": {
      "employer_relevance": {
@@ -160,7 +160,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 44.3,
+      "value": 57.5,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -169,13 +169,13 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 14,
+      "value": 13,
       "vintage": ""
      }
     }
    },
    {
-    "label": "San Mateo Medical Center",
+    "label": "Sunrise Assisted Living",
     "roster": [],
     "values": {
      "employer_relevance": {
@@ -184,7 +184,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 44.3,
+      "value": 57.5,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -193,13 +193,13 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 14,
+      "value": 13,
       "vintage": ""
      }
     }
    },
    {
-    "label": "UCSF Cancer Center",
+    "label": "The Sequoias",
     "roster": [],
     "values": {
      "employer_relevance": {
@@ -208,7 +208,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 44.3,
+      "value": 57.5,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -217,7 +217,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 14,
+      "value": 13,
       "vintage": ""
      }
     }
@@ -231,7 +231,7 @@
     "source": "graph_bls",
     "status": "ok",
     "unit": "employers",
-    "value": 124,
+    "value": 140,
     "vintage": "BLS OEWS Industry-Occupation staffing matrix"
    },
    "shown": {

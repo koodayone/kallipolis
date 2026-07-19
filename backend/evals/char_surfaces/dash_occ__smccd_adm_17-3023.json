@@ -100,14 +100,14 @@
    "enrollment_total": 130,
    "name": "Electronics and Electric Technology",
    "projected_supply": 9.7,
-   "soc_count": 3,
+   "soc_count": 7,
    "top6": "093400"
   },
   {
    "enrollment_total": 0,
    "name": "Engineering Technology, General (requires Trigonometry)",
    "projected_supply": 0.3,
-   "soc_count": 3,
+   "soc_count": 6,
    "top6": "092400"
   }
  ],

@@ -11,7 +11,24 @@
   "top6": null
  },
  "data": {
-  "more": null,
+  "more": {
+   "drill": {
+    "coordinate": {
+     "entity": "17-3026",
+     "lens": "gaps",
+     "member": "smccd",
+     "member_label": "San Mateo County CCD",
+     "region": null,
+     "sector": "adm",
+     "sector_label": "Advanced Manufacturing",
+     "soc": "17-3026",
+     "top6": null
+    },
+    "form": "navigate",
+    "rationale": "6 more rows; re-call navigate scoped to one row to drill in."
+   },
+   "remaining": 6
+  },
   "rows": [
    {
     "label": "49-9041 Industrial Machinery Mechanics",
@@ -140,7 +157,7 @@
     }
    },
    {
-    "label": "17-3026 Industrial Engineering Technologists and Technicians",
+    "label": "49-9043 Maintenance Workers, Machinery",
     "roster": [],
     "values": {
      "gap": {
@@ -149,7 +166,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": -236,
+      "value": -89,
       "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "member_supply": {
@@ -158,7 +175,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 0.3,
+      "value": 11.0,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "regional_demand": {
@@ -167,7 +184,7 @@
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 150,
+      "value": 70,
       "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
      },
      "regional_supply": {
@@ -176,13 +193,13 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 386.3,
+      "value": 159.3,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    },
    {
-    "label": "17-3024 Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "label": "49-9012 Control and Valve Installers and Repairers, Except Mechanical Door",
     "roster": [],
     "values": {
      "gap": {
@@ -191,7 +208,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": -333,
+      "value": -90,
       "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "member_supply": {
@@ -200,7 +217,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 10.0,
+      "value": 11.0,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "regional_demand": {
@@ -209,7 +226,7 @@
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 80,
+      "value": 100,
       "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
      },
      "regional_supply": {
@@ -218,7 +235,133 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 412.7,
+      "value": 189.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "49-9044 Millwrights",
+    "roster": [],
+    "values": {
+     "gap": {
+      "granularity": "regional openings \u2212 regional supply",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": -99,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 11.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "regional_demand": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 60,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "regional_supply": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 159.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "49-2094 Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+    "roster": [],
+    "values": {
+     "gap": {
+      "granularity": "regional openings \u2212 regional supply",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": -143,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 9.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "regional_demand": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 90,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "regional_supply": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 232.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "49-2092 Electric Motor, Power Tool, and Related Repairers",
+    "roster": [],
+    "values": {
+     "gap": {
+      "granularity": "regional openings \u2212 regional supply",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": -167,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 9.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "regional_demand": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 50,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "regional_supply": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 217.0,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
@@ -232,7 +375,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 749,
+    "value": 480,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "member_supply": {
@@ -241,7 +384,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 21.0,
+    "value": 86.0,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "regional_demand": {
@@ -250,7 +393,7 @@
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 1390,
+    "value": 2080,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
    },
    "regional_supply": {
@@ -259,7 +402,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 640.7,
+    "value": 1600.3,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    }
   }
@@ -269,8 +412,7 @@
   "meaning": "A supply\u2013demand gap is regional annual openings minus the whole region's projected completions, per occupation \u2014 regional demand against regional supply. The institution's own completions are its share of that regional supply. Positive means the region hires more than its colleges are projected to complete.",
   "salience": [
    "supply=3yr-avg: supply is a 3-year average of DataMart completions (All Awards), a projection \u2014 any single year can run above or below it.",
-   "member-anchored: a generated member\u00d7sector view covers only occupations the member already serves with an active program \u2014 it does NOT surface greenfield demand in occupations the member does not yet serve. Absence here is not absence of regional demand.",
-   "small-n: the underlying counts are small; treat rates and medians cautiously."
+   "member-anchored: a generated member\u00d7sector view covers only occupations the member already serves with an active program \u2014 it does NOT surface greenfield demand in occupations the member does not yet serve. Absence here is not absence of regional demand."
   ]
  },
  "licensing": {
