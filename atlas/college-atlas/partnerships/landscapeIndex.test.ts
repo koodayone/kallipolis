@@ -1,7 +1,7 @@
 /**
  * Tests for memberIdForCollegeName — the name-join that resolves a college to its
- * single-college landscape member, used to redirect /[collegeId]/partnerships →
- * /landscape/<member>.
+ * single-college landscape member — the resolver behind the in-place
+ * /[collegeId]/partnerships landscape.
  *
  * The join is load-bearing for correctness, not just convenience: the frontend
  * collegeId and the backend member_id diverge (sandiegomesa→sdmesa), and a fuzzy
@@ -19,13 +19,17 @@
  *   - null when the college has no landscape entry
  *
  * Also covers flagshipSectorFor — the landing-sector pick shared by MemberRedirect
- * and the /[collegeId]/partnerships redirect:
+ * and the in-place /[collegeId]/partnerships landscape:
  *   - highest-priority live sector wins (adm before health/retail)
  *   - priority order respected when adm absent (ict before health)
  *   - null when the member has no live sectors
+ *
+ * And landingEntry — the member + ?sector → entry pick behind collegeLandscape:
+ *   - a valid ?sector wins; an invalid/cross-member/absent one falls back to the
+ *     flagship; null when the member has no live landscape.
  */
 import { describe, it, expect } from "vitest";
-import { memberIdForCollegeName, flagshipSectorFor, type LandscapeIndexEntry } from "./landscapeIndex";
+import { memberIdForCollegeName, flagshipSectorFor, landingEntry, type LandscapeIndexEntry } from "./landscapeIndex";
 
 function entry(p: Partial<LandscapeIndexEntry>): LandscapeIndexEntry {
   return {
@@ -82,5 +86,31 @@ describe("flagshipSectorFor", () => {
 
   it("returns null when the member has no live sectors", () => {
     expect(flagshipSectorFor("absent", sectorsFor("m", ["adm"]))).toBeNull();
+  });
+});
+
+describe("landingEntry", () => {
+  const idx: LandscapeIndexEntry[] = [
+    entry({ member_id: "m", sector_id: "adm" }),
+    entry({ member_id: "m", sector_id: "health" }),
+    entry({ member_id: "other", sector_id: "biotech" }),
+  ];
+
+  it("uses a valid ?sector for the member", () => {
+    const e = landingEntry("m", idx, "health");
+    expect([e?.member_id, e?.sector_id]).toEqual(["m", "health"]);
+  });
+
+  it("falls back to the flagship when ?sector is absent (adm outranks health)", () => {
+    expect(landingEntry("m", idx, null)?.sector_id).toBe("adm");
+  });
+
+  it("falls back to the flagship when ?sector isn't one of the member's live sectors", () => {
+    expect(landingEntry("m", idx, "retail")?.sector_id).toBe("adm");   // m doesn't run retail
+    expect(landingEntry("m", idx, "biotech")?.sector_id).toBe("adm");  // biotech is `other`'s, not m's
+  });
+
+  it("returns null when the member has no live landscape", () => {
+    expect(landingEntry("absent", idx, "adm")).toBeNull();
   });
 });

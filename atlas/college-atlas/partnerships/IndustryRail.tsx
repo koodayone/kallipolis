@@ -68,6 +68,21 @@ export default function IndustryRail({ instance, activeAccent }: { instance: str
     return () => { alive = false; };
   }, [isPinned, instance]);
 
+  // In-place college route (/[collegeId]/partnerships): the rail switches sector via
+  // ?sector= on THIS url (a pre-rendered page) instead of navigating into /landscape/*.
+  // Detect the collegeId post-mount — render-time window reads are hydration-unstable.
+  const [collegeId, setCollegeId] = useState<string | null>(null);
+  useEffect(() => {
+    const m = window.location.pathname.replace(/\/$/, "").match(/^\/([^/]+)\/partnerships(?:\/report)?$/);
+    setCollegeId(m ? m[1] : null);
+  }, [instance]);
+  const collegeHref = (sectorId: string) => {
+    const isReport = window.location.pathname.replace(/\/$/, "").endsWith("/report");
+    const sp = new URLSearchParams(window.location.search);
+    sp.set("sector", sectorId);   // preserves lens/soc/etc.; swaps the sector
+    return `/${collegeId}/partnerships${isReport ? "/report" : ""}?${sp.toString()}`;
+  };
+
   const ready = isPinned || index !== null;
   const items = isPinned ? pinnedItems(instance) : index ? generatedItems(instance, index) : [];
   if (!ready || items.length < 2) return null;
@@ -81,13 +96,15 @@ export default function IndustryRail({ instance, activeAccent }: { instance: str
         return (
           <a
             key={it.sectorId}
-            href={it.href}
+            href={collegeId ? collegeHref(it.sectorId) : it.href}
             title={it.label}
             aria-label={it.label}
             aria-current={it.active ? "page" : undefined}
             onClick={(e) => {
               e.preventDefault();
               if (it.active) return;
+              // In-place college route: swap ?sector= on this pre-rendered page.
+              if (collegeId) { window.location.href = collegeHref(it.sectorId); return; }
               // Preserve the current surface (dashboard vs /report) + selection.
               // Normalize the static-export trailing slash (the report is served
               // at .../report/, so a raw endsWith would miss and drop the report

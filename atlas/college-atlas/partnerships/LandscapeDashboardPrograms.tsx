@@ -59,9 +59,10 @@ export default function LandscapeDashboardPrograms({ colleges, instance = "svamp
         setLand(d);
         const u = urlRef.current;
         // Default to the central school's own first program (Programs lens is
-        // scoped to its programs; see possessedTops below).
+        // scoped to the TOPs it actively runs — awards OR enrollment; see
+        // possessedTops below for the rule).
         const poss = primaryCollege
-          ? new Set((d.matrix?.cells ?? []).filter((c) => c.college === primaryCollege && c.projected > 0).map((c) => c.top6))
+          ? new Set((d.matrix?.cells ?? []).filter((c) => c.college === primaryCollege && (c.projected > 0 || c.enrolled)).map((c) => c.top6))
           : null;
         const ownTops = poss ? d.tops.filter((t) => poss.has(t.top6)) : d.tops;
         const urlTop = u.top && ownTops.some((t) => t.top6 === u.top) ? u.top : null;
@@ -93,13 +94,15 @@ export default function LandscapeDashboardPrograms({ colleges, instance = "svamp
   if (err) return <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "#e0654f", fontFamily: MONO, fontSize: 12 }}>Failed to load: {err}</div>;
   if (!land) return <LandscapeLoading />;
 
-  // Programs lens shows the CENTRAL school's own programs (its supply portfolio).
-  // For a cluster-expanded single-college lens, scope the program universe to the
-  // TOPs the primary college possesses (awards) — the cross-school "who else feeds
-  // this occupation" view is the Occupations lens's job. Consortium instances
-  // (primaryCollege == null) keep every program.
+  // Programs lens shows the CENTRAL school's own programs — its supply portfolio AND
+  // the pipelines it's building. For a cluster-expanded single-college lens, scope the
+  // program universe to the TOPs the primary college ACTIVELY RUNS — awards OR
+  // enrollment, the same visibility rule the columns (below) and rows already use, so
+  // an enrolled-but-not-yet-graduating program (0 supply) shows rather than emptying
+  // the lens. The cross-school "who else feeds this occupation" view is the Occupations
+  // lens's job. Consortium instances (primaryCollege == null) keep every program.
   const possessedTops = primaryCollege
-    ? new Set((land.matrix?.cells ?? []).filter((c) => c.college === primaryCollege && c.projected > 0).map((c) => c.top6))
+    ? new Set((land.matrix?.cells ?? []).filter((c) => c.college === primaryCollege && (c.projected > 0 || c.enrolled)).map((c) => c.top6))
     : null;
   const lensTops = possessedTops ? land.tops.filter((t) => possessedTops.has(t.top6)) : land.tops;
   const shownTopIds = new Set(lensTops.map((t) => t.top6));
@@ -239,7 +242,7 @@ export default function LandscapeDashboardPrograms({ colleges, instance = "svamp
         brand={scopeBrand}
         scope={collegeName ?? "Consortium"}
         name={topName}
-        code={`TOP ${top}`}
+        code={top ? `TOP ${top}` : ""}
       />
       {/* One band set per lens: top band (the lens's two aggregates), then the
           scope bands (four panels, one scope — decided B2), two per row at
