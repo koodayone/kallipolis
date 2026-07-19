@@ -2,83 +2,79 @@
 
 Partnerships are the form Kallipolis is built to enable. The mission sentence names the activity directly: the product exists *for community colleges to forge stronger workforce partnerships with industry*. The other four units of analysis — students, courses, occupations, employers — are the analytical material; partnerships are what the analytical material directs work toward.
 
-The Partnerships surface is the place where that material is composed into something the workforce development office can act on: a deterministic, per-occupation labor market alignment report that identifies the regional employers whose hiring profile makes them candidate partners for development of that occupational pathway.
+The Partnerships surface is where that material is composed into something a workforce development office can act on. It is organized as a **landscape**: a college — seen inside its regional consortium — laid across a Strong Workforce sector, so a coordinator can read at a glance where the college's programs meet regional demand, which neighboring colleges serve the same occupations, and where the openings for cross-college partnership lie.
 
 ## The essence
 
-A Partnership Opportunity in Kallipolis is *occupation-centric*. The unit of analysis is a (college, SOC) pair, not a (college, employer) pair. The report frames an occupation in the regional labor market, characterizes the college's curricular coverage of it, and surfaces the regional employers hiring for it as candidate partners for a multi-employer engagement around the occupational pathway.
+A Partnership Opportunity in Kallipolis is *occupation-centric* and *consortium-aware*. The unit of analysis is a (college, occupation) pair, not a (college, employer) pair — and the college is never shown alone.
 
-The shape is opinionated and intentional. California's Strong Workforce Program funds regional consortium projects — multi-college, multi-employer, organized around occupational pathways within the 12 PCAH-classified Doing-What-MATTERS sectors. A single-employer-centric "partnership" was always a dilution of how SWP actually structures grants; reshaping around occupational opportunity, with employers as the candidate target *set*, matches both how SWP funding is written and how regional COE plans frame their priorities. The product becomes the epistemic foundation for workforce development officers to reason about partnerships in the way the institutional context already does.
+The shape is opinionated and intentional. California's Strong Workforce Program funds *regional consortium* projects: multi-college, multi-employer, organized around occupational pathways within the 12 PCAH-classified Doing-What-MATTERS sectors. A single-employer, single-college "partnership" was always a dilution of how SWP actually structures grants. Reshaping the surface around a member read against a sector — with employers as the candidate target *set* and neighboring colleges as candidate *collaborators* — matches both how SWP funding is written and how regional Centers of Excellence plans frame their priorities. The product becomes the epistemic foundation for workforce development officers to reason about partnerships in the way the institutional context already does.
 
-The formulation of high-quality occupation-centric partnership opportunities is the core value proposition of Kallipolis, and the entire ontology is dedicated to making this formulation possible.
+## The landscape: a college inside its consortium
 
-## Navigation: sector → occupation
+The surface is a **member × sector landscape**. A member is a single college, a district, or a regional consortium; a sector is one of the 12 PCAH Strong Workforce sectors. Choosing both resolves the programs and occupations that sector comprises for that member.
 
-The Partnerships index is a sector accordion. Each row is one of the 12 Strong Workforce sectors classified by the Chancellor's Office Program and Course Approval Handbook (PCAH). Expanding a sector reveals the CTE-reachable occupations within it that the college's COE region demands, alphabetically ordered.
+At its center is the **coverage matrix**: programs (TOP6) down the rows, colleges across the columns. For a single college the columns are the college *and its regional peers* — the other colleges in the consortium that offer overlapping programs. This is the partnership-discovery mechanism the surface exists for: reading across a program's row shows every college in the region training for the same occupations, which is exactly where cross-college collaboration — shared curriculum, articulated pathways, joint employer engagement — becomes visible. Each cell is shaded by coverage: the college both graduates completers *and* currently enrolls students (covered), one signal but not the other (partial), or neither against real regional demand (a gap).
 
-The mapping from sector to occupation is institutional: the PCAH file lists every TOP6 code classified as CTE under one of the 12 sectors; for each TOP6, the chain `TOP → CIP → SOC` (Chancellor's Office TOP-CIP crosswalk + BLS/NCES CIP-SOC crosswalk) yields the SOCs reachable from that program area. The intersection with the college's regional COE demand profile bounds each sector accordion to occupations the local labor market actually hires for.
+Supply and demand sit on either side of the matrix, owned by different axes and never conflated. **Supply** — projected annual program completions, a three-year average over the crosswalk's feeder programs — is a property of programs and sums cleanly across colleges. **Demand** — regional annual openings and wages, from the Centers of Excellence — is a property of occupations and is regional; it is shown per occupation and never summed across the occupations a program feeds, because the TOP-CIP-SOC crosswalk is many-to-many and summing would double-count.
 
-A SOC reachable from multiple sectors' TOPs appears under each of them. This is honest to the institutional crosswalk — Welders is genuinely relevant to both Advanced Manufacturing and Energy/Construction/Utilities — and matches the multi-sector tagging the Employers surface uses.
+The landscape is read through three **lenses** — Programs (the coverage matrix), Occupations (the regional demand the sector's occupations carry), and Employers (the regional firms hiring for them) — and an **industry rail** across the top switches the member between the sectors it is actively in, without leaving the view. A single college's self-view shows the occupations it actually serves; a consortium's view applies the regional priority-job curation that identifies where partnership coordination is worth brokering.
 
-Each occupation row carries enough metadata for the row to be self-describing: SOC code, title, the college's current course count for the SOC, and the count of regional employers hiring for it. Clicking the **Draft Partnerships** CTA navigates to the per-SOC opportunity report.
+## The occupation drill: a partnership opportunity report
 
-## What an Opportunity Report contains
+Selecting a coverage cell drills into the occupation as a deterministic per-(college, SOC) **opportunity report**, rendered inline. It frames the occupation in the regional labor market, characterizes the college's curricular coverage of it, and surfaces the regional employers hiring for it as candidate partners for a multi-employer engagement around the pathway.
 
-The report is a deterministic per-(college, SOC) artifact. Five narrative sections argue the institutional case; structured evidence blocks ground each section. The narrative does meaning; the evidence does completeness.
+### The sections of the narrative
 
-### The four sections of the narrative
+- **Executive summary.** Frames the occupation in its sector context, names the multi-employer engagement opportunity the alignment data identifies, and integrates the strongest signals from regional demand and curriculum coverage in compressed form.
 
-- **Executive summary.** Frames the occupation in its sector context, names the multi-employer engagement opportunity the alignment data identifies, and integrates the strongest signals from regional demand and curriculum coverage in compressed form. The reader finishes the paragraph understanding why this occupational pathway merits partnership development.
+- **Occupational demand.** Establishes the regional labor market for the SOC: median annual wage and annual openings in the COE region, drawn directly from the Centers of Excellence published demand profile.
 
-- **Occupational demand.** Establishes the regional labor market for the SOC: median annual wage and annual openings in the COE region, drawn directly from the Centers of Excellence published demand profile. The evidence block carries the wage, openings, regional employment, and 5-year growth rate for inspection.
+- **Curriculum alignment.** Establishes the institutional pathway from the college's curriculum to the SOC via the Chancellor's Office TOP-CIP-SOC crosswalk — the actual departments and courses whose `PREPARES_FOR` edge maps to the target SOC.
 
-- **Curriculum alignment.** Establishes the institutional pathway from the college's curriculum to the SOC via the Chancellor's Office TOP-CIP-SOC crosswalk. The evidence is the actual departments and courses whose `PREPARES_FOR` edge maps to the target SOC, grouped by department.
+- **Partnership opportunities.** Names the regional employers hiring for the SOC as candidate partners, sorted by NAICS-4 industry-share — the BLS Occupational Employment Statistics measure of how prominent this role is within each employer's industry. The most "occupation-central" employers surface first.
 
-- **Partnership opportunities.** Names the regional employers hiring for the SOC as candidate partners for a multi-employer engagement around the occupational pathway. The evidence is the employer list, sorted by NAICS-4 industry-share — the BLS Occupational Employment Statistics measure of how prominent this role is within each employer's industry. The most "occupation-central" employers surface first.
-
-The four sections compose three of the units of analysis (occupations, courses, employers) plus the synthesizing executive summary; the student pipeline, formerly a fifth section, is omitted in the current non-PII configuration (see [students](./students.md)). Employers, formerly the *subject* of the artifact, are now the candidate set the artifact directs the coordinator toward — the multi-employer engagement opportunity the data identifies.
+Employers, formerly the *subject* of the artifact, are the candidate set the artifact directs the coordinator toward; the neighboring colleges the coverage matrix surfaces are the candidate collaborators. Together they are the multi-employer, multi-college engagement the Strong Workforce Program is written to fund.
 
 ### Strong Workforce evidence
 
 The report carries a tabular Strong Workforce evidence block — the regional supply-demand foundation any subsequent funding justification requires. Demand is the regional annual openings for the selected SOC; supply is the projected annual program completions for the TOPs the institutional crosswalk maps to that SOC; the gap is their difference. The block has no narrative; it is data only.
 
-This is what makes the artifact institutionally legible to the Strong Workforce Program without making the artifact itself an SWP application. NOVA submission remains a coordinator-led act; Kallipolis provides the empirical foundation that any submission depends on.
+This is what makes the artifact institutionally legible to the Strong Workforce Program without making the artifact itself an SWP application. NOVA submission remains a coordinator-led act; Kallipolis provides the empirical foundation any submission depends on.
 
-## How Opportunity Reports are generated
+## How the landscape is composed
 
-The methodology is fully deterministic. Same college and same SOC always yield byte-identical prose. There is no LLM call at runtime; every claim is a function of the institutional graph plus the COE-published regional figures.
+The methodology is fully deterministic. The same coordinate always yields byte-identical output. There is no LLM call at runtime; every figure is a function of the institutional graph plus the COE-published regional figures.
 
-**Sector index assembly** ([`backend/partnerships/opportunity.py`](../../backend/partnerships/opportunity.py), `build_sector_index`). Composes PCAH TOP→Sector, the CTE-reachable SOC universe via `cte_reachable_socs`, the college's regional COE demand profile, and the college's `PREPARES_FOR` edge set into the sector accordion. Each occupation row's course count and employer count is derived from a single Cypher pass against the graph.
+- **The landscape** ([`backend/partnerships/landscape_build.py`](../../backend/partnerships/landscape_build.py), `build_landscape`; and [`landscape_programs.py`](../../backend/partnerships/landscape_programs.py) for the coverage matrix) resolves a member×sector spec into the coverage grid, supply treemap, and per-lens data. Supply is routed off the SOC's crosswalk feeder set — the one supply basis — so a program that confers a credential without a course tagged to its own code still counts.
 
-**Per-SOC report assembly** (same file, `build_opportunity_report`). For a given (college, SOC) pair, gathers occupation metadata from the graph, regional demand from COE, TOP-grouped curriculum coverage from the existing `_gather_aligned_curriculum` helper, and the candidate employer set from the `oes_socs_for_naics4` industry-share pivot. The narrative is composed by deterministic templates in [`backend/partnerships/opportunity_narrative.py`](../../backend/partnerships/opportunity_narrative.py).
+- **The occupation drill** ([`opportunity.py`](../../backend/partnerships/opportunity.py), `build_opportunity_report`) composes, for a (college, SOC) pair, occupation metadata and regional demand from the graph, TOP-grouped curriculum coverage, and the candidate employer set from the BLS OEWS industry-share pivot; the narrative is composed by deterministic templates in [`opportunity_narrative.py`](../../backend/partnerships/opportunity_narrative.py). It is rendered *inline* in the landscape (`OpportunityReportBody`), not as a separate page.
 
-**Endpoints**:
+**Endpoints** (mounted at `/partnerships`; see [API reference](../architecture/api-reference.md)):
 
 | Method | Path | Returns |
 |---|---|---|
-| GET | `/partnerships/sectors` | `SectorIndex` (the accordion) |
-| GET | `/partnerships/opportunity/{soc_code}` | `OpportunityReport` (the per-SOC artifact) |
-
-Both are `GET`-shaped because they're idempotent and cacheable. The frontend fetches each on view mount; the deep-link URL `/{collegeId}/partnerships/opportunity?soc={soc}` makes any specific report shareable for grant applications and internal correspondence.
+| GET | `/partnerships/{instance}/programs` | the member×sector coverage landscape |
+| GET | `/partnerships/opportunity/{soc_code}` | the per-(college, SOC) opportunity report (embedded drill) |
 
 ### Trust through visibility
 
-The report is composed deterministically because the audience needs to trust the institutional data, not the system. Each narrative section is followed immediately by the empirical material that supports it. The coordinator reads the claim about regional demand and then sees the wage, openings, employment, and growth figures. They read the curriculum alignment claim and then see the actual courses, with TOP code attribution. They read the partnership opportunities framing and then see the actual employer list with NAICS industry-share figures.
+The report is composed deterministically because the audience needs to trust the institutional data, not the system. Each narrative section is followed immediately by the empirical material that supports it — the reader sees the wage and openings behind the demand claim, the actual courses behind the alignment claim, the employer list with NAICS industry-share behind the partnership framing.
 
-This is the architectural commitment: the narrative is *grounded* by being composed deterministically from the empirical material it interpolates and by being immediately followed by that material. The coordinator is not asked to trust Kallipolis. They are asked to trust the Chancellor's Office TOP-CIP crosswalk, the BLS/NCES CIP-SOC crosswalk, the COE regional demand publication, the BLS OEWS Industry-Occupation Matrix, and the PCAH sector classification — all named external sources cited in the artifact.
+The coordinator is not asked to trust Kallipolis. They are asked to trust the Chancellor's Office TOP-CIP crosswalk, the BLS/NCES CIP-SOC crosswalk, the COE regional demand publication, the BLS OEWS Industry-Occupation Matrix, and the PCAH sector classification — all named external sources cited in the artifact.
 
 ## How the partnerships flow will evolve
 
 The current implementation surfaces partnership *opportunities* — the data-driven foundation a workforce development officer reasons about partnership development from. The artifact is identification, not management.
 
-The natural next vertical slice is partnership *as a managed entity*: each row in a report's Partnership Opportunities section becomes a candidate that, in a later product state, carries status (identified → contacted → engaged → MOU → active), history (last touchpoint, prior engagements), and provenance (which alignment report surfaced this candidate, when). That extends Kallipolis from labor market intelligence into the operational lifecycle of partnerships themselves.
+The natural next vertical slice is partnership *as a managed entity*: each candidate — an employer to convene or a college to collaborate with — carrying status (identified → contacted → engaged → MOU → active), history, and provenance (which coordinate surfaced it, when). That extends Kallipolis from labor market intelligence into the operational lifecycle of partnerships themselves.
 
-A second possible direction is productized SWP application generation — turning the regional supply-demand evidence block into a NOVA-shaped submission. The current report carries the empirical foundation any SWP project narrative requires; a templated NOVA-shaped output is one transformation away.
+A second direction is productized SWP application generation — turning the regional supply-demand evidence into a NOVA-shaped submission. The report already carries the empirical foundation any SWP project narrative requires; a templated output is one transformation away.
 
-Both directions are real architectural possibilities and both will be informed by what coordinators actually request after working with the identification artifact. The current shift establishes the ontological groundwork: partnerships are first-class entities born from occupation-anchored opportunities, not from employer-anchored asks. Future surfaces inherit the same data foundation and the same deterministic engine.
+A third, opened by the consortium framing itself: the peer view is currently strongest in the Bay Area, where the consortium's occupational clusters are computed; extending that regional-peer analysis statewide would make cross-college partnership discovery uniform across every California region.
 
 ## The core value proposition
 
-Partnerships unify their angles around a single observation: the formulation of data-driven, occupation-centric partnership opportunities is the core value proposition of Kallipolis, and the entire ontology is dedicated to enabling it. The four units of analysis provide the empirical material. The institutional TOP-CIP-SOC crosswalk provides the bridge that joins curriculum to labor market without an internally-derived interpretive layer in between. The PCAH sector classification provides the institutional vocabulary the workforce development office already speaks. The BLS OEWS industry-share pivot identifies the candidate employer set whose hiring profile makes them strategic partners for a given occupational pathway.
+Partnerships unify their angles around a single observation: the formulation of data-driven, occupation-centric, consortium-aware partnership opportunities is the core value proposition of Kallipolis, and the entire ontology is dedicated to enabling it. The four units of analysis provide the empirical material. The institutional TOP-CIP-SOC crosswalk joins curriculum to labor market without an interpretive layer in between. The PCAH sector classification provides the institutional vocabulary the workforce development office already speaks. The coverage matrix reveals the regional colleges serving the same occupations; the BLS OEWS industry-share pivot identifies the employers whose hiring profile makes them strategic partners.
 
-Everything upstream of the Partnerships node is preparation. The Partnerships node itself is the moment Kallipolis does its job — the moment a workforce development officer sees, deterministically and reproducibly, a data-driven case for convening regional employers around the development of a specific occupational pathway in their service area.
+Everything upstream of the Partnerships node is preparation. The Partnerships node itself is the moment Kallipolis does its job — the moment a workforce development officer sees, deterministically and reproducibly, a data-driven case for convening regional employers *and* neighboring colleges around the development of a specific occupational pathway in their service area.
