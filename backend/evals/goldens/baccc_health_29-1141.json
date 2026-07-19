@@ -57,7 +57,7 @@
     "n_with_program": 16
    }
   },
-  "sector_supply_over_socs": 2231.3,
+  "sector_supply_over_socs": 2331.7,
   "supply_1yr": 701.0,
   "supply_3yr": 688.7
  },
@@ -66,5 +66,5 @@
  "member": "baccc",
  "sector": "health",
  "soc": "29-1141",
- "socs_n": 14
+ "socs_n": 20
 }

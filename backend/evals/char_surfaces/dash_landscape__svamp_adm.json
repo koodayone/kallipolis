@@ -28,6 +28,7 @@
      "feeding_awards": 0,
      "gap": 430,
      "growth_rate": -0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -98,6 +99,7 @@
      "feeding_awards": 0,
      "gap": 80,
      "growth_rate": -0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -168,6 +170,7 @@
      "feeding_awards": 51,
      "gap": 104,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -323,6 +326,7 @@
      "feeding_awards": 0,
      "gap": 110,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -393,6 +397,7 @@
      "feeding_awards": 0,
      "gap": 40,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "17-3028",
      "supply": 0.0,
@@ -407,6 +412,7 @@
      "feeding_awards": 10,
      "gap": 205,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -524,6 +530,7 @@
      "feeding_awards": 10,
      "gap": 535,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -641,6 +648,7 @@
      "feeding_awards": 10,
      "gap": 55,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -758,6 +766,7 @@
      "feeding_awards": 49,
      "gap": 466,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -828,6 +837,7 @@
      "feeding_awards": 0,
      "gap": 180,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "51-9141",
      "supply": 0.0,
@@ -842,6 +852,7 @@
      "feeding_awards": 49,
      "gap": 256,
      "growth_rate": -0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -912,6 +923,7 @@
      "feeding_awards": 49,
      "gap": 16,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -987,6 +999,7 @@
      "feeding_awards": 0,
      "gap": 430,
      "growth_rate": -0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -1104,6 +1117,7 @@
      "feeding_awards": 0,
      "gap": 80,
      "growth_rate": -0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -1221,6 +1235,7 @@
      "feeding_awards": 0,
      "gap": 150,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -1338,6 +1353,7 @@
      "feeding_awards": 0,
      "gap": 110,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -1455,6 +1471,7 @@
      "feeding_awards": 0,
      "gap": 40,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "17-3028",
      "supply": 0.0,
@@ -1469,6 +1486,7 @@
      "feeding_awards": 0,
      "gap": 220,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -1586,6 +1604,7 @@
      "feeding_awards": 0,
      "gap": 550,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -1656,6 +1675,7 @@
      "feeding_awards": 0,
      "gap": 70,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -1726,6 +1746,7 @@
      "feeding_awards": 0,
      "gap": 510,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "51-4041",
      "supply": 0.0,
@@ -1740,6 +1761,7 @@
      "feeding_awards": 0,
      "gap": 180,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "51-9141",
      "supply": 0.0,
@@ -1754,6 +1776,7 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": -0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "51-9161",
      "supply": 0.0,
@@ -1768,6 +1791,7 @@
      "feeding_awards": 0,
      "gap": 60,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "51-9162",
      "supply": 0.0,
@@ -1787,6 +1811,7 @@
      "feeding_awards": 17,
      "gap": 421,
      "growth_rate": -0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -1849,6 +1874,7 @@
      "feeding_awards": 17,
      "gap": 71,
      "growth_rate": -0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -1911,6 +1937,7 @@
      "feeding_awards": 17,
      "gap": 141,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -1973,6 +2000,7 @@
      "feeding_awards": 17,
      "gap": 101,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -2035,6 +2063,7 @@
      "feeding_awards": 17,
      "gap": 31,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -2097,6 +2126,7 @@
      "feeding_awards": 37,
      "gap": 200,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -2253,6 +2283,7 @@
      "feeding_awards": 37,
      "gap": 530,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -2362,6 +2393,7 @@
      "feeding_awards": 37,
      "gap": 50,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -2471,6 +2503,7 @@
      "feeding_awards": 0,
      "gap": 510,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "51-4041",
      "supply": 0.0,
@@ -2485,6 +2518,7 @@
      "feeding_awards": 0,
      "gap": 180,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "51-9141",
      "supply": 0.0,
@@ -2499,6 +2533,7 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": -0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "51-9161",
      "supply": 0.0,
@@ -2513,6 +2548,7 @@
      "feeding_awards": 0,
      "gap": 60,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "51-9162",
      "supply": 0.0,
@@ -2532,6 +2568,7 @@
      "feeding_awards": 0,
      "gap": 430,
      "growth_rate": -0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "17-3023",
      "supply": 0.0,
@@ -2546,6 +2583,7 @@
      "feeding_awards": 10,
      "gap": 75,
      "growth_rate": -0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -2591,6 +2629,7 @@
      "feeding_awards": 0,
      "gap": 150,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "17-3026",
      "supply": 0.0,
@@ -2605,6 +2644,7 @@
      "feeding_awards": 0,
      "gap": 110,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "17-3027",
      "supply": 0.0,
@@ -2619,6 +2659,7 @@
      "feeding_awards": 0,
      "gap": 40,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "17-3028",
      "supply": 0.0,
@@ -2633,6 +2674,7 @@
      "feeding_awards": 0,
      "gap": 220,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "17-3029",
      "supply": 0.0,
@@ -2647,6 +2689,7 @@
      "feeding_awards": 10,
      "gap": 545,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -2692,6 +2735,7 @@
      "feeding_awards": 10,
      "gap": 65,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -2737,6 +2781,7 @@
      "feeding_awards": 0,
      "gap": 510,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "51-4041",
      "supply": 0.0,
@@ -2751,6 +2796,7 @@
      "feeding_awards": 10,
      "gap": 175,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -2796,6 +2842,7 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": -0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "51-9161",
      "supply": 0.0,
@@ -2810,6 +2857,7 @@
      "feeding_awards": 0,
      "gap": 60,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "51-9162",
      "supply": 0.0,
@@ -2829,6 +2877,7 @@
      "feeding_awards": 77,
      "gap": 398,
      "growth_rate": -0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -3001,6 +3050,7 @@
      "feeding_awards": 77,
      "gap": 48,
      "growth_rate": -0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -3173,6 +3223,7 @@
      "feeding_awards": 77,
      "gap": 119,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -3290,6 +3341,7 @@
      "feeding_awards": 77,
      "gap": 79,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -3407,6 +3459,7 @@
      "feeding_awards": 0,
      "gap": 40,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -3477,6 +3530,7 @@
      "feeding_awards": 77,
      "gap": 188,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -3679,6 +3733,7 @@
      "feeding_awards": 77,
      "gap": 519,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -3749,6 +3804,7 @@
      "feeding_awards": 77,
      "gap": 39,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -3819,6 +3875,7 @@
      "feeding_awards": 0,
      "gap": 510,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "51-4041",
      "supply": 0.0,
@@ -3833,6 +3890,7 @@
      "feeding_awards": 0,
      "gap": 180,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -3903,6 +3961,7 @@
      "feeding_awards": 0,
      "gap": 300,
      "growth_rate": -0.0,
+     "in_demand": true,
      "programs": [],
      "soc_code": "51-9161",
      "supply": 0.0,
@@ -3917,6 +3976,7 @@
      "feeding_awards": 0,
      "gap": 60,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [],
      "soc_code": "51-9162",
      "supply": 0.0,
@@ -3927,6 +3987,7 @@
   }
  ],
  "coverage_awards_only": true,
+ "demand_criteria": null,
  "enrollment_terms": [
   "Winter 2021",
   "Spring 2021",

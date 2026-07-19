@@ -28,6 +28,7 @@
      "feeding_awards": 4,
      "gap": 75,
      "growth_rate": 0.0,
+     "in_demand": false,
      "programs": [
       {
        "awards": [
@@ -141,6 +142,7 @@
      "feeding_awards": 119,
      "gap": 37,
      "growth_rate": -0.0,
+     "in_demand": false,
      "programs": [
       {
        "awards": [
@@ -254,6 +256,7 @@
      "feeding_awards": 4,
      "gap": 425,
      "growth_rate": -0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -367,6 +370,7 @@
      "feeding_awards": 4,
      "gap": 75,
      "growth_rate": -0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -480,6 +484,7 @@
      "feeding_awards": 119,
      "gap": 57,
      "growth_rate": 0.1,
+     "in_demand": false,
      "programs": [
       {
        "awards": [
@@ -593,6 +598,7 @@
      "feeding_awards": 7,
      "gap": 32,
      "growth_rate": 0.1,
+     "in_demand": false,
      "programs": [
       {
        "awards": [
@@ -706,6 +712,7 @@
      "feeding_awards": 4,
      "gap": 45,
      "growth_rate": -0.1,
+     "in_demand": false,
      "programs": [
       {
        "awards": [
@@ -770,6 +777,7 @@
      "feeding_awards": 4,
      "gap": 85,
      "growth_rate": 0.0,
+     "in_demand": false,
      "programs": [
       {
        "awards": [
@@ -834,6 +842,7 @@
      "feeding_awards": 1,
      "gap": 89,
      "growth_rate": 0.0,
+     "in_demand": false,
      "programs": [
       {
        "awards": [
@@ -939,6 +948,7 @@
      "feeding_awards": 1,
      "gap": 539,
      "growth_rate": 0.1,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -1044,6 +1054,7 @@
      "feeding_awards": 1,
      "gap": 59,
      "growth_rate": 0.1,
+     "in_demand": false,
      "programs": [
       {
        "awards": [
@@ -1149,6 +1160,7 @@
      "feeding_awards": 1,
      "gap": 49,
      "growth_rate": 0.1,
+     "in_demand": false,
      "programs": [
       {
        "awards": [
@@ -1254,6 +1266,7 @@
      "feeding_awards": 4,
      "gap": 175,
      "growth_rate": 0.0,
+     "in_demand": true,
      "programs": [
       {
        "awards": [
@@ -1314,6 +1327,10 @@
   }
  ],
  "coverage_awards_only": true,
+ "demand_criteria": {
+  "min_openings": 250,
+  "min_wage": 50000
+ },
  "enrollment_terms": [
   "Fall 2021",
   "Spring 2022",
