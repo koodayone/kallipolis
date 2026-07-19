@@ -203,6 +203,10 @@ export type ApiSvampCell = {
   annual_openings: number | null;
   annual_wage: number | null;
   growth_rate: number | null;
+  // Demand-quality verdict (member-independent): does this SOC clear the sector rule's
+  // openings/wage/growth gate? Drives the priority split — in-demand rows lead, the rest
+  // collapse. Always true for authored / no-rule instances (no gate → no split).
+  in_demand: boolean;
   course_count: number;
   supply: number;
   gap: number;
@@ -244,6 +248,10 @@ export type ApiSvampLandscape = {
   // coverage cell on awards: enrollment-only reads as a gap, not "partial". Only
   // the curated SVAMP instance is false (keeps enrolled-OR-awarded coverage).
   coverage_awards_only: boolean;
+  // The in_demand gate's thresholds when this instance splits priority occupations
+  // from the rest (sector-derived); null for authored / no-rule instances that show
+  // every occupation. The priority-lens UI names the criteria from these.
+  demand_criteria: { min_openings: number | null; min_wage: number | null } | null;
 };
 
 // ── Session cache for the SVAMP getters ─────────────────────────────────────

@@ -32,19 +32,27 @@ export const OCC_MATRIX_CORNER = "↓ role (by demand) · → college";
  *      surface at the top of both panels;
  *   2. the role vocabulary (ROLE_LABEL) as the row label, falling back to the
  *      federal SOC title for any code outside the curated twelve;
- *   3. the SOC code as a "SOC "-prefixed provenance sublabel.
+ *   3. a provenance + demand sublabel: the "SOC "-prefixed code, then the
+ *      regional openings/yr and median wage — openings first, matching the
+ *      demand sort so the leading figure steps down the column. A figure the
+ *      COE profile omits is dropped from the line, never shown as zero.
  * (Extracted 2026-06-07 after the dashboard's hand-rolled copy of this
  * adapter silently dropped #1 and #2.)
  */
 export function occupationMatrixRows(
-  cells: { soc_code: string; title: string; annual_openings: number | null }[],
+  cells: { soc_code: string; title: string; annual_openings: number | null; annual_wage: number | null }[],
 ): { id: string; label: string; sublabel: string; title: string }[] {
   return [...cells]
     .sort((a, b) => (b.annual_openings ?? 0) - (a.annual_openings ?? 0))
-    .map((c) => ({
-      id: c.soc_code,
-      label: ROLE_LABEL[c.soc_code] ?? c.title,
-      sublabel: `SOC ${c.soc_code}`,
-      title: c.title,
-    }));
+    .map((c) => {
+      const parts = [`SOC ${c.soc_code}`];
+      if (c.annual_openings != null) parts.push(`${c.annual_openings.toLocaleString("en-US")} openings/yr`);
+      if (c.annual_wage != null) parts.push(`$${Math.round(c.annual_wage / 1000)}k/yr`);
+      return {
+        id: c.soc_code,
+        label: ROLE_LABEL[c.soc_code] ?? c.title,
+        sublabel: parts.join(" · "),
+        title: c.title,
+      };
+    });
 }
