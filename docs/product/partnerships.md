@@ -48,6 +48,8 @@ The methodology is fully deterministic. The same coordinate always yields byte-i
 
 - **The landscape** ([`backend/partnerships/landscape_build.py`](../../backend/partnerships/landscape_build.py), `build_landscape`; and [`landscape_programs.py`](../../backend/partnerships/landscape_programs.py) for the coverage matrix) resolves a member×sector spec into the coverage grid, supply treemap, and per-lens data. Supply is routed off the SOC's crosswalk feeder set — the one supply basis — so a program that confers a credential without a course tagged to its own code still counts.
 
+- **The peer expansion** ([`clusters.py`](../../backend/partnerships/clusters.py), `cluster_expanded_spec`) is what keeps a lone college from being read alone: a single-college landscape is routed to its COE-region consortium, so the coverage matrix's columns become that college and its regional peers and the rows become the occupational clusters those peers share. This holds uniformly across all nine COE regions — the Bay Area through its curated consortium, every other region through its region member — so cross-college partnership discovery reads the same in every California region.
+
 - **The occupation drill** ([`opportunity.py`](../../backend/partnerships/opportunity.py), `build_opportunity_report`) composes, for a (college, SOC) pair, occupation metadata and regional demand from the graph, TOP-grouped curriculum coverage, and the candidate employer set from the BLS OEWS industry-share pivot; the narrative is composed by deterministic templates in [`opportunity_narrative.py`](../../backend/partnerships/opportunity_narrative.py). It is rendered *inline* in the landscape (`OpportunityReportBody`), not as a separate page.
 
 **Endpoints** (mounted at `/partnerships`; see [API reference](../architecture/api-reference.md)):
@@ -70,8 +72,6 @@ The current implementation surfaces partnership *opportunities* — the data-dri
 The natural next vertical slice is partnership *as a managed entity*: each candidate — an employer to convene or a college to collaborate with — carrying status (identified → contacted → engaged → MOU → active), history, and provenance (which coordinate surfaced it, when). That extends Kallipolis from labor market intelligence into the operational lifecycle of partnerships themselves.
 
 A second direction is productized SWP application generation — turning the regional supply-demand evidence into a NOVA-shaped submission. The report already carries the empirical foundation any SWP project narrative requires; a templated output is one transformation away.
-
-A third, opened by the consortium framing itself: the peer view is currently strongest in the Bay Area, where the consortium's occupational clusters are computed; extending that regional-peer analysis statewide would make cross-college partnership discovery uniform across every California region.
 
 ## The core value proposition
 
