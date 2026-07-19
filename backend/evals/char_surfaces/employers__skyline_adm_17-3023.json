@@ -25,9 +25,9 @@
      "top6": null
     },
     "form": "navigate",
-    "rationale": "15 more rows; re-call navigate scoped to one row to drill in."
+    "rationale": "16 more rows; re-call navigate scoped to one row to drill in."
    },
-   "remaining": 15
+   "remaining": 16
   },
   "rows": [
    {
@@ -40,7 +40,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 11.6,
+      "value": 12.6,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -49,7 +49,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 4,
+      "value": 10,
       "vintage": ""
      }
     }
@@ -64,7 +64,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 11.6,
+      "value": 12.6,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -73,7 +73,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 4,
+      "value": 10,
       "vintage": ""
      }
     }
@@ -88,7 +88,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 11.6,
+      "value": 12.6,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -97,7 +97,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 4,
+      "value": 10,
       "vintage": ""
      }
     }
@@ -112,7 +112,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 11.6,
+      "value": 12.6,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -121,7 +121,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 4,
+      "value": 10,
       "vintage": ""
      }
     }
@@ -136,7 +136,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 11.6,
+      "value": 12.6,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -145,7 +145,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 4,
+      "value": 10,
       "vintage": ""
      }
     }
@@ -160,7 +160,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 11.6,
+      "value": 12.6,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -169,7 +169,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 4,
+      "value": 10,
       "vintage": ""
      }
     }
@@ -184,7 +184,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 11.6,
+      "value": 12.6,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -193,13 +193,13 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 4,
+      "value": 10,
       "vintage": ""
      }
     }
    },
    {
-    "label": "San Benito Foods",
+    "label": "Silicon Valley Power",
     "roster": [],
     "values": {
      "employer_relevance": {
@@ -208,7 +208,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 5.0,
+      "value": 6.2,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -217,7 +217,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 2,
+      "value": 11,
       "vintage": ""
      }
     }
@@ -231,7 +231,7 @@
     "source": "graph_bls",
     "status": "ok",
     "unit": "employers",
-    "value": 116,
+    "value": 144,
     "vintage": "BLS OEWS Industry-Occupation staffing matrix"
    },
    "shown": {
@@ -240,7 +240,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "employers plotted",
-    "value": 23,
+    "value": 24,
     "vintage": ""
    }
   }

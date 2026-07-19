@@ -24,7 +24,6 @@ import { useRouter } from "next/navigation";
 import { MONO } from "@/college-atlas/partnerships/reportChrome";
 import { memberSectors, isLandscapeViewable, RAIL_ORDER } from "@/college-atlas/partnerships/landscapeInstances";
 import { fetchLandscapeIndex, type LandscapeIndexEntry } from "@/college-atlas/partnerships/landscapeIndex";
-import { getMemberClusterSectors } from "@/college-atlas/partnerships/api";
 import { INDUSTRY_FORMS } from "@/college-atlas/partnerships/industryForms";
 
 type RailItem = { sectorId: string; label: string; href: string; active: boolean };
@@ -36,19 +35,19 @@ function pinnedItems(instance: string): RailItem[] {
     .map((s) => ({ sectorId: s.sectorId, label: s.label, href: `/${s.instanceId}`, active: s.instanceId === instance }));
 }
 
-// Generated (/landscape/<member>/<sector>): the member's live sectors from the
-// index, curatorial order, /landscape/<member>/<sector> URLs. Filtered to the
-// member's CLUSTER TARGETS (targetSectors) — an industry the school isn't in a
-// cluster for renders an empty dashboard, so it's hidden. The current sector is
-// always kept so the active item never vanishes; null targets = no filter (the
-// set hasn't resolved or failed).
-function generatedItems(instance: string, index: LandscapeIndexEntry[], targetSectors: Set<string> | null): RailItem[] {
+// Generated (/landscape/<member>/<sector>): the member's ACTIVE sectors straight
+// from the backend landscape index, in curatorial order, with /landscape/<member>/
+// <sector> URLs. The index is active-aware — a sector enters it only when the member
+// runs a program with recent completers or enrollment there (registry.live_catalog,
+// the same active gate the Programs lens filters its rows by) — so no client filter
+// is needed: every listed sector renders a populated dashboard. (Was Bay-only:
+// filtered to cluster targets, which erased the rail for the ~90 non-Bay colleges.)
+function generatedItems(instance: string, index: LandscapeIndexEntry[]): RailItem[] {
   const current = index.find((e) => e.id === instance);
   if (!current) return [];
   const bySector = new Map(index.filter((e) => e.member_id === current.member_id).map((e) => [e.sector_id, e]));
   return RAIL_ORDER
     .filter((sid) => bySector.has(sid))
-    .filter((sid) => !targetSectors || targetSectors.has(sid) || sid === current.sector_id)
     .map((sid) => {
       const e = bySector.get(sid)!;
       return { sectorId: sid, label: e.sector_label, href: `/landscape/${e.member_id}/${sid}`, active: e.id === instance };
@@ -58,30 +57,19 @@ function generatedItems(instance: string, index: LandscapeIndexEntry[], targetSe
 export default function IndustryRail({ instance, activeAccent }: { instance: string; activeAccent: string }) {
   const router = useRouter();
   const isPinned = instance.startsWith("smccd-") || instance.startsWith("baccc-");
-  // Generated members read their sibling sectors from the index (async, cached)
-  // and their cluster TARGETS (the sectors worth showing). Both settle before the
-  // rail paints, so it never flashes the unfiltered set.
+  // Generated members read their sibling sectors from the index (async, cached).
+  // The index is already active-filtered (registry.live_catalog), so the fetched
+  // set IS the rail set — no client-side cluster filter.
   const [index, setIndex] = useState<LandscapeIndexEntry[] | null>(isPinned ? [] : null);
-  const [targets, setTargets] = useState<Set<string> | null>(null);
-  const [targetsDone, setTargetsDone] = useState(isPinned);
   useEffect(() => {
     if (isPinned) return;
     let alive = true;
-    fetchLandscapeIndex().then((idx) => {
-      if (!alive) return;
-      setIndex(idx);
-      const current = idx.find((e) => e.id === instance);
-      if (!current) { setTargetsDone(true); return; }
-      getMemberClusterSectors(current.member_id)
-        .then((r) => { if (alive) setTargets(new Set(r.sectors)); })
-        .catch(() => {})
-        .finally(() => { if (alive) setTargetsDone(true); });
-    });
+    fetchLandscapeIndex().then((idx) => { if (alive) setIndex(idx); });
     return () => { alive = false; };
   }, [isPinned, instance]);
 
-  const ready = isPinned || (index !== null && targetsDone);
-  const items = isPinned ? pinnedItems(instance) : index ? generatedItems(instance, index, targets) : [];
+  const ready = isPinned || index !== null;
+  const items = isPinned ? pinnedItems(instance) : index ? generatedItems(instance, index) : [];
   if (!ready || items.length < 2) return null;
 
   return (

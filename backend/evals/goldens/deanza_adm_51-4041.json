@@ -24,7 +24,7 @@
     "n_with_program": 1
    }
   },
-  "sector_supply_over_socs": 61.7,
+  "sector_supply_over_socs": 250.7,
   "supply_1yr": 49.0,
   "supply_3yr": 43.7
  },
@@ -33,5 +33,5 @@
  "member": "deanza",
  "sector": "adm",
  "soc": "51-4041",
- "socs_n": 5
+ "socs_n": 21
 }

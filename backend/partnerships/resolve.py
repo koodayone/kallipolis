@@ -156,10 +156,17 @@ def effective_socs(spec: LandscapeSpec) -> tuple[str, ...]:
 
 
 def resolve(spec: LandscapeSpec) -> LandscapeSpec:
-    """Return spec with .socs narrowed to its sector rule's effective set (sector-derived instances).
+    """Return spec with .socs narrowed to its sector rule's set (sector-derived instances).
     Identity — and no graph access — for an AUTHORED spec (SVAMP's occupations are the curation, never
     filtered) or a no-rule spec. This branches on the Composition, not the rule, so an authored spec may
-    still carry an active rule (its programs run the universal gate; only its occupation set stays final)."""
+    still carry an active rule (its programs run the universal gate; only its occupation set stays final).
+
+    A SINGLE-COLLEGE self-view narrows to the SERVED set — the occupations the college offers AND actively
+    graduates into — NOT effective (= served ∩ in_demand). The priority-job in_demand gate (openings / wage /
+    growth) is a CONSORTIUM-coordination filter ("where should colleges broker partnerships across the
+    region"): it zeros a lone college's sectors and under-counts the rest, the wrong lens for a college
+    reading itself. Genuine multi-college consortia keep effective."""
     if spec.composition.is_authored or spec.soc_rule is None or not spec.soc_rule.active:
         return spec
-    return dataclasses.replace(spec, socs=effective_socs(spec))
+    socs = sector_lenses(spec)["served"] if len(spec.colleges) == 1 else effective_socs(spec)
+    return dataclasses.replace(spec, socs=socs)

@@ -138,6 +138,90 @@
       "vintage": ""
      }
     }
+   },
+   {
+    "label": "094800 Automotive Technology",
+    "roster": [],
+    "values": {
+     "addressable_demand": {
+      "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 420,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 1,
+      "vintage": ""
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 53.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 3,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "043000 Biotechnology and Biomedical Technology",
+    "roster": [],
+    "values": {
+     "addressable_demand": {
+      "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 260,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 1,
+      "vintage": ""
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 3.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 2,
+      "vintage": ""
+     }
+    }
    }
   ],
   "sorted_by": null,
@@ -175,7 +259,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "TOP6 programs the member runs",
-    "value": 3,
+    "value": 5,
     "vintage": ""
    },
    "member_programs_active": {
@@ -184,7 +268,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "TOP6 programs currently graduating",
-    "value": 2,
+    "value": 4,
     "vintage": ""
    },
    "member_share_of_supply": {

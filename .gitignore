@@ -85,3 +85,6 @@ backend/employers/bay_website_review.json
 # Report-render deliverables (.html/.docx/.pdf/.png) from export.sh — regenerable
 # from the saved def; never source-of-truth, and not baked into the backend image.
 tools/report-render/out/
+
+# Working plans/notes — intent, not truth; disposable. See memory: plan-doc hygiene.
+research/

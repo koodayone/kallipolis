@@ -60,7 +60,7 @@
    "enrollment_total": 24,
    "name": "Machining and Machine Tools",
    "projected_supply": 1.7,
-   "soc_count": 2,
+   "soc_count": 11,
    "top6": "095630"
   }
  ],

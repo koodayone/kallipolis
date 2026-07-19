@@ -56,6 +56,48 @@
     }
    },
    {
+    "label": "095680 Industrial Quality Control",
+    "roster": [],
+    "values": {
+     "addressable_demand": {
+      "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 1680,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 1,
+      "vintage": ""
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 1.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 1,
+      "vintage": ""
+     }
+    }
+   },
+   {
     "label": "095630 Machining and Machine Tools",
     "roster": [],
     "values": {
@@ -140,6 +182,90 @@
     }
    },
    {
+    "label": "094800 Automotive Technology",
+    "roster": [],
+    "values": {
+     "addressable_demand": {
+      "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 420,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 1,
+      "vintage": ""
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 184.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 3,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "095300 Drafting Technology",
+    "roster": [],
+    "values": {
+     "addressable_demand": {
+      "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 210,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 1,
+      "vintage": ""
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 3.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 3,
+      "vintage": ""
+     }
+    }
+   },
+   {
     "label": "095690 Digital Fabrication Technician",
     "roster": [],
     "values": {
@@ -168,6 +294,48 @@
       "status": "ok",
       "unit": "completions/yr",
       "value": 2.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 1,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "095340 Mechanical Drafting",
+    "roster": [],
+    "values": {
+     "addressable_demand": {
+      "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 90,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 1,
+      "vintage": ""
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.0,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "occupations_fed": {
@@ -217,7 +385,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "TOP6 programs the member runs",
-    "value": 4,
+    "value": 8,
     "vintage": ""
    },
    "member_programs_active": {
@@ -226,7 +394,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "TOP6 programs currently graduating",
-    "value": 3,
+    "value": 6,
     "vintage": ""
    },
    "member_share_of_supply": {

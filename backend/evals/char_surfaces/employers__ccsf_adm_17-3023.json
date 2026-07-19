@@ -25,11 +25,83 @@
      "top6": null
     },
     "form": "navigate",
-    "rationale": "16 more rows; re-call navigate scoped to one row to drill in."
+    "rationale": "15 more rows; re-call navigate scoped to one row to drill in."
    },
-   "remaining": 16
+   "remaining": 15
   },
   "rows": [
+   {
+    "label": "MASS Precision",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 24.5,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 25,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Milgard Manufacturing",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 24.5,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 25,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Rheem Manufacturing",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 18.9,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 25,
+      "vintage": ""
+     }
+    }
+   },
    {
     "label": "Arm",
     "roster": [],
@@ -40,7 +112,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 14.5,
+      "value": 17.6,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -49,7 +121,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 6,
+      "value": 21,
       "vintage": ""
      }
     }
@@ -64,7 +136,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 14.5,
+      "value": 17.6,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -73,7 +145,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 6,
+      "value": 21,
       "vintage": ""
      }
     }
@@ -88,7 +160,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 14.5,
+      "value": 17.6,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -97,7 +169,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 6,
+      "value": 21,
       "vintage": ""
      }
     }
@@ -112,7 +184,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 14.5,
+      "value": 17.6,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -121,7 +193,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 6,
+      "value": 21,
       "vintage": ""
      }
     }
@@ -136,7 +208,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 14.5,
+      "value": 17.6,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -145,79 +217,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 6,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "Jameco Electronics",
-    "roster": [],
-    "values": {
-     "employer_relevance": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "graph_bls",
-      "status": "ok",
-      "unit": "\u03a3 OES staffing share",
-      "value": 14.5,
-      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
-     },
-     "occupations_hired": {
-      "granularity": "BLS OES",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "target SOCs",
-      "value": 6,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "Leemah Electronics",
-    "roster": [],
-    "values": {
-     "employer_relevance": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "graph_bls",
-      "status": "ok",
-      "unit": "\u03a3 OES staffing share",
-      "value": 14.5,
-      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
-     },
-     "occupations_hired": {
-      "granularity": "BLS OES",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "target SOCs",
-      "value": 6,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "MASS Precision",
-    "roster": [],
-    "values": {
-     "employer_relevance": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "graph_bls",
-      "status": "ok",
-      "unit": "\u03a3 OES staffing share",
-      "value": 8.8,
-      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
-     },
-     "occupations_hired": {
-      "granularity": "BLS OES",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "target SOCs",
-      "value": 5,
+      "value": 21,
       "vintage": ""
      }
     }
@@ -231,7 +231,7 @@
     "source": "graph_bls",
     "status": "ok",
     "unit": "employers",
-    "value": 124,
+    "value": 149,
     "vintage": "BLS OEWS Industry-Occupation staffing matrix"
    },
    "shown": {
@@ -240,7 +240,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "employers plotted",
-    "value": 24,
+    "value": 23,
     "vintage": ""
    }
   }

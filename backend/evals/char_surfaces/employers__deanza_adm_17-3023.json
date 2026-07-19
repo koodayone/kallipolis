@@ -40,7 +40,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 8.8,
+      "value": 27.6,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -49,7 +49,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 5,
+      "value": 21,
       "vintage": ""
      }
     }
@@ -64,7 +64,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 8.8,
+      "value": 27.6,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -73,7 +73,79 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 5,
+      "value": 21,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Rheem Manufacturing",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 21.2,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 21,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Merrill's Packaging",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 16.5,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 19,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Elroy Air",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 15.3,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 20,
       "vintage": ""
      }
     }
@@ -88,7 +160,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 8.3,
+      "value": 15.3,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -97,7 +169,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 5,
+      "value": 19,
       "vintage": ""
      }
     }
@@ -112,7 +184,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 8.3,
+      "value": 15.3,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -121,7 +193,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 5,
+      "value": 19,
       "vintage": ""
      }
     }
@@ -136,7 +208,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 8.3,
+      "value": 15.3,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -145,79 +217,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 5,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "Coherent",
-    "roster": [],
-    "values": {
-     "employer_relevance": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "graph_bls",
-      "status": "ok",
-      "unit": "\u03a3 OES staffing share",
-      "value": 8.3,
-      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
-     },
-     "occupations_hired": {
-      "granularity": "BLS OES",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "target SOCs",
-      "value": 5,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "Horizon Robotics",
-    "roster": [],
-    "values": {
-     "employer_relevance": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "graph_bls",
-      "status": "ok",
-      "unit": "\u03a3 OES staffing share",
-      "value": 8.3,
-      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
-     },
-     "occupations_hired": {
-      "granularity": "BLS OES",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "target SOCs",
-      "value": 5,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "Jameco Electronics",
-    "roster": [],
-    "values": {
-     "employer_relevance": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "graph_bls",
-      "status": "ok",
-      "unit": "\u03a3 OES staffing share",
-      "value": 8.3,
-      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
-     },
-     "occupations_hired": {
-      "granularity": "BLS OES",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "target SOCs",
-      "value": 5,
+      "value": 19,
       "vintage": ""
      }
     }
@@ -231,7 +231,7 @@
     "source": "graph_bls",
     "status": "ok",
     "unit": "employers",
-    "value": 124,
+    "value": 167,
     "vintage": "BLS OEWS Industry-Occupation staffing matrix"
    },
    "shown": {

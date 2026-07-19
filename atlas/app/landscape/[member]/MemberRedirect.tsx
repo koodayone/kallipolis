@@ -8,13 +8,7 @@
 // to the State Atlas for an unknown member.
 
 import { useEffect } from "react";
-import { fetchLandscapeIndex, parseLandscapePath } from "@/college-atlas/partnerships/landscapeIndex";
-
-// Flagship-first: land on Advanced Manufacturing where present, then the other
-// priority sectors, before the broader-access industries.
-const DEFAULT_SECTOR_PRIORITY = [
-  "adm", "biotech", "ecu", "atl", "ict", "health", "business", "public_safety", "edhd", "agwet", "retail",
-];
+import { fetchLandscapeIndex, parseLandscapePath, flagshipSectorFor } from "@/college-atlas/partnerships/landscapeIndex";
 
 export default function MemberRedirect() {
   useEffect(() => {
@@ -27,8 +21,7 @@ export default function MemberRedirect() {
     let alive = true;
     fetchLandscapeIndex().then((idx) => {
       if (!alive) return;
-      const live = new Set(idx.filter((e) => e.member_id === member).map((e) => e.sector_id));
-      const target = DEFAULT_SECTOR_PRIORITY.find((s) => live.has(s)) ?? [...live][0];
+      const target = flagshipSectorFor(member, idx);
       window.location.replace(target ? `/landscape/${member}/${target}${window.location.search}` : "/");
     });
     return () => { alive = false; };

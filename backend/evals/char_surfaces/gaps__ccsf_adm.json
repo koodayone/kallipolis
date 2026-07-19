@@ -11,7 +11,24 @@
   "top6": null
  },
  "data": {
-  "more": null,
+  "more": {
+   "drill": {
+    "coordinate": {
+     "entity": "51-7032",
+     "lens": "gaps",
+     "member": "ccsf",
+     "member_label": "City College of San Francisco",
+     "region": "Bay",
+     "sector": "adm",
+     "sector_label": "Advanced Manufacturing",
+     "soc": "51-7032",
+     "top6": null
+    },
+    "form": "navigate",
+    "rationale": "21 more rows; re-call navigate scoped to one row to drill in."
+   },
+   "remaining": 21
+  },
   "rows": [
    {
     "label": "49-9041 Industrial Machinery Mechanics",
@@ -98,6 +115,90 @@
     }
    },
    {
+    "label": "51-9161 Computer Numerically Controlled Tool Operators",
+    "roster": [],
+    "values": {
+     "gap": {
+      "granularity": "regional openings \u2212 regional supply",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 145,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 1.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "regional_demand": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 300,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "regional_supply": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 155.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "51-7041 Sawing Machine Setters, Operators, and Tenders, Wood",
+    "roster": [],
+    "values": {
+     "gap": {
+      "granularity": "regional openings \u2212 regional supply",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 29,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "regional_demand": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 40,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "regional_supply": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 10.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
     "label": "17-3023 Electrical and Electronic Engineering Technologists and Technicians",
     "roster": [],
     "values": {
@@ -140,7 +241,7 @@
     }
    },
    {
-    "label": "51-9141 Semiconductor Processing Technicians",
+    "label": "49-9094 Locksmiths and Safe Repairers",
     "roster": [],
     "values": {
      "gap": {
@@ -149,7 +250,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": -53,
+      "value": 20,
       "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "member_supply": {
@@ -158,7 +259,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 44.3,
+      "value": 50.0,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "regional_demand": {
@@ -167,7 +268,7 @@
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 180,
+      "value": 70,
       "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
      },
      "regional_supply": {
@@ -176,13 +277,13 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 232.7,
+      "value": 50.0,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    },
    {
-    "label": "17-3026 Industrial Engineering Technologists and Technicians",
+    "label": "51-4033 Grinding, Lapping, Polishing, and Buffing Machine Tool Setters, Operators, and Tenders, Metal and Plastic",
     "roster": [],
     "values": {
      "gap": {
@@ -191,7 +292,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": -236,
+      "value": -5,
       "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "member_supply": {
@@ -200,7 +301,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 2.7,
+      "value": 1.7,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "regional_demand": {
@@ -218,13 +319,13 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 386.3,
+      "value": 155.3,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
    },
    {
-    "label": "17-3024 Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "label": "51-7031 Model Makers, Wood",
     "roster": [],
     "values": {
      "gap": {
@@ -233,7 +334,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": -333,
+      "value": -11,
       "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "member_supply": {
@@ -242,7 +343,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 45.3,
+      "value": 0.0,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "regional_demand": {
@@ -251,7 +352,7 @@
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 80,
+      "value": 0,
       "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
      },
      "regional_supply": {
@@ -260,7 +361,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 412.7,
+      "value": 10.7,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
@@ -274,7 +375,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 1259,
+    "value": 1663,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "member_supply": {
@@ -283,7 +384,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 47.0,
+    "value": 163.3,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "regional_demand": {
@@ -292,7 +393,7 @@
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 1900,
+    "value": 3660,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
    },
    "regional_supply": {
@@ -301,7 +402,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 640.7,
+    "value": 1996.7,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    }
   }

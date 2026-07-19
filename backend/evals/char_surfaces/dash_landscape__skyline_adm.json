@@ -1,13 +1,13 @@
 {
  "aggregate": {
-  "candidate_employers": 137,
-  "combined_awards": 5,
-  "combined_supply_total": 15.7,
-  "gap": 1224,
+  "candidate_employers": 171,
+  "combined_awards": 127,
+  "combined_supply_total": 71.7,
+  "gap": 1858,
   "n_colleges": 1,
-  "n_occupations": 4,
-  "occupations_taught": 4,
-  "regional_demand_total": 1240
+  "n_occupations": 13,
+  "occupations_taught": 13,
+  "regional_demand_total": 1930
  },
  "award_years": [
   "2020-2021",
@@ -19,6 +19,232 @@
  "colleges": [
   {
    "cells": [
+    {
+     "annual_openings": 80,
+     "annual_wage": 92390,
+     "awards_recent": 4,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 4,
+     "gap": 75,
+     "growth_rate": 0.0,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        2,
+        8,
+        4
+       ],
+       "awards_recent": 4,
+       "enrollment": [
+        56,
+        5,
+        78,
+        46,
+        39,
+        96,
+        34,
+        84,
+        87
+       ],
+       "name": "Electronics and Electric Technology",
+       "top6": "093400",
+       "wages": [
+        {
+         "n": 223,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 65274,
+         "wage_after_5": 80497,
+         "wage_before": 36812,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 353,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 69631,
+         "wage_after_5": 84558,
+         "wage_before": 42485,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 88,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 94249,
+         "wage_after_5": 94013,
+         "wage_before": 69348,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      },
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+       ],
+       "name": "Manufacturing and Industrial Technology",
+       "top6": "095600",
+       "wages": [
+        {
+         "n": 54,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 54092,
+         "wage_after_5": 73636,
+         "wage_before": 26272,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 85,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 60922,
+         "wage_after_5": 72654,
+         "wage_before": 36476,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 38,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 64897,
+         "wage_after_5": 75071,
+         "wage_before": 54280,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "17-3012",
+     "supply": 4.7,
+     "title": "Electrical and Electronics Drafters"
+    },
+    {
+     "annual_openings": 90,
+     "annual_wage": 93900,
+     "awards_recent": 119,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 119,
+     "gap": 37,
+     "growth_rate": -0.0,
+     "programs": [
+      {
+       "awards": [
+        8,
+        9,
+        13,
+        27,
+        119
+       ],
+       "awards_recent": 119,
+       "enrollment": [
+        250,
+        350,
+        379,
+        334,
+        367,
+        399,
+        332,
+        410,
+        383
+       ],
+       "name": "Automotive Technology",
+       "top6": "094800",
+       "wages": [
+        {
+         "n": 530,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 50020,
+         "wage_after_5": 64735,
+         "wage_before": 23838,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 808,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 45472,
+         "wage_after_5": 58950,
+         "wage_before": 21845,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 233,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 42436,
+         "wage_after_5": 58236,
+         "wage_before": 22312,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      },
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+       ],
+       "name": "Manufacturing and Industrial Technology",
+       "top6": "095600",
+       "wages": [
+        {
+         "n": 54,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 54092,
+         "wage_after_5": 73636,
+         "wage_before": 26272,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 85,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 60922,
+         "wage_after_5": 72654,
+         "wage_before": 36476,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 38,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 64897,
+         "wage_after_5": 75071,
+         "wage_before": 54280,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "17-3013",
+     "supply": 53.0,
+     "title": "Mechanical Drafters"
+    },
     {
      "annual_openings": 430,
      "annual_wage": 89280,
@@ -246,6 +472,465 @@
      "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
     },
     {
+     "annual_openings": 110,
+     "annual_wage": 95880,
+     "awards_recent": 119,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 119,
+     "gap": 57,
+     "growth_rate": 0.1,
+     "programs": [
+      {
+       "awards": [
+        8,
+        9,
+        13,
+        27,
+        119
+       ],
+       "awards_recent": 119,
+       "enrollment": [
+        250,
+        350,
+        379,
+        334,
+        367,
+        399,
+        332,
+        410,
+        383
+       ],
+       "name": "Automotive Technology",
+       "top6": "094800",
+       "wages": [
+        {
+         "n": 530,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 50020,
+         "wage_after_5": 64735,
+         "wage_before": 23838,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 808,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 45472,
+         "wage_after_5": 58950,
+         "wage_before": 21845,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 233,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 42436,
+         "wage_after_5": 58236,
+         "wage_before": 22312,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      },
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+       ],
+       "name": "Manufacturing and Industrial Technology",
+       "top6": "095600",
+       "wages": [
+        {
+         "n": 54,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 54092,
+         "wage_after_5": 73636,
+         "wage_before": 26272,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 85,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 60922,
+         "wage_after_5": 72654,
+         "wage_before": 36476,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 38,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 64897,
+         "wage_after_5": 75071,
+         "wage_before": 54280,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "17-3027",
+     "supply": 53.0,
+     "title": "Mechanical Engineering Technologists and Technicians"
+    },
+    {
+     "annual_openings": 40,
+     "annual_wage": 77930,
+     "awards_recent": 7,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 7,
+     "gap": 32,
+     "growth_rate": 0.1,
+     "programs": [
+      {
+       "awards": [
+        3,
+        5,
+        2,
+        4,
+        3
+       ],
+       "awards_recent": 3,
+       "enrollment": [
+        98,
+        1069,
+        74,
+        945,
+        96,
+        1141,
+        141,
+        1106,
+        117
+       ],
+       "name": "Biotechnology and Biomedical Technology",
+       "top6": "043000",
+       "wages": [
+        {
+         "n": 81,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 57228,
+         "wage_after_5": 79399,
+         "wage_before": 21910,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 75,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 57228,
+         "wage_after_5": 65885,
+         "wage_before": 27792,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 41,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 57371,
+         "wage_after_5": 78521,
+         "wage_before": 17908,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      },
+      {
+       "awards": [
+        0,
+        0,
+        2,
+        8,
+        4
+       ],
+       "awards_recent": 4,
+       "enrollment": [
+        56,
+        5,
+        78,
+        46,
+        39,
+        96,
+        34,
+        84,
+        87
+       ],
+       "name": "Electronics and Electric Technology",
+       "top6": "093400",
+       "wages": [
+        {
+         "n": 223,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 65274,
+         "wage_after_5": 80497,
+         "wage_before": 36812,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 353,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 69631,
+         "wage_after_5": 84558,
+         "wage_before": 42485,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 88,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 94249,
+         "wage_after_5": 94013,
+         "wage_before": 69348,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "17-3028",
+     "supply": 7.7,
+     "title": "Calibration Technologists and Technicians"
+    },
+    {
+     "annual_openings": 50,
+     "annual_wage": 75070,
+     "awards_recent": 4,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 4,
+     "gap": 45,
+     "growth_rate": -0.1,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        2,
+        8,
+        4
+       ],
+       "awards_recent": 4,
+       "enrollment": [
+        56,
+        5,
+        78,
+        46,
+        39,
+        96,
+        34,
+        84,
+        87
+       ],
+       "name": "Electronics and Electric Technology",
+       "top6": "093400",
+       "wages": [
+        {
+         "n": 223,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 65274,
+         "wage_after_5": 80497,
+         "wage_before": 36812,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 353,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 69631,
+         "wage_after_5": 84558,
+         "wage_before": 42485,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 88,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 94249,
+         "wage_after_5": 94013,
+         "wage_before": 69348,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "49-2092",
+     "supply": 4.7,
+     "title": "Electric Motor, Power Tool, and Related Repairers"
+    },
+    {
+     "annual_openings": 90,
+     "annual_wage": 93390,
+     "awards_recent": 4,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 4,
+     "gap": 85,
+     "growth_rate": 0.0,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        2,
+        8,
+        4
+       ],
+       "awards_recent": 4,
+       "enrollment": [
+        56,
+        5,
+        78,
+        46,
+        39,
+        96,
+        34,
+        84,
+        87
+       ],
+       "name": "Electronics and Electric Technology",
+       "top6": "093400",
+       "wages": [
+        {
+         "n": 223,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 65274,
+         "wage_after_5": 80497,
+         "wage_before": 36812,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 353,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 69631,
+         "wage_after_5": 84558,
+         "wage_before": 42485,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 88,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 94249,
+         "wage_after_5": 94013,
+         "wage_before": 69348,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "49-2094",
+     "supply": 4.7,
+     "title": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
+    },
+    {
+     "annual_openings": 100,
+     "annual_wage": 110120,
+     "awards_recent": 1,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 1,
+     "gap": 89,
+     "growth_rate": 0.0,
+     "programs": [
+      {
+       "awards": [
+        0,
+        26,
+        32,
+        0,
+        1
+       ],
+       "awards_recent": 1,
+       "enrollment": [
+        4,
+        null,
+        null,
+        null,
+        10,
+        23,
+        null,
+        18,
+        null
+       ],
+       "name": "Energy Systems Technology",
+       "top6": "094610",
+       "wages": [
+        {
+         "n": 20,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 57539,
+         "wage_after_5": 71214,
+         "wage_before": 40258,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 36,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 54002,
+         "wage_after_5": 111606,
+         "wage_before": 17248,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      },
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+       ],
+       "name": "Manufacturing and Industrial Technology",
+       "top6": "095600",
+       "wages": [
+        {
+         "n": 54,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 54092,
+         "wage_after_5": 73636,
+         "wage_before": 26272,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 85,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 60922,
+         "wage_after_5": 72654,
+         "wage_before": 36476,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 38,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 64897,
+         "wage_after_5": 75071,
+         "wage_before": 54280,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "49-9012",
+     "supply": 11.0,
+     "title": "Control and Valve Installers and Repairers, Except Mechanical Door"
+    },
+    {
      "annual_openings": 550,
      "annual_wage": 80760,
      "awards_recent": 1,
@@ -351,6 +1036,216 @@
      "title": "Industrial Machinery Mechanics"
     },
     {
+     "annual_openings": 70,
+     "annual_wage": 70750,
+     "awards_recent": 1,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 1,
+     "gap": 59,
+     "growth_rate": 0.1,
+     "programs": [
+      {
+       "awards": [
+        0,
+        26,
+        32,
+        0,
+        1
+       ],
+       "awards_recent": 1,
+       "enrollment": [
+        4,
+        null,
+        null,
+        null,
+        10,
+        23,
+        null,
+        18,
+        null
+       ],
+       "name": "Energy Systems Technology",
+       "top6": "094610",
+       "wages": [
+        {
+         "n": 20,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 57539,
+         "wage_after_5": 71214,
+         "wage_before": 40258,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 36,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 54002,
+         "wage_after_5": 111606,
+         "wage_before": 17248,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      },
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+       ],
+       "name": "Manufacturing and Industrial Technology",
+       "top6": "095600",
+       "wages": [
+        {
+         "n": 54,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 54092,
+         "wage_after_5": 73636,
+         "wage_before": 26272,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 85,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 60922,
+         "wage_after_5": 72654,
+         "wage_before": 36476,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 38,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 64897,
+         "wage_after_5": 75071,
+         "wage_before": 54280,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "49-9043",
+     "supply": 11.0,
+     "title": "Maintenance Workers, Machinery"
+    },
+    {
+     "annual_openings": 60,
+     "annual_wage": 99070,
+     "awards_recent": 1,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 1,
+     "gap": 49,
+     "growth_rate": 0.1,
+     "programs": [
+      {
+       "awards": [
+        0,
+        26,
+        32,
+        0,
+        1
+       ],
+       "awards_recent": 1,
+       "enrollment": [
+        4,
+        null,
+        null,
+        null,
+        10,
+        23,
+        null,
+        18,
+        null
+       ],
+       "name": "Energy Systems Technology",
+       "top6": "094610",
+       "wages": [
+        {
+         "n": 20,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 57539,
+         "wage_after_5": 71214,
+         "wage_before": 40258,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 36,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 54002,
+         "wage_after_5": 111606,
+         "wage_before": 17248,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      },
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+       ],
+       "name": "Manufacturing and Industrial Technology",
+       "top6": "095600",
+       "wages": [
+        {
+         "n": 54,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 54092,
+         "wage_after_5": 73636,
+         "wage_before": 26272,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 85,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 60922,
+         "wage_after_5": 72654,
+         "wage_before": 36476,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 38,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 64897,
+         "wage_after_5": 75071,
+         "wage_before": 54280,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "49-9044",
+     "supply": 11.0,
+     "title": "Millwrights"
+    },
+    {
      "annual_openings": 180,
      "annual_wage": 49340,
      "awards_recent": 4,
@@ -430,7 +1325,7 @@
   "Spring 2025",
   "Fall 2025"
  ],
- "executive_summary": "This view examines the regional demand landscape across the 4 advanced manufacturing occupations the Skyline College \u2014 Advanced Manufacturing targets in the Bay Area regional labor market. Regional demand for these occupations totals 1,240 openings per year.",
+ "executive_summary": "This view examines the regional demand landscape across the 13 advanced manufacturing occupations the Skyline College \u2014 Advanced Manufacturing targets in the Bay Area regional labor market. Regional demand for these occupations totals 1,930 openings per year.",
  "is_sector_priority": true,
  "region": "Bay",
  "region_display": "Bay Area",
