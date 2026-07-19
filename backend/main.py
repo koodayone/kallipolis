@@ -43,6 +43,16 @@ async def lifespan(app: "FastAPI"):
             await stack.enter_async_context(_oauth_mcp.session_manager.run())
         logger.info("Initializing Neo4j schema and seed data...")
         init_schema()
+        # Warm the landscape index at startup so the first /partnerships/landscapes
+        # request doesn't pay the ~2.3s cold build (live_catalog is lru-cached — this
+        # just moves the one-time cost off the user's request onto boot). Neo4j is
+        # already healthy (compose depends_on), so the graph read is valid here; a
+        # failure is non-fatal — the lazy path rebuilds on first request.
+        try:
+            from partnerships.registry import live_catalog
+            logger.info("Warmed landscape index: %d instances.", len(live_catalog()))
+        except Exception as e:  # noqa: BLE001 — warm-up is best-effort, never blocks boot
+            logger.warning("Landscape index warm-up skipped (%s); will build lazily.", e)
         logger.info("Startup complete.")
         try:
             yield
