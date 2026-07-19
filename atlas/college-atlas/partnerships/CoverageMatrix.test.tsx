@@ -12,6 +12,10 @@
  *   - corner label, column header labels, and row labels render
  *   - clicking a covered cell calls onSelect(rowId, colId)
  *   - clicking a gap cell (level "none") still calls onSelect (selectable)
+ *   - priority split: only the leading `after` rows + a muted expander show by default
+ *   - expanding reveals the collapsed rest and the criteria pills
+ *   - a collapsed row that is the current selection auto-reveals
+ *   - no split ⇒ every row renders, no expander
  */
 
 import { describe, it, expect, vi } from "vitest";
@@ -70,5 +74,69 @@ describe("CoverageMatrix", () => {
       screen.getByTitle("Ohlone · Automotive Technology — doesn't teach this program"),
     );
     expect(onSelect).toHaveBeenCalledWith("094800", "ohlone");
+  });
+});
+
+const splitRows = [
+  { id: "11-1111", label: "Alpha Role", sublabel: "SOC 11-1111 · 800 openings/yr · $70k", title: "Alpha Role" },
+  { id: "22-2222", label: "Beta Role", sublabel: "SOC 22-2222 · 100 openings/yr · $70k", title: "Beta Role" },
+  { id: "33-3333", label: "Gamma Role", sublabel: "SOC 33-3333 · 800 openings/yr · $40k", title: "Gamma Role" },
+];
+const splitProp = {
+  after: 1,   // only Alpha is priority; Beta + Gamma collapse
+  restLabel: "below the priority bar",
+  criteria: ["> 239 openings", "≥ $54k median", "non-declining"],
+};
+
+function renderSplit(selectedRow: string | null = null, split: typeof splitProp | null = splitProp) {
+  render(
+    <CoverageMatrix
+      cols={cols}
+      rows={splitRows}
+      split={split}
+      level={() => "none"}
+      selectedRow={selectedRow}
+      selectedCol={null}
+      cornerLabel="↓ role · → college"
+      gapCellHint="no activity"
+      legend={[{ k: "Gap", sub: "none", bg: "#fff", ring: false }]}
+      onSelect={vi.fn()}
+    />,
+  );
+}
+
+describe("CoverageMatrix priority split", () => {
+  it("shows only the priority rows and a muted expander by default", () => {
+    renderSplit();
+    expect(screen.getByText("Alpha Role")).toBeTruthy();     // priority (after = 1)
+    expect(screen.queryByText("Beta Role")).toBeNull();       // collapsed
+    expect(screen.queryByText("Gamma Role")).toBeNull();
+    expect(screen.getByRole("button").textContent).toContain("2 more");
+    // Criteria pills ride with the rest — not shown until expanded.
+    expect(screen.queryByText("> 239 openings")).toBeNull();
+  });
+
+  it("reveals the rest and the criteria pills when the expander is clicked", async () => {
+    renderSplit();
+    await userEvent.click(screen.getByRole("button"));
+    expect(screen.getByText("Beta Role")).toBeTruthy();
+    expect(screen.getByText("Gamma Role")).toBeTruthy();
+    expect(screen.getByText("below the priority bar")).toBeTruthy();
+    expect(screen.getByText("> 239 openings")).toBeTruthy();
+    expect(screen.getByText("≥ $54k median")).toBeTruthy();
+    expect(screen.getByText("non-declining")).toBeTruthy();
+  });
+
+  it("auto-reveals a collapsed row when it is the current selection", () => {
+    renderSplit("33-3333");   // Gamma is in the collapsed rest
+    expect(screen.getByText("Gamma Role")).toBeTruthy();      // visible without a click
+  });
+
+  it("renders every row and no expander when no split is given", () => {
+    renderSplit(null, null);
+    expect(screen.getByText("Alpha Role")).toBeTruthy();
+    expect(screen.getByText("Beta Role")).toBeTruthy();
+    expect(screen.getByText("Gamma Role")).toBeTruthy();
+    expect(screen.queryByRole("button")).toBeNull();
   });
 });

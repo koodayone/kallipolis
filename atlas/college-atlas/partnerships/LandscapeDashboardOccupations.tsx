@@ -201,6 +201,26 @@ export default function LandscapeDashboardOccupations({ colleges, instance = "sv
   // sort + role vocabulary + SOC provenance sublabel, identical to the report
   // by construction.
   const rows = occupationMatrixRows(refCells).filter((r) => !possessedSocs || possessedSocs.has(r.id));
+  // Priority-default: in-demand occupations lead, the rest collapse behind the
+  // expander. in_demand is member-independent (it rides every cell), so the
+  // reference cells carry the verdict; each group stays demand-sorted.
+  const inDemand = new Set(refCells.filter((c) => c.in_demand).map((c) => c.soc_code));
+  const priorityRows = rows.filter((r) => inDemand.has(r.id));
+  const restRows = rows.filter((r) => !inDemand.has(r.id));
+  const orderedRows = [...priorityRows, ...restRows];
+  // Split only when the instance curates (criteria present) AND there's a real rest
+  // to collapse — a consortium's effective set is entirely in-demand, so no split.
+  const dc = land.demand_criteria;
+  const occSplit = dc && priorityRows.length > 0 && restRows.length > 0
+    ? {
+        after: priorityRows.length,
+        restLabel: "below the priority bar",
+        criteria: [
+          ...(dc.min_openings != null ? [`> ${dc.min_openings.toLocaleString("en-US")} openings`] : []),
+          ...(dc.min_wage != null ? [`≥ $${Math.round(dc.min_wage / 1000)}k median`] : []),
+        ],
+      }
+    : null;
   const cellOf = (rowId: string, colId: string): ApiSvampCell | undefined => {
     const name = nameById.get(colId);
     return land.colleges.find((c) => c.name === name)?.cells.find((c) => c.soc_code === rowId);
@@ -245,14 +265,15 @@ export default function LandscapeDashboardOccupations({ colleges, instance = "sv
     // Coverage leads the top band at 2:1 over the demand treemap — decided in
     // the layout lab (2026-06-06), mirroring the Programs lens.
     weight: 2,
-    minWidth: 560, // matrix inner min (230 label + 5×62 cells) + panel chrome
+    minWidth: 592, // matrix inner min (262 label + 5×62 cells) + panel chrome
     node: (
       <DashPanel title="Occupation Coverage" authority="DataMart" accent={scopeBrand}>
         <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
           <CoverageMatrix
             flush
             cols={cols}
-            rows={rows}
+            rows={orderedRows}
+            split={occSplit}
             level={(r, c) => level(cellOf(r, c))}
             selectedRow={soc}
             selectedCol={collegeId}
