@@ -395,7 +395,7 @@
      "feeding_awards": 0,
      "gap": 75,
      "growth_rate": -0.0,
-     "in_demand": true,
+     "in_demand": false,
      "programs": [
       {
        "awards": [
@@ -501,7 +501,7 @@
      "feeding_awards": 0,
      "gap": 150,
      "growth_rate": 0.1,
-     "in_demand": true,
+     "in_demand": false,
      "programs": [
       {
        "awards": [
@@ -1017,7 +1017,7 @@
      "feeding_awards": 0,
      "gap": 175,
      "growth_rate": 0.0,
-     "in_demand": true,
+     "in_demand": false,
      "programs": [
       {
        "awards": [
@@ -1478,7 +1478,7 @@
      "feeding_awards": 4,
      "gap": 75,
      "growth_rate": -0.0,
-     "in_demand": true,
+     "in_demand": false,
      "programs": [
       {
        "awards": [
@@ -1592,7 +1592,7 @@
      "feeding_awards": 0,
      "gap": 150,
      "growth_rate": 0.1,
-     "in_demand": true,
+     "in_demand": false,
      "programs": [
       {
        "awards": [
@@ -2439,7 +2439,7 @@
      "feeding_awards": 4,
      "gap": 175,
      "growth_rate": 0.0,
-     "in_demand": true,
+     "in_demand": false,
      "programs": [
       {
        "awards": [
@@ -2554,7 +2554,7 @@
      "feeding_awards": 0,
      "gap": 80,
      "growth_rate": -0.0,
-     "in_demand": true,
+     "in_demand": false,
      "programs": [],
      "soc_code": "17-3024",
      "supply": 0.0,
@@ -2569,7 +2569,7 @@
      "feeding_awards": 0,
      "gap": 150,
      "growth_rate": 0.1,
-     "in_demand": true,
+     "in_demand": false,
      "programs": [],
      "soc_code": "17-3026",
      "supply": 0.0,
@@ -2704,7 +2704,7 @@
      "feeding_awards": 0,
      "gap": 180,
      "growth_rate": 0.0,
-     "in_demand": true,
+     "in_demand": false,
      "programs": [],
      "soc_code": "51-9141",
      "supply": 0.0,

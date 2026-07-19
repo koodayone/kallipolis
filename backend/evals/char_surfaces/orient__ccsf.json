@@ -140,6 +140,48 @@
     }
    },
    {
+    "label": "ICT / Digital Media",
+    "roster": [],
+    "values": {
+     "gap": {
+      "granularity": "regional openings \u2212 regional supply",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": -97,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 96.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "regional_demand": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 0,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "regional_supply": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 96.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
     "label": "Life Sciences / Biotech",
     "roster": [],
     "values": {
@@ -319,7 +361,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "sectors the member runs",
-    "value": 6,
+    "value": 7,
     "vintage": ""
    }
   }

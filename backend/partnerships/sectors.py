@@ -259,42 +259,31 @@ PROMOTION_SOCS: frozenset[str] = frozenset({
     "53-1047",
 })
 
-# Curated below-floor admissions (set 2026-06-13 from the BACCC consortium
-# clustering analysis). These occupations clear every gate EXCEPT the 240-openings
-# floor — premium (wage well above floor), growing, multi-college and awards-backed,
-# but thinner in raw annual openings than the floor allows. They earn admission
-# because they cost almost no interpretation bandwidth: five EXTEND a live
-# occupational cluster a member already trains (one more destination on a pipeline
-# already on screen), and one is a single strong standalone. INCLUDE_SOCS exempts
-# ONLY the openings floor (in resolve.effective_socs); every other gate (wage,
-# growth, non_empty/awards, min_colleges) still applies, so a member that loses the
-# supply still drops the row. Cluster-extenders: 29-9021 Health Information
-# Technologists (medical-records), 19-4092 Forensic Science Technicians (criminal-
-# justice), 49-9051 Electrical Power-Line Installers (electrical trades), 47-2071
-# Paving/Surfacing Operators (heavy-equipment), 49-9062 Medical Equipment Repairers
-# (lab sciences). Standalone: 29-1126 Respiratory Therapists (allied health). Held
-# for a later wave / curation pass: the adm engineering-tech block (the shared-
-# feeder clustering over-merges it) and ict Sound Engineering Technicians (its only
-# cluster is crosswalk bleed).
+# Curated below-floor occupations (set 2026-06-13 from the BACCC consortium clustering
+# analysis; the adm engineering-tech block added 2026-06-21). These clear every gate
+# EXCEPT the openings floor — premium wage, growing, multi-college, awards-backed, but
+# thinner in raw annual openings than the floor allows.
+#
+# HISTORY: this list once exempted these SOCs from the in_demand openings floor (and one
+# from the wage floor). That exemption was REMOVED 2026-07-19: curated priority belongs to
+# the AUTHORED composition path (SVAMP, which marks all its SOCs in-demand and never reaches
+# the gate), not to the default rule — which now reads EXACTLY as its stated criteria
+# (openings > floor AND wage >= floor) for every derived landscape in every region. Baking a
+# Bay/SVAMP-strategic list into the global gate silently over-promoted these occupations in
+# every other region's landscape (San Diego adm showed 10-openings roles above a ">250"
+# bar). See resolve.soc_in_demand. Membership is graph-native (COVERS), unaffected — these
+# occupations still show as `served`, now correctly below the priority bar.
+#
+# The list survives ONLY as the ClusterMap `admitted` badge (clusters.py) marking these
+# curated occupations in the cluster view; it no longer gates demand or membership.
+# Cluster-extenders: 29-9021 Health Information Technologists, 19-4092 Forensic Science
+# Technicians, 49-9051 Electrical Power-Line Installers, 47-2071 Paving/Surfacing Operators,
+# 49-9062 Medical Equipment Repairers; standalone 29-1126 Respiratory Therapists; the adm
+# block 17-3026 / 17-3024 / 51-9141 (SVAMP advanced-manufacturing technician occupations).
 INCLUDE_SOCS: frozenset[str] = frozenset({
     "29-9021", "19-4092", "49-9051", "47-2071", "49-9062", "29-1126",
-    # The adm engineering-tech block, admitted 2026-06-21 (the "later wave" above):
-    # SVAMP-prioritized advanced-manufacturing technician occupations — strategically
-    # core to the Bay's semiconductor/mechatronics base, thinner in raw openings than
-    # the floor allows. 17-3026 clears every other gate; 17-3024 also needs
-    # GROWTH_EXEMPT (-1.4%); 51-9141 also needs WAGE_EXEMPT (below).
     "17-3026", "17-3024", "51-9141",
 })
-
-# Curated wage-floor exception. The wage gate is the ONE demand floor with no
-# general exemption — "near-living-wage" ($54,080/yr, $26/hr) is a quality
-# principle, not a size proxy — so admission here is narrow and only on explicit
-# sector-authority designation. 51-9141 Semiconductor Processing Technicians: the
-# SVAMP director's named target advanced-manufacturing occupation, strategically
-# core to the Bay's semiconductor base; its $49,340 regional median sits below the
-# floor. FLAG: that wage looks low for the San Jose MSA — if it understates the true
-# regional median, 51-9141 qualifies on merit and this exemption becomes redundant.
-WAGE_EXEMPT_SOCS: frozenset[str] = frozenset({"51-9141"})
 
 # Uniform SOC-selection curation = the strict BACCC priority-occupation standard
 # (set 2026-06-12; thresholds simplified 2026-07-18): median wage at least

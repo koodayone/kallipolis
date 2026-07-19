@@ -367,7 +367,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "SOCs",
-    "value": 9,
+    "value": 6,
     "vintage": ""
    },
    "in_demand_openings": {
@@ -376,7 +376,7 @@
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 4400,
+    "value": 3990,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
    },
    "member_programs": {

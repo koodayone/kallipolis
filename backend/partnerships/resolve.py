@@ -39,9 +39,7 @@ from partnerships.quantities import (
 from partnerships.sectors import (
     ALL_OTHER_SOCS,
     EXPERIENCE_5YR_SOCS,
-    INCLUDE_SOCS,
     PROMOTION_SOCS,
-    WAGE_EXEMPT_SOCS,
     SectorRule,
 )
 
@@ -53,13 +51,15 @@ def soc_in_demand(
 
     The single birthplace of the in_demand predicate: sector_lenses composes it over a SOC set to derive
     the in_demand lens, and the landscape build stamps each cell with it so a surface can split priority
-    (in-demand) occupations from the rest. Two gates: openings must strictly exceed the floor (`>`), wage
-    meets it (`>=`). INCLUDE_SOCS bypass the openings floor ONLY (still face the wage floor); WAGE_EXEMPT_SOCS
-    the wage floor. (The non-declining-growth gate was dropped 2026-07-18 — a declining field can still be a
-    real, staffable market — so growth no longer gates.)"""
-    if rule.min_openings and (openings or 0) <= rule.min_openings and soc not in INCLUDE_SOCS:
+    (in-demand) occupations from the rest. Two gates, NO curated exceptions: openings must strictly exceed
+    the floor (`>`), wage meets it (`>=`). Curated priority (a sector authority naming a strategic occupation
+    below the floor) belongs to the AUTHORED composition path — which marks all its SOCs in-demand and never
+    reaches this gate — not to this default rule, so the default priority bar reads exactly as its criteria
+    state. (The non-declining-growth gate was dropped 2026-07-18 — a declining field can still be a real,
+    staffable market — so growth no longer gates.)"""
+    if rule.min_openings and (openings or 0) <= rule.min_openings:
         return False
-    if rule.min_wage and (wage or 0) < rule.min_wage and soc not in WAGE_EXEMPT_SOCS:
+    if rule.min_wage and (wage or 0) < rule.min_wage:
         return False
     return True
 

@@ -370,7 +370,7 @@
      "feeding_awards": 4,
      "gap": 75,
      "growth_rate": -0.0,
-     "in_demand": true,
+     "in_demand": false,
      "programs": [
       {
        "awards": [
@@ -1266,7 +1266,7 @@
      "feeding_awards": 4,
      "gap": 175,
      "growth_rate": 0.0,
-     "in_demand": true,
+     "in_demand": false,
      "programs": [
       {
        "awards": [

@@ -10,7 +10,7 @@ Coverage:
   - wage must MEET the floor (== floor passes)
   - a declining occupation still qualifies (the growth gate was dropped 2026-07-18)
   - missing figures read as zero (never crash on None), so below-floor → not in demand
-  - INCLUDE_SOCS bypasses the openings floor ONLY — the wage gate still applies
+  - the gate has NO curated exceptions — an INCLUDE_SOCS member below the floor still fails
 """
 
 from partnerships.resolve import soc_in_demand
@@ -51,13 +51,13 @@ def test_missing_figures_read_as_zero():
     assert soc_in_demand(_SYNTH, openings=None, wage=None, rule=_RULE) is False
 
 
-def test_include_socs_bypass_the_openings_floor_only():
+def test_no_curated_bypass_of_the_floors():
+    # The gate has NO curated exceptions (the INCLUDE_SOCS / WAGE_EXEMPT_SOCS openings/
+    # wage bypass was removed 2026-07-19): curated priority lives in the AUTHORED
+    # composition path, not this default rule. A curated (INCLUDE_SOCS) SOC below the
+    # openings floor fails exactly like any other SOC, and only clears on merit.
     if not INCLUDE_SOCS:
-        return  # nothing curated below the floor in this build — mechanism is a no-op
-    exempt = next(iter(INCLUDE_SOCS))
-    # Below the openings floor, but INCLUDE_SOCS admits it — the wage gate still clears.
-    assert soc_in_demand(exempt, openings=10, wage=60_000, rule=_RULE) is True
-    # The bypass is openings-only: a below-floor wage still fails for an exempt SOC.
-    assert soc_in_demand(exempt, openings=10, wage=40_000, rule=_RULE) is False
-    # A non-exempt SOC with the same low openings fails outright.
-    assert soc_in_demand(_SYNTH, openings=10, wage=60_000, rule=_RULE) is False
+        return  # nothing curated in this build — nothing to distinguish
+    curated = next(iter(INCLUDE_SOCS))
+    assert soc_in_demand(curated, openings=10, wage=60_000, rule=_RULE) is False    # below floor → fails
+    assert soc_in_demand(curated, openings=500, wage=60_000, rule=_RULE) is True     # clears on merit, like anyone
