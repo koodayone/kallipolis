@@ -7,7 +7,7 @@ import KallipolisBrand from "@/ui/KallipolisBrand";
 import SurfaceNav from "@/college-atlas/partnerships/SurfaceNav";
 import RisingSun from "@/ui/RisingSun";
 import { FONT, MONO, ReportHeader, Section, Prose } from "@/college-atlas/partnerships/reportChrome";
-import { OpportunityReportBody, PartnerEmployerRow } from "@/college-atlas/partnerships/OpportunityReport";
+import { OpportunityReportBody, PartnerEmployerRow } from "@/college-atlas/partnerships/OpportunityReportBody";
 import { readLandscapeParams, writeLandscapeParams } from "@/college-atlas/partnerships/landscapeUrl";
 import EmployerListRow from "@/college-atlas/partnerships/EmployerListRow";
 import { OCC_MATRIX_CORNER, occupationMatrixRows } from "@/college-atlas/partnerships/landscapeLabels";

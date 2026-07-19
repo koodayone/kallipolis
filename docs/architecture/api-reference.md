@@ -52,14 +52,13 @@ Defined in `backend/employers/api.py`, mounted at `/employers`. These endpoints 
 
 ## Partnerships
 
-Defined in `backend/partnerships/api.py`, mounted at `/partnerships`. The Partnerships surface is occupation-centric: a sector accordion lists every PCAH-classified Strong Workforce sector with the CTE-reachable, regionally-demanded occupations within it; clicking one generates a deterministic per-(college, SOC) opportunity report.
+Defined in `backend/partnerships/api.py`, mounted at `/partnerships`. The Partnerships surface is occupation-centric: the per-(college, SOC) opportunity report frames the regional employer set as candidate partners for a multi-employer engagement around the occupational pathway. It is embedded in the member×sector landscape — rendered inline as the coverage-cell occupation drill — not a standalone view (the former sector accordion and standalone report route were retired into the landscape).
 
 | Method | Path | Purpose | Response model |
 |---|---|---|---|
-| `GET /partnerships/sectors` | Sector accordion: every Strong Workforce sector with its CTE-reachable, regionally-demanded occupations | `SectorIndex` |
 | `GET /partnerships/opportunity/{soc_code}` | Per-(college, SOC) partnership opportunity report — five narrative sections plus evidence blocks plus the candidate employer set | `OpportunityReport` |
 
-Both endpoints take `college` as a query parameter. Both are deterministic and idempotent — same inputs always yield byte-identical responses, so they are safe to cache and to deep-link.
+The endpoint takes `college` as a query parameter. It is deterministic and idempotent — same inputs always yield byte-identical responses, so it is safe to cache and to deep-link.
 
 The opportunity report carries a `swp_evidence` block — the regional supply (projected program completions per TOP6) and demand (regional annual openings) totals plus the gap, scoped to the selected SOC. It is assembled deterministically by `_build_swp_evidence` in `backend/partnerships/opportunity.py` so any subsequent SWP funding justification has the empirical foundation it needs.
 

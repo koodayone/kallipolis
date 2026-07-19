@@ -167,11 +167,6 @@ export type ApiOpportunityReport = {
   partnership_opportunities: ApiPartnershipOpportunityEmployer[];
 };
 
-export async function getPartnershipSectors(college: string): Promise<ApiSectorIndex> {
-  const res = await fetch(`${API_BASE}/partnerships/sectors?college=${encodeURIComponent(college)}`);
-  if (!res.ok) throw new Error("Failed to fetch partnership sectors");
-  return res.json();
-}
 
 // ── SVAMP aggregated landscape (Silicon Valley Advanced Manufacturing) ─────
 //
@@ -353,13 +348,6 @@ export async function getConsortiumClusterSupply(member = "baccc"): Promise<ApiC
 export interface ApiMemberClusterSectors {
   member: string;
   sectors: string[];
-}
-export async function getMemberClusterSectors(member: string): Promise<ApiMemberClusterSectors> {
-  return landscapeCached(`cluster-sectors:${member}`, async () => {
-    const res = await fetch(`${API_BASE}/partnerships/${encodeURIComponent(member)}/cluster-sectors`);
-    if (!res.ok) throw new Error("Failed to fetch cluster sectors");
-    return res.json();
-  });
 }
 
 export async function getLandscape(instance: string = "svamp"): Promise<ApiSvampLandscape> {

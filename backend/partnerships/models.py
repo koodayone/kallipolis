@@ -175,64 +175,6 @@ class SwpEvidence(BaseModel):
 # ── Sector index (Partnerships view navigation) ───────────────────────────
 
 
-class OpportunityRow(BaseModel):
-    """A single occupation row inside a sector accordion.
-
-    Carries enough metadata for the row to be self-describing without
-    the user needing to drill in: count metrics signal alignment depth
-    at this college (courses, employers); demand metrics signal
-    regional market context (annual wage, annual openings, 5-yr
-    growth rate from the COE projections); `gap` is the per-row
-    triage signal — regional annual openings minus the college's TOP-
-    program supply.
-    """
-    soc_code: str
-    title: str
-    annual_openings: Optional[int] = None
-    annual_wage: Optional[int] = None
-    growth_rate: Optional[float] = None
-    course_count: int = 0
-    employer_count: int = 0
-    gap: Optional[int] = None
-    # Two-valued alignment status driving the row's visual treatment:
-    # - "aligned": college has at least one PREPARES_FOR-aligned course
-    #   (course_count > 0). Renders as a normal navigable opportunity.
-    # - "gap":     SOC is regionally demanded AND in the PCAH sector
-    #   AND CTE-reachable globally, but the college has NO institutionally
-    #   aligned curriculum for it (course_count = 0). Renders distinctly
-    #   to surface "no current pathway, regional demand exists" — a
-    #   consortia-level opportunity for the college to consider closing.
-    # Default "aligned" preserves backward-compat for any caller
-    # constructing rows without explicitly tagging.
-    alignment_status: Literal["aligned", "gap"] = "aligned"
-
-
-class SectorEntry(BaseModel):
-    """A Strong Workforce sector and the CTE-reachable occupations
-    within it that the college's region demands.
-
-    Per the institutional-deference principle: the sector→occupation
-    mapping comes from the PCAH TOP-Codes-to-Sectors file walked
-    through the TOP-CIP-SOC chain. A SOC may appear under multiple
-    sectors when its TOPs are claimed by more than one — matching
-    institutional reality, not forcing a partition.
-    """
-    sector: str
-    is_priority: bool = False
-    occupations: list[OpportunityRow]
-
-
-class SectorIndex(BaseModel):
-    """The Partnerships view's top-level navigation: every PCAH-
-    classified Strong Workforce sector with at least one CTE-reachable,
-    regionally-demanded occupation, alphabetically ordered."""
-    college: str
-    sectors: list[SectorEntry]
-
-
-# ── Per-occupation Partnership Opportunity Report ─────────────────────────
-
-
 class PartnershipOpportunityEmployer(BaseModel):
     """An employer in the regional market that hires for this
     occupation, surfaced as a candidate partner in the report's

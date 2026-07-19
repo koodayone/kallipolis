@@ -15,43 +15,13 @@ import OccupationRow, {
 import DepartmentRow, { type CourseItem } from "@/college-atlas/courses/DepartmentRow";
 import CurriculumPathway from "@/college-atlas/partnerships/CurriculumPathway";
 import OccupationDemandTable from "@/college-atlas/partnerships/OccupationDemandTable";
-import AtlasHeader from "@/ui/AtlasHeader";
-import KallipolisBrand from "@/ui/KallipolisBrand";
 import RisingSun from "@/ui/RisingSun";
 import { FONT, MONO, ReportHeader, Section, Prose } from "@/college-atlas/partnerships/reportChrome";
 
-type Props = {
-  school: SchoolConfig;
-  socCode: string;
-  // Click-context sector — the partnerships-listing tab the user
-  // navigated from. Forwarded to the backend so SOCs that belong to
-  // multiple PCAH sectors render under the user's chosen lens rather
-  // than the alphabetical default. Undefined for deep-links / back-
-  // navigation; backend falls back to the alphabetical sector then.
-  sector?: string;
-  onBack: () => void;
-};
-
-export default function OpportunityReport({ school, socCode, sector, onBack }: Props) {
-  return (
-    <div>
-      <AtlasHeader
-        school={school}
-        onBack={onBack}
-        title={school.name}
-        rightSlot={<KallipolisBrand />}
-      />
-      <div style={{ maxWidth: "880px", margin: "0 auto", padding: "32px 40px 80px" }}>
-        <OpportunityReportBody school={school} socCode={socCode} sector={sector} />
-      </div>
-    </div>
-  );
-}
-
 /* ── Embeddable body — fetch + render, no header/overlay chrome ───────────
-   Used full (with Executive Summary) by the routed report above, and
-   embedded (executive summary suppressed, eyebrow dropped) inside the SVAMP
-   aggregated landscape so a selection renders inline without a page load. */
+   Rendered inside the aggregated landscape (LandscapeReport) when a coverage
+   cell is selected — the occupation drill, inline, no page load. (The former
+   standalone routed report that also used it was retired into the landscape.) */
 export function OpportunityReportBody({
   school, socCode, sector, hideExecutiveSummary = false, embedded = false, programOutcomes,
   demandTitle = "Labor Market Information", hideLaborMarket = false, suppressEmptySupplyGap = false, topPrefix, cteOnly, excludeTops,

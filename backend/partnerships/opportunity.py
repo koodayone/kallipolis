@@ -1,23 +1,20 @@
-"""Occupation-centric partnership opportunity surfaces.
+"""The per-occupation partnership opportunity report engine.
 
-The post-shift Partnerships view: instead of (college, employer) ->
-proposal, the unit of analysis is (college, occupation) -> opportunity
-report. Each Strong Workforce sector contains the CTE-reachable
-occupations the college's region demands; clicking an occupation
-generates a multi-employer partnership opportunity report.
+The unit of analysis is (college, occupation) -> opportunity report: the regional
+employers that hire for the occupation, framed as candidate partners for a
+multi-employer engagement around the occupational pathway. Composed
+deterministically — PCAH TOP->CIP->SOC chain, COE regional demand, the college's
+PREPARES_FOR edges, and the employer regional pivot — into the one public function:
 
-This module owns the composition: PCAH TOP->Sector mapping, TOP->CIP->SOC
-chain, COE regional demand, college's PREPARES_FOR edges, and the
-employer regional pivot all flow into the two public functions:
-
-    build_sector_index(college)             -> SectorIndex
     build_opportunity_report(college, soc)  -> OpportunityReport
 
-Per the institutional-deference principle: the sector->occupation
-mapping comes from PCAH (Chancellor's Office Program and Course
-Approval Handbook) walked through the TOP-CIP-SOC chain. A SOC may
-appear under multiple sectors when its TOPs are claimed by more than
-one. Same employer-agnostic prose frames the report in every case.
+It is embedded, not standalone: the landscape occupation drill (LandscapeReport ->
+OpportunityReportBody) renders it inline. The former sector accordion
+(build_sector_index) was retired when the landscape subsumed the standalone view.
+
+Per the institutional-deference principle: the sector->occupation mapping comes
+from PCAH (Chancellor's Office Program and Course Approval Handbook) walked through
+the TOP-CIP-SOC chain. Same employer-agnostic prose frames the report in every case.
 """
 
 from __future__ import annotations
@@ -51,10 +48,7 @@ from partnerships.models import (
     InstitutionalSources,
     OccupationEvidence,
     OpportunityReport,
-    OpportunityRow,
     PartnershipOpportunityEmployer,
-    SectorEntry,
-    SectorIndex,
     SupplyEstimate,
     SwpEvidence,
 )
@@ -122,181 +116,6 @@ def _sector_socs(sector: str) -> set[str]:
 
 
 # ── Sector index ────────────────────────────────────────────────────────
-
-
-def build_sector_index(college: str) -> SectorIndex:
-    """For a college, return every Strong Workforce sector that has at
-    least one CTE-reachable, regionally-demanded occupation, with the
-    occupations alphabetically listed under each.
-
-    The intersection that scopes each sector accordion:
-      1. SOCs reachable from this sector's PCAH TOPs (institutional)
-      2. CTE-reachable union (filter by overall PCAH coverage)
-      3. SOCs the college's COE region actually demands
-
-    Per-occupation metadata (course_count, employer_count, demand
-    figures) is gathered with focused Cypher passes against the graph,
-    keyed by SOC.
-    """
-    coe_region = COLLEGE_COE_REGION.get(college, "")
-    priority_sectors = set(COE_REGION_PRIORITY_SECTORS.get(coe_region, []))
-    cte_socs = cte_reachable_socs()
-    sector_to_top6 = _load_sector_to_top6()
-
-    # The per-(college, soc) aggregates (course_count, employer_count,
-    # top_codes) are precomputed onto OCCUPATION_PIPELINE edges by
-    # partnerships.compute.materialize_occupation_pipeline at pipeline
-    # reload time. Queries that previously dominated this endpoint at
-    # request time collapse into a single edge read here.
-    #
-    # OCCUPATION_PIPELINE is sparse — edges exist only where the college
-    # has at least one PREPARES_FOR-aligned course for the SOC, mirroring
-    # the strict-filter gating below. SOCs the region demands but the
-    # college doesn't institutionally connect to are still surfaced via
-    # regional_socs (we want them in the dataset for diagnostics) but
-    # filtered out at row construction.
-    driver = get_driver()
-    with driver.session() as session:
-        # All SOCs the region demands, with metadata, plus the precomputed
-        # alignment aggregates joined via OPTIONAL MATCH (so unaligned
-        # SOCs still come through, with NULL aggregates that get filtered
-        # by the strict-filter step).
-        rows = session.run("""
-            MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)
-                  -[d:DEMANDS]->(occ:Occupation)
-            OPTIONAL MATCH (col)-[op:OCCUPATION_PIPELINE]->(occ)
-            RETURN occ.soc_code AS soc_code,
-                   occ.title AS title,
-                   d.annual_openings AS annual_openings,
-                   d.annual_wage AS annual_wage,
-                   d.growth_rate AS growth_rate,
-                   op.course_count AS course_count,
-                   op.employer_count AS employer_count,
-                   op.top_codes AS top_codes
-        """, college=college).data()
-
-    regional_socs = rows  # name preserved for the loop below; same shape +
-                          # the extra alignment fields
-    course_count_by_soc = {r["soc_code"]: r.get("course_count") or 0 for r in rows}
-    employer_count_by_soc = {r["soc_code"]: r.get("employer_count") or 0 for r in rows}
-    top_codes_by_soc: dict[str, set[str]] = {
-        r["soc_code"]: {t for t in (r.get("top_codes") or []) if t}
-        for r in rows
-    }
-
-    # Per-SOC supply — the CANONICAL projected supply (Q.supply: 3-yr-avg DataMart
-    # completions over the SOC's is_vocational crosswalk feeders), so the index gap
-    # matches the dashboard, the MCP, and the per-SOC report's "Workforce Gap"
-    # exactly. (Was get_coe_supply over the COE supply_by_top.csv keyed on
-    # course-tagged TOPs — a different data source AND the course-tagged seam that
-    # under/over-counted; both are retired here.)
-    has_supply_by_soc: dict[str, bool] = {}
-    total_supply_by_soc: dict[str, float] = {}
-    for r in regional_socs:
-        soc = r["soc_code"]
-        if soc in has_supply_by_soc:
-            continue
-        sup = Q.supply([college], soc)
-        total_supply_by_soc[soc] = sup
-        has_supply_by_soc[soc] = sup > 0
-
-    # Build per-soc OpportunityRow once; same row instance can be reused
-    # under multiple sectors.
-    #
-    # Two surface conditions, tagged via `alignment_status`:
-    #
-    # 1. "aligned" — the strict five-signal filter from before. Surfaces
-    #    only SOCs where every clickable row produces a fully-populated
-    #    Opportunity Report (no honest-absence branches in the LMI /
-    #    curriculum / employer / supply sections), AND there's a
-    #    positive workforce gap (regional demand > college supply). The
-    #    gap > 0 requirement is the SWP fundability cut: Strong
-    #    Workforce RFAs require demonstrated regional unmet demand as
-    #    the proposal anchor.
-    #
-    # 2. "gap" — the college has NO institutionally aligned curriculum
-    #    for this SOC (course_count = 0), but the SOC is regionally
-    #    demanded AND globally CTE-reachable AND in this sector's PCAH
-    #    classification. Surfaced so the college can see "no current
-    #    pathway, but regional demand exists" as a consortia-level
-    #    opportunity worth discussing. Per institutional-deference, the
-    #    gap is real institutional signal — papering over it with
-    #    silent omission misrepresents the workforce-alignment surface.
-    rows_by_soc: dict[str, OpportunityRow] = {}
-    for r in regional_socs:
-        soc = r["soc_code"]
-        if soc not in cte_socs:
-            continue
-        course_count = course_count_by_soc.get(soc, 0)
-        employer_count = employer_count_by_soc.get(soc, 0)
-        has_supply = has_supply_by_soc.get(soc, False)
-        annual_openings = r["annual_openings"] or 0
-        total_supply = total_supply_by_soc.get(soc, 0.0)
-        gap = int(round(annual_openings - total_supply))
-
-        if course_count > 0:
-            # Aligned candidate — strict filter so every clickable aligned
-            # row populates fully. student_count was dropped from this gate
-            # with the non-PII migration: the real institutional signals —
-            # courses, employers, regional supply, and the demand gap —
-            # carry it, and a genuine pathway shouldn't be hidden just
-            # because no synthetic student happened to populate it.
-            if (employer_count == 0
-                    or not has_supply or gap <= 0):
-                continue
-            alignment_status = "aligned"
-        else:
-            # Gap candidate — surface when regional demand exists. The
-            # college's per-row supply is 0 (no aligned TOPs), so
-            # gap = annual_openings; we filter on annual_openings > 0
-            # to drop SOCs with no regional demand signal at all.
-            if annual_openings <= 0:
-                continue
-            alignment_status = "gap"
-
-        rows_by_soc[soc] = OpportunityRow(
-            soc_code=soc,
-            title=r["title"] or soc,
-            annual_openings=r["annual_openings"],
-            annual_wage=r["annual_wage"],
-            growth_rate=r.get("growth_rate"),
-            course_count=course_count,
-            employer_count=employer_count,
-            gap=gap,
-            alignment_status=alignment_status,
-        )
-
-    # Build sector entries. Sectors are alphabetical; within each
-    # sector, aligned rows come first (sorted by gap descending —
-    # largest unmet regional pipeline first), then gap rows (also
-    # sorted by gap descending). Title is the deterministic tiebreaker.
-    # The aligned-then-gap ordering surfaces the college's actionable
-    # pathways at the top and consortia-level opportunities below,
-    # without hiding either.
-    sectors: list[SectorEntry] = []
-    for sector in sorted(sector_to_top6.keys()):
-        sector_soc_set = _sector_socs(sector)
-        occupations = [
-            rows_by_soc[soc] for soc in sector_soc_set
-            if soc in rows_by_soc
-        ]
-        if not occupations:
-            continue
-        occupations.sort(key=lambda o: (
-            0 if o.alignment_status == "aligned" else 1,
-            -(o.gap or 0),
-            o.title.lower(),
-        ))
-        sectors.append(SectorEntry(
-            sector=sector,
-            is_priority=sector in priority_sectors,
-            occupations=occupations,
-        ))
-
-    return SectorIndex(college=college, sectors=sectors)
-
-
-# ── Opportunity report ──────────────────────────────────────────────────
 
 
 def _gather_partnership_opportunities(
