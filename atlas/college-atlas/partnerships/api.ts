@@ -283,7 +283,6 @@ export interface ApiClusterOccupation {
   annual_openings: number;
   annual_wage: number;
   growth_rate: number;
-  admitted: boolean;
 }
 export interface ApiClusterFeeder {
   top6: string;

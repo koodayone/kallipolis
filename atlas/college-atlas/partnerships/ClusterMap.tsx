@@ -406,22 +406,6 @@ function ClusterCard({
           >
             <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 3 }}>
               <span style={{ fontSize: 13, color: TEXT, fontWeight: 500, lineHeight: 1.25 }}>{o.title}</span>
-              {o.admitted && (
-                <span
-                  style={{
-                    fontSize: 8.5,
-                    fontWeight: 700,
-                    letterSpacing: "0.08em",
-                    color: "#c9a84c",
-                    border: "1px solid rgba(201,168,76,0.4)",
-                    borderRadius: 4,
-                    padding: "1px 4px",
-                    flex: "none",
-                  }}
-                >
-                  ADDED
-                </span>
-              )}
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 14, fontFamily: MONO, fontSize: 11.5 }}>
               <span style={{ color: FAINT, minWidth: 56 }}>{o.soc}</span>
