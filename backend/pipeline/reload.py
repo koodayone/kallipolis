@@ -24,9 +24,7 @@ from ontology.schema import get_driver, close_driver, init_schema
 from ontology.programs import load_programs, load_program_wage_outcomes
 from partnerships.compute import (
     materialize_partnership_alignment,
-    materialize_occupation_pipeline,
 )
-from partnerships.precompute import build_all as precompute_partnership_cache
 
 logger = logging.getLogger(__name__)
 
@@ -187,7 +185,6 @@ def verify(driver) -> None:
             ("PREPARES_FOR", "MATCH ()-[p:PREPARES_FOR]->() RETURN count(p) AS cnt"),
             ("HIRES_FOR", "MATCH ()-[h:HIRES_FOR]->() RETURN count(h) AS cnt"),
             ("PARTNERSHIP_ALIGNMENT", "MATCH ()-[p:PARTNERSHIP_ALIGNMENT]->() RETURN count(p) AS cnt"),
-            ("OCCUPATION_PIPELINE", "MATCH ()-[p:OCCUPATION_PIPELINE]->() RETURN count(p) AS cnt"),
         ]
         for label, query in queries:
             result = s.run(query)
@@ -250,9 +247,9 @@ def reload_region(region_key: str) -> None:
         except Exception as e:
             logger.error(f"load_sector_graph failed: {e}; graph ontology absent until rerun")
 
-        # Step 5: Materialize PARTNERSHIP_ALIGNMENT and OCCUPATION_PIPELINE
-        # edges. Must run after both load_courses (PREPARES_FOR exists) and
-        # load_industry_data (Employer / HIRES_FOR exist).
+        # Step 5: Materialize PARTNERSHIP_ALIGNMENT edges. Must run after both
+        # load_courses (PREPARES_FOR exists) and load_industry_data (Employer /
+        # HIRES_FOR exist).
         for key in college_keys:
             college_name = configs.get(key, {"name": key})["name"]
             try:
@@ -262,37 +259,9 @@ def reload_region(region_key: str) -> None:
                     f"materialize_partnership_alignment failed for {college_name}: {e}; "
                     f"/employers/ will return empty until rerun"
                 )
-            try:
-                materialize_occupation_pipeline(driver, college_name)
-            except Exception as e:
-                logger.error(
-                    f"materialize_occupation_pipeline failed for {college_name}: {e}; "
-                    f"/partnerships/sectors will fall back to live computation "
-                    f"(slow) until rerun"
-                )
 
         # Step 6: Verify
         verify(driver)
-
-        # Step 7: Precompute partnership reports. Materializes every
-        # /partnerships/sectors and /partnerships/opportunity/{soc}
-        # response to gzipped JSON on disk so the serving layer can
-        # return them with a single file read instead of running the
-        # 6–8 Cypher queries per request that produced the slow tail
-        # (p99=60s, max=469s on prod). Wrapped in try/except because
-        # a precompute failure should not fail the reload — the
-        # serving layer's fallback path remains operational.
-        try:
-            cache_dir = Path(os.environ.get(
-                "KALLIPOLIS_CACHE_DIR", "/var/lib/kallipolis/cache"
-            ))
-            precompute_partnership_cache(driver=driver, out_dir=cache_dir)
-        except Exception as e:
-            logger.error(
-                f"precompute_partnership_cache failed: {e}; "
-                f"/partnerships endpoints will fall back to live "
-                f"computation (slow) until rerun"
-            )
 
     finally:
         close_driver()

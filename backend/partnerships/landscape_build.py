@@ -21,9 +21,9 @@ THE aggregation invariant — two pillars are regional, one is institutional:
     college×SOC cells). NOT the sum of per-college gaps.
 
 Reuses the same graph patterns and helpers as opportunity.py: the
-College→IN_MARKET→Region→DEMANDS→Occupation demand read, the precomputed
-OCCUPATION_PIPELINE alignment edge, get_coe_supply for projected completions,
-and the regional HIRES_FOR employer pivot.
+College→IN_MARKET→Region→DEMANDS→Occupation demand read, the SOC's crosswalk
+feeder set for per-cell supply/programs (get_coe_supply for projected
+completions), and the regional HIRES_FOR employer pivot.
 """
 
 from __future__ import annotations
@@ -284,16 +284,14 @@ def build_landscape(spec: LandscapeSpec) -> Landscape:
         # 1) Regional demand, read ONCE per SOC (shared across all colleges).
         demand_by_soc = regional_demand(session, region, list(spec.socs))
 
-        # 2) Per-college alignment (precomputed OCCUPATION_PIPELINE edge),
-        #    joined onto the regional demand so every demanded SOC comes
-        #    through even where the college has no aligned curriculum.
-        #    SVAMP-scoped to TOP division 09 (see SVAMP_TOP_DIVISION):
-        #    course_count_09 recounts the aligned courses under 09, and
-        #    top_codes is filtered to 09 below — so the grid's supply / awards
-        #    and gap shading reflect the consortium's Engineering & Industrial
-        #    Technology program domain (the full faithful crosswalk still backs
-        #    the unchanged per-college report). The edge's own course_count /
-        #    top_codes are deliberately not used here.
+        # 2) Per-college alignment, joined onto the regional demand so every
+        #    demanded SOC comes through even where the college has no aligned
+        #    curriculum. course_count_09 recounts the aligned courses live under
+        #    the spec's program scope; the per-cell supply / programs are routed
+        #    off the SOC's crosswalk `feeding` set below, NOT off any precomputed
+        #    edge — the OCCUPATION_PIPELINE.top_codes read was dropped (it was the
+        #    course-routed subset of `feeding`, so its union added nothing the
+        #    crosswalk feeders don't already cover; golden-snapshot verified).
         # Program-scope filter for the per-cell course count. Vocational
         # instances (sector-derived) scope to the authoritative CTE TOP set;
         # division instances (SVAMP, SMCCD-AM) keep the legacy division-prefix
@@ -307,16 +305,14 @@ def build_landscape(spec: LandscapeSpec) -> Landscape:
                 MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)
                       -[:DEMANDS]->(occ:Occupation)
                 WHERE occ.soc_code IN $socs
-                OPTIONAL MATCH (col)-[op:OCCUPATION_PIPELINE]->(occ)
                 OPTIONAL MATCH (c09:Course {college: $college})-[:PREPARES_FOR]->(occ)
                       WHERE ( $vocational AND c09.top_code IN $scope_tops )
                          OR ( NOT $vocational
                               AND any(d IN $top_divisions WHERE c09.top_code STARTS WITH d)
                               AND NOT c09.top_code IN $excluded )
-                WITH occ, op, count(DISTINCT c09) AS course_count_09
+                WITH occ, count(DISTINCT c09) AS course_count_09
                 RETURN occ.soc_code AS soc_code,
-                       course_count_09 AS course_count,
-                       op.top_codes AS top_codes
+                       course_count_09 AS course_count
                 """,
                 college=college, socs=list(spec.socs),
                 vocational=spec.vocational, scope_tops=scope_tops,
@@ -326,7 +322,6 @@ def build_landscape(spec: LandscapeSpec) -> Landscape:
             align_by_college[college] = {
                 r["soc_code"]: {
                     "course_count": r["course_count"] or 0,
-                    "top_codes": [t for t in (r["top_codes"] or []) if spec.in_scope(t)],
                 }
                 for r in rows
             }
@@ -478,7 +473,6 @@ def _assemble_landscape(
             demand = demand_by_soc.get(soc, {})
             a = align.get(soc, {})
             course_count = (a.get("course_count") or 0)
-            top_codes = {t for t in (a.get("top_codes") or []) if t}
             # The SOC's crosswalk feeder set (in_scope: is_vocational ∩ crosswalk-
             # reaches-this-SOC ∩ not-excluded) — the ONE supply basis, independent of
             # whether a course is tagged to each program's own code. A program that
@@ -494,14 +488,13 @@ def _assemble_landscape(
                 socs_taught.add(soc)   # trains for this SOC iff a feeder produces here
 
             # DataMart program actuals for the programs SUPPLYING this occupation
-            # — routed off the feeding set (unioned with the course-routed
-            # top_codes so nothing previously shown is dropped), so a program that
+            # — routed off the SOC's crosswalk feeding set, so a program that
             # confers without a tagged course (095630 → Machinists) still appears
             # in the cell's program detail. Per-cell awards display = sum over
             # these programs; the consortium total dedups across cells via
             # scoped_programs.
             programs: list[LandscapeProgram] = []
-            for top6 in sorted(feeding | top_codes):
+            for top6 in sorted(feeding):
                 entry = program_data.get((college, top6))
                 if entry is not None:
                     programs.append(_build_program(
