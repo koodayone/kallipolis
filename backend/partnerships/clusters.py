@@ -46,6 +46,8 @@ from partnerships.graph_reads import latest_academic_year, regional_demand
 from partnerships.landscape import LandscapeSpec
 from partnerships.resolve import resolve
 from partnerships.sectors import INCLUDE_SOCS
+from partnerships.members import region_member
+from ontology.regions import COLLEGE_COE_REGION
 
 # Curated cluster merges — human overrides that force occupations into one cluster
 # even when the connected-components rule keeps them apart (they share no feeder
@@ -270,6 +272,20 @@ def _cached_cluster_map(member_id: str, sector_id: str) -> tuple:
     return tuple(cluster_map(spec)) if spec else ()
 
 
+def _cluster_member_for_college(college: str) -> str | None:
+    """The consortium whose cluster map a single college expands into — its COE region.
+
+    Graph-free (COLLEGE_COE_REGION only). The Bay keeps the curated `baccc` consortium
+    (identical to the generic Bay region member — the same 26 colleges — but the pinned
+    instance the goldens and clusters were tuned against); every other region routes
+    through its generic region member (`region_member(region).id`). None ⇒ the college
+    isn't in the region map, so the caller keeps the solo view."""
+    region = COLLEGE_COE_REGION.get(college)
+    if not region:
+        return None
+    return "baccc" if region == "Bay" else region_member(region).id
+
+
 def cluster_expanded_spec(spec: LandscapeSpec, sector_id: str) -> LandscapeSpec:
     """Single-college lens → its cluster consortium.
 
@@ -293,8 +309,11 @@ def cluster_expanded_spec(spec: LandscapeSpec, sector_id: str) -> LandscapeSpec:
     if len(spec.colleges) != 1:
         return spec
     college = spec.colleges[0]
+    member_id = _cluster_member_for_college(college)
+    if member_id is None:
+        return spec
     mine = [
-        c for c in _cached_cluster_map("baccc", sector_id)
+        c for c in _cached_cluster_map(member_id, sector_id)
         if any(sp.college == college for f in c.feeders for sp in f.by_college)
     ]
     if not mine:
