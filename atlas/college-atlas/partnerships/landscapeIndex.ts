@@ -96,8 +96,8 @@ export function memberIdForCollegeName(
 
 /** Resolve a frontend `collegeId` to its landscape `member_id` via the name-join
  *  above (the `collegeId → SchoolConfig.name → member_label → member_id` chain).
- *  The redirect at `/[collegeId]/partnerships` uses this to bounce to
- *  `/landscape/<member>`. Null when the id is unknown or the college has no landscape. */
+ *  Underpins the in-place `/[collegeId]/partnerships` landscape (via collegeLandscape).
+ *  Null when the id is unknown or the college has no landscape. */
 export function memberIdForCollege(
   collegeId: string,
   entries: LandscapeIndexEntry[],
@@ -113,13 +113,42 @@ export const DEFAULT_SECTOR_PRIORITY = [
   "adm", "biotech", "ecu", "atl", "ict", "health", "business", "public_safety", "edhd", "agwet", "retail",
 ];
 
-/** The sector a member-root or college redirect lands on: the first sector in
+/** The sector a member root or college landing resolves to: the first sector in
  *  priority order the member is actually live in, else its first live sector, else
- *  null (no landscape). Shared by MemberRedirect and the /[collegeId]/partnerships
- *  redirect so the landing sector never drifts between the two entry points. */
+ *  null (no landscape). Shared by MemberRedirect (bare /landscape/<member>) and the
+ *  in-place /[collegeId]/partnerships landscape (landingEntry) so the landing sector
+ *  never drifts between the two entry points. */
 export function flagshipSectorFor(memberId: string, entries: LandscapeIndexEntry[]): string | null {
   const live = new Set(entries.filter((e) => e.member_id === memberId).map((e) => e.sector_id));
   return DEFAULT_SECTOR_PRIORITY.find((s) => live.has(s)) ?? [...live][0] ?? null;
+}
+
+/** The landscape entry a resolved MEMBER lands on for the in-place partnerships
+ *  view: the `?sector=` when it's one of the member's live sectors, else the
+ *  flagship. Null if the member has no live landscape. Config-free (member_id in),
+ *  so the sector pick is unit-tested independent of the collegeId→member join. */
+export function landingEntry(
+  memberId: string,
+  entries: LandscapeIndexEntry[],
+  sectorParam: string | null,
+): LandscapeIndexEntry | null {
+  const live = (s: string | null): s is string =>
+    !!s && entries.some((e) => e.member_id === memberId && e.sector_id === s);
+  const sector = live(sectorParam) ? sectorParam : flagshipSectorFor(memberId, entries);
+  return (sector && entries.find((e) => e.member_id === memberId && e.sector_id === sector)) || null;
+}
+
+/** Resolve a single college's in-place partnerships landscape: collegeId → its
+ *  member (the name join) → landingEntry (`?sector=` validated, else flagship).
+ *  Null if the college has no landscape / the member is unknown. Shared by the
+ *  /[collegeId]/partnerships dashboard + report clients so they resolve identically. */
+export function collegeLandscape(
+  collegeId: string,
+  entries: LandscapeIndexEntry[],
+  sectorParam: string | null,
+): LandscapeIndexEntry | null {
+  const member = memberIdForCollege(collegeId, entries);
+  return member ? landingEntry(member, entries, sectorParam) : null;
 }
 
 /** Build a LandscapeInstance for a generated instance from its index entry —
