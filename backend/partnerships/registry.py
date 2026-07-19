@@ -115,61 +115,54 @@ def _entry(member: members_mod.Member, sector_id: str) -> dict:
     }
 
 
-def _rollup_catalog(college_tops: dict, sector_candidates: dict) -> list[dict]:
-    """Pure rollup (graph-free): the live (member, sector) catalog from
-    `{college_name: {top6}}` and `{sector_id: {candidate top6}}`. A college member
-    is live for a sector when its programs intersect the sector's candidate TOPs;
-    a multi-college district rolls up (live if any member college is). Single-
-    college districts collapse to their college member, and districts duplicating
-    a pinned member's college set are skipped — both are already represented."""
-    catalog = members_mod._catalog()
+def _live_sectors(member: members_mod.Member) -> list[str]:
+    """The sectors whose landscape the route will actually serve for this member —
+    the publish gate applied per sector: ``relevant_tops(spec)`` non-empty, the
+    SAME predicate ``has_supply`` / the dynamic route use (has_supply is exactly
+    "relevant_tops non-empty, and the member runs one of those TOPs" — and an
+    active TOP always has a Program node, so the two agree). Deriving the index
+    from the route's OWN predicate — never a proxy — is what keeps them in
+    lockstep: the rail never offers a landscape the route 404s, nor hides one it
+    serves. (An earlier rollup used SMCCD's awarded set as a universal candidate
+    proxy, which both over- and under-listed for every other member.) `unassigned`
+    is a catch-all bucket, never an offered landscape."""
+    from partnerships.landscape_programs import relevant_tops
 
-    def feeds(tops: set) -> list[str]:
-        return [sid for sid, cand in sector_candidates.items() if tops & cand]
-
-    entries: list[dict] = []
-    for name, tops in college_tops.items():
-        if name not in catalog:
+    out: list[str] = []
+    for sid, sector in SECTORS.items():
+        if sid == "unassigned":
             continue
-        m = members_mod.college_member(name)
-        entries.extend(_entry(m, sid) for sid in feeds(tops))
-
-    pinned_sets = {frozenset(s.colleges) for s in REGISTRY.values()}
-    for dname, dcolleges in members_mod._district_colleges().items():
-        # Single-college districts collapse to their college member (identical
-        # view, no sister colleges); pinned-equivalent districts are represented
-        # by the pinned id. Skip both.
-        if len(dcolleges) <= 1 or frozenset(dcolleges) in pinned_sets:
-            continue
-        dtops: set = set()
-        for c in dcolleges:
-            dtops |= college_tops.get(c, set())
-        m = members_mod.district_member(dname)
-        entries.extend(_entry(m, sid) for sid in feeds(dtops))
-
-    entries.sort(key=lambda e: (e["member_kind"], e["member_id"], e["sector_id"]))
-    return entries
+        spec = landscape_for(member, sector, published=True)
+        if spec and relevant_tops(spec):
+            out.append(sid)
+    return out
 
 
 @lru_cache(maxsize=1)
 def live_catalog() -> list[dict]:
-    """The live member×sector catalog against the current graph: every college
-    and district member that runs ≥1 feeding program per sector. One Program scan
-    + the pure rollup — not a per-pair has_supply query. The source for the
-    frontend's landscape index and the generated-route param set. (Region/state
-    members are deferred; pinned instances keep their own identity.)"""
-    from ontology.schema import get_driver
-    from partnerships.landscape_programs import relevant_tops
+    """The live member×sector catalog against the current graph: every college and
+    district member whose landscape the route will serve (see ``_live_sectors`` for
+    the gate). ``relevant_tops`` caches award/enrollment per college, so this is a
+    handful of graph reads amortized across a member's sectors — not a per-pair
+    query. The source for the frontend's landscape index and the generated-route
+    param set. (Region/state members are deferred; pinned instances keep their own
+    identity and routes.)"""
+    catalog = members_mod._catalog()
+    entries: list[dict] = []
+    for name in catalog:
+        m = members_mod.college_member(name)
+        entries.extend(_entry(m, sid) for sid in _live_sectors(m))
 
-    sector_candidates = {
-        sid: set(relevant_tops(REGISTRY[f"smccd-{sid}"]).keys())
-        for sid in SECTORS
-        if f"smccd-{sid}" in REGISTRY
-    }
-    with get_driver().session() as session:
-        rows = session.run(
-            "MATCH (p:Program) RETURN p.college AS college, "
-            "collect(DISTINCT p.top6) AS tops"
-        ).data()
-    college_tops = {r["college"]: set(r["tops"]) for r in rows}
-    return _rollup_catalog(college_tops, sector_candidates)
+    # District members roll up: live for a sector iff any member college is (the
+    # multi-college relevant_tops gate does this natively). Single-college districts
+    # collapse to their college member (identical view); districts duplicating a
+    # pinned member's college set are represented by the pinned id. Skip both.
+    pinned_sets = {frozenset(s.colleges) for s in REGISTRY.values()}
+    for dname, dcolleges in members_mod._district_colleges().items():
+        if len(dcolleges) <= 1 or frozenset(dcolleges) in pinned_sets:
+            continue
+        m = members_mod.district_member(dname)
+        entries.extend(_entry(m, sid) for sid in _live_sectors(m))
+
+    entries.sort(key=lambda e: (e["member_kind"], e["member_id"], e["sector_id"]))
+    return entries

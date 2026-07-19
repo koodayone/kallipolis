@@ -51,30 +51,29 @@ class TestSpecFor:
         assert registry.spec_for("foothill") is None         # no sector suffix
 
 
-class TestCatalogRollup:
-    def test_college_and_district_rollup(self):
-        # Pure rollup over synthetic supply: two AM feeders + one biotech feeder.
+class TestEntry:
+    """`_entry` builds the identity the frontend needs to render a generated
+    instance with no landscapeInstances row (graph-free). Which (member, sector)
+    pairs are LIVE is the route's own `relevant_tops` gate — graph-dependent, so
+    exercised against a live graph, not here (see `_live_sectors`)."""
+
+    def test_college_entry_identity(self):
         from partnerships import members
-        cofs, foothill, deanza = "College of San Mateo", "Foothill College", "De Anza College"
-        college_tops = {foothill: {"095000"}, deanza: {"095000"}, cofs: {"099999"}}
-        sector_candidates = {"adm": {"095000"}, "biotech": {"099999"}}
-        entries = registry._rollup_catalog(college_tops, sector_candidates)
-        ids = {e["id"] for e in entries}
-        # College members feed only the sectors their TOPs intersect.
-        assert {"foothill-adm", "deanza-adm"} <= ids
-        csm_key = members.college_member(cofs).id
-        assert f"{csm_key}-biotech" in ids
-        assert f"{csm_key}-adm" not in ids
-        # District rolls up: Foothill-De Anza CCD (foothill + deanza) is live for adm.
-        assert "foothill-de-anza-ccd-adm" in ids
-        # Entries carry the full identity the frontend needs to render a
-        # generated instance with no landscapeInstances row.
-        e = next(x for x in entries if x["id"] == "foothill-adm")
+        e = registry._entry(members.college_member("Foothill College"), "adm")
+        assert e["id"] == "foothill-adm"
         assert e["member_kind"] == "college"
         assert e["sector_label"] == "Advanced Manufacturing"
         assert e["region"] == "Bay"
         assert e["colleges"] == ["foothill"]          # college-config id (catalog key)
         assert e["accent"].startswith("#")            # sector accent
-        # District entry aggregates its colleges' config ids.
-        d = next(x for x in entries if x["id"] == "foothill-de-anza-ccd-adm")
-        assert set(d["colleges"]) == {"foothill", "deanza"}
+
+    def test_district_entry_aggregates_member_colleges(self):
+        from partnerships import members
+        catalog = members._catalog()
+        dname, dcolleges = next(
+            (n, c) for n, c in members._district_colleges().items() if len(c) > 1
+        )
+        e = registry._entry(members.district_member(dname), "adm")
+        assert e["member_kind"] == "district"
+        # config ids for exactly the member colleges present in the catalog
+        assert set(e["colleges"]) == {catalog[c]["key"] for c in dcolleges if c in catalog}
