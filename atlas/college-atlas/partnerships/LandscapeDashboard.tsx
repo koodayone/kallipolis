@@ -604,7 +604,7 @@ export function TotalStrip({ label, value, accent }: { label: string; value: num
 // Program-supply summary for a school lens: the school's own supply against the
 // consortium's, with a share bar — "how much of the regional supply in my programs
 // is mine." School stat wears the lens accent; consortium is neutral context.
-export function SupplySplit({ schoolLabel, school, consortium, accent }: { schoolLabel: string; school: number; consortium: number; accent: string }) {
+export function SupplySplit({ schoolLabel, school, consortium, accent, sector }: { schoolLabel: string; school: number; consortium: number; accent: string; sector?: string }) {
   const pct = consortium > 0 ? Math.round((school / consortium) * 100) : 0;
   const stat = (label: string, value: number, bar: string) => (
     <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
@@ -626,7 +626,7 @@ export function SupplySplit({ schoolLabel, school, consortium, accent }: { schoo
       <div style={{ height: 6, borderRadius: 3, background: "rgba(255,255,255,0.08)", overflow: "hidden", marginBottom: 4 }}>
         <div style={{ width: `${Math.max(2, pct)}%`, height: "100%", borderRadius: 3, background: accent }} />
       </div>
-      <div style={{ fontFamily: MONO, fontSize: 10, color: "rgba(255,255,255,0.5)" }}>{schoolLabel} produces {pct}% of consortium supply</div>
+      <div style={{ fontFamily: MONO, fontSize: 10, color: "rgba(255,255,255,0.5)" }}>{schoolLabel} produces {pct}% of consortium supply{sector ? ` in the ${sector} sector` : ""}</div>
     </div>
   );
 }

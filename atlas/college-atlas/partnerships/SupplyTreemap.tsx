@@ -22,7 +22,7 @@ function hexA(hex: string, a: number) {
  * in the recent window have no area and so don't appear here.
  */
 export default function SupplyTreemap({
-  tops, selectedTop, onSelect, accent = "#50c878", caption, fill = false,
+  tops, selectedTop, onSelect, accent = "#50c878", caption, fill = false, scope = null,
 }: {
   tops: ApiSvampTopSummary[];
   selectedTop: string | null;
@@ -35,12 +35,20 @@ export default function SupplyTreemap({
   // blocks re-proportion to whatever size the panel manifests at (the
   // dashboard). Default false ⇒ the report's fixed 860×300 figure, unchanged.
   fill?: boolean;
+  // Scope overlay (part-to-whole). When a college is in scope, the box area STILL
+  // encodes the program's regional supply, but a fill from the base shows THAT
+  // college's share of it, and labels/tooltip read its own number + "% of region".
+  // Null ⇒ consortium scope: the plain regional treemap, unchanged.
+  scope?: { label: string; byTop: Record<string, number> } | null;
 }) {
   const [hover, setHover] = useState<{ i: number; x: number; y: number } | null>(null);
   const { ref: boxRef, box } = useMeasuredBox(fill);
   const data = tops
     .filter((t) => t.projected_supply > 0)
-    .map((t) => ({ top: t.top6, name: t.name, v: t.projected_supply, socs: t.soc_count }))
+    .map((t) => {
+      const pv = scope ? (scope.byTop[t.top6] ?? 0) : null;
+      return { top: t.top6, name: t.name, v: t.projected_supply, socs: t.soc_count, pv, share: pv != null ? pv / t.projected_supply : null };
+    })
     .sort((a, b) => b.v - a.v);
   const W = fill ? Math.max(box?.w ?? 0, 1) : 860;
   const H = fill ? Math.max(box?.h ?? 0, 1) : 300;
@@ -53,29 +61,44 @@ export default function SupplyTreemap({
     data.map((d, i) => {
       const r = rects[i];
       const sel = d.top === selectedTop;
+      const bx = r.x + g / 2, by = r.y + g / 2, bw = Math.max(r.w - g, 0), bh = Math.max(r.h - g, 0);
+      // Part-to-whole (college view): the box area is the regional supply; the
+      // fill from the base is the scope college's share of it.
+      const fillH = d.share != null ? bh * d.share : 0;
+      const pct = d.share != null ? Math.round(d.share * 100) : null;
       return (
-        <g key={d.top} onMouseMove={(e) => setHover({ i, x: e.clientX, y: e.clientY })} onClick={() => onSelect?.(d.top)} style={{ cursor: onSelect ? "pointer" : "default" }}>
+        <g
+          key={d.top}
+          onMouseMove={(e) => setHover({ i, x: e.clientX, y: e.clientY })}
+          onClick={() => onSelect?.(d.top)}
+          style={{ cursor: onSelect ? "pointer" : "default", opacity: hover != null && hover.i !== i && !sel ? 0.45 : 1 }}
+        >
           <rect
-            x={r.x + g / 2} y={r.y + g / 2}
-            width={Math.max(r.w - g, 0)} height={Math.max(r.h - g, 0)} rx={3}
-            fill={color(i)}
-            opacity={hover != null && hover.i !== i && !sel ? 0.4 : 1}
-            stroke={sel ? "rgba(255,255,255,.92)" : "transparent"}
-            strokeWidth={sel ? 2 : 0}
+            x={bx} y={by} width={bw} height={bh} rx={3}
+            fill={scope ? hexA(accent, 0.16) : color(i)}
+            stroke={sel ? "rgba(255,255,255,.92)" : scope ? hexA(accent, 0.34) : "transparent"}
+            strokeWidth={sel ? 2 : scope ? 1 : 0}
           />
+          {scope && fillH > 0.5 && (
+            <rect x={bx} y={by + bh - fillH} width={bw} height={fillH} rx={Math.min(3, fillH / 2)} fill={hexA(accent, 0.92)} style={{ pointerEvents: "none" }} />
+          )}
           {(() => {
             const pad = 8, cw = 0.6;
-            const availW = r.w - 2 * pad;
-            if (availW < 22 || r.h < 18) return null;
+            const availW = bw - 2 * pad;
+            if (availW < 22 || bh < 18) return null;
             const full = `TOP ${d.top}`;
             const label = availW / (full.length * cw) >= 7 ? full : d.top;
             const fs = Math.max(7, Math.min(11.5, availW / (label.length * cw)));
             const lh = fs + 3;
-            const two = r.h >= 2 * lh + 4;
+            const two = bh >= 2 * lh + 4;
+            const three = bh >= 3 * lh + 4;
+            const primVal = d.pv != null ? `${d.pv.toLocaleString(undefined, { maximumFractionDigits: 1 })}/yr` : "";
+            const line2 = scope ? (three ? primVal : `${primVal} · ${pct}%`) : `${d.v.toLocaleString()}/yr`;
             return (
               <g style={{ pointerEvents: "none" }}>
-                <text x={r.x + pad} y={r.y + pad + fs - 1} style={{ fontFamily: MONO, fontSize: fs, fontWeight: 500, fill: "#fff" }}>{label}</text>
-                {two && <text x={r.x + pad} y={r.y + pad + fs - 1 + lh} style={{ fontFamily: MONO, fontSize: Math.max(fs - 1, 6.5), fill: "rgba(255,255,255,.82)" }}>{d.v.toLocaleString()}/yr</text>}
+                <text x={bx + pad} y={by + pad + fs - 1} style={{ fontFamily: MONO, fontSize: fs, fontWeight: 500, fill: "#fff" }}>{label}</text>
+                {two && <text x={bx + pad} y={by + pad + fs - 1 + lh} style={{ fontFamily: MONO, fontSize: Math.max(fs - 1, 6.5), fill: "rgba(255,255,255,.85)" }}>{line2}</text>}
+                {scope && three && <text x={bx + pad} y={by + pad + fs - 1 + 2 * lh} style={{ fontFamily: MONO, fontSize: Math.max(fs - 1.5, 6.5), fill: "rgba(255,255,255,.66)" }}>{pct}% of region</text>}
               </g>
             );
           })()}
@@ -118,7 +141,11 @@ export default function SupplyTreemap({
           padding: "8px 11px", boxShadow: "0 6px 24px rgba(0,0,0,.4)", fontFamily: FONT,
         }}>
           <div style={{ fontSize: 12.5, fontWeight: 600, color: "#e8ecf4", marginBottom: 2 }}>{hd.name}</div>
-          <div style={{ fontFamily: MONO, fontSize: 11, color: accent, whiteSpace: "nowrap" }}>TOP {hd.top} · {hd.v.toLocaleString()}/yr projected · supports {hd.socs} occupation{hd.socs === 1 ? "" : "s"}</div>
+          <div style={{ fontFamily: MONO, fontSize: 11, color: accent, whiteSpace: scope ? "normal" : "nowrap" }}>
+            {scope && hd.pv != null
+              ? `TOP ${hd.top} · ${scope.label} ${hd.pv.toLocaleString(undefined, { maximumFractionDigits: 1 })}/yr of ${hd.v.toLocaleString()}/yr region · ${Math.round((hd.share ?? 0) * 100)}% of region · supports ${hd.socs} occupation${hd.socs === 1 ? "" : "s"}`
+              : `TOP ${hd.top} · ${hd.v.toLocaleString()}/yr projected · supports ${hd.socs} occupation${hd.socs === 1 ? "" : "s"}`}
+          </div>
         </div>,
         document.body,
       )}

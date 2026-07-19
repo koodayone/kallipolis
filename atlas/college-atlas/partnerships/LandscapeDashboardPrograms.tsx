@@ -179,13 +179,22 @@ export default function LandscapeDashboardPrograms({ colleges, instance = "svamp
       <DashPanel title="Program Supply" authority="DataMart" accent={scopeBrand}>
         <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
           {primaryCollege
-            ? <SupplySplit schoolLabel={shortName(primaryCollege)} school={schoolSupply} consortium={totalSupply} accent={scopeBrand} />
+            ? <SupplySplit schoolLabel={shortName(primaryCollege)} school={schoolSupply} consortium={totalSupply} accent={scopeBrand} sector={land.sector} />
             : <TotalStrip label="Total program supply" value={totalSupply} accent={scopeBrand} />}
           {/* Ring tracks the entity in BOTH scopes — the selected program's
               place in the supply distribution is scope-invariant. Scope is
               carried by hue (the ramp wears scopeBrand) and the banner, so the
               ring is free to answer "where does this TOP sit?" */}
-          <SupplyTreemap tops={lensTops} selectedTop={top} onSelect={selectConsortium} accent={scopeBrand} fill />
+          <SupplyTreemap
+            tops={lensTops}
+            selectedTop={top}
+            onSelect={selectConsortium}
+            accent={scopeBrand}
+            scope={collegeName
+              ? { label: shortName(collegeName), byTop: Object.fromEntries(lensTops.map((t) => [t.top6, cellByKey.get(collegeName + "|" + t.top6)?.projected ?? 0])) }
+              : null}
+            fill
+          />
         </div>
       </DashPanel>
     ),
