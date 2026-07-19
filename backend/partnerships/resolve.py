@@ -39,11 +39,29 @@ from partnerships.quantities import (
 from partnerships.sectors import (
     ALL_OTHER_SOCS,
     EXPERIENCE_5YR_SOCS,
-    GROWTH_EXEMPT_SOCS,
     INCLUDE_SOCS,
     PROMOTION_SOCS,
     WAGE_EXEMPT_SOCS,
+    SectorRule,
 )
+
+
+def soc_in_demand(
+    soc: str, *, openings: float | None, wage: float | None, rule: SectorRule
+) -> bool:
+    """Demand-quality gate for ONE occupation — member-independent (openings/wage × region).
+
+    The single birthplace of the in_demand predicate: sector_lenses composes it over a SOC set to derive
+    the in_demand lens, and the landscape build stamps each cell with it so a surface can split priority
+    (in-demand) occupations from the rest. Two gates: openings must strictly exceed the floor (`>`), wage
+    meets it (`>=`). INCLUDE_SOCS bypass the openings floor ONLY (still face the wage floor); WAGE_EXEMPT_SOCS
+    the wage floor. (The non-declining-growth gate was dropped 2026-07-18 — a declining field can still be a
+    real, staffable market — so growth no longer gates.)"""
+    if rule.min_openings and (openings or 0) <= rule.min_openings and soc not in INCLUDE_SOCS:
+        return False
+    if rule.min_wage and (wage or 0) < rule.min_wage and soc not in WAGE_EXEMPT_SOCS:
+        return False
+    return True
 
 
 def sector_lenses(spec: LandscapeSpec) -> dict:
@@ -77,7 +95,6 @@ def sector_lenses(spec: LandscapeSpec) -> dict:
         demand = regional_demand(session, region, socs)
         openings = {s: dr["annual_openings"] for s, dr in demand.items()}
         wages = {s: dr["annual_wage"] for s, dr in demand.items()}
-        growth = {s: dr["growth_rate"] for s, dr in demand.items()}
 
     # The member's offered programs (reachability) and their PRODUCING subset both resolve through the
     # shared gate (quantities.producing_tops / producing_top_colleges), so resolve, relevant_tops and
@@ -117,18 +134,11 @@ def sector_lenses(spec: LandscapeSpec) -> dict:
     # "is the member in it?" (member × sector). Their intersection is what the dashboard shows today; Phase
     # B exposes each on its own so a small effective set reads as "small market" vs "I don't serve it".
     def in_demand(soc: str) -> bool:
-        # Demand-quality gate. INCLUDE_SOCS = curated below-floor admissions (bypass the openings floor
-        # ONLY, still facing every other gate). WAGE_EXEMPT_SOCS bypass the near-living-wage floor on
-        # explicit sector authority. GROWTH_EXEMPT_SOCS keep a few declining-but-structural occupations.
-        if (rule.min_openings and (openings.get(soc) or 0) <= rule.min_openings
-                and soc not in INCLUDE_SOCS):
-            return False
-        if (rule.min_wage and (wages.get(soc) or 0) < rule.min_wage
-                and soc not in WAGE_EXEMPT_SOCS):
-            return False
-        if (growth.get(soc) or 0) < 0 and soc not in GROWTH_EXEMPT_SOCS:
-            return False
-        return True
+        # The demand-quality gate lives in the module-level soc_in_demand (one birthplace, shared with the
+        # landscape build's per-cell stamp); here it's composed over the SOC set.
+        return soc_in_demand(
+            soc, openings=openings.get(soc), wage=wages.get(soc), rule=rule
+        )
 
     def served(soc: str) -> bool:
         # Member-engaged gate: the member offers a feeding program (reachable), actively graduates into it
@@ -161,12 +171,15 @@ def resolve(spec: LandscapeSpec) -> LandscapeSpec:
     filtered) or a no-rule spec. This branches on the Composition, not the rule, so an authored spec may
     still carry an active rule (its programs run the universal gate; only its occupation set stays final).
 
-    A SINGLE-COLLEGE self-view narrows to the SERVED set — the occupations the college offers AND actively
-    graduates into — NOT effective (= served ∩ in_demand). The priority-job in_demand gate (openings / wage /
-    growth) is a CONSORTIUM-coordination filter ("where should colleges broker partnerships across the
-    region"): it zeros a lone college's sectors and under-counts the rest, the wrong lens for a college
-    reading itself. Genuine multi-college consortia keep effective."""
+    Every view — single-college self-view AND multi-college consortium — narrows to the SERVED set (the
+    occupations the member offers AND actively graduates into). The priority-job in_demand gate (openings /
+    wage / growth) is no longer a HARD FILTER that deletes rows; it is a display-time PRIORITY HIGHLIGHT the
+    surface applies over served (LandscapeCell.in_demand + Landscape.demand_criteria), so the coordination
+    priorities (= effective = served ∩ in_demand) lead by default and the rest collapse one click away rather
+    than vanish. One rule everywhere — show served, highlight in_demand — replaces the served-vs-effective
+    fork: a college reading itself and a consortium reading its region now share a WHAT. effective survives
+    only as the highlighted subset, still exposed by sector_lenses / effective_socs for callers that need it."""
     if spec.composition.is_authored or spec.soc_rule is None or not spec.soc_rule.active:
         return spec
-    socs = sector_lenses(spec)["served"] if len(spec.colleges) == 1 else effective_socs(spec)
+    socs = sector_lenses(spec)["served"]
     return dataclasses.replace(spec, socs=socs)

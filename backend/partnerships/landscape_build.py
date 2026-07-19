@@ -47,6 +47,7 @@ from partnerships.landscape import (
     LandscapeSpec, SVAMP_SPEC, _AM_EXCLUDED_TOPS, _term_excluded, _term_sort_key,
 )
 from partnerships.quantities import gap as compute_gap, supply_fn_graph
+from partnerships.resolve import soc_in_demand
 
 # ── Scope ─────────────────────────────────────────────────────────────────
 # The SVAMP scope now lives as SVAMP_SPEC in landscape.py — the single source,
@@ -158,6 +159,11 @@ class LandscapeCell(BaseModel):
     annual_openings: int | None = None
     annual_wage: int | None = None
     growth_rate: float | None = None
+    # Demand-quality verdict (member-independent): does this SOC clear the sector rule's
+    # openings/wage/growth gate? Lets a surface show priority (in-demand) occupations by default
+    # and collapse the rest. True for authored / no-rule instances — no gate, so every occupation
+    # is priority and no split is shown.
+    in_demand: bool = True
     course_count: int = 0
     supply: float = 0.0
     gap: int = 0
@@ -195,6 +201,15 @@ class LandscapeAggregate(BaseModel):
     n_occupations: int
 
 
+class LandscapeDemandCriteria(BaseModel):
+    """The in_demand gate's thresholds, surfaced so the priority-lens UI can name the criteria it splits
+    on (e.g. '> 239 openings · ≥ $54k median · non-declining'). Present only for rule-bearing
+    (sector-derived) instances; None where occupations are authored / all in-demand and no split is
+    shown. Growth is implicit (non-declining)."""
+    min_openings: int | None = None   # regional annual openings must strictly exceed this
+    min_wage: int | None = None       # regional annual median wage must meet this
+
+
 class Landscape(BaseModel):
     region: str
     region_display: str
@@ -220,6 +235,10 @@ class Landscape(BaseModel):
     # completer) reads as a gap, not "partial". The curated SVAMP instance
     # carries no rule and keeps the enrolled-OR-awarded coverage.
     coverage_awards_only: bool = False
+    # The in_demand gate's thresholds when this instance splits priority occupations from the rest
+    # (sector-derived); None for authored / no-rule instances that show every occupation. See
+    # LandscapeCell.in_demand for the per-occupation verdict.
+    demand_criteria: LandscapeDemandCriteria | None = None
 
 
 def _build_executive_summary(spec: LandscapeSpec, region_display: str, agg: "LandscapeAggregate") -> str:
@@ -466,6 +485,24 @@ def _assemble_landscape(
     # these once, never per-cell (a TOP6 serves multiple SOCs).
     scoped_programs: set[tuple[str, str]] = set()
 
+    # Demand-quality verdict per SOC (member-independent) for the priority split — computed ONCE off the
+    # already-read regional demand, not per cell, and stamped on every cell. Authored / no-rule instances
+    # have no gate, so every occupation reads as in-demand (True) and the surface shows no split. `derived`
+    # mirrors sector_lenses' identity branch exactly, so the flag and the in_demand LENS never disagree.
+    rule = spec.soc_rule
+    derived = rule is not None and rule.active and not spec.composition.is_authored
+    in_demand_by_soc = {
+        soc: (
+            soc_in_demand(
+                soc,
+                openings=demand_by_soc.get(soc, {}).get("annual_openings"),
+                wage=demand_by_soc.get(soc, {}).get("annual_wage"),
+                rule=rule,
+            ) if derived else True
+        )
+        for soc in spec.socs
+    }
+
     for college in spec.colleges:
         align = align_by_college.get(college, {})
         cells: list[LandscapeCell] = []
@@ -524,6 +561,7 @@ def _assemble_landscape(
                 annual_openings=annual_openings,
                 annual_wage=demand.get("annual_wage"),
                 growth_rate=demand.get("growth_rate"),
+                in_demand=in_demand_by_soc[soc],
                 course_count=course_count,
                 supply=round(supply, 2),
                 gap=gap,
@@ -584,4 +622,10 @@ def _assemble_landscape(
         colleges=colleges,
         aggregate=aggregate,
         coverage_awards_only=(spec.soc_rule is not None and spec.soc_rule.active),
+        demand_criteria=(
+            LandscapeDemandCriteria(
+                min_openings=rule.min_openings or None,
+                min_wage=rule.min_wage or None,
+            ) if derived else None
+        ),
     )

@@ -29,6 +29,8 @@ from partnerships.landscape_build import (
     _assemble_landscape,
     is_svamp_top,
 )
+from partnerships.landscape import LandscapeSpec
+from partnerships.sectors import SectorRule
 
 
 def _demand_by_soc():
@@ -169,3 +171,69 @@ def test_mandate_excluded_tops_fail_is_svamp_top():
         assert not is_svamp_top(t)
     assert is_svamp_top("095630")   # core AM (Machining) stays in
     assert is_svamp_top("094500")   # Industrial Systems — NOT HVAC (094600) — stays in
+
+
+# ── Priority split: per-cell in_demand stamp + surfaced criteria ──────────────
+# A DERIVED spec (rule-bearing, non-authored) engages the demand gate, so each
+# cell carries the member-independent in_demand verdict and the landscape surfaces
+# the thresholds the split reads on. Synthetic SOCs keep the gate arithmetic pure.
+
+_DERIVED_SOCS = ("11-1111", "22-2222", "33-3333", "44-4444")
+
+
+def _derived_demand():
+    # A clears both gates; B is below the openings floor; C below the wage floor;
+    # D is declining but the growth gate was dropped, so D is in demand on openings+wage.
+    return {
+        "11-1111": {"title": "A", "annual_openings": 800, "annual_wage": 70_000, "growth_rate": 0.04},
+        "22-2222": {"title": "B", "annual_openings": 100, "annual_wage": 70_000, "growth_rate": 0.04},
+        "33-3333": {"title": "C", "annual_openings": 800, "annual_wage": 40_000, "growth_rate": 0.04},
+        "44-4444": {"title": "D", "annual_openings": 800, "annual_wage": 70_000, "growth_rate": -0.02},
+    }
+
+
+def _derived_spec():
+    # soc_rule active + default Composition (occupations=None → is_authored False) = a derived spec.
+    return LandscapeSpec(
+        id="__derived_test__", colleges=("De Anza College", "Foothill College"),
+        socs=_DERIVED_SOCS, top_divisions=("09",), excluded_tops=frozenset(),
+        sector="Advanced Manufacturing", name="Test", accent="#000000",
+        soc_rule=SectorRule(min_openings=239, min_wage=54_081),
+    )
+
+
+def _derived_build():
+    spec = _derived_spec()
+    return _assemble_landscape(
+        region="Bay", region_display="Bay Area",
+        demand_by_soc=_derived_demand(),
+        align_by_college={c: {} for c in spec.colleges},
+        candidate_employers=0,
+        supply_fn=_fake_supply,
+        soc_feeding={s: set() for s in _DERIVED_SOCS},
+        spec=spec,
+    )
+
+
+def test_derived_spec_stamps_in_demand_per_soc():
+    land = _derived_build()
+    verdict = {c.soc_code: c.in_demand for c in land.colleges[0].cells}
+    assert verdict == {"11-1111": True, "22-2222": False, "33-3333": False, "44-4444": True}
+    # in_demand is member-independent — identical across every college's cells.
+    for col in land.colleges:
+        assert {c.soc_code: c.in_demand for c in col.cells} == verdict
+
+
+def test_derived_spec_surfaces_demand_criteria():
+    land = _derived_build()
+    assert land.demand_criteria is not None
+    assert land.demand_criteria.min_openings == 239
+    assert land.demand_criteria.min_wage == 54_081
+
+
+def test_authored_spec_shows_no_split():
+    # The default build is authored (SVAMP's occupations are hand-picked) → every occupation reads as
+    # in-demand and no criteria surface, so the dashboard renders no priority split.
+    land = _build()
+    assert all(c.in_demand for col in land.colleges for c in col.cells)
+    assert land.demand_criteria is None

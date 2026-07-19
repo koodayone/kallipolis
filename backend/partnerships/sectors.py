@@ -297,24 +297,22 @@ INCLUDE_SOCS: frozenset[str] = frozenset({
 WAGE_EXEMPT_SOCS: frozenset[str] = frozenset({"51-9141"})
 
 # Uniform SOC-selection curation = the strict BACCC priority-occupation standard
-# (set 2026-06-12): median wage above $26/hr ($54,080/yr), at least 240 regional
-# annual openings (lowered 350 → 240 on 2026-06-12 to admit core occupations the
-# BACCC regional plan prioritizes, e.g. Aircraft Mechanics, which this demand
-# dataset puts at 240 openings; lowering only adds — never removes), under
-# 5 years of prior work experience (EXPERIENCE_5YR_SOCS
-# drop in resolve), no "all other" catch-alls (ALL_OTHER_SOCS), and no DECLINING
-# occupations (negative regional growth rate — building for a shrinking field is
-# poor strategy — except the structurally-important GROWTH_EXEMPT_SOCS). non_empty_only
+# (set 2026-06-12; thresholds simplified 2026-07-18): median wage at least
+# $50,000/yr, more than 250 regional annual openings, under 5 years of prior work
+# experience (EXPERIENCE_5YR_SOCS drop in resolve), and no "all other" catch-alls
+# (ALL_OTHER_SOCS). The non-declining-GROWTH gate was DROPPED 2026-07-18 — a
+# declining field can still be a real, staffable market a member trains for, so
+# growth no longer gates in_demand (GROWTH_EXEMPT_SOCS is now vestigial). non_empty_only
 # is ON: an occupation is shown only if >=1 member program actually has AWARDS
 # (completers) feeding it — awards are the supply metric, so an occupation with
 # enrollment but no graduates is dropped along with the completely-blank rows (an
 # occupation with zero consortium supply — e.g. Flight Attendants, which has no CC
 # training pathway — is dropped rather than rendered as an all-gap row).
 # reachable_only stays OFF; non_empty_only is the stricter activity gate. Operator note: the rule keeps openings > min_openings and wage
-# >= min_wage, so 239 / 54_081 reproduce "openings >= 240" and "wage > $54,080"
-# ($26/hr) exactly. Per-sector overrides go in _SECTOR_RULES.
+# >= min_wage, so 250 / 50_000 gate at "openings >= 251" and "wage >= $50,000".
+# Per-sector overrides go in _SECTOR_RULES.
 _DEFAULT_RULE = SectorRule(
-    min_openings=239, min_wage=54_081, reachable_only=False, non_empty_only=True,
+    min_openings=250, min_wage=50_000, reachable_only=False, non_empty_only=True,
     min_colleges=2,
 )
 
