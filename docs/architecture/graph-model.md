@@ -111,6 +111,25 @@ Department ──HAS_PROGRAM──▶ Program ──AWARDED───────
 
 The Program layer is consumed by the `/svamp` aggregated landscape ([`backend/partnerships/landscape_build.py`](../../backend/partnerships/landscape_build.py)) and by the MCP comparison engine ([`backend/mcp_server/compare.py`](../../backend/mcp_server/compare.py), which ranks a member's programs by a wage criterion); the per-(college, occupation) partnership reports do not read it.
 
+## The sector membership layer
+
+Above the curriculum and industry sides sits a small classification overlay that gives the twelve PCAH Strong Workforce sectors a place in the graph. It is materialized **read-only** by [`backend/ontology/sector_graph.py`](../../backend/ontology/sector_graph.py) (`load`) from code and on-disk authorities — never from a pipeline extract — and `reconcile` proves the graph reproduces the code so the runtime can read the graph in place of the source, completeness-gated, without changing any figure.
+
+Two node types carry the classification:
+
+- A **Sector** node (keyed by `id`, e.g. `adm`, with `label` and `swp_tag`) — one per Strong Workforce sector.
+- A **ProgramFamily** node (keyed by `top6`, with `title`, a `vocational` flag, and a `home_sector`) — the TOP6 program family abstracted above the per-college `Program`, which links to it by `INSTANCE_OF`. Its `home_sector` is the sector the CCCCO PCAH "TOP Codes to Sectors" publication classifies the family into (read by `_load_pcah_cte_top6` in [`backend/ontology/crosswalks.py`](../../backend/ontology/crosswalks.py)); a family absent from the publication is `unclassified`.
+
+Three relationships express the sector's scope, and the distinction between them is the load-bearing idea:
+
+- **`COVERS`** (Sector → Occupation) — the sector's **occupation membership**, the middle-skill SOCs the Centers of Excellence regional crosstabs classify into it.
+- **`SCOPES`** (Sector → ProgramFamily) — the sector's **program membership**, the TOP6 families the PCAH publication classifies as home to it (`home_sector`).
+- **`CROSSWALKS_TO`** (ProgramFamily → Occupation) — the TOP-CIP-SOC crosswalk reified at the family grain: which programs *prepare for* which occupations.
+
+`COVERS` and `SCOPES` are **membership** — chosen by an authority, one side of the sector each. `CROSSWALKS_TO` is a **relationship** — it connects programs to occupations but never decides what belongs to a sector. This is what lets a sector's supply-demand gap be a *program-portfolio* gap: demand over the sector's `COVERS` occupations, less supply from its `SCOPES` programs, with the `CROSSWALKS_TO` edges into occupations outside the sector — an Energy program that prepares for a manufacturing SOC — simply out of scope, no per-edge curation of the never-edited crosswalk. The runtime scope predicate reads this membership: `Sector.home_programs` in [`backend/partnerships/sectors.py`](../../backend/partnerships/sectors.py) resolves the `SCOPES` set (graph-native when the family universe is fully node-backed, else the source), and `LandscapeSpec.in_scope` in [`backend/partnerships/landscape.py`](../../backend/partnerships/landscape.py) gates every program surface through it.
+
+A member that authors its own view carries a **Composition** ([`backend/partnerships/composition.py`](../../backend/partnerships/composition.py)) — a hand-picked subset of the sector's occupations and programs, reified as a `Composition` node with `INCLUDES` edges to its chosen occupations. `validate` enforces that a Composition only *selects* from the grounded membership, never invents a new occupation or program, so an authored view is one narrowing of the same authorities, not a fork.
+
 ## The bridge logic
 
 The point of the graph schema is to make a specific question answerable: *which regional employers hire for occupations that this college institutionally prepares students for?* The answer is computed by traversing the bridge that the schema constructs between the curriculum and industry sides.
