@@ -142,7 +142,6 @@ export type ApiPartnershipOpportunityEmployer = {
   naics4: string | null;
   naics_title: string | null;
   industry_share: number | null;
-  aligned_course_count: number;
 };
 
 export type ApiOpportunityReport = {

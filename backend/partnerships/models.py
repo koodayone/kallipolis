@@ -192,7 +192,6 @@ class PartnershipOpportunityEmployer(BaseModel):
     naics4: Optional[str] = None
     naics_title: Optional[str] = None
     industry_share: Optional[float] = None
-    aligned_course_count: int = 0
 
 
 class OpportunityReport(BaseModel):
