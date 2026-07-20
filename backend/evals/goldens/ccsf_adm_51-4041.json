@@ -24,7 +24,7 @@
     "n_with_program": 1
    }
   },
-  "sector_supply_over_socs": 163.3,
+  "sector_supply_over_socs": 47.0,
   "supply_1yr": 3.0,
   "supply_3yr": 1.7
  },
@@ -33,5 +33,5 @@
  "member": "ccsf",
  "sector": "adm",
  "soc": "51-4041",
- "socs_n": 29
+ "socs_n": 24
 }

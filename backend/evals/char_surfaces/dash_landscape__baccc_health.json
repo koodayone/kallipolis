@@ -1,13 +1,13 @@
 {
  "aggregate": {
-  "candidate_employers": 169,
-  "combined_awards": 2374,
-  "combined_supply_total": 2331.7,
-  "gap": 20588,
+  "candidate_employers": 155,
+  "combined_awards": 2431,
+  "combined_supply_total": 2371.7,
+  "gap": 19878,
   "n_colleges": 26,
   "n_occupations": 20,
   "occupations_taught": 20,
-  "regional_demand_total": 22920
+  "regional_demand_total": 22250
  },
  "award_years": [
   "2020-2021",
@@ -243,6 +243,21 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 150,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2051",
+     "supply": 0.0,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -361,21 +376,6 @@
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -993,6 +993,69 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 4,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 4,
+     "gap": 148,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        1,
+        0,
+        0,
+        2,
+        4
+       ],
+       "awards_recent": 4,
+       "enrollment": [
+        null,
+        null,
+        241,
+        null,
+        243,
+        238,
+        null,
+        256,
+        253,
+        null,
+        247,
+        253,
+        null,
+        286,
+        250
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 2.0,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -1111,21 +1174,6 @@
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -1807,6 +1855,69 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 1,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 1,
+     "gap": 149,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        0,
+        1,
+        1,
+        2,
+        1
+       ],
+       "awards_recent": 1,
+       "enrollment": [
+        null,
+        null,
+        62,
+        null,
+        40,
+        38,
+        null,
+        40,
+        33,
+        null,
+        41,
+        43,
+        null,
+        41,
+        44
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 1.3,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -2005,21 +2116,6 @@
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -2714,6 +2810,69 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 1,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 1,
+     "gap": 149,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        0,
+        1,
+        0,
+        2,
+        1
+       ],
+       "awards_recent": 1,
+       "enrollment": [
+        null,
+        null,
+        274,
+        null,
+        181,
+        328,
+        null,
+        254,
+        331,
+        null,
+        287,
+        374,
+        null,
+        370,
+        476
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 1.0,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -2912,21 +3071,6 @@
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -3762,6 +3906,69 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 2,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 2,
+     "gap": 148,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        0,
+        4,
+        2,
+        1,
+        2
+       ],
+       "awards_recent": 2,
+       "enrollment": [
+        null,
+        null,
+        329,
+        null,
+        301,
+        257,
+        null,
+        254,
+        269,
+        null,
+        273,
+        279,
+        null,
+        230,
+        268
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 1.7,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 22,
@@ -4427,21 +4634,6 @@
      "title": "Physical Therapist Assistants"
     },
     {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
-    },
-    {
      "annual_openings": 1800,
      "annual_wage": 62350,
      "awards_recent": 15,
@@ -4965,6 +5157,21 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 150,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2051",
+     "supply": 0.0,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -5123,21 +5330,6 @@
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -5445,6 +5637,69 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 0,
+     "gap": 150,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        55,
+        null,
+        44,
+        23,
+        null,
+        20,
+        27,
+        null,
+        23,
+        77,
+        null,
+        21,
+        41
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 0.0,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -5643,21 +5898,6 @@
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -6210,6 +6450,69 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 6,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 6,
+     "gap": 144,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        6,
+        3,
+        4,
+        7,
+        6
+       ],
+       "awards_recent": 6,
+       "enrollment": [
+        null,
+        null,
+        90,
+        null,
+        86,
+        79,
+        null,
+        108,
+        155,
+        null,
+        160,
+        155,
+        null,
+        169,
+        154
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 5.7,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -6328,21 +6631,6 @@
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -6697,6 +6985,69 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 0,
+     "gap": 150,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        30,
+        null,
+        31,
+        32,
+        null,
+        33,
+        40,
+        null,
+        34,
+        36,
+        null,
+        34,
+        36
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 0.0,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -6855,21 +7206,6 @@
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -7289,6 +7625,69 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 0,
+     "gap": 150,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        290,
+        344,
+        367,
+        341,
+        287,
+        371,
+        301,
+        310,
+        null,
+        261,
+        320,
+        373,
+        325,
+        370,
+        354
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 0.0,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -7487,69 +7886,6 @@
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [
-      {
-       "awards": [
-        5,
-        7,
-        1,
-        0,
-        0
-       ],
-       "awards_recent": 0,
-       "enrollment": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-       ],
-       "name": "Massage Therapy",
-       "top6": "126200",
-       "wages": [
-        {
-         "n": 21,
-         "recipient_type": "Associate or Baccalaureate Degree Recipient",
-         "wage_after_2": 24324,
-         "wage_after_5": 41953,
-         "wage_before": 15507,
-         "window": "2015-2016 to 2019-2020"
-        },
-        {
-         "n": 32,
-         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-         "wage_after_2": 22038,
-         "wage_after_5": 44670,
-         "wage_before": 13011,
-         "window": "2015-2016 to 2019-2020"
-        }
-       ]
-      }
-     ],
-     "soc_code": "31-9011",
-     "supply": 0.3,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -8118,6 +8454,69 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 7,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 7,
+     "gap": 145,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        16,
+        9,
+        3,
+        6,
+        7
+       ],
+       "awards_recent": 7,
+       "enrollment": [
+        null,
+        null,
+        604,
+        null,
+        611,
+        563,
+        null,
+        560,
+        603,
+        null,
+        660,
+        627,
+        null,
+        653,
+        638
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 5.3,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -8236,21 +8635,6 @@
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -8558,6 +8942,69 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 2,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 2,
+     "gap": 148,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        6,
+        5,
+        2,
+        3,
+        2
+       ],
+       "awards_recent": 2,
+       "enrollment": [
+        null,
+        131,
+        169,
+        null,
+        184,
+        166,
+        null,
+        181,
+        178,
+        null,
+        136,
+        134,
+        null,
+        135,
+        137
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 2.3,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -8795,21 +9242,6 @@
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -9397,6 +9829,69 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 2,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 2,
+     "gap": 149,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        1,
+        0,
+        1,
+        0,
+        2
+       ],
+       "awards_recent": 2,
+       "enrollment": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 1.0,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 24,
@@ -9563,21 +10058,6 @@
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -9941,6 +10421,21 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 150,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2051",
+     "supply": 0.0,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -10227,21 +10722,6 @@
      "title": "Physical Therapist Assistants"
     },
     {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
-    },
-    {
      "annual_openings": 1800,
      "annual_wage": 62350,
      "awards_recent": 0,
@@ -10412,6 +10892,69 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 0,
+     "gap": 150,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        30,
+        null,
+        32,
+        31,
+        null,
+        34,
+        40,
+        null,
+        73,
+        33,
+        null,
+        33,
+        null
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 0.0,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -10530,21 +11073,6 @@
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -10773,6 +11301,69 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 4,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 4,
+     "gap": 148,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        4,
+        3,
+        3,
+        0,
+        4
+       ],
+       "awards_recent": 4,
+       "enrollment": [
+        null,
+        null,
+        163,
+        null,
+        157,
+        128,
+        null,
+        133,
+        155,
+        null,
+        178,
+        146,
+        null,
+        167,
+        184
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 2.3,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -10891,21 +11482,6 @@
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -11222,6 +11798,69 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 0,
+     "gap": 150,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        237,
+        null,
+        177,
+        215,
+        null,
+        168,
+        229,
+        null,
+        203,
+        245,
+        null,
+        191,
+        239
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 0.0,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -11388,21 +12027,6 @@
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -11950,6 +12574,147 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 6,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 6,
+     "gap": 143,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        1,
+        1,
+        0,
+        1,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        20,
+        null,
+        null,
+        21,
+        null,
+        null,
+        31,
+        null,
+        null,
+        31,
+        null,
+        null,
+        22
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      },
+      {
+       "awards": [
+        1,
+        7,
+        7,
+        1,
+        4
+       ],
+       "awards_recent": 4,
+       "enrollment": [
+        null,
+        null,
+        22,
+        null,
+        62,
+        15,
+        null,
+        50,
+        7,
+        null,
+        41,
+        6,
+        null,
+        42,
+        8
+       ],
+       "name": "Dietetic Services and Management",
+       "top6": "130620",
+       "wages": [
+        {
+         "n": 95,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 60002,
+         "wage_after_5": 70925,
+         "wage_before": 40698,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      },
+      {
+       "awards": [
+        2,
+        1,
+        5,
+        1,
+        2
+       ],
+       "awards_recent": 2,
+       "enrollment": [
+        null,
+        null,
+        173,
+        null,
+        116,
+        163,
+        null,
+        115,
+        186,
+        null,
+        163,
+        228,
+        null,
+        178,
+        212
+       ],
+       "name": "Dietetic Technology",
+       "top6": "130660",
+       "wages": [
+        {
+         "n": 36,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 32805,
+         "wage_after_5": 44770,
+         "wage_before": 25137,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 7.0,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -12068,21 +12833,6 @@
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -12698,6 +13448,69 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 9,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 9,
+     "gap": 145,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        0,
+        4,
+        2,
+        4,
+        9
+       ],
+       "awards_recent": 9,
+       "enrollment": [
+        null,
+        192,
+        170,
+        null,
+        141,
+        191,
+        null,
+        175,
+        199,
+        null,
+        201,
+        191,
+        null,
+        160,
+        186
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 5.0,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -13128,21 +13941,6 @@
      "title": "Physical Therapist Assistants"
     },
     {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
-    },
-    {
      "annual_openings": 1800,
      "annual_wage": 62350,
      "awards_recent": 0,
@@ -13446,6 +14244,21 @@
      "soc_code": "29-2036",
      "supply": 0.0,
      "title": "Medical Dosimetrists"
+    },
+    {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 150,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [],
+     "soc_code": "29-2051",
+     "supply": 0.0,
+     "title": "Dietetic Technicians"
     },
     {
      "annual_openings": 820,
@@ -13791,21 +14604,6 @@
      "title": "Physical Therapist Assistants"
     },
     {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
-    },
-    {
      "annual_openings": 1800,
      "annual_wage": 62350,
      "awards_recent": 0,
@@ -14128,6 +14926,69 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 0,
+     "gap": 150,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        120,
+        null,
+        91,
+        196,
+        null,
+        140,
+        185,
+        null,
+        148,
+        188
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 0.0,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -14334,21 +15195,6 @@
      "soc_code": "31-2021",
      "supply": 19.3,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -14689,6 +15535,69 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 5,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 5,
+     "gap": 147,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        2,
+        3,
+        0,
+        3,
+        5
+       ],
+       "awards_recent": 5,
+       "enrollment": [
+        null,
+        null,
+        131,
+        null,
+        116,
+        86,
+        null,
+        114,
+        123,
+        null,
+        114,
+        95,
+        null,
+        107,
+        118
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 2.7,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -14887,21 +15796,6 @@
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -15859,6 +16753,147 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 7,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 7,
+     "gap": 144,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        486,
+        null,
+        442,
+        460,
+        null,
+        428,
+        501,
+        null,
+        501,
+        548,
+        null,
+        581,
+        712
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      },
+      {
+       "awards": [
+        10,
+        12,
+        5,
+        0,
+        5
+       ],
+       "awards_recent": 5,
+       "enrollment": [
+        null,
+        null,
+        31,
+        null,
+        32,
+        8,
+        null,
+        6,
+        10,
+        null,
+        28,
+        6,
+        null,
+        20,
+        21
+       ],
+       "name": "Dietetic Services and Management",
+       "top6": "130620",
+       "wages": [
+        {
+         "n": 95,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 60002,
+         "wage_after_5": 70925,
+         "wage_before": 40698,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      },
+      {
+       "awards": [
+        10,
+        12,
+        6,
+        0,
+        2
+       ],
+       "awards_recent": 2,
+       "enrollment": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+       ],
+       "name": "Dietetic Technology",
+       "top6": "130660",
+       "wages": [
+        {
+         "n": 36,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 32805,
+         "wage_after_5": 44770,
+         "wage_before": 25137,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 6.0,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 8,
@@ -16192,21 +17227,6 @@
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -16720,6 +17740,69 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 0,
+     "gap": 150,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        null,
+        84,
+        null,
+        143,
+        91,
+        null,
+        130,
+        90,
+        null,
+        101,
+        93,
+        null,
+        105,
+        95
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 0.0,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -16838,69 +17921,6 @@
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 5,
-     "course_count": 0,
-     "enrolled": true,
-     "feeding_awards": 5,
-     "gap": 811,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [
-      {
-       "awards": [
-        0,
-        0,
-        2,
-        21,
-        5
-       ],
-       "awards_recent": 5,
-       "enrollment": [
-        null,
-        null,
-        67,
-        null,
-        128,
-        86,
-        null,
-        122,
-        110,
-        null,
-        97,
-        110,
-        null,
-        161,
-        181
-       ],
-       "name": "Massage Therapy",
-       "top6": "126200",
-       "wages": [
-        {
-         "n": 21,
-         "recipient_type": "Associate or Baccalaureate Degree Recipient",
-         "wage_after_2": 24324,
-         "wage_after_5": 41953,
-         "wage_before": 15507,
-         "window": "2015-2016 to 2019-2020"
-        },
-        {
-         "n": 32,
-         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-         "wage_after_2": 22038,
-         "wage_after_5": 44670,
-         "wage_before": 13011,
-         "window": "2015-2016 to 2019-2020"
-        }
-       ]
-      }
-     ],
-     "soc_code": "31-9011",
-     "supply": 9.3,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -17289,6 +18309,69 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 3,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 3,
+     "gap": 146,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        10,
+        8,
+        4,
+        6,
+        3
+       ],
+       "awards_recent": 3,
+       "enrollment": [
+        null,
+        null,
+        507,
+        null,
+        425,
+        547,
+        null,
+        485,
+        636,
+        null,
+        547,
+        574,
+        null,
+        425,
+        431
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 4.3,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -17447,21 +18530,6 @@
      "soc_code": "31-2021",
      "supply": 0.0,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -17802,6 +18870,69 @@
      "title": "Medical Dosimetrists"
     },
     {
+     "annual_openings": 150,
+     "annual_wage": 45570,
+     "awards_recent": 3,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 3,
+     "gap": 148,
+     "growth_rate": 0.0,
+     "in_demand": false,
+     "programs": [
+      {
+       "awards": [
+        0,
+        2,
+        1,
+        2,
+        3
+       ],
+       "awards_recent": 3,
+       "enrollment": [
+        null,
+        null,
+        109,
+        30,
+        120,
+        100,
+        26,
+        73,
+        160,
+        35,
+        155,
+        144,
+        55,
+        141,
+        137
+       ],
+       "name": "Nutrition, Foods, and Culinary Arts",
+       "top6": "130600",
+       "wages": [
+        {
+         "n": 53,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 35394,
+         "wage_after_5": 48565,
+         "wage_before": 20199,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 27,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 36849,
+         "wage_after_5": 48322,
+         "wage_before": 21356,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "29-2051",
+     "supply": 2.0,
+     "title": "Dietetic Technicians"
+    },
+    {
      "annual_openings": 820,
      "annual_wage": 61760,
      "awards_recent": 0,
@@ -18008,21 +19139,6 @@
      "soc_code": "31-2021",
      "supply": 6.7,
      "title": "Physical Therapist Assistants"
-    },
-    {
-     "annual_openings": 820,
-     "annual_wage": 44790,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 820,
-     "growth_rate": 0.1,
-     "in_demand": false,
-     "programs": [],
-     "soc_code": "31-9011",
-     "supply": 0.0,
-     "title": "Massage Therapists"
     },
     {
      "annual_openings": 1800,
@@ -18348,7 +19464,7 @@
   "Spring 2025",
   "Fall 2025"
  ],
- "executive_summary": "This view examines the regional demand landscape across the 20 health occupations the Bay Area Community College Consortium \u2014 Health targets in the Bay Area regional labor market. Regional demand for these occupations totals 22,920 openings per year.",
+ "executive_summary": "This view examines the regional demand landscape across the 20 health occupations the Bay Area Community College Consortium \u2014 Health targets in the Bay Area regional labor market. Regional demand for these occupations totals 22,250 openings per year.",
  "is_sector_priority": true,
  "region": "Bay",
  "region_display": "Bay Area",

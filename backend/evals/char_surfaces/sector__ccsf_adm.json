@@ -11,24 +11,7 @@
   "top6": null
  },
  "data": {
-  "more": {
-   "drill": {
-    "coordinate": {
-     "entity": "043000",
-     "lens": "",
-     "member": "ccsf",
-     "member_label": "City College of San Francisco",
-     "region": "Bay",
-     "sector": "adm",
-     "sector_label": "Advanced Manufacturing",
-     "soc": null,
-     "top6": "043000"
-    },
-    "form": "crosswalk",
-    "rationale": "5 more programs the member runs; crosswalk on any TOP6 drills into its occupations."
-   },
-   "remaining": 5
-  },
+  "more": null,
   "rows": [
    {
     "label": "095600 Manufacturing and Industrial Technology",
@@ -241,7 +224,7 @@
     }
    },
    {
-    "label": "094800 Automotive Technology",
+    "label": "095040 Aircraft Electronics (Avionics)",
     "roster": [],
     "values": {
      "addressable_demand": {
@@ -250,49 +233,7 @@
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 420,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
-      "value": 1,
-      "vintage": ""
-     },
-     "member_supply": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 33.7,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 3,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "099900 Other Engineering and Related Industrial Technologies",
-    "roster": [],
-    "values": {
-     "addressable_demand": {
-      "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 360,
+      "value": 90,
       "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
      },
      "colleges_with_program": {
@@ -319,49 +260,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "SOCs",
-      "value": 4,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "095200 Construction Crafts Technology",
-    "roster": [],
-    "values": {
-     "addressable_demand": {
-      "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 290,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
       "value": 1,
-      "vintage": ""
-     },
-     "member_supply": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 10.0,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 3,
       "vintage": ""
      }
     }
@@ -375,7 +274,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 5861,
+    "value": 7261,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "in_demand_occupations": {
@@ -402,7 +301,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "TOP6 programs the member runs",
-    "value": 13,
+    "value": 6,
     "vintage": ""
    },
    "member_programs_active": {
@@ -411,7 +310,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "TOP6 programs currently graduating",
-    "value": 8,
+    "value": 4,
     "vintage": ""
    },
    "member_share_of_supply": {
@@ -429,7 +328,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 173.0,
+    "value": 47.0,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "regional_demand": {
@@ -447,7 +346,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 2179.3,
+    "value": 779.3,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "sector_occupations": {
@@ -465,7 +364,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "SOCs",
-    "value": 29,
+    "value": 24,
     "vintage": ""
    },
    "served_openings": {
@@ -474,7 +373,7 @@
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 3660,
+    "value": 3500,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
    }
   }

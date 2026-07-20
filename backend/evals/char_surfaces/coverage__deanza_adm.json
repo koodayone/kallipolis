@@ -14,82 +14,6 @@
   "more": null,
   "rows": [
    {
-    "label": "094800 Automotive Technology",
-    "roster": [
-     {
-      "label": "De Anza College",
-      "roster": [],
-      "values": {
-       "coverage": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       },
-       "projected_supply": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "completions/yr",
-        "value": 184.3,
-        "vintage": ""
-       }
-      }
-     }
-    ],
-    "values": {
-     "colleges_actively_awarding": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges (recent)",
-      "value": 1,
-      "vintage": ""
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
-      "value": 1,
-      "vintage": ""
-     },
-     "enrollment": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled",
-      "value": 774,
-      "vintage": ""
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 2,
-      "vintage": ""
-     },
-     "projected_supply": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 184.3,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     }
-    }
-   },
-   {
     "label": "095630 Machining and Machine Tools",
     "roster": [
      {
@@ -161,234 +85,6 @@
       "status": "ok",
       "unit": "completions/yr",
       "value": 43.7,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     }
-    }
-   },
-   {
-    "label": "094610 Energy Systems Technology",
-    "roster": [
-     {
-      "label": "De Anza College",
-      "roster": [],
-      "values": {
-       "coverage": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       },
-       "projected_supply": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "completions/yr",
-        "value": 15.3,
-        "vintage": ""
-       }
-      }
-     }
-    ],
-    "values": {
-     "colleges_actively_awarding": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges (recent)",
-      "value": 1,
-      "vintage": ""
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
-      "value": 1,
-      "vintage": ""
-     },
-     "enrollment": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled",
-      "value": 147,
-      "vintage": ""
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 4,
-      "vintage": ""
-     },
-     "projected_supply": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 15.3,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     }
-    }
-   },
-   {
-    "label": "095300 Drafting Technology",
-    "roster": [
-     {
-      "label": "De Anza College",
-      "roster": [],
-      "values": {
-       "coverage": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       },
-       "projected_supply": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "completions/yr",
-        "value": 3.7,
-        "vintage": ""
-       }
-      }
-     }
-    ],
-    "values": {
-     "colleges_actively_awarding": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges (recent)",
-      "value": 1,
-      "vintage": ""
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
-      "value": 1,
-      "vintage": ""
-     },
-     "enrollment": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled",
-      "value": 209,
-      "vintage": ""
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 2,
-      "vintage": ""
-     },
-     "projected_supply": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 3.7,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     }
-    }
-   },
-   {
-    "label": "095690 Digital Fabrication Technician",
-    "roster": [
-     {
-      "label": "De Anza College",
-      "roster": [],
-      "values": {
-       "coverage": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "partial",
-        "vintage": ""
-       },
-       "projected_supply": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "completions/yr",
-        "value": 2.7,
-        "vintage": ""
-       }
-      }
-     }
-    ],
-    "values": {
-     "colleges_actively_awarding": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges (recent)",
-      "value": 1,
-      "vintage": ""
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
-      "value": 1,
-      "vintage": ""
-     },
-     "enrollment": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled",
-      "value": 0,
-      "vintage": ""
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 1,
-      "vintage": ""
-     },
-     "projected_supply": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 2.7,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
@@ -554,7 +250,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "college\u00d7program cells",
-    "value": 3,
+    "value": 0,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "gap_cells": {
@@ -581,7 +277,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "college\u00d7program cells",
-    "value": 3,
+    "value": 2,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "programs": {
@@ -590,7 +286,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "TOP6 programs",
-    "value": 7,
+    "value": 3,
     "vintage": ""
    }
   }

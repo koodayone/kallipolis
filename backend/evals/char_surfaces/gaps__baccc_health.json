@@ -14,14 +14,14 @@
   "more": {
    "drill": {
     "coordinate": {
-     "entity": "29-2072",
+     "entity": "29-1292",
      "lens": "gaps",
      "member": "baccc",
      "member_label": "Bay Area Community College Consortium",
      "region": null,
      "sector": "health",
      "sector_label": "Health",
-     "soc": "29-2072",
+     "soc": "29-1292",
      "top6": null
     },
     "form": "navigate",
@@ -283,48 +283,6 @@
     }
    },
    {
-    "label": "31-9011 Massage Therapists",
-    "roster": [],
-    "values": {
-     "gap": {
-      "granularity": "regional openings \u2212 regional supply",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 810,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "member_supply": {
-      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 9.7,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "regional_demand": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 820,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     },
-     "regional_supply": {
-      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 9.7,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     }
-    }
-   },
-   {
     "label": "29-2052 Pharmacy Technicians",
     "roster": [],
     "values": {
@@ -365,6 +323,48 @@
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
+   },
+   {
+    "label": "29-2072 Medical Records Specialists",
+    "roster": [],
+    "values": {
+     "gap": {
+      "granularity": "regional openings \u2212 regional supply",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 299,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 60.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "regional_demand": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 360,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "regional_supply": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 60.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
    }
   ],
   "sorted_by": null,
@@ -375,7 +375,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 20588,
+    "value": 19878,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "member_supply": {
@@ -384,7 +384,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 2331.7,
+    "value": 2371.7,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "regional_demand": {
@@ -393,7 +393,7 @@
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 22920,
+    "value": 22250,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
    },
    "regional_supply": {
@@ -402,7 +402,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 2331.7,
+    "value": 2371.7,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    }
   }

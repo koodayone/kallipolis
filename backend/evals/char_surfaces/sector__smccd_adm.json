@@ -140,48 +140,6 @@
     }
    },
    {
-    "label": "094610 Energy Systems Technology",
-    "roster": [],
-    "values": {
-     "addressable_demand": {
-      "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 1000,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
-      "value": 1,
-      "vintage": ""
-     },
-     "member_supply": {
-      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 11.0,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 5,
-      "vintage": ""
-     }
-    }
-   },
-   {
     "label": "093420 Industrial Electronics",
     "roster": [],
     "values": {
@@ -222,132 +180,6 @@
       "vintage": ""
      }
     }
-   },
-   {
-    "label": "094800 Automotive Technology",
-    "roster": [],
-    "values": {
-     "addressable_demand": {
-      "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 420,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
-      "value": 1,
-      "vintage": ""
-     },
-     "member_supply": {
-      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 53.0,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 3,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "043000 Biotechnology and Biomedical Technology",
-    "roster": [],
-    "values": {
-     "addressable_demand": {
-      "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 260,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
-      "value": 2,
-      "vintage": ""
-     },
-     "member_supply": {
-      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 8.3,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 2,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "095300 Drafting Technology",
-    "roster": [],
-    "values": {
-     "addressable_demand": {
-      "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 210,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
-      "value": 1,
-      "vintage": ""
-     },
-     "member_supply": {
-      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 3.7,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 3,
-      "vintage": ""
-     }
-    }
    }
   ],
   "sorted_by": null,
@@ -358,7 +190,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 5861,
+    "value": 7261,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "in_demand_occupations": {
@@ -385,7 +217,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "TOP6 programs the member runs",
-    "value": 8,
+    "value": 4,
     "vintage": ""
    },
    "member_programs_active": {
@@ -394,7 +226,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "TOP6 programs currently graduating",
-    "value": 6,
+    "value": 2,
     "vintage": ""
    },
    "member_share_of_supply": {
@@ -412,7 +244,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 86.0,
+    "value": 10.0,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "regional_demand": {
@@ -430,7 +262,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 2179.3,
+    "value": 779.3,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "sector_occupations": {
@@ -448,7 +280,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "SOCs",
-    "value": 14,
+    "value": 10,
     "vintage": ""
    },
    "served_openings": {
@@ -457,7 +289,7 @@
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 2080,
+    "value": 1300,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
    }
   }

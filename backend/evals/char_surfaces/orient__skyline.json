@@ -23,7 +23,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 25180,
+      "value": 25140,
       "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "member_supply": {
@@ -32,7 +32,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 60.0,
+      "value": 50.7,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "regional_demand": {
@@ -50,7 +50,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 2380.0,
+      "value": 2420.0,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
@@ -65,7 +65,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 10992,
+      "value": 11042,
       "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "member_supply": {
@@ -92,7 +92,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 387.7,
+      "value": 338.0,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
@@ -107,7 +107,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 5861,
+      "value": 7261,
       "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "member_supply": {
@@ -116,7 +116,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 71.7,
+      "value": 4.7,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "regional_demand": {
@@ -134,7 +134,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 2179.3,
+      "value": 779.3,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
@@ -182,48 +182,6 @@
     }
    },
    {
-    "label": "Advanced Transportation & Logistics",
-    "roster": [],
-    "values": {
-     "gap": {
-      "granularity": "regional openings \u2212 regional supply",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": -933,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "member_supply": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 57.7,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "regional_demand": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 0,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     },
-     "regional_supply": {
-      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 933.3,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     }
-    }
-   },
-   {
     "label": "Energy, Construction & Utilities",
     "roster": [],
     "values": {
@@ -233,7 +191,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": -987,
+      "value": -445,
       "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "member_supply": {
@@ -242,7 +200,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 15.7,
+      "value": 11.0,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "regional_demand": {
@@ -260,7 +218,49 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 987.3,
+      "value": 445.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "Advanced Transportation & Logistics",
+    "roster": [],
+    "values": {
+     "gap": {
+      "granularity": "regional openings \u2212 regional supply",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": -698,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 53.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "regional_demand": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 0,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "regional_supply": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 698.0,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
@@ -274,7 +274,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 42033,
+    "value": 42095,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "member_share_of_supply": {
@@ -292,7 +292,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 162.3,
+    "value": 153.0,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "regional_demand": {
@@ -310,7 +310,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 4947.0,
+    "value": 4884.7,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "sectors": {

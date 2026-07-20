@@ -14,158 +14,6 @@
   "more": null,
   "rows": [
    {
-    "label": "094800 Automotive Technology",
-    "roster": [
-     {
-      "label": "Skyline College",
-      "roster": [],
-      "values": {
-       "coverage": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       },
-       "projected_supply": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "completions/yr",
-        "value": 53.0,
-        "vintage": ""
-       }
-      }
-     }
-    ],
-    "values": {
-     "colleges_actively_awarding": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges (recent)",
-      "value": 1,
-      "vintage": ""
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
-      "value": 1,
-      "vintage": ""
-     },
-     "enrollment": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled",
-      "value": 410,
-      "vintage": ""
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 2,
-      "vintage": ""
-     },
-     "projected_supply": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 53.0,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     }
-    }
-   },
-   {
-    "label": "094610 Energy Systems Technology",
-    "roster": [
-     {
-      "label": "Skyline College",
-      "roster": [],
-      "values": {
-       "coverage": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       },
-       "projected_supply": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "completions/yr",
-        "value": 11.0,
-        "vintage": ""
-       }
-      }
-     }
-    ],
-    "values": {
-     "colleges_actively_awarding": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges (recent)",
-      "value": 1,
-      "vintage": ""
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
-      "value": 1,
-      "vintage": ""
-     },
-     "enrollment": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled",
-      "value": 23,
-      "vintage": ""
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 4,
-      "vintage": ""
-     },
-     "projected_supply": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 11.0,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     }
-    }
-   },
-   {
     "label": "093400 Electronics and Electric Technology",
     "roster": [
      {
@@ -240,82 +88,6 @@
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
-   },
-   {
-    "label": "043000 Biotechnology and Biomedical Technology",
-    "roster": [
-     {
-      "label": "Skyline College",
-      "roster": [],
-      "values": {
-       "coverage": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       },
-       "projected_supply": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "completions/yr",
-        "value": 3.0,
-        "vintage": ""
-       }
-      }
-     }
-    ],
-    "values": {
-     "colleges_actively_awarding": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges (recent)",
-      "value": 1,
-      "vintage": ""
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
-      "value": 1,
-      "vintage": ""
-     },
-     "enrollment": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled",
-      "value": 1141,
-      "vintage": ""
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 1,
-      "vintage": ""
-     },
-     "projected_supply": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 3.0,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     }
-    }
    }
   ],
   "sorted_by": null,
@@ -326,7 +98,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "college\u00d7program cells",
-    "value": 4,
+    "value": 1,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "gap_cells": {
@@ -362,7 +134,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "TOP6 programs",
-    "value": 4,
+    "value": 1,
     "vintage": ""
    }
   }

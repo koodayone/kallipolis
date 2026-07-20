@@ -8,11 +8,11 @@
    "naics4": "3344",
    "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
    "name": "Jameco Electronics",
-   "relevance": 14.8,
+   "relevance": 12.8,
    "sector": "Manufacturing",
    "size_class": "100-249 employees",
    "size_rank": 6,
-   "soc_count": 11,
+   "soc_count": 9,
    "soc_titles": {
     "17-3012": "Electrical and Electronics Drafters",
     "17-3013": "Mechanical Drafters",
@@ -22,18 +22,14 @@
     "17-3027": "Mechanical Engineering Technologists and Technicians",
     "17-3028": "Calibration Technologists and Technicians",
     "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery",
     "51-9141": "Semiconductor Processing Technicians"
    },
    "socs": [
     "51-9141",
     "17-3023",
     "17-3026",
-    "49-9041",
     "17-3024",
     "17-3027",
-    "49-9043",
     "49-2094",
     "17-3012",
     "17-3013",
@@ -49,11 +45,11 @@
    "naics4": "3344",
    "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
    "name": "Leemah Electronics",
-   "relevance": 14.8,
+   "relevance": 12.8,
    "sector": "Manufacturing",
    "size_class": "100-249 employees",
    "size_rank": 6,
-   "soc_count": 11,
+   "soc_count": 9,
    "soc_titles": {
     "17-3012": "Electrical and Electronics Drafters",
     "17-3013": "Mechanical Drafters",
@@ -63,53 +59,20 @@
     "17-3027": "Mechanical Engineering Technologists and Technicians",
     "17-3028": "Calibration Technologists and Technicians",
     "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery",
     "51-9141": "Semiconductor Processing Technicians"
    },
    "socs": [
     "51-9141",
     "17-3023",
     "17-3026",
-    "49-9041",
     "17-3024",
     "17-3027",
-    "49-9043",
     "49-2094",
     "17-3012",
     "17-3013",
     "17-3028"
    ],
    "website": "https://www.leemah.com/"
-  },
-  {
-   "description": "The San Francisco Public Utilities Commission (SFPUC), operating as San Francisco Water Power Sewer, delivers drinking water, hydroelectric power, and wastewater/sewer services to San Francisco residents and businesses, drawing on the Hetch Hetchy regional water system that also serves surrounding Bay Area communities. The agency operates water treatment plants, power generation facilities, and an extensive sewer and stormwater network across the city. Technical and skilled-trades roles include water system engineers, power system operators, wastewater treatment specialists, and field maintenance crews, with active apprenticeship and workforce development programs.",
-   "display_name": null,
-   "lat": 37.6,
-   "lng": -122.4,
-   "naics4": "2213",
-   "naics_title": "Water, Sewage and Other Systems",
-   "name": "San Francisco Water",
-   "relevance": 5.0,
-   "sector": "Utilities",
-   "size_class": "100-249 employees",
-   "size_rank": 6,
-   "soc_count": 5,
-   "soc_titles": {
-    "17-3026": "Industrial Engineering Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9012": "Control and Valve Installers and Repairers, Except Mechanical Door",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery"
-   },
-   "socs": [
-    "49-9041",
-    "49-9012",
-    "49-9043",
-    "49-2094",
-    "17-3026"
-   ],
-   "website": "https://www.sfpuc.org/"
   },
   {
    "description": "BAI, Inc. (Banner Aircraft International) is an aerospace and defense parts distributor supplying certified fasteners, bearings, electrical components, engine parts, and life support systems for military and commercial aircraft platforms including the F-15, F-16, and C-130. The company holds ISO 9001:2015 certification and FAA AC 00-56B compliance, and distributes components from authorized U.S. manufacturers to customers including the Japanese Ministry of Defense. With over 60 years of industry experience, BAI employs staff in logistics, quality assurance, and supply-chain operations supporting aerospace MRO and defense programs.",
@@ -119,11 +82,11 @@
    "naics4": "3345",
    "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
    "name": "Bai",
-   "relevance": 4.8,
+   "relevance": 4.2,
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 13,
+   "soc_count": 10,
    "soc_titles": {
     "17-3012": "Electrical and Electronics Drafters",
     "17-3013": "Mechanical Drafters",
@@ -134,23 +97,17 @@
     "17-3028": "Calibration Technologists and Technicians",
     "49-2092": "Electric Motor, Power Tool, and Related Repairers",
     "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9012": "Control and Valve Installers and Repairers, Except Mechanical Door",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery",
     "51-9141": "Semiconductor Processing Technicians"
    },
    "socs": [
     "17-3023",
     "17-3026",
     "49-2094",
-    "49-9041",
     "17-3027",
     "17-3024",
     "17-3028",
     "17-3012",
     "17-3013",
-    "49-9012",
-    "49-9043",
     "51-9141",
     "49-2092"
    ],
@@ -164,11 +121,11 @@
    "naics4": "3345",
    "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
    "name": "Celldom",
-   "relevance": 4.8,
+   "relevance": 4.2,
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 13,
+   "soc_count": 10,
    "soc_titles": {
     "17-3012": "Electrical and Electronics Drafters",
     "17-3013": "Mechanical Drafters",
@@ -179,23 +136,17 @@
     "17-3028": "Calibration Technologists and Technicians",
     "49-2092": "Electric Motor, Power Tool, and Related Repairers",
     "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9012": "Control and Valve Installers and Repairers, Except Mechanical Door",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery",
     "51-9141": "Semiconductor Processing Technicians"
    },
    "socs": [
     "17-3023",
     "17-3026",
     "49-2094",
-    "49-9041",
     "17-3027",
     "17-3024",
     "17-3028",
     "17-3012",
     "17-3013",
-    "49-9012",
-    "49-9043",
     "51-9141",
     "49-2092"
    ],
@@ -209,11 +160,11 @@
    "naics4": "3345",
    "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
    "name": "Galvanize Therapeutics",
-   "relevance": 4.8,
+   "relevance": 4.2,
    "sector": "Manufacturing",
    "size_class": "100-249 employees",
    "size_rank": 6,
-   "soc_count": 13,
+   "soc_count": 10,
    "soc_titles": {
     "17-3012": "Electrical and Electronics Drafters",
     "17-3013": "Mechanical Drafters",
@@ -224,23 +175,17 @@
     "17-3028": "Calibration Technologists and Technicians",
     "49-2092": "Electric Motor, Power Tool, and Related Repairers",
     "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9012": "Control and Valve Installers and Repairers, Except Mechanical Door",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery",
     "51-9141": "Semiconductor Processing Technicians"
    },
    "socs": [
     "17-3023",
     "17-3026",
     "49-2094",
-    "49-9041",
     "17-3027",
     "17-3024",
     "17-3028",
     "17-3012",
     "17-3013",
-    "49-9012",
-    "49-9043",
     "51-9141",
     "49-2092"
    ],
@@ -254,11 +199,11 @@
    "naics4": "3345",
    "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
    "name": "General Radar Corporation",
-   "relevance": 4.8,
+   "relevance": 4.2,
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 13,
+   "soc_count": 10,
    "soc_titles": {
     "17-3012": "Electrical and Electronics Drafters",
     "17-3013": "Mechanical Drafters",
@@ -269,23 +214,17 @@
     "17-3028": "Calibration Technologists and Technicians",
     "49-2092": "Electric Motor, Power Tool, and Related Repairers",
     "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9012": "Control and Valve Installers and Repairers, Except Mechanical Door",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery",
     "51-9141": "Semiconductor Processing Technicians"
    },
    "socs": [
     "17-3023",
     "17-3026",
     "49-2094",
-    "49-9041",
     "17-3027",
     "17-3024",
     "17-3028",
     "17-3012",
     "17-3013",
-    "49-9012",
-    "49-9043",
     "51-9141",
     "49-2092"
    ],
@@ -299,11 +238,11 @@
    "naics4": "3345",
    "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
    "name": "Northstar Photonics",
-   "relevance": 4.8,
+   "relevance": 4.2,
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 13,
+   "soc_count": 10,
    "soc_titles": {
     "17-3012": "Electrical and Electronics Drafters",
     "17-3013": "Mechanical Drafters",
@@ -314,23 +253,17 @@
     "17-3028": "Calibration Technologists and Technicians",
     "49-2092": "Electric Motor, Power Tool, and Related Repairers",
     "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9012": "Control and Valve Installers and Repairers, Except Mechanical Door",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery",
     "51-9141": "Semiconductor Processing Technicians"
    },
    "socs": [
     "17-3023",
     "17-3026",
     "49-2094",
-    "49-9041",
     "17-3027",
     "17-3024",
     "17-3028",
     "17-3012",
     "17-3013",
-    "49-9012",
-    "49-9043",
     "51-9141",
     "49-2092"
    ],
@@ -344,11 +277,11 @@
    "naics4": "3345",
    "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
    "name": "Soleno Therapeutics",
-   "relevance": 4.8,
+   "relevance": 4.2,
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 13,
+   "soc_count": 10,
    "soc_titles": {
     "17-3012": "Electrical and Electronics Drafters",
     "17-3013": "Mechanical Drafters",
@@ -359,111 +292,21 @@
     "17-3028": "Calibration Technologists and Technicians",
     "49-2092": "Electric Motor, Power Tool, and Related Repairers",
     "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9012": "Control and Valve Installers and Repairers, Except Mechanical Door",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery",
     "51-9141": "Semiconductor Processing Technicians"
    },
    "socs": [
     "17-3023",
     "17-3026",
     "49-2094",
-    "49-9041",
     "17-3027",
     "17-3024",
     "17-3028",
     "17-3012",
     "17-3013",
-    "49-9012",
-    "49-9043",
     "51-9141",
     "49-2092"
    ],
    "website": "https://soleno.life/"
-  },
-  {
-   "description": "Rheem Manufacturing produces residential and commercial HVAC systems (air conditioners, furnaces, heat pumps, ductless mini-splits) and water heating equipment (tank, tankless, and heat pump water heaters, boilers, pool heaters) sold under brands including Rheem, Ruud, Richmond, and Eemax. Founded in 1925, the company serves contractors, plumbers, and commercial building operators across North America and globally. Manufacturing and field operations draw on sheet-metal fabrication, refrigeration systems, electromechanical assembly, and certified HVAC/plumbing trades workers.",
-   "display_name": null,
-   "lat": 37.5,
-   "lng": -122.2,
-   "naics4": "3334",
-   "naics_title": "Ventilation, Heating, Air-Conditioning, and Commercial Refrigeration Equipment Manufacturing",
-   "name": "Rheem Manufacturing",
-   "relevance": 4.5,
-   "sector": "Manufacturing",
-   "size_class": "50-99 employees",
-   "size_rank": 5,
-   "soc_count": 13,
-   "soc_titles": {
-    "17-3012": "Electrical and Electronics Drafters",
-    "17-3013": "Mechanical Drafters",
-    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
-    "17-3026": "Industrial Engineering Technologists and Technicians",
-    "17-3027": "Mechanical Engineering Technologists and Technicians",
-    "17-3028": "Calibration Technologists and Technicians",
-    "49-2092": "Electric Motor, Power Tool, and Related Repairers",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9012": "Control and Valve Installers and Repairers, Except Mechanical Door",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery",
-    "49-9044": "Millwrights"
-   },
-   "socs": [
-    "49-9041",
-    "17-3026",
-    "17-3013",
-    "17-3027",
-    "17-3023",
-    "49-9043",
-    "17-3024",
-    "49-2094",
-    "49-9044",
-    "17-3012",
-    "17-3028",
-    "49-2092",
-    "49-9012"
-   ],
-   "website": "https://www.rheem.com"
-  },
-  {
-   "description": "A company providing packaging solutions.",
-   "display_name": null,
-   "lat": 37.6,
-   "lng": -122.3,
-   "naics4": "3261",
-   "naics_title": "Plastics Product Manufacturing",
-   "name": "Merrill's Packaging",
-   "relevance": 3.8,
-   "sector": "Manufacturing",
-   "size_class": "50-99 employees",
-   "size_rank": 5,
-   "soc_count": 10,
-   "soc_titles": {
-    "17-3013": "Mechanical Drafters",
-    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
-    "17-3026": "Industrial Engineering Technologists and Technicians",
-    "17-3027": "Mechanical Engineering Technologists and Technicians",
-    "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery",
-    "49-9044": "Millwrights"
-   },
-   "socs": [
-    "49-9041",
-    "17-3026",
-    "49-9043",
-    "17-3027",
-    "17-3013",
-    "49-2094",
-    "17-3023",
-    "17-3024",
-    "49-9044",
-    "17-3028"
-   ],
-   "website": "https://merrills.com/"
   },
   {
    "description": "DES is an integrated architecture, interior design, planning, and engineering firm founded in 1973 and headquartered in the San Francisco Bay Area, with over 170 employees across offices in Redwood City, San Francisco, Austin, and Monterey. The firm specializes in technology campuses, life science facilities, healthcare, and education projects, with notable clients including Google, Genentech, Cisco, and UC Irvine. Its in-house disciplines \u2014 architecture, landscape architecture, green building consulting, and digital graphics \u2014 draw architects, engineers, planners, and interior designers locally.",
@@ -473,11 +316,11 @@
    "naics4": "5413",
    "naics_title": "Architectural, Engineering, and Related Services",
    "name": "DES Architects & Engineers",
-   "relevance": 3.1,
+   "relevance": 2.9,
    "sector": "Professional Services",
    "size_class": "100-249 employees",
    "size_rank": 6,
-   "soc_count": 11,
+   "soc_count": 8,
    "soc_titles": {
     "17-3012": "Electrical and Electronics Drafters",
     "17-3013": "Mechanical Drafters",
@@ -486,10 +329,7 @@
     "17-3026": "Industrial Engineering Technologists and Technicians",
     "17-3027": "Mechanical Engineering Technologists and Technicians",
     "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery",
-    "49-9044": "Millwrights"
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
    },
    "socs": [
     "17-3023",
@@ -498,11 +338,8 @@
     "17-3012",
     "17-3026",
     "17-3028",
-    "49-9041",
     "17-3024",
-    "49-2094",
-    "49-9043",
-    "49-9044"
+    "49-2094"
    ],
    "website": "https://des-ae.com/"
   },
@@ -514,11 +351,11 @@
    "naics4": "5413",
    "naics_title": "Architectural, Engineering, and Related Services",
    "name": "EKI",
-   "relevance": 3.1,
+   "relevance": 2.9,
    "sector": "Professional Services",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 11,
+   "soc_count": 8,
    "soc_titles": {
     "17-3012": "Electrical and Electronics Drafters",
     "17-3013": "Mechanical Drafters",
@@ -527,10 +364,7 @@
     "17-3026": "Industrial Engineering Technologists and Technicians",
     "17-3027": "Mechanical Engineering Technologists and Technicians",
     "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery",
-    "49-9044": "Millwrights"
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
    },
    "socs": [
     "17-3023",
@@ -539,11 +373,8 @@
     "17-3012",
     "17-3026",
     "17-3028",
-    "49-9041",
     "17-3024",
-    "49-2094",
-    "49-9043",
-    "49-9044"
+    "49-2094"
    ],
    "website": "https://www.ekiconsult.com/"
   },
@@ -555,11 +386,11 @@
    "naics4": "5413",
    "naics_title": "Architectural, Engineering, and Related Services",
    "name": "Exponent",
-   "relevance": 3.1,
+   "relevance": 2.9,
    "sector": "Professional Services",
    "size_class": "250-499 employees",
    "size_rank": 7,
-   "soc_count": 11,
+   "soc_count": 8,
    "soc_titles": {
     "17-3012": "Electrical and Electronics Drafters",
     "17-3013": "Mechanical Drafters",
@@ -568,10 +399,7 @@
     "17-3026": "Industrial Engineering Technologists and Technicians",
     "17-3027": "Mechanical Engineering Technologists and Technicians",
     "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery",
-    "49-9044": "Millwrights"
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
    },
    "socs": [
     "17-3023",
@@ -580,11 +408,8 @@
     "17-3012",
     "17-3026",
     "17-3028",
-    "49-9041",
     "17-3024",
-    "49-2094",
-    "49-9043",
-    "49-9044"
+    "49-2094"
    ],
    "website": "https://www.exponent.com/"
   },
@@ -596,11 +421,11 @@
    "naics4": "5413",
    "naics_title": "Architectural, Engineering, and Related Services",
    "name": "Fluor Enterprises",
-   "relevance": 3.1,
+   "relevance": 2.9,
    "sector": "Professional Services",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 11,
+   "soc_count": 8,
    "soc_titles": {
     "17-3012": "Electrical and Electronics Drafters",
     "17-3013": "Mechanical Drafters",
@@ -609,10 +434,7 @@
     "17-3026": "Industrial Engineering Technologists and Technicians",
     "17-3027": "Mechanical Engineering Technologists and Technicians",
     "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery",
-    "49-9044": "Millwrights"
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
    },
    "socs": [
     "17-3023",
@@ -621,11 +443,8 @@
     "17-3012",
     "17-3026",
     "17-3028",
-    "49-9041",
     "17-3024",
-    "49-2094",
-    "49-9043",
-    "49-9044"
+    "49-2094"
    ],
    "website": "https://www.fluor.com/"
   },
@@ -637,11 +456,11 @@
    "naics4": "5413",
    "naics_title": "Architectural, Engineering, and Related Services",
    "name": "Reincarnate",
-   "relevance": 3.1,
+   "relevance": 2.9,
    "sector": "Professional Services",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 11,
+   "soc_count": 8,
    "soc_titles": {
     "17-3012": "Electrical and Electronics Drafters",
     "17-3013": "Mechanical Drafters",
@@ -650,10 +469,7 @@
     "17-3026": "Industrial Engineering Technologists and Technicians",
     "17-3027": "Mechanical Engineering Technologists and Technicians",
     "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery",
-    "49-9044": "Millwrights"
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
    },
    "socs": [
     "17-3023",
@@ -662,11 +478,8 @@
     "17-3012",
     "17-3026",
     "17-3028",
-    "49-9041",
     "17-3024",
-    "49-2094",
-    "49-9043",
-    "49-9044"
+    "49-2094"
    ],
    "website": "https://reincarnateartificial.com/"
   },
@@ -678,11 +491,11 @@
    "naics4": "5413",
    "naics_title": "Architectural, Engineering, and Related Services",
    "name": "SRI International",
-   "relevance": 3.1,
+   "relevance": 2.9,
    "sector": "Professional Services",
    "size_class": "1,000-4,999 employees",
    "size_rank": 9,
-   "soc_count": 11,
+   "soc_count": 8,
    "soc_titles": {
     "17-3012": "Electrical and Electronics Drafters",
     "17-3013": "Mechanical Drafters",
@@ -691,10 +504,7 @@
     "17-3026": "Industrial Engineering Technologists and Technicians",
     "17-3027": "Mechanical Engineering Technologists and Technicians",
     "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery",
-    "49-9044": "Millwrights"
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
    },
    "socs": [
     "17-3023",
@@ -703,11 +513,8 @@
     "17-3012",
     "17-3026",
     "17-3028",
-    "49-9041",
     "17-3024",
-    "49-2094",
-    "49-9043",
-    "49-9044"
+    "49-2094"
    ],
    "website": "https://www.sri.com/"
   },
@@ -719,11 +526,11 @@
    "naics4": "5413",
    "naics_title": "Architectural, Engineering, and Related Services",
    "name": "Triplechoice",
-   "relevance": 3.1,
+   "relevance": 2.9,
    "sector": "Professional Services",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 11,
+   "soc_count": 8,
    "soc_titles": {
     "17-3012": "Electrical and Electronics Drafters",
     "17-3013": "Mechanical Drafters",
@@ -732,10 +539,7 @@
     "17-3026": "Industrial Engineering Technologists and Technicians",
     "17-3027": "Mechanical Engineering Technologists and Technicians",
     "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery",
-    "49-9044": "Millwrights"
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
    },
    "socs": [
     "17-3023",
@@ -744,11 +548,8 @@
     "17-3012",
     "17-3026",
     "17-3028",
-    "49-9041",
     "17-3024",
-    "49-2094",
-    "49-9043",
-    "49-9044"
+    "49-2094"
    ],
    "website": "https://triplechoice.com/"
   },
@@ -760,11 +561,11 @@
    "naics4": "5413",
    "naics_title": "Architectural, Engineering, and Related Services",
    "name": "Water Quality Bureau",
-   "relevance": 3.1,
+   "relevance": 2.9,
    "sector": "Professional Services",
    "size_class": "100-249 employees",
    "size_rank": 6,
-   "soc_count": 11,
+   "soc_count": 8,
    "soc_titles": {
     "17-3012": "Electrical and Electronics Drafters",
     "17-3013": "Mechanical Drafters",
@@ -773,10 +574,7 @@
     "17-3026": "Industrial Engineering Technologists and Technicians",
     "17-3027": "Mechanical Engineering Technologists and Technicians",
     "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery",
-    "49-9044": "Millwrights"
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
    },
    "socs": [
     "17-3023",
@@ -785,13 +583,82 @@
     "17-3012",
     "17-3026",
     "17-3028",
-    "49-9041",
     "17-3024",
-    "49-2094",
-    "49-9043",
-    "49-9044"
+    "49-2094"
    ],
    "website": "SFPUC.ORG"
+  },
+  {
+   "description": "Aechelon Technology provides simulation and training solutions.",
+   "display_name": null,
+   "lat": 37.7,
+   "lng": -122.4,
+   "naics4": "3341",
+   "naics_title": "Computer and Peripheral Equipment Manufacturing",
+   "name": "Aechelon Technology",
+   "relevance": 2.3,
+   "sector": "Manufacturing",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 8,
+   "soc_titles": {
+    "17-3012": "Electrical and Electronics Drafters",
+    "17-3013": "Mechanical Drafters",
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "17-3027": "Mechanical Engineering Technologists and Technicians",
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "17-3023",
+    "17-3026",
+    "51-9141",
+    "17-3012",
+    "17-3027",
+    "49-2094",
+    "17-3024",
+    "17-3013"
+   ],
+   "website": "https://aechelon.com/"
+  },
+  {
+   "description": "Rheem Manufacturing produces residential and commercial HVAC systems (air conditioners, furnaces, heat pumps, ductless mini-splits) and water heating equipment (tank, tankless, and heat pump water heaters, boilers, pool heaters) sold under brands including Rheem, Ruud, Richmond, and Eemax. Founded in 1925, the company serves contractors, plumbers, and commercial building operators across North America and globally. Manufacturing and field operations draw on sheet-metal fabrication, refrigeration systems, electromechanical assembly, and certified HVAC/plumbing trades workers.",
+   "display_name": null,
+   "lat": 37.5,
+   "lng": -122.2,
+   "naics4": "3334",
+   "naics_title": "Ventilation, Heating, Air-Conditioning, and Commercial Refrigeration Equipment Manufacturing",
+   "name": "Rheem Manufacturing",
+   "relevance": 2.1,
+   "sector": "Manufacturing",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 9,
+   "soc_titles": {
+    "17-3012": "Electrical and Electronics Drafters",
+    "17-3013": "Mechanical Drafters",
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "17-3027": "Mechanical Engineering Technologists and Technicians",
+    "17-3028": "Calibration Technologists and Technicians",
+    "49-2092": "Electric Motor, Power Tool, and Related Repairers",
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
+   },
+   "socs": [
+    "17-3026",
+    "17-3013",
+    "17-3027",
+    "17-3023",
+    "17-3024",
+    "49-2094",
+    "17-3012",
+    "17-3028",
+    "49-2092"
+   ],
+   "website": "https://www.rheem.com"
   },
   {
    "description": "Elroy Air designs and manufactures the Chaparral, an autonomous electric-hybrid VTOL cargo aircraft built for uncrewed middle-mile logistics missions. The Chaparral carries a detachable cargo pod and has completed flight testing in partnership with the U.S. Air Force, NASA, FedEx, and Lockheed Martin. The company draws on engineers across aerospace, autonomy, defense systems, and advanced manufacturing.",
@@ -801,11 +668,11 @@
    "naics4": "3364",
    "naics_title": "Aerospace Product and Parts Manufacturing",
    "name": "Elroy Air",
-   "relevance": 2.8,
+   "relevance": 1.8,
    "sector": "Manufacturing",
    "size_class": "100-249 employees",
    "size_rank": 6,
-   "soc_count": 12,
+   "soc_count": 9,
    "soc_titles": {
     "17-3012": "Electrical and Electronics Drafters",
     "17-3013": "Mechanical Drafters",
@@ -815,22 +682,16 @@
     "17-3027": "Mechanical Engineering Technologists and Technicians",
     "17-3028": "Calibration Technologists and Technicians",
     "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery",
-    "49-9044": "Millwrights",
     "51-9141": "Semiconductor Processing Technicians"
    },
    "socs": [
-    "49-9041",
     "17-3026",
     "17-3023",
     "17-3013",
     "17-3027",
     "17-3028",
     "49-2094",
-    "49-9043",
     "17-3024",
-    "49-9044",
     "51-9141",
     "17-3012"
    ],
@@ -844,11 +705,11 @@
    "naics4": "3391",
    "naics_title": "Medical Equipment and Supplies Manufacturing",
    "name": "Artio Medical",
-   "relevance": 2.6,
+   "relevance": 1.7,
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 9,
+   "soc_count": 7,
    "soc_titles": {
     "17-3013": "Mechanical Drafters",
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
@@ -856,18 +717,14 @@
     "17-3026": "Industrial Engineering Technologists and Technicians",
     "17-3027": "Mechanical Engineering Technologists and Technicians",
     "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery"
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
    },
    "socs": [
     "17-3026",
-    "49-9041",
     "17-3027",
     "17-3028",
     "17-3013",
     "17-3023",
-    "49-9043",
     "17-3024",
     "49-2094"
    ],
@@ -881,11 +738,11 @@
    "naics4": "3391",
    "naics_title": "Medical Equipment and Supplies Manufacturing",
    "name": "Cutera",
-   "relevance": 2.6,
+   "relevance": 1.7,
    "sector": "Manufacturing",
    "size_class": "100-249 employees",
    "size_rank": 6,
-   "soc_count": 9,
+   "soc_count": 7,
    "soc_titles": {
     "17-3013": "Mechanical Drafters",
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
@@ -893,18 +750,14 @@
     "17-3026": "Industrial Engineering Technologists and Technicians",
     "17-3027": "Mechanical Engineering Technologists and Technicians",
     "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery"
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
    },
    "socs": [
     "17-3026",
-    "49-9041",
     "17-3027",
     "17-3028",
     "17-3013",
     "17-3023",
-    "49-9043",
     "17-3024",
     "49-2094"
    ],
@@ -918,11 +771,11 @@
    "naics4": "3391",
    "naics_title": "Medical Equipment and Supplies Manufacturing",
    "name": "Intravu",
-   "relevance": 2.6,
+   "relevance": 1.7,
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 9,
+   "soc_count": 7,
    "soc_titles": {
     "17-3013": "Mechanical Drafters",
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
@@ -930,18 +783,14 @@
     "17-3026": "Industrial Engineering Technologists and Technicians",
     "17-3027": "Mechanical Engineering Technologists and Technicians",
     "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery"
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
    },
    "socs": [
     "17-3026",
-    "49-9041",
     "17-3027",
     "17-3028",
     "17-3013",
     "17-3023",
-    "49-9043",
     "17-3024",
     "49-2094"
    ],
@@ -955,11 +804,11 @@
    "naics4": "3391",
    "naics_title": "Medical Equipment and Supplies Manufacturing",
    "name": "Tosoh SMD",
-   "relevance": 2.6,
+   "relevance": 1.7,
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 9,
+   "soc_count": 7,
    "soc_titles": {
     "17-3013": "Mechanical Drafters",
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
@@ -967,33 +816,29 @@
     "17-3026": "Industrial Engineering Technologists and Technicians",
     "17-3027": "Mechanical Engineering Technologists and Technicians",
     "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery"
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
    },
    "socs": [
     "17-3026",
-    "49-9041",
     "17-3027",
     "17-3028",
     "17-3013",
     "17-3023",
-    "49-9043",
     "17-3024",
     "49-2094"
    ],
    "website": "https://www.tosohsmd.com/"
   },
   {
-   "description": "Aechelon Technology provides simulation and training solutions.",
+   "description": "Aperture Therapeutics is a clinical-stage biotech developing oligonucleotide therapeutics for neurodegenerative diseases, with programs focused on ALS and frontotemporal dementia (FTD). The company uses machine learning to mine large-scale genomic and clinical datasets to identify naturally occurring gene variants that protect against neurodegeneration, then designs therapies that mimic those protective mechanisms. Their team spans computational biologists, neuroscientists, and R&D operations staff.",
    "display_name": null,
-   "lat": 37.7,
-   "lng": -122.4,
-   "naics4": "3341",
-   "naics_title": "Computer and Peripheral Equipment Manufacturing",
-   "name": "Aechelon Technology",
-   "relevance": 2.5,
-   "sector": "Manufacturing",
+   "lat": 37.5,
+   "lng": -122.3,
+   "naics4": "5417",
+   "naics_title": "Scientific Research and Development Services",
+   "name": "Aperture Therapeutics",
+   "relevance": 1.6,
+   "sector": "Professional Services",
    "size_class": "50-99 employees",
    "size_rank": 5,
    "soc_count": 9,
@@ -1004,22 +849,59 @@
     "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
     "17-3026": "Industrial Engineering Technologists and Technicians",
     "17-3027": "Mechanical Engineering Technologists and Technicians",
+    "17-3028": "Calibration Technologists and Technicians",
     "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "49-9041": "Industrial Machinery Mechanics",
     "51-9141": "Semiconductor Processing Technicians"
    },
    "socs": [
+    "17-3027",
     "17-3023",
     "17-3026",
-    "51-9141",
-    "49-9041",
-    "17-3012",
-    "17-3027",
-    "49-2094",
     "17-3024",
-    "17-3013"
+    "17-3013",
+    "49-2094",
+    "17-3028",
+    "17-3012",
+    "51-9141"
    ],
-   "website": "https://aechelon.com/"
+   "website": "https://www.aperturetx.com/"
+  },
+  {
+   "description": "Arsenalbio is a biotechnology company.",
+   "display_name": null,
+   "lat": 37.7,
+   "lng": -122.4,
+   "naics4": "5417",
+   "naics_title": "Scientific Research and Development Services",
+   "name": "Arsenalbio",
+   "relevance": 1.6,
+   "sector": "Professional Services",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 9,
+   "soc_titles": {
+    "17-3012": "Electrical and Electronics Drafters",
+    "17-3013": "Mechanical Drafters",
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "17-3027": "Mechanical Engineering Technologists and Technicians",
+    "17-3028": "Calibration Technologists and Technicians",
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "17-3027",
+    "17-3023",
+    "17-3026",
+    "17-3024",
+    "17-3013",
+    "49-2094",
+    "17-3028",
+    "17-3012",
+    "51-9141"
+   ],
+   "website": "https://arsenalbio.com/"
   }
  ],
  "region": "Bay",
@@ -1029,5 +911,5 @@
   "San Mateo"
  ],
  "shown": 25,
- "total": 121
+ "total": 87
 }
