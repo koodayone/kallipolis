@@ -69,8 +69,8 @@ def _soc_feeders(colleges: tuple[str, ...], spec=None) -> dict[str, frozenset[st
     (college set, spec) so per-SOC feeder lookup is O(1). The one feeder rule.
 
     Gated by ``spec.in_scope`` when a spec is given — the canonical rule (adjudication A:
-    is_vocational + excluded_tops + home-division + CTE-family; e.g. it excludes generic
-    Nursing 123000 in favor of 123010). Falls back to the legacy bare ``is_vocational`` gate
+    membership in the spec's program portfolio — composition.programs when authored, else the
+    sector's home_sector set). Falls back to the legacy bare ``is_vocational`` gate
     when spec is None; call sites are being migrated to pass spec, after which the fallback
     (and the divergence it leaves) is removed. Does NOT yet apply the latest-year awards gate
     that ``relevant_tops`` layers on for rule-bearing specs — added if the corroboration band
