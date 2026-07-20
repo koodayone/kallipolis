@@ -264,7 +264,7 @@ def _cached_cluster_map(member_id: str, sector_id: str) -> tuple:
     request (~280ms; the dominant cost of those endpoints). It is identical for
     every college in the sector, so cache it. Process-lifetime — a graph data load
     should restart the backend (init_schema) to refresh, matching the precompute
-    cache + dossier `@lru_cache` already in this layer. Returns read-only tuples;
+    `@lru_cache` already in this layer. Returns read-only tuples;
     callers must not mutate the shared OccupationCluster objects."""
     from partnerships.registry import spec_for
 
