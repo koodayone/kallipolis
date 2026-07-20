@@ -54,6 +54,7 @@ from partnerships.landscape_build import (
 from partnerships.landscape import (
     LandscapeSpec, SVAMP_SPEC, _term_excluded, _term_sort_key,
 )
+from partnerships.sectors import SECTORS
 from partnerships.quantities import gap as compute_gap, producing_tops, recent_award_years, supply_fn_graph
 
 
@@ -521,19 +522,25 @@ def build_landscape_occupation(
     # exclusions. _crosswalk_taught_scope picks consortium-union vs single-
     # college taught marking from `college`; everything else is regional.
     taught_college, union_colleges = _crosswalk_taught_scope(college, colleges)
-    # Authored specs scope the hero pathway by their hand-picked program set
-    # (composition.programs) — the same allowlist in_scope/relevant_tops use, so
-    # the drill and the dashboard cannot disagree about what is in scope. Derived
-    # specs keep the prefix/CTE/exclude derive-then-filter path.
-    authored_programs = spec.composition.programs
+    # Both authored and derived specs scope the hero pathway by their PORTFOLIO (only_tops) — the same
+    # program set in_scope/relevant_tops use — so the drill and the dashboard cannot disagree about what
+    # is in scope. Authored: the hand-picked composition.programs; derived: the sector's home_sector
+    # portfolio (Sector.home_programs / SCOPES). Only a spec with neither (none today) falls back to the
+    # legacy prefix/CTE/exclude derive-then-filter path.
+    if spec.composition.programs is not None:
+        portfolio: tuple[str, ...] | None = spec.composition.programs
+    elif spec.sector_id is not None:
+        portfolio = tuple(sorted(SECTORS[spec.sector_id].home_programs))
+    else:
+        portfolio = None
     crosswalk = _gather_curriculum_crosswalk(
         taught_college, soc,
-        top_prefix=(None if authored_programs is not None
+        top_prefix=(None if portfolio is not None
                     else (spec.top_divisions[0] if spec.top_divisions else "")),
         union_colleges=union_colleges, cte_only=spec.cte_only,
-        exclude_tops=(None if authored_programs is not None
+        exclude_tops=(None if portfolio is not None
                       else spec.effective_program_excludes),
-        only_tops=authored_programs,
+        only_tops=portfolio,
     )
 
     report = _assemble_occupation(
