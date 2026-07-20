@@ -148,6 +148,7 @@ def _gather_curriculum_crosswalk(
     union_colleges: list[str] | None = None,
     cte_only: bool = False,
     exclude_tops: frozenset[str] | set[str] | None = None,
+    only_tops: frozenset[str] | set[str] | tuple[str, ...] | None = None,
 ) -> dict:
     """Build the TOP6 × CIP × SOC pathway data for the report's hero
     visualization. Renders the institutional crosswalk chain in three
@@ -193,6 +194,13 @@ def _gather_curriculum_crosswalk(
     programs whose crosswalk link is category-true but whose employment flows
     run to other industry verticals. Default None ⇒ per-college reports are
     byte-identical.
+
+    `only_tops` is the AUTHORED scope — the supply-side twin of
+    composition.programs. When set, the prep universe is intersected directly
+    with this allowlist and it is the SOLE scope authority: the top_prefix / CTE
+    / exclude derive-then-filter path is bypassed (a hand-picked program set is a
+    selection, never a derivation). Default None ⇒ derived specs keep the
+    prefix/CTE/exclude scoping. See research/architecture/sector-membership-authority.md.
 
     Returns a dict shaped for the OpportunityReport `curriculum_crosswalk`
     field — see partnerships.models.CurriculumCrosswalk.
@@ -288,6 +296,14 @@ def _gather_curriculum_crosswalk(
     # build_opportunity_report — which gates the curriculum accordion and the
     # student pipeline — all narrow to this division. Default None ⇒ the full
     # faithful crosswalk, so the per-(college, SOC) report is unchanged.
+    if only_tops is not None:
+        # Authored scope (composition.programs): the allowlist IS the program
+        # universe — intersect directly and bypass the derive-then-filter path
+        # below (top_prefix / exclude / CTE-family), so a hand-picked set is never
+        # re-derived or silently re-filtered. See sector-membership-authority.md.
+        allow = set(only_tops)
+        global_top6 &= allow
+        taught_top6 &= allow
     if top_prefix:
         global_top6 = {t for t in global_top6 if t.startswith(top_prefix)}
         taught_top6 = {t for t in taught_top6 if t.startswith(top_prefix)}
@@ -296,7 +312,7 @@ def _gather_curriculum_crosswalk(
         # as top_prefix, so the whole report scopes consistently.
         global_top6 -= set(exclude_tops)
         taught_top6 -= set(exclude_tops)
-    if cte_only:
+    if cte_only and only_tops is None:
         # Restrict to CTE (career-technical) TOP families per the CCCCO PCAH,
         # dropping transfer/academic ones (the SVAMP workforce scope). Uses the
         # family-level test so newer TOP6 codes missing from the PCAH file but

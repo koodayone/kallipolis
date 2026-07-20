@@ -393,12 +393,18 @@ _AM_EXCLUDED_TOPS = frozenset({
     "094600",  # Environmental Control Technology (HVAC)
     "094800",  # Automotive Technology
 })
-# SVAMP's HAND-PICKED program set (the supply-side twin of _AM_SOCS). These are exactly the
-# feeders the derived-then-charter path produced today (byte-identical), now stated directly as
-# the authored Composition.programs. Every one crosswalks to ≥1 _AM_SOC (validate-coherent).
+# SVAMP's PROGRAM PORTFOLIO — the supply-side twin of _AM_SOCS, stated directly as the authored
+# Composition.programs. The vocational (is_vocational) programs whose curriculum crosswalks to
+# >=1 _AM_SOC, minus the charter drops (Automotive / HVAC / Biotech). This is the PORTFOLIO (what
+# the sector trains for), NOT the currently-active subset: the awards gate (relevant_tops) narrows
+# it to the ~10 programs with a member-college completer for the dashboard, so portfolio (curation)
+# and supply-activity (data) stay cleanly separate. Byte-identical to the original is_vocational-
+# derived scope — freezing the list simply states it, so authored SVAMP no longer re-derives its
+# program set from is_vocational ∩ crosswalk ∩ excludes on every read.
 _AM_PROGRAMS: tuple[str, ...] = (
-    "092400", "093400", "093500", "094500", "094610",
-    "095200", "095420", "095600", "095630", "095690",
+    "092400", "093400", "093410", "093420", "093430", "093440", "093460", "093470",
+    "093480", "093500", "094300", "094500", "094610", "095050", "095200", "095420",
+    "095600", "095630", "095650", "095670", "095690", "095900", "099900",
 )
 
 
