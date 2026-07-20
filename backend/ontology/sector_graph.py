@@ -164,7 +164,7 @@ def load(driver=None) -> dict:
         # Compositions — one node per AUTHORED instance, bootstrapped from the spec (SVAMP today).
         for spec in routable_specs():
             comp = spec.composition
-            if not comp.is_authored and not comp.program_excludes:
+            if not comp.is_authored:
                 continue
             s.run("MERGE (c:Composition {id: $id}) SET c.member = $member, c.sector = $sector",
                   id=spec.id, member=spec.id, sector=spec.sector)
@@ -172,10 +172,6 @@ def load(driver=None) -> dict:
                 s.run("MATCH (c:Composition {id: $id}) UNWIND $socs AS soc "
                       "MATCH (o:Occupation {soc_code: soc}) MERGE (c)-[:INCLUDES]->(o)",
                       id=spec.id, socs=list(comp.occupations))
-            if comp.program_excludes:
-                s.run("MATCH (c:Composition {id: $id}) UNWIND $tops AS t "
-                      "MATCH (pf:ProgramFamily {top6: t}) MERGE (c)-[:EXCLUDES]->(pf)",
-                      id=spec.id, tops=list(comp.program_excludes))
 
     return counts(driver)
 
@@ -237,11 +233,6 @@ def reconcile(driver=None) -> list[str]:
                 want_inc = set(comp.occupations) & have_occ
                 if want_inc != got_inc:
                     diffs.append(f"INCLUDES[{spec.id}]: {sorted(got_inc ^ want_inc)}")
-            if comp.program_excludes:
-                got_exc = {r["x"] for r in s.run(
-                    "MATCH (:Composition {id: $id})-[:EXCLUDES]->(pf) RETURN pf.top6 AS x", id=spec.id)}
-                if set(comp.program_excludes) != got_exc:
-                    diffs.append(f"EXCLUDES[{spec.id}]: {sorted(set(comp.program_excludes) ^ got_exc)}")
     if pending:
         diffs.append(f"pending_hollow: {pending} sector-occupation memberships await demand-less Occupation nodes (3b)")
     return diffs
