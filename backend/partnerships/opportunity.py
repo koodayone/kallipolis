@@ -140,16 +140,13 @@ def _gather_partnership_opportunities(
         rows = session.run("""
             MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)
                   <-[:IN_MARKET]-(emp:Employer)-[h:HIRES_FOR]->(occ:Occupation {soc_code: $soc})
-            OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
-            WITH emp, h.pct_total AS industry_share, count(DISTINCT course) AS aligned_course_count
             RETURN emp.name AS name,
                    emp.sector AS sector,
                    COALESCE(emp.swp_sectors, []) AS swp_sectors,
                    emp.description AS description,
                    emp.website AS website,
                    emp.naics4 AS naics4,
-                   industry_share,
-                   aligned_course_count
+                   h.pct_total AS industry_share
         """, college=college, soc=soc_code).data()
 
     employers = [
@@ -162,14 +159,11 @@ def _gather_partnership_opportunities(
             naics4=r.get("naics4"),
             naics_title=naics_titles.get(r.get("naics4")) if r.get("naics4") else None,
             industry_share=r.get("industry_share"),
-            aligned_course_count=r.get("aligned_course_count", 0),
         )
         for r in rows
     ]
 
-    employers.sort(
-        key=lambda e: (-(e.industry_share or 0.0), -(e.aligned_course_count or 0), e.name)
-    )
+    employers.sort(key=lambda e: (-(e.industry_share or 0.0), e.name))
     return employers
 
 
