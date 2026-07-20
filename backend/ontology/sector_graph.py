@@ -65,16 +65,31 @@ def home_sector_by_top6() -> dict[str, str]:
             if name in _DATAVISTA_TO_SID}
 
 
+_home_by_sid_cache: dict[str, set[str]] | None = None
+
+
+def _home_programs_by_sid() -> dict[str, set[str]]:
+    """{sid → its home-classified program families}. The CCCCO PCAH "TOP Codes to Sectors" classification
+    (``home_sector_by_top6``) VERBATIM — the program→sector source of truth, no second gate. Cached."""
+    global _home_by_sid_cache
+    if _home_by_sid_cache is None:
+        m: dict[str, set[str]] = {}
+        for t, sid in home_sector_by_top6().items():
+            m.setdefault(sid, set()).add(t)
+        _home_by_sid_cache = m
+    return _home_by_sid_cache
+
+
 def sector_scopes(sid: str) -> set[str]:
-    """The sector's program membership = ``vocational`` families that cross-walk to one of the sector's
-    occupations, minus the sector's crosswalk-noise (``excluded_tops``), minus the home-division gate.
-    Member- and awards-independent — the canonical sector boundary that ``in_scope`` + ``relevant_tops``
-    derive per request today. This is the one place the SCOPES edge-set is defined; 3b reads it from the graph."""
-    sec = SECTORS[sid]
-    socs = set(sec.socs)
-    hd = sec.home_divisions
-    reach = {t for t, ss in top6_to_soc(list(_load_vocational_top6())).items() if ss & socs}
-    return {t for t in reach if t not in sec.excluded_tops and (not hd or t[:2] in hd)}
+    """The sector's program membership (S_tops) = its **home_sector portfolio**: the program families the
+    CCCCO PCAH "TOP Codes to Sectors" publication CLASSIFIES as belonging to this sector, read verbatim
+    from that source of truth. Membership is CHOSEN by that authority, not derived from the crosswalk — a
+    program *belongs* to the sector by classification; the crosswalk only says which occupations it *feeds*
+    (``CROSSWALKS_TO`` / ``relevant_tops`` restrict this portfolio to the actual feeders ``R``). This
+    retires the derive-then-exclude path (``is_vocational ∩ crosswalk ∩ ¬excluded_tops ∩ home_div``) and
+    its ``excluded_tops`` / ``home_divisions`` / ≥2-sector machinery. The one place the SCOPES edge-set is
+    defined; ``load`` materializes it, ``sector_covers``'s sibling on the program axis."""
+    return set(_home_programs_by_sid().get(sid, set()))
 
 
 _sector_covers_cache: dict[str, set[str]] | None = None

@@ -153,6 +153,11 @@ class LandscapeSpec:
     # None for the curated AM instances (no SOC filtering). See landscape_for.
     soc_rule: SectorRule | None = None
 
+    # The sector this instance draws its membership from (Sector.id). For a DERIVED spec it is the
+    # authority behind both axes — COVERS (socs) and SCOPES (in_scope's home_programs portfolio). An
+    # authored spec (SVAMP) scopes via its Composition instead, so this is only its provenance tag.
+    sector_id: str | None = None
+
     # The per-member Composition — the authored narrowing (occupation subset + charter). Default = empty
     # (derived; what most members use). SVAMP fills it in. The engine reads member scope through this; today
     # its ``program_excludes`` MIRRORS the legacy charter in ``excluded_tops`` so the migration is byte-
@@ -206,33 +211,25 @@ class LandscapeSpec:
         return frozenset(self.excluded_tops) | self.composition.program_excludes
 
     def in_scope(self, top6: str | None) -> bool:
-        """Whether a TOP6 is in this instance's scoped program universe.
+        """Whether a TOP6 is in this instance's scoped program universe (S_tops) — membership is CHOSEN,
+        never derived from the crosswalk (which only says which occupations a program feeds).
 
-        Two modes:
-        - vocational=True (sector-derived instances): the authoritative
-          TOP6-exact CTE gate is_vocational (CCCCO Taxonomy of Programs 7th Ed
-          vocational asterisk), minus any mandate exclusions. No division
-          restriction — the sector's SOC set is the anchor and relevant_tops
-          intersects it with the crosswalk-reachable feeders.
-        - vocational=False (curated AM instances, e.g. SVAMP): the legacy
-          predicate — in a configured TOP division, CTE per the looser
-          family-level test when cte_only, minus mandate exclusions. Thin alias
-          for svamp.is_svamp_top.
+        Two modes, one shape (a portfolio the crosswalk later restricts to feeders in relevant_tops):
+        - AUTHORED (composition.programs set, e.g. SVAMP): the hand-picked program portfolio.
+        - DERIVED (vocational=True): the sector's home_sector portfolio (the CCCCO PCAH classification,
+          Sector.home_programs / SCOPES) — replaces the old is_vocational ∩ ¬excluded_tops ∩ home_div
+          derive-then-exclude gate.
+
+        The legacy division predicate (vocational=False) is dead — no live spec uses it.
         """
         if not top6:
             return False
-        # Hand-picked program set (authored): the Composition IS the feeder universe —
-        # no crosswalk-derivation, no excludes/home-division gate. `validate` guarantees
-        # it is a subset of the vocational universe. This is the supply-side twin of the
-        # authored `occupations`; see research/architecture/sector-membership-authority.md.
         if self.composition.programs is not None:
             return top6 in self.composition.programs
         if self.vocational:
-            return (
-                is_vocational(top6)
-                and top6 not in self.effective_program_excludes
-                and (not self.home_divisions or top6[:2] in self.home_divisions)
-            )
+            # Derived: membership in the sector's home_sector portfolio (the SCOPES authority). `sector_id`
+            # is set for every derived spec (landscape_for); a spec without one has no derived scope.
+            return self.sector_id is not None and top6 in SECTORS[self.sector_id].home_programs
         return (
             any(top6.startswith(d) for d in self.top_divisions)
             and top6 not in self.effective_program_excludes
@@ -364,9 +361,10 @@ def landscape_for(
         id=f"{member.id}-{sector.id}",
         colleges=member.colleges,
         socs=sector.socs,
-        top_divisions=(),  # unused in vocational mode
-        excluded_tops=sector.excluded_tops,  # sector-level crosswalk-noise drops
-        home_divisions=sector.home_divisions,  # TOP2 home-division gate (e.g. Health=12)
+        sector_id=sector.id,                 # the membership authority for BOTH axes (COVERS + SCOPES)
+        top_divisions=(),  # legacy, unused (derived in_scope reads the home_sector portfolio); P4 removes
+        excluded_tops=sector.excluded_tops,  # legacy, unused by in_scope now; retained until P4 cleanup
+        home_divisions=sector.home_divisions,  # legacy, unused by in_scope now; retained until P4 cleanup
         soc_rule=sector.rule,                # sector-level SOC curation (resolve())
         vocational=True,
         published=published,
@@ -423,9 +421,10 @@ SVAMP_SPEC = LandscapeSpec(
         "Ohlone College",
     ),
     socs=_AM_SOCS,
+    sector_id="adm",  # provenance: SVAMP is an Advanced Manufacturing instance (it scopes via its Composition)
     # The derived-spec scope fields are EMPTY — SVAMP's whole program scope is the Composition. They are
     # passed only because the dataclass still requires them for derived specs (landscape_for), which is what
-    # keeps them mandatory there (a default-empty would be a silent-wrong-scope footgun); P2 retires the pair.
+    # keeps them mandatory there (a default-empty would be a silent-wrong-scope footgun); P4 retires the pair.
     top_divisions=(),
     excluded_tops=frozenset(),
     sector="Advanced Manufacturing",

@@ -113,6 +113,17 @@ class Sector:
         return _load_sector_socs().get(self.id, ())
 
     @property
+    def home_programs(self) -> frozenset[str]:
+        """The sector's program membership (S_tops) — the vocational program families the CCCCO PCAH
+        publication CLASSIFIES as home to this sector. The program-axis twin of `socs`/COVERS: chosen by
+        authority, read from the graph's SCOPES edges (via `sector_graph.sector_scopes`, completeness-gated
+        with a source fallback), never derived from the crosswalk. `in_scope` reads this for a derived spec;
+        `relevant_tops` then restricts it to the actual feeders via the crosswalk. Retires the old
+        `excluded_tops` / `home_divisions` derive-then-exclude scope."""
+        from ontology.sector_graph import sector_scopes
+        return frozenset(sector_scopes(self.id))
+
+    @property
     def addressable_socs(self) -> tuple[str, ...]:
         """The SWP-addressable subset of the sector's occupations: those with a CTE
         crosswalk pathway (reachable from a PCAH-CTE TOP via TOP→CIP→SOC). The
