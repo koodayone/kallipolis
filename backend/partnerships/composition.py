@@ -27,9 +27,14 @@ class Composition:
 
     # None → derived by the lenses; a tuple → an explicit subset of the sector's occupation membership.
     occupations: Optional[tuple[str, ...]] = None
-    # Charter subtraction: grounded programs the member sets outside its scope.
+    # None → derived (home_sector / SCOPES); a tuple → the member's HAND-PICKED program set (an
+    # explicit subset of the vocational universe). The supply-side twin of ``occupations``: when set,
+    # it IS the feeder universe — no crosswalk-derivation, no excludes/includes. See
+    # research/architecture/sector-membership-authority.md.
+    programs: Optional[tuple[str, ...]] = None
+    # LEGACY (retiring): charter subtraction/addition from a crosswalk-derived feeder set. Superseded by
+    # ``programs`` (hand-pick both), which subsumes both (don't list = exclude; list = include).
     program_excludes: frozenset[str] = frozenset()
-    # Reserved (empty today): grounded programs the member adds back within the vocational universe.
     program_includes: frozenset[str] = frozenset()
 
     @property
@@ -55,7 +60,10 @@ def validate(comp: Composition, *, membership: Iterable[str], vocational_univers
         if stray:
             raise ScopeError(
                 f"authored occupations must be a subset of the sector's membership; not members: {stray}")
-    for label, sel in (("excludes", comp.program_excludes), ("includes", comp.program_includes)):
+    selections = [("excludes", comp.program_excludes), ("includes", comp.program_includes)]
+    if comp.programs is not None:
+        selections.append(("programs", comp.programs))
+    for label, sel in selections:
         stray = sorted(set(sel) - voc)
         if stray:
             raise ScopeError(

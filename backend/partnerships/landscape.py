@@ -221,6 +221,12 @@ class LandscapeSpec:
         """
         if not top6:
             return False
+        # Hand-picked program set (authored): the Composition IS the feeder universe —
+        # no crosswalk-derivation, no excludes/home-division gate. `validate` guarantees
+        # it is a subset of the vocational universe. This is the supply-side twin of the
+        # authored `occupations`; see research/architecture/sector-membership-authority.md.
+        if self.composition.programs is not None:
+            return top6 in self.composition.programs
         if self.vocational:
             return (
                 is_vocational(top6)
@@ -387,6 +393,13 @@ _AM_EXCLUDED_TOPS = frozenset({
     "094600",  # Environmental Control Technology (HVAC)
     "094800",  # Automotive Technology
 })
+# SVAMP's HAND-PICKED program set (the supply-side twin of _AM_SOCS). These are exactly the
+# feeders the derived-then-charter path produced today (byte-identical), now stated directly as
+# the authored Composition.programs. Every one crosswalks to ≥1 _AM_SOC (validate-coherent).
+_AM_PROGRAMS: tuple[str, ...] = (
+    "092400", "093400", "093500", "094500", "094610",
+    "095200", "095420", "095600", "095630", "095690",
+)
 
 
 # ── Instances ─────────────────────────────────────────────────────────────
@@ -419,7 +432,7 @@ SVAMP_SPEC = LandscapeSpec(
     vocational=True,
     soc_rule=SECTORS["adm"].rule,
     home_divisions=SECTORS["adm"].home_divisions,  # AM has none today (uses excluded_tops); derived so it can't drift
-    composition=Composition(occupations=_AM_SOCS, program_excludes=_AM_EXCLUDED_TOPS | {"043000"}),
+    composition=Composition(occupations=_AM_SOCS, programs=_AM_PROGRAMS, program_excludes=_AM_EXCLUDED_TOPS | {"043000"}),
 )
 
 # Instance #2+: the SMCCD member set's sector views — a `member × sector` row,

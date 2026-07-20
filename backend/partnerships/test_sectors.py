@@ -147,11 +147,15 @@ class TestLandscapeComposition:
         assert REGISTRY["smccd-adm"].published is True
         assert REGISTRY["smccd-biotech"].published is True
 
-    def test_in_scope_vocational_vs_division(self):
+    def test_in_scope_vocational_vs_handpicked(self):
         from partnerships.landscape import REGISTRY
+        # Derived (smccd-biotech): in_scope is the authoritative is_vocational gate.
         bio = REGISTRY["smccd-biotech"]
         assert bio.in_scope("043000") is True   # Biotechnology — vocational
         assert bio.in_scope("040100") is False  # Biology — transfer, excluded
+        # Authored (SVAMP): in_scope IS membership in the hand-picked Composition.programs —
+        # not a division/CTE derivation. A div-09 CTE program that SVAMP didn't hand-pick is out.
         svamp = REGISTRY["svamp"]
-        assert svamp.in_scope("095500") is True   # div 09 CTE
-        assert svamp.in_scope("043000") is False  # not div 09
+        assert svamp.in_scope("092400") is True   # a hand-picked SVAMP program
+        assert svamp.in_scope("095500") is False  # div 09 CTE but NOT hand-picked
+        assert svamp.in_scope("043000") is False  # not hand-picked
