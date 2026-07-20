@@ -59,15 +59,17 @@ def test_frozen_is_hashable():
 
 
 def test_svamp_registered_composition_is_authored_and_valid():
-    """The one live author today: SVAMP's Composition must be authored and pass the guardrail against the
-    real AM membership + vocational universe — its 12 ⊆ the sector's 49, its charter ⊆ vocational programs."""
+    """The one live author today: SVAMP hand-picks BOTH sides and passes the guardrail against the real AM
+    membership + vocational universe — its 12 occupations ⊆ the sector's 49, its 23-program portfolio ⊆ the
+    vocational universe. No program_excludes: a hand-pick is a selection, so there is nothing to subtract."""
     from ontology.crosswalks import _load_vocational_top6
-    from partnerships.landscape import SVAMP_SPEC
+    from partnerships.landscape import SVAMP_SPEC, _AM_PROGRAMS
     from partnerships.sectors import SECTORS
 
     comp = SVAMP_SPEC.composition
-    assert comp.is_authored                                    # SVAMP hand-picks its occupations
-    assert comp.program_excludes == frozenset({"094600", "094800", "043000"})   # charter: HVAC + Auto + Biotech
+    assert comp.is_authored                          # hand-picked occupations
+    assert comp.programs == _AM_PROGRAMS             # ...and hand-picked programs (the portfolio) — both sides
+    assert comp.program_excludes == frozenset()      # selection, not exclusion — no charter to subtract
     validate(comp, membership=SECTORS["adm"].socs, vocational_universe=_load_vocational_top6())
 
 

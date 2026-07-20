@@ -11,18 +11,15 @@ THE anchoring invariant — supply and demand are owned by different axes:
     across those SOCs into a per-program demand or gap number — that would
     double-count. There is deliberately no gap field in this surface.
 
-Scope = the SVAMP program universe: every TOP6 in DIVISION 09 (Engineering &
-Industrial Technologies — see svamp.SVAMP_TOP_DIVISION) whose TOP-CIP-SOC
-crosswalk intersects the twelve SVAMP SOCs, minus the director's-mandate
-exclusions (svamp.SVAMP_MANDATE_EXCLUDED_TOPS — division-09 programs whose
-employment flows run to other industry verticals). The 09 scope is the
-consortium's programmatic domain per the SVAMP director — a categorical
-division filter applied on top of the faithful crosswalk (the crosswalk itself
-is never edited), so non-engineering feeders it legitimately links (e.g.
-Commercial Music → 17-3029) fall out of scope rather than being hand-curated
-away; the mandate exclusions are the same authority refining its own scope
-where the division proxy over-includes. Reuses landscape_build.py's
-scope constants/helpers, the Program (TOP6) AWARDED/ENROLLED graph reads,
+Scope = the SVAMP program universe: for the authored SVAMP spec that is its
+hand-picked portfolio (composition.programs) — the TOP6s the consortium curates
+as its Advanced Manufacturing scope, restricted to those the TOP-CIP-SOC
+crosswalk links to the twelve SVAMP SOCs. It is a SELECTION, not a division/CTE
+derivation: feeders the crosswalk legitimately links but that sit outside the
+portfolio (e.g. Commercial Music → 17-3029, HVAC/Automotive) simply aren't in
+it — the crosswalk itself is never edited (no per-edge curation). Derived specs
+(smccd/baccc) instead scope by the is_vocational gate. Reuses landscape_build.py's
+helpers, the Program (TOP6) AWARDED/ENROLLED graph reads,
 get_wage_outcomes (TOP6-grain statewide), and the TOP-CIP-SOC crosswalk in
 ontology.crosswalks.
 """

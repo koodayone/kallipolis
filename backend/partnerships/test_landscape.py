@@ -83,25 +83,26 @@ def test_published_spec_routes_regardless_of_flag(monkeypatch):
     assert pub.id in {s.id for s in routable_specs()}
 
 
-def test_svamp_program_scope_derives_from_am_sector():
-    """SVAMP is member×sector + Composition: its program-scope universe DERIVES from the AM sector, not a
-    hand-copy, so it can't drift from /smccd-adm. Regression guard for the crosswalk-noise leak — IT (070100…)
-    and Commercial Music (100500) bled into Advanced Manufacturing when SVAMP's cutover to vocational=True
-    dropped its division wall without picking up the sector's audited noise drops."""
-    from partnerships.landscape import SVAMP_SPEC
+def test_svamp_program_scope_is_handpicked_portfolio():
+    """SVAMP is AUTHORED: its program-scope universe IS the hand-picked Composition.programs (the
+    portfolio) — a selection, not a derive-then-exclude. It carries none of the derived-spec scope
+    fields. Regression guard for the crosswalk-noise leak: IT (070100…) and Commercial Music (100500)
+    must not appear, and the charter (HVAC/Auto/Biotech) stays out — not because a sector excludes
+    them, but because they simply aren't in the portfolio."""
+    from partnerships.landscape import SVAMP_SPEC, _AM_PROGRAMS
     from partnerships.sectors import SECTORS
     adm = SECTORS["adm"]
-    # Sector-scope fields come from the sector (one birthplace), never a literal re-listing.
-    assert SVAMP_SPEC.excluded_tops == adm.excluded_tops
-    assert SVAMP_SPEC.home_divisions == adm.home_divisions
-    # The effective out-of-scope set = the sector's crosswalk-noise ∪ SVAMP's charter (HVAC/Auto/Biotech).
-    assert SVAMP_SPEC.effective_program_excludes == (
-        frozenset(adm.excluded_tops) | frozenset({"094600", "094800", "043000"})
-    )
+    # Scope == the authored portfolio, exactly. in_scope_tops is that set (post the in_scope gate,
+    # which for an authored spec is membership in composition.programs).
+    assert SVAMP_SPEC.composition.programs == _AM_PROGRAMS
     scope = set(SVAMP_SPEC.in_scope_tops())
-    # No audited AM crosswalk-noise survives the scope gate (the leak).
+    assert scope == set(_AM_PROGRAMS)
+    # No audited AM crosswalk-noise is in the portfolio (the leak stays closed).
     assert not (scope & adm.excluded_tops), sorted(scope & adm.excluded_tops)
-    # The charter still stays out; core AM stays in.
-    assert not SVAMP_SPEC.in_scope("094600")   # HVAC (charter)
-    assert not SVAMP_SPEC.in_scope("094800")   # Automotive (charter)
-    assert SVAMP_SPEC.in_scope("095630")       # Machining — core AM
+    # SVAMP no longer inherits the derived-spec scope fields — the Composition is self-contained.
+    assert SVAMP_SPEC.excluded_tops == frozenset()
+    assert SVAMP_SPEC.top_divisions == ()
+    # The charter stays out; core AM stays in.
+    assert not SVAMP_SPEC.in_scope("094600")   # HVAC — not hand-picked
+    assert not SVAMP_SPEC.in_scope("094800")   # Automotive — not hand-picked
+    assert SVAMP_SPEC.in_scope("095630")       # Machining — core AM, in the portfolio

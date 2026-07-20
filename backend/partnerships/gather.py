@@ -190,10 +190,10 @@ def _gather_curriculum_crosswalk(
     workforce scope). Default False ⇒ per-college reports are byte-identical.
 
     `exclude_tops` optionally drops named TOP6 codes from the prep universe —
-    the SVAMP director's-mandate exclusions (svamp.SVAMP_MANDATE_EXCLUDED_TOPS),
-    programs whose crosswalk link is category-true but whose employment flows
-    run to other industry verticals. Default None ⇒ per-college reports are
-    byte-identical.
+    a derived spec's crosswalk-noise drops, programs whose crosswalk link is
+    category-true but whose employment flows run to other industry verticals.
+    Default None ⇒ per-college reports are byte-identical. (Authored specs use
+    `only_tops` instead — the hand-pick is the scope, so nothing to subtract.)
 
     `only_tops` is the AUTHORED scope — the supply-side twin of
     composition.programs. When set, the prep universe is intersected directly
