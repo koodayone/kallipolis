@@ -51,9 +51,9 @@ class TestSectorRegistry:
             assert rule.non_empty_only            # the activity gate (reachable_only is OFF)
             assert rule.min_wage == 50_000        # median-wage floor
             assert rule.min_colleges == 2
-        # Per-sector excluded_tops drop crosswalk-noise feeders. 070810 Computer
-        # Networking (IT/CIS) is a noise feeder for ecu.
-        assert "070810" in SECTORS["ecu"].excluded_tops
+        # Membership is by the PCAH home classification: 070810 Computer Networking (IT/CIS) is not
+        # home-classified to ecu, so it is out of scope even though the crosswalk may reach an ecu SOC.
+        assert "070810" not in SECTORS["ecu"].home_programs
         assert REGISTRY["smccd-ecu"].in_scope("070810") is False
         assert REGISTRY["smccd-ecu"].soc_rule.active
 

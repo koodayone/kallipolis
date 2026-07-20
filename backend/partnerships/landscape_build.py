@@ -286,12 +286,11 @@ def build_landscape(spec: LandscapeSpec) -> Landscape:
         #    edge — the OCCUPATION_PIPELINE.top_codes read was dropped (it was the
         #    course-routed subset of `feeding`, so its union added nothing the
         #    crosswalk feeders don't already cover; golden-snapshot verified).
-        # Program-scope filter for the per-cell course count. Vocational
-        # instances (sector-derived) scope to the authoritative CTE TOP set;
-        # division instances (SVAMP, SMCCD-AM) keep the legacy division-prefix
-        # filter. The $vocational boolean short-circuits, so the division path
-        # is byte-identical to before (golden-snapshot invariant preserved).
-        scope_tops = sorted(_load_vocational_top6()) if spec.vocational else []
+        # Program-scope filter for the per-cell course count: the aligned courses are counted
+        # within the authoritative CTE (is_vocational) TOP set. This is the coarse "aligned
+        # courses" metric, not the portfolio supply — the per-cell supply/programs route off the
+        # SOC's crosswalk feeders (relevant_tops), not off this count.
+        scope_tops = sorted(_load_vocational_top6())
         align_by_college: dict[str, dict[str, dict]] = {}
         for college in spec.colleges:
             rows = session.run(
@@ -300,18 +299,12 @@ def build_landscape(spec: LandscapeSpec) -> Landscape:
                       -[:DEMANDS]->(occ:Occupation)
                 WHERE occ.soc_code IN $socs
                 OPTIONAL MATCH (c09:Course {college: $college})-[:PREPARES_FOR]->(occ)
-                      WHERE ( $vocational AND c09.top_code IN $scope_tops )
-                         OR ( NOT $vocational
-                              AND any(d IN $top_divisions WHERE c09.top_code STARTS WITH d)
-                              AND NOT c09.top_code IN $excluded )
+                      WHERE c09.top_code IN $scope_tops
                 WITH occ, count(DISTINCT c09) AS course_count_09
                 RETURN occ.soc_code AS soc_code,
                        course_count_09 AS course_count
                 """,
-                college=college, socs=list(spec.socs),
-                vocational=spec.vocational, scope_tops=scope_tops,
-                top_divisions=list(spec.top_divisions),
-                excluded=sorted(spec.excluded_tops),
+                college=college, socs=list(spec.socs), scope_tops=scope_tops,
             ).data()
             align_by_college[college] = {
                 r["soc_code"]: {

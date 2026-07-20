@@ -194,7 +194,7 @@ def _derived_spec():
     # soc_rule active + default Composition (occupations=None → is_authored False) = a derived spec.
     return LandscapeSpec(
         id="__derived_test__", colleges=("De Anza College", "Foothill College"),
-        socs=_DERIVED_SOCS, top_divisions=("09",), excluded_tops=frozenset(),
+        socs=_DERIVED_SOCS, sector_id="adm", vocational=True,
         sector="Advanced Manufacturing", name="Test", accent="#000000",
         soc_rule=SectorRule(min_openings=239, min_wage=54_081),
     )

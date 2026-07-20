@@ -525,21 +525,16 @@ def build_landscape_occupation(
     # Both authored and derived specs scope the hero pathway by their PORTFOLIO (only_tops) — the same
     # program set in_scope/relevant_tops use — so the drill and the dashboard cannot disagree about what
     # is in scope. Authored: the hand-picked composition.programs; derived: the sector's home_sector
-    # portfolio (Sector.home_programs / SCOPES). Only a spec with neither (none today) falls back to the
-    # legacy prefix/CTE/exclude derive-then-filter path.
+    # portfolio (Sector.home_programs / SCOPES). Every live spec is one or the other.
     if spec.composition.programs is not None:
         portfolio: tuple[str, ...] | None = spec.composition.programs
     elif spec.sector_id is not None:
         portfolio = tuple(sorted(SECTORS[spec.sector_id].home_programs))
     else:
-        portfolio = None
+        portfolio = None  # no portfolio → unscoped gather (defensive; no live spec hits this)
     crosswalk = _gather_curriculum_crosswalk(
         taught_college, soc,
-        top_prefix=(None if portfolio is not None
-                    else (spec.top_divisions[0] if spec.top_divisions else "")),
         union_colleges=union_colleges, cte_only=spec.cte_only,
-        exclude_tops=(None if portfolio is not None
-                      else spec.effective_program_excludes),
         only_tops=portfolio,
     )
 
