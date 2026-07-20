@@ -154,7 +154,10 @@ def load(driver=None) -> dict:
         s.run("UNWIND $rows AS r MATCH (x:Sector {id: r.sid}), (o:Occupation {soc_code: r.soc}) "
               "MERGE (x)-[:COVERS]->(o)",
               rows=[{"sid": sid, "soc": soc} for sid, sec in SECTORS.items() for soc in sec.socs])
-        # Sector program membership (the noise-corrected boundary).
+        # Sector program membership = the home_sector portfolio. Cleared first so a change to the
+        # classification is a clean rebuild, not an additive union with stale edges (MERGE never deletes) —
+        # this is what keeps `reconcile` a faithful drift detector after the P2 read-swap.
+        s.run("MATCH (:Sector)-[r:SCOPES]->() DELETE r")
         s.run("UNWIND $rows AS r MATCH (x:Sector {id: r.sid}), (pf:ProgramFamily {top6: r.top6}) "
               "MERGE (x)-[:SCOPES]->(pf)",
               rows=[{"sid": sid, "top6": t} for sid in SECTORS for t in sector_scopes(sid)])
