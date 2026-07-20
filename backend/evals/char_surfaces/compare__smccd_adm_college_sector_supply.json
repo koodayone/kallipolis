@@ -40,7 +40,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
-      "value": 349.7,
+      "value": 71.0,
       "vintage": "Fall 2025"
      },
      "sector_supply": {
@@ -49,7 +49,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 277.7,
+      "value": 124.3,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "supply_share": {
@@ -58,73 +58,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "fraction",
-      "value": 0.1,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     }
-    }
-   },
-   {
-    "label": "De Anza College",
-    "roster": [],
-    "values": {
-     "sector_enrollment": {
-      "granularity": "institutional \u2014 a single college in the region",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled/term",
-      "value": 982.3,
-      "vintage": "Fall 2025"
-     },
-     "sector_supply": {
-      "granularity": "institutional \u2014 a single college in the region",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 250.7,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "supply_share": {
-      "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "fraction",
-      "value": 0.1,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     }
-    }
-   },
-   {
-    "label": "Foothill College",
-    "roster": [],
-    "values": {
-     "sector_enrollment": {
-      "granularity": "institutional \u2014 a single college in the region",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled/term",
-      "value": 0.0,
-      "vintage": "Fall 2025"
-     },
-     "sector_supply": {
-      "granularity": "institutional \u2014 a single college in the region",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 215.7,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "supply_share": {
-      "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "fraction",
-      "value": 0.1,
+      "value": 0.2,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
@@ -139,7 +73,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
-      "value": 324.0,
+      "value": 60.7,
       "vintage": "Fall 2025"
      },
      "sector_supply": {
@@ -148,7 +82,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 199.0,
+      "value": 111.7,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "supply_share": {
@@ -163,7 +97,7 @@
     }
    },
    {
-    "label": "City College of San Francisco",
+    "label": "Los Medanos College",
     "roster": [],
     "values": {
      "sector_enrollment": {
@@ -172,7 +106,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
-      "value": 324.3,
+      "value": 294.3,
       "vintage": "Fall 2025"
      },
      "sector_supply": {
@@ -181,40 +115,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 173.0,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "supply_share": {
-      "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "fraction",
-      "value": 0.1,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     }
-    }
-   },
-   {
-    "label": "Solano Community College",
-    "roster": [],
-    "values": {
-     "sector_enrollment": {
-      "granularity": "institutional \u2014 a single college in the region",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled/term",
-      "value": 466.0,
-      "vintage": "Fall 2025"
-     },
-     "sector_supply": {
-      "granularity": "institutional \u2014 a single college in the region",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 158.3,
+      "value": 91.3,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "supply_share": {
@@ -238,7 +139,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
-      "value": 12.7,
+      "value": 0.0,
       "vintage": "Fall 2025"
      },
      "sector_supply": {
@@ -247,7 +148,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 144.7,
+      "value": 79.7,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "supply_share": {
@@ -262,7 +163,7 @@
     }
    },
    {
-    "label": "San Jose City College",
+    "label": "Diablo Valley College",
     "roster": [],
     "values": {
      "sector_enrollment": {
@@ -271,7 +172,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "enrolled/term",
-      "value": 30.0,
+      "value": 229.0,
       "vintage": "Fall 2025"
      },
      "sector_supply": {
@@ -280,7 +181,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 127.7,
+      "value": 54.7,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "supply_share": {
@@ -290,6 +191,105 @@
       "status": "ok",
       "unit": "fraction",
       "value": 0.1,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "City College of San Francisco",
+    "roster": [],
+    "values": {
+     "sector_enrollment": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled/term",
+      "value": 92.3,
+      "vintage": "Fall 2025"
+     },
+     "sector_supply": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 47.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "supply_share": {
+      "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "fraction",
+      "value": 0.1,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "De Anza College",
+    "roster": [],
+    "values": {
+     "sector_enrollment": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled/term",
+      "value": 0.0,
+      "vintage": "Fall 2025"
+     },
+     "sector_supply": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 44.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "supply_share": {
+      "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "fraction",
+      "value": 0.1,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "Cabrillo College",
+    "roster": [],
+    "values": {
+     "sector_enrollment": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled/term",
+      "value": 88.0,
+      "vintage": "Fall 2025"
+     },
+     "sector_supply": {
+      "granularity": "institutional \u2014 a single college in the region",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 38.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "supply_share": {
+      "granularity": "a single college \u00f7 regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "fraction",
+      "value": 0.0,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }

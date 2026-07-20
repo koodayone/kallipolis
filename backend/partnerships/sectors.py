@@ -92,25 +92,23 @@ class Sector:
     # and Utilities"). Used to match a sector's regional employers. "" = no
     # employer match (the residual catch-all).
     swp_tag: str = ""
-    # TOP6 codes dropped from this sector's derived feeder universe — crosswalk
-    # artifacts that don't belong to the industry (e.g. an IT program the
-    # TOP-CIP-SOC crosswalk maps onto a catch-all SOC). Applied in
-    # LandscapeSpec.in_scope on top of the is_vocational gate.
-    excluded_tops: frozenset[str] = frozenset()
     # Declarative SOC-selection curation (demand floor / reachable / non-empty),
     # applied at build time. Default = no-op (show the full middle-skill set).
     rule: SectorRule = SectorRule()
-    # When set, the feeder universe is additionally gated to these TOP2 "home"
-    # divisions — the Taxonomy of Programs top-level industry categories (e.g.
-    # "12" = Health). A clean, self-consistent rule for sectors that map to one
-    # division; left empty (use excluded_tops curation) for the TOP-09 sectors
-    # (AM/ATL/ECU all share Engineering & Industrial Technologies, separable only
-    # at TOP4) and cross-division sectors (ICT spans Media 06 + IT 07 + Arts 10).
-    home_divisions: tuple[str, ...] = ()
 
     @property
     def socs(self) -> tuple[str, ...]:
         return _load_sector_socs().get(self.id, ())
+
+    @property
+    def home_programs(self) -> frozenset[str]:
+        """The sector's program membership (S_tops) — the program families the CCCCO PCAH publication
+        CLASSIFIES as home to this sector. The program-axis twin of `socs`/COVERS: chosen by authority,
+        read from the graph's SCOPES edges (via `sector_graph.sector_scopes`, completeness-gated with a
+        source fallback), never derived from the crosswalk. `in_scope` reads this for a derived spec;
+        `relevant_tops` then restricts it to the actual feeders via the crosswalk."""
+        from ontology.sector_graph import sector_scopes
+        return frozenset(sector_scopes(self.id))
 
     @property
     def addressable_socs(self) -> tuple[str, ...]:
@@ -151,31 +149,6 @@ _SECTOR_META: list[tuple[str, str, str]] = [
     ("retail",        "Retail, Hospitality & Tourism",          "#d06a9b"),
     ("unassigned",    "Unassigned CTE",                         "#8a8f9c"),
 ]
-
-# Per-sector TOP exclusions — crosswalk-noise feeders dropped from the derived
-# universe: a member TOP that reaches the sector through a SINGLE incidental SOC
-# AND also feeds >=2 sectors (so its real home is elsewhere). Single-sector
-# 1-SOC feeders (e.g. Nursing -> Health) are deliberately NOT excluded — they're
-# narrow-but-real programs, not cross-domain artifacts. Derived from the supply-
-# noise audit; applied in LandscapeSpec.in_scope on top of the is_vocational gate.
-# (2026-06-12: extended via a per-industry division-faithfulness audit — programs
-# from a foreign TOP division bleeding into an industry, e.g. IT into Advanced
-# Manufacturing, Vet-Tech/Wine into Health & Business, Construction into Retail.
-# Only confident cross-domain bleed was added; dual-named sectors like ICT/Digital
-# Media and Ag/Water/Environmental keep their legitimately cross-division feeders.)
-_SECTOR_EXCLUDED_TOPS: dict[str, frozenset[str]] = {
-    "adm": frozenset({"020100", "050630", "051800", "061400", "061410", "061450", "061460", "070100", "070200", "070700", "070810", "070820", "095220", "100500"}),
-    "agwet": frozenset({"092400", "094610"}),
-    "atl": frozenset({"050200", "050650", "092400", "094610", "095220", "095600", "210200"}),
-    "biotech": frozenset({"095600", "126000", "129900", "210500", "210540"}),
-    "business": frozenset({"010210", "010400", "011200", "011510", "051420", "083610", "120820", "130700", "130720", "210200", "300500"}),
-    "ecu": frozenset({"070810", "095300", "220610"}),
-    "edhd": frozenset({"120100"}),
-    "health": frozenset({"010210", "050600", "126000", "130600"}),
-    "ict": frozenset({"050900", "061450"}),
-    "public_safety": frozenset({"070100", "126000"}),
-    "retail": frozenset({"050640", "050650", "094500", "095200", "095700", "130320", "300700"}),
-}
 
 # Occupations the BACCC/COE demand data tags as "Work Experience Required:
 # 5 years or more" — promotion destinations a worker reaches AFTER a career, not
@@ -325,36 +298,11 @@ _SECTOR_SWP_TAG: dict[str, str] = {
     "retail":        "Retail, Hospitality and Tourism",
 }
 
-# Per-sector "home" TOP2 division(s) — the Taxonomy of Programs top-level industry
-# category a sector maps to (Manual, 7th Ed.). When set, the feeder universe is
-# gated to these divisions (in_scope), so the sector only draws programs the
-# manual files under its own industry. Only set where the sector maps cleanly to
-# a division — Health is TOP 12, Retail/Hospitality is TOP 13 (Family & Consumer
-# Sciences), Transport (ATL) is TOP 09 (Engineering & Industrial Technologies),
-# Business is TOP 05 (Business & Management). The TOP2 gate drops out-of-division
-# bleed (e.g. TOP-05 Business programs leaking into Transport, or Construction /
-# Paralegal / Cosmetology leaking into Business) but does NOT separate the three
-# 09-rooted sectors (AM/ATL/ECU) from each other — that still needs TOP4
-# excluded_tops, so the two mechanisms are complementary. Business's 05 gate is
-# clean (every occupation keeps a 05 feeder); ATL's 09 gate intentionally drops
-# Logisticians (13-1081), a regional-plan ATL occupation whose only feeder is
-# Business (no 09 pipeline trains logisticians). AM/ECU keep their out-of-division
-# cleanup in excluded_tops for now; ICT spans divisions (Media 06 + IT 07 + Arts
-# 10) so it has no single home.
-_SECTOR_HOME_DIV: dict[str, tuple[str, ...]] = {
-    "health": ("12",),
-    "retail": ("13",),
-    "business": ("05",),
-    "atl": ("09",),
-}
-
 SECTORS: dict[str, Sector] = {
     sid: Sector(
         id=sid, label=label, accent=accent,
         swp_tag=_SECTOR_SWP_TAG.get(sid, ""),
-        excluded_tops=_SECTOR_EXCLUDED_TOPS.get(sid, frozenset()),
         rule=_SECTOR_RULES.get(sid, _DEFAULT_RULE),
-        home_divisions=_SECTOR_HOME_DIV.get(sid, ()),
     )
     for sid, label, accent in _SECTOR_META
 }

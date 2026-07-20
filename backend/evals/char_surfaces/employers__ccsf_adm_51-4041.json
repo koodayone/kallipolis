@@ -64,7 +64,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 24.5,
+      "value": 24.4,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -73,7 +73,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 25,
+      "value": 22,
       "vintage": ""
      }
     }
@@ -88,7 +88,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 24.5,
+      "value": 24.4,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -97,7 +97,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 25,
+      "value": 22,
       "vintage": ""
      }
     }
@@ -112,7 +112,7 @@
       "source": "graph_bls",
       "status": "ok",
       "unit": "\u03a3 OES staffing share",
-      "value": 18.9,
+      "value": 18.8,
       "vintage": "BLS OEWS Industry-Occupation staffing matrix"
      },
      "occupations_hired": {
@@ -121,31 +121,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 25,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "Okeeffes Architectural",
-    "roster": [],
-    "values": {
-     "employer_relevance": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "graph_bls",
-      "status": "ok",
-      "unit": "\u03a3 OES staffing share",
-      "value": 18.4,
-      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
-     },
-     "occupations_hired": {
-      "granularity": "BLS OES",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "target SOCs",
-      "value": 14,
+      "value": 23,
       "vintage": ""
      }
     }
@@ -221,6 +197,30 @@
       "vintage": ""
      }
     }
+   },
+   {
+    "label": "Coherent",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 17.6,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 21,
+      "vintage": ""
+     }
+    }
    }
   ],
   "sorted_by": null,
@@ -231,7 +231,7 @@
     "source": "graph_bls",
     "status": "ok",
     "unit": "employers",
-    "value": 149,
+    "value": 144,
     "vintage": "BLS OEWS Industry-Occupation staffing matrix"
    },
    "shown": {

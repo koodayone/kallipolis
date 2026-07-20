@@ -332,13 +332,15 @@ def test_out_of_scope_gates_not_zero():
 
 @requires_graph
 def test_empty_member_sector_gates_not_zero():
-    """A member with no active program in a sector (SMCCD / business) must GATE with an explicit
-    marker — never a 0-readable 'no demand'. The Bay has business middle-skill demand, but this
-    member-anchored view is scoped to what SMCCD serves — and it runs no ACTIVE (recent completers
-    OR enrollment) business program — so it must SAY so, not report gap=0. (Under the active rule,
-    De Anza / retail is no longer empty: an enrolled culinary program feeds retail occupations.)"""
+    """A member with no active program in a sector (SMCCD / agriculture) must GATE with an explicit
+    marker — never a 0-readable 'no demand'. The Bay has ag/water/environmental demand, but this
+    member-anchored view is scoped to what SMCCD serves — and its peninsula colleges run no ACTIVE
+    (recent completers OR enrollment) agriculture program — so it must SAY so, not report gap=0.
+    (SMCCD / business is NO LONGER the empty example: the P2 home_sector read-swap correctly recovered
+    its Accounting / Business Administration / Real Estate programs that the old excluded_tops machinery
+    had masked — so it now reads as active, which is why this pins agriculture instead.)"""
     for fn, name in ((F.analyze_gap, "gap"), (F.analyze_coverage, "coverage")):
-        env = fn("smccd", "business")
+        env = fn("smccd", "agwet")
         g = env.licensing.gates
         assert g and g[0].marker == "unavailable" and "greenfield" in g[0].reason, name
         assert not env.data.summary, f"{name} returned zero-filled data instead of a gate"

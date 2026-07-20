@@ -63,11 +63,11 @@
    "naics4": "3329",
    "naics_title": "Other Fabricated Metal Product Manufacturing",
    "name": "MASS Precision",
-   "relevance": 24.5,
+   "relevance": 24.4,
    "sector": "Construction",
    "size_class": null,
    "size_rank": 0,
-   "soc_count": 25,
+   "soc_count": 22,
    "soc_titles": {
     "17-3012": "Electrical and Electronics Drafters",
     "17-3013": "Mechanical Drafters",
@@ -89,9 +89,6 @@
     "51-4041": "Machinists",
     "51-4081": "Multiple Machine Tool Setters, Operators, and Tenders, Metal and Plastic",
     "51-4111": "Tool and Die Makers",
-    "51-7032": "Patternmakers, Wood",
-    "51-7041": "Sawing Machine Setters, Operators, and Tenders, Wood",
-    "51-7042": "Woodworking Machine Setters, Operators, and Tenders, Except Sawing",
     "51-9161": "Computer Numerically Controlled Tool Operators",
     "51-9162": "Computer Numerically Controlled Tool Programmers"
    },
@@ -117,10 +114,7 @@
     "17-3024",
     "17-3012",
     "17-3028",
-    "49-2094",
-    "51-7042",
-    "51-7032",
-    "51-7041"
+    "49-2094"
    ],
    "website": "https://massprecision.com/"
   },
@@ -132,11 +126,11 @@
    "naics4": "3323",
    "naics_title": "Architectural and Structural Metals Manufacturing",
    "name": "Milgard Manufacturing",
-   "relevance": 24.5,
+   "relevance": 24.4,
    "sector": "Manufacturing",
    "size_class": null,
    "size_rank": 0,
-   "soc_count": 25,
+   "soc_count": 22,
    "soc_titles": {
     "17-3012": "Electrical and Electronics Drafters",
     "17-3013": "Mechanical Drafters",
@@ -158,9 +152,6 @@
     "51-4041": "Machinists",
     "51-4081": "Multiple Machine Tool Setters, Operators, and Tenders, Metal and Plastic",
     "51-4111": "Tool and Die Makers",
-    "51-7032": "Patternmakers, Wood",
-    "51-7041": "Sawing Machine Setters, Operators, and Tenders, Wood",
-    "51-7042": "Woodworking Machine Setters, Operators, and Tenders, Except Sawing",
     "51-9161": "Computer Numerically Controlled Tool Operators",
     "51-9162": "Computer Numerically Controlled Tool Programmers"
    },
@@ -186,10 +177,7 @@
     "17-3024",
     "17-3012",
     "17-3028",
-    "49-2094",
-    "51-7042",
-    "51-7032",
-    "51-7041"
+    "49-2094"
    ],
    "website": "https://www.milgard.com"
   },
@@ -201,11 +189,11 @@
    "naics4": "3334",
    "naics_title": "Ventilation, Heating, Air-Conditioning, and Commercial Refrigeration Equipment Manufacturing",
    "name": "Rheem Manufacturing",
-   "relevance": 18.9,
+   "relevance": 18.8,
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 25,
+   "soc_count": 23,
    "soc_titles": {
     "17-3012": "Electrical and Electronics Drafters",
     "17-3013": "Mechanical Drafters",
@@ -228,8 +216,6 @@
     "51-4041": "Machinists",
     "51-4081": "Multiple Machine Tool Setters, Operators, and Tenders, Metal and Plastic",
     "51-4111": "Tool and Die Makers",
-    "51-7041": "Sawing Machine Setters, Operators, and Tenders, Wood",
-    "51-7042": "Woodworking Machine Setters, Operators, and Tenders, Except Sawing",
     "51-9161": "Computer Numerically Controlled Tool Operators",
     "51-9162": "Computer Numerically Controlled Tool Programmers"
    },
@@ -256,58 +242,9 @@
     "17-3012",
     "17-3028",
     "49-2092",
-    "49-9012",
-    "51-7041",
-    "51-7042"
+    "49-9012"
    ],
    "website": "https://www.rheem.com"
-  },
-  {
-   "description": "An architectural firm likely specializing in building design and construction.",
-   "display_name": null,
-   "lat": 37.7,
-   "lng": -122.4,
-   "naics4": "3219",
-   "naics_title": "Other Wood Product Manufacturing",
-   "name": "Okeeffes Architectural",
-   "relevance": 18.4,
-   "sector": "Manufacturing",
-   "size_class": "50-99 employees",
-   "size_rank": 5,
-   "soc_count": 14,
-   "soc_titles": {
-    "17-3013": "Mechanical Drafters",
-    "17-3026": "Industrial Engineering Technologists and Technicians",
-    "49-9041": "Industrial Machinery Mechanics",
-    "49-9043": "Maintenance Workers, Machinery",
-    "49-9044": "Millwrights",
-    "51-4031": "Cutting, Punching, and Press Machine Setters, Operators, and Tenders, Metal and Plastic",
-    "51-4035": "Milling and Planing Machine Setters, Operators, and Tenders, Metal and Plastic",
-    "51-4041": "Machinists",
-    "51-4111": "Tool and Die Makers",
-    "51-7031": "Model Makers, Wood",
-    "51-7041": "Sawing Machine Setters, Operators, and Tenders, Wood",
-    "51-7042": "Woodworking Machine Setters, Operators, and Tenders, Except Sawing",
-    "51-9161": "Computer Numerically Controlled Tool Operators",
-    "51-9162": "Computer Numerically Controlled Tool Programmers"
-   },
-   "socs": [
-    "51-7042",
-    "51-7041",
-    "49-9041",
-    "51-9161",
-    "51-4031",
-    "49-9044",
-    "51-4041",
-    "49-9043",
-    "17-3026",
-    "17-3013",
-    "51-4035",
-    "51-9162",
-    "51-4111",
-    "51-7031"
-   ],
-   "website": "https://okeeffes.com/"
   },
   {
    "description": "Arm is a global semiconductor and software design company that develops and licenses CPU, GPU, and NPU architectures and IP. It serves diverse markets including cloud and data centers, autonomous machines, mobile and PC, and embedded IoT devices, with over 350 billion Arm-based chips shipped to date.",
@@ -811,7 +748,7 @@
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 22,
+   "soc_count": 20,
    "soc_titles": {
     "17-3013": "Mechanical Drafters",
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
@@ -831,8 +768,6 @@
     "51-4041": "Machinists",
     "51-4081": "Multiple Machine Tool Setters, Operators, and Tenders, Metal and Plastic",
     "51-4111": "Tool and Die Makers",
-    "51-7041": "Sawing Machine Setters, Operators, and Tenders, Wood",
-    "51-7042": "Woodworking Machine Setters, Operators, and Tenders, Except Sawing",
     "51-9161": "Computer Numerically Controlled Tool Operators",
     "51-9162": "Computer Numerically Controlled Tool Programmers"
    },
@@ -855,9 +790,7 @@
     "17-3024",
     "51-4032",
     "51-4035",
-    "51-7042",
     "49-9044",
-    "51-7041",
     "17-3028"
    ],
    "website": "https://merrills.com/"
@@ -870,11 +803,11 @@
    "naics4": "3391",
    "naics_title": "Medical Equipment and Supplies Manufacturing",
    "name": "Artio Medical",
-   "relevance": 9.4,
+   "relevance": 9.3,
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 19,
+   "soc_count": 18,
    "soc_titles": {
     "17-3013": "Mechanical Drafters",
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
@@ -892,7 +825,6 @@
     "51-4041": "Machinists",
     "51-4081": "Multiple Machine Tool Setters, Operators, and Tenders, Metal and Plastic",
     "51-4111": "Tool and Die Makers",
-    "51-7042": "Woodworking Machine Setters, Operators, and Tenders, Except Sawing",
     "51-9161": "Computer Numerically Controlled Tool Operators",
     "51-9162": "Computer Numerically Controlled Tool Programmers"
    },
@@ -914,7 +846,6 @@
     "17-3023",
     "49-9043",
     "17-3024",
-    "51-7042",
     "49-2094"
    ],
    "website": "https://www.artiomedical.com/"
@@ -927,11 +858,11 @@
    "naics4": "3391",
    "naics_title": "Medical Equipment and Supplies Manufacturing",
    "name": "Cutera",
-   "relevance": 9.4,
+   "relevance": 9.3,
    "sector": "Manufacturing",
    "size_class": "100-249 employees",
    "size_rank": 6,
-   "soc_count": 19,
+   "soc_count": 18,
    "soc_titles": {
     "17-3013": "Mechanical Drafters",
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
@@ -949,7 +880,6 @@
     "51-4041": "Machinists",
     "51-4081": "Multiple Machine Tool Setters, Operators, and Tenders, Metal and Plastic",
     "51-4111": "Tool and Die Makers",
-    "51-7042": "Woodworking Machine Setters, Operators, and Tenders, Except Sawing",
     "51-9161": "Computer Numerically Controlled Tool Operators",
     "51-9162": "Computer Numerically Controlled Tool Programmers"
    },
@@ -971,7 +901,6 @@
     "17-3023",
     "49-9043",
     "17-3024",
-    "51-7042",
     "49-2094"
    ],
    "website": "https://cutera.com/us-en/"
@@ -984,11 +913,11 @@
    "naics4": "3391",
    "naics_title": "Medical Equipment and Supplies Manufacturing",
    "name": "Intravu",
-   "relevance": 9.4,
+   "relevance": 9.3,
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 19,
+   "soc_count": 18,
    "soc_titles": {
     "17-3013": "Mechanical Drafters",
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
@@ -1006,7 +935,6 @@
     "51-4041": "Machinists",
     "51-4081": "Multiple Machine Tool Setters, Operators, and Tenders, Metal and Plastic",
     "51-4111": "Tool and Die Makers",
-    "51-7042": "Woodworking Machine Setters, Operators, and Tenders, Except Sawing",
     "51-9161": "Computer Numerically Controlled Tool Operators",
     "51-9162": "Computer Numerically Controlled Tool Programmers"
    },
@@ -1028,7 +956,6 @@
     "17-3023",
     "49-9043",
     "17-3024",
-    "51-7042",
     "49-2094"
    ],
    "website": "https://www.intravu.com/"
@@ -1041,11 +968,11 @@
    "naics4": "3391",
    "naics_title": "Medical Equipment and Supplies Manufacturing",
    "name": "Tosoh SMD",
-   "relevance": 9.4,
+   "relevance": 9.3,
    "sector": "Manufacturing",
    "size_class": "50-99 employees",
    "size_rank": 5,
-   "soc_count": 19,
+   "soc_count": 18,
    "soc_titles": {
     "17-3013": "Mechanical Drafters",
     "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
@@ -1063,7 +990,6 @@
     "51-4041": "Machinists",
     "51-4081": "Multiple Machine Tool Setters, Operators, and Tenders, Metal and Plastic",
     "51-4111": "Tool and Die Makers",
-    "51-7042": "Woodworking Machine Setters, Operators, and Tenders, Except Sawing",
     "51-9161": "Computer Numerically Controlled Tool Operators",
     "51-9162": "Computer Numerically Controlled Tool Programmers"
    },
@@ -1085,7 +1011,6 @@
     "17-3023",
     "49-9043",
     "17-3024",
-    "51-7042",
     "49-2094"
    ],
    "website": "https://www.tosohsmd.com/"
@@ -1526,6 +1451,51 @@
     "17-3013"
    ],
    "website": "https://www.petersenprecision.com/"
+  },
+  {
+   "description": "Silicon Valley Power is a municipal electric utility serving residents and businesses in Santa Clara, California. It provides reliable electric service, manages utility accounts, and promotes sustainability through rebates for energy efficiency, electric vehicles, and solar programs.",
+   "display_name": null,
+   "lat": 37.4,
+   "lng": -122.0,
+   "naics4": "2211",
+   "naics_title": "Electric Power Generation, Transmission and Distribution",
+   "name": "Silicon Valley Power",
+   "relevance": 6.3,
+   "sector": "Construction",
+   "size_class": null,
+   "size_rank": 0,
+   "soc_count": 13,
+   "soc_titles": {
+    "17-3012": "Electrical and Electronics Drafters",
+    "17-3013": "Mechanical Drafters",
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "17-3027": "Mechanical Engineering Technologists and Technicians",
+    "17-3028": "Calibration Technologists and Technicians",
+    "49-2092": "Electric Motor, Power Tool, and Related Repairers",
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+    "49-9012": "Control and Valve Installers and Repairers, Except Mechanical Door",
+    "49-9041": "Industrial Machinery Mechanics",
+    "49-9043": "Maintenance Workers, Machinery",
+    "51-4041": "Machinists"
+   },
+   "socs": [
+    "49-9012",
+    "49-9041",
+    "17-3023",
+    "17-3012",
+    "49-2094",
+    "49-9043",
+    "49-2092",
+    "51-4041",
+    "17-3024",
+    "17-3026",
+    "17-3013",
+    "17-3028",
+    "17-3027"
+   ],
+   "website": "https://www.siliconvalleypower.com/"
   }
  ],
  "region": "Bay",
@@ -1536,5 +1506,5 @@
   "San Mateo"
  ],
  "shown": 25,
- "total": 149
+ "total": 144
 }

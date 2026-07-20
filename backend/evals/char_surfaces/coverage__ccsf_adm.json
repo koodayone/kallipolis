@@ -11,101 +11,8 @@
   "top6": null
  },
  "data": {
-  "more": {
-   "drill": {
-    "coordinate": {
-     "entity": "",
-     "lens": "coverage",
-     "member": "ccsf",
-     "member_label": "City College of San Francisco",
-     "region": "Bay",
-     "sector": "adm",
-     "sector_label": "Advanced Manufacturing",
-     "soc": null,
-     "top6": null
-    },
-    "form": "navigate",
-    "rationale": "3 more rows; re-call navigate scoped to one row to drill in."
-   },
-   "remaining": 3
-  },
+  "more": null,
   "rows": [
-   {
-    "label": "309900 Other Commercial Services",
-    "roster": [
-     {
-      "label": "City College of San Francisco",
-      "roster": [],
-      "values": {
-       "coverage": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "partial",
-        "vintage": ""
-       },
-       "projected_supply": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "completions/yr",
-        "value": 50.0,
-        "vintage": ""
-       }
-      }
-     }
-    ],
-    "values": {
-     "colleges_actively_awarding": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges (recent)",
-      "value": 1,
-      "vintage": ""
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
-      "value": 1,
-      "vintage": ""
-     },
-     "enrollment": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled",
-      "value": 0,
-      "vintage": ""
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 1,
-      "vintage": ""
-     },
-     "projected_supply": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 50.0,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     }
-    }
-   },
    {
     "label": "093400 Electronics and Electric Technology",
     "roster": [
@@ -178,234 +85,6 @@
       "status": "ok",
       "unit": "completions/yr",
       "value": 44.3,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     }
-    }
-   },
-   {
-    "label": "094800 Automotive Technology",
-    "roster": [
-     {
-      "label": "City College of San Francisco",
-      "roster": [],
-      "values": {
-       "coverage": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       },
-       "projected_supply": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "completions/yr",
-        "value": 33.7,
-        "vintage": ""
-       }
-      }
-     }
-    ],
-    "values": {
-     "colleges_actively_awarding": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges (recent)",
-      "value": 1,
-      "vintage": ""
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
-      "value": 1,
-      "vintage": ""
-     },
-     "enrollment": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled",
-      "value": 140,
-      "vintage": ""
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 2,
-      "vintage": ""
-     },
-     "projected_supply": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 33.7,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     }
-    }
-   },
-   {
-    "label": "043000 Biotechnology and Biomedical Technology",
-    "roster": [
-     {
-      "label": "City College of San Francisco",
-      "roster": [],
-      "values": {
-       "coverage": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       },
-       "projected_supply": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "completions/yr",
-        "value": 22.7,
-        "vintage": ""
-       }
-      }
-     }
-    ],
-    "values": {
-     "colleges_actively_awarding": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges (recent)",
-      "value": 1,
-      "vintage": ""
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
-      "value": 1,
-      "vintage": ""
-     },
-     "enrollment": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled",
-      "value": 278,
-      "vintage": ""
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 1,
-      "vintage": ""
-     },
-     "projected_supply": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 22.7,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     }
-    }
-   },
-   {
-    "label": "095200 Construction Crafts Technology",
-    "roster": [
-     {
-      "label": "City College of San Francisco",
-      "roster": [],
-      "values": {
-       "coverage": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "",
-        "value": "covered",
-        "vintage": ""
-       },
-       "projected_supply": {
-        "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-        "parent_vintages": [],
-        "source": "datamart",
-        "status": "ok",
-        "unit": "completions/yr",
-        "value": 10.0,
-        "vintage": ""
-       }
-      }
-     }
-    ],
-    "values": {
-     "colleges_actively_awarding": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges (recent)",
-      "value": 1,
-      "vintage": ""
-     },
-     "colleges_with_program": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "colleges",
-      "value": 1,
-      "vintage": ""
-     },
-     "enrollment": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled",
-      "value": 105,
-      "vintage": ""
-     },
-     "occupations_fed": {
-      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "SOCs",
-      "value": 1,
-      "vintage": ""
-     },
-     "projected_supply": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 10.0,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
@@ -647,7 +326,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "college\u00d7program cells",
-    "value": 6,
+    "value": 3,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "gap_cells": {
@@ -656,7 +335,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "college\u00d7program cells",
-    "value": 3,
+    "value": 0,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "member_colleges": {
@@ -674,7 +353,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "college\u00d7program cells",
-    "value": 2,
+    "value": 1,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "programs": {
@@ -683,7 +362,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "TOP6 programs",
-    "value": 11,
+    "value": 4,
     "vintage": ""
    }
   }

@@ -51,9 +51,9 @@ class TestSectorRegistry:
             assert rule.non_empty_only            # the activity gate (reachable_only is OFF)
             assert rule.min_wage == 50_000        # median-wage floor
             assert rule.min_colleges == 2
-        # Per-sector excluded_tops drop crosswalk-noise feeders. 070810 Computer
-        # Networking (IT/CIS) is a noise feeder for ecu.
-        assert "070810" in SECTORS["ecu"].excluded_tops
+        # Membership is by the PCAH home classification: 070810 Computer Networking (IT/CIS) is not
+        # home-classified to ecu, so it is out of scope even though the crosswalk may reach an ecu SOC.
+        assert "070810" not in SECTORS["ecu"].home_programs
         assert REGISTRY["smccd-ecu"].in_scope("070810") is False
         assert REGISTRY["smccd-ecu"].soc_rule.active
 
@@ -147,11 +147,15 @@ class TestLandscapeComposition:
         assert REGISTRY["smccd-adm"].published is True
         assert REGISTRY["smccd-biotech"].published is True
 
-    def test_in_scope_vocational_vs_division(self):
+    def test_in_scope_vocational_vs_handpicked(self):
         from partnerships.landscape import REGISTRY
+        # Derived (smccd-biotech): in_scope is the authoritative is_vocational gate.
         bio = REGISTRY["smccd-biotech"]
         assert bio.in_scope("043000") is True   # Biotechnology — vocational
         assert bio.in_scope("040100") is False  # Biology — transfer, excluded
+        # Authored (SVAMP): in_scope IS membership in the hand-picked Composition.programs —
+        # not a division/CTE derivation. A div-09 CTE program that SVAMP didn't hand-pick is out.
         svamp = REGISTRY["svamp"]
-        assert svamp.in_scope("095500") is True   # div 09 CTE
-        assert svamp.in_scope("043000") is False  # not div 09
+        assert svamp.in_scope("092400") is True   # a hand-picked SVAMP program
+        assert svamp.in_scope("095500") is False  # div 09 CTE but NOT hand-picked
+        assert svamp.in_scope("043000") is False  # not hand-picked

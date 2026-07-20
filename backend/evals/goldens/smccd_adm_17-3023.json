@@ -36,7 +36,7 @@
     "n_with_program": 2
    }
   },
-  "sector_supply_over_socs": 86.0,
+  "sector_supply_over_socs": 10.0,
   "supply_1yr": 4.0,
   "supply_3yr": 10.0
  },
@@ -45,5 +45,5 @@
  "member": "smccd",
  "sector": "adm",
  "soc": "17-3023",
- "socs_n": 14
+ "socs_n": 10
 }

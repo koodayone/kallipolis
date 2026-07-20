@@ -3,31 +3,15 @@
  "gated": false,
  "member": "smccd",
  "ranked": [
-  "094610 Energy Systems Technology",
-  "095300 Drafting Technology",
-  "094800 Automotive Technology",
   "093400 Electronics and Electric Technology",
-  "043000 Biotechnology and Biomedical Technology",
   "092400 Engineering Technology, General (requires Trigonometry)"
  ],
  "sector": "adm",
  "unit_type": "program",
  "values": {
-  "043000 Biotechnology and Biomedical Technology": {
-   "addressable_demand": 260,
-   "addressable_gap": -1406,
-   "award_trend": 1.69,
-   "completions": 8.3,
-   "enrollment": 424.0,
-   "enrollment_trend": 1.21,
-   "supply_share": 0.041,
-   "wage_after_2": 57228,
-   "wage_after_5": 79399,
-   "wage_lift": 35318
-  },
   "092400 Engineering Technology, General (requires Trigonometry)": {
    "addressable_demand": 1200,
-   "addressable_gap": -741,
+   "addressable_gap": 437,
    "award_trend": 0.0,
    "completions": 0.3,
    "enrollment": 0.0,
@@ -39,7 +23,7 @@
   },
   "093400 Electronics and Electric Technology": {
    "addressable_demand": 1170,
-   "addressable_gap": -556,
+   "addressable_gap": 620,
    "award_trend": 0.41,
    "completions": 9.7,
    "enrollment": 57.0,
@@ -48,42 +32,6 @@
    "wage_after_2": 69631,
    "wage_after_5": 84558,
    "wage_lift": 27146
-  },
-  "094610 Energy Systems Technology": {
-   "addressable_demand": 1000,
-   "addressable_gap": -706,
-   "award_trend": 0.09,
-   "completions": 11.0,
-   "enrollment": 6.0,
-   "enrollment_trend": 0.0,
-   "supply_share": 0.295,
-   "wage_after_2": 54002,
-   "wage_after_5": 111606,
-   "wage_lift": 36754
-  },
-  "094800 Automotive Technology": {
-   "addressable_demand": 420,
-   "addressable_gap": -1304,
-   "award_trend": 2.25,
-   "completions": 53.0,
-   "enrollment": 264.3,
-   "enrollment_trend": 1.07,
-   "supply_share": 0.079,
-   "wage_after_2": 45472,
-   "wage_after_5": 58950,
-   "wage_lift": 23627
-  },
-  "095300 Drafting Technology": {
-   "addressable_demand": 210,
-   "addressable_gap": -938,
-   "award_trend": 0.81,
-   "completions": 3.7,
-   "enrollment": 38.0,
-   "enrollment_trend": 0.94,
-   "supply_share": 0.134,
-   "wage_after_2": 54059,
-   "wage_after_5": 61002,
-   "wage_lift": 23470
   }
  }
 }

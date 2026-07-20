@@ -98,38 +98,47 @@ def test_vocational_read_swap_reproduces_csv():
 
 
 @requires_graph
-def test_scopes_is_the_noise_corrected_boundary():
-    """The SCOPES edge-set IS the noise-correction: a vocational family that reaches an AM occupation but is
-    marked crosswalk-noise for AM (Commercial Music) is scoped into NO sector for AM, so it never enters the
-    boundary — the graph fact that retires excluded_tops."""
+def test_scopes_is_the_home_classification_boundary():
+    """The SCOPES edge-set IS the PCAH home classification (the P2 read-swap that retires excluded_tops): a
+    program that crosswalks to an AM occupation but is NOT home-classified to adm (Commercial Music → arts/
+    media, not manufacturing) is simply not in adm's portfolio — chosen by the authority, not hand-excluded."""
     from ontology import sector_graph
-    from partnerships.sectors import SECTORS
 
     sector_graph.load()
     scopes_adm = sector_graph.sector_scopes("adm")
-    # 100500 Commercial Music crosswalks to an AM SOC but is adm crosswalk-noise → not scoped in.
-    assert "100500" in SECTORS["adm"].excluded_tops
+    # 100500 Commercial Music crosswalks to an AM SOC but homes elsewhere → never in adm's portfolio.
+    assert sector_graph.home_sector_by_top6().get("100500") != "adm"
     assert "100500" not in scopes_adm
 
 
 def test_home_sector_classification_and_partition():
     """DataVista HOME classification (graph-free). Every family maps to a valid Sector id (or the
-    `global_trade` slug), and `home_sector` cleanly partitions a sector's crosswalk feeders into native vs
-    cross-sector vs unclassified — the derivation that lets the CCCCO-official lens + cross-sector disclosure
-    fall out of one property. Pins the AM partition + charter-home-derivation against silent DataVista drift."""
+    `global_trade` slug). Post-P2, `sector_scopes` IS the home portfolio (membership chosen by the
+    publication); the crosswalk then partitions the reachable feeders into native (home=sector, the R set),
+    cross-sector (home elsewhere — dropped as noise), and unclassified. Pins the AM partition + the
+    charter-home derivation against silent DataVista drift."""
     from ontology.sector_graph import home_sector_by_top6, sector_scopes
+    from ontology.crosswalks import top6_to_soc, _load_top_to_cip, is_vocational
     from partnerships.sectors import SECTORS
 
     h = home_sector_by_top6()
     assert len(h) == 274                                        # the full DataVista TOP-Codes-to-Sectors publication
     assert all(sid in SECTORS or sid == "global_trade" for sid in h.values())
 
-    feeders = sector_scopes("adm")                             # crosswalk feeder set (unchanged; supply-side truth)
-    native = {t for t in feeders if h.get(t) == "adm"}         # officially AM — the CCCCO lens
-    cross = {t for t in feeders if t in h and h[t] != "adm"}   # feeds AM, home elsewhere (Electro-Mech → ecu, …)
-    uncl = {t for t in feeders if t not in h}                  # not in DataVista at all
-    assert (len(native), len(cross), len(uncl)) == (22, 19, 1)
-    assert "095690" in uncl                                    # Digital Fabrication — absent from the publication
+    # sector_scopes = the chosen home portfolio (the PCAH classification, verbatim).
+    assert sector_scopes("adm") == {t for t, sid in h.items() if sid == "adm"}
+    assert len(sector_scopes("adm")) == 27
+
+    # The crosswalk partitions the VOCATIONAL feeders that reach an AM occupation by their home sector.
+    xwalk = top6_to_soc(list(_load_top_to_cip()))
+    adm_socs = set(SECTORS["adm"].socs)
+    reach = {t for t, socs in xwalk.items() if (socs & adm_socs) and is_vocational(t)}
+    native = reach & sector_scopes("adm")                      # home=adm AND feeds AM — the R set
+    cross = {t for t in reach if h.get(t) not in (None, "adm")}  # feeds AM, home elsewhere → dropped as noise
+    uncl = {t for t in reach if t not in h}                    # feeds AM but absent from the publication
+    assert len(native) == 22                                   # matches the dashboard/plan (adm feeders R)
+    assert "095690" in uncl                                    # Digital Fabrication — feeds AM, unclassified (P3 flag)
+    assert cross                                               # real cross-sector bleed exists (Electro-Mech → ecu, …)
     # SVAMP's charter families are distant-home (never native to adm) → auto-flaggable, not a hand-list.
     for charter in ("043000", "094600", "094800"):
         assert h[charter] != "adm"

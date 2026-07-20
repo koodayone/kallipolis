@@ -8,8 +8,8 @@
   "094500 Industrial Systems Technology and Maintenance",
   "093500 Electro-Mechanical Technology",
   "093400 Electronics and Electric Technology",
-  "094610 Energy Systems Technology",
   "092400 Engineering Technology, General (requires Trigonometry)",
+  "094610 Energy Systems Technology",
   "095690 Digital Fabrication Technician"
  ],
  "sector": "adm",
@@ -17,7 +17,7 @@
  "values": {
   "092400 Engineering Technology, General (requires Trigonometry)": {
    "addressable_demand": 1200,
-   "addressable_gap": 277,
+   "addressable_gap": 349,
    "award_trend": null,
    "completions": 0.0,
    "enrollment": 22.0,
@@ -29,7 +29,7 @@
   },
   "093400 Electronics and Electric Technology": {
    "addressable_demand": 1170,
-   "addressable_gap": 463,
+   "addressable_gap": 490,
    "award_trend": 0.0,
    "completions": 0.3,
    "enrollment": 113.3,
@@ -41,7 +41,7 @@
   },
   "093500 Electro-Mechanical Technology": {
    "addressable_demand": 1260,
-   "addressable_gap": 733,
+   "addressable_gap": 791,
    "award_trend": 1.89,
    "completions": 5.3,
    "enrollment": 84.7,
@@ -53,7 +53,7 @@
   },
   "094500 Industrial Systems Technology and Maintenance": {
    "addressable_demand": 1930,
-   "addressable_gap": 941,
+   "addressable_gap": 1079,
    "award_trend": 1.89,
    "completions": 9.0,
    "enrollment": 14.0,
@@ -65,7 +65,7 @@
   },
   "094610 Energy Systems Technology": {
    "addressable_demand": 1000,
-   "addressable_gap": 312,
+   "addressable_gap": 343,
    "award_trend": 1.15,
    "completions": 26.0,
    "enrollment": 92.7,
@@ -77,7 +77,7 @@
   },
   "095600 Manufacturing and Industrial Technology": {
    "addressable_demand": 1980,
-   "addressable_gap": 1027,
+   "addressable_gap": 1129,
    "award_trend": 2.46,
    "completions": 31.3,
    "enrollment": 461.3,
@@ -89,7 +89,7 @@
   },
   "095630 Machining and Machine Tools": {
    "addressable_demand": 1610,
-   "addressable_gap": 967,
+   "addressable_gap": 1098,
    "award_trend": 1.12,
    "completions": 43.7,
    "enrollment": 0.0,

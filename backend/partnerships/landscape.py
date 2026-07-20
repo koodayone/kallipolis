@@ -43,9 +43,9 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 
-from ontology.crosswalks import _load_top_to_cip, is_cte_top4_family, is_vocational
+from ontology.crosswalks import _load_top_to_cip, is_vocational
 from ontology.regions import COLLEGE_COE_REGION
-from partnerships.composition import Composition
+from partnerships.composition import Composition, validate
 from partnerships.sectors import SECTORS, Sector, SectorRule
 
 
@@ -111,12 +111,6 @@ class LandscapeSpec:
     colleges: tuple[str, ...]
     # Target occupations (demand axis). One LandscapeCell per SOC, in this order.
     socs: tuple[str, ...]
-    # Program/supply scope: TOP divisions + the mandate exclusions, applied on
-    # top of the faithful (never-edited) TOP-CIP-SOC crosswalk. See in_scope.
-    # A tuple so an instance may span more than one division — the AM instances
-    # pass a 1-tuple ("09",); a Life Sciences & Health frame spans 04/12/19/03.
-    top_divisions: tuple[str, ...]
-    excluded_tops: frozenset[str]
 
     # ── Identity (presentation; surfaced to the frontend via the payload) ──
     # Canonical PCAH Strong Workforce sector label (drives the priority-sector
@@ -137,15 +131,13 @@ class LandscapeSpec:
     # consortium there. Flip to True once the data lands. See routable_specs.
     published: bool = True
 
-    # Whether a division-mode universe is restricted to CTE families (the
-    # looser family-level is_cte_top4_family test). True for the curated AM
-    # instances. Ignored when vocational=True.
+    # Whether the occupation drill's curriculum gather folds a program's AWARDED/ENROLLED
+    # activity into "taught" (the 095630 parent-code seam) and restricts to CTE families —
+    # read by the gather in landscape_programs, not by in_scope. True for every instance.
     cte_only: bool = True
 
-    # Scope mode. True for the sector-derived instances: the program universe is
-    # the authoritative per-TOP CTE gate — is_vocational (TOP6-exact, CCCCO
-    # Taxonomy of Programs 7th Ed) — and top_divisions/cte_only are unused. False
-    # for the curated AM instances (the legacy division + family-CTE predicate).
+    # Scope mode. True for every live instance: in_scope reads the chosen program portfolio
+    # (composition.programs when authored, else the sector's home_sector set via sector_id).
     vocational: bool = False
 
     # SOC-selection curation for sector instances (demand floor / reachable /
@@ -153,11 +145,14 @@ class LandscapeSpec:
     # None for the curated AM instances (no SOC filtering). See landscape_for.
     soc_rule: SectorRule | None = None
 
-    # The per-member Composition — the authored narrowing (occupation subset + charter). Default = empty
-    # (derived; what most members use). SVAMP fills it in. The engine reads member scope through this; today
-    # its ``program_excludes`` MIRRORS the legacy charter in ``excluded_tops`` so the migration is byte-
-    # identical (in_scope consults both, idempotently). Step 2 makes it authoritative and retires the legacy
-    # fields. See partnerships/composition.py and research/architecture/UNIFIED-ENGINE-PLAN.md.
+    # The sector this instance draws its membership from (Sector.id). For a DERIVED spec it is the
+    # authority behind both axes — COVERS (socs) and SCOPES (in_scope's home_programs portfolio). An
+    # authored spec (SVAMP) scopes via its Composition instead, so this is only its provenance tag.
+    sector_id: str | None = None
+
+    # The per-member Composition — the authored narrowing (a hand-picked occupation + program subset).
+    # Default = empty (derived; what most members use, scoping via sector_id). SVAMP fills it in, and
+    # in_scope reads its programs directly. See partnerships/composition.py.
     composition: Composition = Composition()
 
     # The exact COE/EDD `swp_sectors` tag the Employer nodes carry (Sector.swp_tag).
@@ -165,10 +160,6 @@ class LandscapeSpec:
     # so the regional employer query matches on this, falling back to `sector`
     # when unset (SVAMP, whose display label already equals the COE tag).
     swp_tag: str | None = None
-
-    # Home TOP2 division(s) gating the feeder universe (Sector.home_divisions) —
-    # empty = no division gate (the default; AM/ATL/ECU/ICT rely on excluded_tops).
-    home_divisions: tuple[str, ...] = ()
 
     # The county/ies of the member colleges — scopes the regional employer map to
     # the district's geographic shed (the COE region is too coarse; see
@@ -196,42 +187,22 @@ class LandscapeSpec:
     employer_threshold: int = 0
     max_radius: int = 0
 
-    @property
-    def effective_program_excludes(self) -> frozenset[str]:
-        """Every program out of this instance's feeder universe, in ONE place: the sector-level crosswalk-
-        noise (``excluded_tops`` — e.g. IT / Commercial Music bleeding into Advanced Manufacturing) unioned
-        with the member's charter (``composition.program_excludes`` — e.g. SVAMP's HVAC / Automotive /
-        Biotech). Both scope consumers — ``in_scope`` and the programs landscape's per-occupation gather —
-        read this, so they cannot disagree about what is out of scope."""
-        return frozenset(self.excluded_tops) | self.composition.program_excludes
-
     def in_scope(self, top6: str | None) -> bool:
-        """Whether a TOP6 is in this instance's scoped program universe.
+        """Whether a TOP6 is in this instance's scoped program universe (S_tops) — membership is CHOSEN,
+        never derived from the crosswalk (which only says which occupations a program feeds).
 
-        Two modes:
-        - vocational=True (sector-derived instances): the authoritative
-          TOP6-exact CTE gate is_vocational (CCCCO Taxonomy of Programs 7th Ed
-          vocational asterisk), minus any mandate exclusions. No division
-          restriction — the sector's SOC set is the anchor and relevant_tops
-          intersects it with the crosswalk-reachable feeders.
-        - vocational=False (curated AM instances, e.g. SVAMP): the legacy
-          predicate — in a configured TOP division, CTE per the looser
-          family-level test when cte_only, minus mandate exclusions. Thin alias
-          for svamp.is_svamp_top.
+        Two modes, one shape (a portfolio the crosswalk later restricts to feeders in relevant_tops):
+        - AUTHORED (composition.programs set, e.g. SVAMP): the hand-picked program portfolio.
+        - DERIVED (vocational=True): the sector's home_sector portfolio (the CCCCO PCAH classification,
+          Sector.home_programs / SCOPES). `sector_id` is set for every derived spec (landscape_for).
         """
         if not top6:
             return False
+        if self.composition.programs is not None:
+            return top6 in self.composition.programs
         if self.vocational:
-            return (
-                is_vocational(top6)
-                and top6 not in self.effective_program_excludes
-                and (not self.home_divisions or top6[:2] in self.home_divisions)
-            )
-        return (
-            any(top6.startswith(d) for d in self.top_divisions)
-            and top6 not in self.effective_program_excludes
-            and (not self.cte_only or is_cte_top4_family(top6))
-        )
+            return self.sector_id is not None and top6 in SECTORS[self.sector_id].home_programs
+        return False
 
     def in_scope_tops(self) -> list[str]:
         """Every TOP6 in this instance's scoped program universe — `in_scope`
@@ -358,9 +329,7 @@ def landscape_for(
         id=f"{member.id}-{sector.id}",
         colleges=member.colleges,
         socs=sector.socs,
-        top_divisions=(),  # unused in vocational mode
-        excluded_tops=sector.excluded_tops,  # sector-level crosswalk-noise drops
-        home_divisions=sector.home_divisions,  # TOP2 home-division gate (e.g. Health=12)
+        sector_id=sector.id,                 # the membership authority for BOTH axes (COVERS + SCOPES)
         soc_rule=sector.rule,                # sector-level SOC curation (resolve())
         vocational=True,
         published=published,
@@ -382,17 +351,30 @@ _AM_SOCS: tuple[str, ...] = (
     "17-3023", "17-3024", "17-3026", "17-3027", "17-3028", "17-3029",
     "49-9041", "49-9043", "51-4041", "51-9141", "51-9161", "51-9162",
 )
-_AM_TOP_DIVISIONS: tuple[str, ...] = ("09",)  # Engineering & Industrial Technologies
-_AM_EXCLUDED_TOPS = frozenset({
-    "094600",  # Environmental Control Technology (HVAC)
-    "094800",  # Automotive Technology
-})
+# SVAMP's PROGRAM PORTFOLIO — the supply-side twin of _AM_SOCS, stated directly as the authored
+# Composition.programs. The vocational (is_vocational) programs whose curriculum crosswalks to
+# >=1 _AM_SOC, minus the charter drops (Automotive / HVAC / Biotech). This is the PORTFOLIO (what
+# the sector trains for), NOT the currently-active subset: the awards gate (relevant_tops) narrows
+# it to the ~10 programs with a member-college completer for the dashboard, so portfolio (curation)
+# and supply-activity (data) stay cleanly separate. Byte-identical to the original is_vocational-
+# derived scope — freezing the list simply states it, so authored SVAMP no longer re-derives its
+# program set from is_vocational ∩ crosswalk ∩ excludes on every read.
+_AM_PROGRAMS: tuple[str, ...] = (
+    "092400", "093400", "093410", "093420", "093430", "093440", "093460", "093470",
+    "093480", "093500", "094300", "094500", "094610", "095050", "095200", "095420",
+    "095600", "095630", "095650", "095670", "095690", "095900", "099900",
+)
 
 
 # ── Instances ─────────────────────────────────────────────────────────────
 
-# Instance #1: the original Silicon Valley consortium. Reproduces landscape_build.py's
-# constants verbatim — the golden-snapshot invariant depends on it.
+# Instance #1: the original Silicon Valley consortium — AUTHORED and self-contained.
+# Its entire scope is the Composition: the 12 hand-picked occupations and the 23-program
+# portfolio (both explicit subsets of grounded universes; validate enforces it below). A hand-pick
+# is a selection, not a derive-then-exclude — so the crosswalk-noise that once bled into AM (IT,
+# Commercial Music) simply isn't in the portfolio. The awards gate (soc_rule, relevant_tops) still
+# narrows the portfolio to its member-college-active subset for the dashboard, keeping portfolio
+# (curation) and supply (activity) separate.
 SVAMP_SPEC = LandscapeSpec(
     id="svamp",
     colleges=(
@@ -403,23 +385,22 @@ SVAMP_SPEC = LandscapeSpec(
         "Ohlone College",
     ),
     socs=_AM_SOCS,
-    top_divisions=_AM_TOP_DIVISIONS,  # "09" — the per-occupation crosswalk gather's top_prefix (landscape_programs)
-    excluded_tops=SECTORS["adm"].excluded_tops,  # sector crosswalk-noise drops (parity with /smccd-adm); charter is in composition
+    sector_id="adm",  # provenance: SVAMP is an Advanced Manufacturing instance (it scopes via its Composition)
     sector="Advanced Manufacturing",
     counties=("Santa Clara",),  # SVAMP's shed — keeps the peninsula (SMCCD) out
     name="Silicon Valley Advanced Manufacturing Partnership",
     accent="#ff5a5a",
-    # SVAMP under the UNIVERSAL rule (Step 2b). It runs is_vocational + the active program gate, like every
-    # sector-derived member, and its program-scope universe DERIVES from the AM sector — excluded_tops (the
-    # sector's audited crosswalk-noise drops, e.g. IT / Commercial Music bleeding into AM), home_divisions and
-    # soc_rule all come from SECTORS["adm"], never a hand-copy, so SVAMP cannot drift from /smccd-adm. Its only
-    # per-member authoring is the Composition: the 12 hand-picked occupations (a subset of the AM sector's set;
-    # resolve keeps them final because is_authored) and the charter (Automotive / HVAC / Biotech), both applied
-    # via effective_program_excludes.
     vocational=True,
-    soc_rule=SECTORS["adm"].rule,
-    home_divisions=SECTORS["adm"].home_divisions,  # AM has none today (uses excluded_tops); derived so it can't drift
-    composition=Composition(occupations=_AM_SOCS, program_excludes=_AM_EXCLUDED_TOPS | {"043000"}),
+    soc_rule=SECTORS["adm"].rule,  # the SOC-side priority + awards gate (still derived from the sector)
+    composition=Composition(occupations=_AM_SOCS, programs=_AM_PROGRAMS),
+)
+
+# Fail-fast: an authored Composition SELECTS from grounded universes, never invents (a fork).
+# occupations ⊆ the AM sector's middle-skill membership; programs ⊆ the is_vocational universe.
+validate(
+    SVAMP_SPEC.composition,
+    membership=SECTORS["adm"].socs,
+    vocational_universe=(t for t in _load_top_to_cip() if is_vocational(t)),
 )
 
 # Instance #2+: the SMCCD member set's sector views — a `member × sector` row,

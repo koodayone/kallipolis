@@ -44,7 +44,7 @@ from ontology.programs import get_wage_outcomes
 
 from partnerships.graph_reads import regional_demand
 from partnerships.landscape import (
-    LandscapeSpec, SVAMP_SPEC, _AM_EXCLUDED_TOPS, _term_excluded, _term_sort_key,
+    LandscapeSpec, SVAMP_SPEC, _term_excluded, _term_sort_key,
 )
 from partnerships.quantities import gap as compute_gap, supply_fn_graph
 from partnerships.resolve import soc_in_demand
@@ -73,45 +73,20 @@ SVAMP_SECTOR: str = SVAMP_SPEC.sector
 # span of the enrollment chart. The full history remains in the graph.
 AWARD_YEARS_SHOWN: int = 5
 
-# SVAMP scopes its program / supply universe to TOP division 09 — "Engineering
-# and Industrial Technologies" in the Chancellor's Office TOP taxonomy, the
-# consortium's programmatic domain per the SVAMP director — AND to CTE (career-
-# technical) programs only, excluding transfer/academic ones (e.g. 090100
-# Engineering, General (Transfer)), per the CCCCO PCAH CTE designation. Both are
-# categorical, institutional scopes applied on top of the faithful TOP-CIP-SOC
-# crosswalk — the crosswalk is never edited (no per-edge curation), so
-# non-engineering feeders it legitimately links (e.g. Commercial Music →
-# 17-3029, CIS → 17-3023) and transfer majors simply fall out of the
-# consortium's workforce view. Enforced consortium-wide: the Programs lens
-# universe (landscape_programs.relevant_tops), this landscape's per-cell supply /
-# awards / coverage, and the occupation drill report's curriculum pathway
-# (build_opportunity_report's top_prefix + cte_only) all restrict to 09xx CTE
-# TOPs. DEMAND and the candidate-employer set are NOT scoped — they are
-# occupation- and region-owned, not program-owned.
-SVAMP_TOP_DIVISION: str = SVAMP_SPEC.top_divisions[0]
-
-# Programs the SVAMP director's advanced manufacturing mandate excludes, even
-# though they sit in division 09 and the crosswalk legitimately links them to
-# SVAMP SOCs. The SOC link is occupation-category truth, but the employment
-# flows run to other industry verticals — automotive completers to dealerships,
-# shops, and fleet operations; HVAC completers to commercial/residential
-# building trades — none of which are in the AM-scoped employer set this report
-# pairs supply with. Scope decision per the SVAMP director (the same authority
-# behind SVAMP_SOCS and the 09 domain); the crosswalk itself is never edited.
-# Boundary programs the director has NOT ruled on stay in (e.g. 094840
-# Alternative Fuels & Advanced Transportation, 094610 Energy Systems) — add
-# them here if the mandate later excludes them.
-# The director's-mandate charter (HVAC/Auto). Bound to the charter constant directly: SVAMP_SPEC.excluded_tops
-# now carries the AM sector's crosswalk-noise drops (the charter lives in the Composition), so this name — the
-# mandate — reads _AM_EXCLUDED_TOPS. The full out-of-scope set is SVAMP_SPEC.effective_program_excludes.
-SVAMP_MANDATE_EXCLUDED_TOPS: frozenset[str] = _AM_EXCLUDED_TOPS
+# SVAMP's program / supply universe is the hand-picked portfolio (composition.programs) — the
+# TOP6s the consortium curates as its Advanced Manufacturing scope. It is a SELECTION, not a
+# division/CTE derivation: crosswalk edges to programs outside the portfolio (e.g. Commercial
+# Music → 17-3029, CIS → 17-3023, HVAC/Automotive) simply aren't in it — no per-edge curation of
+# the faithful crosswalk. Enforced consortium-wide through the ONE predicate below: the Programs
+# lens universe (landscape_programs.relevant_tops), this landscape's per-cell coverage, and the
+# occupation drill's curriculum pathway all scope to it. DEMAND and the candidate-employer set are
+# NOT scoped — they are occupation- and region-owned, not program-owned.
 
 
 def is_svamp_top(top6: str | None) -> bool:
-    """True iff a TOP6 is in SVAMP's scoped program universe. Back-compat alias
-    for SVAMP_SPEC.in_scope (landscape_programs and the tests import this name); see
-    LandscapeSpec.in_scope for the predicate — configured TOP division + CTE
-    family test, minus the director's mandate exclusions."""
+    """True iff a TOP6 is in SVAMP's hand-picked program portfolio. Back-compat alias for
+    SVAMP_SPEC.in_scope (landscape_programs and the tests import this name); for an authored spec
+    in_scope is membership in composition.programs — see LandscapeSpec.in_scope."""
     return SVAMP_SPEC.in_scope(top6)
 
 
@@ -311,12 +286,11 @@ def build_landscape(spec: LandscapeSpec) -> Landscape:
         #    edge — the OCCUPATION_PIPELINE.top_codes read was dropped (it was the
         #    course-routed subset of `feeding`, so its union added nothing the
         #    crosswalk feeders don't already cover; golden-snapshot verified).
-        # Program-scope filter for the per-cell course count. Vocational
-        # instances (sector-derived) scope to the authoritative CTE TOP set;
-        # division instances (SVAMP, SMCCD-AM) keep the legacy division-prefix
-        # filter. The $vocational boolean short-circuits, so the division path
-        # is byte-identical to before (golden-snapshot invariant preserved).
-        scope_tops = sorted(_load_vocational_top6()) if spec.vocational else []
+        # Program-scope filter for the per-cell course count: the aligned courses are counted
+        # within the authoritative CTE (is_vocational) TOP set. This is the coarse "aligned
+        # courses" metric, not the portfolio supply — the per-cell supply/programs route off the
+        # SOC's crosswalk feeders (relevant_tops), not off this count.
+        scope_tops = sorted(_load_vocational_top6())
         align_by_college: dict[str, dict[str, dict]] = {}
         for college in spec.colleges:
             rows = session.run(
@@ -325,18 +299,12 @@ def build_landscape(spec: LandscapeSpec) -> Landscape:
                       -[:DEMANDS]->(occ:Occupation)
                 WHERE occ.soc_code IN $socs
                 OPTIONAL MATCH (c09:Course {college: $college})-[:PREPARES_FOR]->(occ)
-                      WHERE ( $vocational AND c09.top_code IN $scope_tops )
-                         OR ( NOT $vocational
-                              AND any(d IN $top_divisions WHERE c09.top_code STARTS WITH d)
-                              AND NOT c09.top_code IN $excluded )
+                      WHERE c09.top_code IN $scope_tops
                 WITH occ, count(DISTINCT c09) AS course_count_09
                 RETURN occ.soc_code AS soc_code,
                        course_count_09 AS course_count
                 """,
-                college=college, socs=list(spec.socs),
-                vocational=spec.vocational, scope_tops=scope_tops,
-                top_divisions=list(spec.top_divisions),
-                excluded=sorted(spec.excluded_tops),
+                college=college, socs=list(spec.socs), scope_tops=scope_tops,
             ).data()
             align_by_college[college] = {
                 r["soc_code"]: {

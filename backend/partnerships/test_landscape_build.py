@@ -17,15 +17,14 @@ Coverage:
   - Cell coverage keys on feeding-program activity (enrolled + feeding_awards),
     not the course pipeline — an awards-only feeding program (the 095630 →
     Machinists seam) reads partial, not gap
-  - Director's-mandate TOP exclusions (automotive, HVAC) fail is_svamp_top —
-    out of the program universe everywhere it gates — while core AM programs
-    and Industrial Systems (094500, not to be confused with HVAC 094600) stay in
+  - Charter programs (automotive, HVAC) are out of SVAMP's hand-picked portfolio —
+    fail is_svamp_top everywhere it gates — while core AM programs and Industrial
+    Systems (094500, not to be confused with HVAC 094600) stay in
 """
 
 from partnerships.landscape_build import (
     SVAMP_COLLEGES,
     SVAMP_SOCS,
-    SVAMP_MANDATE_EXCLUDED_TOPS,
     _assemble_landscape,
     is_svamp_top,
 )
@@ -160,17 +159,16 @@ def test_cell_coverage_keys_on_feeding_activity_not_courses():
     assert fo.programs == []                                        # nothing to show
 
 
-def test_mandate_excluded_tops_fail_is_svamp_top():
-    # Director's-mandate exclusions: division-09, crosswalk-linked, but their
-    # employment flows run to other industry verticals (automotive →
-    # dealerships/fleets; HVAC → building trades). is_svamp_top is the single
-    # predicate every program-universe surface gates on, so failing here keeps
-    # them out of the treemap, coverage, feeding sets, and demand views alike.
-    assert SVAMP_MANDATE_EXCLUDED_TOPS == {"094600", "094800"}
-    for t in SVAMP_MANDATE_EXCLUDED_TOPS:
-        assert not is_svamp_top(t)
-    assert is_svamp_top("095630")   # core AM (Machining) stays in
-    assert is_svamp_top("094500")   # Industrial Systems — NOT HVAC (094600) — stays in
+def test_charter_programs_are_out_of_svamp_portfolio():
+    # HVAC (094600) and Automotive (094800) are crosswalk-linked to SVAMP SOCs but
+    # their employment flows run to other verticals (automotive → dealerships/fleets;
+    # HVAC → building trades), so they aren't in SVAMP's hand-picked portfolio.
+    # is_svamp_top (== composition.programs membership) is the single predicate every
+    # program-universe surface gates on — treemap, coverage, feeding sets, demand.
+    assert not is_svamp_top("094600")   # HVAC — not in the portfolio
+    assert not is_svamp_top("094800")   # Automotive — not in the portfolio
+    assert is_svamp_top("095630")       # core AM (Machining) stays in
+    assert is_svamp_top("094500")       # Industrial Systems — NOT HVAC (094600) — stays in
 
 
 # ── Priority split: per-cell in_demand stamp + surfaced criteria ──────────────
@@ -196,7 +194,7 @@ def _derived_spec():
     # soc_rule active + default Composition (occupations=None → is_authored False) = a derived spec.
     return LandscapeSpec(
         id="__derived_test__", colleges=("De Anza College", "Foothill College"),
-        socs=_DERIVED_SOCS, top_divisions=("09",), excluded_tops=frozenset(),
+        socs=_DERIVED_SOCS, sector_id="adm", vocational=True,
         sector="Advanced Manufacturing", name="Test", accent="#000000",
         soc_rule=SectorRule(min_openings=239, min_wage=54_081),
     )

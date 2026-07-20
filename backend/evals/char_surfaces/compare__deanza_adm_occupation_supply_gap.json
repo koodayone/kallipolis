@@ -169,6 +169,75 @@
     }
    },
    {
+    "label": "49-9041 Industrial Machinery Mechanics",
+    "roster": [],
+    "values": {
+     "median_wage": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "$/yr",
+      "value": 80760,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "member_supply_share": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges) \u00f7 regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "fraction",
+      "value": 0.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "projected_growth": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "%",
+      "value": 0.1,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "regional_employment": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "jobs",
+      "value": 5450,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "regional_openings": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 550,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+     },
+     "regional_supply": {
+      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 112.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "supply_gap": {
+      "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 438,
+      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
     "label": "51-4121 Welders, Cutters, Solderers, and Brazers",
     "roster": [],
     "values": {
@@ -233,75 +302,6 @@
       "status": "ok",
       "unit": "openings/yr",
       "value": 394,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     }
-    }
-   },
-   {
-    "label": "49-9041 Industrial Machinery Mechanics",
-    "roster": [],
-    "values": {
-     "median_wage": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "$/yr",
-      "value": 80760,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     },
-     "member_supply_share": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges) \u00f7 regional (Bay Area) \u2014 all 26 colleges",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "fraction",
-      "value": 0.1,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "projected_growth": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "%",
-      "value": 0.1,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     },
-     "regional_employment": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "jobs",
-      "value": 5450,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     },
-     "regional_openings": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 550,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     },
-     "regional_supply": {
-      "granularity": "regional (Bay Area) \u2014 all 26 colleges",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 159.3,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "supply_gap": {
-      "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 391,
       "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }

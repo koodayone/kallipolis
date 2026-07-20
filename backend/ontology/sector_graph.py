@@ -65,16 +65,31 @@ def home_sector_by_top6() -> dict[str, str]:
             if name in _DATAVISTA_TO_SID}
 
 
+_home_by_sid_cache: dict[str, set[str]] | None = None
+
+
+def _home_programs_by_sid() -> dict[str, set[str]]:
+    """{sid → its home-classified program families}. The CCCCO PCAH "TOP Codes to Sectors" classification
+    (``home_sector_by_top6``) VERBATIM — the program→sector source of truth, no second gate. Cached."""
+    global _home_by_sid_cache
+    if _home_by_sid_cache is None:
+        m: dict[str, set[str]] = {}
+        for t, sid in home_sector_by_top6().items():
+            m.setdefault(sid, set()).add(t)
+        _home_by_sid_cache = m
+    return _home_by_sid_cache
+
+
 def sector_scopes(sid: str) -> set[str]:
-    """The sector's program membership = ``vocational`` families that cross-walk to one of the sector's
-    occupations, minus the sector's crosswalk-noise (``excluded_tops``), minus the home-division gate.
-    Member- and awards-independent — the canonical sector boundary that ``in_scope`` + ``relevant_tops``
-    derive per request today. This is the one place the SCOPES edge-set is defined; 3b reads it from the graph."""
-    sec = SECTORS[sid]
-    socs = set(sec.socs)
-    hd = sec.home_divisions
-    reach = {t for t, ss in top6_to_soc(list(_load_vocational_top6())).items() if ss & socs}
-    return {t for t in reach if t not in sec.excluded_tops and (not hd or t[:2] in hd)}
+    """The sector's program membership (S_tops) = its **home_sector portfolio**: the program families the
+    CCCCO PCAH "TOP Codes to Sectors" publication CLASSIFIES as belonging to this sector, read verbatim
+    from that source of truth. Membership is CHOSEN by that authority, not derived from the crosswalk — a
+    program *belongs* to the sector by classification; the crosswalk only says which occupations it *feeds*
+    (``CROSSWALKS_TO`` / ``relevant_tops`` restrict this portfolio to the actual feeders ``R``). This
+    retires the derive-then-exclude path (``is_vocational ∩ crosswalk ∩ ¬excluded_tops ∩ home_div``) and
+    its ``excluded_tops`` / ``home_divisions`` / ≥2-sector machinery. The one place the SCOPES edge-set is
+    defined; ``load`` materializes it, ``sector_covers``'s sibling on the program axis."""
+    return set(_home_programs_by_sid().get(sid, set()))
 
 
 _sector_covers_cache: dict[str, set[str]] | None = None
@@ -139,14 +154,17 @@ def load(driver=None) -> dict:
         s.run("UNWIND $rows AS r MATCH (x:Sector {id: r.sid}), (o:Occupation {soc_code: r.soc}) "
               "MERGE (x)-[:COVERS]->(o)",
               rows=[{"sid": sid, "soc": soc} for sid, sec in SECTORS.items() for soc in sec.socs])
-        # Sector program membership (the noise-corrected boundary).
+        # Sector program membership = the home_sector portfolio. Cleared first so a change to the
+        # classification is a clean rebuild, not an additive union with stale edges (MERGE never deletes) —
+        # this is what keeps `reconcile` a faithful drift detector after the P2 read-swap.
+        s.run("MATCH (:Sector)-[r:SCOPES]->() DELETE r")
         s.run("UNWIND $rows AS r MATCH (x:Sector {id: r.sid}), (pf:ProgramFamily {top6: r.top6}) "
               "MERGE (x)-[:SCOPES]->(pf)",
               rows=[{"sid": sid, "top6": t} for sid in SECTORS for t in sector_scopes(sid)])
         # Compositions — one node per AUTHORED instance, bootstrapped from the spec (SVAMP today).
         for spec in routable_specs():
             comp = spec.composition
-            if not comp.is_authored and not comp.program_excludes:
+            if not comp.is_authored:
                 continue
             s.run("MERGE (c:Composition {id: $id}) SET c.member = $member, c.sector = $sector",
                   id=spec.id, member=spec.id, sector=spec.sector)
@@ -154,10 +172,6 @@ def load(driver=None) -> dict:
                 s.run("MATCH (c:Composition {id: $id}) UNWIND $socs AS soc "
                       "MATCH (o:Occupation {soc_code: soc}) MERGE (c)-[:INCLUDES]->(o)",
                       id=spec.id, socs=list(comp.occupations))
-            if comp.program_excludes:
-                s.run("MATCH (c:Composition {id: $id}) UNWIND $tops AS t "
-                      "MATCH (pf:ProgramFamily {top6: t}) MERGE (c)-[:EXCLUDES]->(pf)",
-                      id=spec.id, tops=list(comp.program_excludes))
 
     return counts(driver)
 
@@ -219,11 +233,6 @@ def reconcile(driver=None) -> list[str]:
                 want_inc = set(comp.occupations) & have_occ
                 if want_inc != got_inc:
                     diffs.append(f"INCLUDES[{spec.id}]: {sorted(got_inc ^ want_inc)}")
-            if comp.program_excludes:
-                got_exc = {r["x"] for r in s.run(
-                    "MATCH (:Composition {id: $id})-[:EXCLUDES]->(pf) RETURN pf.top6 AS x", id=spec.id)}
-                if set(comp.program_excludes) != got_exc:
-                    diffs.append(f"EXCLUDES[{spec.id}]: {sorted(set(comp.program_excludes) ^ got_exc)}")
     if pending:
         diffs.append(f"pending_hollow: {pending} sector-occupation memberships await demand-less Occupation nodes (3b)")
     return diffs

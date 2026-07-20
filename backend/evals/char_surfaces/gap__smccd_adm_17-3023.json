@@ -23,7 +23,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 27,
+      "value": 30,
       "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "member_supply": {
@@ -50,7 +50,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 403.0,
+      "value": 399.7,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }
@@ -64,7 +64,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 480,
+    "value": 682,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "member_supply": {
@@ -73,7 +73,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 86.0,
+    "value": 10.0,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "regional_demand": {
@@ -82,7 +82,7 @@
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 2080,
+    "value": 1300,
     "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
    },
    "regional_supply": {
@@ -91,7 +91,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 1600.3,
+    "value": 617.7,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    }
   }
@@ -101,7 +101,8 @@
   "meaning": "A supply\u2013demand gap is regional annual openings minus the whole region's projected completions, per occupation \u2014 regional demand against regional supply. The institution's own completions are its share of that regional supply. Positive means the region hires more than its colleges are projected to complete.",
   "salience": [
    "supply=3yr-avg: supply is a 3-year average of DataMart completions (All Awards), a projection \u2014 any single year can run above or below it.",
-   "member-anchored: a generated member\u00d7sector view covers only occupations the member already serves with an active program \u2014 it does NOT surface greenfield demand in occupations the member does not yet serve. Absence here is not absence of regional demand."
+   "member-anchored: a generated member\u00d7sector view covers only occupations the member already serves with an active program \u2014 it does NOT surface greenfield demand in occupations the member does not yet serve. Absence here is not absence of regional demand.",
+   "small-n: the underlying counts are small; treat rates and medians cautiously."
   ]
  },
  "licensing": {

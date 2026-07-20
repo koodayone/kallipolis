@@ -81,7 +81,7 @@ class TestRegionResolution:
         spec = LandscapeSpec(
             id="__multi__",
             colleges=(bay_college, la_college),
-            socs=(), top_divisions=(), excluded_tops=frozenset(),
+            socs=(),
             sector="x", name="x", accent="#000",
         )
         assert spec.resolve_regions() == ("Bay", "LA")

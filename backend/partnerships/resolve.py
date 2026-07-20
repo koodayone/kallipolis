@@ -11,8 +11,8 @@ the colleges/vocational axes but rule-bearing for SOC narrowing).
 
 The three rule dimensions:
   - min_openings   : keep SOCs whose regional annual openings exceed the floor
-  - reachable_only : keep SOCs a member program reaches via the vocational
-                     crosswalk (is_vocational TOP, minus the spec's excluded_tops)
+  - reachable_only : keep SOCs a member program in the spec's program portfolio
+                     (composition.programs, or the sector's home_sector set) reaches
   - non_empty_only : keep SOCs whose reaching member program has AWARDS
                      (completers) in the LATEST reported year — awards are the
                      supply metric and supply is the current year's completers, so
@@ -109,8 +109,9 @@ def sector_lenses(spec: LandscapeSpec) -> dict:
     top_colleges = producing_top_colleges(spec.colleges, prog_tops)
 
     # SOC -> reachable / active via the spec's IN-SCOPE TOPs the member offers —
-    # in_scope applies is_vocational, excluded_tops AND the home-division gate, so
-    # this stays consistent with the displayed feeder universe (relevant_tops).
+    # in_scope is membership in the spec's program portfolio (composition.programs when
+    # authored, else the sector's home_sector set), so this stays consistent with the
+    # displayed feeder universe (relevant_tops).
     voc = spec.in_scope_tops()
     reachable: set[str] = set()
     active: set[str] = set()
