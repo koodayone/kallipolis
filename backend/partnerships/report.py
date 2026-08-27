@@ -85,6 +85,17 @@ def _esc(s) -> str:
     return html.escape(str(s if s is not None else ""))
 
 
+def _short_college(name: str) -> str:
+    """The crosswalk badge label: drop only a TRAILING ' College'.
+
+    A bare `.replace(" College", "")` strips EVERY occurrence, which renames the three
+    CCC colleges carrying ' College' mid-name — most visibly "City College of San
+    Francisco" -> "City of San Francisco", i.e. the municipality rather than the college
+    (also West Hills College Coalinga / Lemoore). Suffix-only is the intended shortening.
+    """
+    return name[: -len(" College")] if name.endswith(" College") else name
+
+
 def _linkify(text: str) -> str:
     """Escape text, then convert [label](url) markdown links to <a> tags and
     **bold** markdown to <b> — lets the author embed trust-building links and
@@ -139,7 +150,12 @@ def _employer_table(occs: list[LensOccupation], postings: dict[str, list[LivePos
         for j, post in enumerate(plist):
             cell = (f'<a target="_blank" rel="noopener" href="{_esc(post.url)}">{_esc(post.title)} ↗</a>'
                     if post else "—")
-            emp = post.employer if post else (o.employers[0].name if o.employers else "—")
+            # No posting -> no employer name. The old fallback printed the lens's top-ranked
+            # regional hirer (BLS OEWS staffing patterns), which put two different claims in one
+            # column — "this employer posted this job" beside "BLS says this employer hires this
+            # occupation" — told apart only by a missing link. A blank row is the honest render of
+            # a NONE verdict: the occupation is in scope, no posting evidence was found.
+            emp = post.employer if post else "—"
             lsoc = (f'<td class="lsoc" rowspan="{len(plist)}">{_esc(o.title)}'
                     f'<span>SOC {_esc(o.soc)}</span></td>' if j == 0 else "")
             body.append(f'<tr class="{acc}">{lsoc}'
@@ -324,7 +340,7 @@ def _crosswalk_svg(programs, occs: list[LensOccupation]) -> str:
             f'<rect x="6" y="{y:.0f}" width="{LBOX_W}" height="{BOXH}" rx="6" '
             'fill="#f7f8fb" stroke="#d4dae6"/>'
             f'<text x="20" y="{y + 21:.0f}" font-size="14" font-weight="700" fill="#22304e">'
-            f'{_esc(p.college.replace(" College", ""))}</text>'
+            f'{_esc(_short_college(p.college))}</text>'
         )
         # full program name — compress to the badge width only if it would overflow
         # (never truncate: the docx native-table crosswalk reads this text verbatim,
@@ -699,9 +715,11 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         f'<p>{_linkify(spec.demand_note)}</p>' if spec.demand_note else '',
         _demand_table(occs),
         '<h1>Employer Evidence</h1>',
+        # No "under the <role> designation" clause: postings are found by SOC, not by the
+        # role title or TOP, so naming the play here overstated what the search did — and it
+        # read as role-report copy inside a program evaluation.
         f'<p>Prominent employers in the region have opened live job postings listed '
-        f'on CareerOneStop, sponsored by the U.S. Department of Labor, under the '
-        f'<b>{_esc(play.title)}</b> designation.</p>',
+        f'on CareerOneStop, sponsored by the U.S. Department of Labor.</p>',
         _employer_table(occs, spec.live_postings),
     ]
 
