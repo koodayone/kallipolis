@@ -1,0 +1,112 @@
+{
+    "member": "foothill",
+    "title": "Environmental Horticulture and Design",
+    "sector": "agwet",
+    "socs": [
+        "37-3012",
+        "37-1012"
+    ],
+    "author": "Dayone Koo",
+    "date": "August 27, 2026",
+    "org_name": "Foothill College Program Evaluation",
+    "org_short": "Regional",
+    "_comment": "PROGRAM EVALUATION (evaluate-program skill). Subject is the PROGRAM (Foothill College x TOP 010900), not a job title. Destination SOCs DERIVED: crosswalk(010900) intersected with SECTORS['agwet'].socs minus ALL_OTHER/PROMOTION/EXPERIENCE_5YR = ['37-3012', '37-1012']. Dropped: 11-9013, 25-1041, 25-9021, 37-3011 (below the middle-skill gate), 45-1011, 99-9999. Peer set = top 6 Bay colleges by 5-year awards on THIS TOP (a program evaluation's peers must share the TOP; the role report mixed TOPs). live_postings and competencies reused verbatim from the matching role report (same SOCs, already verified). EVIDENCE-FORWARD, NO VERDICT.",
+    "lede": "This evaluation assembles labor-market supply and demand evidence for Foothill College's Environmental Horticulture and Design program (TOP 010900). It covers regional occupational demand targeted by the program, and the program's award and enrollment trends in the context of other colleges offering the same program in the region.",
+    "demand_note": "Foothill's Environmental Horticulture and Design program leads to SOC 37-1012 and SOC 37-3012 via the TOP\u2013CIP\u2013SOC crosswalk. [According to the Centers of Excellence](https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061), these occupations demand roughly 580 openings a year.",
+    "alignment_note": "The set of colleges offering TOP 010900 in the Bay Area. All of these colleges support SOC 37-1012 and 37-3012 via the same TOP code through the TOP\u2013CIP\u2013SOC crosswalk.",
+    "competency_note": "",
+    "award_note": "Award trends for each member-college program. Empty cells indicate no data reported via DataMart.",
+    "enrollment_note": "Enrollment trends for each member-college program. Empty cells indicate no data reported via DataMart.",
+    "programs": [
+        [
+            "Foothill College",
+            "010900"
+        ],
+        [
+            "Cabrillo College",
+            "010900"
+        ],
+        [
+            "Merritt College",
+            "010900"
+        ],
+        [
+            "Solano Community College",
+            "010900"
+        ],
+        [
+            "Diablo Valley College",
+            "010900"
+        ],
+        [
+            "Las Positas College",
+            "010900"
+        ]
+    ],
+    "live_postings": {
+        "37-1012": [
+            {
+                "employer": "BrightView",
+                "title": "Landscaper I",
+                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=37-1012.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=0a8c7ce442cf4a89a6d78ae2183a340e8003&detailpage=true"
+            },
+            {
+                "employer": "Six Flags",
+                "title": "Landscaper",
+                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=37-1012.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=2fc7b80dbd0448f4901eb004105cf19a8003&detailpage=true"
+            }
+        ]
+    },
+    "competencies": {
+        "37-3012": {
+            "description": "Mixes and applies pesticides, herbicides, and fungicides to trees, shrubs, lawns, and crops \u2014 work that requires specific training and state certification.",
+            "knowledge": [
+                "Biology",
+                "Chemistry",
+                "Public Safety & Security",
+                "Law & Government"
+            ],
+            "skills": [
+                "Operation & Control",
+                "Operations Monitoring",
+                "Equipment Maintenance",
+                "Complex Problem Solving"
+            ],
+            "abilities": [
+                "Control Precision",
+                "Multilimb Coordination",
+                "Depth Perception",
+                "Arm-Hand Steadiness"
+            ],
+            "technology": [
+                "Geographic information system",
+                "Inventory management software"
+            ]
+        },
+        "37-1012": {
+            "description": "Directs and coordinates landscaping and groundskeeping crews \u2014 reviewing contracts to determine service, machine, and workforce requirements.",
+            "knowledge": [
+                "Building & Construction",
+                "Chemistry",
+                "Personnel & Human Resources",
+                "Biology"
+            ],
+            "skills": [
+                "Management of Personnel Resources",
+                "Management of Material Resources",
+                "Quality Control Analysis",
+                "Operations Monitoring"
+            ],
+            "abilities": [
+                "Control Precision",
+                "Multilimb Coordination",
+                "Arm-Hand Steadiness",
+                "Time Sharing"
+            ],
+            "technology": [
+                "Time accounting software",
+                "Inventory management software"
+            ]
+        }
+    }
+}

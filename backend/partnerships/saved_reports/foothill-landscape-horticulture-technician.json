@@ -1,0 +1,79 @@
+{
+    "member": "foothill",
+    "title": "Landscape Horticulture Technician",
+    "sector": "agwet",
+    "socs": [
+        "37-3012",
+        "37-1012"
+    ],
+    "author": "Dayone Koo",
+    "date": "August 27, 2026",
+    "_comment": "Dialectical surface for the Foothill Landscape Horticulture Technician report. Edit this file; the /report/saved/ endpoint re-renders on refresh. Fields mirror ReportSpec overrides (lede, *_note, live_postings). Feeder: TOP 010900 Horticulture, Foothill 14 awards 2024-25; Merritt College leads the region (010910, 48). EDITORIAL DECISIONS ON RECORD: (a) 37-1012 carries entry-tier postings (BrightView 'Landscaper I', Six Flags 'Landscaper') rather than supervisor-titled ones \u2014 no employer in the region posts a supervisor title, and the entry tier is the pathway a Horticulture completer actually enters, with 37-1012 the promotion destination above it. (b) 37-3012 returned ZERO CareerOneStop listings \u2014 a genuine NONE verdict, carried in demand_note rather than hidden. (c) 37-3011 Landscaping & Groundskeeping Workers (Bay: 4,880 openings, the family's largest) is deliberately OUT of the ontology: COE lists it 'No formal educational credential', below the middle-skill gate the occupation universe is grounded on \u2014 admitting it would also admit Janitors/Maids/Grounds-Maintenance-All-Other. (d) 37-3013 Tree Trimmers ($69,260, middle-skill) was considered and rejected: TOP 010900/010910 do not crosswalk to it and it is in no sector.",
+    "demand_note": "The U.S. Department of Labor's [O*NET system](https://www.onetonline.org/find/quick?s=Landscape+Horticulture) maps this role to two standard occupational classifications supported by Foothill's Horticulture program. [According to the Centers of Excellence](https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061), together they represent roughly 580 openings a year in the Bay Area labor market \u2014 the supervisory tier (37-1012) accounting for 500 of them at a $63,150 median. A search of [CareerOneStop](https://www.careeronestop.org/Toolkit/Jobs/find-jobs.aspx) returned no current Bay Area postings under the Pesticide Handlers classification (37-3012), whose 80 openings a year make it the smaller and more specialized of the two; the live postings below therefore evidence the landscaping tier that Horticulture completers enter directly.",
+    "live_postings": {
+        "37-1012": [
+            {
+                "employer": "BrightView",
+                "title": "Landscaper I",
+                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=37-1012.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=0a8c7ce442cf4a89a6d78ae2183a340e8003&detailpage=true"
+            },
+            {
+                "employer": "Six Flags",
+                "title": "Landscaper",
+                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=37-1012.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=2fc7b80dbd0448f4901eb004105cf19a8003&detailpage=true"
+            }
+        ]
+    },
+    "competencies": {
+        "37-3012": {
+            "description": "Mixes and applies pesticides, herbicides, and fungicides to trees, shrubs, lawns, and crops \u2014 work that requires specific training and state certification.",
+            "knowledge": [
+                "Biology",
+                "Chemistry",
+                "Public Safety & Security",
+                "Law & Government"
+            ],
+            "skills": [
+                "Operation & Control",
+                "Operations Monitoring",
+                "Equipment Maintenance",
+                "Complex Problem Solving"
+            ],
+            "abilities": [
+                "Control Precision",
+                "Multilimb Coordination",
+                "Depth Perception",
+                "Arm-Hand Steadiness"
+            ],
+            "technology": [
+                "Geographic information system",
+                "Inventory management software"
+            ]
+        },
+        "37-1012": {
+            "description": "Directs and coordinates landscaping and groundskeeping crews \u2014 reviewing contracts to determine service, machine, and workforce requirements.",
+            "knowledge": [
+                "Building & Construction",
+                "Chemistry",
+                "Personnel & Human Resources",
+                "Biology"
+            ],
+            "skills": [
+                "Management of Personnel Resources",
+                "Management of Material Resources",
+                "Quality Control Analysis",
+                "Operations Monitoring"
+            ],
+            "abilities": [
+                "Control Precision",
+                "Multilimb Coordination",
+                "Arm-Hand Steadiness",
+                "Time Sharing"
+            ],
+            "technology": [
+                "Time accounting software",
+                "Inventory management software"
+            ]
+        }
+    }
+}
