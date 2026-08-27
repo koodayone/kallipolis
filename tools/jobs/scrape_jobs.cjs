@@ -24,8 +24,12 @@ const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 '
   const page = await browser.newPage({ userAgent: UA });
   const url = `https://www.careeronestop.org/Toolkit/Jobs/find-jobs.aspx` +
               `?keyword=${keyword}&location=${zip}&radius=${radius}`;
-  await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 });
-  await page.waitForTimeout(3000);
+  // 'networkidle' never settles within a sane timeout on a high-latency link (the page
+  // itself is fine — 200 in ~1.5s), so wait for the RESULTS to exist instead of for the
+  // network to go quiet: same guarantee, latency-independent, and usually faster.
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 120000 });
+  await page.waitForSelector('a[href*="find-jobs-details"]', { timeout: 60000 })
+    .catch(() => {});   // no results is a legitimate outcome — fall through and return []
 
   // Capture the FULL selection space, not just page 1: the search can return
   // dozens of results and the strongest candidates (top-brand employers) are
