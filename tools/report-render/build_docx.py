@@ -255,10 +255,19 @@ def add_trend(table):
     for ri, r in enumerate(rows):
         cells = tbl.add_row().cells
         istot = 'tot' in r['cls']; ishdr = ri == 0
+        # Credential-mix sub-row under the member college. Without this branch the
+        # <b> in cell 0 renders bold+dark exactly like a college name, so the docx
+        # keeps the rows but loses the hierarchy that makes them read as a
+        # breakdown — the flatten-not-drop failure the link-parity gate can't see.
+        istier = 'tier' in r['cls']
         for ci, c in enumerate(r['cells']):
             cell = cells[ci]; p = cell.paragraphs[0]
             p.paragraph_format.space_before = Pt(1); p.paragraph_format.space_after = Pt(1)
-            if ci == 0 and not ishdr and not istot:
+            if ci == 0 and istier:
+                p.paragraph_format.left_indent = Pt(12)
+                b = c['el'].find('b')
+                run(p, (b.get_text(strip=True) if b else c['text']), size=8, bold=False, color=MUT)
+            elif ci == 0 and not ishdr and not istot:
                 b = c['el'].find('b'); span = c['el'].find('span')
                 run(p, (b.get_text(strip=True) if b else c['text']), size=9, bold=True, color=DARK)
                 if span:
@@ -267,7 +276,8 @@ def add_trend(table):
             else:
                 p.alignment = WD_ALIGN_PARAGRAPH.LEFT if ci == 0 else WD_ALIGN_PARAGRAPH.CENTER
                 col = MUT if c['text'] in ('—', '-') else (DARK if (ishdr or istot) else BODY)
-                run(p, c['text'], size=8.5, bold=(ishdr or istot), color=col)
+                run(p, c['text'], size=8 if istier else 8.5,
+                    bold=(ishdr or istot), color=MUT if istier else col)
             if ishdr:
                 shade(cell, HFILL)
             if istot:
