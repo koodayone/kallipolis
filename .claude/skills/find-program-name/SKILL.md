@@ -21,7 +21,7 @@ so the crosswalk speaks the audience's language instead of Sacramento's.
 
 ## The one hard rule
 
-Report ONLY a name you actually saw on regionalcte.org or the college's own site. NEVER infer a name
+Report ONLY a name you actually saw on the college's own catalog. NEVER infer a name
 from a job title or the report's SOC — that is the seductive failure mode (matching "094500" to
 "Semiconductor Processing" because the SOC is semiconductor, rather than because Foothill's catalog
 says so). A wrong program name tells an expert your analysis invents things; it is worse than the
