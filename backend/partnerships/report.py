@@ -407,10 +407,28 @@ def _trend_table(programs, axis: list[str], headers: list[str], value_attr: str,
             v = series.get(k) or 0
             totals[i] += v
             cells.append('<td class="num zero">—</td>' if not v else f'<td class="num">{v:,}</td>')
+        # Credential-mix sub-rows: the MEMBER college's award series decomposed by
+        # tier, and only when there is more than one tier to show (a single-tier
+        # program's breakdown just repeats its total). Peers keep one line each, so
+        # the cross-college comparison and the regional total the table exists for
+        # are untouched — the detail is spent on the college the report is about.
+        tiers = getattr(p, "awards_by_tier", {}) if value_attr == "awards" else {}
+        expand = p.is_member and len(tiers) > 1
+        tr_open = '<tr class="sub">' if expand else "<tr>"
         rows.append(
-            f'<tr><td class="prog"><b>{_esc(p.college)}</b><br>'
+            f'{tr_open}<td class="prog"><b>{_esc(p.college)}</b><br>'
             f'<span>TOP {_esc(p.top6)} · {_esc(p.program)}</span></td>{"".join(cells)}</tr>'
         )
+        if expand:
+            for tier, tseries in tiers.items():
+                tcells = "".join(
+                    '<td class="num zero">—</td>' if not (tv := tseries.get(k) or 0)
+                    else f'<td class="num">{tv:,}</td>'
+                    for k in axis
+                )
+                rows.append(
+                    f'<tr class="tier"><td class="prog"><b>{_esc(tier)}</b></td>{tcells}</tr>'
+                )
     tot = "".join('<td class="num zero">—</td>' if not t else f'<td class="num">{t:,}</td>' for t in totals)
     return (
         '<table class="trend"><colgroup><col class="cprog"><col><col><col><col><col></colgroup>'
@@ -514,6 +532,11 @@ p a,.byline a{color:#1155cc;text-decoration:underline}
 .trend td.prog b{font-size:10.5px;color:#2a3450}.trend td.prog span{color:#9099ab;font-size:8.5px}
 .trend td.num{font-variant-numeric:tabular-nums;color:#33405a}.trend td.zero{color:#bcc3ce}
 .trend tr.tot td{background:#f2f6fc;font-weight:700;border-top:1.5px solid #c8d0de;color:#2a3450}
+.trend tr.sub td{border-bottom:0}
+.trend tr.tier td{border-top:0;background:#fbfcfe}
+.trend tr.tier td.prog{padding-left:20px}
+.trend tr.tier td.prog b{font-weight:400;font-size:9.5px;color:#66708a}
+.trend tr.tier td.num{font-size:10px;color:#66708a}
 .byline{font-size:11px;color:#70757c;margin:5px 0 0}
 .tnar{font-size:11px;color:#46536b;margin:12px 0 3px;line-height:1.4}
 .footer{margin-top:18px;padding-top:9px;border-top:1px solid #bfbfbf;font-size:9.5px;color:#5f6368;line-height:1.6;font-style:italic}

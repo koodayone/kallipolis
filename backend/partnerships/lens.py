@@ -45,6 +45,7 @@ from functools import lru_cache
 from typing import Sequence
 
 from ontology.crosswalks import crosswalk_socs
+from ontology.programs import AWARD_TIERS, award_tier, award_tier_label
 from ontology.schema import get_driver
 from partnerships import members
 from partnerships.clusters import cluster_expanded_spec
@@ -52,6 +53,7 @@ from partnerships.employer_relevance import rank_employers
 from partnerships.graph_reads import (
     latest_academic_year,
     program_award_series,
+    program_award_series_by_type,
     program_awards,
     program_enrollment_series,
     program_names,
@@ -149,6 +151,12 @@ class LensProgram:
     socs: list[str]               # the scope occupations this program feeds (crosswalk edges)
     awards: dict[str, int]        # {academic_year -> awards}, full history
     enrollment: dict[str, int]    # {term -> count}, full history
+    # {tier label -> {academic_year -> awards}} — the award series decomposed by
+    # credential tier (ontology.programs.AWARD_TIERS), ordered highest award first.
+    # Summing the tiers for a year reproduces `awards` for that year. The report
+    # renders these as sub-rows under the MEMBER college only: peers keep a single
+    # comparison line, so the aggregate trend the table exists for is preserved.
+    awards_by_tier: dict[str, dict[str, int]] = field(default_factory=dict)
 
 
 @dataclass(frozen=True)
@@ -305,6 +313,7 @@ def _programs(
     if not relevant_tops:
         return [], [], []
     aw = program_award_series(s, colleges, relevant_tops)
+    awt = program_award_series_by_type(s, colleges, relevant_tops)
     en = program_enrollment_series(s, colleges, relevant_tops)
     names = program_names(s, relevant_tops)
 
@@ -317,6 +326,18 @@ def _programs(
     for r in en:
         enroll[(r["college"], r["top6"])][r["term"]] = r["count"]
 
+    # Award series one grain finer, collapsed to credential tiers. Carried on the
+    # LensModel (never recomputed by a renderer) so the report and the dashboard
+    # read the same decomposition.
+    tiers: dict[tuple, dict[str, dict[str, int]]] = defaultdict(lambda: defaultdict(dict))
+    tier_types: dict[tuple, set[str]] = defaultdict(set)
+    for r in awt:
+        tier = award_tier(r["award_type"])
+        key = (r["college"], r["top6"])
+        by_year = tiers[key][tier]
+        by_year[r["year"]] = by_year.get(r["year"], 0) + r["awards"]
+        tier_types[(*key, tier)].add(r["award_type"] or "")
+
     keys = sorted(set(awards) | set(enroll))
     programs = [
         LensProgram(
@@ -325,6 +346,13 @@ def _programs(
             socs=sorted(top_socs.get(top6, set())),
             awards=dict(awards.get((college, top6), {})),
             enrollment=dict(enroll.get((college, top6), {})),
+            awards_by_tier={
+                award_tier_label(t, tier_types[(college, top6, t)]): dict(series)
+                for t, series in sorted(
+                    tiers.get((college, top6), {}).items(),
+                    key=lambda kv: AWARD_TIERS.index(kv[0]),
+                )
+            },
         )
         for college, top6 in keys
     ]

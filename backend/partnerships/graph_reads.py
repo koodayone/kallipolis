@@ -96,6 +96,27 @@ def program_award_series(session, colleges: Sequence[str], tops: Sequence[str]) 
     ).data()
 
 
+def program_award_series_by_type(session, colleges: Sequence[str], tops: Sequence[str]) -> list[dict]:
+    """Per ``(college, top6, academic_year, award_type)`` award counts — the same
+    supply series as ``program_award_series``, one grain finer.
+
+    Deliberately a SEPARATE read rather than a wider return on the existing one:
+    that read is shared with the dashboard (landscape_programs), and its shape is
+    what keeps the report's trend numbers from drifting from the dashboard's. This
+    one adds detail for the report's credential-mix rows without touching it.
+    Summing ``awards`` here over award_type reproduces it exactly.
+    Rows: ``{college, top6, year, award_type, awards}``."""
+    if not colleges or not tops:
+        return []
+    return session.run(
+        "MATCH (pr:Program)-[a:AWARDED]->(ay:AcademicYear) "
+        "WHERE pr.college IN $c AND pr.top6 IN $t AND coalesce(a.count, 0) > 0 "
+        "RETURN pr.college AS college, pr.top6 AS top6, ay.year AS year, "
+        "a.award_type AS award_type, toInteger(coalesce(a.count, 0)) AS awards",
+        c=list(colleges), t=list(tops),
+    ).data()
+
+
 def program_enrollment_series(session, colleges: Sequence[str], tops: Sequence[str]) -> list[dict]:
     """Per ``(college, top6, term)`` enrollment counts — the enrollment-trend
     series. Rows: ``{college, top6, term, count}`` (term e.g. "Fall 2025")."""

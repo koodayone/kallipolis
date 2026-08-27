@@ -113,6 +113,60 @@ def _college_names() -> dict[str, str]:
     return {key: info["name"] for key, info in cat.items()}
 
 
+# ── Award tiers ───────────────────────────────────────────────────────────
+#
+# DataMart reports 20 distinct award types, at a granularity no reader can use in
+# a table cell ("Certificate requiring 8 to fewer than 16 semester units"). These
+# collapse to six tiers a program-review audience already thinks in.
+#
+# TRANSFER IS ITS OWN TIER, deliberately. An A.S.-T/A.A.-T completer intends to
+# transfer to a CSU — that is supply to the transfer pipeline, not to the regional
+# labor market. Folding it into "associate degree" would count university-bound
+# completers as workforce supply, which the demand side of this model never claims.
+AWARD_TIERS: tuple[str, ...] = (
+    "baccalaureate",
+    "associate degree",
+    "transfer degree",
+    "certificate",
+    "other credit award",
+    "noncredit award",
+)
+
+
+def award_tier(award_type: str | None) -> str:
+    """A DataMart award-type string -> one of AWARD_TIERS.
+
+    Order matters: "for Transfer" must be tested BEFORE the plain associate match,
+    since "Associate in Science for Transfer (A.S.-T) Degree" contains both."""
+    t = (award_type or "").lower()
+    if "baccalaureate" in t:
+        return "baccalaureate"
+    if "for transfer" in t or "-t)" in t:
+        return "transfer degree"
+    if "associate" in t:
+        return "associate degree"
+    if "noncredit" in t:
+        return "noncredit award"
+    if "other credit" in t:
+        return "other credit award"
+    if "certificate" in t:
+        return "certificate"
+    return "other credit award"
+
+
+def award_tier_label(tier: str, types: set[str]) -> str:
+    """The row label for a tier. When a tier is carried by exactly ONE underlying
+    award type, append its unit/hour band — "certificate, 8-16 units" says more
+    than "certificate" and costs nothing. Mixed tiers stay unqualified."""
+    if tier != "certificate" or len(types) != 1:
+        return tier
+    m = re.search(r"(\d+)\s*to\s*(?:fewer than|<)\s*(\d+)\s*semester units", next(iter(types)), re.I)
+    if m:
+        return f"{tier}, {m.group(1)}-{m.group(2)} units"
+    m = re.search(r"(\d+)\+\s*semester units", next(iter(types)), re.I)
+    return f"{tier}, {m.group(1)}+ units" if m else tier
+
+
 # ── Parsers (pivoted/hierarchical exports, indentation state machines) ────
 
 
