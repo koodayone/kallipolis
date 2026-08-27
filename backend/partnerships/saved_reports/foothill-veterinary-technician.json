@@ -1,0 +1,94 @@
+{
+    "member": "foothill",
+    "title": "Veterinary Technician",
+    "sector": "agwet",
+    "socs": [
+        "29-2056",
+        "31-9096"
+    ],
+    "author": "Dayone Koo",
+    "date": "August 27, 2026",
+    "_comment": "Dialectical surface for the Foothill Veterinary Technician report. Edit this file; the /report/saved/ endpoint re-renders on refresh. Fields mirror ReportSpec overrides (lede, *_note, live_postings). Feeder: TOP 010210 Veterinary Technician (Licensed), Foothill 30 awards 2024-25. Partner set is only 2 colleges (Foothill 30, Santa Rosa Junior College 25) \u2014 the Bay has few Vet Tech programs, so the thin set is real, not a floor artifact. Postings are tiered deliberately: Vet Assistant listings evidence 31-9096, the licensed/registered tech listings evidence 29-2056 \u2014 the grouped report lets each posting sit at its correct tier instead of stretching one SOC vertically.",
+    "live_postings": {
+        "29-2056": [
+            {
+                "employer": "Ethos Veterinary Health",
+                "title": "Per Diem ER and CCU Veterinary Technician",
+                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=29-2056.00&location=94022&radius=25&pagesize=250&curPage=1&fc=0&jvid=441f123e9066403cb9026c31f8f0beb08003&detailpage=true"
+            },
+            {
+                "employer": "Palo Alto Veterans Institute for Research",
+                "title": "Life Sciences Animal Technician - VMU",
+                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=29-2056.00&location=94022&radius=25&pagesize=250&curPage=1&fc=0&jvid=e8c4e0dd1f9b4b37b4c9285a2abb2d848003&detailpage=true"
+            }
+        ],
+        "31-9096": [
+            {
+                "employer": "Banfield Pet Hospital",
+                "title": "Veterinary Assistant - #5130 SJ Meridian",
+                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=31-9096.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=114b0c0f2fa045fa952920f2001c8d7a8003&detailpage=true"
+            },
+            {
+                "employer": "VCA Animal Hospitals",
+                "title": "Veterinary Assistant",
+                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=31-9096.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=08d1b5b877b946d2a5d18ee7ec1609c28003&detailpage=true"
+            },
+            {
+                "employer": "Stanford University",
+                "title": "Laboratory Assistant III",
+                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=31-9096.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=b231f090e1134dd7beaff4a628dec59c8003&detailpage=true"
+            }
+        ]
+    },
+    "competencies": {
+        "29-2056": {
+            "description": "Performs laboratory and clinical procedures for the diagnosis and treatment of animal disease \u2014 blood and tissue sampling, urinalysis, vaccine preparation, and sterile technique.",
+            "knowledge": [
+                "Medicine & Dentistry",
+                "Biology",
+                "Chemistry",
+                "Customer & Personal Service"
+            ],
+            "skills": [
+                "Science",
+                "Critical Thinking",
+                "Operation & Control",
+                "Operations Monitoring"
+            ],
+            "abilities": [
+                "Manual Dexterity",
+                "Arm-Hand Steadiness",
+                "Auditory Attention",
+                "Stamina"
+            ],
+            "technology": [
+                "Medical software"
+            ]
+        },
+        "31-9096": {
+            "description": "Feeds, monitors, and provides routine and postoperative care for animals in hospitals, clinics, and research laboratories, maintaining sterile equipment and housing.",
+            "knowledge": [
+                "Medicine & Dentistry",
+                "Biology",
+                "Customer & Personal Service",
+                "Administrative"
+            ],
+            "skills": [
+                "Science",
+                "Service Orientation",
+                "Active Listening",
+                "Coordination"
+            ],
+            "abilities": [
+                "Manual Dexterity",
+                "Arm-Hand Steadiness",
+                "Finger Dexterity",
+                "Multilimb Coordination"
+            ],
+            "technology": [
+                "Medical software",
+                "Label making software"
+            ]
+        }
+    }
+}

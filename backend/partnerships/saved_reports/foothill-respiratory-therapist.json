@@ -1,0 +1,56 @@
+{
+    "member": "foothill",
+    "title": "Respiratory Therapist",
+    "sector": "health",
+    "socs": [
+        "29-1126"
+    ],
+    "author": "Dayone Koo",
+    "date": "August 27, 2026",
+    "_comment": "Dialectical surface for the Foothill Respiratory Therapist report. Edit this file; the /report/saved/ endpoint re-renders on refresh. Fields mirror ReportSpec overrides (lede, *_note, live_postings). Phase 1 scaffold complete; Phase 2 enrichments (live_postings, competencies) pending.",
+    "live_postings": {
+        "29-1126": [
+            {
+                "employer": "Stanford Health Care",
+                "title": "Respiratory Care Practitioner - Night Shift",
+                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=29-1126.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=110bea0e00a54a239eb7b95b8fe1288e8003&detailpage=true"
+            },
+            {
+                "employer": "Kaiser Permanente",
+                "title": "Respiratory Care Practitioner II Registered",
+                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=29-1126.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=822f82c1d0464ed9a52a6107b426c12e8003&detailpage=true"
+            },
+            {
+                "employer": "Dignity Health",
+                "title": "Respiratory Care Practitioner",
+                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=29-1126.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=1a3277cefa084ec7ab345f3e5e0994ef8003&detailpage=true"
+            }
+        ]
+    },
+    "competencies": {
+        "29-1126": {
+            "description": "Assesses, treats, and cares for patients with breathing disorders — initiating therapeutic procedures and operating the full range of respiratory care equipment.",
+            "knowledge": [
+                "Medicine & Dentistry",
+                "Biology",
+                "Therapy & Counseling",
+                "Chemistry"
+            ],
+            "skills": [
+                "Operation & Control",
+                "Operations Monitoring",
+                "Quality Control Analysis",
+                "Science"
+            ],
+            "abilities": [
+                "Inductive Reasoning",
+                "Information Ordering",
+                "Control Precision",
+                "Manual Dexterity"
+            ],
+            "technology": [
+                "Medical software"
+            ]
+        }
+    }
+}

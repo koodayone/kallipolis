@@ -60,6 +60,15 @@ Prose is auto-proposed by `propose_spec` with trust links baked in (O*NET, COE, 
 the def carries the enrichments + any prose overrides. Render at `…/report/saved/{slug}` (cp the def
 into the container; rebuild the backend only if code changed).
 
+**Before trusting ANY re-render, check for `{slug}.edited.html`** — the route serves it in preference
+to the def, so a def change renders as a no-op and you will debug the wrong layer. Merely OPENING the
+dialectic surface can create one (the page saves on input), so the shadow appears without a deliberate
+edit. `ls` the saved_reports dir in the CONTAINER (that is what the route reads), not just the repo.
+When one exists, diff it against a fresh generation before removing it —
+`from partnerships.api import _generated_report_html` renders the def-driven HTML directly — then
+consolidate any real prose edits and `POST …/revert`. Same trap, three places it bites: a silent
+no-op re-render (Phase 3), a stale surface (Phase 4), a refused export (Phase 5).
+
 ### Phase 4 — Refine  ·  the dialectic surface, HUMAN voice
 Open the endpoint; edit prose directly (⌘S saves to `{slug}.edited.html`; links open in a new tab).
 **Consolidate:** read `{slug}.edited.html`, port any prose hand-edits into the def, then *revert*

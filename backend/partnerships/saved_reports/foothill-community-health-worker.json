@@ -1,0 +1,66 @@
+{
+    "member": "foothill",
+    "title": "Community Health Worker",
+    "sector": "health",
+    "socs": [
+        "21-1094"
+    ],
+    "author": "Dayone Koo",
+    "date": "August 27, 2026",
+    "_comment": "Dialectical surface for the Foothill Community Health Worker report. Edit this file; the /report/saved/ endpoint re-renders on refresh. Fields mirror ReportSpec overrides (lede, *_note, live_postings). Foothill feeds this from TWO TOPs: 126100 Community Health Care Worker (19 awards, growing 10->11->19) and 120100 Health Occupations General (60). CCSF dominates the region at 302 awards on 126100. NOTE 21-1094 is an unusually leaky SOC on CareerOneStop: 181 listings returned, but most are unrelated (Merchandiser, Dockworker, BGA Rework Operator) \u2014 the three selected are the exact-title matches from real Bay health organizations; staffing-agency listings (Amergis) were discarded per the recognizability axis.",
+    "programs": [
+        ["City College of San Francisco", "126100"],
+        ["Berkeley City College", "126100"],
+        ["Cabrillo College", "126100"],
+        ["Foothill College", "126100"],
+        ["Mission College", "126100"]
+    ],
+    "_programs_note": "EDITORIAL OVERRIDE of the default partner selection. select_partner_programs picks each college's LARGEST feeding program, which mixed TOP 126100 (Community Health Care Worker — the program actually named for this occupation) with TOP 120100 (Health Occupations, General — a generic pre-health program that also crosswalks to 21-1094). That produced an incoherent set where Foothill was represented by 120100 (251 5-yr awards) rather than its own CHW program (40). Restricting to 126100 makes every row the same kind of program. Foothill's supply reads 40 rather than 251 — the smaller number is the honest one, since 120100 completers mostly continue into nursing and allied health, not community health work.",
+    "live_postings": {
+        "21-1094": [
+            {
+                "employer": "Alameda Health System",
+                "title": "SLH Care Management Community Health Worker",
+                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=21-1094.00&location=94022&radius=25&pagesize=250&curPage=1&fc=0&jvid=490e8eb31a734a77b07518fe7d29e38b8003&detailpage=true"
+            },
+            {
+                "employer": "Axis Community Health",
+                "title": "Community Health Worker (CHW)",
+                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=21-1094.00&location=94022&radius=25&pagesize=250&curPage=1&fc=0&jvid=09ddb47208134fc2a508a60672ef889b8003&detailpage=true"
+            },
+            {
+                "employer": "Horizon Services, Inc.",
+                "title": "Community Health Worker",
+                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=21-1094.00&location=94022&radius=25&pagesize=250&curPage=1&fc=0&jvid=25f2206a661f483f985a01d0ab32b4088003&detailpage=true"
+            }
+        ]
+    },
+    "competencies": {
+        "21-1094": {
+            "description": "Promotes health within a community by helping residents adopt healthy behaviors and advocating for their needs with healthcare providers and social service agencies.",
+            "knowledge": [
+                "Psychology",
+                "Therapy & Counseling",
+                "Education & Training",
+                "Customer & Personal Service"
+            ],
+            "skills": [
+                "Social Perceptiveness",
+                "Service Orientation",
+                "Instructing",
+                "Persuasion"
+            ],
+            "abilities": [
+                "Oral Comprehension",
+                "Oral Expression",
+                "Written Expression",
+                "Speech Clarity"
+            ],
+            "technology": [
+                "Medical software",
+                "Video conferencing software",
+                "Desktop publishing software"
+            ]
+        }
+    }
+}
