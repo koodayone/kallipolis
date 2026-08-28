@@ -488,8 +488,12 @@ def _awards_offered_section(college: str, top6: str) -> str:
             c = {"units": c, "basis": "award"}
         if c:
             u = f"{c['units']:g} {cal} units".replace("  ", " ").strip()
-            if c.get("basis") == "major":
-                u += " in the major"
+            # Three bases, because a catalog figure is one of three different things.
+            # "award" is the whole award. "major" is degree coursework with general
+            # education on top. "program" is a completion programme's own units, which
+            # sit on top of a prerequisite degree AND a GE pattern — Foothill's
+            # Respiratory Care B.S. is 68 over an existing associate degree.
+            u += {"major": " in the major", "program": " in the program"}.get(c.get("basis"), "")
         else:
             u = a.band or "—"
         body.append(
@@ -498,7 +502,7 @@ def _awards_offered_section(college: str, top6: str) -> str:
             f'<td class="lemp">{_esc(a.tier)}</td>'
             f'<td class="ltit">{_esc(u)}</td></tr>')
     # Named once at module level: an f-string expression part cannot hold an escape.
-    ge = _GE_NOTE if any((v or {}).get("basis") == "major"
+    ge = _GE_NOTE if any((v or {}).get("basis") in ("major", "program")
                          for v in curated.values() if isinstance(v, dict)) else ""
     link = "."
     if disp and disp.get("url"):

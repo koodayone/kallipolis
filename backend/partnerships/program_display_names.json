@@ -168,8 +168,9 @@
         },
         "Respiratory Care": {
           "units": 68,
-          "basis": "award",
-          "tier": "baccalaureate"
+          "basis": "program",
+          "tier": "baccalaureate",
+          "note": "68 is this completion programme's own units (44 coursework + 24 credit for prior learning). The degree also requires a GE pattern and a CoARC-accredited associate degree as prerequisite."
         },
         "Interventional Pulmonology Assistant": {
           "units": 12,

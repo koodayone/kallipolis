@@ -17,7 +17,7 @@ minimum on their own and so looked indistinguishable from a correct total.
 Coverage:
   - every entry carries the name, url and confidence the renderer expects
   - award_units entries are {units, basis} with a basis the renderer understands
-  - a degree total below the calendar's degree minimum MUST be marked "major"
+  - a degree total below its credential's minimum MUST be marked as a part, not a whole
   - every figure records the credential tier, so the guard cannot be fooled by a
     programme name that does not contain the word "degree"
   - certificate figures are positive and calendars are ones we can label
@@ -29,11 +29,24 @@ import pytest
 
 CACHE = Path(__file__).resolve().parent / "program_display_names.json"
 
-#: California associate-degree minimums (Title 5 §55063): 60 semester units, or the
-#: quarter equivalent. A degree figure below its calendar's minimum cannot be the
-#: award's total — it is major coursework, and must say so.
-DEGREE_MINIMUM = {"semester": 60, "quarter": 90}
-BASES = {"major", "award"}
+#: Minimum units for a whole degree, by credential and calendar. Associate: Title 5
+#: §55063, 60 semester units. Baccalaureate: 120 semester units, of which a CCC upper
+#: division programme is only the top slice. A figure below its minimum CANNOT be the
+#: award's total — it is a part of the award, and must say which part.
+DEGREE_MINIMUM = {
+    "associate degree": {"semester": 60, "quarter": 90},
+    "baccalaureate": {"semester": 120, "quarter": 180},
+}
+#: What a cached figure MEASURES.
+#:   award    the whole award — a Certificate of Achievement IS its course sequence
+#:   major    degree coursework, with general education on top
+#:   program  a completion programme's own units, over a prerequisite degree AND a GE
+#:            pattern (Foothill's Respiratory Care B.S.: 68 on top of an associate)
+BASES = {"major", "award", "program"}
+#: Calendars we can label a unit figure with. Anything else and the renderer
+#: cannot say "quarter units", leaving a bare number beside DataMart's
+#: semester-normalised labels meaning something different.
+CALENDARS = {"semester", "quarter"}
 
 
 def _names():
@@ -72,7 +85,7 @@ def test_entries_with_units_declare_a_calendar():
     sits beside DataMart's semester-normalised award labels meaning something else."""
     for k, v in _names().items():
         if v.get("award_units"):
-            assert v.get("calendar") in DEGREE_MINIMUM, \
+            assert v.get("calendar") in CALENDARS, \
                 f"{k}: award_units present but calendar is {v.get('calendar')!r}"
 
 
@@ -85,21 +98,30 @@ def test_entries_with_units_declare_a_calendar():
 def test_a_degree_total_clears_the_degree_minimum(key, title, u):
     """A figure marked as the award's own total must actually be one.
 
-    THE REGRESSION: Environmental Horticulture's associate degree carried 64 as an
-    "award" total under a 90-unit minimum. Any degree total below its calendar's minimum
-    is really major coursework wearing the wrong label.
+    TWO REGRESSIONS, same class. Environmental Horticulture's associate degree carried
+    64 as an "award" total under a 90-unit minimum. The Respiratory Care baccalaureate
+    carried 68 as an "award" total when the catalog also requires a GE pattern and a
+    prerequisite associate degree — a bachelor's is 180 quarter units, not 68. Any degree
+    total below its minimum is a PART of the award wearing the label of the whole.
 
     Keys on the recorded TIER, not the programme name. A first version asked whether the
     title contained "degree" — and "Environmental Horticulture & Design" does not, so the
     guard sailed straight past the one row it existed to catch.
     """
-    if u["basis"] != "award" or "degree" not in u["tier"]:
+    if u["basis"] != "award" or u["tier"] not in DEGREE_MINIMUM:
         return
     v = _names()[key]
-    minimum = DEGREE_MINIMUM[v["calendar"]]
+    minimum = DEGREE_MINIMUM[u["tier"]][v["calendar"]]
     assert u["units"] >= minimum, (
-        f"{key}/{title}: {u['units']} is below the {v['calendar']} degree minimum "
-        f"({minimum}) — mark it basis='major' or correct the figure")
+        f"{key}/{title}: {u['units']} is below the {v['calendar']} {u['tier']} minimum "
+        f"({minimum}) — mark it basis='major'/'program' or correct the figure")
+
+
+def test_the_baccalaureate_is_a_completion_programme_not_a_whole_degree():
+    """68 units is the programme, over a prerequisite associate degree and a GE pattern."""
+    u = _names()["Foothill College|121000"]["award_units"]["Respiratory Care"]
+    assert u["tier"] == "baccalaureate" and u["units"] == 68
+    assert u["basis"] == "program", "68 is not a whole bachelor's degree"
 
 
 def test_the_environmental_horticulture_case_stays_fixed():
