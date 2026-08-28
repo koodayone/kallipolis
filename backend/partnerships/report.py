@@ -1382,13 +1382,15 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         ]
     if progs and term_keys:
         sections += [
+            # Chart first: it carries its own title. The note and the legend belong to
+            # the TABLE and sit with it, so neither reads as a caption for the chart.
+            _enrollment_lines_svg(progs, term_keys, term_heads, lens.college_terms,
+                                  brand=_brand_color(lens.scope.member.id) if spec.program_top else ""),
             f'<p class="tnar">{_linkify(spec.enrollment_note)}</p>' if spec.enrollment_note else '',
             # No total: see _trend_table. Enrollment across mixed calendars is not a
             # sound cross-college sum, and the old one silently dropped colleges with a
             # missing term — Veterinary Technology's Fall 2023 total read 411 (Santa Rosa
             # alone) against ~700 either side, a 47% regional collapse that never happened.
-            _enrollment_lines_svg(progs, term_keys, term_heads, lens.college_terms,
-                                  brand=_brand_color(lens.scope.member.id) if spec.program_top else ""),
             _trend_table(progs, term_keys, term_heads, "enrollment",
                          college_terms=lens.college_terms),
             f'<p class="tnar">{_esc(_enrollment_legend())}</p>',
