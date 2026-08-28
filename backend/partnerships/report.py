@@ -28,6 +28,8 @@ import sys
 from dataclasses import dataclass, field
 
 from occupations.competencies import get_competencies
+from ontology.regions import COE_REGION_DISPLAY, COE_REGION_TO_COUNTIES
+from ontology.supply import COE_DEMAND_VINTAGE
 from partnerships.lens import LensModel, LensOccupation, Play, build_lens
 
 # Per-occupation accent palette (teal / blue / red / purple / amber), cycled.
@@ -83,6 +85,39 @@ class ReportSpec:
 # ── Section builders (data from the lens, words from the spec) ─────────────────
 def _esc(s) -> str:
     return html.escape(str(s if s is not None else ""))
+
+
+def _region_name(lens: LensModel) -> str:
+    """The report's labor-market geography, named from the lens rather than assumed.
+
+    This was the literal string "Bay Area" in every report, which silently misstated
+    the geography of any non-Bay member. The COE region is the demand grain, so the
+    lens scope is the authority."""
+    regions = [r for r in (lens.scope.regions or ()) if r]
+    if not regions:
+        return "regional"
+    return " and ".join(COE_REGION_DISPLAY.get(r, r) for r in regions)
+
+
+def _demand_provenance(lens: LensModel) -> str:
+    """The geography and vintage behind every demand figure, as a caption under the
+    demand table — not inline in the prose, where a 12-county list wrecks the sentence.
+
+    Counties make the region concrete for a reader who has to know whether their
+    service area is in it. The vintage reuses ontology.supply.COE_DEMAND_VINTAGE,
+    derived from the demand file's own header and already the provenance string the
+    MCP surface reports, so the report cannot drift from the data or the other
+    surfaces. COE publishes no GDP-growth assumption with these projections, so none
+    is stated."""
+    regions = [r for r in (lens.scope.regions or ()) if r]
+    counties = [c for r in regions for c in COE_REGION_TO_COUNTIES.get(r, ())]
+    parts = []
+    if counties:
+        parts.append(f"Covers the {_region_name(lens)} region — "
+                     f"{', '.join(counties[:-1])}, and {counties[-1]} counties.")
+    v = COE_DEMAND_VINTAGE
+    parts.append(f"Figures are {v.split('—', 1)[1].strip()}." if "—" in v else f"Vintage: {v}.")
+    return " ".join(parts)
 
 
 def _short_college(name: str) -> str:
@@ -641,7 +676,7 @@ def propose_spec(member_id: str, play: Play, *, lens: LensModel | None = None,
                     f"[According to the Centers of Excellence]"
                     f"(https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061), "
                     f"{occ_demands} roughly **{total_openings:,} openings a year** in the "
-                    f"Bay Area labor market.",
+                    f"{_region_name(lens)} labor market.",
         alignment_note=f"How member-college programs across the consortium support "
                        f"{occref}, derived from the TOP–CIP–SOC crosswalk published by "
                        f"the Centers of Excellence.",
@@ -741,6 +776,7 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         '<h1>Regional Occupational Demand</h1>',
         f'<p>{_linkify(spec.demand_note)}</p>' if spec.demand_note else '',
         _demand_table(occs),
+        f'<p class="tnar">{_esc(_demand_provenance(lens))}</p>',
         '<h1>Employer Evidence</h1>',
         # No "under the <role> designation" clause: postings are found by SOC, not by the
         # role title or TOP, so naming the play here overstated what the search did — and it
