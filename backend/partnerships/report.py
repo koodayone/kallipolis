@@ -1206,16 +1206,11 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
     dash_url = spec.dashboard_url or f"https://preview.kallipolis.us/landscape/{member_id}/{play.sector}"
     sections += [_sources_section(_org_label(lens.scope.member), sec_label, dash_url,
                                   play.title, [o.soc for o in occs], spec.program_top)]
-    # Document chrome in the college's colour, for evaluations only. Injected as a
-    # small override rather than edited into _CSS, which is the shared render contract
-    # every report and the docx builder rely on.
-    brand_css = ""
-    bc = _brand_color(lens.scope.member.id) if spec.program_top else ""
-    if bc:
-        brand_css = (f"<style>.title{{border-bottom-color:{bc}}}"
-                     f"h1{{color:{bc}}}"
-                     f".live tr.lc1 td.lsoc{{border-left-color:{bc}}}</style>")
-    body = brand_css + "\n".join(s for s in sections if s)
+    # Branding is scoped to the supply chart alone — see _awards_demand_svg. Recolouring
+    # the document chrome (title rule, headings, table accents) was tried and reverted:
+    # a saturated brand hue across every heading fights the report's own palette, where
+    # colour already carries meaning, and the blue chrome reads better.
+    body = "\n".join(s for s in sections if s)
     return (
         '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
         f'<title>{_esc(play.title)}</title><style>{_CSS}</style></head>'
