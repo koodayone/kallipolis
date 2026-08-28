@@ -824,15 +824,16 @@ def _enrollment_lines_svg(programs, term_keys: list[str], term_heads: list[str],
     sums all of them, and the silhouette would zigzag on calendar shape rather than on
     enrollment. Lines compare trajectories, which is what a trend is for.
 
-    The two kinds of absence get DIFFERENT geometry, which is the whole point of the
-    three-state model in the table:
+    ONE rule for absence: skip the x-position and connect the neighbouring observations.
+    Dots mark where a value actually exists, so the line is only ever a connector between
+    real points — which is the standing contract of a line chart, since nothing is
+    observed between Fall and Winter either.
 
-      n/a (the college has no such term)  -> SKIP the x-position and connect across.
-          A semester college's year really does run Fall -> Spring; drawing a break
-          there would invent a discontinuity in a sequence that has none.
-      —   (term exists, nothing reported) -> BREAK the line.
-          Foothill's Fall 2023 is missing, and joining Spring 2023 straight to Winter
-          2024 would draw a value through the hole that we do not have.
+    An earlier version broke the line at missing data (Foothill has no Fall 2023 record)
+    and connected across terms a college does not have. That is two behaviours for two
+    absences a reader cannot tell apart on sight, and the break read as a rendering
+    defect rather than as a data gap. The gap stays disclosed where it is legible: the
+    missing dot, the "—" cell in the table directly below, and the legend defining it.
     """
     if not programs or not term_keys:
         return ""
@@ -880,29 +881,19 @@ def _enrollment_lines_svg(programs, term_keys: list[str], term_heads: list[str],
         colour = brand if (college in member and brand) else _BAND_FILL[(si + 1) % len(_BAND_FILL)]
         wide = college in member
         kinds = college_terms.get(college)
-        seg, segs = [], []
-        for i, key in enumerate(term_keys):
-            if kinds is not None and key.split()[0] not in kinds:
-                continue                      # n/a: not in this college's year at all
-            v = vals.get(key) or 0
-            if not v:
-                if len(seg) > 1: segs.append(seg)
-                elif seg: segs.append(seg)     # keep a lone point; it is still evidence
-                seg = []
-                continue
-            seg.append((i, v))
-        if seg: segs.append(seg)
-        for s_ in segs:
-            if len(s_) > 1:
-                pts = " ".join(f"{x_of(i):.1f},{y_of(v):.1f}" for i, v in s_)
-                p_.append(f'<polyline points="{pts}" fill="none" stroke="{colour}" '
-                          f'stroke-width="{2.2 if wide else 1.5}" stroke-linejoin="round"/>')
-            # A dot at every REAL observation. A semester college's line is drawn across
-            # the Winter tick it has no term for, and without markers that segment could
-            # be read as claiming a Winter value.
-            for i, v in s_:
-                p_.append(f'<circle cx="{x_of(i):.1f}" cy="{y_of(v):.1f}" '
-                          f'r="{2.8 if wide else 2.2}" fill="{colour}"/>')
+        pts_ = [(i, v) for i, key in enumerate(term_keys)
+                if (v := vals.get(key) or 0)
+                and not (kinds is not None and key.split()[0] not in kinds)]
+        if len(pts_) > 1:
+            path = " ".join(f"{x_of(i):.1f},{y_of(v):.1f}" for i, v in pts_)
+            p_.append(f'<polyline points="{path}" fill="none" stroke="{colour}" '
+                      f'stroke-width="{2.2 if wide else 1.5}" stroke-linejoin="round"/>')
+        # A dot at every REAL observation, and only there. The line passes over ticks a
+        # college has no term for and over any term it did not report, so the markers are
+        # what tell a reader which x-positions carry a value.
+        for i, v in pts_:
+            p_.append(f'<circle cx="{x_of(i):.1f}" cy="{y_of(v):.1f}" '
+                      f'r="{2.8 if wide else 2.2}" fill="{colour}"/>')
 
     # term ticks, then the academic year spanning its three terms
     for i, h in enumerate(term_heads):
