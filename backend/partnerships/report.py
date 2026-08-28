@@ -725,7 +725,7 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
     # vintages, and that the axis is broken — survive as the source line and the break
     # label, not a paragraph.
     p_.append(f'<text x="2" y="15" font-size="13" font-weight="700" fill="#12203a">'
-              f'Regional supply against annual openings</text>')
+              f'Annual Awards vs. Annual Openings</text>')
     # No corner source line. DataMart and COE are both named in Sources, and the COE
     # vintage is stated in full under the demand table ("2024 base-year employment,
     # 2024-2029 projection") — the chart corner was restating what the document already
@@ -891,7 +891,7 @@ def _enrollment_lines_svg(programs, term_keys: list[str], term_heads: list[str],
     p_ = [f'<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" '
           'font-family="Helvetica,Arial,sans-serif">']
     p_.append('<text x="2" y="15" font-size="13" font-weight="700" fill="#12203a">'
-              'Enrollment by college</text>')
+              'Regional Program Enrollment Trends</text>')
     p_.append(f'<text x="13" y="{PADT + plot_h / 2:.1f}" font-size="10" fill="#5a6577" '
               f'text-anchor="middle" transform="rotate(-90 13 {PADT + plot_h / 2:.1f})">'
               f'Enrollments</text>')
