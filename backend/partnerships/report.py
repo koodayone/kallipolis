@@ -48,6 +48,13 @@ _ACCENTS = ["#2a9d8f", "#2e74b5", "#cc3333", "#6f5499", "#c98a1b"]
 # text". Greyscale value 0.44 against the navy bands' 0.22, so print separation holds.
 _RULE = "#9e6900"
 
+#: Chart plate sizes, (width, height). Width is 1:1 with the page's 648px content
+#: column so nothing is downscaled. Height is the tuning knob for pagination: a page
+#: holds 904px of content, so a chart plus its caption and table has to stay well under
+#: that or the whole block jumps a page and leaves the remainder blank.
+_SUPPLY_CHART = (648, 340)
+_ENROLL_CHART = (648, 300)
+
 _SEP = " · "        # status/date separator, hoisted: f-strings cannot hold escapes
 _CAREERONESTOP = "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword="
 
@@ -103,6 +110,25 @@ class ReportSpec:
 
 
 # ── Section builders (data from the lens, words from the spec) ─────────────────
+def _block(*parts: str) -> str:
+    """Group a heading, its intro and the visual it introduces into ONE unit that print
+    keeps together.
+
+    Page breaks were landing between a section heading and the thing it describes —
+    "College Program Alignment & Supply" and its sentence stranded at the foot of a page
+    with the crosswalk overleaf. Per-element `break-inside: avoid` could not fix that: it
+    keeps each element whole but says nothing about keeping NEIGHBOURS together.
+
+    Keep blocks small. An atomic block taller than the space left on a page jumps whole
+    and leaves that space blank, so this trades sliced content for white space at exactly
+    the rate the blocks are oversized — which is why the chart heights above are a
+    parameter and why the competency grid is deliberately NOT blocked (it is taller than
+    a page and could never be honoured).
+    """
+    inner = "\n".join(p for p in parts if p)
+    return f'<div class="blk">{inner}</div>' if inner else ""
+
+
 def _esc(s) -> str:
     return html.escape(str(s if s is not None else ""))
 
@@ -397,7 +423,7 @@ def _awards_offered_section(college: str, top6: str) -> str:
         link = (f', published on the '
                 f'<a target="_blank" rel="noopener" href="{_esc(disp["url"])}">'
                 f'{_esc(college)} catalog ↗</a>.')
-    return (
+    return _block(
         '<h1>Awards Offered</h1>'
         '<table class="live"><colgroup><col style="width:44%"><col style="width:22%">'
         '<col style="width:34%"></colgroup><thead><tr>'
@@ -630,7 +656,7 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
     # was downscaled to fit, rendering every label 13% smaller than specified — the
     # chart is the report's central frame and was quietly the least legible thing on
     # the page. Taller too, for the same reason.
-    W, H, PADL, PADR, PADT, PADB = 648, 372, 60, 12, 44, 84
+    (W, H), PADL, PADR, PADT, PADB = _SUPPLY_CHART, 60, 12, 44, 84
     plot_w, plot_h = W - PADL - PADR, H - PADT - PADB
     n = len(award_axis)
 
@@ -823,7 +849,7 @@ def _enrollment_lines_svg(programs, term_keys: list[str], term_heads: list[str],
         return ""
     top *= 1.12
 
-    W, H, PADL, PADR, PADT, PADB = 648, 336, 56, 12, 44, 96
+    (W, H), PADL, PADR, PADT, PADB = _ENROLL_CHART, 56, 12, 44, 96
     plot_w, plot_h = W - PADL - PADR, H - PADT - PADB
     x_of = lambda i: PADL + (plot_w * i / (n - 1) if n > 1 else plot_w / 2)
     y_of = lambda v: PADT + plot_h - (v / top) * plot_h
@@ -1068,7 +1094,7 @@ p a,.byline a{color:#1155cc;text-decoration:underline}
    harness renders with printBackground:true, so without resetting it here Chromium
    faithfully paints that grey wherever .page does not fill the sheet — a grey band
    below the content on the final page of every exported PDF. */
-@media print{body{background:#fff}.page{margin:0;box-shadow:none;min-height:0}.awchart,.enchart,.xwrap{break-inside:avoid}h1{break-after:avoid}p.tnar{break-after:avoid}table.dem,table.live,table.trend{break-inside:avoid}thead{display:table-header-group}tr{break-inside:avoid}h1.srcpage{break-before:page}}
+@media print{body{background:#fff}.page{margin:0;box-shadow:none;min-height:0}.awchart,.enchart,.xwrap{break-inside:avoid}.blk{break-inside:avoid}h1{break-after:avoid}table.dem,table.live,table.trend{break-inside:avoid}thead{display:table-header-group}tr{break-inside:avoid}h1.srcpage{break-before:page}}
 """
 
 
@@ -1264,17 +1290,17 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         # Program evaluations open with the program's own credential menu — the subject of
         # the document. Role reports leave `program_top` empty and this renders nothing.
         _awards_offered_section(lens.scope.member.name, spec.program_top) if spec.program_top else '',
-        '<h1>Regional Occupational Demand</h1>',
-        f'<p>{_linkify(spec.demand_note)}</p>' if spec.demand_note else '',
-        _demand_table(occs),
-        f'<p class="tnar">{_esc(_demand_provenance(lens))}</p>',
-        '<h1>Employer Evidence</h1>',
+        _block('<h1>Regional Occupational Demand</h1>',
+               f'<p>{_linkify(spec.demand_note)}</p>' if spec.demand_note else '',
+               _demand_table(occs),
+               f'<p class="tnar">{_esc(_demand_provenance(lens))}</p>'),
         # No "under the <role> designation" clause: postings are found by SOC, not by the
         # role title or TOP, so naming the play here overstated what the search did — and it
         # read as role-report copy inside a program evaluation.
-        f'<p>Prominent employers in the region have opened live job postings listed '
-        f'on CareerOneStop, sponsored by the U.S. Department of Labor.</p>',
-        _employer_table(occs, spec.live_postings),
+        _block('<h1>Employer Evidence</h1>',
+               '<p>Prominent employers in the region have opened live job postings listed '
+               'on CareerOneStop, sponsored by the U.S. Department of Labor.</p>',
+               _employer_table(occs, spec.live_postings)),
     ]
 
     # Competencies: the Spec OVERRIDES (the curation skill's cut) if present;
@@ -1299,10 +1325,10 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         progs = [p for p in lens.programs if p.top6 not in spec.program_excludes]
 
     sections += [
-        '<h1>College Program Alignment &amp; Supply</h1>',
-        f'<p>{_linkify(spec.alignment_note)}</p>' if spec.alignment_note else
-        '<p>How member-college programs across the consortium support each occupation.</p>',
-        _crosswalk_svg(progs, occs),
+        _block('<h1>College Program Alignment &amp; Supply</h1>',
+               f'<p>{_linkify(spec.alignment_note)}</p>' if spec.alignment_note else
+               '<p>How member-college programs across the consortium support each occupation.</p>',
+               _crosswalk_svg(progs, occs)),
     ]
     if spec.charter_gaps:
         names = ", ".join(spec.charter_gaps)
@@ -1327,17 +1353,18 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         # label, so a paragraph restating them is noise. Only the report's own curated
         # award_note stays — that is editorial, not chart chrome.
         sections += [
-            chart,
-            f'<p class="tnar">{_linkify(spec.award_note)}</p>' if spec.award_note else '',
-            _trend_table(progs, award_axis, [_fmt_year(y) for y in award_axis], "awards", total_label),
+            _block(chart),
+            _block(f'<p class="tnar">{_linkify(spec.award_note)}</p>' if spec.award_note else '',
+                   _trend_table(progs, award_axis, [_fmt_year(y) for y in award_axis],
+                                "awards", total_label)),
         ]
     if progs and term_keys:
         sections += [
             # Chart first: it carries its own title. The note and the legend belong to
             # the TABLE and sit with it, so neither reads as a caption for the chart.
-            _enrollment_lines_svg(progs, term_keys, term_heads, lens.college_terms,
-                                  brand=_brand_color(lens.scope.member.id) if spec.program_top else ""),
-            f'<p class="tnar">{_linkify(spec.enrollment_note)}</p>' if spec.enrollment_note else '',
+            _block(_enrollment_lines_svg(progs, term_keys, term_heads, lens.college_terms,
+                                         brand=_brand_color(lens.scope.member.id) if spec.program_top else "")),
+            _block(f'<p class="tnar">{_linkify(spec.enrollment_note)}</p>' if spec.enrollment_note else '',
             # No total: see _trend_table. Enrollment across mixed calendars is not a
             # sound cross-college sum, and the old one silently dropped colleges with a
             # missing term — Veterinary Technology's Fall 2023 total read 411 (Santa Rosa
@@ -1346,8 +1373,8 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
             # whole column for a semester college reads without being told. The states are
             # still visually distinct — n/a is lighter and italic — which is the part that
             # had to be true; the prose explaining it was a second layer.
-            _trend_table(progs, term_keys, term_heads, "enrollment",
-                         college_terms=lens.college_terms),
+                   _trend_table(progs, term_keys, term_heads, "enrollment",
+                                college_terms=lens.college_terms)),
         ]
     from partnerships.sectors import SECTORS
     sec_label = SECTORS[play.sector].label if play.sector in SECTORS else play.sector.upper()
