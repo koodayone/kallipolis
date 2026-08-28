@@ -62,6 +62,14 @@ _RULE = "#9e6900"
 _SUPPLY_CHART = (648, 320)
 _ENROLL_CHART = (648, 320)
 
+#: How the annual-openings figure is derived. The first is the note written for this
+#: engagement; the second is Lightcast's own documentation, which is the methodology
+#: underneath the COE projections the report cites. Named once and used twice — inline
+#: at the point the number appears, and in Sources with the other authorities.
+_OPENINGS_METHOD_URL = ("https://docs.google.com/document/d/"
+                        "12t9ujVegXBOUhu2g_BwqDsYuhH6w078HRtYDwBiTCM0/edit?tab=t.0")
+_LIGHTCAST_METHOD_URL = "https://kb.lightcast.io/en/articles/6957547-job-openings-data"
+
 _SEP = " · "        # status/date separator, hoisted: f-strings cannot hold escapes
 _CAREERONESTOP = "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword="
 
@@ -197,8 +205,8 @@ def _region_name(lens: LensModel) -> str:
 
 
 def _demand_provenance(lens: LensModel) -> str:
-    """The geography and vintage behind every demand figure, as a caption under the
-    demand table — not inline in the prose, where a 12-county list wrecks the sentence.
+    """The geography, vintage and method behind every demand figure, as a caption under
+    the demand table — not inline in the prose, where a 12-county list wrecks the sentence.
 
     Counties make the region concrete for a reader who has to know whether their
     service area is in it. The vintage reuses ontology.supply.COE_DEMAND_VINTAGE,
@@ -214,7 +222,12 @@ def _demand_provenance(lens: LensModel) -> str:
                      f"{', '.join(counties[:-1])}, and {counties[-1]} counties.")
     v = COE_DEMAND_VINTAGE
     parts.append(f"Figures are {v.split('—', 1)[1].strip()}." if "—" in v else f"Vintage: {v}.")
-    return " ".join(parts)
+    # HTML, not plain text: the methodology link belongs at the point the number appears,
+    # not only in the back matter. A reader who wants to know where "1,130 openings a
+    # year" comes from should not have to go looking for it.
+    out = _esc(" ".join(parts))
+    return (f'{out} <a href="{_esc(_OPENINGS_METHOD_URL)}" target="_blank" rel="noopener">'
+            f'How annual openings are calculated</a>.')
 
 
 def _short_college(name: str) -> str:
@@ -1056,6 +1069,8 @@ def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
              f"https://www.onetonline.org/find/quick?s={quote(title)}"),
             ("Centers of Excellence Occupational Demand Lookup",
              "https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061"),
+            ("How Annual Job Openings Are Calculated", _OPENINGS_METHOD_URL),
+            ("Lightcast — Job Openings Data (methodology)", _LIGHTCAST_METHOD_URL),
         ]),
         ("Occupational Competencies",
          [(f"O*NET Summary of {soc}", f"https://www.onetonline.org/link/summary/{soc}.00")
@@ -1344,7 +1359,7 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         _block('<h1>Regional Occupational Demand</h1>',
                f'<p>{_linkify(spec.demand_note)}</p>' if spec.demand_note else '',
                _demand_table(occs),
-               f'<p class="tnar">{_esc(_demand_provenance(lens))}</p>'),
+               f'<p class="tnar">{_demand_provenance(lens)}</p>'),   # returns HTML: carries a link
         # No "under the <role> designation" clause: postings are found by SOC, not by the
         # role title or TOP, so naming the play here overstated what the search did — and it
         # read as role-report copy inside a program evaluation.
