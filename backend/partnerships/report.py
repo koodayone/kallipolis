@@ -70,6 +70,10 @@ _OPENINGS_METHOD_URL = ("https://docs.google.com/document/d/"
                         "12t9ujVegXBOUhu2g_BwqDsYuhH6w078HRtYDwBiTCM0/edit?tab=t.0")
 _LIGHTCAST_METHOD_URL = "https://kb.lightcast.io/en/articles/6957547-job-openings-data"
 
+#: Appended when any row shows MAJOR coursework rather than the award's own total — the
+#: reader has to know a degree adds general education to the number in the table.
+_GE_NOTE = " A degree additionally requires the college\u2019s general-education minimum."
+
 _SEP = " · "        # status/date separator, hoisted: f-strings cannot hold escapes
 _CAREERONESTOP = "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword="
 
@@ -472,9 +476,20 @@ def _awards_offered_section(college: str, top6: str) -> str:
         # only as the fallback. COCI's own unit fields are never shown — they matched
         # the catalog in 3 of 8 Foothill awards, and the three that agreed are the
         # three most recently approved.
-        n = curated.get(a.title)
-        if n is not None:
-            u = f"{n:g} {cal} units".replace("  ", " ").strip()
+        # A catalog figure measures one of two different things and they must not be
+        # rendered alike. "award" is the award's own full requirement — a Certificate of
+        # Achievement IS its core-and-support sequence, so its number is complete.
+        # "major" is programme coursework only: an associate degree adds general
+        # education on top, so Foothill's Environmental Horticulture major of 64 sits
+        # under a degree that needs 90. Printing a bare "64 quarter units" against
+        # "associate degree" states something false.
+        c = curated.get(a.title)
+        if isinstance(c, (int, float)):          # pre-basis cache entries
+            c = {"units": c, "basis": "award"}
+        if c:
+            u = f"{c['units']:g} {cal} units".replace("  ", " ").strip()
+            if c.get("basis") == "major":
+                u += " in the major"
         else:
             u = a.band or "—"
         body.append(
@@ -482,6 +497,9 @@ def _awards_offered_section(college: str, top6: str) -> str:
             f'<td class="lsoc">{_esc(a.title)}{_esc(note)}</td>'
             f'<td class="lemp">{_esc(a.tier)}</td>'
             f'<td class="ltit">{_esc(u)}</td></tr>')
+    # Named once at module level: an f-string expression part cannot hold an escape.
+    ge = _GE_NOTE if any((v or {}).get("basis") == "major"
+                         for v in curated.values() if isinstance(v, dict)) else ""
     link = "."
     if disp and disp.get("url"):
         link = (f', published on the '
@@ -494,7 +512,7 @@ def _awards_offered_section(college: str, top6: str) -> str:
         '<th class="lsoc">Award</th><th>Credential</th><th>Units</th>'
         f'</tr></thead><tbody>{"".join(body)}</tbody></table>'
         f'<p class="tnar">Approved awards under TOP {_esc(top6)} at {_esc(college)}. '
-        f'Unit counts are the college\'s own requirements{link}</p>')
+        f'Unit counts are the college\'s own requirements{link}{ge}</p>')
 
 
 _BRAND_COLORS = None

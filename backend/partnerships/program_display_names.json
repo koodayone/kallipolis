@@ -161,9 +161,21 @@
       "note": "Catalog heading reads 'Respiratory Therapy' — AS (100 major units) + Certificate of Achievement in Interventional Pulmonology Assistant (12 units). CoARC program 200017. Foothill ALSO offers a separate Bachelor of Science in Respiratory Care (catalog.foothill.edu/degrees-certificates/respiratory-care/) for holders of a CoARC-accredited AS — note the college uses 'Therapy' for the AS brand and 'Care' for the BS.",
       "calendar": "quarter",
       "award_units": {
-        "Respiratory Therapy": 100,
-        "Respiratory Care": 68,
-        "Interventional Pulmonology Assistant": 12
+        "Respiratory Therapy": {
+          "units": 100,
+          "basis": "major",
+          "tier": "associate degree"
+        },
+        "Respiratory Care": {
+          "units": 68,
+          "basis": "award",
+          "tier": "baccalaureate"
+        },
+        "Interventional Pulmonology Assistant": {
+          "units": 12,
+          "basis": "award",
+          "tier": "certificate"
+        }
       },
       "units_verified": "2026-08-28 against the college catalog"
     },
@@ -195,8 +207,16 @@
       "note": "Catalog heading reads 'Veterinary Technology'; award types listed as AS + Certificate of Achievement. AVMA-CVTEA accredited, VTNE pass rate 89% / job placement 100% (2023-2025). State TOP label says 'Technician', the college says 'Technology'.",
       "calendar": "quarter",
       "award_units": {
-        "Veterinary Technology": 93,
-        "Veterinary Assisting": 12.5
+        "Veterinary Technology": {
+          "units": 93,
+          "basis": "major",
+          "tier": "associate degree"
+        },
+        "Veterinary Assisting": {
+          "units": 12.5,
+          "basis": "award",
+          "tier": "certificate"
+        }
       },
       "units_verified": "2026-08-28 against the college catalog"
     },
@@ -246,7 +266,11 @@
       "note": "Foothill brands it 'Community Health Worker' (Certificate of Achievement, 12 units, 9 months), housed in Public & Community Health. Distinct from Foothill's TOP 120100 'Health Occupations, General' — see the report's _programs_note for why the CHW report uses THIS program rather than the larger generic one.",
       "calendar": "quarter",
       "award_units": {
-        "Community Health Worker": 12
+        "Community Health Worker": {
+          "units": 12,
+          "basis": "award",
+          "tier": "certificate"
+        }
       },
       "units_verified": "2026-08-28 against the college catalog"
     },
@@ -269,8 +293,16 @@
       "note": "The largest brand gap in this batch: the state TOP label is the bare word 'Horticulture', but Foothill markets the department and the program as 'Environmental Horticulture & Design' (AS + two Certificates of Achievement). Career list spans arboriculture, landscape construction/design, park and golf-course management.",
       "calendar": "quarter",
       "award_units": {
-        "Environmental Horticulture & Design": 64,
-        "Environmental Horticulture and Design": 64
+        "Environmental Horticulture & Design": {
+          "units": 64,
+          "basis": "major",
+          "tier": "associate degree"
+        },
+        "Environmental Horticulture and Design": {
+          "units": 64,
+          "basis": "award",
+          "tier": "certificate"
+        }
       },
       "units_verified": "2026-08-28 against the college catalog"
     },
