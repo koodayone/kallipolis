@@ -1033,7 +1033,7 @@ def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
              "https://regionalcte.org/browse"),
         ]),
     ]
-    out = ['<h1 class="srcpage">Sources</h1>',
+    out = ['<h1>Sources</h1>',
            f'<p class="srcdash"><i>{_esc(org_label)} {_esc(sector_label)} Dashboard:</i> '
            f'{a(dashboard_url, dashboard_url)}</p>']
     for name, links in groups:
@@ -1041,7 +1041,11 @@ def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
         out.append('<div class="srclist">' + "".join(
             f'<div class="srcitem">({i}) {a(lbl, url)}</div>'
             for i, (lbl, url) in enumerate(links, 1)) + "</div>")
-    return "".join(out)
+    # A block, not a forced page. Sources measured 29-37% of a page in every report, so
+    # giving it one left two thirds blank at the end of every document — padding, not
+    # structure — and cost two pages across the eleven. As a block it flows into whatever
+    # room is left and moves whole when there is none.
+    return _block(*out)
 
 
 _CSS = """
@@ -1097,7 +1101,7 @@ p a,.byline a{color:#1155cc;text-decoration:underline}
    harness renders with printBackground:true, so without resetting it here Chromium
    faithfully paints that grey wherever .page does not fill the sheet — a grey band
    below the content on the final page of every exported PDF. */
-@media print{body{background:#fff}.page{margin:0;box-shadow:none;min-height:0}.awchart,.enchart,.xwrap{break-inside:avoid}.blk{break-inside:avoid}h1{break-after:avoid}table.dem,table.live,table.trend{break-inside:avoid}thead{display:table-header-group}tr{break-inside:avoid}h1.srcpage{break-before:page}}
+@media print{body{background:#fff}.page{margin:0;box-shadow:none;min-height:0}.awchart,.enchart,.xwrap{break-inside:avoid}.blk{break-inside:avoid}h1{break-after:avoid}table.dem,table.live,table.trend{break-inside:avoid}thead{display:table-header-group}tr{break-inside:avoid}}
 """
 
 
