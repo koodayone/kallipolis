@@ -429,86 +429,128 @@ def _fmt_year(y: str) -> str:
     return f"{parts[0]}–{parts[1][-2:]}" if len(parts) == 2 and len(parts[1]) >= 2 else y
 
 
-# Credential palette: one navy→teal→grey family, ordered highest award first, so the
-# stack reads as a single ramp and never competes with the per-occupation _ACCENTS.
-_TIER_FILL = ("#1f3864", "#2e74b5", "#7aa6d4", "#2a9d8f", "#93bfb8", "#b9c1cf")
+# Supply palette: the member college in the strong navy, peers stepping down one
+# navy→teal→grey family so the member reads first and the region reads as one mass.
+# One ramp, never competing with the per-occupation _ACCENTS.
+_BAND_FILL = ("#1f3864", "#2e74b5", "#4a90c4", "#7aa6d4", "#2a9d8f", "#93bfb8", "#c3cad6")
 
 
 def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
-                       member_only: bool = True) -> str:
-    """Completions by credential over time, against annual openings.
+                       max_bands: int = 6) -> str:
+    """REGIONAL completions over time, stacked by college, against annual openings.
 
-    The reviewer ask this answers: show the need to produce workers. Bars are the
-    member's award series decomposed by credential tier (the L1 `awards_by_tier`);
-    the dashed rule is the region's annual openings for the play's occupations.
+    The reviewer ask this answers: show the need to produce workers. The stack is one
+    band per college in the report's supply scope (member at the bottom, in the strong
+    fill); the dashed rule is the region's annual openings for the play's occupations.
 
-    Drawn TO SCALE deliberately, which makes the bars small — Foothill 121000 is
-    ~24-34 completions against 210 openings, Veterinary Technology ~30 against 1,130.
-    That disproportion IS the finding, and the credential numbers are not lost: the
-    award table directly below carries them per tier per year. Chart shows the
-    relationship, table shows the values.
+    Why by COLLEGE and not by credential: the rule is a REGIONAL quantity, so the only
+    coherent thing to compare it against is REGIONAL supply. Charting one college's
+    completions under a regional demand line is a category error that reads as a
+    dramatic shortfall regardless of the truth — Foothill's Manufacturing Technician
+    is 17 completions against 410 openings (24x, alarming) while the region produces
+    826 (0.5x, a surplus). Same data, opposite story. The member's share stays legible
+    as the bottom band, which is the partnership argument anyway: how much of the
+    region's answer is ours.
 
-    NOTE the two sides have different vintages — bars are DataMart actuals, the rule
-    is a COE 2024-2029 projection — so the caption says so rather than implying one
-    series predicts the other."""
-    picked = [p for p in programs if (p.is_member or not member_only)]
-    tiers: dict[str, dict[str, int]] = {}
-    for p in picked:
-        for tier, series in (getattr(p, "awards_by_tier", {}) or {}).items():
-            acc = tiers.setdefault(tier, {})
+    Credential detail is NOT lost — it moved to where it reads better. Most members run
+    one or two tiers, which is a weak stack but a perfectly good table, so the award
+    trend table carries per-tier sub-rows beneath the member's total.
+
+    NOTE the two sides have different vintages — the stack is DataMart actuals, the
+    rule is a COE 2024-2029 projection — so the caption says so rather than implying
+    one series predicts the other."""
+    # Per-college series; a college may run several supporting programs in the play.
+    by_college: dict[str, dict[str, int]] = {}
+    members: set[str] = set()
+    for p in programs:
+        acc = by_college.setdefault(p.college, {})
+        if p.is_member:
+            members.add(p.college)
+        for series in (getattr(p, "awards_by_tier", {}) or {}).values():
             for y, v in series.items():
                 acc[y] = acc.get(y, 0) + (v or 0)
-    if not tiers or not award_axis:
+    by_college = {c: s for c, s in by_college.items() if sum(s.values()) > 0}
+    if not by_college or not award_axis:
         return ""
-    order = list(tiers)                       # already highest-award-first from L1
-    totals = [sum(tiers[t].get(y, 0) for t in order) for y in award_axis]
+
+    def _tot(c: str) -> int:
+        return sum(by_college[c].get(y, 0) or 0 for y in award_axis)
+
+    # Member(s) always shown and always at the bottom; peers by size. A 16-college
+    # region cannot be 16 legible bands, so the tail rolls up — and the roll-up is
+    # NAMED in the legend rather than silently dropped.
+    mem = sorted((c for c in by_college if c in members), key=_tot, reverse=True)
+    peers = sorted((c for c in by_college if c not in members), key=_tot, reverse=True)
+    room = max(0, max_bands - len(mem))
+    bands: list[tuple[str, dict[str, int]]] = [(c, by_college[c]) for c in mem + peers[:room]]
+    rolled = peers[room:]
+    if rolled:
+        acc: dict[str, int] = {}
+        for c in rolled:
+            for y, v in by_college[c].items():
+                acc[y] = acc.get(y, 0) + (v or 0)
+        bands.append((f"{len(rolled)} other colleges", acc))
+
+    totals = [sum(s.get(y, 0) or 0 for _, s in bands) for y in award_axis]
     barmax = max(totals, default=0)
     if barmax <= 0:
         return ""
 
-    W, H, PADL, PADR, PADT, PADB = 744, 250, 46, 12, 16, 44
+    W, H, PADL, PADR, PADT, PADB = 744, 268, 46, 12, 16, 62
     plot_w, plot_h = W - PADL - PADR, H - PADT - PADB
     n = len(award_axis)
-    slot = plot_w / n
-    bw = min(64.0, slot * 0.52)
 
-    # A region's openings routinely dwarf one college's completions — 210 vs ~30 for
-    # Foothill 121000, 1,130 vs ~30 for Veterinary Technology. On one linear scale the
-    # bars collapse to slivers and the credential stack, which is the other half of the
-    # chart's job, becomes unreadable. So: break the axis, but only when the ratio
-    # actually demands it, and DRAW the break so the reader is never misled about the
-    # bars and the rule sharing a scale.
+    def x_of(i: int) -> float:
+        return PADL + (plot_w * i / (n - 1) if n > 1 else plot_w / 2)
+
+    # A region's openings can still dwarf its supply (Veterinary Technology: 55 against
+    # 1,130). Break the axis, but only when the ratio actually demands it, and DRAW the
+    # break so the reader is never misled about the stack and the rule sharing a scale.
+    # Three cases, not two. When the rule is far above the stack, break the axis. When
+    # it is only modestly above, DON'T break — just raise the axis to include it, which
+    # is the honest single scale. Scaling to the stack alone would push the rule off the
+    # top of the viewBox, where it silently disappears (Respiratory Therapist: a 210
+    # rule over a 138 axis rendered no rule at all).
     bar_top = barmax * 1.18
     broken = bool(annual_openings) and annual_openings > bar_top * 2.5
-    bar_band = plot_h * (0.66 if broken else 1.0)
-    break_y = PADT + plot_h - bar_band - 9
+    top = bar_top if broken else max(bar_top, (annual_openings or 0) * 1.08)
+    band_h = plot_h * (0.66 if broken else 1.0)
+    break_y = PADT + plot_h - band_h - 9
 
     def y_of(v: float) -> float:
-        return PADT + plot_h - (v / bar_top) * bar_band
+        return PADT + plot_h - (v / top) * band_h
 
     p_ = [f'<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" '
           'font-family="Helvetica,Arial,sans-serif">']
     for k in range(4):
-        v = bar_top * k / 3
+        v = top * k / 3
         y = y_of(v)
         p_.append(f'<line x1="{PADL}" y1="{y:.1f}" x2="{W-PADR}" y2="{y:.1f}" stroke="#e7eaf1"/>')
         p_.append(f'<text x="{PADL-6}" y="{y+3.5:.1f}" font-size="9" fill="#8a93a5" '
                   f'text-anchor="end">{int(round(v)):,}</text>')
+
+    lower = [0.0] * n
+    for bi, (_name, s) in enumerate(bands):
+        upper = [lower[i] + (s.get(y, 0) or 0) for i, y in enumerate(award_axis)]
+        pts = " ".join(f"{x_of(i):.1f},{y_of(upper[i]):.1f}" for i in range(n))
+        pts += " " + " ".join(f"{x_of(i):.1f},{y_of(lower[i]):.1f}" for i in range(n - 1, -1, -1))
+        p_.append(f'<polygon points="{pts}" fill="{_BAND_FILL[bi % len(_BAND_FILL)]}" '
+                  f'fill-opacity="0.94"/>')
+        lower = upper
+
+    # the regional total, drawn on top — the trend the chart exists to show
+    tl = " ".join(f"{x_of(i):.1f},{y_of(totals[i]):.1f}" for i in range(n))
+    p_.append(f'<polyline points="{tl}" fill="none" stroke="#0f1d33" stroke-width="1.8"/>')
+    for i, t in enumerate(totals):
+        anc = "start" if i == 0 else ("end" if i == n - 1 else "middle")
+        dx = 3 if i == 0 else (-3 if i == n - 1 else 0)
+        p_.append(f'<text x="{x_of(i)+dx:.1f}" y="{y_of(t)-6:.1f}" font-size="9.5" '
+                  f'font-weight="700" fill="#0f1d33" text-anchor="{anc}">{int(t):,}</text>')
     for i, yr in enumerate(award_axis):
-        x = PADL + i * slot + (slot - bw) / 2
-        base = 0.0
-        for ti, tier in enumerate(order):
-            v = tiers[tier].get(yr, 0) or 0
-            if v <= 0:
-                continue
-            p_.append(f'<rect x="{x:.1f}" y="{y_of(base+v):.1f}" width="{bw:.1f}" '
-                      f'height="{(v / bar_top) * bar_band:.1f}" '
-                      f'fill="{_TIER_FILL[ti % len(_TIER_FILL)]}"/>')
-            base += v
-        p_.append(f'<text x="{x+bw/2:.1f}" y="{y_of(base)-4:.1f}" font-size="9.5" '
-                  f'fill="#33405a" text-anchor="middle">{int(base):,}</text>')
-        p_.append(f'<text x="{x+bw/2:.1f}" y="{H-PADB+15:.0f}" font-size="9.5" '
-                  f'fill="#5a6577" text-anchor="middle">{_esc(_fmt_year(yr))}</text>')
+        anc = "start" if i == 0 else ("end" if i == n - 1 else "middle")
+        p_.append(f'<text x="{x_of(i):.1f}" y="{H-PADB+15:.0f}" font-size="9.5" '
+                  f'fill="#5a6577" text-anchor="{anc}">{_esc(_fmt_year(yr))}</text>')
+
     if annual_openings:
         if broken:
             # the break itself: a gap in the axis with the conventional double slash
@@ -524,12 +566,18 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
                   'stroke="#cc3333" stroke-width="1.6" stroke-dasharray="7 4"/>')
         p_.append(f'<text x="{W-PADR}" y="{dy-6:.1f}" font-size="10" font-weight="700" '
                   f'fill="#cc3333" text-anchor="end">{annual_openings:,} openings a year</text>')
-    lx = PADL
-    for ti, tier in enumerate(order):
-        p_.append(f'<rect x="{lx}" y="{H-14}" width="9" height="9" '
-                  f'fill="{_TIER_FILL[ti % len(_TIER_FILL)]}"/>')
-        p_.append(f'<text x="{lx+13}" y="{H-6}" font-size="9" fill="#5a6577">{_esc(tier)}</text>')
-        lx += 22 + 5.6 * len(tier)
+
+    # legend, wrapping onto a second row rather than running off the plate
+    lx, ly = PADL, H - 26
+    for bi, (name, _s) in enumerate(bands):
+        w = 22 + 5.6 * len(name)
+        if lx + w > W - PADR:
+            lx, ly = PADL, ly + 13
+        p_.append(f'<rect x="{lx:.1f}" y="{ly}" width="9" height="9" '
+                  f'fill="{_BAND_FILL[bi % len(_BAND_FILL)]}"/>')
+        p_.append(f'<text x="{lx+13:.1f}" y="{ly+8}" font-size="9" '
+                  f'fill="#5a6577">{_esc(name)}</text>')
+        lx += w
     p_.append('</svg>')
     return f'<div class="awchart">{"".join(p_)}</div>'
 
@@ -936,11 +984,12 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         chart = _awards_demand_svg(progs, award_axis, sum(o.annual_openings for o in occs))
         sections += [
             chart,
-            (f'<p class="tnar">Completions by credential at {_esc(_org_label(lens.scope.member))}, '
-             f'against the region\'s annual openings for {"this occupation" if len(occs) == 1 else "these occupations"}. '
-             f'Bars are CCCCO DataMart actuals; the rule is the COE projection — different vintages, '
-             f'shown together for scale, not as a forecast.'
-             + (' The axis is broken below the rule so the credential bars stay legible.'
+            (f'<p class="tnar">Regional completions a year, stacked by college '
+             f'({_esc(_org_label(lens.scope.member))} at the base), against the region\'s annual '
+             f'openings for {"this occupation" if len(occs) == 1 else "these occupations"}. '
+             f'The stack is CCCCO DataMart actuals; the rule is the COE projection — different '
+             f'vintages, shown together for scale, not as a forecast.'
+             + (' The axis is broken below the rule so the supply bands stay legible.'
                 if 'stroke-width="9"' in chart else '')
              + '</p>') if chart else '',
             f'<p class="tnar">{_linkify(spec.award_note)}</p>' if spec.award_note else '',
