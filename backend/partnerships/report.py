@@ -312,7 +312,7 @@ def _program_display(college: str, top6: str):
     return _DISPLAY_NAMES.get(f"{college}|{top6}")
 
 
-def _awards_offered_section(college: str, top6: str) -> str:
+def _awards_offered_section(college: str, top6: str, conferred: set[str]) -> str:
     """"Awards Offered" — the credential menu for ONE program, from COCI.
 
     Answers the reviewer ask the rest of the report structurally cannot: every other
@@ -326,14 +326,21 @@ def _awards_offered_section(college: str, top6: str) -> str:
     IS the program, so its menu belongs at the top. The trigger is the def's `program_top`.
 
     Renders the approved BAND, never COCI's raw unit figure. Those fields are the numbers
-    as of approval and drift as programs are revised within their band — Foothill's
+    as of APPROVAL and drift as programs are revised within their band — Foothill's
     Veterinary Technology A.S. record is dated 1975-01-01 and reads 98.50 against a
     catalog that says 93 — and they are calendar-native besides, which would put quarter
     units beside this report's semester-normalised DataMart labels. The band is
     calendar-explicit and stays true, because leaving it forces re-approval. The exact
     current requirement is one click away on the college's own catalog.
+
+    No status column: the table already shows only what is on offer, so a column reading
+    "Active" on every row is noise. The approval date survives ONLY where it prevents an
+    apparent contradiction — an offered credential with no conferrals in the award window,
+    which across the four shipped evaluations is exactly one row (the 2024 B.S.). A
+    teachout is flagged the same way, since a credential closed to new students must
+    never read as plainly available.
     """
-    from ontology.coci import COCI_VINTAGE, awards_for
+    from ontology.coci import awards_for
 
     awards = awards_for(college, top6)
     if not awards:
@@ -341,19 +348,16 @@ def _awards_offered_section(college: str, top6: str) -> str:
     disp = _program_display(college, top6)
     body = []
     for i, a in enumerate(awards):
-        band = a.band or "—"
-        # Always name the status. Leaving the cell blank when COCI records no approval
-        # date — 43% of Active records — reads as missing data when the fact is simply
-        # "active, date not recorded".
-        note = ["Teaching out, closed to new students" if a.is_teachout else "Active"]
-        if a.approved:
-            note.append(f"approved {_fmt_approved(a.approved)}")
+        note = ""
+        if a.is_teachout:
+            note = " (teaching out)"
+        elif a.tier not in conferred and a.approved:
+            note = f" (approved {_fmt_approved(a.approved)})"
         body.append(
             f'<tr class="lc{(i % 3) + 1}">'
-            f'<td class="lsoc">{_esc(a.title)}</td>'
+            f'<td class="lsoc">{_esc(a.title)}{_esc(note)}</td>'
             f'<td class="lemp">{_esc(a.tier)}</td>'
-            f'<td class="ltit">{_esc(band)}</td>'
-            f'<td class="ltit">{_esc(_SEP.join(note))}</td></tr>')
+            f'<td class="ltit">{_esc(a.band or "—")}</td></tr>')
     link = ""
     if disp and disp.get("url"):
         link = (f' Exact unit requirements are on the '
@@ -361,13 +365,11 @@ def _awards_offered_section(college: str, top6: str) -> str:
                 f'{_esc(college)} catalog ↗</a>.')
     return (
         '<h1>Awards Offered</h1>'
-        '<table class="live"><colgroup><col style="width:34%"><col style="width:18%">'
-        '<col style="width:26%"><col style="width:22%"></colgroup><thead><tr>'
-        '<th class="lsoc">Award</th><th>Credential</th><th>Approved units</th>'
-        f'<th>Status</th></tr></thead><tbody>{"".join(body)}</tbody></table>'
-        f'<p class="tnar">Approved awards under TOP {_esc(top6)} at {_esc(college)}. '
-        f'Unit ranges are the bands the state approved, shown in both calendars; a program '
-        f'may sit anywhere inside its band.{link} Source: {_esc(COCI_VINTAGE)}.</p>')
+        '<table class="live"><colgroup><col style="width:44%"><col style="width:22%">'
+        '<col style="width:34%"></colgroup><thead><tr>'
+        '<th class="lsoc">Award</th><th>Credential</th><th>Units</th>'
+        f'</tr></thead><tbody>{"".join(body)}</tbody></table>'
+        f'<p class="tnar">Approved awards under TOP {_esc(top6)} at {_esc(college)}.{link}</p>')
 
 
 def _fmt_approved(iso: str) -> str:
@@ -744,7 +746,7 @@ def _footer(lens: LensModel, extra: list[str]) -> str:
 
 
 def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
-                     title: str, socs: list[str]) -> str:
+                     title: str, socs: list[str], program_top: str = "") -> str:
     """Provenance, organized by report section: a tailored dashboard link, then one
     numbered, linked source group per section. Each section's claims trace to named,
     auditable sources — the same audit-trail logic as the clickable program names."""
@@ -753,7 +755,16 @@ def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
     def a(label: str, url: str) -> str:
         return f'<a href="{_esc(url)}" target="_blank" rel="noopener">{_esc(label)}</a>'
 
-    groups = [
+    groups = []
+    if program_top:
+        # Undated on purpose: every other entry here is a named, linked authority, not a
+        # snapshot stamp. The bundled export's vintage lives in ontology.coci.COCI_VINTAGE
+        # for anyone auditing the data; the reader wants the system, not the file date.
+        groups.append(("Awards Offered", [
+            ("CCCCO Curriculum Inventory (COCI) — Approved Programs",
+             "https://coci2.ccctechcenter.org/programs"),
+        ]))
+    groups += [
         ("Regional Occupational Demand", [
             (f'O*NET "{title}" Occupations Search Results',
              f"https://www.onetonline.org/find/quick?s={quote(title)}"),
@@ -1016,6 +1027,22 @@ def select_partner_programs(programs, charter_colleges, min_awards: int = 50):
     return chosen
 
 
+def _conferred_tiers(lens: LensModel, spec: ReportSpec) -> set[str]:
+    """Credential tiers the member actually conferred for the evaluated program.
+
+    Lets "Awards Offered" stay quiet about approval dates except where one is load-bearing:
+    an offered credential absent from the conferrals table below would otherwise read as a
+    contradiction rather than as a program too new to have graduates."""
+    out: set[str] = set()
+    for p in lens.programs:
+        if p.college != lens.scope.member.name or p.top6 != spec.program_top:
+            continue
+        for label, series in (getattr(p, "awards_by_tier", {}) or {}).items():
+            if any((v or 0) > 0 for v in series.values()):
+                out.add(label.split(",", 1)[0].strip())   # labels carry the unit band
+    return out
+
+
 def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
                       lens: LensModel | None = None) -> str:
     """Render a workforce-pathway report for `(member_id, play)` to HTML — DATA
@@ -1035,7 +1062,7 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         f'<div class="subtitle">{_esc(spec.lede)}</div>',
         # Program evaluations open with the program's own credential menu — the subject of
         # the document. Role reports leave `program_top` empty and this renders nothing.
-        _awards_offered_section(lens.scope.member.name, spec.program_top) if spec.program_top else '',
+        _awards_offered_section(lens.scope.member.name, spec.program_top, _conferred_tiers(lens, spec)) if spec.program_top else '',
         '<h1>Regional Occupational Demand</h1>',
         f'<p>{_linkify(spec.demand_note)}</p>' if spec.demand_note else '',
         _demand_table(occs),
@@ -1108,7 +1135,7 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
     sec_label = SECTORS[play.sector].label if play.sector in SECTORS else play.sector.upper()
     dash_url = spec.dashboard_url or f"https://preview.kallipolis.us/landscape/{member_id}/{play.sector}"
     sections += [_sources_section(_org_label(lens.scope.member), sec_label, dash_url,
-                                  play.title, [o.soc for o in occs])]
+                                  play.title, [o.soc for o in occs], spec.program_top)]
     body = "\n".join(s for s in sections if s)
     return (
         '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
