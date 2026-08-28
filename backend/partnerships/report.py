@@ -24,6 +24,7 @@ The demand table and crosswalk are general over any N occupations. The KSA grid
 from __future__ import annotations
 
 import html
+import re
 import sys
 from dataclasses import dataclass, field
 
@@ -496,7 +497,7 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
     if barmax <= 0:
         return ""
 
-    W, H, PADL, PADR, PADT, PADB = 744, 268, 46, 12, 16, 62
+    W, H, PADL, PADR, PADT, PADB = 744, 300, 64, 12, 44, 84
     plot_w, plot_h = W - PADL - PADR, H - PADT - PADB
     n = len(award_axis)
 
@@ -522,6 +523,25 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
 
     p_ = [f'<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" '
           'font-family="Helvetica,Arial,sans-serif">']
+
+    # Title and axis labels carry what a caption used to say in prose. The two facts a
+    # caption MUST carry for the chart to be honest — that the two series have different
+    # vintages, and that the axis is broken — survive as the source line and the break
+    # label, not a paragraph.
+    p_.append(f'<text x="2" y="15" font-size="13" font-weight="700" fill="#12203a">'
+              f'Regional supply against annual openings</text>')
+    # Just the projection span from the vintage sentence — the full string is the demand
+    # table's caption, too long for a chart corner. One authority, two altitudes.
+    span = re.search(r"\d{4}[–-]\d{4}", COE_DEMAND_VINTAGE)
+    src = f"DataMart actuals · COE {span.group()} projection" if span else "DataMart · COE"
+    p_.append(f'<text x="{W}" y="15" font-size="9" fill="#8a93a5" text-anchor="end">'
+              f'{_esc(src)}</text>')
+    p_.append(f'<text x="15" y="{PADT + plot_h / 2:.1f}" font-size="10" fill="#5a6577" '
+              f'text-anchor="middle" transform="rotate(-90 15 {PADT + plot_h / 2:.1f})">'
+              f'Awards conferred a year</text>')
+    p_.append(f'<text x="{PADL + plot_w / 2:.1f}" y="{H-PADB+32:.0f}" font-size="10" '
+              f'fill="#5a6577" text-anchor="middle">Academic year</text>')
+
     for k in range(4):
         v = top * k / 3
         y = y_of(v)
@@ -559,16 +579,25 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
             for dx in (0, 6):
                 p_.append(f'<line x1="{PADL-5+dx}" y1="{break_y+5:.1f}" x2="{PADL+2+dx}" '
                           f'y2="{break_y-5:.1f}" stroke="#8a93a5" stroke-width="1.2"/>')
+            # name the break: the double slash is conventional but not universal, and an
+            # unlabelled cut scale is the one way this chart could still mislead.
+            p_.append(f'<text x="{PADL+12}" y="{break_y-3:.1f}" font-size="8.5" '
+                      f'fill="#8a93a5">scale break</text>')
             dy = PADT + 12
         else:
             dy = y_of(annual_openings)
         p_.append(f'<line x1="{PADL}" y1="{dy:.1f}" x2="{W-PADR}" y2="{dy:.1f}" '
                   'stroke="#cc3333" stroke-width="1.6" stroke-dasharray="7 4"/>')
-        p_.append(f'<text x="{W-PADR}" y="{dy-6:.1f}" font-size="10" font-weight="700" '
-                  f'fill="#cc3333" text-anchor="end">{annual_openings:,} openings a year</text>')
+        # Park the label on the side with clearance. When supply has climbed past the
+        # rule the stack owns the right-hand corner, and a right-anchored label lands on
+        # top of the very crossing the chart exists to show.
+        rise = totals[-1] > totals[0]
+        lx_, anc_ = ((PADL + 4, "start") if rise else (W - PADR, "end"))
+        p_.append(f'<text x="{lx_}" y="{dy-6:.1f}" font-size="10" font-weight="700" '
+                  f'fill="#cc3333" text-anchor="{anc_}">{annual_openings:,} openings a year</text>')
 
     # legend, wrapping onto a second row rather than running off the plate
-    lx, ly = PADL, H - 26
+    lx, ly = PADL, H - PADB + 42
     for bi, (name, _s) in enumerate(bands):
         w = 22 + 5.6 * len(name)
         if lx + w > W - PADR:
@@ -982,16 +1011,11 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
     total_label = "All College Programs"
     if progs and award_axis:
         chart = _awards_demand_svg(progs, award_axis, sum(o.annual_openings for o in occs))
+        # No caption: the chart carries its own title, axis labels, source line and break
+        # label, so a paragraph restating them is noise. Only the report's own curated
+        # award_note stays — that is editorial, not chart chrome.
         sections += [
             chart,
-            (f'<p class="tnar">Regional completions a year, stacked by college '
-             f'({_esc(_org_label(lens.scope.member))} at the base), against the region\'s annual '
-             f'openings for {"this occupation" if len(occs) == 1 else "these occupations"}. '
-             f'The stack is CCCCO DataMart actuals; the rule is the COE projection — different '
-             f'vintages, shown together for scale, not as a forecast.'
-             + (' The axis is broken below the rule so the supply bands stay legible.'
-                if 'stroke-width="9"' in chart else '')
-             + '</p>') if chart else '',
             f'<p class="tnar">{_linkify(spec.award_note)}</p>' if spec.award_note else '',
             _trend_table(progs, award_axis, [_fmt_year(y) for y in award_axis], "awards", total_label),
         ]
