@@ -117,6 +117,34 @@ class ReportSpec:
 
 
 # ── Section builders (data from the lens, words from the spec) ─────────────────
+def _fmt_tick(v: float) -> str:
+    """Tick label: thousands-separated, and no trailing .0 when a 2.5-family step at a
+    small scale lands on a whole number."""
+    return f"{v:,.0f}" if abs(v - round(v)) < 1e-9 else f"{v:,.1f}"
+
+
+def _nice_axis(vmax: float, target: int = 5) -> tuple[float, list[float]]:
+    """A round-numbered y-axis covering `vmax`: returns (top, ticks).
+
+    The axis was `top * k / 3`, i.e. the data maximum cut into thirds, which produced
+    ticks like 76 / 151 / 227. Round steps are the convention for public,
+    institution-facing reporting, and a reader can price a bar against 100 or 200 at a
+    glance where 151 has to be worked out.
+
+    Steps come from the 1 / 2 / 2.5 / 5 / 10 family scaled by a power of ten — the
+    standard nice-number ladder — and the top tick is always at or above `vmax`, so
+    rounding never crops a value.
+    """
+    import math
+    if vmax <= 0:
+        return 1.0, [0.0, 1.0]
+    raw = vmax / max(1, target - 1)
+    mag = 10 ** math.floor(math.log10(raw))
+    step = next((m * mag for m in (1, 2, 2.5, 5, 10) if m * mag >= raw - 1e-9), 10 * mag)
+    n = max(1, math.ceil(vmax / step - 1e-9))
+    return step * n, [step * i for i in range(n + 1)]
+
+
 def _block(*parts: str) -> str:
     """Group a heading, its intro and the visual it introduces into ONE unit that print
     keeps together.
@@ -680,7 +708,9 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
     # rule over a 138 axis rendered no rule at all).
     bar_top = barmax * 1.18
     broken = bool(annual_openings) and annual_openings > bar_top * 2.5
-    top = bar_top if broken else max(bar_top, (annual_openings or 0) * 1.08)
+    # Round the axis AFTER deciding what it has to cover, so the nice top is never
+    # smaller than the data or the rule.
+    top, ticks = _nice_axis(bar_top if broken else max(bar_top, (annual_openings or 0) * 1.08))
     band_h = plot_h * (0.66 if broken else 1.0)
     break_y = PADT + plot_h - band_h - 9
 
@@ -706,12 +736,11 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
     p_.append(f'<text x="{PADL + plot_w / 2:.1f}" y="{H-PADB+32:.0f}" font-size="10" '
               f'fill="#5a6577" text-anchor="middle">Academic year</text>')
 
-    for k in range(4):
-        v = top * k / 3
+    for v in ticks:
         y = y_of(v)
         p_.append(f'<line x1="{PADL}" y1="{y:.1f}" x2="{W-PADR}" y2="{y:.1f}" stroke="#e7eaf1"/>')
         p_.append(f'<text x="{PADL-6}" y="{y+3.5:.1f}" font-size="9" fill="#8a93a5" '
-                  f'text-anchor="end">{int(round(v)):,}</text>')
+                  f'text-anchor="end">{_fmt_tick(v)}</text>')
 
     lower = [0.0] * n
     for bi, (_name, s) in enumerate(bands):
@@ -852,7 +881,7 @@ def _enrollment_lines_svg(programs, term_keys: list[str], term_heads: list[str],
     top = max((v for _, vals in series for k in term_keys if (v := vals.get(k))), default=0)
     if top <= 0:
         return ""
-    top *= 1.12
+    top, ticks = _nice_axis(top * 1.12)
 
     (W, H), PADL, PADR, PADT, PADB = _ENROLL_CHART, 56, 12, 44, 96
     plot_w, plot_h = W - PADL - PADR, H - PADT - PADB
@@ -866,12 +895,11 @@ def _enrollment_lines_svg(programs, term_keys: list[str], term_heads: list[str],
     p_.append(f'<text x="13" y="{PADT + plot_h / 2:.1f}" font-size="10" fill="#5a6577" '
               f'text-anchor="middle" transform="rotate(-90 13 {PADT + plot_h / 2:.1f})">'
               f'Enrollments</text>')
-    for k in range(4):
-        v = top * k / 3
+    for v in ticks:
         y = y_of(v)
         p_.append(f'<line x1="{PADL}" y1="{y:.1f}" x2="{W-PADR}" y2="{y:.1f}" stroke="#e7eaf1"/>')
         p_.append(f'<text x="{PADL-6}" y="{y+3.5:.1f}" font-size="9" fill="#8a93a5" '
-                  f'text-anchor="end">{int(round(v)):,}</text>')
+                  f'text-anchor="end">{_fmt_tick(v)}</text>')
 
     for si, (college, vals) in enumerate(series):
         colour = brand if (college in member and brand) else _BAND_FILL[(si + 1) % len(_BAND_FILL)]
