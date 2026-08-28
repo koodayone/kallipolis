@@ -16,7 +16,7 @@
   "alignment_note": "The set of colleges offering TOP 121000 in the Bay Area. All of these colleges support SOC 29-1126 via the same TOP code through the TOP–CIP–SOC crosswalk.",
   "competency_note": "",
   "award_note": "Award trends for each member-college program. Empty cells indicate no data reported via DataMart.",
-  "enrollment_note": "Enrollment trends for each member-college program.",
+  "enrollment_note": "Enrollment trends for each member-college program. Empty cells indicate no data reported via DataMart.",
   "live_postings": {
     "29-1126": [
       {

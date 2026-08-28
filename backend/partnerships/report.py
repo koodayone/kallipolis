@@ -1199,7 +1199,11 @@ def propose_spec(member_id: str, play: Play, *, lens: LensModel | None = None,
                    ". Empty cells indicate no data reported.",
         enrollment_note="Enrollment trends for each member-college program TOP code, "
                         "[per CCCCO DataMart](https://datamart.cccco.edu/Courses/Credit_Course_Summary.aspx)"
-                        ".",
+                        # "Empty" is exact: a "—" cell IS empty and does mean no data
+                        # reported. An "n/a" cell is not empty — it says n/a, and means the
+                        # college has no such term. Same sentence as award_note, so the two
+                        # trend tables read alike.
+                        ". Empty cells indicate no data reported.",
         live_postings=postings,
         programs=programs,
         extra_sources=sources,
