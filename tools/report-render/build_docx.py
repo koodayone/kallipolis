@@ -42,6 +42,7 @@ XWALK = sys.argv[3] if len(sys.argv) > 3 else '/tmp/crosswalk.png'
 # way the crosswalk falls back. Without its own branch it matched `.xwrap` and was
 # flattened into scraped SVG text — legend words and the rule label as loose runs.
 AWCHART = sys.argv[4] if len(sys.argv) > 4 else '/tmp/awchart.png'
+ENCHART = sys.argv[5] if len(sys.argv) > 5 else '/tmp/enchart.png'
 FONT = 'Arial'
 BYLINE_FONT = 'Days One'  # brand byline face (Google-native; substitutes in Word/Pages without it)
 
@@ -427,6 +428,16 @@ def add_awchart_image():
     doc.paragraphs[-1].alignment = WD_ALIGN_PARAGRAPH.CENTER
 
 
+def add_enchart_image():
+    """The per-college enrolment line chart. Same raster path as the awards chart and
+    for the same reason: it has no native Word equivalent, and sharing a class with the
+    crosswalk would let add_xwalk_table flatten it into scraped SVG text — a chart has no
+    links, so the link-parity gate cannot see that failure."""
+    if not os.path.exists(ENCHART):
+        return
+    doc.add_picture(ENCHART, width=Inches(CONTENT_W))
+
+
 def add_xwalk_legend(div):
     """Fallback only (used when the crosswalk renders as a rasterized funnel PNG):
     one quiet centered line of the per-college program links, which are otherwise
@@ -587,6 +598,8 @@ def emit(el):
             add_cmpgrid(el)
         elif 'trend' in cls:
             add_trend(el)
+    elif 'enchart' in cls:
+        add_enchart_image()
     elif 'awchart' in cls:
         add_awchart_image()
     elif 'xwrap' in cls:

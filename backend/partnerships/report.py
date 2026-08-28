@@ -777,13 +777,13 @@ _ENROLL_YEARS = 3
 
 
 def _enrollment_legend() -> str:
-    """What the enrolment table's cell states mean. STRUCTURAL, not prose: the def-authored
+    """What the enrollment table's cell states mean. STRUCTURAL, not prose: the def-authored
     enrollment_note can be overridden per report, and a legend that can go stale behind an
     override is worse than none — these three states are the whole reason the table is
     trustworthy."""
     return ("Fall, Winter and Spring of each academic year. "
             "\u201cn/a\u201d marks a term the college\u2019s calendar does not have; "
-            "\u201c\u2014\u201d marks a term the college has, with no enrolment reported.")
+            "\u201c\u2014\u201d marks a term the college has, with no enrollment reported.")
 
 
 def _term_axis(lens: LensModel) -> tuple[list[str], list[str]]:
@@ -793,8 +793,8 @@ def _term_axis(lens: LensModel) -> tuple[list[str], list[str]]:
     everywhere, but it assumes the term is present in the data AND that the program runs
     then, and both fail here. Foothill and De Anza — the two quarter colleges of one
     district — have NO Fall 2023 records at all, so the report rendered a "—" that read
-    as an enrolment collapse; and Foothill's Community Health Worker program runs in
-    WINTER only, so its own evaluation showed every peer's enrolment and none of its own.
+    as an enrollment collapse; and Foothill's Community Health Worker program runs in
+    WINTER only, so its own evaluation showed every peer's enrollment and none of its own.
 
     An academic year is Fall Y + Winter/Spring Y+1. Only complete years are shown: the
     pipeline effectively starts Fall 2021 (Fall 2020 reaches 5 colleges), and the current
@@ -814,6 +814,121 @@ def _term_axis(lens: LensModel) -> tuple[list[str], list[str]]:
     return keys, heads
 
 
+def _enrollment_lines_svg(programs, term_keys: list[str], term_heads: list[str],
+                          college_terms: dict, brand: str = "") -> str:
+    """Enrollment over terms, ONE LINE PER COLLEGE. Deliberately not stacked.
+
+    A stack is a visual total, and enrollment has no sound cross-college total when
+    calendars differ — the same reason the trend table below carries none. Stacked, a
+    Winter point would sum the one quarter college in the peer set while a Fall point
+    sums all of them, and the silhouette would zigzag on calendar shape rather than on
+    enrollment. Lines compare trajectories, which is what a trend is for.
+
+    The two kinds of absence get DIFFERENT geometry, which is the whole point of the
+    three-state model in the table:
+
+      n/a (the college has no such term)  -> SKIP the x-position and connect across.
+          A semester college's year really does run Fall -> Spring; drawing a break
+          there would invent a discontinuity in a sequence that has none.
+      —   (term exists, nothing reported) -> BREAK the line.
+          Foothill's Fall 2023 is missing, and joining Spring 2023 straight to Winter
+          2024 would draw a value through the hole that we do not have.
+    """
+    if not programs or not term_keys:
+        return ""
+    n = len(term_keys)
+    series = []
+    for p in programs:
+        vals = getattr(p, "enrollment", {}) or {}
+        if not any(vals.get(k) for k in term_keys):
+            continue
+        series.append((p.college, vals))
+    if not series:
+        return ""
+    # member first (brand colour, heavier stroke), then the largest peers
+    member = [p.college for p in programs if p.is_member]
+    series.sort(key=lambda cv: (cv[0] not in member,
+                                -sum(cv[1].get(k, 0) or 0 for k in term_keys)))
+    series = series[:6]
+    top = max((v for _, vals in series for k in term_keys if (v := vals.get(k))), default=0)
+    if top <= 0:
+        return ""
+    top *= 1.12
+
+    W, H, PADL, PADR, PADT, PADB = 648, 336, 56, 12, 44, 96
+    plot_w, plot_h = W - PADL - PADR, H - PADT - PADB
+    x_of = lambda i: PADL + (plot_w * i / (n - 1) if n > 1 else plot_w / 2)
+    y_of = lambda v: PADT + plot_h - (v / top) * plot_h
+
+    p_ = [f'<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" '
+          'font-family="Helvetica,Arial,sans-serif">']
+    p_.append('<text x="2" y="15" font-size="13" font-weight="700" fill="#12203a">'
+              'Enrollment by college</text>')
+    p_.append(f'<text x="{W}" y="15" font-size="9" fill="#8a93a5" text-anchor="end">'
+              'CCCCO DataMart · course section enrollments</text>')
+    p_.append(f'<text x="13" y="{PADT + plot_h / 2:.1f}" font-size="10" fill="#5a6577" '
+              f'text-anchor="middle" transform="rotate(-90 13 {PADT + plot_h / 2:.1f})">'
+              f'Enrollments</text>')
+    for k in range(4):
+        v = top * k / 3
+        y = y_of(v)
+        p_.append(f'<line x1="{PADL}" y1="{y:.1f}" x2="{W-PADR}" y2="{y:.1f}" stroke="#e7eaf1"/>')
+        p_.append(f'<text x="{PADL-6}" y="{y+3.5:.1f}" font-size="9" fill="#8a93a5" '
+                  f'text-anchor="end">{int(round(v)):,}</text>')
+
+    for si, (college, vals) in enumerate(series):
+        colour = brand if (college in member and brand) else _BAND_FILL[(si + 1) % len(_BAND_FILL)]
+        wide = college in member
+        kinds = college_terms.get(college)
+        seg, segs = [], []
+        for i, key in enumerate(term_keys):
+            if kinds is not None and key.split()[0] not in kinds:
+                continue                      # n/a: not in this college's year at all
+            v = vals.get(key) or 0
+            if not v:
+                if len(seg) > 1: segs.append(seg)
+                elif seg: segs.append(seg)     # keep a lone point; it is still evidence
+                seg = []
+                continue
+            seg.append((i, v))
+        if seg: segs.append(seg)
+        for s_ in segs:
+            if len(s_) > 1:
+                pts = " ".join(f"{x_of(i):.1f},{y_of(v):.1f}" for i, v in s_)
+                p_.append(f'<polyline points="{pts}" fill="none" stroke="{colour}" '
+                          f'stroke-width="{2.2 if wide else 1.5}" stroke-linejoin="round"/>')
+            # A dot at every REAL observation. A semester college's line is drawn across
+            # the Winter tick it has no term for, and without markers that segment could
+            # be read as claiming a Winter value.
+            for i, v in s_:
+                p_.append(f'<circle cx="{x_of(i):.1f}" cy="{y_of(v):.1f}" '
+                          f'r="{2.8 if wide else 2.2}" fill="{colour}"/>')
+
+    # term ticks, then the academic year spanning its three terms
+    for i, h in enumerate(term_heads):
+        p_.append(f'<text x="{x_of(i):.1f}" y="{H-PADB+15:.0f}" font-size="9" '
+                  f'fill="#5a6577" text-anchor="middle">{_esc(h.split()[0])}</text>')
+    for g in range(0, n, len(_TERM_KINDS)):
+        grp = list(range(g, min(g + len(_TERM_KINDS), n)))
+        mid = (x_of(grp[0]) + x_of(grp[-1])) / 2
+        yr = term_keys[grp[0]].split()[1]
+        p_.append(f'<text x="{mid:.1f}" y="{H-PADB+31:.0f}" font-size="9.5" font-weight="700" '
+                  f'fill="#46536b" text-anchor="middle">AY{yr[2:]}\u2013{str(int(yr)+1)[2:]}</text>')
+
+    lx, ly = PADL, H - PADB + 46
+    for si, (college, _v) in enumerate(series):
+        colour = brand if (college in member and brand) else _BAND_FILL[(si + 1) % len(_BAND_FILL)]
+        w = 26 + 5.6 * len(college)
+        if lx + w > W - PADR:
+            lx, ly = PADL, ly + 13
+        p_.append(f'<line x1="{lx}" y1="{ly+4}" x2="{lx+14}" y2="{ly+4}" stroke="{colour}" '
+                  f'stroke-width="{2.2 if college in member else 1.5}"/>')
+        p_.append(f'<text x="{lx+18}" y="{ly+7}" font-size="9" fill="#5a6577">{_esc(college)}</text>')
+        lx += w
+    p_.append('</svg>')
+    return f'<div class="enchart">{"".join(p_)}</div>'
+
+
 def _trend_table(programs, axis: list[str], headers: list[str], value_attr: str,
                  total_label: str = "", college_terms: dict | None = None) -> str:
     """A `table.trend`: one row per (college, program), a value per axis key.
@@ -824,8 +939,8 @@ def _trend_table(programs, axis: list[str], headers: list[str], value_attr: str,
       n/a    the college has no such term at all — a semester college has no Winter
       —      the term exists for this college and the figure is absent or zero
 
-    `total_label` empty renders NO total row. The enrolment table passes empty: summing
-    enrolment across colleges on different calendars adds a quarter college's Fall to a
+    `total_label` empty renders NO total row. The enrollment table passes empty: summing
+    enrollment across colleges on different calendars adds a quarter college's Fall to a
     semester college's Fall fine, but the Winter column would total one college and read
     as regional. Awards keep their total — a credential conferred in an academic year is
     the same unit at every college, calendar-independent.
@@ -968,7 +1083,7 @@ tr.tot td{font-weight:700;background:#f3f6fb}
 .cmpgrid td{font-size:10px}.cmpgrid tr.sec td{background:#eef1f6;font-weight:700;font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:#5f6368}
 .cmpgrid tr.descrow td{font-style:italic;color:#5f6368;font-size:11px;line-height:1.35}
 .xwrap{margin:10px 0 4px}.xwrap svg{width:100%;height:auto;display:block}
-.awchart{margin:12px 0 2px}.awchart svg{width:100%;height:auto;display:block}
+.awchart{margin:12px 0 2px}.enchart{margin:12px 0 2px}.awchart svg{width:100%;height:auto;display:block}.enchart svg{width:100%;height:auto;display:block}
 .cgap{font-size:11px;color:#7a5230;background:#fdf6ec;border-left:3px solid #e0a458;padding:7px 12px;margin:6px 0 2px;border-radius:0 4px 4px 0}.cgap b{color:#a8641a}
 .srcdash{margin:4px 0 16px;font-size:13px}.srcsec{margin:16px 0 6px;font-size:13px}.srcdash i,.srcsec i{color:#222}
 .srclist{margin:0}.srcitem{font-size:13px;line-height:1.55}.srcitem a,.srcdash a{color:#1155cc;text-decoration:underline}
@@ -1277,10 +1392,12 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
     if progs and term_keys:
         sections += [
             f'<p class="tnar">{_linkify(spec.enrollment_note)}</p>' if spec.enrollment_note else '',
-            # No total: see _trend_table. Enrolment across mixed calendars is not a
+            # No total: see _trend_table. Enrollment across mixed calendars is not a
             # sound cross-college sum, and the old one silently dropped colleges with a
             # missing term — Veterinary Technology's Fall 2023 total read 411 (Santa Rosa
             # alone) against ~700 either side, a 47% regional collapse that never happened.
+            _enrollment_lines_svg(progs, term_keys, term_heads, lens.college_terms,
+                                  brand=_brand_color(lens.scope.member.id) if spec.program_top else ""),
             _trend_table(progs, term_keys, term_heads, "enrollment",
                          college_terms=lens.college_terms),
             f'<p class="tnar">{_esc(_enrollment_legend())}</p>',
