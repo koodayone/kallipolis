@@ -70,8 +70,6 @@ _OPENINGS_METHOD_URL = ("https://docs.google.com/document/d/"
                         "12t9ujVegXBOUhu2g_BwqDsYuhH6w078HRtYDwBiTCM0/edit?tab=t.0")
 _LIGHTCAST_METHOD_URL = "https://kb.lightcast.io/en/articles/6957547-job-openings-data"
 
-#: Appended when any row shows MAJOR coursework rather than the award's own total — the
-#: reader has to know a degree adds general education to the number in the table.
 #: Minimum units for an ASSOCIATE degree — Title 5 §55063, 60 semester units and the
 #: quarter equivalent. A degree's catalog figure is major coursework, so the units a
 #: student actually completes is at least the major AND at least this floor.
@@ -90,9 +88,11 @@ def _unit_phrase(units: float, basis: str, cal: str) -> str:
                major is named alongside only when the floor is the binding one —
                "at least 100" needs no "(100 in the major)" after it.
       program  a completion programme sitting on a prerequisite degree. NOT floored to
-               the baccalaureate's 180 quarter units (Title 5 §55091): that 180 counts
-               a credential the student already holds, and attributing it to this
-               college's programme would overstate what the college offers.
+               the baccalaureate's 180 quarter units — Title 5 §55091, read from the
+               CCCCO's final regulation text: "Completion of a minimum of 120 semester
+               or 180 quarter units." That 180 counts a credential the student already
+               holds, so flooring this row would attribute a whole separate degree to
+               the college's own programme.
     """
     n = f"{units:g}"
     unit = f"{cal} units".strip()
@@ -105,9 +105,6 @@ def _unit_phrase(units: float, basis: str, cal: str) -> str:
         return f"{n} {unit} beyond an associate degree"
     return f"{n} {unit}"
 
-
-_GE_NOTE = (" A degree figure is the minimum to complete it; general education may add "
-            "to the coursework shown.")
 
 _SEP = " · "        # status/date separator, hoisted: f-strings cannot hold escapes
 _CAREERONESTOP = "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword="
@@ -527,9 +524,6 @@ def _awards_offered_section(college: str, top6: str) -> str:
             f'<td class="lsoc">{_esc(a.title)}{_esc(note)}</td>'
             f'<td class="lemp">{_esc(a.tier)}</td>'
             f'<td class="ltit">{_esc(u)}</td></tr>')
-    # Named once at module level: an f-string expression part cannot hold an escape.
-    ge = _GE_NOTE if any((v or {}).get("basis") in ("major", "program")
-                         for v in curated.values() if isinstance(v, dict)) else ""
     link = "."
     if disp and disp.get("url"):
         link = (f', published on the '
@@ -542,7 +536,7 @@ def _awards_offered_section(college: str, top6: str) -> str:
         '<th class="lsoc">Award</th><th>Credential</th><th>Units</th>'
         f'</tr></thead><tbody>{"".join(body)}</tbody></table>'
         f'<p class="tnar">Approved awards under TOP {_esc(top6)} at {_esc(college)}. '
-        f'Unit counts are the college\'s own requirements{link}{ge}</p>')
+        f'Unit counts are the college\'s own requirements{link}</p>')
 
 
 _BRAND_COLORS = None
