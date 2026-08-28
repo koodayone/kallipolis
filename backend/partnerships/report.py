@@ -407,6 +407,44 @@ def _fmt_approved(iso: str) -> str:
         return m.group(1)
 
 
+_BRAND_COLORS = None
+
+
+def _brand_color(member_id: str) -> str:
+    """The college's own color, from the SAME generator the atlas dashboard uses.
+
+    `atlas/scripts/extract-college-colors.mjs` extracts a dominant colour per college
+    logo and now writes two committed outputs: the .ts the atlas imports, and the JSON
+    read here. The backend container does not ship atlas/, so it cannot read the .ts —
+    one generator, two outputs, rather than a hand-maintained duplicate that drifts.
+
+    Uses the LOGO-EXTRACTED base, not the COLOR_OVERRIDES in collegeAtlasConfigs.ts.
+    Those are neon-lifted for the dark atlas UI — SchoolConfig.brandColorLight is
+    documented as "readable accent on dark backgrounds" — and are too hot for white
+    paper: Foothill is #b1122b here against #f0425a there.
+    """
+    global _BRAND_COLORS
+    if _BRAND_COLORS is None:
+        import json
+        from pathlib import Path
+        try:
+            p = Path(__file__).resolve().parent / "college_colors.json"
+            _BRAND_COLORS = json.loads(p.read_text()).get("colors", {})
+        except Exception:
+            _BRAND_COLORS = {}
+    return _BRAND_COLORS.get(member_id, "")
+
+
+def _mix(hex_color: str, other: str, t: float) -> str:
+    """Blend two #rrggbb by t toward `other` — for deriving a band from a brand hue."""
+    try:
+        a = [int(hex_color[i:i + 2], 16) for i in (1, 3, 5)]
+        b = [int(other[i:i + 2], 16) for i in (1, 3, 5)]
+    except (ValueError, IndexError):
+        return hex_color
+    return "#" + "".join(f"{round(x + (y - x) * t):02x}" for x, y in zip(a, b))
+
+
 def _crosswalk_svg(programs, occs: list[LensOccupation]) -> str:
     """College-grouped program→occupation funnel: one badge per partner college on the
     left — its human-facing program name (linked to the verified program page when known)
@@ -538,7 +576,7 @@ _BAND_FILL = ("#1f3864", "#2e74b5", "#4a90c4", "#7aa6d4", "#2a9d8f", "#93bfb8", 
 
 
 def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
-                       max_bands: int = 6) -> str:
+                       max_bands: int = 6, brand: str = "") -> str:
     """REGIONAL completions over time, stacked by college, against annual openings.
 
     The reviewer ask this answers: show the need to produce workers. The stack is one
@@ -598,7 +636,11 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
     if barmax <= 0:
         return ""
 
-    W, H, PADL, PADR, PADT, PADB = 744, 300, 64, 12, 44, 84
+    # Authored 1:1 with the page's 648px content width. At the old 744 the whole plate
+    # was downscaled to fit, rendering every label 13% smaller than specified — the
+    # chart is the report's central frame and was quietly the least legible thing on
+    # the page. Taller too, for the same reason.
+    W, H, PADL, PADR, PADT, PADB = 648, 372, 60, 12, 44, 84
     plot_w, plot_h = W - PADL - PADR, H - PADT - PADB
     n = len(award_axis)
 
@@ -655,8 +697,10 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
         upper = [lower[i] + (s.get(y, 0) or 0) for i, y in enumerate(award_axis)]
         pts = " ".join(f"{x_of(i):.1f},{y_of(upper[i]):.1f}" for i in range(n))
         pts += " " + " ".join(f"{x_of(i):.1f},{y_of(lower[i]):.1f}" for i in range(n - 1, -1, -1))
-        p_.append(f'<polygon points="{pts}" fill="{_BAND_FILL[bi % len(_BAND_FILL)]}" '
-                  f'fill-opacity="0.94"/>')
+        # The member owns the brand colour; peers step down the neutral ramp, so the
+        # eye finds "us" in the stack before reading a single legend entry.
+        fill = brand if (bi == 0 and brand and _name in members) else _BAND_FILL[bi % len(_BAND_FILL)]
+        p_.append(f'<polygon points="{pts}" fill="{fill}" fill-opacity="0.94"/>')
         lower = upper
 
     # the regional total, drawn on top — the trend the chart exists to show
@@ -703,8 +747,8 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
         w = 22 + 5.6 * len(name)
         if lx + w > W - PADR:
             lx, ly = PADL, ly + 13
-        p_.append(f'<rect x="{lx:.1f}" y="{ly}" width="9" height="9" '
-                  f'fill="{_BAND_FILL[bi % len(_BAND_FILL)]}"/>')
+        swatch = brand if (bi == 0 and brand and name in members) else _BAND_FILL[bi % len(_BAND_FILL)]
+        p_.append(f'<rect x="{lx:.1f}" y="{ly}" width="9" height="9" fill="{swatch}"/>')
         p_.append(f'<text x="{lx+13:.1f}" y="{ly+8}" font-size="9" '
                   f'fill="#5a6577">{_esc(name)}</text>')
         lx += w
@@ -1139,7 +1183,11 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
     fall_terms = [t for t in lens.enrollment_terms if t.startswith("Fall")][-5:]
     total_label = "All College Programs"
     if progs and award_axis:
-        chart = _awards_demand_svg(progs, award_axis, sum(o.annual_openings for o in occs))
+        # Branded only on program evaluations — a role report is not a college's own
+        # document and keeps the neutral ramp.
+        brand = _brand_color(lens.scope.member.id) if spec.program_top else ""
+        chart = _awards_demand_svg(progs, award_axis,
+                                   sum(o.annual_openings for o in occs), brand=brand)
         # No caption: the chart carries its own title, axis labels, source line and break
         # label, so a paragraph restating them is noise. Only the report's own curated
         # award_note stays — that is editorial, not chart chrome.
@@ -1158,7 +1206,16 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
     dash_url = spec.dashboard_url or f"https://preview.kallipolis.us/landscape/{member_id}/{play.sector}"
     sections += [_sources_section(_org_label(lens.scope.member), sec_label, dash_url,
                                   play.title, [o.soc for o in occs], spec.program_top)]
-    body = "\n".join(s for s in sections if s)
+    # Document chrome in the college's colour, for evaluations only. Injected as a
+    # small override rather than edited into _CSS, which is the shared render contract
+    # every report and the docx builder rely on.
+    brand_css = ""
+    bc = _brand_color(lens.scope.member.id) if spec.program_top else ""
+    if bc:
+        brand_css = (f"<style>.title{{border-bottom-color:{bc}}}"
+                     f"h1{{color:{bc}}}"
+                     f".live tr.lc1 td.lsoc{{border-left-color:{bc}}}</style>")
+    body = brand_css + "\n".join(s for s in sections if s)
     return (
         '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
         f'<title>{_esc(play.title)}</title><style>{_CSS}</style></head>'
