@@ -567,6 +567,10 @@ def emit(el):
     if nm is None:
         return
     cls = el.get('class', [])
+    if el.name == 'h1' and 'srcpage' in cls:
+        # Sources is reference matter, not argument — its own page, matching the
+        # @media print rule in the report CSS so the .docx and .pdf agree.
+        doc.add_page_break()
     if 'title' in cls:
         add_title(el.get_text(' ', strip=True))
     elif 'subtitle' in cls:

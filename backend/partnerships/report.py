@@ -29,6 +29,7 @@ import sys
 from dataclasses import dataclass, field
 
 from occupations.competencies import get_competencies
+from ontology.programs import AWARD_TIERS
 from ontology.regions import COE_REGION_DISPLAY, COE_REGION_TO_COUNTIES
 from ontology.supply import COE_DEMAND_VINTAGE
 from partnerships.lens import LensModel, LensOccupation, Play, build_lens
@@ -295,8 +296,13 @@ def _competency_grid(cols: list[CompetencyColumn], occs) -> str:
         f'target="_blank" rel="noopener">O*NET Occupation Summary</a></div></td>'
         for c in cols)
     return (
-        '<table class="cmpgrid"><tbody>'
+        # The occupation header goes in a real <thead> so print's
+        # `thead{display:table-header-group}` repeats it on every continuation page.
+        # This grid is genuinely taller than a page, so it MUST split — and split
+        # without headers the reader cannot tell which column is which occupation.
+        '<table class="cmpgrid"><thead>'
         f'<tr>{head}</tr>'
+        '</thead><tbody>'
         f'<tr class="sec"><td colspan="{len(cols)}">Description</td></tr>'
         f'<tr class="descrow">{desc}</tr>'
         f'{section("Knowledge", "knowledge")}'
@@ -325,7 +331,8 @@ def _program_display(college: str, top6: str):
     return _DISPLAY_NAMES.get(f"{college}|{top6}")
 
 
-def _awards_offered_section(college: str, top6: str, conferred: set[str]) -> str:
+def _awards_offered_section(college: str, top6: str, conferred: set[str],
+                            brand: str = "") -> str:
     """"Awards Offered" — the credential menu for ONE program, from COCI.
 
     Answers the reviewer ask the rest of the report structurally cannot: every other
@@ -372,6 +379,12 @@ def _awards_offered_section(college: str, top6: str, conferred: set[str]) -> str
     body = []
     curated = (disp or {}).get("award_units") or {}
     cal = (disp or {}).get("calendar") or ""
+    # Row accent in the college's own colour, stepped by credential weight so the bar
+    # distinguishes a baccalaureate from a certificate at a glance. Lightening toward
+    # white keeps one hue — a second hue here would compete with the supply chart, where
+    # the brand colour already means "this college".
+    tint = {t: _mix(brand, "#ffffff", min(0.62, 0.16 * i))
+            for i, t in enumerate(AWARD_TIERS)} if brand else {}
     for i, a in enumerate(awards):
         note = ""
         if a.is_teachout:
@@ -387,9 +400,11 @@ def _awards_offered_section(college: str, top6: str, conferred: set[str]) -> str
             u = f"{n:g} {cal} units".replace("  ", " ").strip()
         else:
             u = a.band or "—"
+        accent = (f' style="border-left-color:{tint[a.tier]}"'
+                  if a.tier in tint else "")
         body.append(
             f'<tr class="lc{(i % 3) + 1}">'
-            f'<td class="lsoc">{_esc(a.title)}{_esc(note)}</td>'
+            f'<td class="lsoc"{accent}>{_esc(a.title)}{_esc(note)}</td>'
             f'<td class="lemp">{_esc(a.tier)}</td>'
             f'<td class="ltit">{_esc(u)}</td></tr>')
     link = "."
@@ -1037,7 +1052,7 @@ def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
              "https://regionalcte.org/browse"),
         ]),
     ]
-    out = ['<h1>Sources</h1>',
+    out = ['<h1 class="srcpage">Sources</h1>',
            f'<p class="srcdash"><i>{_esc(org_label)} {_esc(sector_label)} Dashboard:</i> '
            f'{a(dashboard_url, dashboard_url)}</p>']
     for name, links in groups:
@@ -1101,7 +1116,7 @@ p a,.byline a{color:#1155cc;text-decoration:underline}
    harness renders with printBackground:true, so without resetting it here Chromium
    faithfully paints that grey wherever .page does not fill the sheet — a grey band
    below the content on the final page of every exported PDF. */
-@media print{body{background:#fff}.page{margin:0;box-shadow:none;min-height:0}}
+@media print{body{background:#fff}.page{margin:0;box-shadow:none;min-height:0}.awchart,.enchart,.xwrap{break-inside:avoid}h1{break-after:avoid}p.tnar{break-after:avoid}table.dem,table.live,table.trend{break-inside:avoid}thead{display:table-header-group}tr{break-inside:avoid}h1.srcpage{break-before:page}}
 """
 
 
@@ -1312,7 +1327,9 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         f'<div class="subtitle">{_esc(spec.lede)}</div>',
         # Program evaluations open with the program's own credential menu — the subject of
         # the document. Role reports leave `program_top` empty and this renders nothing.
-        _awards_offered_section(lens.scope.member.name, spec.program_top, _conferred_tiers(lens, spec)) if spec.program_top else '',
+        _awards_offered_section(lens.scope.member.name, spec.program_top,
+                                _conferred_tiers(lens, spec),
+                                brand=_brand_color(lens.scope.member.id)) if spec.program_top else '',
         '<h1>Regional Occupational Demand</h1>',
         f'<p>{_linkify(spec.demand_note)}</p>' if spec.demand_note else '',
         _demand_table(occs),
@@ -1400,11 +1417,15 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
     dash_url = spec.dashboard_url or f"https://preview.kallipolis.us/landscape/{member_id}/{play.sector}"
     sections += [_sources_section(_org_label(lens.scope.member), sec_label, dash_url,
                                   play.title, [o.soc for o in occs], spec.program_top)]
-    # Branding is scoped to the supply chart alone — see _awards_demand_svg. Recolouring
-    # the document chrome (title rule, headings, table accents) was tried and reverted:
-    # a saturated brand hue across every heading fights the report's own palette, where
-    # colour already carries meaning, and the blue chrome reads better.
-    body = "\n".join(s for s in sections if s)
+    # Brand reaches exactly two places in the chrome: the masthead rule and the Awards
+    # Offered accents. Recolouring EVERY heading was tried and reverted — a saturated hue
+    # across the whole document fights the report's own palette, where colour already
+    # carries meaning. h1 stays blue.
+    brand_css = ""
+    bc = _brand_color(lens.scope.member.id) if spec.program_top else ""
+    if bc:
+        brand_css = f"<style>.title{{border-bottom-color:{bc}}}</style>"
+    body = brand_css + "\n".join(s for s in sections if s)
     return (
         '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
         f'<title>{_esc(play.title)}</title><style>{_CSS}</style></head>'
