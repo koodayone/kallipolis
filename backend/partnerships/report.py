@@ -769,19 +769,81 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
     return f'<div class="awchart">{"".join(p_)}</div>'
 
 
-def _trend_table(programs, axis: list[str], headers: list[str], value_attr: str, total_label: str) -> str:
-    """A `table.trend`: one row per (college, program), a value per axis key, a
-    total row. Values come from the L1 program series; '—' marks no data/zero.
-    Fixed to 5 value columns (+ label) to match build_docx's 6-column trend table."""
+#: Instructional-core terms, in academic-year order. Summer is deliberately absent —
+#: 7,150 programs report it against Fall's 12,260, it is irregular across colleges, and
+#: a fourth column per year would not fit the plate.
+_TERM_KINDS = ("Fall", "Winter", "Spring")
+_ENROLL_YEARS = 3
+
+
+def _enrollment_legend() -> str:
+    """What the enrolment table's cell states mean. STRUCTURAL, not prose: the def-authored
+    enrollment_note can be overridden per report, and a legend that can go stale behind an
+    override is worse than none — these three states are the whole reason the table is
+    trustworthy."""
+    return ("Fall, Winter and Spring of each academic year. "
+            "\u201cn/a\u201d marks a term the college\u2019s calendar does not have; "
+            "\u201c\u2014\u201d marks a term the college has, with no enrolment reported.")
+
+
+def _term_axis(lens: LensModel) -> tuple[list[str], list[str]]:
+    """The enrollment axis: (term keys, short headers) over the last complete academic years.
+
+    Replaces a Fall-only axis. Fall census is the convention because Fall is Fall
+    everywhere, but it assumes the term is present in the data AND that the program runs
+    then, and both fail here. Foothill and De Anza — the two quarter colleges of one
+    district — have NO Fall 2023 records at all, so the report rendered a "—" that read
+    as an enrolment collapse; and Foothill's Community Health Worker program runs in
+    WINTER only, so its own evaluation showed every peer's enrolment and none of its own.
+
+    An academic year is Fall Y + Winter/Spring Y+1. Only complete years are shown: the
+    pipeline effectively starts Fall 2021 (Fall 2020 reaches 5 colleges), and the current
+    year is partial, so including either would compare unlike spans.
+    """
+    have = set(lens.enrollment_terms)
+    years = sorted({int(t.split()[1]) - (0 if t.startswith("Fall") else 1)
+                    for t in have if t.split()[0] in _TERM_KINDS})
+    complete = [y for y in years
+                if all(f"{k} {y if k == 'Fall' else y + 1}" in have for k in _TERM_KINDS)]
+    keys, heads = [], []
+    for y in complete[-_ENROLL_YEARS:]:
+        for k in _TERM_KINDS:
+            yy = y if k == "Fall" else y + 1
+            keys.append(f"{k} {yy}")
+            heads.append(f"{k[:3]} {str(yy)[2:]}")
+    return keys, heads
+
+
+def _trend_table(programs, axis: list[str], headers: list[str], value_attr: str,
+                 total_label: str = "", college_terms: dict | None = None) -> str:
+    """A `table.trend`: one row per (college, program), a value per axis key.
+
+    Three cell states, deliberately distinct, because collapsing them states things that
+    are not in evidence:
+      value  the college reported this term
+      n/a    the college has no such term at all — a semester college has no Winter
+      —      the term exists for this college and the figure is absent or zero
+
+    `total_label` empty renders NO total row. The enrolment table passes empty: summing
+    enrolment across colleges on different calendars adds a quarter college's Fall to a
+    semester college's Fall fine, but the Winter column would total one college and read
+    as regional. Awards keep their total — a credential conferred in an academic year is
+    the same unit at every college, calendar-independent.
+
+    Column count is derived by build_docx from the header row, not fixed at 6."""
     head = "".join(f"<th>{_esc(h)}</th>" for h in headers)
     rows, totals = [], [0] * len(axis)
     for p in programs:
         series = getattr(p, value_attr)
         cells = []
+        kinds = (college_terms or {}).get(p.college)
         for i, k in enumerate(axis):
             v = series.get(k) or 0
             totals[i] += v
-            cells.append('<td class="num zero">—</td>' if not v else f'<td class="num">{v:,}</td>')
+            if not v and kinds is not None and k.split()[0] not in kinds:
+                cells.append('<td class="num na">n/a</td>')      # no such term, not a gap
+            else:
+                cells.append('<td class="num zero">—</td>' if not v else f'<td class="num">{v:,}</td>')
         # Credential-mix sub-rows: the MEMBER college's award series decomposed by
         # tier, and only when there is more than one tier to show (a single-tier
         # program's breakdown just repeats its total). Peers keep one line each, so
@@ -804,13 +866,16 @@ def _trend_table(programs, axis: list[str], headers: list[str], value_attr: str,
                 rows.append(
                     f'<tr class="tier"><td class="prog"><b>{_esc(tier)}</b></td>{tcells}</tr>'
                 )
-    tot = "".join('<td class="num zero">—</td>' if not t else f'<td class="num">{t:,}</td>' for t in totals)
+    tot = ""
+    if total_label:
+        cells_ = "".join('<td class="num zero">—</td>' if not t else f'<td class="num">{t:,}</td>'
+                         for t in totals)
+        tot = f'<tr class="tot"><td class="prog">{_esc(total_label)}</td>{cells_}</tr>'
+    cols = '<col class="cprog">' + "<col>" * len(axis)
     return (
-        '<table class="trend"><colgroup><col class="cprog"><col><col><col><col><col></colgroup>'
+        f'<table class="trend"><colgroup>{cols}</colgroup>'
         f'<thead><tr><th class="prog">College · TOP code</th>{head}</tr></thead><tbody>'
-        f'{"".join(rows)}'
-        f'<tr class="tot"><td class="prog">{_esc(total_label)}</td>{tot}</tr>'
-        '</tbody></table>'
+        f'{"".join(rows)}{tot}</tbody></table>'
     )
 
 
@@ -915,7 +980,7 @@ p a,.byline a{color:#1155cc;text-decoration:underline}
 .trend thead th{background:#eef1f6;color:#5a6577;font-size:9px;font-weight:700}
 .trend th.prog,.trend td.prog{text-align:left;padding-left:6px}
 .trend td.prog b{font-size:10.5px;color:#2a3450}.trend td.prog span{color:#9099ab;font-size:8.5px}
-.trend td.num{font-variant-numeric:tabular-nums;color:#33405a}.trend td.zero{color:#bcc3ce}
+.trend td.num{font-variant-numeric:tabular-nums;color:#33405a}.trend td.zero{color:#bcc3ce}.trend td.na{color:#ccd2db;font-style:italic}
 .trend tr.tot td{background:#f2f6fc;font-weight:700;border-top:1.5px solid #c8d0de;color:#2a3450}
 .trend tr.sub td{border-bottom:0}
 .trend tr.tier td{border-top:0;background:#fbfcfe}
@@ -1035,7 +1100,7 @@ def propose_spec(member_id: str, play: Play, *, lens: LensModel | None = None,
                    ". Empty cells indicate no data reported.",
         enrollment_note="Enrollment trends for each member-college program TOP code, "
                         "[per CCCCO DataMart](https://datamart.cccco.edu/Courses/Credit_Course_Summary.aspx)"
-                        ". Empty cells indicate no data reported.",
+                        ".",
         live_postings=postings,
         programs=programs,
         extra_sources=sources,
@@ -1193,7 +1258,7 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
 
     # Supply over time — same program list, from the L1 series.
     award_axis = lens.award_years[-5:]
-    fall_terms = [t for t in lens.enrollment_terms if t.startswith("Fall")][-5:]
+    term_keys, term_heads = _term_axis(lens)
     total_label = "All College Programs"
     if progs and award_axis:
         # Branded only on program evaluations — a role report is not a college's own
@@ -1209,10 +1274,16 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
             f'<p class="tnar">{_linkify(spec.award_note)}</p>' if spec.award_note else '',
             _trend_table(progs, award_axis, [_fmt_year(y) for y in award_axis], "awards", total_label),
         ]
-    if progs and fall_terms:
+    if progs and term_keys:
         sections += [
             f'<p class="tnar">{_linkify(spec.enrollment_note)}</p>' if spec.enrollment_note else '',
-            _trend_table(progs, fall_terms, fall_terms, "enrollment", total_label),
+            # No total: see _trend_table. Enrolment across mixed calendars is not a
+            # sound cross-college sum, and the old one silently dropped colleges with a
+            # missing term — Veterinary Technology's Fall 2023 total read 411 (Santa Rosa
+            # alone) against ~700 either side, a 47% regional collapse that never happened.
+            _trend_table(progs, term_keys, term_heads, "enrollment",
+                         college_terms=lens.college_terms),
+            f'<p class="tnar">{_esc(_enrollment_legend())}</p>',
         ]
     from partnerships.sectors import SECTORS
     sec_label = SECTORS[play.sector].label if play.sector in SECTORS else play.sector.upper()

@@ -256,7 +256,12 @@ def std_table(rows, widths=None, header=True, num_from=2, totalcls='tot'):
 
 def add_trend(table):
     rows = rows_of(table)
-    tbl = doc.add_table(rows=0, cols=6); tbl.alignment = WD_TABLE_ALIGNMENT.CENTER; grid(tbl)
+    # Column count comes from the header row. It was pinned at 6, which silently
+    # truncated any wider trend table — the enrolment table is now 3 terms x 3 academic
+    # years plus the label, and a hardcoded 6 would have dropped four columns of data
+    # into a .docx that still looked plausible.
+    ncols = len(rows[0]['cells']) if rows else 6
+    tbl = doc.add_table(rows=0, cols=ncols); tbl.alignment = WD_TABLE_ALIGNMENT.CENTER; grid(tbl)
     for ri, r in enumerate(rows):
         cells = tbl.add_row().cells
         istot = 'tot' in r['cls']; ishdr = ri == 0

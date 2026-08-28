@@ -17,7 +17,7 @@
   "alignment_note": "The set of colleges offering TOP 010210 in the Bay Area. All of these colleges support SOC 29-2056 and 31-9096 via the same TOP code through the TOP–CIP–SOC crosswalk.",
   "competency_note": "",
   "award_note": "Award trends for each member-college program. Empty cells indicate no data reported via DataMart.",
-  "enrollment_note": "Enrollment trends for each member-college program. Empty cells indicate no data reported via DataMart.",
+  "enrollment_note": "Enrollment trends for each member-college program.",
   "programs": [
     [
       "Foothill College",

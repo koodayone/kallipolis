@@ -55,6 +55,7 @@ from partnerships.graph_reads import (
     program_award_series,
     program_award_series_by_type,
     program_awards,
+    colleges_by_term_type,
     program_enrollment_series,
     program_names,
     regional_demand,
@@ -182,6 +183,11 @@ class LensModel:
     programs: list[LensProgram] = field(default_factory=list)       # supply over time
     award_years: list[str] = field(default_factory=list)            # axis, sorted asc
     enrollment_terms: list[str] = field(default_factory=list)       # axis, sorted asc
+    # {college -> [term kinds it reports]}, e.g. {"Foothill College": ["Fall","Spring",
+    # "Summer","Winter"]}. The academic calendar, read from the data. Lets a renderer
+    # distinguish "this college has no Winter term" from "Winter exists and the data is
+    # missing" — the two look identical in the series and mean opposite things.
+    college_terms: dict[str, list[str]] = field(default_factory=dict)
     sources: list[SourceRef] = field(default_factory=lambda: list(SOURCES.values()))
 
     def to_dict(self) -> dict:
@@ -206,6 +212,7 @@ class LensModel:
             "programs": [vars(p) for p in self.programs],
             "award_years": list(self.award_years),
             "enrollment_terms": list(self.enrollment_terms),
+            "college_terms": {k: list(v) for k, v in self.college_terms.items()},
             "field_authority": FIELD_AUTHORITY,
             "sources": [vars(s) for s in self.sources],
         }
@@ -311,7 +318,7 @@ def _programs(
     still appears — a live pipeline."""
     relevant_tops = list(top_socs)
     if not relevant_tops:
-        return [], [], []
+        return [], [], [], {}
     aw = program_award_series(s, colleges, relevant_tops)
     awt = program_award_series_by_type(s, colleges, relevant_tops)
     en = program_enrollment_series(s, colleges, relevant_tops)
@@ -319,6 +326,7 @@ def _programs(
 
     award_years = sorted({r["year"] for r in aw})
     enrollment_terms = sorted({r["term"] for r in en})
+    college_terms = colleges_by_term_type(s, colleges)
     awards: dict[tuple, dict[str, int]] = defaultdict(dict)
     enroll: dict[tuple, dict[str, int]] = defaultdict(dict)
     for r in aw:
@@ -356,7 +364,7 @@ def _programs(
         )
         for college, top6 in keys
     ]
-    return programs, award_years, enrollment_terms
+    return programs, award_years, enrollment_terms, college_terms
 
 
 # ── The public entry point ────────────────────────────────────────────────────
@@ -415,7 +423,7 @@ def build_lens(member_id: str, *, sector: str | None = None, play: Play | None =
 
     with get_driver().session() as s:
         occupations = _project(s, region, colleges, in_scope, socs, member_colleges)
-        programs, award_years, enrollment_terms = _programs(
+        programs, award_years, enrollment_terms, college_terms = _programs(
             s, colleges, top_socs, member_colleges)
 
     scope = LensScope(
@@ -425,7 +433,8 @@ def build_lens(member_id: str, *, sector: str | None = None, play: Play | None =
         partner_universe=tuple(sorted(colleges)),
     )
     return LensModel(scope=scope, occupations=occupations, programs=programs,
-                     award_years=award_years, enrollment_terms=enrollment_terms)
+                     award_years=award_years, enrollment_terms=enrollment_terms,
+                     college_terms=college_terms)
 
 
 if __name__ == "__main__":
