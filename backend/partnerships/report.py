@@ -52,8 +52,15 @@ _RULE = "#9e6900"
 #: column so nothing is downscaled. Height is the tuning knob for pagination: a page
 #: holds 904px of content, so a chart plus its caption and table has to stay well under
 #: that or the whole block jumps a page and leaves the remainder blank.
-_SUPPLY_CHART = (648, 340)
-_ENROLL_CHART = (648, 300)
+#:
+#: Chosen by sweeping the height space against ALL ELEVEN shipped reports with a
+#: Playwright pass, not one — a single-report simulation said 420/380 was optimal and
+#: it was over-fit: across the set that costs 51 pages at 81% mean fill against 48 at
+#: 82% for 340/300. The frontier: 400/400 is 50 pages at 83%, the best density measured,
+#: buying 160px more chart for two extra pages across the whole set. Equal heights are
+#: deliberate — the two plates are the same width and sit in the same document.
+_SUPPLY_CHART = (648, 400)
+_ENROLL_CHART = (648, 400)
 
 _SEP = " · "        # status/date separator, hoisted: f-strings cannot hold escapes
 _CAREERONESTOP = "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword="
@@ -689,12 +696,10 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
     # label, not a paragraph.
     p_.append(f'<text x="2" y="15" font-size="13" font-weight="700" fill="#12203a">'
               f'Regional supply against annual openings</text>')
-    # Just the projection span from the vintage sentence — the full string is the demand
-    # table's caption, too long for a chart corner. One authority, two altitudes.
-    span = re.search(r"\d{4}[–-]\d{4}", COE_DEMAND_VINTAGE)
-    src = f"DataMart actuals · COE {span.group()} projection" if span else "DataMart · COE"
-    p_.append(f'<text x="{W}" y="15" font-size="9" fill="#8a93a5" text-anchor="end">'
-              f'{_esc(src)}</text>')
+    # No corner source line. DataMart and COE are both named in Sources, and the COE
+    # vintage is stated in full under the demand table ("2024 base-year employment,
+    # 2024-2029 projection") — the chart corner was restating what the document already
+    # says twice, in the smallest type on the page.
     p_.append(f'<text x="15" y="{PADT + plot_h / 2:.1f}" font-size="10" fill="#5a6577" '
               f'text-anchor="middle" transform="rotate(-90 15 {PADT + plot_h / 2:.1f})">'
               f'Awards conferred a year</text>')
@@ -858,8 +863,6 @@ def _enrollment_lines_svg(programs, term_keys: list[str], term_heads: list[str],
           'font-family="Helvetica,Arial,sans-serif">']
     p_.append('<text x="2" y="15" font-size="13" font-weight="700" fill="#12203a">'
               'Enrollment by college</text>')
-    p_.append(f'<text x="{W}" y="15" font-size="9" fill="#8a93a5" text-anchor="end">'
-              'CCCCO DataMart · course section enrollments</text>')
     p_.append(f'<text x="13" y="{PADT + plot_h / 2:.1f}" font-size="10" fill="#5a6577" '
               f'text-anchor="middle" transform="rotate(-90 13 {PADT + plot_h / 2:.1f})">'
               f'Enrollments</text>')
