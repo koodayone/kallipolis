@@ -40,7 +40,7 @@ from ontology.crosswalks import (
 )
 from ontology.regions import COE_REGION_DISPLAY
 from ontology.schema import get_driver
-from ontology.programs import get_wage_outcomes
+from ontology.programs import award_type_sort_key, get_wage_outcomes
 from ontology.supply import get_coe_supply
 from partnerships.gather import _gather_curriculum_crosswalk
 from partnerships.graph_reads import latest_academic_year, regional_demand
@@ -633,21 +633,12 @@ def _enroll_terms_axis(terms: set[str]) -> list[str]:
     return sorted({t for t in terms if not _term_excluded(t)}, key=_term_sort_key)
 
 
-# Credential classes in display order: degrees, then certificates, then
-# noncredit awards (matched as substrings of the DataMart name).
-_AWARD_TYPE_CLASSES = ("associate", "certificate", "noncredit")
-
-
-def _award_type_sort_key(award_type: str) -> tuple[int, int, str]:
-    """Credential-weight ordering for the per-type award series: degrees first,
-    then certificates, then noncredit awards; within a class, larger bands first
-    (the first number in the DataMart name is the band's lower bound — degrees
-    carry none and tie-break by name)."""
-    low = award_type.lower()
-    rank = next((i for i, k in enumerate(_AWARD_TYPE_CLASSES) if k in low),
-                len(_AWARD_TYPE_CLASSES))
-    m = re.search(r"\d+", award_type)
-    return (rank, -int(m.group()) if m else 0, award_type)
+# Credential-weight ordering lives in ontology.programs, which owns the DataMart
+# award-type vocabulary end to end (the parser that produces these strings, the
+# tier collapse, the labels, and this ordering). Keeping a second substring list
+# here let the two surfaces disagree: the dashboard sorted A.S.-T with plain
+# associate degrees while the report gave transfer its own tier.
+_award_type_sort_key = award_type_sort_key
 
 
 # Credit families in display order: degree-applicable credit leads (the
