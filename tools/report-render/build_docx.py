@@ -37,6 +37,11 @@ _RESEARCH = '/Users/dayonekoo/Desktop/code/kallipolis/research/swp-strategy'
 SRC = sys.argv[1] if len(sys.argv) > 1 else f'{_RESEARCH}/svamp-pathway-49-9041-doc.html'
 OUT = sys.argv[2] if len(sys.argv) > 2 else f'{_RESEARCH}/svamp-pathway-manufacturing-technician.docx'
 XWALK = sys.argv[3] if len(sys.argv) > 3 else '/tmp/crosswalk.png'
+# The awards-vs-demand chart is a CHART: no native Word primitive reconstructs a
+# stacked bar series with a reference rule, so it embeds as a high-DPI raster the
+# way the crosswalk falls back. Without its own branch it matched `.xwrap` and was
+# flattened into scraped SVG text — legend words and the rule label as loose runs.
+AWCHART = sys.argv[4] if len(sys.argv) > 4 else '/tmp/awchart.png'
 FONT = 'Arial'
 BYLINE_FONT = 'Days One'  # brand byline face (Google-native; substitutes in Word/Pages without it)
 
@@ -409,6 +414,14 @@ def add_image():
     p.add_run().add_picture(XWALK, width=Inches(CONTENT_W))
 
 
+def add_awchart_image():
+    """Embed the rasterized awards-vs-demand chart, full content width."""
+    if not os.path.exists(AWCHART):
+        return  # no raster on hand -> the caption below the chart still carries the reading
+    doc.add_picture(AWCHART, width=Inches(CONTENT_W))
+    doc.paragraphs[-1].alignment = WD_ALIGN_PARAGRAPH.CENTER
+
+
 def add_xwalk_legend(div):
     """Fallback only (used when the crosswalk renders as a rasterized funnel PNG):
     one quiet centered line of the per-college program links, which are otherwise
@@ -569,6 +582,8 @@ def emit(el):
             add_cmpgrid(el)
         elif 'trend' in cls:
             add_trend(el)
+    elif 'awchart' in cls:
+        add_awchart_image()
     elif 'xwrap' in cls:
         # Native crosswalk (clickable, paste-safe) by default; fall back to the
         # rasterized funnel PNG + a link caption if the SVG can't be parsed.
