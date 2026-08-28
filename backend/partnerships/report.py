@@ -35,6 +35,19 @@ from partnerships.lens import LensModel, LensOccupation, Play, build_lens
 
 # Per-occupation accent palette (teal / blue / red / purple / amber), cycled.
 _ACCENTS = ["#2a9d8f", "#2e74b5", "#cc3333", "#6f5499", "#c98a1b"]
+# The demand rule. Amber, not red, for three measured reasons. (1) Red sits 9 degrees
+# from Foothill's brand crimson in the band below it — amber is 49 degrees away, and the
+# member band is the one thing the rule must never be confused with. (2) Green was the
+# other candidate and fails: 24 degrees from #93bfb8 already in the band ramp, so it
+# would read as another college's supply, and it wrongly connotes "target met" when
+# supply usually sits BELOW this line. (3) Amber is the conventional threshold signal;
+# red says "error", and a region under its openings line has a gap, not a fault.
+# Hue 40 at 4.69:1 on white — a true yellow cannot be used here at all, because yellow's
+# intrinsic luminance puts it at 1.40:1 and any yellow dark enough to clear 4.5:1 has
+# turned olive (#7a7a00). 4.5:1 is the bar because the 10px bold label is not "large
+# text". Greyscale value 0.44 against the navy bands' 0.22, so print separation holds.
+_RULE = "#9e6900"
+
 _SEP = " · "        # status/date separator, hoisted: f-strings cannot hold escapes
 _CAREERONESTOP = "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword="
 
@@ -732,14 +745,14 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
         else:
             dy = y_of(annual_openings)
         p_.append(f'<line x1="{PADL}" y1="{dy:.1f}" x2="{W-PADR}" y2="{dy:.1f}" '
-                  'stroke="#cc3333" stroke-width="1.6" stroke-dasharray="7 4"/>')
+                  f'stroke="{_RULE}" stroke-width="1.6" stroke-dasharray="7 4"/>')
         # Park the label on the side with clearance. When supply has climbed past the
         # rule the stack owns the right-hand corner, and a right-anchored label lands on
         # top of the very crossing the chart exists to show.
         rise = totals[-1] > totals[0]
         lx_, anc_ = ((PADL + 4, "start") if rise else (W - PADR, "end"))
         p_.append(f'<text x="{lx_}" y="{dy-6:.1f}" font-size="10" font-weight="700" '
-                  f'fill="#cc3333" text-anchor="{anc_}">{annual_openings:,} openings a year</text>')
+                  f'fill="{_RULE}" text-anchor="{anc_}">{annual_openings:,} openings a year</text>')
 
     # legend, wrapping onto a second row rather than running off the plate
     lx, ly = PADL, H - PADB + 42
