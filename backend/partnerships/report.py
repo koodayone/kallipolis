@@ -72,7 +72,42 @@ _LIGHTCAST_METHOD_URL = "https://kb.lightcast.io/en/articles/6957547-job-opening
 
 #: Appended when any row shows MAJOR coursework rather than the award's own total — the
 #: reader has to know a degree adds general education to the number in the table.
-_GE_NOTE = " A degree additionally requires the college\u2019s general-education minimum."
+#: Minimum units for an ASSOCIATE degree — Title 5 §55063, 60 semester units and the
+#: quarter equivalent. A degree's catalog figure is major coursework, so the units a
+#: student actually completes is at least the major AND at least this floor.
+_DEGREE_FLOOR = {"semester": 60, "quarter": 90}
+
+
+def _unit_phrase(units: float, basis: str, cal: str) -> str:
+    """How a cached unit figure reads, given what it measures.
+
+    Three shapes, because a catalog publishes three different things and printing them
+    alike states falsehoods — "64 quarter units" against "associate degree" was one.
+
+      award    the whole award. A Certificate of Achievement IS its course sequence.
+      major    degree coursework, general education on top. The completion figure is
+               therefore AT LEAST the major and at least the Title 5 floor, and the
+               major is named alongside only when the floor is the binding one —
+               "at least 100" needs no "(100 in the major)" after it.
+      program  a completion programme sitting on a prerequisite degree. NOT floored to
+               the baccalaureate's 180 quarter units (Title 5 §55091): that 180 counts
+               a credential the student already holds, and attributing it to this
+               college's programme would overstate what the college offers.
+    """
+    n = f"{units:g}"
+    unit = f"{cal} units".strip()
+    if basis == "major":
+        floor = _DEGREE_FLOOR.get(cal, 0)
+        total = max(units, floor)
+        out = f"at least {total:g} {unit}"
+        return f"{out} ({n} in the major)" if total > units else out
+    if basis == "program":
+        return f"{n} {unit} beyond an associate degree"
+    return f"{n} {unit}"
+
+
+_GE_NOTE = (" A degree figure is the minimum to complete it; general education may add "
+            "to the coursework shown.")
 
 _SEP = " · "        # status/date separator, hoisted: f-strings cannot hold escapes
 _CAREERONESTOP = "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword="
@@ -486,16 +521,7 @@ def _awards_offered_section(college: str, top6: str) -> str:
         c = curated.get(a.title)
         if isinstance(c, (int, float)):          # pre-basis cache entries
             c = {"units": c, "basis": "award"}
-        if c:
-            u = f"{c['units']:g} {cal} units".replace("  ", " ").strip()
-            # Three bases, because a catalog figure is one of three different things.
-            # "award" is the whole award. "major" is degree coursework with general
-            # education on top. "program" is a completion programme's own units, which
-            # sit on top of a prerequisite degree AND a GE pattern — Foothill's
-            # Respiratory Care B.S. is 68 over an existing associate degree.
-            u += {"major": " in the major", "program": " in the program"}.get(c.get("basis"), "")
-        else:
-            u = a.band or "—"
+        u = _unit_phrase(c["units"], c.get("basis", "award"), cal) if c else (a.band or "—")
         body.append(
             f'<tr class="lc{(i % 3) + 1}">'
             f'<td class="lsoc">{_esc(a.title)}{_esc(note)}</td>'

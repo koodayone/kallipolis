@@ -21,11 +21,15 @@ Coverage:
   - every figure records the credential tier, so the guard cannot be fooled by a
     programme name that does not contain the word "degree"
   - certificate figures are positive and calendars are ones we can label
+  - the rendered phrase never understates a degree, and never floors the
+    baccalaureate to a total that includes its prerequisite degree
 """
 import json
 from pathlib import Path
 
 import pytest
+
+from partnerships.report import _DEGREE_FLOOR, _unit_phrase
 
 CACHE = Path(__file__).resolve().parent / "program_display_names.json"
 
@@ -133,3 +137,58 @@ def test_the_environmental_horticulture_case_stays_fixed():
         "the degree figure is major coursework; the degree itself needs 90 quarter units"
     assert cert["units"] == 64 and cert["basis"] == "award", \
         "a Certificate of Achievement IS the core-and-support sequence — 64 is its total"
+
+
+# ── how the cached figure READS ──────────────────────────────────────────────
+# The cache is only half the guarantee; the other half is that the phrase built from
+# it cannot understate what a student must complete.
+
+def test_a_major_figure_below_the_floor_reads_as_the_floor():
+    """The Environmental Horticulture row, end to end: 64 in the major under a 90-unit
+    degree, so the reader is told 90 with the major named alongside."""
+    assert _unit_phrase(64, "major", "quarter") == "at least 90 quarter units (64 in the major)"
+
+
+def test_a_major_figure_above_the_floor_is_not_dragged_down_to_it():
+    """Respiratory Therapy's major is 100. Printing the 90-unit floor would understate
+    it — the binding constraint is the major, and no parenthetical is needed when the
+    two numbers are the same."""
+    assert _unit_phrase(100, "major", "quarter") == "at least 100 quarter units"
+    assert _unit_phrase(93, "major", "quarter") == "at least 93 quarter units"
+
+
+def test_a_program_figure_is_not_floored_to_the_baccalaureate_total():
+    """A CCC bachelor's is 180 quarter units (Title 5 §55091), but that counts the
+    prerequisite associate degree the student already holds. Flooring this row to 180
+    would attribute a whole credential to the college's own programme."""
+    p = _unit_phrase(68, "program", "quarter")
+    assert p == "68 quarter units beyond an associate degree"
+    assert "180" not in p
+
+
+def test_certificate_figures_are_left_alone():
+    """A Certificate of Achievement IS its course sequence — no floor, no qualifier."""
+    assert _unit_phrase(12, "award", "quarter") == "12 quarter units"
+    assert _unit_phrase(12.5, "award", "quarter") == "12.5 quarter units"
+
+
+def test_the_floor_matches_title_5_for_both_calendars():
+    assert _DEGREE_FLOOR == {"semester": 60, "quarter": 90}
+    assert _unit_phrase(30, "major", "semester") == "at least 60 semester units (30 in the major)"
+
+
+@pytest.mark.parametrize("key,title,u", [
+    (k, t, u)
+    for k, v in _names().items()
+    for t, u in (v.get("award_units") or {}).items()
+    if isinstance(u, dict)
+])
+def test_no_cached_figure_renders_below_its_degree_floor(key, title, u):
+    """Whatever the basis, an associate-degree row must never PRINT a number under the
+    floor. This is the check the report itself depends on."""
+    if u["tier"] != "associate degree":
+        return
+    cal = _names()[key]["calendar"]
+    phrase = _unit_phrase(u["units"], u["basis"], cal)
+    shown = float(phrase.replace("at least ", "").split()[0])
+    assert shown >= _DEGREE_FLOOR[cal], f"{key}/{title}: renders {phrase!r}, under the floor"
