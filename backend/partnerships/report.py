@@ -325,13 +325,23 @@ def _awards_offered_section(college: str, top6: str, conferred: set[str]) -> str
     offer; opening with the college's own catalog inverts that. An evaluation's subject
     IS the program, so its menu belongs at the top. The trigger is the def's `program_top`.
 
-    Renders the approved BAND, never COCI's raw unit figure. Those fields are the numbers
-    as of APPROVAL and drift as programs are revised within their band — Foothill's
-    Veterinary Technology A.S. record is dated 1975-01-01 and reads 98.50 against a
-    catalog that says 93 — and they are calendar-native besides, which would put quarter
-    units beside this report's semester-normalised DataMart labels. The band is
-    calendar-explicit and stays true, because leaving it forces re-approval. The exact
-    current requirement is one click away on the college's own catalog.
+    Unit counts come from the COLLEGE CATALOG, cached per award in
+    program_display_names.json and cross-checked against a total or course sum on the
+    page. NEVER from COCI's CERT UNITS / MAJOR UNITS: those are the figures as of
+    APPROVAL and drift as programs are revised inside their band. Across Foothill's eight
+    awards they matched the catalog 3 times, and the three that agreed are the three most
+    recently approved — Respiratory Therapy's A.S. is 100 units on the catalog against
+    COCI's 93, and its Interventional Pulmonology certificate is 12 against COCI's 16.
+    Publishing COCI's number would contradict the catalog we link in the same sentence.
+
+    The calendar word is not decoration. Foothill runs quarters (its terms are
+    Fall/Winter/Spring and its associate minimum is 90 units, where a semester college
+    requires 60) while this report's DataMart tier labels are semester-normalised, so an
+    unqualified "12 units" beside "certificate, 8-16 semester units" would read as
+    agreement when 12 quarter units IS 8 semester units.
+
+    Where no verified figure is cached, falls back to COCI's approved BAND, which is
+    calendar-explicit and stays true because leaving it forces re-approval.
 
     No status column: the table already shows only what is on offer, so a column reading
     "Active" on every row is noise. The approval date survives ONLY where it prevents an
@@ -347,20 +357,31 @@ def _awards_offered_section(college: str, top6: str, conferred: set[str]) -> str
         return ""
     disp = _program_display(college, top6)
     body = []
+    curated = (disp or {}).get("award_units") or {}
+    cal = (disp or {}).get("calendar") or ""
     for i, a in enumerate(awards):
         note = ""
         if a.is_teachout:
             note = " (teaching out)"
         elif a.tier not in conferred and a.approved:
             note = f" (approved {_fmt_approved(a.approved)})"
+        # The catalog's exact figure when we have verified one; COCI's approved BAND
+        # only as the fallback. COCI's own unit fields are never shown — they matched
+        # the catalog in 3 of 8 Foothill awards, and the three that agreed are the
+        # three most recently approved.
+        n = curated.get(a.title)
+        if n is not None:
+            u = f"{n:g} {cal} units".replace("  ", " ").strip()
+        else:
+            u = a.band or "—"
         body.append(
             f'<tr class="lc{(i % 3) + 1}">'
             f'<td class="lsoc">{_esc(a.title)}{_esc(note)}</td>'
             f'<td class="lemp">{_esc(a.tier)}</td>'
-            f'<td class="ltit">{_esc(a.band or "—")}</td></tr>')
-    link = ""
+            f'<td class="ltit">{_esc(u)}</td></tr>')
+    link = "."
     if disp and disp.get("url"):
-        link = (f' Exact unit requirements are on the '
+        link = (f', published on the '
                 f'<a target="_blank" rel="noopener" href="{_esc(disp["url"])}">'
                 f'{_esc(college)} catalog ↗</a>.')
     return (
@@ -369,7 +390,8 @@ def _awards_offered_section(college: str, top6: str, conferred: set[str]) -> str
         '<col style="width:34%"></colgroup><thead><tr>'
         '<th class="lsoc">Award</th><th>Credential</th><th>Units</th>'
         f'</tr></thead><tbody>{"".join(body)}</tbody></table>'
-        f'<p class="tnar">Approved awards under TOP {_esc(top6)} at {_esc(college)}.{link}</p>')
+        f'<p class="tnar">Approved awards under TOP {_esc(top6)} at {_esc(college)}. '
+        f'Unit counts are the college\'s own requirements{link}</p>')
 
 
 def _fmt_approved(iso: str) -> str:
