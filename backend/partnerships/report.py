@@ -541,7 +541,11 @@ p a,.byline a{color:#1155cc;text-decoration:underline}
 .tnar{font-size:11px;color:#46536b;margin:12px 0 3px;line-height:1.4}
 .footer{margin-top:18px;padding-top:9px;border-top:1px solid #bfbfbf;font-size:9.5px;color:#5f6368;line-height:1.6;font-style:italic}
 .footer b{font-style:normal;color:#202124}
-@media print{.page{margin:0;box-shadow:none}}
+/* Print: the body's grey is the on-screen "desk" the white .page floats on. The PDF
+   harness renders with printBackground:true, so without resetting it here Chromium
+   faithfully paints that grey wherever .page does not fill the sheet — a grey band
+   below the content on the final page of every exported PDF. */
+@media print{body{background:#fff}.page{margin:0;box-shadow:none;min-height:0}}
 """
 
 
