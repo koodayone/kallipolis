@@ -123,16 +123,15 @@ def _fmt_tick(v: float) -> str:
     return f"{v:,.0f}" if abs(v - round(v)) < 1e-9 else f"{v:,.1f}"
 
 
-#: One line of orientation under each chart. STRUCTURAL, not spec prose: these describe
+#: One line of orientation above each chart. STRUCTURAL, not spec prose: these describe
 #: what the plate mechanically shows, which does not vary by report, and a description
 #: that could be overridden per def is a description that can go stale against the chart
 #: it labels. Each says what is plotted AND what to read from it — a sentence that only
 #: restates the title above it is not worth the vertical space.
-_SUPPLY_BLURB = ("Awards conferred each year by every college in the region, stacked, against "
-                 "the region's projected annual openings. The distance between the two is the "
-                 "regional shortfall or surplus.")
-_ENROLL_BLURB = ("Course enrollment at each college, term by term. Enrollment moves before "
-                 "completions do, so this is the pipeline behind the awards above.")
+_SUPPLY_BLURB = ("Credentials awarded per year across colleges offering this program, set "
+                 "against regional annual openings for target occupations.")
+_ENROLL_BLURB = ("Term-by-term enrollment across the member colleges that run this program, "
+                 "excluding the structurally-low summer terms.")
 
 
 def _nice_axis(vmax: float, target: int = 5) -> tuple[float, list[float]]:
@@ -1404,7 +1403,7 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         # label, so a paragraph restating them is noise. Only the report's own curated
         # award_note stays — that is editorial, not chart chrome.
         sections += [
-            _block(chart, f'<p class="tnar">{_esc(_SUPPLY_BLURB)}</p>'),
+            _block(f'<p class="tnar">{_esc(_SUPPLY_BLURB)}</p>', chart),
             _block(f'<p class="tnar">{_linkify(spec.award_note)}</p>' if spec.award_note else '',
                    _trend_table(progs, award_axis, [_fmt_year(y) for y in award_axis],
                                 "awards", total_label)),
@@ -1413,9 +1412,9 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         sections += [
             # Chart first: it carries its own title. The note and the legend belong to
             # the TABLE and sit with it, so neither reads as a caption for the chart.
-            _block(_enrollment_lines_svg(progs, term_keys, term_heads, lens.college_terms,
-                                         brand=_brand_color(lens.scope.member.id) if spec.program_top else ""),
-                   f'<p class="tnar">{_esc(_ENROLL_BLURB)}</p>'),
+            _block(f'<p class="tnar">{_esc(_ENROLL_BLURB)}</p>',
+                   _enrollment_lines_svg(progs, term_keys, term_heads, lens.college_terms,
+                                         brand=_brand_color(lens.scope.member.id) if spec.program_top else "")),
             _block(f'<p class="tnar">{_linkify(spec.enrollment_note)}</p>' if spec.enrollment_note else '',
             # No total: see _trend_table. Enrollment across mixed calendars is not a
             # sound cross-college sum, and the old one silently dropped colleges with a
