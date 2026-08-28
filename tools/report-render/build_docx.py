@@ -579,7 +579,11 @@ def emit(el):
         t = el.get_text(' ', strip=True)
         if not t:
             return
-        if 'tnote' in cls:
+        if 'chtitle' in cls:
+            # Chart title: real text now that it lives in HTML rather than inside the
+            # SVG raster, so it is selectable and searchable in the .docx.
+            p = para(10, 2); run(p, t, size=11, bold=True, color=DARK)
+        elif 'tnote' in cls:
             p = para(1, 4); run(p, t, size=8.5, color=MUT, italic=True)
         elif 'tnar' in cls:
             p = para(6, 2); runs_from(el, p, size=10, color='46536b')

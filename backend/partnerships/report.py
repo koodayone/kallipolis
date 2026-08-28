@@ -59,8 +59,8 @@ _RULE = "#9e6900"
 #: 82% for 340/300. The frontier: 400/400 is 50 pages at 83%, the best density measured,
 #: buying 160px more chart for two extra pages across the whole set. Equal heights are
 #: deliberate — the two plates are the same width and sit in the same document.
-_SUPPLY_CHART = (648, 370)
-_ENROLL_CHART = (648, 370)
+_SUPPLY_CHART = (648, 320)
+_ENROLL_CHART = (648, 320)
 
 _SEP = " · "        # status/date separator, hoisted: f-strings cannot hold escapes
 _CAREERONESTOP = "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword="
@@ -123,7 +123,12 @@ def _fmt_tick(v: float) -> str:
     return f"{v:,.0f}" if abs(v - round(v)) < 1e-9 else f"{v:,.1f}"
 
 
-#: One line of orientation above each chart. STRUCTURAL, not spec prose: these describe
+#: Chart titles are HTML, not SVG text, so the description can sit BETWEEN the title
+#: and the plot — the order a reader expects — and so the title is real, selectable
+#: text in the .docx rather than pixels inside a raster. The description uses the
+#: same plain <p> as every other section intro, not the small muted .tnar: it is an
+#: introduction, not fine print.
+#: One line of orientation between each chart title and its plot. STRUCTURAL, not spec prose: these describe
 #: what the plate mechanically shows, which does not vary by report, and a description
 #: that could be overridden per def is a description that can go stale against the chart
 #: it labels. Each says what is plotted AND what to read from it — a sentence that only
@@ -702,7 +707,7 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
     # was downscaled to fit, rendering every label 13% smaller than specified — the
     # chart is the report's central frame and was quietly the least legible thing on
     # the page. Taller too, for the same reason.
-    (W, H), PADL, PADR, PADT, PADB = _SUPPLY_CHART, 60, 12, 44, 84
+    (W, H), PADL, PADR, PADT, PADB = _SUPPLY_CHART, 60, 12, 18, 84
     plot_w, plot_h = W - PADL - PADR, H - PADT - PADB
     n = len(award_axis)
 
@@ -735,8 +740,6 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
     # caption MUST carry for the chart to be honest — that the two series have different
     # vintages, and that the axis is broken — survive as the source line and the break
     # label, not a paragraph.
-    p_.append(f'<text x="2" y="15" font-size="13" font-weight="700" fill="#12203a">'
-              f'Annual Awards vs. Annual Openings</text>')
     # No corner source line. DataMart and COE are both named in Sources, and the COE
     # vintage is stated in full under the demand table ("2024 base-year employment,
     # 2024-2029 projection") — the chart corner was restating what the document already
@@ -894,15 +897,13 @@ def _enrollment_lines_svg(programs, term_keys: list[str], term_heads: list[str],
         return ""
     top, ticks = _nice_axis(top * 1.12)
 
-    (W, H), PADL, PADR, PADT, PADB = _ENROLL_CHART, 56, 12, 44, 96
+    (W, H), PADL, PADR, PADT, PADB = _ENROLL_CHART, 56, 12, 18, 96
     plot_w, plot_h = W - PADL - PADR, H - PADT - PADB
     x_of = lambda i: PADL + (plot_w * i / (n - 1) if n > 1 else plot_w / 2)
     y_of = lambda v: PADT + plot_h - (v / top) * plot_h
 
     p_ = [f'<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" '
           'font-family="Helvetica,Arial,sans-serif">']
-    p_.append('<text x="2" y="15" font-size="13" font-weight="700" fill="#12203a">'
-              'Regional Program Enrollment Trends</text>')
     p_.append(f'<text x="13" y="{PADT + plot_h / 2:.1f}" font-size="10" fill="#5a6577" '
               f'text-anchor="middle" transform="rotate(-90 13 {PADT + plot_h / 2:.1f})">'
               f'Enrollments</text>')
@@ -1113,7 +1114,7 @@ tr.tot td{font-weight:700;background:#f3f6fb}
 .cmpgrid td{font-size:10px}.cmpgrid tr.sec td{background:#eef1f6;font-weight:700;font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:#5f6368}
 .cmpgrid tr.descrow td{font-style:italic;color:#5f6368;font-size:11px;line-height:1.35}
 .xwrap{margin:10px 0 4px}.xwrap svg{width:100%;height:auto;display:block}
-.awchart{margin:12px 0 2px}.enchart{margin:12px 0 2px}.awchart svg{width:100%;height:auto;display:block}.enchart svg{width:100%;height:auto;display:block}
+.chtitle{font-size:13px;font-weight:700;color:#12203a;margin:14px 0 3px}.awchart{margin:6px 0 2px}.enchart{margin:6px 0 2px}.awchart svg{width:100%;height:auto;display:block}.enchart svg{width:100%;height:auto;display:block}
 .cgap{font-size:11px;color:#7a5230;background:#fdf6ec;border-left:3px solid #e0a458;padding:7px 12px;margin:6px 0 2px;border-radius:0 4px 4px 0}.cgap b{color:#a8641a}
 .srcdash{margin:4px 0 16px;font-size:13px}.srcsec{margin:16px 0 6px;font-size:13px}.srcdash i,.srcsec i{color:#222}
 .srclist{margin:0}.srcitem{font-size:13px;line-height:1.55}.srcitem a,.srcdash a{color:#1155cc;text-decoration:underline}
@@ -1403,7 +1404,8 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         # label, so a paragraph restating them is noise. Only the report's own curated
         # award_note stays — that is editorial, not chart chrome.
         sections += [
-            _block(f'<p class="tnar">{_esc(_SUPPLY_BLURB)}</p>', chart),
+            _block('<p class="chtitle">Annual Awards vs. Annual Openings</p>',
+                   f'<p>{_esc(_SUPPLY_BLURB)}</p>', chart),
             _block(f'<p class="tnar">{_linkify(spec.award_note)}</p>' if spec.award_note else '',
                    _trend_table(progs, award_axis, [_fmt_year(y) for y in award_axis],
                                 "awards", total_label)),
@@ -1412,7 +1414,8 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         sections += [
             # Chart first: it carries its own title. The note and the legend belong to
             # the TABLE and sit with it, so neither reads as a caption for the chart.
-            _block(f'<p class="tnar">{_esc(_ENROLL_BLURB)}</p>',
+            _block('<p class="chtitle">Regional Program Enrollment Trends</p>',
+                   f'<p>{_esc(_ENROLL_BLURB)}</p>',
                    _enrollment_lines_svg(progs, term_keys, term_heads, lens.college_terms,
                                          brand=_brand_color(lens.scope.member.id) if spec.program_top else "")),
             _block(f'<p class="tnar">{_linkify(spec.enrollment_note)}</p>' if spec.enrollment_note else '',
