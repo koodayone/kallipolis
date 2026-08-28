@@ -35,6 +35,7 @@ from partnerships.lens import LensModel, LensOccupation, Play, build_lens
 
 # Per-occupation accent palette (teal / blue / red / purple / amber), cycled.
 _ACCENTS = ["#2a9d8f", "#2e74b5", "#cc3333", "#6f5499", "#c98a1b"]
+_SEP = " · "        # status/date separator, hoisted: f-strings cannot hold escapes
 _CAREERONESTOP = "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword="
 
 
@@ -78,6 +79,11 @@ class ReportSpec:
     # "Data proposes (all feeders), the author confirms (this list)."
     programs: tuple[tuple[str, str], ...] = ()
     program_excludes: frozenset[str] = frozenset()
+    # The TOP6 this report EVALUATES, e.g. "121000". Set only on program evaluations —
+    # its presence is what marks a def an evaluation rather than a role report, and it
+    # names the program in one field rather than two. Drives the "Awards Offered"
+    # section; a role report leaves it empty and never enters that path.
+    program_top: str = ""
     charter_gaps: tuple[str, ...] = ()              # charter members with no feeding program — the labeled gap
     dashboard_url: str = ""                          # the tailored dashboard link in Sources (def-overridable)
     extra_sources: list[str] = field(default_factory=list)
@@ -304,6 +310,77 @@ def _program_display(college: str, top6: str):
         except Exception:
             _DISPLAY_NAMES = {}
     return _DISPLAY_NAMES.get(f"{college}|{top6}")
+
+
+def _awards_offered_section(college: str, top6: str) -> str:
+    """"Awards Offered" — the credential menu for ONE program, from COCI.
+
+    Answers the reviewer ask the rest of the report structurally cannot: every other
+    award figure here is a CONFERRAL (DataMart — what was awarded), and the question was
+    what the program OFFERS. The two genuinely differ. Foothill's Respiratory Care B.S.
+    was approved 2024-05-30 and has conferred nothing inside our five-year window, so it
+    appears nowhere else in the document.
+
+    Program evaluations only. A role report argues need -> who is meeting it -> what we
+    offer; opening with the college's own catalog inverts that. An evaluation's subject
+    IS the program, so its menu belongs at the top. The trigger is the def's `program_top`.
+
+    Renders the approved BAND, never COCI's raw unit figure. Those fields are the numbers
+    as of approval and drift as programs are revised within their band — Foothill's
+    Veterinary Technology A.S. record is dated 1975-01-01 and reads 98.50 against a
+    catalog that says 93 — and they are calendar-native besides, which would put quarter
+    units beside this report's semester-normalised DataMart labels. The band is
+    calendar-explicit and stays true, because leaving it forces re-approval. The exact
+    current requirement is one click away on the college's own catalog.
+    """
+    from ontology.coci import COCI_VINTAGE, awards_for
+
+    awards = awards_for(college, top6)
+    if not awards:
+        return ""
+    disp = _program_display(college, top6)
+    body = []
+    for i, a in enumerate(awards):
+        band = a.band or "—"
+        # Always name the status. Leaving the cell blank when COCI records no approval
+        # date — 43% of Active records — reads as missing data when the fact is simply
+        # "active, date not recorded".
+        note = ["Teaching out, closed to new students" if a.is_teachout else "Active"]
+        if a.approved:
+            note.append(f"approved {_fmt_approved(a.approved)}")
+        body.append(
+            f'<tr class="lc{(i % 3) + 1}">'
+            f'<td class="lsoc">{_esc(a.title)}</td>'
+            f'<td class="lemp">{_esc(a.tier)}</td>'
+            f'<td class="ltit">{_esc(band)}</td>'
+            f'<td class="ltit">{_esc(_SEP.join(note))}</td></tr>')
+    link = ""
+    if disp and disp.get("url"):
+        link = (f' Exact unit requirements are on the '
+                f'<a target="_blank" rel="noopener" href="{_esc(disp["url"])}">'
+                f'{_esc(college)} catalog ↗</a>.')
+    return (
+        '<h1>Awards Offered</h1>'
+        '<table class="live"><colgroup><col style="width:34%"><col style="width:18%">'
+        '<col style="width:26%"><col style="width:22%"></colgroup><thead><tr>'
+        '<th class="lsoc">Award</th><th>Credential</th><th>Approved units</th>'
+        f'<th>Status</th></tr></thead><tbody>{"".join(body)}</tbody></table>'
+        f'<p class="tnar">Approved awards under TOP {_esc(top6)} at {_esc(college)}. '
+        f'Unit ranges are the bands the state approved, shown in both calendars; a program '
+        f'may sit anywhere inside its band.{link} Source: {_esc(COCI_VINTAGE)}.</p>')
+
+
+def _fmt_approved(iso: str) -> str:
+    """"2024-05-30" -> "May 2024". Day precision implies a currency the record lacks."""
+    m = re.match(r"(\d{4})-(\d{2})", iso or "")
+    if not m:
+        return iso or ""
+    months = ("January", "February", "March", "April", "May", "June", "July",
+              "August", "September", "October", "November", "December")
+    try:
+        return f"{months[int(m.group(2)) - 1]} {m.group(1)}"
+    except (IndexError, ValueError):
+        return m.group(1)
 
 
 def _crosswalk_svg(programs, occs: list[LensOccupation]) -> str:
@@ -956,6 +1033,9 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         f'<div class="title" style="font-size:{tsize:.1f}px">{_esc(spec.org_name)} : {_esc(play.title)}</div>',
         f'<div class="byline">{_linkify(spec.byline)}</div>' if spec.byline else '',
         f'<div class="subtitle">{_esc(spec.lede)}</div>',
+        # Program evaluations open with the program's own credential menu — the subject of
+        # the document. Role reports leave `program_top` empty and this renders nothing.
+        _awards_offered_section(lens.scope.member.name, spec.program_top) if spec.program_top else '',
         '<h1>Regional Occupational Demand</h1>',
         f'<p>{_linkify(spec.demand_note)}</p>' if spec.demand_note else '',
         _demand_table(occs),

@@ -614,6 +614,9 @@ router.add_api_route(
 _SPEC_OVERRIDE_FIELDS = (
     "org_name", "org_short", "lede", "byline", "demand_note", "alignment_note",
     "competency_note", "award_note", "enrollment_note", "dashboard_url",
+    # Program evaluations only: the TOP6 under evaluation. Its presence is the trigger
+    # for the "Awards Offered" section — role-report defs omit it entirely.
+    "program_top",
 )
 
 

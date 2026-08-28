@@ -156,15 +156,22 @@ def award_tier(award_type: str | None) -> str:
 
 def award_tier_label(tier: str, types: set[str]) -> str:
     """The row label for a tier. When a tier is carried by exactly ONE underlying
-    award type, append its unit/hour band — "certificate, 8-16 units" says more
-    than "certificate" and costs nothing. Mixed tiers stay unqualified."""
+    award type, append its unit band — "certificate, 8–16 semester units" says more
+    than "certificate" and costs nothing. Mixed tiers stay unqualified.
+
+    Says SEMESTER explicitly. DataMart normalises every band to semester units, but a
+    third of California's colleges run on quarters — Foothill's own catalog states the
+    90-unit associate minimum where a semester college requires 60 — so a bare "8-16
+    units" is ambiguous on exactly the reports that carry it. It also now shares a page
+    with COCI's dual-notation bands (`ontology.coci.award_band`), which would make an
+    unqualified number read as a third, different measure."""
     if tier != "certificate" or len(types) != 1:
         return tier
     m = re.search(r"(\d+)\s*to\s*(?:fewer than|<)\s*(\d+)\s*semester units", next(iter(types)), re.I)
     if m:
-        return f"{tier}, {m.group(1)}-{m.group(2)} units"
+        return f"{tier}, {m.group(1)}–{m.group(2)} semester units"
     m = re.search(r"(\d+)\+\s*semester units", next(iter(types)), re.I)
-    return f"{tier}, {m.group(1)}+ units" if m else tier
+    return f"{tier}, {m.group(1)}+ semester units" if m else tier
 
 
 def award_type_sort_key(award_type: str) -> tuple[int, int, str]:

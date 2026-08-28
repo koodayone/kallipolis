@@ -1,64 +1,65 @@
 {
-    "member": "foothill",
-    "title": "Respiratory Therapy",
-    "sector": "health",
-    "socs": [
-        "29-1126"
-    ],
-    "author": "Dayone Koo",
-    "date": "August 27, 2026",
-    "org_name": "Foothill College Program Evaluation",
-    "org_short": "Regional",
-    "_comment": "PROGRAM EVALUATION (evaluate-program skill), not a role report. Subject is the PROGRAM (Foothill College x TOP 121000), not a job title. Destination SOCs are DERIVED, not authored: crosswalk(121000) = 4 SOCs, intersected with SECTORS['health'].socs and minus ALL_OTHER/PROMOTION/EXPERIENCE_5YR guards = 1 (29-1126). Dropped: 25-1071 Postsecondary Teachers, 29-2099 Health Technologists All Other, 99-9999. House rule: EVIDENCE-FORWARD, NO VERDICT \u2014 the prose states throughput, trend, destination health and peer standing and stops there; it never says 'at risk' or 'underperforming'. live_postings and competencies are reused verbatim from foothill-respiratory-therapist (same SOC, already verified against the O*NET pool and the CareerOneStop scrape).",
-    "lede": "This evaluation assembles labor-market supply and demand evidence for Foothill College's Respiratory Therapy program (TOP 121000). It covers regional occupational demand targeted by the program, and the program's award and enrollment trends in the context of other colleges offering the same program in the region.",
-    "demand_note": "Foothill's Respiratory Therapy program leads to SOC 29-1126 via the TOP\u2013CIP\u2013SOC crosswalk. [According to the Centers of Excellence](https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061), this occupation demands roughly 210 openings a year at a median salary of $132,040.",
-    "alignment_note": "The set of colleges offering TOP 121000 in the Bay Area. All of these colleges support SOC 29-1126 via the same TOP code through the TOP\u2013CIP\u2013SOC crosswalk.",
-    "competency_note": "",
-    "award_note": "Award trends for each member-college program. Empty cells indicate no data reported via DataMart.",
-    "enrollment_note": "Enrollment trends for each member-college program. Empty cells indicate no data reported via DataMart.",
-    "live_postings": {
-        "29-1126": [
-            {
-                "employer": "Stanford Health Care",
-                "title": "Respiratory Care Practitioner - Night Shift",
-                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=29-1126.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=110bea0e00a54a239eb7b95b8fe1288e8003&detailpage=true"
-            },
-            {
-                "employer": "Kaiser Permanente",
-                "title": "Respiratory Care Practitioner II Registered",
-                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=29-1126.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=822f82c1d0464ed9a52a6107b426c12e8003&detailpage=true"
-            },
-            {
-                "employer": "Dignity Health",
-                "title": "Respiratory Care Practitioner",
-                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=29-1126.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=1a3277cefa084ec7ab345f3e5e0994ef8003&detailpage=true"
-            }
-        ]
-    },
-    "competencies": {
-        "29-1126": {
-            "description": "Assesses, treats, and cares for patients with breathing disorders \u2014 initiating therapeutic procedures and operating the full range of respiratory care equipment.",
-            "knowledge": [
-                "Medicine & Dentistry",
-                "Biology",
-                "Therapy & Counseling",
-                "Chemistry"
-            ],
-            "skills": [
-                "Operation & Control",
-                "Operations Monitoring",
-                "Quality Control Analysis",
-                "Science"
-            ],
-            "abilities": [
-                "Inductive Reasoning",
-                "Information Ordering",
-                "Control Precision",
-                "Manual Dexterity"
-            ],
-            "technology": [
-                "Medical software"
-            ]
-        }
+  "member": "foothill",
+  "title": "Respiratory Therapy",
+  "sector": "health",
+  "socs": [
+    "29-1126"
+  ],
+  "author": "Dayone Koo",
+  "date": "August 27, 2026",
+  "org_name": "Foothill College Program Evaluation",
+  "org_short": "Regional",
+  "_comment": "PROGRAM EVALUATION (evaluate-program skill), not a role report. Subject is the PROGRAM (Foothill College x TOP 121000), not a job title. Destination SOCs are DERIVED, not authored: crosswalk(121000) = 4 SOCs, intersected with SECTORS['health'].socs and minus ALL_OTHER/PROMOTION/EXPERIENCE_5YR guards = 1 (29-1126). Dropped: 25-1071 Postsecondary Teachers, 29-2099 Health Technologists All Other, 99-9999. House rule: EVIDENCE-FORWARD, NO VERDICT — the prose states throughput, trend, destination health and peer standing and stops there; it never says 'at risk' or 'underperforming'. live_postings and competencies are reused verbatim from foothill-respiratory-therapist (same SOC, already verified against the O*NET pool and the CareerOneStop scrape).",
+  "program_top": "121000",
+  "lede": "This evaluation assembles labor-market supply and demand evidence for Foothill College's Respiratory Therapy program (TOP 121000). It covers regional occupational demand targeted by the program, and the program's award and enrollment trends in the context of other colleges offering the same program in the region.",
+  "demand_note": "Foothill's Respiratory Therapy program leads to SOC 29-1126 via the TOP–CIP–SOC crosswalk. [According to the Centers of Excellence](https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061), this occupation demands roughly 210 openings a year at a median salary of $132,040.",
+  "alignment_note": "The set of colleges offering TOP 121000 in the Bay Area. All of these colleges support SOC 29-1126 via the same TOP code through the TOP–CIP–SOC crosswalk.",
+  "competency_note": "",
+  "award_note": "Award trends for each member-college program. Empty cells indicate no data reported via DataMart.",
+  "enrollment_note": "Enrollment trends for each member-college program. Empty cells indicate no data reported via DataMart.",
+  "live_postings": {
+    "29-1126": [
+      {
+        "employer": "Stanford Health Care",
+        "title": "Respiratory Care Practitioner - Night Shift",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=29-1126.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=110bea0e00a54a239eb7b95b8fe1288e8003&detailpage=true"
+      },
+      {
+        "employer": "Kaiser Permanente",
+        "title": "Respiratory Care Practitioner II Registered",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=29-1126.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=822f82c1d0464ed9a52a6107b426c12e8003&detailpage=true"
+      },
+      {
+        "employer": "Dignity Health",
+        "title": "Respiratory Care Practitioner",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=29-1126.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=1a3277cefa084ec7ab345f3e5e0994ef8003&detailpage=true"
+      }
+    ]
+  },
+  "competencies": {
+    "29-1126": {
+      "description": "Assesses, treats, and cares for patients with breathing disorders — initiating therapeutic procedures and operating the full range of respiratory care equipment.",
+      "knowledge": [
+        "Medicine & Dentistry",
+        "Biology",
+        "Therapy & Counseling",
+        "Chemistry"
+      ],
+      "skills": [
+        "Operation & Control",
+        "Operations Monitoring",
+        "Quality Control Analysis",
+        "Science"
+      ],
+      "abilities": [
+        "Inductive Reasoning",
+        "Information Ordering",
+        "Control Precision",
+        "Manual Dexterity"
+      ],
+      "technology": [
+        "Medical software"
+      ]
     }
+  }
 }
