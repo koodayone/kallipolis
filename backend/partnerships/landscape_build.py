@@ -332,16 +332,30 @@ def build_landscape(spec: LandscapeSpec) -> Landscape:
         # Awards per (college, top6, year) — one row per reported AcademicYear
         # so each program carries a full award-year series. Programs with no
         # AWARDED edge still come through (OPTIONAL MATCH ⇒ null year, dropped).
+        # Scoped to the instance's in-scope TOP6s, not just its colleges. The
+        # assembly below only ever looks up `feeding | top_codes`, and BOTH are
+        # already in-scope-gated (`_soc_feeding_tops` iterates
+        # `top6_to_soc(spec.in_scope_tops())`; `top_codes` is filtered by
+        # `spec.in_scope(t)` where it is read), so a college-only fetch pulls
+        # thousands of programs that are never read. On a 26-college BACCC
+        # instance the enrollment scan ran 5.7-8.4s against ~161k ENROLLED edges.
+        #
+        # It also fixes a rendering artifact: the shared award-year and
+        # enrollment-term axes are the union over EVERYTHING fetched, so
+        # out-of-scope programs contributed axis columns that every displayed row
+        # left empty (smccd-agwet gained 9 such columns; baccc-biotech 5;
+        # baccc-retail 1). Scoping the fetch removes exactly those.
+        scope_tops = spec.in_scope_tops()
         program_data: dict[tuple[str, str], dict] = {}
         for r in session.run(
             """
-            MATCH (pr:Program) WHERE pr.college IN $colleges
+            MATCH (pr:Program) WHERE pr.college IN $colleges AND pr.top6 IN $tops
             OPTIONAL MATCH (pr)-[a:AWARDED]->(ay:AcademicYear)
             RETURN pr.college AS college, pr.top6 AS top6, pr.name AS name,
                    ay.year AS year,
                    toInteger(sum(coalesce(a.count, 0))) AS awards
             """,
-            colleges=list(spec.colleges),
+            colleges=list(spec.colleges), tops=scope_tops,
         ).data():
             entry = program_data.setdefault(
                 (r["college"], r["top6"]),
@@ -351,11 +365,12 @@ def build_landscape(spec: LandscapeSpec) -> Landscape:
                 entry["awards_by_year"][r["year"]] = r["awards"]
         for r in session.run(
             """
-            MATCH (pr:Program)-[e:ENROLLED]->(t:Term) WHERE pr.college IN $colleges
+            MATCH (pr:Program)-[e:ENROLLED]->(t:Term)
+            WHERE pr.college IN $colleges AND pr.top6 IN $tops
             RETURN pr.college AS college, pr.top6 AS top6, t.term AS term,
                    toInteger(sum(e.count)) AS count
             """,
-            colleges=list(spec.colleges),
+            colleges=list(spec.colleges), tops=scope_tops,
         ).data():
             entry = program_data.get((r["college"], r["top6"]))
             if entry is not None:
