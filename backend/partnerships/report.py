@@ -29,7 +29,6 @@ import sys
 from dataclasses import dataclass, field
 
 from occupations.competencies import get_competencies
-from ontology.programs import AWARD_TIERS
 from ontology.regions import COE_REGION_DISPLAY, COE_REGION_TO_COUNTIES
 from ontology.supply import COE_DEMAND_VINTAGE
 from partnerships.lens import LensModel, LensOccupation, Play, build_lens
@@ -331,8 +330,7 @@ def _program_display(college: str, top6: str):
     return _DISPLAY_NAMES.get(f"{college}|{top6}")
 
 
-def _awards_offered_section(college: str, top6: str, conferred: set[str],
-                            brand: str = "") -> str:
+def _awards_offered_section(college: str, top6: str, conferred: set[str]) -> str:
     """"Awards Offered" — the credential menu for ONE program, from COCI.
 
     Answers the reviewer ask the rest of the report structurally cannot: every other
@@ -379,12 +377,6 @@ def _awards_offered_section(college: str, top6: str, conferred: set[str],
     body = []
     curated = (disp or {}).get("award_units") or {}
     cal = (disp or {}).get("calendar") or ""
-    # Row accent in the college's own colour, stepped by credential weight so the bar
-    # distinguishes a baccalaureate from a certificate at a glance. Lightening toward
-    # white keeps one hue — a second hue here would compete with the supply chart, where
-    # the brand colour already means "this college".
-    tint = {t: _mix(brand, "#ffffff", min(0.62, 0.16 * i))
-            for i, t in enumerate(AWARD_TIERS)} if brand else {}
     for i, a in enumerate(awards):
         note = ""
         if a.is_teachout:
@@ -400,11 +392,9 @@ def _awards_offered_section(college: str, top6: str, conferred: set[str],
             u = f"{n:g} {cal} units".replace("  ", " ").strip()
         else:
             u = a.band or "—"
-        accent = (f' style="border-left-color:{tint[a.tier]}"'
-                  if a.tier in tint else "")
         body.append(
             f'<tr class="lc{(i % 3) + 1}">'
-            f'<td class="lsoc"{accent}>{_esc(a.title)}{_esc(note)}</td>'
+            f'<td class="lsoc">{_esc(a.title)}{_esc(note)}</td>'
             f'<td class="lemp">{_esc(a.tier)}</td>'
             f'<td class="ltit">{_esc(u)}</td></tr>')
     link = "."
@@ -461,16 +451,6 @@ def _brand_color(member_id: str) -> str:
         except Exception:
             _BRAND_COLORS = {}
     return _BRAND_COLORS.get(member_id, "")
-
-
-def _mix(hex_color: str, other: str, t: float) -> str:
-    """Blend two #rrggbb by t toward `other` — for deriving a band from a brand hue."""
-    try:
-        a = [int(hex_color[i:i + 2], 16) for i in (1, 3, 5)]
-        b = [int(other[i:i + 2], 16) for i in (1, 3, 5)]
-    except (ValueError, IndexError):
-        return hex_color
-    return "#" + "".join(f"{round(x + (y - x) * t):02x}" for x, y in zip(a, b))
 
 
 def _crosswalk_svg(programs, occs: list[LensOccupation]) -> str:
@@ -1328,8 +1308,7 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         # Program evaluations open with the program's own credential menu — the subject of
         # the document. Role reports leave `program_top` empty and this renders nothing.
         _awards_offered_section(lens.scope.member.name, spec.program_top,
-                                _conferred_tiers(lens, spec),
-                                brand=_brand_color(lens.scope.member.id)) if spec.program_top else '',
+                                _conferred_tiers(lens, spec)) if spec.program_top else '',
         '<h1>Regional Occupational Demand</h1>',
         f'<p>{_linkify(spec.demand_note)}</p>' if spec.demand_note else '',
         _demand_table(occs),
@@ -1417,15 +1396,13 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
     dash_url = spec.dashboard_url or f"https://preview.kallipolis.us/landscape/{member_id}/{play.sector}"
     sections += [_sources_section(_org_label(lens.scope.member), sec_label, dash_url,
                                   play.title, [o.soc for o in occs], spec.program_top)]
-    # Brand reaches exactly two places in the chrome: the masthead rule and the Awards
-    # Offered accents. Recolouring EVERY heading was tried and reverted — a saturated hue
-    # across the whole document fights the report's own palette, where colour already
-    # carries meaning. h1 stays blue.
-    brand_css = ""
-    bc = _brand_color(lens.scope.member.id) if spec.program_top else ""
-    if bc:
-        brand_css = f"<style>.title{{border-bottom-color:{bc}}}</style>"
-    body = brand_css + "\n".join(s for s in sections if s)
+    # NO brand colour in the document chrome. Tried three times at widening scope —
+    # every heading, then the masthead rule and the Awards Offered accents — and reverted
+    # each time for the same reason: colour already carries meaning in this report
+    # (per-occupation accents, the amber demand rule), so a saturated brand hue in the
+    # chrome competes rather than brands. It stays where it does work: the member's band
+    # in the supply chart.
+    body = "\n".join(s for s in sections if s)
     return (
         '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
         f'<title>{_esc(play.title)}</title><style>{_CSS}</style></head>'
