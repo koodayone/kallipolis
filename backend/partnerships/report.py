@@ -771,16 +771,6 @@ _TERM_KINDS = ("Fall", "Winter", "Spring")
 _ENROLL_YEARS = 3
 
 
-def _enrollment_legend() -> str:
-    """What the enrollment table's cell states mean. STRUCTURAL, not prose: the def-authored
-    enrollment_note can be overridden per report, and a legend that can go stale behind an
-    override is worse than none — these three states are the whole reason the table is
-    trustworthy."""
-    return ("Fall, Winter and Spring of each academic year. "
-            "\u201cn/a\u201d marks a term the college\u2019s calendar does not have; "
-            "\u201c\u2014\u201d marks a term the college has, with no enrollment reported.")
-
-
 def _term_axis(lens: LensModel) -> tuple[list[str], list[str]]:
     """The enrollment axis: (term keys, short headers) over the last complete academic years.
 
@@ -1387,9 +1377,12 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
             # sound cross-college sum, and the old one silently dropped colleges with a
             # missing term — Veterinary Technology's Fall 2023 total read 411 (Santa Rosa
             # alone) against ~700 either side, a 47% regional collapse that never happened.
+            # No cell-state legend: the headers name the terms, and "n/a" running down a
+            # whole column for a semester college reads without being told. The states are
+            # still visually distinct — n/a is lighter and italic — which is the part that
+            # had to be true; the prose explaining it was a second layer.
             _trend_table(progs, term_keys, term_heads, "enrollment",
                          college_terms=lens.college_terms),
-            f'<p class="tnar">{_esc(_enrollment_legend())}</p>',
         ]
     from partnerships.sectors import SECTORS
     sec_label = SECTORS[play.sector].label if play.sector in SECTORS else play.sector.upper()
