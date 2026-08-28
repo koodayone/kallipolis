@@ -330,7 +330,7 @@ def _program_display(college: str, top6: str):
     return _DISPLAY_NAMES.get(f"{college}|{top6}")
 
 
-def _awards_offered_section(college: str, top6: str, conferred: set[str]) -> str:
+def _awards_offered_section(college: str, top6: str) -> str:
     """"Awards Offered" — the credential menu for ONE program, from COCI.
 
     Answers the reviewer ask the rest of the report structurally cannot: every other
@@ -361,12 +361,11 @@ def _awards_offered_section(college: str, top6: str, conferred: set[str]) -> str
     Where no verified figure is cached, falls back to COCI's approved BAND, which is
     calendar-explicit and stays true because leaving it forces re-approval.
 
-    No status column: the table already shows only what is on offer, so a column reading
-    "Active" on every row is noise. The approval date survives ONLY where it prevents an
-    apparent contradiction — an offered credential with no conferrals in the award window,
-    which across the four shipped evaluations is exactly one row (the 2024 B.S.). A
-    teachout is flagged the same way, since a credential closed to new students must
-    never read as plainly available.
+    No status column and no approval date: the table already shows only what is on offer,
+    so a column reading "Active" on every row, or a stamp saying when the state approved
+    it, is metadata rather than answer. A teachout IS flagged — that is a caveat about
+    availability, not metadata, and a credential closed to new students must never read
+    as plainly on offer.
     """
     from ontology.coci import awards_for
 
@@ -378,11 +377,7 @@ def _awards_offered_section(college: str, top6: str, conferred: set[str]) -> str
     curated = (disp or {}).get("award_units") or {}
     cal = (disp or {}).get("calendar") or ""
     for i, a in enumerate(awards):
-        note = ""
-        if a.is_teachout:
-            note = " (teaching out)"
-        elif a.tier not in conferred and a.approved:
-            note = f" (approved {_fmt_approved(a.approved)})"
+        note = " (teaching out)" if a.is_teachout else ""
         # The catalog's exact figure when we have verified one; COCI's approved BAND
         # only as the fallback. COCI's own unit fields are never shown — they matched
         # the catalog in 3 of 8 Foothill awards, and the three that agreed are the
@@ -410,19 +405,6 @@ def _awards_offered_section(college: str, top6: str, conferred: set[str]) -> str
         f'</tr></thead><tbody>{"".join(body)}</tbody></table>'
         f'<p class="tnar">Approved awards under TOP {_esc(top6)} at {_esc(college)}. '
         f'Unit counts are the college\'s own requirements{link}</p>')
-
-
-def _fmt_approved(iso: str) -> str:
-    """"2024-05-30" -> "May 2024". Day precision implies a currency the record lacks."""
-    m = re.match(r"(\d{4})-(\d{2})", iso or "")
-    if not m:
-        return iso or ""
-    months = ("January", "February", "March", "April", "May", "June", "July",
-              "August", "September", "October", "November", "December")
-    try:
-        return f"{months[int(m.group(2)) - 1]} {m.group(1)}"
-    except (IndexError, ValueError):
-        return m.group(1)
 
 
 _BRAND_COLORS = None
@@ -1262,22 +1244,6 @@ def select_partner_programs(programs, charter_colleges, min_awards: int = 50):
     return chosen
 
 
-def _conferred_tiers(lens: LensModel, spec: ReportSpec) -> set[str]:
-    """Credential tiers the member actually conferred for the evaluated program.
-
-    Lets "Awards Offered" stay quiet about approval dates except where one is load-bearing:
-    an offered credential absent from the conferrals table below would otherwise read as a
-    contradiction rather than as a program too new to have graduates."""
-    out: set[str] = set()
-    for p in lens.programs:
-        if p.college != lens.scope.member.name or p.top6 != spec.program_top:
-            continue
-        for label, series in (getattr(p, "awards_by_tier", {}) or {}).items():
-            if any((v or 0) > 0 for v in series.values()):
-                out.add(label.split(",", 1)[0].strip())   # labels carry the unit band
-    return out
-
-
 def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
                       lens: LensModel | None = None) -> str:
     """Render a workforce-pathway report for `(member_id, play)` to HTML — DATA
@@ -1297,8 +1263,7 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         f'<div class="subtitle">{_esc(spec.lede)}</div>',
         # Program evaluations open with the program's own credential menu — the subject of
         # the document. Role reports leave `program_top` empty and this renders nothing.
-        _awards_offered_section(lens.scope.member.name, spec.program_top,
-                                _conferred_tiers(lens, spec)) if spec.program_top else '',
+        _awards_offered_section(lens.scope.member.name, spec.program_top) if spec.program_top else '',
         '<h1>Regional Occupational Demand</h1>',
         f'<p>{_linkify(spec.demand_note)}</p>' if spec.demand_note else '',
         _demand_table(occs),
