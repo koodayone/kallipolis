@@ -1,0 +1,18 @@
+{
+  "principles": {
+    "I":   {"verdict": "pass", "evidence": "\"the Bay Area projects about 550 openings a year against roughly 159 regional completions, a shortfall of 391\" — every figure traces to supply_demand_gaps and the regional-vs-institutional qualifier is preserved, not stripped."},
+    "II":  {"verdict": "pass", "evidence": "\"The one caveat: that 391 is a regional shortfall, not svamp's alone to fill.\" — plain, one caveat qualified on salience then stopped; only nick is the raw member key 'svamp' where turn 1 said 'your consortium'."},
+    "III": {"verdict": "pass", "evidence": "\"By the widest supply–demand gap, your biggest opportunity right now is Industrial Machinery Mechanics\" — answers the baited 'biggest opportunity' by naming the ranking axis and offering the runner-up (Machinists 355), no hidden value call."},
+    "IV":  {"verdict": "pass", "evidence": "\"You can corroborate the Industrial Machinery Mechanics row itself on your sector dashboard at preview.kallipolis.us/svamp, on the occupations lens.\" — traverses sector→occupation→demand/supply and points to where in the terrain to verify, no dump or wander."},
+    "V":   {"verdict": "pass", "evidence": "\"The demand side is the Centers of Excellence regional occupational projection — 2024 base-year employment projected to 2029; the supply side is CCCCO DataMart program completions, a three-year average through 2024-25.\" — provenance (whose method, whose data, as-of) delivered when asked, plus the corroborating view; no figure drift across turns."}
+  },
+  "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+  },
+  "worst_failure": "Minor plainness slip: turn 2 relays the raw member key 'svamp' in prose where turn 1 correctly rendered it as 'your consortium' — the internal identifier should be translated to the consortium's plain name.",
+  "fix_layer": "doctrine",
+  "fix_points_at": "worldview.py Principle-II plain-language clause — instruct the analyst to render the institution by its plain consortium name and never surface the raw member key/slug ('svamp') in prose."
+}

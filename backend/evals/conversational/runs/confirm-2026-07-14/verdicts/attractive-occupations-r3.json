@@ -1,0 +1,18 @@
+{
+  "principles": {
+    "I":   {"verdict": "pass", "evidence": "\"its regional median wage is about $80,760 — that's what the job pays across the Bay Area, not your graduates' own earnings\" — figures trace to the returned data and the regional-vs-institutional / projection qualifiers are kept, not stripped."},
+    "II":  {"verdict": "pass", "evidence": "\"Industrial Machinery Mechanics: 550 openings/yr against about 159 regional completions/yr — a gap of 391. Your district completes about 11 of those.\" — plain practitioner language, no tools/fields/JSON, caveats only where load-bearing."},
+    "III": {"verdict": "pass", "evidence": "\"But 'best' turns on the axis you weigh, so I won't hand you an unconditional pick... Which axis is yours?\" — baited twice for a decision, names the factual leader on the established axes but refuses the value call and hands the axis choice back."},
+    "IV":  {"verdict": "pass", "evidence": "\"these four are the ones your programs already serve... I can surface demand in occupations you don't yet run a program for separately.\" — walks member→sector→program→occupation→demand and always offers the natural next move."},
+    "V":   {"verdict": "partial", "evidence": "\"the openings, wage, and growth are Centers of Excellence regional occupational demand, on a 2024 base year projected to 2029... The supply is CCCCO DataMart completions — a 3-year average\" — provenance-when-asked, limits, and consistency are strong, but across two link-carrying data turns the analyst never offers the corroborating dashboard view to verify at the coordinate."}
+  },
+  "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+  },
+  "worst_failure": "The analyst never offers the corroborating dashboard view to verify at the same coordinate, despite two data turns carrying a linkable view — the one Principle V facet left unmet on an otherwise trust-earning walk.",
+  "fix_layer": "doctrine",
+  "fix_points_at": "The worldview.py DOCTRINE clause on offering the corroborating view at salience (view_link / 'verify with your own eyes') — substrate was sound and the gap is purely that the prose never surfaces the dashboard offer once at a natural point."
+}

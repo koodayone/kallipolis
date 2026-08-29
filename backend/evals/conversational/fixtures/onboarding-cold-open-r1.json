@@ -1,0 +1,78 @@
+{
+  "pathway_id": "onboarding-cold-open",
+  "turns": [
+    {
+      "role": "practitioner",
+      "text": "Hi — can you help me figure out where our biggest workforce gaps are?"
+    },
+    {
+      "role": "analyst",
+      "text": "Happy to. To ground this in real numbers, I first need to know which institution you're with — a specific college, a district, or a consortium — because every gap is sized against that institution's own programs and its regional labor market. I can pull up any of the 140 institutions covered here. Which one are you with?",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__list_institutions",
+          "args": {"filter": ""},
+          "figures": {"institutions_count": 140},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "San Mateo County Community College District."
+    },
+    {
+      "role": "analyst",
+      "text": "Got it — that resolves to San Mateo County CCD, a district in the Bay Area. Across it I can see 11 workforce sectors, from ICT / Digital Media (15 programs) and Health (12) at the deep end down to single-program footprints in Life Sciences / Biotech and Ag, Water & Environmental. Two things about what the data can and can't tell us before we dig in: any wage figure here is pooled statewide at the program level, not your own graduates' earnings, and there's no SWP spending data in the model — so I can size where you're short, but not what's been invested against it. With that, I can rank where regional demand most outruns what the district actually supplies. Want me to do that across the district?",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "smccd"},
+          "figures": {"sectors_covered": 11, "ict_programs": 15, "health_programs": 12, "biotech_programs": 1, "agwet_programs": 1},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "Great — so where are we most short?"
+    },
+    {
+      "role": "analyst",
+      "text": "Across the whole district there are 59 occupations the Bay Area demands but San Mateo's three colleges currently graduate zero completers for — regional demand with no local pipeline at all. Ranked by annual openings, the largest are:\n\n- Customer Service Representatives — about 5,450 openings a year, median wage $55,440\n- Heavy and Tractor-Trailer Truck Drivers — about 3,680 openings, $62,140\n- Nursing Assistants — about 3,570 openings, $52,770, and the fastest-growing of the group at roughly 9.4%\n- Maintenance and Repair Workers, General — about 3,340 openings, $61,080\n- Carpenters — about 2,500 openings, $73,810\n\nThose are the largest by openings; 51 more sit below them. If your axis is wage rather than volume, Licensed Practical and Licensed Vocational Nurses top the shortlist — $88,370 median against about 1,430 openings.\n\nTwo caveats that shape how you read this: 'zero supply' is a three-year average of your district's completions and excludes locally-approved certificates, so a program that enrolls students but hasn't produced a completer in the window still shows as zero here; and the demand figures are Centers-of-Excellence projected openings, not current job vacancies. This tells you where regional demand exists with no local supply — not that the district should stand any of these up; feasibility and mission fit are yours to weigh.\n\nFrom here I can drill into any one of these — who's hiring for it in the region and who else trains for it — or, if you'd rather, look at gaps inside a sector you already run, where you have programs but may be under-supplying. Which way do you want to go?",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__unmet_demand",
+          "args": {"member": "smccd"},
+          "figures": {
+            "n_unmet_occupations": 59,
+            "member_colleges": 3,
+            "supply_window_years": 3,
+            "customer_service_openings": 5450,
+            "customer_service_wage": 55440,
+            "truck_drivers_openings": 3680,
+            "truck_drivers_wage": 62140,
+            "nursing_assistants_openings": 3570,
+            "nursing_assistants_wage": 52770,
+            "nursing_assistants_growth_5yr": 0.094447384,
+            "maintenance_repair_openings": 3340,
+            "maintenance_repair_wage": 61080,
+            "carpenters_openings": 2500,
+            "carpenters_wage": 73810,
+            "lpn_lvn_wage": 88370,
+            "lpn_lvn_openings": 1430,
+            "remaining_occupations": 51,
+            "member_supply": 0
+          },
+          "sorted_by": "annual_openings",
+          "view_link": false,
+          "gated": false
+        }
+      ]
+    }
+  ]
+}

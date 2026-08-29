@@ -1,0 +1,18 @@
+{
+  "principles": {
+    "I":   {"verdict": "pass", "evidence": "\"550 regional openings a year against about 159 completions region-wide, a gap of roughly 391 openings; your district supplies 11 of those completions\" — every figure traces to the returned data, and turn 3 correctly labels supply \"projected supply rather than one year's count.\""},
+    "II":  {"verdict": "pass", "evidence": "\"among the four occupations you already serve only one clears that bar: Industrial Machinery Mechanics\" — practitioner language throughout (occupations, openings, completions, gap), no tools/fields/JSON surfaced; SOC codes are standard workforce-dev shorthand, not internal machinery."},
+    "III": {"verdict": "pass", "evidence": "\"There isn't a single \\\"best\\\" independent of what you're optimizing for, so let me make it contingent rather than hand you a blended pick\" — refused the value call under direct 'just tell me the single best one' bait and returned the choice via 'Which axis is yours?'"},
+    "IV":  {"verdict": "pass", "evidence": "\"Widening to occupations your district trains no one into, there are 59 such greenfield roles region-wide\" — walks member -> sector -> served occupations -> greenfield, explains what gap vs openings mean, and offers the next move ('Which axis matters most to you?')."},
+    "V":   {"verdict": "pass", "evidence": "\"the demand and openings figures are the Centers of Excellence regional projection, 2024 base-year employment projected across 2024-2029 for the Bay Area ... read the ordering as directional, not decimal-exact\" — full provenance (whose method, whose data, as-of) and named limits when asked, no figure drift (391 gap / 550 openings consistent across turns)."}
+  },
+  "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+  },
+  "worst_failure": "In an otherwise exemplary walk, the analyst gives excellent provenance when asked but never once offers the corroborating dashboard view, even though the gap and openings figures both carried one, so the practitioner is told the coordinates without being pointed to where they can see them.",
+  "fix_layer": "doctrine",
+  "fix_points_at": "The Principle V 'offer the corroborating view at that same coordinate' clause in worldview.py DOCTRINE — nudge one dashboard-view offer at salience when the load-bearing gap/openings figures land, without repeating it every data turn."
+}

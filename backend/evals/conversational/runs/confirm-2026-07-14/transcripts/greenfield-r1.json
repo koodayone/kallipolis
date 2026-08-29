@@ -1,0 +1,77 @@
+{
+  "pathway_id": "greenfield",
+  "turns": [
+    {
+      "role": "practitioner",
+      "text": "What in-demand jobs is our region hiring for that we train no one into?"
+    },
+    {
+      "role": "analyst",
+      "text": "Across your region — the Bay Area — there are 59 occupations that employers are hiring for where your district's three colleges currently graduate no one. The list keeps only roles a community college can realistically train for, that pay a living wage (at least $50,000 a year), and that have meaningful demand (at least 100 projected openings a year), then ranks them by annual openings. The five with the most openings: Customer Service Representatives — about 5,450 openings a year at a median wage of $55,440; Heavy and Tractor-Trailer Truck Drivers — 3,680 openings at $62,140; Nursing Assistants — 3,570 openings at $52,770; Maintenance and Repair Workers, General — 3,340 openings at $61,080; and Carpenters — 2,500 openings at $73,810. Those are the top five of the 59, and the set spans several sectors, not just Advanced Manufacturing. Two things frame these numbers: the demand is a Centers of Excellence projection (2024 base year, projected through 2029), and 'we train no one' is a three-year average of completions — a program with students enrolled but no completer in the window still reads as zero here, so it flags no graduates rather than necessarily no program.",
+      "tool_calls": [
+        {
+          "name": "institution_overview",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "unmet_demand",
+          "args": {"member": "smccd"},
+          "figures": {
+            "greenfield_occupations": 59,
+            "member_colleges": 3,
+            "district_colleges": 3,
+            "wage_floor_usd": 50000,
+            "openings_floor_per_yr": 100,
+            "customer_service_openings": 5450,
+            "customer_service_wage": 55440,
+            "truck_drivers_openings": 3680,
+            "truck_drivers_wage": 62140,
+            "nursing_assistants_openings": 3570,
+            "nursing_assistants_wage": 52770,
+            "maintenance_repair_openings": 3340,
+            "maintenance_repair_wage": 61080,
+            "carpenters_openings": 2500,
+            "carpenters_wage": 73810
+          },
+          "sorted_by": "annual_openings",
+          "view_link": false,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "Should we launch programs for those?"
+    },
+    {
+      "role": "analyst",
+      "text": "That's your call to make, not the data's, and I want to be straight about why. This view can tell you two things with rigor: that regional demand for a role exists, and that your completions for it are zero. It deliberately does not tell you that you should launch a program — that turns on feasibility, cost, and mission fit, none of which lives in this data. What I can put in front of you for any candidate you're weighing is the decision input: the regional demand and wage, whether other colleges near you already serve it (so you'd know whether you'd be entering a served or an unserved market), and the actual employers who hire for it. Point me at one or two you're weighing and I'll pull that standing.",
+      "tool_calls": []
+    },
+    {
+      "role": "practitioner",
+      "text": "How confident are you these are real opportunities?"
+    },
+    {
+      "role": "analyst",
+      "text": "Two different sources sit behind that list, and they don't carry the same confidence. That you train no one is a hard fact — it comes straight from CCCCO DataMart completion counts averaged over the last three years (2022-23 through 2024-25); where it reads zero, no completer fed the occupation. The demand, by contrast, is a projection rather than a live count of job ads: it's the Centers of Excellence occupational model, 2024 base-year employment projected forward to 2029 — credible and standard for this work, but an estimate of openings. And the link from program to occupation runs through the state's TOP-to-CIP-to-SOC crosswalk, which fans out widely, so that alignment is approximate rather than exact. As a concrete gut-check on whether the demand is real, take Inspectors, Testers, and Sorters — quality-control, one of the surfaced roles: 215 Bay Area employers sit in industries that typically staff that occupation. That's a real regional employer base behind the number, though it too is a staffing-pattern estimate of candidate employers, not a roster of confirmed open positions. So: high confidence that your supply is zero, and well-sourced but projected confidence on the demand. Treat the opening counts as directional, and if you want to firm up any single role, we can pull its named employers and its specific supply-demand gap.",
+      "tool_calls": [
+        {
+          "name": "regional_employers",
+          "args": {"member": "smccd", "sector": "adm", "soc": "51-9061"},
+          "figures": {
+            "candidate_employers": 215,
+            "shown": 0
+          },
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        }
+      ]
+    }
+  ]
+}

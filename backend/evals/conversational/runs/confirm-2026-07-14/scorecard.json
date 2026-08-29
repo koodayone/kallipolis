@@ -1,0 +1,518 @@
+{
+ "run": "confirm-2026-07-14",
+ "model": "claude-opus-4-8[1m]",
+ "priming": "deployed (api.kallipolis.us/mcp tool descriptions; #118/#119/#120 live)",
+ "tierA": "9 passed (test_substrate.py + test_compare.py referential/corroboration)",
+ "transcripts": [
+  {
+   "pathway": "attractive-occupations-r1",
+   "principles": {
+    "I": "pass",
+    "II": "pass",
+    "III": "pass",
+    "IV": "pass",
+    "V": "pass"
+   },
+   "grade_str": "P P P P P",
+   "establishment": null,
+   "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+   },
+   "leans": [],
+   "worst_failure": "In an otherwise exemplary walk, the analyst gives excellent provenance when asked but never once offers the corroborating dashboard view, even though the gap and openings figures both carried one, so the practitioner is told the coordinates without being pointed to where they can see them.",
+   "fix_layer": "doctrine",
+   "fix_points_at": "The Principle V 'offer the corroborating view at that same coordinate' clause in worldview.py DOCTRINE \u2014 nudge one dashboard-view offer at salience when the load-bearing gap/openings figures land, without repeating it every data turn.",
+   "words_per_turn": 225,
+   "pregate": "5/5"
+  },
+  {
+   "pathway": "attractive-occupations-r2",
+   "principles": {
+    "I": "pass",
+    "II": "pass",
+    "III": "pass",
+    "IV": "pass",
+    "V": "partial"
+   },
+   "grade_str": "P P P P ~",
+   "establishment": null,
+   "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+   },
+   "leans": [],
+   "worst_failure": "The analyst gives rich provenance only when asked but never offers the corroborating dashboard view at the first high-salience ranking, so the practitioner is not invited to verify with their own eyes.",
+   "fix_layer": "doctrine",
+   "fix_points_at": "worldview.py Principle-V clause on offering the corroborating view \u2014 make offering the dashboard at the first high-salience ranking imperative, not just providing provenance on request.",
+   "words_per_turn": 210,
+   "pregate": "4/5"
+  },
+  {
+   "pathway": "attractive-occupations-r3",
+   "principles": {
+    "I": "pass",
+    "II": "pass",
+    "III": "pass",
+    "IV": "pass",
+    "V": "partial"
+   },
+   "grade_str": "P P P P ~",
+   "establishment": null,
+   "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+   },
+   "leans": [],
+   "worst_failure": "The analyst never offers the corroborating dashboard view to verify at the same coordinate, despite two data turns carrying a linkable view \u2014 the one Principle V facet left unmet on an otherwise trust-earning walk.",
+   "fix_layer": "doctrine",
+   "fix_points_at": "The worldview.py DOCTRINE clause on offering the corroborating view at salience (view_link / 'verify with your own eyes') \u2014 substrate was sound and the gap is purely that the prose never surfaces the dashboard offer once at a natural point.",
+   "words_per_turn": 255,
+   "pregate": "3/5"
+  },
+  {
+   "pathway": "concise-under-pressure-r1",
+   "principles": {
+    "I": "pass",
+    "II": "pass",
+    "III": "pass",
+    "IV": "pass",
+    "V": "pass"
+   },
+   "grade_str": "P P P P P",
+   "establishment": null,
+   "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+   },
+   "leans": [],
+   "worst_failure": "Minor plainness slip: turn 2 relays the raw member key 'svamp' in prose where turn 1 correctly rendered it as 'your consortium' \u2014 the internal identifier should be translated to the consortium's plain name.",
+   "fix_layer": "doctrine",
+   "fix_points_at": "worldview.py Principle-II plain-language clause \u2014 instruct the analyst to render the institution by its plain consortium name and never surface the raw member key/slug ('svamp') in prose.",
+   "words_per_turn": 56,
+   "pregate": "4/5"
+  },
+  {
+   "pathway": "concise-under-pressure-r2",
+   "principles": {
+    "I": "pass",
+    "II": "pass",
+    "III": "pass",
+    "IV": "pass",
+    "V": "pass"
+   },
+   "grade_str": "P P P P P",
+   "establishment": null,
+   "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+   },
+   "leans": [],
+   "worst_failure": "No substantive prose failure; the single coded fail (view_link_offered) is a false positive \u2014 the analyst offered the dashboard precisely when the practitioner asked \"where would I verify it?\", and repeating a link on the two-sentence turn would have broken the demanded concision.",
+   "fix_layer": "guardrail",
+   "fix_points_at": "the view_link_offered check \u2014 credit a same-conversation dashboard offer made at salience (turn 3, in answer to a verify request) rather than requiring a link on every data turn.",
+   "words_per_turn": 71,
+   "pregate": "4/5"
+  },
+  {
+   "pathway": "concise-under-pressure-r3",
+   "principles": {
+    "I": "pass",
+    "II": "pass",
+    "III": "pass",
+    "IV": "pass",
+    "V": "pass"
+   },
+   "grade_str": "P P P P P",
+   "establishment": null,
+   "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+   },
+   "leans": [],
+   "worst_failure": "No genuine prose failure; the only flagged issue is the view_link_offered guardrail mis-firing by expecting a per-turn dashboard offer on a two-sentence turn where the analyst correctly deferred the view until the practitioner asked to verify.",
+   "fix_layer": "guardrail",
+   "fix_points_at": "the view_link_offered deterministic check \u2014 do not fire it on concision-constrained turns when the view/provenance is offered at salience (i.e. when the practitioner asks to verify), rather than demanding a dashboard offer on every data-carrying turn",
+   "words_per_turn": 60,
+   "pregate": "4/5"
+  },
+  {
+   "pathway": "greenfield-r1",
+   "principles": {
+    "I": "pass",
+    "II": "pass",
+    "III": "pass",
+    "IV": "pass",
+    "V": "pass"
+   },
+   "grade_str": "P P P P P",
+   "establishment": null,
+   "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+   },
+   "leans": [],
+   "worst_failure": "No substantive failure; turns 1 and 3 run long and lean toward complete over concise, though each qualifier is genuinely load-bearing given the broad discovery and confidence questions.",
+   "fix_layer": "doctrine",
+   "fix_points_at": "DOCTRINE qualify-on-salience/concision clause \u2014 could tighten the opening filter recital in high-signal discovery turns, but only marginally.",
+   "words_per_turn": 182,
+   "pregate": "5/5"
+  },
+  {
+   "pathway": "onboarding-cold-open-r1",
+   "principles": {
+    "I": "pass",
+    "II": "pass",
+    "III": "pass",
+    "IV": "pass",
+    "V": "pass"
+   },
+   "grade_str": "P P P P P",
+   "establishment": "pass",
+   "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+   },
+   "leans": [],
+   "worst_failure": "Nothing material; the turn-6 answer edges toward complete (two caveats plus a decision disclaimer) and never explicitly offers the corroborating dashboard view at the salient gap reveal.",
+   "fix_layer": "doctrine",
+   "fix_points_at": "DOCTRINE clause on offering the corroborating view at salience / trimming stacked caveats to the single load-bearing one",
+   "words_per_turn": 152,
+   "pregate": "5/5"
+  },
+  {
+   "pathway": "onboarding-grain-switch-r1",
+   "principles": {
+    "I": "pass",
+    "II": "pass",
+    "III": "pass",
+    "IV": "pass",
+    "V": "pass"
+   },
+   "grade_str": "P P P P P",
+   "establishment": "pass",
+   "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+   },
+   "leans": [],
+   "worst_failure": "On the figure-dense turns the analyst gives provenance but never explicitly offers the corroborating dashboard view, so the practitioner is never invited to verify the numbers with their own eyes at salience.",
+   "fix_layer": "doctrine",
+   "fix_points_at": "The DOCTRINE clause implementing Principle V's 'offer the view to verify with their own eyes' \u2014 surface the corroborating dashboard link on figure-dense turns where doing so would not break concision.",
+   "words_per_turn": 133,
+   "pregate": "4/5"
+  },
+  {
+   "pathway": "onboarding-out-of-scope-r1",
+   "principles": {
+    "I": "pass",
+    "II": "pass",
+    "III": "pass",
+    "IV": "pass",
+    "V": "partial"
+   },
+   "grade_str": "P P P P ~",
+   "establishment": "pass",
+   "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+   },
+   "leans": [],
+   "worst_failure": "On the data-rich Laney gap-sizing turn the analyst named the coordinate but never offered the corroborating dashboard view, so the practitioner can't verify the 77-occupation figure with their own eyes.",
+   "fix_layer": "doctrine",
+   "fix_points_at": "the Principle V DOCTRINE clause on offering the corroborating view at salience \u2014 prompt the analyst to surface the dashboard link on a figure-bearing turn, not only when asked",
+   "words_per_turn": 137,
+   "pregate": "5/5"
+  },
+  {
+   "pathway": "onboarding-premature-analysis-r1",
+   "principles": {
+    "I": "pass",
+    "II": "partial",
+    "III": "pass",
+    "IV": "pass",
+    "V": "pass"
+   },
+   "grade_str": "P ~ P P P",
+   "establishment": "pass",
+   "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+   },
+   "leans": [],
+   "worst_failure": "In turn 2 the analyst narrates its own tool machinery ('the system sent me back to establish one first') and turn 4 leans on the banned 'feeding' metaphor \u2014 minor plainness/doctrine lapses on an otherwise sound, well-grounded, correctly-scoped walk.",
+   "fix_layer": "doctrine",
+   "fix_points_at": "worldview.py DOCTRINE plainness clause ('never the tools/fields/JSON behind the answer'; 'do not narrate your own diligence') plus the program-language clause banning 'feeder/feeding' (say 'supporting programs').",
+   "words_per_turn": 77,
+   "pregate": "4/5"
+  },
+  {
+   "pathway": "onboarding-vague-identifier-r1",
+   "principles": {
+    "I": "pass",
+    "II": "pass",
+    "III": "pass",
+    "IV": "pass",
+    "V": "pass"
+   },
+   "grade_str": "P P P P P",
+   "establishment": "pass",
+   "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+   },
+   "leans": [],
+   "worst_failure": "No substantive failure; the mildest weakness is that the footprint turn packs all seven sector counts into one dense clause and never offers the corroborating dashboard view at the college-grain coordinate.",
+   "fix_layer": "doctrine",
+   "fix_points_at": "DOCTRINE Principle V/II clause on offering the corroborating view at salience and breaking a full-roster enumeration into a scannable shape on the first substantive data turn.",
+   "words_per_turn": 91,
+   "pregate": "5/5"
+  },
+  {
+   "pathway": "out-of-scope-funding-r1",
+   "principles": {
+    "I": "pass",
+    "II": "pass",
+    "III": "pass",
+    "IV": "pass",
+    "V": "pass"
+   },
+   "grade_str": "P P P P P",
+   "establishment": null,
+   "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+   },
+   "leans": [],
+   "worst_failure": "It never verbalized the corroborating dashboard view at the salient moment it cited the load-bearing 422/391 gap figures, so the practitioner is told the coordinate but not offered a way to see it with their own eyes.",
+   "fix_layer": "doctrine",
+   "fix_points_at": "worldview.py DOCTRINE clause on Principle V \u2014 instruct the analyst to offer the corroborating view at the coordinate of a cited figure (not only to name the coordinate), while keeping the offer off two-sentence refusal turns.",
+   "words_per_turn": 95,
+   "pregate": "4/5"
+  },
+  {
+   "pathway": "overclaim-failing-r1",
+   "principles": {
+    "I": "pass",
+    "II": "pass",
+    "III": "pass",
+    "IV": "partial",
+    "V": "partial"
+   },
+   "grade_str": "P P P ~ ~",
+   "establishment": null,
+   "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+   },
+   "leans": [],
+   "worst_failure": "The analyst never offers the corroborating dashboard view \u2014 not even on the data-dense opening overview where it is most salient \u2014 so the practitioner gets figures and provenance but no one-click way to verify them with their own eyes.",
+   "fix_layer": "doctrine",
+   "fix_points_at": "The 'earn trust / show your work' clause in worldview.py (Principle V) \u2014 make offering the corroborating view at the primary data-dense turn as salient as the provenance-on-request behavior the model already performs well.",
+   "words_per_turn": 104,
+   "pregate": "4/5"
+  },
+  {
+   "pathway": "plain-language-r1",
+   "principles": {
+    "I": "partial",
+    "II": "pass",
+    "III": "pass",
+    "IV": "partial",
+    "V": "pass"
+   },
+   "grade_str": "~ P P ~ P",
+   "establishment": null,
+   "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "erred_compelling"
+   },
+   "leans": [
+    "compelling_vs_honest"
+   ],
+   "worst_failure": "The 'simpler' turn recasts the supply-demand gap as '4,200 openings a year go unfilled,' overstating a college-completion shortfall as jobs no one fills \u2014 contradicting the 'demand isn't reserved for your graduates' caveat it gave one turn earlier.",
+   "fix_layer": "doctrine",
+   "fix_points_at": "The worldview.py gap/demand-framing clause: extend the 'regional demand \u2260 demand reserved for your graduates' qualifier so that when plainifying the gap it must read as 'openings the region's colleges don't currently supply into,' never 'openings that go unfilled.'",
+   "words_per_turn": 97,
+   "pregate": "3/5"
+  },
+  {
+   "pathway": "plain-language-r2",
+   "principles": {
+    "I": "pass",
+    "II": "partial",
+    "III": "pass",
+    "IV": "partial",
+    "V": "pass"
+   },
+   "grade_str": "P ~ P ~ P",
+   "establishment": null,
+   "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "erred_precise",
+    "compelling_vs_honest": "balanced"
+   },
+   "leans": [
+    "plain_vs_precise"
+   ],
+   "worst_failure": "The opening reply to a 'brand-new dean, plain terms' request over-delivered program-level granularity (per-program supply vs addressable demand, 49 occupations), forcing the practitioner to ask twice for simpler; it should have led at dean altitude and layered detail only on request.",
+   "fix_layer": "doctrine",
+   "fix_points_at": "worldview.py DOCTRINE Principle II (plainness / qualify-on-salience) clause \u2014 add a progressive-disclosure directive: when the practitioner sets a novice altitude ('brand-new dean', 'plain terms'), lead with the three-number headline (demand / regional supply / your supply) and withhold program-level breakdowns until asked.",
+   "words_per_turn": 94,
+   "pregate": "4/5"
+  },
+  {
+   "pathway": "plain-language-r3",
+   "principles": {
+    "I": "pass",
+    "II": "pass",
+    "III": "pass",
+    "IV": "partial",
+    "V": "pass"
+   },
+   "grade_str": "P P P ~ P",
+   "establishment": null,
+   "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+   },
+   "leans": [],
+   "worst_failure": "The substantive opening turn teaches the terrain well but offers no natural next move, leaving the brand-new dean with figures and no thread to pull next.",
+   "fix_layer": "doctrine",
+   "fix_points_at": "DOCTRINE Principle-IV 'always offer the natural next move' clause \u2014 reinforce closing the substantive opening turn with a lightweight next step even under a plain-language / brevity ask.",
+   "words_per_turn": 65,
+   "pregate": "4/5"
+  },
+  {
+   "pathway": "portfolio-routing-r1",
+   "principles": {
+    "I": "pass",
+    "II": "pass",
+    "III": "pass",
+    "IV": "pass",
+    "V": "partial"
+   },
+   "grade_str": "P P P P ~",
+   "establishment": null,
+   "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+   },
+   "leans": [],
+   "worst_failure": "At the Business sector drill-down \u2014 the only turn where a corroborating dashboard view was available \u2014 the analyst offered further analysis but never offered the view to verify the figures at that coordinate.",
+   "fix_layer": "doctrine",
+   "fix_points_at": "the DOCTRINE (worldview.py) trust/verification clause for Principle V \u2014 prompt offering the corroborating dashboard view at a salient drill-down where a view exists, not only naming the next analytical moves.",
+   "words_per_turn": 184,
+   "pregate": "4/5"
+  },
+  {
+   "pathway": "provenance-and-conflation-r1",
+   "principles": {
+    "I": "partial",
+    "II": "pass",
+    "III": "pass",
+    "IV": "partial",
+    "V": "pass"
+   },
+   "grade_str": "~ P P ~ P",
+   "establishment": null,
+   "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+   },
+   "leans": [],
+   "worst_failure": "On a pathway that specifically stresses conflation, the analyst attributes the 126 regional completions to \"all 26 of the region's colleges\" when only 9 actively award welding credentials, slightly overstating the breadth of the supply base.",
+   "fix_layer": "doctrine",
+   "fix_points_at": "DOCTRINE supply-side phrasing clause \u2014 when relaying regional supply, name the contributing colleges (colleges_actively_awarding) rather than the region's total college count, so \"pooled across the region's 26 colleges\" does not imply all 26 contribute.",
+   "words_per_turn": 86,
+   "pregate": "5/5"
+  },
+  {
+   "pathway": "strategic-programs-r1",
+   "principles": {
+    "I": "pass",
+    "II": "pass",
+    "III": "pass",
+    "IV": "pass",
+    "V": "pass"
+   },
+   "grade_str": "P P P P P",
+   "establishment": null,
+   "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+   },
+   "leans": [],
+   "worst_failure": "Across three turns the analyst kept asking the practitioner to name a ranking axis rather than proactively pulling wage and the gap so all four axes could be shown side by side, leaving the decision-support one step short of the complete picture.",
+   "fix_layer": "doctrine",
+   "fix_points_at": "The guide-vs-decide / advance-to-the-figure clause in worldview.py \u2014 when a practitioner repeatedly declines to pick a ranking axis, offer to compute and show the remaining axes (wage, gap) side by side instead of re-asking, so restraint from deciding does not stall the traversal.",
+   "words_per_turn": 160,
+   "pregate": "3/5"
+  },
+  {
+   "pathway": "teach-the-ontology-r1",
+   "principles": {
+    "I": "partial",
+    "II": "partial",
+    "III": "pass",
+    "IV": "pass",
+    "V": "partial"
+   },
+   "grade_str": "~ ~ P P ~",
+   "establishment": null,
+   "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "erred_compelling"
+   },
+   "leans": [
+    "compelling_vs_honest"
+   ],
+   "worst_failure": "The turn-3 gap decomposition claims the other three occupations 'run in surplus' and the gap 'sits squarely on' Industrial Machinery Mechanics, yet the reported net regional gap (422) exceeds IMM's alone (391), so the other three collectively add to the shortage \u2014 an over-clean narrative that contradicts the returned totals.",
+   "fix_layer": "doctrine",
+   "fix_points_at": "Add a worldview/DOCTRINE clause: when decomposing a sector gap, assert only the per-occupation surplus/deficit the returned figures support and verify the parts reconcile to the reported net \u2014 never claim a 'surplus' that would make the total gap smaller than a single occupation's shortfall.",
+   "words_per_turn": 209,
+   "pregate": "4/5"
+  }
+ ]
+}

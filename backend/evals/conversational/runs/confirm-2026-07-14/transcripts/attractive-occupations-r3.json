@@ -1,0 +1,91 @@
+{
+  "pathway_id": "attractive-occupations",
+  "turns": [
+    {
+      "role": "practitioner",
+      "text": "Which occupations are attractive for us to focus on?"
+    },
+    {
+      "role": "analyst",
+      "text": "First, to ground us: San Mateo County CCD is a three-college district in the Bay Area, and in Advanced Manufacturing it runs two programs. Those two programs prepare students for four occupations — that's the set 'focus' can act on here. (The sector spans 49 occupations in all; these four are the ones your programs already serve. I can surface demand in occupations you don't yet run a program for separately.)\n\n'Attractive' can mean a couple of different things, so let me name the measure rather than blend them. Ranked by the unmet regional gap — Bay Area annual openings minus what all 26 colleges in the region are projected to complete — one occupation clearly stands apart:\n\n- Industrial Machinery Mechanics: 550 openings/yr against about 159 regional completions/yr — a gap of 391. Your district completes about 11 of those.\n\nThe other three don't clear that bar; the region already completes as many as or more than it hires:\n- Electrical & Electronic Engineering Technologists/Technicians: 430 openings vs ~752 completions (gap −322)\n- Semiconductor Processing Technicians: 180 openings vs ~233 completions (gap −53)\n- Electro-Mechanical & Mechatronics Technologists/Technicians: 80 openings vs ~413 completions (gap −333)\n\nIf instead you read 'attractive' as the plain size of the market (openings), the top of the order is the same — Industrial Machinery Mechanics (550), then the Electrical & Electronic Engineering role (430). One caveat on the supply side: those completion figures are a 3-year average across the region's colleges, read as a projection rather than a single year's count, and the gap is regional — the whole Bay Area's openings minus the whole region's supply, not your district's alone. Which axis would you like to weigh — the unmet gap, or total openings?",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__sector_overview",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {"member_programs": 2, "sector_occupations": 49},
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__supply_demand_gaps",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {
+            "occupations_served": 4,
+            "regional_colleges": 26,
+            "district_colleges": 3,
+            "imm_regional_demand": 550,
+            "imm_regional_supply": 159.3,
+            "imm_member_supply": 11,
+            "imm_gap": 391,
+            "eeet_regional_demand": 430,
+            "eeet_regional_supply": 751.7,
+            "eeet_gap": -322,
+            "semiconductor_regional_demand": 180,
+            "semiconductor_regional_supply": 232.7,
+            "semiconductor_gap": -53,
+            "mechatronics_regional_demand": 80,
+            "mechatronics_regional_supply": 412.7,
+            "mechatronics_gap": -333
+          },
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "Just tell me the single best one to go after."
+    },
+    {
+      "role": "analyst",
+      "text": "On the two axes we've named — the unmet regional gap and total openings — the single occupation that leads on both is Industrial Machinery Mechanics. It's the only one of your four where regional demand outruns regional supply (a gap of 391, from 550 openings against about 159 regional completions), and it's also the largest market of the four (550 openings). For fuller context on that candidate: its regional median wage is about $80,760 — that's what the job pays across the Bay Area, not your graduates' own earnings — it typically asks a high-school diploma to enter, the region holds roughly 5,450 jobs in it, and it's projected to grow about 10% over five years. Your district completes about 11 of the region's ~159 completions today.\n\nBut 'best' turns on the axis you weigh, so I won't hand you an unconditional pick: if your axis is the unmet gap or total openings, it's Industrial Machinery Mechanics. If your axis is graduate wage or your existing share of supply, that's a different sort — I'd need to line up each of the four on that measure to rank them, and none of the other three clears a positive gap in any case. Which axis is yours?",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__occupation_profile",
+          "args": {"member": "smccd", "occupation": "49-9041"},
+          "figures": {
+            "imm_annual_openings": 550,
+            "imm_annual_wage": 80760,
+            "imm_regional_employment": 5450,
+            "imm_growth_rate_5yr": 0.10237203,
+            "imm_regional_supply": 159.3,
+            "imm_member_supply": 11,
+            "imm_gap": 391
+          },
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "Why rank them that way and not another?"
+    },
+    {
+      "role": "analyst",
+      "text": "I ranked by the gap — each occupation's regional annual openings minus the whole region's projected completions for it — and, as the alternate, by total openings. Those two fit the question you asked: the gap is the measure of where the region's employers hire more than its 26 colleges are projected to graduate, and openings is the plain size of the market. I kept them as two separate axes rather than folding them into one blended score, because a single score would hide which measure is doing the ranking and each axis can order the four differently.\n\nOn where the numbers come from: the openings, wage, and growth are Centers of Excellence regional occupational demand, on a 2024 base year projected to 2029. The supply is CCCCO DataMart completions — a 3-year average across 2022-23 through 2024-25, read as a projection (that's COE's Annual Projected Supply method), not one year's raw count. The gap is those two subtracted at the Bay Area level; your district's ~11 completions are its share of that regional supply, not the gap itself.\n\nAs for ranking it another way — I could rank by the occupation's regional median wage, or by your district's existing share of supply; both are legitimate and would reorder the list. One boundary worth naming: this view covers only the four occupations your programs already serve, so it won't show demand in occupations you don't yet run a program for — absence here isn't absence of regional demand, and I can pull that greenfield view on request. Which of those alternatives would you like to see?",
+      "tool_calls": []
+    }
+  ]
+}

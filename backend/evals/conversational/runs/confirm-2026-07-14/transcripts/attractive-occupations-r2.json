@@ -1,0 +1,83 @@
+{
+  "pathway_id": "attractive-occupations",
+  "turns": [
+    {
+      "role": "practitioner",
+      "text": "Which occupations are attractive for us to focus on?"
+    },
+    {
+      "role": "analyst",
+      "text": "You're San Mateo County CCD, Advanced Manufacturing. \"Attractive\" isn't one number — it's a choice of measure (unfilled demand, total openings, or wage), so let me name the axis rather than blend them into a single score.\n\nRanking the four Advanced Manufacturing occupations your district's programs currently feed by the supply–demand gap — regional annual openings minus what all 26 Bay Area colleges are projected to complete — only one has demand outrunning supply:\n- Industrial Machinery Mechanics (49-9041): 550 openings/yr regionally against about 159 projected completions/yr, a gap of 391. Your district completes roughly 11/yr of that supply.\nThe other three are net-oversupplied on this measure: Electrical & Electronic Engineering Technicians (430 openings, gap −322), Semiconductor Processing Technicians (180 openings, gap −53), and Electro-Mechanical/Mechatronics Technicians (80 openings, gap −333).\n\nIf by \"attractive\" you mean the largest labor market rather than the tightest gap, the openings ranking is the same at the top — Industrial Machinery Mechanics (550), then Electrical/Electronic (430). Wage is a third axis I can pull per occupation if pay is your lens.\n\nTwo honest limits: this covers only occupations you already serve. A district-wide scan of regional demand your colleges graduate no one into surfaces 59 occupations, ranked by annual regional openings; a couple are manufacturing-adjacent — Maintenance & Repair Workers, General (3,340 openings/yr, ~$61,080 median) and Inspectors, Testers, Sorters (1,680 openings/yr, ~$56,770) — but that scan spans all sectors, not just Advanced Manufacturing. And \"supply\" throughout is a 3-year projection of completions, not a single year.",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__sector_overview",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__supply_demand_gaps",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {
+            "imm_regional_openings": 550,
+            "imm_regional_supply": 159.3,
+            "imm_gap": 391,
+            "imm_member_supply": 11,
+            "electrical_openings": 430,
+            "electrical_gap": -322,
+            "semiconductor_openings": 180,
+            "semiconductor_gap": -53,
+            "mechatronics_openings": 80,
+            "mechatronics_gap": -333,
+            "regional_colleges": 26
+          },
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__unmet_demand",
+          "args": {"member": "smccd"},
+          "figures": {
+            "n_unmet": 59,
+            "maintenance_repair_openings": 3340,
+            "maintenance_repair_wage": 61080,
+            "inspectors_openings": 1680,
+            "inspectors_wage": 56770
+          },
+          "sorted_by": "annual_openings",
+          "view_link": false,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "Just tell me the single best one to go after."
+    },
+    {
+      "role": "analyst",
+      "text": "I'll be direct, but the single pick depends on your axis — I won't hand you one recommendation off a weighting I chose for you.\n\nIf your axis is the unfilled regional gap — where demand most outruns local supply — it's Industrial Machinery Mechanics: the only one of your four Advanced Manufacturing occupations where the region hires more than its colleges graduate, 391 openings a year unmet on 550 total, and your district completes only about 11 a year.\n\nIf your axis is raw market size (openings), it's still Industrial Machinery Mechanics, at 550.\n\nThe one axis I haven't measured is wage — if pay is your definition of \"best,\" say so and I'll pull it. So on both axes I have, it's Industrial Machinery Mechanics. Which axis is yours?",
+      "tool_calls": []
+    },
+    {
+      "role": "practitioner",
+      "text": "Why rank them that way and not another?"
+    },
+    {
+      "role": "analyst",
+      "text": "Two parts — the measure I ranked by, and where the numbers come from.\n\nThe measure: I ranked by the supply–demand gap — regional annual openings minus the region's projected completions, per occupation. I chose it because you asked which occupations to focus on, and the gap is the axis that says where the regional market is short of local graduates rather than already saturated. By it, Industrial Machinery Mechanics leads because it's the only one of the four where demand exceeds supply (gap +391); the other three come out negative, so the region already graduates more than it hires.\n\n\"Not another\" — the axis does change the order below the top. By total openings it's Industrial Machinery Mechanics (550), Electrical/Electronic (430), Semiconductor (180), Mechatronics (80). By the gap it's Industrial Machinery Mechanics (+391), Semiconductor (−53), Electrical (−322), Mechatronics (−333) — the bottom three reshuffle. By wage it could reorder again, and I haven't measured that. Industrial Machinery Mechanics happens to top both axes I've computed, which is why I led with it.\n\nThe sources: demand is Centers of Excellence regional occupational demand — 2024 base-year employment with a 2024–2029 projection. Supply is COE's Annual Projected Supply method — a trailing 3-year average of DataMart completions, 2022-23 through 2024-25 — so it reads as a projection, not one year's count. The gap is those two differenced at the regional (Bay Area) scale across all 26 colleges; your district's own completions are a separate share of that regional supply.",
+      "tool_calls": []
+    }
+  ]
+}

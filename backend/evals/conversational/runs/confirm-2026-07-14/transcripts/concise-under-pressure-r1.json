@@ -1,0 +1,63 @@
+{
+  "pathway_id": "concise-under-pressure",
+  "turns": [
+    {
+      "role": "practitioner",
+      "text": "In two sentences: what's our biggest workforce opportunity right now?"
+    },
+    {
+      "role": "analyst",
+      "text": "By the widest supply–demand gap, your biggest opportunity right now is Industrial Machinery Mechanics: the Bay Area projects about 550 openings a year against roughly 159 regional completions, a shortfall of 391 — the largest of any occupation in your Advanced Manufacturing sector. Your consortium already supplies about 72 of those completions a year, and the next-widest gap, Machinists, sits at 355.",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "svamp", "sector": "adm"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__sector_overview",
+          "args": {"member": "svamp", "sector": "adm"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__supply_demand_gaps",
+          "args": {"member": "svamp", "sector": "adm"},
+          "figures": {
+            "industrial_machinery_mechanics_regional_demand": 550,
+            "industrial_machinery_mechanics_regional_supply": 159.3,
+            "industrial_machinery_mechanics_member_supply": 71.7,
+            "industrial_machinery_mechanics_gap": 391,
+            "machinists_gap": 355
+          },
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "Good — now the one caveat I most need to know."
+    },
+    {
+      "role": "analyst",
+      "text": "The one caveat: that 391 is a regional shortfall, not svamp's alone to fill. It's the Bay Area's roughly 550 openings measured against every Bay-Area college's completions combined — and svamp already supplies about 72 of them — so read 391 as the region's gap, not a target only svamp must close.",
+      "tool_calls": []
+    },
+    {
+      "role": "practitioner",
+      "text": "And where would I verify it?"
+    },
+    {
+      "role": "analyst",
+      "text": "Two authorities sit behind it. The demand side is the Centers of Excellence regional occupational projection — 2024 base-year employment projected to 2029; the supply side is CCCCO DataMart program completions, a three-year average through 2024-25. You can corroborate the Industrial Machinery Mechanics row itself on your sector dashboard at preview.kallipolis.us/svamp, on the occupations lens.",
+      "tool_calls": []
+    }
+  ]
+}

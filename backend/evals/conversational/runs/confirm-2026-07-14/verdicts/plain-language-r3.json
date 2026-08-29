@@ -1,0 +1,18 @@
+{
+  "principles": {
+    "I":   {"verdict": "pass", "evidence": "\"so regional demand runs ahead of regional supply by roughly 4,227 a year\" — the gap traces to gap:4227, and the one salient caveat (three-year average of completions) is named rather than stripped."},
+    "II":  {"verdict": "pass", "evidence": "\"Simpler: the Bay Area needs about 8,150 advanced-manufacturing workers a year ... leaving a shortfall of roughly 4,200 a year.\" — plain practitioner language throughout, no tools/fields/JSON named, and the terse rounds land cleanly."},
+    "III": {"verdict": "pass", "evidence": "\"Your district trains about 200 of them, a small share of the region.\" — purely descriptive framing of the gap; no recommendation, no hidden pick, no \"you should.\""},
+    "IV":  {"verdict": "partial", "evidence": "The opener walks member->sector->program->occupation->demand but ends on \"...any single recent year can run a bit above or below\" with no natural next move offered to pull the new dean forward."},
+    "V":   {"verdict": "pass", "evidence": "\"One note on the graduate figures: they're a three-year average of completions...\" — limit named not buried, and every figure (8,150 / ~4,200 / 200) holds consistent across all three turns with no drift or overclaim."}
+  },
+  "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+  },
+  "worst_failure": "The substantive opening turn teaches the terrain well but offers no natural next move, leaving the brand-new dean with figures and no thread to pull next.",
+  "fix_layer": "doctrine",
+  "fix_points_at": "DOCTRINE Principle-IV 'always offer the natural next move' clause — reinforce closing the substantive opening turn with a lightweight next step even under a plain-language / brevity ask."
+}
