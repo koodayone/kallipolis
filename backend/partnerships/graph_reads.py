@@ -117,6 +117,30 @@ def program_award_series_by_type(session, colleges: Sequence[str], tops: Sequenc
     ).data()
 
 
+def colleges_by_term_type(session, colleges: Sequence[str]) -> dict[str, list[str]]:
+    """Which term types each college actually reports — its academic calendar, read
+    from the data rather than inferred.
+
+    A quarter college reports Winter; a semester college has no such term. Only 37 of
+    115 colleges report any Winter at all, and Foothill is the single quarter college
+    in every peer set the shipped reports use. The enrollment table needs this to tell
+    "no such term" apart from "term exists, data missing" — rendering the first as a
+    blank makes a semester college look like it has a reporting hole, and rendering the
+    second as a zero states a fact that is not in evidence.
+
+    Deliberately college-grain, not program-grain: a program that simply is not offered
+    in Winter is NOT the same as a college that has no Winter, and only the college-level
+    question can be answered from the calendar."""
+    if not colleges:
+        return {}
+    rows = session.run(
+        "MATCH (pr:Program)-[:ENROLLED]->(t:Term) WHERE pr.college IN $c "
+        "RETURN pr.college AS college, collect(DISTINCT split(t.term, ' ')[0]) AS kinds",
+        c=list(colleges),
+    ).data()
+    return {r["college"]: sorted(r["kinds"]) for r in rows}
+
+
 def program_enrollment_series(session, colleges: Sequence[str], tops: Sequence[str]) -> list[dict]:
     """Per ``(college, top6, term)`` enrollment counts — the enrollment-trend
     series. Rows: ``{college, top6, term, count}`` (term e.g. "Fall 2025")."""

@@ -156,15 +156,39 @@ def award_tier(award_type: str | None) -> str:
 
 def award_tier_label(tier: str, types: set[str]) -> str:
     """The row label for a tier. When a tier is carried by exactly ONE underlying
-    award type, append its unit/hour band — "certificate, 8-16 units" says more
-    than "certificate" and costs nothing. Mixed tiers stay unqualified."""
+    award type, append its unit band — "certificate, 8–16 semester units" says more
+    than "certificate" and costs nothing. Mixed tiers stay unqualified.
+
+    Says SEMESTER explicitly. DataMart normalises every band to semester units, but a
+    third of California's colleges run on quarters — Foothill's own catalog states the
+    90-unit associate minimum where a semester college requires 60 — so a bare "8-16
+    units" is ambiguous on exactly the reports that carry it. It also now shares a page
+    with COCI's dual-notation bands (`ontology.coci.award_band`), which would make an
+    unqualified number read as a third, different measure."""
     if tier != "certificate" or len(types) != 1:
         return tier
     m = re.search(r"(\d+)\s*to\s*(?:fewer than|<)\s*(\d+)\s*semester units", next(iter(types)), re.I)
     if m:
-        return f"{tier}, {m.group(1)}-{m.group(2)} units"
+        return f"{tier}, {m.group(1)}–{m.group(2)} semester units"
     m = re.search(r"(\d+)\+\s*semester units", next(iter(types)), re.I)
-    return f"{tier}, {m.group(1)}+ units" if m else tier
+    return f"{tier}, {m.group(1)}+ semester units" if m else tier
+
+
+def award_type_sort_key(award_type: str) -> tuple[int, int, str]:
+    """Credential-weight ordering for a RAW DataMart award type: highest award
+    first, and within a tier the larger unit/hour band first (the first number in
+    the DataMart name is the band's lower bound; degrees carry none and tie-break
+    by name).
+
+    Ranks off `award_tier`, so the raw-type ordering the dashboard renders and the
+    tier collapse the report renders cannot disagree about what outranks what. The
+    dashboard previously ranked on its own ("associate", "certificate", "noncredit")
+    substring list, which sorted A.S.-T with plain associate degrees — the one place
+    the two surfaces genuinely diverged."""
+    m = re.search(r"\d+", award_type or "")
+    return (AWARD_TIERS.index(award_tier(award_type)),
+            -int(m.group()) if m else 0,
+            award_type or "")
 
 
 # ── Parsers (pivoted/hierarchical exports, indentation state machines) ────

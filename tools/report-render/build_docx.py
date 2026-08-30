@@ -37,6 +37,12 @@ _RESEARCH = '/Users/dayonekoo/Desktop/code/kallipolis/research/swp-strategy'
 SRC = sys.argv[1] if len(sys.argv) > 1 else f'{_RESEARCH}/svamp-pathway-49-9041-doc.html'
 OUT = sys.argv[2] if len(sys.argv) > 2 else f'{_RESEARCH}/svamp-pathway-manufacturing-technician.docx'
 XWALK = sys.argv[3] if len(sys.argv) > 3 else '/tmp/crosswalk.png'
+# The awards-vs-demand chart is a CHART: no native Word primitive reconstructs a
+# stacked bar series with a reference rule, so it embeds as a high-DPI raster the
+# way the crosswalk falls back. Without its own branch it matched `.xwrap` and was
+# flattened into scraped SVG text — legend words and the rule label as loose runs.
+AWCHART = sys.argv[4] if len(sys.argv) > 4 else '/tmp/awchart.png'
+ENCHART = sys.argv[5] if len(sys.argv) > 5 else '/tmp/enchart.png'
 FONT = 'Arial'
 BYLINE_FONT = 'Days One'  # brand byline face (Google-native; substitutes in Word/Pages without it)
 
@@ -251,7 +257,12 @@ def std_table(rows, widths=None, header=True, num_from=2, totalcls='tot'):
 
 def add_trend(table):
     rows = rows_of(table)
-    tbl = doc.add_table(rows=0, cols=6); tbl.alignment = WD_TABLE_ALIGNMENT.CENTER; grid(tbl)
+    # Column count comes from the header row. It was pinned at 6, which silently
+    # truncated any wider trend table — the enrolment table is now 3 terms x 3 academic
+    # years plus the label, and a hardcoded 6 would have dropped four columns of data
+    # into a .docx that still looked plausible.
+    ncols = len(rows[0]['cells']) if rows else 6
+    tbl = doc.add_table(rows=0, cols=ncols); tbl.alignment = WD_TABLE_ALIGNMENT.CENTER; grid(tbl)
     for ri, r in enumerate(rows):
         cells = tbl.add_row().cells
         istot = 'tot' in r['cls']; ishdr = ri == 0
@@ -409,6 +420,24 @@ def add_image():
     p.add_run().add_picture(XWALK, width=Inches(CONTENT_W))
 
 
+def add_awchart_image():
+    """Embed the rasterized awards-vs-demand chart, full content width."""
+    if not os.path.exists(AWCHART):
+        return  # no raster on hand -> the caption below the chart still carries the reading
+    doc.add_picture(AWCHART, width=Inches(CONTENT_W))
+    doc.paragraphs[-1].alignment = WD_ALIGN_PARAGRAPH.CENTER
+
+
+def add_enchart_image():
+    """The per-college enrolment line chart. Same raster path as the awards chart and
+    for the same reason: it has no native Word equivalent, and sharing a class with the
+    crosswalk would let add_xwalk_table flatten it into scraped SVG text — a chart has no
+    links, so the link-parity gate cannot see that failure."""
+    if not os.path.exists(ENCHART):
+        return
+    doc.add_picture(ENCHART, width=Inches(CONTENT_W))
+
+
 def add_xwalk_legend(div):
     """Fallback only (used when the crosswalk renders as a rasterized funnel PNG):
     one quiet centered line of the per-college program links, which are otherwise
@@ -550,7 +579,11 @@ def emit(el):
         t = el.get_text(' ', strip=True)
         if not t:
             return
-        if 'tnote' in cls:
+        if 'chtitle' in cls:
+            # Chart title: real text now that it lives in HTML rather than inside the
+            # SVG raster, so it is selectable and searchable in the .docx.
+            p = para(10, 2); run(p, t, size=11, bold=True, color=DARK)
+        elif 'tnote' in cls:
             p = para(1, 4); run(p, t, size=8.5, color=MUT, italic=True)
         elif 'tnar' in cls:
             p = para(6, 2); runs_from(el, p, size=10, color='46536b')
@@ -569,6 +602,10 @@ def emit(el):
             add_cmpgrid(el)
         elif 'trend' in cls:
             add_trend(el)
+    elif 'enchart' in cls:
+        add_enchart_image()
+    elif 'awchart' in cls:
+        add_awchart_image()
     elif 'xwrap' in cls:
         # Native crosswalk (clickable, paste-safe) by default; fall back to the
         # rasterized funnel PNG + a link caption if the SVG can't be parsed.

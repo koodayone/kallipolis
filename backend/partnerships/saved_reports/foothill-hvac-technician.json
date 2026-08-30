@@ -1,0 +1,80 @@
+{
+  "member": "foothill",
+  "title": "HVAC Technician",
+  "sector": "ecu",
+  "socs": [
+    "49-9021"
+  ],
+  "author": "Dayone Koo",
+  "date": "June 21, 2026",
+  "programs": [
+    ["Foothill College", "094600"],
+    ["San Jose City College", "094600"],
+    ["Laney College", "094600"],
+    ["De Anza College", "094610"],
+    ["Gavilan College", "094600"]
+  ],
+  "live_postings": {
+    "49-9021": [
+      {
+        "employer": "Lockheed Martin",
+        "title": "HVAC Mechanic",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=49-9021.00&location=94022&radius=50&pagesize=250&curPage=1&fc=1&jvid=827e106636e64f7abf0c0ed89bb142608003&detailpage=true"
+      },
+      {
+        "employer": "Walmart",
+        "title": "Technician, Refrigeration / HVAC",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=49-9021.00&location=94022&radius=50&pagesize=250&curPage=1&fc=1&jvid=daa7961533dd4092b0452a443eac26908003&detailpage=true"
+      },
+      {
+        "employer": "Bayer",
+        "title": "Maintenance Mechanic B, HVACR",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=49-9021.00&location=94022&radius=50&pagesize=250&curPage=1&fc=1&jvid=6cabdc8aa5694b0a8f1b98fdd609eac68003&detailpage=true"
+      },
+      {
+        "employer": "CBRE",
+        "title": "Senior HVAC/R Technician",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=49-9021.00&location=94022&radius=50&pagesize=250&curPage=1&fc=1&jvid=593305bb90334383979a7d114563fc118003&detailpage=true"
+      },
+      {
+        "employer": "EMCOR Group",
+        "title": "Commercial HVAC Service Technician",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=49-9021.00&location=94022&radius=50&pagesize=250&curPage=1&fc=1&jvid=cce7e0226eb04b2f88db682e963bdbcb8003&detailpage=true"
+      },
+      {
+        "employer": "United Rentals",
+        "title": "Power & HVAC Mechanic",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=49-9021.00&location=94022&radius=50&pagesize=250&curPage=1&fc=1&jvid=63b76156764d414b8684582beeb0489f8003&detailpage=true"
+      }
+    ]
+  },
+  "competencies": {
+    "49-9021": {
+      "description": "Install, service, and repair heating, ventilation, air conditioning, and refrigeration (HVACR) systems — including furnaces, heat pumps, central AC, and commercial refrigeration.",
+      "knowledge": [
+        "Mechanical",
+        "Building and Construction",
+        "Engineering and Technology",
+        "Physics",
+        "Chemistry"
+      ],
+      "skills": [
+        "Repairing",
+        "Troubleshooting",
+        "Equipment Maintenance",
+        "Installation"
+      ],
+      "abilities": [
+        "Arm-Hand Steadiness",
+        "Manual Dexterity",
+        "Finger Dexterity",
+        "Visual Color Discrimination"
+      ],
+      "technology": [
+        "Computer aided design CAD software",
+        "Industrial control software",
+        "Facilities management software"
+      ]
+    }
+  }
+}

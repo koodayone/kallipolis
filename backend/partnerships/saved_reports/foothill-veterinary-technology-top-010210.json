@@ -1,112 +1,113 @@
 {
-    "member": "foothill",
-    "title": "Veterinary Technology",
-    "sector": "agwet",
-    "socs": [
-        "29-2056",
-        "31-9096"
+  "member": "foothill",
+  "title": "Veterinary Technology",
+  "sector": "agwet",
+  "socs": [
+    "29-2056",
+    "31-9096"
+  ],
+  "author": "Dayone Koo",
+  "date": "August 27, 2026",
+  "org_name": "Foothill College Program Evaluation",
+  "org_short": "Regional",
+  "_comment": "PROGRAM EVALUATION (evaluate-program skill). Subject is the PROGRAM (Foothill College x TOP 010210), not a job title. Destination SOCs DERIVED: crosswalk(010210) intersected with SECTORS['agwet'].socs minus ALL_OTHER/PROMOTION/EXPERIENCE_5YR = ['29-2056', '31-9096']. Dropped: 11-1021, 11-3012, 11-9111, 25-1071, 43-1011, 43-4171, 43-6013, 99-9999. Peer set = top 2 Bay colleges by 5-year awards on THIS TOP (a program evaluation's peers must share the TOP; the role report mixed TOPs). live_postings and competencies reused verbatim from the matching role report (same SOCs, already verified). EVIDENCE-FORWARD, NO VERDICT.",
+  "program_top": "010210",
+  "lede": "This evaluation assembles labor-market supply and demand evidence for Foothill College's Veterinary Technology program (TOP 010210). It covers regional occupational demand targeted by the program, and the program's award and enrollment trends in the context of other colleges offering the same program in the region.",
+  "demand_note": "Foothill's Veterinary Technology program leads to SOC 29-2056 and SOC 31-9096 via the TOP–CIP–SOC crosswalk. [According to the Centers of Excellence](https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061), these occupations demand roughly 1,130 openings a year.",
+  "alignment_note": "The set of colleges offering TOP 010210 in the Bay Area. All of these colleges support SOC 29-2056 and 31-9096 via the same TOP code through the TOP–CIP–SOC crosswalk.",
+  "competency_note": "",
+  "award_note": "Award trends for each member-college program. Empty cells indicate no data reported via DataMart.",
+  "enrollment_note": "Enrollment trends for each member-college program. Empty cells indicate no data reported via DataMart.",
+  "programs": [
+    [
+      "Foothill College",
+      "010210"
     ],
-    "author": "Dayone Koo",
-    "date": "August 27, 2026",
-    "org_name": "Foothill College Program Evaluation",
-    "org_short": "Regional",
-    "_comment": "PROGRAM EVALUATION (evaluate-program skill). Subject is the PROGRAM (Foothill College x TOP 010210), not a job title. Destination SOCs DERIVED: crosswalk(010210) intersected with SECTORS['agwet'].socs minus ALL_OTHER/PROMOTION/EXPERIENCE_5YR = ['29-2056', '31-9096']. Dropped: 11-1021, 11-3012, 11-9111, 25-1071, 43-1011, 43-4171, 43-6013, 99-9999. Peer set = top 2 Bay colleges by 5-year awards on THIS TOP (a program evaluation's peers must share the TOP; the role report mixed TOPs). live_postings and competencies reused verbatim from the matching role report (same SOCs, already verified). EVIDENCE-FORWARD, NO VERDICT.",
-    "lede": "This evaluation assembles labor-market supply and demand evidence for Foothill College's Veterinary Technology program (TOP 010210). It covers regional occupational demand targeted by the program, and the program's award and enrollment trends in the context of other colleges offering the same program in the region.",
-    "demand_note": "Foothill's Veterinary Technology program leads to SOC 29-2056 and SOC 31-9096 via the TOP\u2013CIP\u2013SOC crosswalk. [According to the Centers of Excellence](https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061), these occupations demand roughly 1,130 openings a year.",
-    "alignment_note": "The set of colleges offering TOP 010210 in the Bay Area. All of these colleges support SOC 29-2056 and 31-9096 via the same TOP code through the TOP\u2013CIP\u2013SOC crosswalk.",
-    "competency_note": "",
-    "award_note": "Award trends for each member-college program. Empty cells indicate no data reported via DataMart.",
-    "enrollment_note": "Enrollment trends for each member-college program. Empty cells indicate no data reported via DataMart.",
-    "programs": [
-        [
-            "Foothill College",
-            "010210"
-        ],
-        [
-            "Santa Rosa Junior College",
-            "010210"
-        ]
+    [
+      "Santa Rosa Junior College",
+      "010210"
+    ]
+  ],
+  "live_postings": {
+    "29-2056": [
+      {
+        "employer": "Ethos Veterinary Health",
+        "title": "Per Diem ER and CCU Veterinary Technician",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=29-2056.00&location=94022&radius=25&pagesize=250&curPage=1&fc=0&jvid=441f123e9066403cb9026c31f8f0beb08003&detailpage=true"
+      },
+      {
+        "employer": "Palo Alto Veterans Institute for Research",
+        "title": "Life Sciences Animal Technician - VMU",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=29-2056.00&location=94022&radius=25&pagesize=250&curPage=1&fc=0&jvid=e8c4e0dd1f9b4b37b4c9285a2abb2d848003&detailpage=true"
+      }
     ],
-    "live_postings": {
-        "29-2056": [
-            {
-                "employer": "Ethos Veterinary Health",
-                "title": "Per Diem ER and CCU Veterinary Technician",
-                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=29-2056.00&location=94022&radius=25&pagesize=250&curPage=1&fc=0&jvid=441f123e9066403cb9026c31f8f0beb08003&detailpage=true"
-            },
-            {
-                "employer": "Palo Alto Veterans Institute for Research",
-                "title": "Life Sciences Animal Technician - VMU",
-                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=29-2056.00&location=94022&radius=25&pagesize=250&curPage=1&fc=0&jvid=e8c4e0dd1f9b4b37b4c9285a2abb2d848003&detailpage=true"
-            }
-        ],
-        "31-9096": [
-            {
-                "employer": "Banfield Pet Hospital",
-                "title": "Veterinary Assistant - #5130 SJ Meridian",
-                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=31-9096.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=114b0c0f2fa045fa952920f2001c8d7a8003&detailpage=true"
-            },
-            {
-                "employer": "VCA Animal Hospitals",
-                "title": "Veterinary Assistant",
-                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=31-9096.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=08d1b5b877b946d2a5d18ee7ec1609c28003&detailpage=true"
-            },
-            {
-                "employer": "Stanford University",
-                "title": "Laboratory Assistant III",
-                "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=31-9096.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=b231f090e1134dd7beaff4a628dec59c8003&detailpage=true"
-            }
-        ]
+    "31-9096": [
+      {
+        "employer": "Banfield Pet Hospital",
+        "title": "Veterinary Assistant - #5130 SJ Meridian",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=31-9096.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=114b0c0f2fa045fa952920f2001c8d7a8003&detailpage=true"
+      },
+      {
+        "employer": "VCA Animal Hospitals",
+        "title": "Veterinary Assistant",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=31-9096.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=08d1b5b877b946d2a5d18ee7ec1609c28003&detailpage=true"
+      },
+      {
+        "employer": "Stanford University",
+        "title": "Laboratory Assistant III",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=31-9096.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=b231f090e1134dd7beaff4a628dec59c8003&detailpage=true"
+      }
+    ]
+  },
+  "competencies": {
+    "29-2056": {
+      "description": "Performs laboratory and clinical procedures for the diagnosis and treatment of animal disease — blood and tissue sampling, urinalysis, vaccine preparation, and sterile technique.",
+      "knowledge": [
+        "Medicine & Dentistry",
+        "Biology",
+        "Chemistry",
+        "Customer & Personal Service"
+      ],
+      "skills": [
+        "Science",
+        "Critical Thinking",
+        "Operation & Control",
+        "Operations Monitoring"
+      ],
+      "abilities": [
+        "Manual Dexterity",
+        "Arm-Hand Steadiness",
+        "Auditory Attention",
+        "Stamina"
+      ],
+      "technology": [
+        "Medical software"
+      ]
     },
-    "competencies": {
-        "29-2056": {
-            "description": "Performs laboratory and clinical procedures for the diagnosis and treatment of animal disease \u2014 blood and tissue sampling, urinalysis, vaccine preparation, and sterile technique.",
-            "knowledge": [
-                "Medicine & Dentistry",
-                "Biology",
-                "Chemistry",
-                "Customer & Personal Service"
-            ],
-            "skills": [
-                "Science",
-                "Critical Thinking",
-                "Operation & Control",
-                "Operations Monitoring"
-            ],
-            "abilities": [
-                "Manual Dexterity",
-                "Arm-Hand Steadiness",
-                "Auditory Attention",
-                "Stamina"
-            ],
-            "technology": [
-                "Medical software"
-            ]
-        },
-        "31-9096": {
-            "description": "Feeds, monitors, and provides routine and postoperative care for animals in hospitals, clinics, and research laboratories, maintaining sterile equipment and housing.",
-            "knowledge": [
-                "Medicine & Dentistry",
-                "Biology",
-                "Customer & Personal Service",
-                "Administrative"
-            ],
-            "skills": [
-                "Science",
-                "Service Orientation",
-                "Active Listening",
-                "Coordination"
-            ],
-            "abilities": [
-                "Manual Dexterity",
-                "Arm-Hand Steadiness",
-                "Finger Dexterity",
-                "Multilimb Coordination"
-            ],
-            "technology": [
-                "Medical software",
-                "Label making software"
-            ]
-        }
+    "31-9096": {
+      "description": "Feeds, monitors, and provides routine and postoperative care for animals in hospitals, clinics, and research laboratories, maintaining sterile equipment and housing.",
+      "knowledge": [
+        "Medicine & Dentistry",
+        "Biology",
+        "Customer & Personal Service",
+        "Administrative"
+      ],
+      "skills": [
+        "Science",
+        "Service Orientation",
+        "Active Listening",
+        "Coordination"
+      ],
+      "abilities": [
+        "Manual Dexterity",
+        "Arm-Hand Steadiness",
+        "Finger Dexterity",
+        "Multilimb Coordination"
+      ],
+      "technology": [
+        "Medical software",
+        "Label making software"
+      ]
     }
+  }
 }
