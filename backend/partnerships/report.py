@@ -110,8 +110,7 @@ def _unit_phrase(units: float, basis: str, cal: str) -> str:
 #: plate: these are STATEWIDE recipients (not the member's own graduates), and the
 #: cohort window predates every other figure in the report.
 _WAGE_BLURB = ("Median earnings of California community college award recipients in this "
-               "program statewide, two years before completion and two and five years after. "
-               "Not limited to {college}'s graduates.")
+               "program statewide, two years before completion and two and five years after.")
 
 _SEP = " · "        # status/date separator, hoisted: f-strings cannot hold escapes
 _CAREERONESTOP = "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword="
@@ -1089,7 +1088,12 @@ def _wage_outcomes_svg(wages: list, top6: str) -> str:
         return ""
     top, ticks = _nice_axis(max(v for _w, vs in series for _y, v in vs) * 1.12)
 
-    W, H, PADL, PADR, PADT, PADB = _WAGE_CHART[0], _WAGE_CHART[1], 58, 148, 18, 60
+    # Right-hand line labels forced a 148px gutter against a 58px left one, so the
+    # plot sat visibly off-centre and used two thirds of the plate. The labels move to
+    # a legend beneath — the same place the enrolment chart puts them — which lets the
+    # gutters match the other charts (12px right) and the plot span the full width.
+    # PADL is sized so the rotated axis title clears the widest tick ("$150,000").
+    W, H, PADL, PADR, PADT, PADB = _WAGE_CHART[0], _WAGE_CHART[1], 76, 12, 18, 84
     plot_w, plot_h = W - PADL - PADR, H - PADT - PADB
     xs = [y for y, _l in _WAGE_POINTS]
     x_of = lambda y: PADL + plot_w * (y - xs[0]) / (xs[-1] - xs[0])
@@ -1097,21 +1101,25 @@ def _wage_outcomes_svg(wages: list, top6: str) -> str:
 
     p_ = [f'<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" '
           'font-family="Helvetica,Arial,sans-serif">']
-    p_.append(f'<text x="13" y="{PADT + plot_h / 2:.1f}" font-size="10" fill="#5a6577" '
-              f'text-anchor="middle" transform="rotate(-90 13 {PADT + plot_h / 2:.1f})">'
+    p_.append(f'<text x="14" y="{PADT + plot_h / 2:.1f}" font-size="10" fill="#5a6577" '
+              f'text-anchor="middle" transform="rotate(-90 14 {PADT + plot_h / 2:.1f})">'
               f'Median earnings</text>')
     for v in ticks:
         y = y_of(v)
         p_.append(f'<line x1="{PADL}" y1="{y:.1f}" x2="{W-PADR}" y2="{y:.1f}" stroke="#e7eaf1"/>')
         p_.append(f'<text x="{PADL-6}" y="{y+3.5:.1f}" font-size="9" fill="#8a93a5" '
                   f'text-anchor="end">${_fmt_tick(v)}</text>')
-    for yr, lbl in _WAGE_POINTS:
+    for i, (yr, lbl) in enumerate(_WAGE_POINTS):
         x = x_of(yr)
         p_.append(f'<line x1="{x:.1f}" y1="{PADT}" x2="{x:.1f}" y2="{PADT+plot_h}" '
                   'stroke="#eef1f6"/>')
-        p_.append(f'<text x="{x:.1f}" y="{H-PADB+16:.0f}" font-size="9.5" fill="#5a6577" '
-                  f'text-anchor="middle">{_esc(lbl)}</text>')
-    p_.append(f'<text x="{PADL + plot_w / 2:.1f}" y="{H-PADB+32:.0f}" font-size="10" '
+        # End ticks anchor inward, the same way the enrolment chart's do. Centred on a
+        # full-width plot the outer labels overrun the plate — "5 yrs after" rendered
+        # as "5 yrs aft".
+        anc = "start" if i == 0 else ("end" if i == len(_WAGE_POINTS) - 1 else "middle")
+        p_.append(f'<text x="{x:.1f}" y="{H-PADB+17:.0f}" font-size="9.5" fill="#5a6577" '
+                  f'text-anchor="{anc}">{_esc(lbl)}</text>')
+    p_.append(f'<text x="{PADL + plot_w / 2:.1f}" y="{H-PADB+38:.0f}" font-size="10" '
               f'fill="#5a6577" text-anchor="middle">Years relative to award</text>')
 
     for si, (w, vals) in enumerate(series):
@@ -1129,18 +1137,25 @@ def _wage_outcomes_svg(wages: list, top6: str) -> str:
             y, v = vals[0]
             p_.append(f'<circle cx="{x_of(y):.1f}" cy="{y_of(v):.1f}" r="5.5" fill="none" '
                       f'stroke="{col}" stroke-width="1.4"/>')
-        # Direct label at the line's end — with two or three lines on paper this
-        # beats a legend the eye has to go look up.
-        ly, lv = vals[-1]
-        # No lift multiple. It was noise, and worse than noise: the certificate cohort
-        # often carries the LARGER multiple while ending at the LOWER level (Vet Tech,
-        # 1.7x vs 2.5x but $14k behind), because it started from a higher base. Two true
-        # numbers pointing opposite ways, read in a glance. The lines already carry the
-        # lift — that is why this is a trajectory plot and not a table.
+    # Legend beneath, not labels in a right-hand gutter: a gutter wide enough for
+    # "Local certificate n=29" pushed the plot off-centre and cost a quarter of the
+    # width. No lift multiple in it either — that was noise, and worse than noise,
+    # since the cohort with the larger multiple often ends at the lower level (Env
+    # Horticulture's local certificate is the biggest multiple and the lowest line).
+    # The lines carry the lift; that is why this is a trajectory plot.
+    lx, ly = PADL, H - PADB + 56
+    for si, (w, _v) in enumerate(series):
+        col = _WAGE_LINE[si % len(_WAGE_LINE)]
+        lab = _wage_label(w.recipient_type)
         nn = f"  n={w.n:,}" if w.n else ""
-        p_.append(f'<text x="{x_of(ly)+9:.1f}" y="{y_of(lv)+3.5:.1f}" font-size="9.5" '
-                  f'fill="{col}">{_esc(_wage_label(w.recipient_type))}'
-                  f'<tspan font-size="8.5" fill="#7a8398">{_esc(nn)}</tspan></text>')
+        wdt = 26 + 5.6 * len(lab) + 4.8 * len(nn)
+        if lx + wdt > W - PADR:
+            lx, ly = PADL, ly + 13
+        p_.append(f'<line x1="{lx}" y1="{ly-3}" x2="{lx+14}" y2="{ly-3}" stroke="{col}" '
+                  'stroke-width="2"/>')
+        p_.append(f'<text x="{lx+19}" y="{ly}" font-size="9.5" fill="#5a6577">{_esc(lab)}'
+                  f'<tspan font-size="8.5" fill="#8a93a5">{_esc(nn)}</tspan></text>')
+        lx += wdt
     p_.append('</svg>')
     return f'<div class="wgchart">{"".join(p_)}</div>'
 
@@ -1530,7 +1545,7 @@ def _wage_section(lens: LensModel, spec: ReportSpec) -> str:
         return ""
     window = next((w.window for w in rows if w.window), "")
     college = _org_label(lens.scope.member)
-    note = _WAGE_BLURB.format(college=_esc(college))
+    note = _WAGE_BLURB
     win = f" Award years {_esc(window)}." if window else ""
     return _block(
         '<h1>Wage Outcomes</h1>',
