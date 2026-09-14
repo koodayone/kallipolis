@@ -1049,12 +1049,18 @@ def _enrollment_lines_svg(programs, term_keys: list[str], term_heads: list[str],
     return f'<div class="enchart">{"".join(p_)}</div>'
 
 
-#: Time ramp for the wage lines: faded -> full as the cohort moves away from the
-#: award. Deliberately NOT the college's brand colour — in this report brand means
-#: "the member's own data" (its band in the supply chart, its line in the enrolment
-#: chart), and these wages are STATEWIDE. Branding them would assert they are the
-#: college's graduates more forcefully than any caption can retract.
-_WAGE_LINE = ("#1f3864", "#2e74b5", "#4a90c4", "#7aa6d4")
+#: One colour per recipient type — CATEGORICAL, not a single-hue ramp. Three shades of
+#: blue put Certificate and Local certificate 3 hue-degrees apart, which is no
+#: distinction at all on paper. Navy / teal / violet are 46 degrees apart at the
+#: closest and descend in weight (greyscale 0.21 / 0.47 / 0.60), so the lines separate
+#: by hue on screen AND by lightness in a photocopy, with the darkest reading as the
+#: heaviest credential.
+#:
+#: Deliberately avoids the two colours that already carry meaning in this report:
+#: crimson is "the member's own data" (its band in the supply chart, its line in the
+#: enrolment chart) and these wages are STATEWIDE; amber is the demand threshold rule.
+#: Both are >40 hue-degrees away from every colour here.
+_WAGE_LINE = ("#1f3864", "#2a9d8f", "#b880cb", "#8a93a5")
 
 
 def _wage_outcomes_svg(wages: list, top6: str) -> str:
