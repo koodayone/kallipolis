@@ -106,6 +106,12 @@ def _unit_phrase(units: float, basis: str, cal: str) -> str:
     return f"{n} {unit}"
 
 
+#: Leads the wage section. Carries the two facts a reader cannot recover from the
+#: plate: these are STATEWIDE recipients (not the member's own graduates), and the
+#: cohort window predates every other figure in the report.
+_WAGE_BLURB = ("Median earnings of California community college award recipients in this "
+               "program statewide, two years before completion and two and five years after.")
+
 _SEP = " · "        # status/date separator, hoisted: f-strings cannot hold escapes
 _CAREERONESTOP = "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword="
 
@@ -181,6 +187,60 @@ _SUPPLY_BLURB = ("Credentials awarded per year across colleges offering this pro
                  "against regional annual openings for target occupations.")
 _ENROLL_BLURB = ("Term-by-term enrollment across the member colleges that run this program, "
                  "excluding the structurally-low summer terms.")
+
+
+#: The wage plate. Shorter than the supply/enrolment charts — two or three lines
+#: over three checkpoints is far less ink than five years by six colleges.
+_WAGE_CHART = (648, 250)
+
+#: Checkpoints in YEARS relative to award. DataMart's "before" figure is two years
+#: BEFORE completion, so the gaps are 4 years then 3 — not uniform. Plotted true to
+#: scale: at equal spacing the second segment reads steeper than it is.
+_WAGE_POINTS = ((-2, "2 yrs before"), (2, "2 yrs after"), (5, "5 yrs after"))
+
+#: Recipient types shortened, in credential weight order — the same order Awards
+#: Offered uses above, so the two sections read consistently. Where the outcome
+#: ordering disagrees (Environmental Horticulture's certificate out-earns its
+#: degree) the lines show it; the row order does not have to.
+#: (pattern, short label, qualifier). The qualifier is not decoration — it is the
+#: only place two real distinctions get made.
+#:
+#: "Certificate" alone was accurate but under-labelled. DataMart splits certificates
+#: into Chancellor's-Office-approved and locally approved, and this section is the ONLY
+#: place in the report that distinction appears; bare "Certificate" beside "Local
+#: certificate" reads as "certificates in general" versus "a local one". (COCI, the CO
+#: approved inventory, contains nothing but Certificate of Achievement types, so the
+#: Awards Offered section above is entirely CO-approved — which the reader has no way
+#: to know from the word "certificate".)
+#:
+#: "Degree" pools ASSOCIATE AND BACCALAUREATE in one DataMart cohort. Respiratory
+#: Therapy lists both an A.S. and a B.S. under Awards Offered, so an unqualified
+#: "Degree" line there reads as the associate degree alone. It is both.
+_WAGE_LABELS = ((r"Associate or Bacc", "Degree", "associate or baccalaureate"),
+                (r"Chancellor.?s Office", "Certificate, CO-approved", ""),
+                (r"Locally Approved", "Certificate, locally approved", ""))
+
+
+def _wage_label(rt: str) -> str:
+    for pat, short, _q in _WAGE_LABELS:
+        if re.search(pat, rt or "", re.I):
+            return short
+    return re.sub(r"\s*Recipient\s*$", "", rt or "")
+
+
+def _wage_qualifier(rt: str) -> str:
+    """What the cohort pools, where the short label does not say."""
+    for pat, _s, q in _WAGE_LABELS:
+        if re.search(pat, rt or "", re.I):
+            return q
+    return ""
+
+
+def _wage_rank(rt: str) -> int:
+    for i, (pat, _s, _q) in enumerate(_WAGE_LABELS):
+        if re.search(pat, rt or "", re.I):
+            return i
+    return len(_WAGE_LABELS)
 
 
 def _nice_axis(vmax: float, target: int = 5) -> tuple[float, list[float]]:
@@ -1011,6 +1071,163 @@ def _enrollment_lines_svg(programs, term_keys: list[str], term_heads: list[str],
     return f'<div class="enchart">{"".join(p_)}</div>'
 
 
+#: One colour per recipient type — CATEGORICAL, not a single-hue ramp. Three shades of
+#: blue put Certificate and Local certificate 3 hue-degrees apart, which is no
+#: distinction at all on paper. Navy / teal / violet are 46 degrees apart at the
+#: closest and descend in weight (greyscale 0.21 / 0.47 / 0.60), so the lines separate
+#: by hue on screen AND by lightness in a photocopy, with the darkest reading as the
+#: heaviest credential.
+#:
+#: Deliberately avoids the two colours that already carry meaning in this report:
+#: crimson is "the member's own data" (its band in the supply chart, its line in the
+#: enrolment chart) and these wages are STATEWIDE; amber is the demand threshold rule.
+#: Both are >40 hue-degrees away from every colour here.
+_WAGE_LINE = ("#1f3864", "#2a9d8f", "#b880cb", "#8a93a5")
+
+
+def _wage_table(rows: list) -> str:
+    """The figures behind the trajectory, as NATIVE text — not baked into the plate.
+
+    Labelling the points directly was the first instinct and it does not survive the
+    data: across the four shipped evaluations five of eleven adjacent pairs sit closer
+    than a label is tall, and Environmental Horticulture's degree and local
+    certificate are $629 apart at two years — 1.2px. They would print on top of one
+    another.
+
+    A table also puts the missing checkpoints somewhere they can be SEEN. DataMart
+    reports N/A for two of Community Health Worker's local-certificate cells; in the
+    chart that is an absence you have to notice, here it is a cell that says so. Same
+    three-state discipline the enrolment table uses — a figure, an explicit "n/a", and
+    never a silent blank.
+
+    Emitted as `table.trend` so build_docx renders it as a real Word table: a reader
+    who wants to quote $96,733 can select it, which they cannot do with a raster.
+    """
+    if not rows:
+        return ""
+    head = "".join(f"<th>{_esc(lbl)}</th>" for _yr, lbl in _WAGE_POINTS)
+    body = []
+    for w in rows:
+        cells = ""
+        for key in ("wage_before", "wage_after_2", "wage_after_5"):
+            v = getattr(w, key)
+            cells += (f'<td class="num">${v:,}</td>' if v
+                      else '<td class="num na">n/a</td>')
+        # The space matters: .trend td.prog span is inline, so without it the label
+        # and the count run together as "Certificaten=28". build_docx already lifts the
+        # span into its own paragraph, so this only affects the HTML and the PDF.
+        sub = " · ".join(x for x in (_wage_qualifier(w.recipient_type),
+                                     f"n={w.n:,}" if w.n else "") if x)
+        n = f' <span>{_esc(sub)}</span>' if sub else ""
+        body.append(f'<tr><td class="prog"><b>{_esc(_wage_label(w.recipient_type))}</b>'
+                    f'{n}</td>{cells}</tr>')
+    cols = '<col class="cprog">' + "<col>" * len(_WAGE_POINTS)
+    return (f'<table class="trend"><colgroup>{cols}</colgroup>'
+            f'<thead><tr><th class="prog">Award recipients</th>{head}</tr></thead>'
+            f'<tbody>{"".join(body)}</tbody></table>')
+
+
+def _wage_outcomes_svg(wages: list, top6: str) -> str:
+    """Earnings trajectory for each award cohort: one line per recipient type across
+    the three DataMart checkpoints.
+
+    A line, not a bar or a dumbbell, because the claim is a LIFT and a lift is a
+    slope — read directly, before the labels are. It also reuses the grammar the
+    enrolment chart already teaches (x = time, y = quantity, one line per series,
+    a dot at every real observation), so the reader learns it once.
+
+    Three things this must not do, each a failure this report has already made once
+    somewhere else:
+      - drop a cohort with a missing endpoint. DataMart reports N/A for some
+        checkpoints; the dashboard's version filters those rows out entirely, which
+        would silently delete Community Health Worker's 12-recipient local
+        certificate and render as a complete picture.
+      - start the y-axis anywhere but zero. A track from $28k to $97k on an axis
+        beginning at $20k overstates the multiple.
+      - space the checkpoints evenly. They are -2, +2 and +5 years.
+    """
+    rows = sorted((w for w in (wages or [])), key=lambda w: _wage_rank(w.recipient_type))
+    series = []
+    for w in rows:
+        vals = [(yr, v) for (yr, _l), v in
+                zip(_WAGE_POINTS, (w.wage_before, w.wage_after_2, w.wage_after_5))
+                if v]
+        if vals:
+            series.append((w, vals))
+    if not series:
+        return ""
+    top, ticks = _nice_axis(max(v for _w, vs in series for _y, v in vs) * 1.12)
+
+    # Right-hand line labels forced a 148px gutter against a 58px left one, so the
+    # plot sat visibly off-centre and used two thirds of the plate. The labels move to
+    # a legend beneath — the same place the enrolment chart puts them — which lets the
+    # gutters match the other charts (12px right) and the plot span the full width.
+    # PADL is sized so the rotated axis title clears the widest tick ("$150,000").
+    W, H, PADL, PADR, PADT, PADB = _WAGE_CHART[0], _WAGE_CHART[1], 76, 12, 18, 84
+    plot_w, plot_h = W - PADL - PADR, H - PADT - PADB
+    xs = [y for y, _l in _WAGE_POINTS]
+    x_of = lambda y: PADL + plot_w * (y - xs[0]) / (xs[-1] - xs[0])
+    y_of = lambda v: PADT + plot_h - (v / top) * plot_h
+
+    p_ = [f'<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" '
+          'font-family="Helvetica,Arial,sans-serif">']
+    p_.append(f'<text x="14" y="{PADT + plot_h / 2:.1f}" font-size="10" fill="#5a6577" '
+              f'text-anchor="middle" transform="rotate(-90 14 {PADT + plot_h / 2:.1f})">'
+              f'Median earnings</text>')
+    for v in ticks:
+        y = y_of(v)
+        p_.append(f'<line x1="{PADL}" y1="{y:.1f}" x2="{W-PADR}" y2="{y:.1f}" stroke="#e7eaf1"/>')
+        p_.append(f'<text x="{PADL-6}" y="{y+3.5:.1f}" font-size="9" fill="#8a93a5" '
+                  f'text-anchor="end">${_fmt_tick(v)}</text>')
+    for i, (yr, lbl) in enumerate(_WAGE_POINTS):
+        x = x_of(yr)
+        p_.append(f'<line x1="{x:.1f}" y1="{PADT}" x2="{x:.1f}" y2="{PADT+plot_h}" '
+                  'stroke="#eef1f6"/>')
+        # End ticks anchor inward, the same way the enrolment chart's do. Centred on a
+        # full-width plot the outer labels overrun the plate — "5 yrs after" rendered
+        # as "5 yrs aft".
+        anc = "start" if i == 0 else ("end" if i == len(_WAGE_POINTS) - 1 else "middle")
+        p_.append(f'<text x="{x:.1f}" y="{H-PADB+17:.0f}" font-size="9.5" fill="#5a6577" '
+                  f'text-anchor="{anc}">{_esc(lbl)}</text>')
+    p_.append(f'<text x="{PADL + plot_w / 2:.1f}" y="{H-PADB+38:.0f}" font-size="10" '
+              f'fill="#5a6577" text-anchor="middle">Years relative to award</text>')
+
+    for si, (w, vals) in enumerate(series):
+        col = _WAGE_LINE[si % len(_WAGE_LINE)]
+        if len(vals) > 1:
+            path = " ".join(f"{x_of(y):.1f},{y_of(v):.1f}" for y, v in vals)
+            p_.append(f'<polyline points="{path}" fill="none" stroke="{col}" '
+                      'stroke-width="2" stroke-linejoin="round"/>')
+        for y, v in vals:
+            p_.append(f'<circle cx="{x_of(y):.1f}" cy="{y_of(v):.1f}" r="3" fill="{col}"/>')
+        # A cohort reporting only ONE checkpoint gets a hollow marker: there is a
+        # real observation, and there is no trajectory to draw. Dropping it would
+        # be the silent deletion this chart exists to avoid.
+        if len(vals) == 1:
+            y, v = vals[0]
+            p_.append(f'<circle cx="{x_of(y):.1f}" cy="{y_of(v):.1f}" r="5.5" fill="none" '
+                      f'stroke="{col}" stroke-width="1.4"/>')
+    # Legend beneath, not labels in a right-hand gutter. A gutter wide enough for the
+    # longest cohort name pushed the plot off-centre and cost a quarter of the width;
+    # beneath, the plot spans the plate and the space either side is even.
+    #
+    # Colour key only. The sample sizes and every figure live in the table below, so
+    # repeating them here would be two places for the same number to disagree.
+    lx, ly = PADL, H - PADB + 56
+    for si, (w, _v) in enumerate(series):
+        col = _WAGE_LINE[si % len(_WAGE_LINE)]
+        lab = _wage_label(w.recipient_type)
+        wdt = 30 + 5.6 * len(lab)
+        if lx + wdt > W - PADR:
+            lx, ly = PADL, ly + 13
+        p_.append(f'<line x1="{lx}" y1="{ly-3}" x2="{lx+14}" y2="{ly-3}" stroke="{col}" '
+                  'stroke-width="2"/>')
+        p_.append(f'<text x="{lx+19}" y="{ly}" font-size="9.5" fill="#5a6577">{_esc(lab)}</text>')
+        lx += wdt
+    p_.append('</svg>')
+    return f'<div class="wgchart">{"".join(p_)}</div>'
+
+
 def _trend_table(programs, axis: list[str], headers: list[str], value_attr: str,
                  total_label: str = "", college_terms: dict | None = None) -> str:
     """A `table.trend`: one row per (college, program), a value per axis key.
@@ -1171,7 +1388,7 @@ tr.tot td{font-weight:700;background:#f3f6fb}
 .cmpgrid td{font-size:10px}.cmpgrid tr.sec td{background:#eef1f6;font-weight:700;font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:#5f6368}
 .cmpgrid tr.descrow td{font-style:italic;color:#5f6368;font-size:11px;line-height:1.35}
 .xwrap{margin:10px 0 4px}.xwrap svg{width:100%;height:auto;display:block}
-.chtitle{font-size:13px;font-weight:700;color:#12203a;margin:14px 0 3px}.awchart{margin:6px 0 2px}.enchart{margin:6px 0 2px}.awchart svg{width:100%;height:auto;display:block}.enchart svg{width:100%;height:auto;display:block}
+.chtitle{font-size:13px;font-weight:700;color:#12203a;margin:14px 0 3px}.awchart{margin:6px 0 2px}.enchart{margin:6px 0 2px}.wgchart{margin:6px 0 2px}.awchart svg{width:100%;height:auto;display:block}.enchart svg{width:100%;height:auto;display:block}.wgchart svg{width:100%;height:auto;display:block}
 .cgap{font-size:11px;color:#7a5230;background:#fdf6ec;border-left:3px solid #e0a458;padding:7px 12px;margin:6px 0 2px;border-radius:0 4px 4px 0}.cgap b{color:#a8641a}
 .srcdash{margin:4px 0 16px;font-size:13px}.srcsec{margin:16px 0 6px;font-size:13px}.srcdash i,.srcsec i{color:#222}
 .srclist{margin:0}.srcitem{font-size:13px;line-height:1.55}.srcitem a,.srcdash a{color:#1155cc;text-decoration:underline}
@@ -1378,6 +1595,32 @@ def select_partner_programs(programs, charter_colleges, min_awards: int = 50):
     return chosen
 
 
+def _wage_section(lens: LensModel, spec: ReportSpec) -> str:
+    """"Wage Outcomes" — the one section that reports what happened to PEOPLE.
+
+    Everything else in the document counts things: awards, enrolments, openings,
+    employers, units. This says whether the credential changed earnings, which for a
+    program evaluation is closer to the thesis than any of them.
+
+    The window is DataMart's own and is stated rather than harmonised: these cohorts
+    completed between 2015-16 and 2019-20, five to ten years older than the award,
+    enrolment and demand vintages elsewhere in the report. Silently placing an older
+    figure beside newer ones is what makes a reader trust the wrong comparison.
+    """
+    rows = lens.wages.get(spec.program_top) or []
+    chart = _wage_outcomes_svg(rows, spec.program_top)
+    if not chart:
+        return ""
+    window = next((w.window for w in rows if w.window), "")
+    win = f" Award years {_esc(window)}." if window else ""
+    return _block(
+        '<h1>Wage Outcomes</h1>',
+        f'<p>{_WAGE_BLURB}{win}</p>',
+        chart,
+        _wage_table(rows),
+    )
+
+
 def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
                       lens: LensModel | None = None) -> str:
     """Render a workforce-pathway report for `(member_id, play)` to HTML — DATA
@@ -1398,6 +1641,11 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         # Program evaluations open with the program's own credential menu — the subject of
         # the document. Role reports leave `program_top` empty and this renders nothing.
         _awards_offered_section(lens.scope.member.name, spec.program_top) if spec.program_top else '',
+        # Wage outcomes sit directly under the credential menu: here is what the
+        # program grants, here is what recipients went on to earn. Evaluations only —
+        # the data is TOP6-grain, and a role report spanning several TOPs would need
+        # one plate per TOP or an invalid merge.
+        _wage_section(lens, spec) if spec.program_top else '',
         _block('<h1>Regional Occupational Demand</h1>',
                f'<p>{_linkify(spec.demand_note)}</p>' if spec.demand_note else '',
                _demand_table(occs),
