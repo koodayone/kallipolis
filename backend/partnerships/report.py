@@ -1207,17 +1207,15 @@ def _wage_outcomes_svg(wages: list, top6: str) -> str:
             y, v = vals[0]
             p_.append(f'<circle cx="{x_of(y):.1f}" cy="{y_of(v):.1f}" r="5.5" fill="none" '
                       f'stroke="{col}" stroke-width="1.4"/>')
-    # Legend beneath, not labels in a right-hand gutter: a gutter wide enough for
-    # "Local certificate n=29" pushed the plot off-centre and cost a quarter of the
-    # width. No lift multiple in it either — that was noise, and worse than noise,
-    # since the cohort with the larger multiple often ends at the lower level (Env
-    # Horticulture's local certificate is the biggest multiple and the lowest line).
-    # The lines carry the lift; that is why this is a trajectory plot.
+    # Legend beneath, not labels in a right-hand gutter. A gutter wide enough for the
+    # longest cohort name pushed the plot off-centre and cost a quarter of the width;
+    # beneath, the plot spans the plate and the space either side is even.
+    #
+    # Colour key only. The sample sizes and every figure live in the table below, so
+    # repeating them here would be two places for the same number to disagree.
     lx, ly = PADL, H - PADB + 56
     for si, (w, _v) in enumerate(series):
         col = _WAGE_LINE[si % len(_WAGE_LINE)]
-        # Colour key only. The n and the figures live in the table beneath, so
-        # repeating them here would be the same number printed twice.
         lab = _wage_label(w.recipient_type)
         wdt = 30 + 5.6 * len(lab)
         if lx + wdt > W - PADR:
@@ -1614,12 +1612,10 @@ def _wage_section(lens: LensModel, spec: ReportSpec) -> str:
     if not chart:
         return ""
     window = next((w.window for w in rows if w.window), "")
-    college = _org_label(lens.scope.member)
-    note = _WAGE_BLURB
     win = f" Award years {_esc(window)}." if window else ""
     return _block(
         '<h1>Wage Outcomes</h1>',
-        f'<p>{note}{win}</p>',
+        f'<p>{_WAGE_BLURB}{win}</p>',
         chart,
         _wage_table(rows),
     )
