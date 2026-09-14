@@ -18,6 +18,9 @@ Coverage:
   - every entry carries the name, url and confidence the renderer expects
   - award_units entries are {units, basis} with a basis the renderer understands
   - a degree total below its credential's minimum MUST be marked as a part, not a whole
+  - a CERTIFICATE figure falls inside the unit band the state approved for its award
+    type — the one fully deterministic check available, since leaving the band forces
+    re-approval
   - every figure records the credential tier, so the guard cannot be fooled by a
     programme name that does not contain the word "degree"
   - certificate figures are positive and calendars are ones we can label
@@ -25,6 +28,7 @@ Coverage:
     baccalaureate to a total that includes its prerequisite degree
 """
 import json
+import re
 from pathlib import Path
 
 import pytest
@@ -192,3 +196,61 @@ def test_no_cached_figure_renders_below_its_degree_floor(key, title, u):
     phrase = _unit_phrase(u["units"], u["basis"], cal)
     shown = float(phrase.replace("at least ", "").split()[0])
     assert shown >= _DEGREE_FLOOR[cal], f"{key}/{title}: renders {phrase!r}, under the floor"
+
+
+# ── the deterministic check ──────────────────────────────────────────────────
+# Curated unit counts are transcribed from catalog pages by hand, so most of this file
+# can only assert internal consistency. Certificates are the exception: COCI's AWARD
+# string carries the unit BAND the Chancellor's Office approved, and a programme that
+# moves outside its band must be re-approved into a different award type. So the band
+# is a real, external, machine-checkable bound on the figure — not a heuristic.
+#
+# Degrees carry no band (COCI records only MAJOR UNITS for them, an approval-time
+# snapshot that drifts), so they fall back to the Title 5 floor above.
+
+def _band_for(band: str, calendar: str):
+    """(lo, hi) units from a rendered band, read on the entry's OWN calendar.
+
+    The band is dual-notation ("8-16 semester / 12-24 quarter units"), so the side
+    that binds depends on the college. Reading the quarter side against a semester
+    figure would be off by 1.5x in the lenient direction.
+    """
+    side = r"(\d+)(?:[-\u2013](\d+))?\+?\s*" + re.escape(calendar)
+    m = re.search(side, (band or "").replace("\u2013", "-"))
+    if not m:
+        return None
+    lo = float(m.group(1))
+    hi = float(m.group(2)) if m.group(2) else float("inf")
+    return lo, hi
+
+
+@pytest.mark.parametrize("key,title,u,cal", [
+    (k, t, u, v.get("calendar"))
+    for k, v in _names().items()
+    for t, u in (v.get("award_units") or {}).items()
+    if isinstance(u, dict) and "certificate" in (u.get("tier") or "")
+])
+def test_a_certificate_figure_sits_inside_its_approved_band(key, title, u, cal):
+    """THE check this file was missing. A hand-transcribed certificate figure is
+    verifiable against the state's own approved range for that award type."""
+    from ontology.coci import award_band, awards_for
+    college, _, top6 = key.partition("|")
+    match = next((a for a in awards_for(college, top6, offered_only=False)
+                  if a.title == title), None)
+    assert match, f"{key}/{title}: no COCI record — cannot verify the figure"
+    assert cal in CALENDARS, f"{key}: calendar is {cal!r}; the band cannot be read"
+    band = _band_for(award_band(match.award), cal)
+    assert band, f"{key}/{title}: no {cal} band in {match.award!r}"
+    lo, hi = band
+    assert lo <= u["units"] <= hi, (
+        f"{key}/{title}: {u['units']:g} {cal} units is outside the approved band "
+        f"{lo:g}-{'inf' if hi == float('inf') else f'{hi:g}'} for {match.award!r}")
+
+
+def test_every_certificate_in_the_cache_is_band_checked():
+    """Guards the guard: if a curated certificate ever lacks a COCI tier, the
+    parametrised check above would silently skip it."""
+    certs = [(k, t) for k, v in _names().items()
+             for t, u in (v.get("award_units") or {}).items()
+             if isinstance(u, dict) and "certificate" in (u.get("tier") or "")]
+    assert len(certs) == 4, f"expected the 4 shipped certificates, found {len(certs)}"
