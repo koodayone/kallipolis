@@ -202,20 +202,42 @@ _WAGE_POINTS = ((-2, "2 yrs before"), (2, "2 yrs after"), (5, "5 yrs after"))
 #: Offered uses above, so the two sections read consistently. Where the outcome
 #: ordering disagrees (Environmental Horticulture's certificate out-earns its
 #: degree) the lines show it; the row order does not have to.
-_WAGE_LABELS = ((r"Associate or Bacc", "Degree"),
-                (r"Chancellor.?s Office", "Certificate"),
-                (r"Locally Approved", "Local certificate"))
+#: (pattern, short label, qualifier). The qualifier is not decoration — it is the
+#: only place two real distinctions get made.
+#:
+#: "Certificate" alone was accurate but under-labelled. DataMart splits certificates
+#: into Chancellor's-Office-approved and locally approved, and this section is the ONLY
+#: place in the report that distinction appears; bare "Certificate" beside "Local
+#: certificate" reads as "certificates in general" versus "a local one". (COCI, the CO
+#: approved inventory, contains nothing but Certificate of Achievement types, so the
+#: Awards Offered section above is entirely CO-approved — which the reader has no way
+#: to know from the word "certificate".)
+#:
+#: "Degree" pools ASSOCIATE AND BACCALAUREATE in one DataMart cohort. Respiratory
+#: Therapy lists both an A.S. and a B.S. under Awards Offered, so an unqualified
+#: "Degree" line there reads as the associate degree alone. It is both.
+_WAGE_LABELS = ((r"Associate or Bacc", "Degree", "associate or baccalaureate"),
+                (r"Chancellor.?s Office", "Certificate, CO-approved", ""),
+                (r"Locally Approved", "Certificate, locally approved", ""))
 
 
 def _wage_label(rt: str) -> str:
-    for pat, short in _WAGE_LABELS:
+    for pat, short, _q in _WAGE_LABELS:
         if re.search(pat, rt or "", re.I):
             return short
     return re.sub(r"\s*Recipient\s*$", "", rt or "")
 
 
+def _wage_qualifier(rt: str) -> str:
+    """What the cohort pools, where the short label does not say."""
+    for pat, _s, q in _WAGE_LABELS:
+        if re.search(pat, rt or "", re.I):
+            return q
+    return ""
+
+
 def _wage_rank(rt: str) -> int:
-    for i, (pat, _s) in enumerate(_WAGE_LABELS):
+    for i, (pat, _s, _q) in enumerate(_WAGE_LABELS):
         if re.search(pat, rt or "", re.I):
             return i
     return len(_WAGE_LABELS)
@@ -1094,7 +1116,9 @@ def _wage_table(rows: list) -> str:
         # The space matters: .trend td.prog span is inline, so without it the label
         # and the count run together as "Certificaten=28". build_docx already lifts the
         # span into its own paragraph, so this only affects the HTML and the PDF.
-        n = f' <span>n={w.n:,}</span>' if w.n else ""
+        sub = " · ".join(x for x in (_wage_qualifier(w.recipient_type),
+                                     f"n={w.n:,}" if w.n else "") if x)
+        n = f' <span>{_esc(sub)}</span>' if sub else ""
         body.append(f'<tr><td class="prog"><b>{_esc(_wage_label(w.recipient_type))}</b>'
                     f'{n}</td>{cells}</tr>')
     cols = '<col class="cprog">' + "<col>" * len(_WAGE_POINTS)

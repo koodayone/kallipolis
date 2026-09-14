@@ -33,7 +33,7 @@ import pytest
 from ontology.programs import get_wage_outcomes
 from partnerships.lens import LensWage
 from partnerships.report import (_WAGE_CHART, _WAGE_POINTS, _wage_label, _wage_outcomes_svg,
-                                 _wage_rank, _wage_table)
+                                 _wage_qualifier, _wage_rank, _wage_table)
 
 #: The four TOPs the shipped program evaluations cover.
 EVAL_TOPS = ("121000", "010900", "126100", "010210")
@@ -55,12 +55,13 @@ def _tbl(top6):
 
 # ── vocabulary ───────────────────────────────────────────────────────────────
 
-def test_recipient_labels_match_the_reports_own_words():
-    """Awards Offered directly above calls a Certificate of Achievement a
-    "certificate"; the wage section must not invent a second vocabulary for it."""
+def test_recipient_labels_name_the_approval_route():
+    """This section is the only place in the report the CO-approved / locally-approved
+    split appears. Bare "Certificate" beside "Local certificate" read as "certificates
+    in general" versus "a local one"."""
     assert _wage_label("Associate or Baccalaureate Degree Recipient") == "Degree"
-    assert _wage_label("Chancellor's Office Approved Certificates Recipient") == "Certificate"
-    assert _wage_label("Locally Approved Certificates Recipient") == "Local certificate"
+    assert _wage_label("Chancellor's Office Approved Certificates Recipient") == "Certificate, CO-approved"
+    assert _wage_label("Locally Approved Certificates Recipient") == "Certificate, locally approved"
 
 
 def test_unknown_recipient_type_degrades_to_its_own_name():
@@ -75,8 +76,8 @@ def test_cohorts_order_by_credential_weight_not_outcome():
     assert _wage_rank("Chancellor's Office Approved Certificates Recipient") == 1
     assert _wage_rank("Locally Approved Certificates Recipient") == 2
     svg = _svg("010900")
-    labels = re.findall(r'fill="#[0-9a-f]{6}">(Degree|Certificate|Local certificate)<', svg)
-    assert labels == ["Degree", "Certificate", "Local certificate"]
+    labels = re.findall(r'fill="#5a6577">(Degree|Certificate,[^<]*)</text>', svg)
+    assert labels == ["Degree", "Certificate, CO-approved", "Certificate, locally approved"]
 
 
 # ── geometry ─────────────────────────────────────────────────────────────────
@@ -140,7 +141,7 @@ def test_a_single_checkpoint_cohort_renders_and_is_not_dropped():
               if r.wage_before is None and r.wage_after_2 and r.wage_after_5 is None]
     assert len(orphan) == 1 and orphan[0].n == 12, "fixture changed; revisit this test"
     svg = _svg("126100")
-    assert "Local certificate" in svg, "the orphan cohort was dropped"
+    assert "Certificate, locally approved" in svg, "the orphan cohort was dropped"
     assert svg.count('r="5.5" fill="none"') == 1, "no hollow marker for the lone point"
     assert svg.count("<polyline") == 1, "a one-point cohort must not draw a line"
 
@@ -199,3 +200,19 @@ def test_the_table_emits_the_class_build_docx_renders_natively():
 
 def test_no_table_without_rows():
     assert _wage_table([]) == ""
+
+
+def test_the_degree_row_says_it_pools_associate_and_baccalaureate():
+    """DataMart's degree cohort is one bucket for both. Respiratory Therapy lists an
+    A.S. AND a B.S. under Awards Offered, so an unqualified "Degree" line there reads
+    as the associate alone."""
+    assert _wage_qualifier("Associate or Baccalaureate Degree Recipient") == \
+        "associate or baccalaureate"
+    assert "associate or baccalaureate" in _tbl("121000")
+
+
+def test_certificate_rows_need_no_qualifier_beyond_their_label():
+    """Their labels already carry the approval route, so a sub-line would repeat it."""
+    for rt in ("Chancellor's Office Approved Certificates Recipient",
+               "Locally Approved Certificates Recipient"):
+        assert _wage_qualifier(rt) == ""
