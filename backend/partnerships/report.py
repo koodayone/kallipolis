@@ -1063,6 +1063,46 @@ def _enrollment_lines_svg(programs, term_keys: list[str], term_heads: list[str],
 _WAGE_LINE = ("#1f3864", "#2a9d8f", "#b880cb", "#8a93a5")
 
 
+def _wage_table(rows: list) -> str:
+    """The figures behind the trajectory, as NATIVE text — not baked into the plate.
+
+    Labelling the points directly was the first instinct and it does not survive the
+    data: across the four shipped evaluations five of eleven adjacent pairs sit closer
+    than a label is tall, and Environmental Horticulture's degree and local
+    certificate are $629 apart at two years — 1.2px. They would print on top of one
+    another.
+
+    A table also puts the missing checkpoints somewhere they can be SEEN. DataMart
+    reports N/A for two of Community Health Worker's local-certificate cells; in the
+    chart that is an absence you have to notice, here it is a cell that says so. Same
+    three-state discipline the enrolment table uses — a figure, an explicit "n/a", and
+    never a silent blank.
+
+    Emitted as `table.trend` so build_docx renders it as a real Word table: a reader
+    who wants to quote $96,733 can select it, which they cannot do with a raster.
+    """
+    if not rows:
+        return ""
+    head = "".join(f"<th>{_esc(lbl)}</th>" for _yr, lbl in _WAGE_POINTS)
+    body = []
+    for w in rows:
+        cells = ""
+        for key in ("wage_before", "wage_after_2", "wage_after_5"):
+            v = getattr(w, key)
+            cells += (f'<td class="num">${v:,}</td>' if v
+                      else '<td class="num na">n/a</td>')
+        # The space matters: .trend td.prog span is inline, so without it the label
+        # and the count run together as "Certificaten=28". build_docx already lifts the
+        # span into its own paragraph, so this only affects the HTML and the PDF.
+        n = f' <span>n={w.n:,}</span>' if w.n else ""
+        body.append(f'<tr><td class="prog"><b>{_esc(_wage_label(w.recipient_type))}</b>'
+                    f'{n}</td>{cells}</tr>')
+    cols = '<col class="cprog">' + "<col>" * len(_WAGE_POINTS)
+    return (f'<table class="trend"><colgroup>{cols}</colgroup>'
+            f'<thead><tr><th class="prog">Award recipients</th>{head}</tr></thead>'
+            f'<tbody>{"".join(body)}</tbody></table>')
+
+
 def _wage_outcomes_svg(wages: list, top6: str) -> str:
     """Earnings trajectory for each award cohort: one line per recipient type across
     the three DataMart checkpoints.
@@ -1152,15 +1192,15 @@ def _wage_outcomes_svg(wages: list, top6: str) -> str:
     lx, ly = PADL, H - PADB + 56
     for si, (w, _v) in enumerate(series):
         col = _WAGE_LINE[si % len(_WAGE_LINE)]
+        # Colour key only. The n and the figures live in the table beneath, so
+        # repeating them here would be the same number printed twice.
         lab = _wage_label(w.recipient_type)
-        nn = f"  n={w.n:,}" if w.n else ""
-        wdt = 26 + 5.6 * len(lab) + 4.8 * len(nn)
+        wdt = 30 + 5.6 * len(lab)
         if lx + wdt > W - PADR:
             lx, ly = PADL, ly + 13
         p_.append(f'<line x1="{lx}" y1="{ly-3}" x2="{lx+14}" y2="{ly-3}" stroke="{col}" '
                   'stroke-width="2"/>')
-        p_.append(f'<text x="{lx+19}" y="{ly}" font-size="9.5" fill="#5a6577">{_esc(lab)}'
-                  f'<tspan font-size="8.5" fill="#8a93a5">{_esc(nn)}</tspan></text>')
+        p_.append(f'<text x="{lx+19}" y="{ly}" font-size="9.5" fill="#5a6577">{_esc(lab)}</text>')
         lx += wdt
     p_.append('</svg>')
     return f'<div class="wgchart">{"".join(p_)}</div>'
@@ -1557,6 +1597,7 @@ def _wage_section(lens: LensModel, spec: ReportSpec) -> str:
         '<h1>Wage Outcomes</h1>',
         f'<p>{note}{win}</p>',
         chart,
+        _wage_table(rows),
     )
 
 

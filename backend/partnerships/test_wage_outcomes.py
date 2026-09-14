@@ -33,7 +33,7 @@ import pytest
 from ontology.programs import get_wage_outcomes
 from partnerships.lens import LensWage
 from partnerships.report import (_WAGE_CHART, _WAGE_POINTS, _wage_label, _wage_outcomes_svg,
-                                 _wage_rank)
+                                 _wage_rank, _wage_table)
 
 #: The four TOPs the shipped program evaluations cover.
 EVAL_TOPS = ("121000", "010900", "126100", "010210")
@@ -47,6 +47,10 @@ def _rows(top6):
 
 def _svg(top6):
     return _wage_outcomes_svg(_rows(top6), top6)
+
+
+def _tbl(top6):
+    return _wage_table(_rows(top6))
 
 
 # ── vocabulary ───────────────────────────────────────────────────────────────
@@ -81,7 +85,6 @@ def test_a_full_cohort_draws_a_trajectory():
     svg = _svg("121000")
     assert svg.count("<polyline") == 2                 # both RT cohorts are complete
     assert svg.count('<circle') == 6                   # three checkpoints x two cohorts
-    assert "n=648" in svg
 
 
 def test_no_lift_multiple_is_printed():
@@ -140,7 +143,6 @@ def test_a_single_checkpoint_cohort_renders_and_is_not_dropped():
     assert "Local certificate" in svg, "the orphan cohort was dropped"
     assert svg.count('r="5.5" fill="none"') == 1, "no hollow marker for the lone point"
     assert svg.count("<polyline") == 1, "a one-point cohort must not draw a line"
-    assert "n=12" in svg
 
 
 @pytest.mark.parametrize("top6", EVAL_TOPS)
@@ -157,3 +159,43 @@ def test_a_cohort_with_no_figures_at_all_yields_no_chart():
     empty = [LensWage("Associate or Baccalaureate Degree Recipient", None, None, None, 5, "w")]
     assert _wage_outcomes_svg(empty, "999999") == ""
     assert _wage_outcomes_svg([], "999999") == ""
+
+
+# ── the value table ──────────────────────────────────────────────────────────
+# Direct point labels were measured and rejected: across the four evaluations five of
+# eleven adjacent pairs sit closer than a label is tall, and Environmental
+# Horticulture's degree and local certificate are $629 apart at two years — 1.2px.
+
+def test_the_table_carries_the_figures_and_the_sample_sizes():
+    t = _tbl("121000")
+    for v in ("$28,040", "$87,457", "$96,733", "$23,813", "$75,095", "$86,357"):
+        assert v in t, f"missing {v}"
+    assert "n=648" in t and "n=185" in t
+
+
+def test_a_missing_checkpoint_prints_n_slash_a_not_a_blank():
+    """The reason the table exists as much as the figures do. Community Health
+    Worker's local certificate has no before or five-year figure; a blank cell would
+    read as an oversight, and an omitted row as a complete picture."""
+    t = _tbl("126100")
+    assert t.count('class="num na">n/a</td>') == 2
+    assert "$61,661" in t
+    assert "n=12" in t
+
+
+def test_the_label_and_count_do_not_run_together():
+    """`.trend td.prog span` is inline, so without a separator the cell rendered
+    "Certificaten=28"."""
+    assert "</b> <span>" in _tbl("126100")
+
+
+def test_the_table_emits_the_class_build_docx_renders_natively():
+    """table.trend becomes a real Word table, so a reader can select $96,733. Baked
+    into the chart raster it would be pixels."""
+    t = _tbl("121000")
+    assert t.startswith('<table class="trend">')
+    assert t.count("<th>") == len(_WAGE_POINTS)
+
+
+def test_no_table_without_rows():
+    assert _wage_table([]) == ""
