@@ -19,8 +19,9 @@ Three invariants here are corrections of real failures elsewhere in this codebas
 
 Coverage:
   - recipient-type labels and their credential-weight ordering
-  - a full three-point cohort draws a polyline, a dot per checkpoint, and its multiple
-  - a single-checkpoint cohort renders (hollow marker, no multiple) and is never dropped
+  - a full three-point cohort draws a polyline and a dot per checkpoint
+  - no lift multiple is printed (it contradicted the levels it sat beside)
+  - a single-checkpoint cohort renders (hollow marker) and is never dropped
   - the y-axis is zero-based and the x-axis honours the real year offsets
   - no cohort is lost between the CSV and the plate, for all four shipped evaluations
   - the section is evaluations-only and carries the statewide caveat
@@ -76,11 +77,20 @@ def test_cohorts_order_by_credential_weight_not_outcome():
 
 # ── geometry ─────────────────────────────────────────────────────────────────
 
-def test_a_full_cohort_draws_a_trajectory_with_its_multiple():
+def test_a_full_cohort_draws_a_trajectory():
     svg = _svg("121000")
     assert svg.count("<polyline") == 2                 # both RT cohorts are complete
-    assert "3.4×" in svg                               # 28,040 -> 96,733
+    assert svg.count('<circle') == 6                   # three checkpoints x two cohorts
     assert "n=648" in svg
+
+
+def test_no_lift_multiple_is_printed():
+    """Removed as noise, and as a genuine misread: the certificate cohort often
+    carries the LARGER multiple while ending at the LOWER level — Veterinary
+    Technology is 1.7x vs 2.5x but finishes $14k behind, because it started higher.
+    Two true numbers pointing opposite ways. The lines carry the lift."""
+    for top in EVAL_TOPS:
+        assert "×" not in _svg(top), f"{top}: a lift multiple is still rendered"
 
 
 def test_the_y_axis_starts_at_zero():
@@ -131,14 +141,6 @@ def test_a_single_checkpoint_cohort_renders_and_is_not_dropped():
     assert svg.count('r="5.5" fill="none"') == 1, "no hollow marker for the lone point"
     assert svg.count("<polyline") == 1, "a one-point cohort must not draw a line"
     assert "n=12" in svg
-
-
-def test_a_lone_point_claims_no_multiple():
-    """A lift needs two endpoints. Stating one from a single observation would be
-    inventing the number the section exists to report."""
-    svg = _svg("126100")
-    tail = svg[svg.index("Local certificate"):]
-    assert "×" not in tail[:tail.index("</text>")]
 
 
 @pytest.mark.parametrize("top6", EVAL_TOPS)

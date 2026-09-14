@@ -1089,7 +1089,7 @@ def _wage_outcomes_svg(wages: list, top6: str) -> str:
         return ""
     top, ticks = _nice_axis(max(v for _w, vs in series for _y, v in vs) * 1.12)
 
-    W, H, PADL, PADR, PADT, PADB = _WAGE_CHART[0], _WAGE_CHART[1], 62, 186, 18, 60
+    W, H, PADL, PADR, PADT, PADB = _WAGE_CHART[0], _WAGE_CHART[1], 58, 148, 18, 60
     plot_w, plot_h = W - PADL - PADR, H - PADT - PADB
     xs = [y for y, _l in _WAGE_POINTS]
     x_of = lambda y: PADL + plot_w * (y - xs[0]) / (xs[-1] - xs[0])
@@ -1132,13 +1132,15 @@ def _wage_outcomes_svg(wages: list, top6: str) -> str:
         # Direct label at the line's end — with two or three lines on paper this
         # beats a legend the eye has to go look up.
         ly, lv = vals[-1]
-        lift = ""
-        if len(vals) > 1 and vals[0][1]:
-            lift = f"  {vals[-1][1] / vals[0][1]:.1f}×"
+        # No lift multiple. It was noise, and worse than noise: the certificate cohort
+        # often carries the LARGER multiple while ending at the LOWER level (Vet Tech,
+        # 1.7x vs 2.5x but $14k behind), because it started from a higher base. Two true
+        # numbers pointing opposite ways, read in a glance. The lines already carry the
+        # lift — that is why this is a trajectory plot and not a table.
         nn = f"  n={w.n:,}" if w.n else ""
         p_.append(f'<text x="{x_of(ly)+9:.1f}" y="{y_of(lv)+3.5:.1f}" font-size="9.5" '
                   f'fill="{col}">{_esc(_wage_label(w.recipient_type))}'
-                  f'<tspan font-size="8.5" fill="#7a8398">{_esc(lift + nn)}</tspan></text>')
+                  f'<tspan font-size="8.5" fill="#7a8398">{_esc(nn)}</tspan></text>')
     p_.append('</svg>')
     return f'<div class="wgchart">{"".join(p_)}</div>'
 
