@@ -53,9 +53,11 @@ node "$HERE/shoot_xwalk_png.cjs" "file://$OUT.html" "$OUT.awchart.png" ".awchart
   || echo "    (no awards chart in this report)"
 node "$HERE/shoot_xwalk_png.cjs" "file://$OUT.html" "$OUT.enchart.png" ".enchart" >/dev/null 2>&1 \
   || echo "    (no enrolment chart in this report)"
+node "$HERE/shoot_xwalk_png.cjs" "file://$OUT.html" "$OUT.wgchart.png" ".wgchart" >/dev/null 2>&1 \
+  || echo "    (no wage chart in this report)"
 
 echo "3/4 build .docx"
-python3 "$HERE/build_docx.py" "$OUT.html" "$OUT.docx" "$OUT.crosswalk.png" "$OUT.awchart.png" "$OUT.enchart.png" >/dev/null
+python3 "$HERE/build_docx.py" "$OUT.html" "$OUT.docx" "$OUT.crosswalk.png" "$OUT.awchart.png" "$OUT.enchart.png" "$OUT.wgchart.png" >/dev/null
 
 echo "4/4 build .pdf"
 node "$HERE/shoot_pdf.cjs" "file://$OUT.html" "$OUT.pdf" >/dev/null

@@ -43,6 +43,7 @@ XWALK = sys.argv[3] if len(sys.argv) > 3 else '/tmp/crosswalk.png'
 # flattened into scraped SVG text — legend words and the rule label as loose runs.
 AWCHART = sys.argv[4] if len(sys.argv) > 4 else '/tmp/awchart.png'
 ENCHART = sys.argv[5] if len(sys.argv) > 5 else '/tmp/enchart.png'
+WGCHART = sys.argv[6] if len(sys.argv) > 6 else '/tmp/wgchart.png'
 FONT = 'Arial'
 BYLINE_FONT = 'Days One'  # brand byline face (Google-native; substitutes in Word/Pages without it)
 
@@ -438,6 +439,16 @@ def add_enchart_image():
     doc.add_picture(ENCHART, width=Inches(CONTENT_W))
 
 
+def add_wgchart_image():
+    """The wage-trajectory chart. Raster, same as the other two: no native Word
+    equivalent, and its own class so add_xwalk_table can never flatten it into
+    scraped SVG text — a failure link parity cannot see, because a chart has no
+    links."""
+    if not os.path.exists(WGCHART):
+        return
+    doc.add_picture(WGCHART, width=Inches(CONTENT_W))
+
+
 def add_xwalk_legend(div):
     """Fallback only (used when the crosswalk renders as a rasterized funnel PNG):
     one quiet centered line of the per-college program links, which are otherwise
@@ -602,6 +613,8 @@ def emit(el):
             add_cmpgrid(el)
         elif 'trend' in cls:
             add_trend(el)
+    elif 'wgchart' in cls:
+        add_wgchart_image()
     elif 'enchart' in cls:
         add_enchart_image()
     elif 'awchart' in cls:

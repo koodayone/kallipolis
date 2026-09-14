@@ -45,7 +45,8 @@ from functools import lru_cache
 from typing import Sequence
 
 from ontology.crosswalks import crosswalk_socs
-from ontology.programs import AWARD_TIERS, award_tier, award_tier_label
+from ontology.programs import (AWARD_TIERS, award_tier, award_tier_label,
+                               get_wage_outcomes)
 from ontology.schema import get_driver
 from partnerships import members
 from partnerships.clusters import cluster_expanded_spec
@@ -177,6 +178,28 @@ class LensScope:
 
 
 @dataclass(frozen=True)
+class LensWage:
+    """One pooled statewide award-cohort wage outcome, by recipient type.
+
+    TOP6-grain and STATEWIDE — the DataMart wage export carries no college
+    dimension, so these are every California community college's recipients for
+    this program, not the member's own graduates. Any surface rendering them has
+    to say so; the number is otherwise read as the college's.
+
+    Medians, so never summed or averaged across recipient types. `wage_before` is
+    two years BEFORE the award, so the three checkpoints sit at -2, +2 and +5
+    years relative to completion — unevenly spaced, which a trajectory plot has
+    to honour. Any checkpoint may be None where DataMart reports N/A.
+    """
+    recipient_type: str
+    wage_before: int | None
+    wage_after_2: int | None
+    wage_after_5: int | None
+    n: int | None
+    window: str
+
+
+@dataclass(frozen=True)
 class LensModel:
     scope: LensScope
     occupations: list[LensOccupation]  # ranked by annual_openings desc
@@ -188,6 +211,11 @@ class LensModel:
     # distinguish "this college has no Winter term" from "Winter exists and the data is
     # missing" — the two look identical in the series and mean opposite things.
     college_terms: dict[str, list[str]] = field(default_factory=dict)
+    # {top6 -> [LensWage]} for every program in scope. Keyed by TOP6, NOT by
+    # (college, top6): the wage export has no college dimension, so hanging it off
+    # LensProgram would duplicate one statewide figure across every college sharing
+    # the TOP and invite it being read as theirs.
+    wages: dict[str, list[LensWage]] = field(default_factory=dict)
     sources: list[SourceRef] = field(default_factory=lambda: list(SOURCES.values()))
 
     def to_dict(self) -> dict:
@@ -212,6 +240,7 @@ class LensModel:
             "programs": [vars(p) for p in self.programs],
             "award_years": list(self.award_years),
             "enrollment_terms": list(self.enrollment_terms),
+            "wages": {t: [vars(w) for w in ws] for t, ws in self.wages.items()},
             "college_terms": {k: list(v) for k, v in self.college_terms.items()},
             "field_authority": FIELD_AUTHORITY,
             "sources": [vars(s) for s in self.sources],
@@ -318,7 +347,7 @@ def _programs(
     still appears — a live pipeline."""
     relevant_tops = list(top_socs)
     if not relevant_tops:
-        return [], [], [], {}
+        return [], [], [], {}, {}
     aw = program_award_series(s, colleges, relevant_tops)
     awt = program_award_series_by_type(s, colleges, relevant_tops)
     en = program_enrollment_series(s, colleges, relevant_tops)
@@ -327,6 +356,16 @@ def _programs(
     award_years = sorted({r["year"] for r in aw})
     enrollment_terms = sorted({r["term"] for r in en})
     college_terms = colleges_by_term_type(s, colleges)
+    # Reference data, not graph data: get_wage_outcomes reads a bundled CSV at
+    # TOP6 grain (see ontology.programs for why it is not in the graph yet). Pulled
+    # here so the renderer selects from L1 like every other figure rather than
+    # reaching for a loader itself.
+    wages = {t: [LensWage(recipient_type=w["recipient_type"], wage_before=w["wage_before"],
+                          wage_after_2=w["wage_after_2"], wage_after_5=w["wage_after_5"],
+                          n=w["n"], window=w["window"])
+                 for w in get_wage_outcomes(t)]
+             for t in relevant_tops}
+    wages = {t: v for t, v in wages.items() if v}
     awards: dict[tuple, dict[str, int]] = defaultdict(dict)
     enroll: dict[tuple, dict[str, int]] = defaultdict(dict)
     for r in aw:
@@ -364,7 +403,7 @@ def _programs(
         )
         for college, top6 in keys
     ]
-    return programs, award_years, enrollment_terms, college_terms
+    return programs, award_years, enrollment_terms, college_terms, wages
 
 
 # ── The public entry point ────────────────────────────────────────────────────
@@ -423,7 +462,7 @@ def build_lens(member_id: str, *, sector: str | None = None, play: Play | None =
 
     with get_driver().session() as s:
         occupations = _project(s, region, colleges, in_scope, socs, member_colleges)
-        programs, award_years, enrollment_terms, college_terms = _programs(
+        programs, award_years, enrollment_terms, college_terms, wages = _programs(
             s, colleges, top_socs, member_colleges)
 
     scope = LensScope(
@@ -434,7 +473,7 @@ def build_lens(member_id: str, *, sector: str | None = None, play: Play | None =
     )
     return LensModel(scope=scope, occupations=occupations, programs=programs,
                      award_years=award_years, enrollment_terms=enrollment_terms,
-                     college_terms=college_terms)
+                     college_terms=college_terms, wages=wages)
 
 
 if __name__ == "__main__":
