@@ -1842,8 +1842,9 @@ def _curriculum_section(spec: ReportSpec) -> tuple[list[str], list[str]]:
     # Appendix: the outlines themselves, linked. A reader checks a chip against the
     # course's outline of record at the source; the quoted sentences live in the review
     # file for the college conversations, and in the canvas's internal review view.
-    method = ('Activities appear in O*NET task-importance order, up to ten per occupation and three courses '
-              'per cell. A course is listed when its outline of record covers the activity.')
+    org = roster.get('short_name') or spec.org_short or spec.org_name
+    method = (f'Links to all course outlines of record relevant to {_esc(org)}. These outlines of record were '
+              'analyzed against detailed work activities for each SOC based on O*NET data to determine curriculum alignment.')
     seen: set[str] = set()
     links = []
     for pl in sorted(al.plates, key=lambda p: order.index(p.member_id) if p.member_id in order else 99):
