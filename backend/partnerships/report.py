@@ -1837,9 +1837,11 @@ def _curriculum_section(spec: ReportSpec) -> tuple[list[str], list[str]]:
                                  show_gaps=spec.curriculum_show_gaps)
         if block:
             parts.append(_block(block))
-    note = ('The outline sentence behind every mark above, by occupation and college. Section names are the '
-            'outline\'s own: SLO and Objective are read literally; Description, Content outline, Lab content and '
-            'Assignment are read for what the course involves.')
+    note = ('The outline sentence behind every mark above, by occupation and college. Each block lists up to '
+            'ten of the occupation\'s core work activities that member colleges\' outlines evidence, ordered by the '
+            'incumbent importance of the O*NET tasks each activity arises from; a college\'s cell shows up to three '
+            'courses, strongest evidence first. Section names are the outline\'s own: SLO and Objective are read '
+            'literally; Description, Content outline, Lab content and Assignment are read for what the course involves.')
     appx_plates = al.plates
     extra = [p for p in al.plates if p.role == "appendix"]
     extra_note = ("" if not extra else " Also here: " + "; ".join(

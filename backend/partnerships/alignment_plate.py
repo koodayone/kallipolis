@@ -191,9 +191,9 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_
     conn = ", ".join(escape(_short(p.college)) for p in plates)
     head = "".join(f'<th style="--c:{college_color(p.member_id)}"><span class="alg-colhd">{escape(_short(p.college))}</span></th>'
                    for p in plates)
+    # No method line per block: how rows are chosen and ordered is said once, in the
+    # appendix introduction (report._curriculum_section).
     out = [f'<p class="chtitle">{escape(title)} <span class="alg-soc">SOC {escape(soc)}</span></p>',
-           f'<p class="tnar alg-hd">The most important core work activities of this occupation that course outlines at {conn} '
-           f'evidence, up to ten, ordered by the incumbent importance of the O*NET tasks they arise from.</p>',
            f'<table class="alg-tbl"><colgroup><col class="alg-actcol">{"".join("<col>" for _ in plates)}</colgroup>'
            f'<thead><tr><th class="alg-acthd">Work activity</th>{head}</tr></thead><tbody>']
     covered = 0
