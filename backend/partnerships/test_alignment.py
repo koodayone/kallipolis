@@ -9,6 +9,7 @@ Coverage:
   - the SVAMP roster's five programs all have every course's outline in the cache with outcomes and a source URL
   - the plate renders program-outcome and course columns, marks gaps, and its readout and evidence table carry the counts and quotes
   - an occupation block lists the top-N activities with colour-coded course chips (one style), marks consortium gaps, and ignores program-outcome cells
+  - a cell shows at most three courses, strongest evidence first, with a +N chip for the rest
 """
 
 from courses.outlines import Outline
@@ -103,3 +104,13 @@ def test_occupation_block_lists_chips_and_gaps_and_skips_program_outcomes():
     assert "Inspect production equipment" not in html                     # top_n=2 cuts d3
     assert "Program outcomes" not in html and "PLO" not in html           # PLO cells are not chips
     assert "<b>1 of 2</b>" in html
+
+
+def test_cell_caps_chips_at_three_strongest_first_with_overflow():
+    cells = {f"C {i}": Cell(1 if i < 4 else 2, [Evidence(f"C {i}", "content" if i < 4 else "outcomes", 1 if i < 4 else 2, f"q{i}", "b")]) for i in range(5)}
+    rows = [Row("d1", "Act.", "t", cells)]
+    pl = Plate("Mission College", "mission", "Cert", "credit", "0935.00", "EMT", "17-3024", "Mechatronics Techs", [], "",
+               [{"code": f"C {i}"} for i in range(5)], [], rows)
+    html = occupation_block("17-3024", [pl], top_n=1)
+    assert html.count('class="chip"') == 3 and 'class="chip alg-more"' in html and ">+2<" in html
+    assert html.index("C 4") < html.index("C 0")        # the outcome-level course leads

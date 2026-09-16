@@ -156,7 +156,15 @@ def college_legend(plates: list[Plate]) -> str:
             ' <span class="alg-lg"><b class="chip" style="--c:#5a6577">CODE</b> a course whose outline evidences the activity</span></p>')
 
 
-def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_order: list[str] | None = None) -> str:
+#: Courses shown per cell. Ranked by the evidence tier the page no longer draws — an
+#: outcome or objective that states the activity outranks content that involves it — then
+#: by the certificate's catalog order; the rest fold into a neutral "+N" chip and the
+#: appendix. Three answers "does this college teach it, and where"; the rest is height.
+CHIPS_PER_CELL = 3
+
+
+def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_order: list[str] | None = None,
+                     max_chips: int = CHIPS_PER_CELL) -> str:
     """One occupation: header, then a table — the top-N activities down the side, one
     column per connected college in a fixed consortium order, that college's evidencing
     courses stacked as chips in the cell. Position carries the college (the strong
@@ -182,13 +190,19 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_
         cells, any_ = [], False
         for pl in plates:
             pr = next((x for x in pl.rows if x.dwa_id == r.dwa_id), None)
-            codes = [code for code, cell in (pr.cells.items() if pr else []) if code != PLO]
+            catalog = [c["code"] for c in pl.courses]
+            found = [(code, cell) for code, cell in (pr.cells.items() if pr else []) if code != PLO]
+            found.sort(key=lambda kv: (-kv[1].level, catalog.index(kv[0]) if kv[0] in catalog else 99))
+            codes = [code for code, _ in found]
             col = college_color(pl.member_id)
             if codes:
                 any_ = True
                 per_college[pl.college] = per_college.get(pl.college, 0) + len(codes)
-                cells.append('<td><div class="alg-chips">' + "".join(
-                    f'<b class="chip" style="--c:{col}" title="{escape(pl.college)} · {escape(c)}">{escape(c)}</b>' for c in codes) + "</div></td>")
+                shown, rest = codes[:max_chips], codes[max_chips:]
+                chips = "".join(f'<b class="chip" style="--c:{col}" title="{escape(pl.college)} · {escape(c)}">{escape(c)}</b>' for c in shown)
+                if rest:
+                    chips += f'<b class="chip alg-more" title="{escape(", ".join(rest))}">+{len(rest)}</b>'
+                cells.append(f'<td><div class="alg-chips">{chips}</div></td>')
             else:
                 cells.append('<td class="alg-empty">—</td>')
         if any_:
