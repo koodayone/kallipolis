@@ -1433,17 +1433,18 @@ p a,.byline a{color:#1155cc;text-decoration:underline}
 .algplate{margin:6px 0 2px}.algplate svg{width:100%;height:auto;display:block}
 .alg-soc{font-weight:400;color:#8a93a5;font-size:10px;margin-left:6px}
 .alg-tbl{table-layout:fixed;margin:6px 0 2px;font-size:11px}
-.alg-tbl col.alg-actcol{width:230px}
+.alg-tbl col.alg-actcol{width:196px}
 .alg-tbl th{background:#fff;color:#2a3450;font-size:10px;padding:4px 6px 6px;border:0;border-bottom:2px solid var(--c,#c8d0de);text-align:left;vertical-align:bottom}
 .alg-tbl th.alg-acthd{border-bottom-color:#e7eaf1;color:#8a93a5;font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:8px}
 .alg-colhd{display:block;font-weight:700}
-.alg-tbl td{border:0;border-bottom:1px solid #eef1f6;padding:5px 6px;vertical-align:top}
+.alg-tbl td{border:0;border-bottom:1px solid #eef1f6;padding:4px 5px;vertical-align:top}
+.alg-tbl thead{display:table-header-group}
 .alg-tbl td.alg-act{font-size:11px;color:#2a3450;line-height:1.35;padding-left:0}
 .alg-tbl td.alg-empty{color:#c9d0da;text-align:center;font-size:10px;padding-top:7px}
 .alg-gaprow td.alg-act{color:#8a93a5}
 .alg-gap{display:block;margin-top:2px}
 .alg-chips{display:flex;flex-wrap:wrap;gap:4px 4px;align-items:center}
-.chip{display:inline-block;font:700 9px/1 Helvetica,Arial,sans-serif;letter-spacing:.02em;padding:3px 6px;border-radius:3px;border:1.5px solid var(--c);white-space:nowrap}
+.chip{display:inline-block;font:700 8.5px/1 Helvetica,Arial,sans-serif;letter-spacing:.01em;padding:2.5px 5px;border-radius:3px;border:1.5px solid var(--c);white-space:nowrap}
 .chip{background:var(--c);color:#fff}.chip.alg-more{background:#eef1f6;color:#5a6577;border-color:#eef1f6}
 .alg-gap{font-size:10px;color:#a8641a;font-style:italic}
 .alg-legend{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin:8px 0 4px}
@@ -1461,7 +1462,7 @@ p a,.byline a{color:#1155cc;text-decoration:underline}
    harness renders with printBackground:true, so without resetting it here Chromium
    faithfully paints that grey wherever .page does not fill the sheet — a grey band
    below the content on the final page of every exported PDF. */
-@media print{.print-only{display:block}.screen-only{display:none}.alg-tbl tr{break-inside:avoid}body{background:#fff}.page{margin:0;box-shadow:none;min-height:0}.awchart,.enchart,.xwrap,.algplate{break-inside:avoid}.blk{break-inside:avoid}h1{break-after:avoid}table.dem,table.live,table.trend{break-inside:avoid}thead{display:table-header-group}tr{break-inside:avoid}}
+@media print{.print-only{display:block}.screen-only{display:none}.alg-tbl tr{break-inside:avoid}.chtitle{break-after:avoid}body{background:#fff}.page{margin:0;box-shadow:none;min-height:0}.awchart,.enchart,.xwrap,.algplate{break-inside:avoid}.blk{break-inside:avoid}h1{break-after:avoid}table.dem,table.live,table.trend{break-inside:avoid}thead{display:table-header-group}tr{break-inside:avoid}}
 """
 
 
@@ -1835,8 +1836,8 @@ def _curriculum_section(spec: ReportSpec) -> tuple[list[str], list[str]]:
     for soc in socs:
         block = occupation_block(soc, [p for p in shown if p.paired_soc == soc], top_n=top_n, college_order=order,
                                  show_gaps=spec.curriculum_show_gaps)
-        if block:
-            parts.append(_block(block))
+        if block:            # not _block(): a block may break across pages; rows never do
+            parts.append(block)
     # Appendix: the outlines themselves, linked. A reader checks a chip against the
     # course's outline of record at the source; the quoted sentences live in the review
     # file for the college conversations, and in the canvas's internal review view.
