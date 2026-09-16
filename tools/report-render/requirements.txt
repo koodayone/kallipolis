@@ -1,0 +1,11 @@
+# Dependencies for the report export toolchain (build_docx.py, verify_docx.py) and
+# its test suite. Deliberately NOT in backend/requirements.txt: these are build-time
+# tools for producing .docx deliverables, not runtime dependencies of the API, and
+# adding them there would carry them into the backend image for no reason.
+#
+# The PDF and chart-raster steps additionally need node + Playwright, resolved from
+# atlas/node_modules by the .cjs scripts — not installable from here.
+#
+#   pip install -r tools/report-render/requirements.txt pytest
+python-docx==1.2.0
+beautifulsoup4==4.14.3
