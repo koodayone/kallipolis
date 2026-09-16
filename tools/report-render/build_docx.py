@@ -789,6 +789,18 @@ def emit(el):
             p = para(10, 2); run(p, t, size=11, bold=True, color=DARK)
         elif 'tnote' in cls:
             p = para(1, 4); run(p, t, size=8.5, color=MUT, italic=True)
+        elif 'alg-legend' in cls:
+            # the college legend: swatches become the college name set in its colour
+            import re as _re
+            p = para(6, 2)
+            for sp in el.find_all('span', class_='alg-lg'):
+                sw = sp.find('i'); chip = sp.find('b')
+                m = _re.search(r'#([0-9a-fA-F]{6})', (sw.get('style', '') if sw else '') or '')
+                if m:
+                    run(p, sp.get_text(' ', strip=True) + '   ', size=9, bold=True, color=m.group(1))
+                elif chip is not None:
+                    run(p, chip.get_text(' ', strip=True) + ' ', size=8, bold=True, color=BLUE)
+                    run(p, sp.get_text(' ', strip=True).replace(chip.get_text(' ', strip=True), '', 1).strip(), size=9, color='46536b')
         elif 'tnar' in cls:
             p = para(6, 2); runs_from(el, p, size=10, color='46536b')
         elif 'srcdash' in cls:
