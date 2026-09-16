@@ -1807,11 +1807,10 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
 
 
 # ── Curriculum alignment (courses × work activities, one plate per program) ──────
-_CURRICULUM_BLURB = ("Each member college's certificate is read from its course outlines of record — the "
-                     "board-approved statement of what every course teaches and assesses — against the core "
-                     "work activities O*NET records for each occupation in the role. A course appears beside an "
-                     "activity when its outline evidences it, in an outcome, an objective, or the course's "
-                     "content. Every mark rests on a sentence of the outline, listed in the appendix.")
+_CURRICULUM_BLURB = ("O*NET maintains a set of detailed work activities that identify the competencies central to "
+                     "each job. We visualize below how the consortium's programs support each target occupation by "
+                     "mapping specific college courses to the work activities it involves. Each mapping rests on a "
+                     "sentence from the course's outline of record, listed in the appendix.")
 
 
 def _curriculum_section(spec: ReportSpec) -> tuple[list[str], list[str]]:
