@@ -65,4 +65,11 @@ node "$HERE/shoot_pdf.cjs" "file://$OUT.html" "$OUT.pdf" >/dev/null
 echo "verify  (docx-drift defense)"
 python3 "$HERE/verify_docx.py" "$OUT.html" "$OUT.docx"
 
+# Link parity is blind to layout — a badly paginated docx still contains every link.
+# This renders the docx through LibreOffice and measures where the pages really broke.
+# Skips cleanly (exit 0) where LibreOffice isn't installed, so it never blocks a build
+# on a machine that can't run it.
+echo "verify  (layout — rendered)"
+python3 "$HERE/verify_layout.py" "$OUT.docx" --html "$OUT.html"
+
 echo "done -> $OUT.docx  $OUT.pdf"
