@@ -204,6 +204,7 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_
         for pl in plates:
             pr = next((x for x in pl.rows if x.dwa_id == r.dwa_id), None)
             catalog = [c["code"] for c in pl.courses]
+            url_of = {c["code"]: c.get("source_url", "") for c in pl.courses}
             found = [(code, cell) for code, cell in (pr.cells.items() if pr else []) if code != PLO]
             found.sort(key=lambda kv: (-kv[1].level, catalog.index(kv[0]) if kv[0] in catalog else 99))
             codes = [code for code, _ in found]
@@ -212,7 +213,14 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_
                 any_ = True
                 per_college[pl.college] = per_college.get(pl.college, 0) + len(codes)
                 shown, rest = codes[:max_chips], codes[max_chips:]
-                chips = "".join(f'<b class="chip" style="--c:{col}" title="{escape(pl.college)} · {escape(c)}">{escape(c)}</b>' for c in shown)
+                # each chip links out to the course's outline of record — the appendix
+                # lists the same links by college; the chip is the shortest path there
+                chips = "".join(
+                    (f'<a class="chip" href="{escape(url_of[c])}" target="_blank" rel="noopener" style="--c:{col}" '
+                     f'title="{escape(pl.college)} · {escape(c)} · outline of record">{escape(c)}</a>')
+                    if url_of.get(c) else
+                    f'<b class="chip" style="--c:{col}" title="{escape(pl.college)} · {escape(c)}">{escape(c)}</b>'
+                    for c in shown)
                 if rest:
                     chips += f'<b class="chip alg-more" title="{escape(", ".join(rest))}">+{len(rest)}</b>'
                 cells.append(f'<td><div class="alg-chips">{chips}</div></td>')

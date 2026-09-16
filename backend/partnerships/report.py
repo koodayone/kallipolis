@@ -1445,7 +1445,7 @@ p a,.byline a{color:#1155cc;text-decoration:underline}
 .alg-gap{display:block;margin-top:2px}
 .alg-chips{display:flex;flex-wrap:wrap;gap:4px 4px;align-items:center}
 .chip{display:inline-block;font:700 8.5px/1 Helvetica,Arial,sans-serif;letter-spacing:.01em;padding:2.5px 5px;border-radius:3px;border:1.5px solid var(--c);white-space:nowrap}
-.chip{background:var(--c);color:#fff}.chip.alg-more{background:#eef1f6;color:#5a6577;border-color:#eef1f6}
+.chip{background:var(--c);color:#fff}a.chip{text-decoration:none;color:#fff}a.chip:hover{filter:brightness(1.12)}.chip.alg-more{background:#eef1f6;color:#5a6577;border-color:#eef1f6}
 .alg-gap{font-size:10px;color:#a8641a;font-style:italic}
 .alg-legend{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin:8px 0 4px}
 .alg-lg{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;color:#46536b}.alg-lg i{display:inline-block;width:10px;height:10px;border-radius:2px}
