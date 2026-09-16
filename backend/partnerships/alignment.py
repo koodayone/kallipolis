@@ -244,6 +244,7 @@ class Plate:
     rows: list[Row]
     dropped: list[dict] = field(default_factory=list)   # gate + adjudication drops, for the review file
     source_note: str = ""
+    role: str = "paired"        # paired | crosswalk | appendix — how the program connects to this occupation
 
     def counts(self) -> dict:
         n = len(self.rows)
@@ -263,7 +264,8 @@ class Alignment:
 
 # ── the run ────────────────────────────────────────────────────────────────────
 def align_program(program: dict, *, soc: str | None = None, refresh: bool = False,
-                  adjudicate: bool = True, complete=None, coci_rows: list[dict] | None = None) -> Plate:
+                  adjudicate: bool = True, complete=None, coci_rows: list[dict] | None = None,
+                  role: str = "paired") -> Plate:
     """Read one program against one occupation. `complete` is the LLM seam
     (llm.claude_cli.complete by default); `coci_rows` the college's COCI course export
     if a currency check is wanted."""
@@ -351,7 +353,7 @@ def align_program(program: dict, *, soc: str | None = None, refresh: bool = Fals
             f"sections present: {', '.join(SECTION_LABEL[s].lower() for s in fmt)}.")
     return Plate(program["college"], program["member_id"], program["certificate"], program.get("kind", "credit"),
                  program.get("top"), program.get("top_name", ""), soc, occ_title, program.get("crosswalk_socs", []),
-                 program.get("pairing_basis", ""), courses, program.get("program_outcomes", []), rows, dropped, note)
+                 program.get("pairing_basis", ""), courses, program.get("program_outcomes", []), rows, dropped, note, role)
 
 
 def _union_plate(new: Plate, old: Plate | None) -> Plate:
@@ -374,28 +376,43 @@ def _union_plate(new: Plate, old: Plate | None) -> Plate:
     return new
 
 
+def readings(program: dict) -> list[tuple[str, str]]:
+    """The (soc, role) pairs a program is read against: its paired occupation, the play
+    occupations its crosswalk reaches, and any appendix-only occupation."""
+    out = [(program["paired_soc"], "paired")]
+    for soc in program.get("reads_against", []):
+        if soc != program["paired_soc"]:
+            out.append((soc, "crosswalk"))
+    for soc in program.get("appendix_socs", []):
+        if soc not in {x[0] for x in out}:
+            out.append((soc, "appendix"))
+    return out
+
+
 def run(roster_id: str, *, refresh: bool = False, adjudicate: bool = True, coci: bool = False,
-        only: str | None = None, accumulate: bool = True) -> Alignment:
+        only: str | None = None, accumulate: bool = True, new_only: bool = False) -> Alignment:
     roster = load_roster(roster_id)
-    previous = load_alignment(roster_id) if (accumulate or only) else None
-    prev_by_college = {p.college: p for p in previous.plates} if previous else {}
+    previous = load_alignment(roster_id) if (accumulate or only or new_only) else None
+    prev = {(p.college, p.paired_soc): p for p in previous.plates} if previous else {}
     coci_cache: dict[str, list[dict]] = {}
     plates = []
     for p in roster["programs"]:
-        if only and p["college_key"] != only:
-            if p["college"] in prev_by_college:           # untouched plates ride along
-                plates.append(prev_by_college[p["college"]])
-            continue
         rows = None
-        if coci:
-            from ontology.coci import fetch_course_export, _COLLEGE_CODE
-            code = _COLLEGE_CODE.get(p["college"])
-            if code:
-                rows = coci_cache.setdefault(code, fetch_course_export(code))
-        plate = align_program(p, refresh=refresh, adjudicate=adjudicate, coci_rows=rows)
-        if accumulate:
-            plate = _union_plate(plate, prev_by_college.get(p["college"]))
-        plates.append(plate)
+        for soc, role in readings(p):
+            key = (p["college"], soc)
+            if (only and p["college_key"] != only) or (new_only and key in prev):
+                if key in prev:                       # untouched readings ride along
+                    plates.append(prev[key])
+                continue
+            if coci and rows is None:
+                from ontology.coci import fetch_course_export, _COLLEGE_CODE
+                code = _COLLEGE_CODE.get(p["college"])
+                if code:
+                    rows = coci_cache.setdefault(code, fetch_course_export(code))
+            plate = align_program(p, soc=soc, refresh=refresh, adjudicate=adjudicate, coci_rows=rows, role=role)
+            if accumulate:
+                plate = _union_plate(plate, prev.get(key))
+            plates.append(plate)
     return Alignment(roster_id, date.today().isoformat(), ONET_VINTAGE, plates)
 
 
@@ -408,7 +425,8 @@ def save(al: Alignment) -> tuple[Path, Path]:
     md = [f"# Curriculum alignment review — {al.roster_id}", f"Generated {al.generated} · {al.onet_vintage}", ""]
     for pl in al.plates:
         c = pl.counts()
-        md += [f"## {pl.college} — {pl.certificate}", f"Paired with {pl.occupation} (SOC {pl.paired_soc}). {pl.pairing_basis}",
+        md += [f"## {pl.college} — {pl.certificate} → {pl.occupation} ({pl.role})",
+               f"Read against {pl.occupation} (SOC {pl.paired_soc}), connected by {pl.role}. {pl.pairing_basis if pl.role == 'paired' else ''}",
                f"{c['outcome_level']} of {c['activities']} activities at outcome level, {c['any_evidence']} with any evidence.", ""]
         for r in pl.rows:
             mark = "●" if r.level == 2 else "○" if r.level == 1 else "·"
@@ -447,11 +465,12 @@ if __name__ == "__main__":
     ap.add_argument("--coci", action="store_true", help="check each outline's currency against the COCI course export")
     ap.add_argument("--only", help="one college_key (other plates are carried over from the saved alignment)")
     ap.add_argument("--fresh", action="store_true", help="do not union with the saved alignment")
+    ap.add_argument("--new-only", action="store_true", help="compute only (program, occupation) readings the saved alignment lacks")
     a = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(message)s")
-    al = run(a.roster, refresh=a.refresh, adjudicate=not a.no_adjudicate, coci=a.coci, only=a.only, accumulate=not a.fresh)
+    al = run(a.roster, refresh=a.refresh, adjudicate=not a.no_adjudicate, coci=a.coci, only=a.only, accumulate=not a.fresh, new_only=a.new_only)
     jp, rp = save(al)
     for pl in al.plates:
         c = pl.counts()
-        print(f"{pl.college:26s} vs {pl.paired_soc}: {c['outcome_level']:2d} outcome-level, {c['any_evidence']:2d} any, of {c['activities']} | dropped {len(pl.dropped)}")
+        print(f"{pl.college:26s} vs {pl.paired_soc} ({pl.role:9s}): {c['outcome_level']:2d} outcome-level, {c['any_evidence']:2d} any, of {c['activities']} | dropped {len(pl.dropped)}")
     print(f"wrote {jp}\n      {rp}")

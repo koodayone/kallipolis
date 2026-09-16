@@ -113,3 +113,119 @@ def evidence_table(plate: Plate, *, max_rows: int | None = None) -> str:
         rows = rows[:max_rows]
     return ('<table class="alg-ev"><thead><tr><th>Work activity</th><th>Course</th><th>Section</th><th>Outline text</th></tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table>')
+
+
+# ── Occupation blocks: the consortium view ─────────────────────────────────────
+# Five programs converge on three occupations, so the report reads by occupation: the
+# ten most important core activities, each followed by the courses — from any member
+# college — whose outlines evidence it, as chips in the college's colour. Solid chip: an
+# outcome or objective states the activity. Outlined chip: the course's content involves
+# it. No chip: nothing in the consortium evidences it. The per-program plate above stays
+# the view for a single college's own report; both draw the same saved alignment.
+
+#: Colleges whose logo-extracted brand colours sit too close on white paper to tell
+#: apart at chip size: De Anza's navy (#1e3a5f) against Mission's blue (#0086ad), and
+#: Evergreen Valley's green against Ohlone's. De Anza takes the report's amber accent;
+#: Evergreen Valley keeps its own green, which is dark enough beside Ohlone's lighter one.
+_COLLEGE_FALLBACK = {"deanza": "#c98a1b", "evc": "#1e894a"}
+_COLOR_ALIAS = {"evc": "evergreen"}
+
+
+def college_color(member_id: str) -> str:
+    from partnerships.report import _brand_color
+    if member_id in _COLLEGE_FALLBACK:
+        return _COLLEGE_FALLBACK[member_id]
+    return _brand_color(_COLOR_ALIAS.get(member_id, member_id)) or "#5a6577"
+
+
+def _short(college: str) -> str:
+    from partnerships.report import _short_college
+    return _short_college(college)
+
+
+def college_legend(plates: list[Plate]) -> str:
+    seen, items = set(), []
+    for pl in plates:
+        if pl.member_id in seen:
+            continue
+        seen.add(pl.member_id)
+        items.append(f'<span class="alg-lg"><i style="background:{college_color(pl.member_id)}"></i>{escape(_short(pl.college))}</span>')
+    return ('<p class="tnar alg-legend">' + " ".join(items) +
+            ' <span class="alg-lg"><b class="chip solid" style="--c:#5a6577">CODE</b> outcome or objective states it</span>'
+            ' <span class="alg-lg"><b class="chip ring" style="--c:#5a6577">CODE</b> content, lab or assignments involve it</span></p>')
+
+
+def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10) -> str:
+    """One occupation: header, the top-N activities with course chips, a readout."""
+    plates = sorted(plates, key=lambda p: (p.role != "paired", p.college))
+    if not plates:
+        return ""
+    title = plates[0].occupation
+    rows = plates[0].rows[:top_n]
+    conn = "; ".join(f"{escape(_short(p.college))} ({'paired' if p.role == 'paired' else 'crosswalk'})" for p in plates)
+    out = [f'<p class="chtitle">{escape(title)} <span class="alg-soc">SOC {escape(soc)}</span></p>',
+           f'<p class="tnar alg-hd">Programs read against it: {conn}. The {len(rows)} most important core work activities, in O*NET\'s order.</p>',
+           '<div class="alg-list">']
+    covered2 = covered1 = 0
+    per_college: dict[str, int] = {}
+    uncovered = []
+    for i, r in enumerate(rows):
+        chips, best = [], 0
+        for pl in plates:
+            pr = next((x for x in pl.rows if x.dwa_id == r.dwa_id), None)
+            if not pr:
+                continue
+            col = college_color(pl.member_id)
+            for code, cell in pr.cells.items():
+                if code == PLO:
+                    continue
+                cls = "solid" if cell.level == 2 else "ring"
+                chips.append(f'<b class="chip {cls}" style="--c:{col}" title="{escape(pl.college)} · {escape(code)}">{escape(code)}</b>')
+                best = max(best, cell.level)
+                per_college[pl.college] = per_college.get(pl.college, 0) + 1
+        if best == 2:
+            covered2 += 1
+        elif best == 1:
+            covered1 += 1
+        else:
+            uncovered.append(r.dwa.rstrip("."))
+        body = "".join(chips) if chips else '<span class="alg-gap">no course in the consortium evidences this</span>'
+        out.append(f'<div class="alg-row{" alg-gaprow" if not chips else ""}"><div class="alg-act">{escape(r.dwa.rstrip("."))}</div>'
+                   f'<div class="alg-chips">{body}</div></div>')
+    out.append("</div>")
+    lead = sorted(per_college.items(), key=lambda kv: -kv[1])[:2]
+    parts = [f"<b>{covered2} of {len(rows)}</b> activities are stated in a course outcome or objective somewhere in the consortium; "
+             f"{covered1} more are involved in course content."]
+    if lead:
+        parts.append("Most course evidence from " + " and ".join(f"{escape(_short(c))} ({n})" for c, n in lead) + ".")
+    if uncovered:
+        parts.append("Not evidenced by any college: " + "; ".join(escape(u) for u in uncovered) + ".")
+    out.append(f'<p class="tnar">{" ".join(parts)}</p>')
+    return "\n".join(out)
+
+
+def appendix_tables(plates: list[Plate], *, top_n: int | None = None) -> str:
+    """Evidence tables grouped by occupation then college. `top_n` limits each table to
+    the rows the block shows (the compact print form)."""
+    by_soc: dict[str, list[Plate]] = {}
+    for pl in plates:
+        by_soc.setdefault(pl.paired_soc, []).append(pl)
+    out = []
+    for soc, pls in by_soc.items():
+        out.append(f'<p class="chtitle">{escape(pls[0].occupation)} <span class="alg-soc">SOC {escape(soc)}</span></p>')
+        for pl in sorted(pls, key=lambda p: p.college):
+            rows = []
+            keep = {r.dwa_id for r in pl.rows[:top_n]} if top_n else None
+            for r in pl.rows:
+                if keep is not None and r.dwa_id not in keep:
+                    continue
+                for code, cell in r.cells.items():
+                    for e in cell.evidence:
+                        rows.append(f'<tr><td>{escape(r.dwa.rstrip("."))}</td><td>{escape("Program outcomes" if code == PLO else code)}</td>'
+                                    f'<td>{escape(SECTION_LABEL.get(e.section, e.section))}</td><td>“{escape(e.quote)}”</td></tr>')
+            if not rows:
+                continue
+            out.append(f'<p class="tnar alg-appx-h"><b>{escape(_short(pl.college))}</b> · {escape(pl.certificate)} · {pl.role}</p>')
+            out.append('<table class="alg-ev"><thead><tr><th>Work activity</th><th>Course</th><th>Section</th><th>Outline text</th></tr></thead>'
+                       f'<tbody>{"".join(rows)}</tbody></table>')
+    return "\n".join(out)

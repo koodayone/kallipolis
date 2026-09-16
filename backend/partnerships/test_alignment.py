@@ -8,11 +8,12 @@ Coverage:
   - the gate is case- and punctuation-insensitive but never fuzzy
   - the SVAMP roster's five programs all have every course's outline in the cache with outcomes and a source URL
   - the plate renders program-outcome and course columns, marks gaps, and its readout and evidence table carry the counts and quotes
+  - an occupation block lists the top-N activities with colour-coded course chips (solid vs ring), marks consortium gaps, and ignores program-outcome cells
 """
 
 from courses.outlines import Outline
 from partnerships.alignment import PLO, Cell, Evidence, Plate, Row, gate, load_roster, program_outlines
-from partnerships.alignment_plate import evidence_table, plate_readout, plate_svg
+from partnerships.alignment_plate import evidence_table, occupation_block, plate_readout, plate_svg
 
 
 def _outline():
@@ -86,3 +87,19 @@ def test_plate_renders_marks_gaps_and_evidence():
     assert pl.counts() == {"activities": 2, "outcome_level": 1, "any_evidence": 1, "per_course": {"MTT 020": 1}}
     assert "1 of 2" in plate_readout(pl) and "Clean workpieces" in plate_readout(pl)
     assert "troubleshoot a basic functional control system" in evidence_table(pl)
+
+
+def test_occupation_block_lists_chips_and_gaps_and_skips_program_outcomes():
+    rows = [Row("d1", "Diagnose equipment malfunctions.", "t",
+                {"MTT 020": Cell(2, [Evidence("MTT 020", "outcomes", 2, "q1", "b")]),
+                 PLO: Cell(2, [Evidence(PLO, "program_outcomes", 2, "q2", "b")])}),
+            Row("d2", "Clean workpieces or finished products.", "t", {}),
+            Row("d3", "Inspect production equipment.", "t", {"MTT 012": Cell(1, [Evidence("MTT 012", "lab", 1, "q3", "b")])})]
+    mk = lambda college, mid, role: Plate(college, mid, "Cert", "credit", "0935.00", "EMT", "17-3024", "Mechatronics Techs",
+                                          ["17-3024"], "", [{"code": "MTT 020"}, {"code": "MTT 012"}], [], rows, role=role)
+    html = occupation_block("17-3024", [mk("Mission College", "mission", "paired")], top_n=2)
+    assert 'class="chip solid"' in html and "MTT 020" in html
+    assert "no course in the consortium evidences this" in html          # d2 is a gap
+    assert "Inspect production equipment" not in html                     # top_n=2 cuts d3
+    assert "Program outcomes" not in html and "PLO" not in html           # PLO cells are not chips
+    assert "<b>1 of 2</b>" in html

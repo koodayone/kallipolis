@@ -1427,6 +1427,20 @@ p a,.byline a{color:#1155cc;text-decoration:underline}
 .byline{font-size:11px;color:#70757c;margin:5px 0 0}
 .tnar{font-size:11px;color:#46536b;margin:12px 0 3px;line-height:1.4}
 .algplate{margin:6px 0 2px}.algplate svg{width:100%;height:auto;display:block}
+.alg-soc{font-weight:400;color:#8a93a5;font-size:10px;margin-left:6px}
+.alg-list{margin:4px 0 2px;border-top:1px solid #e7eaf1}
+.alg-row{display:grid;grid-template-columns:300px 1fr;gap:12px;align-items:start;padding:5px 0;border-bottom:1px solid #eef1f6}
+.alg-act{font-size:11px;color:#2a3450;line-height:1.35}
+.alg-gaprow .alg-act{color:#8a93a5}
+.alg-chips{display:flex;flex-wrap:wrap;gap:4px 5px;align-items:center}
+.chip{display:inline-block;font:700 9px/1 Helvetica,Arial,sans-serif;letter-spacing:.02em;padding:3px 6px;border-radius:3px;border:1.5px solid var(--c);white-space:nowrap}
+.chip.solid{background:var(--c);color:#fff}.chip.ring{background:#fff;color:var(--c)}
+.alg-gap{font-size:10px;color:#a8641a;font-style:italic}
+.alg-legend{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin:8px 0 4px}
+.alg-lg{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;color:#46536b}.alg-lg i{display:inline-block;width:10px;height:10px;border-radius:2px}
+.alg-appx summary{cursor:pointer;list-style:none}.alg-appx summary h1{display:inline;margin:0}.alg-appx summary::after{content:" ▸ show";font-size:11px;color:#8a93a5}.alg-appx[open] summary::after{content:" ▾ hide"}
+.alg-appx-h{margin:10px 0 2px}
+.print-only{display:none}
 .alg-hd{margin-top:2px}.alg-links a{color:#1155cc;text-decoration:underline}
 .alg-solid{color:#2e74b5}.alg-ring{color:#2e74b5}
 .alg-ev{font-size:9.5px}.alg-ev th{background:#eef1f6;color:#5a6577;font-size:8px;letter-spacing:.04em;text-transform:uppercase;padding:3px 6px}
@@ -1437,7 +1451,7 @@ p a,.byline a{color:#1155cc;text-decoration:underline}
    harness renders with printBackground:true, so without resetting it here Chromium
    faithfully paints that grey wherever .page does not fill the sheet — a grey band
    below the content on the final page of every exported PDF. */
-@media print{body{background:#fff}.page{margin:0;box-shadow:none;min-height:0}.awchart,.enchart,.xwrap,.algplate{break-inside:avoid}.blk{break-inside:avoid}h1{break-after:avoid}table.dem,table.live,table.trend{break-inside:avoid}thead{display:table-header-group}tr{break-inside:avoid}}
+@media print{.print-only{display:block}.screen-only{display:none}.alg-row{break-inside:avoid}body{background:#fff}.page{margin:0;box-shadow:none;min-height:0}.awchart,.enchart,.xwrap,.algplate{break-inside:avoid}.blk{break-inside:avoid}h1{break-after:avoid}table.dem,table.live,table.trend{break-inside:avoid}thead{display:table-header-group}tr{break-inside:avoid}}
 """
 
 
@@ -1793,36 +1807,46 @@ _CURRICULUM_BLURB = ("Each member college's certificate is read from its course 
 
 def _curriculum_section(spec: ReportSpec) -> tuple[list[str], list[str]]:
     """(section parts, appendix parts) for the roster named by spec.curriculum_alignment;
-    both empty when no alignment has been run."""
-    from partnerships.alignment import PLO, load_alignment
-    from partnerships.alignment_plate import evidence_table, plate_legend, plate_readout, plate_svg
+    both empty when no alignment has been run. The section reads BY OCCUPATION — the
+    play's SOCs in roster order, each with the ten most important core activities and
+    the courses across the consortium that evidence them. Readings the roster marks
+    appendix-only (De Anza against Machinists) appear in the appendix alone."""
+    from partnerships.alignment import load_alignment, load_roster
+    from partnerships.alignment_plate import appendix_tables, college_legend, occupation_block
 
     al = load_alignment(spec.curriculum_alignment)
     if al is None or not al.plates:
         return [], []
+    roster = load_roster(spec.curriculum_alignment)
+    socs = roster.get("occupations") or sorted({p.paired_soc for p in al.plates})
+    top_n = int(roster.get("top_n", 10))
+    shown = [p for p in al.plates if p.role != "appendix"]
     parts = ['<h1>Curriculum Alignment</h1>',
              f'<p>{_linkify(spec.curriculum_note) if spec.curriculum_note else _esc(_CURRICULUM_BLURB)}</p>',
-             plate_legend()]
-    appendix = ['<h1>Appendix: Curriculum Evidence</h1>',
-                '<p>The outline sentence behind every mark in the Curriculum Alignment plates, by college. '
-                'Section names are the outline\'s own: SLO and Objective are read literally; Description, '
-                'Content outline, Lab content and Assignment are read for what the course involves.</p>']
-    for pl in al.plates:
-        xw = (f"The TOP–CIP–SOC crosswalk for TOP {pl.top} reaches {' and '.join(pl.crosswalk_socs)}"
-              + ("." if pl.paired_soc in pl.crosswalk_socs else f", not {pl.paired_soc}; the pairing follows the program's stated purpose.")
-              if pl.top and pl.crosswalk_socs else "This program is not yet in the crosswalk figure.")
-        links = " · ".join(f'<a href="{_esc(c["source_url"])}" target="_blank" rel="noopener">{_esc(c["code"])}</a>'
-                           for c in pl.courses if c.get("source_url"))
-        parts.append(_block(
-            f'<p class="chtitle">{_esc(_short_college(pl.college))} · {_esc(pl.certificate)}</p>',
-            f'<p class="tnar alg-hd">Prepares for <b>{_esc(pl.occupation)}</b> (SOC {_esc(pl.paired_soc)}). {_esc(xw)} '
-            f'{_esc(pl.source_note)}</p>',
-            f'<div class="algplate">{plate_svg(pl)}</div>',
-            plate_readout(pl),
-            f'<p class="tnar alg-links">Outlines of record: {links}</p>' if links else ''))
-        appendix += [f'<p class="chtitle">{_esc(_short_college(pl.college))} · {_esc(pl.occupation)}</p>',
-                     evidence_table(pl)]
+             college_legend(shown)]
+    for soc in socs:
+        block = occupation_block(soc, [p for p in shown if p.paired_soc == soc], top_n=top_n)
+        if block:
+            parts.append(_block(block))
+    note = ('The outline sentence behind every mark above, by occupation and college. Section names are the '
+            'outline\'s own: SLO and Objective are read literally; Description, Content outline, Lab content and '
+            'Assignment are read for what the course involves.')
+    appx_plates = al.plates
+    extra = [p for p in al.plates if p.role == "appendix"]
+    extra_note = ("" if not extra else " Also here: " + "; ".join(
+        f"{_esc(_short_college(p.college))} read against {_esc(p.occupation)}, its own target occupation, which is outside this report's role"
+        for p in extra) + ".")
+    appendix = [
+        # Screen: collapsed by default, everything inside. Print: the renderers print a
+        # closed <details> as its summary alone, so a compact form (the rows the blocks
+        # show) is emitted for print and hidden on screen.
+        '<div class="screen-only"><details class="alg-appx"><summary><h1>Appendix: Curriculum Evidence</h1></summary>'
+        f'<p>{note}{extra_note}</p>{appendix_tables(appx_plates)}</details></div>',
+        f'<div class="print-only"><h1>Appendix: Curriculum Evidence</h1><p>{note} Limited here to the activities the '
+        f'blocks show; the full record is in the online report.{extra_note}</p>{appendix_tables(appx_plates, top_n=top_n)}</div>',
+    ]
     return parts, appendix
+
 
 # ── Demo: the whole report PROPOSED from just (member, play) ───────────────────
 def _svamp_play() -> Play:
