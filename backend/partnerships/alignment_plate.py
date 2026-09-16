@@ -164,7 +164,7 @@ CHIPS_PER_CELL = 3
 
 
 def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_order: list[str] | None = None,
-                     max_chips: int = CHIPS_PER_CELL) -> str:
+                     max_chips: int = CHIPS_PER_CELL, show_gaps: bool = False) -> str:
     """One occupation: header, then a table — the top-N activities down the side, one
     column per connected college in a fixed consortium order, that college's evidencing
     courses stacked as chips in the cell. Position carries the college (the strong
@@ -213,15 +213,15 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_
         else:
             uncovered.append(r.dwa.rstrip("."))
         act = escape(r.dwa.rstrip("."))
-        if not any_:
+        if not any_ and show_gaps:
             act += '<span class="alg-gap">no course in the consortium evidences this</span>'
-        out.append(f'<tr class="{"alg-gaprow" if not any_ else ""}"><td class="alg-act">{act}</td>{"".join(cells)}</tr>')
+        out.append(f'<tr class="{"alg-gaprow" if (not any_ and show_gaps) else ""}"><td class="alg-act">{act}</td>{"".join(cells)}</tr>')
     out.append("</tbody></table>")
     lead = sorted(per_college.items(), key=lambda kv: -kv[1])[:2]
     parts = [f"<b>{covered} of {len(rows)}</b> activities are evidenced by at least one course in the consortium."]
     if lead:
         parts.append("Most courses from " + " and ".join(f"{escape(_short(c))} ({n})" for c, n in lead) + ".")
-    if uncovered:
+    if uncovered and show_gaps:
         parts.append("Not evidenced by any college: " + "; ".join(escape(u) for u in uncovered) + ".")
     out.append(f'<p class="tnar">{" ".join(parts)}</p>')
     return "\n".join(out)

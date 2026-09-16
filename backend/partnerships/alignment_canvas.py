@@ -56,12 +56,13 @@ _TOOLBAR = """
   <select id="c-roster" onchange="go()" style="font:inherit;background:#1c2030;color:#e6ecf7;border:1px solid #2a2f3e;border-radius:5px;padding:3px 6px">{roster_opts}</select>
   <select id="c-college" onchange="go()" style="font:inherit;background:#1c2030;color:#e6ecf7;border:1px solid #2a2f3e;border-radius:5px;padding:3px 6px">{college_opts}</select>
   <label style="display:flex;gap:4px;align-items:center"><input id="c-appx" type="checkbox" {appx_checked} onchange="go()"> appendix</label>
+  <label style="display:flex;gap:4px;align-items:center" title="internal review only — off in the report"><input id="c-gaps" type="checkbox" {gaps_checked} onchange="go()"> gaps</label>
   <span id="c-status" style="opacity:.55">live</span>
 </div>
 <script>
 const HASH = "{hash}";
-function go(){{ const r=document.getElementById('c-roster').value, c=document.getElementById('c-college').value, a=document.getElementById('c-appx').checked?1:0;
-  location.href = `/?roster=${{r}}&college=${{c}}&appendix=${{a}}`; }}
+function go(){{ const r=document.getElementById('c-roster').value, c=document.getElementById('c-college').value, a=document.getElementById('c-appx').checked?1:0, g=document.getElementById('c-gaps').checked?1:0;
+  location.href = `/?roster=${{r}}&college=${{c}}&appendix=${{a}}&gaps=${{g}}`; }}
 async function poll(){{ try {{ const r = await fetch('/hash?roster={roster}'); const j = await r.json();
   if (j.hash !== HASH) location.reload(); document.getElementById('c-status').textContent='live'; }}
   catch(e) {{ document.getElementById('c-status').textContent='server restarting…'; }} setTimeout(poll, 1500); }}
@@ -75,7 +76,7 @@ def hash_(roster: str = "svamp-manufacturing-technician"):
 
 
 @app.get("/", response_class=HTMLResponse)
-def canvas(roster: str = "svamp-manufacturing-technician", college: str = "", appendix: int = 1):
+def canvas(roster: str = "svamp-manufacturing-technician", college: str = "", appendix: int = 1, gaps: int = 0):
     al = A.load_alignment(roster)
     if al is None:
         return HTMLResponse(f"<p>No saved alignment for <b>{roster}</b>. Run "
@@ -85,7 +86,8 @@ def canvas(roster: str = "svamp-manufacturing-technician", college: str = "", ap
     if dp.exists():
         defn = json.loads(dp.read_text())
     spec = R.ReportSpec(org_name=defn.get("title", roster), org_short="", lede="",
-                        curriculum_alignment=roster, curriculum_note=defn.get("curriculum_note", ""))
+                        curriculum_alignment=roster, curriculum_note=defn.get("curriculum_note", ""),
+                        curriculum_show_gaps=bool(gaps))
     # Optionally narrow to one plate by re-using the section builder on a filtered copy.
     if college:
         keep = [p for p in al.plates if p.member_id == college or p.college.lower().startswith(college.lower())]
@@ -103,7 +105,7 @@ def canvas(roster: str = "svamp-manufacturing-technician", college: str = "", ap
     toolbar = _TOOLBAR.format(
         roster_opts="".join(f'<option value="{r}" {"selected" if r == roster else ""}>{r}</option>' for r in _rosters()),
         college_opts="".join(f'<option value="{k}" {"selected" if k == college else ""}>{v}</option>' for k, v in colleges),
-        appx_checked="checked" if appendix else "", hash=_hash(roster), roster=roster)
+        appx_checked="checked" if appendix else "", gaps_checked="checked" if gaps else "", hash=_hash(roster), roster=roster)
     return HTMLResponse(
         '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
         f'<title>Curriculum alignment · {roster}</title><style>{R._CSS}</style></head>'

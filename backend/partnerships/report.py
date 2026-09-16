@@ -170,6 +170,10 @@ class ReportSpec:
     # activities. Empty → no section. `curriculum_note` is the editorial paragraph.
     curriculum_alignment: str = ""
     curriculum_note: str = ""
+    # Gap annotations (amber "no course evidences this", the uncovered list) are off in
+    # the report: absence of evidence is the method's weakest claim and a college's to
+    # confirm first. The canvas turns them on for internal review.
+    curriculum_show_gaps: bool = False
 
 
 # ── Section builders (data from the lens, words from the spec) ─────────────────
@@ -1831,7 +1835,8 @@ def _curriculum_section(spec: ReportSpec) -> tuple[list[str], list[str]]:
              college_legend(shown)]
     order = [p["member_id"] for p in roster["programs"]]          # one fixed column order across blocks
     for soc in socs:
-        block = occupation_block(soc, [p for p in shown if p.paired_soc == soc], top_n=top_n, college_order=order)
+        block = occupation_block(soc, [p for p in shown if p.paired_soc == soc], top_n=top_n, college_order=order,
+                                 show_gaps=spec.curriculum_show_gaps)
         if block:
             parts.append(_block(block))
     note = ('The outline sentence behind every mark above, by occupation and college. Section names are the '
