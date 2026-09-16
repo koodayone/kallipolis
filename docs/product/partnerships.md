@@ -44,6 +44,12 @@ Selecting a coverage cell drills into the occupation as a deterministic per-(col
 
 Employers, formerly the *subject* of the artifact, are the candidate set the artifact directs the coordinator toward; the neighboring colleges the coverage matrix surfaces are the candidate collaborators. Together they are the multi-employer, multi-college engagement the Strong Workforce Program is written to fund.
 
+### Curriculum alignment against the occupation's work activities
+
+The consortium pathway report (`backend/partnerships/report.py`) carries a further section when a curriculum-alignment roster has been run for it. One plate per member college sets the certificate's course outlines of record against the core work activities O*NET records for the occupation the program prepares students for: activities down the side in O*NET's order, the certificate's own outcomes and then its courses across the top. A solid mark means a course outcome or objective states the activity; a ring means the course's description, content, lab or assignments involve it; an empty row is an activity no course evidences. The footer counts activities per course, so the plate answers the coordinator's question directly — which course carries this, and where the program is silent — with a course number attached.
+
+The pairing of program to occupation is chosen from the program's stated purpose, and the crosswalk's verdict is printed beside it rather than used to decide it: Foothill's semiconductor certificate is paired with Semiconductor Processing Technicians although its TOP code reaches two other technician occupations, and De Anza's CNC certificate is paired with Machinists. Every mark rests on a verbatim sentence of the outline, checked mechanically before it is drawn and listed in the report's appendix. The plate shows coverage at two evidence levels and no score; it says nothing about hours, depth, or whether students attain the outcomes. The roster, the matching rules and the outputs live in `backend/partnerships/alignment.py` and `backend/partnerships/alignment_plate.py`.
+
 ### Strong Workforce evidence
 
 The report carries a tabular Strong Workforce evidence block — the regional supply-demand foundation any subsequent funding justification requires. Demand is the regional annual openings for the selected SOC; supply is the projected annual program completions for the sector's programs that prepare for that SOC; the gap is their difference. The block has no narrative; it is data only.

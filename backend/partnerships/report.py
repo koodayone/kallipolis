@@ -164,6 +164,12 @@ class ReportSpec:
     charter_gaps: tuple[str, ...] = ()              # charter members with no feeding program — the labeled gap
     dashboard_url: str = ""                          # the tailored dashboard link in Sources (def-overridable)
     extra_sources: list[str] = field(default_factory=list)
+    # Curriculum alignment: the roster id (partnerships/data/<id>.json) whose saved
+    # alignment (partnerships/saved_reports/<id>.alignment.json) renders one plate per
+    # program — outlines of record read against the paired occupation's core work
+    # activities. Empty → no section. `curriculum_note` is the editorial paragraph.
+    curriculum_alignment: str = ""
+    curriculum_note: str = ""
 
 
 # ── Section builders (data from the lens, words from the spec) ─────────────────
@@ -1304,7 +1310,7 @@ def _footer(lens: LensModel, extra: list[str]) -> str:
 
 
 def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
-                     title: str, socs: list[str], program_top: str = "") -> str:
+                     title: str, socs: list[str], program_top: str = "", curriculum: bool = False) -> str:
     """Provenance, organized by report section: a tailored dashboard link, then one
     numbered, linked source group per section. Each section's claims trace to named,
     auditable sources — the same audit-trail logic as the clickable program names."""
@@ -1334,6 +1340,17 @@ def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
         ("Occupational Competencies",
          [(f"O*NET Summary of {soc}", f"https://www.onetonline.org/link/summary/{soc}.00")
           for soc in socs]),
+    ]
+    if curriculum:
+        groups += [("Curriculum Alignment", [
+            ("O*NET Database — Task Statements, Task Ratings and Detailed Work Activities",
+             "https://www.onetcenter.org/database.html"),
+            ("Course Outlines of Record — each college's curriculum system, linked under its plate",
+             "https://www.onetcenter.org/database.html#work-activities"),
+            ("CCCCO Curriculum Inventory (COCI) — Courses, the state record each outline's currency is checked against",
+             "https://coci2.ccctechcenter.org/courses"),
+        ])]
+    groups += [
         ("College Program Alignment & Supply", [
             ("CCCCO DataMart — Program Awards",
              "https://datamart.cccco.edu/Outcomes/Program_Awards.aspx"),
@@ -1409,13 +1426,18 @@ p a,.byline a{color:#1155cc;text-decoration:underline}
 .trend tr.tier td.num{font-size:10px;color:#66708a}
 .byline{font-size:11px;color:#70757c;margin:5px 0 0}
 .tnar{font-size:11px;color:#46536b;margin:12px 0 3px;line-height:1.4}
+.algplate{margin:6px 0 2px}.algplate svg{width:100%;height:auto;display:block}
+.alg-hd{margin-top:2px}.alg-links a{color:#1155cc;text-decoration:underline}
+.alg-solid{color:#2e74b5}.alg-ring{color:#2e74b5}
+.alg-ev{font-size:9.5px}.alg-ev th{background:#eef1f6;color:#5a6577;font-size:8px;letter-spacing:.04em;text-transform:uppercase;padding:3px 6px}
+.alg-ev td{border:0;border-bottom:1px solid #eef1f6;padding:3px 6px;vertical-align:top;line-height:1.35}
 .footer{margin-top:18px;padding-top:9px;border-top:1px solid #bfbfbf;font-size:9.5px;color:#5f6368;line-height:1.6;font-style:italic}
 .footer b{font-style:normal;color:#202124}
 /* Print: the body's grey is the on-screen "desk" the white .page floats on. The PDF
    harness renders with printBackground:true, so without resetting it here Chromium
    faithfully paints that grey wherever .page does not fill the sheet — a grey band
    below the content on the final page of every exported PDF. */
-@media print{body{background:#fff}.page{margin:0;box-shadow:none;min-height:0}.awchart,.enchart,.xwrap{break-inside:avoid}.blk{break-inside:avoid}h1{break-after:avoid}table.dem,table.live,table.trend{break-inside:avoid}thead{display:table-header-group}tr{break-inside:avoid}}
+@media print{body{background:#fff}.page{margin:0;box-shadow:none;min-height:0}.awchart,.enchart,.xwrap,.algplate{break-inside:avoid}.blk{break-inside:avoid}h1{break-after:avoid}table.dem,table.live,table.trend{break-inside:avoid}thead{display:table-header-group}tr{break-inside:avoid}}
 """
 
 
@@ -1672,6 +1694,9 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         sections += ['<h1>Occupational Competencies</h1>',
                      f'<p>{_linkify(spec.competency_note)}</p>' if spec.competency_note else '', grid]
 
+    curriculum_parts, curriculum_appendix = (_curriculum_section(spec) if spec.curriculum_alignment else ([], []))
+    sections += curriculum_parts
+
     # The coalition's programs — an editorial (college, TOP6) selection, else all
     # data programs minus excludes. ONE list drives the crosswalk AND the trends.
     by_key = {(p.college, p.top6): p for p in lens.programs}
@@ -1738,8 +1763,10 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
     from partnerships.sectors import SECTORS
     sec_label = SECTORS[play.sector].label if play.sector in SECTORS else play.sector.upper()
     dash_url = spec.dashboard_url or f"https://preview.kallipolis.us/landscape/{member_id}/{play.sector}"
+    sections += curriculum_appendix
     sections += [_sources_section(_org_label(lens.scope.member), sec_label, dash_url,
-                                  play.title, [o.soc for o in occs], spec.program_top)]
+                                  play.title, [o.soc for o in occs], spec.program_top,
+                                  curriculum=bool(spec.curriculum_alignment))]
     # NO brand colour in the document chrome. Tried three times at widening scope —
     # every heading, then the masthead rule and the Awards Offered accents — and reverted
     # each time for the same reason: colour already carries meaning in this report
@@ -1753,6 +1780,49 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         f'<body><div class="page" id="page">{body}</div></body></html>'
     )
 
+
+
+# ── Curriculum alignment (courses × work activities, one plate per program) ──────
+_CURRICULUM_BLURB = ("Each member college's certificate is read from its course outlines of record — the "
+                     "board-approved statement of what every course teaches and assesses — against the core "
+                     "work activities O*NET records for the occupation the program prepares students for. A "
+                     "solid mark means a course outcome or objective states the activity; a ring means the "
+                     "course's description, content, lab or assignments involve it. Every mark rests on a "
+                     "sentence of the outline, listed in the appendix.")
+
+
+def _curriculum_section(spec: ReportSpec) -> tuple[list[str], list[str]]:
+    """(section parts, appendix parts) for the roster named by spec.curriculum_alignment;
+    both empty when no alignment has been run."""
+    from partnerships.alignment import PLO, load_alignment
+    from partnerships.alignment_plate import evidence_table, plate_legend, plate_readout, plate_svg
+
+    al = load_alignment(spec.curriculum_alignment)
+    if al is None or not al.plates:
+        return [], []
+    parts = ['<h1>Curriculum Alignment</h1>',
+             f'<p>{_linkify(spec.curriculum_note) if spec.curriculum_note else _esc(_CURRICULUM_BLURB)}</p>',
+             plate_legend()]
+    appendix = ['<h1>Appendix: Curriculum Evidence</h1>',
+                '<p>The outline sentence behind every mark in the Curriculum Alignment plates, by college. '
+                'Section names are the outline\'s own: SLO and Objective are read literally; Description, '
+                'Content outline, Lab content and Assignment are read for what the course involves.</p>']
+    for pl in al.plates:
+        xw = (f"The TOP–CIP–SOC crosswalk for TOP {pl.top} reaches {' and '.join(pl.crosswalk_socs)}"
+              + ("." if pl.paired_soc in pl.crosswalk_socs else f", not {pl.paired_soc}; the pairing follows the program's stated purpose.")
+              if pl.top and pl.crosswalk_socs else "This program is not yet in the crosswalk figure.")
+        links = " · ".join(f'<a href="{_esc(c["source_url"])}" target="_blank" rel="noopener">{_esc(c["code"])}</a>'
+                           for c in pl.courses if c.get("source_url"))
+        parts.append(_block(
+            f'<p class="chtitle">{_esc(_short_college(pl.college))} · {_esc(pl.certificate)}</p>',
+            f'<p class="tnar alg-hd">Prepares for <b>{_esc(pl.occupation)}</b> (SOC {_esc(pl.paired_soc)}). {_esc(xw)} '
+            f'{_esc(pl.source_note)}</p>',
+            f'<div class="algplate">{plate_svg(pl)}</div>',
+            plate_readout(pl),
+            f'<p class="tnar alg-links">Outlines of record: {links}</p>' if links else ''))
+        appendix += [f'<p class="chtitle">{_esc(_short_college(pl.college))} · {_esc(pl.occupation)}</p>',
+                     evidence_table(pl)]
+    return parts, appendix
 
 # ── Demo: the whole report PROPOSED from just (member, play) ───────────────────
 def _svamp_play() -> Play:
