@@ -175,15 +175,25 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_
     order = college_order or []
     plates = sorted(plates, key=lambda p: (order.index(p.member_id) if p.member_id in order else 99, p.college))
     title = plates[0].occupation
-    rows = plates[0].rows[:top_n]
+    # Rows: the most important core activities that at least one college's outlines
+    # evidence, filled from the ranked list until `top_n` or the list runs out. Activities
+    # nothing evidences are left out rather than shown empty — absence of evidence is
+    # the method's weakest claim and the college's to confirm (see show_gaps). The order
+    # is derived, not O*NET's: an activity inherits the highest incumbent importance
+    # among the tasks it is anchored to (occupations.work_activities).
+    def evidenced(r):
+        return any(any(code != PLO for code in x.cells) for pl in plates
+                   for x in pl.rows if x.dwa_id == r.dwa_id)
+    ranked = plates[0].rows
+    rows = [r for r in ranked if evidenced(r)][:top_n] if not show_gaps else ranked[:top_n]
     # How each college connects to the occupation (its pairing or its crosswalk) is
     # provenance, not reading matter: it stays on the Plate and in the appendix, off the page.
     conn = ", ".join(escape(_short(p.college)) for p in plates)
     head = "".join(f'<th style="--c:{college_color(p.member_id)}"><span class="alg-colhd">{escape(_short(p.college))}</span></th>'
                    for p in plates)
     out = [f'<p class="chtitle">{escape(title)} <span class="alg-soc">SOC {escape(soc)}</span></p>',
-           f'<p class="tnar alg-hd">The {len(rows)} most important core work activities, in O*NET\'s order, and the courses at '
-           f'{conn} whose outlines evidence them.</p>',
+           f'<p class="tnar alg-hd">The most important core work activities of this occupation that course outlines at {conn} '
+           f'evidence, up to ten, ordered by the incumbent importance of the O*NET tasks they arise from.</p>',
            f'<table class="alg-tbl"><colgroup><col class="alg-actcol">{"".join("<col>" for _ in plates)}</colgroup>'
            f'<thead><tr><th class="alg-acthd">Work activity</th>{head}</tr></thead><tbody>']
     covered = 0
@@ -218,9 +228,13 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_
         out.append(f'<tr class="{"alg-gaprow" if (not any_ and show_gaps) else ""}"><td class="alg-act">{act}</td>{"".join(cells)}</tr>')
     out.append("</tbody></table>")
     lead = sorted(per_college.items(), key=lambda kv: -kv[1])[:2]
-    parts = [f"<b>{covered} of {len(rows)}</b> activities are evidenced by at least one course in the consortium."]
+    n_courses = sum(per_college.values())
+    parts = [f"<b>{n_courses} course marks</b> at {len(per_college)} college{'s' if len(per_college) != 1 else ''} evidence these "
+             f"{len(rows)} activities."]
+    if show_gaps:
+        parts[0] = f"<b>{covered} of {len(rows)}</b> activities are evidenced by at least one course in the consortium."
     if lead:
-        parts.append("Most courses from " + " and ".join(f"{escape(_short(c))} ({n})" for c, n in lead) + ".")
+        parts.append("Most from " + " and ".join(f"{escape(_short(c))} ({n})" for c, n in lead) + ".")
     if uncovered and show_gaps:
         parts.append("Not evidenced by any college: " + "; ".join(escape(u) for u in uncovered) + ".")
     out.append(f'<p class="tnar">{" ".join(parts)}</p>')

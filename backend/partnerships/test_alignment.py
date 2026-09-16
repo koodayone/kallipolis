@@ -8,7 +8,7 @@ Coverage:
   - the gate is case- and punctuation-insensitive but never fuzzy
   - the SVAMP roster's five programs all have every course's outline in the cache with outcomes and a source URL
   - the plate renders program-outcome and course columns, marks gaps, and its readout and evidence table carry the counts and quotes
-  - an occupation block lists the top-N activities with colour-coded course chips (one style), keeps gap rows quiet unless show_gaps, and ignores program-outcome cells
+  - an occupation block lists up to N evidenced activities in derived-importance order with colour-coded course chips (one style), leaves unevidenced rows out unless show_gaps, and ignores program-outcome cells
   - a cell shows at most three courses, strongest evidence first, with a +N chip for the rest
 """
 
@@ -100,12 +100,14 @@ def test_occupation_block_lists_chips_and_gaps_and_skips_program_outcomes():
                                           ["17-3024"], "", [{"code": "MTT 020"}, {"code": "MTT 012"}], [], rows, role=role)
     html = occupation_block("17-3024", [mk("Mission College", "mission", "paired")], top_n=2)
     assert 'class="chip"' in html and "MTT 020" in html and "chip solid" not in html and "chip ring" not in html
-    assert "no course in the consortium evidences this" not in html      # gaps are quiet by default
-    assert "no course in the consortium evidences this" in occupation_block(
-        "17-3024", [mk("Mission College", "mission", "paired")], top_n=2, show_gaps=True)
-    assert "Inspect production equipment" not in html                     # top_n=2 cuts d3
+    # unevidenced d2 is left out and the next evidenced activity (d3) fills the second slot
+    assert "Clean workpieces" not in html and "Inspect production equipment" in html
+    assert "no course in the consortium evidences this" not in html
     assert "Program outcomes" not in html and "PLO" not in html           # PLO cells are not chips
-    assert "<b>1 of 2</b>" in html
+    assert "<b>2 course marks</b>" in html
+    # internal review: show_gaps keeps the ranked rows, empty ones annotated
+    g = occupation_block("17-3024", [mk("Mission College", "mission", "paired")], top_n=2, show_gaps=True)
+    assert "Clean workpieces" in g and "no course in the consortium evidences this" in g and "<b>1 of 2</b>" in g
 
 
 def test_cell_caps_chips_at_three_strongest_first_with_overflow():
