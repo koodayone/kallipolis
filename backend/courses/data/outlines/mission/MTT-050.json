@@ -1,0 +1,65 @@
+{
+ "college": "Mission College",
+ "system": "elumen",
+ "code": "MTT 050",
+ "title": "Digital Manufacturing",
+ "description": "Introduction to manufacturing with two-dimensional and three-dimensional digital layout input. Creating designs using standard Two-Dimensional (2D) and Three-Dimensional (3D) design software, e.g. AutoCAD and SolidWorks, and 3D scanner. Optimization of project design for construction on 3D printers. Examination of materials available for 3D printing.",
+ "outcomes": [
+  "Evaluate print quality and determine print parameter optimizations that may improve quality for 2D and 3D manufacturing equipment",
+  "Demonstrate proper alignment and operating procedures for safe and effective operation of the 3D printer"
+ ],
+ "objectives": [
+  "Identify common 3D file formats, and the sequence of file processing used to create a 3D file for printing",
+  "Evaluate a 3D design and determine the parameters for optimum construction with 3D printing",
+  "Design project using 2D/3D software, e.g. AutoCAD and SolidWorks"
+ ],
+ "content": [
+  "Overview of 2D/3D manufacturing processes",
+  "Computer-Aided Drafting (CAD) Design/Drawing",
+  "Modeling",
+  "Machining",
+  "Assembling Parts",
+  "2D and 3D manufacturing equipment and printer safety, setup, and operating procedures",
+  "Equipment: 3D Scanner, 3D printer and Laser Cutter",
+  "Makerspace/Workspace Setup",
+  "Equipment Setup, Operating Procedures and Safety",
+  "3D design file formats: Stereolithography (.STL) , Wavefront 3D Object File (.OBJ), AutoCAD FBX (.FBX), COLLADA (.DAE)",
+  "Hosted vs. web-based design applications",
+  "Hosted: Solidworks, AutoCAD",
+  "Web-based: SketchUp, TinkerCAD",
+  "Characteristics and challenges of 3D printing",
+  "2D versus 3D similarities and differences",
+  "Limitation and Consideration",
+  "3D Scanning principles",
+  "Printing materials and characteristics",
+  "Dimensional accuracy and stability and impact of nozzle and bed temperatures on work piece stability",
+  "Troubleshooting 2D/3D printing"
+ ],
+ "lab": [
+  "Discuss 2D/3D printer safety and operating procedures",
+  "Laser Cutting Machine basics",
+  "Advanced Laser Cutting using AutoCAD",
+  "Process 2D/3D project file for optimum 2D/3D printing",
+  "Fit tolerances for multiple-part assemblies",
+  "3D Scanning machine",
+  "3D printing using SolidWorks",
+  "Incorporate hardware in project design",
+  "Design and produce individual projects"
+ ],
+ "assignments": [
+  "Outside Assignments",
+  "Students are expected to work on homework in order to learn the materials",
+  "Example: Work on 3D design using 3D software.",
+  "Critical Thinking Assignments",
+  "Students use the concepts and technical skills learned in the class to analyze and solve practical problems.",
+  "Example: Troubleshoot 3D printing issue and 3D printer issue.",
+  "Writing/Skills Building Assignments",
+  "Students demonstrate their understanding of the materials by designing a 3D object.",
+  "Example: Create 3D project designs and produce the projects on the 3D printer."
+ ],
+ "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=2d9031c9-7e72-11ee-b77a-f169d0ffb04e",
+ "effective": "2024FA",
+ "approved": "2023-04-26",
+ "retrieved": "2026-09-16",
+ "notes": ""
+}

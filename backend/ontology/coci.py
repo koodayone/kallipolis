@@ -302,3 +302,88 @@ def awards_for(college: str, top6: str, *, offered_only: bool = True) -> list[Co
         rows = tuple(r for r in rows if r.status in OFFERED_STATUSES)
     return sorted(rows, key=lambda r: (AWARD_TIERS.index(r.tier) if r.tier in AWARD_TIERS
                                        else len(AWARD_TIERS), r.title))
+
+
+# ── Courses: the state's record of WHEN a college last touched a course ────────
+# COCI's course side is not bundled (the statewide export is ~80 MB and the alignment
+# needs five colleges), so it is fetched per college on demand. The route is the
+# public "download" behind the courses search page; despite its name it returns CSV.
+COCI_COURSES_EXPORT = "https://coci2.ccctechcenter.org/courses/excel"
+
+
+def fetch_course_export(college_code: str) -> list[dict]:
+    """Every COCI course record for one college (its COCI code, e.g. "DE ANZA")."""
+    import httpx
+
+    r = httpx.get(COCI_COURSES_EXPORT, params={"college_filter[]": college_code},
+                  headers={"User-Agent": "Mozilla/5.0"}, timeout=180, follow_redirects=True)
+    r.raise_for_status()
+    import io
+    return list(csv.DictReader(io.StringIO(r.content.decode("utf-8-sig"))))
+
+
+def course_records(rows: list[dict], dept: str, number: str) -> list[dict]:
+    """The records for a department + number (e.g. "DMT", "84A"). COCI carries one row
+    per control number, so a renumbered course appears as an Inactive twin beside the
+    live record; callers read STATUS. De Anza writes numbers as "084A" / "080." — the
+    match strips spaces, dots and leading zeros on both sides."""
+    norm = lambda s: re.sub(r"[\s.]", "", s).upper().lstrip("0")
+    return [r for r in rows
+            if r["DEPARTMENT NAME (CB01A)"].strip().upper() == dept.upper()
+            and norm(r["DEPARTMENT NUMBER (CB01B)"]) == norm(number)]
+
+
+@dataclass(frozen=True)
+class CourseCurrency:
+    control_number: str
+    status: str
+    last_updated: str          # COCI "LAST UPDATED BY COLLEGE", ISO date
+    outline_date: str          # the date the check compared against (ISO), "" if none
+    verdict: str               # "current" | "outline-newer" | "coci-newer" | "no-date" | "not-found"
+
+
+def course_currency(rows: list[dict], dept: str, number: str, outline_date: str) -> CourseCurrency:
+    """Is the outline we hold at least as recent as the state's last update?
+
+    COCI moves only when the college resubmits, and content-only revisions need not be
+    resubmitted, so agreement is confirmation and "outline-newer" is normal (COCI lags
+    local approval by months). "coci-newer" is the signal: the college approved something
+    after the outline we hold, and the college system should be checked for a later
+    version. `outline_date` may be ISO, US (mm/dd/yyyy), or a term ("Fall 2026")."""
+    recs = course_records(rows, dept, number)
+    live = [r for r in recs if r["STATUS"] in ("Active", "Approved")] or recs
+    if not live:
+        return CourseCurrency("", "", "", outline_date, "not-found")
+    r = max(live, key=lambda r: r["LAST UPDATED BY COLLEGE"])
+    od = _to_iso(outline_date)
+    if not od:
+        v = "no-date"
+    elif od >= r["LAST UPDATED BY COLLEGE"]:
+        v = "outline-newer" if od > r["LAST UPDATED BY COLLEGE"][:7] + "-99" else "current"
+    else:
+        v = "coci-newer"
+    return CourseCurrency(r["CONTROL NUMBER (CB00)"], r["STATUS"], r["LAST UPDATED BY COLLEGE"], od, v)
+
+
+_TERM_MONTH = {"winter": "01", "spring": "03", "summer": "06", "fall": "08"}
+
+
+def _to_iso(d: str) -> str:
+    """Normalize the dates colleges print on outlines to ISO for comparison. A term
+    ("Fall 2026", "2026FA") becomes the first month of that term; an approval date stays
+    a date. Empty when unparseable."""
+    d = (d or "").strip()
+    if not d:
+        return ""
+    if re.match(r"^\d{4}-\d{2}-\d{2}", d):
+        return d[:10]
+    m = re.match(r"^(\d{1,2})/(\d{1,2})/(\d{4})$", d)
+    if m:
+        return f"{m.group(3)}-{int(m.group(1)):02d}-{int(m.group(2)):02d}"
+    m = re.match(r"^(Winter|Spring|Summer|Fall)\s+(?:I\s+)?(\d{4})$", d, re.I)
+    if m:
+        return f"{m.group(2)}-{_TERM_MONTH[m.group(1).lower()]}-01"
+    m = re.match(r"^(\d{4})(FA|SP|SU|WI)$", d, re.I)
+    if m:
+        return f"{m.group(1)}-{ {'FA': '08', 'SP': '03', 'SU': '06', 'WI': '01'}[m.group(2).upper()] }-01"
+    return ""

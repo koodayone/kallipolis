@@ -1,0 +1,60 @@
+{
+ "college": "Ohlone College",
+ "system": "curricunet",
+ "code": "ETEC 124",
+ "title": "Introduction to Internet of Things",
+ "description": "This course explores Internet of Things (IoT) technologies with emphasis on manufacturing applications. Students learn about Industrial Internet of Things, Cloud Computing, and Smart Data.",
+ "outcomes": [
+  "Identify applications of the Internet of Things (IoT).",
+  "Understand the concept of the Internet of Things (IoT) and its relationship with Cloud Computing and Smart Data.",
+  "Design an IoT based system, component, or process to meet desired needs within realistic constraints, such as manufacturability and sustainability, that translates into high productivity",
+  "Use the techniques, skills, and modern engineering tools necessary for engineering practice to construct an IoT based system, component, or process."
+ ],
+ "objectives": [],
+ "content": [
+  "IoT Technology Architecture",
+  "Sensors and Transducers",
+  "Digital and wireless communication systems",
+  "Signal processing",
+  "Cloud Computing",
+  "Big and Smart Data",
+  "The components of embedded systems",
+  "Cyber Security Risks and Web applications relevant to IoT devices",
+  "Industrial IoT",
+  "Biochips",
+  "Biosensors",
+  "Implantable systems",
+  "Other emerging IoT technology",
+  "Monetizing IoT"
+ ],
+ "lab": [
+  "IoT Technology Architecture",
+  "Sensors and Transducers",
+  "Digital and wireless communication systems",
+  "Signal processing",
+  "Cloud Computing",
+  "Big and Smart Data",
+  "The components of embedded systems",
+  "Cyber Security Risks and Web applications relevant to IoT devices"
+ ],
+ "assignments": [
+  "Reading Assignments",
+  "Scholarly journals and industry materials as chosen by instructor",
+  "Projects, Activities, and other Assignments",
+  "Students are required to design and build IoT systems to meet specified",
+  "requirements. Example: Design and Build an IoT System that monitors and",
+  "controls temperature and humidity in a green house.",
+  "Writing Assignments",
+  "Students write technical reports on relevant IoT systems. Example: Write a",
+  "technical report (using the report writing template provided by the instructor) on",
+  "Industrial IoT and its relevance in the semiconductor manufacturing industry.",
+  "Students write lab reports and make entries in lab notebooks detailing",
+  "experiments, design and construction work completed during lab sessions.",
+  "Example: Write a Lab report for the Temperature Sensor experiment."
+ ],
+ "source_url": "https://www.curricunet.com/Ohlone/reports/course_outline_report.cfm?courses_id=9943",
+ "effective": "",
+ "approved": "12/03/2025",
+ "retrieved": "2026-09-16",
+ "notes": "no objectives section in this format; units 1.5"
+}

@@ -1,0 +1,73 @@
+{
+ "college": "Mission College",
+ "system": "elumen",
+ "code": "MTT 030",
+ "title": "Electrical Motors and Control Systems",
+ "description": "This course covers electrical motors and controls for commercial and industrial applications. Motor types include: Direct Current (DC), stepper, single-phase and three-phase Alternating Current (AC) motors, including Variable-Frequency Drives (VFD). Students will also develop motor theory knowledge through hands-on applications.",
+ "outcomes": [
+  "Compare and contrast DC, stepper, and AC motors and their associated control systems",
+  "Configure, operate, and troubleshoot DC, stepper, and AC motor systems",
+  "Configure and troubleshoot VFD"
+ ],
+ "objectives": [
+  "Explain the theory of operation for DC, stepper, 1-phase and 3-phase AC motors",
+  "Analyze simple motor control circuits and explain the sequence of operations and functions of control components",
+  "Commission a variable frequency drive (VFD) 3-phase motor and program it to operate from remote controls",
+  "Identify applicable National Electric Code (NEC) requirements and appropriate safety policies and procedures for installation and operation of electric motors",
+  "Describe the function of overload protection devices and how they protect motos when overloaded",
+  "Demonstrate effective basic troubleshooting techniques to isolate motor and controller faults"
+ ],
+ "content": [
+  "Electrical grounding and safety",
+  "Protecting against electric shock",
+  "Grounding",
+  "Basic motor control circuits",
+  "Manually operated switches",
+  "Mechanically operated switches",
+  "Sensors",
+  "Actuators",
+  "Direct Current (DC) motors",
+  "Fundamentals",
+  "Brushed Motors",
+  "Brushless Motors",
+  "Electronic Speed Control Systems",
+  "Stepper motors",
+  "Permanent Magnet Steppers",
+  "Variable Reluctance Steppers",
+  "Hybrid Steppers",
+  "Stepper Control",
+  "Alternating Current (AC) motors",
+  "Single-phase AC motors",
+  "Three-phase AC motors",
+  "Polyphase Motors",
+  "Asynchronous Polyphase Motors",
+  "AC Motor Control",
+  "National Electrical Code Article 430",
+  "Variable Frequency Drive (VFD) commissioning and programming"
+ ],
+ "lab": [
+  "Observing DC Motor operation and troubleshooting",
+  "Implementing DC motor controls",
+  "Designing Closed-loop DC motor controls",
+  "Implementing controls for and controlling Stepper motors",
+  "Controlling AC motors",
+  "Exploring VFD control systems"
+ ],
+ "assignments": [
+  "Outside Assignments",
+  "Students are expected to work on homework in order to learn the materials",
+  "Example: Complete the online learning object module on Single-Phase Motors, including viewing the introductory animations and completing the end-of-module assessment.",
+  "Critical Thinking Assignments",
+  "Students use the concepts and technical skills learned in the class to analyze and solve practical problems.",
+  "Example: Following the written lab procedure, configure the DC motor and associated controls. Measure motor output power and input voltage and current under multiple conditions. Summarize and analyze the measurement data to characterize the operating characteristics of the motor under test.",
+  "Example: Designing a Community-Based Motor Control System",
+  "Writing/Skills Building Assignments",
+  "Students demonstrate their understanding of the materials with written explanation or lab reports",
+  "Example: Analyze a given simple motor control circuit and explain orally and in writing the sequence of operations and functions of control components."
+ ],
+ "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=817392c1-db8a-11f0-a49b-c50afbed1f33",
+ "effective": "2026FA",
+ "approved": "2025-10-29",
+ "retrieved": "2026-09-16",
+ "notes": ""
+}

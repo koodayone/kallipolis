@@ -1,0 +1,52 @@
+{
+ "college": "Evergreen Valley College",
+ "system": "curriqunet",
+ "code": "MFGT 102",
+ "title": "Math for Manufacturing",
+ "description": "This course is a practical approach to mathematics and data analysis. The course will examine how mathematics, fractions, decimals, percentages, algebraic functions, logarithmic calculations, order of operations, units of measurement, practical data analysis, probability, and statistical analysis are used in advanced manufacturing industries.",
+ "outcomes": [
+  "Perform operations and solve application problems on whole numbers, fractions, and decimals representations; analyze the arithmetic algorithms for these two representations; and justify their equivalence.",
+  "Perform order of operations, prime factorization, and rounding of numbers to specific place values.",
+  "Convert between fractions, decimals, and percentages and solve equations and applications involving percentages.",
+  "Simplify numerical expressions containing exponents and simple square roots and perform operations on signed numbers involving whole and rational numbers.",
+  "Solve simple equations with one variable and evaluate and simplify expressions containing one variable and rational numbers."
+ ],
+ "objectives": [],
+ "content": [
+  "Learn How to Solve Work-Related Problems Using Whole Numbers, Fractions, and Decimals",
+  "Learn How to Solve Work-Related Problems Using Percentages, Ratios, and Scientific Notation",
+  "Learn How to Solve Work-Related Problems Using Order of Operations",
+  "Convert Between Fractions, Decimals, Scientific Notation, and Percentages",
+  "Apply Conversions in Applications Using Both the English and Metric Measurement Systems for Length, Weight (or Mass) and Volume",
+  "Simplify Numerical Expressions Containing Exponents and Simple Square Roots",
+  "Review Algebraic Formulas",
+  "Learn How to Solve Work-Related Problems for Rectangles, Triangles Polygons, and Circles",
+  "Learn How to Solve Practical Mechanical Measurement Problems",
+  "Learn How to Solve Practical Electrical Measurement Problems",
+  "Learn How to Solve Practical Material Analysis Problems",
+  "Learn How to Solve Practical Speed and Ratio Problems for Gears and Pulleys",
+  "Learn How to Solve Practical Problems for Cutting and Feeding Equipment",
+  "Learn How to Evaluate Variable Expressions"
+ ],
+ "lab": [
+  "Solve Mathematical Equations for Dimensional, Mechanical, and Electrical Measurements Using Whole Numbers, Fractions, and Decimals",
+  "Solve Application Problems Using Percentages, Ratios, and Scientific Notation, and Convert Between Fractions, Decimals, Scientific Notation, and Percentages",
+  "Solve Electrical Problems for Voltage, Current, Resistance, and Power",
+  "Apply English and Metric Conversions to Determine Length, Weight (or Mass) and Volume",
+  "Simplify Numerical Expressions Containing Exponents and Simple Square Roots",
+  "Solve Application Problems for Rectangles, Triangles Polygons, and Circles",
+  "Solve Practical Mechanical Measurement Problems",
+  "Solve Practical Material Analysis Problems",
+  "Solve Practical Speed and Ratio Problems for Gears and Pulleys",
+  "Solve Practical Problems for Cutting and Feeding Equipment",
+  "Perform Data Process Control Analysis"
+ ],
+ "assignments": [
+  "Read assigned textbook chapters and complete mathematical problems in the assigned chapters."
+ ],
+ "source_url": "https://evc.curriqunet.com/DynamicReports/AllFieldsReportByEntity/5297?entityType=Course&reportId=52",
+ "effective": "",
+ "approved": "05/13/2021",
+ "retrieved": "2026-09-16",
+ "notes": "objectives field holds template text only"
+}

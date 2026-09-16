@@ -1,0 +1,44 @@
+{
+ "college": "Ohlone College",
+ "system": "curricunet",
+ "code": "CAOT 150",
+ "title": "Excel for the Sciences",
+ "description": "This course provides an introduction to Microsoft Excel with specific emphasis on applications to data science, chemistry, and engineering. The instructor provides relevant course materials and lecture notes for students. No textbook is recommended or required.",
+ "outcomes": [
+  "Use Excel to solve appropriate applications in Data Science, Chemistry and Engineering."
+ ],
+ "objectives": [],
+ "content": [
+  "MS Excel Spreadsheet Fundamentals",
+  "What Excel is used for",
+  "Navigation in Excel",
+  "Entering and Formatting Data",
+  "Formulas",
+  "Protecting cells and worksheets",
+  "Charts and Graphs",
+  "Creating charts",
+  "Formatting charts",
+  "Excel for the Data Sciences",
+  "Basic Data Anaylsis in Excel",
+  "Summary tables",
+  "Pivot Tables"
+ ],
+ "lab": [],
+ "assignments": [
+  "Reading Assignments",
+  "Readings as recommended by instructor from online journals and sources",
+  "providing current themes and data.",
+  "Projects, Activities, and other Assignments",
+  "Use Excel to solve a given application in each of the following areas: Data",
+  "Science, Engineering, and Chemistry. For example, students will be given a set of",
+  "data and need to describe the data numerically and graphically.",
+  "Writing Assignments",
+  "Weekly Discussion Board entries responding to instructor generated prompts that",
+  "encourage critical thinking."
+ ],
+ "source_url": "https://www.curricunet.com/Ohlone/reports/course_outline_report.cfm?courses_id=10258",
+ "effective": "",
+ "approved": "",
+ "retrieved": "2026-09-16",
+ "notes": "no objectives section in this format; units 0.5"
+}
