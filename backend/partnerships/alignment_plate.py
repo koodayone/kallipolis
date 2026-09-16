@@ -176,11 +176,14 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_
     plates = sorted(plates, key=lambda p: (order.index(p.member_id) if p.member_id in order else 99, p.college))
     title = plates[0].occupation
     rows = plates[0].rows[:top_n]
-    conn = "; ".join(f"{escape(_short(p.college))} ({'paired' if p.role == 'paired' else 'crosswalk'})" for p in plates)
-    head = "".join(f'<th style="--c:{college_color(p.member_id)}"><span class="alg-colhd">{escape(_short(p.college))}</span>'
-                   f'<span class="alg-colrole">{"paired" if p.role == "paired" else "crosswalk"}</span></th>' for p in plates)
+    # How each college connects to the occupation (its pairing or its crosswalk) is
+    # provenance, not reading matter: it stays on the Plate and in the appendix, off the page.
+    conn = ", ".join(escape(_short(p.college)) for p in plates)
+    head = "".join(f'<th style="--c:{college_color(p.member_id)}"><span class="alg-colhd">{escape(_short(p.college))}</span></th>'
+                   for p in plates)
     out = [f'<p class="chtitle">{escape(title)} <span class="alg-soc">SOC {escape(soc)}</span></p>',
-           f'<p class="tnar alg-hd">Programs read against it: {conn}. The {len(rows)} most important core work activities, in O*NET\'s order.</p>',
+           f'<p class="tnar alg-hd">The {len(rows)} most important core work activities, in O*NET\'s order, and the courses at '
+           f'{conn} whose outlines evidence them.</p>',
            f'<table class="alg-tbl"><colgroup><col class="alg-actcol">{"".join("<col>" for _ in plates)}</colgroup>'
            f'<thead><tr><th class="alg-acthd">Work activity</th>{head}</tr></thead><tbody>']
     covered = 0

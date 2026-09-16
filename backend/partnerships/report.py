@@ -1432,7 +1432,7 @@ p a,.byline a{color:#1155cc;text-decoration:underline}
 .alg-tbl col.alg-actcol{width:230px}
 .alg-tbl th{background:#fff;color:#2a3450;font-size:10px;padding:4px 6px 6px;border:0;border-bottom:2px solid var(--c,#c8d0de);text-align:left;vertical-align:bottom}
 .alg-tbl th.alg-acthd{border-bottom-color:#e7eaf1;color:#8a93a5;font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:8px}
-.alg-colhd{display:block;font-weight:700}.alg-colrole{display:block;font-size:8px;color:#9099ab;font-weight:400;letter-spacing:.04em;text-transform:uppercase}
+.alg-colhd{display:block;font-weight:700}
 .alg-tbl td{border:0;border-bottom:1px solid #eef1f6;padding:5px 6px;vertical-align:top}
 .alg-tbl td.alg-act{font-size:11px;color:#2a3450;line-height:1.35;padding-left:0}
 .alg-tbl td.alg-empty{color:#c9d0da;text-align:center;font-size:10px;padding-top:7px}
