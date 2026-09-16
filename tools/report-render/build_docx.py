@@ -45,6 +45,10 @@ XWALK = sys.argv[3] if len(sys.argv) > 3 else '/tmp/crosswalk.png'
 AWCHART = sys.argv[4] if len(sys.argv) > 4 else '/tmp/awchart.png'
 ENCHART = sys.argv[5] if len(sys.argv) > 5 else '/tmp/enchart.png'
 WGCHART = sys.argv[6] if len(sys.argv) > 6 else '/tmp/wgchart.png'
+#: Render the crosswalk as the native program x SOC table instead of the raster
+#: figure. Off by default so the .docx matches the .pdf; see the `xwrap` branch.
+XWALK_NATIVE = os.environ.get('XWALK_NATIVE', '') not in ('', '0', 'false')
+XWALK_W = float(os.environ.get('XWALK_W', '7.1'))
 FONT = 'Arial'
 BYLINE_FONT = 'Days One'  # brand byline face (Google-native; substitutes in Word/Pages without it)
 
@@ -542,10 +546,15 @@ def add_footer(div):
 
 
 def add_image():
+    """Embed the rasterized crosswalk figure. Returns whether it went in, so the
+    caller can fall back to the native table when no raster is on hand."""
     if not os.path.exists(XWALK):
-        return  # no rasterized crosswalk on hand → rely on add_xwalk_legend's link caption
+        return False
     p = para(4, 4); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p.add_run().add_picture(XWALK, width=Inches(CONTENT_W))
+    # Width-pinned, so height follows the source aspect ratio — the crosswalk is 1.6in
+    # tall for two programs and 4.4in for five, and both should look the same weight.
+    p.add_run().add_picture(XWALK, width=Inches(XWALK_W))
+    return True
 
 
 def add_awchart_image():
@@ -750,10 +759,23 @@ def emit(el):
     elif 'awchart' in cls:
         add_awchart_image()
     elif 'xwrap' in cls:
-        # Native crosswalk (clickable, paste-safe) by default; fall back to the
-        # rasterized funnel PNG + a link caption if the SVG can't be parsed.
-        if not add_xwalk_table(el):
-            add_image()
+        # The crosswalk ships as the RASTER FIGURE, so the .docx and the .pdf show the
+        # same picture. They diverged before: the PDF drew the funnel — two programs
+        # bending into two occupations, the crossing lines carrying the many-to-many
+        # relation at a glance — while the .docx drew a program x SOC dot matrix. Both
+        # are correct, and sending a client one document that contradicts the other is
+        # its own defect.
+        #
+        # The cost is real: rasterizing turns the program names into pixels, so they
+        # stop being clickable and selectable. add_xwalk_legend puts the same links
+        # back as a caption line, which is what keeps them reachable and keeps the
+        # link-parity gate satisfied. Set XWALK_NATIVE=1 to get the native table back
+        # — worth it if a reader needs to select the program names as text.
+        if XWALK_NATIVE or not add_image():
+            if not add_xwalk_table(el):       # SVG unparseable → raster + caption
+                add_image()
+                add_xwalk_legend(el)
+        else:
             add_xwalk_legend(el)
     elif 'emps' in cls:
         add_emps(el)
