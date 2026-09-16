@@ -227,17 +227,17 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_
             act += '<span class="alg-gap">no course in the consortium evidences this</span>'
         out.append(f'<tr class="{"alg-gaprow" if (not any_ and show_gaps) else ""}"><td class="alg-act">{act}</td>{"".join(cells)}</tr>')
     out.append("</tbody></table>")
-    lead = sorted(per_college.items(), key=lambda kv: -kv[1])[:2]
-    n_courses = sum(per_college.values())
-    parts = [f"<b>{n_courses} course marks</b> at {len(per_college)} college{'s' if len(per_college) != 1 else ''} evidence these "
-             f"{len(rows)} activities."]
+    # No counts in the report. A tally of course marks reads as precision the matcher
+    # does not have, and it counts marks the three-per-cell cap hides. The table is the
+    # statement; the readout survives only in the internal review view.
     if show_gaps:
-        parts[0] = f"<b>{covered} of {len(rows)}</b> activities are evidenced by at least one course in the consortium."
-    if lead:
-        parts.append("Most from " + " and ".join(f"{escape(_short(c))} ({n})" for c, n in lead) + ".")
-    if uncovered and show_gaps:
-        parts.append("Not evidenced by any college: " + "; ".join(escape(u) for u in uncovered) + ".")
-    out.append(f'<p class="tnar">{" ".join(parts)}</p>')
+        lead = sorted(per_college.items(), key=lambda kv: -kv[1])[:2]
+        parts = [f"<b>{covered} of {len(rows)}</b> activities are evidenced by at least one course in the consortium."]
+        if lead:
+            parts.append("Most from " + " and ".join(f"{escape(_short(c))} ({n})" for c, n in lead) + ".")
+        if uncovered:
+            parts.append("Not evidenced by any college: " + "; ".join(escape(u) for u in uncovered) + ".")
+        out.append(f'<p class="tnar">{" ".join(parts)}</p>')
     return "\n".join(out)
 
 

@@ -104,7 +104,7 @@ def test_occupation_block_lists_chips_and_gaps_and_skips_program_outcomes():
     assert "Clean workpieces" not in html and "Inspect production equipment" in html
     assert "no course in the consortium evidences this" not in html
     assert "Program outcomes" not in html and "PLO" not in html           # PLO cells are not chips
-    assert "<b>2 course marks</b>" in html
+    assert "course marks" not in html and "Most from" not in html          # no counts in the report
     # internal review: show_gaps keeps the ranked rows, empty ones annotated
     g = occupation_block("17-3024", [mk("Mission College", "mission", "paired")], top_n=2, show_gaps=True)
     assert "Clean workpieces" in g and "no course in the consortium evidences this" in g and "<b>1 of 2</b>" in g
