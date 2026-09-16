@@ -1434,7 +1434,7 @@ p a,.byline a{color:#1155cc;text-decoration:underline}
 .alg-gaprow .alg-act{color:#8a93a5}
 .alg-chips{display:flex;flex-wrap:wrap;gap:4px 5px;align-items:center}
 .chip{display:inline-block;font:700 9px/1 Helvetica,Arial,sans-serif;letter-spacing:.02em;padding:3px 6px;border-radius:3px;border:1.5px solid var(--c);white-space:nowrap}
-.chip.solid{background:var(--c);color:#fff}.chip.ring{background:#fff;color:var(--c)}
+.chip{background:var(--c);color:#fff}
 .alg-gap{font-size:10px;color:#a8641a;font-style:italic}
 .alg-legend{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin:8px 0 4px}
 .alg-lg{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;color:#46536b}.alg-lg i{display:inline-block;width:10px;height:10px;border-radius:2px}
@@ -1799,10 +1799,9 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
 # ── Curriculum alignment (courses × work activities, one plate per program) ──────
 _CURRICULUM_BLURB = ("Each member college's certificate is read from its course outlines of record — the "
                      "board-approved statement of what every course teaches and assesses — against the core "
-                     "work activities O*NET records for the occupation the program prepares students for. A "
-                     "solid mark means a course outcome or objective states the activity; a ring means the "
-                     "course's description, content, lab or assignments involve it. Every mark rests on a "
-                     "sentence of the outline, listed in the appendix.")
+                     "work activities O*NET records for each occupation in the role. A course appears beside an "
+                     "activity when its outline evidences it, in an outcome, an objective, or the course's "
+                     "content. Every mark rests on a sentence of the outline, listed in the appendix.")
 
 
 def _curriculum_section(spec: ReportSpec) -> tuple[list[str], list[str]]:

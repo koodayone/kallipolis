@@ -118,10 +118,12 @@ def evidence_table(plate: Plate, *, max_rows: int | None = None) -> str:
 # ── Occupation blocks: the consortium view ─────────────────────────────────────
 # Five programs converge on three occupations, so the report reads by occupation: the
 # ten most important core activities, each followed by the courses — from any member
-# college — whose outlines evidence it, as chips in the college's colour. Solid chip: an
-# outcome or objective states the activity. Outlined chip: the course's content involves
-# it. No chip: nothing in the consortium evidences it. The per-program plate above stays
-# the view for a single college's own report; both draw the same saved alignment.
+# college — whose outlines evidence it, as chips in the college's colour. One chip style,
+# one meaning: the course's outline evidences the activity. Whether that evidence is an
+# outcome, an objective or lab content is real and kept — in the saved alignment and the
+# appendix's section column — but it is not drawn: two chip styles read as two shades of
+# one fact and cost the reader a legend. No chip: nothing in the consortium evidences it.
+# The per-program plate above stays the view for a single college's own report.
 
 #: Colleges whose logo-extracted brand colours sit too close on white paper to tell
 #: apart at chip size: De Anza's navy (#1e3a5f) against Mission's blue (#0086ad), and
@@ -151,8 +153,7 @@ def college_legend(plates: list[Plate]) -> str:
         seen.add(pl.member_id)
         items.append(f'<span class="alg-lg"><i style="background:{college_color(pl.member_id)}"></i>{escape(_short(pl.college))}</span>')
     return ('<p class="tnar alg-legend">' + " ".join(items) +
-            ' <span class="alg-lg"><b class="chip solid" style="--c:#5a6577">CODE</b> outcome or objective states it</span>'
-            ' <span class="alg-lg"><b class="chip ring" style="--c:#5a6577">CODE</b> content, lab or assignments involve it</span></p>')
+            ' <span class="alg-lg"><b class="chip" style="--c:#5a6577">CODE</b> a course whose outline evidences the activity</span></p>')
 
 
 def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10) -> str:
@@ -166,7 +167,7 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10) -> str:
     out = [f'<p class="chtitle">{escape(title)} <span class="alg-soc">SOC {escape(soc)}</span></p>',
            f'<p class="tnar alg-hd">Programs read against it: {conn}. The {len(rows)} most important core work activities, in O*NET\'s order.</p>',
            '<div class="alg-list">']
-    covered2 = covered1 = 0
+    covered = 0
     per_college: dict[str, int] = {}
     uncovered = []
     for i, r in enumerate(rows):
@@ -179,14 +180,11 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10) -> str:
             for code, cell in pr.cells.items():
                 if code == PLO:
                     continue
-                cls = "solid" if cell.level == 2 else "ring"
-                chips.append(f'<b class="chip {cls}" style="--c:{col}" title="{escape(pl.college)} · {escape(code)}">{escape(code)}</b>')
+                chips.append(f'<b class="chip" style="--c:{col}" title="{escape(pl.college)} · {escape(code)}">{escape(code)}</b>')
                 best = max(best, cell.level)
                 per_college[pl.college] = per_college.get(pl.college, 0) + 1
-        if best == 2:
-            covered2 += 1
-        elif best == 1:
-            covered1 += 1
+        if best:
+            covered += 1
         else:
             uncovered.append(r.dwa.rstrip("."))
         body = "".join(chips) if chips else '<span class="alg-gap">no course in the consortium evidences this</span>'
@@ -194,10 +192,9 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10) -> str:
                    f'<div class="alg-chips">{body}</div></div>')
     out.append("</div>")
     lead = sorted(per_college.items(), key=lambda kv: -kv[1])[:2]
-    parts = [f"<b>{covered2} of {len(rows)}</b> activities are stated in a course outcome or objective somewhere in the consortium; "
-             f"{covered1} more are involved in course content."]
+    parts = [f"<b>{covered} of {len(rows)}</b> activities are evidenced by at least one course in the consortium."]
     if lead:
-        parts.append("Most course evidence from " + " and ".join(f"{escape(_short(c))} ({n})" for c, n in lead) + ".")
+        parts.append("Most courses from " + " and ".join(f"{escape(_short(c))} ({n})" for c, n in lead) + ".")
     if uncovered:
         parts.append("Not evidenced by any college: " + "; ".join(escape(u) for u in uncovered) + ".")
     out.append(f'<p class="tnar">{" ".join(parts)}</p>')
