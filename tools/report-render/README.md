@@ -37,6 +37,7 @@ docx both faithful **and** editable, with the PDF as the absolute-fidelity net.
 | `table.live` | live-postings table (left SOC-color accent bars `lc1/lc2/lc3`) |
 | `table.cmpgrid` | competency grid (colored `c1h/c2h/c3h` headers, `sec`/`descrow` rows) |
 | `table.trend` | award / enrollment trend tables |
+| `table.alg-tbl` | curriculum alignment — work activities × colleges, course chips as coloured hyperlinks (college colour from the header's `--c`), `+N` overflow with its hidden codes |
 | `.xwrap` | native crosswalk table — converge-to-target box (1 SOC) or program×SOC matrix (≥2 SOCs); PNG fallback only if the SVG won't parse |
 | `.byline` / `.srcdash` / `.srcsec` / `.srclist` | byline + sourced footer blocks |
 | `.emps` / `.footer` | employer list / sourced footer |
