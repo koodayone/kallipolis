@@ -1837,25 +1837,28 @@ def _curriculum_section(spec: ReportSpec) -> tuple[list[str], list[str]]:
                                  show_gaps=spec.curriculum_show_gaps)
         if block:
             parts.append(_block(block))
-    note = ('The outline sentence behind every mark above, by occupation and college. Each block lists up to '
-            'ten of the occupation\'s core work activities that member colleges\' outlines evidence, ordered by the '
-            'incumbent importance of the O*NET tasks each activity arises from; a college\'s cell shows up to three '
-            'courses, strongest evidence first. Section names are the outline\'s own: SLO and Objective are read '
-            'literally; Description, Content outline, Lab content and Assignment are read for what the course involves.')
-    appx_plates = al.plates
-    extra = [p for p in al.plates if p.role == "appendix"]
-    extra_note = ("" if not extra else " Also here: " + "; ".join(
-        f"{_esc(_short_college(p.college))} read against {_esc(p.occupation)}, its own target occupation, which is outside this report's role"
-        for p in extra) + ".")
-    appendix = [
-        # Screen: collapsed by default, everything inside. Print: the renderers print a
-        # closed <details> as its summary alone, so a compact form (the rows the blocks
-        # show) is emitted for print and hidden on screen.
-        '<div class="screen-only"><details class="alg-appx"><summary><h1>Appendix: Curriculum Evidence</h1></summary>'
-        f'<p>{note}{extra_note}</p>{appendix_tables(appx_plates)}</details></div>',
-        f'<div class="print-only"><h1>Appendix: Curriculum Evidence</h1><p>{note} Limited here to the activities the '
-        f'blocks show; the full record is in the online report.{extra_note}</p>{appendix_tables(appx_plates, top_n=top_n)}</div>',
-    ]
+    # Appendix: the outlines themselves, linked. A reader checks a chip against the
+    # course's outline of record at the source; the quoted sentences live in the review
+    # file for the college conversations, and in the canvas's internal review view.
+    method = ('Each block lists up to ten of the occupation\'s core work activities that member colleges\' course '
+              'outlines of record evidence, ordered by the incumbent importance of the O*NET tasks each activity '
+              'arises from; a cell shows up to three courses. A course is listed when its outline states the '
+              'activity in a learning outcome or objective, or involves it in the course\'s description, content, '
+              'lab or assignments. The outlines are linked below.')
+    seen: set[str] = set()
+    links = []
+    for pl in sorted(al.plates, key=lambda p: order.index(p.member_id) if p.member_id in order else 99):
+        if pl.member_id in seen:
+            continue
+        seen.add(pl.member_id)
+        courses = " \u00b7 ".join(
+            f'<a href="{_esc(c["source_url"])}" target="_blank" rel="noopener">{_esc(c["code"])}</a>'
+            for c in pl.courses if c.get("source_url"))
+        links.append(f'<p class="tnar alg-links"><b>{_esc(_short_college(pl.college))}</b> \u00b7 {_esc(pl.certificate)}: {courses}</p>')
+    appendix = ['<h1>Appendix: Course Outlines of Record</h1>', f'<p>{method}</p>'] + links
+    if spec.curriculum_show_gaps:      # internal review: every quoted sentence, by occupation and college
+        appendix += ['<details class="alg-appx"><summary><b>Evidence tables (internal review)</b></summary>'
+                     f'{appendix_tables(al.plates)}</details>']
     return parts, appendix
 
 
