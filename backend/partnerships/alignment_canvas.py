@@ -13,7 +13,13 @@ The page polls `/hash` and reloads itself when the alignment file, the definitio
 any of the rendering modules change, so an edit to `alignment_plate.py`, a re-run of
 `python -m partnerships.alignment …`, or a hand-edit to the saved alignment shows up
 without touching the browser. `?college=<college_key>` shows one plate;
-`?appendix=0` hides the evidence table.
+`?appendix=0` hides the appendix; `?gaps=1` turns on the internal gap annotations.
+
+`?clean=1` drops the toolbar, the reload script and the dev byline and titles the page as
+a standalone document — the input for a section-only .docx/.pdf via tools/report-render:
+
+    curl -s 'http://localhost:8010/?clean=1' -o out/alignment.html
+    python3 tools/report-render/build_docx.py out/alignment.html out/alignment.docx
 """
 
 from __future__ import annotations
@@ -76,7 +82,8 @@ def hash_(roster: str = "svamp-manufacturing-technician"):
 
 
 @app.get("/", response_class=HTMLResponse)
-def canvas(roster: str = "svamp-manufacturing-technician", college: str = "", appendix: int = 1, gaps: int = 0):
+def canvas(roster: str = "svamp-manufacturing-technician", college: str = "", appendix: int = 1, gaps: int = 0,
+           clean: int = 0):
     al = A.load_alignment(roster)
     if al is None:
         return HTMLResponse(f"<p>No saved alignment for <b>{roster}</b>. Run "
@@ -106,6 +113,19 @@ def canvas(roster: str = "svamp-manufacturing-technician", college: str = "", ap
         roster_opts="".join(f'<option value="{r}" {"selected" if r == roster else ""}>{r}</option>' for r in _rosters()),
         college_opts="".join(f'<option value="{k}" {"selected" if k == college else ""}>{v}</option>' for k, v in colleges),
         appx_checked="checked" if appendix else "", gaps_checked="checked" if gaps else "", hash=_hash(roster), roster=roster)
+    if clean:
+        # A standalone document: the section as the report would print it, titled like a
+        # report, no dev chrome. What tools/report-render turns into a .docx / .pdf.
+        from datetime import date as _date
+        gen = _date.fromisoformat(al.generated).strftime("%B %-d, %Y") if al.generated else ""
+        org = defn.get("org_name") or defn.get("member", "").upper()
+        return HTMLResponse(
+            '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
+            f'<title>{R._esc(defn.get("title", roster))} · Curriculum Alignment</title><style>{R._CSS}</style></head>'
+            f'<body><div class="page" id="page">'
+            f'<div class="title">{R._esc(org + " : " if org else "")}{R._esc(defn.get("title", roster))} · Curriculum Alignment</div>'
+            f'<div class="byline">{R._esc(defn.get("author", "Kallipolis"))} · {R._esc(gen)} · {R._esc(al.onet_vintage)}</div>'
+            f'{body}</div></body></html>')
     return HTMLResponse(
         '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
         f'<title>Curriculum alignment · {roster}</title><style>{R._CSS}</style></head>'
