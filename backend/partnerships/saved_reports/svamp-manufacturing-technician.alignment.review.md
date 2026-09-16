@@ -909,3 +909,60 @@ Read against Industrial Engineering Technologists and Technicians (SOC 17-3026),
 - act 10 · MFGT 202 · “Processing/Structure/Properties/Performance Correlations” — adjudicated: a: 'Processing/Structure/Properties/Performance Correlations' is a topic heading without stated statistical evaluation of quality/reliability
 - act 15 · MFGT 202 · “Soldering Techniques” — adjudicated: d: soldering techniques lab evidences a joining/assembly skill, not selecting project materials
 - act 13 · MFGT 203 · “Process Capability Index” — adjudicated: a: 'Process Capability Index' is a topic heading without stated selection of material quantities or processing methods
+
+## Evergreen Valley College — Certificate of Achievement, Advanced Manufacturing Level 1 → Electro-Mechanical and Mechatronics Technologists and Technicians (crosswalk)
+Read against Electro-Mechanical and Mechatronics Technologists and Technicians (SOC 17-3024), connected by crosswalk. 
+6 of 14 activities at outcome level, 10 with any evidence.
+
+- · **Design electromechanical equipment or systems.**
+- ● **Test performance of electrical, electronic, mechanical, or integrated systems or equipment.**
+    - MFGT 101 [Lab content]: “Perform Testing on Assembled Product” — performing testing on an assembled product is a basic instance of testing performance of assembled equipment
+    - MFGT 103 [SLO]: “Demonstrate two techniques for testing assembled product.” — testing assembled product matches testing performance of electromechanical assemblies/equipment
+    - MFGT 103 [Content outline]: “In-Circuit Functional” — in-circuit functional testing of assembled electronics matches testing performance of electronic/electromechanical assemblies
+    - MFGT 201 [SLO]: “Demonstrate the use of specialized test equipment to obtain measurements and generate data from electronic circuits and systems.” — students select and use diagnostic test equipment to assess electrical circuits, directly matching the task
+    - MFGT 201 [Lab content]: “Use Test Equipment such as Oscilloscopes, Frequency Sources, and Vector Analyzers to Develop Basic Understanding of Voltage Patterns” — students test performance of circuits using oscilloscopes, matching the electromechanical assembly test task
+- · **Develop software or computer applications.**
+- ● **Review technical documents to plan work.**
+    - MFGT 103 [SLO]: “Demonstrate how to read and interpret mechanical drawings, prints.” — literal SLO matches reading blueprints/schematics to determine assembly sequence
+    - MFGT 103 [Content outline]: “Learn How to Read and Interpret Mechanical Drawings” — content covers blueprints, drawings, projections, dimensions used to plan assembly sequence
+- ● **Maintain electromechanical equipment.**
+    - MFGT 201 [SLO]: “Demonstrate competence in building, servicing, and testing circuits using passive devices utilizing safe and industry standard practices and procedures.” — literal SLO evidences maintaining/servicing electrical/electromechanical equipment
+    - MFGT 201 [Lab content]: “Apply and Perform Diagnostic and Repair Procedures to Live DC Circuits” — lab activity of diagnosing/repairing circuits evidences maintaining electromechanical equipment
+    - MFGT 201 [SLO]: “Demonstrate the use of diagnostic information and software (electrical diagrams, board diagrams, diagnostic charts, specifications) in order to perform diagnosis and repair of passive circuits and systems.” — students diagnose and repair circuits, matching repair of electrical components to ensure proper functioning
+- ● **Maintain electronic equipment.**
+    - MFGT 201 [SLO]: “Demonstrate the use of diagnostic information and software (electrical diagrams, board diagrams, diagnostic charts, specifications) in order to perform diagnosis and repair of passive circuits and systems.” — literal SLO evidences diagnosis and repair of electronic equipment
+    - MFGT 201 [Lab content]: “Utilize Best Industry Practices on Electronic Troubleshooting, Fault Detection, and Root Cause Corrective Action (RCCA) Methods and Procedures” — lab activity of troubleshooting/repairing electronic circuits evidences maintaining electronic equipment
+- ○ **Inspect finished products to locate flaws.**
+    - MFGT 103 [Lab content]: “Inspect Solder Joint Quality Per IPC 610” — lab inspection of solder joints for defects evidences inspecting finished products for flaws
+    - MFGT 103 [Lab content]: “Inspect and Test Finished Circuit Boards Per Industry and International Standards such as ISO, IEC, IPC, or MILSPEC” — inspecting finished boards for conformance to standards matches inspecting finished products to locate flaws
+    - MFGT 203 [Lab content]: “Precision Measurement: Measure the Length of Similar Devices Using a Micrometer or Vernier Caliper and Graph the Measurements to Determine the Mean, Average and Standard Deviation” — lab use of precision measuring instruments to verify dimensions evidences flaw/tolerance inspection
+    - MFGT 203 [Lab content]: “Precision Measurement: Measure the Length of Similar Devices Using a Micrometer or Vernier Caliper” — verifying part dimensions with precision measuring instruments matches the inspection task literally
+    - MFGT 202 [Lab content]: “Mechanical Testing #2: Fracture Identification and Testing” — fracture identification in a lab is directly locating flaws in tested parts
+- ○ **Install instrumentation or electronic equipment or systems.**
+    - MFGT 103 [Lab content]: “Perform Various Hand-held Soldering Techniques for Wires and Circuit Components” — lab hand soldering of parts into assemblies evidences installing electronic components
+    - MFGT 103 [Content outline]: “Hand Soldering” — hand soldering of electronic parts into housings/assemblies matches installing electronic equipment using soldering equipment
+    - MFGT 201 [Lab content]: “Practice Wiring, Connector Repair Methods, and Soldering Techniques” — students install electrical parts using soldering equipment and hand tools, matching the task literally
+- ● **Assemble equipment or components.**
+    - MFGT 103 [SLO]: “Demonstrate the ability to assemble and test micro circuits under a microscope.” — literal SLO evidences assembling electronic components
+    - MFGT 103 [Lab content]: “Properly Use Various Screw Drivers, Socket, Wrenches, and Torque Tools” — lab use of hand/power tools for assembly evidences fitting/assembling component parts
+    - MFGT 103 [SLO]: “Demonstrate how to form, cut, bond, solder, laminate, and 3D print various materials when assembling circuit boards, mechanical systems and electrical systems.” — forming/bonding/soldering to assemble mechanical and electrical systems is fabricating/assembling electromechanical components
+    - MFGT 103 [Lab content]: “Assemble Electrical Connectors and Route Wiring” — hands-on assembly of electrical connectors/wiring using tools matches aligning/fitting/assembling components with hand tools
+    - MFGT 101 [Lab content]: “Follow a Manufacturing Instruction to Assemble a Product (e.g. IKEA product)” — assembling a product from instructions is a direct instance of assembling components
+- ○ **Fabricate devices or components.**
+    - MFGT 103 [Lab content]: “Assemble Products Using Either Molding, Stamping, Bending, Casting, Laminating, or 3D Printing” — lab fabrication processes evidence fabricating mechanical/electrical components
+    - MFGT 103 [Lab content]: “Assemble Printed Circuit Boards Using Mechanical or Automated Techniques” — fabricating PCB assemblies matches fabricate/assemble electronic components
+- · **Create schematic drawings for electronics.**
+- ● **Select project materials.**
+    - MFGT 202 [SLO]: “Identify three criteria that are important in the materials selection process.” — literal SLO evidences selecting materials to meet functional specifications
+- · **Develop technical methods or processes.**
+- ○ **Maintain operational records or records systems.**
+    - MFGT 203 [Lab content]: “Problem Solving: Given a Problem or Defect, Identify Possible Causes, Fishbone Those Causes, Figure Out How to Eliminate and Test the Various Causes to Identify the Root Cause. Choose a Corrective Action, and Document the Process.” — lab requirement to document the process evidences maintaining operational records
+
+### Dropped
+
+- act 1 · MFGT 101 · “Robotics” — adjudicated: a) topic-only heading "Robotics" with no performable content stated
+- act 13 · MFGT 203 · “Set Up and Monitor a Process with Control Chart to Determine If the Process is in Control” — adjudicated: d) control-chart process monitoring evidences a quality/process-control activity, not establishing inventory or documentation records
+- act 7 · MFGT 101 · “Perform Testing on Assembled Product” — adjudicated: a) "Perform Testing on Assembled Product" is a bare heading with no stated inspection-for-flaws content
+- act 7 · MFGT 202 · “Common Material Failures” — adjudicated: a) "Common Material Failures" is a topic heading with no performable inspection content stated
+- act 5 · MFGT 202 · “Hardening and Annealing” — adjudicated: d) hardening/annealing is a materials heat-treatment process, not repair/maintenance of electromechanical equipment
+- act 7 · MFGT 203 · “Out of Control Conditions” — adjudicated: a) "Out of Control Conditions" is a bare topic heading with no stated inspection-for-flaws content

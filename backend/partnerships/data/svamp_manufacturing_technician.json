@@ -304,11 +304,14 @@
       "member_id": "evc",
       "certificate": "Certificate of Achievement, Advanced Manufacturing Level 1",
       "kind": "credit",
-      "top": null,
-      "top_name": "not yet in the crosswalk figure (no award series)",
+      "top": "0956.00",
+      "top_name": "Manufacturing and Industrial Technology",
       "paired_soc": "17-3026",
-      "crosswalk_socs": [],
-      "pairing_basis": "The certificate prepares manufacturing technicians and assemblers with an emphasis on testing, materials, data analysis and quality control — the process side of the technician role.",
+      "crosswalk_socs": [
+        "17-3024",
+        "17-3026"
+      ],
+      "pairing_basis": "The certificate prepares manufacturing technicians and assemblers with an emphasis on testing, materials, data analysis and quality control — the process side of the technician role. TOP 0956.00 from the state Curriculum Inventory (the program has no award history yet, so it is absent from the report's crosswalk figure); the crosswalk agrees.",
       "source": {
         "system": "curriqunet",
         "host": "evc.curriqunet.com",
@@ -392,7 +395,8 @@
         }
       ],
       "reads_against": [
-        "17-3026"
+        "17-3026",
+        "17-3024"
       ],
       "appendix_socs": []
     }
