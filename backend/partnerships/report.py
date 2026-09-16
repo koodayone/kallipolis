@@ -1841,11 +1841,8 @@ def _curriculum_section(spec: ReportSpec) -> tuple[list[str], list[str]]:
     # Appendix: the outlines themselves, linked. A reader checks a chip against the
     # course's outline of record at the source; the quoted sentences live in the review
     # file for the college conversations, and in the canvas's internal review view.
-    method = ('Each block lists up to ten of the occupation\'s core work activities that member colleges\' course '
-              'outlines of record evidence, ordered by the incumbent importance of the O*NET tasks each activity '
-              'arises from; a cell shows up to three courses. A course is listed when its outline states the '
-              'activity in a learning outcome or objective, or involves it in the course\'s description, content, '
-              'lab or assignments. The outlines are linked below.')
+    method = ('Activities appear in O*NET task-importance order, up to ten per occupation and three courses '
+              'per cell. A course is listed when its outline of record covers the activity.')
     seen: set[str] = set()
     links = []
     for pl in sorted(al.plates, key=lambda p: order.index(p.member_id) if p.member_id in order else 99):
