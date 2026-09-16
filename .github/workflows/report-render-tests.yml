@@ -1,0 +1,37 @@
+name: Report render tests
+
+# The .docx pagination contract. build_docx.py translates the report's CSS print rules
+# into Word's own keepNext / keepLines / tblHeader / cantSplit — the grouping that stops
+# a heading being stranded from the chart it names. That translation is invisible in the
+# artifact (a badly paginated .docx still opens fine and still passes link parity), so it
+# needs a test to have any teeth.
+#
+# Not path-filtered, for the reason documented in docs-audit.yml: GitHub branch
+# protection treats a required check that never ran as pending forever. This one is NOT
+# currently a required check — see repo settings if that changes.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  pagination:
+    name: Report render tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        # python-docx + beautifulsoup4 only; the PDF and raster steps need node +
+        # Playwright and are exercised by a real export, not here.
+        run: pip install -r tools/report-render/requirements.txt pytest
+
+      - name: Run pagination tests
+        run: python -m pytest tools/report-render/tests/ -v

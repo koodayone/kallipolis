@@ -28,6 +28,7 @@ from docx import Document
 from docx.shared import Pt, RGBColor, Inches
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_TABLE_ALIGNMENT
+from docx.text.paragraph import Paragraph
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 from docx.opc.constants import RELATIONSHIP_TYPE as RT
@@ -148,6 +149,117 @@ def cellpad(cell, top=40, bottom=40, left=80, right=80):
     tcPr.append(m)
 
 
+# ---------- pagination ----------
+# The report states its pagination ONCE, in CSS, in report.py's `@media print`:
+#     .blk{break-inside:avoid}  h1{break-after:avoid}
+#     table.dem,table.live,table.trend{break-inside:avoid}
+#     thead{display:table-header-group}  tr{break-inside:avoid}
+# Chromium speaks CSS, so the PDF honours all five. This builder walks the DOM and
+# never reads the stylesheet, so every one of them used to be dropped on the floor:
+# the .docx carried zero keepNext, zero tblHeader, zero cantSplit, and Word paginated
+# by greedy overflow. Every good break in those files was luck.
+#
+# Two different reader problems want two different primitives, and conflating them is
+# what makes this expensive:
+#   * a heading or chart title stranded from the thing it names  -> w:keepNext
+#   * a long table that legitimately spills onto the next page   -> w:tblHeader
+# A table whose header row reprints is interpretable wherever it breaks, so tables are
+# deliberately left SPLITTABLE. Making them atomic would buy nothing the repeated
+# header doesn't already give, and would cost most of a page of white every time one
+# didn't fit. Whitespace is not free: a two-inch gap mid-document reads to a reader as
+# a section boundary that isn't there.
+BODY_TAGS = (qn('w:p'), qn('w:tbl'))
+#: Usable text column — the page less its top and bottom margins.
+COLUMN_H = sec.page_height.inches - sec.top_margin.inches - sec.bottom_margin.inches
+EMU_PER_IN = 914400
+
+
+def body_blocks():
+    """The body's block-level children, in document order."""
+    return [c for c in doc.element.body if c.tag in BODY_TAGS]
+
+
+def est_height_in(items):
+    """Rough height of a would-be keep-together chain, in inches.
+
+    Needed because Word SILENTLY IGNORES a keepNext chain taller than the page: you
+    get no binding, no warning, and a layout that looks like the bug you just fixed.
+    An oversized block must therefore not be bound at all — an honest break beats a
+    promise the renderer drops on the floor.
+
+    Exact for images, which are the dominant term and the only element that can
+    overflow a page single-handedly. Deliberately coarse for text: a chain only needs
+    rejecting when it is near a whole page, and at that size the text is noise.
+    """
+    total = 0.0
+    for el in items:
+        if el.tag == qn('w:tbl'):
+            total += len(el.findall(qn('w:tr'))) * 20 / 72.0  # ~20pt a row incl. padding
+            continue
+        cy = [int(e.get('cy')) for e in el.iter(qn('wp:extent'))]
+        if cy:                                    # a picture paragraph — measure it
+            total += sum(cy) / EMU_PER_IN
+            continue
+        chars = sum(len(t.text or '') for t in el.iter(qn('w:t')))
+        total += max(1, -(-chars // 100)) * 13 / 72.0   # ~100 chars a line, ~13pt a line
+    return total
+
+
+def bind_forward(el):
+    """Keep this block-level element on the same page as the one after it."""
+    if el.tag == qn('w:p'):
+        Paragraph(el, None).paragraph_format.keep_with_next = True
+    elif el.tag == qn('w:tbl'):
+        # Bind only the LAST row forward. Binding every row would make the whole table
+        # unsplittable — the expensive outcome tblHeader exists to make unnecessary.
+        rows = el.findall(qn('w:tr'))
+        for p_el in (rows[-1].iter(qn('w:p')) if rows else ()):
+            Paragraph(p_el, None).paragraph_format.keep_with_next = True
+
+
+def close_block(start):
+    """Everything one `.blk` emitted travels together.
+
+    TWO properties, because keepNext alone is not what the CSS says. keepNext binds the
+    LAST line of a paragraph to the FIRST line of the next one, so a three-line
+    narration could still break through its own middle and strand its opening line on
+    the previous page — the heading and the chart would be correctly together and the
+    sentence introducing them cut in half. keepLines is what forbids that. The last
+    element is deliberately left unbound forward, so the block can still begin a fresh
+    page itself.
+    """
+    items = body_blocks()[start:]
+    if not items:
+        return
+    h = est_height_in(items)
+    if h > COLUMN_H:
+        # Not silently — a dropped grouping is exactly the failure this code exists to
+        # fix, so it has to be visible when we decline to make the promise.
+        # stderr, because export.sh sends this script's stdout to /dev/null — a notice
+        # nobody sees is the silent cap it exists to prevent.
+        print(f'  note: block ~{h:.1f}in exceeds the {COLUMN_H:.1f}in column — left '
+              f'unbound (Word would ignore a chain this tall anyway)', file=sys.stderr)
+        return
+    for el in items:
+        if el.tag == qn('w:p'):
+            Paragraph(el, None).paragraph_format.keep_together = True
+    for el in items[:-1]:
+        bind_forward(el)
+
+
+def repeat_header(row):
+    """w:tblHeader — reprint this row atop every page the table spills onto. Without
+    it the continuation is a page of unlabelled numbers; in the enrolment table that
+    is bare counts under no term at all."""
+    e = OxmlElement('w:tblHeader'); e.set(qn('w:val'), 'true')
+    row._tr.get_or_add_trPr().append(e)
+
+
+def no_split(row):
+    """w:cantSplit — a row never breaks across pages through its own middle."""
+    row._tr.get_or_add_trPr().append(OxmlElement('w:cantSplit'))
+
+
 def run(p, text, size=10, bold=False, color=BODY, italic=False, font=FONT):
     r = p.add_run(text); r.font.name = font; r.font.size = Pt(size)
     r.font.bold = bold; r.font.italic = italic; r.font.color.rgb = RGBColor.from_string(color)
@@ -234,10 +346,13 @@ def std_table(rows, widths=None, header=True, num_from=2, totalcls='tot'):
     tbl = doc.add_table(rows=0, cols=ncol); tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
     grid(tbl)
     for r in rows:
-        cells = tbl.add_row().cells
+        trow = tbl.add_row(); cells = trow.cells
         ci = 0
         istot = totalcls in r['cls']
         ishdr = all(c['th'] for c in r['cells']) and r is rows[0]
+        no_split(trow)
+        if ishdr:
+            repeat_header(trow)
         for c in r['cells']:
             cell = cells[ci]
             for j in range(1, c['colspan']):
@@ -265,8 +380,11 @@ def add_trend(table):
     ncols = len(rows[0]['cells']) if rows else 6
     tbl = doc.add_table(rows=0, cols=ncols); tbl.alignment = WD_TABLE_ALIGNMENT.CENTER; grid(tbl)
     for ri, r in enumerate(rows):
-        cells = tbl.add_row().cells
+        trow = tbl.add_row(); cells = trow.cells
         istot = 'tot' in r['cls']; ishdr = ri == 0
+        no_split(trow)
+        if ishdr:
+            repeat_header(trow)
         # Credential-mix sub-row under the member college. Without this branch the
         # <b> in cell 0 renders bold+dark exactly like a college name, so the docx
         # keeps the rows but loses the hierarchy that makes them read as a
@@ -311,6 +429,9 @@ def add_live(table):
         ishdr = ri == 0
         accent = next((SOCCOL[c] for c in r['cls'] if c in SOCCOL), None)
         ci = 0
+        no_split(tbl.rows[ri])
+        if ishdr:
+            repeat_header(tbl.rows[ri])
         for c in r['cells']:
             while ci < ncol and span_left[ci] > 0:  # covered from above → extend the merge
                 tbl.cell(ri - 1, ci).merge(tbl.cell(ri, ci)); span_left[ci] -= 1; ci += 1
@@ -352,9 +473,15 @@ def add_cmpgrid(table):
     ncol = max(sum(c['colspan'] for c in r['cells']) for r in rows)
     tbl = doc.add_table(rows=0, cols=ncol); tbl.alignment = WD_TABLE_ALIGNMENT.CENTER; grid(tbl)
     for ri, r in enumerate(rows):
-        cells = tbl.add_row().cells
+        trow = tbl.add_row(); cells = trow.cells
         issec = 'sec' in r['cls']; isdesc = 'descrow' in r['cls']; ishdr = ri == 0
         ci = 0
+        # The competency grid is the one table taller than a page, so it is the one
+        # that MOST needs its coloured occupation headers to reprint — a continuation
+        # page of bare K/S/A/T items under no occupation is unreadable.
+        no_split(trow)
+        if ishdr:
+            repeat_header(trow)
         for c in r['cells']:
             cell = cells[ci]
             for j in range(1, c['colspan']):
@@ -531,6 +658,7 @@ def add_xwalk_table(div):
         n = len(progs)
         tbl = doc.add_table(rows=n, cols=3); tbl.alignment = WD_TABLE_ALIGNMENT.CENTER; tbl.autofit = False
         for ri, p in enumerate(progs):
+            no_split(tbl.rows[ri])  # a program and its arrow never straddle a page
             _xwalk_progcell(tbl.cell(ri, 0), p, Inches(4.0))
             left_accent(tbl.cell(ri, 0), accents[ri % len(accents)])
             c1 = tbl.cell(ri, 1); c1.width = Inches(0.5); vcenter(c1)
@@ -549,6 +677,7 @@ def add_xwalk_table(div):
     tbl.autofit = False; grid(tbl)
     W0 = Inches(3.3); WS = Inches((CONTENT_W - 3.3) / len(occs))
     # header: blank label cell + colored SOC columns
+    repeat_header(tbl.rows[0]); no_split(tbl.rows[0])
     h0 = tbl.cell(0, 0); h0.width = W0; shade(h0, HFILL); cellpad(h0)
     run(h0.paragraphs[0], 'College program', size=8, bold=True, color='5a6577')
     for si, o in enumerate(occs):
@@ -560,6 +689,7 @@ def add_xwalk_table(div):
         cellpad(c)
     # program rows
     for pi, p in enumerate(progs):
+        no_split(tbl.rows[pi + 1])
         _xwalk_progcell(tbl.cell(pi + 1, 0), p, W0, pad=28)
         for si in range(len(occs)):
             c = tbl.cell(pi + 1, si + 1); c.width = WS; vcenter(c)
@@ -637,6 +767,16 @@ def emit(el):
         for item in el.find_all('div', recursive=False):
             p = para(0, 1); p.paragraph_format.left_indent = Inches(0.16)
             runs_from(item, p, size=10)
+    elif 'blk' in cls:
+        # A `.blk` is the report's unit of "this claim and the evidence for it" — a
+        # heading, the sentence that frames it, and the chart or table it names. The
+        # PDF gets the grouping from `break-inside: avoid`; without this branch the
+        # boundary was descended straight through and lost, which is why the .docx
+        # could strand "Wage Outcomes" at the foot of a page with its chart overleaf.
+        start = len(body_blocks())
+        for ch in el.children:
+            emit(ch)
+        close_block(start)
     elif 'demstat' in cls:
         pass
     else:
