@@ -156,41 +156,50 @@ def college_legend(plates: list[Plate]) -> str:
             ' <span class="alg-lg"><b class="chip" style="--c:#5a6577">CODE</b> a course whose outline evidences the activity</span></p>')
 
 
-def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10) -> str:
-    """One occupation: header, the top-N activities with course chips, a readout."""
-    plates = sorted(plates, key=lambda p: (p.role != "paired", p.college))
+def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_order: list[str] | None = None) -> str:
+    """One occupation: header, then a table — the top-N activities down the side, one
+    column per connected college in a fixed consortium order, that college's evidencing
+    courses stacked as chips in the cell. Position carries the college (the strong
+    channel); colour repeats it. An empty cell is a quiet dash; only a row empty in every
+    column gets the amber consortium-gap line."""
     if not plates:
         return ""
+    order = college_order or []
+    plates = sorted(plates, key=lambda p: (order.index(p.member_id) if p.member_id in order else 99, p.college))
     title = plates[0].occupation
     rows = plates[0].rows[:top_n]
     conn = "; ".join(f"{escape(_short(p.college))} ({'paired' if p.role == 'paired' else 'crosswalk'})" for p in plates)
+    head = "".join(f'<th style="--c:{college_color(p.member_id)}"><span class="alg-colhd">{escape(_short(p.college))}</span>'
+                   f'<span class="alg-colrole">{"paired" if p.role == "paired" else "crosswalk"}</span></th>' for p in plates)
     out = [f'<p class="chtitle">{escape(title)} <span class="alg-soc">SOC {escape(soc)}</span></p>',
            f'<p class="tnar alg-hd">Programs read against it: {conn}. The {len(rows)} most important core work activities, in O*NET\'s order.</p>',
-           '<div class="alg-list">']
+           f'<table class="alg-tbl"><colgroup><col class="alg-actcol">{"".join("<col>" for _ in plates)}</colgroup>'
+           f'<thead><tr><th class="alg-acthd">Work activity</th>{head}</tr></thead><tbody>']
     covered = 0
     per_college: dict[str, int] = {}
     uncovered = []
-    for i, r in enumerate(rows):
-        chips, best = [], 0
+    for r in rows:
+        cells, any_ = [], False
         for pl in plates:
             pr = next((x for x in pl.rows if x.dwa_id == r.dwa_id), None)
-            if not pr:
-                continue
+            codes = [code for code, cell in (pr.cells.items() if pr else []) if code != PLO]
             col = college_color(pl.member_id)
-            for code, cell in pr.cells.items():
-                if code == PLO:
-                    continue
-                chips.append(f'<b class="chip" style="--c:{col}" title="{escape(pl.college)} · {escape(code)}">{escape(code)}</b>')
-                best = max(best, cell.level)
-                per_college[pl.college] = per_college.get(pl.college, 0) + 1
-        if best:
+            if codes:
+                any_ = True
+                per_college[pl.college] = per_college.get(pl.college, 0) + len(codes)
+                cells.append('<td><div class="alg-chips">' + "".join(
+                    f'<b class="chip" style="--c:{col}" title="{escape(pl.college)} · {escape(c)}">{escape(c)}</b>' for c in codes) + "</div></td>")
+            else:
+                cells.append('<td class="alg-empty">—</td>')
+        if any_:
             covered += 1
         else:
             uncovered.append(r.dwa.rstrip("."))
-        body = "".join(chips) if chips else '<span class="alg-gap">no course in the consortium evidences this</span>'
-        out.append(f'<div class="alg-row{" alg-gaprow" if not chips else ""}"><div class="alg-act">{escape(r.dwa.rstrip("."))}</div>'
-                   f'<div class="alg-chips">{body}</div></div>')
-    out.append("</div>")
+        act = escape(r.dwa.rstrip("."))
+        if not any_:
+            act += '<span class="alg-gap">no course in the consortium evidences this</span>'
+        out.append(f'<tr class="{"alg-gaprow" if not any_ else ""}"><td class="alg-act">{act}</td>{"".join(cells)}</tr>')
+    out.append("</tbody></table>")
     lead = sorted(per_college.items(), key=lambda kv: -kv[1])[:2]
     parts = [f"<b>{covered} of {len(rows)}</b> activities are evidenced by at least one course in the consortium."]
     if lead:
