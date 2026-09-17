@@ -565,6 +565,10 @@ def add_alg_table(table):
                     q = cell.paragraphs[0] if first_p else cell.add_paragraph()
                     first_p = False
                     q.paragraph_format.space_before = Pt(1); q.paragraph_format.space_after = Pt(0)
+                    # titles and quotes start at one x across rows: a tab stop after the chip
+                    # and one after the section tag (the HTML gives both a minimum width)
+                    q.paragraph_format.tab_stops.add_tab_stop(Inches(0.8))
+                    q.paragraph_format.left_indent = Inches(0.8); q.paragraph_format.first_line_indent = Inches(-0.8)
                     chip = ev.find(['a', 'b'], class_='chip')
                     if chip is not None:
                         if chip.name == 'a':
@@ -573,14 +577,16 @@ def add_alg_table(table):
                             run(q, chip.get_text(' ', strip=True), size=8, bold=True, color=colours[ci])
                     title = ev.find('span', class_='alg-ctitle')
                     if title is not None:
-                        run(q, '  ' + title.get_text(' ', strip=True), size=8.5, bold=True, color=DARK)
+                        run(q, '\t' + title.get_text(' ', strip=True), size=8.5, bold=True, color=DARK)
                     quote = ev.find('div', class_='alg-quote')
                     if quote is not None:
                         q2 = cell.add_paragraph()
                         q2.paragraph_format.space_before = Pt(0); q2.paragraph_format.space_after = Pt(2)
+                        q2.paragraph_format.tab_stops.add_tab_stop(Inches(1.3))
+                        q2.paragraph_format.left_indent = Inches(1.3); q2.paragraph_format.first_line_indent = Inches(-1.3)   # wrapped lines hang under the quote
                         sec = quote.find('span', class_='alg-sec')
                         if sec is not None:
-                            run(q2, sec.get_text(' ', strip=True) + '  ', size=7.5, bold=True, color='6b7686')
+                            run(q2, sec.get_text(' ', strip=True) + '\t', size=7.5, bold=True, color='6b7686')
                         text = quote.get_text(' ', strip=True)
                         if sec is not None:
                             text = text.replace(sec.get_text(' ', strip=True), '', 1).strip()
