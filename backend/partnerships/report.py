@@ -1257,8 +1257,20 @@ def _wage_outcomes_svg(wages: list, top6: str, living_annual: float | None = Non
         ly = y_of(living_annual)
         p_.append(f'<line x1="{PADL}" y1="{ly:.1f}" x2="{W-PADR}" y2="{ly:.1f}" '
                   f'stroke="{_RULE}" stroke-width="1.6" stroke-dasharray="7 4"/>')
-        p_.append(f'<text x="{W-PADR-4}" y="{ly-5:.1f}" font-size="9.5" font-weight="700" '
-                  f'fill="{_RULE}" text-anchor="end">{_esc(living_label)}</text>')
+        # The label goes where the curves are farthest from the rule: at whichever end
+        # (first or last checkpoint) the series clear it by most, above the rule if the
+        # curves there sit below it and beneath otherwise. Respiratory Therapy's curves
+        # cross the rule at the right end, where a fixed label sat on top of them.
+        def clearance(year):
+            pts = [v for _w, vs in series for y, v in vs if y == year]
+            return min((abs(y_of(v) - ly) for v in pts), default=1e9), pts
+        ends = [(xs[0], "start", PADL + 4), (xs[-1], "end", W - PADR - 4)]
+        year, anchor, lx = max(ends, key=lambda e: clearance(e[0])[0])
+        pts = clearance(year)[1]
+        above = not pts or all(y_of(v) > ly for v in pts)      # curves below the rule → label above it
+        lyl = ly - 5 if above else ly + 12
+        p_.append(f'<text x="{lx}" y="{lyl:.1f}" font-size="9.5" font-weight="700" fill="{_RULE}" '
+                  f'text-anchor="{anchor}" stroke="#fff" stroke-width="3" paint-order="stroke">{_esc(living_label)}</text>')
 
     for si, (w, vals) in enumerate(series):
         col = _WAGE_LINE[si % len(_WAGE_LINE)]
