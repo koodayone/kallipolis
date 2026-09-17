@@ -844,17 +844,7 @@ def emit(el):
             # chart or table that follows, so it keeps with it — a curriculum-alignment
             # block flows across pages unwrapped, and without this its title stranded at
             # a page bottom (Foothill 094500 evaluation, page 9).
-            import re as _re
-            m = _re.search(r'--a:\s*#([0-9a-fA-F]{6})', el.get('style', '') or '')
-            occ = el.find('span', class_='alg-occ'); soc = el.find('span', class_='alg-soc')
-            p = para(10, 2)
-            if m and occ is not None:
-                # the occupation's accent on its name (the colour the report gives this SOC elsewhere)
-                run(p, occ.get_text(' ', strip=True), size=11, bold=True, color=m.group(1))
-                if soc is not None:
-                    run(p, '  ' + soc.get_text(' ', strip=True), size=9, color=MUT)
-            else:
-                run(p, t, size=11, bold=True, color=DARK)
+            p = para(10, 2); run(p, t, size=11, bold=True, color=DARK)
             p.paragraph_format.keep_with_next = True
         elif 'tnote' in cls:
             p = para(1, 4); run(p, t, size=8.5, color=MUT, italic=True)
@@ -952,6 +942,17 @@ def emit(el):
         for ch in el.children:
             emit(ch)
         close_block(start)
+    elif 'alg-head' in cls:
+        # an alignment block's head — title, description, key — with the occupation's accent
+        # as a bar down its left, as Employer Evidence marks its occupation rows
+        import re as _re
+        m = _re.search(r'--a:\s*#([0-9a-fA-F]{6})', el.get('style', '') or '')
+        start = len(body_blocks())
+        for ch in el.children:
+            emit(ch)
+        for blk in body_blocks()[start:]:
+            if blk.tag == qn('w:p'):
+                left_rule(Paragraph(blk, None), m.group(1) if m else 'c8d0de', sz=18, space=6)
     elif 'demstat' in cls:
         pass
     else:

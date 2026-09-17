@@ -216,10 +216,11 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_
     # No method line per block: how rows are chosen and ordered is said once, in the
     # appendix introduction (report._curriculum_section).
     # The occupation's accent — the colour the report gives this SOC in Employer Evidence and
-    # the crosswalk — on the block title and the work-activity column head; the college's
-    # colour on the course chips. The table header then reads demand left, supply right.
+    # the crosswalk — as a bar down the left of the block head (title, description, key), the
+    # way Employer Evidence marks its occupation rows, and on the work-activity column head;
+    # the college's colour on the course chips. Demand left, supply right.
     a = f' style="--a:{accent}"' if accent else ""
-    out = [f'<p class="chtitle"{a}><span class="alg-occ">{escape(title)}</span> <span class="alg-soc">SOC {escape(soc)}</span></p>', intro,
+    out = [f'<div class="alg-head"{a}><p class="chtitle">{escape(title)} <span class="alg-soc">SOC {escape(soc)}</span></p>{intro}</div>',
            f'<table class="alg-tbl"><colgroup><col class="alg-actcol">{"".join("<col>" for _ in plates)}</colgroup>'
            f'<thead><tr><th class="alg-acthd"{a}>Work activity</th>{head}</tr></thead><tbody>']
     covered = 0
