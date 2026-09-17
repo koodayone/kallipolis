@@ -125,15 +125,16 @@ priority order. They cut roughly half the words without losing a fact.
     back the verdict the whole document is built to withhold. Same reason "the region's largest
     producer" was cut from the award caption: the table already ranks; the prose need not.
 11. **Keep the trust links.** They cost no words and the credibility spine requires them. Prefer
-    the house formula: *"[According to the Centers of Excellence](url), this occupation demands
-    roughly N openings a year at a median salary of $X."*
+    the house formula: *"[According to the Centers of Excellence](url), this occupation has
+    roughly N openings a year in the {region}."* The wage lives in the demand table, in the
+    table's units; do not restate it in the note.
 
 **The canonical lede**, settled over four rounds of editing — start here rather than composing:
 
 > This evaluation assembles labor-market supply and demand evidence for {College}'s {Program}
-> program (TOP {nnnnnn}). It covers regional occupational demand targeted by the program, and the
-> program's award and enrollment trends in the context of other colleges offering the same program
-> in the region.
+> program (TOP {nnnnnn}): regional demand for the occupations it leads to, its award and enrollment
+> trends alongside other colleges offering the same program in the region, and how its courses
+> align with the work of those occupations.
 
 Note *"labor-market supply and demand"*, not *"labor-market and supply"* — the earlier draft
 implicitly equated "labor market" with demand alone and left supply dangling beside it. The two
@@ -148,9 +149,9 @@ Worked example — 61 words to 32, same facts:
 > Bay Area at a $132,040 median, the highest median of any occupation in Foothill's
 > advanced-manufacturing, agriculture or health evaluations to date.~~
 >
-> Foothill's Respiratory Therapy program leads to SOC 29-1126 via the TOP–CIP–SOC crosswalk.
-> According to the Centers of Excellence, this occupation demands roughly 210 openings a year at a
-> median salary of $132,040.
+> Foothill's Respiratory Therapy program leads to Respiratory Therapists (SOC 29-1126) via the
+> TOP–CIP–SOC crosswalk. According to the Centers of Excellence, this occupation has roughly 210
+> openings a year in the Bay Area.
 
 **Where the analysis actually lives.** Not in the prose — in the tables, side by side. Foothill
 121000 shows 630 enrolled against 48 awarded, and 48 awarded against 68 five years earlier. Every

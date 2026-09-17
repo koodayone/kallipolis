@@ -13,12 +13,12 @@
   "program_top": "094500",
   "org_name": "Foothill College Program Evaluation",
   "org_short": "Regional",
-  "lede": "This evaluation assembles labor-market supply and demand evidence for Foothill College's Semiconductor Processing program (TOP 094500). It covers regional occupational demand targeted by the program, the program's award and enrollment trends in the context of other colleges offering the same program in the region, and how the certificate's courses align with the work of its destination occupations.",
-  "demand_note": "Foothill's Semiconductor Processing certificate prepares students to move wafers through semiconductor processing stages in a cleanroom (SOC 51-9141). Through the TOP–CIP–SOC crosswalk, TOP 094500 also leads to Industrial Engineering Technologists (SOC 17-3026) and Electro-Mechanical and Mechatronics Technologists (SOC 17-3024).",
-  "alignment_note": "The set of colleges offering TOP 094500 in the Bay Area, and the occupations each supports through the TOP–CIP–SOC crosswalk.",
+  "lede": "This evaluation assembles labor-market supply and demand evidence for Foothill College's Semiconductor Processing program (TOP 094500): regional demand for the occupations it leads to, its award and enrollment trends alongside other colleges offering the same program in the region, and how its courses align with the work of those occupations.",
+  "demand_note": "Foothill's Semiconductor Processing certificate prepares students to move wafers through semiconductor processing stages in a cleanroom, the work of Semiconductor Processing Technicians (SOC 51-9141). Through the TOP–CIP–SOC crosswalk, TOP 094500 also leads to Industrial Engineering Technologists and Technicians (SOC 17-3026) and Electro-Mechanical and Mechatronics Technologists and Technicians (SOC 17-3024).",
+  "alignment_note": "The colleges offering TOP 094500 in the Bay Area, and the occupations each supports through the TOP–CIP–SOC crosswalk.",
   "competency_note": "",
-  "award_note": "Award trends for each member-college program. Empty cells indicate no data reported via DataMart.",
-  "enrollment_note": "Enrollment trends for each member-college program. Empty cells indicate no data reported via DataMart.",
+  "award_note": "Awards conferred each year by each college's program. An empty cell means DataMart reported no data.",
+  "enrollment_note": "Enrollment each term in each college's program. An empty cell means DataMart reported no data.",
   "curriculum_alignment": "foothill-semiconductor-processing-top-094500",
-  "curriculum_note": "O*NET maintains a set of detailed work activities that identify the competencies central to each job. We visualize below how the Certificate of Achievement in Semiconductor Processing supports three of the program's destination occupations by mapping its courses to each work activity, based on how each course is described in its Course Outline of Record (COR)."
+  "curriculum_note": "O*NET maintains a set of detailed work activities that identify the competencies central to each job. Below, the Semiconductor Processing certificate's courses are mapped to the work activities of three of the program's destination occupations, based on how each course is described in its Course Outline of Record (COR)."
 }
