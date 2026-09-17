@@ -1859,7 +1859,9 @@ def _curriculum_section(spec: ReportSpec) -> tuple[list[str], list[str]]:
             f'<a href="{_esc(c["source_url"])}" target="_blank" rel="noopener">{_esc(c["code"])}</a>'
             for c in pl.courses if c.get("source_url"))
         links.append(f'<p class="tnar alg-links"><b>{_esc(_short_college(pl.college))}</b> \u00b7 {_esc(pl.certificate)}: {courses}</p>')
-    appendix = ['<h1>Appendix: Course Outlines of Record</h1>', f'<p>{method}</p>'] + links
+    # One block: the heading, its method line and the link lines are a few lines that
+    # should not split across pages (a heading stranded above a long list of links).
+    appendix = [_block('<h1>Appendix: Course Outlines of Record</h1>', f'<p>{method}</p>', *links)]
     if spec.curriculum_show_gaps:      # internal review: every quoted sentence, by occupation and college
         appendix += ['<details class="alg-appx"><summary><b>Evidence tables (internal review)</b></summary>'
                      f'{appendix_tables(plates)}</details>']

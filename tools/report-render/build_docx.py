@@ -342,7 +342,11 @@ def add_lede(text):
 
 
 def add_heading(text):
+    # A section heading names what follows, so it keeps with it. Most headings ride
+    # inside a `.blk` whose chain already binds them; the unwrapped ones (Curriculum
+    # Alignment, its appendix) stranded at page bottoms without this.
     p = para(8, 3); run(p, text.replace('\xa0', '').strip(), size=13, bold=True, color=BLUE)
+    p.paragraph_format.keep_with_next = True
 
 
 def std_table(rows, widths=None, header=True, num_from=2, totalcls='tot'):
