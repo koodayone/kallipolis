@@ -173,7 +173,7 @@ CHIPS_PER_CELL = 3
 #: The section of the Course Outline of Record a lead excerpt comes from, as the tag reads it.
 COR_TAG = {"outcomes": "Student learning outcome", "objectives": "Course objective", "description": "Course description",
            "content": "Course content", "lab": "Lab content", "assignments": "Course assignment"}
-COR_LEGEND = "Each tag names the section of the course outline of record the quoted sentence comes from."
+COR_LEGEND = "The caption above each excerpt names the section of the course outline of record it comes from."
 
 
 def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_order: list[str] | None = None,
@@ -243,8 +243,12 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_
                 c = lead["course"]
                 chip = (f'<a class="chip" href="{escape(url_of[c])}" target="_blank" rel="noopener" style="--c:{col}">{escape(c)}</a>'
                         if url_of.get(c) else f'<b class="chip" style="--c:{col}">{escape(c)}</b>')
+                # The excerpt as a small block: the section it comes from as a caption, the
+                # sentence beneath, a rule down the left in the tier's shade (dark where the
+                # outline commits — an outcome or objective; grey where it covers).
+                tier = "#2a3450" if lead["section"] in ("outcomes", "objectives", "program_outcomes") else "#7a869a"
                 cells.append(f'<td class="alg-dense"><div class="alg-ev"><div class="alg-evhd">{chip}<span class="alg-ctitle">{escape(title_of.get(c, ""))}</span></div>'
-                             f'<div class="alg-quote"><span class="alg-sec">{escape(COR_TAG.get(lead["section"], lead["section"]))}</span>'
+                             f'<div class="alg-quote alg-rule" style="--t:{tier}"><span class="alg-secx">{escape(COR_TAG.get(lead["section"], lead["section"]))}</span>'
                              f'“{escape(lead["quote"])}”</div></div></td>')
                 continue
             if codes:

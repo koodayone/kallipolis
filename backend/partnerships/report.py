@@ -1446,7 +1446,8 @@ p a,.byline a{color:#1155cc;text-decoration:underline}
 .alg-gap{display:block;margin-top:2px}
 .alg-chips{display:flex;flex-wrap:wrap;gap:4px 4px;align-items:center}
 .alg-dense .alg-ev{margin:0 0 5px}.alg-dense .alg-ev:last-child{margin-bottom:0}.alg-evhd{display:flex;align-items:center;gap:6px}.alg-ctitle{font-size:10.5px;color:#2a3450;font-weight:600}
-.alg-quote{font-size:10px;color:#5a6577;line-height:1.35;margin-top:2px;padding-left:2px}.alg-sec{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#6b7686;border:1px solid #dde2ea;border-radius:3px;padding:0 4px;margin-right:5px;vertical-align:1px}
+.alg-quote{font-size:10px;color:#5a6577;line-height:1.35;margin-top:2px;padding-left:2px}
+.alg-rule{border-left:2px solid var(--t,#7a869a);padding-left:7px;margin:3px 0 2px 2px}.alg-secx{display:block;font-size:7.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#8a93a5;margin-bottom:1px}
 .alg-lgnote{flex-basis:100%;color:#6b7686;font-size:10px}
 .chip{display:inline-block;font:700 8.5px/1 Helvetica,Arial,sans-serif;letter-spacing:.01em;padding:2.5px 5px;border-radius:3px;border:1.5px solid var(--c);white-space:nowrap}
 .chip{background:var(--c);color:#fff}a.chip{text-decoration:none;color:#fff}a.chip:hover{filter:brightness(1.12)}.chip.alg-more{background:#eef1f6;color:#5a6577;border-color:#eef1f6}

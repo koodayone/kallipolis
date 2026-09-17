@@ -522,6 +522,15 @@ def add_cmpgrid(table):
             ci += c['colspan']
 
 
+def left_rule(p, hexc, *, sz=12, space=4):
+    """A rule down a paragraph's left edge (the excerpt block in a curriculum-alignment cell)."""
+    pPr = p._p.get_or_add_pPr()
+    bdr = OxmlElement('w:pBdr'); left = OxmlElement('w:left')
+    left.set(qn('w:val'), 'single'); left.set(qn('w:sz'), str(sz)); left.set(qn('w:space'), str(space)); left.set(qn('w:color'), hexc)
+    bdr.append(left); pPr.append(bdr)
+    p.paragraph_format.left_indent = Inches(0.08)
+
+
 def add_alg_table(table):
     """Curriculum alignment: work activities down the side, one column per college,
     that college's evidencing courses as coloured hyperlinks in the cell. Mirrors the
@@ -576,15 +585,20 @@ def add_alg_table(table):
                         run(q, '  ' + title.get_text(' ', strip=True), size=8.5, bold=True, color=DARK)
                     quote = ev.find('div', class_='alg-quote')
                     if quote is not None:
-                        q2 = cell.add_paragraph()
-                        q2.paragraph_format.space_before = Pt(0); q2.paragraph_format.space_after = Pt(2)
-                        sec = quote.find('span', class_='alg-sec')
-                        if sec is not None:
-                            run(q2, sec.get_text(' ', strip=True).upper() + '  ', size=6.5, bold=True, color='6b7686')
+                        # the excerpt block: caption (the outline section) over the sentence,
+                        # a rule down the left in the tier's shade (from the HTML's --t)
+                        m = _re.search(r'--t:\s*#([0-9a-fA-F]{6})', quote.get('style', '') or '')
+                        tier_hex = m.group(1) if m else '7a869a'
+                        cap = quote.find('span', class_='alg-secx')
                         text = quote.get_text(' ', strip=True)
-                        if sec is not None:
-                            text = text.replace(sec.get_text(' ', strip=True), '', 1).strip()
-                        run(q2, text, size=8, italic=True, color='5a6577')
+                        if cap is not None:
+                            text = text.replace(cap.get_text(' ', strip=True), '', 1).strip()
+                            q2 = cell.add_paragraph(); left_rule(q2, tier_hex)
+                            q2.paragraph_format.space_before = Pt(1); q2.paragraph_format.space_after = Pt(0)
+                            run(q2, cap.get_text(' ', strip=True).upper(), size=6.5, bold=True, color=MUT)
+                        q3 = cell.add_paragraph(); left_rule(q3, tier_hex)
+                        q3.paragraph_format.space_before = Pt(0); q3.paragraph_format.space_after = Pt(3)
+                        run(q3, text, size=8, italic=True, color='5a6577')
             else:
                 first = True
                 for chip in c['el'].find_all(['a', 'b']):
