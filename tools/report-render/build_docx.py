@@ -62,7 +62,7 @@ page = soup.find(id='page')
 doc = Document()
 st = doc.styles['Normal']
 st.font.name = FONT
-st.font.size = Pt(10)
+st.font.size = Pt(9.5)
 st.font.color.rgb = RGBColor.from_string(BODY)
 sec = doc.sections[0]
 sec.page_width = Inches(8.5)
@@ -92,13 +92,49 @@ def vcenter(cell):
     va = OxmlElement('w:vAlign'); va.set(qn('w:val'), 'center'); tcPr.append(va)
 
 
-def grid(tbl, hexc='dfe3ea'):
+def grid(tbl, hexc='e7eaf1'):
+    """Hairline row separators only — the page draws tables as rows, not cells: no vertical
+    rules, no outer box. (It was a full grid, which read as a spreadsheet in Word.)"""
     t = tbl._tbl
     el = OxmlElement('w:tblBorders')
-    for edge in ('top', 'left', 'bottom', 'right', 'insideH', 'insideV'):
+    for edge in ('top', 'bottom', 'insideH'):
         e = OxmlElement('w:' + edge); e.set(qn('w:val'), 'single'); e.set(qn('w:sz'), '4')
         e.set(qn('w:space'), '0'); e.set(qn('w:color'), hexc); el.append(e)
+    for edge in ('left', 'right', 'insideV'):
+        e = OxmlElement('w:' + edge); e.set(qn('w:val'), 'nil'); el.append(e)
     t.tblPr.append(el)
+
+
+def bottom_rule(cell, hexc, sz=16):
+    """A coloured rule under one cell — the alignment table's column head carries the
+    college's colour this way on the page, not as a filled cell."""
+    tcPr = cell._tc.get_or_add_tcPr()
+    borders = tcPr.find(qn('w:tcBorders'))
+    if borders is None:
+        borders = OxmlElement('w:tcBorders'); tcPr.append(borders)
+    b = OxmlElement('w:bottom'); b.set(qn('w:val'), 'single'); b.set(qn('w:sz'), str(sz))
+    b.set(qn('w:space'), '0'); b.set(qn('w:color'), hexc); borders.append(b)
+
+
+def chip(p, text, hexc, url='', size=7.5):
+    """A course chip as the page draws it: white bold code on a run shaded in the college's
+    colour (Word run shading; Google Docs imports it as text background), linked to the
+    outline when there is one. Replaces the underlined coloured link the docx used."""
+    def _rpr():
+        rPr = OxmlElement('w:rPr')
+        rf = OxmlElement('w:rFonts'); rf.set(qn('w:ascii'), FONT); rf.set(qn('w:hAnsi'), FONT); rPr.append(rf)
+        rPr.append(OxmlElement('w:b'))
+        c = OxmlElement('w:color'); c.set(qn('w:val'), 'ffffff'); rPr.append(c)
+        sz = OxmlElement('w:sz'); sz.set(qn('w:val'), str(int(size * 2))); rPr.append(sz)
+        sh = OxmlElement('w:shd'); sh.set(qn('w:val'), 'clear'); sh.set(qn('w:color'), 'auto'); sh.set(qn('w:fill'), hexc); rPr.append(sh)
+        return rPr
+    rr = OxmlElement('w:r'); rr.append(_rpr())
+    t = OxmlElement('w:t'); t.set(qn('xml:space'), 'preserve'); t.text = f'\u2009{text}\u2009'; rr.append(t)
+    if url:
+        r_id = p.part.relate_to(url, RT.HYPERLINK, is_external=True)
+        link = OxmlElement('w:hyperlink'); link.set(qn('r:id'), r_id); link.append(rr); p._p.append(link)
+    else:
+        p._p.append(rr)
 
 
 def fill_width(tbl):
@@ -145,7 +181,7 @@ def fill_width(tbl):
     tblPr.append(tw); tblPr.append(ly)
 
 
-def cellpad(cell, top=40, bottom=40, left=80, right=80):
+def cellpad(cell, top=28, bottom=28, left=70, right=70):
     tcPr = cell._tc.get_or_add_tcPr()
     m = OxmlElement('w:tcMar')
     for k, v in (('top', top), ('bottom', bottom), ('left', left), ('right', right)):
@@ -264,6 +300,20 @@ def no_split(row):
     row._tr.get_or_add_trPr().append(OxmlElement('w:cantSplit'))
 
 
+def keep_whole(tbl, max_rows=10):
+    """A short table moves to the next page whole rather than splitting — the page's
+    `table.dem, table.live, table.trend {break-inside: avoid}`. Word has no table-level
+    keep, so every row but the last keeps with the next; long tables are left to split
+    (their header reprints) because Word ignores a chain taller than a page anyway."""
+    rows = tbl.rows
+    if len(rows) > max_rows:
+        return
+    for r in list(rows)[:-1]:
+        for cell in r.cells:
+            for para_ in cell.paragraphs:
+                para_.paragraph_format.keep_with_next = True
+
+
 def run(p, text, size=10, bold=False, color=BODY, italic=False, font=FONT):
     r = p.add_run(text); r.font.name = font; r.font.size = Pt(size)
     r.font.bold = bold; r.font.italic = italic; r.font.color.rgb = RGBColor.from_string(color)
@@ -338,14 +388,14 @@ def add_title(text):
 
 def add_lede(text):
     p = para(0, 8); runs = text.strip()
-    run(p, runs, size=10.5, color=BODY)
+    run(p, runs, size=9.5, color=BODY)
 
 
 def add_heading(text):
     # A section heading names what follows, so it keeps with it. Most headings ride
     # inside a `.blk` whose chain already binds them; the unwrapped ones (Curriculum
     # Alignment, its appendix) stranded at page bottoms without this.
-    p = para(8, 3); run(p, text.replace('\xa0', '').strip(), size=13, bold=True, color=BLUE)
+    p = para(9, 2); run(p, text.replace('\xa0', '').strip(), size=12, bold=True, color=BLUE)
     p.paragraph_format.keep_with_next = True
 
 
@@ -368,14 +418,15 @@ def std_table(rows, widths=None, header=True, num_from=2, totalcls='tot'):
             p = cell.paragraphs[0]; p.paragraph_format.space_before = Pt(1); p.paragraph_format.space_after = Pt(1)
             isnum = ci >= num_from
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER if isnum else WD_ALIGN_PARAGRAPH.LEFT
-            col = MUT if c['text'] in ('—', '-') else (DARK if (ishdr or istot) else BODY)
+            col = MUT if c['text'] in ('—', '-') else ('ffffff' if ishdr else (DARK if istot else BODY))
             run(p, c['text'], size=8.5, bold=(ishdr or istot), color=col)
             if ishdr:
-                shade(cell, HFILL)
+                shade(cell, '4472c4')
             if istot:
                 shade(cell, TOTFILL)
             cellpad(cell)
             ci += c['colspan']
+    keep_whole(tbl)
     return tbl
 
 
@@ -421,6 +472,7 @@ def add_trend(table):
             if istot:
                 shade(cell, TOTFILL)
             cellpad(cell)
+    keep_whole(tbl)
 
 
 def add_live(table):
@@ -470,6 +522,7 @@ def add_live(table):
             if c['rowspan'] > 1:
                 span_left[ci] = c['rowspan'] - 1
             ci += c['colspan']
+    keep_whole(tbl)
 
 
 def add_cmpgrid(table):
@@ -553,9 +606,9 @@ def add_alg_table(table):
         cell = trow.cells[ci]; p = cell.paragraphs[0]
         p.paragraph_format.space_before = Pt(1); p.paragraph_format.space_after = Pt(1)
         if ci == 0:
-            run(p, 'WORK ACTIVITY', size=7, bold=True, color=DARK)
+            run(p, 'WORK ACTIVITY', size=7, bold=True, color=DARK); bottom_rule(cell, 'e7eaf1', sz=8)
         else:
-            run(p, c['el'].get_text(' ', strip=True), size=9, bold=True, color='ffffff'); shade(cell, colours[ci])
+            run(p, c['el'].get_text(' ', strip=True), size=9, bold=True, color=DARK); bottom_rule(cell, colours[ci])
         cellpad(cell, 30, 30, 60, 60)
     for r in body:
         trow = tbl.add_row(); no_split(trow)
@@ -574,12 +627,9 @@ def add_alg_table(table):
                     q = cell.paragraphs[0] if first_p else cell.add_paragraph()
                     first_p = False
                     q.paragraph_format.space_before = Pt(1); q.paragraph_format.space_after = Pt(0)
-                    chip = ev.find(['a', 'b'], class_='chip')
-                    if chip is not None:
-                        if chip.name == 'a':
-                            hyperlink(q, chip.get('href', ''), chip.get_text(' ', strip=True), color=colours[ci], size=8)
-                        else:
-                            run(q, chip.get_text(' ', strip=True), size=8, bold=True, color=colours[ci])
+                    chip_el = ev.find(['a', 'b'], class_='chip')
+                    if chip_el is not None:
+                        chip(q, chip_el.get_text(' ', strip=True), colours[ci], chip_el.get('href', '') if chip_el.name == 'a' else '')
                     title = ev.find('span', class_='alg-ctitle')
                     if title is not None:
                         run(q, '  ' + title.get_text(' ', strip=True), size=8.5, bold=True, color=DARK)
@@ -601,15 +651,15 @@ def add_alg_table(table):
                         run(q3, text, size=8, italic=True, color='5a6577')
             else:
                 first = True
-                for chip in c['el'].find_all(['a', 'b']):
+                for chip_el in c['el'].find_all(['a', 'b']):
                     if not first:
-                        run(p, '  ', size=8)
+                        run(p, ' ', size=8)
                     first = False
-                    if chip.name == 'a':
-                        hyperlink(p, chip.get('href', ''), chip.get_text(' ', strip=True), color=colours[ci], size=8)
+                    if chip_el.name == 'a':
+                        chip(p, chip_el.get_text(' ', strip=True), colours[ci], chip_el.get('href', ''))
                     else:  # "+N" overflow — the hidden course codes ride in the title
-                        more = chip.get('title', '')
-                        run(p, chip.get_text(' ', strip=True) + (f' ({more})' if more else ''), size=7.5, color=MUT)
+                        more = chip_el.get('title', '')
+                        run(p, chip_el.get_text(' ', strip=True) + (f' ({more})' if more else ''), size=7.5, color=MUT)
             cellpad(cell, 30, 30, 60, 60)
     # The table is splittable (rows keep, the header reprints), but a block that begins
     # near a page bottom should carry a few rows with its title rather than a lone header
@@ -843,7 +893,7 @@ def emit(el):
             # chart or table that follows, so it keeps with it — a curriculum-alignment
             # block flows across pages unwrapped, and without this its title stranded at
             # a page bottom (Foothill 094500 evaluation, page 9).
-            p = para(10, 2); run(p, t, size=11, bold=True, color=DARK)
+            p = para(9, 2); run(p, t, size=10.5, bold=True, color=DARK)
             p.paragraph_format.keep_with_next = True
         elif 'tnote' in cls:
             p = para(1, 4); run(p, t, size=8.5, color=MUT, italic=True)
@@ -854,12 +904,12 @@ def emit(el):
             p.paragraph_format.keep_with_next = True
         elif 'alg-key' in cls:
             p = para(0, 6); p.paragraph_format.keep_with_next = True
-            chip = el.find('b', class_='chip')
-            if chip is not None:
+            chip_el = el.find('b', class_='chip')
+            if chip_el is not None:
                 import re as _re
-                m = _re.search(r'--c:\s*#([0-9a-fA-F]{6})', chip.get('style', '') or '')
-                run(p, chip.get_text(' ', strip=True) + ' ', size=8, bold=True, color=(m.group(1) if m else BLUE))
-                run(p, t.replace(chip.get_text(' ', strip=True), '', 1).strip(), size=8.5, color='6b7686')
+                m = _re.search(r'--c:\s*#([0-9a-fA-F]{6})', chip_el.get('style', '') or '')
+                chip(p, chip_el.get_text(' ', strip=True), m.group(1) if m else '5a6577')
+                run(p, ' ' + t.replace(chip_el.get_text(' ', strip=True), '', 1).strip(), size=8.5, color='6b7686')
             else:
                 run(p, t, size=8.5, color='6b7686')
         elif 'alg-legend' in cls:
@@ -867,24 +917,24 @@ def emit(el):
             import re as _re
             p = para(6, 2)
             for sp in el.find_all('span', class_='alg-lg'):
-                sw = sp.find('i'); chip = sp.find('b')
+                sw = sp.find('i'); chip_el = sp.find('b')
                 m = _re.search(r'#([0-9a-fA-F]{6})', (sw.get('style', '') if sw else '') or '')
                 if m:
                     run(p, sp.get_text(' ', strip=True) + '   ', size=9, bold=True, color=m.group(1))
-                elif chip is not None:
-                    run(p, chip.get_text(' ', strip=True) + ' ', size=8, bold=True, color=BLUE)
-                    run(p, sp.get_text(' ', strip=True).replace(chip.get_text(' ', strip=True), '', 1).strip(), size=9, color='46536b')
+                elif chip_el is not None:
+                    chip(p, chip_el.get_text(' ', strip=True), '5a6577')
+                    run(p, ' ' + sp.get_text(' ', strip=True).replace(chip_el.get_text(' ', strip=True), '', 1).strip(), size=9, color='46536b')
                 elif 'alg-lgnote' in sp.get('class', []):
                     # the certificate view's note on what the COR tags mean — its own line
                     p = para(2, 2); run(p, sp.get_text(' ', strip=True), size=8.5, color='6b7686')
         elif 'tnar' in cls:
-            p = para(6, 2); runs_from(el, p, size=10, color='46536b')
+            p = para(4, 2); runs_from(el, p, size=8.5, color='5a6577')
         elif 'srcdash' in cls:
-            p = para(2, 4); runs_from(el, p, size=10)
+            p = para(2, 3); runs_from(el, p, size=9)
         elif 'srcsec' in cls:
-            p = para(8, 3); runs_from(el, p, size=10)
+            p = para(6, 2); runs_from(el, p, size=9)
         else:
-            p = para(2, 5); runs_from(el, p, size=10.5)
+            p = para(2, 4); runs_from(el, p, size=9.5)
     elif nm == 'table':
         if 'dem' in cls:
             std_table(rows_of(el))
@@ -932,7 +982,7 @@ def emit(el):
     elif 'srclist' in cls:
         for item in el.find_all('div', recursive=False):
             p = para(0, 1); p.paragraph_format.left_indent = Inches(0.16)
-            runs_from(item, p, size=10)
+            runs_from(item, p, size=9)
     elif 'blk' in cls:
         # A `.blk` is the report's unit of "this claim and the evidence for it" — a
         # heading, the sentence that frames it, and the chart or table it names. The
