@@ -13,7 +13,7 @@
   "partner_min_awards": 50,
   "_comment": "SVAMP consortium report for the Manufacturing Technician role. Curriculum alignment reads each member's certificate from its course outlines of record against the paired occupation's core work activities (partnerships/alignment.py; roster partnerships/data/svamp_manufacturing_technician.json).",
   "lede": "The Silicon Valley Advanced Manufacturing Partnership trains students for critical roles in the region's advanced manufacturing sector. This report examines how each member college's program supports the Manufacturing Technician role, how the programs align with one another across the consortium, and what each certificate's course outlines commit students to being able to do.",
-  "demand_note": "The U.S. Department of Labor's O*NET system [maps the title Manufacturing Technician to these standard occupational classifications](https://www.onetonline.org/find/quick?s=Manufacturing+Technician), supported by Foothill College programs. [According to the Centers of Excellence](https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061), these occupations roughly represent 410 openings a year in the Bay Area labor market.",
+  "demand_note": "The U.S. Department of Labor's O*NET system [maps the title Manufacturing Technician to these standard occupational classifications](https://www.onetonline.org/find/quick?s=Manufacturing+Technician), which SVAMP member programs support. [According to the Centers of Excellence](https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061), these occupations account for roughly 410 openings a year in the Bay Area.",
   "live_postings": {
     "51-9141": {
       "employer": "Intel",

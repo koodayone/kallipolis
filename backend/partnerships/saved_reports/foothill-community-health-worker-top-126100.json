@@ -11,12 +11,12 @@
   "org_short": "Regional",
   "_comment": "PROGRAM EVALUATION (evaluate-program skill). Subject is the PROGRAM (Foothill College x TOP 126100), not a job title. Destination SOCs DERIVED: crosswalk(126100) intersected with SECTORS['health'].socs minus ALL_OTHER/PROMOTION/EXPERIENCE_5YR = ['21-1094']. Dropped: 11-9111, 21-1091, 25-1071, 99-9999. Peer set = top 6 Bay colleges by 5-year awards on THIS TOP (a program evaluation's peers must share the TOP; the role report mixed TOPs). live_postings and competencies reused verbatim from the matching role report (same SOCs, already verified). EVIDENCE-FORWARD, NO VERDICT.",
   "program_top": "126100",
-  "lede": "This evaluation assembles labor-market supply and demand evidence for Foothill College's Community Health Worker program (TOP 126100). It covers regional occupational demand targeted by the program, and the program's award and enrollment trends in the context of other colleges offering the same program in the region, and how the program's courses align with the work of its destination occupations.",
-  "demand_note": "Foothill's Community Health Worker program leads to SOC 21-1094 via the TOP–CIP–SOC crosswalk. [According to the Centers of Excellence](https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061), this occupation demands roughly 320 openings a year in the Bay Area region, at a median salary of $70,860.",
-  "alignment_note": "The set of colleges offering TOP 126100 in the Bay Area. All of these colleges support SOC 21-1094 via the same TOP code through the TOP–CIP–SOC crosswalk.",
+  "lede": "This evaluation assembles labor-market supply and demand evidence for Foothill College's Community Health Worker program (TOP 126100): regional demand for the occupations it leads to, its award and enrollment trends alongside other colleges offering the same program in the region, and how its courses align with the work of those occupations.",
+  "demand_note": "Foothill's Community Health Worker program leads to Community Health Workers (SOC 21-1094) via the TOP–CIP–SOC crosswalk. [According to the Centers of Excellence](https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061), this occupation has roughly 320 openings a year in the Bay Area.",
+  "alignment_note": "The colleges offering TOP 126100 in the Bay Area. Each supports SOC 21-1094 through the same TOP–CIP–SOC crosswalk.",
   "competency_note": "",
-  "award_note": "Award trends for each member-college program. Empty cells indicate no data reported via DataMart.",
-  "enrollment_note": "Enrollment trends for each member-college program. Empty cells indicate no data reported via DataMart.",
+  "award_note": "Awards conferred each year by each college's program. An empty cell means DataMart reported no data.",
+  "enrollment_note": "Enrollment each term in each college's program. An empty cell means DataMart reported no data.",
   "programs": [
     [
       "City College of San Francisco",
@@ -91,5 +91,5 @@
     }
   },
   "curriculum_alignment": "foothill-community-health-worker-top-126100",
-  "curriculum_note": "O*NET maintains a set of detailed work activities that identify the competencies central to each job. We visualize below how the Certificate of Achievement in Community Health Worker supports its destination occupation by mapping its courses to each work activity, based on how each course is described in its Course Outline of Record (COR)."
+  "curriculum_note": "O*NET maintains a set of detailed work activities that identify the competencies central to each job. Below, the Community Health Worker certificate's courses are mapped to the work activities of its destination occupation, based on how each course is described in its Course Outline of Record (COR)."
 }

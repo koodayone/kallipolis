@@ -117,8 +117,8 @@ def _unit_phrase(units: float, basis: str, cal: str) -> str:
 #: Leads the wage section. Carries the two facts a reader cannot recover from the
 #: plate: these are STATEWIDE recipients (not the member's own graduates), and the
 #: cohort window predates every other figure in the report.
-_WAGE_BLURB = ("Median earnings of California community college award recipients in this "
-               "program statewide, two years before completion and two and five years after.")
+_WAGE_BLURB = ("Median earnings, statewide, of California community college students awarded this program's "
+               "credentials: two years before the award, and two and five years after.")
 
 _SEP = " · "        # status/date separator, hoisted: f-strings cannot hold escapes
 _CAREERONESTOP = "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword="
@@ -202,10 +202,10 @@ def _fmt_tick(v: float) -> str:
 #: that could be overridden per def is a description that can go stale against the chart
 #: it labels. Each says what is plotted AND what to read from it — a sentence that only
 #: restates the title above it is not worth the vertical space.
-_SUPPLY_BLURB = ("Credentials awarded per year across colleges offering this program, set "
-                 "against regional annual openings for target occupations.")
-_ENROLL_BLURB = ("Term-by-term enrollment across the member colleges that run this program, "
-                 "excluding the structurally-low summer terms.")
+_SUPPLY_BLURB = ("Credentials awarded each year by colleges offering this program, against the region's "
+                 "annual openings in the target occupations.")
+_ENROLL_BLURB = ("Enrollment by term at the colleges that run this program. Summer terms, which run "
+                 "low by design, are excluded.")
 
 
 #: The wage plate. Shorter than the supply/enrolment charts — two or three lines
@@ -344,9 +344,9 @@ def _demand_provenance(lens: LensModel, living: LivingWage | None = None) -> str
     out = (f'{out} <a href="{_esc(_OPENINGS_METHOD_URL)}" target="_blank" rel="noopener">'
            f'How annual openings are calculated</a>.')
     if living is not None:
-        out += (f' Median hourly earnings are the annual median divided by {HOURS_PER_YEAR:,} hours; the living wage is for '
-                f'one adult with no children in {_esc(living.county)}, per the '
-                f'<a href="{_esc(living.url)}" target="_blank" rel="noopener">MIT Living Wage Calculator</a> ({_esc(living.vintage)}).')
+        out += (f' Median hourly earnings are the annual median divided by {HOURS_PER_YEAR:,} hours. The living wage is for '
+                f'one adult with no children in {_esc(living.county)} '
+                f'(<a href="{_esc(living.url)}" target="_blank" rel="noopener">MIT Living Wage Calculator</a>, {_esc(living.vintage)}).')
     return out
 
 
@@ -652,7 +652,7 @@ def _awards_offered_section(college: str, top6: str) -> str:
             f'<td class="ltit">{_esc(u)}</td></tr>')
     link = "."
     if disp and disp.get("url"):
-        link = (f', published on the '
+        link = (f', published in the '
                 f'<a target="_blank" rel="noopener" href="{_esc(disp["url"])}">'
                 f'{_esc(college)} catalog ↗</a>.')
     return _block(
@@ -1830,8 +1830,8 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         # role title or TOP, so naming the play here overstated what the search did — and it
         # read as role-report copy inside a program evaluation.
         _block('<h1>Employer Evidence</h1>',
-               '<p>Prominent employers in the region have opened live job postings listed '
-               'on CareerOneStop, sponsored by the U.S. Department of Labor.</p>',
+               '<p>Live job postings from prominent regional employers, listed on CareerOneStop '
+               '(U.S. Department of Labor).</p>',
                _employer_table(occs, spec.live_postings)),
     ]
 
