@@ -189,13 +189,13 @@ def test_dense_cell_shows_the_lead_only_with_cor_tag_and_legend():
     html = occupation_block("29-1126", [pl], columns="certificate")
     assert html.count('class="alg-ev"') == 2                                 # one mark per activity
     assert "RSPT 50A" in html and "RSPT 55B" not in html and "also" not in html   # default lead: same tier, more units; no code list
-    assert "Respiratory Therapy Procedures" in html and "Demonstrate use of humidity" in html and "COR · Objective" in html and "COR · Lab" in html
+    assert "Respiratory Therapy Procedures" in html and "Demonstrate use of humidity" in html and "Course objective<" in html and "Lab content<" in html
     assert "Program outcome" not in html                                     # PLO cells are read, not drawn
     pl.rows[0].lead = {"course": "RSPT 70A", "section": "content", "quote": "Aerosol therapy", "reason": "names the procedure"}
     html = occupation_block("29-1126", [pl], columns="certificate")
-    assert "RSPT 70A" in html.split("Inspect production")[0] and "COR · Content" in html        # a stored judgment wins
-    assert "section of the Course Outline of Record" in column_legend([pl], "certificate")
-    assert "section of the Course Outline of Record" not in column_legend([pl])
+    assert "RSPT 70A" in html.split("Inspect production")[0] and "Course content<" in html        # a stored judgment wins
+    assert "section of the course outline of record" in column_legend([pl], "certificate")
+    assert "section of the course outline of record" not in column_legend([pl])
     sparse = occupation_block("29-1126", [pl])
     assert "Respiratory Therapy Procedures" not in sparse and "Program outcome" not in sparse   # consortium view unchanged
 

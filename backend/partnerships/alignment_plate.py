@@ -171,10 +171,9 @@ def column_legend(plates: list[Plate], columns: str = "college") -> str:
 #: appendix. Three answers "does this college teach it, and where"; the rest is height.
 CHIPS_PER_CELL = 3
 #: The section of the Course Outline of Record a lead excerpt comes from, as the tag reads it.
-COR_TAG = {"outcomes": "SLO", "objectives": "Objective", "description": "Description", "content": "Content",
-           "lab": "Lab", "assignments": "Assignment"}
-COR_LEGEND = ("Each tag names the section of the Course Outline of Record the quoted sentence comes from: "
-              "SLO (student learning outcome), Objective, Description, Content, Lab, Assignment.")
+COR_TAG = {"outcomes": "Student learning outcome", "objectives": "Course objective", "description": "Course description",
+           "content": "Course content", "lab": "Lab content", "assignments": "Course assignment"}
+COR_LEGEND = "Each tag names the section of the course outline of record the quoted sentence comes from."
 
 
 def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_order: list[str] | None = None,
@@ -245,7 +244,7 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_
                 chip = (f'<a class="chip" href="{escape(url_of[c])}" target="_blank" rel="noopener" style="--c:{col}">{escape(c)}</a>'
                         if url_of.get(c) else f'<b class="chip" style="--c:{col}">{escape(c)}</b>')
                 cells.append(f'<td class="alg-dense"><div class="alg-ev"><div class="alg-evhd">{chip}<span class="alg-ctitle">{escape(title_of.get(c, ""))}</span></div>'
-                             f'<div class="alg-quote"><span class="alg-sec">COR · {escape(COR_TAG.get(lead["section"], lead["section"]))}</span>'
+                             f'<div class="alg-quote"><span class="alg-sec">{escape(COR_TAG.get(lead["section"], lead["section"]))}</span>'
                              f'“{escape(lead["quote"])}”</div></div></td>')
                 continue
             if codes:
