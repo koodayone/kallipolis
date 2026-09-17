@@ -1733,10 +1733,10 @@ def _wage_section(lens: LensModel, spec: ReportSpec, living=None) -> str:
     window = next((w.window for w in rows if w.window), "")
     win = f" Award years {_esc(window)}." if window else ""
     if living is not None:
-        # The county threshold on a statewide curve: say so, and say which way it leans.
-        win += (f" The dashed line is the living wage from the demand table annualized at {HOURS_PER_YEAR:,} hours "
-                f"(${annual:,.0f} for one adult with no children in {_esc(living.county)}); earnings here are "
-                "statewide, so Bay Area completers likely earn more than the curves show.")
+        # A statement of what the line is, nothing more: the geography mismatch between a
+        # county threshold and statewide earnings is the reader's to weigh, not ours to gloss.
+        win += (f" The dashed line represents the regional annualized living wage for one adult "
+                f"with no children in {_esc(living.county)}.")
     return _block(
         '<h1>Wage Outcomes</h1>',
         f'<p>{_WAGE_BLURB}{win}</p>',
