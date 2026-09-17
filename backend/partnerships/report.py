@@ -1749,7 +1749,7 @@ def _wage_section(lens: LensModel, spec: ReportSpec, living: LivingWage | None =
     """
     rows = lens.wages.get(spec.program_top) or []
     annual = living.headline_annual if living is not None else None
-    label = f"Living wage, 1 adult, {living.county}" if living is not None else ""
+    label = f"Living wage, 1 adult, {living.county} \u00b7 ${annual:,.0f}" if living is not None else ""
     chart = _wage_outcomes_svg(rows, spec.program_top, annual, label)
     if not chart:
         return ""
@@ -1759,7 +1759,8 @@ def _wage_section(lens: LensModel, spec: ReportSpec, living: LivingWage | None =
         # A statement of what the line is, nothing more: the geography mismatch between a
         # county threshold and statewide earnings is the reader's to weigh, not ours to gloss.
         win += (f" The dashed line represents the annualized living wage for one adult "
-                f"with no children in {_esc(living.county)}.")
+                f"with no children in {_esc(living.county)}: ${annual:,.0f} a year, "
+                f"${living.headline:,.2f} an hour at {HOURS_PER_YEAR:,} hours.")
     return _block(
         '<h1>Wage Outcomes</h1>',
         f'<p>{_WAGE_BLURB}{win}</p>',

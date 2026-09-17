@@ -61,5 +61,7 @@
  "effective": "",
  "approved": "05/13/2021",
  "retrieved": "2026-09-16",
- "notes": "objectives field holds template text only"
+ "notes": "objectives field holds template text only",
+ "link_ok": true,
+ "link_checked": "2026-09-17"
 }

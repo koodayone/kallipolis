@@ -13,7 +13,8 @@
   "source": {
     "system": "elumen",
     "host": "deanza.elumenapp.com",
-    "org_entity_id": 8
+    "org_entity_id": 8,
+    "catalog_link": true
   },
   "program_description": "The Computer Numerical Control (CNC) Machinist Certificate of Achievement teaches students the fundamentals of conventional and CNC machine tools. Students learn how to set up safely and operate manual mills and lathes and construct word address programs for the setup and operation of CNC mills. Upon completion, students are prepared for employment in manufacturing facilities as setup persons, machine operators and production workers.",
   "program_outcomes": [
@@ -42,5 +43,6 @@
       "title": "Print Reading and Machine Shop Calculations",
       "units": 4.5
     }
-  ]
+  ],
+  "notes": "Outline links go to the eLumen catalog course page for each outline's own catalog year (deanza.elumenapp.com/catalog/<year>/course/<slug>), which embeds the full outline of record; the curriculum public view cannot be deep-linked to a course."
 }

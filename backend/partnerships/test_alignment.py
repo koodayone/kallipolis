@@ -7,7 +7,7 @@ reading tests stub the LLM seam and the store.
 Coverage:
   - the gate keeps verbatim quotes, relabels a quote to the section it is found in, resolves course codes with or without spaces, and drops paraphrases and unknown courses
   - the gate is case- and punctuation-insensitive but never fuzzy
-  - the SVAMP roster's five entries resolve to program records, and every course's outline is in the cache with outcomes and a source URL
+  - the SVAMP roster's five entries resolve to program records, and every course's outline is in the cache with outcomes and a source URL the link check verified lands on the course
   - the saved per-program stores hold every (program, occupation) reading the SVAMP roster asks for
   - view_roster sets role, pairing basis and crosswalk from the roster, not the store, in roster order
   - read_program unions a fresh reading with the saved one and leaves other saved occupations in place
@@ -94,6 +94,7 @@ def test_roster_and_cached_outlines_cover_every_course():
         for o in outlines.values():
             assert o.source_url.startswith("https://")
             assert o.outcomes, f"{p['college']} {o.code} has no outcomes in its outline"
+            assert o.link_ok is True, f"{p['college']} {o.code}: link not verified to land on the course (run `python -m courses.outlines check`)"
 
 
 def test_stores_cover_every_reading_the_roster_asks_for():

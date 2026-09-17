@@ -72,7 +72,9 @@ class Outline:
     effective: str = ""          # the term / date the college prints as effective
     approved: str = ""           # committee or board approval date, when printed
     retrieved: str = ""          # ISO date this record was fetched
-    notes: str = ""              # format quirks worth carrying (e.g. "objectives field is template text")
+    notes: str = ""
+    link_ok: bool | None = None       # the last link check's verdict (courses.outlines check), None = never checked
+    link_checked: str = ""            # when              # format quirks worth carrying (e.g. "objectives field is template text")
 
     # the sections the matcher reads, in the two reading modes
     LITERAL = ("outcomes", "objectives")
@@ -264,14 +266,38 @@ def _html_list(h) -> list[str]:
     return [_strip_enum(l) for l in _lines(str(h or "")) if _strip_enum(l)]
 
 
-def parse_elumen_course(d: dict, *, college: str, host: str, org_entity_id: int) -> Outline:
-    """The `/curriculum/api/courses/v2/<uuid>` record → Outline."""
+def elumen_catalog_year(start_term: str) -> str:
+    """The catalog year a start term falls in: 'Fall 2026' / '2026FA' → '2026-2027';
+    'Spring 2026' / '2026SP' → '2025-2026'. '' when the term names no year."""
+    m = re.search(r"(20\d\d)", start_term or "")
+    if not m:
+        return ""
+    y = int(m.group(1))
+    fall = re.search(r"fall|summer|\d{4}(FA|SU)", start_term, re.I) is not None
+    return f"{y}-{y + 1}" if fall else f"{y - 1}-{y}"
+
+
+def elumen_catalog_url(host: str, d: dict) -> str:
+    """The tenant's public catalog page for the course's own catalog year — where De Anza
+    embeds the full outline of record (every quoted sentence verified present, 2026-09-17).
+    The curriculum public view cannot be deep-linked: its course route needs a session the
+    app only creates from its root page, so a fresh visitor gets 'Session Expired'."""
+    slug = re.sub(r"[^a-z0-9]", "", str(d.get("curriculumId") or "").lower())
+    year = elumen_catalog_year((d.get("startTerm") or {}).get("name") or "")
+    return f"https://{host}/catalog/{year}/course/{slug}" if slug and year else ""
+
+
+def parse_elumen_course(d: dict, *, college: str, host: str, org_entity_id: int, catalog_link: bool = False) -> Outline:
+    """The `/curriculum/api/courses/v2/<uuid>` record → Outline. `catalog_link` points the
+    outline at the tenant's catalog course page instead of the curriculum public view — right
+    where the catalog page carries the full outline (De Anza), wrong where it shows only
+    outcomes and description (Mission)."""
     code = re.sub(r"\s+", " ", str(d.get("code") or "")).strip()
     code = re.sub(r"\.$", "", code)                                   # De Anza codes end in "."
     code = re.sub(r"^([A-Z]+)\s*D0*(\d)", r"\1 \2", code)             # "DMT D080" → "DMT 80"
     start = (d.get("startTerm") or {}).get("name") or ""
     committee = str(d.get("committeeApprovalDate") or "")[:10]
-    url = f"https://{host}/public/?orgEntityId={org_entity_id}&uuid={d.get('uuid')}"
+    url = (elumen_catalog_url(host, d) if catalog_link else "") or f"https://{host}/public/?orgEntityId={org_entity_id}&uuid={d.get('uuid')}"
     return Outline(college, "elumen", code, d.get("name") or d.get("title") or code,
                    re.sub(r"\s+", " ", htmllib.unescape(re.sub(r"<[^>]+>", " ", d.get("description") or ""))).strip(),
                    [c["name"] for c in d.get("csloList", []) if c.get("name")],
@@ -306,7 +332,7 @@ class ElumenPublicView:
         r.raise_for_status()
         return r.json()
 
-    def fetch(self, org_entity_id: int, code: str) -> Outline:
+    def fetch(self, org_entity_id: int, code: str, *, catalog_link: bool = False) -> Outline:
         want = re.sub(r"[\s.]", "", code).upper()
         want_alt = re.sub(r"^([A-Z]+)(\d)", r"\1D0\2", want) if not re.search(r"[A-Z]D\d", want) else want
         match = next((c for c in self.courses(org_entity_id)
@@ -315,7 +341,8 @@ class ElumenPublicView:
             raise KeyError(f"{code} not in department {org_entity_id} on {self.host}")
         r = _client.get(f"{ELUMEN_API}/curriculum/api/courses/v2/{match['uuid']}", headers=self._auth())
         r.raise_for_status()
-        return parse_elumen_course(r.json(), college=self.college, host=self.host, org_entity_id=org_entity_id)
+        return parse_elumen_course(r.json(), college=self.college, host=self.host, org_entity_id=org_entity_id,
+                                   catalog_link=catalog_link)
 
 
 # ── curriqunet META (Evergreen Valley) ─────────────────────────────────────────
@@ -435,7 +462,8 @@ def retrieve(source: dict, code: str, *, college: str, college_key: str, refresh
     elif sysname == "curricunet":
         o = CurricunetSite(source.get("site", "Ohlone"), college).fetch(code)
     elif sysname == "elumen":
-        o = ElumenPublicView(source["host"], college).fetch(int(source["org_entity_id"]), code)
+        o = ElumenPublicView(source["host"], college).fetch(int(source["org_entity_id"]), code,
+                                                             catalog_link=bool(source.get("catalog_link")))
         o.code = code                                   # keep the roster's spelling
     elif sysname == "curriqunet":
         o = fetch_curriqunet(int(source["entity_id"]), host=source.get("host", "evc.curriqunet.com"),
@@ -447,3 +475,89 @@ def retrieve(source: dict, code: str, *, college: str, college_key: str, refresh
         o.title = title
     save(o, college_key)
     return o
+
+
+# ── link check ─────────────────────────────────────────────────────────────────
+#: Where a rendered page is needed to see anything at all (single-page apps).
+_CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+
+
+def _rendered_text(url: str, budget_ms: int = 20000) -> str:
+    """The page's text after its scripts have run — headless Chrome, when installed."""
+    import shutil
+    import subprocess
+    exe = _CHROME if Path(_CHROME).exists() else shutil.which("google-chrome") or shutil.which("chromium")
+    if not exe:
+        raise RuntimeError("no headless browser for a single-page app link")
+    dom = subprocess.run([exe, "--headless=new", "--disable-gpu", "--no-sandbox", f"--virtual-time-budget={budget_ms}",
+                          "--dump-dom", url], capture_output=True, text=True, timeout=120).stdout
+    return htmllib.unescape(re.sub(r"<[^>]+>", " ", dom))
+
+
+def check_link(o: Outline) -> tuple[bool, str]:
+    """Does the outline's link land on a page that NAMES the course? A reader clicks a chip
+    to check a quote at the source; a link that resolves to a listing, a shell or a stale
+    page is a broken promise the HTTP status alone cannot see. Plain pages and PDFs are read
+    as fetched; single-page apps (eLumen) are rendered first."""
+    import subprocess
+    import tempfile
+    key = re.sub(r"[\s.]", "", o.code).lower()
+    dept, num = re.match(r"^([A-Za-z ]+?)\s*(\d.*)$", o.code).groups() if re.match(r"^([A-Za-z ]+?)\s*(\d.*)$", o.code) else (o.code, "")
+    try:
+        if o.system == "elumen":
+            text = _rendered_text(o.source_url)
+            if "Session Expired" in text:
+                return False, "session expired: the public view cannot be deep-linked"
+        else:
+            r = _client.get(o.source_url)
+            if r.status_code != 200:
+                return False, f"HTTP {r.status_code}"
+            if "pdf" in r.headers.get("content-type", ""):
+                with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as t:
+                    t.write(r.content)
+                text = subprocess.run(["pdftotext", "-l", "2", t.name, "-"], capture_output=True, text=True).stdout
+            else:
+                text = htmllib.unescape(re.sub(r"<[^>]+>", " ", r.text))
+    except Exception as e:  # noqa: BLE001 — the verdict is the point; the reason travels with it
+        return False, f"{type(e).__name__}: {e}"[:120]
+    flat = re.sub(r"[\s.]", "", text).lower()
+    named = key in flat or (num and re.search(rf"{re.escape(dept.strip())}\s*-?\s*D?0*{re.escape(num)}", text, re.I) is not None)
+    if not named:
+        return False, "page does not name the course"
+    if o.outcomes and not any(_norm_text(x) in _norm_text(text) for x in o.outcomes[:3]):
+        return True, "names the course; none of its first outcomes found on the page"
+    return True, "names the course and carries its outcomes"
+
+
+def _norm_text(x: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", x.lower()).strip()
+
+
+def check_cached(college_key: str | None = None) -> list[tuple[str, str, bool, str]]:
+    """Check every cached outline's link (one college, or all) and stamp the verdict into
+    the cache file. Returns (college_key, code, ok, detail) rows."""
+    rows = []
+    for d in sorted(CACHE_DIR.glob("*") if college_key is None else [CACHE_DIR / college_key]):
+        if not d.is_dir():
+            continue
+        for f in sorted(d.glob("*.json")):
+            o = Outline(**json.loads(f.read_text(encoding="utf-8")))
+            ok, why = check_link(o)
+            o.link_ok, o.link_checked = ok, _today()
+            f.write_text(json.dumps(o.__dict__, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+            rows.append((d.name, o.code, ok, why))
+            print(f"{'ok ' if ok else 'BAD'} {d.name:9s} {o.code:10s} {why}", flush=True)
+    return rows
+
+
+if __name__ == "__main__":
+    import argparse
+    ap = argparse.ArgumentParser(description="Course outlines of record: check that every cached outline's link lands on its course.")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    c = sub.add_parser("check", help="fetch (or render) each cached outline's link and stamp link_ok / link_checked into the cache")
+    c.add_argument("college_key", nargs="?", help="one college's cache directory; default all")
+    a = ap.parse_args()
+    rows = check_cached(a.college_key)
+    bad = [r for r in rows if not r[2]]
+    print(f"{len(rows) - len(bad)} ok, {len(bad)} not landing on the course")
+    raise SystemExit(1 if bad else 0)
