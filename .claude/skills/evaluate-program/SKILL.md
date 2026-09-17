@@ -204,7 +204,10 @@ tables read as one throughput story.
       crosswalk misses, add it to the def's `socs` with a `_comment`, never to the roster alone.
    4. `python -m partnerships.alignment run <def slug> --new-only` — reads only the (program,
       occupation) pairs no roster has read yet; readings are saved per program and shared.
-   5. Set `curriculum_alignment: "<def slug>"` and `curriculum_note` on the def. Read the review
+   5. Set `curriculum_alignment: "<def slug>"` and `curriculum_note` on the def. The note speaks of the
+      PROGRAM's courses, not the degree's or the certificate's: an outline belongs to the course and the
+      course to the program; the award only decides which courses were read, and the column header and the
+      Sources line already name it. Read the review
       file (`saved_reports/alignment/<ref>.review.md`) and view the section on the canvas
       (`uvicorn partnerships.alignment_canvas:app --port 8010`, `?roster=<def slug>`).
 6. **Render + review**, then export via `tools/report-render/export.sh` as usual. The def's `date` is the edition date the byline prints, not a render timestamp: set it to the day the def was last materially revised, and bump it whenever the content changes (the four August evaluations shipped in September with an August byline until this was noticed).
