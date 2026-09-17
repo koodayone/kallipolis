@@ -12,7 +12,7 @@ Coverage:
   - view_roster sets role, pairing basis and crosswalk from the roster, not the store, in roster order
   - read_program unions a fresh reading with the saved one and leaves other saved occupations in place
   - a program-outcomes-only re-read keeps the saved plate's courses and adds PLO cells; the gate takes the certificate's name as PLO
-  - a certificate column shows one mark per activity — the lead excerpt with its course title and COR section tag — and the legend explains the tags
+  - a certificate column shows one mark per activity — the lead excerpt with its course title and COR section tag — and the legend explains the tags; program outcomes are not drawn
   - rank_leads asks one judgment for rows with several excerpts, stores the choice, and falls back to tier, units, catalog order
   - an occupation block and legend label columns by certificate when the roster asks, and by college otherwise
   - a ProgramCourseFile course id becomes the college's spelling (space before the number, zeros dropped or kept)
@@ -190,7 +190,7 @@ def test_dense_cell_shows_the_lead_only_with_cor_tag_and_legend():
     assert html.count('class="alg-ev"') == 2                                 # one mark per activity
     assert "RSPT 50A" in html and "RSPT 55B" not in html and "also" not in html   # default lead: same tier, more units; no code list
     assert "Respiratory Therapy Procedures" in html and "Demonstrate use of humidity" in html and "COR · Objective" in html and "COR · Lab" in html
-    assert "Program outcome" in html
+    assert "Program outcome" not in html                                     # PLO cells are read, not drawn
     pl.rows[0].lead = {"course": "RSPT 70A", "section": "content", "quote": "Aerosol therapy", "reason": "names the procedure"}
     html = occupation_block("29-1126", [pl], columns="certificate")
     assert "RSPT 70A" in html.split("Inspect production")[0] and "COR · Content" in html        # a stored judgment wins

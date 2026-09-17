@@ -172,7 +172,7 @@ def column_legend(plates: list[Plate], columns: str = "college") -> str:
 CHIPS_PER_CELL = 3
 #: The section of the Course Outline of Record a lead excerpt comes from, as the tag reads it.
 COR_TAG = {"outcomes": "SLO", "objectives": "Objective", "description": "Description", "content": "Content",
-           "lab": "Lab", "assignments": "Assignment", "program_outcomes": "Program outcome"}
+           "lab": "Lab", "assignments": "Assignment"}
 COR_LEGEND = ("Each tag names the section of the Course Outline of Record the quoted sentence comes from: "
               "SLO (student learning outcome), Objective, Description, Content, Lab, Assignment.")
 
@@ -270,8 +270,9 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_
         else:
             uncovered.append(r.dwa.rstrip("."))
         act = escape(r.dwa.rstrip("."))
-        if columns == "certificate" and any(PLO in x.cells for pl in plates for x in pl.rows if x.dwa_id == r.dwa_id):
-            act += '<span class="alg-plo">Program outcome</span>'       # the certificate's own outcomes state it
+        # The certificate's own program outcomes are read (PLO cells) but not drawn: a
+        # per-row marker read as a third kind of information scattered through the table.
+        # They stay in the review file and the internal evidence tables.
         if not any_ and show_gaps:
             act += '<span class="alg-gap">no course in the consortium evidences this</span>'
         out.append(f'<tr class="{"alg-gaprow" if (not any_ and show_gaps) else ""}"><td class="alg-act">{act}</td>{"".join(cells)}</tr>')
