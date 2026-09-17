@@ -134,6 +134,8 @@ def canvas(roster: str = "svamp-manufacturing-technician", college: str = "", ap
     else:
         parts, appx, _ = R._curriculum_section(spec)
     generated = _generated(roster_d)
+    if appendix and appx:
+        appx = ['<h1>Course Outlines of Record</h1>'] + [f'<p class="tnar alg-links">{x}</p>' for x in appx]
     body = "\n".join(parts + (appx if appendix else []))
     colleges = [("", "all colleges")] + list(dict.fromkeys((p.member_id, p.college) for p in plates))
     toolbar = _TOOLBAR.format(

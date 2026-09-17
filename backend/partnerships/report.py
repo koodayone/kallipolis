@@ -1315,7 +1315,8 @@ def _footer(lens: LensModel, extra: list[str]) -> str:
 
 
 def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
-                     title: str, socs: list[str], program_top: str = "", curriculum: bool = False) -> str:
+                     title: str, socs: list[str], program_top: str = "", curriculum: bool = False,
+                     outlines: list[str] | None = None, consolidated: bool = False) -> str:
     """Provenance, organized by report section: a tailored dashboard link, then one
     numbered, linked source group per section. Each section's claims trace to named,
     auditable sources — the same audit-trail logic as the clickable program names."""
@@ -1342,19 +1343,21 @@ def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
             ("How Annual Job Openings Are Calculated", _OPENINGS_METHOD_URL),
             ("Lightcast — Job Openings Data (methodology)", _LIGHTCAST_METHOD_URL),
         ]),
-        ("Occupational Competencies",
-         [(f"O*NET Summary of {soc}", f"https://www.onetonline.org/link/summary/{soc}.00")
-          for soc in socs]),
     ]
+    summaries = [(f"O*NET Summary of {soc}", f"https://www.onetonline.org/link/summary/{soc}.00") for soc in socs]
+    if not consolidated:
+        groups.append(("Occupational Competencies", summaries))
     if curriculum:
-        groups += [("Curriculum Alignment", [
+        # An evaluation whose alignment blocks carry the occupation descriptions has no
+        # competencies section: the O*NET summaries move in here. The outlines of record
+        # follow as one line per certificate, each course code linked to its outline.
+        links = (summaries if consolidated else []) + [
             ("O*NET Database — Task Statements, Task Ratings and Detailed Work Activities",
              "https://www.onetcenter.org/database.html"),
-            ("Course Outlines of Record — each college's curriculum system, linked under its plate",
-             "https://www.onetcenter.org/database.html#work-activities"),
             ("CCCCO Curriculum Inventory (COCI) — Courses, the state record each outline's currency is checked against",
              "https://coci2.ccctechcenter.org/courses"),
-        ])]
+        ]
+        groups += [("Curriculum Alignment", links)]
     groups += [
         ("College Program Alignment & Supply", [
             ("CCCCO DataMart — Program Awards",
@@ -1374,9 +1377,12 @@ def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
            f'{a(dashboard_url, dashboard_url)}</p>']
     for name, links in groups:
         out.append(f'<p class="srcsec"><i>{_esc(name)} Section:</i></p>')
-        out.append('<div class="srclist">' + "".join(
-            f'<div class="srcitem">({i}) {a(lbl, url)}</div>'
-            for i, (lbl, url) in enumerate(links, 1)) + "</div>")
+        items = [f'<div class="srcitem">({i}) {a(lbl, url)}</div>' for i, (lbl, url) in enumerate(links, 1)]
+        if name == "Curriculum Alignment" and outlines:
+            n = len(links)
+            items += [f'<div class="srcitem alg-links">({n + i}) Course outlines of record \u2014 {line}</div>'
+                      for i, line in enumerate(outlines, 1)]
+        out.append('<div class="srclist">' + "".join(items) + "</div>")
     # A block, not a forced page. Sources measured 29-37% of a page in every report, so
     # giving it one left two thirds blank at the end of every document — padding, not
     # structure — and cost two pages across the eleven. As a block it flows into whatever
@@ -1721,7 +1727,7 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         cols = [by_soc[o.soc] for o in occs if o.soc in by_soc]
     else:
         cols = _cols_from_bundle(occs)
-    curriculum_parts, curriculum_appendix, consolidated = (
+    curriculum_parts, curriculum_outlines, consolidated = (
         _curriculum_section(spec, {c.soc: c.description for c in cols}) if spec.curriculum_alignment else ([], [], False))
     # An evaluation whose curriculum has been read carries the occupation description
     # inside each alignment block and drops the grid: the work activities with their course
@@ -1798,10 +1804,10 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
     from partnerships.sectors import SECTORS
     sec_label = SECTORS[play.sector].label if play.sector in SECTORS else play.sector.upper()
     dash_url = spec.dashboard_url or f"https://preview.kallipolis.us/landscape/{member_id}/{play.sector}"
-    sections += curriculum_appendix
     sections += [_sources_section(_org_label(lens.scope.member), sec_label, dash_url,
                                   play.title, [o.soc for o in occs], spec.program_top,
-                                  curriculum=bool(spec.curriculum_alignment))]
+                                  curriculum=bool(curriculum_parts), outlines=curriculum_outlines,
+                                  consolidated=consolidated)]
     # NO brand colour in the document chrome. Tried three times at widening scope —
     # every heading, then the masthead rule and the Awards Offered accents — and reverted
     # each time for the same reason: colour already carries meaning in this report
@@ -1825,7 +1831,7 @@ _CURRICULUM_BLURB = ("O*NET maintains a set of detailed work activities that ide
 
 
 def _curriculum_section(spec: ReportSpec, descriptions: dict[str, str] | None = None) -> tuple[list[str], list[str], bool]:
-    """(section parts, appendix parts, consolidated) for the roster named by
+    """(section parts, outline link lines for Sources, consolidated) for the roster named by
     spec.curriculum_alignment; the parts are empty when none of its readings has been run.
     The section reads BY OCCUPATION — the roster's SOCs in order, each with its most
     important core activities and the courses that evidence them, one column per program
@@ -1863,14 +1869,12 @@ def _curriculum_section(spec: ReportSpec, descriptions: dict[str, str] | None = 
                                  show_gaps=spec.curriculum_show_gaps, columns=columns, intro=intro)
         if block:            # not _block(): a block may break across pages; rows never do
             parts.append(block)
-    # Appendix: the outlines themselves, linked. A reader checks a chip against the
-    # course's outline of record at the source; the quoted sentences live in the review
-    # file for the college conversations, and in the canvas's internal review view.
-    org = roster.get('short_name') or spec.org_short or spec.org_name
-    method = (f'Links to all course outlines of record relevant to {_esc(org)}. These outlines of record were '
-              'analyzed against detailed work activities for each SOC based on O*NET data to determine curriculum alignment.')
+    # The outlines themselves, linked, go to Sources (one line per certificate): a reader
+    # checks a chip against the course's outline of record at the source; the quoted
+    # sentences live in the review file for the college conversations, and in the canvas's
+    # internal review view.
     seen: set[tuple[str, str]] = set()
-    links = []
+    outlines = []
     for pl in plates:                       # roster order; one line per program (a college may have several)
         key = (pl.member_id, pl.certificate)
         if key in seen:
@@ -1879,14 +1883,11 @@ def _curriculum_section(spec: ReportSpec, descriptions: dict[str, str] | None = 
         courses = " \u00b7 ".join(
             f'<a href="{_esc(c["source_url"])}" target="_blank" rel="noopener">{_esc(c["code"])}</a>'
             for c in pl.courses if c.get("source_url"))
-        links.append(f'<p class="tnar alg-links"><b>{_esc(_short_college(pl.college))}</b> \u00b7 {_esc(pl.certificate)}: {courses}</p>')
-    # One block: the heading, its method line and the link lines are a few lines that
-    # should not split across pages (a heading stranded above a long list of links).
-    appendix = [_block('<h1>Appendix: Course Outlines of Record</h1>', f'<p>{method}</p>', *links)]
+        outlines.append(f'<b>{_esc(_short_college(pl.college))}</b> \u00b7 {_esc(pl.certificate)}: {courses}')
     if spec.curriculum_show_gaps:      # internal review: every quoted sentence, by occupation and college
-        appendix += ['<details class="alg-appx"><summary><b>Evidence tables (internal review)</b></summary>'
-                     f'{appendix_tables(plates)}</details>']
-    return parts, appendix, consolidated
+        outlines.append('<details class="alg-appx"><summary><b>Evidence tables (internal review)</b></summary>'
+                        f'{appendix_tables(plates)}</details>')
+    return parts, outlines, consolidated
 
 
 # ── Demo: the whole report PROPOSED from just (member, play) ───────────────────
