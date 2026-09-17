@@ -585,11 +585,6 @@ def add_alg_table(table):
                         if sec is not None:
                             text = text.replace(sec.get_text(' ', strip=True), '', 1).strip()
                         run(q2, text, size=8, italic=True, color='5a6577')
-                more = c['el'].find('div', class_='alg-evmore')
-                if more is not None:
-                    q3 = cell.paragraphs[0] if first_p else cell.add_paragraph()
-                    q3.paragraph_format.space_before = Pt(0); q3.paragraph_format.space_after = Pt(1)
-                    run(q3, more.get_text(' ', strip=True), size=7.5, italic=True, color=MUT)
             else:
                 first = True
                 for chip in c['el'].find_all(['a', 'b']):
@@ -850,6 +845,9 @@ def emit(el):
                 elif chip is not None:
                     run(p, chip.get_text(' ', strip=True) + ' ', size=8, bold=True, color=BLUE)
                     run(p, sp.get_text(' ', strip=True).replace(chip.get_text(' ', strip=True), '', 1).strip(), size=9, color='46536b')
+                elif 'alg-lgnote' in sp.get('class', []):
+                    # the certificate view's note on what the COR tags mean — its own line
+                    p = para(2, 2); run(p, sp.get_text(' ', strip=True), size=8.5, color='6b7686')
         elif 'tnar' in cls:
             p = para(6, 2); runs_from(el, p, size=10, color='46536b')
         elif 'srcdash' in cls:

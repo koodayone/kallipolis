@@ -78,7 +78,8 @@
      "dwa_id": "4.A.4.b.6.h.3",
      "dwa": "Recommend legal actions.",
      "task": "Report incidences of child or elder abuse, neglect, or threats of harm to authorities, as required.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.1.a.2.e.8",
@@ -104,6 +105,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HLTH 21",
+      "section": "content",
+      "quote": "G. Nutritional behavior",
+      "reason": "content line names nutritional behavior directly, matching 'monitor nutrition' more specifically than a general objective on aged health issues"
      }
     },
     {
@@ -123,6 +130,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HLTH 101",
+      "section": "content",
+      "quote": "Documentation skills",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -149,13 +162,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HLTH 101",
+      "section": "content",
+      "quote": "Client-centered health coaching/counseling",
+      "reason": "coaching/counseling implies ongoing contact to track completion of recommended actions, closer to the task than a general interviewing line"
      }
     },
     {
      "dwa_id": "4.A.1.a.2.e.2",
      "dwa": "Monitor clients to evaluate treatment progress.",
      "task": "Contact clients in person, by phone, or in writing to ensure they have completed required or recommended actions.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.4.b.6.f.3",
@@ -226,6 +246,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HLTH 21",
+      "section": "objectives",
+      "quote": "H. Explain the role of and apply recommendations to: diet planning, physical activity, physical fitness, and weight management for disease prevention.",
+      "reason": "objective-tier commitment naming diet, physical activity, and weight management ties directly to advising on self-care and general health"
      }
     },
     {
@@ -271,6 +297,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HLTH 101",
+      "section": "objectives",
+      "quote": "Identify and enroll patients in need-based resources within the county, state, and federal levels to mitigate negative health outcomes.",
+      "reason": "objective explicitly commits to identifying and enrolling clients in needed health/social services, the clearest statement of referral"
      }
     },
     {
@@ -290,6 +322,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HLTH 101",
+      "section": "outcomes",
+      "quote": "Design a community-level health education and promotion project that demonstrates effective health literacy, communication strategies, and evidence-based health content.",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -309,6 +347,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HLTH 101",
+      "section": "content",
+      "quote": "Building advocacy and capacity in the CHW field",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -335,6 +379,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HLTH 101",
+      "section": "objectives",
+      "quote": "Evaluate patient needs utilizing a cultural humility and social justice lens related to health education, benefit enrollment, and/or care coordination.",
+      "reason": "objective explicitly commits to evaluating patient needs, the core of assessing individual needs for services"
      }
     },
     {
@@ -373,6 +423,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HLTH 101",
+      "section": "outcomes",
+      "quote": "Design a community-level health education and promotion project that demonstrates effective health literacy, communication strategies, and evidence-based health content.",
+      "reason": "SLO commits to designing a community-level health education project, most specific to disseminating educational materials to community members"
      }
     },
     {
@@ -392,19 +448,27 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HLTH 101",
+      "section": "content",
+      "quote": "Community organizing",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
      "dwa_id": "4.A.4.b.6.e.11",
      "dwa": "Advise others on ways to improve processes or products.",
      "task": "Provide feedback to health service providers regarding improving service accessibility or acceptability.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.4.b.6.e.12",
      "dwa": "Recommend changes or corrective procedures.",
      "task": "Provide feedback to health service providers regarding improving service accessibility or acceptability.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     }
    ],
    "dropped": [

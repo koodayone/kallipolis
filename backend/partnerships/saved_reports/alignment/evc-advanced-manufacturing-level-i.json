@@ -223,6 +223,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 201",
+      "section": "outcomes",
+      "quote": "Demonstrate proper practice safety procedures and identification of electrical hazards.",
+      "reason": "SLO explicitly commits to safety procedures and hazard identification, the strongest tier for compliance language"
      }
     },
     {
@@ -280,6 +286,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 201",
+      "section": "outcomes",
+      "quote": "Demonstrate the use of specialized test equipment to obtain measurements and generate data from electronic circuits and systems.",
+      "reason": "SLO directly commits to using specialized test equipment to obtain measurements, matching 'calibrate/adjust equipment' at the highest tier"
      }
     },
     {
@@ -299,13 +311,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 203",
+      "section": "lab",
+      "quote": "Set Up and Monitor a Process with Control Chart to Determine If the Process is in Control",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
      "dwa_id": "4.A.3.b.2.c.3",
      "dwa": "Design industrial equipment.",
      "task": "Identify opportunities for improvements in quality, cost, or efficiency of automation equipment.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.2.f.14",
@@ -343,6 +362,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 203",
+      "section": "lab",
+      "quote": "Problem Solving: Given a Problem or Defect, Identify Possible Causes, Fishbone Those Causes, Figure Out How to Eliminate and Test the Various Causes to Identify the Root Cause. Choose a Corrective Action, and Document the Process.",
+      "reason": "most detailed content line naming root-cause identification and corrective action, the core of developing a technical process"
      }
     },
     {
@@ -388,6 +413,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 203",
+      "section": "lab",
+      "quote": "Choose a Corrective Action, and Document the Process.",
+      "reason": "content line naming the corrective action chosen and documented, the concrete implementation step"
      }
     },
     {
@@ -502,6 +533,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 103",
+      "section": "outcomes",
+      "quote": "Demonstrate two techniques for testing assembled product.",
+      "reason": "SLO explicitly commits to demonstrating techniques for testing assembled product, matching the task text most directly"
      }
     },
     {
@@ -521,6 +558,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 103",
+      "section": "outcomes",
+      "quote": "Demonstrate how to read and interpret mechanical drawings, prints.",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -540,6 +583,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 103",
+      "section": "content",
+      "quote": "Learn How to Read and Interpret Mechanical Drawings",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -578,6 +627,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 203",
+      "section": "outcomes",
+      "quote": "Collect, analyze, interpret, and present numerical data to make effective decisions.",
+      "reason": "SLO commits to analyzing and presenting numerical data to make effective decisions, matching statistical evaluation of quality/reliability"
      }
     },
     {
@@ -597,6 +652,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 203",
+      "section": "lab",
+      "quote": "Choose a Corrective Action, and Document the Process",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -635,6 +696,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 203",
+      "section": "outcomes",
+      "quote": "Read and interpret process control charts.",
+      "reason": "SLO commits to reading and interpreting process control charts, directly matching monitoring records for compliance"
      }
     },
     {
@@ -666,6 +733,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 202",
+      "section": "outcomes",
+      "quote": "Identify three criteria that are important in the materials selection process.",
+      "reason": "SLO on materials selection criteria most directly states determining an operational (processing) method"
      }
     },
     {
@@ -685,6 +758,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 203",
+      "section": "lab",
+      "quote": "Set Up and Monitor a Process with Control Chart to Determine If the Process is in Control",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -728,6 +807,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 202",
+      "section": "outcomes",
+      "quote": "Identify three criteria that are important in the materials selection process.",
+      "reason": "SLO explicitly commits to identifying criteria for materials selection, directly matching the task"
      }
     },
     {
@@ -747,6 +832,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 203",
+      "section": "lab",
+      "quote": "Set Up and Monitor a Process with Control Chart to Determine If the Process is in Control",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -790,6 +881,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 203",
+      "section": "lab",
+      "quote": "Apply Two Adhesives Using Two Different Curing Conditions and Analyze the Bond Quality",
+      "reason": "lab activity of applying adhesives and analyzing bond quality reflects building/testing a prototype process most specifically"
      }
     },
     {
@@ -809,6 +906,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 103",
+      "section": "content",
+      "quote": "Blueprints and Drawings",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -828,13 +931,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 101",
+      "section": "lab",
+      "quote": "Analyze a Manufacturer’s Assembly Instructions for Process Improvement",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
      "dwa_id": "4.A.4.b.3.d.2",
      "dwa": "Train personnel on proper operational procedures.",
      "task": "Provide advice or training to other technicians.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.2.a.4.e.8",
@@ -860,6 +970,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 203",
+      "section": "lab",
+      "quote": "Perform Cost Analysis Plots and Graphs",
+      "reason": "lab content names the concrete act of performing cost analysis, matching analyze costs of proposed designs"
      }
     },
     {
@@ -886,6 +1002,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 203",
+      "section": "content",
+      "quote": "Cost of Quality - Definition and Measuring",
+      "reason": "more specific content line naming 'Cost of Quality' definition and measuring, directly tied to estimating costs"
      }
     },
     {
@@ -912,13 +1034,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 203",
+      "section": "lab",
+      "quote": "Choose a Corrective Action, and Document the Process.",
+      "reason": "fuller content line naming both corrective action and documentation, matching preparation of operational/process documentation"
      }
     },
     {
      "dwa_id": "4.A.4.c.3.e.3",
      "dwa": "Purchase materials, equipment, or other resources.",
      "task": "Coordinate equipment purchases, installations, or transfers.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     }
    ],
    "dropped": [
@@ -1256,7 +1385,8 @@
      "dwa_id": "4.A.3.b.2.e.1",
      "dwa": "Design electromechanical equipment or systems.",
      "task": "Develop, test, or program new robots. · Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.1.b.2.l.2",
@@ -1325,13 +1455,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 201",
+      "section": "outcomes",
+      "quote": "Demonstrate the use of specialized test equipment to obtain measurements and generate data from electronic circuits and systems.",
+      "reason": "SLO commits the course to using specialized test equipment to obtain measurements from electronic circuits/systems, matching the test-performance task most directly and at the objective tier"
      }
     },
     {
      "dwa_id": "4.A.2.b.2.b.1",
      "dwa": "Develop software or computer applications.",
      "task": "Install or program computer hardware or machine or instrumentation software in microprocessor-based systems.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.1.a.1.b.8",
@@ -1357,6 +1494,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 103",
+      "section": "outcomes",
+      "quote": "Demonstrate how to read and interpret mechanical drawings, prints.",
+      "reason": "SLO commits to reading and interpreting mechanical drawings/prints, the exact task text, outranking the parallel content-outline line"
      }
     },
     {
@@ -1390,6 +1533,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 201",
+      "section": "outcomes",
+      "quote": "Demonstrate the use of diagnostic information and software (electrical diagrams, board diagrams, diagnostic charts, specifications) in order to perform diagnosis and repair of passive circuits and systems.",
+      "reason": "SLO specifically commits to diagnosing and repairing circuits/systems using diagnostic information, most precisely matching 'maintain/repair to ensure proper functioning'"
      }
     },
     {
@@ -1428,6 +1577,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 201",
+      "section": "lab",
+      "quote": "Utilize Best Industry Practices on Electronic Troubleshooting, Fault Detection, and Root Cause Corrective Action (RCCA) Methods and Procedures",
+      "reason": "Content line names troubleshooting, fault detection, and root cause corrective action on electronics specifically, more precisely matching electronic-equipment repair than the passive-circuit SLO"
      }
     },
     {
@@ -1485,6 +1640,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 103",
+      "section": "lab",
+      "quote": "Inspect and Test Finished Circuit Boards Per Industry and International Standards such as ISO, IEC, IPC, or MILSPEC",
+      "reason": "Content line specifically names inspecting and testing finished boards against standards, directly matching 'inspect finished products to locate flaws'"
      }
     },
     {
@@ -1523,6 +1684,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 103",
+      "section": "lab",
+      "quote": "Perform Various Hand-held Soldering Techniques for Wires and Circuit Components",
+      "reason": "Content line names hand soldering techniques for wires and circuit components, the exact installation method in the task text"
      }
     },
     {
@@ -1587,6 +1754,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 103",
+      "section": "outcomes",
+      "quote": "Demonstrate how to form, cut, bond, solder, laminate, and 3D print various materials when assembling circuit boards, mechanical systems and electrical systems.",
+      "reason": "SLO commits to forming, cutting, bonding, soldering, laminating and 3D printing when assembling boards/systems, matching fabricate/assemble components at the objective tier"
      }
     },
     {
@@ -1625,13 +1798,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 103",
+      "section": "lab",
+      "quote": "Assemble Products Using Either Molding, Stamping, Bending, Casting, Laminating, or 3D Printing",
+      "reason": "Content line names assembling products via molding, stamping, bending, casting, laminating, or 3D printing, matching fabrication of components most specifically"
      }
     },
     {
      "dwa_id": "4.A.2.b.2.o.8",
      "dwa": "Create schematic drawings for electronics.",
      "task": "Produce electrical, electronic, or mechanical drawings or other related documents or graphics necessary for electromechanical design, using computer-aided design (CAD) software.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.2.b.1.j.2",
@@ -1662,13 +1842,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 202",
+      "section": "outcomes",
+      "quote": "Identify three criteria that are important in the materials selection process.",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
      "dwa_id": "4.A.3.b.2.f.14",
      "dwa": "Develop technical methods or processes.",
      "task": "Establish and maintain inventory, records, or documentation systems.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.6.h.21",
@@ -1687,6 +1874,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MFGT 203",
+      "section": "lab",
+      "quote": "Problem Solving: Given a Problem or Defect, Identify Possible Causes, Fishbone Those Causes, Figure Out How to Eliminate and Test the Various Causes to Identify the Root Cause. Choose a Corrective Action, and Document the Process.",
+      "reason": "default: tier, units, catalog order"
      }
     }
    ],

@@ -809,6 +809,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 84L",
+      "section": "objectives",
+      "quote": "Demonstrate competence in the induction, monitoring, maintenance, and recovery of a veterinary patient under inhalant anesthesia.",
+      "reason": "names the specific procedure (induction, monitoring, maintenance, recovery of anesthesia) as a committed competency, matching the task's monitor-and-adjust-dosage language most directly"
      }
     },
     {
@@ -1023,6 +1029,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 84",
+      "section": "content",
+      "quote": "Use of: esophageal stethoscope, blood pressure monitor, capnometer, electrocardiogram, pulse oximeter",
+      "reason": "lists the exact monitoring devices/techniques used to track patient response, the most concrete statement of the monitoring task"
      }
     },
     {
@@ -1128,6 +1140,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 84L",
+      "section": "objectives",
+      "quote": "Perform a thorough post-anesthetic evaluation of a veterinary patient and develop a nursing care plan.",
+      "reason": "explicitly commits to a full post-anesthetic evaluation and nursing care plan, matching the task's recovery-monitoring language precisely"
      }
     },
     {
@@ -1300,6 +1318,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 83B",
+      "section": "objectives",
+      "quote": "Describe and demonstrate record keeping requirements for controlled substances.",
+      "reason": "SLO-tier objective naming record-keeping requirements specifically for controlled substances, matching the task's controlled drug inventory/log books"
      }
     },
     {
@@ -1445,6 +1469,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 81",
+      "section": "outcomes",
+      "quote": "Explain and demonstrate the steps and rational for performing routine diagnostics in veterinary medicine including urinalysis, blood tests, vaginal cytology and fecal exam.",
+      "reason": "SLO explicitly naming the specific lab tests (urinalysis, blood tests, fecal exam) that match the task verbatim"
      }
     },
     {
@@ -1603,6 +1633,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 55",
+      "section": "content",
+      "quote": "Parenteral routes of administration",
+      "reason": "content line names the specific non-IV (parenteral) administration routes matching the task"
      }
     },
     {
@@ -1641,6 +1677,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 75B",
+      "section": "content",
+      "quote": "Principles of vaccination",
+      "reason": "content line names vaccination principles directly, the core of the immunization task"
      }
     },
     {
@@ -1779,6 +1821,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 53B",
+      "section": "content",
+      "quote": "Reconstitution of powdered drugs",
+      "reason": "content line names reconstitution of powdered drugs, a specific medication-preparation procedure"
      }
     },
     {
@@ -1977,6 +2025,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 70",
+      "section": "content",
+      "quote": "Patient positioning",
+      "reason": "content outline directly names patient positioning, matching the activity title precisely"
      }
     },
     {
@@ -2041,6 +2095,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 85",
+      "section": "outcomes",
+      "quote": "Identify cardiopulmonary arrest in patients and how to initiate and perform CPR effectively.",
+      "reason": "SLO explicitly commits to identifying cardiac arrest and performing CPR, the clearest match to emergency life-saving procedures"
      }
     },
     {
@@ -2110,6 +2170,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 58L",
+      "section": "content",
+      "quote": "Care and maintenance of instruments",
+      "reason": "content line names care and maintenance of instruments, directly matching equipment cleaning"
      }
     },
     {
@@ -2153,6 +2219,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 58L",
+      "section": "objectives",
+      "quote": "Demonstrate proper techniques for the preparation of surgical packs, and operation of an autoclave and gas sterilizer",
+      "reason": "objective explicitly commits to sterilization technique (autoclave/gas sterilizer), the most specific match"
      }
     },
     {
@@ -2320,6 +2392,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 55",
+      "section": "objectives",
+      "quote": "Perform basic steps in physical examination of dogs and cats.",
+      "reason": "objective commits to performing the physical exam duties (assisting practitioner with exam), matching the task closely"
      }
     },
     {
@@ -2391,6 +2469,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 72",
+      "section": "outcomes",
+      "quote": "Safely and correctly perform a complete dental prophylaxis on models and cadavers at an entry level of competency.",
+      "reason": "SLO commits to performing a complete dental prophylaxis, the exact procedure named in the task"
      }
     },
     {
@@ -2448,6 +2532,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 55",
+      "section": "content",
+      "quote": "Intravenous",
+      "reason": "content line names intravenous procedures, matching the task's IV feeding/catheterization language"
      }
     },
     {
@@ -2598,6 +2688,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 55",
+      "section": "objectives",
+      "quote": "Perform venipuncture.",
+      "reason": "objective commits to performing venipuncture, a specific specimen-collection procedure matching the task"
      }
     },
     {
@@ -2679,6 +2775,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 81",
+      "section": "content",
+      "quote": "Sample collection, storage, and preparation",
+      "reason": "content line names sample collection, storage, and preparation directly matching the task's preparation language"
      }
     },
     {
@@ -2710,6 +2812,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 84L",
+      "section": "content",
+      "quote": "Clipping and scrubbing",
+      "reason": "content line names clipping and scrubbing, the exact surgical-prep procedure in the task"
      }
     },
     {
@@ -2820,6 +2928,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 83B",
+      "section": "outcomes",
+      "quote": "Demonstrate the ability to educate clients on medication administration plans and evaluate client understanding",
+      "reason": "SLO commits to educating clients on medication plans and evaluating understanding, matching detailed client communication about patient status"
      }
     },
     {
@@ -2920,6 +3034,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 70",
+      "section": "outcomes",
+      "quote": "Demonstrate entry level skills in producing and evaluating a diagnostic radiograph.",
+      "reason": "SLO commits to producing and evaluating a diagnostic radiograph, matching the imaging equipment operation task"
      }
     },
     {
@@ -2996,6 +3116,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 70",
+      "section": "lab",
+      "quote": "Demonstration and performance of all steps required to produce a diagnostic radiograph, including proper exposure settings and patient positioning",
+      "reason": "lab content covers all steps to produce a diagnostic radiograph including processing, matching the task's develop-radiographs language"
      }
     },
     {
@@ -3041,6 +3167,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 58L",
+      "section": "content",
+      "quote": "Preparation of sterile surgical packs",
+      "reason": "content line names preparation of sterile surgical packs, directly matching treatment room/surgery prep"
      }
     },
     {
@@ -3139,6 +3271,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 58L",
+      "section": "content",
+      "quote": "Operation and maintenance of the autoclave",
+      "reason": "content line names operation and maintenance of the autoclave, a specific equipment-maintenance procedure"
      }
     },
     {
@@ -3196,6 +3334,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 56",
+      "section": "objectives",
+      "quote": "Demonstrate proper application of bandages and splints",
+      "reason": "objective commits to demonstrating bandage and splint application, matching the task verbatim"
      }
     },
     {
@@ -3227,6 +3371,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 60",
+      "section": "content",
+      "quote": "Making and managing appointments",
+      "reason": "content line names making and managing appointments, matching the task directly"
      }
     },
     {
@@ -3327,6 +3477,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 75B",
+      "section": "outcomes",
+      "quote": "Discuss the role of a registered veterinary technician in pain management, nutrition, and preventative care in dogs and cats.",
+      "reason": "SLO commits to discussing the technician's role in nutrition and preventive care counseling, closely matching the advice/counseling task"
      }
     },
     {
@@ -3353,6 +3509,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 60",
+      "section": "content",
+      "quote": "Inventory control",
+      "reason": "content line names inventory control directly, matching the supply-monitoring task"
      }
     },
     {
@@ -3372,6 +3534,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 60",
+      "section": "content",
+      "quote": "Inventory control",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -3410,6 +3578,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 60",
+      "section": "content",
+      "quote": "Principles of personnel management, and skills and personal characteristics of good managers",
+      "reason": "content line names principles of personnel management, matching the supervisory task"
      }
     },
     {
@@ -3429,6 +3603,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 57L",
+      "section": "lab",
+      "quote": "Instruction of first-year students in basic principles of facilities management and maintenance care of resident animals.",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -3448,6 +3628,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 60",
+      "section": "objectives",
+      "quote": "Describe a variety of marketing, promotion, and sales techniques",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -3479,6 +3665,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 60",
+      "section": "content",
+      "quote": "Receptionist skills and duties",
+      "reason": "content line names receptionist skills and duties, matching clerical/office work directly"
      }
     },
     {
@@ -3498,6 +3690,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 60",
+      "section": "content",
+      "quote": "Basic bookkeeping",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -3543,6 +3741,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 56",
+      "section": "content",
+      "quote": "Nail trim: dog and cat",
+      "reason": "content line names nail trim for dog and cat, a specific hygiene task matching the activity verbatim"
      }
     }
    ],
@@ -4784,6 +4988,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 55",
+      "section": "objectives",
+      "quote": "Demonstrate safe and proper low-stress methods of animal handling and restraint.",
+      "reason": "course objective directly commits to demonstrating restraint/handling, matching the task's core verb most specifically at the SLO/objective tier"
      }
     },
     {
@@ -4984,6 +5194,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 84L",
+      "section": "content",
+      "quote": "Critical considerations in the recovery period",
+      "reason": "content line names the recovery-period monitoring most specifically matching post-surgery monitoring"
      }
     },
     {
@@ -5277,6 +5493,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 84L",
+      "section": "outcomes",
+      "quote": "Safely and competently prepare, induce, maintain, and recover and provide post procedure care for dogs and cats from general anesthesia for spays and neuters",
+      "reason": "SLO commits to safely and competently preparing, maintaining, recovering, and post-procedure care including anesthesia monitoring for surgery patients"
      }
     },
     {
@@ -5358,6 +5580,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 83B",
+      "section": "content",
+      "quote": "Filling and labeling prescriptions",
+      "reason": "content line names filling and labeling prescriptions exactly, matching the task text most specifically"
      }
     },
     {
@@ -5444,6 +5672,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 75A",
+      "section": "content",
+      "quote": "Routine cleaning and sanitation",
+      "reason": "content line names routine cleaning and sanitation directly matching kennel/room cleaning to control disease"
      }
     },
     {
@@ -5792,6 +6026,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 75B",
+      "section": "objectives",
+      "quote": "Perform physical assessment of teaching animals during animal care shifts",
+      "reason": "objective commits to performing physical assessment specifically to detect changes in teaching animals"
      }
     },
     {
@@ -5992,6 +6232,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 70",
+      "section": "outcomes",
+      "quote": "Demonstrate entry level skills in producing and evaluating a diagnostic radiograph.",
+      "reason": "SLO commits to producing and evaluating a diagnostic radiograph, directly matching the x-ray task text"
      }
     },
     {
@@ -6206,6 +6452,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 84L",
+      "section": "content",
+      "quote": "Surgical assisting",
+      "reason": "content line names surgical assisting directly, matching passing instruments to veterinarians during surgery"
      }
     },
     {
@@ -6380,6 +6632,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 55",
+      "section": "objectives",
+      "quote": "Perform venipuncture.",
+      "reason": "objective commits specifically to performing venipuncture, a core specimen collection skill"
      }
     },
     {
@@ -6466,6 +6724,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 58L",
+      "section": "content",
+      "quote": "Operation and maintenance of the autoclave",
+      "reason": "content line names autoclave operation and maintenance, directly matching sterilizing instruments"
      }
     },
     {
@@ -6554,6 +6818,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 84L",
+      "section": "content",
+      "quote": "Equipment care and maintenance",
+      "reason": "content line specifically names equipment care and maintenance matching the task text"
      }
     },
     {
@@ -6659,6 +6929,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 60",
+      "section": "content",
+      "quote": "Receptionist skills and duties",
+      "reason": "content line names receptionist skills and duties directly matching clerical/office work"
      }
     },
     {
@@ -6690,6 +6966,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 60",
+      "section": "content",
+      "quote": "Making and managing appointments",
+      "reason": "content line names making and managing appointments exactly matching the task text"
      }
     },
     {
@@ -6862,6 +7144,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 75B",
+      "section": "content",
+      "quote": "Entering data into medical records",
+      "reason": "content line names entering data into medical records, most specific match to recording vital/health information"
      }
     },
     {
@@ -7072,6 +7360,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 56",
+      "section": "content",
+      "quote": "Subcutaneous fluids",
+      "reason": "content line names subcutaneous fluids, a specific basic medical treatment matching the task text"
      }
     },
     {
@@ -7146,6 +7440,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 58L",
+      "section": "content",
+      "quote": "Preparation of sterile surgical packs",
+      "reason": "content line names preparation of sterile surgical packs, directly matching preparing instruments for surgery"
      }
     },
     {
@@ -7253,6 +7553,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 72",
+      "section": "outcomes",
+      "quote": "Prepare client education regarding home dental care for companion animals.",
+      "reason": "SLO commits to preparing client education on home dental care, directly matching teaching clients about care"
      }
     },
     {
@@ -7360,6 +7666,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 75B",
+      "section": "content",
+      "quote": "Calculating feeding requirements for life stages",
+      "reason": "content line names calculating feeding requirements, directly matching preparing feed per diet instructions"
      }
     },
     {
@@ -7391,6 +7703,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 89",
+      "section": "objectives",
+      "quote": "Demonstrate correct examination and treatment room procedures",
+      "reason": "objective commits to demonstrating correct examination and treatment room procedures, matching preparing treatment areas"
      }
     },
     {
@@ -7410,6 +7728,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 89",
+      "section": "content",
+      "quote": "Examination and treatment room procedures",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -7441,6 +7765,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 75A",
+      "section": "objectives",
+      "quote": "Discuss the role of the technician in humane euthanasia.",
+      "reason": "objective discusses the technician's role in humane euthanasia, directly matching the disposal/euthanasia task"
      }
     },
     {
@@ -7539,6 +7869,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 89",
+      "section": "content",
+      "quote": "SOAP charting",
+      "reason": "content line names SOAP charting, a specific medical report format matching the task text"
      }
     },
     {
@@ -7625,6 +7961,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 56",
+      "section": "content",
+      "quote": "Nail trim: dog and cat",
+      "reason": "content line names nail trim for dog and cat, a specific hygiene grooming duty matching the task text"
      }
     },
     {
@@ -7644,6 +7986,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 60",
+      "section": "content",
+      "quote": "Inventory control",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -7663,6 +8011,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 60",
+      "section": "content",
+      "quote": "Basic bookkeeping",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -7689,6 +8043,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 60",
+      "section": "content",
+      "quote": "Inventory control",
+      "reason": "content line names inventory control directly, matching ordering supplies to restock inventory"
      }
     },
     {
@@ -7708,6 +8068,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "V T 60",
+      "section": "objectives",
+      "quote": "Describe a variety of marketing, promotion, and sales techniques",
+      "reason": "default: tier, units, catalog order"
      }
     }
    ],

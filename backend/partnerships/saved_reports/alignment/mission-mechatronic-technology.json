@@ -362,6 +362,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MTT 020",
+      "section": "objectives",
+      "quote": "Develop and design PLC program from Piping/Process and Instrumentation Diagram",
+      "reason": "names the specific PLC design procedure rather than the generic engineering design process"
      }
     },
     {
@@ -547,6 +553,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MTT 022",
+      "section": "outcomes",
+      "quote": "Measure, evaluate, and optimize the open- and closed-loop response of a PID control system.",
+      "reason": "SLO explicitly commits to measuring and evaluating closed-loop system performance, matching the activity's performance-testing language most directly"
      }
     },
     {
@@ -635,6 +647,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MTT 032",
+      "section": "objectives",
+      "quote": "Create simple programs in high-level and assembly language for practical and diagnostic purposes.",
+      "reason": "SLO-level objective committing to creating programs in high-level/assembly language for microprocessor systems, matching the task's software development on microprocessor-based systems"
      }
     },
     {
@@ -754,6 +772,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MTT 020",
+      "section": "outcomes",
+      "quote": "Read and understand automation symbols, including International Society of Automation (ISA) symbols",
+      "reason": "SLO commits to reading and understanding standardized diagram symbols, the core act of reviewing technical documents"
      }
     },
     {
@@ -875,6 +899,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MTT 030",
+      "section": "objectives",
+      "quote": "Demonstrate effective basic troubleshooting techniques to isolate motor and controller faults",
+      "reason": "objective directly commits to troubleshooting technique to isolate motor/mechanical faults, matching maintain electromechanical equipment"
      }
     },
     {
@@ -980,19 +1010,27 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MTT 032",
+      "section": "objectives",
+      "quote": "Use test equipment to troubleshoot microprocessor-based electronic systems.",
+      "reason": "objective explicitly commits to using test equipment to troubleshoot microprocessor-based electronic systems, matching maintain electronic equipment most specifically"
      }
     },
     {
      "dwa_id": "4.A.1.b.2.f.8",
      "dwa": "Inspect finished products to locate flaws.",
      "task": "Inspect parts for surface defects. · Verify part dimensions or clearances to ensure conformance to specifications, using precision measuring instruments.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.2.t.5",
      "dwa": "Install instrumentation or electronic equipment or systems.",
      "task": "Install electrical or electronic parts and hardware in housings or assemblies, using soldering equipment and hand tools.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.2.d.2",
@@ -1066,6 +1104,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MTT 034",
+      "section": "description",
+      "quote": "Hands-on activities using various pneumatic components are assembled in the lab.",
+      "reason": "description states components are physically assembled in the lab, the most direct statement of assembling equipment"
      }
     },
     {
@@ -1085,6 +1129,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MTT 050",
+      "section": "lab",
+      "quote": "Design and produce individual projects",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -1178,6 +1228,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MTT 012",
+      "section": "outcomes",
+      "quote": "Develop electrical wiring diagrams including electrical control panel layout, power distribution, loop drawings, and PLC I/O diagrams",
+      "reason": "SLO commits to developing electrical/electronic schematic wiring diagrams, the most specific match to creating schematic drawings"
      }
     },
     {
@@ -1209,13 +1265,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MTT 022",
+      "section": "objectives",
+      "quote": "Select sensors, controllers, and actuators appropriate for a given task.",
+      "reason": "objective commits to selecting sensors, controllers, and actuators to meet task specifications, directly matching selecting project materials/components"
      }
     },
     {
      "dwa_id": "4.A.3.b.2.f.14",
      "dwa": "Develop technical methods or processes.",
      "task": "Establish and maintain inventory, records, or documentation systems.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.6.h.21",
@@ -1234,6 +1297,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MTT 012",
+      "section": "objectives",
+      "quote": "Organize and present data in tabular and graphic formats using industry-standard software",
+      "reason": "default: tier, units, catalog order"
      }
     }
    ],
@@ -1784,6 +1853,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MTT 012",
+      "section": "outcomes",
+      "quote": "Identify and/or describe circuit and equipment elements and specifications that are relevant to performing accurate measurements.",
+      "reason": "SLO commits the course to identifying specifications relevant to accurate measurements, most directly mirroring inspecting/measuring against specifications"
      }
     },
     {
@@ -1884,6 +1959,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MTT 012",
+      "section": "lab",
+      "quote": "Learn to read Specification sheets",
+      "reason": "directly names reading specification sheets, the exact instruction-reading task described"
      }
     },
     {
@@ -1953,13 +2034,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MTT 034",
+      "section": "objectives",
+      "quote": "Identify the symbols for fluid power and electrical related components from either ANSI or ISO drawings and draw a complete schematic",
+      "reason": "objective explicitly covers reading/interpreting drawings (blueprints) to produce a schematic, matching review of blueprints for operational sequence"
      }
     },
     {
      "dwa_id": "4.A.3.a.1.h.5",
      "dwa": "Clean workpieces or finished products.",
      "task": "Clean semiconductor wafers using cleaning equipment, such as chemical baths, automatic wafer cleaners, or blow-off wands. · Clean and maintain equipment, including replacing etching and rinsing solutions and cleaning bath containers and work area.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.6.h.3",
@@ -2009,31 +2097,41 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MTT 010",
+      "section": "outcomes",
+      "quote": "Collect, organize, and present measurement data in tabular and graphic form.",
+      "reason": "SLO commits to collecting, organizing, and presenting measurement data, the clearest statement of recording operational/production data"
      }
     },
     {
      "dwa_id": "4.A.3.a.2.d.4",
      "dwa": "Assemble precision electronics or optical equipment.",
      "task": "Place semiconductor wafers in processing containers or equipment holders, using vacuum wand or tweezers. · Etch, lap, polish, or grind wafers or ingots to form circuitry and change conductive properties, using etching, lapping, polishing, or grinding equipment. · Align photo mask pattern on photoresist layer, expose pattern to ultraviolet light, and develop pattern, using specialized equipment.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.2.f.3",
      "dwa": "Mount materials or workpieces onto production equipment.",
      "task": "Place semiconductor wafers in processing containers or equipment holders, using vacuum wand or tweezers.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.1.f.10",
      "dwa": "Load materials into production equipment.",
      "task": "Load and unload equipment chambers and transport finished product to storage or to area for further processing.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.1.j.11",
      "dwa": "Move products, materials, or equipment between work areas.",
      "task": "Load and unload equipment chambers and transport finished product to storage or to area for further processing.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.1.a.1",
@@ -2090,6 +2188,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MTT 022",
+      "section": "objectives",
+      "quote": "Program a PLC controller to execute a sequential task.",
+      "reason": "objective states programming a controller to execute a task, matching entering commands/instructions into equipment"
      }
     },
     {
@@ -2261,6 +2365,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MTT 020",
+      "section": "objectives",
+      "quote": "Develop and execute a troubleshooting plan for process control systems.",
+      "reason": "objective commits to developing and executing a troubleshooting plan for process control systems, matching diagnosing equipment malfunctions most specifically"
      }
     },
     {
@@ -2304,13 +2414,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "MTT 050",
+      "section": "outcomes",
+      "quote": "Demonstrate proper alignment and operating procedures for safe and effective operation of the 3D printer",
+      "reason": "SLO commits to demonstrating proper alignment and operating procedures for equipment, the clearest statement of inspecting production equipment"
      }
     },
     {
      "dwa_id": "4.A.4.a.2.g.2",
      "dwa": "Notify others of equipment repair or maintenance needs.",
      "task": "Inspect equipment for leaks, diagnose malfunctions, and request repairs.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     }
    ],
    "dropped": [

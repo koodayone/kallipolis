@@ -990,6 +990,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "RSPT 61A",
+      "section": "objectives",
+      "quote": "Set up a mechanical ventilator (Trilogy, Servo u, Servo i, Pulmonetics LTV1200, and Drager V500)",
+      "reason": "names exact device set-up (mechanical ventilators) matching the task's 'set up and operate devices' language at objective tier"
      }
     },
     {
@@ -1214,6 +1220,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "RSPT 61A",
+      "section": "lab",
+      "quote": "Ventilator set up",
+      "reason": "lab content directly labeled 'Ventilator set up', the clearest equipment-preparation match"
      }
     },
     {
@@ -1621,6 +1633,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "RSPT 51C",
+      "section": "outcomes",
+      "quote": "Analyze physical exams and chest x-rays and relate the data to the patient's condition and anticipate problems",
+      "reason": "SLO explicitly states analyzing physical exams and chest x-rays relating to patient condition, matching 'review patient information to assess patient condition'"
      }
     },
     {
@@ -1664,6 +1682,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "RSPT 65",
+      "section": "content",
+      "quote": "Maintain records and communicate information",
+      "reason": "content outline explicitly ties communicating monitoring data to the patient's condition, matching informing professionals of patient status"
      }
     },
     {
@@ -2016,6 +2040,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "RSPT 56",
+      "section": "objectives",
+      "quote": "Assess and monitor patient's vital signs and breath sounds.",
+      "reason": "objective explicitly states assessing and monitoring patient's vital signs and breath sounds during care"
      }
     },
     {
@@ -2090,6 +2120,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "RSPT 60C",
+      "section": "outcomes",
+      "quote": "Relate results to disease process and recommends appropriate therapy.",
+      "reason": "SLO explicitly states relating (blood gas) results to disease process and recommending therapy, i.e., communicating results"
      }
     },
     {
@@ -2221,6 +2257,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "RSPT 70B",
+      "section": "objectives",
+      "quote": "Demonstrate the correct technique for performing cardiopulmonary resuscitations.",
+      "reason": "objective explicitly states performing cardiopulmonary resuscitation technique, matching advanced life support"
      }
     },
     {
@@ -2364,6 +2406,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "AHS 60C",
+      "section": "objectives",
+      "quote": "Recognize and manage cardiac arrest until termination of resuscitation or transfer of care",
+      "reason": "objective explicitly states recognizing and managing cardiac arrest, a direct medical emergency"
      }
     },
     {
@@ -2443,6 +2491,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "RSPT 70B",
+      "section": "objectives",
+      "quote": "Observe and assist with special procedures respiratory patients.",
+      "reason": "objective explicitly states observing and assisting with special procedures on respiratory patients"
      }
     },
     {
@@ -2474,6 +2528,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "AHS 50C",
+      "section": "objectives",
+      "quote": "Discuss the role of the health care team and collaborative practice",
+      "reason": "objective explicitly discusses the role of the health care team and collaborative practice"
      }
     },
     {
@@ -2524,6 +2584,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "RSPT 56",
+      "section": "outcomes",
+      "quote": "Abide by proper infection control guidelines and standards associated with equipment and respiratory procedures.",
+      "reason": "SLO explicitly commits to abiding by proper infection control guidelines/standards, matching verifying standards adherence"
      }
     },
     {
@@ -2634,13 +2700,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "RSPT 54",
+      "section": "objectives",
+      "quote": "Locate information in a patient's paper and electronic chart.",
+      "reason": "objective explicitly states locating information in patient's paper and electronic chart, core record maintenance"
      }
     },
     {
      "dwa_id": "4.A.3.b.4.f.4",
      "dwa": "Repair medical facility equipment.",
      "task": "Make emergency visits to resolve equipment problems.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.1.i.3",
@@ -2695,6 +2768,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "RSPT 70A",
+      "section": "objectives",
+      "quote": "Demonstrate aseptic technique for cleaning and sterilizing equipment.",
+      "reason": "objective explicitly states aseptic technique for cleaning and sterilizing equipment"
      }
     },
     {
@@ -3041,6 +3120,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "RSPT 50B",
+      "section": "outcomes",
+      "quote": "Explain the indications, contraindications and hazards for invasive and noninvasive respiratory procedures administered.",
+      "reason": "SLO explicitly commits to explaining indications, contraindications and hazards for procedures, matching protocol determination"
      }
     },
     {
@@ -3163,6 +3248,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "RSPT 50A",
+      "section": "objectives",
+      "quote": "Maintain, calibrate, troubleshoot and use oxygen analyzers",
+      "reason": "objective explicitly states maintaining, calibrating, troubleshooting equipment to ensure proper operation"
      }
     },
     {
@@ -3280,6 +3371,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "RSPT 60C",
+      "section": "content",
+      "quote": "Calibration of pulmonary diagnostic equipment",
+      "reason": "content outline explicitly names calibration of pulmonary diagnostic equipment, core maintenance task"
      }
     },
     {
@@ -3299,6 +3396,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "RSPT 55A",
+      "section": "content",
+      "quote": "Patient communication to demonstrate understanding",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -3423,6 +3526,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "RSPT 61C",
+      "section": "objectives",
+      "quote": "Create a lesson plan appropriate for patient education.",
+      "reason": "objective explicitly states creating a lesson plan for patient education, directly matching training patients/families"
      }
     },
     {
@@ -3545,13 +3654,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "RSPT 55F",
+      "section": "objectives",
+      "quote": "Correct management of asthma.",
+      "reason": "objective explicitly states correct management of asthma, a chronic disease treatment"
      }
     },
     {
      "dwa_id": "4.A.4.b.3.f.8",
      "dwa": "Train medical providers.",
      "task": "Demonstrate respiratory care procedures to trainees or other healthcare personnel. · Teach, train, supervise, or use the assistance of students, respiratory therapy technicians, or assistants.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.2.i.9",
@@ -3833,6 +3949,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "RSPT 50C",
+      "section": "objectives",
+      "quote": "Initiate and manage invasive ventilatory support.",
+      "reason": "objective explicitly states initiating and managing invasive ventilatory support, matching adjusting equipment for optimum therapy"
      }
     },
     {
@@ -4040,13 +4162,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "RSPT 60C",
+      "section": "outcomes",
+      "quote": "Perform selected cardio-pulmonary diagnostic tests.",
+      "reason": "SLO explicitly commits to performing selected cardio-pulmonary diagnostic tests"
      }
     },
     {
      "dwa_id": "4.A.4.b.4.a.14",
      "dwa": "Supervise patient care personnel.",
      "task": "Teach, train, supervise, or use the assistance of students, respiratory therapy technicians, or assistants.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.1.m.2",
@@ -4091,6 +4220,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "RSPT 50A",
+      "section": "objectives",
+      "quote": "Demonstrate proper body mechanics when moving patients",
+      "reason": "objective explicitly states demonstrating proper body mechanics when moving patients"
      }
     }
    ],

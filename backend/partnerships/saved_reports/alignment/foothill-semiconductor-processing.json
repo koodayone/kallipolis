@@ -134,6 +134,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 61A",
+      "section": "objectives",
+      "quote": "Identify measurement tools for different properties and how to use them",
+      "reason": "the objective commits the course to identifying measurement tools and their use, matching 'measure dimensions...to verify conformance' more specifically than the bare content line"
      }
     },
     {
@@ -160,6 +166,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 101A",
+      "section": "outcomes",
+      "quote": "read and interpret diagrams for mechanical, gas, and electrical systems",
+      "reason": "the SLO commits to reading and interpreting diagrams (instructions) to determine specifications, and outranks the equivalent content line"
      }
     },
     {
@@ -193,19 +205,27 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 101A",
+      "section": "objectives",
+      "quote": "Identify steps in a procedure from diagrams",
+      "reason": "'identify steps in a procedure from diagrams' most specifically states reviewing instructions to determine operational sequence, beating the more general SLO and the symbols-focused objective"
      }
     },
     {
      "dwa_id": "4.A.3.a.1.h.5",
      "dwa": "Clean workpieces or finished products.",
      "task": "Clean semiconductor wafers using cleaning equipment, such as chemical baths, automatic wafer cleaners, or blow-off wands. · Clean and maintain equipment, including replacing etching and rinsing solutions and cleaning bath containers and work area.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.6.h.3",
      "dwa": "Record operational or production data.",
      "task": "Maintain processing, production, and inspection information and reports.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.2.d.4",
@@ -266,6 +286,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 61A",
+      "section": "content",
+      "quote": "Photolithography",
+      "reason": "photolithography content most specifically names the mask-alignment/expose/develop procedure central to this assembly task"
      }
     },
     {
@@ -306,19 +332,27 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 61A",
+      "section": "content",
+      "quote": "Vacuum wands",
+      "reason": "vacuum wands content line names the exact tool used to place wafers in holders, matching the task text verbatim"
      }
     },
     {
      "dwa_id": "4.A.3.a.1.f.10",
      "dwa": "Load materials into production equipment.",
      "task": "Load and unload equipment chambers and transport finished product to storage or to area for further processing.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.1.j.11",
      "dwa": "Move products, materials, or equipment between work areas.",
      "task": "Load and unload equipment chambers and transport finished product to storage or to area for further processing.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.1.a.1",
@@ -344,6 +378,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 101A",
+      "section": "objectives",
+      "quote": "Present an overview of programmable logic controllers (PLC)",
+      "reason": "the objective commits to presenting PLCs used to key commands into control panels, ranking above the parallel content line"
      }
     },
     {
@@ -403,6 +443,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 61A",
+      "section": "outcomes",
+      "quote": "Upon completion of the course, students will be able to describe the principles of troubleshooting.",
+      "reason": "an explicit SLO statement committing the course to describing troubleshooting principles, the clearest and highest-tier match"
      }
     },
     {
@@ -429,6 +475,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 101A",
+      "section": "content",
+      "quote": "Leak detection",
+      "reason": "the content line names leak detection directly, the specific inspection procedure in the task text"
      }
     },
     {
@@ -462,6 +514,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 101A",
+      "section": "content",
+      "quote": "Procedures for reporting issues",
+      "reason": "the content line on procedures for reporting issues most specifically matches notifying others of repair needs"
      }
     }
    ],
@@ -684,6 +742,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 61A",
+      "section": "outcomes",
+      "quote": "list safety concerns and precautions and contamination concerns and precautions",
+      "reason": "SLO commits to listing safety AND contamination (environmental quality) concerns, most directly matching 'monitor activities affecting environmental quality,' outranking the narrower electrical-safety or hazardous-disposal content lines"
      }
     },
     {
@@ -710,6 +774,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 101A",
+      "section": "objectives",
+      "quote": "Demonstrate ability to read vacuum gauges and different types of gauges",
+      "reason": "gauges are the calibration/adjustment instrument named in the task, more specific than voltage/current/resistance measurement which is general measurement not calibration"
      }
     },
     {
@@ -729,13 +799,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 61A",
+      "section": "outcomes",
+      "quote": "describe stages of the semiconductor manufacturing process",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
      "dwa_id": "4.A.3.b.2.c.3",
      "dwa": "Design industrial equipment.",
      "task": "Identify opportunities for improvements in quality, cost, or efficiency of automation equipment.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.2.f.14",
@@ -766,6 +843,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 101A",
+      "section": "outcomes",
+      "quote": "describe manufacturing concerns and troubleshooting procedures",
+      "reason": "pairs manufacturing (production) concerns with troubleshooting procedures, matching the task's programs to address production problems more specifically than troubleshooting alone"
      }
     },
     {
@@ -785,6 +868,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 61A",
+      "section": "content",
+      "quote": "How to prevent contamination",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -811,6 +900,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 61A",
+      "section": "objectives",
+      "quote": "Design and interpret testing processes",
+      "reason": "objective-tier commitment to design and interpret testing processes directly states testing products for quality/performance, ranking above the content-outline line"
      }
     },
     {
@@ -844,6 +939,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 101A",
+      "section": "outcomes",
+      "quote": "read and interpret diagrams for mechanical, gas, and electrical systems",
+      "reason": "SLO explicitly commits to reading and interpreting diagrams for mechanical, gas, and electrical systems, the clearest match to interpreting engineering drawings/schematics, and is preferred over the duplicate SLO phrasing (excerpt 1) as the canonical form and over the lower-tier objective (excerpt 2)"
      }
     },
     {
@@ -863,19 +964,27 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 101A",
+      "section": "objectives",
+      "quote": "Identify symbols and connections for components using diagrams",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
      "dwa_id": "4.A.2.a.1.g.5",
      "dwa": "Assess product or process usefulness.",
      "task": "Compile and evaluate statistical data to determine and maintain quality and reliability of products.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.4.b.6.e.9",
      "dwa": "Recommend technical design or process changes to improve efficiency, quality, or performance.",
      "task": "Recommend corrective or preventive actions to assure or improve product quality or reliability.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.1.a.2.k.6",
@@ -906,6 +1015,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 101A",
+      "section": "objectives",
+      "quote": "Follow procedures for reporting issues",
+      "reason": "objective-tier commitment to follow procedures for reporting issues most closely tracks verifying records adhere to compliance/reporting standards, outranking the lower-tier content line"
      }
     },
     {
@@ -925,6 +1040,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 61A",
+      "section": "content",
+      "quote": "Moving wafers",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -963,6 +1084,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 101A",
+      "section": "objectives",
+      "quote": "Troubleshoot electro-mechanical systems",
+      "reason": "objective-tier commitment to troubleshoot electro-mechanical systems most specifically matches inspecting operational processes/equipment performance, more concrete than the generic 'troubleshoot issues' objective"
      }
     },
     {
@@ -989,61 +1116,76 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 61A",
+      "section": "content",
+      "quote": "Vacuum wands",
+      "reason": "vacuum wands are cleaning equipment/tools named in content, directly matching the task's 'select cleaning materials, tools, or equipment' more specifically than tweezers, a general handling tool"
      }
     },
     {
      "dwa_id": "4.A.1.a.2.b.15",
      "dwa": "Monitor the productivity or efficiency of industrial operations.",
      "task": "Monitor and adjust production processes or equipment for quality and productivity.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.2.d.3",
      "dwa": "Create physical models or prototypes.",
      "task": "Assist engineers in developing, building, or testing prototypes or new products, processes, or procedures.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.2.b.2.o.21",
      "dwa": "Create graphical representations of industrial production systems.",
      "task": "Prepare layouts, drawings, or sketches of machinery or equipment, such as shop tooling, scale layouts, or new equipment design, using drafting equipment or computer-aided design (CAD) software.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.1.a.1.t.7",
      "dwa": "Research human performance or health factors related to engineering or design activities.",
      "task": "Study time, motion, methods, or speed involved in maintenance, production, or other operations to establish standard production rate or improve efficiency.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.4.b.3.d.2",
      "dwa": "Train personnel on proper operational procedures.",
      "task": "Provide advice or training to other technicians.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.2.a.4.e.8",
      "dwa": "Analyze costs and benefits of proposed designs or projects.",
      "task": "Analyze, estimate, or report production costs. · Conduct statistical studies to analyze or compare production costs for sustainable and nonsustainable designs.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.1.b.3.b.4",
      "dwa": "Estimate operational costs.",
      "task": "Analyze, estimate, or report production costs.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.6.o.4",
      "dwa": "Prepare operational reports.",
      "task": "Prepare production documents, such as standard operating procedures, manufacturing batch records, inventory reports, or productivity reports.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.4.c.3.e.3",
      "dwa": "Purchase materials, equipment, or other resources.",
      "task": "Coordinate equipment purchases, installations, or transfers.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     }
    ],
    "dropped": [
@@ -1203,7 +1345,8 @@
      "dwa_id": "4.A.3.b.2.e.1",
      "dwa": "Design electromechanical equipment or systems.",
      "task": "Develop, test, or program new robots. · Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.1.b.2.l.2",
@@ -1234,13 +1377,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 101A",
+      "section": "objectives",
+      "quote": "Use basic measurement tools and methods for voltage, current, and resistance measurements",
+      "reason": "names the specific test instruments/measurements (voltage, current, resistance) matching the task's electromechanical testing detail, versus the generic 'design and interpret testing processes' objective"
      }
     },
     {
      "dwa_id": "4.A.2.b.2.b.1",
      "dwa": "Develop software or computer applications.",
      "task": "Install or program computer hardware or machine or instrumentation software in microprocessor-based systems.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.1.a.1.b.8",
@@ -1266,6 +1416,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 101A",
+      "section": "outcomes",
+      "quote": "read and interpret diagrams for mechanical, gas, and electrical systems",
+      "reason": "directly states reading and interpreting diagrams for mechanical, gas, and electrical systems, matching the blueprints/schematics task, and is an SLO (higher tier) versus the vaguer procedural-steps objective"
      }
     },
     {
@@ -1304,6 +1460,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 101A",
+      "section": "objectives",
+      "quote": "Troubleshoot electro-mechanical systems",
+      "reason": "explicitly names troubleshooting electro-mechanical systems, the exact maintain/repair task, stated as a course objective"
      }
     },
     {
@@ -1330,6 +1492,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 101A",
+      "section": "outcomes",
+      "quote": "describe elements and basic troubleshooting of circuits",
+      "reason": "specifically ties troubleshooting to circuits (electronic equipment), more precisely matching this activity than the generic electro-mechanical troubleshooting objective"
      }
     },
     {
@@ -1349,13 +1517,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 61A",
+      "section": "content",
+      "quote": "Measurements and interpretation",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
      "dwa_id": "4.A.3.a.2.t.5",
      "dwa": "Install instrumentation or electronic equipment or systems.",
      "task": "Install electrical or electronic parts and hardware in housings or assemblies, using soldering equipment and hand tools.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.2.d.2",
@@ -1393,37 +1568,48 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGR 101A",
+      "section": "objectives",
+      "quote": "Perform wiring of control circuits working from diagrams",
+      "reason": "states performing wiring of control circuits from diagrams, the clearest match to fabricating/assembling electrical components among the excerpts"
      }
     },
     {
      "dwa_id": "4.A.3.a.2.aa.1",
      "dwa": "Fabricate devices or components.",
      "task": "Fabricate or assemble mechanical, electrical, or electronic components or assemblies.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.2.b.2.o.8",
      "dwa": "Create schematic drawings for electronics.",
      "task": "Produce electrical, electronic, or mechanical drawings or other related documents or graphics necessary for electromechanical design, using computer-aided design (CAD) software.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.2.b.1.j.2",
      "dwa": "Select project materials.",
      "task": "Select electromechanical equipment, materials, components, or systems to meet functional specifications.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.2.f.14",
      "dwa": "Develop technical methods or processes.",
      "task": "Establish and maintain inventory, records, or documentation systems.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.6.h.21",
      "dwa": "Maintain operational records or records systems.",
      "task": "Establish and maintain inventory, records, or documentation systems.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     }
    ],
    "dropped": [
@@ -1580,25 +1766,29 @@
         }
        ]
       }
-     }
+     },
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.4.c.5",
      "dwa": "Repair worn, damaged, or defective mechanical parts.",
      "task": "Repair or replace broken or malfunctioning components of machinery or equipment.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.4.c.3",
      "dwa": "Replace worn, damaged, or defective mechanical parts.",
      "task": "Repair or replace broken or malfunctioning components of machinery or equipment.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.2.i.5",
      "dwa": "Adjust equipment to ensure optimal performance.",
      "task": "Clean, lubricate, or adjust parts, equipment, or machinery.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.1.c.16",
@@ -1617,25 +1807,29 @@
         }
        ]
       }
-     }
+     },
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.5.a.7",
      "dwa": "Lubricate equipment to allow proper functioning.",
      "task": "Clean, lubricate, or adjust parts, equipment, or machinery.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.2.s.2",
      "dwa": "Disassemble equipment for maintenance or repair.",
      "task": "Disassemble machinery or equipment to remove parts and make repairs.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.2.d.3",
      "dwa": "Reassemble equipment after repair.",
      "task": "Reassemble equipment after completion of inspections, testing, or repairs.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.1.b.2.g.20",
@@ -1666,13 +1860,15 @@
         }
        ]
       }
-     }
+     },
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.6.h.24",
      "dwa": "Maintain repair or maintenance records.",
      "task": "Record repairs and maintenance performed.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.1.b.2.l.5",
@@ -1710,19 +1906,22 @@
         }
        ]
       }
-     }
+     },
+     "lead": null
     },
     {
      "dwa_id": "4.A.4.c.3.e.1",
      "dwa": "Order materials, supplies, or equipment.",
      "task": "Record parts or materials used and order or requisition new parts or materials, as necessary.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.6.h.13",
      "dwa": "Record information about parts, materials or repair procedures.",
      "task": "Record parts or materials used and order or requisition new parts or materials, as necessary.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.1.a.2.a.6",
@@ -1741,7 +1940,8 @@
         }
        ]
       }
-     }
+     },
+     "lead": null
     },
     {
      "dwa_id": "4.A.2.a.4.l.5",
@@ -1779,7 +1979,8 @@
         }
        ]
       }
-     }
+     },
+     "lead": null
     },
     {
      "dwa_id": "4.A.1.a.1.b.14",
@@ -1812,31 +2013,36 @@
         }
        ]
       }
-     }
+     },
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.2.l.3",
      "dwa": "Cut materials according to specifications or needs.",
      "task": "Cut and weld metal to repair broken metal parts, fabricate new parts, or assemble new equipment.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.2.ai.5",
      "dwa": "Operate welding equipment.",
      "task": "Cut and weld metal to repair broken metal parts, fabricate new parts, or assemble new equipment.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.1.f.10",
      "dwa": "Enter codes or other information into computers.",
      "task": "Enter codes and instructions to program computer-controlled machinery.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.4.b.3.d.3",
      "dwa": "Train others in operational procedures.",
      "task": "Demonstrate equipment functions and features to machine operators.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     }
    ],
    "dropped": [

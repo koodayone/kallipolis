@@ -214,7 +214,8 @@
      "dwa_id": "4.A.3.b.2.e.1",
      "dwa": "Design electromechanical equipment or systems.",
      "task": "Develop, test, or program new robots. · Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.1.b.2.l.2",
@@ -278,6 +279,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGI 130",
+      "section": "content",
+      "quote": "Basic instrumentation and experimental techniques\n    - Multi-meter\n    - Oscilloscope",
+      "reason": "SLO/description-tier content line naming oscilloscope-based instrumentation testing, more specific than lab titles or generic troubleshooting lines"
      }
     },
     {
@@ -323,6 +330,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "assignments",
+      "quote": "Program the Production line using Programmable Logic Controllers(PLCs).",
+      "reason": "directly states programming a PLC (microprocessor-based system), matching the task's programming language most specifically"
      }
     },
     {
@@ -342,6 +355,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGI 130",
+      "section": "outcomes",
+      "quote": "Draw and label circuit diagrams and show thorough mathematical solutions.",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -375,6 +394,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "content",
+      "quote": "Trouble shooting systems",
+      "reason": "'Trouble shooting systems' most directly names maintaining/repairing electromechanical equipment, broader and more general than the narrower predictive-maintenance scheduling lines"
      }
     },
     {
@@ -415,6 +440,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "content",
+      "quote": "Trouble shooting systems",
+      "reason": "'Trouble shooting systems' content line most directly and generally states diagnosing/repairing equipment to ensure proper functioning"
      }
     },
     {
@@ -448,13 +479,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGI 140",
+      "section": "outcomes",
+      "quote": "Measure material properties and/or evaluate processing treatments using standard materials testing equipment and techniques.",
+      "reason": "SLO committing the course to measuring material properties and evaluating processing with standard testing equipment, matching inspection for flaws/defects at the highest tier"
      }
     },
     {
      "dwa_id": "4.A.3.a.2.t.5",
      "dwa": "Install instrumentation or electronic equipment or systems.",
      "task": "Install electrical or electronic parts and hardware in housings or assemblies, using soldering equipment and hand tools.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.2.d.2",
@@ -492,6 +530,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGI 101",
+      "section": "assignments",
+      "quote": "Work on a team to design and build a bridge with specifications including cost and load capacity",
+      "reason": "explicitly names designing and building a physical assembly (bridge) to specifications, matching fabrication/assembly most concretely"
      }
     },
     {
@@ -511,6 +555,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGI 101",
+      "section": "assignments",
+      "quote": "Submit a design accompanied by a concise explanation for a small vehicle powered by a mousetrap",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -530,6 +580,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGI 130",
+      "section": "content",
+      "quote": "Circuit simulation",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -582,13 +638,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGI 140",
+      "section": "assignments",
+      "quote": "select materials best suited to specific design requirements",
+      "reason": "assignment line explicitly states selecting materials best suited to design requirements, the most direct match to the task text"
      }
     },
     {
      "dwa_id": "4.A.3.b.2.f.14",
      "dwa": "Develop technical methods or processes.",
      "task": "Establish and maintain inventory, records, or documentation systems.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.6.h.21",
@@ -614,6 +677,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "content",
+      "quote": "Inventory management",
+      "reason": "content outline line naming inventory management is the more general, SLO-adjacent statement of maintaining records/inventory systems, over the narrower lab task"
      }
     }
    ],
@@ -918,6 +987,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ETEC 113",
+      "section": "assignments",
+      "quote": "The safety plans must detail Cal/OSHA Injury Illness Prevention Plan.",
+      "reason": "the assignment names the specific Cal/OSHA Injury Illness Prevention Plan compliance task, while the content line only lists a topic heading"
      }
     },
     {
@@ -973,6 +1048,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGI 140",
+      "section": "lab",
+      "quote": "X-ray diffraction: Measurement Bragg angle using Telexometer",
+      "reason": "measuring Bragg angle with a Telexometer is a specific calibration-with-precision-instrument task matching the activity"
      }
     },
     {
@@ -992,6 +1073,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "lab",
+      "quote": "Trouble shooting to determine Manufacturing efficiency",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -1023,6 +1110,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ETEC 124",
+      "section": "outcomes",
+      "quote": "Design an IoT based system, component, or process to meet desired needs within realistic constraints, such as manufacturability and sustainability",
+      "reason": "the SLO commits to designing a system within manufacturability/sustainability constraints, directly matching identifying improvement opportunities in equipment design"
      }
     },
     {
@@ -1087,6 +1180,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "outcomes",
+      "quote": "Design a system, component, or process to meet desired needs within realistic constraints such as manufacturability, and sustainability, translate into high productivity",
+      "reason": "the SLO explicitly commits to designing a system/process for high productivity, matching developing methods/programs to address production problems"
      }
     },
     {
@@ -1113,6 +1212,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "lab",
+      "quote": "Trouble shooting to determine Manufacturing efficiency",
+      "reason": "troubleshooting to determine manufacturing efficiency is the specific lab task implementing a process improvement"
      }
     },
     {
@@ -1184,6 +1289,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGI 140",
+      "section": "outcomes",
+      "quote": "Measure material properties and/or evaluate processing treatments using standard materials testing equipment and techniques.",
+      "reason": "the SLO commits to measuring material properties using standard testing equipment/techniques, matching testing products for performance characteristics"
      }
     },
     {
@@ -1203,6 +1314,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGI 130",
+      "section": "outcomes",
+      "quote": "Draw and label circuit diagrams and show thorough mathematical solutions.",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -1234,6 +1351,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGI 130",
+      "section": "outcomes",
+      "quote": "Draw and label circuit diagrams and show thorough mathematical solutions.",
+      "reason": "the SLO commits to drawing and labeling circuit diagrams, directly matching preparing engineering drawings"
      }
     },
     {
@@ -1265,6 +1388,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "CAOT 150",
+      "section": "assignments",
+      "quote": "students will be given a set of data and need to describe the data numerically and graphically",
+      "reason": "the assignment has students numerically and graphically describe data, matching compiling and evaluating statistical data"
      }
     },
     {
@@ -1291,6 +1420,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGI 140",
+      "section": "outcomes",
+      "quote": "Gather data from reference sources regarding the properties, processing, and performance characteristics of materials, and use it as a basis to recommend appropriate material(s) to meet engineering design criteria.",
+      "reason": "the SLO fully states gathering data and recommending materials to meet design criteria, matching recommending corrective/preventive design changes"
      }
     },
     {
@@ -1310,6 +1445,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ETEC 113",
+      "section": "outcomes",
+      "quote": "Prepare a safety inspection format and conduct a safety inspection of an operational facility.",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -1341,6 +1482,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "lab",
+      "quote": "Designing and Implementing a Production plan",
+      "reason": "designing and implementing a production plan is the specific operational-methods task matching selecting processing methods for efficient production"
      }
     },
     {
@@ -1360,6 +1507,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ETEC 113",
+      "section": "outcomes",
+      "quote": "Prepare a safety inspection format and conduct a safety inspection of an operational facility.",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -1386,6 +1539,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGI 140",
+      "section": "assignments",
+      "quote": "select materials best suited to specific design requirements",
+      "reason": "the assignment specifically has students select materials best suited to design requirements, directly matching selecting project materials"
      }
     },
     {
@@ -1412,6 +1571,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "lab",
+      "quote": "Trouble shooting to determine Manufacturing efficiency",
+      "reason": "troubleshooting to determine manufacturing efficiency is the specific monitoring task matching monitoring productivity/efficiency"
      }
     },
     {
@@ -1450,6 +1615,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGI 101",
+      "section": "assignments",
+      "quote": "Work on a team to design and build a bridge with specifications including cost and load capacity.",
+      "reason": "designing and building a bridge to specifications is a concrete physical prototype-building task"
      }
     },
     {
@@ -1476,6 +1647,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "lab",
+      "quote": "Configuring Virtual Factory – Digital Twin",
+      "reason": "configuring a virtual factory/digital twin is a graphical representation of a production system, matching the activity more specifically than an RFID design lab"
      }
     },
     {
@@ -1495,13 +1672,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "lab",
+      "quote": "Trouble shooting to determine Manufacturing efficiency",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
      "dwa_id": "4.A.4.b.3.d.2",
      "dwa": "Train personnel on proper operational procedures.",
      "task": "Provide advice or training to other technicians.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.2.a.4.e.8",
@@ -1520,6 +1704,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGI 101",
+      "section": "assignments",
+      "quote": "design and build a bridge with specifications including cost and load capacity",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -1539,6 +1729,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ENGI 101",
+      "section": "assignments",
+      "quote": "Work on a team to design and build a bridge with specifications including cost and load capacity.",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -1565,6 +1761,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ETEC 124",
+      "section": "assignments",
+      "quote": "Students write technical reports on relevant IoT systems.",
+      "reason": "writing technical reports on IoT systems is the specific operational-report task, more on point than lab notebook entries"
      }
     },
     {
@@ -1591,6 +1793,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "lab",
+      "quote": "Designing and Implementing a Product plan including parts purchase and supply",
+      "reason": "designing and implementing a product plan including parts purchase and supply directly matches purchasing materials/equipment"
      }
     }
    ],

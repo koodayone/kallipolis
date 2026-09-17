@@ -233,19 +233,27 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "content",
+      "quote": "Safe pesticide use",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
      "dwa_id": "4.A.3.b.6.h.2",
      "dwa": "Document operational procedures.",
      "task": "Record information about pesticide applications, such as the type used and amount applied.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.6.h.5",
      "dwa": "Maintain operational records.",
      "task": "Record information about pesticide applications, such as the type used and amount applied.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.3.k.3",
@@ -290,6 +298,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "lab",
+      "quote": "Demonstrate and practice proper use and maintenance of landscape tools, including: Hand equipment Power equipment",
+      "reason": "explicitly names both hand and power equipment use/maintenance in a landscape (grounds) maintenance context, most directly matching 'operate grounds maintenance equipment'"
      }
     },
     {
@@ -309,19 +323,27 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "content",
+      "quote": "Spraying",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
      "dwa_id": "4.A.2.b.1.d.12",
      "dwa": "Choose optimal transportation routes or speeds.",
      "task": "Establish driving routes for pesticide applications.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.2.b.2.l.5",
      "dwa": "Establish operational policies.",
      "task": "Establish driving routes for pesticide applications.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.1.c.4",
@@ -340,6 +362,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HORT 54C",
+      "section": "objectives",
+      "quote": "Demonstrate maintenance skills for an irrigation system.",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -373,6 +401,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HORT 54C",
+      "section": "objectives",
+      "quote": "Demonstrate maintenance skills for an irrigation system.",
+      "reason": "SLO-level objective directly committing to maintenance skills for equipment/systems, outranking the lower-tier lab and content lines"
      }
     }
    ],
@@ -700,6 +734,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "content",
+      "quote": "Prepare a landscape maintenance schedule",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -719,6 +759,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "lab",
+      "quote": "Development of a maintenance schedule for site management",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -776,6 +822,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "objectives",
+      "quote": "Identify routine maintenance requirements and special problems in several different landscape settings",
+      "reason": "SLO-level objective names touring/inspecting maintenance conditions across multiple landscape settings, matching the task's grounds-touring language most specifically"
      }
     },
     {
@@ -795,6 +847,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HORT 30",
+      "section": "outcomes",
+      "quote": "Evaluate a soil by chemical and physical means.",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -826,6 +884,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HORT 54C",
+      "section": "objectives",
+      "quote": "Design water conserving irrigation systems",
+      "reason": "objective-tier commitment to designing water-conserving irrigation systems directly matches the supervisory task of designing/supervising sprinkler system installation"
      }
     },
     {
@@ -897,6 +961,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HORT 54C",
+      "section": "outcomes",
+      "quote": "Program an irrigation time clock (controller) correctly.",
+      "reason": "SLO commits to correctly programming an irrigation controller, the most specific and highest-tier statement of irrigating"
      }
     },
     {
@@ -923,6 +993,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "outcomes",
+      "quote": "Plant trees and shrubs.",
+      "reason": "SLO explicitly commits to planting trees and shrubs, matching the activity verbatim over the lab content line"
      }
     },
     {
@@ -949,6 +1025,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "outcomes",
+      "quote": "Demonstrate skills required for proper pruning of various species of trees and shrubs.",
+      "reason": "SLO explicitly commits to demonstrating proper pruning skills, outranking the lab content line on tier"
      }
     },
     {
@@ -968,6 +1050,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "content",
+      "quote": "Prepare a proposal for landscape maintenance services",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -1025,6 +1113,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "content",
+      "quote": "Safe pesticide use",
+      "reason": "content outline line names safe pesticide use directly, the closest match to chemical application preparation"
      }
     },
     {
@@ -1063,6 +1157,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HORT 54A",
+      "section": "lab",
+      "quote": "Safety practices lab: With the instructor, students review the individual tools and their safe handling and operation.",
+      "reason": "lab content describes instructor directly training students on safe tool handling and operation, matching staff instruction on procedures most specifically"
      }
     },
     {
@@ -1127,6 +1227,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HORT 54B",
+      "section": "objectives",
+      "quote": "Estimate and bid landscape projects.",
+      "reason": "objective-tier commitment to estimate and bid landscape projects most specifically matches preparing service estimates"
      }
     },
     {
@@ -1196,43 +1302,55 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "objectives",
+      "quote": "Identify common pest problems and solutions in the landscape",
+      "reason": "objective-tier commitment to identify pest problems and solutions in the landscape most specifically matches inspecting for treatment needs"
      }
     },
     {
      "dwa_id": "4.A.4.c.3.g.2",
      "dwa": "Inventory materials or equipment.",
      "task": "Inventory supplies of tools, equipment, or materials to ensure that sufficient supplies are available and items are in usable condition.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.6.h.17",
      "dwa": "Document work hours or activities.",
      "task": "Maintain required records, such as personnel information or project records. · Prepare or maintain required records, such as work activity or personnel reports. · Perform administrative duties, such as authorizing leaves or processing time sheets.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.2.a.1.d.2",
      "dwa": "Evaluate current or prospective maintenance employees.",
      "task": "Perform personnel-related activities, such as hiring workers, evaluating staff performance, or taking disciplinary actions when performance problems occur.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.1.g.7",
      "dwa": "Assist skilled construction or extraction personnel.",
      "task": "Provide workers with assistance in performing duties as necessary to meet deadlines.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.1.a.1.v.2",
      "dwa": "Investigate work related complaints to determine corrective actions.",
      "task": "Investigate work-related complaints to verify problems and to determine responses. · Order the performance of corrective work when problems occur and recommend procedural changes to avoid such problems.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.4.a.2.c.3",
      "dwa": "Confer with coworkers to coordinate maintenance or cleaning activities.",
      "task": "Confer with other supervisors to coordinate work activities with those of other departments or units. · Confer with managers or landscape architects to develop plans or schedules for landscaping maintenance or improvement.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.2.b.1.h.5",
@@ -1289,19 +1407,27 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "objectives",
+      "quote": "Identify routine maintenance requirements and special problems in several different landscape settings",
+      "reason": "objective-tier commitment to identify maintenance requirements and special problems across landscape settings most specifically matches determining resource needs for jobs"
      }
     },
     {
      "dwa_id": "4.A.4.b.6.e.7",
      "dwa": "Recommend organizational process or policy changes.",
      "task": "Recommend changes in working conditions or equipment used to increase crew efficiency.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.1.c.23",
      "dwa": "Remove snow.",
      "task": "Install or maintain landscaped areas, performing tasks such as removing snow, pouring cement curbs, or repairing sidewalks.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     }
    ],
    "dropped": [

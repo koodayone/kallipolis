@@ -202,6 +202,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 90",
+      "section": "outcomes",
+      "quote": "Demonstrate the ability to solve common calculations found in machine shop applications.",
+      "reason": "the SLO is the higher-tier commitment naming the exact machine-shop calculation task, matching excerpt 0's near-duplicate objective but outranking it as an SLO"
      }
     },
     {
@@ -285,6 +291,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 84A",
+      "section": "objectives",
+      "quote": "Apply the use of precision measuring tools to inspect the accuracy of machined parts",
+      "reason": "an objective explicitly committing to using precision measuring tools to inspect accuracy of machined parts states the verification task most specifically"
      }
     },
     {
@@ -356,6 +368,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 80",
+      "section": "lab",
+      "quote": "Demonstrate lathe operations",
+      "reason": "a lab content line demonstrating actual lathe operation names the specific cutting equipment task rather than a broader setup objective"
      }
     },
     {
@@ -387,6 +405,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 80",
+      "section": "objectives",
+      "quote": "Perform basic set-ups and operations on pedestal grinders.",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -406,7 +430,8 @@
         }
        ]
       }
-     }
+     },
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.1.a.2",
@@ -482,6 +507,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 84A",
+      "section": "outcomes",
+      "quote": "Create basic word-address programs to successfully construct projects using vertical machining centers.",
+      "reason": "the SLO commits the course to creating programs for machining centers, the clearest statement of programming equipment for production"
      }
     },
     {
@@ -539,6 +570,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 90",
+      "section": "outcomes",
+      "quote": "Demonstrate the ability to interpret multi-view drawings and prints.",
+      "reason": "the SLO directly commits to interpreting multi-view drawings and prints, matching the blueprint-review task most specifically"
      }
     },
     {
@@ -584,6 +621,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 80",
+      "section": "content",
+      "quote": "Milling cutter RPM and feed rate.",
+      "reason": "content line names monitoring RPM and feed rate directly, the exact task text of monitoring feed and speed"
      }
     },
     {
@@ -603,6 +646,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 80",
+      "section": "content",
+      "quote": "Wheel replacement, ring testing and dressing.",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -622,6 +671,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 84A",
+      "section": "lab",
+      "quote": "Setup CNC milling tooling (cutting tools and holders)",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -712,6 +767,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 84A",
+      "section": "lab",
+      "quote": "Setup CNC milling tooling (cutting tools and holders)",
+      "reason": "lab content explicitly describes setting up CNC milling tooling (cutting tools and holders), the direct act of mounting attachments"
      }
     },
     {
@@ -764,19 +825,27 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 84A",
+      "section": "objectives",
+      "quote": "Operate mill CNC controller to download and dry run part programs",
+      "reason": "an objective committing to downloading and dry running part programs on the CNC controller is the clearest statement of a test run"
      }
     },
     {
      "dwa_id": "4.A.4.a.2.c.20",
      "dwa": "Exchange information with colleagues.",
      "task": "Confer with numerical control programmers to check and ensure that new programs or machinery will function properly and that output will meet specifications. · Confer with engineering, supervisory, or manufacturing personnel to exchange technical information.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.4.b.6.e.11",
      "dwa": "Advise others on ways to improve processes or products.",
      "task": "Evaluate machining procedures and recommend changes or modifications for improved efficiency or adaptability. · Advise clients about the materials being used for finished products.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.2.b.1.b.3",
@@ -795,19 +864,27 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 84B",
+      "section": "content",
+      "quote": "Identify and clear alarms.",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
      "dwa_id": "4.A.3.b.2.c.5",
      "dwa": "Design tools, fixtures, or other devices for production equipment.",
      "task": "Design fixtures, tooling, or experimental parts to meet special engineering needs.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.1.e.7",
      "dwa": "Dispose of trash or waste materials.",
      "task": "Dispose of scrap or waste material in accordance with company policies and environmental regulations.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.2.ao.8",
@@ -833,6 +910,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 80",
+      "section": "content",
+      "quote": "Layout dye - application. Tools - scribes, combination squares, dividers, prick and center punches.",
+      "reason": "content line naming layout dye application with scribes, squares, dividers, and punches most specifically states drawing guide lines/markings"
      }
     },
     {
@@ -859,13 +942,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 80",
+      "section": "content",
+      "quote": "Tools - scribes, combination squares, dividers, prick and center punches.",
+      "reason": "content line naming scribes, combination squares, dividers, and center punches directly states the tools for marking reference points and cutting lines"
      }
     },
     {
      "dwa_id": "4.A.2.a.2.b.3",
      "dwa": "Sort recyclable materials.",
      "task": "Separate scrap waste and related materials for reuse, recycling, or disposal.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.1.a.2.a.4",
@@ -884,6 +974,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 80",
+      "section": "content",
+      "quote": "Coolant selection.",
+      "reason": "default: tier, units, catalog order"
      }
     }
    ],
@@ -1156,6 +1252,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 80",
+      "section": "objectives",
+      "quote": "Demonstrate safe manufacturing lab practices.",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -1220,6 +1322,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 80",
+      "section": "content",
+      "quote": "Micrometers.\n    - Advantages and disadvantages.\n    - Calibration and care.",
+      "reason": "directly names calibration of micrometers, the exact procedure the task specifies"
      }
     },
     {
@@ -1275,13 +1383,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 84B",
+      "section": "outcomes",
+      "quote": "Demonstrate the set up and advanced operation of vertical machining centers.",
+      "reason": "SLO commits the course to demonstrating advanced setup/operation oversight, the highest-tier match to overseeing production"
      }
     },
     {
      "dwa_id": "4.A.3.b.2.c.3",
      "dwa": "Design industrial equipment.",
      "task": "Identify opportunities for improvements in quality, cost, or efficiency of automation equipment.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.2.f.14",
@@ -1307,13 +1422,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 84B",
+      "section": "objectives",
+      "quote": "Prepare and interpret programs for CNC mills.",
+      "reason": "objective commits to preparing/interpreting CNC programs, matching development of production processes"
      }
     },
     {
      "dwa_id": "4.A.2.b.1.i.6",
      "dwa": "Implement design or process improvements.",
      "task": "Develop or implement programs to address problems related to production, materials, safety, or quality.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.1.b.2.c.2",
@@ -1375,6 +1497,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 84A",
+      "section": "objectives",
+      "quote": "Apply the use of precision measuring tools to inspect the accuracy of machined parts",
+      "reason": "objective explicitly commits to inspecting accuracy of machined parts, matching testing for adherence to specifications"
      }
     },
     {
@@ -1413,6 +1541,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 90",
+      "section": "outcomes",
+      "quote": "Demonstrate the ability to interpret multi-view drawings and prints.",
+      "reason": "SLO directly commits to interpreting multi-view drawings and prints, the core of the task"
      }
     },
     {
@@ -1463,6 +1597,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 90",
+      "section": "content",
+      "quote": "Shop Sketching",
+      "reason": "content outline names shop sketching, the specific drawing-preparation activity"
      }
     },
     {
@@ -1482,13 +1622,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 80",
+      "section": "outcomes",
+      "quote": "Analyze, construct, and inspect assigned machined projects using the introductory principles of machining.",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
      "dwa_id": "4.A.4.b.6.e.9",
      "dwa": "Recommend technical design or process changes to improve efficiency, quality, or performance.",
      "task": "Recommend corrective or preventive actions to assure or improve product quality or reliability.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.1.a.2.k.6",
@@ -1519,6 +1666,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 80",
+      "section": "content",
+      "quote": "Dimensioning nomenclature.\n    - Basic dimensions.\n    - Tolerance.\n    - Bilateral/unilateral.\n    - High/low limits.",
+      "reason": "content outline specifies tolerance and dimensioning standards, the concrete compliance criteria referenced by the task"
      }
     },
     {
@@ -1595,6 +1748,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 80",
+      "section": "objectives",
+      "quote": "Calculate and apply cutting tool speeds and feeds.",
+      "reason": "objective commits to calculating and applying speeds and feeds, the exact operational method selection in the task"
      }
     },
     {
@@ -1626,6 +1785,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 84A",
+      "section": "content",
+      "quote": "Run tool tryout with single block and adjusted feed rates.",
+      "reason": "content outline specifies running a tool tryout with adjusted feed rates, an inspection of operation against standards"
      }
     },
     {
@@ -1664,6 +1829,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 80",
+      "section": "objectives",
+      "quote": "Select vertical milling machine cutting tools and perform basic machining operations.",
+      "reason": "objective commits to selecting cutting tools, directly matching material/tool selection for production"
      }
     },
     {
@@ -1683,13 +1854,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 84A",
+      "section": "content",
+      "quote": "RPM and feed rate guidelines/calculations.",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
      "dwa_id": "4.A.3.b.2.d.3",
      "dwa": "Create physical models or prototypes.",
      "task": "Assist engineers in developing, building, or testing prototypes or new products, processes, or procedures.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.2.b.2.o.21",
@@ -1720,43 +1898,55 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 80",
+      "section": "content",
+      "quote": "CAD drawing transfer to CNC program.",
+      "reason": "content outline names CAD drawing transfer, the specific CAD-based graphical representation the task describes"
      }
     },
     {
      "dwa_id": "4.A.1.a.1.t.7",
      "dwa": "Research human performance or health factors related to engineering or design activities.",
      "task": "Study time, motion, methods, or speed involved in maintenance, production, or other operations to establish standard production rate or improve efficiency.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.4.b.3.d.2",
      "dwa": "Train personnel on proper operational procedures.",
      "task": "Provide advice or training to other technicians.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.2.a.4.e.8",
      "dwa": "Analyze costs and benefits of proposed designs or projects.",
      "task": "Analyze, estimate, or report production costs. · Conduct statistical studies to analyze or compare production costs for sustainable and nonsustainable designs.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.1.b.3.b.4",
      "dwa": "Estimate operational costs.",
      "task": "Analyze, estimate, or report production costs.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.6.o.4",
      "dwa": "Prepare operational reports.",
      "task": "Prepare production documents, such as standard operating procedures, manufacturing batch records, inventory reports, or productivity reports.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.4.c.3.e.3",
      "dwa": "Purchase materials, equipment, or other resources.",
      "task": "Coordinate equipment purchases, installations, or transfers.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     }
    ],
    "dropped": [
@@ -2036,6 +2226,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 84B",
+      "section": "objectives",
+      "quote": "Prepare and interpret programs for CNC mills.",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
@@ -2086,6 +2282,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 80",
+      "section": "content",
+      "quote": "Safely test program with single block and adjusted feed rates.",
+      "reason": "content outline names the exact procedure of safely test-running a program, matching 'test performance' most specifically versus the others which address verification/tool-path checking rather than performance testing"
      }
     },
     {
@@ -2157,6 +2359,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 84A",
+      "section": "outcomes",
+      "quote": "Create basic word-address programs to successfully construct projects using vertical machining centers.",
+      "reason": "SLO commits the course to creating (programming) word-address programs on CNC controllers, matching 'develop software' most directly and at the higher SLO tier"
      }
     },
     {
@@ -2197,6 +2405,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 90",
+      "section": "outcomes",
+      "quote": "Demonstrate the ability to interpret multi-view drawings and prints.",
+      "reason": "SLO states interpreting multi-view drawings and prints, directly matching reading blueprints/schematics to plan work, at the highest section tier"
      }
     },
     {
@@ -2216,13 +2430,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 84B",
+      "section": "content",
+      "quote": "Identify and clear alarms.",
+      "reason": "default: tier, units, catalog order"
      }
     },
     {
      "dwa_id": "4.A.3.b.5.c.4",
      "dwa": "Maintain electronic equipment.",
      "task": "Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.1.b.2.f.8",
@@ -2310,13 +2531,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 80",
+      "section": "objectives",
+      "quote": "Interpret and record measurements made with precision measuring tools.",
+      "reason": "objective specifically states interpreting and recording measurements with precision tools, matching verifying part dimensions/clearances most precisely"
      }
     },
     {
      "dwa_id": "4.A.3.a.2.t.5",
      "dwa": "Install instrumentation or electronic equipment or systems.",
      "task": "Install electrical or electronic parts and hardware in housings or assemblies, using soldering equipment and hand tools.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.a.2.d.2",
@@ -2359,6 +2587,12 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 84B",
+      "section": "content",
+      "quote": "Lathe set-up for internal and external threads.",
+      "reason": "content outline names the specific fitting/assembly setup (lathe set-up for threads) matching align/fit/assemble component parts more specifically than a tooling setup line"
      }
     },
     {
@@ -2402,13 +2636,20 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 84A",
+      "section": "assignments",
+      "quote": "Lab projects demonstrating mastery of skills using three axis CNC machines, simulators and verification software covered in this course.",
+      "reason": "assignment ties mastery of skills to fabricating parts via CNC machines, most specifically evidencing fabricate/assemble components"
      }
     },
     {
      "dwa_id": "4.A.2.b.2.o.8",
      "dwa": "Create schematic drawings for electronics.",
      "task": "Produce electrical, electronic, or mechanical drawings or other related documents or graphics necessary for electromechanical design, using computer-aided design (CAD) software.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.2.b.1.j.2",
@@ -2441,19 +2682,27 @@
         }
        ]
       }
+     },
+     "lead": {
+      "course": "DMT 80",
+      "section": "objectives",
+      "quote": "Select vertical milling machine cutting tools and perform basic machining operations.",
+      "reason": "objective explicitly states selecting cutting tools to meet machining specifications, matching select materials/equipment to meet functional specs at the higher objective tier"
      }
     },
     {
      "dwa_id": "4.A.3.b.2.f.14",
      "dwa": "Develop technical methods or processes.",
      "task": "Establish and maintain inventory, records, or documentation systems.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     },
     {
      "dwa_id": "4.A.3.b.6.h.21",
      "dwa": "Maintain operational records or records systems.",
      "task": "Establish and maintain inventory, records, or documentation systems.",
-     "cells": {}
+     "cells": {},
+     "lead": null
     }
    ],
    "dropped": [

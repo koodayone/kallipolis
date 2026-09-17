@@ -36,6 +36,10 @@ THE EDITORIAL RULES (locked 2026-09-16; change them here, not in prose):
   adjudicate  a second pass reviews each gated match against the activity's task text
               and drops the disputed ones; drops are logged for the review file
   merge       sources union; the strongest level wins; evidence is deduplicated by quote
+  lead        per activity, ONE excerpt is chosen as the mark a reviewer points to first:
+              a final LLM pass judges which verified excerpt most specifically states the
+              activity as the task defines it; tier breaks ties (an SLO or objective over
+              content). Stored on the row; a certificate column shows only the lead
   accumulate  a re-run UNIONS with the saved alignment: the proposer is stochastic, so a
               match found once (gated, adjudicated) is kept until a human removes it
               from the saved file; drops are logged, never applied retroactively
@@ -153,6 +157,20 @@ ADJUDICATE_SCHEMA = {
         "required": ["id", "keep", "reason"], "additionalProperties": False}}},
     "required": ["verdicts"], "additionalProperties": False}
 
+RANK_SYSTEM = """You are the final reader on a curriculum-alignment audit. For one occupation, each work activity below lists the verbatim outline excerpts (already verified and adjudicated) that evidence it, each from a named course and a named section of that course's Course Outline of Record.
+
+For each activity choose the ONE excerpt that most specifically states the activity as the occupation's task text defines it — the sentence a reviewer would point to first. Judge the excerpt, not the course: a short content line that names the exact procedure beats a longer objective about something adjacent. When two excerpts state the activity equally well, prefer the higher section tier: an SLO or objective (the course commits to it) over a description, content, lab or assignment line (the course covers it).
+
+Return every activity id with the chosen excerpt id and a one-clause reason."""
+
+RANK_SCHEMA = {
+    "type": "object",
+    "properties": {"choices": {"type": "array", "items": {
+        "type": "object",
+        "properties": {"activity": {"type": "integer"}, "excerpt": {"type": "integer"}, "reason": {"type": "string"}},
+        "required": ["activity", "excerpt", "reason"], "additionalProperties": False}}},
+    "required": ["choices"], "additionalProperties": False}
+
 
 def _program_text(program: dict, outlines: dict[str, Outline]) -> str:
     L = [f"CERTIFICATE: {program['certificate']} ({program['college']})",
@@ -250,6 +268,7 @@ class Row:
     dwa: str
     task: str
     cells: dict[str, Cell] = field(default_factory=dict)     # course code -> Cell (PLO included)
+    lead: dict | None = None                                 # {course, section, quote, reason}: the excerpt shown first
 
     @property
     def level(self) -> int:
@@ -416,6 +435,53 @@ def _union_plate(new: Plate, old: Plate | None) -> Plate:
     return new
 
 
+def _candidates(row: Row) -> list[Evidence]:
+    """Every course excerpt on a row (the certificate's own outcomes are not a course)."""
+    return [e for code, cell in row.cells.items() if code != PLO for e in cell.evidence]
+
+
+def _default_lead(row: Row, plate: Plate) -> dict | None:
+    """The deterministic choice when no judgment is stored or the judge fails: tier, then
+    the course's units, then catalog order, then the longer excerpt."""
+    cands = _candidates(row)
+    if not cands:
+        return None
+    units = {c["code"]: (c.get("units") or 0) for c in plate.courses}
+    order = [c["code"] for c in plate.courses]
+    e = max(cands, key=lambda e: (e.level, units.get(e.course, 0), -(order.index(e.course) if e.course in order else 99), len(e.quote)))
+    return {"course": e.course, "section": e.section, "quote": e.quote, "reason": "default: tier, units, catalog order"}
+
+
+def rank_leads(plate: Plate, *, complete=None) -> Plate:
+    """Set every row's lead. Rows with one excerpt need no judgment; rows with several go
+    to the ranking pass in one call. Any failure falls back to `_default_lead`."""
+    if complete is None:
+        from llm.claude_cli import complete as _c
+        complete = _c
+    for r in plate.rows:
+        r.lead = _default_lead(r, plate)
+    multi = [(i, r) for i, r in enumerate(plate.rows) if len(_candidates(r)) > 1]
+    if not multi:
+        return plate
+    ids: dict[tuple[int, int], Evidence] = {}
+    blocks = []
+    for i, r in multi:
+        lines = [f"[{i}] activity: {r.dwa}\n    task: {r.task[:400]}"]
+        for k, e in enumerate(_candidates(r)):
+            ids[(i, k)] = e
+            lines.append(f"    excerpt {k} — course {e.course}, section {SECTION_LABEL.get(e.section, e.section)}: “{e.quote}”")
+        blocks.append("\n".join(lines))
+    res = complete(RANK_SYSTEM, f"=== OCCUPATION: {plate.occupation} (SOC {plate.paired_soc}) ===\n\n" + "\n\n".join(blocks), RANK_SCHEMA)
+    if res["data"] is None:
+        logger.warning("ranking failed for %s vs %s (%s); default leads kept", plate.college, plate.paired_soc, res["error"])
+        return plate
+    for ch in (res["data"] or {}).get("choices", []):
+        e = ids.get((int(ch["activity"]), int(ch["excerpt"])))
+        if e is not None:
+            plate.rows[int(ch["activity"])].lead = {"course": e.course, "section": e.section, "quote": e.quote, "reason": ch.get("reason", "")}
+    return plate
+
+
 def readings(program: dict) -> list[tuple[str, str]]:
     """The (soc, role) pairs a program is read against: its paired occupation, the play
     occupations its crosswalk reaches, and any appendix-only occupation."""
@@ -434,7 +500,8 @@ def _plates_from_json(items: list[dict]) -> list[Plate]:
     plates = []
     for pl in items:
         rows = [Row(r["dwa_id"], r["dwa"], r["task"],
-                    {k: Cell(v["level"], [Evidence(**e) for e in v["evidence"]]) for k, v in r["cells"].items()})
+                    {k: Cell(v["level"], [Evidence(**e) for e in v["evidence"]]) for k, v in r["cells"].items()},
+                    r.get("lead"))
                 for r in pl["rows"]]
         plates.append(Plate(**{**{k: v for k, v in pl.items() if k != "rows"}, "rows": rows}))
     return plates
@@ -514,6 +581,7 @@ def read_program(program: dict, socs: list[str], *, refresh: bool = False, adjud
             plate = replace(plate, courses=prev[soc].courses, source_note=prev[soc].source_note,
                             dropped=prev[soc].dropped + plate.dropped)
         out[soc] = _union_plate(plate, prev.get(soc)) if accumulate else plate
+        rank_leads(out[soc], complete=complete)
     return out
 
 
@@ -533,10 +601,12 @@ def _check_against_def(roster: dict) -> None:
 
 
 def run(roster_id: str, *, refresh: bool = False, adjudicate: bool = True, coci: bool = False,
-        only: str | None = None, accumulate: bool = True, new_only: bool = False, units: str = "all") -> list[Plate]:
+        only: str | None = None, accumulate: bool = True, new_only: bool = False, units: str = "all",
+        rerank: bool = False) -> list[Plate]:
     """Read every program the roster cites against every occupation it connects it to, save
     each record's readings, and return the roster's view. `only` restricts the reading to
-    one program (its college_key or ref); the others keep their saved readings."""
+    one program (its college_key or ref); the others keep their saved readings. `rerank`
+    makes no new reading: it re-judges each saved plate's lead excerpts and saves."""
     roster = load_roster(roster_id)
     _check_against_def(roster)
     coci_cache: dict[str, list[dict]] = {}
@@ -544,6 +614,13 @@ def run(roster_id: str, *, refresh: bool = False, adjudicate: bool = True, coci:
         if only and only not in (p["college_key"], p["ref"]):
             continue
         socs = [soc for soc, _ in readings(p)]
+        if rerank:
+            saved = load_readings(p["ref"])
+            for soc in socs:
+                if soc in saved:
+                    rank_leads(saved[soc])
+            save_readings(p["ref"], saved)
+            continue
         if new_only and all(soc in load_readings(p["ref"]) for soc in socs):
             continue
         rows = None
@@ -662,6 +739,7 @@ if __name__ == "__main__":
     r.add_argument("--fresh", action="store_true", help="do not union a fresh reading with the saved one")
     r.add_argument("--new-only", action="store_true", help="read only (program, occupation) pairs the store lacks")
     r.add_argument("--units", choices=("all", "plo"), default="all", help="plo: re-read only the certificate's program outcomes, unioned into the saved plates")
+    r.add_argument("--rerank", action="store_true", help="no new reading: re-judge each saved plate's lead excerpt per activity and save")
     sc = sub.add_parser("scaffold", help="draft a program record from COCI and the ProgramCourseFile")
     sc.add_argument("college_key", help="catalog key, e.g. foothill")
     sc.add_argument("control_number", help="the award's COCI control number, e.g. 43983")
@@ -674,7 +752,7 @@ if __name__ == "__main__":
         print(f"wrote {scaffold(a.college_key, a.control_number, pcf_dir=a.pcf_dir, keep_zeros=a.keep_zeros, out=a.out)}")
     else:
         plates = run(a.roster, refresh=a.refresh, adjudicate=not a.no_adjudicate, coci=a.coci, only=a.only,
-                     accumulate=not a.fresh, new_only=a.new_only, units=a.units)
+                     accumulate=not a.fresh, new_only=a.new_only, units=a.units, rerank=a.rerank)
         for pl in plates:
             c = pl.counts()
             print(f"{pl.college:26s} vs {pl.paired_soc} ({pl.role:9s}): {c['outcome_level']:2d} outcome-level, {c['any_evidence']:2d} any, of {c['activities']} | dropped {len(pl.dropped)}")

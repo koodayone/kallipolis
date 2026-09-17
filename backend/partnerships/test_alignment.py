@@ -12,7 +12,8 @@ Coverage:
   - view_roster sets role, pairing basis and crosswalk from the roster, not the store, in roster order
   - read_program unions a fresh reading with the saved one and leaves other saved occupations in place
   - a program-outcomes-only re-read keeps the saved plate's courses and adds PLO cells; the gate takes the certificate's name as PLO
-  - a certificate column shows each course's title and its strongest outline sentence with the section as the tier, ranked by tier then units
+  - a certificate column shows one mark per activity — the lead excerpt with its course title and COR section tag — and the legend explains the tags
+  - rank_leads asks one judgment for rows with several excerpts, stores the choice, and falls back to tier, units, catalog order
   - an occupation block and legend label columns by certificate when the roster asks, and by college otherwise
   - a ProgramCourseFile course id becomes the college's spelling (space before the number, zeros dropped or kept)
   - scaffold_record drafts a record from a COCI award and Active PCF rows, with a _todo list and the sibling's source
@@ -128,7 +129,7 @@ def test_read_program_unions_with_the_store_and_keeps_other_occupations(monkeypa
     program = {"ref": "mission-mechatronic-technology", "college": "Mission College", "member_id": "mission", "college_key": "mission",
                "certificate": "Cert", "courses": [{"code": "MTT 020"}], "program_outcomes": [], "source": {}}
     fresh = lambda system, user, schema: {"data": {"matches": [
-        {"activity": 1, "course": "MTT 020", "section": "content", "quote": "Ladder logic programming", "basis": "b"}]}, "error": None}
+        {"activity": 1, "course": "MTT 020", "section": "content", "quote": "Ladder logic programming", "basis": "b"}], "choices": []}, "error": None}
     out = read_program(program, ["17-3024"], adjudicate=False, complete=fresh)
     assert set(out) == {"17-3024", "51-9141"} and out["51-9141"] is other
     quotes = {e.quote for e in out["17-3024"].rows[0].cells["MTT 020"].evidence} | {e.quote for e in out["17-3024"].rows[0].cells["C 1"].evidence}
@@ -150,9 +151,10 @@ def test_plo_only_reread_unions_into_the_saved_plate(monkeypatch):
     def fake(system, user, schema):
         calls.append(user)
         return {"data": {"matches": [{"activity": 1, "course": "Certificate of Achievement, Mechatronic Technology",
-                                      "section": "program_outcomes", "quote": "Troubleshoot and repair electrical, electronic, and mechanical systems", "basis": "b"}]}, "error": None}
+                                      "section": "program_outcomes", "quote": "Troubleshoot and repair electrical, electronic, and mechanical systems", "basis": "b"}],
+                         "choices": []}, "error": None}
     out = read_program(program, ["17-3024"], adjudicate=False, complete=fake, units="plo")
-    assert len(calls) == 1 and "PROGRAM OUTCOMES (PLO)" in calls[0]          # one call: the outcomes unit alone
+    assert "PROGRAM OUTCOMES (PLO)" in calls[0] and not any("PROGRAM TEXT" in c for c in calls)   # the outcomes unit alone (plus the ranking pass)
     row = out["17-3024"].rows[0]
     assert PLO in row.cells and row.cells[PLO].level == 2                    # certificate-named course gated as PLO
     assert "C 1" in row.cells and out["17-3024"].courses == prev.courses     # the saved course marks and course list survive
@@ -170,21 +172,48 @@ def test_columns_label_by_certificate_or_college():
     assert column_legend(plates).count("alg-lg") == 2                          # one college label + the chip key
 
 
-def test_dense_cell_shows_title_quote_and_ranks_by_tier_then_units():
+def _rt_plate():
     rows = [Row("d1", "Diagnose equipment malfunctions.", "t",
                 {"RSPT 55B": Cell(2, [Evidence("RSPT 55B", "objectives", 2, "seminar objective", "b")]),
                  "RSPT 50A": Cell(2, [Evidence("RSPT 50A", "objectives", 2, "Demonstrate use of humidity and bland aerosol therapy", "b")]),
                  "RSPT 70A": Cell(1, [Evidence("RSPT 70A", "content", 1, "Aerosol therapy", "b")]),
-                 PLO: Cell(2, [Evidence(PLO, "program_outcomes", 2, "entry-level competency", "b")])})]
-    pl = Plate("Foothill College", "foothill", "Associate in Science Degree, Respiratory Therapy", "credit", "121000", "RT", "29-1126", "Respiratory Therapists",
-               [], "", [{"code": "RSPT 55B", "title": "Mediated Studies Ii", "units": 0.5}, {"code": "RSPT 50A", "title": "Respiratory Therapy Procedures", "units": 4.5},
-                        {"code": "RSPT 70A", "title": "Clinical Rotation I", "units": 2}], [], rows, short_title="Respiratory Therapy")
+                 PLO: Cell(2, [Evidence(PLO, "program_outcomes", 2, "entry-level competency", "b")])}),
+            Row("d2", "Inspect production equipment.", "t", {"RSPT 70A": Cell(1, [Evidence("RSPT 70A", "lab", 1, "Inspect ventilator circuits", "b")])})]
+    return Plate("Foothill College", "foothill", "Associate in Science Degree, Respiratory Therapy", "credit", "121000", "RT", "29-1126", "Respiratory Therapists",
+                 [], "", [{"code": "RSPT 55B", "title": "Mediated Studies Ii", "units": 0.5}, {"code": "RSPT 50A", "title": "Respiratory Therapy Procedures", "units": 4.5},
+                          {"code": "RSPT 70A", "title": "Clinical Rotation I", "units": 2}], [], rows, short_title="Respiratory Therapy")
+
+
+def test_dense_cell_shows_the_lead_only_with_cor_tag_and_legend():
+    pl = _rt_plate()
     html = occupation_block("29-1126", [pl], columns="certificate")
-    assert html.index("RSPT 50A") < html.index("RSPT 55B")                  # same tier: the 4.5-unit course leads the seminar
-    assert "Respiratory Therapy Procedures" in html and "Demonstrate use of humidity" in html and 'alg-sec">Objective<' in html
-    assert "also RSPT 70A" in html and "Program outcome" in html           # overflow named; the certificate's own outcome flagged
+    assert html.count('class="alg-ev"') == 2                                 # one mark per activity
+    assert "RSPT 50A" in html and "RSPT 55B" not in html and "also" not in html   # default lead: same tier, more units; no code list
+    assert "Respiratory Therapy Procedures" in html and "Demonstrate use of humidity" in html and "COR · Objective" in html and "COR · Lab" in html
+    assert "Program outcome" in html
+    pl.rows[0].lead = {"course": "RSPT 70A", "section": "content", "quote": "Aerosol therapy", "reason": "names the procedure"}
+    html = occupation_block("29-1126", [pl], columns="certificate")
+    assert "RSPT 70A" in html.split("Inspect production")[0] and "COR · Content" in html        # a stored judgment wins
+    assert "section of the Course Outline of Record" in column_legend([pl], "certificate")
+    assert "section of the Course Outline of Record" not in column_legend([pl])
     sparse = occupation_block("29-1126", [pl])
     assert "Respiratory Therapy Procedures" not in sparse and "Program outcome" not in sparse   # consortium view unchanged
+
+
+def test_rank_leads_judges_multi_excerpt_rows_and_falls_back():
+    from partnerships.alignment import rank_leads
+    pl = _rt_plate()
+    seen = []
+    def judge(system, user, schema):
+        seen.append(user)
+        return {"data": {"choices": [{"activity": 0, "excerpt": 2, "reason": "names aerosol therapy itself"}]}, "error": None}
+    rank_leads(pl, complete=judge)
+    assert len(seen) == 1 and "[0] activity" in seen[0] and "[1] activity" not in seen[0]     # only the multi-excerpt row is judged
+    assert pl.rows[0].lead["course"] == "RSPT 70A" and pl.rows[0].lead["reason"] == "names aerosol therapy itself"
+    assert pl.rows[1].lead["course"] == "RSPT 70A" and pl.rows[1].lead["reason"].startswith("default")   # single excerpt: no call
+    pl = _rt_plate()
+    rank_leads(pl, complete=lambda *a: {"data": None, "error": "boom"})
+    assert pl.rows[0].lead["course"] == "RSPT 50A"                                              # failure: tier, units, catalog
 
 
 def test_pcf_code_spelling():

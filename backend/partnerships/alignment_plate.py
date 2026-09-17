@@ -159,8 +159,10 @@ def column_legend(plates: list[Plate], columns: str = "college") -> str:
             continue
         seen.add(label)
         items.append(f'<span class="alg-lg"><i style="background:{college_color(pl.member_id)}"></i>{escape(label)}</span>')
+    tail = (f' <span class="alg-lg alg-lgnote">{COR_LEGEND}</span>' if columns == "certificate" else "")
     return ('<p class="tnar alg-legend">' + " ".join(items) +
-            ' <span class="alg-lg"><b class="chip" style="--c:#5a6577">CODE</b> a course whose outline evidences the activity</span></p>')
+            ' <span class="alg-lg"><b class="chip" style="--c:#5a6577">CODE</b> a course whose outline evidences the activity</span>'
+            f'{tail}</p>')
 
 
 #: Courses shown per cell. Ranked by the evidence tier the page no longer draws — an
@@ -168,9 +170,11 @@ def column_legend(plates: list[Plate], columns: str = "college") -> str:
 #: by the certificate's catalog order; the rest fold into a neutral "+N" chip and the
 #: appendix. Three answers "does this college teach it, and where"; the rest is height.
 CHIPS_PER_CELL = 3
-#: Courses shown per cell when the column is one college's certificate and each mark
-#: carries its title and quote — two, then "also …" for the rest.
-DENSE_PER_CELL = 2
+#: The section of the Course Outline of Record a lead excerpt comes from, as the tag reads it.
+COR_TAG = {"outcomes": "SLO", "objectives": "Objective", "description": "Description", "content": "Content",
+           "lab": "Lab", "assignments": "Assignment", "program_outcomes": "Program outcome"}
+COR_LEGEND = ("Each tag names the section of the Course Outline of Record the quoted sentence comes from: "
+              "SLO (student learning outcome), Objective, Description, Content, Lab, Assignment.")
 
 
 def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_order: list[str] | None = None,
@@ -227,26 +231,22 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_
             codes = [code for code, _ in found]
             col = college_color(pl.member_id)
             if codes and columns == "certificate":
-                # One college's own document: the column has the width, so each mark
-                # carries its course title and the outline sentence it rests on, with the
-                # section as the tier in words (an SLO commits; content touches).
+                # One college's own document: the column has the width, so the mark is the
+                # LEAD excerpt — the one course sentence a reviewer would point to first
+                # (alignment.rank_leads; tier breaks ties) — with its course title and the
+                # section of the outline it comes from. Other evidencing courses stay in the
+                # review file and the appendix; a list of codes here was noise.
                 any_ = True
                 per_college[pl.college] = per_college.get(pl.college, 0) + len(codes)
                 title_of = {c["code"]: c.get("title", "") for c in pl.courses}
-                shown, rest = codes[:DENSE_PER_CELL], codes[DENSE_PER_CELL:]
-                items = []
-                for c in shown:
-                    ev = max(pr.cells[c].evidence, key=lambda e: (e.level, -len(e.quote)))
-                    chip = (f'<a class="chip" href="{escape(url_of[c])}" target="_blank" rel="noopener" style="--c:{col}">{escape(c)}</a>'
-                            if url_of.get(c) else f'<b class="chip" style="--c:{col}">{escape(c)}</b>')
-                    items.append(f'<div class="alg-ev"><div class="alg-evhd">{chip}<span class="alg-ctitle">{escape(title_of.get(c, ""))}</span></div>'
-                                 f'<div class="alg-quote"><span class="alg-sec">{escape(SECTION_LABEL.get(ev.section, ev.section))}</span>'
-                                 f'“{escape(ev.quote)}”</div></div>')
-                if rest:
-                    named, more = rest[:6], len(rest) - 6
-                    items.append(f'<div class="alg-evmore">also {", ".join(escape(c) for c in named)}'
-                                 f'{f" and {more} more" if more > 0 else ""}</div>')
-                cells.append(f'<td class="alg-dense">{"".join(items)}</td>')
+                from partnerships.alignment import _default_lead
+                lead = pr.lead if pr.lead and pr.lead.get("course") in pr.cells else _default_lead(pr, pl)
+                c = lead["course"]
+                chip = (f'<a class="chip" href="{escape(url_of[c])}" target="_blank" rel="noopener" style="--c:{col}">{escape(c)}</a>'
+                        if url_of.get(c) else f'<b class="chip" style="--c:{col}">{escape(c)}</b>')
+                cells.append(f'<td class="alg-dense"><div class="alg-ev"><div class="alg-evhd">{chip}<span class="alg-ctitle">{escape(title_of.get(c, ""))}</span></div>'
+                             f'<div class="alg-quote"><span class="alg-sec">COR · {escape(COR_TAG.get(lead["section"], lead["section"]))}</span>'
+                             f'“{escape(lead["quote"])}”</div></div></td>')
                 continue
             if codes:
                 any_ = True
