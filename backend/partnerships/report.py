@@ -1183,7 +1183,7 @@ def _wage_table(rows: list) -> str:
             f'<tbody>{"".join(body)}</tbody></table>')
 
 
-def _wage_outcomes_svg(wages: list, top6: str) -> str:
+def _wage_outcomes_svg(wages: list, top6: str, living_annual: float | None = None, living_label: str = "") -> str:
     """Earnings trajectory for each award cohort: one line per recipient type across
     the three DataMart checkpoints.
 
@@ -1212,7 +1212,10 @@ def _wage_outcomes_svg(wages: list, top6: str) -> str:
             series.append((w, vals))
     if not series:
         return ""
-    top, ticks = _nice_axis(max(v for _w, vs in series for _y, v in vs) * 1.12)
+    peak = max(v for _w, vs in series for _y, v in vs)
+    if living_annual:
+        peak = max(peak, living_annual)          # the reference line must sit inside the plot
+    top, ticks = _nice_axis(peak * 1.12)
 
     # Right-hand line labels forced a 148px gutter against a 58px left one, so the
     # plot sat visibly off-centre and used two thirds of the plate. The labels move to
@@ -1247,6 +1250,15 @@ def _wage_outcomes_svg(wages: list, top6: str) -> str:
                   f'text-anchor="{anc}">{_esc(lbl)}</text>')
     p_.append(f'<text x="{PADL + plot_w / 2:.1f}" y="{H-PADB+38:.0f}" font-size="10" '
               f'fill="#5a6577" text-anchor="middle">Years relative to award</text>')
+
+    if living_annual:
+        # The living wage as a dashed rule, the awards chart's idiom for a threshold — the
+        # one reference this chart has for whether completers reach self-sufficiency.
+        ly = y_of(living_annual)
+        p_.append(f'<line x1="{PADL}" y1="{ly:.1f}" x2="{W-PADR}" y2="{ly:.1f}" '
+                  f'stroke="{_RULE}" stroke-width="1.6" stroke-dasharray="7 4"/>')
+        p_.append(f'<text x="{W-PADR-4}" y="{ly-5:.1f}" font-size="9.5" font-weight="700" '
+                  f'fill="{_RULE}" text-anchor="end">{_esc(living_label)}</text>')
 
     for si, (w, vals) in enumerate(series):
         col = _WAGE_LINE[si % len(_WAGE_LINE)]
@@ -1700,7 +1712,7 @@ def select_partner_programs(programs, charter_colleges, min_awards: int = 50):
     return chosen
 
 
-def _wage_section(lens: LensModel, spec: ReportSpec) -> str:
+def _wage_section(lens: LensModel, spec: ReportSpec, living=None) -> str:
     """"Wage Outcomes" — the one section that reports what happened to PEOPLE.
 
     Everything else in the document counts things: awards, enrolments, openings,
@@ -1713,11 +1725,18 @@ def _wage_section(lens: LensModel, spec: ReportSpec) -> str:
     figure beside newer ones is what makes a reader trust the wrong comparison.
     """
     rows = lens.wages.get(spec.program_top) or []
-    chart = _wage_outcomes_svg(rows, spec.program_top)
+    annual = living.headline * HOURS_PER_YEAR if living is not None else None
+    label = f"Living wage, 1 adult, {living.county}" if living is not None else ""
+    chart = _wage_outcomes_svg(rows, spec.program_top, annual, label)
     if not chart:
         return ""
     window = next((w.window for w in rows if w.window), "")
     win = f" Award years {_esc(window)}." if window else ""
+    if living is not None:
+        # The county threshold on a statewide curve: say so, and say which way it leans.
+        win += (f" The dashed line is the living wage from the demand table annualized at {HOURS_PER_YEAR:,} hours "
+                f"(${annual:,.0f} for one adult with no children in {_esc(living.county)}); earnings here are "
+                "statewide, so Bay Area completers likely earn more than the curves show.")
     return _block(
         '<h1>Wage Outcomes</h1>',
         f'<p>{_WAGE_BLURB}{win}</p>',
@@ -1751,7 +1770,7 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         # program grants, here is what recipients went on to earn. Evaluations only —
         # the data is TOP6-grain, and a role report spanning several TOPs would need
         # one plate per TOP or an invalid merge.
-        _wage_section(lens, spec) if spec.program_top else '',
+        _wage_section(lens, spec, living) if spec.program_top else '',
         _block('<h1>Regional Occupational Demand</h1>',
                f'<p>{_linkify(spec.demand_note)}</p>' if spec.demand_note else '',
                _demand_table(occs, living),
