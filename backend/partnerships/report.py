@@ -1436,7 +1436,8 @@ p a,.byline a{color:#1155cc;text-decoration:underline}
 .alg-tbl{table-layout:fixed;margin:6px 0 2px;font-size:11px}
 .alg-tbl col.alg-actcol{width:196px}
 .alg-tbl th{background:#fff;color:#2a3450;font-size:10px;padding:4px 6px 6px;border:0;border-bottom:2px solid var(--c,#c8d0de);text-align:left;vertical-align:bottom}
-.alg-tbl th.alg-acthd{border-bottom-color:#e7eaf1;color:#8a93a5;font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:8px}
+.alg-tbl th.alg-acthd{border-bottom-color:var(--a,#e7eaf1);color:var(--a,#8a93a5);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:8px}
+.chtitle .alg-occ{color:var(--a,inherit)}
 .alg-colhd{display:block;font-weight:700}
 .alg-tbl td{border:0;border-bottom:1px solid #eef1f6;padding:4px 5px;vertical-align:top}
 .alg-tbl thead{display:table-header-group}
@@ -1721,8 +1722,10 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         cols = [by_soc[o.soc] for o in occs if o.soc in by_soc]
     else:
         cols = _cols_from_bundle(occs)
+    # the same per-occupation accents Employer Evidence and the crosswalk use, by SOC order
+    accents = {o.soc: _ACCENTS[i % len(_ACCENTS)] for i, o in enumerate(occs)}
     curriculum_parts, curriculum_appendix, consolidated = (
-        _curriculum_section(spec, {c.soc: c.description for c in cols}) if spec.curriculum_alignment else ([], [], False))
+        _curriculum_section(spec, {c.soc: c.description for c in cols}, accents) if spec.curriculum_alignment else ([], [], False))
     # An evaluation whose curriculum has been read carries the occupation description
     # inside each alignment block and drops the grid: the work activities with their course
     # sentences say what the grid's knowledge, skills and abilities only named.
@@ -1824,7 +1827,8 @@ _CURRICULUM_BLURB = ("O*NET maintains a set of detailed work activities that ide
                      "described in its Course Outline of Record (COR).")
 
 
-def _curriculum_section(spec: ReportSpec, descriptions: dict[str, str] | None = None) -> tuple[list[str], list[str], bool]:
+def _curriculum_section(spec: ReportSpec, descriptions: dict[str, str] | None = None,
+                        accents: dict[str, str] | None = None) -> tuple[list[str], list[str], bool]:
     """(section parts, appendix parts, consolidated) for the roster named by
     spec.curriculum_alignment; the parts are empty when none of its readings has been run.
     The section reads BY OCCUPATION — the roster's SOCs in order, each with its most
@@ -1860,7 +1864,8 @@ def _curriculum_section(spec: ReportSpec, descriptions: dict[str, str] | None = 
             key = block_key(college_color(shown[0].member_id) if shown else "#5a6577")   # the chip in the college's colour, as in the table
             intro = (f'<p class="alg-desc">{_esc(desc)} {link}</p>' if desc else f'<p class="alg-desc">{link}</p>') + key
         block = occupation_block(soc, [p for p in shown if p.paired_soc == soc], top_n=top_n, college_order=member_order,
-                                 show_gaps=spec.curriculum_show_gaps, columns=columns, intro=intro)
+                                 show_gaps=spec.curriculum_show_gaps, columns=columns, intro=intro,
+                                 accent=(accents or {}).get(soc, ""))
         if block:            # not _block(): a block may break across pages; rows never do
             parts.append(block)
     # Appendix: the outlines themselves, linked. A reader checks a chip against the
