@@ -1,0 +1,1881 @@
+{
+ "program": "foothill-semiconductor-processing",
+ "generated": "2026-09-17",
+ "onet_vintage": "O*NET 31.0 database (August 2026), U.S. Department of Labor",
+ "plates": [
+  {
+   "college": "Foothill College",
+   "member_id": "foothill",
+   "certificate": "Certificate of Achievement, Semiconductor Processing Technician",
+   "kind": "credit",
+   "top6": "094500",
+   "top_name": "Industrial Systems Technology and Maintenance",
+   "paired_soc": "51-9141",
+   "occupation": "Semiconductor Processing Technicians",
+   "crosswalk_socs": [],
+   "pairing_basis": "",
+   "courses": [
+    {
+     "code": "MATH 40A",
+     "title": "Quantitative Reasoning",
+     "units": 5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/MATH-40A/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000632280",
+      "status": "Active",
+      "last_updated": "2024-10-04",
+      "outline_date": "2025-06-01",
+      "verdict": "outline-newer"
+     }
+    },
+    {
+     "code": "MATH 240A",
+     "title": "Just-in-Time Support for MATH 40A",
+     "units": 2.5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/MATH-240A/",
+     "system": "courseleaf",
+     "effective": "Summer 2024",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000632281",
+      "status": "Active",
+      "last_updated": "2023-02-28",
+      "outline_date": "2024-06-01",
+      "verdict": "outline-newer"
+     }
+    },
+    {
+     "code": "ENGR 61A",
+     "title": "Introduction to Semiconductor Technology",
+     "units": 5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/ENGR-61A/",
+     "system": "courseleaf",
+     "effective": "Winter 2024",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000640216",
+      "status": "Active",
+      "last_updated": "2023-11-13",
+      "outline_date": "2024-01-01",
+      "verdict": "outline-newer"
+     }
+    },
+    {
+     "code": "ENGR 101A",
+     "title": "Advanced Manufacturing",
+     "units": 5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/ENGR-101A/",
+     "system": "courseleaf",
+     "effective": "Spring 2026",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000640217",
+      "status": "Active",
+      "last_updated": "2024-02-13",
+      "outline_date": "2026-03-01",
+      "verdict": "outline-newer"
+     }
+    }
+   ],
+   "program_outcomes": [],
+   "rows": [
+    {
+     "dwa_id": "4.A.1.b.3.a.12",
+     "dwa": "Measure dimensions of completed products or workpieces to verify conformance to specifications.",
+     "task": "Inspect materials, components, or products for surface defects and measure circuitry, using electronic test equipment, precision measuring instruments, microscope, and standard procedures.",
+     "cells": {
+      "ENGR 61A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "Measurement tools",
+         "basis": "measurement of circuitry/materials using tools directly matches measuring dimensions to verify specs"
+        },
+        {
+         "course": "ENGR 61A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify measurement tools for different properties and how to use them",
+         "basis": "using measurement tools to measure properties parallels measuring dimensions with precision instruments"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.1.b.4",
+     "dwa": "Read work orders or other instructions to determine product specifications or materials requirements.",
+     "task": "Study work orders, instructions, formulas, and processing charts to determine specifications and sequence of operations.",
+     "cells": {
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "content",
+         "level": 1,
+         "quote": "Read and interpret diagrams",
+         "basis": "reading diagrams to determine specifications/sequence of operations matches reading work orders/processing charts"
+        },
+        {
+         "course": "ENGR 101A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "read and interpret diagrams for mechanical, gas, and electrical systems",
+         "basis": "interpreting diagrams to determine specifications directly matches studying instructions to determine sequence of operations"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.1.b.11",
+     "dwa": "Review blueprints or other instructions to determine operational methods or sequences.",
+     "task": "Study work orders, instructions, formulas, and processing charts to determine specifications and sequence of operations.",
+     "cells": {
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "read and interpret diagrams for mechanical, gas, and electrical systems",
+         "basis": "Outcome literally states reading diagrams to determine operational methods, matching blueprint-review activity"
+        },
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify steps in a procedure from diagrams",
+         "basis": "Objective literally states reading diagrams/procedures to determine operational sequence"
+        },
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify symbols and connections for components using diagrams",
+         "basis": "Objective evidences reviewing diagrams to determine operational methods for wiring/circuits"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.1.h.5",
+     "dwa": "Clean workpieces or finished products.",
+     "task": "Clean semiconductor wafers using cleaning equipment, such as chemical baths, automatic wafer cleaners, or blow-off wands. · Clean and maintain equipment, including replacing etching and rinsing solutions and cleaning bath containers and work area.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.b.6.h.3",
+     "dwa": "Record operational or production data.",
+     "task": "Maintain processing, production, and inspection information and reports.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.a.2.d.4",
+     "dwa": "Assemble precision electronics or optical equipment.",
+     "task": "Place semiconductor wafers in processing containers or equipment holders, using vacuum wand or tweezers. · Etch, lap, polish, or grind wafers or ingots to form circuitry and change conductive properties, using etching, lapping, polishing, or grinding equipment. · Align photo mask pattern on photoresist layer, expose pattern to ultraviolet light, and develop pattern, using specialized equipment.",
+     "cells": {
+      "ENGR 61A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "Vacuum wands",
+         "basis": "Content line on moving wafers directly evidences placing wafers in equipment holders using vacuum wand, per O*NET task"
+        },
+        {
+         "course": "ENGR 61A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate different wafer handing methods",
+         "basis": "Objective states students perform wafer handling methods including tweezers/vacuum wand placement into containers"
+        },
+        {
+         "course": "ENGR 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "Cutting wafers",
+         "basis": "Content line on cutting wafers evidences forming wafer circuitry-related shaping per assemble precision equipment activity"
+        },
+        {
+         "course": "ENGR 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "Etching and polishing",
+         "basis": "Content on etching and polishing evidences etching/polishing wafers to form circuitry per O*NET task"
+        },
+        {
+         "course": "ENGR 61A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Describe etching and polishing",
+         "basis": "Objective on etching and polishing directly maps to etch/lap/polish wafers task under assemble precision equipment"
+        },
+        {
+         "course": "ENGR 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "Photolithography",
+         "basis": "Content line on photolithography evidences aligning photo mask pattern and exposing/developing pattern per O*NET task"
+        },
+        {
+         "course": "ENGR 61A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Describe photolithography",
+         "basis": "Objective on photolithography evidences photo mask alignment, exposure, and development activity"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.f.3",
+     "dwa": "Mount materials or workpieces onto production equipment.",
+     "task": "Place semiconductor wafers in processing containers or equipment holders, using vacuum wand or tweezers.",
+     "cells": {
+      "ENGR 61A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "Vacuum wands",
+         "basis": "Content on moving wafers evidences mounting wafers onto processing equipment via vacuum wand or tweezers"
+        },
+        {
+         "course": "ENGR 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "Wafer carriers",
+         "basis": "Content on wafer carriers evidences mounting workpieces into holders for processing"
+        },
+        {
+         "course": "ENGR 61A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate different wafer handing methods",
+         "basis": "wafer handling methods directly evidence mounting wafers using vacuum wand or tweezers"
+        },
+        {
+         "course": "ENGR 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "Using tweezers",
+         "basis": "tweezer wafer handling directly evidences mounting workpieces using vacuum wand or tweezers"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.1.f.10",
+     "dwa": "Load materials into production equipment.",
+     "task": "Load and unload equipment chambers and transport finished product to storage or to area for further processing.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.a.1.j.11",
+     "dwa": "Move products, materials, or equipment between work areas.",
+     "task": "Load and unload equipment chambers and transport finished product to storage or to area for further processing.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.b.1.a.1",
+     "dwa": "Enter commands, instructions, or specifications into equipment.",
+     "task": "Manipulate valves, switches, and buttons, or key commands into control panels to start semiconductor processing cycles.",
+     "cells": {
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "content",
+         "level": 1,
+         "quote": "Programmable logic controllers",
+         "basis": "PLC coursework involves entering commands/specifications into control equipment"
+        },
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Present an overview of programmable logic controllers (PLC)",
+         "basis": "PLC operation is the concrete mechanism for keying commands into control panels to run process cycles"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.1.b.3",
+     "dwa": "Diagnose equipment malfunctions.",
+     "task": "Inspect equipment for leaks, diagnose malfunctions, and request repairs.",
+     "cells": {
+      "ENGR 61A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 61A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "describe the principles of troubleshooting",
+         "basis": "Outcome literally requires understanding troubleshooting, constitutive of diagnosing equipment malfunctions"
+        },
+        {
+         "course": "ENGR 61A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Troubleshoot issues",
+         "basis": "Objective states students perform troubleshooting, directly matching diagnose equipment malfunctions activity"
+        },
+        {
+         "course": "ENGR 61A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Upon completion of the course, students will be able to describe the principles of troubleshooting.",
+         "basis": "troubleshooting principles directly evidence diagnosing equipment malfunctions"
+        }
+       ]
+      },
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "describe manufacturing concerns and troubleshooting procedures",
+         "basis": "Outcome literally covers troubleshooting procedures, constitutive of diagnosing equipment malfunctions"
+        },
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Troubleshoot electro-mechanical systems",
+         "basis": "Objective states students perform troubleshooting of electro-mechanical systems, matching diagnose malfunctions activity"
+        },
+        {
+         "course": "ENGR 101A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "describe elements and basic troubleshooting of circuits",
+         "basis": "troubleshooting circuits is diagnosing equipment malfunctions"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.2.g.15",
+     "dwa": "Inspect production equipment.",
+     "task": "Inspect equipment for leaks, diagnose malfunctions, and request repairs.",
+     "cells": {
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Understand the importance of leak detection",
+         "basis": "Objective on leak detection directly evidences inspecting equipment for leaks per O*NET task"
+        },
+        {
+         "course": "ENGR 101A",
+         "section": "content",
+         "level": 1,
+         "quote": "Leak detection",
+         "basis": "Content line on leak detection evidences inspecting production equipment for leaks per O*NET task"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.2.g.2",
+     "dwa": "Notify others of equipment repair or maintenance needs.",
+     "task": "Inspect equipment for leaks, diagnose malfunctions, and request repairs.",
+     "cells": {
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Follow procedures for reporting issues",
+         "basis": "Objective literally states reporting issues, matching notify others of equipment repair needs activity"
+        },
+        {
+         "course": "ENGR 101A",
+         "section": "content",
+         "level": 1,
+         "quote": "Procedures for reporting issues",
+         "basis": "Content on reporting procedures evidences notifying others of equipment repair or maintenance needs"
+        },
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify contact person for various issues",
+         "basis": "identifying who to notify evidences notifying others of equipment repair or maintenance needs"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "dropped": [
+    {
+     "activity": 4,
+     "course": "ENGR 61A",
+     "section": "content",
+     "quote": "Using tweezers",
+     "basis": "Content line on wafer handling methods evidences cleaning/handling workpieces per occupation task of moving wafers safely",
+     "why": "adjudicated: d) 'Using tweezers' evidences placing wafers using tweezers (assemble/mount tasks), not cleaning workpieces — different activity"
+    },
+    {
+     "activity": 2,
+     "course": "ENGR 61A",
+     "section": "outcomes",
+     "quote": "describe stages of the semiconductor manufacturing process",
+     "basis": "Outcome requires knowing process sequence which is directly constitutive of studying specifications/sequence of operations",
+     "why": "adjudicated: a) 'describe stages of manufacturing process' names a topic heading without performable specification-study content"
+    },
+    {
+     "activity": 5,
+     "course": "ENGR 101A",
+     "section": "objectives",
+     "quote": "Follow procedures for reporting issues",
+     "basis": "Reporting procedures constitute recording operational data on equipment issues for production records",
+     "why": "adjudicated: d) reporting issues evidences notifying others of repair needs, not recording production/inspection data"
+    },
+    {
+     "activity": 2,
+     "course": "ENGR 61A",
+     "section": "objectives",
+     "quote": "Design and interpret testing processes",
+     "basis": "interpreting test procedures reflects reading instructions to determine specifications and sequence",
+     "why": "adjudicated: d) designing/interpreting testing processes evidences test-process design, not reading work orders for specs/sequence"
+    },
+    {
+     "activity": 3,
+     "course": "ENGR 61A",
+     "section": "objectives",
+     "quote": "Design and interpret testing processes",
+     "basis": "interpreting test processes evidences reviewing instructions to determine operational sequences",
+     "why": "adjudicated: d) interpreting testing processes evidences test design/interpretation, not reviewing blueprints for operational sequence"
+    },
+    {
+     "activity": 4,
+     "course": "ENGR 61A",
+     "section": "content",
+     "quote": "Cutting wafers",
+     "basis": "wafer handling content directly involves cleaning/processing wafers as workpieces",
+     "why": "adjudicated: d) cutting wafers evidences wafer forming/shaping task, not cleaning workpieces"
+    },
+    {
+     "activity": 4,
+     "course": "ENGR 61A",
+     "section": "objectives",
+     "quote": "Understand contamination and how to prevent it",
+     "basis": "preventing contamination in wafer handling directly concerns cleaning workpieces to avoid defects",
+     "why": "adjudicated: b) understanding contamination is precondition knowledge preceding the cleaning activity itself"
+    }
+   ],
+   "source_note": "Read from Foothill College's course outlines of record (courseleaf); sections present: slo, objective, description, content outline.",
+   "role": "",
+   "short_title": "Semiconductor Processing"
+  },
+  {
+   "college": "Foothill College",
+   "member_id": "foothill",
+   "certificate": "Certificate of Achievement, Semiconductor Processing Technician",
+   "kind": "credit",
+   "top6": "094500",
+   "top_name": "Industrial Systems Technology and Maintenance",
+   "paired_soc": "17-3026",
+   "occupation": "Industrial Engineering Technologists and Technicians",
+   "crosswalk_socs": [],
+   "pairing_basis": "",
+   "courses": [
+    {
+     "code": "MATH 40A",
+     "title": "Quantitative Reasoning",
+     "units": 5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/MATH-40A/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000632280",
+      "status": "Active",
+      "last_updated": "2024-10-04",
+      "outline_date": "2025-06-01",
+      "verdict": "outline-newer"
+     }
+    },
+    {
+     "code": "MATH 240A",
+     "title": "Just-in-Time Support for MATH 40A",
+     "units": 2.5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/MATH-240A/",
+     "system": "courseleaf",
+     "effective": "Summer 2024",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000632281",
+      "status": "Active",
+      "last_updated": "2023-02-28",
+      "outline_date": "2024-06-01",
+      "verdict": "outline-newer"
+     }
+    },
+    {
+     "code": "ENGR 61A",
+     "title": "Introduction to Semiconductor Technology",
+     "units": 5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/ENGR-61A/",
+     "system": "courseleaf",
+     "effective": "Winter 2024",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000640216",
+      "status": "Active",
+      "last_updated": "2023-11-13",
+      "outline_date": "2024-01-01",
+      "verdict": "outline-newer"
+     }
+    },
+    {
+     "code": "ENGR 101A",
+     "title": "Advanced Manufacturing",
+     "units": 5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/ENGR-101A/",
+     "system": "courseleaf",
+     "effective": "Spring 2026",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000640217",
+      "status": "Active",
+      "last_updated": "2024-02-13",
+      "outline_date": "2026-03-01",
+      "verdict": "outline-newer"
+     }
+    }
+   ],
+   "program_outcomes": [],
+   "rows": [
+    {
+     "dwa_id": "4.A.1.a.2.i.4",
+     "dwa": "Monitor activities affecting environmental quality.",
+     "task": "Adhere to all applicable regulations, policies, and procedures for health, safety, and environmental compliance.",
+     "cells": {
+      "ENGR 61A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 61A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "list safety concerns and precautions and contamination concerns and precautions",
+         "basis": "students state compliance-relevant safety and contamination precautions, a health/safety/environmental compliance activity"
+        },
+        {
+         "course": "ENGR 61A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate proper safety equipment usage and procedures",
+         "basis": "students perform safety/PPE compliance procedures required in cleanroom health and safety compliance"
+        },
+        {
+         "course": "ENGR 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "Disposing of hazardous materials",
+         "basis": "hazardous materials disposal is environmental compliance activity within scope of content"
+        }
+       ]
+      },
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "content",
+         "level": 1,
+         "quote": "Electrical safety concerns for people and equipment",
+         "basis": "course content covers safety compliance procedures for industrial equipment"
+        },
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Explain electrical safety concerns for working with electrical systems",
+         "basis": "states adherence to health/safety compliance for electrical systems"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.i.4",
+     "dwa": "Calibrate scientific or technical equipment.",
+     "task": "Calibrate or adjust equipment to ensure quality production, using tools such as calipers, micrometers, height gauges, protractors, or ring gauges. · Monitor and adjust production processes or equipment for quality and productivity.",
+     "cells": {
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Use basic measurement tools and methods for voltage, current, and resistance measurements",
+         "basis": "using measurement tools to check equipment values is directly constitutive of calibrating/adjusting equipment"
+        },
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate ability to read vacuum gauges and different types of gauges",
+         "basis": "reading gauges to verify/adjust vacuum equipment operation is calibration-related"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.b.4.j.24",
+     "dwa": "Direct industrial production activities.",
+     "task": "Oversee or inspect production processes.",
+     "cells": {
+      "ENGR 61A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 61A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "describe stages of the semiconductor manufacturing process",
+         "basis": "describing production stages evidences oversight/inspection scope of production processes"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.2.c.3",
+     "dwa": "Design industrial equipment.",
+     "task": "Identify opportunities for improvements in quality, cost, or efficiency of automation equipment.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.b.2.f.14",
+     "dwa": "Develop technical methods or processes.",
+     "task": "Develop or implement programs to address problems related to production, materials, safety, or quality. · Assist engineers in developing, building, or testing prototypes or new products, processes, or procedures. · Develop production, inventory, or quality assurance programs.",
+     "cells": {
+      "ENGR 61A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 61A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "describe the principles of troubleshooting",
+         "basis": "troubleshooting methods are a technical method/process for addressing production problems"
+        }
+       ]
+      },
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "describe manufacturing concerns and troubleshooting procedures",
+         "basis": "developing troubleshooting procedures for manufacturing concerns is developing a technical process"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.1.i.6",
+     "dwa": "Implement design or process improvements.",
+     "task": "Develop or implement programs to address problems related to production, materials, safety, or quality.",
+     "cells": {
+      "ENGR 61A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ENGR 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "How to prevent contamination",
+         "basis": "implementing contamination-prevention practice is a process improvement addressing a production/quality problem"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.2.c.2",
+     "dwa": "Test products for functionality or quality.",
+     "task": "Test selected products at specified stages in the production process for performance characteristics or adherence to specifications.",
+     "cells": {
+      "ENGR 61A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 61A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Design and interpret testing processes",
+         "basis": "designing/interpreting tests directly evidences testing products for performance characteristics"
+        },
+        {
+         "course": "ENGR 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "Running and interpreting tests",
+         "basis": "running and interpreting tests on wafers/devices evidences testing products for functionality"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.1.a.4",
+     "dwa": "Explain engineering drawings, specifications, or other technical information.",
+     "task": "Create or interpret engineering drawings, schematic diagrams, formulas, or blueprints for management or engineering staff.",
+     "cells": {
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "read and interpret diagrams for mechanical, gas, and electrical systems",
+         "basis": "reading/interpreting technical diagrams literally evidences explaining engineering drawings"
+        },
+        {
+         "course": "ENGR 101A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "students will be able to read and interpret diagrams for mechanical, gas, and electrical systems",
+         "basis": "literal interpretation of technical diagrams for engineering information"
+        },
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify symbols and connections for components using diagrams",
+         "basis": "interpreting schematic diagram symbols for technical communication"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.2.o.1",
+     "dwa": "Prepare drawings or diagrams of products or services.",
+     "task": "Create or interpret engineering drawings, schematic diagrams, formulas, or blueprints for management or engineering staff.",
+     "cells": {
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify symbols and connections for components using diagrams",
+         "basis": "working with circuit diagrams and symbols is directly constitutive of interpreting/preparing schematic diagrams"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.a.1.g.5",
+     "dwa": "Assess product or process usefulness.",
+     "task": "Compile and evaluate statistical data to determine and maintain quality and reliability of products.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.4.b.6.e.9",
+     "dwa": "Recommend technical design or process changes to improve efficiency, quality, or performance.",
+     "task": "Recommend corrective or preventive actions to assure or improve product quality or reliability.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.1.a.2.k.6",
+     "dwa": "Monitor processes for compliance with standards.",
+     "task": "Read worker logs, product processing sheets, or specification sheets to verify that records adhere to quality assurance specifications. · Evaluate industrial operations for compliance with permits or regulations related to the generation, storage, treatment, transportation, or disposal of hazardous materials or waste.",
+     "cells": {
+      "ENGR 61A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ENGR 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "Reporting when things are not working",
+         "basis": "monitoring and reporting equipment/process status evidences monitoring compliance with quality standards"
+        }
+       ]
+      },
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Follow procedures for reporting issues",
+         "basis": "monitoring processes and reporting deviations against standards"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.1.d.3",
+     "dwa": "Determine operational methods.",
+     "task": "Select material quantities or processing methods needed to achieve efficient production.",
+     "cells": {
+      "ENGR 61A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ENGR 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "Moving wafers",
+         "basis": "selecting the wafer-moving method (tweezers vs. vacuum wand) is determining an operational method for production"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.2.b.9",
+     "dwa": "Inspect operational processes.",
+     "task": "Verify that equipment is being operated and maintained according to quality assurance standards by observing worker performance.",
+     "cells": {
+      "ENGR 61A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 61A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Troubleshoot issues",
+         "basis": "troubleshooting equipment/process issues evidences verifying equipment is operated per quality standards"
+        }
+       ]
+      },
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Troubleshoot electro-mechanical systems",
+         "basis": "inspecting operational processes to identify faults constitutes process inspection"
+        },
+        {
+         "course": "ENGR 101A",
+         "section": "content",
+         "level": 1,
+         "quote": "Troubleshooting",
+         "basis": "diagnosing equipment/process operation aligns with inspecting operational processes"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.1.j.2",
+     "dwa": "Select project materials.",
+     "task": "Select material quantities or processing methods needed to achieve efficient production. · Select cleaning materials, tools, or equipment.",
+     "cells": {
+      "ENGR 61A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ENGR 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "Using tweezers",
+         "basis": "selecting handling tools (tweezers vs. vacuum wands) for wafer processing evidences selecting tools/equipment"
+        },
+        {
+         "course": "ENGR 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "Vacuum wands",
+         "basis": "selecting appropriate wafer handling tool evidences selecting tools/equipment for the task"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.2.b.15",
+     "dwa": "Monitor the productivity or efficiency of industrial operations.",
+     "task": "Monitor and adjust production processes or equipment for quality and productivity.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.b.2.d.3",
+     "dwa": "Create physical models or prototypes.",
+     "task": "Assist engineers in developing, building, or testing prototypes or new products, processes, or procedures.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.2.b.2.o.21",
+     "dwa": "Create graphical representations of industrial production systems.",
+     "task": "Prepare layouts, drawings, or sketches of machinery or equipment, such as shop tooling, scale layouts, or new equipment design, using drafting equipment or computer-aided design (CAD) software.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.1.a.1.t.7",
+     "dwa": "Research human performance or health factors related to engineering or design activities.",
+     "task": "Study time, motion, methods, or speed involved in maintenance, production, or other operations to establish standard production rate or improve efficiency.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.4.b.3.d.2",
+     "dwa": "Train personnel on proper operational procedures.",
+     "task": "Provide advice or training to other technicians.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.2.a.4.e.8",
+     "dwa": "Analyze costs and benefits of proposed designs or projects.",
+     "task": "Analyze, estimate, or report production costs. · Conduct statistical studies to analyze or compare production costs for sustainable and nonsustainable designs.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.1.b.3.b.4",
+     "dwa": "Estimate operational costs.",
+     "task": "Analyze, estimate, or report production costs.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.b.6.o.4",
+     "dwa": "Prepare operational reports.",
+     "task": "Prepare production documents, such as standard operating procedures, manufacturing batch records, inventory reports, or productivity reports.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.4.c.3.e.3",
+     "dwa": "Purchase materials, equipment, or other resources.",
+     "task": "Coordinate equipment purchases, installations, or transfers.",
+     "cells": {}
+    }
+   ],
+   "dropped": [
+    {
+     "activity": 12,
+     "course": "ENGR 61A",
+     "section": "objectives",
+     "quote": "Understand contamination and how to prevent it",
+     "basis": "monitoring for contamination is a compliance-relevant check against clean-room quality standards",
+     "why": "adjudicated: b) understanding contamination and prevention is precondition knowledge, not monitoring records/permits for compliance"
+    },
+    {
+     "activity": 14,
+     "course": "ENGR 61A",
+     "section": "content",
+     "quote": "Practice isolating issues",
+     "basis": "practicing isolation of process issues evidences inspecting operational processes for correct operation",
+     "why": "adjudicated: d) practicing isolating issues evidences troubleshooting/inspecting equipment operation, not observing worker performance against QA standards"
+    },
+    {
+     "activity": 20,
+     "course": "ENGR 101A",
+     "section": "objectives",
+     "quote": "Identify contact person for various issues",
+     "basis": "identifying escalation contacts supports the training/advising scope for operational procedures",
+     "why": "adjudicated: c) identifying a contact person is a generic administrative skill, not training others on procedures"
+    },
+    {
+     "activity": 20,
+     "course": "ENGR 61A",
+     "section": "content",
+     "quote": "Practice isolating issues",
+     "basis": "incidental; excluded on review",
+     "why": "adjudicated: d) practicing isolating issues evidences troubleshooting/inspection, not training other personnel"
+    },
+    {
+     "activity": 20,
+     "course": "ENGR 101A",
+     "section": "objectives",
+     "quote": "Communicate effectively in various clean room scenarios",
+     "basis": "borderline; excluded as general communication, not specific technical training of personnel",
+     "why": "adjudicated: c) communicating effectively in clean room scenarios is a generic communication skill, not technical training of personnel on procedures"
+    }
+   ],
+   "source_note": "Read from Foothill College's course outlines of record (courseleaf); sections present: slo, objective, description, content outline.",
+   "role": "",
+   "short_title": "Semiconductor Processing"
+  },
+  {
+   "college": "Foothill College",
+   "member_id": "foothill",
+   "certificate": "Certificate of Achievement, Semiconductor Processing Technician",
+   "kind": "credit",
+   "top6": "094500",
+   "top_name": "Industrial Systems Technology and Maintenance",
+   "paired_soc": "17-3024",
+   "occupation": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+   "crosswalk_socs": [],
+   "pairing_basis": "",
+   "courses": [
+    {
+     "code": "MATH 40A",
+     "title": "Quantitative Reasoning",
+     "units": 5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/MATH-40A/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000632280",
+      "status": "Active",
+      "last_updated": "2024-10-04",
+      "outline_date": "2025-06-01",
+      "verdict": "outline-newer"
+     }
+    },
+    {
+     "code": "MATH 240A",
+     "title": "Just-in-Time Support for MATH 40A",
+     "units": 2.5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/MATH-240A/",
+     "system": "courseleaf",
+     "effective": "Summer 2024",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000632281",
+      "status": "Active",
+      "last_updated": "2023-02-28",
+      "outline_date": "2024-06-01",
+      "verdict": "outline-newer"
+     }
+    },
+    {
+     "code": "ENGR 61A",
+     "title": "Introduction to Semiconductor Technology",
+     "units": 5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/ENGR-61A/",
+     "system": "courseleaf",
+     "effective": "Winter 2024",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000640216",
+      "status": "Active",
+      "last_updated": "2023-11-13",
+      "outline_date": "2024-01-01",
+      "verdict": "outline-newer"
+     }
+    },
+    {
+     "code": "ENGR 101A",
+     "title": "Advanced Manufacturing",
+     "units": 5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/ENGR-101A/",
+     "system": "courseleaf",
+     "effective": "Spring 2026",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000640217",
+      "status": "Active",
+      "last_updated": "2024-02-13",
+      "outline_date": "2026-03-01",
+      "verdict": "outline-newer"
+     }
+    }
+   ],
+   "program_outcomes": [],
+   "rows": [
+    {
+     "dwa_id": "4.A.3.b.2.e.1",
+     "dwa": "Design electromechanical equipment or systems.",
+     "task": "Develop, test, or program new robots. · Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.1.b.2.l.2",
+     "dwa": "Test performance of electrical, electronic, mechanical, or integrated systems or equipment.",
+     "task": "Develop, test, or program new robots. · Test performance of electromechanical assemblies, using test instruments such as oscilloscopes, electronic voltmeters, or bridges. · Select and use laboratory, operational, or diagnostic techniques or test equipment to assess electromechanical circuits, equipment, processes, systems, or subsystems. · Operate, test, or maintain robotic equipment used for green production applications, such as waste-to-energy conversion systems, minimization of material waste, or replacement of human operators in dangerous work environments.",
+     "cells": {
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Use basic measurement tools and methods for voltage, current, and resistance measurements",
+         "basis": "objective literally states using test instruments to assess electrical circuits"
+        }
+       ]
+      },
+      "ENGR 61A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 61A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Design and interpret testing processes",
+         "basis": "objective literally states designing and interpreting tests, matching diagnostic technique selection"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.2.b.1",
+     "dwa": "Develop software or computer applications.",
+     "task": "Install or program computer hardware or machine or instrumentation software in microprocessor-based systems.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.1.a.1.b.8",
+     "dwa": "Review technical documents to plan work.",
+     "task": "Read blueprints, schematics, diagrams, or technical orders to determine methods and sequences of assembly.",
+     "cells": {
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "read and interpret diagrams for mechanical, gas, and electrical systems",
+         "basis": "SLO literally states reading technical diagrams to determine methods/sequences"
+        },
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify steps in a procedure from diagrams",
+         "basis": "objective literally states determining sequence of steps from technical diagrams"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.5.a.18",
+     "dwa": "Maintain electromechanical equipment.",
+     "task": "Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning. · Repair, rework, or calibrate hydraulic or pneumatic assemblies or systems to meet operational specifications or tolerances. · Operate, test, or maintain robotic equipment used for green production applications, such as waste-to-energy conversion systems, minimization of material waste, or replacement of human operators in dangerous work environments.",
+     "cells": {
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Troubleshoot electro-mechanical systems",
+         "basis": "objective literally states diagnosing/repairing electro-mechanical systems"
+        },
+        {
+         "course": "ENGR 101A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "describe manufacturing concerns and troubleshooting procedures",
+         "basis": "troubleshooting procedures in a manufacturing context evidence maintenance activity"
+        }
+       ]
+      },
+      "ENGR 61A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 61A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "students will be able to describe the principles of troubleshooting",
+         "basis": "troubleshooting maintenance-related issues in equipment is a direct component of maintaining electromechanical equipment"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.5.c.4",
+     "dwa": "Maintain electronic equipment.",
+     "task": "Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning.",
+     "cells": {
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "describe elements and basic troubleshooting of circuits",
+         "basis": "SLO literally states diagnosing/maintaining electronic circuits"
+        },
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Troubleshoot electro-mechanical systems",
+         "basis": "objective literally states diagnosing electronic system malfunctions"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.2.f.8",
+     "dwa": "Inspect finished products to locate flaws.",
+     "task": "Inspect parts for surface defects. · Verify part dimensions or clearances to ensure conformance to specifications, using precision measuring instruments.",
+     "cells": {
+      "ENGR 61A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ENGR 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "Measurements and interpretation",
+         "basis": "interpreting measurement results to assess part conformance evidences inspecting for flaws via precision measurement"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.t.5",
+     "dwa": "Install instrumentation or electronic equipment or systems.",
+     "task": "Install electrical or electronic parts and hardware in housings or assemblies, using soldering equipment and hand tools.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.a.2.d.2",
+     "dwa": "Assemble equipment or components.",
+     "task": "Fabricate or assemble mechanical, electrical, or electronic components or assemblies. · Align, fit, or assemble component parts, using hand or power tools, fixtures, templates, or microscopes.",
+     "cells": {
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Perform wiring of control circuits working from diagrams",
+         "basis": "objective literally states assembling electrical components/circuits from diagrams"
+        }
+       ]
+      },
+      "ENGR 61A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 61A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate different wafer handing methods",
+         "basis": "hands-on wafer handling using tools like tweezers and vacuum wands evidences assembling/handling components with hand tools"
+        },
+        {
+         "course": "ENGR 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "Using tweezers",
+         "basis": "manipulating wafers with tweezers as a hand tool evidences aligning/fitting component parts using hand tools"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.aa.1",
+     "dwa": "Fabricate devices or components.",
+     "task": "Fabricate or assemble mechanical, electrical, or electronic components or assemblies.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.2.b.2.o.8",
+     "dwa": "Create schematic drawings for electronics.",
+     "task": "Produce electrical, electronic, or mechanical drawings or other related documents or graphics necessary for electromechanical design, using computer-aided design (CAD) software.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.2.b.1.j.2",
+     "dwa": "Select project materials.",
+     "task": "Select electromechanical equipment, materials, components, or systems to meet functional specifications.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.b.2.f.14",
+     "dwa": "Develop technical methods or processes.",
+     "task": "Establish and maintain inventory, records, or documentation systems.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.b.6.h.21",
+     "dwa": "Maintain operational records or records systems.",
+     "task": "Establish and maintain inventory, records, or documentation systems.",
+     "cells": {}
+    }
+   ],
+   "dropped": [
+    {
+     "activity": 5,
+     "course": "ENGR 101A",
+     "section": "content",
+     "quote": "Vacuum pumps",
+     "basis": "content covers vacuum hardware maintenance consistent with repair/calibration of vacuum systems",
+     "why": "adjudicated: a: 'Vacuum pumps' is a topic heading naming equipment with no stated maintain/repair/calibrate action"
+    },
+    {
+     "activity": 2,
+     "course": "ENGR 61A",
+     "section": "content",
+     "quote": "Measurement tools",
+     "basis": "content covers using measurement instruments to assess semiconductor processes/equipment",
+     "why": "adjudicated: a: 'Measurement tools' alone is a topic heading with no stated testing/assessment action"
+    },
+    {
+     "activity": 5,
+     "course": "ENGR 61A",
+     "section": "content",
+     "quote": "Reporting when things are not working",
+     "basis": "identifying malfunctioning equipment for repair is a constitutive step of maintaining electromechanical equipment",
+     "why": "adjudicated: a: 'Reporting when things are not working' is reporting a condition, not modifying/maintaining/repairing equipment"
+    },
+    {
+     "activity": 7,
+     "course": "ENGR 61A",
+     "section": "content",
+     "quote": "Wafer breakage",
+     "basis": "recognizing wafer breakage as a defect condition evidences inspecting finished products for flaws",
+     "why": "adjudicated: a: 'Wafer breakage' is a topic heading with no stated inspection or measurement action"
+    },
+    {
+     "activity": 6,
+     "course": "ENGR 101A",
+     "section": "objectives",
+     "quote": "Explain electrical safety concerns for working with electrical systems",
+     "basis": "supporting quote only; primary evidence is troubleshooting circuits objective/outcome",
+     "why": "adjudicated: b: electrical safety concerns precede the maintain/repair activity rather than evidencing it"
+    },
+    {
+     "activity": 3,
+     "course": "ENGR 101A",
+     "section": "objectives",
+     "quote": "Explain the basic operating principals of programmable logic controllers",
+     "basis": "PLC programming knowledge underlies installing/programming instrumentation software in microprocessor-based systems",
+     "why": "adjudicated: b: explaining basic operating principles of PLCs precedes actually installing/programming instrumentation software"
+    }
+   ],
+   "source_note": "Read from Foothill College's course outlines of record (courseleaf); sections present: slo, objective, description, content outline.",
+   "role": "",
+   "short_title": "Semiconductor Processing"
+  },
+  {
+   "college": "Foothill College",
+   "member_id": "foothill",
+   "certificate": "Certificate of Achievement, Semiconductor Processing Technician",
+   "kind": "credit",
+   "top6": "094500",
+   "top_name": "Industrial Systems Technology and Maintenance",
+   "paired_soc": "49-9041",
+   "occupation": "Industrial Machinery Mechanics",
+   "crosswalk_socs": [],
+   "pairing_basis": "",
+   "courses": [
+    {
+     "code": "MATH 40A",
+     "title": "Quantitative Reasoning",
+     "units": 5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/MATH-40A/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "MATH 240A",
+     "title": "Just-in-Time Support for MATH 40A",
+     "units": 2.5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/MATH-240A/",
+     "system": "courseleaf",
+     "effective": "Summer 2024",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "ENGR 61A",
+     "title": "Introduction to Semiconductor Technology",
+     "units": 5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/ENGR-61A/",
+     "system": "courseleaf",
+     "effective": "Winter 2024",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "ENGR 101A",
+     "title": "Advanced Manufacturing",
+     "units": 5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/ENGR-101A/",
+     "system": "courseleaf",
+     "effective": "Spring 2026",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    }
+   ],
+   "program_outcomes": [],
+   "rows": [
+    {
+     "dwa_id": "4.A.3.b.5.a.16",
+     "dwa": "Maintain work equipment or machinery.",
+     "task": "Repair or maintain the operating condition of industrial production or processing machinery or equipment.",
+     "cells": {
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Troubleshoot electro-mechanical systems",
+         "basis": "troubleshooting electro-mechanical production equipment to keep it operating is maintaining work equipment"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.4.c.5",
+     "dwa": "Repair worn, damaged, or defective mechanical parts.",
+     "task": "Repair or replace broken or malfunctioning components of machinery or equipment.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.b.4.c.3",
+     "dwa": "Replace worn, damaged, or defective mechanical parts.",
+     "task": "Repair or replace broken or malfunctioning components of machinery or equipment.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.a.2.i.5",
+     "dwa": "Adjust equipment to ensure optimal performance.",
+     "task": "Clean, lubricate, or adjust parts, equipment, or machinery.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.a.1.c.16",
+     "dwa": "Clean equipment, parts, or tools to repair or maintain them in good working order.",
+     "task": "Clean, lubricate, or adjust parts, equipment, or machinery.",
+     "cells": {
+      "ENGR 61A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ENGR 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "Leaving tools in proper state",
+         "basis": "returning tools/equipment to proper working state implies cleaning/maintaining them after use"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.5.a.7",
+     "dwa": "Lubricate equipment to allow proper functioning.",
+     "task": "Clean, lubricate, or adjust parts, equipment, or machinery.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.a.2.s.2",
+     "dwa": "Disassemble equipment for maintenance or repair.",
+     "task": "Disassemble machinery or equipment to remove parts and make repairs.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.a.2.d.3",
+     "dwa": "Reassemble equipment after repair.",
+     "task": "Reassemble equipment after completion of inspections, testing, or repairs.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.1.b.2.g.20",
+     "dwa": "Inspect mechanical equipment to locate damage, defects, or wear.",
+     "task": "Examine parts for defects, such as breakage or excessive wear.",
+     "cells": {
+      "ENGR 61A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ENGR 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "Wafer breakage",
+         "basis": "identifying wafer breakage requires inspecting for damage/defects, a component activity of equipment inspection in this setting"
+        }
+       ]
+      },
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Understand the importance of leak detection",
+         "basis": "leak detection on vacuum equipment is inspecting mechanical equipment to locate defects"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.6.h.24",
+     "dwa": "Maintain repair or maintenance records.",
+     "task": "Record repairs and maintenance performed.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.1.b.2.l.5",
+     "dwa": "Test mechanical equipment to ensure proper functioning.",
+     "task": "Operate newly repaired machinery or equipment to verify the adequacy of repairs. · Observe and test the operation of machinery or equipment to diagnose malfunctions, using voltmeters or other testing devices.",
+     "cells": {
+      "ENGR 61A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 61A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "describe the principles of troubleshooting",
+         "basis": "troubleshooting equipment directly evidences testing equipment to diagnose malfunctions"
+        },
+        {
+         "course": "ENGR 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "Running and interpreting tests",
+         "basis": "running and interpreting tests on equipment evidences testing mechanical equipment for proper function"
+        }
+       ]
+      },
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate ability to read vacuum gauges and different types of gauges",
+         "basis": "reading gauges to check system operation is testing equipment to ensure proper functioning"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.c.3.e.1",
+     "dwa": "Order materials, supplies, or equipment.",
+     "task": "Record parts or materials used and order or requisition new parts or materials, as necessary.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.b.6.h.13",
+     "dwa": "Record information about parts, materials or repair procedures.",
+     "task": "Record parts or materials used and order or requisition new parts or materials, as necessary.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.1.a.2.a.6",
+     "dwa": "Observe equipment in operation to detect potential problems.",
+     "task": "Observe and test the operation of machinery or equipment to diagnose malfunctions, using voltmeters or other testing devices.",
+     "cells": {
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate the use of various sensors to monitor clean room processes",
+         "basis": "monitoring processes with sensors evidences observing equipment in operation to detect potential problems"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.a.4.l.5",
+     "dwa": "Analyze test or performance data to assess equipment operation.",
+     "task": "Analyze test results, machine error messages, or information obtained from operators to diagnose equipment problems.",
+     "cells": {
+      "ENGR 61A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "Measurements and interpretation",
+         "basis": "interpreting measurement data from equipment tests evidences analyzing performance data to assess equipment operation"
+        },
+        {
+         "course": "ENGR 61A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Design and interpret testing processes",
+         "basis": "analyzing test/performance data to assess equipment or process operation"
+        }
+       ]
+      },
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "describe elements and basic troubleshooting of circuits",
+         "basis": "troubleshooting circuits requires analyzing test/error information to diagnose equipment problems"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.1.b.14",
+     "dwa": "Interpret blueprints, specifications, or diagrams to inform installation, development or operation activities.",
+     "task": "Study blueprints or manufacturers' manuals to determine correct installation or operation of machinery.",
+     "cells": {
+      "ENGR 101A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGR 101A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "read and interpret diagrams for mechanical, gas, and electrical systems",
+         "basis": "literal match to interpreting diagrams to inform installation/operation of machinery"
+        },
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify symbols and connections for components using diagrams",
+         "basis": "reading diagram symbols/connections directly evidences interpreting diagrams for equipment operation"
+        },
+        {
+         "course": "ENGR 101A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Perform wiring of control circuits working from diagrams",
+         "basis": "wiring circuits from diagrams evidences interpreting diagrams to inform installation activities"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.l.3",
+     "dwa": "Cut materials according to specifications or needs.",
+     "task": "Cut and weld metal to repair broken metal parts, fabricate new parts, or assemble new equipment.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.a.2.ai.5",
+     "dwa": "Operate welding equipment.",
+     "task": "Cut and weld metal to repair broken metal parts, fabricate new parts, or assemble new equipment.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.b.1.f.10",
+     "dwa": "Enter codes or other information into computers.",
+     "task": "Enter codes and instructions to program computer-controlled machinery.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.4.b.3.d.3",
+     "dwa": "Train others in operational procedures.",
+     "task": "Demonstrate equipment functions and features to machine operators.",
+     "cells": {}
+    }
+   ],
+   "dropped": [
+    {
+     "activity": 14,
+     "course": "ENGR 61A",
+     "section": "content",
+     "quote": "Reporting when things are not working",
+     "basis": "reporting non-working equipment requires observing equipment in operation to detect problems",
+     "why": "adjudicated: b) precondition: reporting a non-working state presupposes prior observation but does not itself state the observing/testing activity"
+    },
+    {
+     "activity": 14,
+     "course": "ENGR 61A",
+     "section": "content",
+     "quote": "Reporting when things are not working",
+     "basis": "observing equipment status to detect problems before they escalate",
+     "why": "adjudicated: b) precondition: reporting non-working equipment presupposes but does not itself state observing/testing the equipment"
+    },
+    {
+     "activity": 4,
+     "course": "ENGR 101A",
+     "section": "objectives",
+     "quote": "Troubleshoot electro-mechanical systems",
+     "basis": "diagnosing and correcting faults in electro-mechanical systems is adjusting equipment for optimal performance",
+     "why": "adjudicated: d) different activity: troubleshooting to diagnose faults evidences testing/diagnosing equipment, not adjusting parts for performance"
+    },
+    {
+     "activity": 19,
+     "course": "ENGR 101A",
+     "section": "objectives",
+     "quote": "Explain the basic operating principals of programmable logic controllers",
+     "basis": "understanding PLC operation is foundational to entering codes/instructions into computer-controlled machinery",
+     "why": "adjudicated: b) precondition: explaining PLC operating principles is knowledge preceding the activity of entering codes/instructions into machinery"
+    }
+   ],
+   "source_note": "Read from Foothill College's course outlines of record (courseleaf); sections present: slo, objective, description, content outline.",
+   "role": "",
+   "short_title": "Semiconductor Processing"
+  }
+ ]
+}

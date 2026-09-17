@@ -1,0 +1,98 @@
+{
+  "college": "Mission College",
+  "college_key": "mission",
+  "member_id": "mission",
+  "certificate": "Certificate of Achievement, Mechatronic Technology",
+  "short_title": "Mechatronic Technology",
+  "kind": "credit",
+  "control_number": "40796",
+  "award": "Certificate of Achievement requiring 16S/24Q to fewer than 30S/45Q units",
+  "status": "Approved",
+  "top6": "093500",
+  "top_name": "Electro-Mechanical Technology",
+  "source": {
+    "system": "elumen",
+    "host": "mission.elumenapp.com",
+    "org_entity_id": 200
+  },
+  "course_sources": {
+    "EGR 025": {
+      "system": "elumen",
+      "host": "mission.elumenapp.com",
+      "org_entity_id": 71
+    },
+    "WRK 300MT": {
+      "system": "elumen",
+      "host": "mission.elumenapp.com",
+      "org_entity_id": 138
+    }
+  },
+  "program_description": "The Mechatronic Technology program at Mission College prepares students for high-demand careers in industrial automation. Combining electrical, mechanical, software, and computer engineering, this multidisciplinary program offers hands-on training in the latest technologies. Mechatronic technology is an interdisciplinary field that combines the study of mechanics, electronics, automation, and computers. Depending on the course track selected, students gain specialized technical skills in electrical, electronic and/or mechanical industry environment.",
+  "program_outcomes": [
+    "Analyze and Integrate electrical, electronic, and mechanical systems and devices.",
+    "Demonstrate written and verbal communication skills through technical documentation and oral presentations.",
+    "Troubleshoot and repair electrical, electronic, and mechanical systems and devices."
+  ],
+  "courses": [
+    {
+      "code": "MTT 010",
+      "title": "Introduction to Technology and Careers",
+      "units": 2
+    },
+    {
+      "code": "MTT 012",
+      "title": "Electronic Systems Measurement and Troubleshooting",
+      "units": 2
+    },
+    {
+      "code": "EGR 025",
+      "title": "Engineering Graphics and Design",
+      "units": 4
+    },
+    {
+      "code": "MTT 020",
+      "title": "Programmable Logic Controller (PLC) Process Control Systems",
+      "units": 2
+    },
+    {
+      "code": "MTT 022",
+      "title": "Programmable Logic Controller (PLC) and Robotic System Components",
+      "units": 2
+    },
+    {
+      "code": "MTT 030",
+      "title": "Electrical Motors and Control Systems",
+      "units": 2
+    },
+    {
+      "code": "MTT 032",
+      "title": "Microcontroller Systems",
+      "units": 2
+    },
+    {
+      "code": "MTT 034",
+      "title": "Fluid Power Systems",
+      "units": 2
+    },
+    {
+      "code": "MTT 040",
+      "title": "Analog Circuits and Semiconductor Devices",
+      "units": 2
+    },
+    {
+      "code": "MTT 042",
+      "title": "Digital Logic Systems",
+      "units": 2
+    },
+    {
+      "code": "MTT 050",
+      "title": "Digital Manufacturing",
+      "units": 2
+    },
+    {
+      "code": "WRK 300MT",
+      "title": "Occupational Work Experience for Mechatronic Technology",
+      "units": 2
+    }
+  ]
+}

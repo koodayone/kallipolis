@@ -1,0 +1,159 @@
+# Curriculum alignment review — evc-advanced-manufacturing-level-i
+Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of Labor
+
+## Evergreen Valley College — Certificate of Achievement, Advanced Manufacturing Level 1 → Industrial Engineering Technologists and Technicians (SOC 17-3026)
+8 of 24 activities at outcome level, 21 with any evidence.
+
+- ● **Monitor activities affecting environmental quality.**
+    - MFGT 101 [Content outline]: “Safety and Hazardous Waste” — content covers regulatory health/safety/environmental compliance topics including MSDS and legal requirements
+    - MFGT 101 [Lab content]: “Identify Methods to Achieve ISO Safety Standards” — lab has students identify methods to comply with safety standards
+    - MFGT 201 [Lab content]: “Utilize Service Information: Industry Standards, Procedures, and Regulations” — students follow applicable industry standards and regulations during lab work, evidencing compliance activity
+    - MFGT 201 [SLO]: “Demonstrate proper practice safety procedures and identification of electrical hazards.” — SLO literally has students identify hazards and apply safety procedures relevant to health/safety compliance
+    - MFGT 202 [Lab content]: “Demonstrate Safety Practices, Equipment Usage, and Proper Data Gathering and Storage Within the Laboratory” — lab requires adherence to health/safety procedures in a technical lab setting
+- ● **Calibrate scientific or technical equipment.**
+    - MFGT 203 [Lab content]: “Measure the Length of Similar Devices Using a Micrometer or Vernier Caliper” — lab uses calipers to take precision measurements, a calibration-adjacent skill using listed tools
+    - MFGT 203 [Lab content]: “Measure the Length of Similar Devices Using a Micrometer or Vernier Caliper and Graph the Measurements” — students calibrate/use precision measurement tools such as micrometers and calipers
+    - MFGT 201 [Lab content]: “Set Up Test Measurement Equipment to Verify Ohm's Law, Kirchhoff’s Voltage Law, Kirchhoff’s Current Law” — students set up and calibrate test measurement equipment to obtain accurate readings, matching calibration of technical equipment
+    - MFGT 201 [SLO]: “Demonstrate the use of specialized test equipment to obtain measurements and generate data from electronic circuits and systems.” — SLO has students use and set up specialized measurement/test equipment, directly constitutive of calibrating technical equipment
+    - MFGT 202 [Lab content]: “Mechanical Testing #1: Plastic Deformation Identification and Testing” — mechanical testing lab requires use of calibrated instruments to assess material properties
+- ○ **Direct industrial production activities.**
+    - MFGT 203 [Lab content]: “Set Up and Monitor a Process with Control Chart to Determine If the Process is in Control” — setting up and monitoring a production process directly constitutes overseeing production
+- · **Design industrial equipment.**
+- ○ **Develop technical methods or processes.**
+    - MFGT 203 [Lab content]: “Choose a Corrective Action, and Document the Process” — lab develops a process to address a production/quality problem via root cause and corrective action
+    - MFGT 203 [Lab content]: “Problem Solving: Given a Problem or Defect, Identify Possible Causes, Fishbone Those Causes, Figure Out How to Eliminate and Test the Various Causes to Identify the Root Cause. Choose a Corrective Action, and Document the Process.” — developing a method to address a production/quality problem and document a corrective process
+    - MFGT 101 [Lab content]: “Analyze a Manufacturer’s Assembly Instructions for Process Improvement” — students develop/implement process improvements to production methods
+- ○ **Implement design or process improvements.**
+    - MFGT 203 [Lab content]: “Figure Out How to Eliminate and Test the Various Causes to Identify the Root Cause. Choose a Corrective Action” — lab implements a process improvement addressing an identified quality problem
+    - MFGT 203 [Lab content]: “Choose a Corrective Action, and Document the Process.” — implementing a chosen corrective action to fix a quality problem is a process improvement
+    - MFGT 101 [Lab content]: “Analyze a Manufacturer’s Assembly Instructions for Process Improvement” — lab has students identify and implement process improvements to assembly procedures
+    - MFGT 101 [Lab content]: “Problem Solving: Find Alternatives to an Assembly Failure” — students implement a process improvement to fix an assembly failure
+- ● **Test products for functionality or quality.**
+    - MFGT 103 [SLO]: “Demonstrate two techniques for testing assembled product.” — SLO states literally that students test assembled products for functionality
+    - MFGT 103 [Lab content]: “Inspect and Test Finished Circuit Boards Per Industry and International Standards such as ISO, IEC, IPC, or MILSPEC” — testing finished circuit boards at a production stage evidences testing products for functionality
+    - MFGT 201 [SLO]: “Demonstrate competence in building, servicing, and testing circuits using passive devices” — SLO states literally that students test circuits for functionality
+    - MFGT 201 [SLO]: “Demonstrate competence in building, servicing, and testing circuits using passive devices utilizing safe and industry standard practices” — SLO literally has students test circuits for performance against standards, matching testing products for functionality
+    - MFGT 201 [Lab content]: “Build and Test Simple DC Circuits Using Switches, LEDs, Capacitors, Inductors, and Resistors” — lab has students test built circuits for functional performance characteristics
+    - MFGT 101 [Lab content]: “Perform Testing on Assembled Product” — students literally test an assembled product, matching testing products for quality
+    - MFGT 202 [SLO]: “Perform three different material application processes (including material selection, application fabrication techniques, relevant testing that could be performed, and necessary characterization technique based on the application).” — students perform testing of materials against application specifications
+    - MFGT 202 [Lab content]: “Mechanical Testing #2: Fracture Identification and Testing” — lab has students test material specimens for performance characteristics
+    - MFGT 203 [Lab content]: “Apply Two Adhesives Using Two Different Curing Conditions and Analyze the Bond Quality” — testing product samples under process conditions for quality characteristics
+- ● **Explain engineering drawings, specifications, or other technical information.**
+    - MFGT 103 [SLO]: “Demonstrate how to read and interpret mechanical drawings, prints.” — SLO states literally that students interpret engineering drawings
+- ○ **Prepare drawings or diagrams of products or services.**
+    - MFGT 103 [Content outline]: “Learn How to Read and Interpret Mechanical Drawings” — content on drawings/projections/dimensions covers preparing and reading engineering drawings
+- ● **Assess product or process usefulness.**
+    - MFGT 203 [SLO]: “Collect, analyze, interpret, and present numerical data to make effective decisions.” — SLO states literally that students compile and evaluate statistical data to assess product/process quality
+    - MFGT 203 [Lab content]: “Develop and Analyze Reliability Plots and Graphs” — evaluating statistical reliability data to assess product usefulness
+- ○ **Recommend technical design or process changes to improve efficiency, quality, or performance.**
+    - MFGT 203 [Lab content]: “Choose a Corrective Action, and Document the Process” — lab has students recommend a corrective action to improve product/process quality
+- ● **Monitor processes for compliance with standards.**
+    - MFGT 203 [SLO]: “Read and interpret process control charts.” — SLO states literally that students read control records to verify process adherence to quality specifications
+    - MFGT 103 [Lab content]: “Inspect Solder Joint Quality Per IPC 610” — inspecting joints against an industry standard evidences monitoring processes for compliance with standards
+    - MFGT 103 [Lab content]: “Inspect and Test Finished Circuit Boards Per Industry and International Standards such as ISO, IEC, IPC, or MILSPEC” — testing product against named industry/international standards evidences monitoring compliance with standards
+- ● **Determine operational methods.**
+    - MFGT 103 [Lab content]: “Join Various Materials Using Welding, Soldering, Staking, or Weaving Techniques” — selecting among alternative joining methods for a task evidences determining operational methods
+    - MFGT 202 [SLO]: “Identify three criteria that are important in the materials selection process.” — identifying materials selection criteria evidences determining operational methods via material selection
+- ○ **Inspect operational processes.**
+    - MFGT 203 [Lab content]: “Set Up and Monitor a Process with Control Chart to Determine If the Process is in Control” — lab inspects an operational process against quality assurance standards
+- ● **Select project materials.**
+    - MFGT 202 [SLO]: “Identify three criteria that are important in the materials selection process.” — SLO states literally that students select materials for an application
+    - MFGT 103 [Lab content]: “Assemble Products Using Plastics, Metals, and Ceramics” — choosing among materials to assemble products evidences selecting project materials
+- ○ **Monitor the productivity or efficiency of industrial operations.**
+    - MFGT 203 [Lab content]: “Set Up and Monitor a Process with Control Chart to Determine If the Process is in Control” — monitoring production process control directly evidences monitoring productivity/efficiency
+- ○ **Create physical models or prototypes.**
+    - MFGT 101 [Lab content]: “Follow a Manufacturing Instruction to Assemble a Product (e.g. IKEA product)” — lab has students physically build a product model/prototype
+    - MFGT 203 [Lab content]: “Apply Two Adhesives Using Two Different Curing Conditions and Analyze the Bond Quality” — lab builds and tests physical sample assemblies, akin to prototype testing
+- ○ **Create graphical representations of industrial production systems.**
+    - MFGT 103 [Content outline]: “Blueprints and Drawings” — content covers preparing/interpreting drawings and layouts of assembled equipment/systems
+- ○ **Research human performance or health factors related to engineering or design activities.**
+    - MFGT 101 [Lab content]: “Analyze a Manufacturer’s Assembly Instructions for Process Improvement” — lab studies assembly process methods to identify efficiency improvements, akin to time/motion study
+- · **Train personnel on proper operational procedures.**
+- ○ **Analyze costs and benefits of proposed designs or projects.**
+    - MFGT 203 [Content outline]: “Cost of Quality” — content covers analyzing and reporting costs related to production quality
+    - MFGT 203 [Lab content]: “Perform Cost Analysis Plots and Graphs” — lab conducts statistical cost analysis comparing production costs
+- ○ **Estimate operational costs.**
+    - MFGT 203 [Content outline]: “Definition and Measuring” — content on Cost of Quality covers estimating and reporting production-related costs
+    - MFGT 203 [Content outline]: “Cost of Quality - Definition and Measuring” — measuring and estimating production/quality-related costs
+- ○ **Prepare operational reports.**
+    - MFGT 203 [Lab content]: “Document the Process” — lab has students prepare a documented operational report of the quality process
+    - MFGT 203 [Lab content]: “Choose a Corrective Action, and Document the Process.” — documenting the corrective action process constitutes preparing an operational report
+- · **Purchase materials, equipment, or other resources.**
+
+### Dropped
+
+- act 2 · MFGT 102 · “Solve Practical Mechanical Measurement Problems” — adjudicated: d: solving mechanical measurement calculation problems evidences measurement/computation, a different activity than calibrating equipment with gauges
+- act 3 · MFGT 101 · “Quality Assurance” — adjudicated: a: 'Quality Assurance' as a content heading names a topic without stating oversight/inspection of production
+- act 5 · MFGT 101 · “Total Quality Management” — adjudicated: a: 'Total Quality Management' is a topic heading without a stated program-development activity
+- act 13 · MFGT 102 · “Learn How to Solve Practical Speed and Ratio Problems for Gears and Pulleys” — adjudicated: d: solving speed/ratio problems for gears and pulleys evidences mechanical calculation, not selecting materials/processing methods for production
+- act 16 · MFGT 101 · “Statistical Process Control” — adjudicated: a: 'Statistical Process Control' is a topic heading without stated monitoring of productivity/efficiency
+- act 3 · MFGT 101 · “Quality Assurance” — adjudicated: a: 'Quality Assurance' content heading names a topic without stating oversight/inspection of production processes
+- act 6 · MFGT 101 · “Root Cause Analysis” — adjudicated: a: 'Root Cause Analysis' content heading names a technique without stating implementation of a process improvement
+- act 10 · MFGT 101 · “Statistical Process Control” — adjudicated: a: 'Statistical Process Control' content heading names a topic without stated evaluation of product/process usefulness
+- act 12 · MFGT 101 · “International Organization for Standardization (ISO) 9000” — adjudicated: a: 'ISO 9000' content heading names a standard topic without stated verification of records/logs against specifications
+- act 13 · MFGT 101 · “Production Planning” — adjudicated: a: 'Production Planning' content heading names a topic without stated selection of processing methods
+- act 20 · MFGT 101 · “Develop Site Visit Questionnaire” — adjudicated: c: site visit questionnaire is a generic inquiry activity, not training personnel on operational procedures
+- act 2 · MFGT 102 · “Learn How to Solve Practical Mechanical Measurement Problems” — adjudicated: d: solving mechanical measurement calculation problems evidences computation, not calibrating equipment with the listed tools
+- act 2 · MFGT 102 · “Solve Practical Mechanical Measurement Problems” — adjudicated: d: solving mechanical measurement problems is quantitative practice, a different activity than calibrating equipment
+- act 21 · MFGT 102 · “Learn How to Solve Practical Problems for Cutting and Feeding Equipment” — adjudicated: d: solving speed/feed-rate problems for cutting equipment evidences mechanical calculation, not analyzing production costs
+- act 12 · MFGT 201 · “Apply Test Methods to Troubleshoot, Diagnose, and Identify Faults” — adjudicated: d: troubleshooting/diagnosing faults evidences fault diagnosis, a different activity than verifying records against specifications
+- act 2 · MFGT 202 · “Identify methods used to test and characterize various materials.” — adjudicated: b: identifying testing/characterization methods precedes actually calibrating or using measurement equipment
+- act 10 · MFGT 202 · “Processing/Structure/Properties/Performance Correlations” — adjudicated: a: 'Processing/Structure/Properties/Performance Correlations' is a topic heading without stated statistical evaluation of quality/reliability
+- act 15 · MFGT 202 · “Soldering Techniques” — adjudicated: d: soldering techniques lab evidences a joining/assembly skill, not selecting project materials
+- act 13 · MFGT 203 · “Process Capability Index” — adjudicated: a: 'Process Capability Index' is a topic heading without stated selection of material quantities or processing methods
+
+## Evergreen Valley College — Certificate of Achievement, Advanced Manufacturing Level 1 → Electro-Mechanical and Mechatronics Technologists and Technicians (SOC 17-3024)
+6 of 14 activities at outcome level, 10 with any evidence.
+
+- · **Design electromechanical equipment or systems.**
+- ● **Test performance of electrical, electronic, mechanical, or integrated systems or equipment.**
+    - MFGT 101 [Lab content]: “Perform Testing on Assembled Product” — performing testing on an assembled product is a basic instance of testing performance of assembled equipment
+    - MFGT 103 [SLO]: “Demonstrate two techniques for testing assembled product.” — testing assembled product matches testing performance of electromechanical assemblies/equipment
+    - MFGT 103 [Content outline]: “In-Circuit Functional” — in-circuit functional testing of assembled electronics matches testing performance of electronic/electromechanical assemblies
+    - MFGT 201 [SLO]: “Demonstrate the use of specialized test equipment to obtain measurements and generate data from electronic circuits and systems.” — students select and use diagnostic test equipment to assess electrical circuits, directly matching the task
+    - MFGT 201 [Lab content]: “Use Test Equipment such as Oscilloscopes, Frequency Sources, and Vector Analyzers to Develop Basic Understanding of Voltage Patterns” — students test performance of circuits using oscilloscopes, matching the electromechanical assembly test task
+- · **Develop software or computer applications.**
+- ● **Review technical documents to plan work.**
+    - MFGT 103 [SLO]: “Demonstrate how to read and interpret mechanical drawings, prints.” — literal SLO matches reading blueprints/schematics to determine assembly sequence
+    - MFGT 103 [Content outline]: “Learn How to Read and Interpret Mechanical Drawings” — content covers blueprints, drawings, projections, dimensions used to plan assembly sequence
+- ● **Maintain electromechanical equipment.**
+    - MFGT 201 [SLO]: “Demonstrate competence in building, servicing, and testing circuits using passive devices utilizing safe and industry standard practices and procedures.” — literal SLO evidences maintaining/servicing electrical/electromechanical equipment
+    - MFGT 201 [Lab content]: “Apply and Perform Diagnostic and Repair Procedures to Live DC Circuits” — lab activity of diagnosing/repairing circuits evidences maintaining electromechanical equipment
+    - MFGT 201 [SLO]: “Demonstrate the use of diagnostic information and software (electrical diagrams, board diagrams, diagnostic charts, specifications) in order to perform diagnosis and repair of passive circuits and systems.” — students diagnose and repair circuits, matching repair of electrical components to ensure proper functioning
+- ● **Maintain electronic equipment.**
+    - MFGT 201 [SLO]: “Demonstrate the use of diagnostic information and software (electrical diagrams, board diagrams, diagnostic charts, specifications) in order to perform diagnosis and repair of passive circuits and systems.” — literal SLO evidences diagnosis and repair of electronic equipment
+    - MFGT 201 [Lab content]: “Utilize Best Industry Practices on Electronic Troubleshooting, Fault Detection, and Root Cause Corrective Action (RCCA) Methods and Procedures” — lab activity of troubleshooting/repairing electronic circuits evidences maintaining electronic equipment
+- ○ **Inspect finished products to locate flaws.**
+    - MFGT 103 [Lab content]: “Inspect Solder Joint Quality Per IPC 610” — lab inspection of solder joints for defects evidences inspecting finished products for flaws
+    - MFGT 103 [Lab content]: “Inspect and Test Finished Circuit Boards Per Industry and International Standards such as ISO, IEC, IPC, or MILSPEC” — inspecting finished boards for conformance to standards matches inspecting finished products to locate flaws
+    - MFGT 203 [Lab content]: “Precision Measurement: Measure the Length of Similar Devices Using a Micrometer or Vernier Caliper and Graph the Measurements to Determine the Mean, Average and Standard Deviation” — lab use of precision measuring instruments to verify dimensions evidences flaw/tolerance inspection
+    - MFGT 203 [Lab content]: “Precision Measurement: Measure the Length of Similar Devices Using a Micrometer or Vernier Caliper” — verifying part dimensions with precision measuring instruments matches the inspection task literally
+    - MFGT 202 [Lab content]: “Mechanical Testing #2: Fracture Identification and Testing” — fracture identification in a lab is directly locating flaws in tested parts
+- ○ **Install instrumentation or electronic equipment or systems.**
+    - MFGT 103 [Lab content]: “Perform Various Hand-held Soldering Techniques for Wires and Circuit Components” — lab hand soldering of parts into assemblies evidences installing electronic components
+    - MFGT 103 [Content outline]: “Hand Soldering” — hand soldering of electronic parts into housings/assemblies matches installing electronic equipment using soldering equipment
+    - MFGT 201 [Lab content]: “Practice Wiring, Connector Repair Methods, and Soldering Techniques” — students install electrical parts using soldering equipment and hand tools, matching the task literally
+- ● **Assemble equipment or components.**
+    - MFGT 103 [SLO]: “Demonstrate the ability to assemble and test micro circuits under a microscope.” — literal SLO evidences assembling electronic components
+    - MFGT 103 [Lab content]: “Properly Use Various Screw Drivers, Socket, Wrenches, and Torque Tools” — lab use of hand/power tools for assembly evidences fitting/assembling component parts
+    - MFGT 103 [SLO]: “Demonstrate how to form, cut, bond, solder, laminate, and 3D print various materials when assembling circuit boards, mechanical systems and electrical systems.” — forming/bonding/soldering to assemble mechanical and electrical systems is fabricating/assembling electromechanical components
+    - MFGT 103 [Lab content]: “Assemble Electrical Connectors and Route Wiring” — hands-on assembly of electrical connectors/wiring using tools matches aligning/fitting/assembling components with hand tools
+    - MFGT 101 [Lab content]: “Follow a Manufacturing Instruction to Assemble a Product (e.g. IKEA product)” — assembling a product from instructions is a direct instance of assembling components
+- ○ **Fabricate devices or components.**
+    - MFGT 103 [Lab content]: “Assemble Products Using Either Molding, Stamping, Bending, Casting, Laminating, or 3D Printing” — lab fabrication processes evidence fabricating mechanical/electrical components
+    - MFGT 103 [Lab content]: “Assemble Printed Circuit Boards Using Mechanical or Automated Techniques” — fabricating PCB assemblies matches fabricate/assemble electronic components
+- · **Create schematic drawings for electronics.**
+- ● **Select project materials.**
+    - MFGT 202 [SLO]: “Identify three criteria that are important in the materials selection process.” — literal SLO evidences selecting materials to meet functional specifications
+- · **Develop technical methods or processes.**
+- ○ **Maintain operational records or records systems.**
+    - MFGT 203 [Lab content]: “Problem Solving: Given a Problem or Defect, Identify Possible Causes, Fishbone Those Causes, Figure Out How to Eliminate and Test the Various Causes to Identify the Root Cause. Choose a Corrective Action, and Document the Process.” — lab requirement to document the process evidences maintaining operational records
+
+### Dropped
+
+- act 1 · MFGT 101 · “Robotics” — adjudicated: a) topic-only heading "Robotics" with no performable content stated
+- act 13 · MFGT 203 · “Set Up and Monitor a Process with Control Chart to Determine If the Process is in Control” — adjudicated: d) control-chart process monitoring evidences a quality/process-control activity, not establishing inventory or documentation records
+- act 7 · MFGT 101 · “Perform Testing on Assembled Product” — adjudicated: a) "Perform Testing on Assembled Product" is a bare heading with no stated inspection-for-flaws content
+- act 7 · MFGT 202 · “Common Material Failures” — adjudicated: a) "Common Material Failures" is a topic heading with no performable inspection content stated
+- act 5 · MFGT 202 · “Hardening and Annealing” — adjudicated: d) hardening/annealing is a materials heat-treatment process, not repair/maintenance of electromechanical equipment
+- act 7 · MFGT 203 · “Out of Control Conditions” — adjudicated: a) "Out of Control Conditions" is a bare topic heading with no stated inspection-for-flaws content

@@ -1,0 +1,210 @@
+# Curriculum alignment review — mission-mechatronic-technology
+Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of Labor
+
+## Mission College — Certificate of Achievement, Mechatronic Technology → Electro-Mechanical and Mechatronics Technologists and Technicians (SOC 17-3024)
+9 of 14 activities at outcome level, 11 with any evidence.
+
+- ● **Design electromechanical equipment or systems.**
+    - MTT 020 [Objective]: “Develop and design PLC program from Piping/Process and Instrumentation Diagram” — designing a control system component (PLC program) to specification
+    - EGR 025 [Objective]: “Apply the engineering design process to develop creative solutions to engineering problems.” — engineering design process applied to design of devices/systems
+- ● **Test performance of electrical, electronic, mechanical, or integrated systems or equipment.**
+    - MTT 012 [Objective]: “Compare measured performance to published specifications and identify any performance deficiencies” — testing performance of electronic systems against specifications
+    - MTT 012 [SLO]: “Connect and configure a mixed-signal oscilloscope to measure complex analog and
+digital signals” — use of test instrument (oscilloscope) to assess electronic circuits, matching O*NET task
+    - MTT 012 [Objective]: “Measure DC and AC parameters of simple analog and digital electronic systems and components” — directly performs performance testing of electronic components with test instruments
+    - MTT 022 [SLO]: “Measure, evaluate, and optimize the open- and closed-loop response of a PID control system.” — testing performance of an integrated electromechanical control system
+    - MTT 022 [Objective]: “Develop and execute a troubleshooting plan for process control systems” — diagnostic technique used to assess electromechanical systems/subsystems
+    - MTT 010 [SLO]: “Measuring DC voltage, DC current, and resistance” — measuring voltage/current/resistance is basic test performance on electrical circuits
+    - MTT 020 [SLO]: “Implement and troubleshoot a basic functional control system using ladder-logic programming” — students test/troubleshoot a control system's performance, evidencing performance testing of an electromechanical/PLC system
+    - MTT 020 [Lab content]: “Build and test a basic ladder logic circuit with simulation software” — lab has students build and test control circuits, a diagnostic technique assessing electromechanical/control systems
+    - MTT 030 [Assignment]: “Measure motor output power and input voltage and current under multiple conditions” — measuring electrical output under test conditions is testing performance of electromechanical assemblies with instruments
+    - MTT 030 [SLO]: “Configure and troubleshoot VFD” — troubleshooting VFD systems is assessing electromechanical equipment using diagnostic technique
+    - MTT 032 [SLO]: “Use standard test equipment, system documentation, and software program listings to measure and verify timing, inputs, and outputs of a given basic microcontroller system.” — measuring and verifying microcontroller inputs/outputs with test equipment directly evidences testing performance of electronic systems
+    - MTT 032 [Objective]: “Use test equipment to troubleshoot microprocessor-based electronic systems.” — use of test equipment to assess electromechanical/electronic circuits matches the test-equipment task directly
+    - MTT 034 [Objective]: “Measure the output flow and pressure of a compressor.” — measuring compressor output flow/pressure is directly testing performance of an electromechanical component using diagnostic technique
+    - MTT 034 [Objective]: “Demonstrate how to determine the integrity of a pneumatic and hydraulic actuator.” — determining actuator integrity is testing performance of a mechanical component/system
+    - MTT 034 [Lab content]: “Build and test pneumatic systems” — literal lab activity of testing an electromechanical system
+    - MTT 040 [Assignment]: “Measure and compare the performance of a class AB and class D amplifier, including gain, bandwidth, noise, and efficiency.” — students test performance of electronic amplifier circuits using measurement/lab techniques
+    - MTT 040 [Lab content]: “Measure and compare the performance of different classes of amplifiers including classes AB and D” — lab activity requires using test instruments to assess electronic circuit performance
+    - MTT 042 [SLO]: “Use standard test equipment, system documentation, logic diagrams, and VHDL listings to measure and verify timing, inputs, and outputs” — student directly uses test equipment to assess electromechanical/electronic circuit timing and I/O
+    - MTT 042 [Objective]: “Use test equipment to troubleshoot digital electronic systems.” — direct use of diagnostic test equipment to assess electronic systems
+- ● **Develop software or computer applications.**
+    - MTT 032 [Objective]: “Create simple programs in high-level and assembly language for practical and diagnostic purposes.” — programming microprocessor-based systems
+    - MTT 032 [Lab content]: “Assembling and loading a program to a single-chip microprocessor” — loading a program onto microcontroller hardware evidences installing/programming microprocessor-based systems
+    - MTT 042 [Objective]: “Program in VHDL for diagnostics purposes” — programming instrumentation/logic hardware software
+    - MTT 020 [SLO]: “Design a PLC program using ladder-logic or function block diagramming using P&ID” — programming a PLC is installing/programming instrumentation software in a microprocessor-based control system
+    - MTT 020 [Assignment]: “Program PLC controller for a specified operation using Piping/Process Instrumentation Diagram (P&ID).” — students write PLC programs for controller hardware, evidencing programming instrumentation software
+    - MTT 022 [Objective]: “Program a PLC controller to execute a sequential task” — programming a microprocessor-based controller is developing software for instrumentation systems
+    - MTT 022 [Lab content]: “Program a Controller with Sensor integration” — hands-on programming of PLC (microprocessor-based) hardware/software
+    - MTT 030 [Objective]: “Commission a variable frequency drive (VFD) 3-phase motor and program it to operate from remote controls” — programming a VFD to operate from remote controls is programming instrumentation/control software in a microprocessor-based drive system
+- ● **Review technical documents to plan work.**
+    - MTT 020 [SLO]: “Read and understand automation symbols, including International Society of Automation (ISA) symbols” — literal reading of technical diagrams/symbols to determine assembly/process sequence
+    - MTT 020 [Objective]: “Develop and design PLC program from Piping/Process and Instrumentation Diagram” — using a P&ID technical diagram to plan the sequence/method of programming work evidences reviewing technical documents to plan work
+    - MTT 012 [SLO]: “Troubleshoot using electrical wiring diagram including power distribution and PLC I/O diagrams.” — reading wiring/PLC diagrams to determine troubleshooting sequence matches reviewing technical documents to plan work
+    - MTT 012 [Lab content]: “Learn to read Specification sheets” — reading spec sheets to plan measurement/troubleshooting work matches reviewing technical documents
+    - EGR 025 [Objective]: “Develop the ability to evaluate engineering drawings and their application to design and fabrication.” — reading/evaluating engineering drawings to plan design and fabrication work
+    - MTT 022 [Content outline]: “Create and understand electrical plans for advanced process systems” — reading/creating electrical diagrams to determine assembly/wiring sequence matches reviewing technical documents
+    - MTT 022 [Content outline]: “Discrete Input/Output (I/O) diagrams” — I/O diagrams are schematic technical documents read to plan PLC wiring/assembly work
+    - MTT 032 [SLO]: “Interpret manufacturers' data sheets and reference documentation and apply principles of digital and microcontroller systems to describe the operation of a given microcontroller system.” — interpreting manufacturer datasheets/reference documentation to plan understanding of a system matches reviewing technical documents to plan work
+    - MTT 032 [Objective]: “Trace timing, inputs, and outputs of a single-chip microcontroller with appropriate test equipment and schematic diagrams.” — using schematic diagrams to trace system operation evidences reading schematics to determine methods/sequences
+    - MTT 034 [Objective]: “Identify the symbols for fluid power and electrical related components from either ANSI or ISO drawings and draw a complete schematic based on given parameters.” — reading ANSI/ISO schematic symbols to determine circuit design is reviewing technical documents/drawings to plan assembly
+    - MTT 042 [Objective]: “Interpret manufacturers’ data sheets for CPLD devices.” — reviewing technical documents (datasheets) to plan work on devices
+- ● **Maintain electromechanical equipment.**
+    - MTT 030 [SLO]: “Configure, operate, and troubleshoot DC, stepper, and AC motor systems” — maintaining/repairing electromechanical equipment (motors)
+    - MTT 030 [Objective]: “Demonstrate effective basic troubleshooting techniques to isolate motor and controller faults” — isolating motor/controller faults is directly repairing/maintaining electromechanical equipment
+    - MTT 034 [Objective]: “Demonstrate how to determine the integrity of a pneumatic and hydraulic actuator.” — calibrating/repairing pneumatic or hydraulic assemblies to meet operational tolerances
+    - MTT 034 [Assignment]: “Troubleshoot a given pneumatic control system.” — troubleshooting a pneumatic control system is maintaining/repairing an electromechanical system to ensure proper functioning
+    - MTT 034 [Lab content]: “Build and test circuits with electro-hydraulic systems” — building and testing electro-hydraulic circuits involves repairing/calibrating hydraulic assemblies to meet operational specs
+    - MTT 012 [Objective]: “Develop, present, and execute a logical troubleshooting plan appropriate for the subject system or component” — developing and executing a troubleshooting plan for electronic systems evidences maintain/repair to ensure proper functioning
+    - MTT 012 [Assignment]: “develop an initial troubleshooting plan to logically and effectively isolate the fault” — fault isolation/troubleshooting plan for a non-functioning system matches maintenance/repair task
+    - MTT 020 [Objective]: “Develop and execute a troubleshooting plan for process control systems.” — troubleshooting a PLC-based control system is maintaining/repairing an electromechanical system to ensure proper functioning
+    - MTT 020 [Assignment]: “Develop and execute a troubleshooting plan for a malfunctioning PLC system.” — diagnosing and fixing a malfunctioning PLC system evidences maintaining/repairing electromechanical equipment
+    - MTT 022 [SLO]: “identify logic states during operation, and troubleshoot a PLC-controlled system” — troubleshooting a controlled system is maintaining electromechanical equipment
+    - MTT 022 [Objective]: “Tune a PID control loop for optimized operation” — loop tuning to meet operational specifications parallels calibrating assemblies/systems
+- ● **Maintain electronic equipment.**
+    - MTT 040 [Assignment]: “Develop and execute a troubleshooting plan for a Metal Oxide Semiconductor Field Effect Transistor (MOSFET) oscillator circuit.” — repairing electronic components/equipment to ensure proper functioning
+    - MTT 032 [Objective]: “Use test equipment to troubleshoot microprocessor-based electronic systems.” — maintaining/repairing electronic equipment using test instruments
+    - MTT 012 [Objective]: “Compare measured performance to published specifications and identify any performance deficiencies” — identifying performance deficiencies in electronic equipment is a core step of maintaining/repairing electronic equipment
+    - MTT 012 [Lab content]: “Develop troubleshooting plan for faulty circuits” — troubleshooting faulty electronic circuits evidences maintaining electronic equipment
+    - MTT 020 [Description]: “This course covers Programmable Logic Controller (PLC) systems, function, interrelationship, and troubleshooting of systems components.” — troubleshooting PLC electronic system components evidences maintaining electronic equipment
+    - MTT 022 [Lab content]: “Troubleshooting a PLC-controlled system” — diagnosing/repairing electronic controller system to ensure proper functioning
+    - MTT 042 [Objective]: “Use test equipment to troubleshoot digital electronic systems.” — troubleshooting is a diagnostic step directly constitutive of maintaining electronic equipment
+    - MTT 042 [Description]: “allows students to develop troubleshooting techniques” — course scope explicitly covers troubleshooting of electronic systems, part of maintenance
+- · **Inspect finished products to locate flaws.**
+- · **Install instrumentation or electronic equipment or systems.**
+- ○ **Assemble equipment or components.**
+    - MTT 034 [Lab content]: “Build and test pneumatic systems” — assembling electromechanical components using hand tools/fixtures
+    - MTT 034 [Description]: “Hands-on activities using various pneumatic components are assembled in the lab.” — literal statement that students assemble pneumatic components using hand tools/fixtures
+    - MTT 020 [Lab content]: “Build and test circuits with multiple PLC input elements” — fitting/assembling component parts into a functioning circuit
+    - MTT 030 [Lab content]: “Implementing controls for and controlling Stepper motors” — implementing motor control hardware/wiring is assembling electrical/electronic components into a working assembly
+    - MTT 040 [Lab content]: “Basics of circuits through the creation and simulation of resistor based circuits.” — building/assembling circuits from components is constitutive of assembling electronic assemblies
+    - MTT 050 [Lab content]: “Fit tolerances for multiple-part assemblies” — fitting parts to tolerance is aligning/assembling component parts
+- ○ **Fabricate devices or components.**
+    - MTT 050 [Lab content]: “Design and produce individual projects” — fabricating mechanical/electronic components via 3D printing/manufacturing
+- ● **Create schematic drawings for electronics.**
+    - EGR 025 [Objective]: “Apply computer aided graphics techniques to construct engineering designs.” — producing CAD drawings for design, matching O*NET CAD schematic task
+    - EGR 025 [SLO]: “Construct two-dimensional and three-dimensional drawings of engineering designs using sketching, manual drafting, and computer-aided drafting approaches.” — students produce electrical/mechanical drawings using CAD as required for electromechanical design documentation
+    - MTT 022 [Content outline]: “Control panel layout diagrams” — producing electrical schematic drawings necessary for electromechanical design
+    - MTT 012 [SLO]: “Develop electrical wiring diagrams including electrical control panel layout, power distribution, loop drawings, and PLC I/O diagrams” — producing electrical wiring/control panel diagrams matches producing electrical drawings for electromechanical design
+    - MTT 012 [Lab content]: “Using industry software to develop electrical wiring diagrams including electrical control panel layout, power distribution, loop drawings, and PLC I/O diagrams” — use of industry software to produce electrical drawings matches CAD-based schematic production task
+    - MTT 034 [Description]: “Basic power and control circuits are developed using computer aided design.” — developing circuits with CAD is producing electromechanical design drawings using CAD software
+    - MTT 040 [Objective]: “Identify and draw basic amplifier circuits” — drawing amplifier circuit schematics is directly constitutive of creating schematic drawings for electronics
+    - MTT 050 [Objective]: “Design project using 2D/3D software, e.g. AutoCAD and SolidWorks” — designing with CAD software directly evidences creating drawings for electromechanical design
+- ● **Select project materials.**
+    - MTT 022 [Objective]: “Select sensors, controllers, and actuators appropriate for a given task.” — literal selection of electromechanical components to meet functional specifications
+    - MTT 034 [Assignment]: “Given a set of conditions and process, determine the best pneumatic system for the process.” — selecting the best pneumatic system for given specifications is selecting electromechanical equipment/materials to meet functional specs
+- · **Develop technical methods or processes.**
+- ● **Maintain operational records or records systems.**
+    - MTT 012 [Objective]: “Organize and present data in tabular and graphic formats using industry-standard software” — maintaining operational records/documentation of measurement data
+
+### Dropped
+
+- act 11 · MTT 034 · “P&ID” — malformed
+- act 4 · MTT 022 · “Process/Piping and Instrumentation Diagram (P&ID)” — adjudicated: a: P&ID is named as a topic/heading with no performable reading action stated
+- act 7 · MTT 050 · “Evaluate print quality and determine print parameter optimizations that may improve qualit” — adjudicated: d: evaluating print quality/optimization evidences fabrication/quality-improvement, not inspecting finished parts for defects/conformance
+- act 8 · MTT 020 · “Digital inputs” — adjudicated: a: 'Digital inputs' is a topic heading with no stated installation action
+- act 10 · EGR 025 · “Component Modeling” — adjudicated: a: 'Component Modeling' is a topic heading without stated fabrication/assembly action
+- act 13 · MTT 010 · “Reports using MS Word/Google Docs” — adjudicated: d: reports using Word/Docs evidences general documentation writing, not the technical-methods/inventory-records activity as defined
+- act 2 · MTT 010 · “Build a simple AC/DC circuit” — adjudicated: b: building a circuit precedes any stated testing of its performance
+- act 6 · MTT 020 · “Types of PLCs” — adjudicated: a: 'Types of PLCs' is a topic heading with no stated maintenance/repair action
+- act 1 · MTT 022 · “troubleshoot a PLC-controlled system” — adjudicated: d: troubleshooting a PLC-controlled system evidences the maintain electromechanical equipment activity, not designing equipment
+- act 1 · MTT 030 · “Configure, operate, and troubleshoot DC, stepper, and AC motor systems” — adjudicated: d: configuring/troubleshooting motor systems evidences maintain electromechanical equipment task, not design
+- act 6 · MTT 032 · “General debugging techniques” — adjudicated: a: 'General debugging techniques' is a topic heading with no stated repair action on equipment
+- act 9 · MTT 034 · “Introduction to pneumatic system components” — adjudicated: a: 'Introduction to pneumatic system components' is a topic heading with no stated assembly action
+- act 4 · MTT 040 · “Filters and time constants - including the use of scopes to visualize the impact of the fi” — adjudicated: d: using scopes to visualize filter behavior evidences testing performance, not reading schematics to plan assembly
+- act 11 · MTT 040 · “Schematic” — adjudicated: a: 'Schematic' is a bare topic heading with no stated drawing-production action
+- act 3 · MTT 042 · “Very-High-Speed-Integrated-Circuit Hardware Description Language (VHDL)” — adjudicated: a: 'VHDL' is a topic/content heading with no stated programming action performed
+- act 4 · MTT 042 · “Use standard test equipment, system documentation, logic diagrams, and VHDL listings to me” — adjudicated: d: using test equipment to measure/verify timing and I/O evidences testing performance, not reviewing documents to plan work
+- act 11 · MTT 050 · “Computer-Aided Drafting (CAD) Design/Drawing” — adjudicated: a: 'Computer-Aided Drafting (CAD) Design/Drawing' is a bare topic heading with no stated action
+- act 9 · MTT 050 · “Assembling Parts” — adjudicated: a: 'Assembling Parts' is a bare topic heading restating the task without performable specifics
+- act 10 · MTT 050 · “Machining” — adjudicated: a: 'Machining' is a bare topic heading with no stated fabrication action described
+- act 7 · MTT 050 · “Evaluate print quality and determine print parameter optimizations that may improve qualit” — adjudicated: d: evaluating print quality/optimization evidences a fabrication-process quality activity, not inspecting finished parts for surface defects/dimensional conformance
+- act 12 · MTT 050 · “Printing materials and characteristics” — adjudicated: a: 'Printing materials and characteristics' is a topic heading with no stated selection action performed
+
+## Mission College — Certificate of Achievement, Mechatronic Technology → Semiconductor Processing Technicians (SOC 51-9141)
+7 of 13 activities at outcome level, 7 with any evidence.
+
+- ● **Measure dimensions of completed products or workpieces to verify conformance to specifications.**
+    - MTT 012 [Objective]: “Compare measured performance to published specifications and identify any performance deficiencies” — measuring and comparing to specifications directly evidences verifying conformance to specs
+    - MTT 012 [SLO]: “Identify and/or describe circuit and equipment elements and specifications that are relevant to performing accurate measurements.” — measuring and comparing to specifications directly parallels measuring circuitry to verify conformance
+    - MTT 032 [SLO]: “Use standard test equipment, system documentation, and software program listings to measure and verify timing, inputs, and outputs of a given basic microcontroller system.” — measuring timing/inputs/outputs with test equipment against documentation verifies conformance to specification, directly analogous to measuring circuitry with test equipment
+    - MTT 032 [Objective]: “Trace timing, inputs, and outputs of a single-chip microcontroller with appropriate test equipment and schematic diagrams.” — using test equipment to measure and verify electronic signals against schematic specifications
+    - MTT 042 [SLO]: “Use standard test equipment, system documentation, logic diagrams, and VHDL listings to measure and verify timing, inputs, and outputs” — measuring circuit signals with test equipment to verify conformance to specified timing/values
+- ● **Read work orders or other instructions to determine product specifications or materials requirements.**
+    - MTT 034 [Assignment]: “Given a set of conditions and process, determine the best pneumatic system for the process.” — reading specified conditions/requirements to determine process specifications
+    - MTT 034 [Objective]: “Identify the symbols for fluid power and electrical related components from either ANSI or ISO drawings” — reading schematic symbols to determine specifications parallels studying instructions/processing charts for specifications
+    - MTT 012 [Lab content]: “Learn to read Specification sheets” — reading specification sheets to determine product/component requirements before testing
+    - MTT 012 [Content outline]: “Specification sheets and finding:” — studying specification sheets to determine device specifications, paralleling reading work orders/specs
+    - MTT 020 [Content outline]: “Understanding Piping/Process and Instrumentation Diagrams” — P&IDs function as work orders/processing charts specifying sequence of operations
+    - MTT 030 [Objective]: “Identify applicable National Electric Code (NEC) requirements and appropriate safety policies and procedures for installation and operation of electric motors” — identifying code requirements to determine correct installation/operation procedures evidences reading instructions to determine specifications
+    - MTT 032 [SLO]: “Interpret manufacturers' data sheets and reference documentation and apply principles of digital and microcontroller systems to describe the operation of a given microcontroller system.” — reading manufacturer specification documents to determine device/product specifications
+    - MTT 032 [Objective]: “Interpret manufacturers’ data sheets for microprocessor devices.” — reading technical specification sheets to determine product/device requirements
+    - MTT 042 [Objective]: “Interpret manufacturers’ data sheets for CPLD devices.” — reading specification documents to determine device requirements directly matches studying instructions/specs
+- ● **Review blueprints or other instructions to determine operational methods or sequences.**
+    - MTT 020 [SLO]: “Read and understand automation symbols, including International Society of Automation (ISA) symbols” — reading standardized diagram symbols to determine operational sequences matches literally
+    - MTT 034 [Objective]: “Identify the symbols for fluid power and electrical related components from either ANSI or ISO drawings and draw a complete schematic” — reading standardized schematic symbols to determine operational methods
+    - MTT 034 [Objective]: “draw a complete schematic based on given parameters” — working from given parameters to produce schematics evidences reviewing instructions to determine operational sequences
+    - MTT 022 [Content outline]: “Control panel layout diagrams” — studying layout diagrams to determine operational methods/sequences for control systems, analogous to blueprint reading
+    - MTT 022 [Content outline]: “Discrete Input/Output (I/O) diagrams” — reviewing I/O diagrams to determine operational sequencing of PLC-controlled equipment
+    - MTT 030 [Assignment]: “Following the written lab procedure, configure the DC motor and associated controls.” — following a written procedure to determine operational sequence evidences reviewing instructions to determine operational methods
+- · **Clean workpieces or finished products.**
+- ● **Record operational or production data.**
+    - MTT 010 [SLO]: “Collect, organize, and present measurement data in tabular and graphic form.” — recording measurement data as production/inspection information matches literally
+    - MTT 012 [Objective]: “Organize and present data in tabular and graphic formats using industry-standard software” — recording operational/measurement data in industry format matches literally
+    - MTT 012 [Description]: “data collection, and reporting results in industry-accepted formats” — recording operational/measurement data and reporting results
+    - MTT 030 [Assignment]: “Measure motor output power and input voltage and current under multiple conditions. Summarize and analyze the measurement data” — recording and summarizing measurement data evidences recording operational data
+- · **Assemble precision electronics or optical equipment.**
+- · **Mount materials or workpieces onto production equipment.**
+- · **Load materials into production equipment.**
+- · **Move products, materials, or equipment between work areas.**
+- ● **Enter commands, instructions, or specifications into equipment.**
+    - MTT 020 [Content outline]: “Rung input: Checkers” — PLC ladder logic programming is entering commands/instructions into control equipment
+    - MTT 020 [Lab content]: “Build and test a basic ladder logic circuit with simulation software” — building/testing ladder logic in simulation directly practices entering PLC commands that key panel commands in real equipment
+    - MTT 022 [Objective]: “Program a PLC controller to execute a sequential task.” — programming a PLC controller matches entering commands into equipment literally
+    - MTT 022 [Lab content]: “Program a Controller with Sensor integration” — lab activity of programming a controller is direct entry of commands/instructions into equipment
+    - MTT 030 [Objective]: “Commission a variable frequency drive (VFD) 3-phase motor and program it to operate from remote controls” — programming a drive to operate via remote control commands evidences entering commands/instructions into equipment
+- ● **Diagnose equipment malfunctions.**
+    - MTT 012 [Objective]: “Develop, present, and execute a logical troubleshooting plan appropriate for the subject system or component” — developing a troubleshooting plan for a malfunctioning system evidences diagnosing malfunctions
+    - MTT 012 [Assignment]: “develop an initial troubleshooting plan to logically and effectively isolate the fault” — isolating the fault via troubleshooting plan evidences diagnosing malfunctions
+    - MTT 030 [SLO]: “Configure, operate, and troubleshoot DC, stepper, and AC motor systems” — troubleshooting motor systems evidences diagnosing equipment malfunctions
+    - MTT 030 [Objective]: “Demonstrate effective basic troubleshooting techniques to isolate motor and controller faults” — isolating faults in motor/controller equipment directly evidences diagnosing equipment malfunctions
+    - MTT 030 [Lab content]: “Observing DC Motor operation and troubleshooting” — troubleshooting motor operation evidences diagnosing equipment malfunctions
+    - MTT 034 [Assignment]: “Troubleshoot a given pneumatic control system.” — troubleshooting a fluid power system evidences diagnosing equipment malfunctions
+    - MTT 020 [Objective]: “Develop and execute a troubleshooting plan for process control systems.” — troubleshooting process control systems is literally diagnosing equipment malfunctions
+    - MTT 020 [Assignment]: “Develop and execute a troubleshooting plan for a malfunctioning PLC system.” — diagnosing a malfunctioning PLC system matches diagnosing equipment malfunctions directly
+    - MTT 022 [SLO]: “Measure inputs and outputs, identify logic states during operation, and troubleshoot a PLC-controlled system” — troubleshooting a controlled system requires diagnosing equipment malfunctions
+    - MTT 022 [Objective]: “Develop and execute a troubleshooting plan for process control systems” — explicit development/execution of a troubleshooting plan matches diagnosing equipment malfunctions
+    - MTT 032 [Objective]: “Use test equipment to troubleshoot microprocessor-based electronic systems.” — troubleshooting electronic systems with test equipment is diagnosing equipment malfunctions
+    - MTT 032 [Content outline]: “General debugging techniques” — debugging a malfunctioning system is diagnosing equipment malfunctions
+    - MTT 042 [Objective]: “Use test equipment to troubleshoot digital electronic systems.” — troubleshooting with test equipment is diagnosing equipment malfunctions
+    - MTT 042 [Description]: “allows students to develop troubleshooting techniques” — course scope centers on diagnosing malfunctions in digital circuits
+    - MTT 050 [Content outline]: “Troubleshooting 2D/3D printing” — troubleshooting printer issues evidences diagnosing equipment malfunctions
+    - MTT 050 [Assignment]: “Troubleshoot 3D printing issue and 3D printer issue.” — student practice diagnosing printer malfunctions directly evidences the diagnose-malfunction activity
+- ● **Inspect production equipment.**
+    - MTT 034 [Objective]: “Demonstrate how to determine the integrity of a pneumatic and hydraulic actuator.” — determining actuator integrity is inspecting production equipment for defects/leaks
+    - MTT 050 [SLO]: “Demonstrate proper alignment and operating procedures for safe and effective operation of the 3D printer” — checking alignment for safe/effective operation evidences inspecting production equipment before/during use
+- · **Notify others of equipment repair or maintenance needs.**
+
+### Dropped
+
+- act 1 · MTT 040 · “Identify op-amp circuit configurations and calculate gain and impedances for the circuit” — adjudicated: d: calculating op-amp gain/impedance evidences circuit analysis/design, not measuring completed products against specs
+- act 2 · MTT 020 · “Design a PLC program using ladder-logic or function block diagramming using P&ID” — adjudicated: d: designing a PLC program from P&ID evidences programming/design activity, not reading orders to determine specs
+- act 6 · MTT 020 · “Implement and troubleshoot a basic functional control system using ladder-logic programmin” — adjudicated: d: implementing/troubleshooting a ladder-logic control system evidences programming/diagnosing, not assembling precision electronics
+- act 6 · MTT 022 · “Measure inputs and outputs, identify logic states during operation, and troubleshoot a PLC” — adjudicated: d: measuring inputs/outputs and troubleshooting a PLC system evidences diagnosing malfunctions, not assembling precision equipment
+- act 12 · MTT 022 · “Develop and execute a troubleshooting plan for process control systems.” — adjudicated: d: developing a troubleshooting plan evidences diagnosing malfunctions, a different activity than inspecting equipment
+- act 2 · MTT 020 · “Develop and design PLC program from Piping/Process and Instrumentation Diagram” — adjudicated: d: developing/designing a PLC program from a P&ID evidences programming activity, not reading orders to determine specs
+- act 3 · MTT 020 · “Design a PLC program using ladder-logic or function block diagramming using P&ID” — adjudicated: d: designing a PLC program using P&ID evidences programming/design, not reviewing blueprints for sequence
+- act 3 · MTT 020 · “Program PLC controller for a specified operation using Piping/Process Instrumentation Diag” — adjudicated: d: programming a PLC controller for a specified operation evidences programming activity, not reviewing blueprints
+- act 5 · MTT 020 · “Discrete Input/Output (I/O) diagrams” — adjudicated: a: I/O diagrams named as content with no performable recording activity described
+- act 10 · MTT 020 · “Implement and troubleshoot a basic functional control system using ladder-logic programmin” — adjudicated: d: implementing/troubleshooting a control system evidences programming/diagnosing, not entering commands into equipment
+- act 2 · MTT 022 · “Create and understand electrical plans for advanced process systems” — adjudicated: a: creating/understanding electrical plans named as content without clear tie to reading orders for specs
+- act 2 · MTT 022 · “Select sensors, controllers, and actuators appropriate for a given task” — adjudicated: b: selecting appropriate sensors/controllers/actuators precedes reading instructions rather than evidencing it
+- act 2 · MTT 030 · “National Electrical Code Article 430” — adjudicated: a: NEC Article 430 named as topic/content with no performable step tied to determining specifications
+- act 10 · MTT 030 · “Exploring VFD control systems” — adjudicated: a: exploring VFD control systems named as lab topic with no performable command-entry step stated
+- act 12 · MTT 030 · “Configure, operate, and troubleshoot DC, stepper, and AC motor systems” — adjudicated: d: configuring/operating/troubleshooting motor systems evidences diagnosing malfunctions, a different activity than inspecting equipment
+- act 10 · MTT 034 · “Control valve” — adjudicated: a: control valve named as topic/content heading with no performable command-entry step described
+- act 2 · MTT 050 · “Identify common 3D file formats, and the sequence of file processing used to create a 3D f” — adjudicated: d: identifying file formats and print-processing sequence evidences additive-manufacturing production steps, not reading work orders for product specs
+- act 3 · MTT 050 · “Equipment Setup, Operating Procedures and Safety” — adjudicated: a: equipment setup/operating procedures/safety named as content heading with no stated instruction-reading step
+- act 6 · MTT 050 · “3D printing using SolidWorks” — adjudicated: d: 3D printing lab evidences an additive-manufacturing production task, a different activity than assembling precision electronics/optical equipment
+- act 8 · MTT 050 · “Discuss 2D/3D printer safety and operating procedures” — adjudicated: a: discussing printer safety/operating procedures is topic-only with no performable loading step described
+- act 10 · MTT 050 · “Design project using 2D/3D software, e.g. AutoCAD and SolidWorks” — adjudicated: d: designing a project in 2D/3D CAD software evidences design activity, not entering commands into production equipment

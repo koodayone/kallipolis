@@ -1,0 +1,2477 @@
+{
+ "program": "deanza-cnc-machinist",
+ "generated": "2026-09-16",
+ "onet_vintage": "O*NET 31.0 database (August 2026), U.S. Department of Labor",
+ "plates": [
+  {
+   "college": "De Anza College",
+   "member_id": "deanza",
+   "certificate": "Certificate of Achievement, CNC Machinist",
+   "kind": "credit",
+   "top6": "095630",
+   "top_name": "Manufacturing and Industrial Technology",
+   "paired_soc": "51-4041",
+   "occupation": "Machinists",
+   "crosswalk_socs": [],
+   "pairing_basis": "",
+   "courses": [
+    {
+     "code": "DMT 80",
+     "title": "Introduction to Machining and CNC Processes",
+     "units": 5,
+     "source_url": "https://deanza.elumenapp.com/public/?orgEntityId=8&uuid=f81ddc5a-1dd2-11f1-81f6-9b5952c4aab2",
+     "system": "elumen",
+     "effective": "Fall 2026",
+     "approved": "2025-11-18",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000573780",
+      "status": "Approved",
+      "last_updated": "2026-06-09",
+      "outline_date": "2025-11-18",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "DMT 84A",
+     "title": "Introduction to CNC Programming and Operation; Mill",
+     "units": 5,
+     "source_url": "https://deanza.elumenapp.com/public/?orgEntityId=8&uuid=1aec3396-1dd6-11f1-81f6-5589ce056bfa",
+     "system": "elumen",
+     "effective": "Fall 2026",
+     "approved": "2025-11-18",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000573778",
+      "status": "Approved",
+      "last_updated": "2026-06-09",
+      "outline_date": "2025-11-18",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "DMT 84B",
+     "title": "CNC Programming and Operation; Intermediate Mill",
+     "units": 5,
+     "source_url": "https://deanza.elumenapp.com/public/?orgEntityId=8&uuid=f4d0616a-1dd6-11f1-81f6-3725a4f4f547",
+     "system": "elumen",
+     "effective": "Fall 2026",
+     "approved": "2025-06-17",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000573777",
+      "status": "Approved",
+      "last_updated": "2026-06-09",
+      "outline_date": "2025-06-17",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "DMT 90",
+     "title": "Print Reading and Machine Shop Calculations",
+     "units": 4.5,
+     "source_url": "https://deanza.elumenapp.com/public/?orgEntityId=8&uuid=9fb0cac2-afa6-11ef-b640-fbe498812414",
+     "system": "elumen",
+     "effective": "Fall 2025",
+     "approved": "2024-02-27",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000535078",
+      "status": "Active",
+      "last_updated": "2024-09-12",
+      "outline_date": "2024-02-27",
+      "verdict": "coci-newer"
+     }
+    }
+   ],
+   "program_outcomes": [
+    "Setup and operate conventional and CNC machines safely",
+    "Construct and inspect machined projects using conventional and CNC equipment",
+    "Construct word address programs to machine projects"
+   ],
+   "rows": [
+    {
+     "dwa_id": "4.A.1.b.3.a.2",
+     "dwa": "Calculate dimensions of workpieces, products, or equipment.",
+     "task": "Calculate dimensions or tolerances, using instruments, such as micrometers or vernier calipers.",
+     "cells": {
+      "DMT 90": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 90",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate the ability to solve common calculations found in the machine shop.",
+         "basis": "shop calculations including measurement over pins and taper calculations compute workpiece dimensions"
+        },
+        {
+         "course": "DMT 90",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate the ability to solve common calculations found in machine shop applications.",
+         "basis": "students calculate dimensions/tolerances directly per SLO"
+        },
+        {
+         "course": "DMT 90",
+         "section": "content",
+         "level": 1,
+         "quote": "Measurement over pins",
+         "basis": "measurement-over-pins calculation is a standard dimension/tolerance calculation using instruments"
+        }
+       ]
+      },
+      "DMT 80": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Interpret and record measurements made with precision measuring tools.",
+         "basis": "interpreting/recording measurements with micrometers and calipers is calculating dimensions with precision instruments"
+        },
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Measurement calculations.",
+         "basis": "explicit calculation of dimensions using measuring tools content"
+        }
+       ]
+      },
+      "DMT 84A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84A",
+         "section": "content",
+         "level": 1,
+         "quote": "Right triangle laws: computing unknown sides and angles",
+         "basis": "trigonometric calculation of dimensions directly matches calculating workpiece dimensions"
+        }
+       ]
+      },
+      "DMT 84B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "content",
+         "level": 1,
+         "quote": "Pitch diameter calculation for various thread classes.",
+         "basis": "calculating thread pitch diameter is a dimensional calculation of a workpiece feature"
+        },
+        {
+         "course": "DMT 84B",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Take home worksheets involving cartesian coordinate calculations.",
+         "basis": "calculating tool point/workpiece coordinates is calculating workpiece dimensions"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.3.a.12",
+     "dwa": "Measure dimensions of completed products or workpieces to verify conformance to specifications.",
+     "task": "Calculate dimensions or tolerances, using instruments, such as micrometers or vernier calipers. · Measure, examine, or test completed units to check for defects and ensure conformance to specifications, using precision instruments, such as micrometers.",
+     "cells": {
+      "DMT 80": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Interpret and record measurements made with precision measuring tools.",
+         "basis": "directly states measuring products with precision instruments to verify specifications"
+        },
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Micrometers.",
+         "basis": "use of micrometers to measure workpieces evidences verifying conformance to specifications"
+        },
+        {
+         "course": "DMT 80",
+         "section": "lab",
+         "level": 1,
+         "quote": "Demonstrate use of measuring tools.",
+         "basis": "lab practice measuring completed work with precision tools to check conformance"
+        }
+       ]
+      },
+      "DMT 84A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 84A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Apply the use of precision measuring tools to inspect the accuracy of machined parts",
+         "basis": "literal statement of measuring completed parts to verify conformance"
+        },
+        {
+         "course": "DMT 84A",
+         "section": "content",
+         "level": 1,
+         "quote": "Travel and test indicators.",
+         "basis": "precision inspection instruments used to measure completed workpieces"
+        }
+       ]
+      },
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Construct and inspect machined projects using conventional and CNC equipment",
+         "basis": "inspecting machined projects requires measuring dimensions to verify conformance"
+        }
+       ]
+      },
+      "DMT 84B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "content",
+         "level": 1,
+         "quote": "Thread measurement using three-wire method.",
+         "basis": "measuring completed thread dimensions to verify conformance using precision measurement method"
+        },
+        {
+         "course": "DMT 84B",
+         "section": "lab",
+         "level": 1,
+         "quote": "Measurement and inspection",
+         "basis": "lab activity directly measuring/inspecting completed parts for conformance"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.3.l.2",
+     "dwa": "Operate cutting equipment.",
+     "task": "Machine parts to specifications, using machine tools, such as lathes, milling machines, shapers, or grinders. · Set up or operate metalworking, brazing, heat-treating, welding, or cutting equipment.",
+     "cells": {
+      "DMT 80": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Apply basic set-ups and operations on lathes; explain characteristics of lathe cutting tools.",
+         "basis": "lathe operation is direct cutting equipment operation per O*NET task"
+        },
+        {
+         "course": "DMT 80",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Select vertical milling machine cutting tools and perform basic machining operations.",
+         "basis": "milling machine operation is cutting equipment operation"
+        },
+        {
+         "course": "DMT 80",
+         "section": "lab",
+         "level": 1,
+         "quote": "Demonstrate lathe operations",
+         "basis": "operating a lathe is operating cutting equipment"
+        },
+        {
+         "course": "DMT 80",
+         "section": "lab",
+         "level": 1,
+         "quote": "Demonstrate milling machine operations",
+         "basis": "operating a milling machine is operating cutting equipment"
+        }
+       ]
+      },
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Setup and operate conventional and CNC machines safely",
+         "basis": "operating conventional/CNC machines includes cutting operations on lathes/mills"
+        }
+       ]
+      },
+      "DMT 84B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate the set up and advanced operation of vertical machining centers.",
+         "basis": "operating a milling machine (vertical machining center) is operating cutting equipment"
+        },
+        {
+         "course": "DMT 84B",
+         "section": "content",
+         "level": 1,
+         "quote": "Lathe set-up for internal and external threads.",
+         "basis": "setting up a lathe to cut threads is operating cutting equipment"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.3.l.1",
+     "dwa": "Operate grinding equipment.",
+     "task": "Machine parts to specifications, using machine tools, such as lathes, milling machines, shapers, or grinders.",
+     "cells": {
+      "DMT 80": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Perform basic set-ups and operations on pedestal grinders.",
+         "basis": "literal operation of grinding equipment"
+        }
+       ]
+      },
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Setup and operate conventional and CNC machines safely",
+         "basis": "operating conventional/CNC machines includes grinding operations"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.3.f.12",
+     "dwa": "Operate metal or plastic forming equipment.",
+     "task": "Set up, adjust, or operate basic or specialized machine tools used to perform precision machining operations. · Operate equipment to verify operational efficiency.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.b.1.a.2",
+     "dwa": "Program equipment to perform production tasks.",
+     "task": "Program computers or electronic instruments, such as numerically controlled machine tools.",
+     "cells": {
+      "DMT 84A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 84A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Create basic word-address programs to successfully construct projects using vertical machining centers.",
+         "basis": "literal programming of CNC equipment for production"
+        },
+        {
+         "course": "DMT 84A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Prepare basic three-axis programming for milling machine operations",
+         "basis": "literal statement of programming a CNC machine tool"
+        }
+       ]
+      },
+      "DMT 84B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Create advanced word-address programs to successfully construct projects using vertical machining centers.",
+         "basis": "literal advanced CNC programming for production tasks"
+        },
+        {
+         "course": "DMT 84B",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Write advanced computer numerical control programs using sub programs and sub routines.",
+         "basis": "directly programming CNC machine tools"
+        }
+       ]
+      },
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Construct word address programs to machine projects",
+         "basis": "word address programming is CNC machine programming for production"
+        }
+       ]
+      },
+      "DMT 80": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Input and operate in MDI.",
+         "basis": "manual data input to CNC controller is programming equipment to perform production tasks"
+        },
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Tool path generation and code produced by CAM program.",
+         "basis": "generating CNC program code is programming equipment for production"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.1.b.11",
+     "dwa": "Review blueprints or other instructions to determine operational methods or sequences.",
+     "task": "Study sample parts, blueprints, drawings, or engineering information to determine methods or sequences of operations needed to fabricate products.",
+     "cells": {
+      "DMT 90": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 90",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate the ability to interpret multi-view drawings and prints.",
+         "basis": "literal blueprint reading to determine operational methods"
+        },
+        {
+         "course": "DMT 90",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Project that requires comprehension and application of calculations used to complete a process plan to interpret prints.",
+         "basis": "using prints to determine sequence of operations for fabrication"
+        },
+        {
+         "course": "DMT 90",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify projections and views used in manufacturing",
+         "basis": "reading blueprint views is core to determining operational methods"
+        }
+       ]
+      },
+      "DMT 80": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "CAD drawing transfer to CNC program.",
+         "basis": "using CAD drawings to derive CNC program sequences is reviewing drawings to determine operational methods"
+        }
+       ]
+      },
+      "DMT 84A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84A",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Take home and in class worksheets involving feeds, speeds, and cartesian coordinate calculations.",
+         "basis": "worksheets require determining operations/sequence for machining from given specifications"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.2.a.5",
+     "dwa": "Monitor equipment operation to ensure proper functioning.",
+     "task": "Monitor the feed and speed of machines during the machining process.",
+     "cells": {
+      "DMT 84B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "content",
+         "level": 1,
+         "quote": "Understand controller operational aids.",
+         "basis": "monitoring functions like single block, dry run, feed rate override during operation"
+        },
+        {
+         "course": "DMT 84B",
+         "section": "content",
+         "level": 1,
+         "quote": "Feed rate override.",
+         "basis": "monitoring and adjusting feed rate during machine operation to ensure proper functioning"
+        },
+        {
+         "course": "DMT 84B",
+         "section": "content",
+         "level": 1,
+         "quote": "Identify and clear alarms.",
+         "basis": "monitoring controller for alarm conditions is monitoring equipment operation"
+        }
+       ]
+      },
+      "DMT 80": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Milling cutter RPM and feed rate.",
+         "basis": "setting/monitoring feed and speed during machining evidences monitoring equipment operation"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.5.a.2",
+     "dwa": "Maintain production or processing equipment.",
+     "task": "Maintain machine tools in proper operational condition.",
+     "cells": {
+      "DMT 80": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Wheel replacement, ring testing and dressing.",
+         "basis": "maintaining grinding equipment in proper operational condition"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.d.5",
+     "dwa": "Assemble machine tools, parts, or fixtures.",
+     "task": "Fit and assemble parts to make or repair machine tools.",
+     "cells": {
+      "DMT 84A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84A",
+         "section": "lab",
+         "level": 1,
+         "quote": "Setup CNC milling tooling (cutting tools and holders)",
+         "basis": "assembling tooling components onto machine fixtures"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.f.2",
+     "dwa": "Mount attachments or tools onto production equipment.",
+     "task": "Align and secure holding fixtures, cutting tools, attachments, accessories, or materials onto machines. · Install repaired parts into equipment or install new equipment.",
+     "cells": {
+      "DMT 84A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84A",
+         "section": "content",
+         "level": 1,
+         "quote": "Tool holders. Tapers, methods of securing. Retention knobs, lengths.",
+         "basis": "mounting cutting tools/holders onto CNC mill per O*NET securing attachments task"
+        },
+        {
+         "course": "DMT 84A",
+         "section": "lab",
+         "level": 1,
+         "quote": "Setup CNC milling tooling (cutting tools and holders)",
+         "basis": "literal mounting of cutting tools/holders onto the machine"
+        },
+        {
+         "course": "DMT 84A",
+         "section": "content",
+         "level": 1,
+         "quote": "Location and setting of workpiece/fixture zero.",
+         "basis": "securing/aligning fixtures onto the machine to establish zero point"
+        }
+       ]
+      },
+      "DMT 80": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Vise and stop. Strap and toe clamps. Collet and V-blocks.",
+         "basis": "securing holding fixtures onto machine as described by O*NET task"
+        },
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Vise and stop.",
+         "basis": "work holding setup mounts fixtures/attachments onto machines"
+        },
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Workpiece/fixture alignment.",
+         "basis": "aligning and securing fixtures onto CNC mill is mounting attachments onto production equipment"
+        }
+       ]
+      },
+      "DMT 84B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "content",
+         "level": 1,
+         "quote": "Insert mounting methods.",
+         "basis": "mounting carbide insert cutting tools onto tool holders/machines"
+        },
+        {
+         "course": "DMT 84B",
+         "section": "content",
+         "level": 1,
+         "quote": "Setting tool offsets.",
+         "basis": "setting tool offsets is part of aligning/securing cutting tools onto the machine"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.2.l.8",
+     "dwa": "Conduct test runs of production equipment.",
+     "task": "Operate equipment to verify operational efficiency. · Test experimental models under simulated operating conditions, for purposes such as development, standardization, or feasibility of design.",
+     "cells": {
+      "DMT 84A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 84A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Operate mill CNC controller to download and dry run part programs",
+         "basis": "dry run is a test run of equipment to verify operational efficiency before production"
+        },
+        {
+         "course": "DMT 84A",
+         "section": "content",
+         "level": 1,
+         "quote": "Verify CNC programs by means of machine simulators and software verification tools.",
+         "basis": "dry running/verifying programs on the machine is a test run to verify operational efficiency"
+        },
+        {
+         "course": "DMT 84A",
+         "section": "content",
+         "level": 1,
+         "quote": "Run tool tryout with single block and adjusted feed rates.",
+         "basis": "tool tryout runs are test runs of production equipment before full operation"
+        }
+       ]
+      },
+      "DMT 84B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "content",
+         "level": 1,
+         "quote": "Dry run tool with single block and adjusted feed rates.",
+         "basis": "test running equipment under controlled conditions to verify function"
+        },
+        {
+         "course": "DMT 84B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Verify mill programs with PC based solid modeling software.",
+         "basis": "verifying tool paths via simulation is testing program operation before production run"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.2.c.20",
+     "dwa": "Exchange information with colleagues.",
+     "task": "Confer with numerical control programmers to check and ensure that new programs or machinery will function properly and that output will meet specifications. · Confer with engineering, supervisory, or manufacturing personnel to exchange technical information.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.4.b.6.e.11",
+     "dwa": "Advise others on ways to improve processes or products.",
+     "task": "Evaluate machining procedures and recommend changes or modifications for improved efficiency or adaptability. · Advise clients about the materials being used for finished products.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.2.b.1.b.3",
+     "dwa": "Diagnose equipment malfunctions.",
+     "task": "Diagnose machine tool malfunctions to determine need for adjustments or repairs.",
+     "cells": {
+      "DMT 84B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "content",
+         "level": 1,
+         "quote": "Identify and clear alarms.",
+         "basis": "diagnosing controller/equipment malfunction indicated by alarm to determine needed adjustment"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.2.c.5",
+     "dwa": "Design tools, fixtures, or other devices for production equipment.",
+     "task": "Design fixtures, tooling, or experimental parts to meet special engineering needs.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.a.1.e.7",
+     "dwa": "Dispose of trash or waste materials.",
+     "task": "Dispose of scrap or waste material in accordance with company policies and environmental regulations.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.a.2.ao.8",
+     "dwa": "Draw guide lines or markings on materials or workpieces using patterns or other references.",
+     "task": "Lay out, measure, and mark metal stock to display placement of cuts.",
+     "cells": {
+      "DMT 80": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Layout dye - application. Tools - scribes, combination squares, dividers, prick and center punches.",
+         "basis": "drawing guide markings on stock using layout tools per O*NET layout task"
+        },
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Layout dye - application.",
+         "basis": "layout dye and scribing tools used to mark cut lines on stock"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.3.a.1",
+     "dwa": "Measure materials to mark reference points, cutting lines, or other indicators.",
+     "task": "Lay out, measure, and mark metal stock to display placement of cuts.",
+     "cells": {
+      "DMT 80": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Layout table and precision height gage.",
+         "basis": "measuring and marking stock to indicate cut placement"
+        },
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Tools - scribes, combination squares, dividers, prick and center punches.",
+         "basis": "layout tools used to measure and mark reference points on stock"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.a.2.b.3",
+     "dwa": "Sort recyclable materials.",
+     "task": "Separate scrap waste and related materials for reuse, recycling, or disposal.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.1.a.2.a.4",
+     "dwa": "Monitor lubrication of equipment or workpieces.",
+     "task": "Check work pieces to ensure that they are properly lubricated or cooled.",
+     "cells": {
+      "DMT 80": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Coolant selection.",
+         "basis": "selecting coolant relates directly to lubricating/cooling workpieces during machining"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "dropped": [
+    {
+     "activity": 1,
+     "course": "DMT 80",
+     "section": "content",
+     "quote": "Calculate and apply cutting tool speeds and feeds.",
+     "basis": "speed/feed calculation uses precision instrument-derived dimensions for machining setup",
+     "why": "adjudicated: d: this quote evidences calculating speeds/feeds for machining setup, a different activity (operate/monitor cutting equipment), not calculating workpiece dimensions with micrometers/calipers"
+    },
+    {
+     "activity": 5,
+     "course": "DMT 80",
+     "section": "content",
+     "quote": "Boring, facing, grooving.",
+     "basis": "precision machining operations on lathe/mill forming equipment",
+     "why": "adjudicated: a: boring/facing/grooving names lathe operations with no distinct performable content mapping to metal/plastic forming equipment beyond cutting already captured elsewhere"
+    },
+    {
+     "activity": 8,
+     "course": "DMT 84A",
+     "section": "lab",
+     "quote": "Demonstrate CNC mill controller operations",
+     "basis": "operating and monitoring controller functions during machining run",
+     "why": "adjudicated: d: demonstrating controller operations evidences programming/operating equipment, not specifically monitoring feed/speed"
+    },
+    {
+     "activity": 5,
+     "course": "PLO",
+     "section": "program_outcomes",
+     "quote": "Setup and operate conventional and CNC machines safely",
+     "basis": "setup/operation of machines constitutes operating metal forming equipment",
+     "why": "adjudicated: a: generic 'setup and operate conventional and CNC machines' names no content specific to forming equipment distinct from cutting already captured"
+    },
+    {
+     "activity": 5,
+     "course": "DMT 80",
+     "section": "objectives",
+     "quote": "Apply basic set-ups and operations on lathes; explain characteristics of lathe cutting tools.",
+     "basis": "operating a lathe is operating metal forming/machining equipment for precision machining",
+     "why": "adjudicated: d: lathe cutting operations evidence operating cutting equipment, a different activity than metal/plastic forming equipment"
+    },
+    {
+     "activity": 1,
+     "course": "DMT 84A",
+     "section": "objectives",
+     "quote": "Select and calculate logical tool paths and positioning for mill cutters.",
+     "basis": "calculating tool path positioning requires calculating dimensions/coordinates of the workpiece",
+     "why": "adjudicated: d: calculating tool paths/positioning for cutters evidences CNC programming, a different activity than calculating workpiece dimensions"
+    },
+    {
+     "activity": 7,
+     "course": "DMT 84A",
+     "section": "content",
+     "quote": "Cutter path development.",
+     "basis": "developing cutter paths from part requirements is determining operational methods/sequences to fabricate the product",
+     "why": "adjudicated: d: cutter path development evidences CNC programming, a different activity than reviewing blueprints to determine methods"
+    },
+    {
+     "activity": 8,
+     "course": "DMT 84A",
+     "section": "content",
+     "quote": "RPM and feed rate guidelines/calculations.",
+     "basis": "monitoring feed/speed during machining requires understanding these guidelines for proper operation",
+     "why": "adjudicated: b: RPM/feed rate guidelines and calculations precede monitoring rather than evidencing the monitoring act itself"
+    },
+    {
+     "activity": 8,
+     "course": "DMT 84A",
+     "section": "lab",
+     "quote": "Demonstrate CNC mill controller operations",
+     "basis": "operating the controller during machining includes monitoring equipment functioning",
+     "why": "adjudicated: d: demonstrating controller operations evidences programming/operating the machine, not specifically monitoring feed and speed"
+    },
+    {
+     "activity": 18,
+     "course": "DMT 84A",
+     "section": "content",
+     "quote": "Zero point selection.",
+     "basis": "selecting zero/reference points on stock is directly constitutive of laying out reference markings for cuts",
+     "why": "adjudicated: b: zero point selection is a programming/setup precondition, not marking guide lines on the workpiece stock"
+    },
+    {
+     "activity": 19,
+     "course": "DMT 84A",
+     "section": "content",
+     "quote": "Location and setting of workpiece/fixture zero.",
+     "basis": "measuring and marking reference points on workpiece for cutting operations",
+     "why": "adjudicated: d: setting workpiece/fixture zero evidences mounting/aligning fixtures onto machines, a different activity than measuring to mark reference/cutting lines"
+    },
+    {
+     "activity": 7,
+     "course": "DMT 84B",
+     "section": "objectives",
+     "quote": "Prepare and interpret programs for CNC mills.",
+     "basis": "interpreting programs to determine machining operation sequence for a workpiece",
+     "why": "adjudicated: d: preparing/interpreting CNC programs evidences programming equipment, a different activity than reviewing blueprints for operational sequence"
+    },
+    {
+     "activity": 18,
+     "course": "DMT 84B",
+     "section": "content",
+     "quote": "Plot coordinate points using tool nose radius compensation.",
+     "basis": "plotting cut coordinate points on the workpiece is laying out cut placement markings",
+     "why": "adjudicated: d: plotting coordinate points with tool nose compensation evidences CNC programming/tool path work, a different activity than marking guide lines on the workpiece"
+    },
+    {
+     "activity": 19,
+     "course": "DMT 84B",
+     "section": "assignments",
+     "quote": "Take home worksheets involving cartesian coordinate calculations.",
+     "basis": "computing reference/cutting-line coordinates is measuring to mark cutting points",
+     "why": "adjudicated: d: cartesian coordinate calculation worksheets evidence dimension/programming calculation, a different activity than measuring materials to mark reference/cutting lines"
+    },
+    {
+     "activity": 21,
+     "course": "DMT 84B",
+     "section": "content",
+     "quote": "Chip breakers.",
+     "basis": "chip breaker geometry relates to cooling/chip control at the cutting tool during machining",
+     "why": "adjudicated: a: chip breakers names a tool geometry topic with no performable lubrication/cooling-check content"
+    }
+   ],
+   "source_note": "Read from De Anza College's course outlines of record (elumen); sections present: slo, objective, description, content outline, lab content, assignment.",
+   "role": "",
+   "short_title": "CNC Machinist"
+  },
+  {
+   "college": "De Anza College",
+   "member_id": "deanza",
+   "certificate": "Certificate of Achievement, CNC Machinist",
+   "kind": "credit",
+   "top6": "095630",
+   "top_name": "Manufacturing and Industrial Technology",
+   "paired_soc": "17-3026",
+   "occupation": "Industrial Engineering Technologists and Technicians",
+   "crosswalk_socs": [],
+   "pairing_basis": "",
+   "courses": [
+    {
+     "code": "DMT 80",
+     "title": "Introduction to Machining and CNC Processes",
+     "units": 5,
+     "source_url": "https://deanza.elumenapp.com/public/?orgEntityId=8&uuid=f81ddc5a-1dd2-11f1-81f6-9b5952c4aab2",
+     "system": "elumen",
+     "effective": "Fall 2026",
+     "approved": "2025-11-18",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000573780",
+      "status": "Approved",
+      "last_updated": "2026-06-09",
+      "outline_date": "2025-11-18",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "DMT 84A",
+     "title": "Introduction to CNC Programming and Operation; Mill",
+     "units": 5,
+     "source_url": "https://deanza.elumenapp.com/public/?orgEntityId=8&uuid=1aec3396-1dd6-11f1-81f6-5589ce056bfa",
+     "system": "elumen",
+     "effective": "Fall 2026",
+     "approved": "2025-11-18",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000573778",
+      "status": "Approved",
+      "last_updated": "2026-06-09",
+      "outline_date": "2025-11-18",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "DMT 84B",
+     "title": "CNC Programming and Operation; Intermediate Mill",
+     "units": 5,
+     "source_url": "https://deanza.elumenapp.com/public/?orgEntityId=8&uuid=f4d0616a-1dd6-11f1-81f6-3725a4f4f547",
+     "system": "elumen",
+     "effective": "Fall 2026",
+     "approved": "2025-06-17",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000573777",
+      "status": "Approved",
+      "last_updated": "2026-06-09",
+      "outline_date": "2025-06-17",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "DMT 90",
+     "title": "Print Reading and Machine Shop Calculations",
+     "units": 4.5,
+     "source_url": "https://deanza.elumenapp.com/public/?orgEntityId=8&uuid=9fb0cac2-afa6-11ef-b640-fbe498812414",
+     "system": "elumen",
+     "effective": "Fall 2025",
+     "approved": "2024-02-27",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000535078",
+      "status": "Active",
+      "last_updated": "2024-09-12",
+      "outline_date": "2024-02-27",
+      "verdict": "coci-newer"
+     }
+    }
+   ],
+   "program_outcomes": [
+    "Setup and operate conventional and CNC machines safely",
+    "Construct and inspect machined projects using conventional and CNC equipment",
+    "Construct word address programs to machine projects"
+   ],
+   "rows": [
+    {
+     "dwa_id": "4.A.1.a.2.i.4",
+     "dwa": "Monitor activities affecting environmental quality.",
+     "task": "Adhere to all applicable regulations, policies, and procedures for health, safety, and environmental compliance.",
+     "cells": {
+      "DMT 80": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate safe manufacturing lab practices.",
+         "basis": "requires adhering to health/safety procedures in production setting"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.i.4",
+     "dwa": "Calibrate scientific or technical equipment.",
+     "task": "Calibrate or adjust equipment to ensure quality production, using tools such as calipers, micrometers, height gauges, protractors, or ring gauges. · Monitor and adjust production processes or equipment for quality and productivity.",
+     "cells": {
+      "DMT 80": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Interpret and record measurements made with precision measuring tools.",
+         "basis": "using calipers/micrometers to calibrate/verify parts matches equipment calibration"
+        },
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Micrometers.\n    - Advantages and disadvantages.\n    - Calibration and care.",
+         "basis": "explicit calibration instruction with micrometers matches calibrating scientific/technical equipment"
+        }
+       ]
+      },
+      "DMT 84B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "content",
+         "level": 1,
+         "quote": "Setting tool wear offsets.",
+         "basis": "adjusting tool offsets on CNC equipment to ensure quality production directly matches calibrating/adjusting equipment"
+        },
+        {
+         "course": "DMT 84B",
+         "section": "content",
+         "level": 1,
+         "quote": "Setting tool offsets.",
+         "basis": "setting tool offsets is calibrating/adjusting CNC equipment to ensure accurate production"
+        }
+       ]
+      },
+      "DMT 84A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 84A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Apply the use of precision measuring tools to inspect the accuracy of machined parts",
+         "basis": "using gage blocks, sine bars, and indicators to calibrate/verify measurement setups is calibrating technical equipment"
+        },
+        {
+         "course": "DMT 84A",
+         "section": "lab",
+         "level": 1,
+         "quote": "Identify measuring tools and inspection techniques",
+         "basis": "hands-on use of calipers/indicators/gage blocks constitutes calibrating measuring equipment"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.b.4.j.24",
+     "dwa": "Direct industrial production activities.",
+     "task": "Oversee or inspect production processes.",
+     "cells": {
+      "DMT 80": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Safely test program with single block and adjusted feed rates.",
+         "basis": "overseeing/inspecting a production run for correctness before full operation"
+        }
+       ]
+      },
+      "DMT 84A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84A",
+         "section": "lab",
+         "level": 1,
+         "quote": "Demonstrate CNC mill controller operations",
+         "basis": "running and overseeing machine operation during production is directing/overseeing the production process"
+        }
+       ]
+      },
+      "DMT 84B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate the set up and advanced operation of vertical machining centers.",
+         "basis": "setting up and operating production machinery is directing/overseeing industrial production activities"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.2.c.3",
+     "dwa": "Design industrial equipment.",
+     "task": "Identify opportunities for improvements in quality, cost, or efficiency of automation equipment.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.b.2.f.14",
+     "dwa": "Develop technical methods or processes.",
+     "task": "Develop or implement programs to address problems related to production, materials, safety, or quality. · Assist engineers in developing, building, or testing prototypes or new products, processes, or procedures. · Develop production, inventory, or quality assurance programs.",
+     "cells": {
+      "DMT 84B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "content",
+         "level": 1,
+         "quote": "Macros; programs and applications.",
+         "basis": "developing advanced programmed methods/processes for machining production"
+        },
+        {
+         "course": "DMT 84B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Prepare and interpret programs for CNC mills.",
+         "basis": "developing CNC programs is developing technical methods/processes for production"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.1.i.6",
+     "dwa": "Implement design or process improvements.",
+     "task": "Develop or implement programs to address problems related to production, materials, safety, or quality.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.1.b.2.c.2",
+     "dwa": "Test products for functionality or quality.",
+     "task": "Test selected products at specified stages in the production process for performance characteristics or adherence to specifications.",
+     "cells": {
+      "DMT 84A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 84A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Apply the use of precision measuring tools to inspect the accuracy of machined parts",
+         "basis": "testing finished machined parts against specifications at a production stage"
+        }
+       ]
+      },
+      "DMT 80": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Analyze, construct, and inspect assigned machined projects using the introductory principles of machining.",
+         "basis": "inspecting machined projects for adherence to specifications"
+        }
+       ]
+      },
+      "DMT 84B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "lab",
+         "level": 1,
+         "quote": "Measurement and inspection",
+         "basis": "lab measurement/inspection of machined parts is testing products for adherence to specifications"
+        },
+        {
+         "course": "DMT 84B",
+         "section": "content",
+         "level": 1,
+         "quote": "Thread measurement using three-wire method.",
+         "basis": "measuring threads against specification is testing product for quality/adherence to specs"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.1.a.4",
+     "dwa": "Explain engineering drawings, specifications, or other technical information.",
+     "task": "Create or interpret engineering drawings, schematic diagrams, formulas, or blueprints for management or engineering staff.",
+     "cells": {
+      "DMT 90": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 90",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate the ability to interpret multi-view drawings and prints.",
+         "basis": "literal interpretation of engineering drawings/blueprints"
+        },
+        {
+         "course": "DMT 90",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Describe screw thread and gear callout information available on prints and drawings.",
+         "basis": "describing thread/gear callouts is explaining technical drawing information"
+        }
+       ]
+      },
+      "DMT 84B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Prepare and interpret programs for CNC lathes",
+         "basis": "interpreting CNC programs (technical specifications) for machine setup is explaining technical information"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.2.o.1",
+     "dwa": "Prepare drawings or diagrams of products or services.",
+     "task": "Create or interpret engineering drawings, schematic diagrams, formulas, or blueprints for management or engineering staff.",
+     "cells": {
+      "DMT 90": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 90",
+         "section": "content",
+         "level": 1,
+         "quote": "Shop Sketching",
+         "basis": "producing sketches/drawings of parts as a drafting activity"
+        },
+        {
+         "course": "DMT 90",
+         "section": "content",
+         "level": 1,
+         "quote": "Pictorial sketching",
+         "basis": "pictorial sketching is direct practice preparing product drawings"
+        }
+       ]
+      },
+      "DMT 84A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 84A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Create basic word-address programs to successfully construct projects using vertical machining centers.",
+         "basis": "word-address CNC programs are the technical schematic/blueprint equivalent directing tool paths, i.e. diagrams of the machining process"
+        }
+       ]
+      },
+      "DMT 84B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Create advanced word-address programs to successfully construct projects using vertical machining centers.",
+         "basis": "word-address programs function as the technical blueprint/diagram directing tool paths for a product"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.a.1.g.5",
+     "dwa": "Assess product or process usefulness.",
+     "task": "Compile and evaluate statistical data to determine and maintain quality and reliability of products.",
+     "cells": {
+      "DMT 80": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Analyze, construct, and inspect assigned machined projects using the introductory principles of machining.",
+         "basis": "analyzing machined product against specifications evidences assessing product usefulness/quality"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.b.6.e.9",
+     "dwa": "Recommend technical design or process changes to improve efficiency, quality, or performance.",
+     "task": "Recommend corrective or preventive actions to assure or improve product quality or reliability.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.1.a.2.k.6",
+     "dwa": "Monitor processes for compliance with standards.",
+     "task": "Read worker logs, product processing sheets, or specification sheets to verify that records adhere to quality assurance specifications. · Evaluate industrial operations for compliance with permits or regulations related to the generation, storage, treatment, transportation, or disposal of hazardous materials or waste.",
+     "cells": {
+      "DMT 90": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 90",
+         "section": "content",
+         "level": 1,
+         "quote": "Demonstrate the various uses of dimensions, tolerances, notes and symbols",
+         "basis": "verifying parts against tolerance specifications on prints matches monitoring compliance with standards"
+        }
+       ]
+      },
+      "DMT 80": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Dimensioning nomenclature.\n    - Basic dimensions.\n    - Tolerance.\n    - Bilateral/unilateral.\n    - High/low limits.",
+         "basis": "checking parts against tolerance/limit specifications is monitoring processes for compliance with standards"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.1.d.3",
+     "dwa": "Determine operational methods.",
+     "task": "Select material quantities or processing methods needed to achieve efficient production.",
+     "cells": {
+      "DMT 80": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Calculate and apply cutting tool speeds and feeds.",
+         "basis": "selecting processing methods (speeds/feeds) to achieve efficient production"
+        },
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Speed and feed selection.",
+         "basis": "selecting processing methods (speed/feed) needed for efficient production is determining operational methods"
+        }
+       ]
+      },
+      "DMT 84A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84A",
+         "section": "content",
+         "level": 1,
+         "quote": "Effective rough, semi-finish and finish cuts for productivity and accuracy.",
+         "basis": "determining machining methods for productive, accurate operations"
+        },
+        {
+         "course": "DMT 84A",
+         "section": "content",
+         "level": 1,
+         "quote": "RPM and feed rate guidelines/calculations.",
+         "basis": "selecting speed/feed and tool path parameters is determining the operational method for efficient machining"
+        },
+        {
+         "course": "DMT 84A",
+         "section": "content",
+         "level": 1,
+         "quote": "Select and calculate logical tool paths and positioning for mill cutters.",
+         "basis": "choosing tool paths/cutting sequence is selecting the processing method for production"
+        }
+       ]
+      },
+      "DMT 84B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "content",
+         "level": 1,
+         "quote": "Tool geometry for different work piece materials.",
+         "basis": "selecting appropriate tooling/geometry for given materials is determining operational processing methods"
+        }
+       ]
+      },
+      "DMT 90": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 90",
+         "section": "content",
+         "level": 1,
+         "quote": "Taper calculations",
+         "basis": "computing taper/compound-angle machining parameters is determining operational machining methods"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.2.b.9",
+     "dwa": "Inspect operational processes.",
+     "task": "Verify that equipment is being operated and maintained according to quality assurance standards by observing worker performance.",
+     "cells": {
+      "DMT 80": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "lab",
+         "level": 1,
+         "quote": "Demonstrate milling machine operations",
+         "basis": "observing/demonstrating proper machine operation per quality standards"
+        }
+       ]
+      },
+      "DMT 84A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84A",
+         "section": "content",
+         "level": 1,
+         "quote": "Run tool tryout with single block and adjusted feed rates.",
+         "basis": "dry-running and observing tool tryout to verify correct operation is inspecting the operational process"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.1.j.2",
+     "dwa": "Select project materials.",
+     "task": "Select material quantities or processing methods needed to achieve efficient production. · Select cleaning materials, tools, or equipment.",
+     "cells": {
+      "DMT 84B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "content",
+         "level": 1,
+         "quote": "Carbide insert types, ANSI designations and applications.",
+         "basis": "selecting tooling/cutting materials appropriate to the job matches selecting project materials"
+        }
+       ]
+      },
+      "DMT 80": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Select vertical milling machine cutting tools and perform basic machining operations.",
+         "basis": "selecting cutting tools/materials for machining operation"
+        },
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Coolant selection.",
+         "basis": "choosing coolant for a machining process is selecting project materials"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.2.b.15",
+     "dwa": "Monitor the productivity or efficiency of industrial operations.",
+     "task": "Monitor and adjust production processes or equipment for quality and productivity.",
+     "cells": {
+      "DMT 84A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84A",
+         "section": "content",
+         "level": 1,
+         "quote": "RPM and feed rate guidelines/calculations.",
+         "basis": "adjusting machining parameters to maintain efficiency/quality of production"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.2.d.3",
+     "dwa": "Create physical models or prototypes.",
+     "task": "Assist engineers in developing, building, or testing prototypes or new products, processes, or procedures.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.2.b.2.o.21",
+     "dwa": "Create graphical representations of industrial production systems.",
+     "task": "Prepare layouts, drawings, or sketches of machinery or equipment, such as shop tooling, scale layouts, or new equipment design, using drafting equipment or computer-aided design (CAD) software.",
+     "cells": {
+      "DMT 80": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "CAD drawing transfer to CNC program.",
+         "basis": "creating CAD-based toolpaths for CNC production is a graphical representation of an industrial production system"
+        }
+       ]
+      },
+      "DMT 84A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 84A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Create basic word-address programs to successfully construct projects using vertical machining centers.",
+         "basis": "word-address programs function as the graphical/coded layout representation of the machining sequence for production"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.1.t.7",
+     "dwa": "Research human performance or health factors related to engineering or design activities.",
+     "task": "Study time, motion, methods, or speed involved in maintenance, production, or other operations to establish standard production rate or improve efficiency.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.4.b.3.d.2",
+     "dwa": "Train personnel on proper operational procedures.",
+     "task": "Provide advice or training to other technicians.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.2.a.4.e.8",
+     "dwa": "Analyze costs and benefits of proposed designs or projects.",
+     "task": "Analyze, estimate, or report production costs. · Conduct statistical studies to analyze or compare production costs for sustainable and nonsustainable designs.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.1.b.3.b.4",
+     "dwa": "Estimate operational costs.",
+     "task": "Analyze, estimate, or report production costs.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.b.6.o.4",
+     "dwa": "Prepare operational reports.",
+     "task": "Prepare production documents, such as standard operating procedures, manufacturing batch records, inventory reports, or productivity reports.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.4.c.3.e.3",
+     "dwa": "Purchase materials, equipment, or other resources.",
+     "task": "Coordinate equipment purchases, installations, or transfers.",
+     "cells": {}
+    }
+   ],
+   "dropped": [
+    {
+     "activity": 3,
+     "course": "CNC Machinist Certificate",
+     "section": "program_outcomes",
+     "quote": "Setup and operate conventional and CNC machines safely",
+     "basis": "operating machines to produce parts is overseeing/inspecting a production process at the operator level",
+     "why": "unknown course 'CNC Machinist Certificate'"
+    },
+    {
+     "activity": 7,
+     "course": "CNC Machinist Certificate",
+     "section": "program_outcomes",
+     "quote": "Construct and inspect machined projects using conventional and CNC equipment",
+     "basis": "inspecting machined projects is literally testing products for adherence to specifications",
+     "why": "unknown course 'CNC Machinist Certificate'"
+    },
+    {
+     "activity": 14,
+     "course": "CNC Machinist Certificate",
+     "section": "program_outcomes",
+     "quote": "Setup and operate conventional and CNC machines safely",
+     "basis": "safe setup/operation of machines evidences inspecting operational processes against standards",
+     "why": "unknown course 'CNC Machinist Certificate'"
+    },
+    {
+     "activity": 9,
+     "course": "CNC Machinist Certificate",
+     "section": "program_outcomes",
+     "quote": "Construct word address programs to machine projects",
+     "basis": "word address (G-code) programs are the machine-executable specification/diagram used to produce the part",
+     "why": "unknown course 'CNC Machinist Certificate'"
+    },
+    {
+     "activity": 15,
+     "course": "DMT 84A",
+     "section": "content",
+     "quote": "Carbide",
+     "basis": "choosing cutting tool material for the job is selecting project (cutting tool) materials",
+     "why": "malformed"
+    },
+    {
+     "activity": 6,
+     "course": "DMT 84B",
+     "section": "objectives",
+     "quote": "Describe carbide insert ANSI designations, wear characteristics and applications.",
+     "basis": "selecting improved tooling to address wear/quality problems in the process",
+     "why": "adjudicated: b) describing insert designations/wear characteristics is knowledge preceding a process-improvement decision, not the improvement itself"
+    },
+    {
+     "activity": 18,
+     "course": "DMT 84A",
+     "section": "content",
+     "quote": "Cutter path development.",
+     "basis": "generating tool path/graphical layout of machining operations akin to production system layouts",
+     "why": "adjudicated: d) cutter path development evidences programming/tool-path selection, not preparing drawings/layouts of machinery via CAD"
+    },
+    {
+     "activity": 21,
+     "course": "DMT 90",
+     "section": "content",
+     "quote": "Applications of geometric and trigonometric functions.",
+     "basis": "not used standalone",
+     "why": "adjudicated: a) geometric/trigonometric function applications is topic-only content with no performable cost-analysis step named"
+    },
+    {
+     "activity": 6,
+     "course": "DMT 80",
+     "section": "objectives",
+     "quote": "Calculate and apply cutting tool speeds and feeds.",
+     "basis": "adjusting speeds/feeds to optimize machining is implementing process improvements",
+     "why": "adjudicated: d) calculating/applying cutting speeds and feeds evidences determining operational methods, not implementing a process/quality improvement program"
+    },
+    {
+     "activity": 16,
+     "course": "DMT 80",
+     "section": "objectives",
+     "quote": "Calculate and apply cutting tool speeds and feeds.",
+     "basis": "adjusting cutting parameters for efficient machining is monitoring productivity/efficiency of operations",
+     "why": "adjudicated: d) calculating/applying cutting speeds and feeds evidences determining operational methods, not monitoring ongoing productivity/efficiency"
+    },
+    {
+     "activity": 20,
+     "course": "DMT 80",
+     "section": "assignments",
+     "quote": "Lab projects demonstrating mastery of skills using the machines and equipment covered in this course.",
+     "basis": "hands-on demonstration of correct machine operation supports training others on proper operational procedures",
+     "why": "adjudicated: c) lab projects demonstrating mastery of skills is generic student skill practice, not training other technicians"
+    },
+    {
+     "activity": 8,
+     "course": "DMT 84A",
+     "section": "content",
+     "quote": "Verify CNC programs by means of machine simulators and software verification tools.",
+     "basis": "interpreting/verifying G&M code programs is explaining technical programming information used for production",
+     "why": "adjudicated: d) verifying CNC programs via simulators evidences testing/inspecting a program, not explaining engineering drawings to others"
+    },
+    {
+     "activity": 1,
+     "course": "DMT 84B",
+     "section": "content",
+     "quote": "Identify and clear alarms.",
+     "basis": "responding to controller alarms is part of adhering to safety/operational compliance procedures on the machine",
+     "why": "adjudicated: d) identifying and clearing controller alarms evidences equipment troubleshooting/operation, not environmental/health/safety regulatory compliance"
+    },
+    {
+     "activity": 6,
+     "course": "DMT 84B",
+     "section": "content",
+     "quote": "Cutter compensation, ramp on/off moves.",
+     "basis": "implementing cutter compensation techniques is a process improvement to machining operations",
+     "why": "adjudicated: d) cutter compensation and ramp on/off moves is a programming technique, not a process/quality improvement program"
+    },
+    {
+     "activity": 15,
+     "course": "DMT 84B",
+     "section": "objectives",
+     "quote": "Describe carbide insert ANSI designations, wear characteristics and applications.",
+     "basis": "choosing correct insert per wear characteristics/application evidences selecting tools/materials for the process",
+     "why": "adjudicated: b) describing insert designations/wear characteristics is knowledge preceding tool selection, not the selection act itself"
+    },
+    {
+     "activity": 12,
+     "course": "DMT 90",
+     "section": "content",
+     "quote": "Positional",
+     "basis": "positional tolerance interpretation underlies verifying parts against specification sheets, i.e., monitoring compliance with standards",
+     "why": "adjudicated: a) 'Positional' alone is a topic-only heading with no performable content named"
+    }
+   ],
+   "source_note": "Read from De Anza College's course outlines of record (elumen); sections present: slo, objective, description, content outline, lab content, assignment.",
+   "role": "",
+   "short_title": "CNC Machinist"
+  },
+  {
+   "college": "De Anza College",
+   "member_id": "deanza",
+   "certificate": "Certificate of Achievement, CNC Machinist",
+   "kind": "credit",
+   "top6": "095630",
+   "top_name": "Manufacturing and Industrial Technology",
+   "paired_soc": "17-3024",
+   "occupation": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+   "crosswalk_socs": [],
+   "pairing_basis": "",
+   "courses": [
+    {
+     "code": "DMT 80",
+     "title": "Introduction to Machining and CNC Processes",
+     "units": 5,
+     "source_url": "https://deanza.elumenapp.com/public/?orgEntityId=8&uuid=f81ddc5a-1dd2-11f1-81f6-9b5952c4aab2",
+     "system": "elumen",
+     "effective": "Fall 2026",
+     "approved": "2025-11-18",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000573780",
+      "status": "Approved",
+      "last_updated": "2026-06-09",
+      "outline_date": "2025-11-18",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "DMT 84A",
+     "title": "Introduction to CNC Programming and Operation; Mill",
+     "units": 5,
+     "source_url": "https://deanza.elumenapp.com/public/?orgEntityId=8&uuid=1aec3396-1dd6-11f1-81f6-5589ce056bfa",
+     "system": "elumen",
+     "effective": "Fall 2026",
+     "approved": "2025-11-18",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000573778",
+      "status": "Approved",
+      "last_updated": "2026-06-09",
+      "outline_date": "2025-11-18",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "DMT 84B",
+     "title": "CNC Programming and Operation; Intermediate Mill",
+     "units": 5,
+     "source_url": "https://deanza.elumenapp.com/public/?orgEntityId=8&uuid=f4d0616a-1dd6-11f1-81f6-3725a4f4f547",
+     "system": "elumen",
+     "effective": "Fall 2026",
+     "approved": "2025-06-17",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000573777",
+      "status": "Approved",
+      "last_updated": "2026-06-09",
+      "outline_date": "2025-06-17",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "DMT 90",
+     "title": "Print Reading and Machine Shop Calculations",
+     "units": 4.5,
+     "source_url": "https://deanza.elumenapp.com/public/?orgEntityId=8&uuid=9fb0cac2-afa6-11ef-b640-fbe498812414",
+     "system": "elumen",
+     "effective": "Fall 2025",
+     "approved": "2024-02-27",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000535078",
+      "status": "Active",
+      "last_updated": "2024-09-12",
+      "outline_date": "2024-02-27",
+      "verdict": "coci-newer"
+     }
+    }
+   ],
+   "program_outcomes": [
+    "Setup and operate conventional and CNC machines safely",
+    "Construct and inspect machined projects using conventional and CNC equipment",
+    "Construct word address programs to machine projects"
+   ],
+   "rows": [
+    {
+     "dwa_id": "4.A.3.b.2.e.1",
+     "dwa": "Design electromechanical equipment or systems.",
+     "task": "Develop, test, or program new robots. · Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning.",
+     "cells": {
+      "DMT 84B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Prepare and interpret programs for CNC mills.",
+         "basis": "programming CNC mills to construct new tool paths constitutes designing/programming the equipment's operation"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.2.l.2",
+     "dwa": "Test performance of electrical, electronic, mechanical, or integrated systems or equipment.",
+     "task": "Develop, test, or program new robots. · Test performance of electromechanical assemblies, using test instruments such as oscilloscopes, electronic voltmeters, or bridges. · Select and use laboratory, operational, or diagnostic techniques or test equipment to assess electromechanical circuits, equipment, processes, systems, or subsystems. · Operate, test, or maintain robotic equipment used for green production applications, such as waste-to-energy conversion systems, minimization of material waste, or replacement of human operators in dangerous work environments.",
+     "cells": {
+      "DMT 84A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84A",
+         "section": "content",
+         "level": 1,
+         "quote": "Verify CNC programs by means of machine simulators and software verification tools.",
+         "basis": "verifying CNC programs via simulators tests the performance of the integrated mechanical/control system"
+        }
+       ]
+      },
+      "DMT 84B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Verify mill programs with PC based solid modeling software.",
+         "basis": "software-based verification of tool paths constitutes testing performance of the machine system before run"
+        },
+        {
+         "course": "DMT 84B",
+         "section": "content",
+         "level": 1,
+         "quote": "Verify tool paths.",
+         "basis": "verifying tool paths is testing the programmed system's performance before running on the machine"
+        }
+       ]
+      },
+      "DMT 80": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Safely test program with single block and adjusted feed rates.",
+         "basis": "testing a CNC program's performance on the machine matches testing performance of an integrated system"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.2.b.1",
+     "dwa": "Develop software or computer applications.",
+     "task": "Install or program computer hardware or machine or instrumentation software in microprocessor-based systems.",
+     "cells": {
+      "DMT 84A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 84A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Prepare basic three-axis programming for milling machine operations",
+         "basis": "writing CNC part programs is programming machine/instrumentation software for a microprocessor-based (CNC controller) system"
+        },
+        {
+         "course": "DMT 84A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Create basic word-address programs to successfully construct projects using vertical machining centers.",
+         "basis": "programming machine controller software directly matches installing/programming machine or instrumentation software"
+        },
+        {
+         "course": "DMT 84A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Operate mill CNC controller to download and dry run part programs",
+         "basis": "downloading and running programs on the machine controller evidences programming instrumentation software"
+        }
+       ]
+      },
+      "DMT 84B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Create advanced word-address programs to successfully construct projects using vertical machining centers.",
+         "basis": "authoring advanced CNC programs is developing software for the machine's control system"
+        },
+        {
+         "course": "DMT 84B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Verify mill programs with PC based solid modeling software.",
+         "basis": "writing and verifying programs on the controller software is developing/programming software applications for the machine"
+        }
+       ]
+      },
+      "DMT 80": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Call up and run programs in memory.",
+         "basis": "operating machine control software/programs matches installing or programming machine instrumentation software"
+        },
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Input and operate in MDI.",
+         "basis": "manual data input to the CNC controller is programming machine software in a microprocessor-based system"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.1.b.8",
+     "dwa": "Review technical documents to plan work.",
+     "task": "Read blueprints, schematics, diagrams, or technical orders to determine methods and sequences of assembly.",
+     "cells": {
+      "DMT 90": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 90",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate the ability to interpret multi-view drawings and prints.",
+         "basis": "reading blueprints/prints literally to plan machining/assembly sequence matches task text directly"
+        },
+        {
+         "course": "DMT 90",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Describe screw thread and gear callout information available on prints and drawings.",
+         "basis": "reading thread/gear callouts on technical drawings to determine assembly/machining methods"
+        },
+        {
+         "course": "DMT 90",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify projections and views used in manufacturing",
+         "basis": "identifying drawing projections/views is directly constitutive of reading blueprints/schematics"
+        },
+        {
+         "course": "DMT 90",
+         "section": "content",
+         "level": 1,
+         "quote": "Detail and assembly views",
+         "basis": "interpreting detail and assembly views is scope of reading technical drawings to determine assembly sequence"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.5.a.18",
+     "dwa": "Maintain electromechanical equipment.",
+     "task": "Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning. · Repair, rework, or calibrate hydraulic or pneumatic assemblies or systems to meet operational specifications or tolerances. · Operate, test, or maintain robotic equipment used for green production applications, such as waste-to-energy conversion systems, minimization of material waste, or replacement of human operators in dangerous work environments.",
+     "cells": {
+      "DMT 84B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "content",
+         "level": 1,
+         "quote": "Identify and clear alarms.",
+         "basis": "diagnosing and clearing machine alarms is maintaining/repairing equipment to ensure proper functioning"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.5.c.4",
+     "dwa": "Maintain electronic equipment.",
+     "task": "Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.1.b.2.f.8",
+     "dwa": "Inspect finished products to locate flaws.",
+     "task": "Inspect parts for surface defects. · Verify part dimensions or clearances to ensure conformance to specifications, using precision measuring instruments.",
+     "cells": {
+      "DMT 80": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Analyze, construct, and inspect assigned machined projects using the introductory principles of machining.",
+         "basis": "inspecting machined projects for surface defects/dimensional conformance matches inspecting finished products for flaws"
+        },
+        {
+         "course": "DMT 80",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Interpret and record measurements made with precision measuring tools.",
+         "basis": "verifying dimensions with precision measuring instruments matches the O*NET task literally"
+        }
+       ]
+      },
+      "DMT 84A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 84A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Apply the use of precision measuring tools to inspect the accuracy of machined parts",
+         "basis": "verifying dimensional accuracy with precision instruments evidences inspecting for conformance to specifications"
+        },
+        {
+         "course": "DMT 84A",
+         "section": "lab",
+         "level": 1,
+         "quote": "Identify measuring tools and inspection techniques",
+         "basis": "hands-on use of inspection techniques matches verifying part dimensions using precision measuring instruments"
+        }
+       ]
+      },
+      "DMT 84B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "lab",
+         "level": 1,
+         "quote": "Measurement and inspection",
+         "basis": "lab inspection activity evidences inspecting finished parts to locate flaws"
+        },
+        {
+         "course": "DMT 84B",
+         "section": "content",
+         "level": 1,
+         "quote": "Thread measurement using three-wire method.",
+         "basis": "precision measurement of thread dimensions verifies conformance to specifications, evidencing inspection"
+        }
+       ]
+      },
+      "DMT 90": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 90",
+         "section": "description",
+         "level": 1,
+         "quote": "as well as calculations used to solve common problems found in print interpretation and inspection",
+         "basis": "course scope explicitly covers inspection using print-based tolerance interpretation, matching verifying part dimensions/clearances"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.t.5",
+     "dwa": "Install instrumentation or electronic equipment or systems.",
+     "task": "Install electrical or electronic parts and hardware in housings or assemblies, using soldering equipment and hand tools.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.a.2.d.2",
+     "dwa": "Assemble equipment or components.",
+     "task": "Fabricate or assemble mechanical, electrical, or electronic components or assemblies. · Align, fit, or assemble component parts, using hand or power tools, fixtures, templates, or microscopes.",
+     "cells": {
+      "DMT 84A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84A",
+         "section": "lab",
+         "level": 1,
+         "quote": "Setup CNC milling tooling (cutting tools and holders)",
+         "basis": "fitting and assembling tool holders/cutting tools with hand tools and fixtures matches aligning/fitting component parts using fixtures"
+        }
+       ]
+      },
+      "DMT 84B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84B",
+         "section": "content",
+         "level": 1,
+         "quote": "Lathe set-up for internal and external threads.",
+         "basis": "setting up the lathe with tooling/fixtures for machining constitutes assembling equipment/components for production"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.aa.1",
+     "dwa": "Fabricate devices or components.",
+     "task": "Fabricate or assemble mechanical, electrical, or electronic components or assemblies.",
+     "cells": {
+      "DMT 80": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Lab projects demonstrating mastery of skills using the machines and equipment covered in this course.",
+         "basis": "producing machined lab projects on manual/CNC machines is fabricating mechanical components"
+        }
+       ]
+      },
+      "DMT 84A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "DMT 84A",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Lab projects demonstrating mastery of skills using three axis CNC machines, simulators and verification software covered in this course.",
+         "basis": "constructing CNC-machined parts in lab projects is fabricating mechanical components"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.2.o.8",
+     "dwa": "Create schematic drawings for electronics.",
+     "task": "Produce electrical, electronic, or mechanical drawings or other related documents or graphics necessary for electromechanical design, using computer-aided design (CAD) software.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.2.b.1.j.2",
+     "dwa": "Select project materials.",
+     "task": "Select electromechanical equipment, materials, components, or systems to meet functional specifications.",
+     "cells": {
+      "DMT 80": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "DMT 80",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Select vertical milling machine cutting tools and perform basic machining operations.",
+         "basis": "selecting cutting tools/materials to meet a job's functional specification matches selecting project materials/components"
+        },
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Cutting tool selection.",
+         "basis": "selecting tooling/materials to meet the machining job's functional requirements matches selecting project materials/components"
+        },
+        {
+         "course": "DMT 80",
+         "section": "content",
+         "level": 1,
+         "quote": "Coolant selection.",
+         "basis": "selecting process materials to meet functional specifications of the machining operation"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.2.f.14",
+     "dwa": "Develop technical methods or processes.",
+     "task": "Establish and maintain inventory, records, or documentation systems.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.b.6.h.21",
+     "dwa": "Maintain operational records or records systems.",
+     "task": "Establish and maintain inventory, records, or documentation systems.",
+     "cells": {}
+    }
+   ],
+   "dropped": [
+    {
+     "activity": 1,
+     "course": "DMT 80",
+     "section": "content",
+     "quote": "Explain basic CNC system components, axis movements, and controller operations.",
+     "basis": "designing/configuring electromechanical CNC system components maps to design of electromechanical systems",
+     "why": "adjudicated: d) explaining CNC system components/axis movements/controller operations is knowledge content, not designing equipment/systems; better evidences a review/knowledge task, not the design activity"
+    },
+    {
+     "activity": 5,
+     "course": "DMT 80",
+     "section": "objectives",
+     "quote": "Set-up and perform basic operations on drill presses.",
+     "basis": "operating and adjusting machine equipment to ensure proper functioning constitutes maintaining electromechanical equipment",
+     "why": "adjudicated: b) setting up and performing basic drill press operations is learning/performing an operation, not modifying/repairing/maintaining equipment"
+    },
+    {
+     "activity": 9,
+     "course": "DMT 80",
+     "section": "lab",
+     "quote": "Demonstrate milling machine operations",
+     "basis": "hands-on machine operation producing parts constitutes fabricating/assembling mechanical components",
+     "why": "adjudicated: d) demonstrating milling machine operations is operating/machining equipment, not assembling component parts"
+    },
+    {
+     "activity": 12,
+     "course": "DMT 84B",
+     "section": "objectives",
+     "quote": "Describe carbide insert ANSI designations, wear characteristics and applications.",
+     "basis": "selecting appropriate carbide insert grade/geometry for a workpiece material is selecting components/materials to meet specifications",
+     "why": "adjudicated: a) describing carbide insert ANSI designations and wear characteristics is topic knowledge, not the performable act of selecting materials for a job"
+    },
+    {
+     "activity": 5,
+     "course": "DMT 80",
+     "section": "content",
+     "quote": "Set-up and perform basic operations on drill presses.",
+     "basis": "operating and setting up manual machines constitutes maintaining/operating electromechanical equipment",
+     "why": "adjudicated: b) setting up and performing basic drill press operations is performing an operation, not maintaining/repairing equipment"
+    },
+    {
+     "activity": 2,
+     "course": "DMT 80",
+     "section": "objectives",
+     "quote": "Explain basic CNC system components, axis movements, and controller operations.",
+     "basis": "assessing CNC system operation directly supports selecting/using diagnostic techniques on electromechanical equipment",
+     "why": "adjudicated: a) explaining basic CNC components/axis movements/controller operations is topic knowledge, not performing a diagnostic/test activity"
+    },
+    {
+     "activity": 2,
+     "course": "DMT 84A",
+     "section": "outcomes",
+     "quote": "Demonstrate the set up and basic operation of vertical machining centers.",
+     "basis": "operating and testing setup of machining equipment matches testing/assessing electromechanical equipment",
+     "why": "adjudicated: a) demonstrating set up and basic operation of machining centers is operating equipment, not testing/diagnosing performance"
+    },
+    {
+     "activity": 4,
+     "course": "DMT 84A",
+     "section": "content",
+     "quote": "Down load programs from PC or DNC.",
+     "basis": "using downloaded numeric control programs to determine machine sequence matches reading technical orders to plan assembly/machining sequence",
+     "why": "adjudicated: d) downloading programs from PC or DNC is a programming/software action, not reading blueprints to plan a sequence"
+    },
+    {
+     "activity": 4,
+     "course": "DMT 84A",
+     "section": "assignments",
+     "quote": "Take home and in class worksheets involving feeds, speeds, and cartesian coordinate calculations.",
+     "basis": "working from technical/numeric specifications to plan tool paths matches reviewing technical documents to plan work sequence",
+     "why": "adjudicated: d) worksheets on feeds, speeds, and coordinate calculations are computational exercises, not reading blueprints/schematics/technical orders"
+    },
+    {
+     "activity": 9,
+     "course": "DMT 84A",
+     "section": "content",
+     "quote": "Tool holders.",
+     "basis": "assembling tool holder components (tapers, collets, adapters) onto the machine matches fabricate/assemble mechanical components",
+     "why": "adjudicated: a) 'Tool holders' alone is a topic heading with no stated performable assembly action"
+    },
+    {
+     "activity": 12,
+     "course": "DMT 84A",
+     "section": "objectives",
+     "quote": "Describe mill cutting tool materials; characteristics, and uses.",
+     "basis": "selecting cutting tool material/characteristics to meet job specifications matches selecting equipment/materials/components to meet functional specifications",
+     "why": "adjudicated: a) describing mill cutting tool materials/characteristics/uses is topic knowledge, not the performable act of selecting materials for a job"
+    },
+    {
+     "activity": 2,
+     "course": "DMT 84B",
+     "section": "outcomes",
+     "quote": "Demonstrate the set up and advanced operation of vertical machining centers.",
+     "basis": "setting up and operating machining centers evidences testing performance of the integrated equipment",
+     "why": "adjudicated: a) demonstrating set up and advanced operation of machining centers is operating equipment, not testing/diagnostic activity"
+    },
+    {
+     "activity": 4,
+     "course": "DMT 84B",
+     "section": "content",
+     "quote": "Interpret command screens.",
+     "basis": "reading controller/program screens to determine machining sequence is reviewing technical documents to plan work",
+     "why": "adjudicated: d) interpreting command screens on the controller is operating/programming the machine, not reading blueprints/schematics/technical orders"
+    },
+    {
+     "activity": 7,
+     "course": "DMT 90",
+     "section": "content",
+     "quote": "Positional",
+     "basis": "positional tolerance interpretation is used to verify part dimensions/clearances against specifications",
+     "why": "adjudicated: a) 'Positional' alone is a topic heading (positional tolerancing) with no stated performable inspection action"
+    }
+   ],
+   "source_note": "Read from De Anza College's course outlines of record (elumen); sections present: slo, objective, description, content outline, lab content, assignment.",
+   "role": "",
+   "short_title": "CNC Machinist"
+  }
+ ]
+}

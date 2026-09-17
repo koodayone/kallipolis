@@ -145,13 +145,20 @@ def _short(college: str) -> str:
     return _short_college(college)
 
 
-def college_legend(plates: list[Plate]) -> str:
+def _col_label(pl: Plate, columns: str) -> str:
+    """What a column is called: the college (a consortium roster, one program per college)
+    or the certificate (an evaluation roster, one college's programs side by side)."""
+    return _short(pl.college) if columns == "college" else (pl.short_title or pl.certificate)
+
+
+def column_legend(plates: list[Plate], columns: str = "college") -> str:
     seen, items = set(), []
     for pl in plates:
-        if pl.member_id in seen:
+        label = _col_label(pl, columns)
+        if label in seen:
             continue
-        seen.add(pl.member_id)
-        items.append(f'<span class="alg-lg"><i style="background:{college_color(pl.member_id)}"></i>{escape(_short(pl.college))}</span>')
+        seen.add(label)
+        items.append(f'<span class="alg-lg"><i style="background:{college_color(pl.member_id)}"></i>{escape(label)}</span>')
     return ('<p class="tnar alg-legend">' + " ".join(items) +
             ' <span class="alg-lg"><b class="chip" style="--c:#5a6577">CODE</b> a course whose outline evidences the activity</span></p>')
 
@@ -164,12 +171,13 @@ CHIPS_PER_CELL = 3
 
 
 def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_order: list[str] | None = None,
-                     max_chips: int = CHIPS_PER_CELL, show_gaps: bool = False) -> str:
+                     max_chips: int = CHIPS_PER_CELL, show_gaps: bool = False, columns: str = "college") -> str:
     """One occupation: header, then a table — the top-N activities down the side, one
-    column per connected college in a fixed consortium order, that college's evidencing
-    courses stacked as chips in the cell. Position carries the college (the strong
-    channel); colour repeats it. An empty cell is a quiet dash; only a row empty in every
-    column gets the amber consortium-gap line."""
+    column per plate in a fixed roster order, that program's evidencing courses stacked as
+    chips in the cell. Position carries the column (the strong channel); colour repeats the
+    college. `columns` names the columns by college (a consortium roster) or by certificate
+    (an evaluation roster: one college, its certificates side by side). An empty cell is a
+    quiet dash; only a row empty in every column gets the amber gap line."""
     if not plates:
         return ""
     order = college_order or []
@@ -189,7 +197,7 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_
     # How each college connects to the occupation (its pairing or its crosswalk) is
     # provenance, not reading matter: it stays on the Plate and in the appendix, off the page.
     conn = ", ".join(escape(_short(p.college)) for p in plates)
-    head = "".join(f'<th style="--c:{college_color(p.member_id)}"><span class="alg-colhd">{escape(_short(p.college))}</span></th>'
+    head = "".join(f'<th style="--c:{college_color(p.member_id)}"><span class="alg-colhd">{escape(_col_label(p, columns))}</span></th>'
                    for p in plates)
     # No method line per block: how rows are chosen and ordered is said once, in the
     # appendix introduction (report._curriculum_section).

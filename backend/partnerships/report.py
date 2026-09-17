@@ -164,10 +164,11 @@ class ReportSpec:
     charter_gaps: tuple[str, ...] = ()              # charter members with no feeding program — the labeled gap
     dashboard_url: str = ""                          # the tailored dashboard link in Sources (def-overridable)
     extra_sources: list[str] = field(default_factory=list)
-    # Curriculum alignment: the roster id (partnerships/data/<id>.json) whose saved
-    # alignment (partnerships/saved_reports/<id>.alignment.json) renders one plate per
-    # program — outlines of record read against the paired occupation's core work
-    # activities. Empty → no section. `curriculum_note` is the editorial paragraph.
+    # Curriculum alignment: the roster id (partnerships/data/<id>.json) whose programs'
+    # saved readings (partnerships/saved_reports/alignment/<program>.json) render as one
+    # block per occupation — outlines of record read against the occupation's core work
+    # activities. A program evaluation's roster shares the def's slug. Empty → no section.
+    # `curriculum_note` is the editorial paragraph.
     curriculum_alignment: str = ""
     curriculum_note: str = ""
     # Gap annotations (amber "no course evidences this", the uncovered list) are off in
@@ -1809,34 +1810,36 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
 
 # ── Curriculum alignment (courses × work activities, one plate per program) ──────
 _CURRICULUM_BLURB = ("O*NET maintains a set of detailed work activities that identify the competencies central to "
-                     "each job. We visualize below how the consortium's programs support each target occupation by "
-                     "mapping specific college courses to the work activities it involves, based on how each course is "
+                     "each job. We visualize below how these programs support each target occupation by mapping "
+                     "specific college courses to the work activities it involves, based on how each course is "
                      "described in its Course Outline of Record (COR).")
 
 
 def _curriculum_section(spec: ReportSpec) -> tuple[list[str], list[str]]:
     """(section parts, appendix parts) for the roster named by spec.curriculum_alignment;
-    both empty when no alignment has been run. The section reads BY OCCUPATION — the
-    play's SOCs in roster order, each with the ten most important core activities and
-    the courses across the consortium that evidence them. Readings the roster marks
-    appendix-only (De Anza against Machinists) appear in the appendix alone."""
-    from partnerships.alignment import load_alignment, load_roster
-    from partnerships.alignment_plate import appendix_tables, college_legend, occupation_block
+    both empty when none of its readings has been run. The section reads BY OCCUPATION —
+    the roster's SOCs in order, each with the ten most important core activities and the
+    courses that evidence them, one column per program the roster connects. A consortium
+    roster names its columns by college; an evaluation roster (one college, its
+    certificates) by certificate. Readings the roster marks appendix-only appear in the
+    appendix alone."""
+    from partnerships.alignment import view_roster
+    from partnerships.alignment_plate import appendix_tables, column_legend, occupation_block
 
-    al = load_alignment(spec.curriculum_alignment)
-    if al is None or not al.plates:
+    roster, plates = view_roster(spec.curriculum_alignment)
+    if not plates:
         return [], []
-    roster = load_roster(spec.curriculum_alignment)
-    socs = roster.get("occupations") or sorted({p.paired_soc for p in al.plates})
+    columns = roster.get("columns", "college")
+    socs = roster.get("occupations") or sorted({p.paired_soc for p in plates})
     top_n = int(roster.get("top_n", 10))
-    shown = [p for p in al.plates if p.role != "appendix"]
+    shown = [p for p in plates if p.role != "appendix"]
     parts = ['<h1>Curriculum Alignment</h1>',
              f'<p>{_linkify(spec.curriculum_note) if spec.curriculum_note else _esc(_CURRICULUM_BLURB)}</p>',
-             college_legend(shown)]
-    order = [p["member_id"] for p in roster["programs"]]          # one fixed column order across blocks
+             column_legend(shown, columns)]
+    member_order = list(dict.fromkeys(pl.member_id for pl in plates))   # one fixed column order across blocks
     for soc in socs:
-        block = occupation_block(soc, [p for p in shown if p.paired_soc == soc], top_n=top_n, college_order=order,
-                                 show_gaps=spec.curriculum_show_gaps)
+        block = occupation_block(soc, [p for p in shown if p.paired_soc == soc], top_n=top_n, college_order=member_order,
+                                 show_gaps=spec.curriculum_show_gaps, columns=columns)
         if block:            # not _block(): a block may break across pages; rows never do
             parts.append(block)
     # Appendix: the outlines themselves, linked. A reader checks a chip against the
@@ -1845,12 +1848,13 @@ def _curriculum_section(spec: ReportSpec) -> tuple[list[str], list[str]]:
     org = roster.get('short_name') or spec.org_short or spec.org_name
     method = (f'Links to all course outlines of record relevant to {_esc(org)}. These outlines of record were '
               'analyzed against detailed work activities for each SOC based on O*NET data to determine curriculum alignment.')
-    seen: set[str] = set()
+    seen: set[tuple[str, str]] = set()
     links = []
-    for pl in sorted(al.plates, key=lambda p: order.index(p.member_id) if p.member_id in order else 99):
-        if pl.member_id in seen:
+    for pl in plates:                       # roster order; one line per program (a college may have several)
+        key = (pl.member_id, pl.certificate)
+        if key in seen:
             continue
-        seen.add(pl.member_id)
+        seen.add(key)
         courses = " \u00b7 ".join(
             f'<a href="{_esc(c["source_url"])}" target="_blank" rel="noopener">{_esc(c["code"])}</a>'
             for c in pl.courses if c.get("source_url"))
@@ -1858,7 +1862,7 @@ def _curriculum_section(spec: ReportSpec) -> tuple[list[str], list[str]]:
     appendix = ['<h1>Appendix: Course Outlines of Record</h1>', f'<p>{method}</p>'] + links
     if spec.curriculum_show_gaps:      # internal review: every quoted sentence, by occupation and college
         appendix += ['<details class="alg-appx"><summary><b>Evidence tables (internal review)</b></summary>'
-                     f'{appendix_tables(al.plates)}</details>']
+                     f'{appendix_tables(plates)}</details>']
     return parts, appendix
 
 

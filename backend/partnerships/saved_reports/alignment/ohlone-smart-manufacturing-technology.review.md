@@ -1,0 +1,167 @@
+# Curriculum alignment review — ohlone-smart-manufacturing-technology
+Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of Labor
+
+## Ohlone College — Certificate of Achievement, Smart Manufacturing Technology → Electro-Mechanical and Mechatronics Technologists and Technicians (SOC 17-3024)
+4 of 14 activities at outcome level, 11 with any evidence.
+
+- · **Design electromechanical equipment or systems.**
+- ○ **Test performance of electrical, electronic, mechanical, or integrated systems or equipment.**
+    - ENGI 130 [Content outline]: “Lab 12: The Oscilloscope and Function Generator” — using oscilloscopes to test electromechanical/electronic circuits directly evidences test-instrument use
+    - ENGI 130 [Content outline]: “Multi-meter
+    - Oscilloscope
+    - Signal generator” — use of oscilloscopes and meters to test circuits matches the O*NET task on test instruments
+    - ENGI 130 [Content outline]: “Basic instrumentation and experimental techniques
+    - Multi-meter
+    - Oscilloscope” — course scope covers using diagnostic test equipment (multimeter, oscilloscope) to assess circuits
+    - ETEC 126 [Lab content]: “Trouble shooting to determine Manufacturing efficiency” — troubleshooting a smart manufacturing system tests performance of an integrated electromechanical system
+    - ETEC 126 [Content outline]: “Trouble shooting systems” — diagnostic troubleshooting of manufacturing systems evidences testing performance of integrated systems
+- ● **Develop software or computer applications.**
+    - ETEC 126 [Assignment]: “Program the Production line using Programmable Logic Controllers(PLCs).” — programming PLC software/hardware for a manufacturing control system is developing/installing computer applications in microprocessor-based systems
+    - ETEC 126 [Lab content]: “Configuring and Testing PLC and Bus Technology” — configuring PLC (microprocessor-based) systems is programming machine/instrumentation software
+    - ETEC 124 [Assignment]: “Students are required to design and build IoT systems to meet specified” — building IoT systems requires programming the embedded computer hardware/software controlling them
+    - ETEC 124 [SLO]: “Use the techniques, skills, and modern engineering tools necessary for engineering practice to construct an IoT based system, component, or process.” — constructing an IoT-based system requires programming embedded/computer components
+- ● **Review technical documents to plan work.**
+    - ENGI 130 [SLO]: “Draw and label circuit diagrams and show thorough mathematical solutions.” — drawing/reading circuit diagrams to determine solution methods evidences reviewing technical schematics to plan work
+- ○ **Maintain electromechanical equipment.**
+    - ETEC 126 [Content outline]: “Predictive Maintenance” — predictive maintenance content directly covers maintaining electromechanical equipment
+    - ETEC 126 [Lab content]: “Scheduling Predictive Maintenance” — hands-on scheduling of predictive maintenance evidences maintaining electromechanical equipment
+    - ETEC 126 [Content outline]: “Trouble shooting systems” — troubleshooting production/factory systems evidences maintaining electromechanical equipment
+- ○ **Maintain electronic equipment.**
+    - ETEC 126 [Content outline]: “Trouble shooting systems” — troubleshooting production-line electronic/control systems evidences maintaining electronic equipment
+    - ETEC 126 [Lab content]: “Trouble shooting to determine Manufacturing efficiency” — hands-on troubleshooting of smart-factory electronic systems evidences maintaining electronic equipment
+    - ETEC 126 [Lab content]: “Configuring and Troubleshooting Links to the ERP” — troubleshooting electronic networked links in factory systems evidences maintaining electronic equipment
+    - ETEC 126 [Lab content]: “Configuring and Testing PLC and Bus Technology” — configuring and testing electronic control/network equipment to ensure proper functioning
+- ● **Inspect finished products to locate flaws.**
+    - ENGI 140 [SLO]: “Measure material properties and/or evaluate processing treatments using standard materials testing equipment and techniques.” — using precision testing equipment to evaluate material/part properties evidences verifying conformance via precision measuring instruments
+    - ENGI 140 [Lab content]: “Hardness testing” — hardness testing with standard measuring equipment evidences inspecting for conformance to specification
+    - ENGI 140 [Lab content]: “Microstructures analysis of the sample using a Light Microscope.” — microscopic inspection of material samples for structural flaws parallels inspecting parts for surface defects
+- · **Install instrumentation or electronic equipment or systems.**
+- ○ **Assemble equipment or components.**
+    - ENGI 101 [Assignment]: “Work on a team to design and build a bridge with specifications including cost and load capacity” — students physically assemble a mechanical structure from components to meet functional specifications
+    - ETEC 124 [Assignment]: “requirements. Example: Design and Build an IoT System that monitors and” — building a physical IoT system evidences assembling electrical/electronic components into a working assembly
+    - ETEC 124 [Assignment]: “Students are required to design and build IoT systems to meet specified” — building an IoT system requires assembling electronic/mechanical components into a working assembly
+- ○ **Fabricate devices or components.**
+    - ENGI 101 [Assignment]: “Submit a design accompanied by a concise explanation for a small vehicle powered by a mousetrap” — designing and building a small mechanical vehicle evidences fabricating a device
+- ○ **Create schematic drawings for electronics.**
+    - ENGI 130 [Content outline]: “Circuit simulation” — circuit simulation and diagram drawing is a directly constitutive component of producing electrical drawings, though CAD is not explicitly named
+- ● **Select project materials.**
+    - ENGI 140 [SLO]: “Gather data from reference sources regarding the properties, processing, and performance characteristics of materials, and use it as a basis to recommend appropriate material(s) to meet engineering design criteria.” — selecting materials against design criteria is literally selecting project materials to meet functional specifications
+    - ENGI 140 [Assignment]: “select materials best suited to specific design requirements” — selecting materials against design requirements directly evidences selecting project materials to meet functional specifications
+    - ENGI 140 [SLO]: “use it as a basis to recommend appropriate material(s) to meet engineering design criteria.” — literally selecting materials to meet functional/design specifications
+    - ENGI 140 [SLO]: “recommend appropriate material(s) to meet engineering design criteria” — selecting materials against design criteria directly matches selecting materials to meet functional specifications
+    - ETEC 124 [SLO]: “Design an IoT based system, component, or process to meet desired needs within realistic constraints, such as manufacturability and sustainability” — designing to constraints requires selecting components/materials to meet functional specifications
+- · **Develop technical methods or processes.**
+- ○ **Maintain operational records or records systems.**
+    - ETEC 126 [Lab content]: “Setting up a Materials and Inventory management systems for Smart Factories” — configuring an inventory management system evidences establishing and maintaining inventory/records systems
+    - ETEC 126 [Content outline]: “Inventory management” — inventory management content evidences maintaining inventory records systems
+
+### Dropped
+
+- act 9 · ENGI 101 · “Submit a design accompanied by a concise explanation for a small vehicle powered by a mous” — adjudicated: a: quote names only submitting a design/explanation, not a performable build/assembly step
+- act 2 · ENGI 130 · “Analyze DC circuits to find current, voltage, resistance, power, and/or energy.” — adjudicated: b: analyzing DC circuits mathematically is precondition knowledge, not testing performance with instruments
+- act 3 · ETEC 124 · “The components of embedded systems” — adjudicated: a: naming embedded systems components as a topic, with no performable programming step stated
+- act 2 · ETEC 124 · “Use the techniques, skills, and modern engineering tools necessary for engineering practic” — adjudicated: d: constructing a system using engineering tools evidences building/developing rather than testing performance with test instruments
+- act 13 · ETEC 126 · “Designing and Implementing a Production plan” — adjudicated: d: designing a production plan evidences production/process planning, not establishing inventory or records systems
+- act 13 · ETEC 126 · “Production planning” — adjudicated: d: production planning content evidences a different activity than establishing records/documentation systems
+
+## Ohlone College — Certificate of Achievement, Smart Manufacturing Technology → Industrial Engineering Technologists and Technicians (SOC 17-3026)
+9 of 24 activities at outcome level, 23 with any evidence.
+
+- ○ **Monitor activities affecting environmental quality.**
+    - ETEC 113 [Content outline]: “Disposal of Hazardous Waste” — environmental compliance activity in industrial setting
+    - ETEC 113 [Assignment]: “The safety plans must detail Cal/OSHA Injury Illness Prevention Plan.” — adhering to regulations/policies for health and safety compliance
+- ○ **Calibrate scientific or technical equipment.**
+    - ENGI 140 [Lab content]: “X-ray diffraction: Measurement Bragg angle using Telexometer” — calibrating/using precision measurement equipment on materials
+    - ENGI 130 [Content outline]: “Lab 12: The Oscilloscope and Function Generator” — using calibrated instrumentation (oscilloscope/signal generator) to make precise measurements is directly constitutive of calibrating technical equipment
+    - ETEC 126 [Lab content]: “Scheduling Predictive Maintenance” — lab practice adjusting equipment maintenance schedules to sustain quality production
+- ○ **Direct industrial production activities.**
+    - ETEC 126 [Lab content]: “Trouble shooting to determine Manufacturing efficiency” — overseeing/inspecting production processes in smart factory
+- ● **Design industrial equipment.**
+    - ETEC 124 [SLO]: “Design an IoT based system, component, or process to meet desired needs within realistic constraints, such as manufacturability and sustainability” — designing industrial automation equipment/systems with efficiency constraints
+    - ENGI 140 [SLO]: “recommend appropriate material(s) to meet engineering design criteria” — recommending materials to meet design criteria evidences identifying improvements in equipment/product design
+- ● **Develop technical methods or processes.**
+    - ETEC 126 [SLO]: “Design a system, component, or process to meet desired needs within realistic constraints such as manufacturability, and sustainability, translate into high productivity” — developing technical processes addressing production/quality problems
+    - ETEC 126 [Lab content]: “Setting up a Smart Factory” — implementing a production process/program addressing manufacturing setup
+    - ETEC 126 [Assignment]: “Team-based projects to plan the process of manufacturing a component using Smart Advanced Manufacturing Principles.” — developing a technical production process/method as a project
+    - ENGI 140 [SLO]: “Gather data from reference sources regarding the properties, processing, and performance characteristics of materials, and use it as a basis to recommend appropriate material(s) to meet engineering design criteria.” — developing process/methods for materials selection in production
+    - ETEC 124 [SLO]: “Design an IoT based system, component, or process to meet desired needs within realistic constraints” — students develop technical processes/systems addressing production/manufacturing needs
+    - ETEC 124 [Assignment]: “Students are required to design and build IoT systems to meet specified requirements” — builds/tests new system prototypes akin to assisting engineers in developing new processes
+- ○ **Implement design or process improvements.**
+    - ETEC 126 [Lab content]: “Trouble shooting to determine Manufacturing efficiency” — implementing process improvement via troubleshooting production efficiency
+    - ETEC 126 [Lab content]: “Configuring Manufacturing Execution Systems(MES) for Smart Factories” — implementing a process improvement system addressing production and quality tracking
+- ● **Test products for functionality or quality.**
+    - ENGI 140 [SLO]: “Measure material properties and/or evaluate processing treatments using standard materials testing equipment and techniques.” — testing products/materials for quality against specifications
+    - ENGI 140 [Lab content]: “Tensile testing” — testing material product for performance characteristics
+    - ENGI 140 [SLO]: “Measure material properties and/or evaluate processing treatments using standard materials testing equipment” — measuring/evaluating material properties with testing equipment is testing products for functionality or quality
+    - ENGI 140 [Lab content]: “Hardness testing” — hardness testing of material samples is testing product characteristics against specifications
+    - ENGI 130 [SLO]: “Analyze DC circuits to find current, voltage, resistance, power, and/or energy.” — measuring circuit performance characteristics against expected values is testing for functionality/performance
+    - ENGI 130 [Content outline]: “Lab 11: Loading Effects of DC Instruments” — hands-on testing of circuit performance at specified experimental stages evidences product/process testing for functionality
+    - ETEC 126 [Lab content]: “Trouble shooting systems” — testing production systems at stages of operation for performance/adherence to specification
+- ● **Explain engineering drawings, specifications, or other technical information.**
+    - ENGI 130 [SLO]: “Draw and label circuit diagrams and show thorough mathematical solutions.” — creating/interpreting engineering schematic diagrams
+- ● **Prepare drawings or diagrams of products or services.**
+    - ENGI 130 [SLO]: “Draw and label circuit diagrams and show thorough mathematical solutions.” — preparing diagrams of circuits as products/components
+    - ETEC 126 [Lab content]: “Designing RFID Systems” — preparing design layouts/diagrams of industrial system components
+- ○ **Assess product or process usefulness.**
+    - CAOT 150 [Assignment]: “students will be given a set of data and need to describe the data numerically and graphically” — compiling and evaluating statistical data
+    - ENGI 140 [Assignment]: “compare various causes of material failure, select materials best suited to specific design requirements” — evaluating material failure and suitability assesses product/process usefulness
+- ● **Recommend technical design or process changes to improve efficiency, quality, or performance.**
+    - ENGI 140 [SLO]: “Gather data from reference sources regarding the properties, processing, and performance characteristics of materials, and use it as a basis to recommend appropriate material(s) to meet engineering design criteria.” — recommending material/process changes to meet design performance
+    - ENGI 140 [SLO]: “use it as a basis to recommend appropriate material(s) to meet engineering design criteria” — recommending material selection to meet design criteria is recommending a technical design change to improve performance
+- ● **Monitor processes for compliance with standards.**
+    - ETEC 113 [SLO]: “Prepare a safety inspection format and conduct a safety inspection of an operational facility.” — monitoring compliance with safety standards via inspection
+- ○ **Determine operational methods.**
+    - ENGI 140 [Assignment]: “select materials best suited to specific design requirements” — determining operational/material selection methods for efficient production
+    - ETEC 126 [Lab content]: “Designing and Implementing a Production plan” — determining operational/processing methods needed for efficient production
+- ● **Inspect operational processes.**
+    - ETEC 113 [SLO]: “Prepare a safety inspection format and conduct a safety inspection of an operational facility.” — inspecting operational processes for compliance with standards
+- ○ **Select project materials.**
+    - ENGI 140 [Assignment]: “select materials best suited to specific design requirements” — selecting project materials to achieve efficient production
+    - ENGI 140 [Assignment]: “identify appropriate materials for a simple engineering of interest agreed with instructor” — team project selecting materials for an engineering application evidences project material selection
+- ● **Monitor the productivity or efficiency of industrial operations.**
+    - ETEC 126 [SLO]: “Design a system, component, or process to meet desired needs within realistic constraints such as manufacturability, and sustainability, translate into high productivity” — monitoring/adjusting production for productivity and quality
+    - ETEC 126 [Lab content]: “Trouble shooting to determine Manufacturing efficiency” — lab exercise monitoring efficiency of the smart production line
+- ○ **Create physical models or prototypes.**
+    - ETEC 124 [Assignment]: “Students are required to design and build IoT systems to meet specified requirements.” — building prototype systems for new processes/products
+    - ETEC 124 [Assignment]: “Design and Build an IoT System that monitors and controls temperature and humidity in a green house” — students construct a physical prototype system
+    - ENGI 101 [Assignment]: “Work on a team to design and build a bridge with specifications including cost and load capacity.” — creating physical models/prototypes as design projects
+- ○ **Create graphical representations of industrial production systems.**
+    - ETEC 126 [Lab content]: “Configuring Virtual Factory – Digital Twin” — creating graphical/digital representation of an industrial production system
+    - ETEC 126 [Lab content]: “Designing RFID Systems” — preparing layouts of industrial equipment components using design tools
+- ○ **Research human performance or health factors related to engineering or design activities.**
+    - ETEC 126 [Lab content]: “Trouble shooting to determine Manufacturing efficiency” — studying operations to establish/improve production efficiency
+- · **Train personnel on proper operational procedures.**
+- ○ **Analyze costs and benefits of proposed designs or projects.**
+    - ENGI 101 [Assignment]: “design and build a bridge with specifications including cost and load capacity” — designing to a stated cost specification requires analyzing cost tradeoffs of the proposed design
+- ○ **Estimate operational costs.**
+    - ENGI 101 [Assignment]: “Work on a team to design and build a bridge with specifications including cost and load capacity.” — estimating operational/project costs as part of design specification
+- ○ **Prepare operational reports.**
+    - ETEC 124 [Assignment]: “Students write technical reports on relevant IoT systems.” — preparing technical/operational documentation on industrial systems
+    - ETEC 124 [Assignment]: “Students write lab reports and make entries in lab notebooks detailing experiments, design and construction work completed during lab sessions” — preparation of documentation records of technical/production work performed
+- ○ **Purchase materials, equipment, or other resources.**
+    - ETEC 126 [Content outline]: “Product planning, purchase” — coordinating purchases of equipment/materials for production
+    - ETEC 126 [Lab content]: “Designing and Implementing a Product plan including parts purchase and supply” — lab covering coordination of equipment/parts purchases within a supply chain plan
+
+### Dropped
+
+- act 16 · Certificate of Achievement, Smart Manufacturing Technology · “Operate relevant Smart Manufacturing Equipment such as Smart CNC Machines, Industrial Robo” — unknown course 'Certificate of Achievement, Smart Manufacturing Technology'
+- act 5 · Certificate of Achievement, Smart Manufacturing Technology · “Apply basic scientific and engineering principles to solve problems in the manufacturing i” — unknown course 'Certificate of Achievement, Smart Manufacturing Technology'
+- act 1 · ETEC 113 · “Develop an awareness of potential safety hazards at home and the work site.” — adjudicated: c) generic safety-hazard awareness credited to environmental-quality monitoring, not a technical/regulatory compliance activity
+- act 2 · ENGI 130 · “Lab 3: Electrical Power in DC Circuits” — adjudicated: d) DC circuit power lab evidences electrical measurement/analysis, not calibration of equipment using the named gauge-type tools
+- act 3 · ETEC 126 · “Manufacturing efficiency” — adjudicated: a) topic-only heading 'Manufacturing efficiency' with no performable oversight/inspection content
+- act 6 · ETEC 113 · “Compare and describe safety implementation programs in various work locations.” — adjudicated: b) comparing/describing existing safety programs is precondition knowledge, not implementing a process improvement
+- act 10 · ENGI 140 · “Explain the relationship between the internal structure of materials and their macroscopic” — adjudicated: b) explaining structure-property relationships is precondition knowledge, not compiling/evaluating statistical data on product quality
+- act 12 · ETEC 113 · “Legal requirements/investigations” — adjudicated: a) topic-only heading 'Legal requirements/investigations' names a subject with no performable compliance-monitoring content
+- act 15 · ETEC 113 · “Safety when handling and storing materials and tools” — adjudicated: a) topic-only heading naming safety practice with materials/tools, not a performable material-selection activity
+- act 16 · ETEC 126 · “Manufacturing efficiency” — adjudicated: a) topic-only heading 'Manufacturing efficiency' with no performable monitoring content
+- act 20 · ETEC 113 · “Report this safety plan with an oral presentation.” — adjudicated: c) generic oral presentation of a safety plan credited to training personnel on operational procedures
+- act 21 · CAOT 150 · “Basic Data Anaylsis in Excel” — adjudicated: a) topic-only heading 'Basic Data Analysis in Excel' names a subject with no performable cost/benefit content
+- act 23 · ENGI 140 · “Write laboratory reports that communicate the collection, analysis, and interpretation of ” — adjudicated: d) writing lab reports on experimental data evidences report-writing on lab work, a different activity than production documents like SOPs or batch records
+- act 9 · ENGI 101 · “Modification/refinement of design plan” — adjudicated: a) topic-only heading 'Modification/refinement of design plan' names a subject with no performable drawing/diagram content stated
+- act 1 · ETEC 124 · “Cyber Security Risks and Web applications relevant to IoT devices” — adjudicated: d) cybersecurity risk content for IoT/web applications evidences a data-security topic, not environmental-quality/health-safety compliance
+- act 18 · ETEC 124 · “IoT Technology Architecture” — adjudicated: a) topic-only heading 'IoT Technology Architecture' names a subject with no stated drawing/layout performable content
+- act 1 · ETEC 126 · “Green Manufacturing” — adjudicated: a) topic-only heading 'Green Manufacturing' names a subject with no performable environmental-monitoring content stated
+- act 2 · ETEC 126 · “Predictive Maintenance” — adjudicated: a) topic-only heading 'Predictive Maintenance' names a subject with no performable calibration content, and does not name the specified calibration tools
+- act 12 · ETEC 126 · “SCADA – Data Acquisition” — adjudicated: a) topic-only heading 'SCADA – Data Acquisition' names a subject with no stated compliance-verification content
+- act 16 · ETEC 126 · “Manufacturing efficiency” — adjudicated: a) topic-only heading 'Manufacturing efficiency' with no performable monitoring content
+- act 23 · ETEC 126 · “Inventory management” — adjudicated: a) topic-only heading 'Inventory management' names a subject with no stated report-preparation content

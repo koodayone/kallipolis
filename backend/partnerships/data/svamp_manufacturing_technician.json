@@ -1,49 +1,24 @@
 {
-  "_comment": "Curriculum-alignment roster for the SVAMP Manufacturing Technician report. One program per college, each PAIRED with one target occupation chosen from the program's stated purpose (the crosswalk's verdict is shown beside it, never used to choose). `source` is the outline adapter spec for courses.outlines.retrieve; `courses` is the certificate's course list in catalog order. Program outcomes are the certificate's own stated outcomes (from the college catalog / SVAMP course document). Edit here; the alignment run reads this file. `occupations` are the report's play SOCs, each rendered as an occupation block; a program is read against an occupation when its pairing or its crosswalk reaches it (`reads_against`, derived), plus any `appendix_socs` (read, but shown only in the appendix).",
+  "_comment": "Curriculum-alignment roster for the SVAMP Manufacturing Technician report. Each entry cites a program record (data/programs/<program>.json — the certificate and its courses; edit the courses there) and CONNECTS it to occupations: `paired_soc` is chosen from the program's stated purpose (the crosswalk's verdict is shown beside it, never used to choose); a program is read against an occupation when its pairing or its crosswalk reaches it (`reads_against`), plus any `appendix_socs` (read, shown only in the appendix). `occupations` are the report's play SOCs, each rendered as an occupation block; `columns` names the blocks' columns by college. Readings are saved per program under saved_reports/alignment/ and shared with any other roster that cites the same program.",
   "id": "svamp-manufacturing-technician",
   "onet_release": "31.0",
+  "short_name": "SVAMP",
+  "columns": "college",
+  "occupations": [
+    "17-3026",
+    "51-9141",
+    "17-3024"
+  ],
+  "top_n": 10,
   "programs": [
     {
-      "college": "Foothill College",
-      "college_key": "foothill",
-      "member_id": "foothill",
-      "certificate": "Certificate of Achievement, Semiconductor Processing Technician",
-      "kind": "credit",
-      "top": "0945.00",
-      "top_name": "Industrial Systems Technology and Maintenance",
+      "program": "foothill-semiconductor-processing",
       "paired_soc": "51-9141",
       "crosswalk_socs": [
         "17-3024",
         "17-3026"
       ],
       "pairing_basis": "The certificate's stated purpose: preparing students to move wafers through semiconductor processing stages in a cleanroom. TOP 0945.00 does not reach 51-9141 through the TOP-CIP-SOC crosswalk; the discrepancy is shown, not resolved.",
-      "source": {
-        "system": "courseleaf"
-      },
-      "program_description": "The Certificate of Achievement in Semiconductor Processing provides foundational knowledge and skills necessary for safely and efficiently moving wafers through the semiconductor processing stages in a cleanroom work environment. This certificate is open to all students with an interest in learning more about semiconductor processing. Students in the apprenticeship pathway will complete the Certificate of Achievement as a part of the apprenticeship program.",
-      "program_outcomes": [],
-      "courses": [
-        {
-          "code": "MATH 40A",
-          "title": "Quantitative Reasoning",
-          "units": 5
-        },
-        {
-          "code": "MATH 240A",
-          "title": "Just-in-Time Support for MATH 40A",
-          "units": 2.5
-        },
-        {
-          "code": "ENGR 61A",
-          "title": "Introduction to Semiconductor Technology",
-          "units": 5
-        },
-        {
-          "code": "ENGR 101A",
-          "title": "Advanced Manufacturing",
-          "units": 5
-        }
-      ],
       "reads_against": [
         "17-3026",
         "51-9141",
@@ -52,86 +27,13 @@
       "appendix_socs": []
     },
     {
-      "college": "Ohlone College",
-      "college_key": "ohlone",
-      "member_id": "ohlone",
-      "certificate": "Certificate of Achievement, Smart Manufacturing Technology",
-      "kind": "credit",
-      "top": "0956.00",
-      "top_name": "Manufacturing and Industrial Technology",
+      "program": "ohlone-smart-manufacturing-technology",
       "paired_soc": "17-3024",
       "crosswalk_socs": [
         "17-3024",
         "17-3026"
       ],
       "pairing_basis": "SVAMP's pathway framing (Smart Automation Technicians build on the mechatronics foundation). The program reads about equally against 17-3026; the alternate is available in the plate.",
-      "source": {
-        "system": "curricunet",
-        "site": "Ohlone"
-      },
-      "program_description": "The Certificate of Achievement in Smart Manufacturing Technology program at Ohlone provides entry-level manufacturing technicians with the relevant knowledge and skills for the Smart Manufacturing industry in the 21st century. The certificate provides students with knowledge and skills of Smart Manufacturing processes, Safety in Industry, Industrial Internet of Things, and troubleshooting techniques. Students earning this certificate can progress and achieve the Associate in Science in Smart Manufacturing Technology",
-      "program_outcomes": [
-        "Apply basic scientific and engineering principles to solve problems in the manufacturing industry.",
-        "Demonstrate ability to work in a team on a project.",
-        "Operate relevant Smart Manufacturing Equipment such as Smart CNC Machines, Industrial Robotic Arms, Smart Factories, and Mechatronic Systems."
-      ],
-      "courses": [
-        {
-          "code": "CAOT 150",
-          "title": "Excel for the Sciences",
-          "units": 0.5
-        },
-        {
-          "code": "COMM 113",
-          "title": "Interpersonal Communication (or ENGL C1000 / COMM C1000)",
-          "units": 3
-        },
-        {
-          "code": "ENGI 101",
-          "title": "Introduction to Engineering",
-          "units": 3
-        },
-        {
-          "code": "ENGI 130",
-          "title": "Electric Circuit Analysis (or ETEC 106)",
-          "units": 4,
-          "alternates": [
-            "ETEC 106"
-          ]
-        },
-        {
-          "code": "ENGI 140",
-          "title": "Materials Engineering (or ETEC 107)",
-          "units": 4,
-          "alternates": [
-            "ETEC 107"
-          ]
-        },
-        {
-          "code": "ETEC 113",
-          "title": "Safety in Industry",
-          "units": 1
-        },
-        {
-          "code": "ETEC 124",
-          "title": "Introduction to Internet of Things",
-          "units": 1.5
-        },
-        {
-          "code": "ETEC 126",
-          "title": "Industrial Internet of Things-Industry Standard 4.0",
-          "units": 3
-        }
-      ],
-      "footnote_programs": [
-        {
-          "certificate": "Certificate of Completion, Smart Manufacturing Technology (noncredit bridge)",
-          "courses": [
-            "ETEC 926",
-            "ETEC 928"
-          ]
-        }
-      ],
       "reads_against": [
         "17-3026",
         "17-3024"
@@ -139,104 +41,13 @@
       "appendix_socs": []
     },
     {
-      "college": "Mission College",
-      "college_key": "mission",
-      "member_id": "mission",
-      "certificate": "Certificate of Achievement, Mechatronic Technology",
-      "kind": "credit",
-      "top": "0935.00",
-      "top_name": "Electro-Mechanical Technology",
+      "program": "mission-mechatronic-technology",
       "paired_soc": "17-3024",
       "crosswalk_socs": [
         "17-3024",
         "51-9141"
       ],
       "pairing_basis": "The program's stated purpose (industrial automation, mechatronics technicians); the crosswalk agrees.",
-      "source": {
-        "system": "elumen",
-        "host": "mission.elumenapp.com",
-        "org_entity_id": 200
-      },
-      "course_sources": {
-        "EGR 025": {
-          "system": "elumen",
-          "host": "mission.elumenapp.com",
-          "org_entity_id": 71
-        },
-        "WRK 300MT": {
-          "system": "elumen",
-          "host": "mission.elumenapp.com",
-          "org_entity_id": 138
-        }
-      },
-      "program_description": "The Mechatronic Technology program at Mission College prepares students for high-demand careers in industrial automation. Combining electrical, mechanical, software, and computer engineering, this multidisciplinary program offers hands-on training in the latest technologies. Mechatronic technology is an interdisciplinary field that combines the study of mechanics, electronics, automation, and computers. Depending on the course track selected, students gain specialized technical skills in electrical, electronic and/or mechanical industry environment.",
-      "program_outcomes": [
-        "Analyze and Integrate electrical, electronic, and mechanical systems and devices.",
-        "Demonstrate written and verbal communication skills through technical documentation and oral presentations.",
-        "Troubleshoot and repair electrical, electronic, and mechanical systems and devices."
-      ],
-      "courses": [
-        {
-          "code": "MTT 010",
-          "title": "Introduction to Technology and Careers",
-          "units": 2
-        },
-        {
-          "code": "MTT 012",
-          "title": "Electronic Systems Measurement and Troubleshooting",
-          "units": 2
-        },
-        {
-          "code": "EGR 025",
-          "title": "Engineering Graphics and Design",
-          "units": 4
-        },
-        {
-          "code": "MTT 020",
-          "title": "Programmable Logic Controller (PLC) Process Control Systems",
-          "units": 2
-        },
-        {
-          "code": "MTT 022",
-          "title": "Programmable Logic Controller (PLC) and Robotic System Components",
-          "units": 2
-        },
-        {
-          "code": "MTT 030",
-          "title": "Electrical Motors and Control Systems",
-          "units": 2
-        },
-        {
-          "code": "MTT 032",
-          "title": "Microcontroller Systems",
-          "units": 2
-        },
-        {
-          "code": "MTT 034",
-          "title": "Fluid Power Systems",
-          "units": 2
-        },
-        {
-          "code": "MTT 040",
-          "title": "Analog Circuits and Semiconductor Devices",
-          "units": 2
-        },
-        {
-          "code": "MTT 042",
-          "title": "Digital Logic Systems",
-          "units": 2
-        },
-        {
-          "code": "MTT 050",
-          "title": "Digital Manufacturing",
-          "units": 2
-        },
-        {
-          "code": "WRK 300MT",
-          "title": "Occupational Work Experience for Mechatronic Technology",
-          "units": 2
-        }
-      ],
       "reads_against": [
         "51-9141",
         "17-3024"
@@ -244,52 +55,13 @@
       "appendix_socs": []
     },
     {
-      "college": "De Anza College",
-      "college_key": "deanza",
-      "member_id": "deanza",
-      "certificate": "Certificate of Achievement, CNC Machinist",
-      "kind": "credit",
-      "top": "0956.00",
-      "top_name": "Manufacturing and Industrial Technology",
+      "program": "deanza-cnc-machinist",
       "paired_soc": "51-4041",
       "crosswalk_socs": [
         "17-3024",
         "17-3026"
       ],
       "pairing_basis": "The certificate prepares setup persons, machine operators and CNC machinists — Machinists (51-4041), which SVAMP names as a target occupation. The 0956.00 crosswalk reaches the two technician SOCs instead; shown, not used.",
-      "source": {
-        "system": "elumen",
-        "host": "deanza.elumenapp.com",
-        "org_entity_id": 8
-      },
-      "program_description": "The Computer Numerical Control (CNC) Machinist Certificate of Achievement teaches students the fundamentals of conventional and CNC machine tools. Students learn how to set up safely and operate manual mills and lathes and construct word address programs for the setup and operation of CNC mills. Upon completion, students are prepared for employment in manufacturing facilities as setup persons, machine operators and production workers.",
-      "program_outcomes": [
-        "Setup and operate conventional and CNC machines safely",
-        "Construct and inspect machined projects using conventional and CNC equipment",
-        "Construct word address programs to machine projects"
-      ],
-      "courses": [
-        {
-          "code": "DMT 80",
-          "title": "Introduction to Machining and CNC Processes",
-          "units": 5
-        },
-        {
-          "code": "DMT 84A",
-          "title": "Introduction to CNC Programming and Operation; Mill",
-          "units": 5
-        },
-        {
-          "code": "DMT 84B",
-          "title": "CNC Programming and Operation; Intermediate Mill",
-          "units": 5
-        },
-        {
-          "code": "DMT 90",
-          "title": "Print Reading and Machine Shop Calculations",
-          "units": 4.5
-        }
-      ],
       "reads_against": [
         "17-3026",
         "17-3024"
@@ -299,113 +71,18 @@
       ]
     },
     {
-      "college": "Evergreen Valley College",
-      "college_key": "evc",
-      "member_id": "evc",
-      "certificate": "Certificate of Achievement, Advanced Manufacturing Level 1",
-      "kind": "credit",
-      "top": "0956.00",
-      "top_name": "Manufacturing and Industrial Technology",
+      "program": "evc-advanced-manufacturing-level-i",
       "paired_soc": "17-3026",
       "crosswalk_socs": [
         "17-3024",
         "17-3026"
       ],
       "pairing_basis": "The certificate prepares manufacturing technicians and assemblers with an emphasis on testing, materials, data analysis and quality control — the process side of the technician role. TOP 0956.00 from the state Curriculum Inventory (the program has no award history yet, so it is absent from the report's crosswalk figure); the crosswalk agrees.",
-      "source": {
-        "system": "curriqunet",
-        "host": "evc.curriqunet.com",
-        "report_id": 52
-      },
-      "course_sources": {
-        "MFGT 101": {
-          "system": "curriqunet",
-          "host": "evc.curriqunet.com",
-          "entity_id": 5563,
-          "report_id": 52
-        },
-        "MFGT 102": {
-          "system": "curriqunet",
-          "host": "evc.curriqunet.com",
-          "entity_id": 5297,
-          "report_id": 52
-        },
-        "MFGT 103": {
-          "system": "curriqunet",
-          "host": "evc.curriqunet.com",
-          "entity_id": 4452,
-          "report_id": 52
-        },
-        "MFGT 201": {
-          "system": "curriqunet",
-          "host": "evc.curriqunet.com",
-          "entity_id": 5299,
-          "report_id": 52
-        },
-        "MFGT 202": {
-          "system": "curriqunet",
-          "host": "evc.curriqunet.com",
-          "entity_id": 5298,
-          "report_id": 52
-        },
-        "MFGT 203": {
-          "system": "curriqunet",
-          "host": "evc.curriqunet.com",
-          "entity_id": 5295,
-          "report_id": 52
-        }
-      },
-      "program_description": "Provides the relevant knowledge and skills required for entry-level employment or internship for manufacturing technicians and assemblers. The subjects are taught with an emphasis on job related skills required by manufacturing industries, using a practical approach using procedures, and standards used in the manufacturing industry.",
-      "program_outcomes": [
-        "Demonstrate competence in building, servicing, and testing circuits utilizing safe and industry standard practices and procedures.",
-        "Demonstrate how to assemble circuit boards, mechanical systems and electrical systems.",
-        "Perform a material application process that includes material selection, application fabrication techniques, relevant testing, and necessary characterization technique based on the application.",
-        "Demonstrate how to collect, analyze, interpret, and present numerical data to make effective decisions."
-      ],
-      "courses": [
-        {
-          "code": "MFGT 101",
-          "title": "Introduction to Advanced Manufacturing",
-          "units": 2
-        },
-        {
-          "code": "MFGT 102",
-          "title": "Math for Manufacturing",
-          "units": 2
-        },
-        {
-          "code": "MFGT 103",
-          "title": "Introduction to Assembly",
-          "units": 3
-        },
-        {
-          "code": "MFGT 201",
-          "title": "Fundamentals of Electronics for Manufacturing",
-          "units": 3
-        },
-        {
-          "code": "MFGT 202",
-          "title": "Properties of Materials for Manufacturing",
-          "units": 3
-        },
-        {
-          "code": "MFGT 203",
-          "title": "Data Analytics for Manufacturing and Quality Control",
-          "units": 3
-        }
-      ],
       "reads_against": [
         "17-3026",
         "17-3024"
       ],
       "appendix_socs": []
     }
-  ],
-  "occupations": [
-    "17-3026",
-    "51-9141",
-    "17-3024"
-  ],
-  "top_n": 10,
-  "short_name": "SVAMP"
+  ]
 }

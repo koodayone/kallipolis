@@ -304,6 +304,26 @@ def awards_for(college: str, top6: str, *, offered_only: bool = True) -> list[Co
                                        else len(AWARD_TIERS), r.title))
 
 
+def award_by_control(college: str, control_number: str) -> CociAward | None:
+    """The award with this COCI control number at a graph college — any TOP, any status.
+
+    The control number is a program's identity across the state's curriculum files: the
+    ProgramCourseFile keys its course lists on it (zero-padded, hence the strip). Status is
+    not filtered here — an award being scaffolded may still read "Approved".
+    """
+    code = coci_code(college)
+    if not code:
+        return None
+    want = control_number.strip().lstrip("0")
+    for (c, _top6), rows in _load().items():
+        if c != code:
+            continue
+        for r in rows:
+            if r.control_number.lstrip("0") == want:
+                return r
+    return None
+
+
 # ── Courses: the state's record of WHEN a college last touched a course ────────
 # COCI's course side is not bundled (the statewide export is ~80 MB and the alignment
 # needs five colleges), so it is fetched per college on demand. The route is the

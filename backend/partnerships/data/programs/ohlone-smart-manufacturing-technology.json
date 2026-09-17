@@ -1,0 +1,80 @@
+{
+  "college": "Ohlone College",
+  "college_key": "ohlone",
+  "member_id": "ohlone",
+  "certificate": "Certificate of Achievement, Smart Manufacturing Technology",
+  "short_title": "Smart Manufacturing Technology",
+  "kind": "credit",
+  "control_number": "40034",
+  "award": "Certificate of Achievement requiring 16S/24Q to fewer than 30S/45Q units",
+  "status": "Active",
+  "top6": "095600",
+  "top_name": "Manufacturing and Industrial Technology",
+  "source": {
+    "system": "curricunet",
+    "site": "Ohlone"
+  },
+  "program_description": "The Certificate of Achievement in Smart Manufacturing Technology program at Ohlone provides entry-level manufacturing technicians with the relevant knowledge and skills for the Smart Manufacturing industry in the 21st century. The certificate provides students with knowledge and skills of Smart Manufacturing processes, Safety in Industry, Industrial Internet of Things, and troubleshooting techniques. Students earning this certificate can progress and achieve the Associate in Science in Smart Manufacturing Technology",
+  "program_outcomes": [
+    "Apply basic scientific and engineering principles to solve problems in the manufacturing industry.",
+    "Demonstrate ability to work in a team on a project.",
+    "Operate relevant Smart Manufacturing Equipment such as Smart CNC Machines, Industrial Robotic Arms, Smart Factories, and Mechatronic Systems."
+  ],
+  "courses": [
+    {
+      "code": "CAOT 150",
+      "title": "Excel for the Sciences",
+      "units": 0.5
+    },
+    {
+      "code": "COMM 113",
+      "title": "Interpersonal Communication (or ENGL C1000 / COMM C1000)",
+      "units": 3
+    },
+    {
+      "code": "ENGI 101",
+      "title": "Introduction to Engineering",
+      "units": 3
+    },
+    {
+      "code": "ENGI 130",
+      "title": "Electric Circuit Analysis (or ETEC 106)",
+      "units": 4,
+      "alternates": [
+        "ETEC 106"
+      ]
+    },
+    {
+      "code": "ENGI 140",
+      "title": "Materials Engineering (or ETEC 107)",
+      "units": 4,
+      "alternates": [
+        "ETEC 107"
+      ]
+    },
+    {
+      "code": "ETEC 113",
+      "title": "Safety in Industry",
+      "units": 1
+    },
+    {
+      "code": "ETEC 124",
+      "title": "Introduction to Internet of Things",
+      "units": 1.5
+    },
+    {
+      "code": "ETEC 126",
+      "title": "Industrial Internet of Things-Industry Standard 4.0",
+      "units": 3
+    }
+  ],
+  "footnote_programs": [
+    {
+      "certificate": "Certificate of Completion, Smart Manufacturing Technology (noncredit bridge)",
+      "courses": [
+        "ETEC 926",
+        "ETEC 928"
+      ]
+    }
+  ]
+}

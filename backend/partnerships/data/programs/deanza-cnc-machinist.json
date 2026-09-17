@@ -1,0 +1,46 @@
+{
+  "college": "De Anza College",
+  "college_key": "deanza",
+  "member_id": "deanza",
+  "certificate": "Certificate of Achievement, CNC Machinist",
+  "short_title": "CNC Machinist",
+  "kind": "credit",
+  "control_number": "33330",
+  "award": "Certificate of Achievement requiring 8S/12Q to fewer than 16S/24Q units",
+  "status": "Active",
+  "top6": "095630",
+  "top_name": "Manufacturing and Industrial Technology",
+  "source": {
+    "system": "elumen",
+    "host": "deanza.elumenapp.com",
+    "org_entity_id": 8
+  },
+  "program_description": "The Computer Numerical Control (CNC) Machinist Certificate of Achievement teaches students the fundamentals of conventional and CNC machine tools. Students learn how to set up safely and operate manual mills and lathes and construct word address programs for the setup and operation of CNC mills. Upon completion, students are prepared for employment in manufacturing facilities as setup persons, machine operators and production workers.",
+  "program_outcomes": [
+    "Setup and operate conventional and CNC machines safely",
+    "Construct and inspect machined projects using conventional and CNC equipment",
+    "Construct word address programs to machine projects"
+  ],
+  "courses": [
+    {
+      "code": "DMT 80",
+      "title": "Introduction to Machining and CNC Processes",
+      "units": 5
+    },
+    {
+      "code": "DMT 84A",
+      "title": "Introduction to CNC Programming and Operation; Mill",
+      "units": 5
+    },
+    {
+      "code": "DMT 84B",
+      "title": "CNC Programming and Operation; Intermediate Mill",
+      "units": 5
+    },
+    {
+      "code": "DMT 90",
+      "title": "Print Reading and Machine Shop Calculations",
+      "units": 4.5
+    }
+  ]
+}

@@ -1,20 +1,30 @@
-"""Unit tests for partnerships.alignment and alignment_plate — the gate, the roster plumbing, and the plate.
+"""Unit tests for partnerships.alignment and alignment_plate — the gate, records and rosters, the store, and the plate.
 
 The gate is the rule that keeps the LLM matcher honest: fail-closed on the verbatim quote,
-level set by the section the quote is actually found in. No LLM call is made here.
+level set by the section the quote is actually found in. No LLM call is made here; the
+reading tests stub the LLM seam and the store.
 
 Coverage:
   - the gate keeps verbatim quotes, relabels a quote to the section it is found in, resolves course codes with or without spaces, and drops paraphrases and unknown courses
   - the gate is case- and punctuation-insensitive but never fuzzy
-  - the SVAMP roster's five programs all have every course's outline in the cache with outcomes and a source URL
+  - the SVAMP roster's five entries resolve to program records, and every course's outline is in the cache with outcomes and a source URL
+  - the saved per-program stores hold every (program, occupation) reading the SVAMP roster asks for
+  - view_roster sets role, pairing basis and crosswalk from the roster, not the store, in roster order
+  - read_program unions a fresh reading with the saved one and leaves other saved occupations in place
+  - an occupation block and legend label columns by certificate when the roster asks, and by college otherwise
+  - a ProgramCourseFile course id becomes the college's spelling (space before the number, zeros dropped or kept)
+  - scaffold_record drafts a record from a COCI award and Active PCF rows, with a _todo list and the sibling's source
   - the plate renders program-outcome and course columns, marks gaps, and its readout and evidence table carry the counts and quotes
   - an occupation block lists up to N evidenced activities in derived-importance order with colour-coded course chips (one style) that link to the course's outline of record, leaves unevidenced rows out unless show_gaps, and ignores program-outcome cells
   - a cell shows at most three courses, strongest evidence first, with a +N chip for the rest
 """
 
 from courses.outlines import Outline
-from partnerships.alignment import PLO, Cell, Evidence, Plate, Row, gate, load_roster, program_outlines
-from partnerships.alignment_plate import evidence_table, occupation_block, plate_readout, plate_svg
+from ontology.coci import CociAward
+from partnerships import alignment as A
+from partnerships.alignment import (PLO, Cell, Evidence, Plate, Row, _pcf_code, gate, load_readings, load_roster,
+                                    program_outlines, read_program, readings, roster_programs, scaffold_record, view_roster)
+from partnerships.alignment_plate import column_legend, evidence_table, occupation_block, plate_readout, plate_svg
 
 
 def _outline():
@@ -64,13 +74,98 @@ def test_gate_is_case_and_punctuation_insensitive_but_not_fuzzy():
 
 def test_roster_and_cached_outlines_cover_every_course():
     roster = load_roster("svamp-manufacturing-technician")
-    assert len(roster["programs"]) == 5
-    for p in roster["programs"]:
+    programs = roster_programs(roster)
+    assert len(programs) == 5 and roster["columns"] == "college"
+    for p in programs:
+        assert p["ref"] == p["program"] and p["control_number"] and len(p["top6"]) == 6 and p["short_title"]
         outlines = program_outlines(p)              # cache only — no network in tests
         assert set(outlines) == {c["code"] for c in p["courses"]}
         for o in outlines.values():
             assert o.source_url.startswith("https://")
             assert o.outcomes, f"{p['college']} {o.code} has no outcomes in its outline"
+
+
+def test_stores_cover_every_reading_the_roster_asks_for():
+    roster = load_roster("svamp-manufacturing-technician")
+    for p in roster_programs(roster):
+        saved = load_readings(p["ref"])
+        assert {soc for soc, _ in readings(p)} <= set(saved), p["ref"]
+        for soc, pl in saved.items():
+            assert pl.paired_soc == soc and pl.role == "" and pl.top6 == p["top6"] and pl.short_title == p["short_title"]
+
+
+def _plate(college, mid, soc, cert="Cert", **kw):
+    rows = [Row("d1", "Diagnose equipment malfunctions.", "t", {"C 1": Cell(1, [Evidence("C 1", "content", 1, "q", "b")])})]
+    return Plate(college, mid, cert, "credit", "095600", "Mfg", soc, "Occ", [], "", [{"code": "C 1"}], [], rows, **kw)
+
+
+def test_view_roster_takes_connection_from_the_roster_in_roster_order(monkeypatch):
+    roster = {"id": "r", "columns": "college", "occupations": ["17-3024", "17-3026"], "top_n": 10,
+              "programs": [{"program": "b-x", "paired_soc": "17-3026", "crosswalk_socs": ["17-3024"], "pairing_basis": "stated",
+                            "reads_against": ["17-3024"], "appendix_socs": ["51-4041"]},
+                           {"program": "a-y", "paired_soc": "17-3024", "reads_against": []}]}
+    monkeypatch.setattr(A, "load_roster", lambda _id: roster)
+    monkeypatch.setattr(A, "load_program", lambda ref: {"college": ref.upper(), "college_key": ref[0], "member_id": ref[0]})
+    store = {"b-x": {s: _plate("B", "b", s) for s in ("17-3026", "17-3024", "51-4041")},
+             "a-y": {"17-3024": _plate("A", "a", "17-3024"), "99-9999": _plate("A", "a", "99-9999")}}
+    monkeypatch.setattr(A, "load_readings", lambda ref: store[ref])
+    _, plates = view_roster("r")
+    assert [(p.member_id, p.paired_soc, p.role) for p in plates] == [
+        ("b", "17-3026", "paired"), ("b", "17-3024", "crosswalk"), ("b", "51-4041", "appendix"), ("a", "17-3024", "paired")]
+    assert plates[0].pairing_basis == "stated" and plates[0].crosswalk_socs == ["17-3024"]
+    assert plates[3].pairing_basis == "" and plates[3].crosswalk_socs == []     # a reading the roster does not ask for is left out
+
+
+def test_read_program_unions_with_the_store_and_keeps_other_occupations(monkeypatch):
+    prev = _plate("Mission College", "mission", "17-3024")
+    other = _plate("Mission College", "mission", "51-9141")
+    monkeypatch.setattr(A, "load_readings", lambda ref: {"17-3024": prev, "51-9141": other})
+    monkeypatch.setattr(A, "program_outlines", lambda program, refresh=False: {"MTT 020": _outline()})
+    monkeypatch.setattr(A, "get_work_activities", lambda soc: [type("W", (), {"dwa_id": "d1", "dwa": "Diagnose equipment malfunctions.", "task_text": "t"})()])
+    monkeypatch.setattr(A, "get_title", lambda soc: "Occ")
+    program = {"ref": "mission-mechatronic-technology", "college": "Mission College", "member_id": "mission", "college_key": "mission",
+               "certificate": "Cert", "courses": [{"code": "MTT 020"}], "program_outcomes": [], "source": {}}
+    fresh = lambda system, user, schema: {"data": {"matches": [
+        {"activity": 1, "course": "MTT 020", "section": "content", "quote": "Ladder logic programming", "basis": "b"}]}, "error": None}
+    out = read_program(program, ["17-3024"], adjudicate=False, complete=fresh)
+    assert set(out) == {"17-3024", "51-9141"} and out["51-9141"] is other
+    quotes = {e.quote for e in out["17-3024"].rows[0].cells["MTT 020"].evidence} | {e.quote for e in out["17-3024"].rows[0].cells["C 1"].evidence}
+    assert quotes == {"Ladder logic programming", "q"}                        # the saved mark survives the re-read
+    out = read_program(program, ["17-3024"], adjudicate=False, complete=fresh, new_only=True)
+    assert out["17-3024"] is prev                                              # already saved: not re-read
+
+
+def test_columns_label_by_certificate_or_college():
+    plates = [_plate("Foothill College", "foothill", "17-3024", cert="Certificate of Achievement, Semiconductor Processing Technician",
+                     short_title="Semiconductor Processing"),
+              _plate("Foothill College", "foothill", "17-3024", cert="Certificate of Achievement, Vacuum Technology", short_title="Vacuum Technology")]
+    by_cert = occupation_block("17-3024", plates, columns="certificate")
+    assert by_cert.count("alg-colhd") == 2 and "Semiconductor Processing<" in by_cert and "Vacuum Technology<" in by_cert
+    assert "Semiconductor Processing" in column_legend(plates, "certificate") and "Vacuum Technology" in column_legend(plates, "certificate")
+    by_college = occupation_block("17-3024", plates)
+    assert by_college.count(">Foothill<") == 2 and "Vacuum Technology<" not in by_college
+    assert column_legend(plates).count("alg-lg") == 2                          # one college label + the chip key
+
+
+def test_pcf_code_spelling():
+    assert _pcf_code("ENGR061A") == "ENGR 61A" and _pcf_code("MATH040A") == "MATH 40A" and _pcf_code("DMT084A") == "DMT 84A"
+    assert _pcf_code("WRK300MT") == "WRK 300MT" and _pcf_code("MTT020", keep_zeros=True) == "MTT 020"
+    assert _pcf_code("ENGR 61A") == "ENGR 61A"
+
+
+def test_scaffold_record_from_coci_and_pcf_rows():
+    award = CociAward("FOOTHILL", "094500", "Semiconductor Processing",
+                      "Certificate of Achievement requiring 8S/12Q to fewer than 16S/24Q units", "Active", "2023-01-01", "", "43983")
+    rows = [{"Course Id": "ENGR061A", "Course Title": "INTRODUCTION TO SEMICONDUCTOR TECHNOLOGY", "Course Status": "Active"},
+            {"Course Id": "ENGR101A", "Course Title": "ADVANCED MANUFACTURING", "Course Status": "Active"},
+            {"Course Id": "ENGR101A", "Course Title": "ADVANCED MANUFACTURING", "Course Status": "Active"},    # PCF repeats a course per proposal
+            {"Course Id": "MATH040A", "Course Title": "QUANTITATIVE REASONING", "Course Status": "Inactive"}]
+    rec = scaffold_record(award, rows, college="Foothill College", college_key="foothill", source={"system": "courseleaf"},
+                          top_name="Industrial Systems Technology and Maintenance")
+    assert [c["code"] for c in rec["courses"]] == ["ENGR 61A", "ENGR 101A"]
+    assert rec["certificate"] == "Certificate of Achievement, Semiconductor Processing" and rec["short_title"] == "Semiconductor Processing"
+    assert rec["control_number"] == "43983" and rec["top6"] == "094500" and rec["status"] == "Active" and rec["kind"] == "credit"
+    assert rec["source"] == {"system": "courseleaf"} and rec["_todo"] and rec["program_outcomes"] == []
 
 
 def test_plate_renders_marks_gaps_and_evidence():

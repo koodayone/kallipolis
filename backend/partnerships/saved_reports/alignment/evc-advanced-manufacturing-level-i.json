@@ -1,0 +1,1625 @@
+{
+ "program": "evc-advanced-manufacturing-level-i",
+ "generated": "2026-09-16",
+ "onet_vintage": "O*NET 31.0 database (August 2026), U.S. Department of Labor",
+ "plates": [
+  {
+   "college": "Evergreen Valley College",
+   "member_id": "evc",
+   "certificate": "Certificate of Achievement, Advanced Manufacturing Level 1",
+   "kind": "credit",
+   "top6": "095600",
+   "top_name": "not yet in the crosswalk figure (no award series)",
+   "paired_soc": "17-3026",
+   "occupation": "Industrial Engineering Technologists and Technicians",
+   "crosswalk_socs": [],
+   "pairing_basis": "",
+   "courses": [
+    {
+     "code": "MFGT 101",
+     "title": "Introduction to Advanced Manufacturing",
+     "units": 2,
+     "source_url": "https://evc.curriqunet.com/DynamicReports/AllFieldsReportByEntity/5563?entityType=Course&reportId=52",
+     "system": "curriqunet",
+     "effective": "",
+     "approved": "09/28/2023",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "objectives field holds template text only",
+     "currency": {
+      "control_number": "CCC000618858",
+      "status": "Active",
+      "last_updated": "2023-10-11",
+      "outline_date": "2023-09-28",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MFGT 102",
+     "title": "Math for Manufacturing",
+     "units": 2,
+     "source_url": "https://evc.curriqunet.com/DynamicReports/AllFieldsReportByEntity/5297?entityType=Course&reportId=52",
+     "system": "curriqunet",
+     "effective": "",
+     "approved": "05/13/2021",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "objectives field holds template text only",
+     "currency": {
+      "control_number": "CCC000618860",
+      "status": "Active",
+      "last_updated": "2021-07-08",
+      "outline_date": "2021-05-13",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MFGT 103",
+     "title": "Introduction to Assembly",
+     "units": 3,
+     "source_url": "https://evc.curriqunet.com/DynamicReports/AllFieldsReportByEntity/4452?entityType=Course&reportId=52",
+     "system": "curriqunet",
+     "effective": "2021-03-22",
+     "approved": "05/13/2021",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618861",
+      "status": "Active",
+      "last_updated": "2021-07-08",
+      "outline_date": "2021-05-13",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MFGT 201",
+     "title": "Fundamentals of Electronics for Manufacturing",
+     "units": 3,
+     "source_url": "https://evc.curriqunet.com/DynamicReports/AllFieldsReportByEntity/5299?entityType=Course&reportId=52",
+     "system": "curriqunet",
+     "effective": "",
+     "approved": "05/13/2021",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "objectives field holds template text only",
+     "currency": {
+      "control_number": "CCC000618862",
+      "status": "Active",
+      "last_updated": "2021-07-09",
+      "outline_date": "2021-05-13",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MFGT 202",
+     "title": "Properties of Materials for Manufacturing",
+     "units": 3,
+     "source_url": "https://evc.curriqunet.com/DynamicReports/AllFieldsReportByEntity/5298?entityType=Course&reportId=52",
+     "system": "curriqunet",
+     "effective": "",
+     "approved": "05/13/2021",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "objectives field holds template text only",
+     "currency": {
+      "control_number": "CCC000618863",
+      "status": "Active",
+      "last_updated": "2021-07-08",
+      "outline_date": "2021-05-13",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MFGT 203",
+     "title": "Data Analytics for Manufacturing and Quality Control",
+     "units": 3,
+     "source_url": "https://evc.curriqunet.com/DynamicReports/AllFieldsReportByEntity/5295?entityType=Course&reportId=52",
+     "system": "curriqunet",
+     "effective": "2022-11-18",
+     "approved": "09/28/2023",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "objectives field holds template text only",
+     "currency": {
+      "control_number": "CCC000618864",
+      "status": "Active",
+      "last_updated": "2023-10-11",
+      "outline_date": "2023-09-28",
+      "verdict": "coci-newer"
+     }
+    }
+   ],
+   "program_outcomes": [
+    "Demonstrate competence in building, servicing, and testing circuits utilizing safe and industry standard practices and procedures.",
+    "Demonstrate how to assemble circuit boards, mechanical systems and electrical systems.",
+    "Perform a material application process that includes material selection, application fabrication techniques, relevant testing, and necessary characterization technique based on the application.",
+    "Demonstrate how to collect, analyze, interpret, and present numerical data to make effective decisions."
+   ],
+   "rows": [
+    {
+     "dwa_id": "4.A.1.a.2.i.4",
+     "dwa": "Monitor activities affecting environmental quality.",
+     "task": "Adhere to all applicable regulations, policies, and procedures for health, safety, and environmental compliance.",
+     "cells": {
+      "MFGT 101": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 101",
+         "section": "content",
+         "level": 1,
+         "quote": "Safety and Hazardous Waste",
+         "basis": "content covers regulatory health/safety/environmental compliance topics including MSDS and legal requirements"
+        },
+        {
+         "course": "MFGT 101",
+         "section": "lab",
+         "level": 1,
+         "quote": "Identify Methods to Achieve ISO Safety Standards",
+         "basis": "lab has students identify methods to comply with safety standards"
+        }
+       ]
+      },
+      "MFGT 201": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MFGT 201",
+         "section": "lab",
+         "level": 1,
+         "quote": "Utilize Service Information: Industry Standards, Procedures, and Regulations",
+         "basis": "students follow applicable industry standards and regulations during lab work, evidencing compliance activity"
+        },
+        {
+         "course": "MFGT 201",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate proper practice safety procedures and identification of electrical hazards.",
+         "basis": "SLO literally has students identify hazards and apply safety procedures relevant to health/safety compliance"
+        }
+       ]
+      },
+      "MFGT 202": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 202",
+         "section": "lab",
+         "level": 1,
+         "quote": "Demonstrate Safety Practices, Equipment Usage, and Proper Data Gathering and Storage Within the Laboratory",
+         "basis": "lab requires adherence to health/safety procedures in a technical lab setting"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.i.4",
+     "dwa": "Calibrate scientific or technical equipment.",
+     "task": "Calibrate or adjust equipment to ensure quality production, using tools such as calipers, micrometers, height gauges, protractors, or ring gauges. · Monitor and adjust production processes or equipment for quality and productivity.",
+     "cells": {
+      "MFGT 203": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 203",
+         "section": "lab",
+         "level": 1,
+         "quote": "Measure the Length of Similar Devices Using a Micrometer or Vernier Caliper",
+         "basis": "lab uses calipers to take precision measurements, a calibration-adjacent skill using listed tools"
+        },
+        {
+         "course": "MFGT 203",
+         "section": "lab",
+         "level": 1,
+         "quote": "Measure the Length of Similar Devices Using a Micrometer or Vernier Caliper and Graph the Measurements",
+         "basis": "students calibrate/use precision measurement tools such as micrometers and calipers"
+        }
+       ]
+      },
+      "MFGT 201": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MFGT 201",
+         "section": "lab",
+         "level": 1,
+         "quote": "Set Up Test Measurement Equipment to Verify Ohm's Law, Kirchhoff’s Voltage Law, Kirchhoff’s Current Law",
+         "basis": "students set up and calibrate test measurement equipment to obtain accurate readings, matching calibration of technical equipment"
+        },
+        {
+         "course": "MFGT 201",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate the use of specialized test equipment to obtain measurements and generate data from electronic circuits and systems.",
+         "basis": "SLO has students use and set up specialized measurement/test equipment, directly constitutive of calibrating technical equipment"
+        }
+       ]
+      },
+      "MFGT 202": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 202",
+         "section": "lab",
+         "level": 1,
+         "quote": "Mechanical Testing #1: Plastic Deformation Identification and Testing",
+         "basis": "mechanical testing lab requires use of calibrated instruments to assess material properties"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.b.4.j.24",
+     "dwa": "Direct industrial production activities.",
+     "task": "Oversee or inspect production processes.",
+     "cells": {
+      "MFGT 203": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 203",
+         "section": "lab",
+         "level": 1,
+         "quote": "Set Up and Monitor a Process with Control Chart to Determine If the Process is in Control",
+         "basis": "setting up and monitoring a production process directly constitutes overseeing production"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.2.c.3",
+     "dwa": "Design industrial equipment.",
+     "task": "Identify opportunities for improvements in quality, cost, or efficiency of automation equipment.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.b.2.f.14",
+     "dwa": "Develop technical methods or processes.",
+     "task": "Develop or implement programs to address problems related to production, materials, safety, or quality. · Assist engineers in developing, building, or testing prototypes or new products, processes, or procedures. · Develop production, inventory, or quality assurance programs.",
+     "cells": {
+      "MFGT 203": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 203",
+         "section": "lab",
+         "level": 1,
+         "quote": "Choose a Corrective Action, and Document the Process",
+         "basis": "lab develops a process to address a production/quality problem via root cause and corrective action"
+        },
+        {
+         "course": "MFGT 203",
+         "section": "lab",
+         "level": 1,
+         "quote": "Problem Solving: Given a Problem or Defect, Identify Possible Causes, Fishbone Those Causes, Figure Out How to Eliminate and Test the Various Causes to Identify the Root Cause. Choose a Corrective Action, and Document the Process.",
+         "basis": "developing a method to address a production/quality problem and document a corrective process"
+        }
+       ]
+      },
+      "MFGT 101": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 101",
+         "section": "lab",
+         "level": 1,
+         "quote": "Analyze a Manufacturer’s Assembly Instructions for Process Improvement",
+         "basis": "students develop/implement process improvements to production methods"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.1.i.6",
+     "dwa": "Implement design or process improvements.",
+     "task": "Develop or implement programs to address problems related to production, materials, safety, or quality.",
+     "cells": {
+      "MFGT 203": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 203",
+         "section": "lab",
+         "level": 1,
+         "quote": "Figure Out How to Eliminate and Test the Various Causes to Identify the Root Cause. Choose a Corrective Action",
+         "basis": "lab implements a process improvement addressing an identified quality problem"
+        },
+        {
+         "course": "MFGT 203",
+         "section": "lab",
+         "level": 1,
+         "quote": "Choose a Corrective Action, and Document the Process.",
+         "basis": "implementing a chosen corrective action to fix a quality problem is a process improvement"
+        }
+       ]
+      },
+      "MFGT 101": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 101",
+         "section": "lab",
+         "level": 1,
+         "quote": "Analyze a Manufacturer’s Assembly Instructions for Process Improvement",
+         "basis": "lab has students identify and implement process improvements to assembly procedures"
+        },
+        {
+         "course": "MFGT 101",
+         "section": "lab",
+         "level": 1,
+         "quote": "Problem Solving: Find Alternatives to an Assembly Failure",
+         "basis": "students implement a process improvement to fix an assembly failure"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.2.c.2",
+     "dwa": "Test products for functionality or quality.",
+     "task": "Test selected products at specified stages in the production process for performance characteristics or adherence to specifications.",
+     "cells": {
+      "MFGT 103": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MFGT 103",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate two techniques for testing assembled product.",
+         "basis": "SLO states literally that students test assembled products for functionality"
+        },
+        {
+         "course": "MFGT 103",
+         "section": "lab",
+         "level": 1,
+         "quote": "Inspect and Test Finished Circuit Boards Per Industry and International Standards such as ISO, IEC, IPC, or MILSPEC",
+         "basis": "testing finished circuit boards at a production stage evidences testing products for functionality"
+        }
+       ]
+      },
+      "MFGT 201": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MFGT 201",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate competence in building, servicing, and testing circuits using passive devices",
+         "basis": "SLO states literally that students test circuits for functionality"
+        },
+        {
+         "course": "MFGT 201",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate competence in building, servicing, and testing circuits using passive devices utilizing safe and industry standard practices",
+         "basis": "SLO literally has students test circuits for performance against standards, matching testing products for functionality"
+        },
+        {
+         "course": "MFGT 201",
+         "section": "lab",
+         "level": 1,
+         "quote": "Build and Test Simple DC Circuits Using Switches, LEDs, Capacitors, Inductors, and Resistors",
+         "basis": "lab has students test built circuits for functional performance characteristics"
+        }
+       ]
+      },
+      "MFGT 101": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 101",
+         "section": "lab",
+         "level": 1,
+         "quote": "Perform Testing on Assembled Product",
+         "basis": "students literally test an assembled product, matching testing products for quality"
+        }
+       ]
+      },
+      "MFGT 202": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MFGT 202",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Perform three different material application processes (including material selection, application fabrication techniques, relevant testing that could be performed, and necessary characterization technique based on the application).",
+         "basis": "students perform testing of materials against application specifications"
+        },
+        {
+         "course": "MFGT 202",
+         "section": "lab",
+         "level": 1,
+         "quote": "Mechanical Testing #2: Fracture Identification and Testing",
+         "basis": "lab has students test material specimens for performance characteristics"
+        }
+       ]
+      },
+      "MFGT 203": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 203",
+         "section": "lab",
+         "level": 1,
+         "quote": "Apply Two Adhesives Using Two Different Curing Conditions and Analyze the Bond Quality",
+         "basis": "testing product samples under process conditions for quality characteristics"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.1.a.4",
+     "dwa": "Explain engineering drawings, specifications, or other technical information.",
+     "task": "Create or interpret engineering drawings, schematic diagrams, formulas, or blueprints for management or engineering staff.",
+     "cells": {
+      "MFGT 103": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MFGT 103",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate how to read and interpret mechanical drawings, prints.",
+         "basis": "SLO states literally that students interpret engineering drawings"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.2.o.1",
+     "dwa": "Prepare drawings or diagrams of products or services.",
+     "task": "Create or interpret engineering drawings, schematic diagrams, formulas, or blueprints for management or engineering staff.",
+     "cells": {
+      "MFGT 103": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 103",
+         "section": "content",
+         "level": 1,
+         "quote": "Learn How to Read and Interpret Mechanical Drawings",
+         "basis": "content on drawings/projections/dimensions covers preparing and reading engineering drawings"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.a.1.g.5",
+     "dwa": "Assess product or process usefulness.",
+     "task": "Compile and evaluate statistical data to determine and maintain quality and reliability of products.",
+     "cells": {
+      "MFGT 203": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MFGT 203",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Collect, analyze, interpret, and present numerical data to make effective decisions.",
+         "basis": "SLO states literally that students compile and evaluate statistical data to assess product/process quality"
+        },
+        {
+         "course": "MFGT 203",
+         "section": "lab",
+         "level": 1,
+         "quote": "Develop and Analyze Reliability Plots and Graphs",
+         "basis": "evaluating statistical reliability data to assess product usefulness"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.b.6.e.9",
+     "dwa": "Recommend technical design or process changes to improve efficiency, quality, or performance.",
+     "task": "Recommend corrective or preventive actions to assure or improve product quality or reliability.",
+     "cells": {
+      "MFGT 203": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 203",
+         "section": "lab",
+         "level": 1,
+         "quote": "Choose a Corrective Action, and Document the Process",
+         "basis": "lab has students recommend a corrective action to improve product/process quality"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.2.k.6",
+     "dwa": "Monitor processes for compliance with standards.",
+     "task": "Read worker logs, product processing sheets, or specification sheets to verify that records adhere to quality assurance specifications. · Evaluate industrial operations for compliance with permits or regulations related to the generation, storage, treatment, transportation, or disposal of hazardous materials or waste.",
+     "cells": {
+      "MFGT 203": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MFGT 203",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Read and interpret process control charts.",
+         "basis": "SLO states literally that students read control records to verify process adherence to quality specifications"
+        }
+       ]
+      },
+      "MFGT 103": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 103",
+         "section": "lab",
+         "level": 1,
+         "quote": "Inspect Solder Joint Quality Per IPC 610",
+         "basis": "inspecting joints against an industry standard evidences monitoring processes for compliance with standards"
+        },
+        {
+         "course": "MFGT 103",
+         "section": "lab",
+         "level": 1,
+         "quote": "Inspect and Test Finished Circuit Boards Per Industry and International Standards such as ISO, IEC, IPC, or MILSPEC",
+         "basis": "testing product against named industry/international standards evidences monitoring compliance with standards"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.1.d.3",
+     "dwa": "Determine operational methods.",
+     "task": "Select material quantities or processing methods needed to achieve efficient production.",
+     "cells": {
+      "MFGT 103": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 103",
+         "section": "lab",
+         "level": 1,
+         "quote": "Join Various Materials Using Welding, Soldering, Staking, or Weaving Techniques",
+         "basis": "selecting among alternative joining methods for a task evidences determining operational methods"
+        }
+       ]
+      },
+      "MFGT 202": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MFGT 202",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Identify three criteria that are important in the materials selection process.",
+         "basis": "identifying materials selection criteria evidences determining operational methods via material selection"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.2.b.9",
+     "dwa": "Inspect operational processes.",
+     "task": "Verify that equipment is being operated and maintained according to quality assurance standards by observing worker performance.",
+     "cells": {
+      "MFGT 203": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 203",
+         "section": "lab",
+         "level": 1,
+         "quote": "Set Up and Monitor a Process with Control Chart to Determine If the Process is in Control",
+         "basis": "lab inspects an operational process against quality assurance standards"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.1.j.2",
+     "dwa": "Select project materials.",
+     "task": "Select material quantities or processing methods needed to achieve efficient production. · Select cleaning materials, tools, or equipment.",
+     "cells": {
+      "MFGT 202": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MFGT 202",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Identify three criteria that are important in the materials selection process.",
+         "basis": "SLO states literally that students select materials for an application"
+        }
+       ]
+      },
+      "MFGT 103": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 103",
+         "section": "lab",
+         "level": 1,
+         "quote": "Assemble Products Using Plastics, Metals, and Ceramics",
+         "basis": "choosing among materials to assemble products evidences selecting project materials"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.2.b.15",
+     "dwa": "Monitor the productivity or efficiency of industrial operations.",
+     "task": "Monitor and adjust production processes or equipment for quality and productivity.",
+     "cells": {
+      "MFGT 203": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 203",
+         "section": "lab",
+         "level": 1,
+         "quote": "Set Up and Monitor a Process with Control Chart to Determine If the Process is in Control",
+         "basis": "monitoring production process control directly evidences monitoring productivity/efficiency"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.2.d.3",
+     "dwa": "Create physical models or prototypes.",
+     "task": "Assist engineers in developing, building, or testing prototypes or new products, processes, or procedures.",
+     "cells": {
+      "MFGT 101": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 101",
+         "section": "lab",
+         "level": 1,
+         "quote": "Follow a Manufacturing Instruction to Assemble a Product (e.g. IKEA product)",
+         "basis": "lab has students physically build a product model/prototype"
+        }
+       ]
+      },
+      "MFGT 203": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 203",
+         "section": "lab",
+         "level": 1,
+         "quote": "Apply Two Adhesives Using Two Different Curing Conditions and Analyze the Bond Quality",
+         "basis": "lab builds and tests physical sample assemblies, akin to prototype testing"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.2.o.21",
+     "dwa": "Create graphical representations of industrial production systems.",
+     "task": "Prepare layouts, drawings, or sketches of machinery or equipment, such as shop tooling, scale layouts, or new equipment design, using drafting equipment or computer-aided design (CAD) software.",
+     "cells": {
+      "MFGT 103": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 103",
+         "section": "content",
+         "level": 1,
+         "quote": "Blueprints and Drawings",
+         "basis": "content covers preparing/interpreting drawings and layouts of assembled equipment/systems"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.1.t.7",
+     "dwa": "Research human performance or health factors related to engineering or design activities.",
+     "task": "Study time, motion, methods, or speed involved in maintenance, production, or other operations to establish standard production rate or improve efficiency.",
+     "cells": {
+      "MFGT 101": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 101",
+         "section": "lab",
+         "level": 1,
+         "quote": "Analyze a Manufacturer’s Assembly Instructions for Process Improvement",
+         "basis": "lab studies assembly process methods to identify efficiency improvements, akin to time/motion study"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.b.3.d.2",
+     "dwa": "Train personnel on proper operational procedures.",
+     "task": "Provide advice or training to other technicians.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.2.a.4.e.8",
+     "dwa": "Analyze costs and benefits of proposed designs or projects.",
+     "task": "Analyze, estimate, or report production costs. · Conduct statistical studies to analyze or compare production costs for sustainable and nonsustainable designs.",
+     "cells": {
+      "MFGT 203": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 203",
+         "section": "content",
+         "level": 1,
+         "quote": "Cost of Quality",
+         "basis": "content covers analyzing and reporting costs related to production quality"
+        },
+        {
+         "course": "MFGT 203",
+         "section": "lab",
+         "level": 1,
+         "quote": "Perform Cost Analysis Plots and Graphs",
+         "basis": "lab conducts statistical cost analysis comparing production costs"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.3.b.4",
+     "dwa": "Estimate operational costs.",
+     "task": "Analyze, estimate, or report production costs.",
+     "cells": {
+      "MFGT 203": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 203",
+         "section": "content",
+         "level": 1,
+         "quote": "Definition and Measuring",
+         "basis": "content on Cost of Quality covers estimating and reporting production-related costs"
+        },
+        {
+         "course": "MFGT 203",
+         "section": "content",
+         "level": 1,
+         "quote": "Cost of Quality - Definition and Measuring",
+         "basis": "measuring and estimating production/quality-related costs"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.6.o.4",
+     "dwa": "Prepare operational reports.",
+     "task": "Prepare production documents, such as standard operating procedures, manufacturing batch records, inventory reports, or productivity reports.",
+     "cells": {
+      "MFGT 203": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 203",
+         "section": "lab",
+         "level": 1,
+         "quote": "Document the Process",
+         "basis": "lab has students prepare a documented operational report of the quality process"
+        },
+        {
+         "course": "MFGT 203",
+         "section": "lab",
+         "level": 1,
+         "quote": "Choose a Corrective Action, and Document the Process.",
+         "basis": "documenting the corrective action process constitutes preparing an operational report"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.c.3.e.3",
+     "dwa": "Purchase materials, equipment, or other resources.",
+     "task": "Coordinate equipment purchases, installations, or transfers.",
+     "cells": {}
+    }
+   ],
+   "dropped": [
+    {
+     "activity": 2,
+     "course": "MFGT 102",
+     "section": "lab",
+     "quote": "Solve Practical Mechanical Measurement Problems",
+     "basis": "lab applies measurement calculations analogous to calibrating equipment with gauges",
+     "why": "adjudicated: d: solving mechanical measurement calculation problems evidences measurement/computation, a different activity than calibrating equipment with gauges"
+    },
+    {
+     "activity": 3,
+     "course": "MFGT 101",
+     "section": "content",
+     "quote": "Quality Assurance",
+     "basis": "content covers oversight of production quality within resource/production planning topics",
+     "why": "adjudicated: a: 'Quality Assurance' as a content heading names a topic without stating oversight/inspection of production"
+    },
+    {
+     "activity": 5,
+     "course": "MFGT 101",
+     "section": "content",
+     "quote": "Total Quality Management",
+     "basis": "content covers developing programs/processes addressing production and quality problems",
+     "why": "adjudicated: a: 'Total Quality Management' is a topic heading without a stated program-development activity"
+    },
+    {
+     "activity": 13,
+     "course": "MFGT 102",
+     "section": "content",
+     "quote": "Learn How to Solve Practical Speed and Ratio Problems for Gears and Pulleys",
+     "basis": "content covers determining processing methods/parameters for efficient production",
+     "why": "adjudicated: d: solving speed/ratio problems for gears and pulleys evidences mechanical calculation, not selecting materials/processing methods for production"
+    },
+    {
+     "activity": 16,
+     "course": "MFGT 101",
+     "section": "content",
+     "quote": "Statistical Process Control",
+     "basis": "content covers monitoring production processes for productivity and quality",
+     "why": "adjudicated: a: 'Statistical Process Control' is a topic heading without stated monitoring of productivity/efficiency"
+    },
+    {
+     "activity": 3,
+     "course": "MFGT 101",
+     "section": "content",
+     "quote": "Quality Assurance",
+     "basis": "production planning/QA content involves oversight of production processes",
+     "why": "adjudicated: a: 'Quality Assurance' content heading names a topic without stating oversight/inspection of production processes"
+    },
+    {
+     "activity": 6,
+     "course": "MFGT 101",
+     "section": "content",
+     "quote": "Root Cause Analysis",
+     "basis": "root cause analysis technique used to implement process improvements",
+     "why": "adjudicated: a: 'Root Cause Analysis' content heading names a technique without stating implementation of a process improvement"
+    },
+    {
+     "activity": 10,
+     "course": "MFGT 101",
+     "section": "content",
+     "quote": "Statistical Process Control",
+     "basis": "SPC content evaluates statistical data to assess product/process quality",
+     "why": "adjudicated: a: 'Statistical Process Control' content heading names a topic without stated evaluation of product/process usefulness"
+    },
+    {
+     "activity": 12,
+     "course": "MFGT 101",
+     "section": "content",
+     "quote": "International Organization for Standardization (ISO) 9000",
+     "basis": "ISO 9000 standards content evidences monitoring processes for compliance with standards",
+     "why": "adjudicated: a: 'ISO 9000' content heading names a standard topic without stated verification of records/logs against specifications"
+    },
+    {
+     "activity": 13,
+     "course": "MFGT 101",
+     "section": "content",
+     "quote": "Production Planning",
+     "basis": "production planning content addresses determining operational/processing methods",
+     "why": "adjudicated: a: 'Production Planning' content heading names a topic without stated selection of processing methods"
+    },
+    {
+     "activity": 20,
+     "course": "MFGT 101",
+     "section": "lab",
+     "quote": "Develop Site Visit Questionnaire",
+     "basis": "weak/no match; excluded",
+     "why": "adjudicated: c: site visit questionnaire is a generic inquiry activity, not training personnel on operational procedures"
+    },
+    {
+     "activity": 2,
+     "course": "MFGT 102",
+     "section": "content",
+     "quote": "Learn How to Solve Practical Mechanical Measurement Problems",
+     "basis": "solving practical mechanical measurement problems reflects the calculation work underlying calibrating equipment with calipers, micrometers, height gauges",
+     "why": "adjudicated: d: solving mechanical measurement calculation problems evidences computation, not calibrating equipment with the listed tools"
+    },
+    {
+     "activity": 2,
+     "course": "MFGT 102",
+     "section": "lab",
+     "quote": "Solve Practical Mechanical Measurement Problems",
+     "basis": "lab practice on mechanical measurement problems constitutes the quantitative skill needed to calibrate or adjust equipment",
+     "why": "adjudicated: d: solving mechanical measurement problems is quantitative practice, a different activity than calibrating equipment"
+    },
+    {
+     "activity": 21,
+     "course": "MFGT 102",
+     "section": "content",
+     "quote": "Learn How to Solve Practical Problems for Cutting and Feeding Equipment",
+     "basis": "solving practical cost/production-rate problems for cutting and feeding equipment involves analyzing production costs",
+     "why": "adjudicated: d: solving speed/feed-rate problems for cutting equipment evidences mechanical calculation, not analyzing production costs"
+    },
+    {
+     "activity": 12,
+     "course": "MFGT 201",
+     "section": "lab",
+     "quote": "Apply Test Methods to Troubleshoot, Diagnose, and Identify Faults",
+     "basis": "students verify circuit operation against specifications through diagnostic testing, matching monitoring processes for compliance with standards",
+     "why": "adjudicated: d: troubleshooting/diagnosing faults evidences fault diagnosis, a different activity than verifying records against specifications"
+    },
+    {
+     "activity": 2,
+     "course": "MFGT 202",
+     "section": "outcomes",
+     "quote": "Identify methods used to test and characterize various materials.",
+     "basis": "identifying testing/characterization methods involves use of measurement instruments to assess material quality",
+     "why": "adjudicated: b: identifying testing/characterization methods precedes actually calibrating or using measurement equipment"
+    },
+    {
+     "activity": 10,
+     "course": "MFGT 202",
+     "section": "content",
+     "quote": "Processing/Structure/Properties/Performance Correlations",
+     "basis": "evaluating how processing and structure relate to performance evidences assessing material/process usefulness",
+     "why": "adjudicated: a: 'Processing/Structure/Properties/Performance Correlations' is a topic heading without stated statistical evaluation of quality/reliability"
+    },
+    {
+     "activity": 15,
+     "course": "MFGT 202",
+     "section": "lab",
+     "quote": "Soldering Techniques",
+     "basis": "soldering lab requires selecting bonding materials and equipment for assembly technique",
+     "why": "adjudicated: d: soldering techniques lab evidences a joining/assembly skill, not selecting project materials"
+    },
+    {
+     "activity": 13,
+     "course": "MFGT 203",
+     "section": "content",
+     "quote": "Process Capability Index",
+     "basis": "determining process methods needed for efficient, capable production",
+     "why": "adjudicated: a: 'Process Capability Index' is a topic heading without stated selection of material quantities or processing methods"
+    }
+   ],
+   "source_note": "Read from Evergreen Valley College's course outlines of record (curriqunet); sections present: slo, objective, description, content outline, lab content, assignment.",
+   "role": "",
+   "short_title": "Advanced Manufacturing Level I"
+  },
+  {
+   "college": "Evergreen Valley College",
+   "member_id": "evc",
+   "certificate": "Certificate of Achievement, Advanced Manufacturing Level 1",
+   "kind": "credit",
+   "top6": "095600",
+   "top_name": "Manufacturing and Industrial Technology",
+   "paired_soc": "17-3024",
+   "occupation": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+   "crosswalk_socs": [],
+   "pairing_basis": "",
+   "courses": [
+    {
+     "code": "MFGT 101",
+     "title": "Introduction to Advanced Manufacturing",
+     "units": 2,
+     "source_url": "https://evc.curriqunet.com/DynamicReports/AllFieldsReportByEntity/5563?entityType=Course&reportId=52",
+     "system": "curriqunet",
+     "effective": "",
+     "approved": "09/28/2023",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "objectives field holds template text only",
+     "currency": {
+      "control_number": "CCC000618858",
+      "status": "Active",
+      "last_updated": "2023-10-11",
+      "outline_date": "2023-09-28",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MFGT 102",
+     "title": "Math for Manufacturing",
+     "units": 2,
+     "source_url": "https://evc.curriqunet.com/DynamicReports/AllFieldsReportByEntity/5297?entityType=Course&reportId=52",
+     "system": "curriqunet",
+     "effective": "",
+     "approved": "05/13/2021",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "objectives field holds template text only",
+     "currency": {
+      "control_number": "CCC000618860",
+      "status": "Active",
+      "last_updated": "2021-07-08",
+      "outline_date": "2021-05-13",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MFGT 103",
+     "title": "Introduction to Assembly",
+     "units": 3,
+     "source_url": "https://evc.curriqunet.com/DynamicReports/AllFieldsReportByEntity/4452?entityType=Course&reportId=52",
+     "system": "curriqunet",
+     "effective": "2021-03-22",
+     "approved": "05/13/2021",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618861",
+      "status": "Active",
+      "last_updated": "2021-07-08",
+      "outline_date": "2021-05-13",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MFGT 201",
+     "title": "Fundamentals of Electronics for Manufacturing",
+     "units": 3,
+     "source_url": "https://evc.curriqunet.com/DynamicReports/AllFieldsReportByEntity/5299?entityType=Course&reportId=52",
+     "system": "curriqunet",
+     "effective": "",
+     "approved": "05/13/2021",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "objectives field holds template text only",
+     "currency": {
+      "control_number": "CCC000618862",
+      "status": "Active",
+      "last_updated": "2021-07-09",
+      "outline_date": "2021-05-13",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MFGT 202",
+     "title": "Properties of Materials for Manufacturing",
+     "units": 3,
+     "source_url": "https://evc.curriqunet.com/DynamicReports/AllFieldsReportByEntity/5298?entityType=Course&reportId=52",
+     "system": "curriqunet",
+     "effective": "",
+     "approved": "05/13/2021",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "objectives field holds template text only",
+     "currency": {
+      "control_number": "CCC000618863",
+      "status": "Active",
+      "last_updated": "2021-07-08",
+      "outline_date": "2021-05-13",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MFGT 203",
+     "title": "Data Analytics for Manufacturing and Quality Control",
+     "units": 3,
+     "source_url": "https://evc.curriqunet.com/DynamicReports/AllFieldsReportByEntity/5295?entityType=Course&reportId=52",
+     "system": "curriqunet",
+     "effective": "2022-11-18",
+     "approved": "09/28/2023",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "objectives field holds template text only",
+     "currency": {
+      "control_number": "CCC000618864",
+      "status": "Active",
+      "last_updated": "2023-10-11",
+      "outline_date": "2023-09-28",
+      "verdict": "coci-newer"
+     }
+    }
+   ],
+   "program_outcomes": [
+    "Demonstrate competence in building, servicing, and testing circuits utilizing safe and industry standard practices and procedures.",
+    "Demonstrate how to assemble circuit boards, mechanical systems and electrical systems.",
+    "Perform a material application process that includes material selection, application fabrication techniques, relevant testing, and necessary characterization technique based on the application.",
+    "Demonstrate how to collect, analyze, interpret, and present numerical data to make effective decisions."
+   ],
+   "rows": [
+    {
+     "dwa_id": "4.A.3.b.2.e.1",
+     "dwa": "Design electromechanical equipment or systems.",
+     "task": "Develop, test, or program new robots. · Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.1.b.2.l.2",
+     "dwa": "Test performance of electrical, electronic, mechanical, or integrated systems or equipment.",
+     "task": "Develop, test, or program new robots. · Test performance of electromechanical assemblies, using test instruments such as oscilloscopes, electronic voltmeters, or bridges. · Select and use laboratory, operational, or diagnostic techniques or test equipment to assess electromechanical circuits, equipment, processes, systems, or subsystems. · Operate, test, or maintain robotic equipment used for green production applications, such as waste-to-energy conversion systems, minimization of material waste, or replacement of human operators in dangerous work environments.",
+     "cells": {
+      "MFGT 101": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 101",
+         "section": "lab",
+         "level": 1,
+         "quote": "Perform Testing on Assembled Product",
+         "basis": "performing testing on an assembled product is a basic instance of testing performance of assembled equipment"
+        }
+       ]
+      },
+      "MFGT 103": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MFGT 103",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate two techniques for testing assembled product.",
+         "basis": "testing assembled product matches testing performance of electromechanical assemblies/equipment"
+        },
+        {
+         "course": "MFGT 103",
+         "section": "content",
+         "level": 1,
+         "quote": "In-Circuit Functional",
+         "basis": "in-circuit functional testing of assembled electronics matches testing performance of electronic/electromechanical assemblies"
+        }
+       ]
+      },
+      "MFGT 201": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MFGT 201",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate the use of specialized test equipment to obtain measurements and generate data from electronic circuits and systems.",
+         "basis": "students select and use diagnostic test equipment to assess electrical circuits, directly matching the task"
+        },
+        {
+         "course": "MFGT 201",
+         "section": "lab",
+         "level": 1,
+         "quote": "Use Test Equipment such as Oscilloscopes, Frequency Sources, and Vector Analyzers to Develop Basic Understanding of Voltage Patterns",
+         "basis": "students test performance of circuits using oscilloscopes, matching the electromechanical assembly test task"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.2.b.1",
+     "dwa": "Develop software or computer applications.",
+     "task": "Install or program computer hardware or machine or instrumentation software in microprocessor-based systems.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.1.a.1.b.8",
+     "dwa": "Review technical documents to plan work.",
+     "task": "Read blueprints, schematics, diagrams, or technical orders to determine methods and sequences of assembly.",
+     "cells": {
+      "MFGT 103": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MFGT 103",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate how to read and interpret mechanical drawings, prints.",
+         "basis": "literal SLO matches reading blueprints/schematics to determine assembly sequence"
+        },
+        {
+         "course": "MFGT 103",
+         "section": "content",
+         "level": 1,
+         "quote": "Learn How to Read and Interpret Mechanical Drawings",
+         "basis": "content covers blueprints, drawings, projections, dimensions used to plan assembly sequence"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.5.a.18",
+     "dwa": "Maintain electromechanical equipment.",
+     "task": "Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning. · Repair, rework, or calibrate hydraulic or pneumatic assemblies or systems to meet operational specifications or tolerances. · Operate, test, or maintain robotic equipment used for green production applications, such as waste-to-energy conversion systems, minimization of material waste, or replacement of human operators in dangerous work environments.",
+     "cells": {
+      "MFGT 201": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MFGT 201",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate competence in building, servicing, and testing circuits using passive devices utilizing safe and industry standard practices and procedures.",
+         "basis": "literal SLO evidences maintaining/servicing electrical/electromechanical equipment"
+        },
+        {
+         "course": "MFGT 201",
+         "section": "lab",
+         "level": 1,
+         "quote": "Apply and Perform Diagnostic and Repair Procedures to Live DC Circuits",
+         "basis": "lab activity of diagnosing/repairing circuits evidences maintaining electromechanical equipment"
+        },
+        {
+         "course": "MFGT 201",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate the use of diagnostic information and software (electrical diagrams, board diagrams, diagnostic charts, specifications) in order to perform diagnosis and repair of passive circuits and systems.",
+         "basis": "students diagnose and repair circuits, matching repair of electrical components to ensure proper functioning"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.5.c.4",
+     "dwa": "Maintain electronic equipment.",
+     "task": "Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning.",
+     "cells": {
+      "MFGT 201": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MFGT 201",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate the use of diagnostic information and software (electrical diagrams, board diagrams, diagnostic charts, specifications) in order to perform diagnosis and repair of passive circuits and systems.",
+         "basis": "literal SLO evidences diagnosis and repair of electronic equipment"
+        },
+        {
+         "course": "MFGT 201",
+         "section": "lab",
+         "level": 1,
+         "quote": "Utilize Best Industry Practices on Electronic Troubleshooting, Fault Detection, and Root Cause Corrective Action (RCCA) Methods and Procedures",
+         "basis": "lab activity of troubleshooting/repairing electronic circuits evidences maintaining electronic equipment"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.2.f.8",
+     "dwa": "Inspect finished products to locate flaws.",
+     "task": "Inspect parts for surface defects. · Verify part dimensions or clearances to ensure conformance to specifications, using precision measuring instruments.",
+     "cells": {
+      "MFGT 103": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 103",
+         "section": "lab",
+         "level": 1,
+         "quote": "Inspect Solder Joint Quality Per IPC 610",
+         "basis": "lab inspection of solder joints for defects evidences inspecting finished products for flaws"
+        },
+        {
+         "course": "MFGT 103",
+         "section": "lab",
+         "level": 1,
+         "quote": "Inspect and Test Finished Circuit Boards Per Industry and International Standards such as ISO, IEC, IPC, or MILSPEC",
+         "basis": "inspecting finished boards for conformance to standards matches inspecting finished products to locate flaws"
+        }
+       ]
+      },
+      "MFGT 203": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 203",
+         "section": "lab",
+         "level": 1,
+         "quote": "Precision Measurement: Measure the Length of Similar Devices Using a Micrometer or Vernier Caliper and Graph the Measurements to Determine the Mean, Average and Standard Deviation",
+         "basis": "lab use of precision measuring instruments to verify dimensions evidences flaw/tolerance inspection"
+        },
+        {
+         "course": "MFGT 203",
+         "section": "lab",
+         "level": 1,
+         "quote": "Precision Measurement: Measure the Length of Similar Devices Using a Micrometer or Vernier Caliper",
+         "basis": "verifying part dimensions with precision measuring instruments matches the inspection task literally"
+        }
+       ]
+      },
+      "MFGT 202": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 202",
+         "section": "lab",
+         "level": 1,
+         "quote": "Mechanical Testing #2: Fracture Identification and Testing",
+         "basis": "fracture identification in a lab is directly locating flaws in tested parts"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.t.5",
+     "dwa": "Install instrumentation or electronic equipment or systems.",
+     "task": "Install electrical or electronic parts and hardware in housings or assemblies, using soldering equipment and hand tools.",
+     "cells": {
+      "MFGT 103": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 103",
+         "section": "lab",
+         "level": 1,
+         "quote": "Perform Various Hand-held Soldering Techniques for Wires and Circuit Components",
+         "basis": "lab hand soldering of parts into assemblies evidences installing electronic components"
+        },
+        {
+         "course": "MFGT 103",
+         "section": "content",
+         "level": 1,
+         "quote": "Hand Soldering",
+         "basis": "hand soldering of electronic parts into housings/assemblies matches installing electronic equipment using soldering equipment"
+        }
+       ]
+      },
+      "MFGT 201": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 201",
+         "section": "lab",
+         "level": 1,
+         "quote": "Practice Wiring, Connector Repair Methods, and Soldering Techniques",
+         "basis": "students install electrical parts using soldering equipment and hand tools, matching the task literally"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.d.2",
+     "dwa": "Assemble equipment or components.",
+     "task": "Fabricate or assemble mechanical, electrical, or electronic components or assemblies. · Align, fit, or assemble component parts, using hand or power tools, fixtures, templates, or microscopes.",
+     "cells": {
+      "MFGT 103": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MFGT 103",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate the ability to assemble and test micro circuits under a microscope.",
+         "basis": "literal SLO evidences assembling electronic components"
+        },
+        {
+         "course": "MFGT 103",
+         "section": "lab",
+         "level": 1,
+         "quote": "Properly Use Various Screw Drivers, Socket, Wrenches, and Torque Tools",
+         "basis": "lab use of hand/power tools for assembly evidences fitting/assembling component parts"
+        },
+        {
+         "course": "MFGT 103",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate how to form, cut, bond, solder, laminate, and 3D print various materials when assembling circuit boards, mechanical systems and electrical systems.",
+         "basis": "forming/bonding/soldering to assemble mechanical and electrical systems is fabricating/assembling electromechanical components"
+        },
+        {
+         "course": "MFGT 103",
+         "section": "lab",
+         "level": 1,
+         "quote": "Assemble Electrical Connectors and Route Wiring",
+         "basis": "hands-on assembly of electrical connectors/wiring using tools matches aligning/fitting/assembling components with hand tools"
+        }
+       ]
+      },
+      "MFGT 101": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 101",
+         "section": "lab",
+         "level": 1,
+         "quote": "Follow a Manufacturing Instruction to Assemble a Product (e.g. IKEA product)",
+         "basis": "assembling a product from instructions is a direct instance of assembling components"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.aa.1",
+     "dwa": "Fabricate devices or components.",
+     "task": "Fabricate or assemble mechanical, electrical, or electronic components or assemblies.",
+     "cells": {
+      "MFGT 103": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 103",
+         "section": "lab",
+         "level": 1,
+         "quote": "Assemble Products Using Either Molding, Stamping, Bending, Casting, Laminating, or 3D Printing",
+         "basis": "lab fabrication processes evidence fabricating mechanical/electrical components"
+        },
+        {
+         "course": "MFGT 103",
+         "section": "lab",
+         "level": 1,
+         "quote": "Assemble Printed Circuit Boards Using Mechanical or Automated Techniques",
+         "basis": "fabricating PCB assemblies matches fabricate/assemble electronic components"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.2.o.8",
+     "dwa": "Create schematic drawings for electronics.",
+     "task": "Produce electrical, electronic, or mechanical drawings or other related documents or graphics necessary for electromechanical design, using computer-aided design (CAD) software.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.2.b.1.j.2",
+     "dwa": "Select project materials.",
+     "task": "Select electromechanical equipment, materials, components, or systems to meet functional specifications.",
+     "cells": {
+      "MFGT 202": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MFGT 202",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Identify three criteria that are important in the materials selection process.",
+         "basis": "literal SLO evidences selecting materials to meet functional specifications"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.2.f.14",
+     "dwa": "Develop technical methods or processes.",
+     "task": "Establish and maintain inventory, records, or documentation systems.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.b.6.h.21",
+     "dwa": "Maintain operational records or records systems.",
+     "task": "Establish and maintain inventory, records, or documentation systems.",
+     "cells": {
+      "MFGT 203": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MFGT 203",
+         "section": "lab",
+         "level": 1,
+         "quote": "Problem Solving: Given a Problem or Defect, Identify Possible Causes, Fishbone Those Causes, Figure Out How to Eliminate and Test the Various Causes to Identify the Root Cause. Choose a Corrective Action, and Document the Process.",
+         "basis": "lab requirement to document the process evidences maintaining operational records"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "dropped": [
+    {
+     "activity": 1,
+     "course": "MFGT 101",
+     "section": "content",
+     "quote": "Robotics",
+     "basis": "listed under automated manufacturing topics touching design/build of robotic systems",
+     "why": "adjudicated: a) topic-only heading \"Robotics\" with no performable content stated"
+    },
+    {
+     "activity": 13,
+     "course": "MFGT 203",
+     "section": "lab",
+     "quote": "Set Up and Monitor a Process with Control Chart to Determine If the Process is in Control",
+     "basis": "lab process-control documentation evidences developing technical methods/process documentation",
+     "why": "adjudicated: d) control-chart process monitoring evidences a quality/process-control activity, not establishing inventory or documentation records"
+    },
+    {
+     "activity": 7,
+     "course": "MFGT 101",
+     "section": "lab",
+     "quote": "Perform Testing on Assembled Product",
+     "basis": "testing an assembled product for flaws maps to inspecting finished products, though generic to manufacturing",
+     "why": "adjudicated: a) \"Perform Testing on Assembled Product\" is a bare heading with no stated inspection-for-flaws content"
+    },
+    {
+     "activity": 7,
+     "course": "MFGT 202",
+     "section": "content",
+     "quote": "Common Material Failures",
+     "basis": "identifying material failure modes evidences inspecting finished products to locate flaws",
+     "why": "adjudicated: a) \"Common Material Failures\" is a topic heading with no performable inspection content stated"
+    },
+    {
+     "activity": 5,
+     "course": "MFGT 202",
+     "section": "lab",
+     "quote": "Hardening and Annealing",
+     "basis": "heat treatment processing supports maintaining and improving material condition of mechanical components",
+     "why": "adjudicated: d) hardening/annealing is a materials heat-treatment process, not repair/maintenance of electromechanical equipment"
+    },
+    {
+     "activity": 7,
+     "course": "MFGT 203",
+     "section": "content",
+     "quote": "Out of Control Conditions",
+     "basis": "identifying out-of-control process conditions evidences locating flaws/defects in produced parts",
+     "why": "adjudicated: a) \"Out of Control Conditions\" is a bare topic heading with no stated inspection-for-flaws content"
+    }
+   ],
+   "source_note": "Read from Evergreen Valley College's course outlines of record (curriqunet); sections present: slo, objective, description, content outline, lab content, assignment.",
+   "role": "",
+   "short_title": "Advanced Manufacturing Level I"
+  }
+ ]
+}
