@@ -1449,8 +1449,8 @@ p a,.byline a{color:#1155cc;text-decoration:underline}
 .alg-quote{font-size:10px;color:#5a6577;line-height:1.35;margin-top:2px;padding-left:2px}
 .alg-rule{border-left:2px solid var(--t,#7a869a);padding-left:7px;margin:3px 0 2px 2px}.alg-secx{display:block;font-size:7.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#8a93a5;margin-bottom:1px}
 .alg-lgnote{flex-basis:100%;color:#6b7686;font-size:10px}
-.alg-desc{font-size:10px;color:#5a6577;margin:-2px 0 4px;line-height:1.4}.alg-desc a{color:#1155cc;text-decoration:underline;font-size:10px;white-space:nowrap}
-.alg-key{margin:0 0 4px;font-size:10px;color:#6b7686}
+.alg-desc{font-size:10px;color:#5a6577;margin:5px 0 8px;line-height:1.45}.alg-desc a{color:#1155cc;text-decoration:underline;font-size:10px;white-space:nowrap}
+.alg-key{margin:0 0 10px;font-size:10px;color:#6b7686}.alg-key+.alg-tbl{margin-top:0}
 .chip{display:inline-block;font:700 8.5px/1 Helvetica,Arial,sans-serif;letter-spacing:.01em;padding:2.5px 5px;border-radius:3px;border:1.5px solid var(--c);white-space:nowrap}
 .chip{background:var(--c);color:#fff}a.chip{text-decoration:none;color:#fff}a.chip:hover{filter:brightness(1.12)}.chip.alg-more{background:#eef1f6;color:#5a6577;border-color:#eef1f6}
 .alg-gap{font-size:10px;color:#a8641a;font-style:italic}
@@ -1836,7 +1836,7 @@ def _curriculum_section(spec: ReportSpec, descriptions: dict[str, str] | None = 
     sentences say what the grid's knowledge, skills and abilities only named. Readings the
     roster marks appendix-only appear in the appendix alone."""
     from partnerships.alignment import view_roster
-    from partnerships.alignment_plate import appendix_tables, block_key, column_legend, occupation_block
+    from partnerships.alignment_plate import appendix_tables, block_key, college_color, column_legend, occupation_block
 
     roster, plates = view_roster(spec.curriculum_alignment)
     if not plates:
@@ -1857,7 +1857,8 @@ def _curriculum_section(spec: ReportSpec, descriptions: dict[str, str] | None = 
             desc = (descriptions or {}).get(soc, "")
             link = (f'<a href="https://www.onetonline.org/link/summary/{_esc(soc)}.00" target="_blank" rel="noopener">'
                     'O*NET Occupation Summary \u2197</a>')
-            intro = (f'<p class="alg-desc">{_esc(desc)} {link}</p>' if desc else f'<p class="alg-desc">{link}</p>') + block_key()
+            key = block_key(college_color(shown[0].member_id) if shown else "#5a6577")   # the chip in the college's colour, as in the table
+            intro = (f'<p class="alg-desc">{_esc(desc)} {link}</p>' if desc else f'<p class="alg-desc">{link}</p>') + key
         block = occupation_block(soc, [p for p in shown if p.paired_soc == soc], top_n=top_n, college_order=member_order,
                                  show_gaps=spec.curriculum_show_gaps, columns=columns, intro=intro)
         if block:            # not _block(): a block may break across pages; rows never do

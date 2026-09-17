@@ -176,11 +176,11 @@ COR_TAG = {"outcomes": "Student learning outcome", "objectives": "Course objecti
 COR_LEGEND = "The caption above each excerpt names the section of the course outline of record it comes from."
 
 
-def block_key() -> str:
+def block_key(colour: str = "#5a6577") -> str:
     """The one-line key under a certificate-column block: what a chip is. The college swatch
     is left out (the column header names the certificate a few lines down) and the captions
     need no explanation — a small heading over a quoted sentence reads as its source."""
-    return '<p class="tnar alg-key"><b class="chip" style="--c:#5a6577">CODE</b> a course whose outline evidences the activity</p>'
+    return f'<p class="tnar alg-key"><b class="chip" style="--c:{colour}">CODE</b> a course whose outline evidences the activity</p>'
 
 
 def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_order: list[str] | None = None,

@@ -849,12 +849,14 @@ def emit(el):
             p = para(1, 4); run(p, t, size=8.5, color=MUT, italic=True)
         elif 'alg-desc' in cls:
             # an alignment block's opening line: the occupation's O*NET description, then its summary link
-            p = para(0, 3); runs_from(el, p, size=9.5, color='46536b')
+            p = para(3, 5); runs_from(el, p, size=9.5, color='5a6577')
         elif 'alg-key' in cls:
-            p = para(0, 3)
+            p = para(0, 6)
             chip = el.find('b', class_='chip')
             if chip is not None:
-                run(p, chip.get_text(' ', strip=True) + ' ', size=8, bold=True, color=BLUE)
+                import re as _re
+                m = _re.search(r'--c:\s*#([0-9a-fA-F]{6})', chip.get('style', '') or '')
+                run(p, chip.get_text(' ', strip=True) + ' ', size=8, bold=True, color=(m.group(1) if m else BLUE))
                 run(p, t.replace(chip.get_text(' ', strip=True), '', 1).strip(), size=8.5, color='6b7686')
             else:
                 run(p, t, size=8.5, color='6b7686')
