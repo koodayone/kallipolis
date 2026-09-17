@@ -1,6 +1,6 @@
 {
  "program": "ohlone-smart-manufacturing-technology",
- "generated": "2026-09-16",
+ "generated": "2026-09-17",
  "onet_vintage": "O*NET 31.0 database (August 2026), U.S. Department of Labor",
  "plates": [
   {
@@ -221,6 +221,18 @@
      "dwa": "Test performance of electrical, electronic, mechanical, or integrated systems or equipment.",
      "task": "Develop, test, or program new robots. · Test performance of electromechanical assemblies, using test instruments such as oscilloscopes, electronic voltmeters, or bridges. · Select and use laboratory, operational, or diagnostic techniques or test equipment to assess electromechanical circuits, equipment, processes, systems, or subsystems. · Operate, test, or maintain robotic equipment used for green production applications, such as waste-to-energy conversion systems, minimization of material waste, or replacement of human operators in dangerous work environments.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Operate relevant Smart Manufacturing Equipment such as Smart CNC Machines, Industrial Robotic Arms, Smart Factories, and Mechatronic Systems.",
+         "basis": "operating robotic and mechatronic equipment directly constitutes testing/operating integrated electromechanical systems"
+        }
+       ]
+      },
       "ENGI 130": {
        "level": 1,
        "evidence": [
@@ -653,6 +665,22 @@
      "quote": "Production planning",
      "basis": "production planning content evidences developing technical processes for manufacturing",
      "why": "adjudicated: d: production planning content evidences a different activity than establishing records/documentation systems"
+    },
+    {
+     "activity": 1,
+     "course": "PLO",
+     "section": "program_outcomes",
+     "quote": "Apply basic scientific and engineering principles to solve problems in the manufacturing industry.",
+     "basis": "designing electromechanical solutions is a form of applying engineering principles to manufacturing problems",
+     "why": "adjudicated: b) precondition: applying general engineering/scientific principles to manufacturing problems precedes and is broader than designing electromechanical equipment or systems, it does not state the design activity itself"
+    },
+    {
+     "activity": 5,
+     "course": "PLO",
+     "section": "program_outcomes",
+     "quote": "Operate relevant Smart Manufacturing Equipment such as Smart CNC Machines, Industrial Robotic Arms, Smart Factories, and Mechatronic Systems.",
+     "basis": "operating smart manufacturing equipment is directly constitutive of maintaining electromechanical equipment in use",
+     "why": "adjudicated: d) different activity: operating smart manufacturing equipment evidences using/testing equipment, not maintaining, modifying, or repairing it as the listed tasks require"
     }
    ],
    "source_note": "Read from Ohlone College's course outlines of record (curricunet); sections present: slo, description, content outline, lab content, assignment.",
@@ -897,6 +925,18 @@
      "dwa": "Calibrate scientific or technical equipment.",
      "task": "Calibrate or adjust equipment to ensure quality production, using tools such as calipers, micrometers, height gauges, protractors, or ring gauges. · Monitor and adjust production processes or equipment for quality and productivity.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Operate relevant Smart Manufacturing Equipment such as Smart CNC Machines, Industrial Robotic Arms",
+         "basis": "operating smart manufacturing equipment involves calibrating/adjusting it for production"
+        }
+       ]
+      },
       "ENGI 140": {
        "level": 1,
        "evidence": [
@@ -1722,6 +1762,14 @@
      "quote": "Inventory management",
      "basis": "content on production-related inventory reporting matching operational report preparation",
      "why": "adjudicated: a) topic-only heading 'Inventory management' names a subject with no stated report-preparation content"
+    },
+    {
+     "activity": 1,
+     "course": "PLO",
+     "section": "program_outcomes",
+     "quote": "Apply basic scientific and engineering principles to solve problems in the manufacturing industry",
+     "basis": "too general; not matched",
+     "why": "adjudicated: c) generic application of basic scientific/engineering principles credited to the specific technical activity of monitoring environmental compliance"
     }
    ],
    "source_note": "Read from Ohlone College's course outlines of record (curricunet); sections present: slo, description, content outline, lab content, assignment.",

@@ -1,6 +1,6 @@
 {
  "program": "evc-advanced-manufacturing-level-i",
- "generated": "2026-09-16",
+ "generated": "2026-09-17",
  "onet_vintage": "O*NET 31.0 database (August 2026), U.S. Department of Labor",
  "plates": [
   {
@@ -9,7 +9,7 @@
    "certificate": "Certificate of Achievement, Advanced Manufacturing Level 1",
    "kind": "credit",
    "top6": "095600",
-   "top_name": "not yet in the crosswalk figure (no award series)",
+   "top_name": "Manufacturing and Industrial Technology",
    "paired_soc": "17-3026",
    "occupation": "Industrial Engineering Technologists and Technicians",
    "crosswalk_socs": [],
@@ -395,6 +395,25 @@
      "dwa": "Test products for functionality or quality.",
      "task": "Test selected products at specified stages in the production process for performance characteristics or adherence to specifications.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Demonstrate competence in building, servicing, and testing circuits utilizing safe and industry standard practices and procedures",
+         "basis": "testing circuits literally evidences testing products for functionality or quality"
+        },
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "relevant testing, and necessary characterization technique based on the application",
+         "basis": "testing and characterizing materials evidences testing products/materials for functionality or quality"
+        }
+       ]
+      },
       "MFGT 103": {
        "level": 2,
        "evidence": [
@@ -528,6 +547,18 @@
      "dwa": "Assess product or process usefulness.",
      "task": "Compile and evaluate statistical data to determine and maintain quality and reliability of products.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Demonstrate how to collect, analyze, interpret, and present numerical data to make effective decisions",
+         "basis": "analyzing and interpreting numerical data to make decisions is a directly constitutive component of evaluating data to assess product/process usefulness"
+        }
+       ]
+      },
       "MFGT 203": {
        "level": 2,
        "evidence": [
@@ -661,6 +692,18 @@
      "dwa": "Select project materials.",
      "task": "Select material quantities or processing methods needed to achieve efficient production. · Select cleaning materials, tools, or equipment.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Perform a material application process that includes material selection, application fabrication techniques",
+         "basis": "material selection as part of the application process literally evidences selecting project materials"
+        }
+       ]
+      },
       "MFGT 202": {
        "level": 2,
        "evidence": [
@@ -711,6 +754,18 @@
      "dwa": "Create physical models or prototypes.",
      "task": "Assist engineers in developing, building, or testing prototypes or new products, processes, or procedures.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Demonstrate how to assemble circuit boards, mechanical systems and electrical systems",
+         "basis": "assembling circuit boards and mechanical/electrical systems is a directly constitutive component of building physical prototypes"
+        }
+       ]
+      },
       "MFGT 101": {
        "level": 1,
        "evidence": [
@@ -1018,6 +1073,14 @@
      "quote": "Process Capability Index",
      "basis": "determining process methods needed for efficient, capable production",
      "why": "adjudicated: a: 'Process Capability Index' is a topic heading without stated selection of material quantities or processing methods"
+    },
+    {
+     "activity": 2,
+     "course": "PLO",
+     "section": "program_outcomes",
+     "quote": "Demonstrate competence in building, servicing, and testing circuits utilizing safe and industry standard practices and procedures",
+     "basis": "servicing circuits per industry standard practices is a directly constitutive component of calibrating/adjusting equipment to ensure quality",
+     "why": "adjudicated: b) precondition/generic statement of competence in servicing circuits per industry practice states a broad skill claim, not the specific calibration activity of adjusting equipment using tools like calipers, micrometers, height gauges, etc.—no calibration-specific content is named"
     }
    ],
    "source_note": "Read from Evergreen Valley College's course outlines of record (curriqunet); sections present: slo, objective, description, content outline, lab content, assignment.",
@@ -1200,6 +1263,18 @@
      "dwa": "Test performance of electrical, electronic, mechanical, or integrated systems or equipment.",
      "task": "Develop, test, or program new robots. · Test performance of electromechanical assemblies, using test instruments such as oscilloscopes, electronic voltmeters, or bridges. · Select and use laboratory, operational, or diagnostic techniques or test equipment to assess electromechanical circuits, equipment, processes, systems, or subsystems. · Operate, test, or maintain robotic equipment used for green production applications, such as waste-to-energy conversion systems, minimization of material waste, or replacement of human operators in dangerous work environments.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Demonstrate competence in building, servicing, and testing circuits utilizing safe and industry standard practices",
+         "basis": "testing circuits is a direct component of testing electrical/electronic performance"
+        }
+       ]
+      },
       "MFGT 101": {
        "level": 1,
        "evidence": [
@@ -1322,6 +1397,18 @@
      "dwa": "Maintain electronic equipment.",
      "task": "Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Demonstrate competence in building, servicing, and testing circuits utilizing safe and industry standard practices",
+         "basis": "servicing circuits is a direct component of maintaining electronic equipment"
+        }
+       ]
+      },
       "MFGT 201": {
        "level": 2,
        "evidence": [
@@ -1443,6 +1530,18 @@
      "dwa": "Assemble equipment or components.",
      "task": "Fabricate or assemble mechanical, electrical, or electronic components or assemblies. · Align, fit, or assemble component parts, using hand or power tools, fixtures, templates, or microscopes.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Demonstrate how to assemble circuit boards, mechanical systems and electrical systems",
+         "basis": "literal statement that graduates assemble components/systems"
+        }
+       ]
+      },
       "MFGT 103": {
        "level": 2,
        "evidence": [
@@ -1495,6 +1594,18 @@
      "dwa": "Fabricate devices or components.",
      "task": "Fabricate or assemble mechanical, electrical, or electronic components or assemblies.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Perform a material application process that includes material selection, application fabrication techniques",
+         "basis": "fabrication techniques directly evidence fabricating devices or components"
+        }
+       ]
+      },
       "MFGT 103": {
        "level": 1,
        "evidence": [
@@ -1527,6 +1638,18 @@
      "dwa": "Select project materials.",
      "task": "Select electromechanical equipment, materials, components, or systems to meet functional specifications.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Perform a material application process that includes material selection, application fabrication techniques",
+         "basis": "material selection directly evidences selecting project materials"
+        }
+       ]
+      },
       "MFGT 202": {
        "level": 2,
        "evidence": [

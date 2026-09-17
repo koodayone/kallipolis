@@ -1,11 +1,12 @@
 # Curriculum alignment review — ohlone-smart-manufacturing-technology
-Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of Labor
+Generated 2026-09-17 · O*NET 31.0 database (August 2026), U.S. Department of Labor
 
 ## Ohlone College — Certificate of Achievement, Smart Manufacturing Technology → Electro-Mechanical and Mechatronics Technologists and Technicians (SOC 17-3024)
-4 of 14 activities at outcome level, 11 with any evidence.
+5 of 14 activities at outcome level, 11 with any evidence.
 
 - · **Design electromechanical equipment or systems.**
-- ○ **Test performance of electrical, electronic, mechanical, or integrated systems or equipment.**
+- ● **Test performance of electrical, electronic, mechanical, or integrated systems or equipment.**
+    - PLO [Program outcome]: “Operate relevant Smart Manufacturing Equipment such as Smart CNC Machines, Industrial Robotic Arms, Smart Factories, and Mechatronic Systems.” — operating robotic and mechatronic equipment directly constitutes testing/operating integrated electromechanical systems
     - ENGI 130 [Content outline]: “Lab 12: The Oscilloscope and Function Generator” — using oscilloscopes to test electromechanical/electronic circuits directly evidences test-instrument use
     - ENGI 130 [Content outline]: “Multi-meter
     - Oscilloscope
@@ -63,14 +64,17 @@ Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of La
 - act 2 · ETEC 124 · “Use the techniques, skills, and modern engineering tools necessary for engineering practic” — adjudicated: d: constructing a system using engineering tools evidences building/developing rather than testing performance with test instruments
 - act 13 · ETEC 126 · “Designing and Implementing a Production plan” — adjudicated: d: designing a production plan evidences production/process planning, not establishing inventory or records systems
 - act 13 · ETEC 126 · “Production planning” — adjudicated: d: production planning content evidences a different activity than establishing records/documentation systems
+- act 1 · PLO · “Apply basic scientific and engineering principles to solve problems in the manufacturing i” — adjudicated: b) precondition: applying general engineering/scientific principles to manufacturing problems precedes and is broader than designing electromechanical equipment or systems, it does not state the design activity itself
+- act 5 · PLO · “Operate relevant Smart Manufacturing Equipment such as Smart CNC Machines, Industrial Robo” — adjudicated: d) different activity: operating smart manufacturing equipment evidences using/testing equipment, not maintaining, modifying, or repairing it as the listed tasks require
 
 ## Ohlone College — Certificate of Achievement, Smart Manufacturing Technology → Industrial Engineering Technologists and Technicians (SOC 17-3026)
-9 of 24 activities at outcome level, 23 with any evidence.
+10 of 24 activities at outcome level, 23 with any evidence.
 
 - ○ **Monitor activities affecting environmental quality.**
     - ETEC 113 [Content outline]: “Disposal of Hazardous Waste” — environmental compliance activity in industrial setting
     - ETEC 113 [Assignment]: “The safety plans must detail Cal/OSHA Injury Illness Prevention Plan.” — adhering to regulations/policies for health and safety compliance
-- ○ **Calibrate scientific or technical equipment.**
+- ● **Calibrate scientific or technical equipment.**
+    - PLO [Program outcome]: “Operate relevant Smart Manufacturing Equipment such as Smart CNC Machines, Industrial Robotic Arms” — operating smart manufacturing equipment involves calibrating/adjusting it for production
     - ENGI 140 [Lab content]: “X-ray diffraction: Measurement Bragg angle using Telexometer” — calibrating/using precision measurement equipment on materials
     - ENGI 130 [Content outline]: “Lab 12: The Oscilloscope and Function Generator” — using calibrated instrumentation (oscilloscope/signal generator) to make precise measurements is directly constitutive of calibrating technical equipment
     - ETEC 126 [Lab content]: “Scheduling Predictive Maintenance” — lab practice adjusting equipment maintenance schedules to sustain quality production
@@ -165,3 +169,4 @@ Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of La
 - act 12 · ETEC 126 · “SCADA – Data Acquisition” — adjudicated: a) topic-only heading 'SCADA – Data Acquisition' names a subject with no stated compliance-verification content
 - act 16 · ETEC 126 · “Manufacturing efficiency” — adjudicated: a) topic-only heading 'Manufacturing efficiency' with no performable monitoring content
 - act 23 · ETEC 126 · “Inventory management” — adjudicated: a) topic-only heading 'Inventory management' names a subject with no stated report-preparation content
+- act 1 · PLO · “Apply basic scientific and engineering principles to solve problems in the manufacturing i” — adjudicated: c) generic application of basic scientific/engineering principles credited to the specific technical activity of monitoring environmental compliance

@@ -2160,6 +2160,18 @@
      "dwa": "Assist healthcare practitioners during examinations or treatments.",
      "task": "Provide veterinarians with the correct equipment or instruments, as needed. · Take animals into treatment areas and assist with physical examinations by performing such duties as obtaining temperature, pulse, or respiration data. · Provide assistance with animal euthanasia and the disposal of remains.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "demonstrate entry-level clinical skills competency in accordance with accreditation requirements",
+         "basis": "clinical skills competency directly names assisting practitioners during exams/treatments as a core accredited skill set"
+        }
+       ]
+      },
       "V T 55": {
        "level": 2,
        "evidence": [
@@ -3894,6 +3906,14 @@
      "quote": "Biomethodology techniques",
      "basis": "biomethodology techniques in lab animal context include sample collection procedures",
      "why": "adjudicated: a) 'Biomethodology techniques' is a topic heading without specific specimen-collection content"
+    },
+    {
+     "activity": 26,
+     "course": "PLO",
+     "section": "program_outcomes",
+     "quote": "the veterinary nurse's role in the health of animals, humans, and the planet",
+     "basis": "role in animal health directly constitutes providing health and wellness guidance to caregivers",
+     "why": "adjudicated: b) precondition: naming a role or orientation toward 'the health of animals, humans, and the planet' is a values/knowledge framing that precedes and is broader than the specific performable task of counseling patients/caregivers on health care, behavior, or nutrition issues."
     }
    ],
    "source_note": "Read from Foothill College's course outlines of record (courseleaf); sections present: slo, objective, description, content outline, lab content.",
@@ -7995,6 +8015,38 @@
      "quote": "Contributing member of the veterinary medicine team",
      "basis": "insufficient standalone basis",
      "why": "adjudicated: c: 'contributing member of the veterinary medicine team' is a generic teamwork phrase, not teaching clients"
+    },
+    {
+     "activity": 1,
+     "course": "PLO",
+     "section": "program_outcomes",
+     "quote": "entry-level clinical skills competency in accordance with accreditation requirements",
+     "basis": "clinical skills competency in accredited vet tech programs constitutively includes restraint/positioning of patients",
+     "why": "adjudicated: b) precondition: general accreditation-required clinical skills competency is a broad credential requirement, not a statement of the specific holding/restraint activity"
+    },
+    {
+     "activity": 6,
+     "course": "PLO",
+     "section": "program_outcomes",
+     "quote": "entry-level competency in the necessary knowledge, skills, and abilities required for the practice of veterinary technology",
+     "basis": "assessing patient physical condition is a core practice competency of veterinary technology",
+     "why": "adjudicated: b) precondition: a general statement of program competency in veterinary technology knowledge/skills does not itself state the specific activity of assessing physical conditions to aid diagnosis"
+    },
+    {
+     "activity": 8,
+     "course": "PLO",
+     "section": "program_outcomes",
+     "quote": "entry-level clinical skills competency in accordance with accreditation requirements",
+     "basis": "assisting veterinarians in medical procedures is a required accredited clinical skill for vet technicians",
+     "why": "adjudicated: b) precondition: general accreditation-required clinical skills competency does not name the specific activity of assisting practitioners in medical procedures"
+    },
+    {
+     "activity": 9,
+     "course": "PLO",
+     "section": "program_outcomes",
+     "quote": "entry-level clinical skills competency in accordance with accreditation requirements",
+     "basis": "specimen collection is a core accredited clinical skill for veterinary technicians",
+     "why": "adjudicated: b) precondition: general accreditation-required clinical skills competency does not name the specific activity of collecting biological specimens"
     }
    ],
    "source_note": "Read from Foothill College's course outlines of record (courseleaf); sections present: slo, objective, description, content outline, lab content.",

@@ -11,6 +11,8 @@ Coverage:
   - the saved per-program stores hold every (program, occupation) reading the SVAMP roster asks for
   - view_roster sets role, pairing basis and crosswalk from the roster, not the store, in roster order
   - read_program unions a fresh reading with the saved one and leaves other saved occupations in place
+  - a program-outcomes-only re-read keeps the saved plate's courses and adds PLO cells; the gate takes the certificate's name as PLO
+  - a certificate column shows each course's title and its strongest outline sentence with the section as the tier, ranked by tier then units
   - an occupation block and legend label columns by certificate when the roster asks, and by college otherwise
   - a ProgramCourseFile course id becomes the college's spelling (space before the number, zeros dropped or kept)
   - scaffold_record drafts a record from a COCI award and Active PCF rows, with a _todo list and the sibling's source
@@ -135,6 +137,27 @@ def test_read_program_unions_with_the_store_and_keeps_other_occupations(monkeypa
     assert out["17-3024"] is prev                                              # already saved: not re-read
 
 
+def test_plo_only_reread_unions_into_the_saved_plate(monkeypatch):
+    prev = _plate("Mission College", "mission", "17-3024")
+    monkeypatch.setattr(A, "load_readings", lambda ref: {"17-3024": prev})
+    monkeypatch.setattr(A, "program_outlines", lambda program, refresh=False: {"MTT 020": _outline()})
+    monkeypatch.setattr(A, "get_work_activities", lambda soc: [type("W", (), {"dwa_id": "d1", "dwa": "Diagnose equipment malfunctions.", "task_text": "t"})()])
+    monkeypatch.setattr(A, "get_title", lambda soc: "Occ")
+    program = {"ref": "mission-mechatronic-technology", "college": "Mission College", "member_id": "mission", "college_key": "mission",
+               "certificate": "Certificate of Achievement, Mechatronic Technology", "courses": [{"code": "MTT 020"}], "source": {},
+               "program_outcomes": ["Troubleshoot and repair electrical, electronic, and mechanical systems and devices."]}
+    calls = []
+    def fake(system, user, schema):
+        calls.append(user)
+        return {"data": {"matches": [{"activity": 1, "course": "Certificate of Achievement, Mechatronic Technology",
+                                      "section": "program_outcomes", "quote": "Troubleshoot and repair electrical, electronic, and mechanical systems", "basis": "b"}]}, "error": None}
+    out = read_program(program, ["17-3024"], adjudicate=False, complete=fake, units="plo")
+    assert len(calls) == 1 and "PROGRAM OUTCOMES (PLO)" in calls[0]          # one call: the outcomes unit alone
+    row = out["17-3024"].rows[0]
+    assert PLO in row.cells and row.cells[PLO].level == 2                    # certificate-named course gated as PLO
+    assert "C 1" in row.cells and out["17-3024"].courses == prev.courses     # the saved course marks and course list survive
+
+
 def test_columns_label_by_certificate_or_college():
     plates = [_plate("Foothill College", "foothill", "17-3024", cert="Certificate of Achievement, Semiconductor Processing Technician",
                      short_title="Semiconductor Processing"),
@@ -145,6 +168,23 @@ def test_columns_label_by_certificate_or_college():
     by_college = occupation_block("17-3024", plates)
     assert by_college.count(">Foothill<") == 2 and "Vacuum Technology<" not in by_college
     assert column_legend(plates).count("alg-lg") == 2                          # one college label + the chip key
+
+
+def test_dense_cell_shows_title_quote_and_ranks_by_tier_then_units():
+    rows = [Row("d1", "Diagnose equipment malfunctions.", "t",
+                {"RSPT 55B": Cell(2, [Evidence("RSPT 55B", "objectives", 2, "seminar objective", "b")]),
+                 "RSPT 50A": Cell(2, [Evidence("RSPT 50A", "objectives", 2, "Demonstrate use of humidity and bland aerosol therapy", "b")]),
+                 "RSPT 70A": Cell(1, [Evidence("RSPT 70A", "content", 1, "Aerosol therapy", "b")]),
+                 PLO: Cell(2, [Evidence(PLO, "program_outcomes", 2, "entry-level competency", "b")])})]
+    pl = Plate("Foothill College", "foothill", "Associate in Science Degree, Respiratory Therapy", "credit", "121000", "RT", "29-1126", "Respiratory Therapists",
+               [], "", [{"code": "RSPT 55B", "title": "Mediated Studies Ii", "units": 0.5}, {"code": "RSPT 50A", "title": "Respiratory Therapy Procedures", "units": 4.5},
+                        {"code": "RSPT 70A", "title": "Clinical Rotation I", "units": 2}], [], rows, short_title="Respiratory Therapy")
+    html = occupation_block("29-1126", [pl], columns="certificate")
+    assert html.index("RSPT 50A") < html.index("RSPT 55B")                  # same tier: the 4.5-unit course leads the seminar
+    assert "Respiratory Therapy Procedures" in html and "Demonstrate use of humidity" in html and 'alg-sec">Objective<' in html
+    assert "also RSPT 70A" in html and "Program outcome" in html           # overflow named; the certificate's own outcome flagged
+    sparse = occupation_block("29-1126", [pl])
+    assert "Respiratory Therapy Procedures" not in sparse and "Program outcome" not in sparse   # consortium view unchanged
 
 
 def test_pcf_code_spelling():

@@ -208,7 +208,9 @@ def gate(raw_matches: list[dict], program: dict, outlines: dict[str, Outline], n
         if not (0 <= i < n_activities) or len(q) < 8:
             dropped.append({**m, "why": "malformed"}); continue
         course = str(m.get("course", "")).strip()
-        if course.upper().startswith(PLO):
+        cert = _norm(program.get("certificate", ""))
+        if course.upper().startswith(PLO) or m.get("section") == "program_outcomes" or (cert and _norm(course) == cert):
+            # the certificate's own outcomes: the matcher writes "PLO", or the certificate's name
             if q in plo_text:
                 kept.append(Match(i, PLO, "program_outcomes", 2, m["quote"], m.get("basis", ""), m.get("section", "")))
             else:
@@ -285,10 +287,11 @@ class Plate:
 # ── the run ────────────────────────────────────────────────────────────────────
 def align_program(program: dict, *, soc: str | None = None, refresh: bool = False,
                   adjudicate: bool = True, complete=None, coci_rows: list[dict] | None = None,
-                  role: str = "paired") -> Plate:
+                  role: str = "paired", units: str = "all") -> Plate:
     """Read one program against one occupation. `complete` is the LLM seam
     (llm.claude_cli.complete by default); `coci_rows` the college's COCI course export
-    if a currency check is wanted."""
+    if a currency check is wanted. `units="plo"` reads only the certificate's own program
+    outcomes — a cheap re-read that unions into the saved plate."""
     if complete is None:
         from llm.claude_cli import complete as _c
         complete = _c
@@ -303,16 +306,32 @@ def align_program(program: dict, *, soc: str | None = None, refresh: bool = Fals
     # course they drew 81) while a lone course loses the certificate's framing (Foothill
     # drew 23 as a program and 10 course by course). Their union is what the gate and
     # the adjudicator then discipline. The certificate's own outcomes get a call too.
-    units: list[tuple[str, str]] = [("program", _program_text(program, outlines))]
+    units_: list[tuple[str, str]] = [("program", _program_text(program, outlines))] if units == "all" else []
     if program.get("program_outcomes"):
-        units.append((PLO, f"CERTIFICATE: {program['certificate']} ({program['college']})\n" +
-                      "\n".join(f"PLO: {x}" for x in program["program_outcomes"])))
-    for c in program["courses"]:
-        units.append((c["code"], _program_text({**program, "courses": [c], "program_outcomes": []}, outlines)))
+        # Its own unit, and an explicit one: given bare PLO lines under the course-shaped
+        # rubric the matcher proposed nothing at all (Foothill's four programs, 2026-09-17),
+        # or named the certificate as the course (Ohlone). Say what the unit is and how to
+        # label a match.
+        units_.append((PLO, f"CERTIFICATE: {program['certificate']} ({program['college']})\n"
+                       "This unit holds ONLY the certificate's PROGRAM LEARNING OUTCOMES (no courses). Read each literally: a "
+                       "PLO evidences an activity when it states that graduates perform the activity or a directly constitutive "
+                       f"component of it. For every match, course = \"{PLO}\", section = \"program_outcomes\", quote = a "
+                       "verbatim phrase of the PLO.\n" + "\n".join(f"PLO: {x}" for x in program["program_outcomes"])))
+    if units == "all":
+        for c in program["courses"]:
+            units_.append((c["code"], _program_text({**program, "courses": [c], "program_outcomes": []}, outlines)))
+    units = units_
+    if not units:
+        rows = [Row(a.dwa_id, a.dwa, a.task_text) for a in acts]
+        return Plate(program["college"], program["member_id"], program["certificate"], program.get("kind", "credit"),
+                     program.get("top6"), program.get("top_name", ""), soc, occ_title, program.get("crosswalk_socs", []),
+                     program.get("pairing_basis", ""), [], program.get("program_outcomes", []), rows, [], "", role,
+                     short_title=program.get("short_title", ""))
 
     def _match(unit):
         code, text = unit
-        r = complete(MATCH_SYSTEM, f"{acts_text}\n\n=== PROGRAM TEXT ({code}) ===\n{text}", MATCH_SCHEMA)
+        label = "PROGRAM OUTCOMES" if code == PLO else "PROGRAM TEXT"
+        r = complete(MATCH_SYSTEM, f"{acts_text}\n\n=== {label} ({code}) ===\n{text}", MATCH_SCHEMA)
         if r["data"] is None:
             logger.warning("matcher failed for %s %s: %s", program["college"], code, r["error"])
             return []
@@ -480,7 +499,7 @@ def view_roster(roster_id: str) -> tuple[dict, list[Plate]]:
 # ── the run ────────────────────────────────────────────────────────────────────
 def read_program(program: dict, socs: list[str], *, refresh: bool = False, adjudicate: bool = True,
                  coci_rows: list[dict] | None = None, accumulate: bool = True, new_only: bool = False,
-                 complete=None) -> dict[str, Plate]:
+                 complete=None, units: str = "all") -> dict[str, Plate]:
     """Read one resolved record (see `roster_programs`) against each SOC. With `accumulate`
     each fresh reading unions with the saved one; with `new_only` SOCs already saved are not
     re-read. Saved readings for other SOCs always ride along."""
@@ -490,7 +509,10 @@ def read_program(program: dict, socs: list[str], *, refresh: bool = False, adjud
         if new_only and soc in prev:
             continue
         plate = align_program(program, soc=soc, refresh=refresh, adjudicate=adjudicate, coci_rows=coci_rows,
-                              complete=complete)
+                              complete=complete, units=units)
+        if units != "all" and soc in prev:              # a partial re-read keeps the saved plate's course list
+            plate = replace(plate, courses=prev[soc].courses, source_note=prev[soc].source_note,
+                            dropped=prev[soc].dropped + plate.dropped)
         out[soc] = _union_plate(plate, prev.get(soc)) if accumulate else plate
     return out
 
@@ -511,7 +533,7 @@ def _check_against_def(roster: dict) -> None:
 
 
 def run(roster_id: str, *, refresh: bool = False, adjudicate: bool = True, coci: bool = False,
-        only: str | None = None, accumulate: bool = True, new_only: bool = False) -> list[Plate]:
+        only: str | None = None, accumulate: bool = True, new_only: bool = False, units: str = "all") -> list[Plate]:
     """Read every program the roster cites against every occupation it connects it to, save
     each record's readings, and return the roster's view. `only` restricts the reading to
     one program (its college_key or ref); the others keep their saved readings."""
@@ -530,8 +552,10 @@ def run(roster_id: str, *, refresh: bool = False, adjudicate: bool = True, coci:
             code = coci_code(p["college"])
             if code:
                 rows = coci_cache.setdefault(code, fetch_course_export(code))
+        if units != "all" and not p.get("program_outcomes"):
+            continue
         plates = read_program(p, socs, refresh=refresh, adjudicate=adjudicate, coci_rows=rows,
-                              accumulate=accumulate, new_only=new_only)
+                              accumulate=accumulate, new_only=new_only, units=units)
         save_readings(p["ref"], plates)
     return view_roster(roster_id)[1]
 
@@ -637,6 +661,7 @@ if __name__ == "__main__":
     r.add_argument("--only", help="one program (college_key or record ref); the others keep their saved readings")
     r.add_argument("--fresh", action="store_true", help="do not union a fresh reading with the saved one")
     r.add_argument("--new-only", action="store_true", help="read only (program, occupation) pairs the store lacks")
+    r.add_argument("--units", choices=("all", "plo"), default="all", help="plo: re-read only the certificate's program outcomes, unioned into the saved plates")
     sc = sub.add_parser("scaffold", help="draft a program record from COCI and the ProgramCourseFile")
     sc.add_argument("college_key", help="catalog key, e.g. foothill")
     sc.add_argument("control_number", help="the award's COCI control number, e.g. 43983")
@@ -649,7 +674,7 @@ if __name__ == "__main__":
         print(f"wrote {scaffold(a.college_key, a.control_number, pcf_dir=a.pcf_dir, keep_zeros=a.keep_zeros, out=a.out)}")
     else:
         plates = run(a.roster, refresh=a.refresh, adjudicate=not a.no_adjudicate, coci=a.coci, only=a.only,
-                     accumulate=not a.fresh, new_only=a.new_only)
+                     accumulate=not a.fresh, new_only=a.new_only, units=a.units)
         for pl in plates:
             c = pl.counts()
             print(f"{pl.college:26s} vs {pl.paired_soc} ({pl.role:9s}): {c['outcome_level']:2d} outcome-level, {c['any_evidence']:2d} any, of {c['activities']} | dropped {len(pl.dropped)}")

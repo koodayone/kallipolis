@@ -1,6 +1,6 @@
 {
  "program": "mission-mechatronic-technology",
- "generated": "2026-09-16",
+ "generated": "2026-09-17",
  "onet_vintage": "O*NET 31.0 database (August 2026), U.S. Department of Labor",
  "plates": [
   {
@@ -326,6 +326,18 @@
      "dwa": "Design electromechanical equipment or systems.",
      "task": "Develop, test, or program new robots. · Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Analyze and Integrate electrical, electronic, and mechanical systems and devices.",
+         "basis": "PLO states graduates integrate electromechanical systems, directly constitutive of designing such equipment"
+        }
+       ]
+      },
       "MTT 020": {
        "level": 2,
        "evidence": [
@@ -749,6 +761,18 @@
      "dwa": "Maintain electromechanical equipment.",
      "task": "Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning. · Repair, rework, or calibrate hydraulic or pneumatic assemblies or systems to meet operational specifications or tolerances. · Operate, test, or maintain robotic equipment used for green production applications, such as waste-to-energy conversion systems, minimization of material waste, or replacement of human operators in dangerous work environments.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Troubleshoot and repair electrical, electronic, and mechanical systems and devices.",
+         "basis": "PLO literally states graduates repair mechanical systems, matching maintenance of electromechanical equipment"
+        }
+       ]
+      },
       "MTT 030": {
        "level": 2,
        "evidence": [
@@ -858,6 +882,18 @@
      "dwa": "Maintain electronic equipment.",
      "task": "Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Troubleshoot and repair electrical, electronic, and mechanical systems and devices.",
+         "basis": "PLO literally states graduates repair electronic systems, matching maintenance of electronic equipment"
+        }
+       ]
+      },
       "MTT 040": {
        "level": 1,
        "evidence": [
@@ -2061,6 +2097,18 @@
      "dwa": "Diagnose equipment malfunctions.",
      "task": "Inspect equipment for leaks, diagnose malfunctions, and request repairs.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Troubleshoot and repair electrical, electronic, and mechanical systems and devices",
+         "basis": "troubleshooting equipment is diagnosing equipment malfunctions"
+        }
+       ]
+      },
       "MTT 012": {
        "level": 2,
        "evidence": [
@@ -2220,6 +2268,18 @@
      "dwa": "Inspect production equipment.",
      "task": "Inspect equipment for leaks, diagnose malfunctions, and request repairs.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Troubleshoot and repair electrical, electronic, and mechanical systems and devices",
+         "basis": "troubleshooting requires inspecting the equipment to locate the fault"
+        }
+       ]
+      },
       "MTT 034": {
        "level": 2,
        "evidence": [

@@ -557,6 +557,39 @@ def add_alg_table(table):
                 run(p, c['el'].get_text(' ', strip=True), size=8.5, color=DARK)
             elif 'alg-empty' in c['cls']:
                 run(p, '—', size=8.5, color='c9d0da')
+            elif 'alg-dense' in c['cls']:
+                # One college's certificate (HTML `td.alg-dense`): per course a chip and its
+                # title, then the outline sentence with its section tag; an "also …" line.
+                first_p = True
+                for ev in c['el'].find_all('div', class_='alg-ev'):
+                    q = cell.paragraphs[0] if first_p else cell.add_paragraph()
+                    first_p = False
+                    q.paragraph_format.space_before = Pt(1); q.paragraph_format.space_after = Pt(0)
+                    chip = ev.find(['a', 'b'], class_='chip')
+                    if chip is not None:
+                        if chip.name == 'a':
+                            hyperlink(q, chip.get('href', ''), chip.get_text(' ', strip=True), color=colours[ci], size=8)
+                        else:
+                            run(q, chip.get_text(' ', strip=True), size=8, bold=True, color=colours[ci])
+                    title = ev.find('span', class_='alg-ctitle')
+                    if title is not None:
+                        run(q, '  ' + title.get_text(' ', strip=True), size=8.5, bold=True, color=DARK)
+                    quote = ev.find('div', class_='alg-quote')
+                    if quote is not None:
+                        q2 = cell.add_paragraph()
+                        q2.paragraph_format.space_before = Pt(0); q2.paragraph_format.space_after = Pt(2)
+                        sec = quote.find('span', class_='alg-sec')
+                        if sec is not None:
+                            run(q2, sec.get_text(' ', strip=True).upper() + '  ', size=6.5, bold=True, color=MUT)
+                        text = quote.get_text(' ', strip=True)
+                        if sec is not None:
+                            text = text.replace(sec.get_text(' ', strip=True), '', 1).strip()
+                        run(q2, text, size=8, italic=True, color='5a6577')
+                more = c['el'].find('div', class_='alg-evmore')
+                if more is not None:
+                    q3 = cell.paragraphs[0] if first_p else cell.add_paragraph()
+                    q3.paragraph_format.space_before = Pt(0); q3.paragraph_format.space_after = Pt(1)
+                    run(q3, more.get_text(' ', strip=True), size=7.5, italic=True, color=MUT)
             else:
                 first = True
                 for chip in c['el'].find_all(['a', 'b']):

@@ -162,6 +162,18 @@
      "dwa": "Advise clients or community groups on health issues.",
      "task": "Advise clients or community groups on issues related to self-care, such as diabetes management. · Advise clients or community groups on issues related to improving general health, such as diet or exercise. · Advise clients or community groups on issues related to sanitation or hygiene, such as flossing or hand washing. · Advise clients or community groups on issues related to diagnostic screenings, such as breast cancer screening, pap smears, glaucoma tests, or diabetes screenings. · Advise clients or community groups to ensure parental understanding of the importance of childhood immunizations and how to access immunization services. · Advise clients or community groups on issues related to risk or prevention of conditions, such as lead poisoning, human immunodeficiency virus (HIV), prenatal substance abuse, or domestic violence.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "demonstrate the dissemination of culturally competent health education to individuals, groups, and communities",
+         "basis": "health education to individuals/groups is a directly constitutive component of advising clients on health issues"
+        }
+       ]
+      },
       "HLTH 101": {
        "level": 1,
        "evidence": [
@@ -221,6 +233,18 @@
      "dwa": "Refer clients to community or social service programs.",
      "task": "Refer community members to needed health services.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "demonstrate health navigation and care coordination skills when supporting vulnerable individuals, groups, and communities",
+         "basis": "care coordination for vulnerable clients directly constitutes referring clients to needed services"
+        }
+       ]
+      },
       "HLTH 101": {
        "level": 2,
        "evidence": [
@@ -318,6 +342,18 @@
      "dwa": "Provide educational materials to community members.",
      "task": "Teach classes or otherwise disseminate medical or dental health information to school groups, community groups, or targeted families or individuals, in a manner consistent with cultural norms. · Distribute flyers, brochures, or other informational or educational documents to inform members of a targeted community.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "demonstrate the dissemination of culturally competent health education to individuals, groups, and communities",
+         "basis": "dissemination of health education literally states providing educational materials/information to community members"
+        }
+       ]
+      },
       "HLTH 101": {
        "level": 2,
        "evidence": [
@@ -483,6 +519,22 @@
      "quote": "Professional networks and associations in the CHW field",
      "basis": "networking content evidences developing working relationships to facilitate program activities",
      "why": "adjudicated: c: professional networks/associations is a generic workplace networking skill, not program-activity relationship building"
+    },
+    {
+     "activity": 10,
+     "course": "PLO",
+     "section": "program_outcomes",
+     "quote": "demonstrate health navigation and care coordination skills when supporting vulnerable individuals, groups, and communities",
+     "basis": "navigating individuals/groups to services requires identifying their particular health care needs first, stated as a graduate skill",
+     "why": "adjudicated: b: health navigation/care coordination is the downstream activity of connecting people to services, not the needs-assessment step that precedes it"
+    },
+    {
+     "activity": 3,
+     "course": "PLO",
+     "section": "program_outcomes",
+     "quote": "demonstrate the ability to assist individuals with applications for social services",
+     "basis": "assisting with applications is a directly constitutive component of maintaining client records/forms",
+     "why": "adjudicated: d: assisting individuals with applications for social services evidences referring/connecting clients to services, not maintaining client records"
     }
    ],
    "source_note": "Read from Foothill College's course outlines of record (courseleaf); sections present: slo, objective, description, content outline, lab content.",

@@ -15,6 +15,7 @@ Generated 2026-09-17 · O*NET 31.0 database (August 2026), U.S. Department of La
     - HLTH 101 [Content outline]: “Client-centered health coaching/counseling” — health coaching/counseling directly evidences conferring with clients on progress and plans
 - · **Monitor clients to evaluate treatment progress.**
 - ● **Advise clients or community groups on health issues.**
+    - PLO [Program outcome]: “demonstrate the dissemination of culturally competent health education to individuals, groups, and communities” — health education to individuals/groups is a directly constitutive component of advising clients on health issues
     - HLTH 101 [Content outline]: “Group health education vs. individual health education” — health education content evidences advising clients/groups on health issues
     - HLTH 101 [Content outline]: “Diabetes” — chronic disease content under health education topics evidences advising clients on self-care such as diabetes management
     - HLTH 101 [Content outline]: “Diet: Eating habits, food and water deserts” — diet content evidences advising clients on general health issues such as diet
@@ -22,6 +23,7 @@ Generated 2026-09-17 · O*NET 31.0 database (August 2026), U.S. Department of La
     - HLTH 21 [Content outline]: “Nutritional guidelines” — course content on diet guidelines evidences advising on general health/nutrition issues
     - HLTH 21 [Objective]: “apply recommendations to: diet planning, physical activity, physical fitness, and weight management for disease prevention” — objective literally has students apply health recommendations akin to advising on self-care/general health
 - ● **Refer clients to community or social service programs.**
+    - PLO [Program outcome]: “demonstrate health navigation and care coordination skills when supporting vulnerable individuals, groups, and communities” — care coordination for vulnerable clients directly constitutes referring clients to needed services
     - HLTH 101 [Content outline]: “211, SNAP, WIC, Daycare, Medicaid, Section 8, etc.” — listing referral resources evidences referring clients to community/social service programs
     - HLTH 101 [Objective]: “Identify and enroll patients in need-based resources within the county, state, and federal levels to mitigate negative health outcomes.” — enrolling patients in need-based resources is directly referring clients to community/social services
     - HLTH 101 [SLO]: “Assist clients in completing applications for social services.” — assisting with social service applications evidences referral to social service programs
@@ -33,6 +35,7 @@ Generated 2026-09-17 · O*NET 31.0 database (August 2026), U.S. Department of La
     - HLTH 101 [Objective]: “Evaluate patient needs utilizing a cultural humility and social justice lens related to health education, benefit enrollment, and/or care coordination.” — evaluating patient needs directly evidences assessing individual needs for services
     - HLTH 101 [Objective]: “Identify chronic diseases that impact vulnerable populations.” — identifying health needs of vulnerable populations evidences assessing community health needs
 - ● **Provide educational materials to community members.**
+    - PLO [Program outcome]: “demonstrate the dissemination of culturally competent health education to individuals, groups, and communities” — dissemination of health education literally states providing educational materials/information to community members
     - HLTH 101 [SLO]: “Design a community-level health education and promotion project that demonstrates effective health literacy, communication strategies, and evidence-based health content.” — designing health education/promotion project directly evidences providing educational materials to community
     - HLTH 101 [Content outline]: “Group health education vs. individual health education” — delivering health education to groups/individuals evidences disseminating medical/health information to community members
 - ○ **Develop working relationships with others to facilitate program activities.**
@@ -56,3 +59,5 @@ Generated 2026-09-17 · O*NET 31.0 database (August 2026), U.S. Department of La
 - act 4 · HLTH 101 · “Develop care coordination plans using health navigation principles for vulnerable populati” — adjudicated: d: care coordination planning evidences developing plans, not contacting clients to confirm completed actions
 - act 11 · HLTH 101 · “Health outreach” — adjudicated: a: 'Health outreach' alone is a topic heading without stated distribution/dissemination content
 - act 12 · HLTH 101 · “Professional networks and associations in the CHW field” — adjudicated: c: professional networks/associations is a generic workplace networking skill, not program-activity relationship building
+- act 10 · PLO · “demonstrate health navigation and care coordination skills when supporting vulnerable indi” — adjudicated: b: health navigation/care coordination is the downstream activity of connecting people to services, not the needs-assessment step that precedes it
+- act 3 · PLO · “demonstrate the ability to assist individuals with applications for social services” — adjudicated: d: assisting individuals with applications for social services evidences referring/connecting clients to services, not maintaining client records

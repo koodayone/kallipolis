@@ -1,8 +1,8 @@
 # Curriculum alignment review — deanza-cnc-machinist
-Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of Labor
+Generated 2026-09-17 · O*NET 31.0 database (August 2026), U.S. Department of Labor
 
 ## De Anza College — Certificate of Achievement, CNC Machinist → Machinists (SOC 51-4041)
-7 of 21 activities at outcome level, 15 with any evidence.
+9 of 21 activities at outcome level, 16 with any evidence.
 
 - ● **Calculate dimensions of workpieces, products, or equipment.**
     - DMT 90 [Objective]: “Demonstrate the ability to solve common calculations found in the machine shop.” — shop calculations including measurement over pins and taper calculations compute workpiece dimensions
@@ -14,32 +14,33 @@ Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of La
     - DMT 84B [Content outline]: “Pitch diameter calculation for various thread classes.” — calculating thread pitch diameter is a dimensional calculation of a workpiece feature
     - DMT 84B [Assignment]: “Take home worksheets involving cartesian coordinate calculations.” — calculating tool point/workpiece coordinates is calculating workpiece dimensions
 - ● **Measure dimensions of completed products or workpieces to verify conformance to specifications.**
+    - PLO [Program outcome]: “Construct and inspect machined projects using conventional and CNC equipment” — inspecting machined projects constitutes measuring dimensions to verify conformance
     - DMT 80 [Objective]: “Interpret and record measurements made with precision measuring tools.” — directly states measuring products with precision instruments to verify specifications
     - DMT 80 [Content outline]: “Micrometers.” — use of micrometers to measure workpieces evidences verifying conformance to specifications
     - DMT 80 [Lab content]: “Demonstrate use of measuring tools.” — lab practice measuring completed work with precision tools to check conformance
     - DMT 84A [Objective]: “Apply the use of precision measuring tools to inspect the accuracy of machined parts” — literal statement of measuring completed parts to verify conformance
     - DMT 84A [Content outline]: “Travel and test indicators.” — precision inspection instruments used to measure completed workpieces
-    - PLO [Program outcome]: “Construct and inspect machined projects using conventional and CNC equipment” — inspecting machined projects requires measuring dimensions to verify conformance
     - DMT 84B [Content outline]: “Thread measurement using three-wire method.” — measuring completed thread dimensions to verify conformance using precision measurement method
     - DMT 84B [Lab content]: “Measurement and inspection” — lab activity directly measuring/inspecting completed parts for conformance
 - ● **Operate cutting equipment.**
+    - PLO [Program outcome]: “Setup and operate conventional and CNC machines safely” — operating CNC/conventional machines directly constitutes operating cutting equipment
     - DMT 80 [Objective]: “Apply basic set-ups and operations on lathes; explain characteristics of lathe cutting tools.” — lathe operation is direct cutting equipment operation per O*NET task
     - DMT 80 [Objective]: “Select vertical milling machine cutting tools and perform basic machining operations.” — milling machine operation is cutting equipment operation
     - DMT 80 [Lab content]: “Demonstrate lathe operations” — operating a lathe is operating cutting equipment
     - DMT 80 [Lab content]: “Demonstrate milling machine operations” — operating a milling machine is operating cutting equipment
-    - PLO [Program outcome]: “Setup and operate conventional and CNC machines safely” — operating conventional/CNC machines includes cutting operations on lathes/mills
     - DMT 84B [SLO]: “Demonstrate the set up and advanced operation of vertical machining centers.” — operating a milling machine (vertical machining center) is operating cutting equipment
     - DMT 84B [Content outline]: “Lathe set-up for internal and external threads.” — setting up a lathe to cut threads is operating cutting equipment
 - ● **Operate grinding equipment.**
     - DMT 80 [Objective]: “Perform basic set-ups and operations on pedestal grinders.” — literal operation of grinding equipment
     - PLO [Program outcome]: “Setup and operate conventional and CNC machines safely” — operating conventional/CNC machines includes grinding operations
-- · **Operate metal or plastic forming equipment.**
+- ● **Operate metal or plastic forming equipment.**
+    - PLO [Program outcome]: “Setup and operate conventional and CNC machines safely” — setup/operation of CNC machines constitutes operating specialized machine tools
 - ● **Program equipment to perform production tasks.**
+    - PLO [Program outcome]: “Construct word address programs to machine projects” — word address programming is CNC machine programming for production
     - DMT 84A [SLO]: “Create basic word-address programs to successfully construct projects using vertical machining centers.” — literal programming of CNC equipment for production
     - DMT 84A [Objective]: “Prepare basic three-axis programming for milling machine operations” — literal statement of programming a CNC machine tool
     - DMT 84B [SLO]: “Create advanced word-address programs to successfully construct projects using vertical machining centers.” — literal advanced CNC programming for production tasks
     - DMT 84B [Assignment]: “Write advanced computer numerical control programs using sub programs and sub routines.” — directly programming CNC machine tools
-    - PLO [Program outcome]: “Construct word address programs to machine projects” — word address programming is CNC machine programming for production
     - DMT 80 [Content outline]: “Input and operate in MDI.” — manual data input to CNC controller is programming equipment to perform production tasks
     - DMT 80 [Content outline]: “Tool path generation and code produced by CAM program.” — generating CNC program code is programming equipment for production
 - ● **Review blueprints or other instructions to determine operational methods or sequences.**
@@ -57,7 +58,8 @@ Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of La
     - DMT 80 [Content outline]: “Wheel replacement, ring testing and dressing.” — maintaining grinding equipment in proper operational condition
 - ○ **Assemble machine tools, parts, or fixtures.**
     - DMT 84A [Lab content]: “Setup CNC milling tooling (cutting tools and holders)” — assembling tooling components onto machine fixtures
-- ○ **Mount attachments or tools onto production equipment.**
+- ● **Mount attachments or tools onto production equipment.**
+    - PLO [Program outcome]: “Setup and operate conventional and CNC machines safely” — setup of machines directly constitutes mounting attachments/tools onto equipment
     - DMT 84A [Content outline]: “Tool holders. Tapers, methods of securing. Retention knobs, lengths.” — mounting cutting tools/holders onto CNC mill per O*NET securing attachments task
     - DMT 84A [Lab content]: “Setup CNC milling tooling (cutting tools and holders)” — literal mounting of cutting tools/holders onto the machine
     - DMT 84A [Content outline]: “Location and setting of workpiece/fixture zero.” — securing/aligning fixtures onto the machine to establish zero point
@@ -105,6 +107,7 @@ Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of La
 - act 18 · DMT 84B · “Plot coordinate points using tool nose radius compensation.” — adjudicated: d: plotting coordinate points with tool nose compensation evidences CNC programming/tool path work, a different activity than marking guide lines on the workpiece
 - act 19 · DMT 84B · “Take home worksheets involving cartesian coordinate calculations.” — adjudicated: d: cartesian coordinate calculation worksheets evidence dimension/programming calculation, a different activity than measuring materials to mark reference/cutting lines
 - act 21 · DMT 84B · “Chip breakers.” — adjudicated: a: chip breakers names a tool geometry topic with no performable lubrication/cooling-check content
+- act 4 · PLO · “Setup and operate conventional and CNC machines safely” — adjudicated: d) different activity: the quote evidences general conventional/CNC machine operation, not specifically grinding equipment, which is a distinct activity from lathe/milling operation already covered
 
 ## De Anza College — Certificate of Achievement, CNC Machinist → Industrial Engineering Technologists and Technicians (SOC 17-3026)
 11 of 24 activities at outcome level, 14 with any evidence.
@@ -121,6 +124,7 @@ Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of La
     - DMT 84A [Objective]: “Apply the use of precision measuring tools to inspect the accuracy of machined parts” — using gage blocks, sine bars, and indicators to calibrate/verify measurement setups is calibrating technical equipment
     - DMT 84A [Lab content]: “Identify measuring tools and inspection techniques” — hands-on use of calipers/indicators/gage blocks constitutes calibrating measuring equipment
 - ● **Direct industrial production activities.**
+    - PLO [Program outcome]: “Setup and operate conventional and CNC machines safely” — operating machines to produce parts is a directly constitutive component of overseeing/inspecting production processes
     - DMT 80 [Content outline]: “Safely test program with single block and adjusted feed rates.” — overseeing/inspecting a production run for correctness before full operation
     - DMT 84A [Lab content]: “Demonstrate CNC mill controller operations” — running and overseeing machine operation during production is directing/overseeing the production process
     - DMT 84B [SLO]: “Demonstrate the set up and advanced operation of vertical machining centers.” — setting up and operating production machinery is directing/overseeing industrial production activities
@@ -130,6 +134,7 @@ Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of La
     - DMT 84B [Objective]: “Prepare and interpret programs for CNC mills.” — developing CNC programs is developing technical methods/processes for production
 - · **Implement design or process improvements.**
 - ● **Test products for functionality or quality.**
+    - PLO [Program outcome]: “Construct and inspect machined projects using conventional and CNC equipment” — inspecting machined projects is literally testing products at a production stage for adherence to specifications
     - DMT 84A [Objective]: “Apply the use of precision measuring tools to inspect the accuracy of machined parts” — testing finished machined parts against specifications at a production stage
     - DMT 80 [SLO]: “Analyze, construct, and inspect assigned machined projects using the introductory principles of machining.” — inspecting machined projects for adherence to specifications
     - DMT 84B [Lab content]: “Measurement and inspection” — lab measurement/inspection of machined parts is testing products for adherence to specifications
@@ -199,9 +204,10 @@ Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of La
 - act 6 · DMT 84B · “Cutter compensation, ramp on/off moves.” — adjudicated: d) cutter compensation and ramp on/off moves is a programming technique, not a process/quality improvement program
 - act 15 · DMT 84B · “Describe carbide insert ANSI designations, wear characteristics and applications.” — adjudicated: b) describing insert designations/wear characteristics is knowledge preceding tool selection, not the selection act itself
 - act 12 · DMT 90 · “Positional” — adjudicated: a) 'Positional' alone is a topic-only heading with no performable content named
+- act 9 · PLO · “Construct word address programs to machine projects” — adjudicated: d) different activity: word address (G-code) programs to run a machine tool evidence programming/operating machinery, not preparing engineering drawings, diagrams, schematics, or blueprints for management/engineering staff.
 
 ## De Anza College — Certificate of Achievement, CNC Machinist → Electro-Mechanical and Mechatronics Technologists and Technicians (SOC 17-3024)
-6 of 14 activities at outcome level, 9 with any evidence.
+8 of 14 activities at outcome level, 9 with any evidence.
 
 - ● **Design electromechanical equipment or systems.**
     - DMT 84B [Objective]: “Prepare and interpret programs for CNC mills.” — programming CNC mills to construct new tool paths constitutes designing/programming the equipment's operation
@@ -227,6 +233,7 @@ Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of La
     - DMT 84B [Content outline]: “Identify and clear alarms.” — diagnosing and clearing machine alarms is maintaining/repairing equipment to ensure proper functioning
 - · **Maintain electronic equipment.**
 - ● **Inspect finished products to locate flaws.**
+    - PLO [Program outcome]: “Construct and inspect machined projects using conventional and CNC equipment” — PLO literally states graduates inspect machined projects to locate flaws/defects
     - DMT 80 [SLO]: “Analyze, construct, and inspect assigned machined projects using the introductory principles of machining.” — inspecting machined projects for surface defects/dimensional conformance matches inspecting finished products for flaws
     - DMT 80 [Objective]: “Interpret and record measurements made with precision measuring tools.” — verifying dimensions with precision measuring instruments matches the O*NET task literally
     - DMT 84A [Objective]: “Apply the use of precision measuring tools to inspect the accuracy of machined parts” — verifying dimensional accuracy with precision instruments evidences inspecting for conformance to specifications
@@ -235,10 +242,12 @@ Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of La
     - DMT 84B [Content outline]: “Thread measurement using three-wire method.” — precision measurement of thread dimensions verifies conformance to specifications, evidencing inspection
     - DMT 90 [Description]: “as well as calculations used to solve common problems found in print interpretation and inspection” — course scope explicitly covers inspection using print-based tolerance interpretation, matching verifying part dimensions/clearances
 - · **Install instrumentation or electronic equipment or systems.**
-- ○ **Assemble equipment or components.**
+- ● **Assemble equipment or components.**
+    - PLO [Program outcome]: “Construct and inspect machined projects using conventional and CNC equipment” — constructing machined projects is directly constitutive of assembling/fabricating components
     - DMT 84A [Lab content]: “Setup CNC milling tooling (cutting tools and holders)” — fitting and assembling tool holders/cutting tools with hand tools and fixtures matches aligning/fitting component parts using fixtures
     - DMT 84B [Content outline]: “Lathe set-up for internal and external threads.” — setting up the lathe with tooling/fixtures for machining constitutes assembling equipment/components for production
-- ○ **Fabricate devices or components.**
+- ● **Fabricate devices or components.**
+    - PLO [Program outcome]: “Construct and inspect machined projects using conventional and CNC equipment” — PLO literally states graduates construct (fabricate) machined components
     - DMT 80 [Assignment]: “Lab projects demonstrating mastery of skills using the machines and equipment covered in this course.” — producing machined lab projects on manual/CNC machines is fabricating mechanical components
     - DMT 84A [Assignment]: “Lab projects demonstrating mastery of skills using three axis CNC machines, simulators and verification software covered in this course.” — constructing CNC-machined parts in lab projects is fabricating mechanical components
 - · **Create schematic drawings for electronics.**
@@ -265,3 +274,5 @@ Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of La
 - act 2 · DMT 84B · “Demonstrate the set up and advanced operation of vertical machining centers.” — adjudicated: a) demonstrating set up and advanced operation of machining centers is operating equipment, not testing/diagnostic activity
 - act 4 · DMT 84B · “Interpret command screens.” — adjudicated: d) interpreting command screens on the controller is operating/programming the machine, not reading blueprints/schematics/technical orders
 - act 7 · DMT 90 · “Positional” — adjudicated: a) 'Positional' alone is a topic heading (positional tolerancing) with no stated performable inspection action
+- act 2 · PLO · “Setup and operate conventional and CNC machines safely” — adjudicated: d) operating CNC machines to make parts evidences fabrication/machine operation, not testing performance of electromechanical assemblies with diagnostic test equipment like oscilloscopes
+- act 3 · PLO · “Construct word address programs to machine projects” — adjudicated: d) writing word-address/G-code programs to run a CNC machine tool evidences machine programming/operation, not developing software or computer applications for microprocessor-based instrumentation systems

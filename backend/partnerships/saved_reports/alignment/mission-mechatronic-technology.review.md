@@ -1,10 +1,11 @@
 # Curriculum alignment review — mission-mechatronic-technology
-Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of Labor
+Generated 2026-09-17 · O*NET 31.0 database (August 2026), U.S. Department of Labor
 
 ## Mission College — Certificate of Achievement, Mechatronic Technology → Electro-Mechanical and Mechatronics Technologists and Technicians (SOC 17-3024)
 9 of 14 activities at outcome level, 11 with any evidence.
 
 - ● **Design electromechanical equipment or systems.**
+    - PLO [Program outcome]: “Analyze and Integrate electrical, electronic, and mechanical systems and devices.” — PLO states graduates integrate electromechanical systems, directly constitutive of designing such equipment
     - MTT 020 [Objective]: “Develop and design PLC program from Piping/Process and Instrumentation Diagram” — designing a control system component (PLC program) to specification
     - EGR 025 [Objective]: “Apply the engineering design process to develop creative solutions to engineering problems.” — engineering design process applied to design of devices/systems
 - ● **Test performance of electrical, electronic, mechanical, or integrated systems or equipment.**
@@ -50,6 +51,7 @@ digital signals” — use of test instrument (oscilloscope) to assess electroni
     - MTT 034 [Objective]: “Identify the symbols for fluid power and electrical related components from either ANSI or ISO drawings and draw a complete schematic based on given parameters.” — reading ANSI/ISO schematic symbols to determine circuit design is reviewing technical documents/drawings to plan assembly
     - MTT 042 [Objective]: “Interpret manufacturers’ data sheets for CPLD devices.” — reviewing technical documents (datasheets) to plan work on devices
 - ● **Maintain electromechanical equipment.**
+    - PLO [Program outcome]: “Troubleshoot and repair electrical, electronic, and mechanical systems and devices.” — PLO literally states graduates repair mechanical systems, matching maintenance of electromechanical equipment
     - MTT 030 [SLO]: “Configure, operate, and troubleshoot DC, stepper, and AC motor systems” — maintaining/repairing electromechanical equipment (motors)
     - MTT 030 [Objective]: “Demonstrate effective basic troubleshooting techniques to isolate motor and controller faults” — isolating motor/controller faults is directly repairing/maintaining electromechanical equipment
     - MTT 034 [Objective]: “Demonstrate how to determine the integrity of a pneumatic and hydraulic actuator.” — calibrating/repairing pneumatic or hydraulic assemblies to meet operational tolerances
@@ -62,6 +64,7 @@ digital signals” — use of test instrument (oscilloscope) to assess electroni
     - MTT 022 [SLO]: “identify logic states during operation, and troubleshoot a PLC-controlled system” — troubleshooting a controlled system is maintaining electromechanical equipment
     - MTT 022 [Objective]: “Tune a PID control loop for optimized operation” — loop tuning to meet operational specifications parallels calibrating assemblies/systems
 - ● **Maintain electronic equipment.**
+    - PLO [Program outcome]: “Troubleshoot and repair electrical, electronic, and mechanical systems and devices.” — PLO literally states graduates repair electronic systems, matching maintenance of electronic equipment
     - MTT 040 [Assignment]: “Develop and execute a troubleshooting plan for a Metal Oxide Semiconductor Field Effect Transistor (MOSFET) oscillator circuit.” — repairing electronic components/equipment to ensure proper functioning
     - MTT 032 [Objective]: “Use test equipment to troubleshoot microprocessor-based electronic systems.” — maintaining/repairing electronic equipment using test instruments
     - MTT 012 [Objective]: “Compare measured performance to published specifications and identify any performance deficiencies” — identifying performance deficiencies in electronic equipment is a core step of maintaining/repairing electronic equipment
@@ -164,6 +167,7 @@ digital signals” — use of test instrument (oscilloscope) to assess electroni
     - MTT 022 [Lab content]: “Program a Controller with Sensor integration” — lab activity of programming a controller is direct entry of commands/instructions into equipment
     - MTT 030 [Objective]: “Commission a variable frequency drive (VFD) 3-phase motor and program it to operate from remote controls” — programming a drive to operate via remote control commands evidences entering commands/instructions into equipment
 - ● **Diagnose equipment malfunctions.**
+    - PLO [Program outcome]: “Troubleshoot and repair electrical, electronic, and mechanical systems and devices” — troubleshooting equipment is diagnosing equipment malfunctions
     - MTT 012 [Objective]: “Develop, present, and execute a logical troubleshooting plan appropriate for the subject system or component” — developing a troubleshooting plan for a malfunctioning system evidences diagnosing malfunctions
     - MTT 012 [Assignment]: “develop an initial troubleshooting plan to logically and effectively isolate the fault” — isolating the fault via troubleshooting plan evidences diagnosing malfunctions
     - MTT 030 [SLO]: “Configure, operate, and troubleshoot DC, stepper, and AC motor systems” — troubleshooting motor systems evidences diagnosing equipment malfunctions
@@ -181,6 +185,7 @@ digital signals” — use of test instrument (oscilloscope) to assess electroni
     - MTT 050 [Content outline]: “Troubleshooting 2D/3D printing” — troubleshooting printer issues evidences diagnosing equipment malfunctions
     - MTT 050 [Assignment]: “Troubleshoot 3D printing issue and 3D printer issue.” — student practice diagnosing printer malfunctions directly evidences the diagnose-malfunction activity
 - ● **Inspect production equipment.**
+    - PLO [Program outcome]: “Troubleshoot and repair electrical, electronic, and mechanical systems and devices” — troubleshooting requires inspecting the equipment to locate the fault
     - MTT 034 [Objective]: “Demonstrate how to determine the integrity of a pneumatic and hydraulic actuator.” — determining actuator integrity is inspecting production equipment for defects/leaks
     - MTT 050 [SLO]: “Demonstrate proper alignment and operating procedures for safe and effective operation of the 3D printer” — checking alignment for safe/effective operation evidences inspecting production equipment before/during use
 - · **Notify others of equipment repair or maintenance needs.**

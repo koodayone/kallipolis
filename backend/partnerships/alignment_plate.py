@@ -168,6 +168,9 @@ def column_legend(plates: list[Plate], columns: str = "college") -> str:
 #: by the certificate's catalog order; the rest fold into a neutral "+N" chip and the
 #: appendix. Three answers "does this college teach it, and where"; the rest is height.
 CHIPS_PER_CELL = 3
+#: Courses shown per cell when the column is one college's certificate and each mark
+#: carries its title and quote — two, then "also …" for the rest.
+DENSE_PER_CELL = 2
 
 
 def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_order: list[str] | None = None,
@@ -214,9 +217,37 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_
             catalog = [c["code"] for c in pl.courses]
             url_of = {c["code"]: c.get("source_url", "") for c in pl.courses}
             found = [(code, cell) for code, cell in (pr.cells.items() if pr else []) if code != PLO]
-            found.sort(key=lambda kv: (-kv[1].level, catalog.index(kv[0]) if kv[0] in catalog else 99))
+            if columns == "certificate":
+                # one college's certificate: tier first, then the course's weight in units (a
+                # 4.5-unit procedures course ahead of a half-unit seminar), then catalog order
+                units = {c["code"]: (c.get("units") or 0) for c in pl.courses}
+                found.sort(key=lambda kv: (-kv[1].level, -units.get(kv[0], 0), catalog.index(kv[0]) if kv[0] in catalog else 99))
+            else:
+                found.sort(key=lambda kv: (-kv[1].level, catalog.index(kv[0]) if kv[0] in catalog else 99))
             codes = [code for code, _ in found]
             col = college_color(pl.member_id)
+            if codes and columns == "certificate":
+                # One college's own document: the column has the width, so each mark
+                # carries its course title and the outline sentence it rests on, with the
+                # section as the tier in words (an SLO commits; content touches).
+                any_ = True
+                per_college[pl.college] = per_college.get(pl.college, 0) + len(codes)
+                title_of = {c["code"]: c.get("title", "") for c in pl.courses}
+                shown, rest = codes[:DENSE_PER_CELL], codes[DENSE_PER_CELL:]
+                items = []
+                for c in shown:
+                    ev = max(pr.cells[c].evidence, key=lambda e: (e.level, -len(e.quote)))
+                    chip = (f'<a class="chip" href="{escape(url_of[c])}" target="_blank" rel="noopener" style="--c:{col}">{escape(c)}</a>'
+                            if url_of.get(c) else f'<b class="chip" style="--c:{col}">{escape(c)}</b>')
+                    items.append(f'<div class="alg-ev"><div class="alg-evhd">{chip}<span class="alg-ctitle">{escape(title_of.get(c, ""))}</span></div>'
+                                 f'<div class="alg-quote"><span class="alg-sec">{escape(SECTION_LABEL.get(ev.section, ev.section))}</span>'
+                                 f'“{escape(ev.quote)}”</div></div>')
+                if rest:
+                    named, more = rest[:6], len(rest) - 6
+                    items.append(f'<div class="alg-evmore">also {", ".join(escape(c) for c in named)}'
+                                 f'{f" and {more} more" if more > 0 else ""}</div>')
+                cells.append(f'<td class="alg-dense">{"".join(items)}</td>')
+                continue
             if codes:
                 any_ = True
                 per_college[pl.college] = per_college.get(pl.college, 0) + len(codes)
@@ -239,6 +270,8 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_
         else:
             uncovered.append(r.dwa.rstrip("."))
         act = escape(r.dwa.rstrip("."))
+        if columns == "certificate" and any(PLO in x.cells for pl in plates for x in pl.rows if x.dwa_id == r.dwa_id):
+            act += '<span class="alg-plo">Program outcome</span>'       # the certificate's own outcomes state it
         if not any_ and show_gaps:
             act += '<span class="alg-gap">no course in the consortium evidences this</span>'
         out.append(f'<tr class="{"alg-gaprow" if (not any_ and show_gaps) else ""}"><td class="alg-act">{act}</td>{"".join(cells)}</tr>')

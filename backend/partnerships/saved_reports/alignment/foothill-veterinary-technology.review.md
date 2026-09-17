@@ -154,6 +154,7 @@ Generated 2026-09-17 · O*NET 31.0 database (August 2026), U.S. Department of La
     - V T 89 [Content outline]: “Principles of asepsis” — sterilizing instruments/equipment is a direct application of asepsis principles taught in the internship
     - V T 84L [Content outline]: “Surgical scrubbing; donning and doffing of PPE (gowns and gloves)” — sterile technique preparation directly supports instrument/equipment sterilization in surgery
 - ● **Assist healthcare practitioners during examinations or treatments.**
+    - PLO [Program outcome]: “demonstrate entry-level clinical skills competency in accordance with accreditation requirements” — clinical skills competency directly names assisting practitioners during exams/treatments as a core accredited skill set
     - V T 55 [Objective]: “Perform basic steps in physical examination of dogs and cats.” — assisting exam by obtaining TPR/vitals
     - V T 75A [Objective]: “Discuss the role of the technician in humane euthanasia.” — assisting with euthanasia
     - V T 75A [Content outline]: “Role of veterinary technician” — euthanasia content addresses the technician's assisting role in euthanasia procedures
@@ -340,6 +341,7 @@ Generated 2026-09-17 · O*NET 31.0 database (August 2026), U.S. Department of La
 - act 22 · V T 84L · “Moving into surgery” — adjudicated: a) 'Moving into surgery' is a vague topic heading without preparation-specific content
 - act 5 · V T 86 · “Biomethodology techniques” — adjudicated: a) 'Biomethodology techniques' is a topic heading without specific lab-testing content
 - act 16 · V T 86 · “Biomethodology techniques” — adjudicated: a) 'Biomethodology techniques' is a topic heading without specific specimen-collection content
+- act 26 · PLO · “the veterinary nurse's role in the health of animals, humans, and the planet” — adjudicated: b) precondition: naming a role or orientation toward 'the health of animals, humans, and the planet' is a values/knowledge framing that precedes and is broader than the specific performable task of counseling patients/caregivers on health care, behavior, or nutrition issues.
 
 ## Foothill College — Associate in Science Degree, Veterinary Technology → Veterinary Assistants and Laboratory Animal Caretakers (SOC 31-9096)
 23 of 27 activities at outcome level, 27 with any evidence.
@@ -695,3 +697,7 @@ Generated 2026-09-17 · O*NET 31.0 database (August 2026), U.S. Department of La
 - act 1 · V T 93 · “Contribute to the nursing care of all of veterinary patients.” — adjudicated: a: contribute to nursing care is a topic-level phrase without naming holding/restraint specifically
 - act 16 · V T 93 · “complete dental prophylaxis, anesthetic procedures, and complex therapeutics” — adjudicated: d: complex therapeutics/anesthetic procedures description is topic-level program description, not clearly naming equipment preparation for surgery
 - act 17 · V T 93 · “Contributing member of the veterinary medicine team” — adjudicated: c: 'contributing member of the veterinary medicine team' is a generic teamwork phrase, not teaching clients
+- act 1 · PLO · “entry-level clinical skills competency in accordance with accreditation requirements” — adjudicated: b) precondition: general accreditation-required clinical skills competency is a broad credential requirement, not a statement of the specific holding/restraint activity
+- act 6 · PLO · “entry-level competency in the necessary knowledge, skills, and abilities required for the ” — adjudicated: b) precondition: a general statement of program competency in veterinary technology knowledge/skills does not itself state the specific activity of assessing physical conditions to aid diagnosis
+- act 8 · PLO · “entry-level clinical skills competency in accordance with accreditation requirements” — adjudicated: b) precondition: general accreditation-required clinical skills competency does not name the specific activity of assisting practitioners in medical procedures
+- act 9 · PLO · “entry-level clinical skills competency in accordance with accreditation requirements” — adjudicated: b) precondition: general accreditation-required clinical skills competency does not name the specific activity of collecting biological specimens

@@ -1,8 +1,8 @@
 # Curriculum alignment review — evc-advanced-manufacturing-level-i
-Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of Labor
+Generated 2026-09-17 · O*NET 31.0 database (August 2026), U.S. Department of Labor
 
 ## Evergreen Valley College — Certificate of Achievement, Advanced Manufacturing Level 1 → Industrial Engineering Technologists and Technicians (SOC 17-3026)
-8 of 24 activities at outcome level, 21 with any evidence.
+9 of 24 activities at outcome level, 21 with any evidence.
 
 - ● **Monitor activities affecting environmental quality.**
     - MFGT 101 [Content outline]: “Safety and Hazardous Waste” — content covers regulatory health/safety/environmental compliance topics including MSDS and legal requirements
@@ -29,6 +29,8 @@ Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of La
     - MFGT 101 [Lab content]: “Analyze a Manufacturer’s Assembly Instructions for Process Improvement” — lab has students identify and implement process improvements to assembly procedures
     - MFGT 101 [Lab content]: “Problem Solving: Find Alternatives to an Assembly Failure” — students implement a process improvement to fix an assembly failure
 - ● **Test products for functionality or quality.**
+    - PLO [Program outcome]: “Demonstrate competence in building, servicing, and testing circuits utilizing safe and industry standard practices and procedures” — testing circuits literally evidences testing products for functionality or quality
+    - PLO [Program outcome]: “relevant testing, and necessary characterization technique based on the application” — testing and characterizing materials evidences testing products/materials for functionality or quality
     - MFGT 103 [SLO]: “Demonstrate two techniques for testing assembled product.” — SLO states literally that students test assembled products for functionality
     - MFGT 103 [Lab content]: “Inspect and Test Finished Circuit Boards Per Industry and International Standards such as ISO, IEC, IPC, or MILSPEC” — testing finished circuit boards at a production stage evidences testing products for functionality
     - MFGT 201 [SLO]: “Demonstrate competence in building, servicing, and testing circuits using passive devices” — SLO states literally that students test circuits for functionality
@@ -43,6 +45,7 @@ Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of La
 - ○ **Prepare drawings or diagrams of products or services.**
     - MFGT 103 [Content outline]: “Learn How to Read and Interpret Mechanical Drawings” — content on drawings/projections/dimensions covers preparing and reading engineering drawings
 - ● **Assess product or process usefulness.**
+    - PLO [Program outcome]: “Demonstrate how to collect, analyze, interpret, and present numerical data to make effective decisions” — analyzing and interpreting numerical data to make decisions is a directly constitutive component of evaluating data to assess product/process usefulness
     - MFGT 203 [SLO]: “Collect, analyze, interpret, and present numerical data to make effective decisions.” — SLO states literally that students compile and evaluate statistical data to assess product/process quality
     - MFGT 203 [Lab content]: “Develop and Analyze Reliability Plots and Graphs” — evaluating statistical reliability data to assess product usefulness
 - ○ **Recommend technical design or process changes to improve efficiency, quality, or performance.**
@@ -57,11 +60,13 @@ Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of La
 - ○ **Inspect operational processes.**
     - MFGT 203 [Lab content]: “Set Up and Monitor a Process with Control Chart to Determine If the Process is in Control” — lab inspects an operational process against quality assurance standards
 - ● **Select project materials.**
+    - PLO [Program outcome]: “Perform a material application process that includes material selection, application fabrication techniques” — material selection as part of the application process literally evidences selecting project materials
     - MFGT 202 [SLO]: “Identify three criteria that are important in the materials selection process.” — SLO states literally that students select materials for an application
     - MFGT 103 [Lab content]: “Assemble Products Using Plastics, Metals, and Ceramics” — choosing among materials to assemble products evidences selecting project materials
 - ○ **Monitor the productivity or efficiency of industrial operations.**
     - MFGT 203 [Lab content]: “Set Up and Monitor a Process with Control Chart to Determine If the Process is in Control” — monitoring production process control directly evidences monitoring productivity/efficiency
-- ○ **Create physical models or prototypes.**
+- ● **Create physical models or prototypes.**
+    - PLO [Program outcome]: “Demonstrate how to assemble circuit boards, mechanical systems and electrical systems” — assembling circuit boards and mechanical/electrical systems is a directly constitutive component of building physical prototypes
     - MFGT 101 [Lab content]: “Follow a Manufacturing Instruction to Assemble a Product (e.g. IKEA product)” — lab has students physically build a product model/prototype
     - MFGT 203 [Lab content]: “Apply Two Adhesives Using Two Different Curing Conditions and Analyze the Bond Quality” — lab builds and tests physical sample assemblies, akin to prototype testing
 - ○ **Create graphical representations of industrial production systems.**
@@ -101,12 +106,14 @@ Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of La
 - act 10 · MFGT 202 · “Processing/Structure/Properties/Performance Correlations” — adjudicated: a: 'Processing/Structure/Properties/Performance Correlations' is a topic heading without stated statistical evaluation of quality/reliability
 - act 15 · MFGT 202 · “Soldering Techniques” — adjudicated: d: soldering techniques lab evidences a joining/assembly skill, not selecting project materials
 - act 13 · MFGT 203 · “Process Capability Index” — adjudicated: a: 'Process Capability Index' is a topic heading without stated selection of material quantities or processing methods
+- act 2 · PLO · “Demonstrate competence in building, servicing, and testing circuits utilizing safe and ind” — adjudicated: b) precondition/generic statement of competence in servicing circuits per industry practice states a broad skill claim, not the specific calibration activity of adjusting equipment using tools like calipers, micrometers, height gauges, etc.—no calibration-specific content is named
 
 ## Evergreen Valley College — Certificate of Achievement, Advanced Manufacturing Level 1 → Electro-Mechanical and Mechatronics Technologists and Technicians (SOC 17-3024)
-6 of 14 activities at outcome level, 10 with any evidence.
+7 of 14 activities at outcome level, 10 with any evidence.
 
 - · **Design electromechanical equipment or systems.**
 - ● **Test performance of electrical, electronic, mechanical, or integrated systems or equipment.**
+    - PLO [Program outcome]: “Demonstrate competence in building, servicing, and testing circuits utilizing safe and industry standard practices” — testing circuits is a direct component of testing electrical/electronic performance
     - MFGT 101 [Lab content]: “Perform Testing on Assembled Product” — performing testing on an assembled product is a basic instance of testing performance of assembled equipment
     - MFGT 103 [SLO]: “Demonstrate two techniques for testing assembled product.” — testing assembled product matches testing performance of electromechanical assemblies/equipment
     - MFGT 103 [Content outline]: “In-Circuit Functional” — in-circuit functional testing of assembled electronics matches testing performance of electronic/electromechanical assemblies
@@ -121,6 +128,7 @@ Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of La
     - MFGT 201 [Lab content]: “Apply and Perform Diagnostic and Repair Procedures to Live DC Circuits” — lab activity of diagnosing/repairing circuits evidences maintaining electromechanical equipment
     - MFGT 201 [SLO]: “Demonstrate the use of diagnostic information and software (electrical diagrams, board diagrams, diagnostic charts, specifications) in order to perform diagnosis and repair of passive circuits and systems.” — students diagnose and repair circuits, matching repair of electrical components to ensure proper functioning
 - ● **Maintain electronic equipment.**
+    - PLO [Program outcome]: “Demonstrate competence in building, servicing, and testing circuits utilizing safe and industry standard practices” — servicing circuits is a direct component of maintaining electronic equipment
     - MFGT 201 [SLO]: “Demonstrate the use of diagnostic information and software (electrical diagrams, board diagrams, diagnostic charts, specifications) in order to perform diagnosis and repair of passive circuits and systems.” — literal SLO evidences diagnosis and repair of electronic equipment
     - MFGT 201 [Lab content]: “Utilize Best Industry Practices on Electronic Troubleshooting, Fault Detection, and Root Cause Corrective Action (RCCA) Methods and Procedures” — lab activity of troubleshooting/repairing electronic circuits evidences maintaining electronic equipment
 - ○ **Inspect finished products to locate flaws.**
@@ -134,16 +142,19 @@ Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of La
     - MFGT 103 [Content outline]: “Hand Soldering” — hand soldering of electronic parts into housings/assemblies matches installing electronic equipment using soldering equipment
     - MFGT 201 [Lab content]: “Practice Wiring, Connector Repair Methods, and Soldering Techniques” — students install electrical parts using soldering equipment and hand tools, matching the task literally
 - ● **Assemble equipment or components.**
+    - PLO [Program outcome]: “Demonstrate how to assemble circuit boards, mechanical systems and electrical systems” — literal statement that graduates assemble components/systems
     - MFGT 103 [SLO]: “Demonstrate the ability to assemble and test micro circuits under a microscope.” — literal SLO evidences assembling electronic components
     - MFGT 103 [Lab content]: “Properly Use Various Screw Drivers, Socket, Wrenches, and Torque Tools” — lab use of hand/power tools for assembly evidences fitting/assembling component parts
     - MFGT 103 [SLO]: “Demonstrate how to form, cut, bond, solder, laminate, and 3D print various materials when assembling circuit boards, mechanical systems and electrical systems.” — forming/bonding/soldering to assemble mechanical and electrical systems is fabricating/assembling electromechanical components
     - MFGT 103 [Lab content]: “Assemble Electrical Connectors and Route Wiring” — hands-on assembly of electrical connectors/wiring using tools matches aligning/fitting/assembling components with hand tools
     - MFGT 101 [Lab content]: “Follow a Manufacturing Instruction to Assemble a Product (e.g. IKEA product)” — assembling a product from instructions is a direct instance of assembling components
-- ○ **Fabricate devices or components.**
+- ● **Fabricate devices or components.**
+    - PLO [Program outcome]: “Perform a material application process that includes material selection, application fabrication techniques” — fabrication techniques directly evidence fabricating devices or components
     - MFGT 103 [Lab content]: “Assemble Products Using Either Molding, Stamping, Bending, Casting, Laminating, or 3D Printing” — lab fabrication processes evidence fabricating mechanical/electrical components
     - MFGT 103 [Lab content]: “Assemble Printed Circuit Boards Using Mechanical or Automated Techniques” — fabricating PCB assemblies matches fabricate/assemble electronic components
 - · **Create schematic drawings for electronics.**
 - ● **Select project materials.**
+    - PLO [Program outcome]: “Perform a material application process that includes material selection, application fabrication techniques” — material selection directly evidences selecting project materials
     - MFGT 202 [SLO]: “Identify three criteria that are important in the materials selection process.” — literal SLO evidences selecting materials to meet functional specifications
 - · **Develop technical methods or processes.**
 - ○ **Maintain operational records or records systems.**

@@ -1,6 +1,6 @@
 {
  "program": "deanza-cnc-machinist",
- "generated": "2026-09-16",
+ "generated": "2026-09-17",
  "onet_vintage": "O*NET 31.0 database (August 2026), U.S. Department of Labor",
  "plates": [
   {
@@ -209,6 +209,18 @@
      "dwa": "Measure dimensions of completed products or workpieces to verify conformance to specifications.",
      "task": "Calculate dimensions or tolerances, using instruments, such as micrometers or vernier calipers. · Measure, examine, or test completed units to check for defects and ensure conformance to specifications, using precision instruments, such as micrometers.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Construct and inspect machined projects using conventional and CNC equipment",
+         "basis": "inspecting machined projects constitutes measuring dimensions to verify conformance"
+        }
+       ]
+      },
       "DMT 80": {
        "level": 2,
        "evidence": [
@@ -254,18 +266,6 @@
         }
        ]
       },
-      "PLO": {
-       "level": 2,
-       "evidence": [
-        {
-         "course": "PLO",
-         "section": "program_outcomes",
-         "level": 2,
-         "quote": "Construct and inspect machined projects using conventional and CNC equipment",
-         "basis": "inspecting machined projects requires measuring dimensions to verify conformance"
-        }
-       ]
-      },
       "DMT 84B": {
        "level": 1,
        "evidence": [
@@ -292,6 +292,18 @@
      "dwa": "Operate cutting equipment.",
      "task": "Machine parts to specifications, using machine tools, such as lathes, milling machines, shapers, or grinders. · Set up or operate metalworking, brazing, heat-treating, welding, or cutting equipment.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Setup and operate conventional and CNC machines safely",
+         "basis": "operating CNC/conventional machines directly constitutes operating cutting equipment"
+        }
+       ]
+      },
       "DMT 80": {
        "level": 2,
        "evidence": [
@@ -322,18 +334,6 @@
          "level": 1,
          "quote": "Demonstrate milling machine operations",
          "basis": "operating a milling machine is operating cutting equipment"
-        }
-       ]
-      },
-      "PLO": {
-       "level": 2,
-       "evidence": [
-        {
-         "course": "PLO",
-         "section": "program_outcomes",
-         "level": 2,
-         "quote": "Setup and operate conventional and CNC machines safely",
-         "basis": "operating conventional/CNC machines includes cutting operations on lathes/mills"
         }
        ]
       },
@@ -393,13 +393,38 @@
      "dwa_id": "4.A.3.a.3.f.12",
      "dwa": "Operate metal or plastic forming equipment.",
      "task": "Set up, adjust, or operate basic or specialized machine tools used to perform precision machining operations. · Operate equipment to verify operational efficiency.",
-     "cells": {}
+     "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Setup and operate conventional and CNC machines safely",
+         "basis": "setup/operation of CNC machines constitutes operating specialized machine tools"
+        }
+       ]
+      }
+     }
     },
     {
      "dwa_id": "4.A.3.b.1.a.2",
      "dwa": "Program equipment to perform production tasks.",
      "task": "Program computers or electronic instruments, such as numerically controlled machine tools.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Construct word address programs to machine projects",
+         "basis": "word address programming is CNC machine programming for production"
+        }
+       ]
+      },
       "DMT 84A": {
        "level": 2,
        "evidence": [
@@ -435,18 +460,6 @@
          "level": 1,
          "quote": "Write advanced computer numerical control programs using sub programs and sub routines.",
          "basis": "directly programming CNC machine tools"
-        }
-       ]
-      },
-      "PLO": {
-       "level": 2,
-       "evidence": [
-        {
-         "course": "PLO",
-         "section": "program_outcomes",
-         "level": 2,
-         "quote": "Construct word address programs to machine projects",
-         "basis": "word address programming is CNC machine programming for production"
         }
        ]
       },
@@ -616,6 +629,18 @@
      "dwa": "Mount attachments or tools onto production equipment.",
      "task": "Align and secure holding fixtures, cutting tools, attachments, accessories, or materials onto machines. · Install repaired parts into equipment or install new equipment.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Setup and operate conventional and CNC machines safely",
+         "basis": "setup of machines directly constitutes mounting attachments/tools onto equipment"
+        }
+       ]
+      },
       "DMT 84A": {
        "level": 1,
        "evidence": [
@@ -982,6 +1007,14 @@
      "quote": "Chip breakers.",
      "basis": "chip breaker geometry relates to cooling/chip control at the cutting tool during machining",
      "why": "adjudicated: a: chip breakers names a tool geometry topic with no performable lubrication/cooling-check content"
+    },
+    {
+     "activity": 4,
+     "course": "PLO",
+     "section": "program_outcomes",
+     "quote": "Setup and operate conventional and CNC machines safely",
+     "basis": "conventional machine operation includes grinding equipment operation",
+     "why": "adjudicated: d) different activity: the quote evidences general conventional/CNC machine operation, not specifically grinding equipment, which is a distinct activity from lathe/milling operation already covered"
     }
    ],
    "source_note": "Read from De Anza College's course outlines of record (elumen); sections present: slo, objective, description, content outline, lab content, assignment.",
@@ -1194,6 +1227,18 @@
      "dwa": "Direct industrial production activities.",
      "task": "Oversee or inspect production processes.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Setup and operate conventional and CNC machines safely",
+         "basis": "operating machines to produce parts is a directly constitutive component of overseeing/inspecting production processes"
+        }
+       ]
+      },
       "DMT 80": {
        "level": 1,
        "evidence": [
@@ -1275,6 +1320,18 @@
      "dwa": "Test products for functionality or quality.",
      "task": "Test selected products at specified stages in the production process for performance characteristics or adherence to specifications.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Construct and inspect machined projects using conventional and CNC equipment",
+         "basis": "inspecting machined projects is literally testing products at a production stage for adherence to specifications"
+        }
+       ]
+      },
       "DMT 84A": {
        "level": 2,
        "evidence": [
@@ -1830,6 +1887,14 @@
      "quote": "Positional",
      "basis": "positional tolerance interpretation underlies verifying parts against specification sheets, i.e., monitoring compliance with standards",
      "why": "adjudicated: a) 'Positional' alone is a topic-only heading with no performable content named"
+    },
+    {
+     "activity": 9,
+     "course": "PLO",
+     "section": "program_outcomes",
+     "quote": "Construct word address programs to machine projects",
+     "basis": "word address (G-code) programs are the technical instructions directing machine tool paths, a form of preparing technical process specifications",
+     "why": "adjudicated: d) different activity: word address (G-code) programs to run a machine tool evidence programming/operating machinery, not preparing engineering drawings, diagrams, schematics, or blueprints for management/engineering staff."
     }
    ],
    "source_note": "Read from De Anza College's course outlines of record (elumen); sections present: slo, objective, description, content outline, lab content, assignment.",
@@ -2164,6 +2229,18 @@
      "dwa": "Inspect finished products to locate flaws.",
      "task": "Inspect parts for surface defects. · Verify part dimensions or clearances to ensure conformance to specifications, using precision measuring instruments.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Construct and inspect machined projects using conventional and CNC equipment",
+         "basis": "PLO literally states graduates inspect machined projects to locate flaws/defects"
+        }
+       ]
+      },
       "DMT 80": {
        "level": 2,
        "evidence": [
@@ -2246,6 +2323,18 @@
      "dwa": "Assemble equipment or components.",
      "task": "Fabricate or assemble mechanical, electrical, or electronic components or assemblies. · Align, fit, or assemble component parts, using hand or power tools, fixtures, templates, or microscopes.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Construct and inspect machined projects using conventional and CNC equipment",
+         "basis": "constructing machined projects is directly constitutive of assembling/fabricating components"
+        }
+       ]
+      },
       "DMT 84A": {
        "level": 1,
        "evidence": [
@@ -2277,6 +2366,18 @@
      "dwa": "Fabricate devices or components.",
      "task": "Fabricate or assemble mechanical, electrical, or electronic components or assemblies.",
      "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Construct and inspect machined projects using conventional and CNC equipment",
+         "basis": "PLO literally states graduates construct (fabricate) machined components"
+        }
+       ]
+      },
       "DMT 80": {
        "level": 1,
        "evidence": [
@@ -2467,6 +2568,22 @@
      "quote": "Positional",
      "basis": "positional tolerance interpretation is used to verify part dimensions/clearances against specifications",
      "why": "adjudicated: a) 'Positional' alone is a topic heading (positional tolerancing) with no stated performable inspection action"
+    },
+    {
+     "activity": 2,
+     "course": "PLO",
+     "section": "program_outcomes",
+     "quote": "Setup and operate conventional and CNC machines safely",
+     "basis": "operating machines to produce/test parts constitutes testing performance of mechanical equipment via operation",
+     "why": "adjudicated: d) operating CNC machines to make parts evidences fabrication/machine operation, not testing performance of electromechanical assemblies with diagnostic test equipment like oscilloscopes"
+    },
+    {
+     "activity": 3,
+     "course": "PLO",
+     "section": "program_outcomes",
+     "quote": "Construct word address programs to machine projects",
+     "basis": "writing word-address (G-code) programs is a form of programming instrumentation/machine software",
+     "why": "adjudicated: d) writing word-address/G-code programs to run a CNC machine tool evidences machine programming/operation, not developing software or computer applications for microprocessor-based instrumentation systems"
     }
    ],
    "source_note": "Read from De Anza College's course outlines of record (elumen); sections present: slo, objective, description, content outline, lab content, assignment.",
