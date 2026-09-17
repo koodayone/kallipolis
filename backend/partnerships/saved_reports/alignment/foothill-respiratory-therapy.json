@@ -1,0 +1,4848 @@
+{
+ "program": "foothill-respiratory-therapy",
+ "generated": "2026-09-17",
+ "onet_vintage": "O*NET 31.0 database (August 2026), U.S. Department of Labor",
+ "plates": [
+  {
+   "college": "Foothill College",
+   "member_id": "foothill",
+   "certificate": "Associate in Science Degree, Respiratory Therapy",
+   "kind": "credit",
+   "top6": "121000",
+   "top_name": "Respiratory Care/Therapy",
+   "paired_soc": "29-1126",
+   "occupation": "Respiratory Therapists",
+   "crosswalk_socs": [],
+   "pairing_basis": "",
+   "courses": [
+    {
+     "code": "AHS 50A",
+     "title": "Introduction To Allied Health Programs",
+     "units": 1.5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/AHS-50A/",
+     "system": "courseleaf",
+     "effective": "Fall 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "BIOL 41",
+     "title": "Microbiology",
+     "units": 6,
+     "source_url": "https://catalog.foothill.edu/course-outlines/BIOL-41/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 50A",
+     "title": "Respiratory Therapy Procedures",
+     "units": 4.5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-50A/",
+     "system": "courseleaf",
+     "effective": "Summer 2022",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 51A",
+     "title": "Introduction To Respiratory Anatomy & Physiology",
+     "units": 2,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-51A/",
+     "system": "courseleaf",
+     "effective": "Summer 2022",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 52",
+     "title": "Applied Science For Respiratory Therapy",
+     "units": 3,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-52/",
+     "system": "courseleaf",
+     "effective": "Summer 2022",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 54",
+     "title": "Orientation To Respiratory Care",
+     "units": 2,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-54/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 55A",
+     "title": "Mediated Studies In Respiratory Therapy I",
+     "units": 0.5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-55A/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "AHS 50B",
+     "title": "Interprofessional Patient Competencies",
+     "units": 0.5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/AHS-50B/",
+     "system": "courseleaf",
+     "effective": "Summer 2024",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 50B",
+     "title": "Introduction To Patient Care Procedures",
+     "units": 5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-50B/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 51C",
+     "title": "Patient Assessment & Pulmonary Disease",
+     "units": 4,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-51C/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 53A",
+     "title": "Introduction To Respiratory Therapy Pharmacology",
+     "units": 2,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-53A/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 55B",
+     "title": "Mediated Studies In Respiratory Therapy Ii",
+     "units": 0.5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-55B/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 56",
+     "title": "Orientation To Hospital & Patient Care I",
+     "units": 1,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-56/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 50C",
+     "title": "Therapeutics & Introduction To Mechanical Ventilation",
+     "units": 4,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-50C/",
+     "system": "courseleaf",
+     "effective": "Summer 2024",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 51B",
+     "title": "Respiratory Physiology",
+     "units": 3,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-51B/",
+     "system": "courseleaf",
+     "effective": "Summer 2023",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 55C",
+     "title": "Mediated Studies In Respiratory Therapy Iii",
+     "units": 0.5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-55C/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 57",
+     "title": "Orientation To Hospital & Patient Care Ii",
+     "units": 2,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-57/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 55D",
+     "title": "Mediated Studies In Respiratory Therapy Iv",
+     "units": 0.5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-55D/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 61A",
+     "title": "Adult Mechanical Ventilation",
+     "units": 4,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-61A/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 70A",
+     "title": "Clinical Rotation I",
+     "units": 2,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-70A/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "AHS 60A",
+     "title": "Cardiology For Allied Health",
+     "units": 2,
+     "source_url": "https://catalog.foothill.edu/course-outlines/AHS-60A/",
+     "system": "courseleaf",
+     "effective": "Summer 2022",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 53B",
+     "title": "Advanced Respiratory Therapy Pharmacology",
+     "units": 2,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-53B/",
+     "system": "courseleaf",
+     "effective": "Summer 2022",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 55E",
+     "title": "Mediated Studies In Respiratory Therapy V",
+     "units": 0.5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-55E/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 61B",
+     "title": "Neonatal Respiratory Care",
+     "units": 3,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-61B/",
+     "system": "courseleaf",
+     "effective": "Summer 2022",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 70B",
+     "title": "Clinical Rotation Ii",
+     "units": 8,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-70B/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "AHS 60C",
+     "title": "Advanced Cardiac Life Support",
+     "units": 2,
+     "source_url": "https://catalog.foothill.edu/course-outlines/AHS-60C/",
+     "system": "courseleaf",
+     "effective": "Summer 2023",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 55F",
+     "title": "Mediated Studies In Respiratory Therapy Vi",
+     "units": 0.5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-55F/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 61C",
+     "title": "Home & Rehabilitative Respiratory Care",
+     "units": 2,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-61C/",
+     "system": "courseleaf",
+     "effective": "Summer 2022",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 63A",
+     "title": "Advanced Pathophysiology & Patient Management",
+     "units": 3,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-63A/",
+     "system": "courseleaf",
+     "effective": "Summer 2022",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 65",
+     "title": "Computer Patient Simulations",
+     "units": 0.5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-65/",
+     "system": "courseleaf",
+     "effective": "Summer 2022",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 70C",
+     "title": "Clinical Rotation Iii",
+     "units": 8,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-70C/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "AHS 50C",
+     "title": "Interprofessional Competencies For Collaborative Practice",
+     "units": 0.5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/AHS-50C/",
+     "system": "courseleaf",
+     "effective": "Summer 2024",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 55G",
+     "title": "Mediated Studies In Respiratory Therapy Vii",
+     "units": 0.5,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-55G/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 60C",
+     "title": "Pulmonary Diagnostics",
+     "units": 3,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-60C/",
+     "system": "courseleaf",
+     "effective": "Summer 2022",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 61D",
+     "title": "Pediatric Respiratory Care",
+     "units": 2,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-61D/",
+     "system": "courseleaf",
+     "effective": "Summer 2022",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 62",
+     "title": "Management, Resume & National Board Examination",
+     "units": 1,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-62/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "RSPT 70D",
+     "title": "Clinical Rotation Iv",
+     "units": 8,
+     "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-70D/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    }
+   ],
+   "program_outcomes": [
+    "Graduates will be able to demonstrate the necessary knowledge, entry-level competency, and clinical skills in respiratory therapy.",
+    "Graduates will be able to demonstrate the appropriate values, critical thinking skills, time management, and communication skills needed for competent respiratory therapy care in multidisciplinary settings."
+   ],
+   "rows": [
+    {
+     "dwa_id": "4.A.3.a.3.d.3",
+     "dwa": "Operate diagnostic or therapeutic medical instruments or equipment.",
+     "task": "Set up and operate devices, such as mechanical ventilators, therapeutic gas administration apparatus, environmental control systems, or aerosol generators, following specified parameters of treatment.",
+     "cells": {
+      "RSPT 61A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Set up a mechanical ventilator (Trilogy, Servo u, Servo i, Pulmonetics LTV1200, and Drager V500)",
+         "basis": "student directly operates mechanical ventilators per specified settings"
+        }
+       ]
+      },
+      "RSPT 50A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 50A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Evaluate patient, review physicians orders to administer oxygen therapy and aerosol drug therapy",
+         "basis": "student operates therapeutic gas/aerosol devices following ordered parameters"
+        },
+        {
+         "course": "RSPT 50A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Evaluate patient, review physicians orders to administer oxygen therapy and aerosol drug therapy, use a therapist driven protocol",
+         "basis": "operating oxygen/aerosol therapy devices per treatment parameters"
+        },
+        {
+         "course": "RSPT 50A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate use of humidity and bland aerosol therapy",
+         "basis": "operating aerosol generator equipment"
+        }
+       ]
+      },
+      "RSPT 55A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 55A",
+         "section": "content",
+         "level": 1,
+         "quote": "Oxygen administration equipment based on patient conditions and evaluations",
+         "basis": "selecting/setting up oxygen equipment per patient condition evidences operating therapeutic gas administration apparatus"
+        }
+       ]
+      },
+      "RSPT 50B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 50B",
+         "section": "content",
+         "level": 1,
+         "quote": "Continuous Positive Airway Pressure (CPAP) therapy",
+         "basis": "operating a therapeutic gas/ventilation device per treatment parameters"
+        },
+        {
+         "course": "RSPT 50B",
+         "section": "lab",
+         "level": 1,
+         "quote": "Non-invasive positive pressure ventilation (NPPV)",
+         "basis": "hands-on setup/operation of a ventilator-type device"
+        }
+       ]
+      },
+      "RSPT 55B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Proper ventilation procedures during respiratory care.",
+         "basis": "students perform ventilator setup/operation per specified parameters"
+        },
+        {
+         "course": "RSPT 55B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Aerosol medication delivery.",
+         "basis": "students operate aerosol generators following treatment parameters"
+        }
+       ]
+      },
+      "RSPT 56": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 56",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Administer oxygen and aerosol therapy to patients as indicated.",
+         "basis": "operating therapeutic gas/aerosol administration devices per treatment parameters"
+        },
+        {
+         "course": "RSPT 56",
+         "section": "content",
+         "level": 1,
+         "quote": "Use of large-volume nebulizer",
+         "basis": "setting up and operating an aerosol generator device"
+        }
+       ]
+      },
+      "RSPT 50C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 50C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Initiate and manage invasive ventilatory support.",
+         "basis": "operating mechanical ventilators per specified treatment parameters"
+        },
+        {
+         "course": "RSPT 50C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Discuss the application of noninvasive ventilation (NIV)",
+         "basis": "operating noninvasive ventilation apparatus per treatment parameters"
+        }
+       ]
+      },
+      "RSPT 57": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 57",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Perform hyperinflation therapy.",
+         "basis": "operating hyperinflation therapy devices to specified treatment parameters"
+        },
+        {
+         "course": "RSPT 57",
+         "section": "content",
+         "level": 1,
+         "quote": "Continuous positive airway pressure (CPAP) administration",
+         "basis": "operating CPAP therapeutic device per treatment protocol"
+        }
+       ]
+      },
+      "RSPT 55D": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55D",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Differentiate between the different modes of ventilation.",
+         "basis": "operating a mechanical ventilator requires setting and differentiating modes of ventilation per treatment parameters"
+        },
+        {
+         "course": "RSPT 55D",
+         "section": "content",
+         "level": 1,
+         "quote": "Modes of mechanical ventilation",
+         "basis": "content on ventilator modes covers operating the ventilator following specified treatment parameters"
+        }
+       ]
+      },
+      "RSPT 70A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate correct technique for set up and delivery of invasive positive pressure ventilation, being able to manage one ventilator patient",
+         "basis": "operating a mechanical ventilator per specified parameters directly evidences this activity"
+        },
+        {
+         "course": "RSPT 70A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate correct techniques for delivery of oxygen, humidity, and mist therapy",
+         "basis": "operating therapeutic gas/aerosol administration apparatus"
+        }
+       ]
+      },
+      "RSPT 55E": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 55E",
+         "section": "lab",
+         "level": 1,
+         "quote": "Neonatal respiratory care",
+         "basis": "lab covers operating neonatal respiratory care equipment such as ventilators"
+        }
+       ]
+      },
+      "RSPT 61B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61B",
+         "section": "lab",
+         "level": 1,
+         "quote": "Assemble, troubleshoot and manage infant ventilators",
+         "basis": "students operate mechanical ventilator equipment per set parameters"
+        },
+        {
+         "course": "RSPT 61B",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Explain the steps necessary to place a newborn on an infant ventilator and applies the principles of airway management appropriately",
+         "basis": "operating ventilator to place patient consistent with treatment parameters"
+        }
+       ]
+      },
+      "RSPT 70B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate correct set up and monitoring of mechanical ventilators.",
+         "basis": "student directly operates ventilators per specified parameters"
+        }
+       ]
+      },
+      "RSPT 55F": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55F",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Mechanical ventilation management of a COPD patient.",
+         "basis": "operating a mechanical ventilator per specified parameters is directly stated"
+        },
+        {
+         "course": "RSPT 55F",
+         "section": "content",
+         "level": 1,
+         "quote": "COPD/mechanical ventilation clinical simulation",
+         "basis": "simulation content requires operating ventilator equipment to specified parameters"
+        }
+       ]
+      },
+      "RSPT 61C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61C",
+         "section": "content",
+         "level": 1,
+         "quote": "Positive pressure machines vs. negative pressure devices",
+         "basis": "content covers setting up/operating home ventilators per treatment parameters"
+        },
+        {
+         "course": "RSPT 61C",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Compare and contrast home positive pressure ventilators, negative pressure ventilators and ICU style positive pressure ventilators.",
+         "basis": "requires comparing operation of ventilator/therapeutic gas devices used in treatment"
+        }
+       ]
+      },
+      "RSPT 70C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Monitor parameters on mechanical ventilators accurately.",
+         "basis": "operating mechanical ventilators per treatment parameters"
+        },
+        {
+         "course": "RSPT 70C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate effective management of patients on CPAP devices.",
+         "basis": "operating therapeutic gas/CPAP apparatus per parameters"
+        }
+       ]
+      },
+      "RSPT 60C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 60C",
+         "section": "lab",
+         "level": 1,
+         "quote": "Principles of operation of blood gas analyzers",
+         "basis": "operating diagnostic medical equipment (blood gas analyzers) following specified parameters"
+        }
+       ]
+      },
+      "RSPT 70D": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70D",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate comprehensive clinical proficiency with ventilation and special procedures for adult patients.",
+         "basis": "operating ventilators with specified settings evidences operating therapeutic medical equipment"
+        },
+        {
+         "course": "RSPT 70D",
+         "section": "content",
+         "level": 1,
+         "quote": "Selecting appropriate ventilator",
+         "basis": "setting up and operating a mechanical ventilator per treatment parameters"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.k.1",
+     "dwa": "Prepare medical supplies or equipment for use.",
+     "task": "Set up and operate devices, such as mechanical ventilators, therapeutic gas administration apparatus, environmental control systems, or aerosol generators, following specified parameters of treatment.",
+     "cells": {
+      "RSPT 50A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 50A",
+         "section": "content",
+         "level": 1,
+         "quote": "Deliver oxygen therapy per physician's order and therapy driven protocols",
+         "basis": "preparing and administering oxygen equipment for use per protocol"
+        },
+        {
+         "course": "RSPT 50A",
+         "section": "lab",
+         "level": 1,
+         "quote": "Students will select proper oxygen devices based on patient criteria",
+         "basis": "preparing therapeutic gas equipment for use"
+        },
+        {
+         "course": "RSPT 50A",
+         "section": "lab",
+         "level": 1,
+         "quote": "Students will review and manipulate oxygen therapy equipment",
+         "basis": "preparing equipment for administration"
+        }
+       ]
+      },
+      "RSPT 56": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 56",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Administer oxygen and aerosol therapy to patients as indicated.",
+         "basis": "sets up and prepares therapeutic gas/aerosol equipment for patient use"
+        },
+        {
+         "course": "RSPT 56",
+         "section": "content",
+         "level": 1,
+         "quote": "Compressed gas equipment",
+         "basis": "preparing therapeutic gas administration equipment for use"
+        },
+        {
+         "course": "RSPT 56",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate safe handling of compressed gas equipment.",
+         "basis": "preparing medical gas equipment for patient use"
+        }
+       ]
+      },
+      "RSPT 55A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 55A",
+         "section": "content",
+         "level": 1,
+         "quote": "Assembly of various types of oxygen administration equipment",
+         "basis": "assembling oxygen equipment before use is preparing medical equipment for use"
+        }
+       ]
+      },
+      "RSPT 50B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 50B",
+         "section": "lab",
+         "level": 1,
+         "quote": "Hyperinflation equipment",
+         "basis": "preparing therapeutic equipment for use"
+        },
+        {
+         "course": "RSPT 50B",
+         "section": "lab",
+         "level": 1,
+         "quote": "Suctioning equipment",
+         "basis": "preparing medical supplies/equipment for use"
+        }
+       ]
+      },
+      "RSPT 55B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 55B",
+         "section": "content",
+         "level": 1,
+         "quote": "Pre-procedure considerations for delivering aerosol, metered dose inhalers, dry powder inhalers, and soft mist inhalers",
+         "basis": "preparing aerosol delivery equipment for use"
+        },
+        {
+         "course": "RSPT 55B",
+         "section": "content",
+         "level": 1,
+         "quote": "Pre-procedure considerations for invasive and non-invasive mechanical ventilation",
+         "basis": "preparing ventilator equipment for use"
+        }
+       ]
+      },
+      "RSPT 50C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 50C",
+         "section": "content",
+         "level": 1,
+         "quote": "Equipment selection",
+         "basis": "setting up NIV equipment for use as part of preparing devices for treatment"
+        }
+       ]
+      },
+      "RSPT 57": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 57",
+         "section": "content",
+         "level": 1,
+         "quote": "Selection of appropriate delivery device to deliver non-invasive positive pressure ventilation (NPPV)",
+         "basis": "preparing/selecting device setup before use"
+        },
+        {
+         "course": "RSPT 57",
+         "section": "content",
+         "level": 1,
+         "quote": "Drug delivery systems",
+         "basis": "preparing aerosol/medication delivery equipment for use"
+        }
+       ]
+      },
+      "RSPT 61A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 61A",
+         "section": "lab",
+         "level": 1,
+         "quote": "Ventilator set up",
+         "basis": "lab exercise preparing ventilator equipment for use"
+        }
+       ]
+      },
+      "RSPT 70A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate correct technique for compressed gas handling",
+         "basis": "preparing gas supply equipment for therapeutic use"
+        }
+       ]
+      },
+      "RSPT 61B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 61B",
+         "section": "lab",
+         "level": 1,
+         "quote": "Demonstrate how to assemble a bag/mask unit and bag a simulation baby with given parameters",
+         "basis": "assembling resuscitation equipment for use is preparing medical supplies"
+        }
+       ]
+      },
+      "RSPT 70B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 70B",
+         "section": "lab",
+         "level": 1,
+         "quote": "Set up and check mechanical ventilators",
+         "basis": "preparing ventilator equipment for use before treatment"
+        }
+       ]
+      },
+      "RSPT 61C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "State set-up, maintenance, troubleshooting and aseptic procedures for home care equipment.",
+         "basis": "prepares respiratory equipment for patient use"
+        }
+       ]
+      },
+      "RSPT 70C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 70C",
+         "section": "lab",
+         "level": 1,
+         "quote": "Management of patients on CPAP devices",
+         "basis": "setting up CPAP device for use"
+        }
+       ]
+      },
+      "RSPT 70D": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 70D",
+         "section": "content",
+         "level": 1,
+         "quote": "Establishing initial settings",
+         "basis": "preparing ventilator equipment for use by configuring initial settings"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.1.l.1",
+     "dwa": "Gather medical information from patient histories.",
+     "task": "Read prescription, measure arterial blood gases, and review patient information to assess patient condition.",
+     "cells": {
+      "RSPT 50B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 50B",
+         "section": "content",
+         "level": 1,
+         "quote": "Arterial blood sampling indications and contraindications",
+         "basis": "measuring arterial blood gases to assess patient condition"
+        },
+        {
+         "course": "RSPT 50B",
+         "section": "lab",
+         "level": 1,
+         "quote": "Perform arterial blood gas sampling",
+         "basis": "gathering diagnostic patient information via ABG sampling"
+        },
+        {
+         "course": "RSPT 50B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify indications, complications, and hazards for arterial blood sampling",
+         "basis": "directly ties to gathering patient blood-gas information"
+        }
+       ]
+      },
+      "RSPT 50A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 50A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Interpret clinical laboratory data",
+         "basis": "gathering patient information via lab data review"
+        }
+       ]
+      },
+      "RSPT 55A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate how to look up a patient's history.",
+         "basis": "looking up patient history directly evidences gathering medical information from patient histories"
+        },
+        {
+         "course": "RSPT 55A",
+         "section": "content",
+         "level": 1,
+         "quote": "Obtaining and documenting patient history",
+         "basis": "obtaining patient history is a literal component of gathering medical information from patient histories"
+        }
+       ]
+      },
+      "RSPT 51C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 51C",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Analyze physical exams and chest x-rays and relate the data to the patient's condition and anticipate problems",
+         "basis": "gathering and interpreting patient history/exam data to assess condition directly evidences gathering medical information from patient histories"
+        },
+        {
+         "course": "RSPT 51C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Analyze clinical laboratory test results and apply them to the patient's status",
+         "basis": "reviewing lab/patient information to assess condition is a directly constitutive component of gathering medical information"
+        }
+       ]
+      },
+      "RSPT 55B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Arterial blood gas (ABG) procedures and interpretation.",
+         "basis": "measuring arterial blood gases to assess patient condition"
+        }
+       ]
+      },
+      "RSPT 56": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 56",
+         "section": "content",
+         "level": 1,
+         "quote": "Review physician's order to administer oxygen and aerosol therapy",
+         "basis": "gathering patient/prescription information to assess condition before treatment"
+        },
+        {
+         "course": "RSPT 56",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Interpret clinical laboratory data.",
+         "basis": "reviewing patient lab information to assess patient condition"
+        }
+       ]
+      },
+      "RSPT 50C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 50C",
+         "section": "content",
+         "level": 1,
+         "quote": "Arterial blood gas analysis",
+         "basis": "reviewing arterial blood gas data to assess patient condition"
+        }
+       ]
+      },
+      "RSPT 51B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 51B",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "The student will be able to interpret arterial blood gases and initiate therapy based on results.",
+         "basis": "measuring/reviewing arterial blood gases to assess patient condition is read literally as gathering patient information"
+        },
+        {
+         "course": "RSPT 51B",
+         "section": "content",
+         "level": 1,
+         "quote": "Interpret representative blood gas analysis reports and recommend appropriate therapy",
+         "basis": "interpreting blood gas reports is a form of gathering/reviewing patient information to assess condition"
+        }
+       ]
+      },
+      "RSPT 55C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Interpretation of arterial blood gases.",
+         "basis": "reviewing arterial blood gas info to assess patient condition matches interpreting ABGs"
+        },
+        {
+         "course": "RSPT 55C",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Analyzes arterial blood gases.",
+         "basis": "gathering/analyzing blood gas info evidences reviewing patient information to assess condition"
+        }
+       ]
+      },
+      "RSPT 57": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 57",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Perform patient assessments.",
+         "basis": "gathering patient information to assess condition"
+        },
+        {
+         "course": "RSPT 57",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Perform arterial blood sampling.",
+         "basis": "obtaining arterial blood gas data per O*NET task"
+        }
+       ]
+      },
+      "RSPT 70A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate ability to effectively read a patient's chart and give a patient report",
+         "basis": "reviewing patient information/history to assess condition"
+        },
+        {
+         "course": "RSPT 70A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Relate basic diagnostic data to respiratory therapy techniques and the patient's illness",
+         "basis": "gathering and interpreting diagnostic information from patient records"
+        }
+       ]
+      },
+      "AHS 60A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "AHS 60A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Identify normal and abnormal readings from pulmonary artery catheters, central venous pressure lines and arterial lines.",
+         "basis": "reviewing hemodynamic patient information to assess condition is gathering medical information from patient histories/data"
+        }
+       ]
+      },
+      "RSPT 55E": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55E",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Identifies and chooses the correct laboratory tests that lead to proper treatment in the clinical simulation scenarios.",
+         "basis": "SLO states gathering/interpreting patient test information to assess condition"
+        }
+       ]
+      },
+      "RSPT 61B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Perform an examination and assessment of the neonatal patient",
+         "basis": "gathering patient information via history/exam to assess condition"
+        },
+        {
+         "course": "RSPT 61B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Interpret laboratory data",
+         "basis": "reviewing lab data including ABGs to assess patient condition"
+        }
+       ]
+      },
+      "RSPT 70B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Calibrate blood gas analyzers and analyze blood samples.",
+         "basis": "gathering diagnostic patient information via blood gas analysis"
+        },
+        {
+         "course": "RSPT 70B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Assist with the drawing of arterial blood samples.",
+         "basis": "gathering arterial blood gas information to assess patient condition"
+        }
+       ]
+      },
+      "RSPT 55F": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 55F",
+         "section": "content",
+         "level": 1,
+         "quote": "The course content includes information gathering and decision-making for different patients whose diagnoses and classifications are listed below:",
+         "basis": "gathering patient information to assess condition across simulated cases"
+        }
+       ]
+      },
+      "RSPT 61C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 61C",
+         "section": "content",
+         "level": 1,
+         "quote": "Patient assessment techniques",
+         "basis": "gathering patient information to assess condition for care planning"
+        }
+       ]
+      },
+      "RSPT 63A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 63A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Gather appropriate information in the assessment of the various pulmonary diseases.",
+         "basis": "gathering assessment information from patient data is patient history gathering"
+        },
+        {
+         "course": "RSPT 63A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Interpret arterial blood gases and evaluate the patient's need for treatment.",
+         "basis": "measuring/interpreting ABGs to assess patient condition matches the task literally"
+        }
+       ]
+      },
+      "RSPT 65": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 65",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Obtain patient data, evaluate patient data and make recommendations",
+         "basis": "gathering and evaluating patient history/data directly evidences gathering medical information from patient histories"
+        },
+        {
+         "course": "RSPT 65",
+         "section": "content",
+         "level": 1,
+         "quote": "Patient history",
+         "basis": "content line lists patient history as data gathered by student"
+        }
+       ]
+      },
+      "RSPT 70C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate the correct technique for performing patient assessments.",
+         "basis": "gathering patient information to assess condition"
+        },
+        {
+         "course": "RSPT 70C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Monitor and interpret hemodynamic data accurately.",
+         "basis": "reviewing patient physiological data to assess condition"
+        }
+       ]
+      },
+      "RSPT 55G": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55G",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Identifies respiratory problems based on information provided and chooses correct tests and procedures in the clinical simulations.",
+         "basis": "gathering and interpreting patient information to select correct tests directly evidences gathering medical information to assess condition"
+        }
+       ]
+      },
+      "RSPT 60C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 60C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Interpret blood gases and related tests",
+         "basis": "reviewing patient blood gas information to assess condition"
+        },
+        {
+         "course": "RSPT 60C",
+         "section": "lab",
+         "level": 1,
+         "quote": "Arterial blood gases: collection and interpretation",
+         "basis": "measuring arterial blood gases to assess patient condition"
+        }
+       ]
+      },
+      "RSPT 61D": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61D",
+         "section": "content",
+         "level": 1,
+         "quote": "Pediatric laboratory studies",
+         "basis": "reviewing patient ABGs/labs to assess condition matches gathering medical information from patient histories"
+        },
+        {
+         "course": "RSPT 61D",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Analyze and evaluate pediatric laboratory results",
+         "basis": "reviewing lab results is gathering patient information to assess condition"
+        }
+       ]
+      },
+      "RSPT 70D": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70D",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Evaluate and apply advanced diagnostic data to respiratory therapy techniques and the patient's illness.",
+         "basis": "evaluating diagnostic data on the patient's illness evidences gathering patient information to assess condition"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.2.d.1",
+     "dwa": "Inform medical professionals regarding patient conditions and care.",
+     "task": "Monitor patient's physiological responses to therapy, such as vital signs, arterial blood gases, or blood chemistry changes, and consult with physician if adverse reactions occur.",
+     "cells": {
+      "RSPT 63A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 63A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Interpret arterial blood gases and evaluate the patient's need for treatment.",
+         "basis": "monitoring physiologic responses to determine need for physician consult"
+        }
+       ]
+      },
+      "RSPT 61B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Recognize monitoring equipment and relate the data to the patient's condition",
+         "basis": "relating monitoring data to condition is informing on patient status"
+        }
+       ]
+      },
+      "RSPT 65": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 65",
+         "section": "content",
+         "level": 1,
+         "quote": "Maintain records and communicate information",
+         "basis": "communicating patient information supports informing medical professionals"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.2.e.7",
+     "dwa": "Monitor patient conditions during treatments, procedures, or activities.",
+     "task": "Monitor patient's physiological responses to therapy, such as vital signs, arterial blood gases, or blood chemistry changes, and consult with physician if adverse reactions occur. · Monitor cardiac patients, using electrocardiography devices, such as a holter monitor. · Attend high-risk and caesarian section infant deliveries to provide neonatal respiratory care as needed.",
+     "cells": {
+      "RSPT 56": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 56",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Assess and monitor patient's vital signs and breath sounds.",
+         "basis": "direct monitoring of patient physiological responses during care"
+        },
+        {
+         "course": "RSPT 56",
+         "section": "content",
+         "level": 1,
+         "quote": "Use of pulse oximetry",
+         "basis": "monitoring physiological response (oxygenation) during therapy"
+        }
+       ]
+      },
+      "RSPT 61B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61B",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Can demonstrate the appropriate steps and sequence for the resuscitation of a neonate.",
+         "basis": "attending high-risk deliveries to provide neonatal respiratory care"
+        },
+        {
+         "course": "RSPT 61B",
+         "section": "lab",
+         "level": 1,
+         "quote": "Cardiac monitoring",
+         "basis": "monitoring cardiac status of neonatal patient during care"
+        }
+       ]
+      },
+      "RSPT 50A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 50A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Monitor vital signs and breath sounds",
+         "basis": "monitoring patient physiological status during treatment"
+        },
+        {
+         "course": "RSPT 50A",
+         "section": "lab",
+         "level": 1,
+         "quote": "Students will demonstrate the use of pulse oximetry",
+         "basis": "monitoring patient oxygenation status"
+        }
+       ]
+      },
+      "RSPT 50B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 50B",
+         "section": "content",
+         "level": 1,
+         "quote": "Patient's response to bronchial hygiene therapy",
+         "basis": "monitoring patient physiological response during treatment"
+        }
+       ]
+      },
+      "RSPT 55B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Pediatric vital signs assessment.",
+         "basis": "monitoring patient physiological responses via vital signs"
+        },
+        {
+         "course": "RSPT 55B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Infant vital signs assessment.",
+         "basis": "monitoring patient physiological responses via vital signs"
+        }
+       ]
+      },
+      "RSPT 50C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 50C",
+         "section": "content",
+         "level": 1,
+         "quote": "Respiratory monitoring",
+         "basis": "monitoring patient physiological responses during ventilatory treatment"
+        },
+        {
+         "course": "RSPT 50C",
+         "section": "content",
+         "level": 1,
+         "quote": "Cardiac monitoring",
+         "basis": "monitoring cardiac status during ICU treatment"
+        }
+       ]
+      },
+      "RSPT 55C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Performing and interpreting 12-lead electrocardiograms (ECG).",
+         "basis": "monitoring cardiac patients via ECG matches monitoring physiological responses/cardiac monitoring task"
+        }
+       ]
+      },
+      "RSPT 57": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 57",
+         "section": "content",
+         "level": 1,
+         "quote": "Evaluating patient's response to therapy",
+         "basis": "monitoring physiological response during treatment"
+        },
+        {
+         "course": "RSPT 57",
+         "section": "content",
+         "level": 1,
+         "quote": "Vital signs",
+         "basis": "monitoring patient vital signs during assessment/treatment"
+        }
+       ]
+      },
+      "RSPT 55D": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55D",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Interpret ventilator waveforms and loops.",
+         "basis": "interpreting waveforms is monitoring the patient's physiological response to ventilator therapy"
+        },
+        {
+         "course": "RSPT 55D",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Recognize auto-peep and demonstrate strategies to correct it.",
+         "basis": "recognizing auto-peep during ventilation is monitoring patient condition during treatment"
+        }
+       ]
+      },
+      "RSPT 61A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 61A",
+         "section": "content",
+         "level": 1,
+         "quote": "Parameter changes based on:\n    - ABG results",
+         "basis": "monitoring patient physiological response (ABG) to adjust therapy"
+        }
+       ]
+      },
+      "RSPT 70A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate competency while performing a complete chest examination on a patient",
+         "basis": "monitoring patient physiological status via chest exam/auscultation"
+        }
+       ]
+      },
+      "AHS 60A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "AHS 60A",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Identify normal and abnormal readings from pulmonary artery catheters, central venous pressure lines and arterial lines.",
+         "basis": "identifying normal/abnormal hemodynamic readings evidences monitoring patient physiological responses during treatment"
+        },
+        {
+         "course": "AHS 60A",
+         "section": "content",
+         "level": 1,
+         "quote": "Holter monitor",
+         "basis": "covers monitoring cardiac patients using electrocardiography devices such as a holter monitor"
+        }
+       ]
+      },
+      "RSPT 55E": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55E",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Student will be able to recognize hemodynamic waveforms.",
+         "basis": "SLO evidences monitoring patient physiological responses via hemodynamic waveforms"
+        },
+        {
+         "course": "RSPT 55E",
+         "section": "content",
+         "level": 1,
+         "quote": "Continuous SVO2 monitoring",
+         "basis": "content covers continuous monitoring of patient physiological status"
+        }
+       ]
+      },
+      "RSPT 70B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Evaluate effects of therapy given to ventilator patients.",
+         "basis": "monitoring patient physiological response to therapy"
+        },
+        {
+         "course": "RSPT 70B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate the correct technique for performing cardiovascular evaluations.",
+         "basis": "monitoring cardiac patient status directly maps to cardiac evaluation task"
+        }
+       ]
+      },
+      "RSPT 55F": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55F",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Proper management of an acute exacerbation of congestive heart failure.",
+         "basis": "managing acute cardiac exacerbation entails monitoring patient physiological response during treatment"
+        }
+       ]
+      },
+      "RSPT 63A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 63A",
+         "section": "content",
+         "level": 1,
+         "quote": "Hemodynamic monitoring",
+         "basis": "monitoring physiological responses during therapy matches the occupation task"
+        },
+        {
+         "course": "RSPT 63A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Interpret arterial blood gases and evaluate the patient's need for treatment.",
+         "basis": "monitoring ABGs as physiological response to therapy"
+        }
+       ]
+      },
+      "RSPT 65": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 65",
+         "section": "content",
+         "level": 1,
+         "quote": "Monitoring data",
+         "basis": "monitoring data as part of patient data review evidences monitoring patient conditions"
+        },
+        {
+         "course": "RSPT 65",
+         "section": "lab",
+         "level": 1,
+         "quote": "Monitoring data and vital signs",
+         "basis": "lab content on reviewing vital signs/monitoring data evidences monitoring patient conditions during treatment"
+        }
+       ]
+      },
+      "RSPT 70C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Monitor and interpret hemodynamic data accurately.",
+         "basis": "monitoring physiological responses during treatment"
+        },
+        {
+         "course": "RSPT 70C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Monitor parameters on mechanical ventilators accurately.",
+         "basis": "monitoring patient condition during ventilator therapy"
+        }
+       ]
+      },
+      "RSPT 61D": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61D",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Interpret cardiac and non-invasive monitoring data",
+         "basis": "monitoring physiological responses during treatment matches this activity directly"
+        },
+        {
+         "course": "RSPT 61D",
+         "section": "content",
+         "level": 1,
+         "quote": "Cardiac monitoring and non-invasive monitoring",
+         "basis": "cardiac/non-invasive monitoring content covers monitoring patient conditions during treatment"
+        }
+       ]
+      },
+      "RSPT 70D": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 70D",
+         "section": "content",
+         "level": 1,
+         "quote": "Monitoring patient/ventilator system",
+         "basis": "directly monitors patient physiological status during ventilator therapy"
+        },
+        {
+         "course": "RSPT 70D",
+         "section": "lab",
+         "level": 1,
+         "quote": "Monitoring patient",
+         "basis": "hands-on monitoring of neonatal/pediatric patient during treatment"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.2.d.4",
+     "dwa": "Communicate test or assessment results to medical professionals.",
+     "task": "Relay blood analysis results to a physician.",
+     "cells": {
+      "RSPT 70A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate ability to effectively read a patient's chart and give a patient report.",
+         "basis": "relaying assessment results to medical team"
+        },
+        {
+         "course": "RSPT 70A",
+         "section": "content",
+         "level": 1,
+         "quote": "Situation Background Assessment Recommendation (SBAR) charting",
+         "basis": "SBAR reporting format used to relay assessment results to physicians/staff"
+        }
+       ]
+      },
+      "RSPT 51B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 51B",
+         "section": "content",
+         "level": 1,
+         "quote": "Interpret representative blood gas analysis reports and recommend appropriate therapy",
+         "basis": "interpreting and recommending therapy from blood analysis results directly evidences relaying blood analysis results"
+        }
+       ]
+      },
+      "RSPT 55C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Interpretation of arterial blood gases.",
+         "basis": "interpreting blood gas results is the basis for relaying blood analysis results to a physician"
+        }
+       ]
+      },
+      "RSPT 65": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 65",
+         "section": "content",
+         "level": 1,
+         "quote": "Blood gas results",
+         "basis": "reviewing and reporting blood gas results evidences communicating test results to professionals"
+        }
+       ]
+      },
+      "RSPT 60C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 60C",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Relate results to disease process and recommends appropriate therapy.",
+         "basis": "communicating test results and relating them to therapy recommendations"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.5.g.4",
+     "dwa": "Implement advanced life support techniques.",
+     "task": "Provide emergency care, such as artificial respiration, external cardiac massage, or assistance with cardiopulmonary resuscitation. · Perform endotracheal intubation to maintain open airways for patients who are unable to breathe on their own.",
+     "cells": {
+      "RSPT 55B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Adult Basic Life Support (BLS).",
+         "basis": "performing advanced/basic life support techniques including CPR"
+        },
+        {
+         "course": "RSPT 55B",
+         "section": "content",
+         "level": 1,
+         "quote": "Pre-procedure considerations for intubation",
+         "basis": "endotracheal intubation procedure to maintain open airways"
+        }
+       ]
+      },
+      "RSPT 50B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 50B",
+         "section": "content",
+         "level": 1,
+         "quote": "Prolonged intubation",
+         "basis": "endotracheal intubation content evidencing airway management technique"
+        }
+       ]
+      },
+      "RSPT 56": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 56",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate the ability to perform basic life support procedures.",
+         "basis": "literal performance of basic life support, a core advanced life support component"
+        }
+       ]
+      },
+      "RSPT 61B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 61B",
+         "section": "lab",
+         "level": 1,
+         "quote": "Performs neonatal resuscitation simulation",
+         "basis": "practicing resuscitation is providing emergency/advanced life support technique"
+        },
+        {
+         "course": "RSPT 61B",
+         "section": "lab",
+         "level": 1,
+         "quote": "Complete the Neonatal Resuscitation Program (NRP) certification",
+         "basis": "NRP certification directly trains advanced life support techniques for neonates"
+        }
+       ]
+      },
+      "RSPT 70B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate the correct technique for performing cardiopulmonary resuscitations.",
+         "basis": "advanced life support technique performed literally as stated"
+        }
+       ]
+      },
+      "AHS 60C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "AHS 60C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate proficiency in providing basic life support (BLS) and the use of an AED device",
+         "basis": "directly evidences advanced life support technique performance"
+        },
+        {
+         "course": "AHS 60C",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Discuss airway care procedures and demonstrate cardiac life support proficiency.",
+         "basis": "literal outcome of performing cardiac life support/airway care"
+        }
+       ]
+      },
+      "RSPT 70C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Perform effective cardiopulmonary resuscitations.",
+         "basis": "literal CPR performance, an advanced life support technique"
+        }
+       ]
+      },
+      "RSPT 61D": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61D",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Assess patients and select proper treatment and or actions necessary for resuscitation of the pediatric patient",
+         "basis": "resuscitation actions constitute advanced life support technique implementation"
+        },
+        {
+         "course": "RSPT 61D",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Review Pediatric Advanced Life Support",
+         "basis": "PALS review directly evidences advanced life support technique training"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.5.g.3",
+     "dwa": "Treat medical emergencies.",
+     "task": "Provide emergency care, such as artificial respiration, external cardiac massage, or assistance with cardiopulmonary resuscitation.",
+     "cells": {
+      "AHS 60C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "AHS 60C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Recognize and manage cardiac arrest until termination of resuscitation or transfer of care",
+         "basis": "treating cardiopulmonary emergencies directly"
+        },
+        {
+         "course": "AHS 60C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Recognize and manage cardiac arrest until termination of resuscitation or transfer of care, including immediate post-cardiac arrest care",
+         "basis": "literal outcome of managing a medical emergency"
+        },
+        {
+         "course": "AHS 60C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Recognize and manage respiratory arrest",
+         "basis": "literal outcome of treating a medical emergency"
+        }
+       ]
+      },
+      "RSPT 70B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 70B",
+         "section": "content",
+         "level": 1,
+         "quote": "Cardiopulmonary resuscitations",
+         "basis": "hands-on treatment of medical emergencies in clinical rotation"
+        }
+       ]
+      },
+      "RSPT 50A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 50A",
+         "section": "lab",
+         "level": 1,
+         "quote": "Apply emergency cardiovascular life support based on patient care scenarios",
+         "basis": "treating medical emergencies with emergency life support"
+        }
+       ]
+      },
+      "RSPT 55B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 55B",
+         "section": "content",
+         "level": 1,
+         "quote": "Procedure for performing cardiopulmonary resuscitation for adult BLS",
+         "basis": "emergency care via CPR for medical emergencies"
+        }
+       ]
+      },
+      "RSPT 56": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 56",
+         "section": "content",
+         "level": 1,
+         "quote": "Cardio pulmonary resuscitation",
+         "basis": "treating medical emergencies via CPR content coverage"
+        },
+        {
+         "course": "RSPT 56",
+         "section": "content",
+         "level": 1,
+         "quote": "Basic life support certification",
+         "basis": "emergency care training constituting treatment of medical emergencies"
+        }
+       ]
+      },
+      "RSPT 61B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate neonatal assessment and resuscitation",
+         "basis": "resuscitation is treating a medical emergency"
+        }
+       ]
+      },
+      "RSPT 55F": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55F",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Correct management of hypothermia with cardiac arrest.",
+         "basis": "cardiac arrest management is treatment of a medical emergency"
+        },
+        {
+         "course": "RSPT 55F",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Correct management and therapeutic interventions for a pediatric near-drowning patient.",
+         "basis": "near-drowning intervention is treatment of a medical emergency"
+        }
+       ]
+      },
+      "RSPT 70C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 70C",
+         "section": "content",
+         "level": 1,
+         "quote": "Cardiopulmonary resuscitations",
+         "basis": "treating cardiac/respiratory emergencies via CPR"
+        }
+       ]
+      },
+      "RSPT 61D": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61D",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Assess patients and select proper treatment and or actions necessary for resuscitation of the pediatric patient",
+         "basis": "resuscitation actions for pediatric emergencies match treating medical emergencies"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.5.k.5",
+     "dwa": "Assist healthcare practitioners during examinations or treatments.",
+     "task": "Work as part of a team of physicians, nurses, or other healthcare professionals to manage patient care by assisting with medical procedures or related duties. · Use a variety of testing techniques to assist doctors in cardiac or pulmonary research or to diagnose disorders.",
+     "cells": {
+      "RSPT 60C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 60C",
+         "section": "content",
+         "level": 1,
+         "quote": "Bronchoscopy",
+         "basis": "assisting physician with diagnostic bronchoscopy procedure"
+        }
+       ]
+      },
+      "RSPT 57": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 57",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Select appropriate therapy based on the patient assessment.",
+         "basis": "assisting in care decisions alongside healthcare team during treatment"
+        }
+       ]
+      },
+      "RSPT 70B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Observe and assist with special procedures respiratory patients.",
+         "basis": "assisting healthcare practitioners during patient procedures"
+        }
+       ]
+      },
+      "RSPT 65": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 65",
+         "section": "content",
+         "level": 1,
+         "quote": "Act as an assistant to the physician performing special procedures",
+         "basis": "directly states assisting physician during procedures"
+        }
+       ]
+      },
+      "RSPT 70C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Successfully observe and provide assistance with special procedures.",
+         "basis": "assisting healthcare practitioners during procedures"
+        }
+       ]
+      },
+      "RSPT 61D": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 61D",
+         "section": "content",
+         "level": 1,
+         "quote": "Pediatric flexible bronchoscopy",
+         "basis": "assisting with bronchoscopy procedure equipment/monitoring evidences assisting healthcare practitioners during examinations"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.2.d.5",
+     "dwa": "Collaborate with healthcare professionals to plan or provide treatment.",
+     "task": "Work as part of a team of physicians, nurses, or other healthcare professionals to manage patient care by assisting with medical procedures or related duties.",
+     "cells": {
+      "AHS 50C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "AHS 50C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Discuss the role of the health care team and collaborative practice",
+         "basis": "collaborating with healthcare professionals on patient treatment planning"
+        }
+       ]
+      },
+      "AHS 50B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "AHS 50B",
+         "section": "content",
+         "level": 1,
+         "quote": "Working effectively with the health care team",
+         "basis": "content on team-based collaboration for patient care"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.2.k.5",
+     "dwa": "Verify that medical activities or operations meet standards.",
+     "task": "Enforce safety rules and ensure careful adherence to physicians' orders.",
+     "cells": {
+      "RSPT 50A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 50A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Evaluate patient, review physicians orders to administer oxygen therapy and aerosol drug therapy, use a therapist driven protocol to assess the patient's need",
+         "basis": "verifying treatment adherence to physician orders and protocol"
+        },
+        {
+         "course": "RSPT 50A",
+         "section": "content",
+         "level": 1,
+         "quote": "Deliver oxygen therapy per physician's order and therapy driven protocols",
+         "basis": "ensuring therapy adherence to physician orders and standards"
+        }
+       ]
+      },
+      "RSPT 56": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 56",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Abide by proper infection control guidelines and standards associated with equipment and respiratory procedures.",
+         "basis": "verifying that care activities meet infection-control standards"
+        }
+       ]
+      },
+      "RSPT 65": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 65",
+         "section": "content",
+         "level": 1,
+         "quote": "Ensure infection control",
+         "basis": "ensuring infection control adherence evidences verifying medical activities meet standards"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.6.k.2",
+     "dwa": "Maintain medical facility records.",
+     "task": "Maintain charts that contain patients' pertinent identification and therapy information.",
+     "cells": {
+      "RSPT 54": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 54",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Locate information in a patient's paper and electronic chart.",
+         "basis": "maintaining patient identification and therapy records in charts"
+        }
+       ]
+      },
+      "RSPT 70A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 70A",
+         "section": "content",
+         "level": 1,
+         "quote": "Subjective Objective Assessment Plan (SOAP) charting",
+         "basis": "documenting patient therapy information in medical records"
+        }
+       ]
+      },
+      "RSPT 55A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55A",
+         "section": "content",
+         "level": 1,
+         "quote": "Correct documentation of the patient's record using the SOAP format",
+         "basis": "documenting patient records evidences maintaining medical facility records"
+        },
+        {
+         "course": "RSPT 55A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate how to navigate through electronic health records (EHR).",
+         "basis": "working within EHR system to document supports maintaining medical facility records"
+        }
+       ]
+      },
+      "RSPT 51C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 51C",
+         "section": "lab",
+         "level": 1,
+         "quote": "Document using SOAP charting",
+         "basis": "SOAP charting of patient assessment data is directly maintaining medical facility records"
+        }
+       ]
+      },
+      "RSPT 55B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 55B",
+         "section": "content",
+         "level": 1,
+         "quote": "Recording and reporting procedures",
+         "basis": "maintaining records of therapy/procedures performed"
+        }
+       ]
+      },
+      "RSPT 70B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Appropriately document treatment outcomes and observations of therapy.",
+         "basis": "maintaining records of patient treatment and observations"
+        }
+       ]
+      },
+      "RSPT 65": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 65",
+         "section": "content",
+         "level": 1,
+         "quote": "Maintain records and communicate information",
+         "basis": "maintaining records directly evidences maintaining medical facility records"
+        }
+       ]
+      },
+      "RSPT 70C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 70C",
+         "section": "content",
+         "level": 1,
+         "quote": "Documentation of observations and therapies",
+         "basis": "maintaining medical facility records of patient therapy"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.4.f.4",
+     "dwa": "Repair medical facility equipment.",
+     "task": "Make emergency visits to resolve equipment problems.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.a.1.i.3",
+     "dwa": "Clean medical equipment or facilities.",
+     "task": "Inspect, clean, test, and maintain respiratory therapy equipment to ensure equipment is functioning safely and efficiently, ordering repairs when necessary.",
+     "cells": {
+      "RSPT 70A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate aseptic technique for cleaning and sterilizing equipment.",
+         "basis": "literal cleaning of respiratory therapy equipment"
+        }
+       ]
+      },
+      "RSPT 65": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 65",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Manipulate equipment by order or protocol including infection and quality control",
+         "basis": "infection control equipment manipulation evidences cleaning medical equipment"
+        }
+       ]
+      },
+      "RSPT 60C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 60C",
+         "section": "content",
+         "level": 1,
+         "quote": "Cleaning and sterilization techniques for pulmonary diagnostic equipment",
+         "basis": "cleaning diagnostic medical equipment"
+        }
+       ]
+      },
+      "RSPT 70D": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 70D",
+         "section": "content",
+         "level": 1,
+         "quote": "Changing ventilator tubing",
+         "basis": "changing tubing is a cleaning/maintenance action on respiratory equipment"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.1.d.11",
+     "dwa": "Determine protocols for medical procedures.",
+     "task": "Determine requirements for treatment, such as type, method and duration of therapy, precautions to be taken, or medication and dosages, compatible with physicians' orders.",
+     "cells": {
+      "RSPT 50A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 50A",
+         "section": "content",
+         "level": 1,
+         "quote": "Select proper oxygen device",
+         "basis": "determining treatment type/method per protocol"
+        },
+        {
+         "course": "RSPT 50A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Evaluate patient, review physicians orders to administer oxygen therapy and aerosol drug therapy, use a therapist driven protocol to assess the patient's need for oxygen therapy",
+         "basis": "determining treatment type/method compatible with physician's orders"
+        }
+       ]
+      },
+      "RSPT 50C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 50C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Initiate and manage invasive ventilatory support.",
+         "basis": "determining ventilation treatment protocol parameters"
+        },
+        {
+         "course": "RSPT 50C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Discuss the indications for ventilatory support.",
+         "basis": "determining treatment type/method compatible with physician orders"
+        }
+       ]
+      },
+      "RSPT 50B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 50B",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Explain the indications, contraindications and hazards for invasive and noninvasive respiratory procedures administered.",
+         "basis": "literal determination of treatment requirements/precautions"
+        }
+       ]
+      },
+      "RSPT 51C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 51C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Explain which respiratory therapy modalities should be used to treat various pulmonary diseases",
+         "basis": "specifying which treatment modality to use for a diagnosed disease is determining protocols for medical procedures"
+        }
+       ]
+      },
+      "RSPT 53A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 53A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Based upon patient's condition, select the appropriate respiratory pharmacologic agent.",
+         "basis": "selecting the appropriate drug/method for a patient constitutes determining treatment protocol"
+        }
+       ]
+      },
+      "RSPT 55B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 55B",
+         "section": "content",
+         "level": 1,
+         "quote": "Pre-procedure considerations for arterial blood gas sampling",
+         "basis": "determining treatment/procedure requirements prior to therapy"
+        }
+       ]
+      },
+      "RSPT 56": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 56",
+         "section": "content",
+         "level": 1,
+         "quote": "Indications for therapy",
+         "basis": "determining protocol elements (indications) for oxygen/aerosol therapy per physician orders"
+        }
+       ]
+      },
+      "RSPT 51B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 51B",
+         "section": "content",
+         "level": 1,
+         "quote": "Interpret representative blood gas analysis reports and recommend appropriate therapy",
+         "basis": "recommending appropriate therapy based on blood gas results evidences determining treatment protocols"
+        },
+        {
+         "course": "RSPT 51B",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "The student will be able to interpret arterial blood gases and initiate therapy based on results.",
+         "basis": "initiating therapy based on ABG interpretation evidences determining treatment requirements compatible with physician orders"
+        }
+       ]
+      },
+      "RSPT 57": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 57",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Discuss indications for therapy.",
+         "basis": "determining treatment protocol requirements compatible with orders"
+        },
+        {
+         "course": "RSPT 57",
+         "section": "content",
+         "level": 1,
+         "quote": "Selection of an artificial airway",
+         "basis": "determining appropriate method/device for airway management protocol"
+        }
+       ]
+      },
+      "RSPT 55D": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55D",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Describe weaning strategies.",
+         "basis": "determining weaning strategy is determining the method/duration of ventilator therapy per protocol"
+        }
+       ]
+      },
+      "RSPT 61A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Input appropriate initial ventilator settings based on the principles of oxygen delivery and arterial blood gas analysis applied to patient case scenarios",
+         "basis": "determines treatment parameters (type/duration of therapy) for ventilation based on patient data"
+        }
+       ]
+      },
+      "RSPT 53B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 53B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Calculate the pediatric dosage for various respiratory care drugs.",
+         "basis": "determining medication and dosage is a stated component of determining treatment protocols"
+        },
+        {
+         "course": "RSPT 53B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Evaluate the patient's need for various diuretic agents.",
+         "basis": "evaluating need for a drug class informs determining medication and dosage per treatment protocol"
+        }
+       ]
+      },
+      "RSPT 61B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 61B",
+         "section": "content",
+         "level": 1,
+         "quote": "Initial ventilator settings",
+         "basis": "determining ventilator settings/mode is determining treatment protocol"
+        }
+       ]
+      },
+      "RSPT 70B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Recommend appropriate therapies for ventilator patients.",
+         "basis": "determining treatment type/method for ventilator patients"
+        }
+       ]
+      },
+      "RSPT 55F": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55F",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Correct management of asthma.",
+         "basis": "determining correct management reflects determining treatment type/method/duration protocols"
+        },
+        {
+         "course": "RSPT 55F",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Correct management and therapeutic interventions for neonates with respiratory distress syndrome.",
+         "basis": "determining therapeutic interventions is determining treatment protocol"
+        }
+       ]
+      },
+      "RSPT 61C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Design a basic respiratory rehabilitation program.",
+         "basis": "designing a therapy program sets protocol type/method/duration for treatment"
+        },
+        {
+         "course": "RSPT 61C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "State indications for the use of home oxygen therapy.",
+         "basis": "determining indications is determining treatment protocol requirements"
+        }
+       ]
+      },
+      "RSPT 63A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 63A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Select the appropriate treatment for various pulmonary disorders.",
+         "basis": "selecting treatment type/method matches determining protocols for medical procedures"
+        },
+        {
+         "course": "RSPT 63A",
+         "section": "content",
+         "level": 1,
+         "quote": "Therapist driven protocols",
+         "basis": "protocol determination for respiratory therapy treatment matches task literally"
+        }
+       ]
+      },
+      "RSPT 65": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 65",
+         "section": "content",
+         "level": 1,
+         "quote": "Initiation and modification of therapeutic procedures",
+         "basis": "determining and modifying therapy procedures evidences determining protocols for medical procedures"
+        }
+       ]
+      },
+      "RSPT 70C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Recommend appropriate therapies for ventilator patients.",
+         "basis": "determining treatment/therapy protocol for patients"
+        },
+        {
+         "course": "RSPT 70C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate effective ventilator weaning techniques and airway care.",
+         "basis": "determining method/duration protocol for weaning therapy"
+        }
+       ]
+      },
+      "RSPT 55G": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55G",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Interprets data correctly and chooses correct treatments in the computer modules.",
+         "basis": "choosing correct treatment from clinical data evidences determining the protocol/method of therapy"
+        }
+       ]
+      },
+      "RSPT 60C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 60C",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Relate results to disease process and recommends appropriate therapy.",
+         "basis": "determining appropriate therapy protocol based on diagnostic results"
+        }
+       ]
+      },
+      "RSPT 61D": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61D",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Differentiates between common pulmonary system disorders of the pediatric patient and selects appropriate therapy.",
+         "basis": "selecting appropriate therapy type matches determining protocols/type of treatment"
+        }
+       ]
+      },
+      "RSPT 70D": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70D",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Identify indications, contraindications, hazards, and method of evaluating effectiveness of all therapies administered.",
+         "basis": "identifying indications/hazards/methods for therapy is determining treatment protocol"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.2.g.21",
+     "dwa": "Examine medical instruments or equipment to ensure proper operation.",
+     "task": "Inspect, clean, test, and maintain respiratory therapy equipment to ensure equipment is functioning safely and efficiently, ordering repairs when necessary.",
+     "cells": {
+      "RSPT 50A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 50A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Maintain, calibrate, troubleshoot and use oxygen analyzers",
+         "basis": "examining equipment to ensure proper operation via calibration/testing"
+        }
+       ]
+      },
+      "RSPT 60C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 60C",
+         "section": "lab",
+         "level": 1,
+         "quote": "Calibration and maintenance",
+         "basis": "examining pulmonary diagnostic equipment to ensure proper function"
+        },
+        {
+         "course": "RSPT 60C",
+         "section": "content",
+         "level": 1,
+         "quote": "Criteria for acceptability of results of pulmonary function tests",
+         "basis": "examining equipment output against acceptability standards to verify proper operation"
+        }
+       ]
+      },
+      "RSPT 56": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 56",
+         "section": "content",
+         "level": 1,
+         "quote": "Calibration of analyzers",
+         "basis": "examining oxygen analyzer equipment to ensure proper operation"
+        }
+       ]
+      },
+      "RSPT 61A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Check ventilator settings on a mechanical ventilator",
+         "basis": "examining equipment to ensure proper operation"
+        }
+       ]
+      },
+      "AHS 60A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "AHS 60A",
+         "section": "content",
+         "level": 1,
+         "quote": "Troubleshooting lines",
+         "basis": "troubleshooting hemodynamic monitoring lines evidences examining medical equipment to ensure proper operation"
+        }
+       ]
+      },
+      "RSPT 61B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 61B",
+         "section": "lab",
+         "level": 1,
+         "quote": "Perform a neonatal ventilator check",
+         "basis": "checking ventilator ensures proper equipment operation"
+        }
+       ]
+      },
+      "RSPT 61C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "State set-up, maintenance, troubleshooting and aseptic procedures for home care equipment.",
+         "basis": "troubleshooting equipment is examining equipment to ensure proper operation"
+        }
+       ]
+      },
+      "RSPT 65": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 65",
+         "section": "content",
+         "level": 1,
+         "quote": "Perform quality control procedures",
+         "basis": "quality control of equipment evidences examining equipment to ensure proper operation"
+        }
+       ]
+      },
+      "RSPT 70D": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 70D",
+         "section": "content",
+         "level": 1,
+         "quote": "Troubleshooting ventilator tubing",
+         "basis": "troubleshooting equipment examines it to ensure proper operation"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.4.f.1",
+     "dwa": "Maintain medical equipment or instruments.",
+     "task": "Inspect, clean, test, and maintain respiratory therapy equipment to ensure equipment is functioning safely and efficiently, ordering repairs when necessary.",
+     "cells": {
+      "RSPT 61A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 61A",
+         "section": "lab",
+         "level": 1,
+         "quote": "Completion of a ventilator check",
+         "basis": "maintaining ventilator equipment via checks"
+        }
+       ]
+      },
+      "RSPT 50A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 50A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Handle compressed gas equipment safely",
+         "basis": "maintaining compressed gas equipment for respiratory therapy"
+        },
+        {
+         "course": "RSPT 50A",
+         "section": "lab",
+         "level": 1,
+         "quote": "Students will perform one and two point calibration of analyzers",
+         "basis": "maintaining/calibrating medical equipment"
+        }
+       ]
+      },
+      "RSPT 56": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 56",
+         "section": "content",
+         "level": 1,
+         "quote": "Troubleshooting devices",
+         "basis": "maintaining aerosol/oxygen delivery equipment function"
+        }
+       ]
+      },
+      "RSPT 61B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 61B",
+         "section": "lab",
+         "level": 1,
+         "quote": "Assemble, troubleshoot and manage infant ventilators",
+         "basis": "troubleshooting/managing ventilator is maintaining medical equipment"
+        }
+       ]
+      },
+      "RSPT 61C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "State set-up, maintenance, troubleshooting and aseptic procedures for home care equipment.",
+         "basis": "maintenance procedures for respiratory equipment directly evidence equipment upkeep"
+        }
+       ]
+      },
+      "RSPT 65": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 65",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Manipulate equipment by order or protocol including infection and quality control",
+         "basis": "quality control manipulation of equipment evidences maintaining medical equipment"
+        }
+       ]
+      },
+      "RSPT 60C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 60C",
+         "section": "content",
+         "level": 1,
+         "quote": "Calibration of pulmonary diagnostic equipment",
+         "basis": "maintaining diagnostic equipment through calibration"
+        },
+        {
+         "course": "RSPT 60C",
+         "section": "lab",
+         "level": 1,
+         "quote": "Calibration and maintenance",
+         "basis": "performing hands-on maintenance of pulmonary diagnostic equipment"
+        }
+       ]
+      },
+      "RSPT 70D": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 70D",
+         "section": "content",
+         "level": 1,
+         "quote": "Troubleshooting patient problems",
+         "basis": "identifying and resolving ventilator-related issues constitutes equipment maintenance in context"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.1.e.5",
+     "dwa": "Explain medical procedures or test results to patients or family members.",
+     "task": "Explain treatment procedures to patients to gain cooperation and allay fears.",
+     "cells": {
+      "RSPT 55A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 55A",
+         "section": "content",
+         "level": 1,
+         "quote": "Patient communication to demonstrate understanding",
+         "basis": "explaining procedures to gain patient understanding/cooperation"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.b.3.f.5",
+     "dwa": "Train patients, family members, or caregivers in techniques for managing disabilities or illnesses.",
+     "task": "Perform bronchopulmonary drainage and assist or instruct patients in performance of breathing exercises. · Educate patients and their families about their conditions and teach appropriate disease management techniques, such as breathing exercises or the use of medications or respiratory equipment.",
+     "cells": {
+      "RSPT 61C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Create a lesson plan appropriate for patient education.",
+         "basis": "training patients/families in disease management techniques"
+        }
+       ]
+      },
+      "RSPT 50B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 50B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate how to perform bronchial hygiene and chest physiotherapy",
+         "basis": "bronchopulmonary drainage and instructing patients in breathing techniques"
+        },
+        {
+         "course": "RSPT 50B",
+         "section": "lab",
+         "level": 1,
+         "quote": "Chest Physiotherapy (CPT)",
+         "basis": "hands-on bronchopulmonary drainage technique per task"
+        }
+       ]
+      },
+      "RSPT 57": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 57",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Perform bronchial hygiene and chest physiotherapy.",
+         "basis": "performing bronchopulmonary drainage technique per O*NET task"
+        }
+       ]
+      },
+      "RSPT 70A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate correct technique for chest physiotherapy",
+         "basis": "chest physiotherapy is bronchopulmonary drainage technique performed on/with patients"
+        }
+       ]
+      },
+      "RSPT 61B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 61B",
+         "section": "content",
+         "level": 1,
+         "quote": "Airway clearance techniques",
+         "basis": "bronchopulmonary hygiene/airway clearance instruction to manage patient condition"
+        },
+        {
+         "course": "RSPT 61B",
+         "section": "lab",
+         "level": 1,
+         "quote": "Bronchopulmonary hygiene therapy",
+         "basis": "performing bronchopulmonary drainage technique per occupation task"
+        }
+       ]
+      },
+      "RSPT 55F": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55F",
+         "section": "objectives",
+         "level": 2,
+         "quote": "COPD/home care and pulmonary rehabilitation.",
+         "basis": "home care/pulmonary rehab content involves training patients in disease management techniques"
+        },
+        {
+         "course": "RSPT 55F",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Pulmonary rehabilitation.",
+         "basis": "pulmonary rehabilitation involves instructing patients in managing chronic respiratory illness"
+        }
+       ]
+      },
+      "RSPT 65": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 65",
+         "section": "content",
+         "level": 1,
+         "quote": "Remove bronchopulmonary secretions",
+         "basis": "bronchopulmonary drainage task directly matches training/treatment task description of removing secretions"
+        }
+       ]
+      },
+      "RSPT 61D": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 61D",
+         "section": "content",
+         "level": 1,
+         "quote": "Airway clearance techniques and lung volume expansion therapy",
+         "basis": "chest physical therapy/PEP therapy content covers instructing patients in breathing/airway clearance techniques"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.5.l.7",
+     "dwa": "Treat chronic diseases or disorders.",
+     "task": "Perform bronchopulmonary drainage and assist or instruct patients in performance of breathing exercises.",
+     "cells": {
+      "RSPT 50B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 50B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate how to perform bronchial hygiene and chest physiotherapy",
+         "basis": "treating chronic pulmonary disease via bronchopulmonary drainage"
+        }
+       ]
+      },
+      "RSPT 51C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 51C",
+         "section": "content",
+         "level": 1,
+         "quote": "Bronchopulmonary hygiene therapy",
+         "basis": "bronchopulmonary hygiene therapy for chronic obstructive/restrictive disease is treating a chronic disease modality"
+        }
+       ]
+      },
+      "RSPT 57": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 57",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Perform bronchial hygiene and chest physiotherapy.",
+         "basis": "treating chronic pulmonary conditions via bronchial hygiene technique"
+        }
+       ]
+      },
+      "RSPT 70A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate correct technique for chest physiotherapy",
+         "basis": "bronchopulmonary drainage used in treating chronic pulmonary disease"
+        }
+       ]
+      },
+      "RSPT 61B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 61B",
+         "section": "content",
+         "level": 1,
+         "quote": "Chronic lung disease",
+         "basis": "treating chronic pulmonary disorder (bronchopulmonary dysplasia) in neonate"
+        }
+       ]
+      },
+      "RSPT 55F": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55F",
+         "section": "objectives",
+         "level": 2,
+         "quote": "COPD/home care and pulmonary rehabilitation.",
+         "basis": "COPD home care and rehab is treatment of a chronic pulmonary disorder"
+        },
+        {
+         "course": "RSPT 55F",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Correct management of asthma.",
+         "basis": "asthma management is treatment of a chronic disorder"
+        }
+       ]
+      },
+      "RSPT 61C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 61C",
+         "section": "content",
+         "level": 1,
+         "quote": "Rehabilitation programs",
+         "basis": "pulmonary rehabilitation programs treat chronic respiratory disease"
+        }
+       ]
+      },
+      "RSPT 65": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 65",
+         "section": "content",
+         "level": 1,
+         "quote": "Remove bronchopulmonary secretions",
+         "basis": "bronchopulmonary drainage directly evidences treating chronic pulmonary disease per O*NET task"
+        }
+       ]
+      },
+      "RSPT 61D": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 61D",
+         "section": "content",
+         "level": 1,
+         "quote": "Chest physical therapy",
+         "basis": "chest PT for airway clearance is treatment of chronic pulmonary disease such as bronchiectasis or cystic fibrosis"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.b.3.f.8",
+     "dwa": "Train medical providers.",
+     "task": "Demonstrate respiratory care procedures to trainees or other healthcare personnel. · Teach, train, supervise, or use the assistance of students, respiratory therapy technicians, or assistants.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.a.2.i.9",
+     "dwa": "Adjust settings or positions of medical equipment.",
+     "task": "Perform pulmonary function and adjust equipment to obtain optimum results in therapy.",
+     "cells": {
+      "RSPT 61A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Suggest changes in ventilator parameters based on patient data.",
+         "basis": "adjusting equipment settings to optimize therapy"
+        },
+        {
+         "course": "RSPT 61A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Suggest ventilator settings to decrease work of breathing",
+         "basis": "adjusting equipment settings to optimize therapy results"
+        }
+       ]
+      },
+      "RSPT 50A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 50A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Perform basic pulmonary function tests",
+         "basis": "adjusting equipment to obtain optimum pulmonary function results"
+        }
+       ]
+      },
+      "RSPT 50B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 50B",
+         "section": "lab",
+         "level": 1,
+         "quote": "Non-invasive positive pressure ventilation (NPPV) equipment",
+         "basis": "adjusting NPPV equipment settings to achieve therapeutic parameters"
+        }
+       ]
+      },
+      "RSPT 55B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 55B",
+         "section": "content",
+         "level": 1,
+         "quote": "Initiating invasive and non-invasive mechanical ventilation",
+         "basis": "adjusting ventilator settings to obtain optimum results"
+        }
+       ]
+      },
+      "RSPT 56": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 56",
+         "section": "content",
+         "level": 1,
+         "quote": "Selecting proper oxygen delivery device",
+         "basis": "adjusting equipment settings/positions to achieve therapy parameters"
+        }
+       ]
+      },
+      "RSPT 50C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 50C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Initiate and manage invasive ventilatory support.",
+         "basis": "adjusting ventilator settings to obtain optimum therapeutic results"
+        },
+        {
+         "course": "RSPT 50C",
+         "section": "content",
+         "level": 1,
+         "quote": "Adjusting ventilatory support",
+         "basis": "adjusting equipment settings for oxygenation/ventilation optimization"
+        }
+       ]
+      },
+      "RSPT 55C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 55C",
+         "section": "content",
+         "level": 1,
+         "quote": "Ventilator weaning strategies",
+         "basis": "adjusting ventilator settings during weaning matches adjusting equipment settings for optimum therapy"
+        }
+       ]
+      },
+      "RSPT 57": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 57",
+         "section": "content",
+         "level": 1,
+         "quote": "Appropriate interface selection",
+         "basis": "adjusting equipment settings/interface to optimize NPPV therapy"
+        }
+       ]
+      },
+      "RSPT 55D": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 55D",
+         "section": "content",
+         "level": 1,
+         "quote": "Strategies for correcting auto-peep",
+         "basis": "correcting auto-peep requires adjusting ventilator settings to obtain optimum therapy results"
+        },
+        {
+         "course": "RSPT 55D",
+         "section": "lab",
+         "level": 1,
+         "quote": "Setting a sigh",
+         "basis": "lab practice adjusting ventilator sigh settings is adjusting equipment settings for therapy"
+        }
+       ]
+      },
+      "RSPT 70A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate correct technique for incentive spirometry",
+         "basis": "adjusting spirometry equipment settings to obtain therapeutic results"
+        }
+       ]
+      },
+      "AHS 60A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "AHS 60A",
+         "section": "content",
+         "level": 1,
+         "quote": "Lead placement",
+         "basis": "placing ECG leads correctly is adjusting positions of diagnostic medical equipment"
+        }
+       ]
+      },
+      "RSPT 55E": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 55E",
+         "section": "content",
+         "level": 1,
+         "quote": "Using neonatal airway graphics to optimize care in neonatal patients",
+         "basis": "content covers adjusting equipment settings using graphics to optimize therapy results"
+        },
+        {
+         "course": "RSPT 55E",
+         "section": "content",
+         "level": 1,
+         "quote": "Volume targeted ventilation in neonatal care",
+         "basis": "content covers adjusting ventilator settings to achieve targeted volumes"
+        }
+       ]
+      },
+      "RSPT 70B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Adjust, troubleshoot, change circuits on mechanical ventilators, and successfully manage two ventilator patients.",
+         "basis": "adjusting ventilator equipment settings literally matches task"
+        }
+       ]
+      },
+      "RSPT 63A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 63A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Practice ventilator waveforms and ventilator strategies.",
+         "basis": "adjusting ventilator settings/strategies to optimize therapy matches equipment adjustment"
+        }
+       ]
+      },
+      "RSPT 65": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 65",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Manipulate equipment by order or protocol including infection and quality control",
+         "basis": "manipulating equipment settings evidences adjusting settings of medical equipment"
+        }
+       ]
+      },
+      "RSPT 70C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 70C",
+         "section": "content",
+         "level": 1,
+         "quote": "Parameter checks on mechanical ventilators",
+         "basis": "adjusting ventilator settings for optimum therapy"
+        }
+       ]
+      },
+      "RSPT 55G": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55G",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Describe and demonstrate advanced pulmonary function testing (PFT).",
+         "basis": "demonstrating PFT requires operating and adjusting the equipment used to obtain results"
+        }
+       ]
+      },
+      "RSPT 60C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 60C",
+         "section": "lab",
+         "level": 1,
+         "quote": "Equipment basics including calibration",
+         "basis": "adjusting equipment settings to obtain optimum test results"
+        }
+       ]
+      },
+      "RSPT 61D": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61D",
+         "section": "content",
+         "level": 1,
+         "quote": "Non-invasive ventilation",
+         "basis": "device/interface selection content evidences adjusting settings of ventilation equipment"
+        },
+        {
+         "course": "RSPT 61D",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Explain airway management and indications for CPAP and mechanical ventilation",
+         "basis": "mechanical ventilation setup involves adjusting equipment settings"
+        }
+       ]
+      },
+      "RSPT 70D": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 70D",
+         "section": "content",
+         "level": 1,
+         "quote": "Changing settings with changing patient response",
+         "basis": "adjusting ventilator settings based on patient response is direct equipment adjustment"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.2.a.1",
+     "dwa": "Test patient heart or lung functioning.",
+     "task": "Perform pulmonary function and adjust equipment to obtain optimum results in therapy. · Conduct tests, such as electrocardiograms (EKGs), stress testing, or lung capacity tests, to evaluate patients' cardiopulmonary functions. · Use a variety of testing techniques to assist doctors in cardiac or pulmonary research or to diagnose disorders.",
+     "cells": {
+      "AHS 60A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "AHS 60A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Describe the electrocardiogram: normal",
+         "basis": "conducting EKG testing to evaluate cardiac function"
+        },
+        {
+         "course": "AHS 60A",
+         "section": "content",
+         "level": 1,
+         "quote": "Stress testing",
+         "basis": "stress testing content directly evidences conducting cardiac tests to evaluate cardiopulmonary function"
+        }
+       ]
+      },
+      "RSPT 60C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 60C",
+         "section": "content",
+         "level": 1,
+         "quote": "Spirometry and related tests",
+         "basis": "performing pulmonary function tests to evaluate lung function"
+        },
+        {
+         "course": "RSPT 60C",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Perform selected cardio-pulmonary diagnostic tests.",
+         "basis": "testing patient lung and heart functioning via cardiopulmonary diagnostics"
+        },
+        {
+         "course": "RSPT 60C",
+         "section": "content",
+         "level": 1,
+         "quote": "Cardiopulmonary exercise testing",
+         "basis": "conducting exercise-based tests to evaluate cardiopulmonary function"
+        }
+       ]
+      },
+      "RSPT 50A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 50A",
+         "section": "lab",
+         "level": 1,
+         "quote": "Students will learn how to perform a forced vital capacity test",
+         "basis": "testing patient lung functioning"
+        },
+        {
+         "course": "RSPT 50A",
+         "section": "content",
+         "level": 1,
+         "quote": "Peak flow test",
+         "basis": "testing patient lung functioning"
+        }
+       ]
+      },
+      "RSPT 55B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Arterial blood gas (ABG) procedures and interpretation.",
+         "basis": "testing to evaluate cardiopulmonary function via ABG"
+        }
+       ]
+      },
+      "RSPT 56": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 56",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Perform basic bedside pulmonary function tests as indicated.",
+         "basis": "literal testing of patient lung function"
+        }
+       ]
+      },
+      "RSPT 55C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Performing a complete chest exam.",
+         "basis": "chest exam via auscultation/percussion evaluates cardiopulmonary function"
+        }
+       ]
+      },
+      "RSPT 55E": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55E",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Electrocardiography.",
+         "basis": "objective evidences testing patient heart function via ECG"
+        },
+        {
+         "course": "RSPT 55E",
+         "section": "content",
+         "level": 1,
+         "quote": "Basic rhythm recognition",
+         "basis": "content covers interpreting cardiac rhythm tests to evaluate cardiopulmonary function"
+        }
+       ]
+      },
+      "RSPT 61B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "RSPT 61B",
+         "section": "content",
+         "level": 1,
+         "quote": "End tidal CO2",
+         "basis": "capnography/monitoring is a test of lung/gas exchange function"
+        }
+       ]
+      },
+      "RSPT 70B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Interpret electrocardiograms and arterial blood gas analyses.",
+         "basis": "testing cardiopulmonary function via ECG interpretation"
+        },
+        {
+         "course": "RSPT 70B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate the correct technique for performing cardiovascular evaluations.",
+         "basis": "cardiac testing technique directly matches occupation task"
+        }
+       ]
+      },
+      "RSPT 70C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 70C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Monitor and interpret hemodynamic data accurately.",
+         "basis": "testing cardiac/hemodynamic function including ECG"
+        }
+       ]
+      },
+      "RSPT 55G": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55G",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Describe and demonstrate advanced pulmonary function testing (PFT).",
+         "basis": "PFT is a direct test of patient lung functioning"
+        },
+        {
+         "course": "RSPT 55G",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Describe and demonstrate basic spirometry for inpatients and outpatients.",
+         "basis": "spirometry is a standard test of lung function performed on patients"
+        }
+       ]
+      },
+      "RSPT 61D": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 61D",
+         "section": "content",
+         "level": 1,
+         "quote": "Pediatric PFT and bedside spirometry studies",
+         "basis": "pulmonary function testing directly evidences testing patient lung functioning"
+        },
+        {
+         "course": "RSPT 61D",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Examine and compare pediatric PFT and bedside spirometry studies",
+         "basis": "PFT comparison evidences testing patient lung function"
+        }
+       ]
+      }
+     }
+    },
+    {
+     "dwa_id": "4.A.4.b.4.a.14",
+     "dwa": "Supervise patient care personnel.",
+     "task": "Teach, train, supervise, or use the assistance of students, respiratory therapy technicians, or assistants.",
+     "cells": {}
+    },
+    {
+     "dwa_id": "4.A.3.a.1.m.2",
+     "dwa": "Move patients to or from treatment areas.",
+     "task": "Transport patients to the hospital or within the hospital.",
+     "cells": {
+      "RSPT 50A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 50A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate proper body mechanics when moving patients",
+         "basis": "moving patients directly evidenced"
+        },
+        {
+         "course": "RSPT 50A",
+         "section": "content",
+         "level": 1,
+         "quote": "Emergency carries",
+         "basis": "moving patients during emergency transport"
+        },
+        {
+         "course": "RSPT 50A",
+         "section": "lab",
+         "level": 1,
+         "quote": "Students will position and move patients using correct body mechanics",
+         "basis": "moving patients as part of treatment"
+        }
+       ]
+      },
+      "RSPT 55A": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "RSPT 55A",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate how to position patients properly.",
+         "basis": "positioning patients is a directly constitutive component of moving/positioning patients in treatment areas"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "dropped": [
+    {
+     "activity": 3,
+     "course": "RSPT 55B",
+     "section": "objectives",
+     "quote": "Interpretation of arterial blood gases (ABG) procedures and interpretation.",
+     "basis": "reviewing lab/ABG data to assess patient condition",
+     "why": "quote not verbatim in that course"
+    },
+    {
+     "activity": 9,
+     "course": "RSPT 61B",
+     "section": "description",
+     "quote": "Therapists work with physicians, nurses, and other healthcare professionals in intensive care units and hospital floor care areas",
+     "basis": "assisting healthcare team with procedures/duties",
+     "why": "quote not verbatim in that course"
+    },
+    {
+     "activity": 10,
+     "course": "RSPT 61B",
+     "section": "description",
+     "quote": "Therapists work with physicians, nurses, and other healthcare professionals in intensive care units and hospital floor care areas",
+     "basis": "collaborating with healthcare professionals to manage patient care",
+     "why": "quote not verbatim in that course"
+    },
+    {
+     "activity": 12,
+     "course": "RSPT 61B",
+     "section": "content",
+     "quote": "History",
+     "basis": "antenatal history documentation contributes to patient chart/record",
+     "why": "malformed"
+    },
+    {
+     "activity": 25,
+     "course": "RSPT 61B",
+     "section": "description",
+     "quote": "Attend high-risk and caesarian section infant deliveries to provide neonatal respiratory care as needed",
+     "basis": "transporting/attending patients during delivery consistent with moving patients to treatment",
+     "why": "quote not verbatim in that course"
+    },
+    {
+     "activity": 5,
+     "course": "AHS 60C",
+     "section": "content",
+     "quote": "Monitors patient's condition; Analyze rhythm",
+     "basis": "content line placeholder",
+     "why": "quote not verbatim in that course"
+    },
+    {
+     "activity": 23,
+     "course": "RSPT 63A",
+     "section": "content",
+     "quote": "PFTs",
+     "basis": "pulmonary function testing content evidences testing patient lung functioning",
+     "why": "malformed"
+    },
+    {
+     "activity": 23,
+     "course": "RSPT 70C",
+     "section": "content",
+     "quote": "ECG",
+     "basis": "testing patient heart function via electrocardiography",
+     "why": "malformed"
+    },
+    {
+     "activity": 4,
+     "course": "RSPT 51B",
+     "section": "objectives",
+     "quote": "Interpret arterial blood gases",
+     "basis": "assessment data informing physician consultation on patient condition",
+     "why": "adjudicated: d) interpreting ABGs evidences gathering/monitoring not informing physicians of a consult"
+    },
+    {
+     "activity": 6,
+     "course": "RSPT 70B",
+     "section": "objectives",
+     "quote": "Interpret electrocardiograms and arterial blood gas analyses.",
+     "basis": "communicating blood/ECG analysis results as part of clinical reporting",
+     "why": "adjudicated: d) interpreting ECG/ABG evidences testing/gathering, not relaying results to a physician"
+    },
+    {
+     "activity": 9,
+     "course": "RSPT 70A",
+     "section": "description",
+     "quote": "Introduction to various hospital departments, focusing on the practical implementation of respiratory therapy techniques",
+     "basis": "assisting healthcare team with medical procedures in clinical setting",
+     "why": "adjudicated: a) topic-only description of department introduction with no performable assisting content named"
+    },
+    {
+     "activity": 10,
+     "course": "RSPT 70B",
+     "section": "objectives",
+     "quote": "Demonstrate effective and appropriate communication skills with patients, family members, and hospital staff.",
+     "basis": "coordinating care with hospital staff during clinical rotation",
+     "why": "adjudicated: c) generic communication skill credited to collaborating with professionals"
+    },
+    {
+     "activity": 11,
+     "course": "RSPT 54",
+     "section": "content",
+     "quote": "Scope of practice",
+     "basis": "ensuring adherence to standards/physician orders in care delivery",
+     "why": "adjudicated: a) topic-only heading 'scope of practice' with no performable standards-verification content"
+    },
+    {
+     "activity": 13,
+     "course": "RSPT 50A",
+     "section": "objectives",
+     "quote": "Maintain, calibrate, troubleshoot and use oxygen analyzers",
+     "basis": "troubleshooting equipment problems constitutes resolving equipment issues",
+     "why": "adjudicated: d) troubleshooting/calibrating equipment evidences examine/maintain equipment tasks, not emergency repair visits"
+    },
+    {
+     "activity": 13,
+     "course": "RSPT 61A",
+     "section": "objectives",
+     "quote": "Recognize ventilator malfunction, given patient simulations.",
+     "basis": "identifying and resolving ventilator equipment problems",
+     "why": "adjudicated: d) recognizing malfunction evidences monitoring/examining equipment, not repair"
+    },
+    {
+     "activity": 14,
+     "course": "BIOL 41",
+     "section": "lab",
+     "quote": "Chemical control using disinfectants and antiseptics",
+     "basis": "disinfection technique applicable to cleaning medical equipment",
+     "why": "adjudicated: different activity: general biology lab disinfection content not tied to respiratory therapy equipment"
+    },
+    {
+     "activity": 18,
+     "course": "RSPT 54",
+     "section": "content",
+     "quote": "Patient interview",
+     "basis": "communication component of explaining procedures to patients",
+     "why": "adjudicated: c) generic patient interview communication skill credited to explaining procedures"
+    },
+    {
+     "activity": 20,
+     "course": "RSPT 61C",
+     "section": "description",
+     "quote": "Introduction to rehabilitative respiratory care.",
+     "basis": "treatment/management of chronic respiratory disease",
+     "why": "adjudicated: a) topic-only description naming a subject with no performable treatment content"
+    },
+    {
+     "activity": 21,
+     "course": "RSPT 62",
+     "section": "objectives",
+     "quote": "Differentiate between the different management and leadership styles.",
+     "basis": "preparation for supervisory/training role of medical providers",
+     "why": "adjudicated: b) precondition knowledge of leadership styles precedes actually training providers"
+    },
+    {
+     "activity": 21,
+     "course": "AHS 60C",
+     "section": "objectives",
+     "quote": "Demonstrate effective communication as a member or leader of a resuscitation team",
+     "basis": "leading/training team members in life support procedures",
+     "why": "adjudicated: c) generic communication/leadership skill credited to training medical providers"
+    },
+    {
+     "activity": 24,
+     "course": "RSPT 62",
+     "section": "content",
+     "quote": "Management and leadership styles",
+     "basis": "prepares students to supervise care personnel",
+     "why": "adjudicated: a) topic-only heading on management/leadership styles with no supervisory performance content"
+    },
+    {
+     "activity": 8,
+     "course": "RSPT 50A",
+     "section": "content",
+     "quote": "Respiratory therapy in emergency situations",
+     "basis": "course scope covers treating medical emergencies",
+     "why": "adjudicated: a) topic-only heading naming subject area with no specific performable content"
+    },
+    {
+     "activity": 9,
+     "course": "RSPT 50A",
+     "section": "description",
+     "quote": "Vital signs, compressed gas equipment, oxygen therapy, medical asepsis, bedside pulmonary function testing, disaster and emergency procedures",
+     "basis": "assisting with medical procedures under physician orders",
+     "why": "adjudicated: a) topic-only list of course scope subjects with no explicit team-assisting content"
+    },
+    {
+     "activity": 2,
+     "course": "RSPT 55A",
+     "section": "objectives",
+     "quote": "Identify the different types of oxygen therapy equipment.",
+     "basis": "identifying and assembling oxygen therapy equipment evidences preparing medical supplies/equipment for use",
+     "why": "adjudicated: b) identifying types of equipment is precondition knowledge preceding preparing equipment for use"
+    },
+    {
+     "activity": 10,
+     "course": "AHS 50B",
+     "section": "objectives",
+     "quote": "Understand the skills and scope of practice of other health care professionals.",
+     "basis": "directly evidences working within a healthcare team to plan patient care",
+     "why": "adjudicated: b) understanding scope of other professionals is precondition knowledge preceding collaboration"
+    },
+    {
+     "activity": 18,
+     "course": "AHS 50B",
+     "section": "objectives",
+     "quote": "Apply appropriate modes of treatment or management to assist in the treatment of the geriatric patient.",
+     "basis": "applying treatment/management to a patient implies communicating procedures to gain cooperation",
+     "why": "adjudicated: a) topic-only generic reference to applying treatment modes with no explicit explanation-to-patient content"
+    },
+    {
+     "activity": 12,
+     "course": "RSPT 50B",
+     "section": "content",
+     "quote": "Methods of evaluating therapy effectiveness",
+     "basis": "evaluating and documenting treatment outcomes, constitutive of monitoring/records use",
+     "why": "adjudicated: different activity: evaluating therapy effectiveness evidences monitoring, not maintaining facility records"
+    },
+    {
+     "activity": 18,
+     "course": "RSPT 50B",
+     "section": "objectives",
+     "quote": "Describe how to safely perform endotracheal and nasotracheal suctioning",
+     "basis": "no direct patient-explanation evidence; omit",
+     "why": "adjudicated: as stated in basis, no direct patient-explanation evidence in the quote"
+    },
+    {
+     "activity": 20,
+     "course": "RSPT 50B",
+     "section": "content",
+     "quote": "Goals of bronchial hygiene therapy",
+     "basis": "treating chronic pulmonary disease via bronchopulmonary drainage per task",
+     "why": "adjudicated: a) topic-only heading 'goals of bronchial hygiene therapy' with no performable treatment content"
+    },
+    {
+     "activity": 4,
+     "course": "RSPT 51C",
+     "section": "lab",
+     "quote": "Identify normal laboratory test results, and anticipate patient problems which may occur, including in SOAP charting",
+     "basis": "documenting anticipated problems from lab/vital data in charting evidences informing medical professionals of patient conditions",
+     "why": "adjudicated: different activity: SOAP charting of lab results evidences maintaining records, not informing professionals directly"
+    },
+    {
+     "activity": 6,
+     "course": "RSPT 51C",
+     "section": "outcomes",
+     "quote": "Analyze physical exams and chest x-rays and relate the data to the patient's condition and anticipate problems",
+     "basis": "analyzing exam/imaging results and relating to condition constitutes communicating assessment results as documented findings",
+     "why": "adjudicated: d) analyzing exam/imaging data evidences gathering information not communicating results to a physician"
+    },
+    {
+     "activity": 20,
+     "course": "RSPT 51C",
+     "section": "content",
+     "quote": "Aerosolized medication therapy",
+     "basis": "aerosolized medication and bronchopulmonary hygiene therapy content addresses treatment of chronic pulmonary disease",
+     "why": "adjudicated: a) topic-only heading naming subject with no performable bronchopulmonary drainage content"
+    },
+    {
+     "activity": 15,
+     "course": "RSPT 53A",
+     "section": "content",
+     "quote": "Appropriate respiratory pharmacologic agents",
+     "basis": "content on selecting rescue vs. maintenance drugs evidences determining requirements for treatment",
+     "why": "adjudicated: a) topic-only heading naming subject with no performable protocol-determination content"
+    },
+    {
+     "activity": 4,
+     "course": "RSPT 55B",
+     "section": "content",
+     "quote": "Recording and reporting the procedure",
+     "basis": "reporting ABG results as part of informing on patient condition",
+     "why": "adjudicated: a) topic-only heading 'recording and reporting the procedure' with no patient-condition informing content specified"
+    },
+    {
+     "activity": 6,
+     "course": "RSPT 55B",
+     "section": "content",
+     "quote": "Recording and reporting the procedure",
+     "basis": "reporting blood gas analysis results as part of ABG procedure",
+     "why": "adjudicated: a) topic-only heading 'recording and reporting the procedure' with no physician-relay content specified"
+    },
+    {
+     "activity": 9,
+     "course": "RSPT 55B",
+     "section": "objectives",
+     "quote": "Arterial blood gas (ABG) procedures and interpretation.",
+     "basis": "testing technique assisting in patient diagnosis as part of care team",
+     "why": "adjudicated: different activity: ABG procedure evidences gather information/testing, not team-assisting"
+    },
+    {
+     "activity": 11,
+     "course": "RSPT 55B",
+     "section": "content",
+     "quote": "The \"seven rights\" of drug administration",
+     "basis": "adherence to safety standards in medication administration",
+     "why": "adjudicated: c) generic drug administration safety rule credited to verifying standards"
+    },
+    {
+     "activity": 14,
+     "course": "RSPT 55B",
+     "section": "content",
+     "quote": "Post-procedure considerations",
+     "basis": "equipment care steps following ventilation/airway procedures, part of cleaning/maintenance routine",
+     "why": "adjudicated: a) topic-only heading 'post-procedure considerations' with no explicit cleaning content"
+    },
+    {
+     "activity": 18,
+     "course": "RSPT 55B",
+     "section": "content",
+     "quote": "Recording and reporting procedures",
+     "basis": "documentation following procedures, adjacent to explaining results",
+     "why": "adjudicated: different activity: recording/reporting procedures evidences maintaining records, not explaining to patients"
+    },
+    {
+     "activity": 19,
+     "course": "RSPT 55B",
+     "section": "objectives",
+     "quote": "Proper suctioning procedures during respiratory care.",
+     "basis": "training-adjacent technique performed for managing patient airway care",
+     "why": "adjudicated: different activity: suctioning procedure evidences airway management, not patient/family training"
+    },
+    {
+     "activity": 25,
+     "course": "RSPT 55B",
+     "section": "content",
+     "quote": "Pre-procedure considerations for extubation",
+     "basis": "airway procedure implies patient positioning/transport context within respiratory care",
+     "why": "adjudicated: different activity: extubation pre-procedure considerations evidence airway management, not patient transport"
+    },
+    {
+     "activity": 4,
+     "course": "RSPT 56",
+     "section": "content",
+     "quote": "Assessing patient's response to therapy",
+     "basis": "monitoring physiological response used to inform care, precursor to consulting physician",
+     "why": "adjudicated: a) topic-only heading 'assessing patient's response to therapy' with no consult/inform content"
+    },
+    {
+     "activity": 6,
+     "course": "RSPT 56",
+     "section": "content",
+     "quote": "Critical test values",
+     "basis": "recognizing and reporting lab test results relevant to physicians",
+     "why": "adjudicated: a) topic-only heading 'critical test values' with no relay-to-physician content"
+    },
+    {
+     "activity": 14,
+     "course": "RSPT 56",
+     "section": "content",
+     "quote": "Hand hygiene",
+     "basis": "cleaning practice tied to equipment/facility infection control",
+     "why": "adjudicated: c) generic hand hygiene skill credited to cleaning medical equipment"
+    },
+    {
+     "activity": 4,
+     "course": "RSPT 50C",
+     "section": "objectives",
+     "quote": "Discuss the principle of monitoring the patient in the intensive care unit.",
+     "basis": "consulting on physiologic responses to therapy as part of ICU monitoring principles",
+     "why": "adjudicated: b) discussing principle of monitoring is precondition knowledge preceding informing professionals"
+    },
+    {
+     "activity": 4,
+     "course": "RSPT 51B",
+     "section": "outcomes",
+     "quote": "The student will be able to interpret arterial blood gases and initiate therapy based on results.",
+     "basis": "interpreting ABGs to initiate therapy evidences the assessment component underlying informing professionals of patient condition",
+     "why": "adjudicated: different activity: interpreting ABGs to initiate therapy evidences gather info/determine protocols, not informing professionals"
+    },
+    {
+     "activity": 23,
+     "course": "RSPT 55C",
+     "section": "lab",
+     "quote": "Discuss chest, bony thorax, and soft tissue neck/upper airway pathology, and identify what signs and symptoms relate to that pathology",
+     "basis": "chest exam and radiograph interpretation supports testing patient lung functioning",
+     "why": "adjudicated: a) topic-only heading discussing pathology/signs with no performable testing content"
+    },
+    {
+     "activity": 4,
+     "course": "RSPT 57",
+     "section": "content",
+     "quote": "Interpretation of laboratory data",
+     "basis": "informing on patient condition via lab/blood gas interpretation",
+     "why": "adjudicated: a) topic-only heading 'interpretation of laboratory data' with no consult/inform content"
+    },
+    {
+     "activity": 6,
+     "course": "RSPT 57",
+     "section": "content",
+     "quote": "Interpretation of laboratory data",
+     "basis": "communicating blood analysis results as part of assessment findings",
+     "why": "adjudicated: a) topic-only heading 'interpretation of laboratory data' with no relay-to-physician content"
+    },
+    {
+     "activity": 18,
+     "course": "RSPT 57",
+     "section": "content",
+     "quote": "Indications, contraindication, and hazards for therapy",
+     "basis": "content covering explanation basis but course centers on performing, not patient-facing explanation",
+     "why": "adjudicated: as stated in basis, course centers on performing not patient-facing explanation"
+    },
+    {
+     "activity": 14,
+     "course": "RSPT 61A",
+     "section": "lab",
+     "quote": "Set ventilator alarms and sensitivity appropriately",
+     "basis": "servicing/maintaining equipment for safe operation, part of equipment upkeep routine",
+     "why": "adjudicated: different activity: setting alarms/sensitivity evidences adjusting equipment settings, not cleaning"
+    },
+    {
+     "activity": 4,
+     "course": "RSPT 61A",
+     "section": "objectives",
+     "quote": "Recognize ventilator malfunction, given patient simulations",
+     "basis": "recognizing adverse conditions requiring consultation/informing on patient/equipment condition",
+     "why": "adjudicated: different activity: recognizing ventilator malfunction evidences examine/maintain equipment, not informing professionals"
+    },
+    {
+     "activity": 4,
+     "course": "RSPT 70A",
+     "section": "outcomes",
+     "quote": "State indications, contraindications, hazards, and methods of evaluating effectiveness of all therapies administered",
+     "basis": "assessing and communicating therapy effectiveness informs medical professionals of patient status",
+     "why": "adjudicated: a) topic-only heading listing indications/hazards/evaluation methods with no consult content"
+    },
+    {
+     "activity": 9,
+     "course": "RSPT 70A",
+     "section": "description",
+     "quote": "Students will learn to analyze fundamental diagnostic information and its relevance to treatment strategies in the clinical setting",
+     "basis": "clinical rotation places students assisting healthcare practitioners during patient care",
+     "why": "adjudicated: a) topic-only description of learning to analyze diagnostic information with no team-assisting content"
+    },
+    {
+     "activity": 9,
+     "course": "RSPT 70A",
+     "section": "content",
+     "quote": "End of shift reports",
+     "basis": "team-based reporting evidences assisting practitioners in coordinated patient care",
+     "why": "adjudicated: different activity: end of shift reports evidence communicating with team/records, not assisting during exam/treatment"
+    },
+    {
+     "activity": 18,
+     "course": "RSPT 70A",
+     "section": "description",
+     "quote": "focusing on the practical implementation of respiratory therapy techniques",
+     "basis": "clinical implementation of therapy techniques with patients requires explaining procedures to gain cooperation, per course scope",
+     "why": "adjudicated: a) topic-only description of practical implementation with no explicit patient-explanation content"
+    },
+    {
+     "activity": 4,
+     "course": "AHS 60A",
+     "section": "content",
+     "quote": "Relating patient condition and pathophysiology to abnormal readings",
+     "basis": "relating abnormal hemodynamic readings to patient condition evidences informing medical professionals about patient conditions",
+     "why": "adjudicated: a) topic-only heading relating readings to pathophysiology with no consult content"
+    },
+    {
+     "activity": 6,
+     "course": "AHS 60A",
+     "section": "content",
+     "quote": "Relating patient condition and pathophysiology to abnormal readings",
+     "basis": "translating hemodynamic/ECG readings into patient condition assessment evidences relaying test results to inform care decisions",
+     "why": "adjudicated: a) topic-only heading relating readings to pathophysiology with no relay-to-physician content"
+    },
+    {
+     "activity": 23,
+     "course": "AHS 60A",
+     "section": "outcomes",
+     "quote": "Discuss the electrophysiology of the heart and relate it to the electrocardiogram.",
+     "basis": "literal outcome on interpreting the ECG evidences testing patient heart functioning",
+     "why": "adjudicated: b) discussing electrophysiology is precondition knowledge preceding testing patient heart function"
+    },
+    {
+     "activity": 4,
+     "course": "RSPT 53B",
+     "section": "objectives",
+     "quote": "Evaluate the patient's need for various diuretic agents.",
+     "basis": "evaluating a patient's drug therapy need requires assessing physiological status to inform or consult with the physician",
+     "why": "adjudicated: different activity: evaluating need for diuretic agents evidences determine protocols, not informing professionals"
+    },
+    {
+     "activity": 4,
+     "course": "RSPT 53B",
+     "section": "objectives",
+     "quote": "Evaluate the patient's need for selected respiratory therapy agents.",
+     "basis": "evaluating need for a respiratory agent evidences assessing patient condition relevant to informing medical professionals",
+     "why": "adjudicated: different activity: evaluating need for respiratory agent evidences determine protocols, not informing professionals"
+    },
+    {
+     "activity": 1,
+     "course": "RSPT 55E",
+     "section": "content",
+     "quote": "Hemodynamic monitoring",
+     "basis": "content covers operating hemodynamic monitoring equipment following treatment parameters",
+     "why": "adjudicated: different activity: hemodynamic monitoring evidences monitor patient conditions, not operating therapeutic devices"
+    },
+    {
+     "activity": 4,
+     "course": "RSPT 61B",
+     "section": "content",
+     "quote": "Alarm settings",
+     "basis": "monitoring equipment alarms inform staff of patient status changes needing physician consult",
+     "why": "adjudicated: different activity: alarm settings content evidences equipment adjustment, not informing professionals"
+    },
+    {
+     "activity": 6,
+     "course": "RSPT 61B",
+     "section": "objectives",
+     "quote": "Interpret laboratory data",
+     "basis": "interpreting lab/blood gas results implies conveying results within care team",
+     "why": "adjudicated: different activity: interpreting lab data evidences gathering information, not relaying to physician"
+    },
+    {
+     "activity": 14,
+     "course": "RSPT 61B",
+     "section": "lab",
+     "quote": "Assemble, troubleshoot and manage infant ventilators",
+     "basis": "troubleshooting/maintaining equipment functioning safely",
+     "why": "adjudicated: different activity: assembling/troubleshooting ventilators evidences maintain equipment, not cleaning"
+    },
+    {
+     "activity": 22,
+     "course": "RSPT 61B",
+     "section": "lab",
+     "quote": "Assemble, troubleshoot and manage infant ventilators",
+     "basis": "adjusting ventilator settings to achieve optimum therapy results",
+     "why": "adjudicated: different activity: assembling/troubleshooting ventilators evidences maintain/operate equipment, not adjust settings specifically"
+    },
+    {
+     "activity": 4,
+     "course": "RSPT 70B",
+     "section": "objectives",
+     "quote": "Appropriately document treatment outcomes and observations of therapy.",
+     "basis": "informing on patient condition and care via documented observations",
+     "why": "adjudicated: different activity: documenting treatment outcomes evidences maintaining records, not informing professionals"
+    },
+    {
+     "activity": 6,
+     "course": "RSPT 70B",
+     "section": "objectives",
+     "quote": "Interpret electrocardiograms and arterial blood gas analyses.",
+     "basis": "test result interpretation communicated as part of clinical care team",
+     "why": "adjudicated: different activity: interpreting ECG/ABG evidences testing, not relaying results to a physician"
+    },
+    {
+     "activity": 10,
+     "course": "RSPT 70B",
+     "section": "objectives",
+     "quote": "Recommend appropriate therapies for ventilator patients.",
+     "basis": "collaborating on treatment planning for ventilator patients",
+     "why": "adjudicated: different activity: recommending therapies evidences determine protocols, not team collaboration specifically"
+    },
+    {
+     "activity": 18,
+     "course": "RSPT 70B",
+     "section": "objectives",
+     "quote": "Demonstrate effective and appropriate communication skills with patients, family members, and hospital staff.",
+     "basis": "explaining procedures to patients and family",
+     "why": "adjudicated: c) generic communication skill credited to explaining procedures"
+    },
+    {
+     "activity": 4,
+     "course": "RSPT 55F",
+     "section": "outcomes",
+     "quote": "Interprets information and accurately suggests treatment in clinical simulations for patients with cardiopulmonary and pulmonary conditions.",
+     "basis": "interpreting patient data and suggesting treatment reflects informing on patient condition and care",
+     "why": "adjudicated: different activity: suggesting treatment evidences determine protocols, not informing professionals"
+    },
+    {
+     "activity": 9,
+     "course": "RSPT 55F",
+     "section": "objectives",
+     "quote": "Case management of a neuro patient.",
+     "basis": "case management in head injury simulation reflects assisting healthcare team during patient procedures",
+     "why": "adjudicated: a) topic-only heading 'case management of a neuro patient' with no performable team-assisting content"
+    },
+    {
+     "activity": 12,
+     "course": "RSPT 61C",
+     "section": "outcomes",
+     "quote": "Create a patient care plan for a respiratory patient.",
+     "basis": "creating a care plan document is maintaining patient-care records",
+     "why": "adjudicated: different activity: creating a care plan evidences care planning, not maintaining identification/therapy charts"
+    },
+    {
+     "activity": 18,
+     "course": "RSPT 61C",
+     "section": "content",
+     "quote": "Purpose of plan",
+     "basis": "discharge planning content on explaining plan purpose to patients",
+     "why": "adjudicated: a) topic-only heading 'purpose of plan' with no explicit patient-explanation content"
+    },
+    {
+     "activity": 19,
+     "course": "RSPT 61C",
+     "section": "content",
+     "quote": "Introduction to teaching techniques",
+     "basis": "teaching techniques content supports patient/family training in respiratory management",
+     "why": "adjudicated: b) introduction to teaching techniques is precondition knowledge preceding actual patient training"
+    },
+    {
+     "activity": 4,
+     "course": "RSPT 63A",
+     "section": "content",
+     "quote": "Laboratory results",
+     "basis": "reviewing lab/blood chemistry results to inform physicians of patient condition",
+     "why": "adjudicated: a) topic-only heading 'laboratory results' with no consult/inform content"
+    },
+    {
+     "activity": 6,
+     "course": "RSPT 63A",
+     "section": "content",
+     "quote": "Laboratory results",
+     "basis": "relaying blood/lab analysis results is communicating assessment results to medical professionals",
+     "why": "adjudicated: a) topic-only heading 'laboratory results' with no relay-to-physician content"
+    },
+    {
+     "activity": 9,
+     "course": "RSPT 63A",
+     "section": "description",
+     "quote": "The assessment and treatment of patients with cardiopulmonary disease.",
+     "basis": "assessment and treatment activity implies assisting healthcare practitioners in patient care",
+     "why": "adjudicated: a) topic-only description naming subject area with no performable assisting content"
+    },
+    {
+     "activity": 4,
+     "course": "RSPT 65",
+     "section": "content",
+     "quote": "Evaluate patient's response to respiratory care",
+     "basis": "evaluating patient response and communicating info evidences informing professionals of patient condition",
+     "why": "adjudicated: different activity: evaluating patient's response evidences monitor conditions, not informing professionals"
+    },
+    {
+     "activity": 10,
+     "course": "RSPT 65",
+     "section": "content",
+     "quote": "Initiate, conduct or modify respiratory care techniques in an emergency setting",
+     "basis": "coordinating care as part of team consistent with collaborating with healthcare professionals to plan/provide treatment",
+     "why": "adjudicated: different activity: modifying respiratory care in emergency evidences determine protocols, not collaboration specifically"
+    },
+    {
+     "activity": 19,
+     "course": "RSPT 65",
+     "section": "content",
+     "quote": "Patient's learning needs",
+     "basis": "addressing patient's learning needs evidences training patients in managing their illness",
+     "why": "adjudicated: a) topic-only heading 'patient's learning needs' with no performable training content"
+    },
+    {
+     "activity": 23,
+     "course": "RSPT 65",
+     "section": "content",
+     "quote": "Pulmonary function results",
+     "basis": "reviewing pulmonary function results evidences testing patient lung functioning",
+     "why": "adjudicated: a) topic-only heading 'pulmonary function results' with no performable testing content"
+    },
+    {
+     "activity": 23,
+     "course": "RSPT 65",
+     "section": "content",
+     "quote": "Cardiac monitoring",
+     "basis": "cardiac monitoring data review evidences testing patient heart functioning",
+     "why": "adjudicated: a) topic-only heading 'cardiac monitoring' with no performable heart-testing content beyond monitoring"
+    },
+    {
+     "activity": 4,
+     "course": "RSPT 70C",
+     "section": "content",
+     "quote": "Patient care plans and education with the patient/family members",
+     "basis": "communicating patient condition information as part of care planning",
+     "why": "adjudicated: a) topic-only heading 'patient care plans and education' with no consult/inform content"
+    },
+    {
+     "activity": 4,
+     "course": "RSPT 70C",
+     "section": "objectives",
+     "quote": "Recommend appropriate therapies for ventilator patients.",
+     "basis": "informing on patient condition to determine therapy recommendations",
+     "why": "adjudicated: different activity: recommending therapies evidences determine protocols, not informing professionals"
+    },
+    {
+     "activity": 6,
+     "course": "RSPT 70C",
+     "section": "objectives",
+     "quote": "Provide correct documentation of observations and therapies.",
+     "basis": "communicating assessment/test results via documentation to care team",
+     "why": "adjudicated: a) topic-only heading naming documentation with no relay-to-physician content"
+    },
+    {
+     "activity": 10,
+     "course": "RSPT 70C",
+     "section": "objectives",
+     "quote": "Demonstrate effective and appropriate communication skills with patients, family members, and hospital staff.",
+     "basis": "collaborating with hospital staff on patient care",
+     "why": "adjudicated: c) generic communication skill credited to collaborating with professionals"
+    },
+    {
+     "activity": 18,
+     "course": "RSPT 70C",
+     "section": "content",
+     "quote": "Patient education",
+     "basis": "explaining procedures/results to patients",
+     "why": "adjudicated: a) topic-only heading 'patient education' with no explicit explain-procedures content"
+    },
+    {
+     "activity": 19,
+     "course": "RSPT 70C",
+     "section": "content",
+     "quote": "Patient care plans and education with the patient/family members",
+     "basis": "training patients/family in managing their condition",
+     "why": "adjudicated: a) topic-only heading 'patient care plans and education' with no performable training content"
+    },
+    {
+     "activity": 4,
+     "course": "RSPT 55G",
+     "section": "outcomes",
+     "quote": "Interprets data correctly and chooses correct treatments in the computer modules.",
+     "basis": "interpreting patient data to choose treatment reflects informing on patient condition/care decisions",
+     "why": "adjudicated: different activity: choosing treatments from data evidences determine protocols, not informing professionals"
+    },
+    {
+     "activity": 6,
+     "course": "RSPT 61D",
+     "section": "content",
+     "quote": "Pediatric laboratory studies",
+     "basis": "evaluating and analyzing lab results implies relaying results as part of assessment communication",
+     "why": "adjudicated: different activity: analyzing lab studies evidences gathering information, not relaying to physician"
+    },
+    {
+     "activity": 18,
+     "course": "RSPT 61D",
+     "section": "content",
+     "quote": "Chief complaint",
+     "basis": "not a strong match; removed",
+     "why": "adjudicated: as stated in basis, not a strong match; removed"
+    },
+    {
+     "activity": 9,
+     "course": "RSPT 70D",
+     "section": "content",
+     "quote": "Adult intensive critical care patients",
+     "basis": "clinical rotation in ICU setting involves assisting healthcare team with procedures",
+     "why": "adjudicated: a) topic-only heading 'adult intensive critical care patients' with no performable assisting content"
+    }
+   ],
+   "source_note": "Read from Foothill College's course outlines of record (courseleaf); sections present: slo, objective, description, content outline, lab content.",
+   "role": "",
+   "short_title": "Respiratory Therapy"
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+{
+  "_comment": "Curriculum-alignment roster for the foothill-respiratory-therapy-top-121000 program evaluation: one program record read against the def's destination occupations; columns are labelled by certificate. Readings are saved per program under saved_reports/alignment/.",
+  "id": "foothill-respiratory-therapy-top-121000",
+  "onet_release": "31.0",
+  "short_name": "Foothill College",
+  "columns": "certificate",
+  "occupations": [
+    "29-1126"
+  ],
+  "top_n": 10,
+  "programs": [
+    {
+      "program": "foothill-respiratory-therapy",
+      "paired_soc": "29-1126",
+      "crosswalk_socs": [
+        "29-1126"
+      ],
+      "pairing_basis": "The degree's stated purpose: preparing Respiratory Therapists (SOC 29-1126), the one destination TOP 121000's crosswalk reaches.",
+      "reads_against": [],
+      "appendix_socs": []
+    }
+  ]
+}

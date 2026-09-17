@@ -1,0 +1,47 @@
+{
+ "college": "Foothill College",
+ "system": "courseleaf",
+ "code": "AHS 50B",
+ "title": "Interprofessional Patient Competencies",
+ "description": "This is the second of three courses focusing on interprofessional education (IPE). This course includes an overview on the pediatric patient, the geriatric patient, communication issues in health care settings, and understanding the skills and scope of practice of other health care professionals with a focus on patient safety and teamwork. Enrollment is limited to students accepted in an allied health program.",
+ "outcomes": [
+  "Students will demonstrate how to perform a mini-cognitive assessment of a geriatric patient.",
+  "Students will demonstrate the correct way to work with an interpreter in the healthcare environment."
+ ],
+ "objectives": [
+  "Analyze and demonstrate effective communication in the health care setting related specifically to patient safety.",
+  "Identify issues of cultural, health literacy, and language barriers that affect communication in the delivery of health care.",
+  "Understand the skills and scope of practice of other health care professionals.",
+  "Apply appropriate modes of treatment or management to assist in the treatment of the pediatric patient.",
+  "Apply appropriate modes of treatment or management to assist in the treatment of the geriatric patient."
+ ],
+ "content": [
+  "Issues related to communication in health care environment",
+  "Verbal and non-verbal communication",
+  "Interprofessional communication",
+  "Patient confidentiality and privacy",
+  "Effect of communication on patient safety",
+  "Patient issues related to communication in the health care environment",
+  "Health literacy",
+  "Language barriers and using an interpreter",
+  "Culturally competent health care",
+  "Scope of Practice of various health care professionals",
+  "Duties, licensing, skills",
+  "Working effectively with the health care team",
+  "Pediatric patients",
+  "Management and communication with pediatric patients and family",
+  "Team approach to pediatric patient care",
+  "Referral and consultation protocols for the pediatric patient",
+  "Geriatric patients",
+  "Management and communication with geriatric patients and family",
+  "Team approach to geriatric patient care",
+  "Referral and consultation protocols for the geriatric patient"
+ ],
+ "lab": [],
+ "assignments": [],
+ "source_url": "https://catalog.foothill.edu/course-outlines/AHS-50B/",
+ "effective": "Summer 2024",
+ "approved": "",
+ "retrieved": "2026-09-17",
+ "notes": ""
+}

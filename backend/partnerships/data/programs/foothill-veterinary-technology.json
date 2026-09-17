@@ -1,0 +1,207 @@
+{
+  "college": "Foothill College",
+  "college_key": "foothill",
+  "member_id": "foothill",
+  "certificate": "Associate in Science Degree, Veterinary Technology",
+  "short_title": "Veterinary Technology",
+  "kind": "credit",
+  "control_number": "06009",
+  "award": "A.S. Degree",
+  "status": "Active",
+  "top6": "010210",
+  "top_name": "Veterinary Technician (Licensed)",
+  "source": {
+    "system": "courseleaf"
+  },
+  "course_sources": {},
+  "program_description": "The Foothill College Veterinary Technology program is an academically challenging two-year, AVMA-accredited course of training that prepares the student for employment as a Registered Veterinary Technician (RVT). The program focuses on building competency in essential skills through hands-on training and personal attention to students. Graduates receive an Associate in Science Degree in Veterinary Technology and are then eligible to sit for the Veterinary Technician National Examination to become licensed.",
+  "program_outcomes": [
+    "Graduates will demonstrate entry-level competency in the necessary knowledge, skills, and abilities required for the practice of veterinary technology in a wide range of practice settings.",
+    "Graduates will demonstrate entry-level clinical skills competency in accordance with accreditation requirements.",
+    "Graduates will demonstrate proficiency in critical skills including collaboration, professionalism, communication, and critical thinking.",
+    "Graduates will have a firm understanding of \"One Health,\" the veterinary nurse's role in the health of animals, humans, and the planet. They will also have an understanding and tools to support their own mental, physical, and emotional health through self-care and support systems."
+  ],
+  "courses": [
+    {
+      "code": "AHS 50A",
+      "title": "Introduction To Allied Health Programs",
+      "units": 1.5
+    },
+    {
+      "code": "V T 53A",
+      "title": "Veterinary Medical Terminology",
+      "units": 2
+    },
+    {
+      "code": "V T 51A",
+      "title": "Freshman Seminar",
+      "units": 1
+    },
+    {
+      "code": "V T 54A",
+      "title": "Comparative Veterinary Anatomy & Physiology For The Veterinary Technician",
+      "units": 5
+    },
+    {
+      "code": "V T 55",
+      "title": "Small Animal Nursing I",
+      "units": 4
+    },
+    {
+      "code": "V T 75A",
+      "title": "Animal Care Skills I",
+      "units": 2
+    },
+    {
+      "code": "V T 51B",
+      "title": "Current Topics In Veterinary Technology Ii",
+      "units": 1
+    },
+    {
+      "code": "V T 53B",
+      "title": "Medical Calculations For Veterinary Nurses",
+      "units": 2
+    },
+    {
+      "code": "V T 54B",
+      "title": "Comparative Veterinary Anatomy & Physiology For The Veterinary Technician",
+      "units": 5
+    },
+    {
+      "code": "V T 56",
+      "title": "Small Animal Nursing Ii",
+      "units": 4
+    },
+    {
+      "code": "V T 60",
+      "title": "Veterinary Office Practice",
+      "units": 2
+    },
+    {
+      "code": "V T 75B",
+      "title": "Animal Care Skills Ii",
+      "units": 2
+    },
+    {
+      "code": "V T 51C",
+      "title": "Service Learning & Leadership For Veterinary Nurses",
+      "units": 1
+    },
+    {
+      "code": "V T 53C",
+      "title": "Introduction To Large Animal Nursing",
+      "units": 2
+    },
+    {
+      "code": "V T 61",
+      "title": "Pathophysiology Of Animal Disease",
+      "units": 4
+    },
+    {
+      "code": "V T 75C",
+      "title": "Large Animal Skills Laboratory",
+      "units": 1
+    },
+    {
+      "code": "V T 81",
+      "title": "Clinical Pathology Methods",
+      "units": 5
+    },
+    {
+      "code": "V T 70",
+      "title": "Fundamentals Of Veterinary Diagnostic Imaging",
+      "units": 4
+    },
+    {
+      "code": "V T 83A",
+      "title": "Pharmacology For Veterinary Nurses I",
+      "units": 3
+    },
+    {
+      "code": "V T 89",
+      "title": "Clinical Internship I",
+      "units": 3
+    },
+    {
+      "code": "V T 51D",
+      "title": "Senior Seminar",
+      "units": 1
+    },
+    {
+      "code": "V T 57L",
+      "title": "Advanced Small Animal Nursing",
+      "units": 1
+    },
+    {
+      "code": "V T 83B",
+      "title": "Pharmacology For Veterinary Nurses Ii",
+      "units": 3
+    },
+    {
+      "code": "V T 85",
+      "title": "Veterinary Emergency & Critical Care",
+      "units": 4
+    },
+    {
+      "code": "V T 91",
+      "title": "Clinical Internship Ii",
+      "units": 3
+    },
+    {
+      "code": "V T 51E",
+      "title": "Current Topics In Veterinary Technology V",
+      "units": 1
+    },
+    {
+      "code": "V T 58L",
+      "title": "Surgical Assisting For The Veterinary Nurse",
+      "units": 1
+    },
+    {
+      "code": "V T 72",
+      "title": "Principles Of Veterinary Dentistry",
+      "units": 4
+    },
+    {
+      "code": "V T 84",
+      "title": "Anesthesiology For Technicians",
+      "units": 4
+    },
+    {
+      "code": "V T 92",
+      "title": "Clinical Internship Iii",
+      "units": 3
+    },
+    {
+      "code": "V T 51F",
+      "title": "Career Exploration For Veterinary Nurses",
+      "units": 1
+    },
+    {
+      "code": "V T 66",
+      "title": "Exotic Animal Care",
+      "units": 2
+    },
+    {
+      "code": "V T 84L",
+      "title": "Veterinary Anesthesia Laboratory",
+      "units": 3
+    },
+    {
+      "code": "V T 86",
+      "title": "Laboratory Animal Nursing",
+      "units": 2.5
+    },
+    {
+      "code": "V T 93",
+      "title": "Clinical Internship Iv",
+      "units": 3
+    },
+    {
+      "code": "V T 95",
+      "title": "Veterinary Technician Proficiency",
+      "units": 2
+    }
+  ],
+  "notes": "Courses = the degree's core and support courses per the catalog plan grid at catalog.foothill.edu/degrees-certificates/veterinary-technology/ (2026-09-17), in plan order; program prerequisites (V T 51, ENGL, BIOL 10, BIOL 41, CHEM 30A) are left out. The ProgramCourseFile draft carried only two 'Current Topics' shells — the state file is stale for this degree."
+}

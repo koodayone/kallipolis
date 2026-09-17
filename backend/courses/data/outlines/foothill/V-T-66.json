@@ -1,0 +1,52 @@
+{
+ "college": "Foothill College",
+ "system": "courseleaf",
+ "code": "V T 66",
+ "title": "Exotic Animal Care",
+ "description": "Students build on their understanding of anatomy and physiology to gain a better understanding of the care, husbandry, clinical procedures, and medical concerns of rabbits, ferrets, guinea pigs, chinchillas, small rodents, birds, snakes, lizards, turtles. Emphasis on clinically relevant materials and activities. Intended for students in the Veterinary Technology Program; enrollment is limited to students accepted in the program.",
+ "outcomes": [
+  "Demonstrate entry level skills of the husbandry, handling, medical care, routine clinical procedures of rabbits, ferrets, guinea pigs, chinchillas, small rodents, birds, snakes, lizards, turtles.",
+  "Identify the basic anatomy, physiology, nutrition and common diseases of rabbits, ferrets, guinea pigs, chinchillas, small rodents, birds, snakes, lizards, turtles."
+ ],
+ "objectives": [
+  "Discuss the husbandry needs of the exotic species.",
+  "Demonstrate the proper handling and restraint techniques for these species.",
+  "Discuss the basic medical concerns (diseases and disorders) of the exotic species.",
+  "Demonstrate the proper grooming, sample collection techniques, and nursing care for the exotic species.",
+  "Discuss the behavior of these exotic species."
+ ],
+ "content": [
+  "Husbandry needs of the exotic species",
+  "Psittacines and passerines",
+  "Reptiles",
+  "Chelonians",
+  "Mammals",
+  "Proper handling and restraint techniques for these species",
+  "Psittacines and passerines",
+  "Reptiles",
+  "Chelonians",
+  "Mammals",
+  "Basic medical concerns",
+  "Psittacines and passerines",
+  "Reptiles",
+  "Chelonians",
+  "Mammals",
+  "Grooming, sample collection techniques, and nursing care",
+  "Psittacines and passerines",
+  "Reptiles",
+  "Chelonians",
+  "Mammals",
+  "Behavior of these exotic species",
+  "Psittacines and passerines",
+  "Reptiles",
+  "Chelonians",
+  "Mammals"
+ ],
+ "lab": [],
+ "assignments": [],
+ "source_url": "https://catalog.foothill.edu/course-outlines/V-T-66/",
+ "effective": "Fall 2025",
+ "approved": "",
+ "retrieved": "2026-09-17",
+ "notes": ""
+}

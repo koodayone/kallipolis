@@ -1,0 +1,210 @@
+{
+  "college": "Foothill College",
+  "college_key": "foothill",
+  "member_id": "foothill",
+  "certificate": "Associate in Science Degree, Respiratory Therapy",
+  "short_title": "Respiratory Therapy",
+  "kind": "credit",
+  "control_number": "06068",
+  "award": "A.S. Degree",
+  "status": "Active",
+  "top6": "121000",
+  "top_name": "Respiratory Care/Therapy",
+  "source": {
+    "system": "courseleaf"
+  },
+  "course_sources": {},
+  "program_description": "Respiratory Therapy is a dynamic and challenging healthcare profession. Therapists work with physicians, nurses, and other healthcare professionals in intensive care units and hospital floor care areas. They are involved in the treatment, management, and rehabilitation of patients with lung and heart problems. Respiratory Therapists manage the ventilation of critically ill patients, as well as provide care to patients with acute and chronic pulmonary disease. The program is accredited by the Commission on Accreditation for Respiratory Care (CoARC).",
+  "program_outcomes": [
+    "Graduates will be able to demonstrate the necessary knowledge, entry-level competency, and clinical skills in respiratory therapy.",
+    "Graduates will be able to demonstrate the appropriate values, critical thinking skills, time management, and communication skills needed for competent respiratory therapy care in multidisciplinary settings."
+  ],
+  "courses": [
+    {
+      "code": "AHS 50A",
+      "title": "Introduction To Allied Health Programs",
+      "units": 1.5
+    },
+    {
+      "code": "BIOL 41",
+      "title": "Microbiology",
+      "units": 6
+    },
+    {
+      "code": "RSPT 50A",
+      "title": "Respiratory Therapy Procedures",
+      "units": 4.5
+    },
+    {
+      "code": "RSPT 51A",
+      "title": "Introduction To Respiratory Anatomy & Physiology",
+      "units": 2
+    },
+    {
+      "code": "RSPT 52",
+      "title": "Applied Science For Respiratory Therapy",
+      "units": 3
+    },
+    {
+      "code": "RSPT 54",
+      "title": "Orientation To Respiratory Care",
+      "units": 2
+    },
+    {
+      "code": "RSPT 55A",
+      "title": "Mediated Studies In Respiratory Therapy I",
+      "units": 0.5
+    },
+    {
+      "code": "AHS 50B",
+      "title": "Interprofessional Patient Competencies",
+      "units": 0.5
+    },
+    {
+      "code": "RSPT 50B",
+      "title": "Introduction To Patient Care Procedures",
+      "units": 5
+    },
+    {
+      "code": "RSPT 51C",
+      "title": "Patient Assessment & Pulmonary Disease",
+      "units": 4
+    },
+    {
+      "code": "RSPT 53A",
+      "title": "Introduction To Respiratory Therapy Pharmacology",
+      "units": 2
+    },
+    {
+      "code": "RSPT 55B",
+      "title": "Mediated Studies In Respiratory Therapy Ii",
+      "units": 0.5
+    },
+    {
+      "code": "RSPT 56",
+      "title": "Orientation To Hospital & Patient Care I",
+      "units": 1
+    },
+    {
+      "code": "RSPT 50C",
+      "title": "Therapeutics & Introduction To Mechanical Ventilation",
+      "units": 4
+    },
+    {
+      "code": "RSPT 51B",
+      "title": "Respiratory Physiology",
+      "units": 3
+    },
+    {
+      "code": "RSPT 55C",
+      "title": "Mediated Studies In Respiratory Therapy Iii",
+      "units": 0.5
+    },
+    {
+      "code": "RSPT 57",
+      "title": "Orientation To Hospital & Patient Care Ii",
+      "units": 2
+    },
+    {
+      "code": "RSPT 55D",
+      "title": "Mediated Studies In Respiratory Therapy Iv",
+      "units": 0.5
+    },
+    {
+      "code": "RSPT 61A",
+      "title": "Adult Mechanical Ventilation",
+      "units": 4
+    },
+    {
+      "code": "RSPT 70A",
+      "title": "Clinical Rotation I",
+      "units": 2
+    },
+    {
+      "code": "AHS 60A",
+      "title": "Cardiology For Allied Health",
+      "units": 2
+    },
+    {
+      "code": "RSPT 53B",
+      "title": "Advanced Respiratory Therapy Pharmacology",
+      "units": 2
+    },
+    {
+      "code": "RSPT 55E",
+      "title": "Mediated Studies In Respiratory Therapy V",
+      "units": 0.5
+    },
+    {
+      "code": "RSPT 61B",
+      "title": "Neonatal Respiratory Care",
+      "units": 3
+    },
+    {
+      "code": "RSPT 70B",
+      "title": "Clinical Rotation Ii",
+      "units": 8
+    },
+    {
+      "code": "AHS 60C",
+      "title": "Advanced Cardiac Life Support",
+      "units": 2
+    },
+    {
+      "code": "RSPT 55F",
+      "title": "Mediated Studies In Respiratory Therapy Vi",
+      "units": 0.5
+    },
+    {
+      "code": "RSPT 61C",
+      "title": "Home & Rehabilitative Respiratory Care",
+      "units": 2
+    },
+    {
+      "code": "RSPT 63A",
+      "title": "Advanced Pathophysiology & Patient Management",
+      "units": 3
+    },
+    {
+      "code": "RSPT 65",
+      "title": "Computer Patient Simulations",
+      "units": 0.5
+    },
+    {
+      "code": "RSPT 70C",
+      "title": "Clinical Rotation Iii",
+      "units": 8
+    },
+    {
+      "code": "AHS 50C",
+      "title": "Interprofessional Competencies For Collaborative Practice",
+      "units": 0.5
+    },
+    {
+      "code": "RSPT 55G",
+      "title": "Mediated Studies In Respiratory Therapy Vii",
+      "units": 0.5
+    },
+    {
+      "code": "RSPT 60C",
+      "title": "Pulmonary Diagnostics",
+      "units": 3
+    },
+    {
+      "code": "RSPT 61D",
+      "title": "Pediatric Respiratory Care",
+      "units": 2
+    },
+    {
+      "code": "RSPT 62",
+      "title": "Management, Resume & National Board Examination",
+      "units": 1
+    },
+    {
+      "code": "RSPT 70D",
+      "title": "Clinical Rotation Iv",
+      "units": 8
+    }
+  ],
+  "notes": "Courses = the degree's core and support courses per the catalog plan grid at catalog.foothill.edu/degrees-certificates/respiratory-therapy/ (2026-09-17), in plan order; the general-education course (PSYC C1000) and the program prerequisites (ENGL, CHEM, BIOL 40A-C, AHS 52) are left out. The ProgramCourseFile draft carried only the seven RSPT 55 mediated-studies shells — the state file is stale for this degree."
+}

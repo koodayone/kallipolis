@@ -1,0 +1,438 @@
+# Curriculum alignment review — foothill-respiratory-therapy
+Generated 2026-09-17 · O*NET 31.0 database (August 2026), U.S. Department of Labor
+
+## Foothill College — Associate in Science Degree, Respiratory Therapy → Respiratory Therapists (SOC 29-1126)
+21 of 25 activities at outcome level, 22 with any evidence.
+
+- ● **Operate diagnostic or therapeutic medical instruments or equipment.**
+    - RSPT 61A [Objective]: “Set up a mechanical ventilator (Trilogy, Servo u, Servo i, Pulmonetics LTV1200, and Drager V500)” — student directly operates mechanical ventilators per specified settings
+    - RSPT 50A [Objective]: “Evaluate patient, review physicians orders to administer oxygen therapy and aerosol drug therapy” — student operates therapeutic gas/aerosol devices following ordered parameters
+    - RSPT 50A [Objective]: “Evaluate patient, review physicians orders to administer oxygen therapy and aerosol drug therapy, use a therapist driven protocol” — operating oxygen/aerosol therapy devices per treatment parameters
+    - RSPT 50A [Objective]: “Demonstrate use of humidity and bland aerosol therapy” — operating aerosol generator equipment
+    - RSPT 55A [Content outline]: “Oxygen administration equipment based on patient conditions and evaluations” — selecting/setting up oxygen equipment per patient condition evidences operating therapeutic gas administration apparatus
+    - RSPT 50B [Content outline]: “Continuous Positive Airway Pressure (CPAP) therapy” — operating a therapeutic gas/ventilation device per treatment parameters
+    - RSPT 50B [Lab content]: “Non-invasive positive pressure ventilation (NPPV)” — hands-on setup/operation of a ventilator-type device
+    - RSPT 55B [Objective]: “Proper ventilation procedures during respiratory care.” — students perform ventilator setup/operation per specified parameters
+    - RSPT 55B [Objective]: “Aerosol medication delivery.” — students operate aerosol generators following treatment parameters
+    - RSPT 56 [Objective]: “Administer oxygen and aerosol therapy to patients as indicated.” — operating therapeutic gas/aerosol administration devices per treatment parameters
+    - RSPT 56 [Content outline]: “Use of large-volume nebulizer” — setting up and operating an aerosol generator device
+    - RSPT 50C [Objective]: “Initiate and manage invasive ventilatory support.” — operating mechanical ventilators per specified treatment parameters
+    - RSPT 50C [Objective]: “Discuss the application of noninvasive ventilation (NIV)” — operating noninvasive ventilation apparatus per treatment parameters
+    - RSPT 57 [Objective]: “Perform hyperinflation therapy.” — operating hyperinflation therapy devices to specified treatment parameters
+    - RSPT 57 [Content outline]: “Continuous positive airway pressure (CPAP) administration” — operating CPAP therapeutic device per treatment protocol
+    - RSPT 55D [Objective]: “Differentiate between the different modes of ventilation.” — operating a mechanical ventilator requires setting and differentiating modes of ventilation per treatment parameters
+    - RSPT 55D [Content outline]: “Modes of mechanical ventilation” — content on ventilator modes covers operating the ventilator following specified treatment parameters
+    - RSPT 70A [Objective]: “Demonstrate correct technique for set up and delivery of invasive positive pressure ventilation, being able to manage one ventilator patient” — operating a mechanical ventilator per specified parameters directly evidences this activity
+    - RSPT 70A [Objective]: “Demonstrate correct techniques for delivery of oxygen, humidity, and mist therapy” — operating therapeutic gas/aerosol administration apparatus
+    - RSPT 55E [Lab content]: “Neonatal respiratory care” — lab covers operating neonatal respiratory care equipment such as ventilators
+    - RSPT 61B [Lab content]: “Assemble, troubleshoot and manage infant ventilators” — students operate mechanical ventilator equipment per set parameters
+    - RSPT 61B [SLO]: “Explain the steps necessary to place a newborn on an infant ventilator and applies the principles of airway management appropriately” — operating ventilator to place patient consistent with treatment parameters
+    - RSPT 70B [Objective]: “Demonstrate correct set up and monitoring of mechanical ventilators.” — student directly operates ventilators per specified parameters
+    - RSPT 55F [Objective]: “Mechanical ventilation management of a COPD patient.” — operating a mechanical ventilator per specified parameters is directly stated
+    - RSPT 55F [Content outline]: “COPD/mechanical ventilation clinical simulation” — simulation content requires operating ventilator equipment to specified parameters
+    - RSPT 61C [Content outline]: “Positive pressure machines vs. negative pressure devices” — content covers setting up/operating home ventilators per treatment parameters
+    - RSPT 61C [SLO]: “Compare and contrast home positive pressure ventilators, negative pressure ventilators and ICU style positive pressure ventilators.” — requires comparing operation of ventilator/therapeutic gas devices used in treatment
+    - RSPT 70C [Objective]: “Monitor parameters on mechanical ventilators accurately.” — operating mechanical ventilators per treatment parameters
+    - RSPT 70C [Objective]: “Demonstrate effective management of patients on CPAP devices.” — operating therapeutic gas/CPAP apparatus per parameters
+    - RSPT 60C [Lab content]: “Principles of operation of blood gas analyzers” — operating diagnostic medical equipment (blood gas analyzers) following specified parameters
+    - RSPT 70D [Objective]: “Demonstrate comprehensive clinical proficiency with ventilation and special procedures for adult patients.” — operating ventilators with specified settings evidences operating therapeutic medical equipment
+    - RSPT 70D [Content outline]: “Selecting appropriate ventilator” — setting up and operating a mechanical ventilator per treatment parameters
+- ● **Prepare medical supplies or equipment for use.**
+    - RSPT 50A [Content outline]: “Deliver oxygen therapy per physician's order and therapy driven protocols” — preparing and administering oxygen equipment for use per protocol
+    - RSPT 50A [Lab content]: “Students will select proper oxygen devices based on patient criteria” — preparing therapeutic gas equipment for use
+    - RSPT 50A [Lab content]: “Students will review and manipulate oxygen therapy equipment” — preparing equipment for administration
+    - RSPT 56 [Objective]: “Administer oxygen and aerosol therapy to patients as indicated.” — sets up and prepares therapeutic gas/aerosol equipment for patient use
+    - RSPT 56 [Content outline]: “Compressed gas equipment” — preparing therapeutic gas administration equipment for use
+    - RSPT 56 [Objective]: “Demonstrate safe handling of compressed gas equipment.” — preparing medical gas equipment for patient use
+    - RSPT 55A [Content outline]: “Assembly of various types of oxygen administration equipment” — assembling oxygen equipment before use is preparing medical equipment for use
+    - RSPT 50B [Lab content]: “Hyperinflation equipment” — preparing therapeutic equipment for use
+    - RSPT 50B [Lab content]: “Suctioning equipment” — preparing medical supplies/equipment for use
+    - RSPT 55B [Content outline]: “Pre-procedure considerations for delivering aerosol, metered dose inhalers, dry powder inhalers, and soft mist inhalers” — preparing aerosol delivery equipment for use
+    - RSPT 55B [Content outline]: “Pre-procedure considerations for invasive and non-invasive mechanical ventilation” — preparing ventilator equipment for use
+    - RSPT 50C [Content outline]: “Equipment selection” — setting up NIV equipment for use as part of preparing devices for treatment
+    - RSPT 57 [Content outline]: “Selection of appropriate delivery device to deliver non-invasive positive pressure ventilation (NPPV)” — preparing/selecting device setup before use
+    - RSPT 57 [Content outline]: “Drug delivery systems” — preparing aerosol/medication delivery equipment for use
+    - RSPT 61A [Lab content]: “Ventilator set up” — lab exercise preparing ventilator equipment for use
+    - RSPT 70A [Objective]: “Demonstrate correct technique for compressed gas handling” — preparing gas supply equipment for therapeutic use
+    - RSPT 61B [Lab content]: “Demonstrate how to assemble a bag/mask unit and bag a simulation baby with given parameters” — assembling resuscitation equipment for use is preparing medical supplies
+    - RSPT 70B [Lab content]: “Set up and check mechanical ventilators” — preparing ventilator equipment for use before treatment
+    - RSPT 61C [Objective]: “State set-up, maintenance, troubleshooting and aseptic procedures for home care equipment.” — prepares respiratory equipment for patient use
+    - RSPT 70C [Lab content]: “Management of patients on CPAP devices” — setting up CPAP device for use
+    - RSPT 70D [Content outline]: “Establishing initial settings” — preparing ventilator equipment for use by configuring initial settings
+- ● **Gather medical information from patient histories.**
+    - RSPT 50B [Content outline]: “Arterial blood sampling indications and contraindications” — measuring arterial blood gases to assess patient condition
+    - RSPT 50B [Lab content]: “Perform arterial blood gas sampling” — gathering diagnostic patient information via ABG sampling
+    - RSPT 50B [Objective]: “Identify indications, complications, and hazards for arterial blood sampling” — directly ties to gathering patient blood-gas information
+    - RSPT 50A [Objective]: “Interpret clinical laboratory data” — gathering patient information via lab data review
+    - RSPT 55A [Objective]: “Demonstrate how to look up a patient's history.” — looking up patient history directly evidences gathering medical information from patient histories
+    - RSPT 55A [Content outline]: “Obtaining and documenting patient history” — obtaining patient history is a literal component of gathering medical information from patient histories
+    - RSPT 51C [SLO]: “Analyze physical exams and chest x-rays and relate the data to the patient's condition and anticipate problems” — gathering and interpreting patient history/exam data to assess condition directly evidences gathering medical information from patient histories
+    - RSPT 51C [Objective]: “Analyze clinical laboratory test results and apply them to the patient's status” — reviewing lab/patient information to assess condition is a directly constitutive component of gathering medical information
+    - RSPT 55B [Objective]: “Arterial blood gas (ABG) procedures and interpretation.” — measuring arterial blood gases to assess patient condition
+    - RSPT 56 [Content outline]: “Review physician's order to administer oxygen and aerosol therapy” — gathering patient/prescription information to assess condition before treatment
+    - RSPT 56 [Objective]: “Interpret clinical laboratory data.” — reviewing patient lab information to assess patient condition
+    - RSPT 50C [Content outline]: “Arterial blood gas analysis” — reviewing arterial blood gas data to assess patient condition
+    - RSPT 51B [SLO]: “The student will be able to interpret arterial blood gases and initiate therapy based on results.” — measuring/reviewing arterial blood gases to assess patient condition is read literally as gathering patient information
+    - RSPT 51B [Content outline]: “Interpret representative blood gas analysis reports and recommend appropriate therapy” — interpreting blood gas reports is a form of gathering/reviewing patient information to assess condition
+    - RSPT 55C [Objective]: “Interpretation of arterial blood gases.” — reviewing arterial blood gas info to assess patient condition matches interpreting ABGs
+    - RSPT 55C [SLO]: “Analyzes arterial blood gases.” — gathering/analyzing blood gas info evidences reviewing patient information to assess condition
+    - RSPT 57 [Objective]: “Perform patient assessments.” — gathering patient information to assess condition
+    - RSPT 57 [Objective]: “Perform arterial blood sampling.” — obtaining arterial blood gas data per O*NET task
+    - RSPT 70A [Objective]: “Demonstrate ability to effectively read a patient's chart and give a patient report” — reviewing patient information/history to assess condition
+    - RSPT 70A [SLO]: “Relate basic diagnostic data to respiratory therapy techniques and the patient's illness” — gathering and interpreting diagnostic information from patient records
+    - AHS 60A [SLO]: “Identify normal and abnormal readings from pulmonary artery catheters, central venous pressure lines and arterial lines.” — reviewing hemodynamic patient information to assess condition is gathering medical information from patient histories/data
+    - RSPT 55E [SLO]: “Identifies and chooses the correct laboratory tests that lead to proper treatment in the clinical simulation scenarios.” — SLO states gathering/interpreting patient test information to assess condition
+    - RSPT 61B [Objective]: “Perform an examination and assessment of the neonatal patient” — gathering patient information via history/exam to assess condition
+    - RSPT 61B [Objective]: “Interpret laboratory data” — reviewing lab data including ABGs to assess patient condition
+    - RSPT 70B [Objective]: “Calibrate blood gas analyzers and analyze blood samples.” — gathering diagnostic patient information via blood gas analysis
+    - RSPT 70B [Objective]: “Assist with the drawing of arterial blood samples.” — gathering arterial blood gas information to assess patient condition
+    - RSPT 55F [Content outline]: “The course content includes information gathering and decision-making for different patients whose diagnoses and classifications are listed below:” — gathering patient information to assess condition across simulated cases
+    - RSPT 61C [Content outline]: “Patient assessment techniques” — gathering patient information to assess condition for care planning
+    - RSPT 63A [Objective]: “Gather appropriate information in the assessment of the various pulmonary diseases.” — gathering assessment information from patient data is patient history gathering
+    - RSPT 63A [Objective]: “Interpret arterial blood gases and evaluate the patient's need for treatment.” — measuring/interpreting ABGs to assess patient condition matches the task literally
+    - RSPT 65 [Objective]: “Obtain patient data, evaluate patient data and make recommendations” — gathering and evaluating patient history/data directly evidences gathering medical information from patient histories
+    - RSPT 65 [Content outline]: “Patient history” — content line lists patient history as data gathered by student
+    - RSPT 70C [Objective]: “Demonstrate the correct technique for performing patient assessments.” — gathering patient information to assess condition
+    - RSPT 70C [Objective]: “Monitor and interpret hemodynamic data accurately.” — reviewing patient physiological data to assess condition
+    - RSPT 55G [SLO]: “Identifies respiratory problems based on information provided and chooses correct tests and procedures in the clinical simulations.” — gathering and interpreting patient information to select correct tests directly evidences gathering medical information to assess condition
+    - RSPT 60C [Objective]: “Interpret blood gases and related tests” — reviewing patient blood gas information to assess condition
+    - RSPT 60C [Lab content]: “Arterial blood gases: collection and interpretation” — measuring arterial blood gases to assess patient condition
+    - RSPT 61D [Content outline]: “Pediatric laboratory studies” — reviewing patient ABGs/labs to assess condition matches gathering medical information from patient histories
+    - RSPT 61D [Objective]: “Analyze and evaluate pediatric laboratory results” — reviewing lab results is gathering patient information to assess condition
+    - RSPT 70D [SLO]: “Evaluate and apply advanced diagnostic data to respiratory therapy techniques and the patient's illness.” — evaluating diagnostic data on the patient's illness evidences gathering patient information to assess condition
+- ● **Inform medical professionals regarding patient conditions and care.**
+    - RSPT 63A [Objective]: “Interpret arterial blood gases and evaluate the patient's need for treatment.” — monitoring physiologic responses to determine need for physician consult
+    - RSPT 61B [Objective]: “Recognize monitoring equipment and relate the data to the patient's condition” — relating monitoring data to condition is informing on patient status
+    - RSPT 65 [Content outline]: “Maintain records and communicate information” — communicating patient information supports informing medical professionals
+- ● **Monitor patient conditions during treatments, procedures, or activities.**
+    - RSPT 56 [Objective]: “Assess and monitor patient's vital signs and breath sounds.” — direct monitoring of patient physiological responses during care
+    - RSPT 56 [Content outline]: “Use of pulse oximetry” — monitoring physiological response (oxygenation) during therapy
+    - RSPT 61B [SLO]: “Can demonstrate the appropriate steps and sequence for the resuscitation of a neonate.” — attending high-risk deliveries to provide neonatal respiratory care
+    - RSPT 61B [Lab content]: “Cardiac monitoring” — monitoring cardiac status of neonatal patient during care
+    - RSPT 50A [Objective]: “Monitor vital signs and breath sounds” — monitoring patient physiological status during treatment
+    - RSPT 50A [Lab content]: “Students will demonstrate the use of pulse oximetry” — monitoring patient oxygenation status
+    - RSPT 50B [Content outline]: “Patient's response to bronchial hygiene therapy” — monitoring patient physiological response during treatment
+    - RSPT 55B [Objective]: “Pediatric vital signs assessment.” — monitoring patient physiological responses via vital signs
+    - RSPT 55B [Objective]: “Infant vital signs assessment.” — monitoring patient physiological responses via vital signs
+    - RSPT 50C [Content outline]: “Respiratory monitoring” — monitoring patient physiological responses during ventilatory treatment
+    - RSPT 50C [Content outline]: “Cardiac monitoring” — monitoring cardiac status during ICU treatment
+    - RSPT 55C [Objective]: “Performing and interpreting 12-lead electrocardiograms (ECG).” — monitoring cardiac patients via ECG matches monitoring physiological responses/cardiac monitoring task
+    - RSPT 57 [Content outline]: “Evaluating patient's response to therapy” — monitoring physiological response during treatment
+    - RSPT 57 [Content outline]: “Vital signs” — monitoring patient vital signs during assessment/treatment
+    - RSPT 55D [Objective]: “Interpret ventilator waveforms and loops.” — interpreting waveforms is monitoring the patient's physiological response to ventilator therapy
+    - RSPT 55D [Objective]: “Recognize auto-peep and demonstrate strategies to correct it.” — recognizing auto-peep during ventilation is monitoring patient condition during treatment
+    - RSPT 61A [Content outline]: “Parameter changes based on:
+    - ABG results” — monitoring patient physiological response (ABG) to adjust therapy
+    - RSPT 70A [Objective]: “Demonstrate competency while performing a complete chest examination on a patient” — monitoring patient physiological status via chest exam/auscultation
+    - AHS 60A [SLO]: “Identify normal and abnormal readings from pulmonary artery catheters, central venous pressure lines and arterial lines.” — identifying normal/abnormal hemodynamic readings evidences monitoring patient physiological responses during treatment
+    - AHS 60A [Content outline]: “Holter monitor” — covers monitoring cardiac patients using electrocardiography devices such as a holter monitor
+    - RSPT 55E [SLO]: “Student will be able to recognize hemodynamic waveforms.” — SLO evidences monitoring patient physiological responses via hemodynamic waveforms
+    - RSPT 55E [Content outline]: “Continuous SVO2 monitoring” — content covers continuous monitoring of patient physiological status
+    - RSPT 70B [Objective]: “Evaluate effects of therapy given to ventilator patients.” — monitoring patient physiological response to therapy
+    - RSPT 70B [Objective]: “Demonstrate the correct technique for performing cardiovascular evaluations.” — monitoring cardiac patient status directly maps to cardiac evaluation task
+    - RSPT 55F [Objective]: “Proper management of an acute exacerbation of congestive heart failure.” — managing acute cardiac exacerbation entails monitoring patient physiological response during treatment
+    - RSPT 63A [Content outline]: “Hemodynamic monitoring” — monitoring physiological responses during therapy matches the occupation task
+    - RSPT 63A [Objective]: “Interpret arterial blood gases and evaluate the patient's need for treatment.” — monitoring ABGs as physiological response to therapy
+    - RSPT 65 [Content outline]: “Monitoring data” — monitoring data as part of patient data review evidences monitoring patient conditions
+    - RSPT 65 [Lab content]: “Monitoring data and vital signs” — lab content on reviewing vital signs/monitoring data evidences monitoring patient conditions during treatment
+    - RSPT 70C [Objective]: “Monitor and interpret hemodynamic data accurately.” — monitoring physiological responses during treatment
+    - RSPT 70C [Objective]: “Monitor parameters on mechanical ventilators accurately.” — monitoring patient condition during ventilator therapy
+    - RSPT 61D [Objective]: “Interpret cardiac and non-invasive monitoring data” — monitoring physiological responses during treatment matches this activity directly
+    - RSPT 61D [Content outline]: “Cardiac monitoring and non-invasive monitoring” — cardiac/non-invasive monitoring content covers monitoring patient conditions during treatment
+    - RSPT 70D [Content outline]: “Monitoring patient/ventilator system” — directly monitors patient physiological status during ventilator therapy
+    - RSPT 70D [Lab content]: “Monitoring patient” — hands-on monitoring of neonatal/pediatric patient during treatment
+- ● **Communicate test or assessment results to medical professionals.**
+    - RSPT 70A [Objective]: “Demonstrate ability to effectively read a patient's chart and give a patient report.” — relaying assessment results to medical team
+    - RSPT 70A [Content outline]: “Situation Background Assessment Recommendation (SBAR) charting” — SBAR reporting format used to relay assessment results to physicians/staff
+    - RSPT 51B [Content outline]: “Interpret representative blood gas analysis reports and recommend appropriate therapy” — interpreting and recommending therapy from blood analysis results directly evidences relaying blood analysis results
+    - RSPT 55C [Objective]: “Interpretation of arterial blood gases.” — interpreting blood gas results is the basis for relaying blood analysis results to a physician
+    - RSPT 65 [Content outline]: “Blood gas results” — reviewing and reporting blood gas results evidences communicating test results to professionals
+    - RSPT 60C [SLO]: “Relate results to disease process and recommends appropriate therapy.” — communicating test results and relating them to therapy recommendations
+- ● **Implement advanced life support techniques.**
+    - RSPT 55B [Objective]: “Adult Basic Life Support (BLS).” — performing advanced/basic life support techniques including CPR
+    - RSPT 55B [Content outline]: “Pre-procedure considerations for intubation” — endotracheal intubation procedure to maintain open airways
+    - RSPT 50B [Content outline]: “Prolonged intubation” — endotracheal intubation content evidencing airway management technique
+    - RSPT 56 [Objective]: “Demonstrate the ability to perform basic life support procedures.” — literal performance of basic life support, a core advanced life support component
+    - RSPT 61B [Lab content]: “Performs neonatal resuscitation simulation” — practicing resuscitation is providing emergency/advanced life support technique
+    - RSPT 61B [Lab content]: “Complete the Neonatal Resuscitation Program (NRP) certification” — NRP certification directly trains advanced life support techniques for neonates
+    - RSPT 70B [Objective]: “Demonstrate the correct technique for performing cardiopulmonary resuscitations.” — advanced life support technique performed literally as stated
+    - AHS 60C [Objective]: “Demonstrate proficiency in providing basic life support (BLS) and the use of an AED device” — directly evidences advanced life support technique performance
+    - AHS 60C [SLO]: “Discuss airway care procedures and demonstrate cardiac life support proficiency.” — literal outcome of performing cardiac life support/airway care
+    - RSPT 70C [Objective]: “Perform effective cardiopulmonary resuscitations.” — literal CPR performance, an advanced life support technique
+    - RSPT 61D [SLO]: “Assess patients and select proper treatment and or actions necessary for resuscitation of the pediatric patient” — resuscitation actions constitute advanced life support technique implementation
+    - RSPT 61D [Objective]: “Review Pediatric Advanced Life Support” — PALS review directly evidences advanced life support technique training
+- ● **Treat medical emergencies.**
+    - AHS 60C [Objective]: “Recognize and manage cardiac arrest until termination of resuscitation or transfer of care” — treating cardiopulmonary emergencies directly
+    - AHS 60C [Objective]: “Recognize and manage cardiac arrest until termination of resuscitation or transfer of care, including immediate post-cardiac arrest care” — literal outcome of managing a medical emergency
+    - AHS 60C [Objective]: “Recognize and manage respiratory arrest” — literal outcome of treating a medical emergency
+    - RSPT 70B [Content outline]: “Cardiopulmonary resuscitations” — hands-on treatment of medical emergencies in clinical rotation
+    - RSPT 50A [Lab content]: “Apply emergency cardiovascular life support based on patient care scenarios” — treating medical emergencies with emergency life support
+    - RSPT 55B [Content outline]: “Procedure for performing cardiopulmonary resuscitation for adult BLS” — emergency care via CPR for medical emergencies
+    - RSPT 56 [Content outline]: “Cardio pulmonary resuscitation” — treating medical emergencies via CPR content coverage
+    - RSPT 56 [Content outline]: “Basic life support certification” — emergency care training constituting treatment of medical emergencies
+    - RSPT 61B [Objective]: “Demonstrate neonatal assessment and resuscitation” — resuscitation is treating a medical emergency
+    - RSPT 55F [Objective]: “Correct management of hypothermia with cardiac arrest.” — cardiac arrest management is treatment of a medical emergency
+    - RSPT 55F [Objective]: “Correct management and therapeutic interventions for a pediatric near-drowning patient.” — near-drowning intervention is treatment of a medical emergency
+    - RSPT 70C [Content outline]: “Cardiopulmonary resuscitations” — treating cardiac/respiratory emergencies via CPR
+    - RSPT 61D [SLO]: “Assess patients and select proper treatment and or actions necessary for resuscitation of the pediatric patient” — resuscitation actions for pediatric emergencies match treating medical emergencies
+- ● **Assist healthcare practitioners during examinations or treatments.**
+    - RSPT 60C [Content outline]: “Bronchoscopy” — assisting physician with diagnostic bronchoscopy procedure
+    - RSPT 57 [Objective]: “Select appropriate therapy based on the patient assessment.” — assisting in care decisions alongside healthcare team during treatment
+    - RSPT 70B [Objective]: “Observe and assist with special procedures respiratory patients.” — assisting healthcare practitioners during patient procedures
+    - RSPT 65 [Content outline]: “Act as an assistant to the physician performing special procedures” — directly states assisting physician during procedures
+    - RSPT 70C [Objective]: “Successfully observe and provide assistance with special procedures.” — assisting healthcare practitioners during procedures
+    - RSPT 61D [Content outline]: “Pediatric flexible bronchoscopy” — assisting with bronchoscopy procedure equipment/monitoring evidences assisting healthcare practitioners during examinations
+- ● **Collaborate with healthcare professionals to plan or provide treatment.**
+    - AHS 50C [Objective]: “Discuss the role of the health care team and collaborative practice” — collaborating with healthcare professionals on patient treatment planning
+    - AHS 50B [Content outline]: “Working effectively with the health care team” — content on team-based collaboration for patient care
+- ● **Verify that medical activities or operations meet standards.**
+    - RSPT 50A [Objective]: “Evaluate patient, review physicians orders to administer oxygen therapy and aerosol drug therapy, use a therapist driven protocol to assess the patient's need” — verifying treatment adherence to physician orders and protocol
+    - RSPT 50A [Content outline]: “Deliver oxygen therapy per physician's order and therapy driven protocols” — ensuring therapy adherence to physician orders and standards
+    - RSPT 56 [SLO]: “Abide by proper infection control guidelines and standards associated with equipment and respiratory procedures.” — verifying that care activities meet infection-control standards
+    - RSPT 65 [Content outline]: “Ensure infection control” — ensuring infection control adherence evidences verifying medical activities meet standards
+- ● **Maintain medical facility records.**
+    - RSPT 54 [Objective]: “Locate information in a patient's paper and electronic chart.” — maintaining patient identification and therapy records in charts
+    - RSPT 70A [Content outline]: “Subjective Objective Assessment Plan (SOAP) charting” — documenting patient therapy information in medical records
+    - RSPT 55A [Content outline]: “Correct documentation of the patient's record using the SOAP format” — documenting patient records evidences maintaining medical facility records
+    - RSPT 55A [Objective]: “Demonstrate how to navigate through electronic health records (EHR).” — working within EHR system to document supports maintaining medical facility records
+    - RSPT 51C [Lab content]: “Document using SOAP charting” — SOAP charting of patient assessment data is directly maintaining medical facility records
+    - RSPT 55B [Content outline]: “Recording and reporting procedures” — maintaining records of therapy/procedures performed
+    - RSPT 70B [Objective]: “Appropriately document treatment outcomes and observations of therapy.” — maintaining records of patient treatment and observations
+    - RSPT 65 [Content outline]: “Maintain records and communicate information” — maintaining records directly evidences maintaining medical facility records
+    - RSPT 70C [Content outline]: “Documentation of observations and therapies” — maintaining medical facility records of patient therapy
+- · **Repair medical facility equipment.**
+- ● **Clean medical equipment or facilities.**
+    - RSPT 70A [Objective]: “Demonstrate aseptic technique for cleaning and sterilizing equipment.” — literal cleaning of respiratory therapy equipment
+    - RSPT 65 [Objective]: “Manipulate equipment by order or protocol including infection and quality control” — infection control equipment manipulation evidences cleaning medical equipment
+    - RSPT 60C [Content outline]: “Cleaning and sterilization techniques for pulmonary diagnostic equipment” — cleaning diagnostic medical equipment
+    - RSPT 70D [Content outline]: “Changing ventilator tubing” — changing tubing is a cleaning/maintenance action on respiratory equipment
+- ● **Determine protocols for medical procedures.**
+    - RSPT 50A [Content outline]: “Select proper oxygen device” — determining treatment type/method per protocol
+    - RSPT 50A [Objective]: “Evaluate patient, review physicians orders to administer oxygen therapy and aerosol drug therapy, use a therapist driven protocol to assess the patient's need for oxygen therapy” — determining treatment type/method compatible with physician's orders
+    - RSPT 50C [Objective]: “Initiate and manage invasive ventilatory support.” — determining ventilation treatment protocol parameters
+    - RSPT 50C [Objective]: “Discuss the indications for ventilatory support.” — determining treatment type/method compatible with physician orders
+    - RSPT 50B [SLO]: “Explain the indications, contraindications and hazards for invasive and noninvasive respiratory procedures administered.” — literal determination of treatment requirements/precautions
+    - RSPT 51C [Objective]: “Explain which respiratory therapy modalities should be used to treat various pulmonary diseases” — specifying which treatment modality to use for a diagnosed disease is determining protocols for medical procedures
+    - RSPT 53A [Objective]: “Based upon patient's condition, select the appropriate respiratory pharmacologic agent.” — selecting the appropriate drug/method for a patient constitutes determining treatment protocol
+    - RSPT 55B [Content outline]: “Pre-procedure considerations for arterial blood gas sampling” — determining treatment/procedure requirements prior to therapy
+    - RSPT 56 [Content outline]: “Indications for therapy” — determining protocol elements (indications) for oxygen/aerosol therapy per physician orders
+    - RSPT 51B [Content outline]: “Interpret representative blood gas analysis reports and recommend appropriate therapy” — recommending appropriate therapy based on blood gas results evidences determining treatment protocols
+    - RSPT 51B [SLO]: “The student will be able to interpret arterial blood gases and initiate therapy based on results.” — initiating therapy based on ABG interpretation evidences determining treatment requirements compatible with physician orders
+    - RSPT 57 [Objective]: “Discuss indications for therapy.” — determining treatment protocol requirements compatible with orders
+    - RSPT 57 [Content outline]: “Selection of an artificial airway” — determining appropriate method/device for airway management protocol
+    - RSPT 55D [Objective]: “Describe weaning strategies.” — determining weaning strategy is determining the method/duration of ventilator therapy per protocol
+    - RSPT 61A [Objective]: “Input appropriate initial ventilator settings based on the principles of oxygen delivery and arterial blood gas analysis applied to patient case scenarios” — determines treatment parameters (type/duration of therapy) for ventilation based on patient data
+    - RSPT 53B [Objective]: “Calculate the pediatric dosage for various respiratory care drugs.” — determining medication and dosage is a stated component of determining treatment protocols
+    - RSPT 53B [Objective]: “Evaluate the patient's need for various diuretic agents.” — evaluating need for a drug class informs determining medication and dosage per treatment protocol
+    - RSPT 61B [Content outline]: “Initial ventilator settings” — determining ventilator settings/mode is determining treatment protocol
+    - RSPT 70B [Objective]: “Recommend appropriate therapies for ventilator patients.” — determining treatment type/method for ventilator patients
+    - RSPT 55F [Objective]: “Correct management of asthma.” — determining correct management reflects determining treatment type/method/duration protocols
+    - RSPT 55F [Objective]: “Correct management and therapeutic interventions for neonates with respiratory distress syndrome.” — determining therapeutic interventions is determining treatment protocol
+    - RSPT 61C [Objective]: “Design a basic respiratory rehabilitation program.” — designing a therapy program sets protocol type/method/duration for treatment
+    - RSPT 61C [Objective]: “State indications for the use of home oxygen therapy.” — determining indications is determining treatment protocol requirements
+    - RSPT 63A [Objective]: “Select the appropriate treatment for various pulmonary disorders.” — selecting treatment type/method matches determining protocols for medical procedures
+    - RSPT 63A [Content outline]: “Therapist driven protocols” — protocol determination for respiratory therapy treatment matches task literally
+    - RSPT 65 [Content outline]: “Initiation and modification of therapeutic procedures” — determining and modifying therapy procedures evidences determining protocols for medical procedures
+    - RSPT 70C [Objective]: “Recommend appropriate therapies for ventilator patients.” — determining treatment/therapy protocol for patients
+    - RSPT 70C [Objective]: “Demonstrate effective ventilator weaning techniques and airway care.” — determining method/duration protocol for weaning therapy
+    - RSPT 55G [SLO]: “Interprets data correctly and chooses correct treatments in the computer modules.” — choosing correct treatment from clinical data evidences determining the protocol/method of therapy
+    - RSPT 60C [SLO]: “Relate results to disease process and recommends appropriate therapy.” — determining appropriate therapy protocol based on diagnostic results
+    - RSPT 61D [SLO]: “Differentiates between common pulmonary system disorders of the pediatric patient and selects appropriate therapy.” — selecting appropriate therapy type matches determining protocols/type of treatment
+    - RSPT 70D [SLO]: “Identify indications, contraindications, hazards, and method of evaluating effectiveness of all therapies administered.” — identifying indications/hazards/methods for therapy is determining treatment protocol
+- ● **Examine medical instruments or equipment to ensure proper operation.**
+    - RSPT 50A [Objective]: “Maintain, calibrate, troubleshoot and use oxygen analyzers” — examining equipment to ensure proper operation via calibration/testing
+    - RSPT 60C [Lab content]: “Calibration and maintenance” — examining pulmonary diagnostic equipment to ensure proper function
+    - RSPT 60C [Content outline]: “Criteria for acceptability of results of pulmonary function tests” — examining equipment output against acceptability standards to verify proper operation
+    - RSPT 56 [Content outline]: “Calibration of analyzers” — examining oxygen analyzer equipment to ensure proper operation
+    - RSPT 61A [Objective]: “Check ventilator settings on a mechanical ventilator” — examining equipment to ensure proper operation
+    - AHS 60A [Content outline]: “Troubleshooting lines” — troubleshooting hemodynamic monitoring lines evidences examining medical equipment to ensure proper operation
+    - RSPT 61B [Lab content]: “Perform a neonatal ventilator check” — checking ventilator ensures proper equipment operation
+    - RSPT 61C [Objective]: “State set-up, maintenance, troubleshooting and aseptic procedures for home care equipment.” — troubleshooting equipment is examining equipment to ensure proper operation
+    - RSPT 65 [Content outline]: “Perform quality control procedures” — quality control of equipment evidences examining equipment to ensure proper operation
+    - RSPT 70D [Content outline]: “Troubleshooting ventilator tubing” — troubleshooting equipment examines it to ensure proper operation
+- ● **Maintain medical equipment or instruments.**
+    - RSPT 61A [Lab content]: “Completion of a ventilator check” — maintaining ventilator equipment via checks
+    - RSPT 50A [Objective]: “Handle compressed gas equipment safely” — maintaining compressed gas equipment for respiratory therapy
+    - RSPT 50A [Lab content]: “Students will perform one and two point calibration of analyzers” — maintaining/calibrating medical equipment
+    - RSPT 56 [Content outline]: “Troubleshooting devices” — maintaining aerosol/oxygen delivery equipment function
+    - RSPT 61B [Lab content]: “Assemble, troubleshoot and manage infant ventilators” — troubleshooting/managing ventilator is maintaining medical equipment
+    - RSPT 61C [Objective]: “State set-up, maintenance, troubleshooting and aseptic procedures for home care equipment.” — maintenance procedures for respiratory equipment directly evidence equipment upkeep
+    - RSPT 65 [Objective]: “Manipulate equipment by order or protocol including infection and quality control” — quality control manipulation of equipment evidences maintaining medical equipment
+    - RSPT 60C [Content outline]: “Calibration of pulmonary diagnostic equipment” — maintaining diagnostic equipment through calibration
+    - RSPT 60C [Lab content]: “Calibration and maintenance” — performing hands-on maintenance of pulmonary diagnostic equipment
+    - RSPT 70D [Content outline]: “Troubleshooting patient problems” — identifying and resolving ventilator-related issues constitutes equipment maintenance in context
+- ○ **Explain medical procedures or test results to patients or family members.**
+    - RSPT 55A [Content outline]: “Patient communication to demonstrate understanding” — explaining procedures to gain patient understanding/cooperation
+- ● **Train patients, family members, or caregivers in techniques for managing disabilities or illnesses.**
+    - RSPT 61C [Objective]: “Create a lesson plan appropriate for patient education.” — training patients/families in disease management techniques
+    - RSPT 50B [Objective]: “Demonstrate how to perform bronchial hygiene and chest physiotherapy” — bronchopulmonary drainage and instructing patients in breathing techniques
+    - RSPT 50B [Lab content]: “Chest Physiotherapy (CPT)” — hands-on bronchopulmonary drainage technique per task
+    - RSPT 57 [Objective]: “Perform bronchial hygiene and chest physiotherapy.” — performing bronchopulmonary drainage technique per O*NET task
+    - RSPT 70A [Objective]: “Demonstrate correct technique for chest physiotherapy” — chest physiotherapy is bronchopulmonary drainage technique performed on/with patients
+    - RSPT 61B [Content outline]: “Airway clearance techniques” — bronchopulmonary hygiene/airway clearance instruction to manage patient condition
+    - RSPT 61B [Lab content]: “Bronchopulmonary hygiene therapy” — performing bronchopulmonary drainage technique per occupation task
+    - RSPT 55F [Objective]: “COPD/home care and pulmonary rehabilitation.” — home care/pulmonary rehab content involves training patients in disease management techniques
+    - RSPT 55F [Objective]: “Pulmonary rehabilitation.” — pulmonary rehabilitation involves instructing patients in managing chronic respiratory illness
+    - RSPT 65 [Content outline]: “Remove bronchopulmonary secretions” — bronchopulmonary drainage task directly matches training/treatment task description of removing secretions
+    - RSPT 61D [Content outline]: “Airway clearance techniques and lung volume expansion therapy” — chest physical therapy/PEP therapy content covers instructing patients in breathing/airway clearance techniques
+- ● **Treat chronic diseases or disorders.**
+    - RSPT 50B [Objective]: “Demonstrate how to perform bronchial hygiene and chest physiotherapy” — treating chronic pulmonary disease via bronchopulmonary drainage
+    - RSPT 51C [Content outline]: “Bronchopulmonary hygiene therapy” — bronchopulmonary hygiene therapy for chronic obstructive/restrictive disease is treating a chronic disease modality
+    - RSPT 57 [Objective]: “Perform bronchial hygiene and chest physiotherapy.” — treating chronic pulmonary conditions via bronchial hygiene technique
+    - RSPT 70A [Objective]: “Demonstrate correct technique for chest physiotherapy” — bronchopulmonary drainage used in treating chronic pulmonary disease
+    - RSPT 61B [Content outline]: “Chronic lung disease” — treating chronic pulmonary disorder (bronchopulmonary dysplasia) in neonate
+    - RSPT 55F [Objective]: “COPD/home care and pulmonary rehabilitation.” — COPD home care and rehab is treatment of a chronic pulmonary disorder
+    - RSPT 55F [Objective]: “Correct management of asthma.” — asthma management is treatment of a chronic disorder
+    - RSPT 61C [Content outline]: “Rehabilitation programs” — pulmonary rehabilitation programs treat chronic respiratory disease
+    - RSPT 65 [Content outline]: “Remove bronchopulmonary secretions” — bronchopulmonary drainage directly evidences treating chronic pulmonary disease per O*NET task
+    - RSPT 61D [Content outline]: “Chest physical therapy” — chest PT for airway clearance is treatment of chronic pulmonary disease such as bronchiectasis or cystic fibrosis
+- · **Train medical providers.**
+- ● **Adjust settings or positions of medical equipment.**
+    - RSPT 61A [Objective]: “Suggest changes in ventilator parameters based on patient data.” — adjusting equipment settings to optimize therapy
+    - RSPT 61A [Objective]: “Suggest ventilator settings to decrease work of breathing” — adjusting equipment settings to optimize therapy results
+    - RSPT 50A [Objective]: “Perform basic pulmonary function tests” — adjusting equipment to obtain optimum pulmonary function results
+    - RSPT 50B [Lab content]: “Non-invasive positive pressure ventilation (NPPV) equipment” — adjusting NPPV equipment settings to achieve therapeutic parameters
+    - RSPT 55B [Content outline]: “Initiating invasive and non-invasive mechanical ventilation” — adjusting ventilator settings to obtain optimum results
+    - RSPT 56 [Content outline]: “Selecting proper oxygen delivery device” — adjusting equipment settings/positions to achieve therapy parameters
+    - RSPT 50C [Objective]: “Initiate and manage invasive ventilatory support.” — adjusting ventilator settings to obtain optimum therapeutic results
+    - RSPT 50C [Content outline]: “Adjusting ventilatory support” — adjusting equipment settings for oxygenation/ventilation optimization
+    - RSPT 55C [Content outline]: “Ventilator weaning strategies” — adjusting ventilator settings during weaning matches adjusting equipment settings for optimum therapy
+    - RSPT 57 [Content outline]: “Appropriate interface selection” — adjusting equipment settings/interface to optimize NPPV therapy
+    - RSPT 55D [Content outline]: “Strategies for correcting auto-peep” — correcting auto-peep requires adjusting ventilator settings to obtain optimum therapy results
+    - RSPT 55D [Lab content]: “Setting a sigh” — lab practice adjusting ventilator sigh settings is adjusting equipment settings for therapy
+    - RSPT 70A [Objective]: “Demonstrate correct technique for incentive spirometry” — adjusting spirometry equipment settings to obtain therapeutic results
+    - AHS 60A [Content outline]: “Lead placement” — placing ECG leads correctly is adjusting positions of diagnostic medical equipment
+    - RSPT 55E [Content outline]: “Using neonatal airway graphics to optimize care in neonatal patients” — content covers adjusting equipment settings using graphics to optimize therapy results
+    - RSPT 55E [Content outline]: “Volume targeted ventilation in neonatal care” — content covers adjusting ventilator settings to achieve targeted volumes
+    - RSPT 70B [Objective]: “Adjust, troubleshoot, change circuits on mechanical ventilators, and successfully manage two ventilator patients.” — adjusting ventilator equipment settings literally matches task
+    - RSPT 63A [Objective]: “Practice ventilator waveforms and ventilator strategies.” — adjusting ventilator settings/strategies to optimize therapy matches equipment adjustment
+    - RSPT 65 [Objective]: “Manipulate equipment by order or protocol including infection and quality control” — manipulating equipment settings evidences adjusting settings of medical equipment
+    - RSPT 70C [Content outline]: “Parameter checks on mechanical ventilators” — adjusting ventilator settings for optimum therapy
+    - RSPT 55G [Objective]: “Describe and demonstrate advanced pulmonary function testing (PFT).” — demonstrating PFT requires operating and adjusting the equipment used to obtain results
+    - RSPT 60C [Lab content]: “Equipment basics including calibration” — adjusting equipment settings to obtain optimum test results
+    - RSPT 61D [Content outline]: “Non-invasive ventilation” — device/interface selection content evidences adjusting settings of ventilation equipment
+    - RSPT 61D [Objective]: “Explain airway management and indications for CPAP and mechanical ventilation” — mechanical ventilation setup involves adjusting equipment settings
+    - RSPT 70D [Content outline]: “Changing settings with changing patient response” — adjusting ventilator settings based on patient response is direct equipment adjustment
+- ● **Test patient heart or lung functioning.**
+    - AHS 60A [Objective]: “Describe the electrocardiogram: normal” — conducting EKG testing to evaluate cardiac function
+    - AHS 60A [Content outline]: “Stress testing” — stress testing content directly evidences conducting cardiac tests to evaluate cardiopulmonary function
+    - RSPT 60C [Content outline]: “Spirometry and related tests” — performing pulmonary function tests to evaluate lung function
+    - RSPT 60C [SLO]: “Perform selected cardio-pulmonary diagnostic tests.” — testing patient lung and heart functioning via cardiopulmonary diagnostics
+    - RSPT 60C [Content outline]: “Cardiopulmonary exercise testing” — conducting exercise-based tests to evaluate cardiopulmonary function
+    - RSPT 50A [Lab content]: “Students will learn how to perform a forced vital capacity test” — testing patient lung functioning
+    - RSPT 50A [Content outline]: “Peak flow test” — testing patient lung functioning
+    - RSPT 55B [Objective]: “Arterial blood gas (ABG) procedures and interpretation.” — testing to evaluate cardiopulmonary function via ABG
+    - RSPT 56 [Objective]: “Perform basic bedside pulmonary function tests as indicated.” — literal testing of patient lung function
+    - RSPT 55C [Objective]: “Performing a complete chest exam.” — chest exam via auscultation/percussion evaluates cardiopulmonary function
+    - RSPT 55E [Objective]: “Electrocardiography.” — objective evidences testing patient heart function via ECG
+    - RSPT 55E [Content outline]: “Basic rhythm recognition” — content covers interpreting cardiac rhythm tests to evaluate cardiopulmonary function
+    - RSPT 61B [Content outline]: “End tidal CO2” — capnography/monitoring is a test of lung/gas exchange function
+    - RSPT 70B [Objective]: “Interpret electrocardiograms and arterial blood gas analyses.” — testing cardiopulmonary function via ECG interpretation
+    - RSPT 70B [Objective]: “Demonstrate the correct technique for performing cardiovascular evaluations.” — cardiac testing technique directly matches occupation task
+    - RSPT 70C [Objective]: “Monitor and interpret hemodynamic data accurately.” — testing cardiac/hemodynamic function including ECG
+    - RSPT 55G [Objective]: “Describe and demonstrate advanced pulmonary function testing (PFT).” — PFT is a direct test of patient lung functioning
+    - RSPT 55G [Objective]: “Describe and demonstrate basic spirometry for inpatients and outpatients.” — spirometry is a standard test of lung function performed on patients
+    - RSPT 61D [Content outline]: “Pediatric PFT and bedside spirometry studies” — pulmonary function testing directly evidences testing patient lung functioning
+    - RSPT 61D [Objective]: “Examine and compare pediatric PFT and bedside spirometry studies” — PFT comparison evidences testing patient lung function
+- · **Supervise patient care personnel.**
+- ● **Move patients to or from treatment areas.**
+    - RSPT 50A [Objective]: “Demonstrate proper body mechanics when moving patients” — moving patients directly evidenced
+    - RSPT 50A [Content outline]: “Emergency carries” — moving patients during emergency transport
+    - RSPT 50A [Lab content]: “Students will position and move patients using correct body mechanics” — moving patients as part of treatment
+    - RSPT 55A [Objective]: “Demonstrate how to position patients properly.” — positioning patients is a directly constitutive component of moving/positioning patients in treatment areas
+
+### Dropped
+
+- act 3 · RSPT 55B · “Interpretation of arterial blood gases (ABG) procedures and interpretation.” — quote not verbatim in that course
+- act 9 · RSPT 61B · “Therapists work with physicians, nurses, and other healthcare professionals in intensive c” — quote not verbatim in that course
+- act 10 · RSPT 61B · “Therapists work with physicians, nurses, and other healthcare professionals in intensive c” — quote not verbatim in that course
+- act 12 · RSPT 61B · “History” — malformed
+- act 25 · RSPT 61B · “Attend high-risk and caesarian section infant deliveries to provide neonatal respiratory c” — quote not verbatim in that course
+- act 5 · AHS 60C · “Monitors patient's condition; Analyze rhythm” — quote not verbatim in that course
+- act 23 · RSPT 63A · “PFTs” — malformed
+- act 23 · RSPT 70C · “ECG” — malformed
+- act 4 · RSPT 51B · “Interpret arterial blood gases” — adjudicated: d) interpreting ABGs evidences gathering/monitoring not informing physicians of a consult
+- act 6 · RSPT 70B · “Interpret electrocardiograms and arterial blood gas analyses.” — adjudicated: d) interpreting ECG/ABG evidences testing/gathering, not relaying results to a physician
+- act 9 · RSPT 70A · “Introduction to various hospital departments, focusing on the practical implementation of ” — adjudicated: a) topic-only description of department introduction with no performable assisting content named
+- act 10 · RSPT 70B · “Demonstrate effective and appropriate communication skills with patients, family members, ” — adjudicated: c) generic communication skill credited to collaborating with professionals
+- act 11 · RSPT 54 · “Scope of practice” — adjudicated: a) topic-only heading 'scope of practice' with no performable standards-verification content
+- act 13 · RSPT 50A · “Maintain, calibrate, troubleshoot and use oxygen analyzers” — adjudicated: d) troubleshooting/calibrating equipment evidences examine/maintain equipment tasks, not emergency repair visits
+- act 13 · RSPT 61A · “Recognize ventilator malfunction, given patient simulations.” — adjudicated: d) recognizing malfunction evidences monitoring/examining equipment, not repair
+- act 14 · BIOL 41 · “Chemical control using disinfectants and antiseptics” — adjudicated: different activity: general biology lab disinfection content not tied to respiratory therapy equipment
+- act 18 · RSPT 54 · “Patient interview” — adjudicated: c) generic patient interview communication skill credited to explaining procedures
+- act 20 · RSPT 61C · “Introduction to rehabilitative respiratory care.” — adjudicated: a) topic-only description naming a subject with no performable treatment content
+- act 21 · RSPT 62 · “Differentiate between the different management and leadership styles.” — adjudicated: b) precondition knowledge of leadership styles precedes actually training providers
+- act 21 · AHS 60C · “Demonstrate effective communication as a member or leader of a resuscitation team” — adjudicated: c) generic communication/leadership skill credited to training medical providers
+- act 24 · RSPT 62 · “Management and leadership styles” — adjudicated: a) topic-only heading on management/leadership styles with no supervisory performance content
+- act 8 · RSPT 50A · “Respiratory therapy in emergency situations” — adjudicated: a) topic-only heading naming subject area with no specific performable content
+- act 9 · RSPT 50A · “Vital signs, compressed gas equipment, oxygen therapy, medical asepsis, bedside pulmonary ” — adjudicated: a) topic-only list of course scope subjects with no explicit team-assisting content
+- act 2 · RSPT 55A · “Identify the different types of oxygen therapy equipment.” — adjudicated: b) identifying types of equipment is precondition knowledge preceding preparing equipment for use
+- act 10 · AHS 50B · “Understand the skills and scope of practice of other health care professionals.” — adjudicated: b) understanding scope of other professionals is precondition knowledge preceding collaboration
+- act 18 · AHS 50B · “Apply appropriate modes of treatment or management to assist in the treatment of the geria” — adjudicated: a) topic-only generic reference to applying treatment modes with no explicit explanation-to-patient content
+- act 12 · RSPT 50B · “Methods of evaluating therapy effectiveness” — adjudicated: different activity: evaluating therapy effectiveness evidences monitoring, not maintaining facility records
+- act 18 · RSPT 50B · “Describe how to safely perform endotracheal and nasotracheal suctioning” — adjudicated: as stated in basis, no direct patient-explanation evidence in the quote
+- act 20 · RSPT 50B · “Goals of bronchial hygiene therapy” — adjudicated: a) topic-only heading 'goals of bronchial hygiene therapy' with no performable treatment content
+- act 4 · RSPT 51C · “Identify normal laboratory test results, and anticipate patient problems which may occur, ” — adjudicated: different activity: SOAP charting of lab results evidences maintaining records, not informing professionals directly
+- act 6 · RSPT 51C · “Analyze physical exams and chest x-rays and relate the data to the patient's condition and” — adjudicated: d) analyzing exam/imaging data evidences gathering information not communicating results to a physician
+- act 20 · RSPT 51C · “Aerosolized medication therapy” — adjudicated: a) topic-only heading naming subject with no performable bronchopulmonary drainage content
+- act 15 · RSPT 53A · “Appropriate respiratory pharmacologic agents” — adjudicated: a) topic-only heading naming subject with no performable protocol-determination content
+- act 4 · RSPT 55B · “Recording and reporting the procedure” — adjudicated: a) topic-only heading 'recording and reporting the procedure' with no patient-condition informing content specified
+- act 6 · RSPT 55B · “Recording and reporting the procedure” — adjudicated: a) topic-only heading 'recording and reporting the procedure' with no physician-relay content specified
+- act 9 · RSPT 55B · “Arterial blood gas (ABG) procedures and interpretation.” — adjudicated: different activity: ABG procedure evidences gather information/testing, not team-assisting
+- act 11 · RSPT 55B · “The "seven rights" of drug administration” — adjudicated: c) generic drug administration safety rule credited to verifying standards
+- act 14 · RSPT 55B · “Post-procedure considerations” — adjudicated: a) topic-only heading 'post-procedure considerations' with no explicit cleaning content
+- act 18 · RSPT 55B · “Recording and reporting procedures” — adjudicated: different activity: recording/reporting procedures evidences maintaining records, not explaining to patients
+- act 19 · RSPT 55B · “Proper suctioning procedures during respiratory care.” — adjudicated: different activity: suctioning procedure evidences airway management, not patient/family training
+- act 25 · RSPT 55B · “Pre-procedure considerations for extubation” — adjudicated: different activity: extubation pre-procedure considerations evidence airway management, not patient transport
+- act 4 · RSPT 56 · “Assessing patient's response to therapy” — adjudicated: a) topic-only heading 'assessing patient's response to therapy' with no consult/inform content
+- act 6 · RSPT 56 · “Critical test values” — adjudicated: a) topic-only heading 'critical test values' with no relay-to-physician content
+- act 14 · RSPT 56 · “Hand hygiene” — adjudicated: c) generic hand hygiene skill credited to cleaning medical equipment
+- act 4 · RSPT 50C · “Discuss the principle of monitoring the patient in the intensive care unit.” — adjudicated: b) discussing principle of monitoring is precondition knowledge preceding informing professionals
+- act 4 · RSPT 51B · “The student will be able to interpret arterial blood gases and initiate therapy based on r” — adjudicated: different activity: interpreting ABGs to initiate therapy evidences gather info/determine protocols, not informing professionals
+- act 23 · RSPT 55C · “Discuss chest, bony thorax, and soft tissue neck/upper airway pathology, and identify what” — adjudicated: a) topic-only heading discussing pathology/signs with no performable testing content
+- act 4 · RSPT 57 · “Interpretation of laboratory data” — adjudicated: a) topic-only heading 'interpretation of laboratory data' with no consult/inform content
+- act 6 · RSPT 57 · “Interpretation of laboratory data” — adjudicated: a) topic-only heading 'interpretation of laboratory data' with no relay-to-physician content
+- act 18 · RSPT 57 · “Indications, contraindication, and hazards for therapy” — adjudicated: as stated in basis, course centers on performing not patient-facing explanation
+- act 14 · RSPT 61A · “Set ventilator alarms and sensitivity appropriately” — adjudicated: different activity: setting alarms/sensitivity evidences adjusting equipment settings, not cleaning
+- act 4 · RSPT 61A · “Recognize ventilator malfunction, given patient simulations” — adjudicated: different activity: recognizing ventilator malfunction evidences examine/maintain equipment, not informing professionals
+- act 4 · RSPT 70A · “State indications, contraindications, hazards, and methods of evaluating effectiveness of ” — adjudicated: a) topic-only heading listing indications/hazards/evaluation methods with no consult content
+- act 9 · RSPT 70A · “Students will learn to analyze fundamental diagnostic information and its relevance to tre” — adjudicated: a) topic-only description of learning to analyze diagnostic information with no team-assisting content
+- act 9 · RSPT 70A · “End of shift reports” — adjudicated: different activity: end of shift reports evidence communicating with team/records, not assisting during exam/treatment
+- act 18 · RSPT 70A · “focusing on the practical implementation of respiratory therapy techniques” — adjudicated: a) topic-only description of practical implementation with no explicit patient-explanation content
+- act 4 · AHS 60A · “Relating patient condition and pathophysiology to abnormal readings” — adjudicated: a) topic-only heading relating readings to pathophysiology with no consult content
+- act 6 · AHS 60A · “Relating patient condition and pathophysiology to abnormal readings” — adjudicated: a) topic-only heading relating readings to pathophysiology with no relay-to-physician content
+- act 23 · AHS 60A · “Discuss the electrophysiology of the heart and relate it to the electrocardiogram.” — adjudicated: b) discussing electrophysiology is precondition knowledge preceding testing patient heart function
+- act 4 · RSPT 53B · “Evaluate the patient's need for various diuretic agents.” — adjudicated: different activity: evaluating need for diuretic agents evidences determine protocols, not informing professionals
+- act 4 · RSPT 53B · “Evaluate the patient's need for selected respiratory therapy agents.” — adjudicated: different activity: evaluating need for respiratory agent evidences determine protocols, not informing professionals
+- act 1 · RSPT 55E · “Hemodynamic monitoring” — adjudicated: different activity: hemodynamic monitoring evidences monitor patient conditions, not operating therapeutic devices
+- act 4 · RSPT 61B · “Alarm settings” — adjudicated: different activity: alarm settings content evidences equipment adjustment, not informing professionals
+- act 6 · RSPT 61B · “Interpret laboratory data” — adjudicated: different activity: interpreting lab data evidences gathering information, not relaying to physician
+- act 14 · RSPT 61B · “Assemble, troubleshoot and manage infant ventilators” — adjudicated: different activity: assembling/troubleshooting ventilators evidences maintain equipment, not cleaning
+- act 22 · RSPT 61B · “Assemble, troubleshoot and manage infant ventilators” — adjudicated: different activity: assembling/troubleshooting ventilators evidences maintain/operate equipment, not adjust settings specifically
+- act 4 · RSPT 70B · “Appropriately document treatment outcomes and observations of therapy.” — adjudicated: different activity: documenting treatment outcomes evidences maintaining records, not informing professionals
+- act 6 · RSPT 70B · “Interpret electrocardiograms and arterial blood gas analyses.” — adjudicated: different activity: interpreting ECG/ABG evidences testing, not relaying results to a physician
+- act 10 · RSPT 70B · “Recommend appropriate therapies for ventilator patients.” — adjudicated: different activity: recommending therapies evidences determine protocols, not team collaboration specifically
+- act 18 · RSPT 70B · “Demonstrate effective and appropriate communication skills with patients, family members, ” — adjudicated: c) generic communication skill credited to explaining procedures
+- act 4 · RSPT 55F · “Interprets information and accurately suggests treatment in clinical simulations for patie” — adjudicated: different activity: suggesting treatment evidences determine protocols, not informing professionals
+- act 9 · RSPT 55F · “Case management of a neuro patient.” — adjudicated: a) topic-only heading 'case management of a neuro patient' with no performable team-assisting content
+- act 12 · RSPT 61C · “Create a patient care plan for a respiratory patient.” — adjudicated: different activity: creating a care plan evidences care planning, not maintaining identification/therapy charts
+- act 18 · RSPT 61C · “Purpose of plan” — adjudicated: a) topic-only heading 'purpose of plan' with no explicit patient-explanation content
+- act 19 · RSPT 61C · “Introduction to teaching techniques” — adjudicated: b) introduction to teaching techniques is precondition knowledge preceding actual patient training
+- act 4 · RSPT 63A · “Laboratory results” — adjudicated: a) topic-only heading 'laboratory results' with no consult/inform content
+- act 6 · RSPT 63A · “Laboratory results” — adjudicated: a) topic-only heading 'laboratory results' with no relay-to-physician content
+- act 9 · RSPT 63A · “The assessment and treatment of patients with cardiopulmonary disease.” — adjudicated: a) topic-only description naming subject area with no performable assisting content
+- act 4 · RSPT 65 · “Evaluate patient's response to respiratory care” — adjudicated: different activity: evaluating patient's response evidences monitor conditions, not informing professionals
+- act 10 · RSPT 65 · “Initiate, conduct or modify respiratory care techniques in an emergency setting” — adjudicated: different activity: modifying respiratory care in emergency evidences determine protocols, not collaboration specifically
+- act 19 · RSPT 65 · “Patient's learning needs” — adjudicated: a) topic-only heading 'patient's learning needs' with no performable training content
+- act 23 · RSPT 65 · “Pulmonary function results” — adjudicated: a) topic-only heading 'pulmonary function results' with no performable testing content
+- act 23 · RSPT 65 · “Cardiac monitoring” — adjudicated: a) topic-only heading 'cardiac monitoring' with no performable heart-testing content beyond monitoring
+- act 4 · RSPT 70C · “Patient care plans and education with the patient/family members” — adjudicated: a) topic-only heading 'patient care plans and education' with no consult/inform content
+- act 4 · RSPT 70C · “Recommend appropriate therapies for ventilator patients.” — adjudicated: different activity: recommending therapies evidences determine protocols, not informing professionals
+- act 6 · RSPT 70C · “Provide correct documentation of observations and therapies.” — adjudicated: a) topic-only heading naming documentation with no relay-to-physician content
+- act 10 · RSPT 70C · “Demonstrate effective and appropriate communication skills with patients, family members, ” — adjudicated: c) generic communication skill credited to collaborating with professionals
+- act 18 · RSPT 70C · “Patient education” — adjudicated: a) topic-only heading 'patient education' with no explicit explain-procedures content
+- act 19 · RSPT 70C · “Patient care plans and education with the patient/family members” — adjudicated: a) topic-only heading 'patient care plans and education' with no performable training content
+- act 4 · RSPT 55G · “Interprets data correctly and chooses correct treatments in the computer modules.” — adjudicated: different activity: choosing treatments from data evidences determine protocols, not informing professionals
+- act 6 · RSPT 61D · “Pediatric laboratory studies” — adjudicated: different activity: analyzing lab studies evidences gathering information, not relaying to physician
+- act 18 · RSPT 61D · “Chief complaint” — adjudicated: as stated in basis, not a strong match; removed
+- act 9 · RSPT 70D · “Adult intensive critical care patients” — adjudicated: a) topic-only heading 'adult intensive critical care patients' with no performable assisting content

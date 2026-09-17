@@ -1,0 +1,59 @@
+{
+ "college": "Foothill College",
+ "system": "courseleaf",
+ "code": "HORT 40",
+ "title": "Landscape Design: Graphic Communication",
+ "description": "An introductory survey of the basic principles of design communication, landscape graphics, and design process. Graphic mediums and tools, graphic vocabulary, graphic skills, reprographic techniques, plan reading, and presentation skill development. The application of lines, symbols, and lettering to create typical landscape drawings.",
+ "outcomes": [
+  "Demonstrate knowledge of the fundamentals of landscape design communication and landscape design process on class projects.",
+  "Develop visual communication \"thinking\" skills through the completion of a sketchbook."
+ ],
+ "objectives": [
+  "Exhibit an understanding of graphic communication skills as they relate to landscape design through a series of class exercises.",
+  "Demonstrate knowledge of the fundamentals of landscape design communication and landscape design process on class projects.",
+  "Read landscape design plans and correctly identify symbols and nomenclature.",
+  "Develop visual communication \"thinking\" skills through the completion of a sketchbook.",
+  "Understand the cross-cultural nature of design and graphic communication skills."
+ ],
+ "content": [
+  "Explanation of drafting equipment care and use",
+  "Sketching as a design tool",
+  "Development of lettering skills",
+  "Graphic and drafting techniques for landscape design",
+  "The application of lines and symbols as they relate to landscape design",
+  "Graphic vocabulary",
+  "Reprographic techniques",
+  "Basic design communication drawing formats",
+  "Plan",
+  "Elevation",
+  "Section",
+  "Orthographic projection",
+  "Fundamentals of paraline drawings",
+  "Fundamentals of perspectives",
+  "Techniques for and comprehension of working drawings",
+  "Plans for layout, grading, irrigation, planting, etc.",
+  "Construction details",
+  "Plan reading",
+  "The fundamentals of design",
+  "Graphics as a design communication tool",
+  "Communications triangle",
+  "Conceptual drawings",
+  "The design process",
+  "Cross-cultural design communication",
+  "Presentation skills"
+ ],
+ "lab": [
+  "Lettering lab: Students practice the refinement of architectural lettering in class with assistance from the instructor",
+  "Line and drafting labs: Students practice and perfect their drafting skills in class with assistance from the instructor",
+  "Orthographic lab: Students lay out plan, elevation, and section drawings using orthographic techniques",
+  "Axonometric lab: Students lay out an axonometric drawing based on a plan view drawing they created",
+  "Plan, section, and elevation: Students practice laying out plan, elevation, and section drawings",
+  "Plan illustration lab: Students practice the use of texture and tone to illustrate and highlight key aspects of plan, elevation, and section drawings"
+ ],
+ "assignments": [],
+ "source_url": "https://catalog.foothill.edu/course-outlines/HORT-40/",
+ "effective": "Summer 2022",
+ "approved": "",
+ "retrieved": "2026-09-17",
+ "notes": ""
+}

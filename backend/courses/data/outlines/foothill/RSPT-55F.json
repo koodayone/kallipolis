@@ -1,0 +1,58 @@
+{
+ "college": "Foothill College",
+ "system": "courseleaf",
+ "code": "RSPT 55F",
+ "title": "Mediated Studies In Respiratory Therapy Vi",
+ "description": "Sixth of seven courses paralleling content taught in courses in the Respiratory Therapy Program. Designed to develop and reinforce concepts taught in the concurrent lecture and laboratory sessions of the program, with a focus on COPD/mechanical ventilation, head injuries, acute congestive heart failure, near drowning, neonatal respiratory distress syndrome, hypothermia with cardiac arrest, COPD/home care, and pulmonary rehabilitation. Media materials, simulations, and videos will provide alternative learning resources to accommodate diverse learning styles. Intended for students in the Respiratory Therapy Program; enrollment is limited to students accepted in the program.",
+ "outcomes": [
+  "Interprets information and accurately suggests treatment in clinical simulations for patients with cardiopulmonary and pulmonary conditions.",
+  "Student will be able to state indications, application and risks involved with the placement of Chest tubes."
+ ],
+ "objectives": [
+  "The student will be able to describe and demonstrate the following skills:",
+  "Mechanical ventilation management of a COPD patient.",
+  "Case management of a neuro patient.",
+  "Proper management of an acute exacerbation of congestive heart failure.",
+  "Correct management and therapeutic interventions for a pediatric near-drowning patient.",
+  "Correct management and therapeutic interventions for neonates with respiratory distress syndrome.",
+  "Correct management of hypothermia with cardiac arrest.",
+  "COPD/home care and pulmonary rehabilitation.",
+  "Correct management of chest tubes and chest drainage systems.",
+  "Innovative approaches in the management of ARDS.",
+  "Correct management of asthma.",
+  "Pulmonary rehabilitation."
+ ],
+ "content": [
+  "The course content includes information gathering and decision-making for different patients whose diagnoses and classifications are listed below:",
+  "COPD/mechanical ventilation clinical simulation",
+  "Head injury clinical simulation",
+  "Acute congestive heart failure clinical simulation",
+  "Pediatric near drowning clinical simulation",
+  "Neonatal respiratory distress syndrome",
+  "Hypothermia with cardiac arrest clinical simulation",
+  "COPD/home care and pulmonary rehabilitation clinical simulation",
+  "Chest tubes and chest drainage systems computer module",
+  "Innovative approaches in the management of ARDS computer module",
+  "Management of asthma computer module",
+  "Pulmonary rehabilitation computer module"
+ ],
+ "lab": [
+  "COPD/mechanical ventilation clinical simulation",
+  "Head injury clinical simulation",
+  "Acute congestive heart failure clinical simulation",
+  "Pediatric near drowning clinical simulation",
+  "Neonatal respiratory distress syndrome",
+  "Hypothermia with cardiac arrest clinical simulation",
+  "COPD/home care and pulmonary rehabilitation clinical simulation",
+  "Chest tubes and chest drainage systems computer module",
+  "Innovative approaches in the management of ARDS computer module",
+  "Management of asthma computer module",
+  "Pulmonary rehabilitation computer module"
+ ],
+ "assignments": [],
+ "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-55F/",
+ "effective": "Summer 2025",
+ "approved": "",
+ "retrieved": "2026-09-17",
+ "notes": ""
+}
