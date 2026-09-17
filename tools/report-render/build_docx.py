@@ -553,7 +553,7 @@ def add_alg_table(table):
         cell = trow.cells[ci]; p = cell.paragraphs[0]
         p.paragraph_format.space_before = Pt(1); p.paragraph_format.space_after = Pt(1)
         if ci == 0:
-            run(p, 'WORK ACTIVITY', size=7, bold=True, color=MUT)
+            run(p, 'WORK ACTIVITY', size=7, bold=True, color=DARK)
         else:
             run(p, c['el'].get_text(' ', strip=True), size=9, bold=True, color='ffffff'); shade(cell, colours[ci])
         cellpad(cell, 30, 30, 60, 60)

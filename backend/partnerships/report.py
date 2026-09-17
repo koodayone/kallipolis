@@ -1436,7 +1436,7 @@ p a,.byline a{color:#1155cc;text-decoration:underline}
 .alg-tbl{table-layout:fixed;margin:6px 0 2px;font-size:11px}
 .alg-tbl col.alg-actcol{width:196px}
 .alg-tbl th{background:#fff;color:#2a3450;font-size:10px;padding:4px 6px 6px;border:0;border-bottom:2px solid var(--c,#c8d0de);text-align:left;vertical-align:bottom}
-.alg-tbl th.alg-acthd{border-bottom-color:#e7eaf1;color:#8a93a5;font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:8px}
+.alg-tbl th.alg-acthd{border-bottom-color:#c8d0de;color:#2a3450;font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:8px}
 .alg-colhd{display:block;font-weight:700}
 .alg-tbl td{border:0;border-bottom:1px solid #eef1f6;padding:4px 5px;vertical-align:top}
 .alg-tbl thead{display:table-header-group}
