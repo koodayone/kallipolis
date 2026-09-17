@@ -582,8 +582,8 @@ def add_alg_table(table):
                     if quote is not None:
                         q2 = cell.add_paragraph()
                         q2.paragraph_format.space_before = Pt(0); q2.paragraph_format.space_after = Pt(2)
-                        q2.paragraph_format.tab_stops.add_tab_stop(Inches(1.3))
-                        q2.paragraph_format.left_indent = Inches(1.3); q2.paragraph_format.first_line_indent = Inches(-1.3)   # wrapped lines hang under the quote
+                        q2.paragraph_format.tab_stops.add_tab_stop(Inches(1.4))
+                        q2.paragraph_format.left_indent = Inches(1.4); q2.paragraph_format.first_line_indent = Inches(-1.4)   # wrapped lines hang under the quote
                         sec = quote.find('span', class_='alg-sec')
                         if sec is not None:
                             run(q2, sec.get_text(' ', strip=True) + '\t', size=7.5, bold=True, color='6b7686')
