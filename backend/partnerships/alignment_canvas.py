@@ -128,11 +128,11 @@ def canvas(roster: str = "svamp-manufacturing-technician", college: str = "", ap
         orig = A.view_roster
         A.view_roster = lambda _r: (roster_d, keep)          # the builder reads through this seam
         try:
-            parts, appx = R._curriculum_section(spec)
+            parts, appx, _ = R._curriculum_section(spec)
         finally:
             A.view_roster = orig
     else:
-        parts, appx = R._curriculum_section(spec)
+        parts, appx, _ = R._curriculum_section(spec)
     generated = _generated(roster_d)
     body = "\n".join(parts + (appx if appendix else []))
     colleges = [("", "all colleges")] + list(dict.fromkeys((p.member_id, p.college) for p in plates))

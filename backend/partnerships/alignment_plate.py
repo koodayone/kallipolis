@@ -176,8 +176,16 @@ COR_TAG = {"outcomes": "Student learning outcome", "objectives": "Course objecti
 COR_LEGEND = "The caption above each excerpt names the section of the course outline of record it comes from."
 
 
+def block_key() -> str:
+    """The one-line key under a certificate-column block: what a chip is, what a caption is.
+    The college swatch is left out — the column header names the certificate a few lines down."""
+    return ('<p class="tnar alg-key"><b class="chip" style="--c:#5a6577">CODE</b> a course whose outline evidences the activity '
+            '\u00b7 captions name the section of the course outline of record the sentence comes from</p>')
+
+
 def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_order: list[str] | None = None,
-                     max_chips: int = CHIPS_PER_CELL, show_gaps: bool = False, columns: str = "college") -> str:
+                     max_chips: int = CHIPS_PER_CELL, show_gaps: bool = False, columns: str = "college",
+                     intro: str = "") -> str:
     """One occupation: header, then a table — the top-N activities down the side, one
     column per plate in a fixed roster order, that program's evidencing courses stacked as
     chips in the cell. Position carries the column (the strong channel); colour repeats the
@@ -207,7 +215,7 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_
                    for p in plates)
     # No method line per block: how rows are chosen and ordered is said once, in the
     # appendix introduction (report._curriculum_section).
-    out = [f'<p class="chtitle">{escape(title)} <span class="alg-soc">SOC {escape(soc)}</span></p>',
+    out = [f'<p class="chtitle">{escape(title)} <span class="alg-soc">SOC {escape(soc)}</span></p>', intro,
            f'<table class="alg-tbl"><colgroup><col class="alg-actcol">{"".join("<col>" for _ in plates)}</colgroup>'
            f'<thead><tr><th class="alg-acthd">Work activity</th>{head}</tr></thead><tbody>']
     covered = 0
@@ -291,7 +299,7 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_
         if uncovered:
             parts.append("Not evidenced by any college: " + "; ".join(escape(u) for u in uncovered) + ".")
         out.append(f'<p class="tnar">{" ".join(parts)}</p>')
-    return "\n".join(out)
+    return "\n".join(x for x in out if x)
 
 
 def appendix_tables(plates: list[Plate], *, top_n: int | None = None) -> str:

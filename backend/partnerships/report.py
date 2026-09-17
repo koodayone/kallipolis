@@ -1449,6 +1449,8 @@ p a,.byline a{color:#1155cc;text-decoration:underline}
 .alg-quote{font-size:10px;color:#5a6577;line-height:1.35;margin-top:2px;padding-left:2px}
 .alg-rule{border-left:2px solid var(--t,#7a869a);padding-left:7px;margin:3px 0 2px 2px}.alg-secx{display:block;font-size:7.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#8a93a5;margin-bottom:1px}
 .alg-lgnote{flex-basis:100%;color:#6b7686;font-size:10px}
+.alg-desc{font-size:10.5px;color:#46536b;margin:-2px 0 4px;line-height:1.4}.alg-desc a{color:#1155cc;text-decoration:underline;font-size:10px;white-space:nowrap}
+.alg-key{margin:0 0 4px;font-size:10px;color:#6b7686}
 .chip{display:inline-block;font:700 8.5px/1 Helvetica,Arial,sans-serif;letter-spacing:.01em;padding:2.5px 5px;border-radius:3px;border:1.5px solid var(--c);white-space:nowrap}
 .chip{background:var(--c);color:#fff}a.chip{text-decoration:none;color:#fff}a.chip:hover{filter:brightness(1.12)}.chip.alg-more{background:#eef1f6;color:#5a6577;border-color:#eef1f6}
 .alg-gap{font-size:10px;color:#a8641a;font-style:italic}
@@ -1719,12 +1721,15 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         cols = [by_soc[o.soc] for o in occs if o.soc in by_soc]
     else:
         cols = _cols_from_bundle(occs)
-    grid = _competency_grid(cols, occs)
+    curriculum_parts, curriculum_appendix, consolidated = (
+        _curriculum_section(spec, {c.soc: c.description for c in cols}) if spec.curriculum_alignment else ([], [], False))
+    # An evaluation whose curriculum has been read carries the occupation description
+    # inside each alignment block and drops the grid: the work activities with their course
+    # sentences say what the grid's knowledge, skills and abilities only named.
+    grid = _competency_grid(cols, occs) if not consolidated else ""
     if grid:
         sections += ['<h1>Occupational Competencies</h1>',
                      f'<p>{_linkify(spec.competency_note)}</p>' if spec.competency_note else '', grid]
-
-    curriculum_parts, curriculum_appendix = (_curriculum_section(spec) if spec.curriculum_alignment else ([], []))
     sections += curriculum_parts
 
     # The coalition's programs — an editorial (college, TOP6) selection, else all
@@ -1819,31 +1824,42 @@ _CURRICULUM_BLURB = ("O*NET maintains a set of detailed work activities that ide
                      "described in its Course Outline of Record (COR).")
 
 
-def _curriculum_section(spec: ReportSpec) -> tuple[list[str], list[str]]:
-    """(section parts, appendix parts) for the roster named by spec.curriculum_alignment;
-    both empty when none of its readings has been run. The section reads BY OCCUPATION —
-    the roster's SOCs in order, each with the ten most important core activities and the
-    courses that evidence them, one column per program the roster connects. A consortium
-    roster names its columns by college; an evaluation roster (one college, its
-    certificates) by certificate. Readings the roster marks appendix-only appear in the
-    appendix alone."""
+def _curriculum_section(spec: ReportSpec, descriptions: dict[str, str] | None = None) -> tuple[list[str], list[str], bool]:
+    """(section parts, appendix parts, consolidated) for the roster named by
+    spec.curriculum_alignment; the parts are empty when none of its readings has been run.
+    The section reads BY OCCUPATION — the roster's SOCs in order, each with its most
+    important core activities and the courses that evidence them, one column per program
+    the roster connects. A consortium roster names its columns by college and keeps one
+    legend. An evaluation roster (one college, its certificates) is CONSOLIDATED: each block
+    opens with the occupation's O*NET description and summary link and its own one-line
+    key, so the report drops the competency grid — the activities and their course
+    sentences say what the grid's knowledge, skills and abilities only named. Readings the
+    roster marks appendix-only appear in the appendix alone."""
     from partnerships.alignment import view_roster
-    from partnerships.alignment_plate import appendix_tables, column_legend, occupation_block
+    from partnerships.alignment_plate import appendix_tables, block_key, column_legend, occupation_block
 
     roster, plates = view_roster(spec.curriculum_alignment)
     if not plates:
-        return [], []
+        return [], [], False
     columns = roster.get("columns", "college")
+    consolidated = columns == "certificate"
     socs = roster.get("occupations") or sorted({p.paired_soc for p in plates})
     top_n = int(roster.get("top_n", 10))
     shown = [p for p in plates if p.role != "appendix"]
     parts = ['<h1>Curriculum Alignment</h1>',
-             f'<p>{_linkify(spec.curriculum_note) if spec.curriculum_note else _esc(_CURRICULUM_BLURB)}</p>',
-             column_legend(shown, columns)]
+             f'<p>{_linkify(spec.curriculum_note) if spec.curriculum_note else _esc(_CURRICULUM_BLURB)}</p>']
+    if not consolidated:
+        parts.append(column_legend(shown, columns))
     member_order = list(dict.fromkeys(pl.member_id for pl in plates))   # one fixed column order across blocks
     for soc in socs:
+        intro = ""
+        if consolidated:
+            desc = (descriptions or {}).get(soc, "")
+            link = (f'<a href="https://www.onetonline.org/link/summary/{_esc(soc)}.00" target="_blank" rel="noopener">'
+                    'O*NET Occupation Summary \u2197</a>')
+            intro = (f'<p class="alg-desc"><i>{_esc(desc)}</i> {link}</p>' if desc else f'<p class="alg-desc">{link}</p>') + block_key()
         block = occupation_block(soc, [p for p in shown if p.paired_soc == soc], top_n=top_n, college_order=member_order,
-                                 show_gaps=spec.curriculum_show_gaps, columns=columns)
+                                 show_gaps=spec.curriculum_show_gaps, columns=columns, intro=intro)
         if block:            # not _block(): a block may break across pages; rows never do
             parts.append(block)
     # Appendix: the outlines themselves, linked. A reader checks a chip against the
@@ -1869,7 +1885,7 @@ def _curriculum_section(spec: ReportSpec) -> tuple[list[str], list[str]]:
     if spec.curriculum_show_gaps:      # internal review: every quoted sentence, by occupation and college
         appendix += ['<details class="alg-appx"><summary><b>Evidence tables (internal review)</b></summary>'
                      f'{appendix_tables(plates)}</details>']
-    return parts, appendix
+    return parts, appendix, consolidated
 
 
 # ── Demo: the whole report PROPOSED from just (member, play) ───────────────────

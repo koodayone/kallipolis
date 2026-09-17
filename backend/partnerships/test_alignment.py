@@ -14,6 +14,7 @@ Coverage:
   - a program-outcomes-only re-read keeps the saved plate's courses and adds PLO cells; the gate takes the certificate's name as PLO
   - a certificate column shows one mark per activity — the lead excerpt with its course title and COR section tag — and the legend explains the tags; program outcomes are not drawn
   - rank_leads asks one judgment for rows with several excerpts, stores the choice, and falls back to tier, units, catalog order
+  - a block takes an intro (the occupation description and its key) under its title; the certificate key names chip and caption without a swatch
   - an occupation block and legend label columns by certificate when the roster asks, and by college otherwise
   - a ProgramCourseFile course id becomes the college's spelling (space before the number, zeros dropped or kept)
   - scaffold_record drafts a record from a COCI award and Active PCF rows, with a _todo list and the sibling's source
@@ -198,6 +199,15 @@ def test_dense_cell_shows_the_lead_only_with_cor_tag_and_legend():
     assert "section of the course outline of record" not in column_legend([pl])
     sparse = occupation_block("29-1126", [pl])
     assert "Respiratory Therapy Procedures" not in sparse and "Program outcome" not in sparse   # consortium view unchanged
+
+
+def test_block_intro_and_key():
+    from partnerships.alignment_plate import block_key
+    pl = _rt_plate()
+    html = occupation_block("29-1126", [pl], columns="certificate", intro='<p class="alg-desc"><i>Assesses patients.</i></p>' + block_key())
+    assert html.index("SOC 29-1126") < html.index("Assesses patients.") < html.index('alg-key') < html.index("<table")
+    assert "swatch" not in block_key() and "<i style" not in block_key() and "CODE" in block_key() and "captions name the section" in block_key()
+    assert 'alg-desc' not in occupation_block("29-1126", [pl], columns="certificate")       # no intro, nothing inserted
 
 
 def test_rank_leads_judges_multi_excerpt_rows_and_falls_back():
