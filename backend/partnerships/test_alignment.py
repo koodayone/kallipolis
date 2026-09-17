@@ -206,7 +206,7 @@ def test_block_intro_and_key():
     pl = _rt_plate()
     html = occupation_block("29-1126", [pl], columns="certificate", intro='<p class="alg-desc"><i>Assesses patients.</i></p>' + block_key())
     assert html.index("SOC 29-1126") < html.index("Assesses patients.") < html.index('alg-key') < html.index("<table")
-    assert "swatch" not in block_key() and "<i style" not in block_key() and "CODE" in block_key() and "captions name the section" in block_key()
+    assert "swatch" not in block_key() and "<i style" not in block_key() and "CODE" in block_key() and "captions" not in block_key()
     assert 'alg-desc' not in occupation_block("29-1126", [pl], columns="certificate")       # no intro, nothing inserted
 
 

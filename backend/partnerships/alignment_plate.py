@@ -177,10 +177,10 @@ COR_LEGEND = "The caption above each excerpt names the section of the course out
 
 
 def block_key() -> str:
-    """The one-line key under a certificate-column block: what a chip is, what a caption is.
-    The college swatch is left out — the column header names the certificate a few lines down."""
-    return ('<p class="tnar alg-key"><b class="chip" style="--c:#5a6577">CODE</b> a course whose outline evidences the activity '
-            '\u00b7 captions name the section of the course outline of record the sentence comes from</p>')
+    """The one-line key under a certificate-column block: what a chip is. The college swatch
+    is left out (the column header names the certificate a few lines down) and the captions
+    need no explanation — a small heading over a quoted sentence reads as its source."""
+    return '<p class="tnar alg-key"><b class="chip" style="--c:#5a6577">CODE</b> a course whose outline evidences the activity</p>'
 
 
 def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_order: list[str] | None = None,
