@@ -9,7 +9,7 @@ role; the bundle keeps that selection ANCHORED to real O*NET elements, so the
 "Source: O*NET" citation stays honest — the LLM curates from authority, it does
 not invent competencies from memory.
 
-The authoritative source is O*NET (U.S. Dept. of Labor) — the same release (28.3)
+The authoritative source is O*NET (U.S. Dept. of Labor) — the same release
 the descriptions module bundles, at `backend/ontology/data/onet_competencies.tsv`
 (public-domain, slow cadence, no runtime network fetch).
 
@@ -97,9 +97,13 @@ def build_bundle(onet_dir: str, top_n: int = 8, im_floor: float = 2.5) -> None:
         rows: dict[str, dict[str, bool]] = defaultdict(dict)
         df: dict[str, int] = defaultdict(int)
         seen: dict[str, set] = defaultdict(set)
-        with open(f"{onet_dir}/Technology Skills.txt", encoding="utf-8") as f:
+        # 28.3 named this file `Technology Skills.txt` with a `Commodity Title` column;
+        # 31.0 renamed it `Software Skills.txt` with `Element Name` / `Workplace Example`.
+        import os
+        fname = "Software Skills.txt" if os.path.exists(f"{onet_dir}/Software Skills.txt") else "Technology Skills.txt"
+        with open(f"{onet_dir}/{fname}", encoding="utf-8") as f:
             for row in csv.DictReader(f, delimiter="\t"):
-                t, code = row["Commodity Title"], row["O*NET-SOC Code"]
+                t, code = row.get("Commodity Title") or row["Element Name"], row["O*NET-SOC Code"]
                 rows[code][t] = rows[code].get(t, False) or row.get("Hot Technology") == "Y"
                 if t not in seen[code]:
                     df[t] += 1
@@ -115,7 +119,17 @@ def build_bundle(onet_dir: str, top_n: int = 8, im_floor: float = 2.5) -> None:
             (primary if suffix == "00" else fallback).setdefault(base, picks)
         return {**fallback, **primary}
 
-    cats = {"knowledge": ksa("Knowledge.txt"), "skills": ksa("Skills.txt"),
+    # O*NET 31.0 split `Skills.txt` into `Essential Skills.txt` (the ten cross-cutting
+    # basics) and `Transferable Skills.txt` (the occupation-shaped rest). Read whichever
+    # the release ships; the transferable file is the one that carries curriculum signal.
+    import os
+    if os.path.exists(f"{onet_dir}/Skills.txt"):
+        skills = ksa("Skills.txt")
+    else:
+        ess, trans = ksa("Essential Skills.txt"), ksa("Transferable Skills.txt")
+        skills = {soc: (trans.get(soc, []) + [e for e in ess.get(soc, []) if e not in trans.get(soc, [])])[:top_n]
+                  for soc in set(ess) | set(trans)}
+    cats = {"knowledge": ksa("Knowledge.txt"), "skills": skills,
             "abilities": ksa("Abilities.txt"), "technology": tech()}
     socs = sorted(set().union(*(set(c) for c in cats.values())))
     with open(BUNDLE_PATH, "w", encoding="utf-8") as f:

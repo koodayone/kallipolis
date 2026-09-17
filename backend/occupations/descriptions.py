@@ -6,7 +6,7 @@ Occupational Classification 2018 definitions. BLS publishes them at
 bls.gov/soc/2018; the file ships in-repo via O*NET, which redistributes
 the BLS definitions verbatim on the `.00` rows of its Occupation Data
 release. We bundle the O*NET TSV at
-`backend/ontology/data/onet_occupation_data.tsv` (release 28.3) for the
+`backend/ontology/data/onet_occupation_data.tsv` (release 31.0, August 2026) for the
 same reason the other federal vocabulary files (TOP→CIP, CIP→SOC,
 PCAH sectors, OES) are bundled: public-domain dataset, slow update
 cadence, no live dependency on a network fetch at runtime.
@@ -80,6 +80,27 @@ def _load_soc_descriptions() -> dict[str, str]:
 def get_description(soc_code: str) -> str | None:
     """Return the BLS SOC 2018 definition for a SOC, or None if unknown."""
     return _load_soc_descriptions().get(soc_code)
+
+
+_soc_to_title: dict[str, str] | None = None
+
+
+def get_title(soc_code: str) -> str | None:
+    """The O*NET occupation title for a base SOC (the `.00` row, else the first
+    specialty) — the name a plate prints beside the code."""
+    global _soc_to_title
+    if _soc_to_title is None:
+        primary, fallback = {}, {}
+        with open(ONET_TSV_PATH, newline="", encoding="utf-8") as f:
+            for row in csv.DictReader(f, delimiter="\t"):
+                code = row["O*NET-SOC Code"]
+                base, suffix = code[:7], code[8:]
+                if suffix == "00":
+                    primary[base] = row["Title"].strip()
+                elif base not in fallback:
+                    fallback[base] = row["Title"].strip()
+        _soc_to_title = {**fallback, **primary}
+    return _soc_to_title.get(soc_code[:7])
 
 
 def update_descriptions() -> None:

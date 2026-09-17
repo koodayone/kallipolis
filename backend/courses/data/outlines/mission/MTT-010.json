@@ -1,0 +1,66 @@
+{
+ "college": "Mission College",
+ "system": "elumen",
+ "code": "MTT 010",
+ "title": "Introduction to Technology and Careers",
+ "description": "This course exposes students to the field of mechatronics and control system disciplines. The course presents basic skills necessary to succeed as mechatronics student. The nature of control system in different process industries and the role of mechatronics technicians are explored. Communication skills for reports are developed. Guest speakers from local process firms and tours to local companies are included.",
+ "outcomes": [
+  "Collect, organize, and present measurement data in tabular and graphic form.",
+  "Measuring DC voltage, DC current, and resistance",
+  "Comparison of DC and AC circuits",
+  "Identify both process variable and control variable in a manufacturing process",
+  "Identify and understanding different process industries, e.g. pharmaceutical, water and wastewater, electronic parts, and oil & refinery."
+ ],
+ "objectives": [
+  "Overview of the field of mechatronics and control system career",
+  "Communication skills for reports are developed",
+  "Describe, compare, and contrast voltage, current, power, efficiency, energy, resistance, and various pneumatic system."
+ ],
+ "content": [
+  "Overview",
+  "Different process industries",
+  "Difference between Engineering Technology and Engineering",
+  "Future technology career prospects in the Silicon Valley and beyond",
+  "History of Mechatronics and its impact on various industries",
+  "Work Ethics and Industrial Safety",
+  "Mechatronics Curriculum – Courses and Outcomes",
+  "Success in College",
+  "Teaching styles and Learning styles",
+  "Using college resources",
+  "Technical Software",
+  "Microsoft Office Suite",
+  "Reports using MS Word/Google Docs",
+  "Presentations using MS PowerPoint/Google Slides",
+  "Analyzing and presenting data using MS Excel/Google Sheets",
+  "Expose students to idea of control systems: define Programmable Logic Controller (PLC)/Human Machine Interface (HMI)/Operator Interface Terminal (OIT)/Distributed Control System (DCS)",
+  "Working effectively within a team of technicians and engineering team",
+  "Introduction to Electronic Fundamentals",
+  "Voltage, Current and Resistance",
+  "Alternating Current (AC)/Direct Current (DC) Circuits"
+ ],
+ "lab": [
+  "Projects",
+  "managing the project",
+  "building and completing the project",
+  "data collection and analysis",
+  "Explore Tools Used by Mechatronics technicians: MS Word, PowerPoint, Excel, PLC program",
+  "Build a simple AC/DC circuit"
+ ],
+ "assignments": [
+  "Outside Assignments",
+  "Outside assignments are reading and homework assignments. Students prepare presentations outside of class.",
+  "For example: Deliver a presentation on the role of mechatronics in a process industry",
+  "Critical Thinking Assignments",
+  "Students will analyze and present solutions to engineering technology problems related to current technology issues. The students will also discuss the presentations of guest speakers and analyze how they relate to their own interests and experiences. Numerous applications of the engineering technology problem solving process will be presented throughout the semester.",
+  "For example: \"Identify and analyze the automation issues with autonomous vehicles.\"",
+  "Writing/Skills Building Assignments",
+  "The students deliver weekly written homework assignments addressing topics such as why they chose to study mechatronics, how do they prepare for exams, what is their problem-solving process. In addition to the weekly assignments, the students deliver a report of their mechatronics field work.",
+  "A typical writing assignment may be the following: \"How does automation impact your life?”",
+  "Another typical presentation assignment is to have students present about someone in STEM. As many of our students work day jobs in STEM companies, they can share their current job as assemblers or lower-level technicians. Others are asked to research and find people who have these roles."
+ ],
+ "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=4e5135a6-db8a-11f0-a49b-d37f508de934",
+ "effective": "2026FA",
+ "approved": "2025-10-29",
+ "retrieved": "2026-09-16",
+ "notes": ""
+}

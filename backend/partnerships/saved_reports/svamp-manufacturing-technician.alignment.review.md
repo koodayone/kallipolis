@@ -1,0 +1,968 @@
+# Curriculum alignment review — svamp-manufacturing-technician
+Generated 2026-09-16 · O*NET 31.0 database (August 2026), U.S. Department of Labor
+
+## Foothill College — Certificate of Achievement, Semiconductor Processing Technician → Semiconductor Processing Technicians (paired)
+Read against Semiconductor Processing Technicians (SOC 51-9141), connected by paired. The certificate's stated purpose: preparing students to move wafers through semiconductor processing stages in a cleanroom. TOP 0945.00 does not reach 51-9141 through the TOP-CIP-SOC crosswalk; the discrepancy is shown, not resolved.
+9 of 13 activities at outcome level, 9 with any evidence.
+
+- ● **Measure dimensions of completed products or workpieces to verify conformance to specifications.**
+    - ENGR 61A [Content outline]: “Measurement tools” — measurement of circuitry/materials using tools directly matches measuring dimensions to verify specs
+    - ENGR 61A [Objective]: “Identify measurement tools for different properties and how to use them” — using measurement tools to measure properties parallels measuring dimensions with precision instruments
+- ● **Read work orders or other instructions to determine product specifications or materials requirements.**
+    - ENGR 101A [Content outline]: “Read and interpret diagrams” — reading diagrams to determine specifications/sequence of operations matches reading work orders/processing charts
+    - ENGR 101A [SLO]: “read and interpret diagrams for mechanical, gas, and electrical systems” — interpreting diagrams to determine specifications directly matches studying instructions to determine sequence of operations
+- ● **Review blueprints or other instructions to determine operational methods or sequences.**
+    - ENGR 101A [SLO]: “read and interpret diagrams for mechanical, gas, and electrical systems” — Outcome literally states reading diagrams to determine operational methods, matching blueprint-review activity
+    - ENGR 101A [Objective]: “Identify steps in a procedure from diagrams” — Objective literally states reading diagrams/procedures to determine operational sequence
+    - ENGR 101A [Objective]: “Identify symbols and connections for components using diagrams” — Objective evidences reviewing diagrams to determine operational methods for wiring/circuits
+- · **Clean workpieces or finished products.**
+- · **Record operational or production data.**
+- ● **Assemble precision electronics or optical equipment.**
+    - ENGR 61A [Content outline]: “Vacuum wands” — Content line on moving wafers directly evidences placing wafers in equipment holders using vacuum wand, per O*NET task
+    - ENGR 61A [Objective]: “Demonstrate different wafer handing methods” — Objective states students perform wafer handling methods including tweezers/vacuum wand placement into containers
+    - ENGR 61A [Content outline]: “Cutting wafers” — Content line on cutting wafers evidences forming wafer circuitry-related shaping per assemble precision equipment activity
+    - ENGR 61A [Content outline]: “Etching and polishing” — Content on etching and polishing evidences etching/polishing wafers to form circuitry per O*NET task
+    - ENGR 61A [Objective]: “Describe etching and polishing” — Objective on etching and polishing directly maps to etch/lap/polish wafers task under assemble precision equipment
+    - ENGR 61A [Content outline]: “Photolithography” — Content line on photolithography evidences aligning photo mask pattern and exposing/developing pattern per O*NET task
+    - ENGR 61A [Objective]: “Describe photolithography” — Objective on photolithography evidences photo mask alignment, exposure, and development activity
+- ● **Mount materials or workpieces onto production equipment.**
+    - ENGR 61A [Content outline]: “Vacuum wands” — Content on moving wafers evidences mounting wafers onto processing equipment via vacuum wand or tweezers
+    - ENGR 61A [Content outline]: “Wafer carriers” — Content on wafer carriers evidences mounting workpieces into holders for processing
+    - ENGR 61A [Objective]: “Demonstrate different wafer handing methods” — wafer handling methods directly evidence mounting wafers using vacuum wand or tweezers
+    - ENGR 61A [Content outline]: “Using tweezers” — tweezer wafer handling directly evidences mounting workpieces using vacuum wand or tweezers
+- · **Load materials into production equipment.**
+- · **Move products, materials, or equipment between work areas.**
+- ● **Enter commands, instructions, or specifications into equipment.**
+    - ENGR 101A [Content outline]: “Programmable logic controllers” — PLC coursework involves entering commands/specifications into control equipment
+    - ENGR 101A [Objective]: “Present an overview of programmable logic controllers (PLC)” — PLC operation is the concrete mechanism for keying commands into control panels to run process cycles
+- ● **Diagnose equipment malfunctions.**
+    - ENGR 61A [SLO]: “describe the principles of troubleshooting” — Outcome literally requires understanding troubleshooting, constitutive of diagnosing equipment malfunctions
+    - ENGR 61A [Objective]: “Troubleshoot issues” — Objective states students perform troubleshooting, directly matching diagnose equipment malfunctions activity
+    - ENGR 61A [SLO]: “Upon completion of the course, students will be able to describe the principles of troubleshooting.” — troubleshooting principles directly evidence diagnosing equipment malfunctions
+    - ENGR 101A [SLO]: “describe manufacturing concerns and troubleshooting procedures” — Outcome literally covers troubleshooting procedures, constitutive of diagnosing equipment malfunctions
+    - ENGR 101A [Objective]: “Troubleshoot electro-mechanical systems” — Objective states students perform troubleshooting of electro-mechanical systems, matching diagnose malfunctions activity
+    - ENGR 101A [SLO]: “describe elements and basic troubleshooting of circuits” — troubleshooting circuits is diagnosing equipment malfunctions
+- ● **Inspect production equipment.**
+    - ENGR 101A [Objective]: “Understand the importance of leak detection” — Objective on leak detection directly evidences inspecting equipment for leaks per O*NET task
+    - ENGR 101A [Content outline]: “Leak detection” — Content line on leak detection evidences inspecting production equipment for leaks per O*NET task
+- ● **Notify others of equipment repair or maintenance needs.**
+    - ENGR 101A [Objective]: “Follow procedures for reporting issues” — Objective literally states reporting issues, matching notify others of equipment repair needs activity
+    - ENGR 101A [Content outline]: “Procedures for reporting issues” — Content on reporting procedures evidences notifying others of equipment repair or maintenance needs
+    - ENGR 101A [Objective]: “Identify contact person for various issues” — identifying who to notify evidences notifying others of equipment repair or maintenance needs
+
+### Dropped
+
+- act 4 · ENGR 61A · “Using tweezers” — adjudicated: d) 'Using tweezers' evidences placing wafers using tweezers (assemble/mount tasks), not cleaning workpieces — different activity
+- act 2 · ENGR 61A · “describe stages of the semiconductor manufacturing process” — adjudicated: a) 'describe stages of manufacturing process' names a topic heading without performable specification-study content
+- act 5 · ENGR 101A · “Follow procedures for reporting issues” — adjudicated: d) reporting issues evidences notifying others of repair needs, not recording production/inspection data
+- act 2 · ENGR 61A · “Design and interpret testing processes” — adjudicated: d) designing/interpreting testing processes evidences test-process design, not reading work orders for specs/sequence
+- act 3 · ENGR 61A · “Design and interpret testing processes” — adjudicated: d) interpreting testing processes evidences test design/interpretation, not reviewing blueprints for operational sequence
+- act 4 · ENGR 61A · “Cutting wafers” — adjudicated: d) cutting wafers evidences wafer forming/shaping task, not cleaning workpieces
+- act 4 · ENGR 61A · “Understand contamination and how to prevent it” — adjudicated: b) understanding contamination is precondition knowledge preceding the cleaning activity itself
+
+## Foothill College — Certificate of Achievement, Semiconductor Processing Technician → Industrial Engineering Technologists and Technicians (crosswalk)
+Read against Industrial Engineering Technologists and Technicians (SOC 17-3026), connected by crosswalk. 
+9 of 24 activities at outcome level, 12 with any evidence.
+
+- ● **Monitor activities affecting environmental quality.**
+    - ENGR 61A [SLO]: “list safety concerns and precautions and contamination concerns and precautions” — students state compliance-relevant safety and contamination precautions, a health/safety/environmental compliance activity
+    - ENGR 61A [Objective]: “Demonstrate proper safety equipment usage and procedures” — students perform safety/PPE compliance procedures required in cleanroom health and safety compliance
+    - ENGR 61A [Content outline]: “Disposing of hazardous materials” — hazardous materials disposal is environmental compliance activity within scope of content
+    - ENGR 101A [Content outline]: “Electrical safety concerns for people and equipment” — course content covers safety compliance procedures for industrial equipment
+    - ENGR 101A [Objective]: “Explain electrical safety concerns for working with electrical systems” — states adherence to health/safety compliance for electrical systems
+- ● **Calibrate scientific or technical equipment.**
+    - ENGR 101A [Objective]: “Use basic measurement tools and methods for voltage, current, and resistance measurements” — using measurement tools to check equipment values is directly constitutive of calibrating/adjusting equipment
+    - ENGR 101A [Objective]: “Demonstrate ability to read vacuum gauges and different types of gauges” — reading gauges to verify/adjust vacuum equipment operation is calibration-related
+- ● **Direct industrial production activities.**
+    - ENGR 61A [SLO]: “describe stages of the semiconductor manufacturing process” — describing production stages evidences oversight/inspection scope of production processes
+- · **Design industrial equipment.**
+- ● **Develop technical methods or processes.**
+    - ENGR 61A [SLO]: “describe the principles of troubleshooting” — troubleshooting methods are a technical method/process for addressing production problems
+    - ENGR 101A [SLO]: “describe manufacturing concerns and troubleshooting procedures” — developing troubleshooting procedures for manufacturing concerns is developing a technical process
+- ○ **Implement design or process improvements.**
+    - ENGR 61A [Content outline]: “How to prevent contamination” — implementing contamination-prevention practice is a process improvement addressing a production/quality problem
+- ● **Test products for functionality or quality.**
+    - ENGR 61A [Objective]: “Design and interpret testing processes” — designing/interpreting tests directly evidences testing products for performance characteristics
+    - ENGR 61A [Content outline]: “Running and interpreting tests” — running and interpreting tests on wafers/devices evidences testing products for functionality
+- ● **Explain engineering drawings, specifications, or other technical information.**
+    - ENGR 101A [SLO]: “read and interpret diagrams for mechanical, gas, and electrical systems” — reading/interpreting technical diagrams literally evidences explaining engineering drawings
+    - ENGR 101A [SLO]: “students will be able to read and interpret diagrams for mechanical, gas, and electrical systems” — literal interpretation of technical diagrams for engineering information
+    - ENGR 101A [Objective]: “Identify symbols and connections for components using diagrams” — interpreting schematic diagram symbols for technical communication
+- ● **Prepare drawings or diagrams of products or services.**
+    - ENGR 101A [Objective]: “Identify symbols and connections for components using diagrams” — working with circuit diagrams and symbols is directly constitutive of interpreting/preparing schematic diagrams
+- · **Assess product or process usefulness.**
+- · **Recommend technical design or process changes to improve efficiency, quality, or performance.**
+- ● **Monitor processes for compliance with standards.**
+    - ENGR 61A [Content outline]: “Reporting when things are not working” — monitoring and reporting equipment/process status evidences monitoring compliance with quality standards
+    - ENGR 101A [Objective]: “Follow procedures for reporting issues” — monitoring processes and reporting deviations against standards
+- ○ **Determine operational methods.**
+    - ENGR 61A [Content outline]: “Moving wafers” — selecting the wafer-moving method (tweezers vs. vacuum wand) is determining an operational method for production
+- ● **Inspect operational processes.**
+    - ENGR 61A [Objective]: “Troubleshoot issues” — troubleshooting equipment/process issues evidences verifying equipment is operated per quality standards
+    - ENGR 101A [Objective]: “Troubleshoot electro-mechanical systems” — inspecting operational processes to identify faults constitutes process inspection
+    - ENGR 101A [Content outline]: “Troubleshooting” — diagnosing equipment/process operation aligns with inspecting operational processes
+- ○ **Select project materials.**
+    - ENGR 61A [Content outline]: “Using tweezers” — selecting handling tools (tweezers vs. vacuum wands) for wafer processing evidences selecting tools/equipment
+    - ENGR 61A [Content outline]: “Vacuum wands” — selecting appropriate wafer handling tool evidences selecting tools/equipment for the task
+- · **Monitor the productivity or efficiency of industrial operations.**
+- · **Create physical models or prototypes.**
+- · **Create graphical representations of industrial production systems.**
+- · **Research human performance or health factors related to engineering or design activities.**
+- · **Train personnel on proper operational procedures.**
+- · **Analyze costs and benefits of proposed designs or projects.**
+- · **Estimate operational costs.**
+- · **Prepare operational reports.**
+- · **Purchase materials, equipment, or other resources.**
+
+### Dropped
+
+- act 12 · ENGR 61A · “Understand contamination and how to prevent it” — adjudicated: b) understanding contamination and prevention is precondition knowledge, not monitoring records/permits for compliance
+- act 14 · ENGR 61A · “Practice isolating issues” — adjudicated: d) practicing isolating issues evidences troubleshooting/inspecting equipment operation, not observing worker performance against QA standards
+- act 20 · ENGR 101A · “Identify contact person for various issues” — adjudicated: c) identifying a contact person is a generic administrative skill, not training others on procedures
+- act 20 · ENGR 61A · “Practice isolating issues” — adjudicated: d) practicing isolating issues evidences troubleshooting/inspection, not training other personnel
+- act 20 · ENGR 101A · “Communicate effectively in various clean room scenarios” — adjudicated: c) communicating effectively in clean room scenarios is a generic communication skill, not technical training of personnel on procedures
+
+## Foothill College — Certificate of Achievement, Semiconductor Processing Technician → Electro-Mechanical and Mechatronics Technologists and Technicians (crosswalk)
+Read against Electro-Mechanical and Mechatronics Technologists and Technicians (SOC 17-3024), connected by crosswalk. 
+5 of 14 activities at outcome level, 6 with any evidence.
+
+- · **Design electromechanical equipment or systems.**
+- ● **Test performance of electrical, electronic, mechanical, or integrated systems or equipment.**
+    - ENGR 101A [Objective]: “Use basic measurement tools and methods for voltage, current, and resistance measurements” — objective literally states using test instruments to assess electrical circuits
+    - ENGR 61A [Objective]: “Design and interpret testing processes” — objective literally states designing and interpreting tests, matching diagnostic technique selection
+- · **Develop software or computer applications.**
+- ● **Review technical documents to plan work.**
+    - ENGR 101A [SLO]: “read and interpret diagrams for mechanical, gas, and electrical systems” — SLO literally states reading technical diagrams to determine methods/sequences
+    - ENGR 101A [Objective]: “Identify steps in a procedure from diagrams” — objective literally states determining sequence of steps from technical diagrams
+- ● **Maintain electromechanical equipment.**
+    - ENGR 101A [Objective]: “Troubleshoot electro-mechanical systems” — objective literally states diagnosing/repairing electro-mechanical systems
+    - ENGR 101A [SLO]: “describe manufacturing concerns and troubleshooting procedures” — troubleshooting procedures in a manufacturing context evidence maintenance activity
+    - ENGR 61A [SLO]: “students will be able to describe the principles of troubleshooting” — troubleshooting maintenance-related issues in equipment is a direct component of maintaining electromechanical equipment
+- ● **Maintain electronic equipment.**
+    - ENGR 101A [SLO]: “describe elements and basic troubleshooting of circuits” — SLO literally states diagnosing/maintaining electronic circuits
+    - ENGR 101A [Objective]: “Troubleshoot electro-mechanical systems” — objective literally states diagnosing electronic system malfunctions
+- ○ **Inspect finished products to locate flaws.**
+    - ENGR 61A [Content outline]: “Measurements and interpretation” — interpreting measurement results to assess part conformance evidences inspecting for flaws via precision measurement
+- · **Install instrumentation or electronic equipment or systems.**
+- ● **Assemble equipment or components.**
+    - ENGR 101A [Objective]: “Perform wiring of control circuits working from diagrams” — objective literally states assembling electrical components/circuits from diagrams
+    - ENGR 61A [Objective]: “Demonstrate different wafer handing methods” — hands-on wafer handling using tools like tweezers and vacuum wands evidences assembling/handling components with hand tools
+    - ENGR 61A [Content outline]: “Using tweezers” — manipulating wafers with tweezers as a hand tool evidences aligning/fitting component parts using hand tools
+- · **Fabricate devices or components.**
+- · **Create schematic drawings for electronics.**
+- · **Select project materials.**
+- · **Develop technical methods or processes.**
+- · **Maintain operational records or records systems.**
+
+### Dropped
+
+- act 5 · ENGR 101A · “Vacuum pumps” — adjudicated: a: 'Vacuum pumps' is a topic heading naming equipment with no stated maintain/repair/calibrate action
+- act 2 · ENGR 61A · “Measurement tools” — adjudicated: a: 'Measurement tools' alone is a topic heading with no stated testing/assessment action
+- act 5 · ENGR 61A · “Reporting when things are not working” — adjudicated: a: 'Reporting when things are not working' is reporting a condition, not modifying/maintaining/repairing equipment
+- act 7 · ENGR 61A · “Wafer breakage” — adjudicated: a: 'Wafer breakage' is a topic heading with no stated inspection or measurement action
+- act 6 · ENGR 101A · “Explain electrical safety concerns for working with electrical systems” — adjudicated: b: electrical safety concerns precede the maintain/repair activity rather than evidencing it
+- act 3 · ENGR 101A · “Explain the basic operating principals of programmable logic controllers” — adjudicated: b: explaining basic operating principles of PLCs precedes actually installing/programming instrumentation software
+
+## Ohlone College — Certificate of Achievement, Smart Manufacturing Technology → Electro-Mechanical and Mechatronics Technologists and Technicians (paired)
+Read against Electro-Mechanical and Mechatronics Technologists and Technicians (SOC 17-3024), connected by paired. SVAMP's pathway framing (Smart Automation Technicians build on the mechatronics foundation). The program reads about equally against 17-3026; the alternate is available in the plate.
+4 of 14 activities at outcome level, 11 with any evidence.
+
+- · **Design electromechanical equipment or systems.**
+- ○ **Test performance of electrical, electronic, mechanical, or integrated systems or equipment.**
+    - ENGI 130 [Content outline]: “Lab 12: The Oscilloscope and Function Generator” — using oscilloscopes to test electromechanical/electronic circuits directly evidences test-instrument use
+    - ENGI 130 [Content outline]: “Multi-meter
+    - Oscilloscope
+    - Signal generator” — use of oscilloscopes and meters to test circuits matches the O*NET task on test instruments
+    - ENGI 130 [Content outline]: “Basic instrumentation and experimental techniques
+    - Multi-meter
+    - Oscilloscope” — course scope covers using diagnostic test equipment (multimeter, oscilloscope) to assess circuits
+    - ETEC 126 [Lab content]: “Trouble shooting to determine Manufacturing efficiency” — troubleshooting a smart manufacturing system tests performance of an integrated electromechanical system
+    - ETEC 126 [Content outline]: “Trouble shooting systems” — diagnostic troubleshooting of manufacturing systems evidences testing performance of integrated systems
+- ● **Develop software or computer applications.**
+    - ETEC 126 [Assignment]: “Program the Production line using Programmable Logic Controllers(PLCs).” — programming PLC software/hardware for a manufacturing control system is developing/installing computer applications in microprocessor-based systems
+    - ETEC 126 [Lab content]: “Configuring and Testing PLC and Bus Technology” — configuring PLC (microprocessor-based) systems is programming machine/instrumentation software
+    - ETEC 124 [Assignment]: “Students are required to design and build IoT systems to meet specified” — building IoT systems requires programming the embedded computer hardware/software controlling them
+    - ETEC 124 [SLO]: “Use the techniques, skills, and modern engineering tools necessary for engineering practice to construct an IoT based system, component, or process.” — constructing an IoT-based system requires programming embedded/computer components
+- ● **Review technical documents to plan work.**
+    - ENGI 130 [SLO]: “Draw and label circuit diagrams and show thorough mathematical solutions.” — drawing/reading circuit diagrams to determine solution methods evidences reviewing technical schematics to plan work
+- ○ **Maintain electromechanical equipment.**
+    - ETEC 126 [Content outline]: “Predictive Maintenance” — predictive maintenance content directly covers maintaining electromechanical equipment
+    - ETEC 126 [Lab content]: “Scheduling Predictive Maintenance” — hands-on scheduling of predictive maintenance evidences maintaining electromechanical equipment
+    - ETEC 126 [Content outline]: “Trouble shooting systems” — troubleshooting production/factory systems evidences maintaining electromechanical equipment
+- ○ **Maintain electronic equipment.**
+    - ETEC 126 [Content outline]: “Trouble shooting systems” — troubleshooting production-line electronic/control systems evidences maintaining electronic equipment
+    - ETEC 126 [Lab content]: “Trouble shooting to determine Manufacturing efficiency” — hands-on troubleshooting of smart-factory electronic systems evidences maintaining electronic equipment
+    - ETEC 126 [Lab content]: “Configuring and Troubleshooting Links to the ERP” — troubleshooting electronic networked links in factory systems evidences maintaining electronic equipment
+    - ETEC 126 [Lab content]: “Configuring and Testing PLC and Bus Technology” — configuring and testing electronic control/network equipment to ensure proper functioning
+- ● **Inspect finished products to locate flaws.**
+    - ENGI 140 [SLO]: “Measure material properties and/or evaluate processing treatments using standard materials testing equipment and techniques.” — using precision testing equipment to evaluate material/part properties evidences verifying conformance via precision measuring instruments
+    - ENGI 140 [Lab content]: “Hardness testing” — hardness testing with standard measuring equipment evidences inspecting for conformance to specification
+    - ENGI 140 [Lab content]: “Microstructures analysis of the sample using a Light Microscope.” — microscopic inspection of material samples for structural flaws parallels inspecting parts for surface defects
+- · **Install instrumentation or electronic equipment or systems.**
+- ○ **Assemble equipment or components.**
+    - ENGI 101 [Assignment]: “Work on a team to design and build a bridge with specifications including cost and load capacity” — students physically assemble a mechanical structure from components to meet functional specifications
+    - ETEC 124 [Assignment]: “requirements. Example: Design and Build an IoT System that monitors and” — building a physical IoT system evidences assembling electrical/electronic components into a working assembly
+    - ETEC 124 [Assignment]: “Students are required to design and build IoT systems to meet specified” — building an IoT system requires assembling electronic/mechanical components into a working assembly
+- ○ **Fabricate devices or components.**
+    - ENGI 101 [Assignment]: “Submit a design accompanied by a concise explanation for a small vehicle powered by a mousetrap” — designing and building a small mechanical vehicle evidences fabricating a device
+- ○ **Create schematic drawings for electronics.**
+    - ENGI 130 [Content outline]: “Circuit simulation” — circuit simulation and diagram drawing is a directly constitutive component of producing electrical drawings, though CAD is not explicitly named
+- ● **Select project materials.**
+    - ENGI 140 [SLO]: “Gather data from reference sources regarding the properties, processing, and performance characteristics of materials, and use it as a basis to recommend appropriate material(s) to meet engineering design criteria.” — selecting materials against design criteria is literally selecting project materials to meet functional specifications
+    - ENGI 140 [Assignment]: “select materials best suited to specific design requirements” — selecting materials against design requirements directly evidences selecting project materials to meet functional specifications
+    - ENGI 140 [SLO]: “use it as a basis to recommend appropriate material(s) to meet engineering design criteria.” — literally selecting materials to meet functional/design specifications
+    - ENGI 140 [SLO]: “recommend appropriate material(s) to meet engineering design criteria” — selecting materials against design criteria directly matches selecting materials to meet functional specifications
+    - ETEC 124 [SLO]: “Design an IoT based system, component, or process to meet desired needs within realistic constraints, such as manufacturability and sustainability” — designing to constraints requires selecting components/materials to meet functional specifications
+- · **Develop technical methods or processes.**
+- ○ **Maintain operational records or records systems.**
+    - ETEC 126 [Lab content]: “Setting up a Materials and Inventory management systems for Smart Factories” — configuring an inventory management system evidences establishing and maintaining inventory/records systems
+    - ETEC 126 [Content outline]: “Inventory management” — inventory management content evidences maintaining inventory records systems
+
+### Dropped
+
+- act 9 · ENGI 101 · “Submit a design accompanied by a concise explanation for a small vehicle powered by a mous” — adjudicated: a: quote names only submitting a design/explanation, not a performable build/assembly step
+- act 2 · ENGI 130 · “Analyze DC circuits to find current, voltage, resistance, power, and/or energy.” — adjudicated: b: analyzing DC circuits mathematically is precondition knowledge, not testing performance with instruments
+- act 3 · ETEC 124 · “The components of embedded systems” — adjudicated: a: naming embedded systems components as a topic, with no performable programming step stated
+- act 2 · ETEC 124 · “Use the techniques, skills, and modern engineering tools necessary for engineering practic” — adjudicated: d: constructing a system using engineering tools evidences building/developing rather than testing performance with test instruments
+- act 13 · ETEC 126 · “Designing and Implementing a Production plan” — adjudicated: d: designing a production plan evidences production/process planning, not establishing inventory or records systems
+- act 13 · ETEC 126 · “Production planning” — adjudicated: d: production planning content evidences a different activity than establishing records/documentation systems
+
+## Ohlone College — Certificate of Achievement, Smart Manufacturing Technology → Industrial Engineering Technologists and Technicians (crosswalk)
+Read against Industrial Engineering Technologists and Technicians (SOC 17-3026), connected by crosswalk. 
+9 of 24 activities at outcome level, 23 with any evidence.
+
+- ○ **Monitor activities affecting environmental quality.**
+    - ETEC 113 [Content outline]: “Disposal of Hazardous Waste” — environmental compliance activity in industrial setting
+    - ETEC 113 [Assignment]: “The safety plans must detail Cal/OSHA Injury Illness Prevention Plan.” — adhering to regulations/policies for health and safety compliance
+- ○ **Calibrate scientific or technical equipment.**
+    - ENGI 140 [Lab content]: “X-ray diffraction: Measurement Bragg angle using Telexometer” — calibrating/using precision measurement equipment on materials
+    - ENGI 130 [Content outline]: “Lab 12: The Oscilloscope and Function Generator” — using calibrated instrumentation (oscilloscope/signal generator) to make precise measurements is directly constitutive of calibrating technical equipment
+    - ETEC 126 [Lab content]: “Scheduling Predictive Maintenance” — lab practice adjusting equipment maintenance schedules to sustain quality production
+- ○ **Direct industrial production activities.**
+    - ETEC 126 [Lab content]: “Trouble shooting to determine Manufacturing efficiency” — overseeing/inspecting production processes in smart factory
+- ● **Design industrial equipment.**
+    - ETEC 124 [SLO]: “Design an IoT based system, component, or process to meet desired needs within realistic constraints, such as manufacturability and sustainability” — designing industrial automation equipment/systems with efficiency constraints
+    - ENGI 140 [SLO]: “recommend appropriate material(s) to meet engineering design criteria” — recommending materials to meet design criteria evidences identifying improvements in equipment/product design
+- ● **Develop technical methods or processes.**
+    - ETEC 126 [SLO]: “Design a system, component, or process to meet desired needs within realistic constraints such as manufacturability, and sustainability, translate into high productivity” — developing technical processes addressing production/quality problems
+    - ETEC 126 [Lab content]: “Setting up a Smart Factory” — implementing a production process/program addressing manufacturing setup
+    - ETEC 126 [Assignment]: “Team-based projects to plan the process of manufacturing a component using Smart Advanced Manufacturing Principles.” — developing a technical production process/method as a project
+    - ENGI 140 [SLO]: “Gather data from reference sources regarding the properties, processing, and performance characteristics of materials, and use it as a basis to recommend appropriate material(s) to meet engineering design criteria.” — developing process/methods for materials selection in production
+    - ETEC 124 [SLO]: “Design an IoT based system, component, or process to meet desired needs within realistic constraints” — students develop technical processes/systems addressing production/manufacturing needs
+    - ETEC 124 [Assignment]: “Students are required to design and build IoT systems to meet specified requirements” — builds/tests new system prototypes akin to assisting engineers in developing new processes
+- ○ **Implement design or process improvements.**
+    - ETEC 126 [Lab content]: “Trouble shooting to determine Manufacturing efficiency” — implementing process improvement via troubleshooting production efficiency
+    - ETEC 126 [Lab content]: “Configuring Manufacturing Execution Systems(MES) for Smart Factories” — implementing a process improvement system addressing production and quality tracking
+- ● **Test products for functionality or quality.**
+    - ENGI 140 [SLO]: “Measure material properties and/or evaluate processing treatments using standard materials testing equipment and techniques.” — testing products/materials for quality against specifications
+    - ENGI 140 [Lab content]: “Tensile testing” — testing material product for performance characteristics
+    - ENGI 140 [SLO]: “Measure material properties and/or evaluate processing treatments using standard materials testing equipment” — measuring/evaluating material properties with testing equipment is testing products for functionality or quality
+    - ENGI 140 [Lab content]: “Hardness testing” — hardness testing of material samples is testing product characteristics against specifications
+    - ENGI 130 [SLO]: “Analyze DC circuits to find current, voltage, resistance, power, and/or energy.” — measuring circuit performance characteristics against expected values is testing for functionality/performance
+    - ENGI 130 [Content outline]: “Lab 11: Loading Effects of DC Instruments” — hands-on testing of circuit performance at specified experimental stages evidences product/process testing for functionality
+    - ETEC 126 [Lab content]: “Trouble shooting systems” — testing production systems at stages of operation for performance/adherence to specification
+- ● **Explain engineering drawings, specifications, or other technical information.**
+    - ENGI 130 [SLO]: “Draw and label circuit diagrams and show thorough mathematical solutions.” — creating/interpreting engineering schematic diagrams
+- ● **Prepare drawings or diagrams of products or services.**
+    - ENGI 130 [SLO]: “Draw and label circuit diagrams and show thorough mathematical solutions.” — preparing diagrams of circuits as products/components
+    - ETEC 126 [Lab content]: “Designing RFID Systems” — preparing design layouts/diagrams of industrial system components
+- ○ **Assess product or process usefulness.**
+    - CAOT 150 [Assignment]: “students will be given a set of data and need to describe the data numerically and graphically” — compiling and evaluating statistical data
+    - ENGI 140 [Assignment]: “compare various causes of material failure, select materials best suited to specific design requirements” — evaluating material failure and suitability assesses product/process usefulness
+- ● **Recommend technical design or process changes to improve efficiency, quality, or performance.**
+    - ENGI 140 [SLO]: “Gather data from reference sources regarding the properties, processing, and performance characteristics of materials, and use it as a basis to recommend appropriate material(s) to meet engineering design criteria.” — recommending material/process changes to meet design performance
+    - ENGI 140 [SLO]: “use it as a basis to recommend appropriate material(s) to meet engineering design criteria” — recommending material selection to meet design criteria is recommending a technical design change to improve performance
+- ● **Monitor processes for compliance with standards.**
+    - ETEC 113 [SLO]: “Prepare a safety inspection format and conduct a safety inspection of an operational facility.” — monitoring compliance with safety standards via inspection
+- ○ **Determine operational methods.**
+    - ENGI 140 [Assignment]: “select materials best suited to specific design requirements” — determining operational/material selection methods for efficient production
+    - ETEC 126 [Lab content]: “Designing and Implementing a Production plan” — determining operational/processing methods needed for efficient production
+- ● **Inspect operational processes.**
+    - ETEC 113 [SLO]: “Prepare a safety inspection format and conduct a safety inspection of an operational facility.” — inspecting operational processes for compliance with standards
+- ○ **Select project materials.**
+    - ENGI 140 [Assignment]: “select materials best suited to specific design requirements” — selecting project materials to achieve efficient production
+    - ENGI 140 [Assignment]: “identify appropriate materials for a simple engineering of interest agreed with instructor” — team project selecting materials for an engineering application evidences project material selection
+- ● **Monitor the productivity or efficiency of industrial operations.**
+    - ETEC 126 [SLO]: “Design a system, component, or process to meet desired needs within realistic constraints such as manufacturability, and sustainability, translate into high productivity” — monitoring/adjusting production for productivity and quality
+    - ETEC 126 [Lab content]: “Trouble shooting to determine Manufacturing efficiency” — lab exercise monitoring efficiency of the smart production line
+- ○ **Create physical models or prototypes.**
+    - ETEC 124 [Assignment]: “Students are required to design and build IoT systems to meet specified requirements.” — building prototype systems for new processes/products
+    - ETEC 124 [Assignment]: “Design and Build an IoT System that monitors and controls temperature and humidity in a green house” — students construct a physical prototype system
+    - ENGI 101 [Assignment]: “Work on a team to design and build a bridge with specifications including cost and load capacity.” — creating physical models/prototypes as design projects
+- ○ **Create graphical representations of industrial production systems.**
+    - ETEC 126 [Lab content]: “Configuring Virtual Factory – Digital Twin” — creating graphical/digital representation of an industrial production system
+    - ETEC 126 [Lab content]: “Designing RFID Systems” — preparing layouts of industrial equipment components using design tools
+- ○ **Research human performance or health factors related to engineering or design activities.**
+    - ETEC 126 [Lab content]: “Trouble shooting to determine Manufacturing efficiency” — studying operations to establish/improve production efficiency
+- · **Train personnel on proper operational procedures.**
+- ○ **Analyze costs and benefits of proposed designs or projects.**
+    - ENGI 101 [Assignment]: “design and build a bridge with specifications including cost and load capacity” — designing to a stated cost specification requires analyzing cost tradeoffs of the proposed design
+- ○ **Estimate operational costs.**
+    - ENGI 101 [Assignment]: “Work on a team to design and build a bridge with specifications including cost and load capacity.” — estimating operational/project costs as part of design specification
+- ○ **Prepare operational reports.**
+    - ETEC 124 [Assignment]: “Students write technical reports on relevant IoT systems.” — preparing technical/operational documentation on industrial systems
+    - ETEC 124 [Assignment]: “Students write lab reports and make entries in lab notebooks detailing experiments, design and construction work completed during lab sessions” — preparation of documentation records of technical/production work performed
+- ○ **Purchase materials, equipment, or other resources.**
+    - ETEC 126 [Content outline]: “Product planning, purchase” — coordinating purchases of equipment/materials for production
+    - ETEC 126 [Lab content]: “Designing and Implementing a Product plan including parts purchase and supply” — lab covering coordination of equipment/parts purchases within a supply chain plan
+
+### Dropped
+
+- act 16 · Certificate of Achievement, Smart Manufacturing Technology · “Operate relevant Smart Manufacturing Equipment such as Smart CNC Machines, Industrial Robo” — unknown course 'Certificate of Achievement, Smart Manufacturing Technology'
+- act 5 · Certificate of Achievement, Smart Manufacturing Technology · “Apply basic scientific and engineering principles to solve problems in the manufacturing i” — unknown course 'Certificate of Achievement, Smart Manufacturing Technology'
+- act 1 · ETEC 113 · “Develop an awareness of potential safety hazards at home and the work site.” — adjudicated: c) generic safety-hazard awareness credited to environmental-quality monitoring, not a technical/regulatory compliance activity
+- act 2 · ENGI 130 · “Lab 3: Electrical Power in DC Circuits” — adjudicated: d) DC circuit power lab evidences electrical measurement/analysis, not calibration of equipment using the named gauge-type tools
+- act 3 · ETEC 126 · “Manufacturing efficiency” — adjudicated: a) topic-only heading 'Manufacturing efficiency' with no performable oversight/inspection content
+- act 6 · ETEC 113 · “Compare and describe safety implementation programs in various work locations.” — adjudicated: b) comparing/describing existing safety programs is precondition knowledge, not implementing a process improvement
+- act 10 · ENGI 140 · “Explain the relationship between the internal structure of materials and their macroscopic” — adjudicated: b) explaining structure-property relationships is precondition knowledge, not compiling/evaluating statistical data on product quality
+- act 12 · ETEC 113 · “Legal requirements/investigations” — adjudicated: a) topic-only heading 'Legal requirements/investigations' names a subject with no performable compliance-monitoring content
+- act 15 · ETEC 113 · “Safety when handling and storing materials and tools” — adjudicated: a) topic-only heading naming safety practice with materials/tools, not a performable material-selection activity
+- act 16 · ETEC 126 · “Manufacturing efficiency” — adjudicated: a) topic-only heading 'Manufacturing efficiency' with no performable monitoring content
+- act 20 · ETEC 113 · “Report this safety plan with an oral presentation.” — adjudicated: c) generic oral presentation of a safety plan credited to training personnel on operational procedures
+- act 21 · CAOT 150 · “Basic Data Anaylsis in Excel” — adjudicated: a) topic-only heading 'Basic Data Analysis in Excel' names a subject with no performable cost/benefit content
+- act 23 · ENGI 140 · “Write laboratory reports that communicate the collection, analysis, and interpretation of ” — adjudicated: d) writing lab reports on experimental data evidences report-writing on lab work, a different activity than production documents like SOPs or batch records
+- act 9 · ENGI 101 · “Modification/refinement of design plan” — adjudicated: a) topic-only heading 'Modification/refinement of design plan' names a subject with no performable drawing/diagram content stated
+- act 1 · ETEC 124 · “Cyber Security Risks and Web applications relevant to IoT devices” — adjudicated: d) cybersecurity risk content for IoT/web applications evidences a data-security topic, not environmental-quality/health-safety compliance
+- act 18 · ETEC 124 · “IoT Technology Architecture” — adjudicated: a) topic-only heading 'IoT Technology Architecture' names a subject with no stated drawing/layout performable content
+- act 1 · ETEC 126 · “Green Manufacturing” — adjudicated: a) topic-only heading 'Green Manufacturing' names a subject with no performable environmental-monitoring content stated
+- act 2 · ETEC 126 · “Predictive Maintenance” — adjudicated: a) topic-only heading 'Predictive Maintenance' names a subject with no performable calibration content, and does not name the specified calibration tools
+- act 12 · ETEC 126 · “SCADA – Data Acquisition” — adjudicated: a) topic-only heading 'SCADA – Data Acquisition' names a subject with no stated compliance-verification content
+- act 16 · ETEC 126 · “Manufacturing efficiency” — adjudicated: a) topic-only heading 'Manufacturing efficiency' with no performable monitoring content
+- act 23 · ETEC 126 · “Inventory management” — adjudicated: a) topic-only heading 'Inventory management' names a subject with no stated report-preparation content
+
+## Mission College — Certificate of Achievement, Mechatronic Technology → Electro-Mechanical and Mechatronics Technologists and Technicians (paired)
+Read against Electro-Mechanical and Mechatronics Technologists and Technicians (SOC 17-3024), connected by paired. The program's stated purpose (industrial automation, mechatronics technicians); the crosswalk agrees.
+9 of 14 activities at outcome level, 11 with any evidence.
+
+- ● **Design electromechanical equipment or systems.**
+    - MTT 020 [Objective]: “Develop and design PLC program from Piping/Process and Instrumentation Diagram” — designing a control system component (PLC program) to specification
+    - EGR 025 [Objective]: “Apply the engineering design process to develop creative solutions to engineering problems.” — engineering design process applied to design of devices/systems
+- ● **Test performance of electrical, electronic, mechanical, or integrated systems or equipment.**
+    - MTT 012 [Objective]: “Compare measured performance to published specifications and identify any performance deficiencies” — testing performance of electronic systems against specifications
+    - MTT 012 [SLO]: “Connect and configure a mixed-signal oscilloscope to measure complex analog and
+digital signals” — use of test instrument (oscilloscope) to assess electronic circuits, matching O*NET task
+    - MTT 012 [Objective]: “Measure DC and AC parameters of simple analog and digital electronic systems and components” — directly performs performance testing of electronic components with test instruments
+    - MTT 022 [SLO]: “Measure, evaluate, and optimize the open- and closed-loop response of a PID control system.” — testing performance of an integrated electromechanical control system
+    - MTT 022 [Objective]: “Develop and execute a troubleshooting plan for process control systems” — diagnostic technique used to assess electromechanical systems/subsystems
+    - MTT 010 [SLO]: “Measuring DC voltage, DC current, and resistance” — measuring voltage/current/resistance is basic test performance on electrical circuits
+    - MTT 020 [SLO]: “Implement and troubleshoot a basic functional control system using ladder-logic programming” — students test/troubleshoot a control system's performance, evidencing performance testing of an electromechanical/PLC system
+    - MTT 020 [Lab content]: “Build and test a basic ladder logic circuit with simulation software” — lab has students build and test control circuits, a diagnostic technique assessing electromechanical/control systems
+    - MTT 030 [Assignment]: “Measure motor output power and input voltage and current under multiple conditions” — measuring electrical output under test conditions is testing performance of electromechanical assemblies with instruments
+    - MTT 030 [SLO]: “Configure and troubleshoot VFD” — troubleshooting VFD systems is assessing electromechanical equipment using diagnostic technique
+    - MTT 032 [SLO]: “Use standard test equipment, system documentation, and software program listings to measure and verify timing, inputs, and outputs of a given basic microcontroller system.” — measuring and verifying microcontroller inputs/outputs with test equipment directly evidences testing performance of electronic systems
+    - MTT 032 [Objective]: “Use test equipment to troubleshoot microprocessor-based electronic systems.” — use of test equipment to assess electromechanical/electronic circuits matches the test-equipment task directly
+    - MTT 034 [Objective]: “Measure the output flow and pressure of a compressor.” — measuring compressor output flow/pressure is directly testing performance of an electromechanical component using diagnostic technique
+    - MTT 034 [Objective]: “Demonstrate how to determine the integrity of a pneumatic and hydraulic actuator.” — determining actuator integrity is testing performance of a mechanical component/system
+    - MTT 034 [Lab content]: “Build and test pneumatic systems” — literal lab activity of testing an electromechanical system
+    - MTT 040 [Assignment]: “Measure and compare the performance of a class AB and class D amplifier, including gain, bandwidth, noise, and efficiency.” — students test performance of electronic amplifier circuits using measurement/lab techniques
+    - MTT 040 [Lab content]: “Measure and compare the performance of different classes of amplifiers including classes AB and D” — lab activity requires using test instruments to assess electronic circuit performance
+    - MTT 042 [SLO]: “Use standard test equipment, system documentation, logic diagrams, and VHDL listings to measure and verify timing, inputs, and outputs” — student directly uses test equipment to assess electromechanical/electronic circuit timing and I/O
+    - MTT 042 [Objective]: “Use test equipment to troubleshoot digital electronic systems.” — direct use of diagnostic test equipment to assess electronic systems
+- ● **Develop software or computer applications.**
+    - MTT 032 [Objective]: “Create simple programs in high-level and assembly language for practical and diagnostic purposes.” — programming microprocessor-based systems
+    - MTT 032 [Lab content]: “Assembling and loading a program to a single-chip microprocessor” — loading a program onto microcontroller hardware evidences installing/programming microprocessor-based systems
+    - MTT 042 [Objective]: “Program in VHDL for diagnostics purposes” — programming instrumentation/logic hardware software
+    - MTT 020 [SLO]: “Design a PLC program using ladder-logic or function block diagramming using P&ID” — programming a PLC is installing/programming instrumentation software in a microprocessor-based control system
+    - MTT 020 [Assignment]: “Program PLC controller for a specified operation using Piping/Process Instrumentation Diagram (P&ID).” — students write PLC programs for controller hardware, evidencing programming instrumentation software
+    - MTT 022 [Objective]: “Program a PLC controller to execute a sequential task” — programming a microprocessor-based controller is developing software for instrumentation systems
+    - MTT 022 [Lab content]: “Program a Controller with Sensor integration” — hands-on programming of PLC (microprocessor-based) hardware/software
+    - MTT 030 [Objective]: “Commission a variable frequency drive (VFD) 3-phase motor and program it to operate from remote controls” — programming a VFD to operate from remote controls is programming instrumentation/control software in a microprocessor-based drive system
+- ● **Review technical documents to plan work.**
+    - MTT 020 [SLO]: “Read and understand automation symbols, including International Society of Automation (ISA) symbols” — literal reading of technical diagrams/symbols to determine assembly/process sequence
+    - MTT 020 [Objective]: “Develop and design PLC program from Piping/Process and Instrumentation Diagram” — using a P&ID technical diagram to plan the sequence/method of programming work evidences reviewing technical documents to plan work
+    - MTT 012 [SLO]: “Troubleshoot using electrical wiring diagram including power distribution and PLC I/O diagrams.” — reading wiring/PLC diagrams to determine troubleshooting sequence matches reviewing technical documents to plan work
+    - MTT 012 [Lab content]: “Learn to read Specification sheets” — reading spec sheets to plan measurement/troubleshooting work matches reviewing technical documents
+    - EGR 025 [Objective]: “Develop the ability to evaluate engineering drawings and their application to design and fabrication.” — reading/evaluating engineering drawings to plan design and fabrication work
+    - MTT 022 [Content outline]: “Create and understand electrical plans for advanced process systems” — reading/creating electrical diagrams to determine assembly/wiring sequence matches reviewing technical documents
+    - MTT 022 [Content outline]: “Discrete Input/Output (I/O) diagrams” — I/O diagrams are schematic technical documents read to plan PLC wiring/assembly work
+    - MTT 032 [SLO]: “Interpret manufacturers' data sheets and reference documentation and apply principles of digital and microcontroller systems to describe the operation of a given microcontroller system.” — interpreting manufacturer datasheets/reference documentation to plan understanding of a system matches reviewing technical documents to plan work
+    - MTT 032 [Objective]: “Trace timing, inputs, and outputs of a single-chip microcontroller with appropriate test equipment and schematic diagrams.” — using schematic diagrams to trace system operation evidences reading schematics to determine methods/sequences
+    - MTT 034 [Objective]: “Identify the symbols for fluid power and electrical related components from either ANSI or ISO drawings and draw a complete schematic based on given parameters.” — reading ANSI/ISO schematic symbols to determine circuit design is reviewing technical documents/drawings to plan assembly
+    - MTT 042 [Objective]: “Interpret manufacturers’ data sheets for CPLD devices.” — reviewing technical documents (datasheets) to plan work on devices
+- ● **Maintain electromechanical equipment.**
+    - MTT 030 [SLO]: “Configure, operate, and troubleshoot DC, stepper, and AC motor systems” — maintaining/repairing electromechanical equipment (motors)
+    - MTT 030 [Objective]: “Demonstrate effective basic troubleshooting techniques to isolate motor and controller faults” — isolating motor/controller faults is directly repairing/maintaining electromechanical equipment
+    - MTT 034 [Objective]: “Demonstrate how to determine the integrity of a pneumatic and hydraulic actuator.” — calibrating/repairing pneumatic or hydraulic assemblies to meet operational tolerances
+    - MTT 034 [Assignment]: “Troubleshoot a given pneumatic control system.” — troubleshooting a pneumatic control system is maintaining/repairing an electromechanical system to ensure proper functioning
+    - MTT 034 [Lab content]: “Build and test circuits with electro-hydraulic systems” — building and testing electro-hydraulic circuits involves repairing/calibrating hydraulic assemblies to meet operational specs
+    - MTT 012 [Objective]: “Develop, present, and execute a logical troubleshooting plan appropriate for the subject system or component” — developing and executing a troubleshooting plan for electronic systems evidences maintain/repair to ensure proper functioning
+    - MTT 012 [Assignment]: “develop an initial troubleshooting plan to logically and effectively isolate the fault” — fault isolation/troubleshooting plan for a non-functioning system matches maintenance/repair task
+    - MTT 020 [Objective]: “Develop and execute a troubleshooting plan for process control systems.” — troubleshooting a PLC-based control system is maintaining/repairing an electromechanical system to ensure proper functioning
+    - MTT 020 [Assignment]: “Develop and execute a troubleshooting plan for a malfunctioning PLC system.” — diagnosing and fixing a malfunctioning PLC system evidences maintaining/repairing electromechanical equipment
+    - MTT 022 [SLO]: “identify logic states during operation, and troubleshoot a PLC-controlled system” — troubleshooting a controlled system is maintaining electromechanical equipment
+    - MTT 022 [Objective]: “Tune a PID control loop for optimized operation” — loop tuning to meet operational specifications parallels calibrating assemblies/systems
+- ● **Maintain electronic equipment.**
+    - MTT 040 [Assignment]: “Develop and execute a troubleshooting plan for a Metal Oxide Semiconductor Field Effect Transistor (MOSFET) oscillator circuit.” — repairing electronic components/equipment to ensure proper functioning
+    - MTT 032 [Objective]: “Use test equipment to troubleshoot microprocessor-based electronic systems.” — maintaining/repairing electronic equipment using test instruments
+    - MTT 012 [Objective]: “Compare measured performance to published specifications and identify any performance deficiencies” — identifying performance deficiencies in electronic equipment is a core step of maintaining/repairing electronic equipment
+    - MTT 012 [Lab content]: “Develop troubleshooting plan for faulty circuits” — troubleshooting faulty electronic circuits evidences maintaining electronic equipment
+    - MTT 020 [Description]: “This course covers Programmable Logic Controller (PLC) systems, function, interrelationship, and troubleshooting of systems components.” — troubleshooting PLC electronic system components evidences maintaining electronic equipment
+    - MTT 022 [Lab content]: “Troubleshooting a PLC-controlled system” — diagnosing/repairing electronic controller system to ensure proper functioning
+    - MTT 042 [Objective]: “Use test equipment to troubleshoot digital electronic systems.” — troubleshooting is a diagnostic step directly constitutive of maintaining electronic equipment
+    - MTT 042 [Description]: “allows students to develop troubleshooting techniques” — course scope explicitly covers troubleshooting of electronic systems, part of maintenance
+- · **Inspect finished products to locate flaws.**
+- · **Install instrumentation or electronic equipment or systems.**
+- ○ **Assemble equipment or components.**
+    - MTT 034 [Lab content]: “Build and test pneumatic systems” — assembling electromechanical components using hand tools/fixtures
+    - MTT 034 [Description]: “Hands-on activities using various pneumatic components are assembled in the lab.” — literal statement that students assemble pneumatic components using hand tools/fixtures
+    - MTT 020 [Lab content]: “Build and test circuits with multiple PLC input elements” — fitting/assembling component parts into a functioning circuit
+    - MTT 030 [Lab content]: “Implementing controls for and controlling Stepper motors” — implementing motor control hardware/wiring is assembling electrical/electronic components into a working assembly
+    - MTT 040 [Lab content]: “Basics of circuits through the creation and simulation of resistor based circuits.” — building/assembling circuits from components is constitutive of assembling electronic assemblies
+    - MTT 050 [Lab content]: “Fit tolerances for multiple-part assemblies” — fitting parts to tolerance is aligning/assembling component parts
+- ○ **Fabricate devices or components.**
+    - MTT 050 [Lab content]: “Design and produce individual projects” — fabricating mechanical/electronic components via 3D printing/manufacturing
+- ● **Create schematic drawings for electronics.**
+    - EGR 025 [Objective]: “Apply computer aided graphics techniques to construct engineering designs.” — producing CAD drawings for design, matching O*NET CAD schematic task
+    - EGR 025 [SLO]: “Construct two-dimensional and three-dimensional drawings of engineering designs using sketching, manual drafting, and computer-aided drafting approaches.” — students produce electrical/mechanical drawings using CAD as required for electromechanical design documentation
+    - MTT 022 [Content outline]: “Control panel layout diagrams” — producing electrical schematic drawings necessary for electromechanical design
+    - MTT 012 [SLO]: “Develop electrical wiring diagrams including electrical control panel layout, power distribution, loop drawings, and PLC I/O diagrams” — producing electrical wiring/control panel diagrams matches producing electrical drawings for electromechanical design
+    - MTT 012 [Lab content]: “Using industry software to develop electrical wiring diagrams including electrical control panel layout, power distribution, loop drawings, and PLC I/O diagrams” — use of industry software to produce electrical drawings matches CAD-based schematic production task
+    - MTT 034 [Description]: “Basic power and control circuits are developed using computer aided design.” — developing circuits with CAD is producing electromechanical design drawings using CAD software
+    - MTT 040 [Objective]: “Identify and draw basic amplifier circuits” — drawing amplifier circuit schematics is directly constitutive of creating schematic drawings for electronics
+    - MTT 050 [Objective]: “Design project using 2D/3D software, e.g. AutoCAD and SolidWorks” — designing with CAD software directly evidences creating drawings for electromechanical design
+- ● **Select project materials.**
+    - MTT 022 [Objective]: “Select sensors, controllers, and actuators appropriate for a given task.” — literal selection of electromechanical components to meet functional specifications
+    - MTT 034 [Assignment]: “Given a set of conditions and process, determine the best pneumatic system for the process.” — selecting the best pneumatic system for given specifications is selecting electromechanical equipment/materials to meet functional specs
+- · **Develop technical methods or processes.**
+- ● **Maintain operational records or records systems.**
+    - MTT 012 [Objective]: “Organize and present data in tabular and graphic formats using industry-standard software” — maintaining operational records/documentation of measurement data
+
+### Dropped
+
+- act 11 · MTT 034 · “P&ID” — malformed
+- act 4 · MTT 022 · “Process/Piping and Instrumentation Diagram (P&ID)” — adjudicated: a: P&ID is named as a topic/heading with no performable reading action stated
+- act 7 · MTT 050 · “Evaluate print quality and determine print parameter optimizations that may improve qualit” — adjudicated: d: evaluating print quality/optimization evidences fabrication/quality-improvement, not inspecting finished parts for defects/conformance
+- act 8 · MTT 020 · “Digital inputs” — adjudicated: a: 'Digital inputs' is a topic heading with no stated installation action
+- act 10 · EGR 025 · “Component Modeling” — adjudicated: a: 'Component Modeling' is a topic heading without stated fabrication/assembly action
+- act 13 · MTT 010 · “Reports using MS Word/Google Docs” — adjudicated: d: reports using Word/Docs evidences general documentation writing, not the technical-methods/inventory-records activity as defined
+- act 2 · MTT 010 · “Build a simple AC/DC circuit” — adjudicated: b: building a circuit precedes any stated testing of its performance
+- act 6 · MTT 020 · “Types of PLCs” — adjudicated: a: 'Types of PLCs' is a topic heading with no stated maintenance/repair action
+- act 1 · MTT 022 · “troubleshoot a PLC-controlled system” — adjudicated: d: troubleshooting a PLC-controlled system evidences the maintain electromechanical equipment activity, not designing equipment
+- act 1 · MTT 030 · “Configure, operate, and troubleshoot DC, stepper, and AC motor systems” — adjudicated: d: configuring/troubleshooting motor systems evidences maintain electromechanical equipment task, not design
+- act 6 · MTT 032 · “General debugging techniques” — adjudicated: a: 'General debugging techniques' is a topic heading with no stated repair action on equipment
+- act 9 · MTT 034 · “Introduction to pneumatic system components” — adjudicated: a: 'Introduction to pneumatic system components' is a topic heading with no stated assembly action
+- act 4 · MTT 040 · “Filters and time constants - including the use of scopes to visualize the impact of the fi” — adjudicated: d: using scopes to visualize filter behavior evidences testing performance, not reading schematics to plan assembly
+- act 11 · MTT 040 · “Schematic” — adjudicated: a: 'Schematic' is a bare topic heading with no stated drawing-production action
+- act 3 · MTT 042 · “Very-High-Speed-Integrated-Circuit Hardware Description Language (VHDL)” — adjudicated: a: 'VHDL' is a topic/content heading with no stated programming action performed
+- act 4 · MTT 042 · “Use standard test equipment, system documentation, logic diagrams, and VHDL listings to me” — adjudicated: d: using test equipment to measure/verify timing and I/O evidences testing performance, not reviewing documents to plan work
+- act 11 · MTT 050 · “Computer-Aided Drafting (CAD) Design/Drawing” — adjudicated: a: 'Computer-Aided Drafting (CAD) Design/Drawing' is a bare topic heading with no stated action
+- act 9 · MTT 050 · “Assembling Parts” — adjudicated: a: 'Assembling Parts' is a bare topic heading restating the task without performable specifics
+- act 10 · MTT 050 · “Machining” — adjudicated: a: 'Machining' is a bare topic heading with no stated fabrication action described
+- act 7 · MTT 050 · “Evaluate print quality and determine print parameter optimizations that may improve qualit” — adjudicated: d: evaluating print quality/optimization evidences a fabrication-process quality activity, not inspecting finished parts for surface defects/dimensional conformance
+- act 12 · MTT 050 · “Printing materials and characteristics” — adjudicated: a: 'Printing materials and characteristics' is a topic heading with no stated selection action performed
+
+## Mission College — Certificate of Achievement, Mechatronic Technology → Semiconductor Processing Technicians (crosswalk)
+Read against Semiconductor Processing Technicians (SOC 51-9141), connected by crosswalk. 
+7 of 13 activities at outcome level, 7 with any evidence.
+
+- ● **Measure dimensions of completed products or workpieces to verify conformance to specifications.**
+    - MTT 012 [Objective]: “Compare measured performance to published specifications and identify any performance deficiencies” — measuring and comparing to specifications directly evidences verifying conformance to specs
+    - MTT 012 [SLO]: “Identify and/or describe circuit and equipment elements and specifications that are relevant to performing accurate measurements.” — measuring and comparing to specifications directly parallels measuring circuitry to verify conformance
+    - MTT 032 [SLO]: “Use standard test equipment, system documentation, and software program listings to measure and verify timing, inputs, and outputs of a given basic microcontroller system.” — measuring timing/inputs/outputs with test equipment against documentation verifies conformance to specification, directly analogous to measuring circuitry with test equipment
+    - MTT 032 [Objective]: “Trace timing, inputs, and outputs of a single-chip microcontroller with appropriate test equipment and schematic diagrams.” — using test equipment to measure and verify electronic signals against schematic specifications
+    - MTT 042 [SLO]: “Use standard test equipment, system documentation, logic diagrams, and VHDL listings to measure and verify timing, inputs, and outputs” — measuring circuit signals with test equipment to verify conformance to specified timing/values
+- ● **Read work orders or other instructions to determine product specifications or materials requirements.**
+    - MTT 034 [Assignment]: “Given a set of conditions and process, determine the best pneumatic system for the process.” — reading specified conditions/requirements to determine process specifications
+    - MTT 034 [Objective]: “Identify the symbols for fluid power and electrical related components from either ANSI or ISO drawings” — reading schematic symbols to determine specifications parallels studying instructions/processing charts for specifications
+    - MTT 012 [Lab content]: “Learn to read Specification sheets” — reading specification sheets to determine product/component requirements before testing
+    - MTT 012 [Content outline]: “Specification sheets and finding:” — studying specification sheets to determine device specifications, paralleling reading work orders/specs
+    - MTT 020 [Content outline]: “Understanding Piping/Process and Instrumentation Diagrams” — P&IDs function as work orders/processing charts specifying sequence of operations
+    - MTT 030 [Objective]: “Identify applicable National Electric Code (NEC) requirements and appropriate safety policies and procedures for installation and operation of electric motors” — identifying code requirements to determine correct installation/operation procedures evidences reading instructions to determine specifications
+    - MTT 032 [SLO]: “Interpret manufacturers' data sheets and reference documentation and apply principles of digital and microcontroller systems to describe the operation of a given microcontroller system.” — reading manufacturer specification documents to determine device/product specifications
+    - MTT 032 [Objective]: “Interpret manufacturers’ data sheets for microprocessor devices.” — reading technical specification sheets to determine product/device requirements
+    - MTT 042 [Objective]: “Interpret manufacturers’ data sheets for CPLD devices.” — reading specification documents to determine device requirements directly matches studying instructions/specs
+- ● **Review blueprints or other instructions to determine operational methods or sequences.**
+    - MTT 020 [SLO]: “Read and understand automation symbols, including International Society of Automation (ISA) symbols” — reading standardized diagram symbols to determine operational sequences matches literally
+    - MTT 034 [Objective]: “Identify the symbols for fluid power and electrical related components from either ANSI or ISO drawings and draw a complete schematic” — reading standardized schematic symbols to determine operational methods
+    - MTT 034 [Objective]: “draw a complete schematic based on given parameters” — working from given parameters to produce schematics evidences reviewing instructions to determine operational sequences
+    - MTT 022 [Content outline]: “Control panel layout diagrams” — studying layout diagrams to determine operational methods/sequences for control systems, analogous to blueprint reading
+    - MTT 022 [Content outline]: “Discrete Input/Output (I/O) diagrams” — reviewing I/O diagrams to determine operational sequencing of PLC-controlled equipment
+    - MTT 030 [Assignment]: “Following the written lab procedure, configure the DC motor and associated controls.” — following a written procedure to determine operational sequence evidences reviewing instructions to determine operational methods
+- · **Clean workpieces or finished products.**
+- ● **Record operational or production data.**
+    - MTT 010 [SLO]: “Collect, organize, and present measurement data in tabular and graphic form.” — recording measurement data as production/inspection information matches literally
+    - MTT 012 [Objective]: “Organize and present data in tabular and graphic formats using industry-standard software” — recording operational/measurement data in industry format matches literally
+    - MTT 012 [Description]: “data collection, and reporting results in industry-accepted formats” — recording operational/measurement data and reporting results
+    - MTT 030 [Assignment]: “Measure motor output power and input voltage and current under multiple conditions. Summarize and analyze the measurement data” — recording and summarizing measurement data evidences recording operational data
+- · **Assemble precision electronics or optical equipment.**
+- · **Mount materials or workpieces onto production equipment.**
+- · **Load materials into production equipment.**
+- · **Move products, materials, or equipment between work areas.**
+- ● **Enter commands, instructions, or specifications into equipment.**
+    - MTT 020 [Content outline]: “Rung input: Checkers” — PLC ladder logic programming is entering commands/instructions into control equipment
+    - MTT 020 [Lab content]: “Build and test a basic ladder logic circuit with simulation software” — building/testing ladder logic in simulation directly practices entering PLC commands that key panel commands in real equipment
+    - MTT 022 [Objective]: “Program a PLC controller to execute a sequential task.” — programming a PLC controller matches entering commands into equipment literally
+    - MTT 022 [Lab content]: “Program a Controller with Sensor integration” — lab activity of programming a controller is direct entry of commands/instructions into equipment
+    - MTT 030 [Objective]: “Commission a variable frequency drive (VFD) 3-phase motor and program it to operate from remote controls” — programming a drive to operate via remote control commands evidences entering commands/instructions into equipment
+- ● **Diagnose equipment malfunctions.**
+    - MTT 012 [Objective]: “Develop, present, and execute a logical troubleshooting plan appropriate for the subject system or component” — developing a troubleshooting plan for a malfunctioning system evidences diagnosing malfunctions
+    - MTT 012 [Assignment]: “develop an initial troubleshooting plan to logically and effectively isolate the fault” — isolating the fault via troubleshooting plan evidences diagnosing malfunctions
+    - MTT 030 [SLO]: “Configure, operate, and troubleshoot DC, stepper, and AC motor systems” — troubleshooting motor systems evidences diagnosing equipment malfunctions
+    - MTT 030 [Objective]: “Demonstrate effective basic troubleshooting techniques to isolate motor and controller faults” — isolating faults in motor/controller equipment directly evidences diagnosing equipment malfunctions
+    - MTT 030 [Lab content]: “Observing DC Motor operation and troubleshooting” — troubleshooting motor operation evidences diagnosing equipment malfunctions
+    - MTT 034 [Assignment]: “Troubleshoot a given pneumatic control system.” — troubleshooting a fluid power system evidences diagnosing equipment malfunctions
+    - MTT 020 [Objective]: “Develop and execute a troubleshooting plan for process control systems.” — troubleshooting process control systems is literally diagnosing equipment malfunctions
+    - MTT 020 [Assignment]: “Develop and execute a troubleshooting plan for a malfunctioning PLC system.” — diagnosing a malfunctioning PLC system matches diagnosing equipment malfunctions directly
+    - MTT 022 [SLO]: “Measure inputs and outputs, identify logic states during operation, and troubleshoot a PLC-controlled system” — troubleshooting a controlled system requires diagnosing equipment malfunctions
+    - MTT 022 [Objective]: “Develop and execute a troubleshooting plan for process control systems” — explicit development/execution of a troubleshooting plan matches diagnosing equipment malfunctions
+    - MTT 032 [Objective]: “Use test equipment to troubleshoot microprocessor-based electronic systems.” — troubleshooting electronic systems with test equipment is diagnosing equipment malfunctions
+    - MTT 032 [Content outline]: “General debugging techniques” — debugging a malfunctioning system is diagnosing equipment malfunctions
+    - MTT 042 [Objective]: “Use test equipment to troubleshoot digital electronic systems.” — troubleshooting with test equipment is diagnosing equipment malfunctions
+    - MTT 042 [Description]: “allows students to develop troubleshooting techniques” — course scope centers on diagnosing malfunctions in digital circuits
+    - MTT 050 [Content outline]: “Troubleshooting 2D/3D printing” — troubleshooting printer issues evidences diagnosing equipment malfunctions
+    - MTT 050 [Assignment]: “Troubleshoot 3D printing issue and 3D printer issue.” — student practice diagnosing printer malfunctions directly evidences the diagnose-malfunction activity
+- ● **Inspect production equipment.**
+    - MTT 034 [Objective]: “Demonstrate how to determine the integrity of a pneumatic and hydraulic actuator.” — determining actuator integrity is inspecting production equipment for defects/leaks
+    - MTT 050 [SLO]: “Demonstrate proper alignment and operating procedures for safe and effective operation of the 3D printer” — checking alignment for safe/effective operation evidences inspecting production equipment before/during use
+- · **Notify others of equipment repair or maintenance needs.**
+
+### Dropped
+
+- act 1 · MTT 040 · “Identify op-amp circuit configurations and calculate gain and impedances for the circuit” — adjudicated: d: calculating op-amp gain/impedance evidences circuit analysis/design, not measuring completed products against specs
+- act 2 · MTT 020 · “Design a PLC program using ladder-logic or function block diagramming using P&ID” — adjudicated: d: designing a PLC program from P&ID evidences programming/design activity, not reading orders to determine specs
+- act 6 · MTT 020 · “Implement and troubleshoot a basic functional control system using ladder-logic programmin” — adjudicated: d: implementing/troubleshooting a ladder-logic control system evidences programming/diagnosing, not assembling precision electronics
+- act 6 · MTT 022 · “Measure inputs and outputs, identify logic states during operation, and troubleshoot a PLC” — adjudicated: d: measuring inputs/outputs and troubleshooting a PLC system evidences diagnosing malfunctions, not assembling precision equipment
+- act 12 · MTT 022 · “Develop and execute a troubleshooting plan for process control systems.” — adjudicated: d: developing a troubleshooting plan evidences diagnosing malfunctions, a different activity than inspecting equipment
+- act 2 · MTT 020 · “Develop and design PLC program from Piping/Process and Instrumentation Diagram” — adjudicated: d: developing/designing a PLC program from a P&ID evidences programming activity, not reading orders to determine specs
+- act 3 · MTT 020 · “Design a PLC program using ladder-logic or function block diagramming using P&ID” — adjudicated: d: designing a PLC program using P&ID evidences programming/design, not reviewing blueprints for sequence
+- act 3 · MTT 020 · “Program PLC controller for a specified operation using Piping/Process Instrumentation Diag” — adjudicated: d: programming a PLC controller for a specified operation evidences programming activity, not reviewing blueprints
+- act 5 · MTT 020 · “Discrete Input/Output (I/O) diagrams” — adjudicated: a: I/O diagrams named as content with no performable recording activity described
+- act 10 · MTT 020 · “Implement and troubleshoot a basic functional control system using ladder-logic programmin” — adjudicated: d: implementing/troubleshooting a control system evidences programming/diagnosing, not entering commands into equipment
+- act 2 · MTT 022 · “Create and understand electrical plans for advanced process systems” — adjudicated: a: creating/understanding electrical plans named as content without clear tie to reading orders for specs
+- act 2 · MTT 022 · “Select sensors, controllers, and actuators appropriate for a given task” — adjudicated: b: selecting appropriate sensors/controllers/actuators precedes reading instructions rather than evidencing it
+- act 2 · MTT 030 · “National Electrical Code Article 430” — adjudicated: a: NEC Article 430 named as topic/content with no performable step tied to determining specifications
+- act 10 · MTT 030 · “Exploring VFD control systems” — adjudicated: a: exploring VFD control systems named as lab topic with no performable command-entry step stated
+- act 12 · MTT 030 · “Configure, operate, and troubleshoot DC, stepper, and AC motor systems” — adjudicated: d: configuring/operating/troubleshooting motor systems evidences diagnosing malfunctions, a different activity than inspecting equipment
+- act 10 · MTT 034 · “Control valve” — adjudicated: a: control valve named as topic/content heading with no performable command-entry step described
+- act 2 · MTT 050 · “Identify common 3D file formats, and the sequence of file processing used to create a 3D f” — adjudicated: d: identifying file formats and print-processing sequence evidences additive-manufacturing production steps, not reading work orders for product specs
+- act 3 · MTT 050 · “Equipment Setup, Operating Procedures and Safety” — adjudicated: a: equipment setup/operating procedures/safety named as content heading with no stated instruction-reading step
+- act 6 · MTT 050 · “3D printing using SolidWorks” — adjudicated: d: 3D printing lab evidences an additive-manufacturing production task, a different activity than assembling precision electronics/optical equipment
+- act 8 · MTT 050 · “Discuss 2D/3D printer safety and operating procedures” — adjudicated: a: discussing printer safety/operating procedures is topic-only with no performable loading step described
+- act 10 · MTT 050 · “Design project using 2D/3D software, e.g. AutoCAD and SolidWorks” — adjudicated: d: designing a project in 2D/3D CAD software evidences design activity, not entering commands into production equipment
+
+## De Anza College — Certificate of Achievement, CNC Machinist → Machinists (paired)
+Read against Machinists (SOC 51-4041), connected by paired. The certificate prepares setup persons, machine operators and CNC machinists — Machinists (51-4041), which SVAMP names as a target occupation. The 0956.00 crosswalk reaches the two technician SOCs instead; shown, not used.
+7 of 21 activities at outcome level, 15 with any evidence.
+
+- ● **Calculate dimensions of workpieces, products, or equipment.**
+    - DMT 90 [Objective]: “Demonstrate the ability to solve common calculations found in the machine shop.” — shop calculations including measurement over pins and taper calculations compute workpiece dimensions
+    - DMT 90 [SLO]: “Demonstrate the ability to solve common calculations found in machine shop applications.” — students calculate dimensions/tolerances directly per SLO
+    - DMT 90 [Content outline]: “Measurement over pins” — measurement-over-pins calculation is a standard dimension/tolerance calculation using instruments
+    - DMT 80 [Objective]: “Interpret and record measurements made with precision measuring tools.” — interpreting/recording measurements with micrometers and calipers is calculating dimensions with precision instruments
+    - DMT 80 [Content outline]: “Measurement calculations.” — explicit calculation of dimensions using measuring tools content
+    - DMT 84A [Content outline]: “Right triangle laws: computing unknown sides and angles” — trigonometric calculation of dimensions directly matches calculating workpiece dimensions
+    - DMT 84B [Content outline]: “Pitch diameter calculation for various thread classes.” — calculating thread pitch diameter is a dimensional calculation of a workpiece feature
+    - DMT 84B [Assignment]: “Take home worksheets involving cartesian coordinate calculations.” — calculating tool point/workpiece coordinates is calculating workpiece dimensions
+- ● **Measure dimensions of completed products or workpieces to verify conformance to specifications.**
+    - DMT 80 [Objective]: “Interpret and record measurements made with precision measuring tools.” — directly states measuring products with precision instruments to verify specifications
+    - DMT 80 [Content outline]: “Micrometers.” — use of micrometers to measure workpieces evidences verifying conformance to specifications
+    - DMT 80 [Lab content]: “Demonstrate use of measuring tools.” — lab practice measuring completed work with precision tools to check conformance
+    - DMT 84A [Objective]: “Apply the use of precision measuring tools to inspect the accuracy of machined parts” — literal statement of measuring completed parts to verify conformance
+    - DMT 84A [Content outline]: “Travel and test indicators.” — precision inspection instruments used to measure completed workpieces
+    - PLO [Program outcome]: “Construct and inspect machined projects using conventional and CNC equipment” — inspecting machined projects requires measuring dimensions to verify conformance
+    - DMT 84B [Content outline]: “Thread measurement using three-wire method.” — measuring completed thread dimensions to verify conformance using precision measurement method
+    - DMT 84B [Lab content]: “Measurement and inspection” — lab activity directly measuring/inspecting completed parts for conformance
+- ● **Operate cutting equipment.**
+    - DMT 80 [Objective]: “Apply basic set-ups and operations on lathes; explain characteristics of lathe cutting tools.” — lathe operation is direct cutting equipment operation per O*NET task
+    - DMT 80 [Objective]: “Select vertical milling machine cutting tools and perform basic machining operations.” — milling machine operation is cutting equipment operation
+    - DMT 80 [Lab content]: “Demonstrate lathe operations” — operating a lathe is operating cutting equipment
+    - DMT 80 [Lab content]: “Demonstrate milling machine operations” — operating a milling machine is operating cutting equipment
+    - PLO [Program outcome]: “Setup and operate conventional and CNC machines safely” — operating conventional/CNC machines includes cutting operations on lathes/mills
+    - DMT 84B [SLO]: “Demonstrate the set up and advanced operation of vertical machining centers.” — operating a milling machine (vertical machining center) is operating cutting equipment
+    - DMT 84B [Content outline]: “Lathe set-up for internal and external threads.” — setting up a lathe to cut threads is operating cutting equipment
+- ● **Operate grinding equipment.**
+    - DMT 80 [Objective]: “Perform basic set-ups and operations on pedestal grinders.” — literal operation of grinding equipment
+    - PLO [Program outcome]: “Setup and operate conventional and CNC machines safely” — operating conventional/CNC machines includes grinding operations
+- · **Operate metal or plastic forming equipment.**
+- ● **Program equipment to perform production tasks.**
+    - DMT 84A [SLO]: “Create basic word-address programs to successfully construct projects using vertical machining centers.” — literal programming of CNC equipment for production
+    - DMT 84A [Objective]: “Prepare basic three-axis programming for milling machine operations” — literal statement of programming a CNC machine tool
+    - DMT 84B [SLO]: “Create advanced word-address programs to successfully construct projects using vertical machining centers.” — literal advanced CNC programming for production tasks
+    - DMT 84B [Assignment]: “Write advanced computer numerical control programs using sub programs and sub routines.” — directly programming CNC machine tools
+    - PLO [Program outcome]: “Construct word address programs to machine projects” — word address programming is CNC machine programming for production
+    - DMT 80 [Content outline]: “Input and operate in MDI.” — manual data input to CNC controller is programming equipment to perform production tasks
+    - DMT 80 [Content outline]: “Tool path generation and code produced by CAM program.” — generating CNC program code is programming equipment for production
+- ● **Review blueprints or other instructions to determine operational methods or sequences.**
+    - DMT 90 [SLO]: “Demonstrate the ability to interpret multi-view drawings and prints.” — literal blueprint reading to determine operational methods
+    - DMT 90 [Assignment]: “Project that requires comprehension and application of calculations used to complete a process plan to interpret prints.” — using prints to determine sequence of operations for fabrication
+    - DMT 90 [Objective]: “Identify projections and views used in manufacturing” — reading blueprint views is core to determining operational methods
+    - DMT 80 [Content outline]: “CAD drawing transfer to CNC program.” — using CAD drawings to derive CNC program sequences is reviewing drawings to determine operational methods
+    - DMT 84A [Assignment]: “Take home and in class worksheets involving feeds, speeds, and cartesian coordinate calculations.” — worksheets require determining operations/sequence for machining from given specifications
+- ○ **Monitor equipment operation to ensure proper functioning.**
+    - DMT 84B [Content outline]: “Understand controller operational aids.” — monitoring functions like single block, dry run, feed rate override during operation
+    - DMT 84B [Content outline]: “Feed rate override.” — monitoring and adjusting feed rate during machine operation to ensure proper functioning
+    - DMT 84B [Content outline]: “Identify and clear alarms.” — monitoring controller for alarm conditions is monitoring equipment operation
+    - DMT 80 [Content outline]: “Milling cutter RPM and feed rate.” — setting/monitoring feed and speed during machining evidences monitoring equipment operation
+- ○ **Maintain production or processing equipment.**
+    - DMT 80 [Content outline]: “Wheel replacement, ring testing and dressing.” — maintaining grinding equipment in proper operational condition
+- ○ **Assemble machine tools, parts, or fixtures.**
+    - DMT 84A [Lab content]: “Setup CNC milling tooling (cutting tools and holders)” — assembling tooling components onto machine fixtures
+- ○ **Mount attachments or tools onto production equipment.**
+    - DMT 84A [Content outline]: “Tool holders. Tapers, methods of securing. Retention knobs, lengths.” — mounting cutting tools/holders onto CNC mill per O*NET securing attachments task
+    - DMT 84A [Lab content]: “Setup CNC milling tooling (cutting tools and holders)” — literal mounting of cutting tools/holders onto the machine
+    - DMT 84A [Content outline]: “Location and setting of workpiece/fixture zero.” — securing/aligning fixtures onto the machine to establish zero point
+    - DMT 80 [Content outline]: “Vise and stop. Strap and toe clamps. Collet and V-blocks.” — securing holding fixtures onto machine as described by O*NET task
+    - DMT 80 [Content outline]: “Vise and stop.” — work holding setup mounts fixtures/attachments onto machines
+    - DMT 80 [Content outline]: “Workpiece/fixture alignment.” — aligning and securing fixtures onto CNC mill is mounting attachments onto production equipment
+    - DMT 84B [Content outline]: “Insert mounting methods.” — mounting carbide insert cutting tools onto tool holders/machines
+    - DMT 84B [Content outline]: “Setting tool offsets.” — setting tool offsets is part of aligning/securing cutting tools onto the machine
+- ● **Conduct test runs of production equipment.**
+    - DMT 84A [Objective]: “Operate mill CNC controller to download and dry run part programs” — dry run is a test run of equipment to verify operational efficiency before production
+    - DMT 84A [Content outline]: “Verify CNC programs by means of machine simulators and software verification tools.” — dry running/verifying programs on the machine is a test run to verify operational efficiency
+    - DMT 84A [Content outline]: “Run tool tryout with single block and adjusted feed rates.” — tool tryout runs are test runs of production equipment before full operation
+    - DMT 84B [Content outline]: “Dry run tool with single block and adjusted feed rates.” — test running equipment under controlled conditions to verify function
+    - DMT 84B [Objective]: “Verify mill programs with PC based solid modeling software.” — verifying tool paths via simulation is testing program operation before production run
+- · **Exchange information with colleagues.**
+- · **Advise others on ways to improve processes or products.**
+- ○ **Diagnose equipment malfunctions.**
+    - DMT 84B [Content outline]: “Identify and clear alarms.” — diagnosing controller/equipment malfunction indicated by alarm to determine needed adjustment
+- · **Design tools, fixtures, or other devices for production equipment.**
+- · **Dispose of trash or waste materials.**
+- ○ **Draw guide lines or markings on materials or workpieces using patterns or other references.**
+    - DMT 80 [Content outline]: “Layout dye - application. Tools - scribes, combination squares, dividers, prick and center punches.” — drawing guide markings on stock using layout tools per O*NET layout task
+    - DMT 80 [Content outline]: “Layout dye - application.” — layout dye and scribing tools used to mark cut lines on stock
+- ○ **Measure materials to mark reference points, cutting lines, or other indicators.**
+    - DMT 80 [Content outline]: “Layout table and precision height gage.” — measuring and marking stock to indicate cut placement
+    - DMT 80 [Content outline]: “Tools - scribes, combination squares, dividers, prick and center punches.” — layout tools used to measure and mark reference points on stock
+- · **Sort recyclable materials.**
+- ○ **Monitor lubrication of equipment or workpieces.**
+    - DMT 80 [Content outline]: “Coolant selection.” — selecting coolant relates directly to lubricating/cooling workpieces during machining
+
+### Dropped
+
+- act 1 · DMT 80 · “Calculate and apply cutting tool speeds and feeds.” — adjudicated: d: this quote evidences calculating speeds/feeds for machining setup, a different activity (operate/monitor cutting equipment), not calculating workpiece dimensions with micrometers/calipers
+- act 5 · DMT 80 · “Boring, facing, grooving.” — adjudicated: a: boring/facing/grooving names lathe operations with no distinct performable content mapping to metal/plastic forming equipment beyond cutting already captured elsewhere
+- act 8 · DMT 84A · “Demonstrate CNC mill controller operations” — adjudicated: d: demonstrating controller operations evidences programming/operating equipment, not specifically monitoring feed/speed
+- act 5 · PLO · “Setup and operate conventional and CNC machines safely” — adjudicated: a: generic 'setup and operate conventional and CNC machines' names no content specific to forming equipment distinct from cutting already captured
+- act 5 · DMT 80 · “Apply basic set-ups and operations on lathes; explain characteristics of lathe cutting too” — adjudicated: d: lathe cutting operations evidence operating cutting equipment, a different activity than metal/plastic forming equipment
+- act 1 · DMT 84A · “Select and calculate logical tool paths and positioning for mill cutters.” — adjudicated: d: calculating tool paths/positioning for cutters evidences CNC programming, a different activity than calculating workpiece dimensions
+- act 7 · DMT 84A · “Cutter path development.” — adjudicated: d: cutter path development evidences CNC programming, a different activity than reviewing blueprints to determine methods
+- act 8 · DMT 84A · “RPM and feed rate guidelines/calculations.” — adjudicated: b: RPM/feed rate guidelines and calculations precede monitoring rather than evidencing the monitoring act itself
+- act 8 · DMT 84A · “Demonstrate CNC mill controller operations” — adjudicated: d: demonstrating controller operations evidences programming/operating the machine, not specifically monitoring feed and speed
+- act 18 · DMT 84A · “Zero point selection.” — adjudicated: b: zero point selection is a programming/setup precondition, not marking guide lines on the workpiece stock
+- act 19 · DMT 84A · “Location and setting of workpiece/fixture zero.” — adjudicated: d: setting workpiece/fixture zero evidences mounting/aligning fixtures onto machines, a different activity than measuring to mark reference/cutting lines
+- act 7 · DMT 84B · “Prepare and interpret programs for CNC mills.” — adjudicated: d: preparing/interpreting CNC programs evidences programming equipment, a different activity than reviewing blueprints for operational sequence
+- act 18 · DMT 84B · “Plot coordinate points using tool nose radius compensation.” — adjudicated: d: plotting coordinate points with tool nose compensation evidences CNC programming/tool path work, a different activity than marking guide lines on the workpiece
+- act 19 · DMT 84B · “Take home worksheets involving cartesian coordinate calculations.” — adjudicated: d: cartesian coordinate calculation worksheets evidence dimension/programming calculation, a different activity than measuring materials to mark reference/cutting lines
+- act 21 · DMT 84B · “Chip breakers.” — adjudicated: a: chip breakers names a tool geometry topic with no performable lubrication/cooling-check content
+
+## De Anza College — Certificate of Achievement, CNC Machinist → Industrial Engineering Technologists and Technicians (crosswalk)
+Read against Industrial Engineering Technologists and Technicians (SOC 17-3026), connected by crosswalk. 
+11 of 24 activities at outcome level, 14 with any evidence.
+
+- ● **Monitor activities affecting environmental quality.**
+    - DMT 80 [Objective]: “Demonstrate safe manufacturing lab practices.” — requires adhering to health/safety procedures in production setting
+- ● **Calibrate scientific or technical equipment.**
+    - DMT 80 [Objective]: “Interpret and record measurements made with precision measuring tools.” — using calipers/micrometers to calibrate/verify parts matches equipment calibration
+    - DMT 80 [Content outline]: “Micrometers.
+    - Advantages and disadvantages.
+    - Calibration and care.” — explicit calibration instruction with micrometers matches calibrating scientific/technical equipment
+    - DMT 84B [Content outline]: “Setting tool wear offsets.” — adjusting tool offsets on CNC equipment to ensure quality production directly matches calibrating/adjusting equipment
+    - DMT 84B [Content outline]: “Setting tool offsets.” — setting tool offsets is calibrating/adjusting CNC equipment to ensure accurate production
+    - DMT 84A [Objective]: “Apply the use of precision measuring tools to inspect the accuracy of machined parts” — using gage blocks, sine bars, and indicators to calibrate/verify measurement setups is calibrating technical equipment
+    - DMT 84A [Lab content]: “Identify measuring tools and inspection techniques” — hands-on use of calipers/indicators/gage blocks constitutes calibrating measuring equipment
+- ● **Direct industrial production activities.**
+    - DMT 80 [Content outline]: “Safely test program with single block and adjusted feed rates.” — overseeing/inspecting a production run for correctness before full operation
+    - DMT 84A [Lab content]: “Demonstrate CNC mill controller operations” — running and overseeing machine operation during production is directing/overseeing the production process
+    - DMT 84B [SLO]: “Demonstrate the set up and advanced operation of vertical machining centers.” — setting up and operating production machinery is directing/overseeing industrial production activities
+- · **Design industrial equipment.**
+- ● **Develop technical methods or processes.**
+    - DMT 84B [Content outline]: “Macros; programs and applications.” — developing advanced programmed methods/processes for machining production
+    - DMT 84B [Objective]: “Prepare and interpret programs for CNC mills.” — developing CNC programs is developing technical methods/processes for production
+- · **Implement design or process improvements.**
+- ● **Test products for functionality or quality.**
+    - DMT 84A [Objective]: “Apply the use of precision measuring tools to inspect the accuracy of machined parts” — testing finished machined parts against specifications at a production stage
+    - DMT 80 [SLO]: “Analyze, construct, and inspect assigned machined projects using the introductory principles of machining.” — inspecting machined projects for adherence to specifications
+    - DMT 84B [Lab content]: “Measurement and inspection” — lab measurement/inspection of machined parts is testing products for adherence to specifications
+    - DMT 84B [Content outline]: “Thread measurement using three-wire method.” — measuring threads against specification is testing product for quality/adherence to specs
+- ● **Explain engineering drawings, specifications, or other technical information.**
+    - DMT 90 [SLO]: “Demonstrate the ability to interpret multi-view drawings and prints.” — literal interpretation of engineering drawings/blueprints
+    - DMT 90 [Objective]: “Describe screw thread and gear callout information available on prints and drawings.” — describing thread/gear callouts is explaining technical drawing information
+    - DMT 84B [Objective]: “Prepare and interpret programs for CNC lathes” — interpreting CNC programs (technical specifications) for machine setup is explaining technical information
+- ● **Prepare drawings or diagrams of products or services.**
+    - DMT 90 [Content outline]: “Shop Sketching” — producing sketches/drawings of parts as a drafting activity
+    - DMT 90 [Content outline]: “Pictorial sketching” — pictorial sketching is direct practice preparing product drawings
+    - DMT 84A [SLO]: “Create basic word-address programs to successfully construct projects using vertical machining centers.” — word-address CNC programs are the technical schematic/blueprint equivalent directing tool paths, i.e. diagrams of the machining process
+    - DMT 84B [SLO]: “Create advanced word-address programs to successfully construct projects using vertical machining centers.” — word-address programs function as the technical blueprint/diagram directing tool paths for a product
+- ● **Assess product or process usefulness.**
+    - DMT 80 [SLO]: “Analyze, construct, and inspect assigned machined projects using the introductory principles of machining.” — analyzing machined product against specifications evidences assessing product usefulness/quality
+- · **Recommend technical design or process changes to improve efficiency, quality, or performance.**
+- ○ **Monitor processes for compliance with standards.**
+    - DMT 90 [Content outline]: “Demonstrate the various uses of dimensions, tolerances, notes and symbols” — verifying parts against tolerance specifications on prints matches monitoring compliance with standards
+    - DMT 80 [Content outline]: “Dimensioning nomenclature.
+    - Basic dimensions.
+    - Tolerance.
+    - Bilateral/unilateral.
+    - High/low limits.” — checking parts against tolerance/limit specifications is monitoring processes for compliance with standards
+- ● **Determine operational methods.**
+    - DMT 80 [Objective]: “Calculate and apply cutting tool speeds and feeds.” — selecting processing methods (speeds/feeds) to achieve efficient production
+    - DMT 80 [Content outline]: “Speed and feed selection.” — selecting processing methods (speed/feed) needed for efficient production is determining operational methods
+    - DMT 84A [Content outline]: “Effective rough, semi-finish and finish cuts for productivity and accuracy.” — determining machining methods for productive, accurate operations
+    - DMT 84A [Content outline]: “RPM and feed rate guidelines/calculations.” — selecting speed/feed and tool path parameters is determining the operational method for efficient machining
+    - DMT 84A [Content outline]: “Select and calculate logical tool paths and positioning for mill cutters.” — choosing tool paths/cutting sequence is selecting the processing method for production
+    - DMT 84B [Content outline]: “Tool geometry for different work piece materials.” — selecting appropriate tooling/geometry for given materials is determining operational processing methods
+    - DMT 90 [Content outline]: “Taper calculations” — computing taper/compound-angle machining parameters is determining operational machining methods
+- ○ **Inspect operational processes.**
+    - DMT 80 [Lab content]: “Demonstrate milling machine operations” — observing/demonstrating proper machine operation per quality standards
+    - DMT 84A [Content outline]: “Run tool tryout with single block and adjusted feed rates.” — dry-running and observing tool tryout to verify correct operation is inspecting the operational process
+- ● **Select project materials.**
+    - DMT 84B [Content outline]: “Carbide insert types, ANSI designations and applications.” — selecting tooling/cutting materials appropriate to the job matches selecting project materials
+    - DMT 80 [Objective]: “Select vertical milling machine cutting tools and perform basic machining operations.” — selecting cutting tools/materials for machining operation
+    - DMT 80 [Content outline]: “Coolant selection.” — choosing coolant for a machining process is selecting project materials
+- ○ **Monitor the productivity or efficiency of industrial operations.**
+    - DMT 84A [Content outline]: “RPM and feed rate guidelines/calculations.” — adjusting machining parameters to maintain efficiency/quality of production
+- · **Create physical models or prototypes.**
+- ● **Create graphical representations of industrial production systems.**
+    - DMT 80 [Content outline]: “CAD drawing transfer to CNC program.” — creating CAD-based toolpaths for CNC production is a graphical representation of an industrial production system
+    - DMT 84A [SLO]: “Create basic word-address programs to successfully construct projects using vertical machining centers.” — word-address programs function as the graphical/coded layout representation of the machining sequence for production
+- · **Research human performance or health factors related to engineering or design activities.**
+- · **Train personnel on proper operational procedures.**
+- · **Analyze costs and benefits of proposed designs or projects.**
+- · **Estimate operational costs.**
+- · **Prepare operational reports.**
+- · **Purchase materials, equipment, or other resources.**
+
+### Dropped
+
+- act 3 · CNC Machinist Certificate · “Setup and operate conventional and CNC machines safely” — unknown course 'CNC Machinist Certificate'
+- act 7 · CNC Machinist Certificate · “Construct and inspect machined projects using conventional and CNC equipment” — unknown course 'CNC Machinist Certificate'
+- act 14 · CNC Machinist Certificate · “Setup and operate conventional and CNC machines safely” — unknown course 'CNC Machinist Certificate'
+- act 9 · CNC Machinist Certificate · “Construct word address programs to machine projects” — unknown course 'CNC Machinist Certificate'
+- act 15 · DMT 84A · “Carbide” — malformed
+- act 6 · DMT 84B · “Describe carbide insert ANSI designations, wear characteristics and applications.” — adjudicated: b) describing insert designations/wear characteristics is knowledge preceding a process-improvement decision, not the improvement itself
+- act 18 · DMT 84A · “Cutter path development.” — adjudicated: d) cutter path development evidences programming/tool-path selection, not preparing drawings/layouts of machinery via CAD
+- act 21 · DMT 90 · “Applications of geometric and trigonometric functions.” — adjudicated: a) geometric/trigonometric function applications is topic-only content with no performable cost-analysis step named
+- act 6 · DMT 80 · “Calculate and apply cutting tool speeds and feeds.” — adjudicated: d) calculating/applying cutting speeds and feeds evidences determining operational methods, not implementing a process/quality improvement program
+- act 16 · DMT 80 · “Calculate and apply cutting tool speeds and feeds.” — adjudicated: d) calculating/applying cutting speeds and feeds evidences determining operational methods, not monitoring ongoing productivity/efficiency
+- act 20 · DMT 80 · “Lab projects demonstrating mastery of skills using the machines and equipment covered in t” — adjudicated: c) lab projects demonstrating mastery of skills is generic student skill practice, not training other technicians
+- act 8 · DMT 84A · “Verify CNC programs by means of machine simulators and software verification tools.” — adjudicated: d) verifying CNC programs via simulators evidences testing/inspecting a program, not explaining engineering drawings to others
+- act 1 · DMT 84B · “Identify and clear alarms.” — adjudicated: d) identifying and clearing controller alarms evidences equipment troubleshooting/operation, not environmental/health/safety regulatory compliance
+- act 6 · DMT 84B · “Cutter compensation, ramp on/off moves.” — adjudicated: d) cutter compensation and ramp on/off moves is a programming technique, not a process/quality improvement program
+- act 15 · DMT 84B · “Describe carbide insert ANSI designations, wear characteristics and applications.” — adjudicated: b) describing insert designations/wear characteristics is knowledge preceding tool selection, not the selection act itself
+- act 12 · DMT 90 · “Positional” — adjudicated: a) 'Positional' alone is a topic-only heading with no performable content named
+
+## De Anza College — Certificate of Achievement, CNC Machinist → Electro-Mechanical and Mechatronics Technologists and Technicians (crosswalk)
+Read against Electro-Mechanical and Mechatronics Technologists and Technicians (SOC 17-3024), connected by crosswalk. 
+6 of 14 activities at outcome level, 9 with any evidence.
+
+- ● **Design electromechanical equipment or systems.**
+    - DMT 84B [Objective]: “Prepare and interpret programs for CNC mills.” — programming CNC mills to construct new tool paths constitutes designing/programming the equipment's operation
+- ● **Test performance of electrical, electronic, mechanical, or integrated systems or equipment.**
+    - DMT 84A [Content outline]: “Verify CNC programs by means of machine simulators and software verification tools.” — verifying CNC programs via simulators tests the performance of the integrated mechanical/control system
+    - DMT 84B [Objective]: “Verify mill programs with PC based solid modeling software.” — software-based verification of tool paths constitutes testing performance of the machine system before run
+    - DMT 84B [Content outline]: “Verify tool paths.” — verifying tool paths is testing the programmed system's performance before running on the machine
+    - DMT 80 [Content outline]: “Safely test program with single block and adjusted feed rates.” — testing a CNC program's performance on the machine matches testing performance of an integrated system
+- ● **Develop software or computer applications.**
+    - DMT 84A [Objective]: “Prepare basic three-axis programming for milling machine operations” — writing CNC part programs is programming machine/instrumentation software for a microprocessor-based (CNC controller) system
+    - DMT 84A [SLO]: “Create basic word-address programs to successfully construct projects using vertical machining centers.” — programming machine controller software directly matches installing/programming machine or instrumentation software
+    - DMT 84A [Objective]: “Operate mill CNC controller to download and dry run part programs” — downloading and running programs on the machine controller evidences programming instrumentation software
+    - DMT 84B [SLO]: “Create advanced word-address programs to successfully construct projects using vertical machining centers.” — authoring advanced CNC programs is developing software for the machine's control system
+    - DMT 84B [Objective]: “Verify mill programs with PC based solid modeling software.” — writing and verifying programs on the controller software is developing/programming software applications for the machine
+    - DMT 80 [Content outline]: “Call up and run programs in memory.” — operating machine control software/programs matches installing or programming machine instrumentation software
+    - DMT 80 [Content outline]: “Input and operate in MDI.” — manual data input to the CNC controller is programming machine software in a microprocessor-based system
+- ● **Review technical documents to plan work.**
+    - DMT 90 [SLO]: “Demonstrate the ability to interpret multi-view drawings and prints.” — reading blueprints/prints literally to plan machining/assembly sequence matches task text directly
+    - DMT 90 [Objective]: “Describe screw thread and gear callout information available on prints and drawings.” — reading thread/gear callouts on technical drawings to determine assembly/machining methods
+    - DMT 90 [Objective]: “Identify projections and views used in manufacturing” — identifying drawing projections/views is directly constitutive of reading blueprints/schematics
+    - DMT 90 [Content outline]: “Detail and assembly views” — interpreting detail and assembly views is scope of reading technical drawings to determine assembly sequence
+- ○ **Maintain electromechanical equipment.**
+    - DMT 84B [Content outline]: “Identify and clear alarms.” — diagnosing and clearing machine alarms is maintaining/repairing equipment to ensure proper functioning
+- · **Maintain electronic equipment.**
+- ● **Inspect finished products to locate flaws.**
+    - DMT 80 [SLO]: “Analyze, construct, and inspect assigned machined projects using the introductory principles of machining.” — inspecting machined projects for surface defects/dimensional conformance matches inspecting finished products for flaws
+    - DMT 80 [Objective]: “Interpret and record measurements made with precision measuring tools.” — verifying dimensions with precision measuring instruments matches the O*NET task literally
+    - DMT 84A [Objective]: “Apply the use of precision measuring tools to inspect the accuracy of machined parts” — verifying dimensional accuracy with precision instruments evidences inspecting for conformance to specifications
+    - DMT 84A [Lab content]: “Identify measuring tools and inspection techniques” — hands-on use of inspection techniques matches verifying part dimensions using precision measuring instruments
+    - DMT 84B [Lab content]: “Measurement and inspection” — lab inspection activity evidences inspecting finished parts to locate flaws
+    - DMT 84B [Content outline]: “Thread measurement using three-wire method.” — precision measurement of thread dimensions verifies conformance to specifications, evidencing inspection
+    - DMT 90 [Description]: “as well as calculations used to solve common problems found in print interpretation and inspection” — course scope explicitly covers inspection using print-based tolerance interpretation, matching verifying part dimensions/clearances
+- · **Install instrumentation or electronic equipment or systems.**
+- ○ **Assemble equipment or components.**
+    - DMT 84A [Lab content]: “Setup CNC milling tooling (cutting tools and holders)” — fitting and assembling tool holders/cutting tools with hand tools and fixtures matches aligning/fitting component parts using fixtures
+    - DMT 84B [Content outline]: “Lathe set-up for internal and external threads.” — setting up the lathe with tooling/fixtures for machining constitutes assembling equipment/components for production
+- ○ **Fabricate devices or components.**
+    - DMT 80 [Assignment]: “Lab projects demonstrating mastery of skills using the machines and equipment covered in this course.” — producing machined lab projects on manual/CNC machines is fabricating mechanical components
+    - DMT 84A [Assignment]: “Lab projects demonstrating mastery of skills using three axis CNC machines, simulators and verification software covered in this course.” — constructing CNC-machined parts in lab projects is fabricating mechanical components
+- · **Create schematic drawings for electronics.**
+- ● **Select project materials.**
+    - DMT 80 [Objective]: “Select vertical milling machine cutting tools and perform basic machining operations.” — selecting cutting tools/materials to meet a job's functional specification matches selecting project materials/components
+    - DMT 80 [Content outline]: “Cutting tool selection.” — selecting tooling/materials to meet the machining job's functional requirements matches selecting project materials/components
+    - DMT 80 [Content outline]: “Coolant selection.” — selecting process materials to meet functional specifications of the machining operation
+- · **Develop technical methods or processes.**
+- · **Maintain operational records or records systems.**
+
+### Dropped
+
+- act 1 · DMT 80 · “Explain basic CNC system components, axis movements, and controller operations.” — adjudicated: d) explaining CNC system components/axis movements/controller operations is knowledge content, not designing equipment/systems; better evidences a review/knowledge task, not the design activity
+- act 5 · DMT 80 · “Set-up and perform basic operations on drill presses.” — adjudicated: b) setting up and performing basic drill press operations is learning/performing an operation, not modifying/repairing/maintaining equipment
+- act 9 · DMT 80 · “Demonstrate milling machine operations” — adjudicated: d) demonstrating milling machine operations is operating/machining equipment, not assembling component parts
+- act 12 · DMT 84B · “Describe carbide insert ANSI designations, wear characteristics and applications.” — adjudicated: a) describing carbide insert ANSI designations and wear characteristics is topic knowledge, not the performable act of selecting materials for a job
+- act 5 · DMT 80 · “Set-up and perform basic operations on drill presses.” — adjudicated: b) setting up and performing basic drill press operations is performing an operation, not maintaining/repairing equipment
+- act 2 · DMT 80 · “Explain basic CNC system components, axis movements, and controller operations.” — adjudicated: a) explaining basic CNC components/axis movements/controller operations is topic knowledge, not performing a diagnostic/test activity
+- act 2 · DMT 84A · “Demonstrate the set up and basic operation of vertical machining centers.” — adjudicated: a) demonstrating set up and basic operation of machining centers is operating equipment, not testing/diagnosing performance
+- act 4 · DMT 84A · “Down load programs from PC or DNC.” — adjudicated: d) downloading programs from PC or DNC is a programming/software action, not reading blueprints to plan a sequence
+- act 4 · DMT 84A · “Take home and in class worksheets involving feeds, speeds, and cartesian coordinate calcul” — adjudicated: d) worksheets on feeds, speeds, and coordinate calculations are computational exercises, not reading blueprints/schematics/technical orders
+- act 9 · DMT 84A · “Tool holders.” — adjudicated: a) 'Tool holders' alone is a topic heading with no stated performable assembly action
+- act 12 · DMT 84A · “Describe mill cutting tool materials; characteristics, and uses.” — adjudicated: a) describing mill cutting tool materials/characteristics/uses is topic knowledge, not the performable act of selecting materials for a job
+- act 2 · DMT 84B · “Demonstrate the set up and advanced operation of vertical machining centers.” — adjudicated: a) demonstrating set up and advanced operation of machining centers is operating equipment, not testing/diagnostic activity
+- act 4 · DMT 84B · “Interpret command screens.” — adjudicated: d) interpreting command screens on the controller is operating/programming the machine, not reading blueprints/schematics/technical orders
+- act 7 · DMT 90 · “Positional” — adjudicated: a) 'Positional' alone is a topic heading (positional tolerancing) with no stated performable inspection action
+
+## Evergreen Valley College — Certificate of Achievement, Advanced Manufacturing Level 1 → Industrial Engineering Technologists and Technicians (paired)
+Read against Industrial Engineering Technologists and Technicians (SOC 17-3026), connected by paired. The certificate prepares manufacturing technicians and assemblers with an emphasis on testing, materials, data analysis and quality control — the process side of the technician role.
+8 of 24 activities at outcome level, 21 with any evidence.
+
+- ● **Monitor activities affecting environmental quality.**
+    - MFGT 101 [Content outline]: “Safety and Hazardous Waste” — content covers regulatory health/safety/environmental compliance topics including MSDS and legal requirements
+    - MFGT 101 [Lab content]: “Identify Methods to Achieve ISO Safety Standards” — lab has students identify methods to comply with safety standards
+    - MFGT 201 [Lab content]: “Utilize Service Information: Industry Standards, Procedures, and Regulations” — students follow applicable industry standards and regulations during lab work, evidencing compliance activity
+    - MFGT 201 [SLO]: “Demonstrate proper practice safety procedures and identification of electrical hazards.” — SLO literally has students identify hazards and apply safety procedures relevant to health/safety compliance
+    - MFGT 202 [Lab content]: “Demonstrate Safety Practices, Equipment Usage, and Proper Data Gathering and Storage Within the Laboratory” — lab requires adherence to health/safety procedures in a technical lab setting
+- ● **Calibrate scientific or technical equipment.**
+    - MFGT 203 [Lab content]: “Measure the Length of Similar Devices Using a Micrometer or Vernier Caliper” — lab uses calipers to take precision measurements, a calibration-adjacent skill using listed tools
+    - MFGT 203 [Lab content]: “Measure the Length of Similar Devices Using a Micrometer or Vernier Caliper and Graph the Measurements” — students calibrate/use precision measurement tools such as micrometers and calipers
+    - MFGT 201 [Lab content]: “Set Up Test Measurement Equipment to Verify Ohm's Law, Kirchhoff’s Voltage Law, Kirchhoff’s Current Law” — students set up and calibrate test measurement equipment to obtain accurate readings, matching calibration of technical equipment
+    - MFGT 201 [SLO]: “Demonstrate the use of specialized test equipment to obtain measurements and generate data from electronic circuits and systems.” — SLO has students use and set up specialized measurement/test equipment, directly constitutive of calibrating technical equipment
+    - MFGT 202 [Lab content]: “Mechanical Testing #1: Plastic Deformation Identification and Testing” — mechanical testing lab requires use of calibrated instruments to assess material properties
+- ○ **Direct industrial production activities.**
+    - MFGT 203 [Lab content]: “Set Up and Monitor a Process with Control Chart to Determine If the Process is in Control” — setting up and monitoring a production process directly constitutes overseeing production
+- · **Design industrial equipment.**
+- ○ **Develop technical methods or processes.**
+    - MFGT 203 [Lab content]: “Choose a Corrective Action, and Document the Process” — lab develops a process to address a production/quality problem via root cause and corrective action
+    - MFGT 203 [Lab content]: “Problem Solving: Given a Problem or Defect, Identify Possible Causes, Fishbone Those Causes, Figure Out How to Eliminate and Test the Various Causes to Identify the Root Cause. Choose a Corrective Action, and Document the Process.” — developing a method to address a production/quality problem and document a corrective process
+    - MFGT 101 [Lab content]: “Analyze a Manufacturer’s Assembly Instructions for Process Improvement” — students develop/implement process improvements to production methods
+- ○ **Implement design or process improvements.**
+    - MFGT 203 [Lab content]: “Figure Out How to Eliminate and Test the Various Causes to Identify the Root Cause. Choose a Corrective Action” — lab implements a process improvement addressing an identified quality problem
+    - MFGT 203 [Lab content]: “Choose a Corrective Action, and Document the Process.” — implementing a chosen corrective action to fix a quality problem is a process improvement
+    - MFGT 101 [Lab content]: “Analyze a Manufacturer’s Assembly Instructions for Process Improvement” — lab has students identify and implement process improvements to assembly procedures
+    - MFGT 101 [Lab content]: “Problem Solving: Find Alternatives to an Assembly Failure” — students implement a process improvement to fix an assembly failure
+- ● **Test products for functionality or quality.**
+    - MFGT 103 [SLO]: “Demonstrate two techniques for testing assembled product.” — SLO states literally that students test assembled products for functionality
+    - MFGT 103 [Lab content]: “Inspect and Test Finished Circuit Boards Per Industry and International Standards such as ISO, IEC, IPC, or MILSPEC” — testing finished circuit boards at a production stage evidences testing products for functionality
+    - MFGT 201 [SLO]: “Demonstrate competence in building, servicing, and testing circuits using passive devices” — SLO states literally that students test circuits for functionality
+    - MFGT 201 [SLO]: “Demonstrate competence in building, servicing, and testing circuits using passive devices utilizing safe and industry standard practices” — SLO literally has students test circuits for performance against standards, matching testing products for functionality
+    - MFGT 201 [Lab content]: “Build and Test Simple DC Circuits Using Switches, LEDs, Capacitors, Inductors, and Resistors” — lab has students test built circuits for functional performance characteristics
+    - MFGT 101 [Lab content]: “Perform Testing on Assembled Product” — students literally test an assembled product, matching testing products for quality
+    - MFGT 202 [SLO]: “Perform three different material application processes (including material selection, application fabrication techniques, relevant testing that could be performed, and necessary characterization technique based on the application).” — students perform testing of materials against application specifications
+    - MFGT 202 [Lab content]: “Mechanical Testing #2: Fracture Identification and Testing” — lab has students test material specimens for performance characteristics
+    - MFGT 203 [Lab content]: “Apply Two Adhesives Using Two Different Curing Conditions and Analyze the Bond Quality” — testing product samples under process conditions for quality characteristics
+- ● **Explain engineering drawings, specifications, or other technical information.**
+    - MFGT 103 [SLO]: “Demonstrate how to read and interpret mechanical drawings, prints.” — SLO states literally that students interpret engineering drawings
+- ○ **Prepare drawings or diagrams of products or services.**
+    - MFGT 103 [Content outline]: “Learn How to Read and Interpret Mechanical Drawings” — content on drawings/projections/dimensions covers preparing and reading engineering drawings
+- ● **Assess product or process usefulness.**
+    - MFGT 203 [SLO]: “Collect, analyze, interpret, and present numerical data to make effective decisions.” — SLO states literally that students compile and evaluate statistical data to assess product/process quality
+    - MFGT 203 [Lab content]: “Develop and Analyze Reliability Plots and Graphs” — evaluating statistical reliability data to assess product usefulness
+- ○ **Recommend technical design or process changes to improve efficiency, quality, or performance.**
+    - MFGT 203 [Lab content]: “Choose a Corrective Action, and Document the Process” — lab has students recommend a corrective action to improve product/process quality
+- ● **Monitor processes for compliance with standards.**
+    - MFGT 203 [SLO]: “Read and interpret process control charts.” — SLO states literally that students read control records to verify process adherence to quality specifications
+    - MFGT 103 [Lab content]: “Inspect Solder Joint Quality Per IPC 610” — inspecting joints against an industry standard evidences monitoring processes for compliance with standards
+    - MFGT 103 [Lab content]: “Inspect and Test Finished Circuit Boards Per Industry and International Standards such as ISO, IEC, IPC, or MILSPEC” — testing product against named industry/international standards evidences monitoring compliance with standards
+- ● **Determine operational methods.**
+    - MFGT 103 [Lab content]: “Join Various Materials Using Welding, Soldering, Staking, or Weaving Techniques” — selecting among alternative joining methods for a task evidences determining operational methods
+    - MFGT 202 [SLO]: “Identify three criteria that are important in the materials selection process.” — identifying materials selection criteria evidences determining operational methods via material selection
+- ○ **Inspect operational processes.**
+    - MFGT 203 [Lab content]: “Set Up and Monitor a Process with Control Chart to Determine If the Process is in Control” — lab inspects an operational process against quality assurance standards
+- ● **Select project materials.**
+    - MFGT 202 [SLO]: “Identify three criteria that are important in the materials selection process.” — SLO states literally that students select materials for an application
+    - MFGT 103 [Lab content]: “Assemble Products Using Plastics, Metals, and Ceramics” — choosing among materials to assemble products evidences selecting project materials
+- ○ **Monitor the productivity or efficiency of industrial operations.**
+    - MFGT 203 [Lab content]: “Set Up and Monitor a Process with Control Chart to Determine If the Process is in Control” — monitoring production process control directly evidences monitoring productivity/efficiency
+- ○ **Create physical models or prototypes.**
+    - MFGT 101 [Lab content]: “Follow a Manufacturing Instruction to Assemble a Product (e.g. IKEA product)” — lab has students physically build a product model/prototype
+    - MFGT 203 [Lab content]: “Apply Two Adhesives Using Two Different Curing Conditions and Analyze the Bond Quality” — lab builds and tests physical sample assemblies, akin to prototype testing
+- ○ **Create graphical representations of industrial production systems.**
+    - MFGT 103 [Content outline]: “Blueprints and Drawings” — content covers preparing/interpreting drawings and layouts of assembled equipment/systems
+- ○ **Research human performance or health factors related to engineering or design activities.**
+    - MFGT 101 [Lab content]: “Analyze a Manufacturer’s Assembly Instructions for Process Improvement” — lab studies assembly process methods to identify efficiency improvements, akin to time/motion study
+- · **Train personnel on proper operational procedures.**
+- ○ **Analyze costs and benefits of proposed designs or projects.**
+    - MFGT 203 [Content outline]: “Cost of Quality” — content covers analyzing and reporting costs related to production quality
+    - MFGT 203 [Lab content]: “Perform Cost Analysis Plots and Graphs” — lab conducts statistical cost analysis comparing production costs
+- ○ **Estimate operational costs.**
+    - MFGT 203 [Content outline]: “Definition and Measuring” — content on Cost of Quality covers estimating and reporting production-related costs
+    - MFGT 203 [Content outline]: “Cost of Quality - Definition and Measuring” — measuring and estimating production/quality-related costs
+- ○ **Prepare operational reports.**
+    - MFGT 203 [Lab content]: “Document the Process” — lab has students prepare a documented operational report of the quality process
+    - MFGT 203 [Lab content]: “Choose a Corrective Action, and Document the Process.” — documenting the corrective action process constitutes preparing an operational report
+- · **Purchase materials, equipment, or other resources.**
+
+### Dropped
+
+- act 2 · MFGT 102 · “Solve Practical Mechanical Measurement Problems” — adjudicated: d: solving mechanical measurement calculation problems evidences measurement/computation, a different activity than calibrating equipment with gauges
+- act 3 · MFGT 101 · “Quality Assurance” — adjudicated: a: 'Quality Assurance' as a content heading names a topic without stating oversight/inspection of production
+- act 5 · MFGT 101 · “Total Quality Management” — adjudicated: a: 'Total Quality Management' is a topic heading without a stated program-development activity
+- act 13 · MFGT 102 · “Learn How to Solve Practical Speed and Ratio Problems for Gears and Pulleys” — adjudicated: d: solving speed/ratio problems for gears and pulleys evidences mechanical calculation, not selecting materials/processing methods for production
+- act 16 · MFGT 101 · “Statistical Process Control” — adjudicated: a: 'Statistical Process Control' is a topic heading without stated monitoring of productivity/efficiency
+- act 3 · MFGT 101 · “Quality Assurance” — adjudicated: a: 'Quality Assurance' content heading names a topic without stating oversight/inspection of production processes
+- act 6 · MFGT 101 · “Root Cause Analysis” — adjudicated: a: 'Root Cause Analysis' content heading names a technique without stating implementation of a process improvement
+- act 10 · MFGT 101 · “Statistical Process Control” — adjudicated: a: 'Statistical Process Control' content heading names a topic without stated evaluation of product/process usefulness
+- act 12 · MFGT 101 · “International Organization for Standardization (ISO) 9000” — adjudicated: a: 'ISO 9000' content heading names a standard topic without stated verification of records/logs against specifications
+- act 13 · MFGT 101 · “Production Planning” — adjudicated: a: 'Production Planning' content heading names a topic without stated selection of processing methods
+- act 20 · MFGT 101 · “Develop Site Visit Questionnaire” — adjudicated: c: site visit questionnaire is a generic inquiry activity, not training personnel on operational procedures
+- act 2 · MFGT 102 · “Learn How to Solve Practical Mechanical Measurement Problems” — adjudicated: d: solving mechanical measurement calculation problems evidences computation, not calibrating equipment with the listed tools
+- act 2 · MFGT 102 · “Solve Practical Mechanical Measurement Problems” — adjudicated: d: solving mechanical measurement problems is quantitative practice, a different activity than calibrating equipment
+- act 21 · MFGT 102 · “Learn How to Solve Practical Problems for Cutting and Feeding Equipment” — adjudicated: d: solving speed/feed-rate problems for cutting equipment evidences mechanical calculation, not analyzing production costs
+- act 12 · MFGT 201 · “Apply Test Methods to Troubleshoot, Diagnose, and Identify Faults” — adjudicated: d: troubleshooting/diagnosing faults evidences fault diagnosis, a different activity than verifying records against specifications
+- act 2 · MFGT 202 · “Identify methods used to test and characterize various materials.” — adjudicated: b: identifying testing/characterization methods precedes actually calibrating or using measurement equipment
+- act 10 · MFGT 202 · “Processing/Structure/Properties/Performance Correlations” — adjudicated: a: 'Processing/Structure/Properties/Performance Correlations' is a topic heading without stated statistical evaluation of quality/reliability
+- act 15 · MFGT 202 · “Soldering Techniques” — adjudicated: d: soldering techniques lab evidences a joining/assembly skill, not selecting project materials
+- act 13 · MFGT 203 · “Process Capability Index” — adjudicated: a: 'Process Capability Index' is a topic heading without stated selection of material quantities or processing methods
+
+## Evergreen Valley College — Certificate of Achievement, Advanced Manufacturing Level 1 → Electro-Mechanical and Mechatronics Technologists and Technicians (crosswalk)
+Read against Electro-Mechanical and Mechatronics Technologists and Technicians (SOC 17-3024), connected by crosswalk. 
+6 of 14 activities at outcome level, 10 with any evidence.
+
+- · **Design electromechanical equipment or systems.**
+- ● **Test performance of electrical, electronic, mechanical, or integrated systems or equipment.**
+    - MFGT 101 [Lab content]: “Perform Testing on Assembled Product” — performing testing on an assembled product is a basic instance of testing performance of assembled equipment
+    - MFGT 103 [SLO]: “Demonstrate two techniques for testing assembled product.” — testing assembled product matches testing performance of electromechanical assemblies/equipment
+    - MFGT 103 [Content outline]: “In-Circuit Functional” — in-circuit functional testing of assembled electronics matches testing performance of electronic/electromechanical assemblies
+    - MFGT 201 [SLO]: “Demonstrate the use of specialized test equipment to obtain measurements and generate data from electronic circuits and systems.” — students select and use diagnostic test equipment to assess electrical circuits, directly matching the task
+    - MFGT 201 [Lab content]: “Use Test Equipment such as Oscilloscopes, Frequency Sources, and Vector Analyzers to Develop Basic Understanding of Voltage Patterns” — students test performance of circuits using oscilloscopes, matching the electromechanical assembly test task
+- · **Develop software or computer applications.**
+- ● **Review technical documents to plan work.**
+    - MFGT 103 [SLO]: “Demonstrate how to read and interpret mechanical drawings, prints.” — literal SLO matches reading blueprints/schematics to determine assembly sequence
+    - MFGT 103 [Content outline]: “Learn How to Read and Interpret Mechanical Drawings” — content covers blueprints, drawings, projections, dimensions used to plan assembly sequence
+- ● **Maintain electromechanical equipment.**
+    - MFGT 201 [SLO]: “Demonstrate competence in building, servicing, and testing circuits using passive devices utilizing safe and industry standard practices and procedures.” — literal SLO evidences maintaining/servicing electrical/electromechanical equipment
+    - MFGT 201 [Lab content]: “Apply and Perform Diagnostic and Repair Procedures to Live DC Circuits” — lab activity of diagnosing/repairing circuits evidences maintaining electromechanical equipment
+    - MFGT 201 [SLO]: “Demonstrate the use of diagnostic information and software (electrical diagrams, board diagrams, diagnostic charts, specifications) in order to perform diagnosis and repair of passive circuits and systems.” — students diagnose and repair circuits, matching repair of electrical components to ensure proper functioning
+- ● **Maintain electronic equipment.**
+    - MFGT 201 [SLO]: “Demonstrate the use of diagnostic information and software (electrical diagrams, board diagrams, diagnostic charts, specifications) in order to perform diagnosis and repair of passive circuits and systems.” — literal SLO evidences diagnosis and repair of electronic equipment
+    - MFGT 201 [Lab content]: “Utilize Best Industry Practices on Electronic Troubleshooting, Fault Detection, and Root Cause Corrective Action (RCCA) Methods and Procedures” — lab activity of troubleshooting/repairing electronic circuits evidences maintaining electronic equipment
+- ○ **Inspect finished products to locate flaws.**
+    - MFGT 103 [Lab content]: “Inspect Solder Joint Quality Per IPC 610” — lab inspection of solder joints for defects evidences inspecting finished products for flaws
+    - MFGT 103 [Lab content]: “Inspect and Test Finished Circuit Boards Per Industry and International Standards such as ISO, IEC, IPC, or MILSPEC” — inspecting finished boards for conformance to standards matches inspecting finished products to locate flaws
+    - MFGT 203 [Lab content]: “Precision Measurement: Measure the Length of Similar Devices Using a Micrometer or Vernier Caliper and Graph the Measurements to Determine the Mean, Average and Standard Deviation” — lab use of precision measuring instruments to verify dimensions evidences flaw/tolerance inspection
+    - MFGT 203 [Lab content]: “Precision Measurement: Measure the Length of Similar Devices Using a Micrometer or Vernier Caliper” — verifying part dimensions with precision measuring instruments matches the inspection task literally
+    - MFGT 202 [Lab content]: “Mechanical Testing #2: Fracture Identification and Testing” — fracture identification in a lab is directly locating flaws in tested parts
+- ○ **Install instrumentation or electronic equipment or systems.**
+    - MFGT 103 [Lab content]: “Perform Various Hand-held Soldering Techniques for Wires and Circuit Components” — lab hand soldering of parts into assemblies evidences installing electronic components
+    - MFGT 103 [Content outline]: “Hand Soldering” — hand soldering of electronic parts into housings/assemblies matches installing electronic equipment using soldering equipment
+    - MFGT 201 [Lab content]: “Practice Wiring, Connector Repair Methods, and Soldering Techniques” — students install electrical parts using soldering equipment and hand tools, matching the task literally
+- ● **Assemble equipment or components.**
+    - MFGT 103 [SLO]: “Demonstrate the ability to assemble and test micro circuits under a microscope.” — literal SLO evidences assembling electronic components
+    - MFGT 103 [Lab content]: “Properly Use Various Screw Drivers, Socket, Wrenches, and Torque Tools” — lab use of hand/power tools for assembly evidences fitting/assembling component parts
+    - MFGT 103 [SLO]: “Demonstrate how to form, cut, bond, solder, laminate, and 3D print various materials when assembling circuit boards, mechanical systems and electrical systems.” — forming/bonding/soldering to assemble mechanical and electrical systems is fabricating/assembling electromechanical components
+    - MFGT 103 [Lab content]: “Assemble Electrical Connectors and Route Wiring” — hands-on assembly of electrical connectors/wiring using tools matches aligning/fitting/assembling components with hand tools
+    - MFGT 101 [Lab content]: “Follow a Manufacturing Instruction to Assemble a Product (e.g. IKEA product)” — assembling a product from instructions is a direct instance of assembling components
+- ○ **Fabricate devices or components.**
+    - MFGT 103 [Lab content]: “Assemble Products Using Either Molding, Stamping, Bending, Casting, Laminating, or 3D Printing” — lab fabrication processes evidence fabricating mechanical/electrical components
+    - MFGT 103 [Lab content]: “Assemble Printed Circuit Boards Using Mechanical or Automated Techniques” — fabricating PCB assemblies matches fabricate/assemble electronic components
+- · **Create schematic drawings for electronics.**
+- ● **Select project materials.**
+    - MFGT 202 [SLO]: “Identify three criteria that are important in the materials selection process.” — literal SLO evidences selecting materials to meet functional specifications
+- · **Develop technical methods or processes.**
+- ○ **Maintain operational records or records systems.**
+    - MFGT 203 [Lab content]: “Problem Solving: Given a Problem or Defect, Identify Possible Causes, Fishbone Those Causes, Figure Out How to Eliminate and Test the Various Causes to Identify the Root Cause. Choose a Corrective Action, and Document the Process.” — lab requirement to document the process evidences maintaining operational records
+
+### Dropped
+
+- act 1 · MFGT 101 · “Robotics” — adjudicated: a) topic-only heading "Robotics" with no performable content stated
+- act 13 · MFGT 203 · “Set Up and Monitor a Process with Control Chart to Determine If the Process is in Control” — adjudicated: d) control-chart process monitoring evidences a quality/process-control activity, not establishing inventory or documentation records
+- act 7 · MFGT 101 · “Perform Testing on Assembled Product” — adjudicated: a) "Perform Testing on Assembled Product" is a bare heading with no stated inspection-for-flaws content
+- act 7 · MFGT 202 · “Common Material Failures” — adjudicated: a) "Common Material Failures" is a topic heading with no performable inspection content stated
+- act 5 · MFGT 202 · “Hardening and Annealing” — adjudicated: d) hardening/annealing is a materials heat-treatment process, not repair/maintenance of electromechanical equipment
+- act 7 · MFGT 203 · “Out of Control Conditions” — adjudicated: a) "Out of Control Conditions" is a bare topic heading with no stated inspection-for-flaws content

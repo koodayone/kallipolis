@@ -518,6 +518,60 @@ def add_cmpgrid(table):
             ci += c['colspan']
 
 
+def add_alg_table(table):
+    """Curriculum alignment: work activities down the side, one column per college,
+    that college's evidencing courses as coloured hyperlinks in the cell. Mirrors the
+    HTML (`table.alg-tbl`): header cells carry the college colour in `style="--c:#…"`;
+    body cells hold `a.chip` links (one per course) and an optional `b.chip.alg-more`
+    overflow marker whose title lists the hidden courses. Empty cells are a dash."""
+    import re as _re
+    rows = rows_of(table)
+    if not rows:
+        return
+    hdr, body = rows[0], rows[1:]
+    ncol = len(hdr['cells'])
+    tbl = doc.add_table(rows=0, cols=ncol); tbl.alignment = WD_TABLE_ALIGNMENT.CENTER; grid(tbl, 'eef1f6')
+    colours = []
+    for c in hdr['cells']:
+        m = _re.search(r'--c:\s*#([0-9a-fA-F]{6})', c['el'].get('style', '') or '')
+        colours.append(m.group(1) if m else '5a6577')
+    trow = tbl.add_row(); repeat_header(trow); no_split(trow)
+    for ci, c in enumerate(hdr['cells']):
+        cell = trow.cells[ci]; p = cell.paragraphs[0]
+        p.paragraph_format.space_before = Pt(1); p.paragraph_format.space_after = Pt(1)
+        if ci == 0:
+            run(p, 'WORK ACTIVITY', size=7, bold=True, color=MUT)
+        else:
+            run(p, c['el'].get_text(' ', strip=True), size=9, bold=True, color='ffffff'); shade(cell, colours[ci])
+        cellpad(cell, 30, 30, 60, 60)
+    for r in body:
+        trow = tbl.add_row(); no_split(trow)
+        for ci, c in enumerate(r['cells']):
+            cell = trow.cells[ci]; p = cell.paragraphs[0]
+            p.paragraph_format.space_before = Pt(1); p.paragraph_format.space_after = Pt(1)
+            if ci == 0:
+                run(p, c['el'].get_text(' ', strip=True), size=8.5, color=DARK)
+            elif 'alg-empty' in c['cls']:
+                run(p, '—', size=8.5, color='c9d0da')
+            else:
+                first = True
+                for chip in c['el'].find_all(['a', 'b']):
+                    if not first:
+                        run(p, '  ', size=8)
+                    first = False
+                    if chip.name == 'a':
+                        hyperlink(p, chip.get('href', ''), chip.get_text(' ', strip=True), color=colours[ci], size=8)
+                    else:  # "+N" overflow — the hidden course codes ride in the title
+                        more = chip.get('title', '')
+                        run(p, chip.get_text(' ', strip=True) + (f' ({more})' if more else ''), size=7.5, color=MUT)
+            cellpad(cell, 30, 30, 60, 60)
+    # widths: the activity column takes ~2.6in, the colleges share the rest
+    total = CONTENT_W; act = min(2.6, total * 0.4); rest = (total - act) / max(1, ncol - 1)
+    for row in tbl.rows:
+        for ci, cell in enumerate(row.cells):
+            cell.width = Inches(act if ci == 0 else rest)
+
+
 def add_emps(div):
     p = para(2, 4)
     for node in div.children:
@@ -735,6 +789,18 @@ def emit(el):
             p = para(10, 2); run(p, t, size=11, bold=True, color=DARK)
         elif 'tnote' in cls:
             p = para(1, 4); run(p, t, size=8.5, color=MUT, italic=True)
+        elif 'alg-legend' in cls:
+            # the college legend: swatches become the college name set in its colour
+            import re as _re
+            p = para(6, 2)
+            for sp in el.find_all('span', class_='alg-lg'):
+                sw = sp.find('i'); chip = sp.find('b')
+                m = _re.search(r'#([0-9a-fA-F]{6})', (sw.get('style', '') if sw else '') or '')
+                if m:
+                    run(p, sp.get_text(' ', strip=True) + '   ', size=9, bold=True, color=m.group(1))
+                elif chip is not None:
+                    run(p, chip.get_text(' ', strip=True) + ' ', size=8, bold=True, color=BLUE)
+                    run(p, sp.get_text(' ', strip=True).replace(chip.get_text(' ', strip=True), '', 1).strip(), size=9, color='46536b')
         elif 'tnar' in cls:
             p = para(6, 2); runs_from(el, p, size=10, color='46536b')
         elif 'srcdash' in cls:
@@ -752,6 +818,8 @@ def emit(el):
             add_cmpgrid(el)
         elif 'trend' in cls:
             add_trend(el)
+        elif 'alg-tbl' in cls:
+            add_alg_table(el)
     elif 'wgchart' in cls:
         add_wgchart_image()
     elif 'enchart' in cls:

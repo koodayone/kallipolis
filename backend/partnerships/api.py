@@ -617,6 +617,9 @@ _SPEC_OVERRIDE_FIELDS = (
     # Program evaluations only: the TOP6 under evaluation. Its presence is the trigger
     # for the "Awards Offered" section — role-report defs omit it entirely.
     "program_top",
+    # Curriculum alignment: the roster id whose saved alignment renders the plates, and
+    # the editorial paragraph above them.
+    "curriculum_alignment", "curriculum_note",
 )
 
 
