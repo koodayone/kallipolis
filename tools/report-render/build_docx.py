@@ -553,8 +553,7 @@ def add_alg_table(table):
         cell = trow.cells[ci]; p = cell.paragraphs[0]
         p.paragraph_format.space_before = Pt(1); p.paragraph_format.space_after = Pt(1)
         if ci == 0:
-            ma = _re.search(r'--a:\s*#([0-9a-fA-F]{6})', c['el'].get('style', '') or '')
-            run(p, 'WORK ACTIVITY', size=7, bold=True, color=(ma.group(1) if ma else MUT))
+            run(p, 'WORK ACTIVITY', size=7, bold=True, color=MUT)
         else:
             run(p, c['el'].get_text(' ', strip=True), size=9, bold=True, color='ffffff'); shade(cell, colours[ci])
         cellpad(cell, 30, 30, 60, 60)
@@ -844,17 +843,7 @@ def emit(el):
             # chart or table that follows, so it keeps with it — a curriculum-alignment
             # block flows across pages unwrapped, and without this its title stranded at
             # a page bottom (Foothill 094500 evaluation, page 9).
-            import re as _re
-            m = _re.search(r'--a:\s*#([0-9a-fA-F]{6})', el.get('style', '') or '')
-            occ = el.find('span', class_='alg-occ'); soc = el.find('span', class_='alg-soc')
-            p = para(10, 2)
-            if m and occ is not None:
-                # the occupation's accent on its name (the colour the report gives this SOC elsewhere)
-                run(p, occ.get_text(' ', strip=True), size=11, bold=True, color=m.group(1))
-                if soc is not None:
-                    run(p, '  ' + soc.get_text(' ', strip=True), size=9, color=MUT)
-            else:
-                run(p, t, size=11, bold=True, color=DARK)
+            p = para(10, 2); run(p, t, size=11, bold=True, color=DARK)
             p.paragraph_format.keep_with_next = True
         elif 'tnote' in cls:
             p = para(1, 4); run(p, t, size=8.5, color=MUT, italic=True)

@@ -185,7 +185,7 @@ def block_key(colour: str = "#5a6577") -> str:
 
 def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_order: list[str] | None = None,
                      max_chips: int = CHIPS_PER_CELL, show_gaps: bool = False, columns: str = "college",
-                     intro: str = "", accent: str = "") -> str:
+                     intro: str = "") -> str:
     """One occupation: header, then a table — the top-N activities down the side, one
     column per plate in a fixed roster order, that program's evidencing courses stacked as
     chips in the cell. Position carries the column (the strong channel); colour repeats the
@@ -215,13 +215,9 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_
                    for p in plates)
     # No method line per block: how rows are chosen and ordered is said once, in the
     # appendix introduction (report._curriculum_section).
-    # The occupation's accent — the colour the report gives this SOC in Employer Evidence and
-    # the crosswalk — on the block title and the work-activity column head; the college's
-    # colour on the course chips. The table header then reads demand left, supply right.
-    a = f' style="--a:{accent}"' if accent else ""
-    out = [f'<p class="chtitle"{a}><span class="alg-occ">{escape(title)}</span> <span class="alg-soc">SOC {escape(soc)}</span></p>', intro,
+    out = [f'<p class="chtitle">{escape(title)} <span class="alg-soc">SOC {escape(soc)}</span></p>', intro,
            f'<table class="alg-tbl"><colgroup><col class="alg-actcol">{"".join("<col>" for _ in plates)}</colgroup>'
-           f'<thead><tr><th class="alg-acthd"{a}>Work activity</th>{head}</tr></thead><tbody>']
+           f'<thead><tr><th class="alg-acthd">Work activity</th>{head}</tr></thead><tbody>']
     covered = 0
     per_college: dict[str, int] = {}
     uncovered = []
