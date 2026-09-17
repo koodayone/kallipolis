@@ -1267,20 +1267,40 @@ def _wage_outcomes_svg(wages: list, top6: str, living_annual: float | None = Non
         ly = y_of(living_annual)
         p_.append(f'<line x1="{PADL}" y1="{ly:.1f}" x2="{W-PADR}" y2="{ly:.1f}" '
                   f'stroke="{_RULE}" stroke-width="1.6" stroke-dasharray="7 4"/>')
-        # The label goes where the curves are farthest from the rule: at whichever end
-        # (first or last checkpoint) the series clear it by most, above the rule if the
-        # curves there sit below it and beneath otherwise. Respiratory Therapy's curves
-        # cross the rule at the right end, where a fixed label sat on top of them.
-        def clearance(year):
-            pts = [v for _w, vs in series for y, v in vs if y == year]
-            return min((abs(y_of(v) - ly) for v in pts), default=1e9), pts
-        ends = [(xs[0], "start", PADL + 4), (xs[-1], "end", W - PADR - 4)]
-        year, anchor, lx = max(ends, key=lambda e: clearance(e[0])[0])
-        pts = clearance(year)[1]
-        above = not pts or all(y_of(v) > ly for v in pts)      # curves below the rule → label above it
-        lyl = ly - 5 if above else ly + 12
-        p_.append(f'<text x="{lx}" y="{lyl:.1f}" font-size="9.5" font-weight="700" fill="{_RULE}" '
-                  f'text-anchor="{anchor}" stroke="#fff" stroke-width="3" paint-order="stroke">{_esc(living_label)}</text>')
+        # The words go in the legend beneath (nothing there can collide); only the figure
+        # rides the rule, as a short tag, and only where it is clear. Clearance is measured
+        # along the tag's own span against every curve — interpolated, not just at the
+        # checkpoints — because a curve that crosses the rule mid-plot ran under an
+        # end-placed label. No clear spot → no tag; the legend still carries the figure.
+        tag = f"${living_annual:,.0f}"
+        tag_w = 6.2 * len(tag)
+        polys = [[(x_of(y), y_of(v)) for y, v in vals] for _w, vals in series if len(vals) > 1]
+
+        def y_at(poly, x):
+            for (x0, y0), (x1, y1) in zip(poly, poly[1:]):
+                if x0 <= x <= x1 and x1 > x0:
+                    return y0 + (y1 - y0) * (x - x0) / (x1 - x0)
+            return None
+
+        def clearance(x_left, top, bottom):
+            worst = 1e9
+            for poly in polys:
+                for k in range(11):
+                    yv = y_at(poly, x_left + tag_w * k / 10)
+                    if yv is not None:
+                        worst = min(worst, 0.0 if top <= yv <= bottom else min(abs(yv - top), abs(yv - bottom)))
+            return worst
+
+        best = None
+        for x_left, anchor in ((PADL + 4, "start"), (W - PADR - 4 - tag_w, "end")):
+            for baseline in (ly - 5, ly + 12):                     # above the rule, beneath it
+                c = clearance(x_left, baseline - 9, baseline + 2)   # the text's box: ascent above, a little below
+                if best is None or c > best[0]:
+                    best = (c, x_left if anchor == "start" else x_left + tag_w, anchor, baseline)
+        if best and best[0] >= 6:
+            _c, tx, anchor, baseline = best
+            p_.append(f'<text x="{tx:.1f}" y="{baseline:.1f}" font-size="9.5" font-weight="700" fill="{_RULE}" '
+                      f'text-anchor="{anchor}" stroke="#fff" stroke-width="3" paint-order="stroke">{_esc(tag)}</text>')
 
     for si, (w, vals) in enumerate(series):
         col = _WAGE_LINE[si % len(_WAGE_LINE)]
@@ -1314,6 +1334,13 @@ def _wage_outcomes_svg(wages: list, top6: str, living_annual: float | None = Non
                   'stroke-width="2"/>')
         p_.append(f'<text x="{lx+19}" y="{ly}" font-size="9.5" fill="#5a6577">{_esc(lab)}</text>')
         lx += wdt
+    if living_annual and living_label:
+        lab = f"{living_label} \u00b7 ${living_annual:,.0f}"
+        wdt = 30 + 5.6 * len(lab)
+        if lx + wdt > W - PADR:
+            lx, ly = PADL, ly + 13
+        p_.append(f'<line x1="{lx}" y1="{ly-3}" x2="{lx+14}" y2="{ly-3}" stroke="{_RULE}" stroke-width="1.6" stroke-dasharray="4 3"/>')
+        p_.append(f'<text x="{lx+19}" y="{ly}" font-size="9.5" fill="#5a6577">{_esc(lab)}</text>')
     p_.append('</svg>')
     return f'<div class="wgchart">{"".join(p_)}</div>'
 
@@ -1749,7 +1776,7 @@ def _wage_section(lens: LensModel, spec: ReportSpec, living: LivingWage | None =
     """
     rows = lens.wages.get(spec.program_top) or []
     annual = living.headline_annual if living is not None else None
-    label = f"Living wage, 1 adult, {living.county} \u00b7 ${annual:,.0f}" if living is not None else ""
+    label = f"Living wage, 1 adult, {living.county}" if living is not None else ""
     chart = _wage_outcomes_svg(rows, spec.program_top, annual, label)
     if not chart:
         return ""

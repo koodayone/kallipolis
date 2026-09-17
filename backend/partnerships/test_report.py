@@ -8,7 +8,7 @@ Coverage:
   - the demand table adds median hourly (annual over 2,080) and a signed distance from the living wage for a single college, keeps the salary column otherwise, and shows dashes for a missing wage
   - the living wage is the college's own county; districts, consortia and an unmapped college get none
   - the demand caption names the basis, county and source only when a living wage is shown
-  - the wage chart's living-wage rule sits inside a grown axis and its label goes to the end where the curves clear it, above or below as space allows
+  - the wage chart's living-wage rule sits inside a grown axis; its words and figure sit in the legend, and a short figure tag rides the rule only where the curves clear it
   - the wage section states what the dashed line is only when a living wage is drawn
   - the awards chart's openings label names the region
   - Sources merges the O*NET summaries into the Curriculum Alignment group when the grid is dropped, numbers outline lines after the links, and links the MIT county page only with a living wage
@@ -63,29 +63,30 @@ def test_demand_caption_names_basis_county_and_source_only_with_a_living_wage():
     assert "MIT" not in _demand_provenance(_lens())
 
 
-def _svg_label(svg, label):
-    m = re.search(r'<text x="([\d.]+)" y="([\d.]+)"[^>]*text-anchor="(start|end)"[^>]*>' + re.escape(label) + "</text>", svg)
-    assert m, svg[-600:]
-    return float(m.group(1)), float(m.group(2)), m.group(3)
+def _tag(svg, tag="$79,040"):
+    m = re.search(r'<text x="([\d.]+)" y="([\d.]+)"[^>]*text-anchor="(start|end)"[^>]*>' + re.escape(tag) + "</text>", svg)
+    return (float(m.group(1)), float(m.group(2)), m.group(3)) if m else None
 
 
 def _rule_y(svg):
     return float(re.search(r'<line x1="\d+" y1="([\d.]+)"[^>]*stroke-dasharray="7 4"', svg).group(1))
 
 
-def test_wage_rule_label_sits_where_the_curves_clear_it():
+def test_wage_rule_tag_sits_only_where_the_curves_clear_it():
     lw = 38.0 * 2080
     rising = [LensWage("Degree", 30000, 60000, 90000, 100, "2015-16 to 2019-20")]
     svg = _wage_outcomes_svg(rising, "121000", lw, "LW")
-    x, y, anchor = _svg_label(svg, "LW")
+    x, y, anchor = _tag(svg)
     assert anchor == "start" and y < _rule_y(svg)                    # curves start far below the rule → left, above
+    assert "LW \u00b7 $79,040" in svg and 'stroke-dasharray="4 3"' in svg   # the words and the figure in the legend
     falling = [LensWage("Degree", 90000, 60000, 30000, 100, "w")]
-    x, y, anchor = _svg_label(_wage_outcomes_svg(falling, "121000", lw, "LW"), "LW")
-    assert anchor == "end"                                             # the right end has the room
+    assert _tag(_wage_outcomes_svg(falling, "121000", lw, "LW"))[2] == "end"
     high = [LensWage("Degree", 100000, 120000, 140000, 100, "w")]
     svg = _wage_outcomes_svg(high, "121000", lw, "LW")
-    x, y, anchor = _svg_label(svg, "LW")
-    assert y > _rule_y(svg)                                            # curves above the rule → label beneath it
+    assert _tag(svg)[1] > _rule_y(svg)                                # curves above the rule → tag beneath it
+    flat = [LensWage("Degree", 79040, 79040, 79040, 100, "w"), LensWage("Certificate", 76000, 82000, 76000, 50, "w")]
+    svg = _wage_outcomes_svg(flat, "121000", lw, "LW")
+    assert _tag(svg) is None and "LW \u00b7 $79,040" in svg          # no clear spot: no tag on the rule, legend still says it
     low = [LensWage("Degree", 20000, 25000, 30000, 100, "w")]
     svg = _wage_outcomes_svg(low, "121000", lw, "LW")
     assert "$100,000" in svg and _rule_y(svg) > 18                     # the axis grows to hold the rule inside the plot
