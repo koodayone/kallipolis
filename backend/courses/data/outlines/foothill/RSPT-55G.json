@@ -1,0 +1,39 @@
+{
+ "college": "Foothill College",
+ "system": "courseleaf",
+ "code": "RSPT 55G",
+ "title": "Mediated Studies In Respiratory Therapy Vii",
+ "description": "Last in the series of seven courses paralleling content taught in the Respiratory Therapy Program. Designed to develop and reinforce concepts taught in the concurrent lecture and laboratory sessions of the program, with a focus on advanced PFT and basic spirometry. Students will also take practice exams of the national entry-level and registry examinations. Media materials, simulations, and videos will provide alternative learning resources to accommodate diverse learning styles. Intended for students in the Respiratory Therapy Program; enrollment is limited to students accepted in the program.",
+ "outcomes": [
+  "Identifies respiratory problems based on information provided and chooses correct tests and procedures in the clinical simulations.",
+  "Interprets data correctly and chooses correct treatments in the computer modules."
+ ],
+ "objectives": [
+  "Describe and demonstrate advanced pulmonary function testing (PFT).",
+  "Describe and demonstrate basic spirometry for inpatients and outpatients.",
+  "Complete the TMC multiple-choice examination and achieve high and low cut scores.",
+  "Complete the NBRC practice exams and achieve at least a 75% score.",
+  "Perform the self-evaluation clinical simulations and achieve a passing score."
+ ],
+ "content": [
+  "The course content contains modules where students will be evaluated on information gathering and decision-making. Representative comprehensive mock exams will enable the students to identify areas of deficiency. Students will complete a self-evaluation of areas where they need to focus on based on exam results.",
+  "Advanced PFT computer module",
+  "Basic spirometry computer module",
+  "TMC Therapist multiple-choice examination for high and low cut scores",
+  "NBRC practice exams",
+  "Self-evaluation clinical simulation exam"
+ ],
+ "lab": [
+  "Advanced PFT computer module",
+  "Basic spirometry computer module",
+  "TMC Therapist multiple-choice examination for high and low cut scores",
+  "NBRC practice exams",
+  "Self-evaluation clinical simulation exam"
+ ],
+ "assignments": [],
+ "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-55G/",
+ "effective": "Summer 2025",
+ "approved": "",
+ "retrieved": "2026-09-17",
+ "notes": ""
+}

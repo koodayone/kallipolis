@@ -1,0 +1,1648 @@
+{
+ "program": "foothill-environmental-horticulture-and-design",
+ "generated": "2026-09-17",
+ "onet_vintage": "O*NET 31.0 database (August 2026), U.S. Department of Labor",
+ "plates": [
+  {
+   "college": "Foothill College",
+   "member_id": "foothill",
+   "certificate": "Certificate of Achievement, Environmental Horticulture and Design",
+   "kind": "credit",
+   "top6": "010900",
+   "top_name": "Horticulture",
+   "paired_soc": "37-3012",
+   "occupation": "Pesticide Handlers, Sprayers, and Applicators, Vegetation",
+   "crosswalk_socs": [],
+   "pairing_basis": "",
+   "courses": [
+    {
+     "code": "HORT 10",
+     "title": "Environmental Horticulture & The Urban Landscape",
+     "units": 3,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-10/",
+     "system": "courseleaf",
+     "effective": "Summer 2023",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "HORT 15",
+     "title": "Orientation To Environmental Horticulture",
+     "units": 4,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-15/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "HORT 21",
+     "title": "Plant Materials I",
+     "units": 3,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-21/",
+     "system": "courseleaf",
+     "effective": "Summer 2023",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "HORT 22",
+     "title": "Plant Materials Ii",
+     "units": 3,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-22/",
+     "system": "courseleaf",
+     "effective": "Summer 2023",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "HORT 30",
+     "title": "Horticultural Practices: Soils",
+     "units": 3,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-30/",
+     "system": "courseleaf",
+     "effective": "Summer 2023",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "HORT 40",
+     "title": "Landscape Design: Graphic Communication",
+     "units": 4,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-40/",
+     "system": "courseleaf",
+     "effective": "Summer 2022",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "HORT 52C",
+     "title": "Horticulture Practices: Plant Installation & Maintenance",
+     "units": 4,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-52C/",
+     "system": "courseleaf",
+     "effective": "Summer 2023",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "HORT 54A",
+     "title": "Landscape Construction: General Practices",
+     "units": 4,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-54A/",
+     "system": "courseleaf",
+     "effective": "Fall 2026",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "HORT 54B",
+     "title": "Landscape Construction: Technical Practices",
+     "units": 3,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-54B/",
+     "system": "courseleaf",
+     "effective": "Fall 2026",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "HORT 54C",
+     "title": "Landscape Construction: Irrigation Practices",
+     "units": 3,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-54C/",
+     "system": "courseleaf",
+     "effective": "Fall 2026",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "HORT 60B",
+     "title": "Landscape Design: Theory",
+     "units": null,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-60B/",
+     "system": "courseleaf",
+     "effective": "Summer 2022",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    }
+   ],
+   "program_outcomes": [
+    "Students will be able to demonstrate skills necessary to design residential landscapes.",
+    "Students will be able to identify plant material."
+   ],
+   "rows": [
+    {
+     "dwa_id": "4.A.3.a.1.a.5",
+     "dwa": "Prepare chemicals for work application.",
+     "task": "Fill sprayer tanks with water and chemicals, according to formulas. · Mix pesticides, herbicides, or fungicides for application to trees, shrubs, lawns, or botanical crops.",
+     "cells": {
+      "HORT 52C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HORT 52C",
+         "section": "content",
+         "level": 1,
+         "quote": "Safe pesticide use",
+         "basis": "engaging in safe pesticide use in landscape settings involves mixing/handling chemicals for application, matching preparing chemicals for application"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "content",
+      "quote": "Safe pesticide use",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.6.h.2",
+     "dwa": "Document operational procedures.",
+     "task": "Record information about pesticide applications, such as the type used and amount applied.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.3.b.6.h.5",
+     "dwa": "Maintain operational records.",
+     "task": "Record information about pesticide applications, such as the type used and amount applied.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.3.a.3.k.3",
+     "dwa": "Operate grounds maintenance equipment.",
+     "task": "Start motors and engage machinery, such as sprayer agitators or pumps or portable spray equipment. · Connect hoses and nozzles selected according to terrain, distribution pattern requirements, types of infestations, and velocities. · Plant grass with seed spreaders, and operate straw blowers to cover seeded areas with mixtures of asphalt and straw.",
+     "cells": {
+      "HORT 52C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HORT 52C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Practice and achieve proficiency in the safe handling of various landscape maintenance equipment, including hand tools and power equipment",
+         "basis": "hands-on operation of landscape power equipment directly matches operating grounds maintenance equipment"
+        },
+        {
+         "course": "HORT 52C",
+         "section": "lab",
+         "level": 1,
+         "quote": "Demonstrate and practice proper use and maintenance of landscape tools, including: Hand equipment Power equipment",
+         "basis": "lab practice operating power equipment used in grounds maintenance"
+        }
+       ]
+      },
+      "HORT 54C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HORT 54C",
+         "section": "lab",
+         "level": 1,
+         "quote": "Spray head and rotor lab: Field installation and adjustment of a variety of sprinkler products.",
+         "basis": "installing and adjusting spray nozzles/heads on grounds equipment matches operating and connecting spray equipment components"
+        },
+        {
+         "course": "HORT 54C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Select the correct irrigation equipment for spray and drip irrigation systems.",
+         "basis": "selecting hoses/nozzles/equipment by terrain and system requirements evidences operating grounds spray equipment selection"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "lab",
+      "quote": "Demonstrate and practice proper use and maintenance of landscape tools, including: Hand equipment Power equipment",
+      "reason": "explicitly names both hand and power equipment use/maintenance in a landscape (grounds) maintenance context, most directly matching 'operate grounds maintenance equipment'"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.ag.7",
+     "dwa": "Treat greenery or surfaces with protective substances.",
+     "task": "Lift, push, and swing nozzles, hoses, and tubes to direct spray over designated areas. · Cover areas to specified depths with pesticides, applying knowledge of weather conditions, droplet sizes, elevation-to-distance ratios, and obstructions.",
+     "cells": {
+      "HORT 52C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HORT 52C",
+         "section": "content",
+         "level": 1,
+         "quote": "Spraying",
+         "basis": "listed as a post-planting care technique, evidencing application of a substance (e.g., pesticide/treatment spray) to landscape plants"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "content",
+      "quote": "Spraying",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.1.d.12",
+     "dwa": "Choose optimal transportation routes or speeds.",
+     "task": "Establish driving routes for pesticide applications.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.2.b.2.l.5",
+     "dwa": "Establish operational policies.",
+     "task": "Establish driving routes for pesticide applications.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.3.a.1.c.4",
+     "dwa": "Clean equipment or supplies.",
+     "task": "Clean or service machinery to ensure operating efficiency, using water, gasoline, lubricants, or hand tools.",
+     "cells": {
+      "HORT 54C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HORT 54C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate maintenance skills for an irrigation system.",
+         "basis": "maintaining irrigation equipment directly evidences cleaning/servicing machinery to ensure operating efficiency"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HORT 54C",
+      "section": "objectives",
+      "quote": "Demonstrate maintenance skills for an irrigation system.",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.5.a.3",
+     "dwa": "Maintain equipment or systems to ensure proper functioning.",
+     "task": "Clean or service machinery to ensure operating efficiency, using water, gasoline, lubricants, or hand tools.",
+     "cells": {
+      "HORT 54C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HORT 54C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate maintenance skills for an irrigation system.",
+         "basis": "irrigation system maintenance is grounds equipment maintenance analogous to sprayer/pump equipment upkeep"
+        },
+        {
+         "course": "HORT 54C",
+         "section": "lab",
+         "level": 1,
+         "quote": "Valve troubleshooting lab: Modular lab covers all the common problems that irrigation professionals may encounter when valves malfunction in the landscape.",
+         "basis": "troubleshooting and repairing valves is direct equipment maintenance to ensure proper functioning"
+        },
+        {
+         "course": "HORT 54C",
+         "section": "content",
+         "level": 1,
+         "quote": "Repairs and replacement parts",
+         "basis": "repairing irrigation system components evidences maintaining equipment to ensure proper functioning"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HORT 54C",
+      "section": "objectives",
+      "quote": "Demonstrate maintenance skills for an irrigation system.",
+      "reason": "SLO-level objective directly committing to maintenance skills for equipment/systems, outranking the lower-tier lab and content lines"
+     }
+    }
+   ],
+   "dropped": [
+    {
+     "activity": 5,
+     "course": "HORT 52C",
+     "section": "content",
+     "quote": "Post-planting care techniques",
+     "basis": "not a direct quote; see corrected match below",
+     "why": "quote not verbatim in that course"
+    },
+    {
+     "activity": 1,
+     "course": "HORT 15",
+     "section": "content",
+     "quote": "Use of pesticides",
+     "basis": "pest management content covering use of pesticides implies preparation/mixing as part of pest control methods studied",
+     "why": "adjudicated: a topic-only: 'Use of pesticides' as a content heading does not itself state chemical preparation/mixing as performable content"
+    },
+    {
+     "activity": 8,
+     "course": "HORT 52C",
+     "section": "objectives",
+     "quote": "Practice and achieve proficiency in the safe handling of various landscape maintenance equipment, including hand tools and power equipment",
+     "basis": "safe handling and use of maintenance equipment constitutes cleaning/servicing to ensure operating efficiency",
+     "why": "adjudicated: d different activity: safe handling proficiency evidences operating equipment, not cleaning it"
+    },
+    {
+     "activity": 9,
+     "course": "HORT 52C",
+     "section": "objectives",
+     "quote": "Practice and achieve proficiency in the safe handling of various landscape maintenance equipment, including hand tools and power equipment",
+     "basis": "handling and using equipment properly directly supports maintaining equipment to ensure proper functioning",
+     "why": "adjudicated: d different activity: safe handling/use of equipment evidences operating it, not maintaining/servicing it"
+    },
+    {
+     "activity": 1,
+     "course": "HORT 15",
+     "section": "content",
+     "quote": "Use of pesticides",
+     "basis": "course content covers pesticide use within pest management as part of horticultural production practices",
+     "why": "adjudicated: a topic-only: 'Use of pesticides' names a subject heading without stating mixing/filling as performable content"
+    },
+    {
+     "activity": 4,
+     "course": "HORT 54A",
+     "section": "content",
+     "quote": "Power wheelbarrow",
+     "basis": "operating powered landscape equipment parallels operating grounds maintenance equipment",
+     "why": "adjudicated: d different activity: power wheelbarrow is materials-handling equipment, not sprayer/spreader/straw-blower grounds maintenance equipment named in this task"
+    },
+    {
+     "activity": 8,
+     "course": "HORT 54A",
+     "section": "content",
+     "quote": "Project finish and cleanup",
+     "basis": "cleanup of tools/site after construction evidences cleaning equipment or supplies",
+     "why": "adjudicated: c generic: general project cleanup is not equipment-specific cleaning/servicing"
+    },
+    {
+     "activity": 8,
+     "course": "HORT 54A",
+     "section": "lab",
+     "quote": "students review the individual tools and their safe handling and operation",
+     "basis": "safe handling instruction for tools involves proper cleaning and servicing practice",
+     "why": "adjudicated: d different activity: safe handling and operation review evidences equipment operation, not cleaning"
+    },
+    {
+     "activity": 1,
+     "course": "HORT 54C",
+     "section": "content",
+     "quote": "Gallons per minute (GPM) and pounds per square inch (PSI)",
+     "basis": "computing chemical/water mix ratios by flow and pressure is a directly constitutive component of preparing tank chemical formulas, though this is irrigation water not pesticide chemical",
+     "why": "adjudicated: d different activity: GPM/PSI calculations pertain to irrigation water delivery, not pesticide/herbicide chemical mixing"
+    },
+    {
+     "activity": 5,
+     "course": "HORT 54C",
+     "section": "lab",
+     "quote": "Drip irrigation lab: Installation of drip systems including standard PE flexible lines, drip heads, and in-line drip emitter systems.",
+     "basis": "directing water/spray delivery over designated landscape areas via installed tubing and heads parallels lifting and directing hoses/nozzles to cover areas",
+     "why": "adjudicated: d different activity: installing drip irrigation lines evidences operating/installing grounds equipment, not treating surfaces with protective substances"
+    },
+    {
+     "activity": 5,
+     "course": "HORT 54C",
+     "section": "content",
+     "quote": "Site terrain",
+     "basis": "accounting for terrain in covering landscape areas with irrigation matches applying knowledge of terrain/elevation to cover designated areas to specified depths",
+     "why": "adjudicated: d different activity: site terrain content pertains to irrigation system design/operation, not pesticide/protective-substance application"
+    }
+   ],
+   "source_note": "Read from Foothill College's course outlines of record (courseleaf); sections present: slo, objective, description, content outline, lab content.",
+   "role": "",
+   "short_title": "Environmental Horticulture and Design"
+  },
+  {
+   "college": "Foothill College",
+   "member_id": "foothill",
+   "certificate": "Certificate of Achievement, Environmental Horticulture and Design",
+   "kind": "credit",
+   "top6": "010900",
+   "top_name": "Horticulture",
+   "paired_soc": "37-1012",
+   "occupation": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers",
+   "crosswalk_socs": [],
+   "pairing_basis": "",
+   "courses": [
+    {
+     "code": "HORT 10",
+     "title": "Environmental Horticulture & The Urban Landscape",
+     "units": 3,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-10/",
+     "system": "courseleaf",
+     "effective": "Summer 2023",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "HORT 15",
+     "title": "Orientation To Environmental Horticulture",
+     "units": 4,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-15/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "HORT 21",
+     "title": "Plant Materials I",
+     "units": 3,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-21/",
+     "system": "courseleaf",
+     "effective": "Summer 2023",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "HORT 22",
+     "title": "Plant Materials Ii",
+     "units": 3,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-22/",
+     "system": "courseleaf",
+     "effective": "Summer 2023",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "HORT 30",
+     "title": "Horticultural Practices: Soils",
+     "units": 3,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-30/",
+     "system": "courseleaf",
+     "effective": "Summer 2023",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "HORT 40",
+     "title": "Landscape Design: Graphic Communication",
+     "units": 4,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-40/",
+     "system": "courseleaf",
+     "effective": "Summer 2022",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "HORT 52C",
+     "title": "Horticulture Practices: Plant Installation & Maintenance",
+     "units": 4,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-52C/",
+     "system": "courseleaf",
+     "effective": "Summer 2023",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "HORT 54A",
+     "title": "Landscape Construction: General Practices",
+     "units": 4,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-54A/",
+     "system": "courseleaf",
+     "effective": "Fall 2026",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "HORT 54B",
+     "title": "Landscape Construction: Technical Practices",
+     "units": 3,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-54B/",
+     "system": "courseleaf",
+     "effective": "Fall 2026",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "HORT 54C",
+     "title": "Landscape Construction: Irrigation Practices",
+     "units": 3,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-54C/",
+     "system": "courseleaf",
+     "effective": "Fall 2026",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "HORT 60B",
+     "title": "Landscape Design: Theory",
+     "units": null,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HORT-60B/",
+     "system": "courseleaf",
+     "effective": "Summer 2022",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    }
+   ],
+   "program_outcomes": [
+    "Students will be able to demonstrate skills necessary to design residential landscapes.",
+    "Students will be able to identify plant material."
+   ],
+   "rows": [
+    {
+     "dwa_id": "4.A.2.b.2.l.1",
+     "dwa": "Establish work standards.",
+     "task": "Establish and enforce operating procedures and work standards that will ensure adequate performance and personnel safety. · Order the performance of corrective work when problems occur and recommend procedural changes to avoid such problems.",
+     "cells": {
+      "HORT 52C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HORT 52C",
+         "section": "content",
+         "level": 1,
+         "quote": "Prepare a landscape maintenance schedule",
+         "basis": "establishing standards/procedures for maintenance operations"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "content",
+      "quote": "Prepare a landscape maintenance schedule",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.b.1.f.1",
+     "dwa": "Plan employee work schedules.",
+     "task": "Schedule work for crews, depending on work priorities, crew or equipment availability, or weather conditions.",
+     "cells": {
+      "HORT 52C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HORT 52C",
+         "section": "lab",
+         "level": 1,
+         "quote": "Development of a maintenance schedule for site management",
+         "basis": "scheduling of maintenance work directly analogous to crew work scheduling"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "lab",
+      "quote": "Development of a maintenance schedule for site management",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.2.e.16",
+     "dwa": "Inspect buildings or grounds to determine condition.",
+     "task": "Tour grounds, such as parks, botanical gardens, cemeteries, or golf courses, to inspect conditions of plants and soil.",
+     "cells": {
+      "HORT 21": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HORT 21",
+         "section": "content",
+         "level": 1,
+         "quote": "Describe soil and ecological conditions for plants",
+         "basis": "assessing plant/soil condition on grounds, consistent with touring to inspect plant and soil condition"
+        },
+        {
+         "course": "HORT 21",
+         "section": "description",
+         "level": 1,
+         "quote": "Plants are observed on campus and at off-site locations.",
+         "basis": "touring locations to inspect plant condition directly parallels touring grounds to inspect plant condition"
+        }
+       ]
+      },
+      "HORT 52C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HORT 52C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify routine maintenance requirements and special problems in several different landscape settings",
+         "basis": "inspecting grounds/settings to determine maintenance condition and needs"
+        }
+       ]
+      },
+      "HORT 30": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HORT 30",
+         "section": "description",
+         "level": 1,
+         "quote": "Examination of soil samples and interpretation of soil reports and surveys",
+         "basis": "inspecting soil condition is a directly constitutive component of touring grounds to inspect plant and soil condition"
+        },
+        {
+         "course": "HORT 30",
+         "section": "lab",
+         "level": 1,
+         "quote": "Collection of soil samples",
+         "basis": "hands-on soil inspection in the field matches inspecting grounds/soil condition"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "objectives",
+      "quote": "Identify routine maintenance requirements and special problems in several different landscape settings",
+      "reason": "SLO-level objective names touring/inspecting maintenance conditions across multiple landscape settings, matching the task's grounds-touring language most specifically"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.2.f.6",
+     "dwa": "Inspect work to ensure standards are met.",
+     "task": "Monitor project activities to ensure that instructions are followed, deadlines are met, and schedules are maintained. · Inspect completed work to ensure conformance to specifications, standards, and contract requirements.",
+     "cells": {
+      "HORT 30": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HORT 30",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Evaluate a soil by chemical and physical means.",
+         "basis": "inspection/testing to confirm conditions meet standards"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HORT 30",
+      "section": "outcomes",
+      "quote": "Evaluate a soil by chemical and physical means.",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.b.4.a.1",
+     "dwa": "Supervise maintenance workers.",
+     "task": "Direct activities of workers who perform duties, such as landscaping, cultivating lawns, or pruning trees and shrubs. · Direct or assist workers engaged in the maintenance or repair of equipment, such as power tools or motorized equipment. · Design or supervise the installation of sprinkler systems, calculating water pressure, or valve and pipe coverage needs.",
+     "cells": {
+      "HORT 52C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HORT 52C",
+         "section": "content",
+         "level": 1,
+         "quote": "Practice and achieve proficiency in the safe handling of various landscape maintenance equipment, including hand tools and power equipment",
+         "basis": "directing/assisting workers in equipment use and maintenance is directly practiced here"
+        }
+       ]
+      },
+      "HORT 54C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HORT 54C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Design water conserving irrigation systems",
+         "basis": "designing irrigation systems is the constitutive component of supervising sprinkler system installation named in the task"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HORT 54C",
+      "section": "objectives",
+      "quote": "Design water conserving irrigation systems",
+      "reason": "objective-tier commitment to designing water-conserving irrigation systems directly matches the supervisory task of designing/supervising sprinkler system installation"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.1.q.8",
+     "dwa": "Irrigate lawns, trees, or plants.",
+     "task": "Plant or maintain vegetation through activities such as mulching, fertilizing, watering, mowing, or pruning.",
+     "cells": {
+      "HORT 54C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HORT 54C",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Program an irrigation time clock (controller) correctly.",
+         "basis": "operating irrigation controller to water landscape plants"
+        },
+        {
+         "course": "HORT 54C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Construct an irrigation system",
+         "basis": "constructing an irrigation system is a direct means of irrigating lawns, trees, or plants"
+        },
+        {
+         "course": "HORT 54C",
+         "section": "lab",
+         "level": 1,
+         "quote": "Installation of drip systems including standard PE flexible lines, drip heads, and in-line drip emitter systems",
+         "basis": "hands-on installation of irrigation delivering water to plants evidences irrigating lawns/plants"
+        }
+       ]
+      },
+      "HORT 52C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HORT 52C",
+         "section": "lab",
+         "level": 1,
+         "quote": "Deep watering",
+         "basis": "watering of landscape plants as post-planting maintenance"
+        },
+        {
+         "course": "HORT 52C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Recognize and evaluate various post-planting techniques in order to select the most appropriate method for care of a given plant species",
+         "basis": "post-planting care includes watering/deep watering of landscape plants"
+        }
+       ]
+      },
+      "HORT 15": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HORT 15",
+         "section": "content",
+         "level": 1,
+         "quote": "Watering",
+         "basis": "irrigating lawns/plants directly matches watering as turf cultural practice"
+        },
+        {
+         "course": "HORT 15",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify common turfgrass species and turfgrass cultural practices",
+         "basis": "turfgrass cultural practices include watering/irrigation of lawns"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HORT 54C",
+      "section": "outcomes",
+      "quote": "Program an irrigation time clock (controller) correctly.",
+      "reason": "SLO commits to correctly programming an irrigation controller, the most specific and highest-tier statement of irrigating"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.1.q.5",
+     "dwa": "Plant greenery to improve landscape appearance.",
+     "task": "Plant or maintain vegetation through activities such as mulching, fertilizing, watering, mowing, or pruning.",
+     "cells": {
+      "HORT 52C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HORT 52C",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Plant trees and shrubs.",
+         "basis": "literal planting of vegetation for landscape"
+        },
+        {
+         "course": "HORT 52C",
+         "section": "lab",
+         "level": 1,
+         "quote": "Planting containerized stock",
+         "basis": "hands-on planting of landscape greenery"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "outcomes",
+      "quote": "Plant trees and shrubs.",
+      "reason": "SLO explicitly commits to planting trees and shrubs, matching the activity verbatim over the lab content line"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.n.2",
+     "dwa": "Trim trees or other vegetation.",
+     "task": "Plant or maintain vegetation through activities such as mulching, fertilizing, watering, mowing, or pruning.",
+     "cells": {
+      "HORT 52C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HORT 52C",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate skills required for proper pruning of various species of trees and shrubs.",
+         "basis": "literal pruning/trimming of trees and vegetation"
+        },
+        {
+         "course": "HORT 52C",
+         "section": "lab",
+         "level": 1,
+         "quote": "Practice pruning techniques on plants",
+         "basis": "hands-on trimming of vegetation"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "outcomes",
+      "quote": "Demonstrate skills required for proper pruning of various species of trees and shrubs.",
+      "reason": "SLO explicitly commits to demonstrating proper pruning skills, outranking the lab content line on tier"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.1.a.6",
+     "dwa": "Provide information about landscaping services or costs.",
+     "task": "Negotiate with customers regarding fees for landscaping, lawn service, or groundskeeping work. · Answer inquiries from current or prospective customers regarding methods, materials, or price ranges.",
+     "cells": {
+      "HORT 52C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HORT 52C",
+         "section": "content",
+         "level": 1,
+         "quote": "Prepare a proposal for landscape maintenance services",
+         "basis": "providing information on services offered, akin to quoting maintenance work to customers"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "content",
+      "quote": "Prepare a proposal for landscape maintenance services",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.1.a.5",
+     "dwa": "Prepare chemicals for work application.",
+     "task": "Direct or perform mixing or application of fertilizers, insecticides, herbicides, or fungicides.",
+     "cells": {
+      "HORT 52C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HORT 52C",
+         "section": "content",
+         "level": 1,
+         "quote": "Safe pesticide use",
+         "basis": "preparing/applying pesticide chemicals for landscape treatment"
+        },
+        {
+         "course": "HORT 52C",
+         "section": "lab",
+         "level": 1,
+         "quote": "Establishment of pest controls",
+         "basis": "hands-on preparation and application of pest control chemicals"
+        }
+       ]
+      },
+      "HORT 15": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HORT 15",
+         "section": "content",
+         "level": 1,
+         "quote": "Use of pesticides",
+         "basis": "preparing chemicals for application matches use of pesticides in pest management"
+        },
+        {
+         "course": "HORT 15",
+         "section": "content",
+         "level": 1,
+         "quote": "Plant fertilization needs and fertilization techniques",
+         "basis": "preparing fertilizer chemicals for application maps to fertilization techniques"
+        }
+       ]
+      },
+      "HORT 30": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HORT 30",
+         "section": "lab",
+         "level": 1,
+         "quote": "Soil fertilization application",
+         "basis": "applying fertilizer to soil matches directing or performing mixing or application of fertilizers"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "content",
+      "quote": "Safe pesticide use",
+      "reason": "content outline line names safe pesticide use directly, the closest match to chemical application preparation"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.b.3.d.6",
+     "dwa": "Instruct staff in work policies or procedures.",
+     "task": "Train workers in tasks such as transplanting or pruning trees or shrubs, finishing cement, using equipment, or caring for turf.",
+     "cells": {
+      "HORT 54A": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HORT 54A",
+         "section": "lab",
+         "level": 1,
+         "quote": "Safety practices lab: With the instructor, students review the individual tools and their safe handling and operation.",
+         "basis": "instructing in safe tool use/work procedures, mirrors training workers on equipment use"
+        }
+       ]
+      },
+      "HORT 52C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HORT 52C",
+         "section": "content",
+         "level": 1,
+         "quote": "Practice and achieve proficiency in the safe handling of various landscape maintenance equipment, including hand tools and power equipment",
+         "basis": "training-oriented content on procedures for equipment use"
+        },
+        {
+         "course": "HORT 52C",
+         "section": "lab",
+         "level": 1,
+         "quote": "Demonstrate and practice proper use and maintenance of landscape tools, including:",
+         "basis": "training in use of equipment and maintenance tasks mirrors instructing staff in these procedures"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HORT 54A",
+      "section": "lab",
+      "quote": "Safety practices lab: With the instructor, students review the individual tools and their safe handling and operation.",
+      "reason": "lab content describes instructor directly training students on safe tool handling and operation, matching staff instruction on procedures most specifically"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.3.b.3",
+     "dwa": "Estimate maintenance service requirements or costs.",
+     "task": "Prepare service estimates based on labor, material, and machine costs and maintain budgets for individual projects. · Design or supervise the installation of sprinkler systems, calculating water pressure, or valve and pipe coverage needs.",
+     "cells": {
+      "HORT 54B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HORT 54B",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate, on written examinations, knowledge of estimating techniques used in landscape construction.",
+         "basis": "literal cost estimating for landscape service/construction requirements"
+        },
+        {
+         "course": "HORT 54B",
+         "section": "lab",
+         "level": 1,
+         "quote": "Students use a variety of estimating equipment to develop cost estimates for a typical residential landscape",
+         "basis": "hands-on estimating of landscape project costs"
+        },
+        {
+         "course": "HORT 54B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Estimate and bid landscape projects.",
+         "basis": "directly evidences preparing service/cost estimates for projects"
+        }
+       ]
+      },
+      "HORT 52C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HORT 52C",
+         "section": "content",
+         "level": 1,
+         "quote": "Prepare a proposal for landscape maintenance services",
+         "basis": "estimating maintenance service costs directly matches preparing a service proposal"
+        }
+       ]
+      },
+      "HORT 54C": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HORT 54C",
+         "section": "content",
+         "level": 1,
+         "quote": "Gallons per minute (GPM) and pounds per square inch (PSI)",
+         "basis": "calculating water pressure/flow for irrigation design matches the sprinkler system calculation component of estimating service requirements"
+        },
+        {
+         "course": "HORT 54C",
+         "section": "content",
+         "level": 1,
+         "quote": "Site analysis techniques",
+         "basis": "site data collection to determine equipment/material needs supports estimating maintenance service requirements"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HORT 54B",
+      "section": "objectives",
+      "quote": "Estimate and bid landscape projects.",
+      "reason": "objective-tier commitment to estimate and bid landscape projects most specifically matches preparing service estimates"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.2.i.1",
+     "dwa": "Inspect landscaping to determine treatment needs.",
+     "task": "Identify diseases or pests affecting landscaping and order appropriate treatments.",
+     "cells": {
+      "HORT 52C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HORT 52C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify common pest problems and solutions in the landscape",
+         "basis": "inspecting landscape to determine pest/disease treatment needs"
+        }
+       ]
+      },
+      "HORT 15": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HORT 15",
+         "section": "content",
+         "level": 1,
+         "quote": "Pest damage recognition",
+         "basis": "identifying disease/pest damage requiring treatment"
+        },
+        {
+         "course": "HORT 15",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify common horticultural and interior plant pests and pest damage",
+         "basis": "inspecting landscaping for treatment needs matches identifying pest damage"
+        },
+        {
+         "course": "HORT 15",
+         "section": "content",
+         "level": 1,
+         "quote": "Pest identification",
+         "basis": "identifying pests is direct component of inspecting landscaping for treatment needs"
+        }
+       ]
+      },
+      "HORT 21": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HORT 21",
+         "section": "content",
+         "level": 1,
+         "quote": "Pest issues",
+         "basis": "covering pest issues for each plant evidences inspecting plants to determine pest/disease treatment needs"
+        }
+       ]
+      },
+      "HORT 22": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HORT 22",
+         "section": "content",
+         "level": 1,
+         "quote": "Pest issues",
+         "basis": "identifying pest issues affecting plants evidences inspecting landscaping to determine treatment needs"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "objectives",
+      "quote": "Identify common pest problems and solutions in the landscape",
+      "reason": "objective-tier commitment to identify pest problems and solutions in the landscape most specifically matches inspecting for treatment needs"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.c.3.g.2",
+     "dwa": "Inventory materials or equipment.",
+     "task": "Inventory supplies of tools, equipment, or materials to ensure that sufficient supplies are available and items are in usable condition.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.3.b.6.h.17",
+     "dwa": "Document work hours or activities.",
+     "task": "Maintain required records, such as personnel information or project records. · Prepare or maintain required records, such as work activity or personnel reports. · Perform administrative duties, such as authorizing leaves or processing time sheets.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.2.a.1.d.2",
+     "dwa": "Evaluate current or prospective maintenance employees.",
+     "task": "Perform personnel-related activities, such as hiring workers, evaluating staff performance, or taking disciplinary actions when performance problems occur.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.3.a.1.g.7",
+     "dwa": "Assist skilled construction or extraction personnel.",
+     "task": "Provide workers with assistance in performing duties as necessary to meet deadlines.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.1.a.1.v.2",
+     "dwa": "Investigate work related complaints to determine corrective actions.",
+     "task": "Investigate work-related complaints to verify problems and to determine responses. · Order the performance of corrective work when problems occur and recommend procedural changes to avoid such problems.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.4.a.2.c.3",
+     "dwa": "Confer with coworkers to coordinate maintenance or cleaning activities.",
+     "task": "Confer with other supervisors to coordinate work activities with those of other departments or units. · Confer with managers or landscape architects to develop plans or schedules for landscaping maintenance or improvement.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.2.b.1.h.5",
+     "dwa": "Determine resource needs.",
+     "task": "Review contracts or work assignments to determine service, machine, or workforce requirements for jobs.",
+     "cells": {
+      "HORT 54B": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HORT 54B",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Read landscape construction documents (plans and specifications).",
+         "basis": "reviewing work assignment documents to determine job requirements"
+        },
+        {
+         "course": "HORT 54B",
+         "section": "content",
+         "level": 1,
+         "quote": "Estimating landscape materials and costs",
+         "basis": "estimating materials/costs determines resource requirements for jobs"
+        }
+       ]
+      },
+      "HORT 52C": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HORT 52C",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify routine maintenance requirements and special problems in several different landscape settings",
+         "basis": "determining resource/service requirements for maintenance jobs"
+        },
+        {
+         "course": "HORT 52C",
+         "section": "lab",
+         "level": 1,
+         "quote": "Identification of maintenance tasks required for a site",
+         "basis": "determining tasks/resource needs for a site matches reviewing requirements for jobs"
+        }
+       ]
+      },
+      "HORT 60B": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HORT 60B",
+         "section": "lab",
+         "level": 1,
+         "quote": "Using a real site, students will practice and develop site analysis skills",
+         "basis": "site analysis to determine what a landscape project requires evidences determining resource/service needs for a job"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HORT 52C",
+      "section": "objectives",
+      "quote": "Identify routine maintenance requirements and special problems in several different landscape settings",
+      "reason": "objective-tier commitment to identify maintenance requirements and special problems across landscape settings most specifically matches determining resource needs for jobs"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.b.6.e.7",
+     "dwa": "Recommend organizational process or policy changes.",
+     "task": "Recommend changes in working conditions or equipment used to increase crew efficiency.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.3.a.1.c.23",
+     "dwa": "Remove snow.",
+     "task": "Install or maintain landscaped areas, performing tasks such as removing snow, pouring cement curbs, or repairing sidewalks.",
+     "cells": {},
+     "lead": null
+    }
+   ],
+   "dropped": [
+    {
+     "activity": 4,
+     "course": "HORT 54B",
+     "section": "content",
+     "quote": "Evaluating system performance",
+     "basis": "inspecting completed irrigation work against performance standards",
+     "why": "quote not verbatim in that course"
+    },
+    {
+     "activity": 5,
+     "course": "HORT 10",
+     "section": "content",
+     "quote": "Design or supervise the installation of sprinkler systems",
+     "basis": "not present; excluded",
+     "why": "quote not verbatim in that course"
+    },
+    {
+     "activity": 1,
+     "course": "HORT 52C",
+     "section": "content",
+     "quote": "Identify legal and business requirements for landscape maintenance business",
+     "basis": "operating standards/requirements for maintenance work are established",
+     "why": "adjudicated: a: legal/business requirements is a topic heading, not the establishing/enforcing of standards itself"
+    },
+    {
+     "activity": 2,
+     "course": "HORT 52C",
+     "section": "lab",
+     "quote": "Creation of a management plan for a site",
+     "basis": "planning of site maintenance work over time",
+     "why": "adjudicated: d: creating a management plan for a site is broader planning, not crew work scheduling"
+    },
+    {
+     "activity": 9,
+     "course": "HORT 15",
+     "section": "content",
+     "quote": "Sales and business management",
+     "basis": "business content covering customer-facing cost/service discussion",
+     "why": "adjudicated: a: 'Sales and business management' is a topic heading without performable content tied to answering customer cost inquiries"
+    },
+    {
+     "activity": 15,
+     "course": "HORT 52C",
+     "section": "lab",
+     "quote": "Identification of maintenance tasks required for a site",
+     "basis": "documenting/recording work activities required, akin to work activity records",
+     "why": "adjudicated: d: identifying maintenance tasks required for a site evidences determining resource needs, not documenting work hours/records"
+    },
+    {
+     "activity": 19,
+     "course": "HORT 10",
+     "section": "objectives",
+     "quote": "Share ideas and discoveries with students and clients using design, written documents, and oral presentations",
+     "basis": "conferring with others (clients/colleagues) to coordinate landscape work plans",
+     "why": "adjudicated: c: sharing ideas via presentations is a generic communication skill, not conferring to coordinate specific maintenance activities"
+    },
+    {
+     "activity": 21,
+     "course": "HORT 52C",
+     "section": "content",
+     "quote": "Identify methods to improve sustainability of business and services",
+     "basis": "recommending process changes to improve operations, analogous to recommending efficiency changes",
+     "why": "adjudicated: a: identifying sustainability improvement methods is a topic without performable content tied to recommending crew efficiency/equipment changes"
+    },
+    {
+     "activity": 3,
+     "course": "HORT 15",
+     "section": "objectives",
+     "quote": "Identify common horticultural and interior plant pests and pest damage",
+     "basis": "inspecting plants/soil for condition maps to identifying pest damage on plants",
+     "why": "adjudicated: d: identifying pest damage evidences inspecting for treatment needs, a different activity than inspecting grounds condition generally"
+    },
+    {
+     "activity": 3,
+     "course": "HORT 15",
+     "section": "content",
+     "quote": "Turf cultural practices",
+     "basis": "touring/inspecting turf condition is part of turf cultural practice knowledge",
+     "why": "adjudicated: a: 'Turf cultural practices' is a topic heading without specific touring/inspection content"
+    },
+    {
+     "activity": 7,
+     "course": "HORT 15",
+     "section": "objectives",
+     "quote": "Explain horticultural production concepts, such as media mixes, plant propagation, plant fertilization, and cultural practices",
+     "basis": "plant propagation and fertilization underlie planting greenery for landscape appearance",
+     "why": "adjudicated: b: media mixes, propagation, fertilization concepts are precondition knowledge, not the planting activity itself"
+    },
+    {
+     "activity": 6,
+     "course": "HORT 21",
+     "section": "content",
+     "quote": "Moisture requirements",
+     "basis": "identifying moisture requirements is the technical basis for irrigating plants per their cultural needs",
+     "why": "adjudicated: b: moisture requirements is precondition knowledge preceding the act of irrigating"
+    },
+    {
+     "activity": 7,
+     "course": "HORT 21",
+     "section": "objectives",
+     "quote": "Design with listed plants, selecting plants with proper form, color, texture, line, cultural needs, and uses",
+     "basis": "selecting and designing with plants for landscape use evidences planting greenery to improve landscape appearance",
+     "why": "adjudicated: b: selecting plants by cultural needs for design is precondition/design knowledge, not the planting activity itself"
+    },
+    {
+     "activity": 6,
+     "course": "HORT 22",
+     "section": "content",
+     "quote": "Moisture requirements",
+     "basis": "covering moisture/irrigation requirements of plants evidences irrigating lawns, trees, or plants",
+     "why": "adjudicated: b: moisture requirements is precondition knowledge preceding irrigating activity"
+    },
+    {
+     "activity": 7,
+     "course": "HORT 22",
+     "section": "objectives",
+     "quote": "Design landscapes based on plant features, uses, and cultural needs in different landscape and garden applications and select plants that conform to specific landscape needs",
+     "basis": "selecting and designing plantings for landscapes evidences planting greenery to improve landscape appearance",
+     "why": "adjudicated: b: designing landscapes based on cultural needs is precondition design knowledge, not the planting activity"
+    },
+    {
+     "activity": 7,
+     "course": "HORT 22",
+     "section": "content",
+     "quote": "Design landscapes in landscape and garden applications by:",
+     "basis": "designing landscape plantings evidences planting greenery to improve appearance",
+     "why": "adjudicated: b: designing landscapes is precondition/design work, not the planting activity itself"
+    },
+    {
+     "activity": 6,
+     "course": "HORT 30",
+     "section": "content",
+     "quote": "Nutritional needs of crops growing in soils",
+     "basis": "addressing plant fertility needs supports maintaining vegetation through fertilizing",
+     "why": "adjudicated: b: nutritional needs of crops is precondition knowledge preceding fertilizing/irrigating activity"
+    },
+    {
+     "activity": 20,
+     "course": "HORT 30",
+     "section": "objectives",
+     "quote": "Demonstrate knowledge of the soil's role in horticulture, agriculture, plant growth, ecology, and construction",
+     "basis": "understanding soil requirements informs determining service or resource needs for a job site, though this is weak",
+     "why": "adjudicated: b: demonstrating knowledge of soil's role is precondition knowledge, not determining resource needs for a job"
+    },
+    {
+     "activity": 19,
+     "course": "HORT 52C",
+     "section": "content",
+     "quote": "Prepare a landscape maintenance schedule",
+     "basis": "developing a maintenance schedule reflects coordinating maintenance activities",
+     "why": "adjudicated: d: preparing a maintenance schedule evidences scheduling/establishing standards, not conferring with coworkers to coordinate"
+    },
+    {
+     "activity": 5,
+     "course": "HORT 54A",
+     "section": "lab",
+     "quote": "Deck lab: Working in groups, students build a small wood deck from the ground up.",
+     "basis": "students direct/coordinate group installation work analogous to supervising installation, closest available evidence of directing crew construction activity",
+     "why": "adjudicated: d: building a deck as a group lab evidences hands-on construction skill, not supervising other workers"
+    },
+    {
+     "activity": 12,
+     "course": "HORT 54A",
+     "section": "objectives",
+     "quote": "List career opportunities in landscape construction.",
+     "basis": "not a strong match; excluded",
+     "why": "adjudicated: a: listing career opportunities is a topic heading with no estimating content"
+    },
+    {
+     "activity": 4,
+     "course": "HORT 54B",
+     "section": "objectives",
+     "quote": "Estimate and bid landscape projects.",
+     "basis": "estimating and bidding checks work against contract/specification requirements",
+     "why": "adjudicated: d: estimating and bidding evidences the estimate-preparation activity, not inspecting completed work for conformance"
+    },
+    {
+     "activity": 4,
+     "course": "HORT 54B",
+     "section": "content",
+     "quote": "Producing bids and contracts",
+     "basis": "bids/contracts set the specifications work is inspected against",
+     "why": "adjudicated: d: producing bids/contracts evidences estimating activity, not inspecting completed work"
+    },
+    {
+     "activity": 22,
+     "course": "HORT 54B",
+     "section": "content",
+     "quote": "Surface and subsurface drainage systems",
+     "basis": "landscape drainage installation is a directly constitutive landscaped-area maintenance task alongside snow removal in this task",
+     "why": "adjudicated: d: drainage systems content evidences landscape installation/construction, not snow removal"
+    },
+    {
+     "activity": 5,
+     "course": "HORT 54C",
+     "section": "content",
+     "quote": "Central control of parks and municipal settings",
+     "basis": "central control systems for irrigation overlap directly with the supervisory task of designing/supervising sprinkler system installation",
+     "why": "adjudicated: d: central control of irrigation in parks is irrigation system content, not supervising workers"
+    },
+    {
+     "activity": 4,
+     "course": "HORT 60B",
+     "section": "objectives",
+     "quote": "Discuss and analyze design case studies and/or completed residential landscape projects",
+     "basis": "reviewing completed projects against design standards evidences inspecting work for conformance",
+     "why": "adjudicated: d: analyzing design case studies evidences design review, not inspecting completed work for schedule/contract conformance"
+    }
+   ],
+   "source_note": "Read from Foothill College's course outlines of record (courseleaf); sections present: slo, objective, description, content outline, lab content.",
+   "role": "",
+   "short_title": "Environmental Horticulture and Design"
+  }
+ ]
+}

@@ -24,11 +24,14 @@ The demand table and crosswalk are general over any N occupations. The KSA grid
 from __future__ import annotations
 
 import html
+import logging
 import re
 import sys
+from typing import TYPE_CHECKING
 from dataclasses import dataclass, field
 
 from occupations.competencies import get_competencies
+from ontology.living_wage import HOURS_PER_YEAR
 from ontology.regions import COE_REGION_DISPLAY, COE_REGION_TO_COUNTIES
 from ontology.supply import COE_DEMAND_VINTAGE
 from partnerships.lens import LensModel, LensOccupation, Play, build_lens
@@ -74,6 +77,11 @@ _LIGHTCAST_METHOD_URL = "https://kb.lightcast.io/en/articles/6957547-job-opening
 #: quarter equivalent. A degree's catalog figure is major coursework, so the units a
 #: student actually completes is at least the major AND at least this floor.
 _DEGREE_FLOOR = {"semester": 60, "quarter": 90}
+
+if TYPE_CHECKING:
+    from ontology.living_wage import LivingWage
+
+logger = logging.getLogger(__name__)
 
 
 def _unit_phrase(units: float, basis: str, cal: str) -> str:
@@ -164,10 +172,11 @@ class ReportSpec:
     charter_gaps: tuple[str, ...] = ()              # charter members with no feeding program — the labeled gap
     dashboard_url: str = ""                          # the tailored dashboard link in Sources (def-overridable)
     extra_sources: list[str] = field(default_factory=list)
-    # Curriculum alignment: the roster id (partnerships/data/<id>.json) whose saved
-    # alignment (partnerships/saved_reports/<id>.alignment.json) renders one plate per
-    # program — outlines of record read against the paired occupation's core work
-    # activities. Empty → no section. `curriculum_note` is the editorial paragraph.
+    # Curriculum alignment: the roster id (partnerships/data/<id>.json) whose programs'
+    # saved readings (partnerships/saved_reports/alignment/<program>.json) render as one
+    # block per occupation — outlines of record read against the occupation's core work
+    # activities. A program evaluation's roster shares the def's slug. Empty → no section.
+    # `curriculum_note` is the editorial paragraph.
     curriculum_alignment: str = ""
     curriculum_note: str = ""
     # Gap annotations (amber "no course evidences this", the uncovered list) are off in
@@ -310,7 +319,7 @@ def _region_name(lens: LensModel) -> str:
     return " and ".join(COE_REGION_DISPLAY.get(r, r) for r in regions)
 
 
-def _demand_provenance(lens: LensModel) -> str:
+def _demand_provenance(lens: LensModel, living: LivingWage | None = None) -> str:
     """The geography, vintage and method behind every demand figure, as a caption under
     the demand table — not inline in the prose, where a 12-county list wrecks the sentence.
 
@@ -332,8 +341,13 @@ def _demand_provenance(lens: LensModel) -> str:
     # not only in the back matter. A reader who wants to know where "1,130 openings a
     # year" comes from should not have to go looking for it.
     out = _esc(" ".join(parts))
-    return (f'{out} <a href="{_esc(_OPENINGS_METHOD_URL)}" target="_blank" rel="noopener">'
-            f'How annual openings are calculated</a>.')
+    out = (f'{out} <a href="{_esc(_OPENINGS_METHOD_URL)}" target="_blank" rel="noopener">'
+           f'How annual openings are calculated</a>.')
+    if living is not None:
+        out += (f' Median hourly earnings are the annual median divided by {HOURS_PER_YEAR:,} hours; the living wage is for '
+                f'one adult with no children in {_esc(living.county)}, per the '
+                f'<a href="{_esc(living.url)}" target="_blank" rel="noopener">MIT Living Wage Calculator</a> ({_esc(living.vintage)}).')
+    return out
 
 
 def _short_college(name: str) -> str:
@@ -370,24 +384,66 @@ def _pct(x: float) -> str:
     return f"{'+' if x >= 0 else '−'}{abs(x) * 100:.1f}%"
 
 
-def _demand_table(occs: list[LensOccupation]) -> str:
+def _hourly(annual: int) -> float:
+    """The median hourly wage from COE's annual median. COE's own hourly column is rounded
+    to whole dollars; the annual figure keeps the cents."""
+    return annual / HOURS_PER_YEAR
+
+
+def _vs(hourly: float, living: float) -> str:
+    d = hourly - living
+    sign = "+" if d >= 0 else "\u2212"
+    return f"{sign}${abs(d):,.2f}"
+
+
+def _demand_table(occs: list[LensOccupation], living: LivingWage | None = None) -> str:
+    """The demand table. With a `living` wage (a single college with a known county) the
+    salary column becomes the median hourly wage beside its distance from the living wage
+    for one adult in that county — the comparison a program reviewer reads the wage for."""
+    if living is None:
+        wage_head = '<th class="n">Median salary</th>'
+        wage = lambda o: f'<td class="n">${o.median_wage:,}</td>' if o.median_wage else '<td class="n">—</td>'
+        tot = '<td class="n">—</td>'
+    else:
+        wage_head = '<th class="n">Median hourly</th><th class="n">vs. living wage</th>'
+        # No COE wage (the lens stores 0) → dashes, never a fabricated shortfall of the whole living wage.
+        wage = lambda o: ((f'<td class="n">${_hourly(o.median_wage):,.2f}</td>'
+                           f'<td class="n">{_vs(_hourly(o.median_wage), living.headline)}</td>')
+                          if o.median_wage else '<td class="n">—</td><td class="n">—</td>')
+        tot = '<td class="n">—</td><td class="n">—</td>'
     rows = "".join(
         f'<tr><td>{_esc(o.soc)}</td><td>{_esc(o.title)}</td>'
         f'<td class="n">{o.annual_openings:,}</td>'
         f'<td class="n">{_pct(o.growth_rate)}</td>'
-        f'<td class="n">${o.median_wage:,}</td></tr>'
+        f'{wage(o)}</tr>'
         for o in occs
     )
     total = sum(o.annual_openings for o in occs)
     return (
         '<table class="dem"><tbody>'
         '<tr><th>SOC</th><th>Occupation</th><th class="n">Openings / yr</th>'
-        '<th class="n">5-yr growth</th><th class="n">Median salary</th></tr>'
+        f'<th class="n">5-yr growth</th>{wage_head}</tr>'
         f'{rows}'
         f'<tr class="tot"><td></td><td>Total regional demand</td>'
-        f'<td class="n">≈ {total:,}</td><td class="n">—</td><td class="n">—</td></tr>'
+        f'<td class="n">≈ {total:,}</td><td class="n">—</td>{tot}</tr>'
         '</tbody></table>'
     )
+
+
+def _living_wage_for(lens: LensModel) -> LivingWage | None:
+    """The living wage a single college's report measures wages against: MIT's headline
+    figure for the college's own county. None for districts, regions and consortia (many
+    counties, one regional wage) and for a college whose county is not on record."""
+    from ontology.living_wage import living_wage
+    from ontology.regions import COLLEGE_COUNTY
+    m = lens.scope.member
+    if m.kind != "college":
+        return None
+    county = COLLEGE_COUNTY.get(m.name)
+    if not county:
+        logger.info("no county on record for %s; the demand table keeps the salary column", m.name)
+        return None
+    return living_wage(county)
 
 
 def _employer_table(occs: list[LensOccupation], postings: dict[str, list[LivePosting]]) -> str:
@@ -768,7 +824,7 @@ _BAND_FILL = ("#1f3864", "#2e74b5", "#4a90c4", "#7aa6d4", "#2a9d8f", "#93bfb8", 
 
 
 def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
-                       max_bands: int = 6, brand: str = "") -> str:
+                       max_bands: int = 6, brand: str = "", region: str = "") -> str:
     """REGIONAL completions over time, stacked by college, against annual openings.
 
     The reviewer ask this answers: show the need to produce workers. The stack is one
@@ -928,7 +984,7 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
         rise = totals[-1] > totals[0]
         lx_, anc_ = ((PADL + 4, "start") if rise else (W - PADR, "end"))
         p_.append(f'<text x="{lx_}" y="{dy-6:.1f}" font-size="10" font-weight="700" '
-                  f'fill="{_RULE}" text-anchor="{anc_}">{annual_openings:,} openings a year</text>')
+                  f'fill="{_RULE}" text-anchor="{anc_}">{annual_openings:,} openings a year{", " + _esc(region) if region else ""}</text>')
 
     # legend, wrapping onto a second row rather than running off the plate
     lx, ly = PADL, H - PADB + 42
@@ -1137,7 +1193,7 @@ def _wage_table(rows: list) -> str:
             f'<tbody>{"".join(body)}</tbody></table>')
 
 
-def _wage_outcomes_svg(wages: list, top6: str) -> str:
+def _wage_outcomes_svg(wages: list, top6: str, living_annual: float | None = None, living_label: str = "") -> str:
     """Earnings trajectory for each award cohort: one line per recipient type across
     the three DataMart checkpoints.
 
@@ -1166,7 +1222,10 @@ def _wage_outcomes_svg(wages: list, top6: str) -> str:
             series.append((w, vals))
     if not series:
         return ""
-    top, ticks = _nice_axis(max(v for _w, vs in series for _y, v in vs) * 1.12)
+    peak = max(v for _w, vs in series for _y, v in vs)
+    if living_annual:
+        peak = max(peak, living_annual)          # the reference line must sit inside the plot
+    top, ticks = _nice_axis(peak * 1.12)
 
     # Right-hand line labels forced a 148px gutter against a 58px left one, so the
     # plot sat visibly off-centre and used two thirds of the plate. The labels move to
@@ -1201,6 +1260,27 @@ def _wage_outcomes_svg(wages: list, top6: str) -> str:
                   f'text-anchor="{anc}">{_esc(lbl)}</text>')
     p_.append(f'<text x="{PADL + plot_w / 2:.1f}" y="{H-PADB+38:.0f}" font-size="10" '
               f'fill="#5a6577" text-anchor="middle">Years relative to award</text>')
+
+    if living_annual:
+        # The living wage as a dashed rule, the awards chart's idiom for a threshold — the
+        # one reference this chart has for whether completers reach self-sufficiency.
+        ly = y_of(living_annual)
+        p_.append(f'<line x1="{PADL}" y1="{ly:.1f}" x2="{W-PADR}" y2="{ly:.1f}" '
+                  f'stroke="{_RULE}" stroke-width="1.6" stroke-dasharray="7 4"/>')
+        # The label goes where the curves are farthest from the rule: at whichever end
+        # (first or last checkpoint) the series clear it by most, above the rule if the
+        # curves there sit below it and beneath otherwise. Respiratory Therapy's curves
+        # cross the rule at the right end, where a fixed label sat on top of them.
+        def clearance(year):
+            pts = [v for _w, vs in series for y, v in vs if y == year]
+            return min((abs(y_of(v) - ly) for v in pts), default=1e9), pts
+        ends = [(xs[0], "start", PADL + 4), (xs[-1], "end", W - PADR - 4)]
+        year, anchor, lx = max(ends, key=lambda e: clearance(e[0])[0])
+        pts = clearance(year)[1]
+        above = not pts or all(y_of(v) > ly for v in pts)      # curves below the rule → label above it
+        lyl = ly - 5 if above else ly + 12
+        p_.append(f'<text x="{lx}" y="{lyl:.1f}" font-size="9.5" font-weight="700" fill="{_RULE}" '
+                  f'text-anchor="{anchor}" stroke="#fff" stroke-width="3" paint-order="stroke">{_esc(living_label)}</text>')
 
     for si, (w, vals) in enumerate(series):
         col = _WAGE_LINE[si % len(_WAGE_LINE)]
@@ -1314,7 +1394,9 @@ def _footer(lens: LensModel, extra: list[str]) -> str:
 
 
 def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
-                     title: str, socs: list[str], program_top: str = "", curriculum: bool = False) -> str:
+                     title: str, socs: list[str], program_top: str = "", curriculum: bool = False,
+                     outlines: list[str] | None = None, consolidated: bool = False,
+                     living: LivingWage | None = None) -> str:
     """Provenance, organized by report section: a tailored dashboard link, then one
     numbered, linked source group per section. Each section's claims trace to named,
     auditable sources — the same audit-trail logic as the clickable program names."""
@@ -1340,20 +1422,22 @@ def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
              "https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061"),
             ("How Annual Job Openings Are Calculated", _OPENINGS_METHOD_URL),
             ("Lightcast — Job Openings Data (methodology)", _LIGHTCAST_METHOD_URL),
-        ]),
-        ("Occupational Competencies",
-         [(f"O*NET Summary of {soc}", f"https://www.onetonline.org/link/summary/{soc}.00")
-          for soc in socs]),
+        ] + ([(f"MIT Living Wage Calculator — {living.county}, California", living.url)] if living is not None else [])),
     ]
+    summaries = [(f"O*NET Summary of {soc}", f"https://www.onetonline.org/link/summary/{soc}.00") for soc in socs]
+    if not consolidated:
+        groups.append(("Occupational Competencies", summaries))
     if curriculum:
-        groups += [("Curriculum Alignment", [
+        # An evaluation whose alignment blocks carry the occupation descriptions has no
+        # competencies section: the O*NET summaries move in here. The outlines of record
+        # follow as one line per certificate, each course code linked to its outline.
+        links = (summaries if consolidated else []) + [
             ("O*NET Database — Task Statements, Task Ratings and Detailed Work Activities",
              "https://www.onetcenter.org/database.html"),
-            ("Course Outlines of Record — each college's curriculum system, linked under its plate",
-             "https://www.onetcenter.org/database.html#work-activities"),
             ("CCCCO Curriculum Inventory (COCI) — Courses, the state record each outline's currency is checked against",
              "https://coci2.ccctechcenter.org/courses"),
-        ])]
+        ]
+        groups += [("Curriculum Alignment", links)]
     groups += [
         ("College Program Alignment & Supply", [
             ("CCCCO DataMart — Program Awards",
@@ -1373,9 +1457,12 @@ def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
            f'{a(dashboard_url, dashboard_url)}</p>']
     for name, links in groups:
         out.append(f'<p class="srcsec"><i>{_esc(name)} Section:</i></p>')
-        out.append('<div class="srclist">' + "".join(
-            f'<div class="srcitem">({i}) {a(lbl, url)}</div>'
-            for i, (lbl, url) in enumerate(links, 1)) + "</div>")
+        items = [f'<div class="srcitem">({i}) {a(lbl, url)}</div>' for i, (lbl, url) in enumerate(links, 1)]
+        if name == "Curriculum Alignment" and outlines:
+            n = len(links)
+            items += [f'<div class="srcitem alg-links">({n + i}) Course outlines of record \u2014 {line}</div>'
+                      for i, line in enumerate(outlines, 1)]
+        out.append('<div class="srclist">' + "".join(items) + "</div>")
     # A block, not a forced page. Sources measured 29-37% of a page in every report, so
     # giving it one left two thirds blank at the end of every document — padding, not
     # structure — and cost two pages across the eleven. As a block it flows into whatever
@@ -1435,7 +1522,7 @@ p a,.byline a{color:#1155cc;text-decoration:underline}
 .alg-tbl{table-layout:fixed;margin:6px 0 2px;font-size:11px}
 .alg-tbl col.alg-actcol{width:196px}
 .alg-tbl th{background:#fff;color:#2a3450;font-size:10px;padding:4px 6px 6px;border:0;border-bottom:2px solid var(--c,#c8d0de);text-align:left;vertical-align:bottom}
-.alg-tbl th.alg-acthd{border-bottom-color:#e7eaf1;color:#8a93a5;font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:8px}
+.alg-tbl th.alg-acthd{border-bottom-color:#c8d0de;color:#2a3450;font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:8px}
 .alg-colhd{display:block;font-weight:700}
 .alg-tbl td{border:0;border-bottom:1px solid #eef1f6;padding:4px 5px;vertical-align:top}
 .alg-tbl thead{display:table-header-group}
@@ -1444,6 +1531,12 @@ p a,.byline a{color:#1155cc;text-decoration:underline}
 .alg-gaprow td.alg-act{color:#8a93a5}
 .alg-gap{display:block;margin-top:2px}
 .alg-chips{display:flex;flex-wrap:wrap;gap:4px 4px;align-items:center}
+.alg-dense .alg-ev{margin:0 0 5px}.alg-dense .alg-ev:last-child{margin-bottom:0}.alg-evhd{display:flex;align-items:center;gap:6px}.alg-ctitle{font-size:10.5px;color:#2a3450;font-weight:600}
+.alg-quote{font-size:10px;color:#5a6577;line-height:1.35;margin-top:2px;padding-left:2px}
+.alg-rule{border-left:2px solid var(--t,#7a869a);padding-left:7px;margin:3px 0 2px 2px}.alg-secx{display:block;font-size:7.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#8a93a5;margin-bottom:1px}
+.alg-lgnote{flex-basis:100%;color:#6b7686;font-size:10px}
+.alg-desc{font-size:10px;color:#5a6577;margin:5px 0 8px;line-height:1.45}.alg-desc a{color:#1155cc;text-decoration:underline;font-size:10px;white-space:nowrap}
+.alg-key{margin:0 0 10px;font-size:10px;color:#6b7686}.alg-key+.alg-tbl{margin-top:0}
 .chip{display:inline-block;font:700 8.5px/1 Helvetica,Arial,sans-serif;letter-spacing:.01em;padding:2.5px 5px;border-radius:3px;border:1.5px solid var(--c);white-space:nowrap}
 .chip{background:var(--c);color:#fff}a.chip{text-decoration:none;color:#fff}a.chip:hover{filter:brightness(1.12)}.chip.alg-more{background:#eef1f6;color:#5a6577;border-color:#eef1f6}
 .alg-gap{font-size:10px;color:#a8641a;font-style:italic}
@@ -1642,7 +1735,7 @@ def select_partner_programs(programs, charter_colleges, min_awards: int = 50):
     return chosen
 
 
-def _wage_section(lens: LensModel, spec: ReportSpec) -> str:
+def _wage_section(lens: LensModel, spec: ReportSpec, living: LivingWage | None = None) -> str:
     """"Wage Outcomes" — the one section that reports what happened to PEOPLE.
 
     Everything else in the document counts things: awards, enrolments, openings,
@@ -1655,11 +1748,18 @@ def _wage_section(lens: LensModel, spec: ReportSpec) -> str:
     figure beside newer ones is what makes a reader trust the wrong comparison.
     """
     rows = lens.wages.get(spec.program_top) or []
-    chart = _wage_outcomes_svg(rows, spec.program_top)
+    annual = living.headline_annual if living is not None else None
+    label = f"Living wage, 1 adult, {living.county}" if living is not None else ""
+    chart = _wage_outcomes_svg(rows, spec.program_top, annual, label)
     if not chart:
         return ""
     window = next((w.window for w in rows if w.window), "")
     win = f" Award years {_esc(window)}." if window else ""
+    if living is not None:
+        # A statement of what the line is, nothing more: the geography mismatch between a
+        # county threshold and statewide earnings is the reader's to weigh, not ours to gloss.
+        win += (f" The dashed line represents the annualized living wage for one adult "
+                f"with no children in {_esc(living.county)}.")
     return _block(
         '<h1>Wage Outcomes</h1>',
         f'<p>{_WAGE_BLURB}{win}</p>',
@@ -1675,6 +1775,7 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
     Pass `lens` to reuse a build shared with `propose_spec`."""
     lens = lens or build_lens(member_id, play=play)
     occs = lens.occupations
+    living = _living_wage_for(lens)      # a single college's county, else None
 
     # keep the title on ONE line: shrink from 26px just enough to fit the 648px content
     # width (816 page − 2×84 padding); short titles stay at the full 26px.
@@ -1692,11 +1793,11 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         # program grants, here is what recipients went on to earn. Evaluations only —
         # the data is TOP6-grain, and a role report spanning several TOPs would need
         # one plate per TOP or an invalid merge.
-        _wage_section(lens, spec) if spec.program_top else '',
+        _wage_section(lens, spec, living) if spec.program_top else '',
         _block('<h1>Regional Occupational Demand</h1>',
                f'<p>{_linkify(spec.demand_note)}</p>' if spec.demand_note else '',
-               _demand_table(occs),
-               f'<p class="tnar">{_demand_provenance(lens)}</p>'),   # returns HTML: carries a link
+               _demand_table(occs, living),
+               f'<p class="tnar">{_demand_provenance(lens, living)}</p>'),   # returns HTML: carries a link
         # No "under the <role> designation" clause: postings are found by SOC, not by the
         # role title or TOP, so naming the play here overstated what the search did — and it
         # read as role-report copy inside a program evaluation.
@@ -1714,12 +1815,15 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         cols = [by_soc[o.soc] for o in occs if o.soc in by_soc]
     else:
         cols = _cols_from_bundle(occs)
-    grid = _competency_grid(cols, occs)
+    curriculum_parts, curriculum_outlines, consolidated = (
+        _curriculum_section(spec, {c.soc: c.description for c in cols}) if spec.curriculum_alignment else ([], [], False))
+    # An evaluation whose curriculum has been read carries the occupation description
+    # inside each alignment block and drops the grid: the work activities with their course
+    # sentences say what the grid's knowledge, skills and abilities only named.
+    grid = _competency_grid(cols, occs) if not consolidated else ""
     if grid:
         sections += ['<h1>Occupational Competencies</h1>',
                      f'<p>{_linkify(spec.competency_note)}</p>' if spec.competency_note else '', grid]
-
-    curriculum_parts, curriculum_appendix = (_curriculum_section(spec) if spec.curriculum_alignment else ([], []))
     sections += curriculum_parts
 
     # The coalition's programs — an editorial (college, TOP6) selection, else all
@@ -1754,7 +1858,7 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         # document and keeps the neutral ramp.
         brand = _brand_color(lens.scope.member.id) if spec.program_top else ""
         chart = _awards_demand_svg(progs, award_axis,
-                                   sum(o.annual_openings for o in occs), brand=brand)
+                                   sum(o.annual_openings for o in occs), brand=brand, region=_region_name(lens))
         # No caption: the chart carries its own title, axis labels, source line and break
         # label, so a paragraph restating them is noise. Only the report's own curated
         # award_note stays — that is editorial, not chart chrome.
@@ -1788,10 +1892,10 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
     from partnerships.sectors import SECTORS
     sec_label = SECTORS[play.sector].label if play.sector in SECTORS else play.sector.upper()
     dash_url = spec.dashboard_url or f"https://preview.kallipolis.us/landscape/{member_id}/{play.sector}"
-    sections += curriculum_appendix
     sections += [_sources_section(_org_label(lens.scope.member), sec_label, dash_url,
                                   play.title, [o.soc for o in occs], spec.program_top,
-                                  curriculum=bool(spec.curriculum_alignment))]
+                                  curriculum=bool(curriculum_parts), outlines=curriculum_outlines,
+                                  consolidated=consolidated, living=living)]
     # NO brand colour in the document chrome. Tried three times at widening scope —
     # every heading, then the masthead rule and the Awards Offered accents — and reverted
     # each time for the same reason: colour already carries meaning in this report
@@ -1809,57 +1913,74 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
 
 # ── Curriculum alignment (courses × work activities, one plate per program) ──────
 _CURRICULUM_BLURB = ("O*NET maintains a set of detailed work activities that identify the competencies central to "
-                     "each job. We visualize below how the consortium's programs support each target occupation by "
-                     "mapping specific college courses to the work activities it involves, based on how each course is "
+                     "each job. We visualize below how these programs support each target occupation by mapping "
+                     "specific college courses to the work activities it involves, based on how each course is "
                      "described in its Course Outline of Record (COR).")
 
 
-def _curriculum_section(spec: ReportSpec) -> tuple[list[str], list[str]]:
-    """(section parts, appendix parts) for the roster named by spec.curriculum_alignment;
-    both empty when no alignment has been run. The section reads BY OCCUPATION — the
-    play's SOCs in roster order, each with the ten most important core activities and
-    the courses across the consortium that evidence them. Readings the roster marks
-    appendix-only (De Anza against Machinists) appear in the appendix alone."""
-    from partnerships.alignment import load_alignment, load_roster
-    from partnerships.alignment_plate import appendix_tables, college_legend, occupation_block
+def _curriculum_section(spec: ReportSpec, descriptions: dict[str, str] | None = None, *,
+                        plates: list | None = None) -> tuple[list[str], list[str], bool]:
+    """(section parts, outline link lines for Sources, consolidated) for the roster named by
+    spec.curriculum_alignment; the parts are empty when none of its readings has been run.
+    The section reads BY OCCUPATION — the roster's SOCs in order, each with its most
+    important core activities and the courses that evidence them, one column per program
+    the roster connects. A consortium roster names its columns by college and keeps one
+    legend. An evaluation roster (one college, its certificates) is CONSOLIDATED: each block
+    opens with the occupation's O*NET description and summary link and its own one-line
+    key, so the report drops the competency grid — the activities and their course
+    sentences say what the grid's knowledge, skills and abilities only named. Readings the
+    roster marks review-only are read but not drawn; they surface in the internal evidence
+    tables. `plates` overrides the roster's view (the canvas narrows to one college)."""
+    from partnerships.alignment import load_roster, view_roster
+    from partnerships.alignment_plate import appendix_tables, block_key, college_color, column_legend, occupation_block
 
-    al = load_alignment(spec.curriculum_alignment)
-    if al is None or not al.plates:
-        return [], []
-    roster = load_roster(spec.curriculum_alignment)
-    socs = roster.get("occupations") or sorted({p.paired_soc for p in al.plates})
+    if plates is None:
+        roster, plates = view_roster(spec.curriculum_alignment)
+    else:
+        roster = load_roster(spec.curriculum_alignment)
+    if not plates:
+        return [], [], False
+    columns = roster.get("columns", "college")
+    consolidated = columns == "certificate"
+    socs = roster.get("occupations") or sorted({p.paired_soc for p in plates})
     top_n = int(roster.get("top_n", 10))
-    shown = [p for p in al.plates if p.role != "appendix"]
+    shown = [p for p in plates if p.role != "review"]
     parts = ['<h1>Curriculum Alignment</h1>',
-             f'<p>{_linkify(spec.curriculum_note) if spec.curriculum_note else _esc(_CURRICULUM_BLURB)}</p>',
-             college_legend(shown)]
-    order = [p["member_id"] for p in roster["programs"]]          # one fixed column order across blocks
+             f'<p>{_linkify(spec.curriculum_note) if spec.curriculum_note else _esc(_CURRICULUM_BLURB)}</p>']
+    if not consolidated:
+        parts.append(column_legend(shown, columns))
+    member_order = list(dict.fromkeys(pl.member_id for pl in plates))   # one fixed column order across blocks
     for soc in socs:
-        block = occupation_block(soc, [p for p in shown if p.paired_soc == soc], top_n=top_n, college_order=order,
-                                 show_gaps=spec.curriculum_show_gaps)
+        intro = ""
+        if consolidated:
+            desc = (descriptions or {}).get(soc, "")
+            link = (f'<a href="https://www.onetonline.org/link/summary/{_esc(soc)}.00" target="_blank" rel="noopener">'
+                    'O*NET Occupation Summary \u2197</a>')
+            key = block_key(college_color(shown[0].member_id) if shown else "#5a6577")   # the chip in the college's colour, as in the table
+            intro = (f'<p class="alg-desc">{_esc(desc)} {link}</p>' if desc else f'<p class="alg-desc">{link}</p>') + key
+        block = occupation_block(soc, [p for p in shown if p.paired_soc == soc], top_n=top_n, college_order=member_order,
+                                 show_gaps=spec.curriculum_show_gaps, columns=columns, intro=intro)
         if block:            # not _block(): a block may break across pages; rows never do
             parts.append(block)
-    # Appendix: the outlines themselves, linked. A reader checks a chip against the
-    # course's outline of record at the source; the quoted sentences live in the review
-    # file for the college conversations, and in the canvas's internal review view.
-    org = roster.get('short_name') or spec.org_short or spec.org_name
-    method = (f'Links to all course outlines of record relevant to {_esc(org)}. These outlines of record were '
-              'analyzed against detailed work activities for each SOC based on O*NET data to determine curriculum alignment.')
-    seen: set[str] = set()
-    links = []
-    for pl in sorted(al.plates, key=lambda p: order.index(p.member_id) if p.member_id in order else 99):
-        if pl.member_id in seen:
+    # The outlines themselves, linked, go to Sources (one line per certificate): a reader
+    # checks a chip against the course's outline of record at the source; the quoted
+    # sentences live in the review file for the college conversations, and in the canvas's
+    # internal review view.
+    seen: set[tuple[str, str]] = set()
+    outlines = []
+    for pl in plates:                       # roster order; one line per program (a college may have several)
+        key = (pl.member_id, pl.certificate)
+        if key in seen:
             continue
-        seen.add(pl.member_id)
+        seen.add(key)
         courses = " \u00b7 ".join(
             f'<a href="{_esc(c["source_url"])}" target="_blank" rel="noopener">{_esc(c["code"])}</a>'
             for c in pl.courses if c.get("source_url"))
-        links.append(f'<p class="tnar alg-links"><b>{_esc(_short_college(pl.college))}</b> \u00b7 {_esc(pl.certificate)}: {courses}</p>')
-    appendix = ['<h1>Appendix: Course Outlines of Record</h1>', f'<p>{method}</p>'] + links
+        outlines.append(f'<b>{_esc(_short_college(pl.college))}</b> \u00b7 {_esc(pl.certificate)}: {courses}')
     if spec.curriculum_show_gaps:      # internal review: every quoted sentence, by occupation and college
-        appendix += ['<details class="alg-appx"><summary><b>Evidence tables (internal review)</b></summary>'
-                     f'{appendix_tables(al.plates)}</details>']
-    return parts, appendix
+        parts.append('<details class="alg-appx"><summary><b>Evidence tables (internal review)</b></summary>'
+                     f'{appendix_tables(plates)}</details>')
+    return parts, outlines, consolidated
 
 
 # ── Demo: the whole report PROPOSED from just (member, play) ───────────────────

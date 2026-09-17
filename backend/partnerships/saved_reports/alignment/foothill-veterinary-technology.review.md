@@ -1,0 +1,703 @@
+# Curriculum alignment review — foothill-veterinary-technology
+Generated 2026-09-17 · O*NET 31.0 database (August 2026), U.S. Department of Labor
+
+## Foothill College — Associate in Science Degree, Veterinary Technology → Veterinary Technologists and Technicians (SOC 29-2056)
+25 of 34 activities at outcome level, 34 with any evidence.
+
+- ● **Administer anesthetics or sedatives to control pain.**
+    - V T 84 [Objective]: “Develop a comprehensive anesthetic plan, from intake through recovery” — student develops/administers anesthesia plan directly
+    - V T 84 [Objective]: “Describe the role of the veterinary technician in the anesthetic event” — students learn the technician role in administering and monitoring anesthesia
+    - V T 84 [Content outline]: “Pre-anesthetic drugs” — covers administering sedative/pre-anesthetic agents to control pain
+    - V T 84L [SLO]: “Safely and competently prepare, induce, maintain, and recover and provide post procedure care for dogs and cats from general anesthesia” — student directly administers and manages anesthesia
+    - V T 84L [Objective]: “Demonstrate competence in the induction, monitoring, maintenance, and recovery of a veterinary patient under inhalant anesthesia.” — student administers inhalant anesthesia to patient
+    - V T 85 [Description]: “Principles and techniques of fluid therapy and administration of emergency drugs” — administering emergency drugs and fluid therapy under veterinarian direction evidences administering sedatives/anesthetics-type pain control agents
+    - V T 85 [Content outline]: “Analgesia and the critical patient” — analgesia content directly evidences administering agents to control pain
+    - V T 58L [Objective]: “Identify the parts and explain the use of common anesthetic equipment and circuits” — students learn anesthetic equipment used to administer and control anesthesia
+    - V T 58L [Content outline]: “Anesthetic monitoring devices” — content on monitoring devices used while administering anesthetics
+    - V T 72 [Objective]: “Describe principles of pain management in veterinary dentistry” — pain management via local anesthetic blocks corresponds to administering sedatives/anesthetics for pain control
+    - V T 72 [Content outline]: “Local anesthetic block techniques for pain control” — administering local anesthetic blocks is administering an anesthetic to control pain
+    - V T 92 [Objective]: “Observe and describe the skills for anesthesia and dental care” — objective has students engage with anesthesia administration/monitoring skills in clinical setting
+    - V T 92 [Content outline]: “Anesthetics” — content topic on anesthetics under anesthesia/dental section covers administering agents to control pain
+    - V T 86 [Objective]: “Describe acceptable methods that are compatible with the Animal Welfare Act of anesthesia, analgesia, and euthanasia” — objective states students describe/administer appropriate anesthesia methods for lab animal species
+    - V T 93 [Objective]: “Demonstrate entry-level participation in anesthetic events.” — administering/monitoring anesthesia is a directly constitutive component of anesthetic events performed under supervision
+    - V T 93 [Content outline]: “Monitoring of anesthetized patients” — monitoring anesthetized patients literally covers adjusting to responses to anesthetics
+- ● **Monitor patient conditions during treatments, procedures, or activities.**
+    - V T 84L [Objective]: “Recognize, critically evaluate, and respond appropriately to common anesthetic problems and emergencies.” — monitoring patient responses during anesthesia procedure
+    - V T 84L [Content outline]: “Assessment of physiological status” — monitoring clinical symptoms during anesthesia procedure
+    - V T 56 [Objective]: “Perform blood pressure monitoring using both Doppler and Oscillometric monitors” — monitoring cardiac/blood pressure status is direct patient condition monitoring
+    - V T 56 [Content outline]: “Diagnostic blood pressure” — blood pressure monitoring during treatment evidences monitoring patient conditions
+    - V T 75B [Objective]: “Perform physical assessment of teaching animals during animal care shifts” — physical assessment during care shifts directly constitutes monitoring patient condition
+    - V T 75B [Content outline]: “Normal values for TPR” — taking temperature/pulse/respiration is core monitoring of clinical symptoms
+    - V T 61 [Objective]: “Explain the etiology, pathogenesis, clinical signs, diagnostics, treatment, nursing assessments, and clinical management of selected diseases” — clinical signs assessment directly constitutes monitoring patient condition
+    - V T 61 [Content outline]: “Nursing assessments” — nursing assessment of diseased patients evidences monitoring clinical symptoms
+    - V T 89 [Content outline]: “Nursing assessment” — monitoring patient condition and clinical symptoms is the core of nursing assessment during clinical internship
+    - V T 57L [SLO]: “Perform diagnostic nursing skills on shelter and program animals.” — diagnostic nursing includes monitoring clinical symptoms/patient status
+    - V T 85 [SLO]: “Quickly and competently triage patients.” — triage is literal monitoring of patient condition during treatment
+    - V T 85 [Content outline]: “Monitoring of patient condition during and after treatment” — explicit content line on monitoring patients during treatment
+    - V T 91 [Objective]: “Differentiate between normal and abnormal in the assessment of patients” — assessing patient condition literally constitutes monitoring patient status
+    - V T 91 [Content outline]: “Heart and lung sounds” — monitoring heart/lung sounds is a direct component of monitoring patient condition
+    - V T 58L [Objective]: “Use and troubleshoot common anesthetic monitoring devices” — directly evidences monitoring patient condition during anesthesia
+    - V T 84 [Objective]: “Explain best practices in anesthetic monitoring” — directly evidences monitoring patient condition during anesthesia
+    - V T 84 [Content outline]: “Use of: esophageal stethoscope, blood pressure monitor, capnometer, electrocardiogram, pulse oximeter” — hands-on use of monitoring instruments during anesthesia procedures
+    - V T 92 [Objective]: “Differentiate between normal and abnormal assessments of patients” — monitoring patient condition during treatment is directly evidenced by assessing normal/abnormal patient status
+    - V T 92 [Content outline]: “Normal and abnormal heart and lung sounds” — monitoring vital signs during procedures evidenced by assessing heart/lung sounds
+    - V T 93 [Content outline]: “Patient assessments” — assessing patients during treatments/procedures directly evidences monitoring patient conditions
+    - V T 93 [Content outline]: “Monitoring of anesthetized patients” — monitoring anesthetized patients is monitoring patient condition during a procedure
+- ● **Monitor patients following surgeries or other treatments.**
+    - V T 84L [Objective]: “Perform a thorough post-anesthetic evaluation of a veterinary patient and develop a nursing care plan.” — monitoring recovery following anesthesia/surgery
+    - V T 89 [Objective]: “Demonstrate basic animal nursing” — monitoring recovering patients is a core component of basic animal nursing
+    - V T 57L [Objective]: “Develop nursing assessments and nursing plans.” — nursing assessment/plan covers monitoring recovering patients per condition
+    - V T 85 [Content outline]: “Post-resuscitation care and monitoring” — monitoring patients following a treatment (resuscitation) matches recovery monitoring
+    - V T 91 [Objective]: “Contribute to the nursing care of a variety of veterinary patients” — nursing care in clinical setting includes monitoring patients recovering from treatment
+    - V T 84 [Content outline]: “Monitoring during recovery” — covers monitoring the patient's condition following the anesthetic procedure
+    - V T 84 [SLO]: “Describe the steps and risks involved during the pre-anesthetic, maintenance and recovery stages of an anesthetic procedure” — explicitly addresses recovery-stage patient monitoring
+    - V T 93 [Objective]: “Contribute to the nursing care of all of veterinary patients.” — nursing care in a clinical setting includes monitoring post-surgical/post-treatment recovery
+    - V T 93 [Content outline]: “Therapeutic effects of plan on patient” — evaluating therapeutic effects of a treatment plan constitutes monitoring patients following treatment
+- ● **Maintain medical facility records.**
+    - V T 83B [Objective]: “Describe and demonstrate record keeping requirements for controlled substances.” — maintaining controlled drug log/inventory records
+    - V T 75A [Objective]: “Demonstrate the principles of Problem Oriented Veterinary Medical Record keeping to writing records and reading case studies at Foothill College.” — maintaining medical facility records literally
+    - V T 75A [SLO]: “Discuss the human animal bond, medical records including SOAP (subjective, objective, assessment and plan) technique and behavior assessments.” — SOAP medical record technique is direct instruction in maintaining medical facility records
+    - V T 60 [Objective]: “Construct and evaluate medical records” — Directly states students create and assess medical facility records
+    - V T 60 [Content outline]: “Medical records and practice management software” — Course content covers maintaining medical facility records via practice software
+    - V T 75B [Objective]: “Implement the Problem Oriented Veterinary Medical Record keeping system” — implementing medical record keeping system directly constitutes maintaining medical facility records
+    - V T 75B [Content outline]: “Entering data into medical records” — entering data into medical records is literal maintenance of medical facility records
+    - V T 89 [Content outline]: “Medical record keeping” — maintaining medical facility records is directly stated as content
+    - V T 57L [Content outline]: “Medical record keeping” — maintaining medical records directly matches record-keeping activity
+    - V T 85 [Content outline]: “Maintenance of medical records” — literal content line on maintaining medical records
+    - V T 91 [Content outline]: “Documentation/medical record keeping” — literal maintenance of medical facility records
+    - V T 58L [Content outline]: “Medical record keeping” — explicit content line on maintaining medical records for program animals
+    - V T 84 [Content outline]: “Documentation” — anesthesia record documentation is a medical facility record
+    - V T 92 [Content outline]: “Documentation/medical record keeping” — literal maintenance of medical facility records
+    - V T 84L [Content outline]: “Record keeping for controlled drugs” — maintaining controlled drug log books directly matches task
+- ● **Test biological specimens to gather information about patient conditions.**
+    - V T 81 [SLO]: “Explain and demonstrate the steps and rational for performing routine diagnostics in veterinary medicine including urinalysis, blood tests, vaginal cytology and fecal exam.” — testing biological specimens for diagnosis
+    - V T 81 [Objective]: “Demonstrate basic procedures in veterinary hematology.” — testing blood specimens to assist diagnosis
+    - V T 81 [Objective]: “Demonstrate basic procedures in veterinary urinalysis.” — urinalysis testing directly evidences testing biological specimens
+    - V T 56 [Content outline]: “Skin scraping” — skin scraping is a biological specimen test to assess patient skin condition
+    - V T 56 [Content outline]: “Dermatophyte test” — dermatophyte testing is a biological specimen test to gather diagnostic information
+    - V T 61 [Content outline]: “Diagnostics and identification” — diagnostics of infectious/parasitic disease implies lab testing of specimens to assess condition
+    - V T 57L [Content outline]: “Bloodwork” — bloodwork under diagnostic nursing evidences testing biological specimens
+    - V T 57L [Content outline]: “Urinalysis” — urinalysis is a lab test on biological specimen for diagnosis
+    - V T 91 [Objective]: “Apply laboratory assessments to clinical patients” — applying lab assessments to patients directly constitutes testing biological specimens for diagnostic information
+    - V T 91 [Content outline]: “Blood testing” — blood testing is direct testing of a biological specimen
+    - V T 58L [Content outline]: “Deworming and fecal examination (as needed)” — fecal examination is a biological specimen test to inform patient condition
+    - V T 92 [Objective]: “Apply laboratory assessments for clinical patients” — testing biological specimens to inform patient condition is directly stated as applying lab assessments
+    - V T 92 [Content outline]: “Blood testing” — blood testing under laboratory assessments evidences testing biological specimens
+    - V T 84L [Content outline]: “Appropriate laboratory testing using equipment commonly found in clinical practices (CBC, chemistry analyzer, PCV, TP)” — testing biological specimens (blood) for patient condition
+- ● **Administer non-intravenous medications.**
+    - V T 55 [Objective]: “Demonstrate competence in preparing and administering medication.” — administering medications as prescribed
+    - V T 55 [Content outline]: “Parenteral routes of administration” — content covers non-intravenous administration routes such as subcutaneous and intramuscular
+    - V T 53B [Description]: “Clinical medical calculations utilized in preparation and administration of drugs, dosage determinations, intravenous fluid infusion” — course scope covers calculating doses for administering non-IV medications under veterinary orders
+    - V T 56 [Content outline]: “Subcutaneous fluids” — administering subcutaneous fluids is a non-intravenous medication/treatment administration
+    - V T 75B [Content outline]: “Heartworm prevention” — administering preventive medications like heartworm prevention evidences non-intravenous medication administration
+    - V T 75C [Content outline]: “Injections (SQ, IM, IV)” — administering injections is a core non-intravenous/parenteral medication administration skill
+    - V T 83A [Content outline]: “In-clinic prescriptions orders” — content covers preparing and executing in-clinic medication orders, i.e. administering non-IV medications
+    - V T 57L [Content outline]: “Deworming and fecal examination (as needed)” — deworming is administering a non-intravenous medication
+    - V T 83B [Objective]: “Interpret a drug order and a prescription, and label dispensed medications correctly.” — labeling and interpreting orders for non-IV medication administration directly evidences administering non-intravenous medications
+    - V T 91 [Content outline]: “Medication administration” — literal administration of medications to patients
+    - V T 92 [Content outline]: “Medication administration” — administering non-intravenous medications is core scope of medication administration content
+    - V T 86 [Lab content]: “Hands-on skills relating to restraint, physical exam, and medication administration for the mouse, rat, and rabbit.” — medication administration lab evidences non-intravenous medication administration
+    - V T 93 [Content outline]: “Medication administration” — medication administration in clinical setting evidences administering non-intravenous medications
+- ○ **Immunize patients.**
+    - V T 75B [Content outline]: “Principles of vaccination” — content covering administering vaccines to animals
+    - V T 75B [Content outline]: “Vaccines for dogs” — content on vaccines and vaccination principles evidences immunizing patients in veterinary care
+    - V T 57L [Content outline]: “Vaccination (as needed)” — lecture topic on performing vaccination of program animals
+- ● **Prepare medications or medical solutions.**
+    - V T 53B [Objective]: “Interpret and prepare medication labels involving capsule and tablet strength, dosages, and oral solution concentrations.” — preparing medication solutions/prescriptions
+    - V T 53B [SLO]: “quickly and accurately calculate common drug doseages, intravenous fluid rates and constant rate infusions” — computing dosages for drug preparation directly evidences preparing medications
+    - V T 53B [Content outline]: “Reconstitution of powdered drugs” — reconstituting powdered drugs is a concrete preparation-of-medication task
+    - V T 83A [Content outline]: “Filling and labeling prescriptions” — preparing medications for dispensing
+    - V T 83A [Objective]: “Interpret medication prescriptions.” — objective on interpreting prescriptions is directly constitutive of preparing medications
+    - V T 55 [Objective]: “Demonstrate competence in preparing and administering medication.” — literal statement of preparing medication
+    - V T 56 [Objective]: “Discuss the basic principles of fluid administration” — preparing fluids for administration is preparing a medical solution
+    - V T 56 [Content outline]: “Fluid selection” — selecting and preparing fluids evidences preparation of medical solutions
+    - V T 83B [Objective]: “Interpret a drug order and a prescription, and label dispensed medications correctly.” — interpreting orders and labeling dispensed medications is preparing medications for use
+    - V T 83B [Content outline]: “Filling and labeling prescriptions” — filling and labeling prescriptions is directly preparing medications
+    - V T 91 [Content outline]: “Drug labels and fill prescriptions accurately, if allowed by the practice” — filling prescriptions and labeling constitutes preparing medications
+    - V T 58L [Content outline]: “Vaccination (as needed)” — preparing vaccines for administration constitutes preparing a medical solution
+    - V T 93 [Content outline]: “Dosage calculations” — calculating dosages is a directly constitutive component of preparing medications
+- ● **Position patients for treatment or examination.**
+    - V T 55 [Objective]: “Demonstrate safe and proper low-stress methods of animal handling and restraint.” — restraining/positioning patients for treatment or exam
+    - V T 55 [Content outline]: “Canine restraint” — restraint content evidences positioning patients for treatment
+    - V T 75C [Objective]: “Describe proper restraint techniques of horses, goats, cattle, sheep, and pigs.” — positioning/restraining large animal patients for exam
+    - V T 75C [Lab content]: “Restraint of large animal species” — hands-on restraint lab evidences positioning patients for exam or treatment
+    - V T 75A [Content outline]: “Handling techniques in the veterinary clinic” — handling technique content covers positioning/restraining animals for exam or treatment
+    - V T 75A [Content outline]: “Low stress handling techniques for dogs and cats” — low stress handling directly covers positioning/restraining patients for procedures
+    - V T 53C [SLO]: “Describe proper restraint and handling of the horse, the cow, the sheep/goat, and the pig.” — restraint/handling directly evidences positioning patients for treatment or examination
+    - V T 70 [Content outline]: “Patient positioning” — positioning the patient for radiographic exposure is positioning patients for a diagnostic procedure
+    - V T 70 [Objective]: “Apply principles of radiation physics, exposure factor settings, and patient positioning to the production of diagnostic radiographs.” — applying patient positioning for radiographs is literally positioning patients for the imaging procedure
+    - V T 89 [Content outline]: “Safe restraint and handling” — positioning patients for exam/treatment is achieved through restraint and handling
+    - V T 57L [Content outline]: “Physical examination” — physical exams require positioning/restraining patients for exam
+    - V T 58L [Content outline]: “Surgical preparation of the patient” — positioning and preparing patient for surgical procedure
+    - V T 84 [Content outline]: “Positioning” — positioning patient as part of nursing care plan for anesthesia procedure
+    - V T 92 [Content outline]: “Principles of exposure, positioning, and troubleshooting” — positioning patients for radiographic examination evidenced by positioning principles under diagnostic imaging
+    - V T 66 [Objective]: “Demonstrate the proper handling and restraint techniques for these species.” — restraint of animals during exams/procedures directly matches positioning patients for treatment
+    - V T 66 [SLO]: “Demonstrate entry level skills of the husbandry, handling, medical care, routine clinical procedures” — handling/restraint skill for clinical procedures evidences positioning patients
+    - V T 84L [Content outline]: “Positioning” — positioning patient for surgical procedure listed under patient preparation
+    - V T 86 [Lab content]: “Hands-on skills relating to restraint, physical exam, and medication administration for the mouse, rat, and rabbit.” — restraint for exam/procedure is positioning patients for treatment or examination
+- ● **Treat medical emergencies.**
+    - V T 85 [SLO]: “Identify cardiopulmonary arrest in patients and how to initiate and perform CPR effectively.” — treating medical emergency via resuscitation
+    - V T 85 [Lab content]: “CPR (Recover Initiative)” — hands-on emergency resuscitation practice
+    - V T 85 [Description]: “Application of treatment protocols for shock, cardiopulmonary arrest, gastrointestinal crisis, wounds and fractures, toxicoses” — treatment protocols for emergencies directly evidence treating medical emergencies
+    - V T 84 [Content outline]: “Cardiopulmonary resuscitation procedures (recover initiative)” — CPR is emergency treatment of a medical emergency
+    - V T 84 [Objective]: “Explain how to recognize and respond to common anesthetic problems and emergencies” — directly evidences treating medical emergencies during anesthesia
+    - V T 92 [Content outline]: “Emergency and critical care” — treating medical emergencies is direct scope of emergency and critical care content
+- ● **Clean medical equipment or facilities.**
+    - V T 58L [Content outline]: “Care and maintenance of instruments” — cleaning surgical instruments/equipment
+    - V T 58L [Objective]: “Demonstrate aseptic techniques and universal precautions pertaining to surgical procedures” — aseptic technique includes cleaning of surgical equipment and facilities
+    - V T 75A [Content outline]: “Routine cleaning and sanitation” — cleaning facility to control disease spread
+    - V T 75A [Content outline]: “Care and safe use of cleaning equipment” — cleaning equipment content supports cleaning of the animal care/medical facility
+    - V T 89 [Content outline]: “Hospital maintenance and workplace safety” — cleaning facilities to control disease spread falls under hospital maintenance
+    - V T 57L [Lab content]: “Instruction of first-year students in basic principles of facilities management and maintenance care of resident animals.” — facilities maintenance includes cleaning animal housing to control disease spread
+- ● **Sterilize medical equipment or instruments.**
+    - V T 58L [Objective]: “Demonstrate proper techniques for the preparation of surgical packs, and operation of an autoclave and gas sterilizer” — sterilizing instruments via autoclave/gas sterilizer
+    - V T 89 [Content outline]: “Principles of asepsis” — sterilizing instruments/equipment is a direct application of asepsis principles taught in the internship
+    - V T 84L [Content outline]: “Surgical scrubbing; donning and doffing of PPE (gowns and gloves)” — sterile technique preparation directly supports instrument/equipment sterilization in surgery
+- ● **Assist healthcare practitioners during examinations or treatments.**
+    - PLO [Program outcome]: “demonstrate entry-level clinical skills competency in accordance with accreditation requirements” — clinical skills competency directly names assisting practitioners during exams/treatments as a core accredited skill set
+    - V T 55 [Objective]: “Perform basic steps in physical examination of dogs and cats.” — assisting exam by obtaining TPR/vitals
+    - V T 75A [Objective]: “Discuss the role of the technician in humane euthanasia.” — assisting with euthanasia
+    - V T 75A [Content outline]: “Role of veterinary technician” — euthanasia content addresses the technician's assisting role in euthanasia procedures
+    - V T 75C [Objective]: “Demonstrate physical examination of horses, cattle, and small ruminants.” — performing physical exam duties (e.g., temperature, pulse, respiration) assists practitioner during examination
+    - V T 75C [Lab content]: “Physical examination on horses and ruminants” — lab practice of physical exam assists veterinarian during examination
+    - V T 89 [Content outline]: “Physical examination of dogs, cats, and other animals” — assisting practitioners during exams is directly evidenced by physical examination content
+    - V T 91 [Objective]: “Contribute to the nursing care of a variety of veterinary patients” — nursing care assistance to veterinary staff during patient treatment
+    - V T 58L [Content outline]: “Physical examination” — performing physical exam duties assists veterinarian during examination
+    - V T 92 [Objective]: “Contribute to the nursing care of a variety of veterinary patients” — assisting healthcare practitioners with patient care is evidenced by contributing to nursing care
+    - V T 84L [Objective]: “Demonstrate the essential clinical skills related to anesthesiology.” — assisting veterinarian/surgeon during procedures via clinical skills
+    - V T 84L [Content outline]: “Surgical assisting” — explicit content line evidencing assisting practitioner during treatment
+    - V T 86 [Lab content]: “Hands-on skills relating to restraint, physical exam, and medication administration for the mouse, rat, and rabbit.” — assisting with physical exam of animals directly evidences assisting during examinations
+    - V T 93 [Content outline]: “Surgical assisting” — surgical assisting evidences assisting healthcare practitioners during treatments
+    - V T 93 [Objective]: “Participate as a contributing member of a veterinary medical team.” — participating on the veterinary medical team under a veterinarian evidences assisting practitioners during exams/treatments
+- ● **Treat dental problems or diseases.**
+    - V T 72 [SLO]: “Safely and correctly perform a complete dental prophylaxis on models and cadavers at an entry level of competency.” — treating dental problems via cleaning/prophylaxis
+    - V T 72 [Objective]: “Describe and perform a complete dental prophylaxis using hand and power dental tools” — performing dental prophylaxis is treating a dental problem literally
+    - V T 84L [Objective]: “Participate in a minimum of one complete oral health assessment and treatment under anesthesia for a dog or a cat.” — performing dental cleaning/treatment on live patient
+    - V T 84L [SLO]: “Competently perform a full dental cleaning and maintain sterility while assist a surgeon during routine spays and neuters.” — literal statement of performing dental cleaning
+    - V T 84L [Content outline]: “Dental prophylaxis (complete oral health assessment and treatment or COHAT)” — content on treating dental problems/cleaning
+    - V T 93 [Objective]: “Perform complete dental prophylaxis on veterinary patients.” — dental prophylaxis (cleaning/polishing teeth) literally evidences treating dental problems
+    - V T 93 [Description]: “complete dental prophylaxis, anesthetic procedures, and complex therapeutics” — dental prophylaxis in clinical scope evidences performing dental cleaning work
+- ● **Administer basic health care or medical treatments.**
+    - V T 55 [Content outline]: “Intravenous” — administering IV as basic medical treatment
+    - V T 56 [Content outline]: “Anal sac expression” — basic health care treatment procedure
+    - V T 56 [Content outline]: “Ear exam and ear cleaning” — ear cleaning/flushing is listed explicitly as a basic health care treatment task for this activity
+    - V T 92 [Content outline]: “Anal sacs” — basic medical treatment procedure (anal sac expression) evidenced by anal sacs content topic
+    - V T 92 [Objective]: “Apply nursing skills” — administering basic health care treatments evidenced by applying nursing skills
+- ● **Collect biological specimens from patients.**
+    - V T 81 [Objective]: “Describe and demonstrate the safe and proper collections, handling, and storage of clinical samples.” — collecting biological specimens from patients
+    - V T 81 [Content outline]: “Safe, low stress, efficient collection of samples from patients” — sample collection directly from patients evidences collecting biological specimens
+    - V T 55 [Objective]: “Perform venipuncture.” — collecting blood specimen from patient
+    - V T 55 [Content outline]: “Venipuncture” — blood collection technique content directly evidences specimen collection
+    - V T 56 [Content outline]: “Ear cytology” — ear cytology requires collecting a sample from the patient for lab testing
+    - V T 75C [Content outline]: “Phlebotomy” — phlebotomy is blood sample collection from a patient for lab testing
+    - V T 57L [Content outline]: “Fecal exams” — fecal exam requires collecting a biological specimen from the animal
+    - V T 57L [Content outline]: “Skin scraping” — skin scraping is direct collection of a biological specimen
+    - V T 91 [Content outline]: “Blood collection” — literal collection of a biological specimen from a patient
+    - V T 58L [Content outline]: “Deworming and fecal examination (as needed)” — fecal collection for examination constitutes collecting a biological specimen
+    - V T 92 [Objective]: “Demonstrate venipuncture skills” — collecting biological specimens (blood) directly stated as venipuncture skill demonstration
+    - V T 92 [Content outline]: “Blood collection skills in multiple sizes of patients” — collecting biological specimens evidenced by blood collection skills content
+    - V T 66 [Objective]: “Demonstrate the proper grooming, sample collection techniques, and nursing care for the exotic species.” — sample collection technique evidences collecting biological specimens from patients
+    - V T 66 [Content outline]: “Grooming, sample collection techniques, and nursing care” — sample collection content evidences collecting biological specimens
+- ○ **Prepare biological specimens for laboratory analysis.**
+    - V T 81 [Content outline]: “Sample collection, storage, and preparation” — preparing specimens for laboratory analysis
+    - V T 81 [Content outline]: “Fine needle aspirates and impression smears” — preparing cytology specimens for lab exam
+    - V T 81 [Content outline]: “Correct processing and storage of samples” — preparing and storing samples for lab testing evidences preparing biological specimens for analysis
+    - V T 56 [Content outline]: “Fluorescein stain” — preparing eye stain for ophthalmic diagnostic exam evidences preparing specimens for analysis
+    - V T 57L [Content outline]: “Parasite identification” — preparing samples for parasite ID is preparing specimens for lab analysis
+    - V T 91 [Content outline]: “Cytology prep procedures” — preparation of cytology specimens for laboratory analysis
+    - V T 92 [Content outline]: “Cytology prep procedures” — preparing biological specimens for lab analysis evidenced by cytology prep procedures
+- ○ **Prepare patients physically for medical procedures.**
+    - V T 84L [Content outline]: “Clipping and scrubbing” — preparing patient physically for surgery
+    - V T 58L [Content outline]: “Aseptic preparation of surgical sites” — preparing patient for surgical procedure
+- ● **Communicate detailed medical information to patients or family members.**
+    - V T 75B [Content outline]: “Talking to clients about vaccination” — communicating detailed medical information to owners
+    - V T 75A [Content outline]: “Client education” — client education content within the medical record plan covers communicating medical information to clients
+    - V T 60 [Objective]: “Demonstrate effective client communication” — Communicating with clients is the constitutive component of relaying medical information to patients/family
+    - V T 61 [Content outline]: “Client education” — communicating disease management information to clients evidences detailed medical communication
+    - V T 61 [SLO]: “create a handout using simplified language geared toward client education that discusses common signalment, etiology, pathophysiology, treatment, monitoring and prognosis” — explicit production of client-facing medical communication
+    - V T 89 [Content outline]: “Client education” — communicating medical information to clients is evidenced by client education content
+    - V T 83B [SLO]: “Demonstrate the ability to educate clients on medication administration plans and evaluate client understanding” — educating clients on medication plans is communicating detailed medical information to patients/family
+    - V T 91 [Content outline]: “Client communication” — communicating with clients in clinical setting on patient care information
+    - V T 93 [Description]: “client education, development of patient care plans” — client education on patient care plans evidences communicating medical information to clients
+- ● **Operate diagnostic imaging equipment.**
+    - V T 70 [SLO]: “Demonstrate entry level skills in producing and evaluating a diagnostic radiograph.” — operating diagnostic imaging (radiograph) equipment
+    - V T 70 [Lab content]: “Demonstration and performance of all steps required to produce a diagnostic radiograph, including proper exposure settings and patient positioning” — hands-on operation of x-ray equipment
+    - V T 70 [Objective]: “Integrate the knowledge of the various factors that affect radiographic image quality, and perform proper radiographic examinations” — performing radiographic examinations requires operating the X-ray/ultrasound diagnostic imaging equipment
+    - V T 57L [Content outline]: “Diagnostic imaging” — diagnostic imaging content directly evidences operating imaging equipment
+    - V T 91 [Objective]: “Assist in diagnostic imaging” — literal operation/assistance with diagnostic imaging equipment
+    - V T 72 [Objective]: “Identify the components of a dental radiography unit, select exposure factors, and safely expose and interpret dental radiographs” — operating a dental radiography unit to expose radiographs is operating diagnostic imaging equipment
+    - V T 92 [Objective]: “Assist in diagnostic imaging” — operating diagnostic imaging equipment directly stated as assisting in diagnostic imaging
+    - V T 92 [Content outline]: “Taking radiographs” — operating imaging equipment evidenced by taking radiographs content
+    - V T 93 [Objective]: “Participate in radiography procedures.” — participating in radiography procedures literally evidences operating diagnostic imaging equipment
+- ● **Process x-rays or other medical images.**
+    - V T 91 [Content outline]: “Taking radiographs” — producing/processing x-ray images
+    - V T 72 [Objective]: “Identify the components of a dental radiography unit, select exposure factors, and safely expose and interpret dental radiographs.” — processing dental x-ray images
+    - V T 72 [Content outline]: “Dental radiology” — dental radiology content covering exposure and interpretation evidences processing of x-ray images
+    - V T 70 [Lab content]: “Demonstration and performance of all steps required to produce a diagnostic radiograph, including proper exposure settings and patient positioning” — producing the diagnostic radiograph through exposure and processing directly evidences processing x-ray images
+    - V T 70 [Content outline]: “Radiographic recording” — recording the radiographic image is a constitutive step of processing x-rays
+    - V T 93 [Content outline]: “Dental radiographs” — producing dental radiographs evidences processing diagnostic images
+    - V T 93 [Lab content]: “Radiography” — hands-on radiography lab work evidences processing x-rays
+- ○ **Prepare medical supplies or equipment for use.**
+    - V T 58L [Content outline]: “Preparation of sterile surgical packs” — preparing medical supplies for surgical use
+    - V T 58L [Content outline]: “Final prep in surgical suite” — preparing surgical suite equipment/supplies for use in procedure
+    - V T 58L [Content outline]: “Preparing packs” — preparing sterile surgical packs is preparing medical supplies for use
+    - V T 84 [Content outline]: “Assembling an emergency "crash kit"” — preparing emergency medical supplies/equipment for use
+- ● **Maintain medical equipment or instruments.**
+    - V T 70 [Content outline]: “Cleaning, regular maintenance of machine” — maintaining imaging equipment
+    - V T 70 [Content outline]: “Properly care for equipment” — caring for and maintaining the X-ray machine evidences maintaining medical equipment
+    - V T 84 [Content outline]: “Care and maintenance” — maintaining anesthesia machine/equipment
+    - V T 81 [Content outline]: “Manual and automated laboratory equipment” — training on laboratory equipment including its proper use and maintenance evidences maintaining medical equipment
+    - V T 85 [Objective]: “care and maintenance of emergency equipment” — objective explicitly lists maintenance of emergency equipment as technician role
+    - V T 58L [Content outline]: “Operation and maintenance of the autoclave” — maintaining sterilization equipment to ensure proper working condition
+    - V T 72 [Objective]: “Explain and demonstrate the proper use, care, and maintenance of common dental equipment and tools” — maintaining dental equipment directly evidences maintaining medical instruments
+    - V T 84L [Content outline]: “Equipment care and maintenance” — maintaining anesthesia machine/monitoring equipment for proper function
+- ● **Apply bandages, dressings, or splints.**
+    - V T 56 [Objective]: “Demonstrate proper application of bandages and splints” — applying bandages/splints
+    - V T 56 [Lab content]: “Bandages and splints” — hands-on lab practice applying bandages and splints
+    - V T 58L [Objective]: “Demonstrate suturing of non-living tissues” — suturing wounds
+    - V T 75C [Content outline]: “Bandaging horses” — applying bandages to animals directly evidences dressing wounds/applying bandaging
+    - V T 75C [Lab content]: “Bandaging on horses during field trips and on models” — hands-on bandaging lab evidences applying bandages
+- ○ **Schedule patient procedures or appointments.**
+    - V T 60 [Content outline]: “Making and managing appointments” — scheduling patient appointments
+    - V T 89 [Content outline]: “Office and hospital procedures and client relations” — scheduling appointments falls under office and hospital procedures in a clinical setting
+- ● **Provide health and wellness advice to patients, program participants, or caregivers.**
+    - V T 75B [SLO]: “Discuss the role of a registered veterinary technician in pain management, nutrition, and preventative care in dogs and cats.” — providing wellness advice to caregivers
+    - V T 75B [Objective]: “Explain a preventive health plan for the dog and the cat, through all life stages” — explaining preventive health plans directly constitutes providing health/wellness advice
+    - V T 75B [Content outline]: “Talking to clients about nutrition” — advising clients on nutrition constitutes providing health and wellness advice to caregivers
+    - V T 72 [Objective]: “Educate clients about common dental problems and proper care and prevention.” — providing health advice to caregivers
+    - V T 72 [SLO]: “Prepare client education regarding home dental care for companion animals” — client education on home dental care is advice to caregivers on animal health care
+    - V T 53C [Objective]: “Explain feeding and nutritional requirements of horses and ruminants.” — nutrition knowledge as basis for wellness/nutrition advice covered explicitly
+    - V T 61 [Content outline]: “Client education” — client education on disease evidences providing health advice to caregivers
+    - V T 83B [Objective]: “Create client education plans.” — client education plans on medication constitute health advice to caregivers
+    - V T 92 [Content outline]: “Client communication” — providing health/wellness advice to caregivers evidenced by client communication content in clinical setting
+- ● **Maintain inventory of medical supplies or equipment.**
+    - V T 60 [Content outline]: “Inventory control” — maintaining inventory of medical supplies
+    - V T 60 [Objective]: “Discuss principles of personnel, facilities, and inventory management” — maintaining supply inventory
+- ○ **Order medical supplies or equipment.**
+    - V T 60 [Content outline]: “Inventory control” — ordering supplies as part of inventory management
+- ○ **Supervise patient care personnel.**
+    - V T 57L [Description]: “Opportunity to participate in the health care team in a supervisory role with increased organizational responsibility.” — supervisory role over care personnel/first-year students
+    - V T 57L [Lab content]: “Instruction of first-year students in basic principles of facilities management and maintenance care of resident animals.” — supervising/training junior students
+    - V T 60 [Content outline]: “Principles of personnel management, and skills and personal characteristics of good managers” — Personnel management content evidences supervising patient care personnel
+- ○ **Train medical providers.**
+    - V T 57L [Lab content]: “Instruction of first-year students in basic principles of facilities management and maintenance care of resident animals.” — training other students directly
+- ● **Merchandise healthcare products or services.**
+    - V T 60 [Objective]: “Describe a variety of marketing, promotion, and sales techniques” — merchandising healthcare products/services
+- ● **Perform clerical work in medical settings.**
+    - V T 60 [Content outline]: “Receptionist skills and duties” — performing clerical work in medical setting
+    - V T 89 [Objective]: “Properly perform office and hospital procedures” — clerical work in medical settings is directly evidenced by office and hospital procedures objective
+- ○ **Process medical billing information.**
+    - V T 60 [Content outline]: “Basic bookkeeping” — processing billing/financial information
+- ● **Assist patients with hygiene or daily living activities.**
+    - V T 56 [Content outline]: “Grooming dogs” — assisting patients with hygiene/grooming
+    - V T 56 [Content outline]: “Nail trim: dog and cat” — assisting patients with hygiene activity
+    - V T 66 [Objective]: “Demonstrate the proper grooming, sample collection techniques, and nursing care for the exotic species.” — grooming exotic animals evidences assisting patients with hygiene/daily living activities
+    - V T 66 [Content outline]: “Grooming, sample collection techniques, and nursing care” — grooming content line evidences hygiene/daily living care of animals
+
+### Dropped
+
+- act 13 · V T 54A · “Take animals into treatment areas and assist with physical examinations” — quote not verbatim in that course
+- act 13 · V T 55 · “TPR” — malformed
+- act 1 · V T 57L · “ECG” — malformed
+- act 8 · V T 84 · “Drugs” — malformed
+- act 1 · V T 84L · “Safely and competently prepare, induce, maintain, and recover ... from general anesthesia ” — quote not verbatim in that course
+- act 2 · V T 55 · “Perform basic steps in physical examination of dogs and cats.” — adjudicated: d) physical exam evidences assisting healthcare practitioners/exam duties, not monitoring during treatment
+- act 3 · V T 57L · “Perform diagnostic nursing skills on shelter and program animals.” — adjudicated: b) diagnostic nursing skills precedes/is broader than specifically monitoring post-surgical recovery
+- act 6 · V T 83B · “Discharge instructions” — adjudicated: a) discharge instructions is a topic heading without performable medication-administration content
+- act 19 · V T 60 · “Client admission and discharge procedures” — adjudicated: a) admission/discharge procedures topic heading lacks specific medical-information-communication content
+- act 22 · V T 58L · “Identify, properly handle, and maintain common surgical instruments” — adjudicated: d) handling/maintaining surgical instruments evidences maintaining equipment, not preparing treatment rooms
+- act 1 · V T 55 · “Demonstrate competence in preparing and administering medication.” — adjudicated: d) general medication administration objective evidences non-IV medication administration, not specifically anesthetics/sedatives
+- act 11 · V T 55 · “Discuss the state and federal laws that govern safety in the veterinary workplace and desc” — adjudicated: c) Cal-OSHA safety compliance is generic workplace safety, not cleaning facilities content
+- act 13 · V T 75A · “Daily veterinary care of the teaching animal colony” — adjudicated: d) daily colony care is general animal husbandry, not assisting practitioner during exam/treatment
+- act 33 · V T 53B · “Doctors' orders and prepare prescription labels” — adjudicated: d) prescription label preparation evidences medication preparation, not billing/clerical activity
+- act 16 · V T 54B · “Participate in a necropsy procedure as an essential skill to apply anatomical knowledge” — adjudicated: d) necropsy is postmortem examination, not collecting specimens from living patients for lab testing
+- act 11 · V T 56 · “Aseptic technique” — adjudicated: d) aseptic technique for catheter placement evidences a different activity (sterile procedure technique), not facility/equipment cleaning
+- act 30 · V T 60 · “Procedures for hiring and firing employees: job descriptions, interviews, evaluations” — adjudicated: c) hiring/firing/evaluation procedures are generic management skills, not training medical providers
+- act 5 · V T 75B · “Perform physical assessment of teaching animals during animal care shifts” — adjudicated: d) physical assessment evidences monitoring patient condition, not lab testing of specimens
+- act 26 · V T 53C · “Veterinary technician's role in large animal clinical practice” — adjudicated: a) role description is a topic heading without specific counseling content
+- act 7 · V T 61 · “Explain how vaccinations protect animals from disease.” — adjudicated: b) explaining how vaccines work is precondition knowledge, not administering the vaccine
+- act 26 · V T 61 · “Explain the role of the veterinary technician in "One Health."” — adjudicated: a) 'One Health' role explanation is a topic without specific counseling content on animal health/nutrition/behavior
+- act 17 · V T 81 · “Demonstrate skill in the proper use of various types of clinical laboratory equipment.” — adjudicated: d) lab equipment use skill is generic equipment competency, not specifically preparing specimens
+- act 23 · V T 70 · “List and explain the parts of an X-ray machine and the ancillary equipment and supplies re” — adjudicated: b) knowledge of machine parts is precondition knowledge, not the maintenance activity itself
+- act 6 · V T 83A · “Perform medication calculations.” — adjudicated: d) medication calculations evidences preparing medications, not administering non-IV medications
+- act 1 · V T 89 · “Follow doctor's orders” — adjudicated: a) 'follow doctor's orders' is a topic heading without specific anesthesia content
+- act 26 · V T 57L · “Environmental enrichment program” — adjudicated: d) environmental enrichment is animal welfare/husbandry content, not health/nutrition/behavior counseling to caregivers
+- act 27 · V T 83B · “Estimates” — adjudicated: a) 'Estimates' is a topic heading without inventory-management content
+- act 22 · V T 85 · “Care and maintenance of emergency equipment and supplies” — adjudicated: d) equipment care/maintenance evidences maintaining equipment, not preparing treatment rooms for surgery
+- act 1 · V T 91 · “Indications, contraindications, and therapeutic effects of medications” — adjudicated: d) general medication indications/contraindications content is not specific to anesthetics/sedatives
+- act 9 · V T 91 · “Assist in diagnostic imaging” — adjudicated: d) assisting in diagnostic imaging evidences imaging assistance, not positioning patients specifically
+- act 27 · V T 91 · “Patient needs” — adjudicated: a) 'Patient needs' is a topic heading with no performable inventory content
+- act 4 · V T 58L · “Record keeping” — adjudicated: a) 'Record keeping' generic heading within surgical pack section lacks medical facility record specificity
+- act 18 · V T 58L · “Demonstrate placement of intravenous catheters” — adjudicated: d) IV catheter placement evidences a different task (catheterization/basic treatment), not surgical prep like shaving
+- act 34 · V T 58L · “Care of all program animals” — adjudicated: d) general care of program animals is animal husbandry, not specifically patient hygiene/grooming
+- act 22 · V T 72 · “Care and use of common instruments and equipment” — adjudicated: d) care/use of dental instruments evidences maintaining equipment, not preparing treatment rooms
+- act 3 · V T 92 · “Emergency and critical care” — adjudicated: a) 'Emergency and critical care' is a topic heading without specific post-treatment monitoring content
+- act 8 · V T 92 · “Analgesics” — adjudicated: d) analgesics topic evidences pain-control medication content, more aligned with administering anesthetics/sedatives than preparing medications generally, but as listed lacks preparation-specific content
+- act 13 · V T 92 · “Assist in diagnostic imaging” — adjudicated: d) assisting in diagnostic imaging evidences imaging assistance activity, not general exam/treatment assistance
+- act 21 · V T 92 · “Radiation safety” — adjudicated: a) 'Radiation safety' is a topic heading without image-processing content
+- act 19 · V T 92 · “Patient and staff needs” — adjudicated: a) 'Patient and staff needs' is a vague topic heading lacking client-communication specificity
+- act 26 · V T 66 · “Discuss the husbandry needs of the exotic species.” — adjudicated: b) discussing husbandry needs is precondition knowledge, not counseling caregivers
+- act 11 · V T 84L · “Equipment care and maintenance” — adjudicated: d) equipment care/maintenance evidences maintaining equipment, not cleaning facilities
+- act 22 · V T 84L · “Moving into surgery” — adjudicated: a) 'Moving into surgery' is a vague topic heading without preparation-specific content
+- act 5 · V T 86 · “Biomethodology techniques” — adjudicated: a) 'Biomethodology techniques' is a topic heading without specific lab-testing content
+- act 16 · V T 86 · “Biomethodology techniques” — adjudicated: a) 'Biomethodology techniques' is a topic heading without specific specimen-collection content
+- act 26 · PLO · “the veterinary nurse's role in the health of animals, humans, and the planet” — adjudicated: b) precondition: naming a role or orientation toward 'the health of animals, humans, and the planet' is a values/knowledge framing that precedes and is broader than the specific performable task of counseling patients/caregivers on health care, behavior, or nutrition issues.
+
+## Foothill College — Associate in Science Degree, Veterinary Technology → Veterinary Assistants and Laboratory Animal Caretakers (SOC 31-9096)
+23 of 27 activities at outcome level, 27 with any evidence.
+
+- ● **Hold patients to ensure proper positioning or safety.**
+    - V T 55 [Objective]: “Demonstrate safe and proper low-stress methods of animal handling and restraint.” — restraint of animals for procedures matches holding patients for positioning/safety
+    - V T 55 [SLO]: “Obtain and demonstrate foundation skills needed as a registered veterinary technician including restraint, physical examination, syringe handling, medication administration and venipuncture.” — outcome lists restraint as a core skill
+    - V T 75C [Objective]: “Describe proper restraint techniques of horses, goats, cattle, sheep, and pigs.” — restraint technique for large animals evidences holding patients
+    - V T 75C [Lab content]: “Restraint of large animal species” — hands-on restraint lab evidences holding patients to ensure proper positioning or safety
+    - V T 75A [Content outline]: “Handling techniques in the veterinary clinic” — content on clinic handling techniques evidences holding/restraining animals for procedures
+    - V T 75A [Content outline]: “Low stress handling techniques for dogs and cats” — handling technique content directly involves restraint for positioning/safety
+    - V T 53C [SLO]: “Describe proper restraint and handling of the horse, the cow, the sheep/goat, and the pig.” — restraint and handling of large animals is holding patients for positioning/safety
+    - V T 70 [Content outline]: “Patient positioning” — positioning patients for radiographs requires holding/restraining animals for proper positioning during the procedure
+    - V T 89 [Content outline]: “Safe restraint and handling” — restraint/handling content directly evidences holding patients for safety
+    - V T 85 [Content outline]: “Primary and secondary survey of patient” — restraining/positioning patients for physical survey and treatment in emergency setting
+    - V T 58L [Lab content]: “Practical skills involving surgical assisting.” — surgical assisting involves holding/positioning patients for procedures
+    - V T 84 [Content outline]: “Positioning” — positioning patient under anesthesia in nursing care plan is a direct component of holding/positioning for procedures
+    - V T 66 [Objective]: “Demonstrate the proper handling and restraint techniques for these species.” — restraint techniques directly evidence holding/restraining animals for safety and positioning
+    - V T 66 [Content outline]: “Proper handling and restraint techniques for these species” — content topic directly covers restraint of exotic patients
+    - V T 84L [Content outline]: “Patient preparation for dog spay, cat spay, dog neuter, cat neuter surgical procedures” — positioning patients for surgical procedures requires holding/restraining for safety
+    - V T 84L [Content outline]: “Positioning” — positioning patient for anesthesia/surgery involves holding to ensure safety
+    - V T 86 [Lab content]: “Hands-on skills relating to restraint, physical exam, and medication administration for the mouse, rat, and rabbit.” — restraint of animals evidences holding patients for positioning/safety
+    - V T 86 [Content outline]: “Restraint” — restraint content under husbandry/nursing evidences holding animals safely
+    - V T 93 [Content outline]: “Surgical assisting” — surgical assisting requires holding/positioning animals during procedures
+    - V T 95 [Content outline]: “Animal Nursing” — animal nursing domain includes restraint/positioning of patients
+- ● **Monitor patients to detect health problems.**
+    - V T 84L [Objective]: “Perform a thorough post-anesthetic evaluation of a veterinary patient and develop a nursing care plan.” — post-anesthetic evaluation is monitoring recovering patients for problems
+    - V T 84L [Content outline]: “Critical considerations in the recovery period” — monitoring patient during recovery for unusual changes
+    - V T 85 [Content outline]: “Monitoring of patient condition during and after treatment” — monitoring patients post-treatment to detect health problems
+    - V T 85 [Content outline]: “Post-resuscitation care and monitoring” — monitoring recovering patients for unusual changes
+    - V T 75B [Content outline]: “Nursing assessments” — monitoring patient animals for health problems as part of nursing assessment
+    - V T 61 [Content outline]: “Nursing assessments” — monitoring patients for disease response is a nursing assessment task
+    - V T 89 [Content outline]: “Nursing assessment” — nursing assessment involves monitoring patients to detect health problems
+    - V T 57L [SLO]: “Perform diagnostic nursing skills on shelter and program animals.” — diagnostic nursing on program animals directly evidences monitoring patients to detect health problems
+    - V T 91 [Objective]: “Differentiate between normal and abnormal in the assessment of patients” — assessing patients to detect abnormal changes is monitoring for health problems
+    - V T 91 [Content outline]: “Normal and abnormal patient assessments” — identifying abnormal findings evidences monitoring patients for health problems
+    - V T 84 [Content outline]: “Monitoring during recovery” — monitoring recovering patients for changes directly matches the task
+    - V T 84 [Objective]: “Explain best practices in anesthetic monitoring” — monitoring patients for problems literally matches this outcome
+    - V T 92 [Objective]: “Differentiate between normal and abnormal assessments of patients” — monitoring patients to detect health problems requires distinguishing normal from abnormal status
+    - V T 92 [Content outline]: “Normal and abnormal patient assessments” — content on identifying abnormal findings evidences monitoring for health problems
+    - V T 86 [Content outline]: “Colony health surveillance techniques” — ongoing monitoring of animal colonies to detect health problems
+    - V T 86 [Content outline]: “Sentinel animals” — sentinel monitoring is a technique for detecting health problems in a colony
+    - V T 93 [Content outline]: “Patient assessments” — monitoring patients to detect health problems is a patient assessment activity
+    - V T 93 [Content outline]: “Monitoring of anesthetized patients” — monitoring anesthetized/recovering patients for unusual changes
+    - V T 95 [Content outline]: “Animal Nursing” — animal nursing domain includes monitoring patients
+- ● **Give medications or immunizations.**
+    - V T 55 [Objective]: “Demonstrate competence in preparing and administering medication.” — administering medication directly matches activity
+    - V T 84L [Content outline]: “Patient monitoring” — monitoring anesthetic effects during surgery
+    - V T 84L [SLO]: “Safely and competently prepare, induce, maintain, and recover and provide post procedure care for dogs and cats from general anesthesia for spays and neuters” — administering anesthetic agents and monitoring effects directly matches administering anesthesia
+    - V T 84L [Content outline]: “Local anesthesia” — administering local anesthetic drugs
+    - V T 53B [Content outline]: “Doctors' orders and prepare prescription labels” — preparing medication per doctor's order evidences giving/preparing medications for administration
+    - V T 56 [Content outline]: “Subcutaneous fluids” — administering subcutaneous fluids is giving medications to an animal
+    - V T 75B [Content outline]: “Vaccines for dogs” — administering immunizations as part of preventive care content
+    - V T 75B [Content outline]: “Heartworm prevention” — administering preventive medication to animals
+    - V T 75C [Content outline]: “Injections (SQ, IM, IV)” — administering injections is giving medications/immunizations
+    - V T 83A [SLO]: “Articulate "The Five Rights" for safe and correct administration of veterinary medications to animal patients” — literal SLO on administering medications to animal patients
+    - V T 83A [Content outline]: “Rights of medication administration” — content covers correct administration of medications, constitutive of giving medications
+    - V T 57L [Content outline]: “Vaccination (as needed)” — administering vaccinations to program animals evidences giving immunizations
+    - V T 83B [Content outline]: “Emergency medications” — covers administering emergency medications to patients
+    - V T 85 [Objective]: “Describe the pharmacological actions, indications, and methods of administration of various common emergency drugs” — learning to administer emergency medications directly evidences giving medications
+    - V T 85 [Content outline]: “Drugs used in basic and advanced life support” — administration of emergency drugs during resuscitation
+    - V T 91 [Content outline]: “Medication administration” — administering medications directly matches giving medications
+    - V T 58L [Content outline]: “Vaccination (as needed)” — administering vaccinations is a directly listed content item
+    - V T 72 [Content outline]: “Local anesthetic block techniques for pain control” — administering local anesthetic blocks is giving medications to the animal patient
+    - V T 84 [Objective]: “Develop a comprehensive anesthetic plan, from intake through recovery” — developing anesthetic plan constitutes administering anesthetics as prescribed
+    - V T 84 [Content outline]: “Pre-anesthetic drugs” — administering pre-anesthetic drugs is giving medications directly
+    - V T 92 [Content outline]: “Medication administration” — literal content on administering medications to patients
+    - V T 92 [Content outline]: “Anesthetics” — content on anesthetics evidences administering anesthesia to animals
+    - V T 86 [Lab content]: “Hands-on skills relating to restraint, physical exam, and medication administration for the mouse, rat, and rabbit.” — medication administration lab evidences giving medications
+    - V T 86 [Content outline]: “Anesthesia” — administering anesthesia to laboratory animals evidences giving medications
+    - V T 93 [Objective]: “Demonstrate entry-level participation in anesthetic events.” — administering anesthetics during procedures matches giving medications
+    - V T 93 [Content outline]: “Medication administration” — directly evidences giving medications to patients
+    - V T 95 [Content outline]: “Pharmacy and Pharmacology” — pharmacology domain evidences administering medications
+    - V T 95 [Content outline]: “Veterinary Anesthesia” — anesthesia domain evidences administering anesthetics and monitoring effects
+- ● **Control prescription refills or authorizations.**
+    - V T 83B [Objective]: “Interpret a drug order and a prescription, and label dispensed medications correctly.” — filling prescriptions matches control of refills/authorizations
+    - V T 83B [Content outline]: “Filling and labeling prescriptions” — filling prescriptions directly evidences prescription refill/authorization control
+    - V T 53B [Content outline]: “Doctors' orders and prepare prescription labels” — preparing prescription labels from doctors' orders is directly constitutive of controlling prescription refills/authorizations
+    - V T 83A [Objective]: “Interpret medication prescriptions.” — literal objective on interpreting prescriptions, constitutive of controlling prescription refills/authorizations
+    - V T 83A [Content outline]: “Filling and labeling prescriptions” — content covers filling prescriptions, matching prescription refill authorization task
+    - V T 91 [Content outline]: “Drug labels and fill prescriptions accurately, if allowed by the practice” — filling prescriptions directly matches controlling prescription refills
+    - V T 95 [Content outline]: “Pharmacy and Pharmacology” — pharmacy domain evidences handling prescriptions
+- ● **Clean patient rooms or patient treatment rooms.**
+    - V T 75A [Content outline]: “Routine cleaning and sanitation” — cleaning animal holding areas to control disease matches
+    - V T 75A [Objective]: “Demonstrate standard operating procedures for veterinary technology laboratory and facilities care.” — facilities care SOPs evidence cleaning of animal holding/treatment areas to control disease spread
+    - V T 75C [SLO]: “Describe proper biosecurity and maintenance of large animal housing areas.” — maintenance of housing areas for biosecurity evidences cleaning patient/animal holding areas to control disease spread
+    - V T 89 [Objective]: “Properly follow hospital maintenance and workplace safety guidelines” — hospital maintenance includes cleaning patient/treatment areas to control disease spread
+    - V T 57L [Lab content]: “Instruction of first-year students in basic principles of facilities management and maintenance care of resident animals.” — facilities/maintenance care of resident animal areas evidences cleaning animal holding areas
+    - V T 58L [Lab content]: “Basic principles of facilities management and maintenance care of resident animals.” — facilities maintenance includes cleaning animal holding areas to control disease
+    - V T 86 [Content outline]: “Sanitation practices” — sanitation of animal caging/facilities evidences cleaning patient areas to control disease
+- ● **Assess physical conditions of patients to aid in diagnosis or treatment.**
+    - V T 75B [Objective]: “Perform physical assessment of teaching animals during animal care shifts” — assessing physical condition to detect illness/injury
+    - V T 75B [Content outline]: “DVM versus RVT assessment” — assessment of animal condition to aid diagnosis
+    - V T 61 [Content outline]: “Clinical signs” — recognizing clinical signs aids diagnosis of illness/injury
+    - V T 61 [Objective]: “Explain the etiology, pathogenesis, clinical signs, diagnostics, treatment, nursing assessments, and clinical management of selected diseases organized by body systems.” — covers assessing clinical signs to aid diagnosis
+    - V T 61 [Content outline]: “Clinical signs
+    - Non-specific
+    - Localizing” — recognizing clinical signs is assessing physical condition for diagnosis
+    - V T 55 [Objective]: “Perform basic steps in physical examination of dogs and cats.” — physical exam performance evidences assessing physical condition for diagnosis
+    - V T 75A [SLO]: “Discuss the human animal bond, medical records including SOAP (subjective, objective, assessment and plan) technique and behavior assessments.” — SOAP assessment and behavior assessments directly evidence assessing physical/behavioral condition to aid diagnosis
+    - V T 54B [SLO]: “Recognize and identify the normal anatomy of selected organs and organ systems of domestic animals and relate it to the clinical practice” — identifying normal vs. abnormal anatomical structure is directly constitutive of assessing physical condition to aid diagnosis
+    - V T 56 [SLO]: “Demonstrate knowledge and competency in common diagnostics within the veterinary field, including fluid administration, dermatological, ophthalmic and otic diagnostics” — performing dermatologic/ophthalmic diagnostics assesses physical condition to aid diagnosis
+    - V T 53C [Content outline]: “Nursing assessments in large animals” — nursing assessment involves examining animals for clinical signs of illness
+    - V T 53C [SLO]: “List and explain the clinical significance and nursing care for medical conditions and diseases of a horse, cow and small ruminant.” — identifying clinical significance of disease conditions evidences assessing physical condition for diagnosis
+    - V T 75C [Objective]: “Demonstrate physical examination of horses, cattle, and small ruminants.” — physical exam directly evidences assessing physical condition to aid diagnosis
+    - V T 75C [Content outline]: “History taking” — history taking is part of assessing physical condition for diagnosis
+    - V T 75C [Objective]: “Describe an equine lameness examination.” — lameness exam is assessing physical condition to aid diagnosis
+    - V T 81 [SLO]: “Evaluate examples of diagnostics and determine nursing assessments and clinical signs appropriate for the patient.” — evaluating clinical signs to inform diagnosis is assessing physical condition of patients
+    - V T 70 [Lab content]: “Identification of organs, normal and abnormal pathology” — identifying abnormal pathology on images is assessing physical condition to aid diagnosis
+    - V T 89 [Content outline]: “Physical examination of dogs, cats, and other animals” — physical exam evidences assessing physical conditions to aid diagnosis
+    - V T 57L [Content outline]: “Physical examination” — physical exam of program animals evidences assessing physical condition to aid diagnosis
+    - V T 85 [Objective]: “Discuss the role of the veterinary technician in the care of emergency patients, including: initial patient assessment, application of diagnostic and therapeutic techniques, monitoring, and care and maintenance of emergency equipment” — initial patient assessment evidences assessing physical condition to aid diagnosis/treatment
+    - V T 85 [SLO]: “Recognize and discuss the history and clinical signs of veterinary emergency conditions including the pathophysiology and effects of shock.” — recognizing clinical signs to assess condition directly evidences the activity
+    - V T 91 [Objective]: “Differentiate between normal and abnormal in the assessment of patients” — assessing physical condition to detect abnormalities aids diagnosis
+    - V T 91 [Content outline]: “Physical findings” — documenting physical findings evidences assessing patient condition
+    - V T 58L [Content outline]: “Physical examination” — physical exam directly evidences assessing physical condition of patients
+    - V T 72 [Lab content]: “Performance of a complete oral examination, dental charting, and the complete dental prophylaxis on cadaver/models” — performing an oral examination is assessing physical condition to aid diagnosis
+    - V T 72 [Content outline]: “Pathophysiology of common dental and oral disorders” — diagnosing dental/oral pathophysiology is assessing physical condition
+    - V T 84 [Content outline]: “History, physical exam, minimum data base, ancillary tests” — pre-anesthetic physical exam evidences assessing physical condition to aid diagnosis
+    - V T 92 [Objective]: “Differentiate between normal and abnormal assessments of patients” — assessing physical condition to aid diagnosis directly matches distinguishing normal/abnormal assessments
+    - V T 92 [Content outline]: “Normal and abnormal heart and lung sounds” — auscultation assessment content evidences assessing physical condition for diagnosis
+    - V T 84L [Content outline]: “Physical examination” — examining animal to assess physical condition for anesthetic plan
+    - V T 84L [Objective]: “Perform a thorough pre-anesthetic evaluation of a veterinary patient and develop a comprehensive anesthetic plan.” — assessing physical condition to aid in anesthetic diagnosis/treatment planning
+    - V T 86 [Lab content]: “Hands-on skills relating to restraint, physical exam, and medication administration for the mouse, rat, and rabbit.” — physical exam evidences assessing physical condition to aid diagnosis
+    - V T 93 [Content outline]: “Patient assessments” — assessing physical condition to aid diagnosis or treatment
+    - V T 95 [Content outline]: “Avian, Exotic and Small Mammal Topics and Procedures” — exotic animal procedures domain evidences assessing patient condition across species
+- ● **Conduct diagnostic tests to determine patient health.**
+    - V T 81 [SLO]: “Explain and demonstrate the steps and rational for performing routine diagnostics in veterinary medicine including urinalysis, blood tests, vaginal cytology and fecal exam.” — performing routine diagnostic lab tests matches directly
+    - V T 70 [SLO]: “Demonstrate entry level skills in producing and evaluating a diagnostic radiograph.” — taking x-rays matches diagnostic test task
+    - V T 70 [Objective]: “Integrate the knowledge of the various factors that affect radiographic image quality, and perform proper radiographic examinations” — performing radiographic exams is a diagnostic test as described in the occupation's x-ray task
+    - V T 70 [Lab content]: “Demonstration and performance of all steps required to produce a diagnostic radiograph, including proper exposure settings and patient positioning” — hands-on production of diagnostic radiographs is the routine diagnostic test task
+    - V T 56 [Content outline]: “Skin scraping” — skin scraping is a routine diagnostic laboratory test on the patient
+    - V T 56 [Objective]: “Perform blood pressure monitoring using both Doppler and Oscillometric monitors” — blood pressure monitoring is a diagnostic test to determine patient health
+    - V T 61 [Content outline]: “Diagnostics and identification” — diagnostic identification of disease-causing organisms constitutes diagnostic testing
+    - V T 57L [Content outline]: “Diagnostic imaging” — diagnostic imaging is a routine diagnostic test performed on animals
+    - V T 57L [Content outline]: “Bloodwork” — bloodwork is a routine laboratory diagnostic test on animals
+    - V T 91 [Objective]: “Assist in diagnostic imaging” — diagnostic imaging (radiographs) is a diagnostic test
+    - V T 91 [Content outline]: “Taking radiographs” — taking x-rays directly matches diagnostic test task of developing/taking x-rays
+    - V T 58L [Content outline]: “Deworming and fecal examination (as needed)” — fecal examination is a routine diagnostic laboratory test
+    - V T 58L [Content outline]: “Heartworm testing and prevention (as needed)” — heartworm testing is a routine diagnostic test
+    - V T 72 [Objective]: “Identify the components of a dental radiography unit, select exposure factors, and safely expose and interpret dental radiographs.” — exposing and interpreting dental radiographs is a diagnostic imaging test
+    - V T 92 [Objective]: “Apply laboratory assessments for clinical patients” — performing lab assessments literally matches conducting diagnostic tests
+    - V T 92 [Content outline]: “Taking radiographs” — taking x-rays is an explicit diagnostic test task for this occupation
+    - V T 84L [Content outline]: “Appropriate laboratory testing using equipment commonly found in clinical practices (CBC, chemistry analyzer, PCV, TP)” — performing routine diagnostic laboratory tests
+    - V T 93 [Objective]: “Participate in radiography procedures.” — radiography is a diagnostic test performed to determine patient health
+    - V T 95 [Content outline]: “Laboratory Procedures” — laboratory procedures domain evidences performing diagnostic tests
+- ● **Assist practitioners to perform medical procedures.**
+    - V T 58L [SLO]: “Demonstrate skills in basic principles of surgical nursing tasks as needed by a second year student.” — surgical assisting supports practitioners performing procedures
+    - V T 58L [Content outline]: “Preparation of sterile surgical packs” — preparing packs to pass to surgeon is a component of assisting during surgery
+    - V T 84L [Content outline]: “Surgical assisting” — passing instruments/assisting during surgery matches directly
+    - V T 84L [SLO]: “Competently perform a full dental cleaning and maintain sterility while assist a surgeon during routine spays and neuters.” — directly states assisting surgeon during medical procedures
+    - V T 84L [Content outline]: “Suturing and appropriate handling of live tissue” — surgical assisting by passing/handling instruments and materials during procedures
+    - V T 75A [Objective]: “Discuss the role of the technician in humane euthanasia.” — literal outcome on technician's role in euthanasia evidences assisting practitioners with euthanasia
+    - V T 75A [Content outline]: “Modes of euthanasia” — euthanasia content evidences assisting with euthanasia procedures
+    - V T 89 [Description]: “Supervised hands-on training in basic medical and surgical nursing” — surgical nursing assistance evidences assisting practitioners in medical procedures
+    - V T 85 [SLO]: “Identify cardiopulmonary arrest in patients and how to initiate and perform CPR effectively.” — performing CPR is assisting/performing a medical procedure alongside veterinarian in emergency care
+    - V T 85 [Lab content]: “Place orogastric tube in canine” — hands-on assisting with a medical procedure (tube placement) during emergency care
+    - V T 91 [Objective]: “Contribute to the nursing care of a variety of veterinary patients” — assisting with patient care under doctors is assisting practitioners with procedures
+    - V T 72 [SLO]: “Safely and correctly perform a complete dental prophylaxis on models and cadavers at an entry level of competency.” — performing dental prophylaxis assists veterinarians in a medical/surgical dental procedure
+    - V T 84 [SLO]: “Describe the role of a registered veterinary technician during common surgical procedures” — technician's role in surgical procedures directly evidences assisting practitioners in medical procedures
+    - V T 84 [Content outline]: “Role of the veterinary technician in anesthesia” — technician role in anesthesia during surgery is assisting the veterinarian in a medical procedure
+    - V T 92 [Objective]: “Assist in diagnostic imaging” — assisting with imaging procedures directly evidences assisting practitioners in medical procedures
+    - V T 92 [Content outline]: “Anesthesia/dental” — assisting with anesthesia and dental procedures evidences assisting practitioners
+    - V T 86 [Objective]: “Describe acceptable methods that are compatible with the Animal Welfare Act of anesthesia, analgesia, and euthanasia in common laboratory animal species.” — assisting with euthanasia/anesthesia procedures directly matches assisting practitioners
+    - V T 86 [Content outline]: “Necropsy procedures” — necropsy procedures involve assisting with post-mortem medical procedures
+    - V T 93 [Content outline]: “Surgical assisting” — assisting veterinarians during surgical procedures
+    - V T 93 [Objective]: “Perform complete dental prophylaxis on veterinary patients.” — assisting practitioners in performing dental medical procedures
+    - V T 95 [Content outline]: “Surgical Nursing of Veterinary Patients” — surgical nursing domain evidences assisting veterinarians during surgery
+- ● **Collect biological specimens from patients.**
+    - V T 81 [Objective]: “Describe and demonstrate the safe and proper collections, handling, and storage of clinical samples.” — collecting biological specimens for testing matches directly
+    - V T 81 [Content outline]: “Safe, low stress, efficient collection of samples from patients” — collection of blood, urine, fecal samples from patients is biological specimen collection
+    - V T 75C [Content outline]: “Phlebotomy” — blood collection is a biological specimen collection
+    - V T 55 [Objective]: “Perform venipuncture.” — venipuncture is the technique for collecting blood specimens
+    - V T 56 [Content outline]: “Ear cytology” — ear cytology requires collecting an ear specimen for testing
+    - V T 57L [Content outline]: “Urinalysis” — urinalysis requires collecting urine as a laboratory specimen
+    - V T 57L [Content outline]: “Fecal exams” — fecal exams require collecting fecal specimens for testing
+    - V T 85 [Content outline]: “Thoracocentesis, nasal catheters, and chest drains” — thoracocentesis is collection of a biological specimen (fluid) from a patient
+    - V T 91 [Objective]: “Demonstrate basic venipuncture skills” — venipuncture is collection of blood specimens from patients
+    - V T 91 [Content outline]: “Blood collection” — directly matches collecting biological specimens (blood) from patients
+    - V T 58L [Content outline]: “Deworming and fecal examination (as needed)” — fecal examination requires collecting fecal specimens for testing
+    - V T 92 [Objective]: “Demonstrate venipuncture skills” — venipuncture/blood collection is literal specimen collection from patients
+    - V T 92 [Content outline]: “Blood collection skills in multiple sizes of patients” — explicit blood specimen collection content
+    - V T 66 [Objective]: “Demonstrate the proper grooming, sample collection techniques, and nursing care for the exotic species.” — sample collection techniques directly evidence collecting biological specimens
+    - V T 66 [Content outline]: “Grooming, sample collection techniques, and nursing care” — content topic covers specimen collection technique for exotic species
+    - V T 95 [Content outline]: “Laboratory Procedures” — laboratory procedures domain evidences collecting specimens for testing
+- ● **Clean medical equipment.**
+    - V T 58L [Objective]: “Identify, properly handle, and maintain common surgical instruments” — maintaining/cleaning surgical instruments matches
+    - V T 58L [Content outline]: “Operation and maintenance of the autoclave” — sterilizing instruments matches cleaning medical equipment
+    - V T 70 [Content outline]: “Cleaning, regular maintenance of machine” — cleaning imaging equipment is cleaning medical equipment
+    - V T 85 [Content outline]: “Care and maintenance of emergency equipment and supplies” — maintenance of equipment includes cleaning per course scope
+    - V T 72 [Objective]: “Explain and demonstrate the proper use, care, and maintenance of common dental equipment and tools.” — care/maintenance of dental instruments includes cleaning them
+    - V T 84L [Content outline]: “Equipment care and maintenance” — cleaning and maintaining anesthesia equipment
+    - V T 95 [Content outline]: “Surgical Nursing of Veterinary Patients” — surgical nursing domain evidences cleaning and sterilizing instruments
+- ● **Maintain medical equipment or instruments.**
+    - V T 72 [Objective]: “Explain and demonstrate the proper use, care, and maintenance of common dental equipment and tools.” — maintaining medical instruments matches directly
+    - V T 72 [Content outline]: “Care and maintenance” — maintenance of dental hand instruments and power equipment
+    - V T 70 [Content outline]: “Cleaning, regular maintenance of machine” — maintaining imaging equipment matches
+    - V T 70 [Content outline]: “Properly care for equipment” — caring for/maintaining X-ray and ultrasound equipment is maintaining medical instruments
+    - V T 85 [Objective]: “Discuss the role of the veterinary technician in the care of emergency patients, including: initial patient assessment, application of diagnostic and therapeutic techniques, monitoring, and care and maintenance of emergency equipment” — care and maintenance of emergency equipment directly evidences maintaining medical equipment
+    - V T 58L [Objective]: “Demonstrate proper techniques for the preparation of surgical packs, and operation of an autoclave and gas sterilizer” — operating sterilizing equipment is directly maintaining/sterilizing instruments
+    - V T 84L [Content outline]: “Components, function, and use of the anesthetic machine” — maintaining anesthesia machine equipment
+    - V T 84L [Content outline]: “Equipment care and maintenance” — maintaining monitoring and anesthesia instruments
+- ● **Perform clerical work in medical settings.**
+    - V T 60 [Content outline]: “Receptionist skills and duties” — clerical office work matches directly
+    - V T 60 [SLO]: “Demonstrate a basic understanding of practice management.” — practice management directly constitutes clerical/office work in a medical setting
+    - V T 89 [Objective]: “Properly perform office and hospital procedures” — office procedures relate to clerical work in medical setting
+    - V T 89 [Content outline]: “Office and hospital procedures and client relations” — office procedures evidence performing clerical work in medical settings
+    - V T 57L [Content outline]: “Medical record keeping” — medical record keeping is clerical work performed in the veterinary setting
+    - V T 85 [Content outline]: “Maintenance of medical records” — clerical work in medical setting via record maintenance
+    - V T 91 [Content outline]: “Documentation/medical record keeping” — medical record keeping is clerical work in a medical setting
+    - V T 84L [Content outline]: “Anesthetic records” — clerical documentation of anesthesia events
+    - V T 95 [Content outline]: “Office and Hospital Procedures, Client Relations and Communication” — content domain covers clerical/reception work in veterinary settings
+- ● **Schedule patient procedures or appointments.**
+    - V T 60 [Content outline]: “Making and managing appointments” — scheduling appointments matches directly
+    - V T 89 [Objective]: “Properly perform office and hospital procedures” — office procedures in veterinary clinic include scheduling appointments
+- ● **Record vital statistics or other health information.**
+    - V T 75A [SLO]: “Discuss the human animal bond, medical records including SOAP (subjective, objective, assessment and plan) technique and behavior assessments.” — recording medical record info matches recording vital statistics/health info
+    - V T 75A [Content outline]: “History taking in small animal medicine” — history taking is recording of health information for patient records
+    - V T 55 [Content outline]: “Record keeping” — recording TPR and exam findings matches vital statistics recording
+    - V T 60 [Content outline]: “Record keeping and filing” — record keeping of information matches recording vital/health information
+    - V T 75B [Objective]: “Implement the Problem Oriented Veterinary Medical Record keeping system” — recording health information in medical records
+    - V T 75B [Content outline]: “Entering data into medical records” — recording vital statistics/health info into medical record
+    - V T 89 [Content outline]: “Medical record keeping” — record keeping evidences recording vital statistics or health information
+    - V T 57L [Content outline]: “Medical record keeping” — recording exam findings and vitals into medical records evidences recording health information
+    - V T 85 [Content outline]: “Maintenance of medical records” — recording vital statistics/health information in patient records
+    - V T 91 [Content outline]: “Documentation/medical record keeping” — recording patient data in medical records evidences recording vital statistics or health information
+    - V T 58L [Content outline]: “Medical record keeping” — record keeping for program animals evidences recording vital/health information
+    - V T 92 [Content outline]: “Documentation/medical record keeping” — recording patient information in medical records matches recording vital statistics/health info
+    - V T 84L [Content outline]: “Record keeping for controlled drugs” — recording health-related information/controlled substance records
+    - V T 84L [Content outline]: “Anesthetic records” — recording vital statistics such as TPR and physiological parameters during anesthesia
+    - V T 86 [Content outline]: “Animal records” — animal records evidence recording vital statistics/health information
+- ● **Administer basic health care or medical treatments.**
+    - V T 85 [Objective]: “Demonstrate a problem-oriented approach to critical care nursing” — emergency care of sick/injured animals matches basic health care admin
+    - V T 85 [Content outline]: “Treatment of specific respiratory emergencies” — administering emergency treatment/first aid for respiratory crisis
+    - V T 85 [Content outline]: “Fluid support” — administering intravenous fluid therapy is a basic medical treatment
+    - V T 56 [Content outline]: “Subcutaneous fluids” — administering fluids matches basic medical treatment
+    - V T 56 [Objective]: “Demonstrate proper application of bandages and splints” — applying bandages and splints is a basic medical treatment to the animal
+    - V T 75B [Content outline]: “Technician interventions in pain control” — administering basic medical/pain treatment interventions to patients
+    - V T 61 [Content outline]: “Treatment and nursing interventions” — nursing interventions for disease constitute basic medical treatment administration
+    - V T 75C [Content outline]: “Balling gun and dosing syringe” — administering oral medication via balling gun/dosing syringe is a basic medical treatment technique
+    - V T 89 [Content outline]: “Basic animal nursing” — basic animal nursing evidences administering basic health care/treatments
+    - V T 57L [Content outline]: “Deworming and fecal examination (as needed)” — deworming is administration of a basic medical treatment to program animals
+    - V T 84 [Content outline]: “Cardiopulmonary resuscitation procedures (recover initiative)” — CPR is emergency first aid to sick or injured animals
+    - V T 84 [Content outline]: “Common anesthetic problems and emergencies” — nursing interventions for anesthetic emergencies evidence administering basic medical treatments
+    - V T 92 [Content outline]: “Emergency and critical care” — emergency/critical care content evidences administering basic medical treatments
+    - V T 66 [Objective]: “Demonstrate the proper grooming, sample collection techniques, and nursing care for the exotic species.” — nursing care evidences administering basic health care/medical treatments
+    - V T 84L [Content outline]: “Manual methods of ventilation” — providing emergency ventilatory support/basic medical treatment to patient
+    - V T 84L [Objective]: “Recognize, critically evaluate, and respond appropriately to common anesthetic problems and emergencies.” — administering emergency care/treatment during anesthetic complications
+    - V T 86 [Objective]: “Describe acceptable methods that are compatible with the Animal Welfare Act of anesthesia, analgesia, and euthanasia in common laboratory animal species.” — analgesia/anesthesia administration is a basic medical treatment
+    - V T 93 [Content outline]: “Intravenous skills” — IV skills correspond to basic health care/medical treatments such as intravenous feedings
+    - V T 95 [Content outline]: “Animal Nursing” — animal nursing domain includes basic treatments like enemas or catheterization
+- ● **Prepare medical instruments or equipment for use.**
+    - V T 58L [Objective]: “Demonstrate proper techniques for the preparation of surgical packs, and operation of an autoclave and gas sterilizer” — preparing surgical instruments for use matches directly
+    - V T 58L [Content outline]: “Preparation of sterile surgical packs” — preparing sterile packs is preparing instruments for use before surgery
+    - V T 55 [Content outline]: “Syringes and needles” — preparing syringes/needles is preparing medical instruments for administration
+    - V T 72 [Content outline]: “Dental hand instruments and dental power equipment” — identifying and using dental instruments in preparation for the prophylaxis/procedure
+    - V T 84L [Content outline]: “Surgical scrubbing; donning and doffing of PPE (gowns and gloves)” — preparing surgical equipment/self for passing instruments during procedures
+    - V T 95 [Content outline]: “Surgical Nursing of Veterinary Patients” — surgical nursing domain evidences preparing surgical instruments
+- ● **Teach medical procedures or medical equipment use to patients.**
+    - V T 72 [Objective]: “Educate clients about common dental problems and proper care and prevention.” — teaching clients about care matches teaching patients/owners
+    - V T 72 [SLO]: “Prepare client education regarding home dental care for companion animals.” — teaching clients home dental care procedures for their animal
+    - V T 75B [Content outline]: “Talking to clients about vaccination” — educating clients about preventive care matches teach procedures/equipment use
+    - V T 75B [Content outline]: “Talking to clients about nutrition” — advising clients on animal nutrition
+    - V T 61 [SLO]: “Create a handout using simplified language geared toward client education that discusses common signalment, etiology, pathophysiology, treatment, monitoring and prognosis of the disease.” — directly creating client education materials on animal health care
+    - V T 61 [Content outline]: “Client education” — repeated content topic on educating clients about disease treatment and prevention
+    - V T 83B [SLO]: “Demonstrate the ability to educate clients on medication administration plans and evaluate client understanding” — literal statement of teaching medical (medication) procedures to clients/patients
+    - V T 83B [Objective]: “Create client education plans.” — directly constitutive of teaching medical procedures/equipment use to patients' caretakers
+    - V T 92 [Content outline]: “Client communication” — client communication in clinical context evidences educating clients on animal care
+    - V T 95 [Content outline]: “Office and Hospital Procedures, Client Relations and Communication” — client relations domain evidences advising clients on animal care
+- ● **Feed patients.**
+    - V T 75B [Objective]: “Demonstrate skill in creating nutritional plans for dogs and cats at different stages of their lives” — preparing feed per diet instructions matches feeding patients
+    - V T 75B [Content outline]: “Calculating feeding requirements for life stages” — preparing feed plans for animals per nutritional requirements
+    - V T 53C [Content outline]: “Feeding horses” — feeding animals per instructions matches directly
+    - V T 53C [Content outline]: “Feeding ruminants” — content on feeding practices evidences preparing/administering feed per instructions
+    - V T 75A [Content outline]: “Routine animal care and husbandry requirements” — husbandry duties for teaching animals concretely include feeding per schedule
+    - V T 75A [SLO]: “Conscientiously and safely perform assigned routine husbandry duties for veterinary technology teaching animals.” — husbandry duties literally include feeding of program animals
+    - V T 75C [Objective]: “Identify equine feeds and describe proper feeding practices related to equine colic.” — identifying feeds and proper feeding practices evidences feeding patients per instructions
+    - V T 86 [Content outline]: “Husbandry practices” — husbandry practices for lab animals include feeding per species requirements
+    - V T 86 [Description]: “Includes husbandry and housing, feeding and nutrition” — feeding and nutrition content evidences feeding patients
+    - V T 95 [Content outline]: “Animal Nursing” — animal nursing domain includes feeding patients
+- ● **Prepare patient treatment areas for use.**
+    - V T 89 [Objective]: “Demonstrate correct examination and treatment room procedures” — preparing treatment rooms matches directly
+    - V T 84L [Content outline]: “Moving into surgery” — preparing patient treatment/surgical area for use
+- ○ **Stock medical or patient care supplies.**
+    - V T 89 [Content outline]: “Examination and treatment room procedures” — stocking exam/treatment rooms with supplies implied by treatment room procedures
+- ● **Dispose of biomedical waste in accordance with standards.**
+    - V T 75A [Objective]: “Discuss the role of the technician in humane euthanasia.” — role in euthanasia matches disposal of corpses/biomedical waste task
+    - V T 86 [Objective]: “Describe acceptable methods that are compatible with the Animal Welfare Act of anesthesia, analgesia, and euthanasia in common laboratory animal species.” — euthanasia methods relate to disposal of biomedical waste per standards
+- ● **Prepare medical reports or documents.**
+    - V T 61 [SLO]: “Create a handout using simplified language geared toward client education that discusses common signalment, etiology, pathophysiology, treatment, monitoring and prognosis of the disease.” — writing reports/maintaining research info matches directly
+    - V T 55 [Content outline]: “Record keeping” — recordkeeping in physical exam content evidences preparing medical documents/reports
+    - V T 75A [Content outline]: “Medical record keeping” — record keeping content evidences preparing medical documents
+    - V T 75A [SLO]: “Discuss the human animal bond, medical records including SOAP (subjective, objective, assessment and plan) technique and behavior assessments.” — SOAP medical record writing is preparation of medical reports/documents
+    - V T 60 [Objective]: “Construct and evaluate medical records” — constructing medical records is preparing medical documents
+    - V T 75B [Content outline]: “Reading medical records” — preparing/interpreting medical documents as part of recordkeeping
+    - V T 89 [Content outline]: “SOAP charting” — SOAP charting evidences preparing medical reports or documents
+    - V T 93 [Content outline]: “Diagnostic plans” — documenting diagnostic/treatment plans constitutes preparing medical reports
+- ○ **Assist patients with daily activities.**
+    - V T 56 [Content outline]: “Nail trim: dog and cat” — hygiene-related duties (claw clipping) matches directly
+    - V T 56 [Content outline]: “Grooming dogs” — grooming animals matches activity directly
+    - V T 75A [Content outline]: “Daily veterinary care of the teaching animal colony” — daily animal care of teaching colony includes exercise/companionship activities constitutive of daily-activity assistance
+    - V T 57L [Content outline]: “Environmental enrichment program” — environmental enrichment program provides companionship/enrichment to program animals as daily-activity assistance
+    - V T 92 [Content outline]: “Anal sacs” — anal sac expression is a hygiene-related patient care task under this occupation's daily-activity assistance
+    - V T 66 [Content outline]: “Grooming, sample collection techniques, and nursing care” — grooming content evidences hygiene-related daily-activity assistance (grooming animals)
+    - V T 95 [Content outline]: “Animal Nursing” — animal nursing domain includes daily patient care such as grooming
+- ○ **Inventory medical supplies or equipment.**
+    - V T 60 [Content outline]: “Inventory control” — inventory of medical supplies matches directly
+- ○ **Process medical billing information.**
+    - V T 60 [Content outline]: “Basic bookkeeping” — billing/accounting duties matches process medical billing information
+- ● **Order medical supplies or equipment.**
+    - V T 60 [Objective]: “Discuss principles of personnel, facilities, and inventory management” — inventory management includes ordering supplies to restock
+    - V T 60 [Content outline]: “Inventory control” — inventory control encompasses ordering to restock supplies
+- ● **Sell products or services.**
+    - V T 60 [Objective]: “Describe a variety of marketing, promotion, and sales techniques” — sales techniques matches selling products/services to customers
+
+### Dropped
+
+- act 14 · V T 55 · “History” — malformed
+- act 7 · V T 95 · “Imaging” — malformed
+- act 2 · V T 75B · “Discuss the role of a registered veterinary technician in pain management, nutrition, and ” — adjudicated: b: this quote discusses the RVT role in pain management/nutrition/preventative care, a precondition topic not the monitoring-for-problems activity itself; author flagged it as weaker substitute
+- act 5 · V T 55 · “Proper disposal of biohazardous sharps and medical waste” — adjudicated: d: proper disposal of biohazardous waste evidences a distinct waste-disposal activity, not cleaning treatment rooms
+- act 6 · V T 54A · “Application of cardiovascular system in clinical practice” — adjudicated: a: application of cardiovascular system in clinical practice is topic-only anatomy knowledge without a performable exam step named
+- act 6 · V T 54A · “Application of respiratory system in clinical practice” — adjudicated: a: application of respiratory system in clinical practice is topic-only anatomy knowledge without a performable exam step named
+- act 6 · V T 75A · “Common behavior problems in the dog” — adjudicated: a: common behavior problems in the dog is a topic heading without a performable examination/detection step named
+- act 21 · V T 75A · “Modes of euthanasia” — adjudicated: d: modes of euthanasia content evidences assisting with euthanasia, a distinct activity from waste disposal
+- act 16 · V T 53B · “Interpret and prepare medication labels involving capsule and tablet strength, dosages, an” — adjudicated: d: preparing medication labels evidences filling prescriptions, not preparing surgical instruments for surgery
+- act 7 · V T 54B · “Identification of major cell and tissue types on prepared histology slides of systems cove” — adjudicated: d: identifying histology slides is an anatomy lab skill, not a routine diagnostic test performed on a patient
+- act 9 · V T 54B · “Participate in a necropsy procedure as an essential skill to apply anatomical knowledge” — adjudicated: d: necropsy is post-mortem examination, a distinct activity from live specimen collection for testing
+- act 16 · V T 56 · “Intravenous catheter placement” — adjudicated: d: IV catheter placement is an administration route, better evidencing giving medications than preparing surgical equipment for surgery
+- act 1 · V T 75B · “Physical assessment” — adjudicated: a: physical assessment is a topic heading here without stating holding/restraint as the performed step
+- act 2 · V T 61 · “Explain the role of the veterinary technician in "One Health."” — adjudicated: a: One Health role explanation is topic-only, no performable monitoring step named
+- act 15 · V T 75C · “Application of an equine twitch” — adjudicated: d: twitch application is a restraint technique for holding patients, not administering basic health care
+- act 10 · V T 81 · “Demonstrate skill in the proper use of various types of clinical laboratory equipment.” — adjudicated: b: proper use of lab equipment is a precondition skill, not the cleaning/maintaining activity itself
+- act 6 · V T 70 · “Assess and critique radiograph quality, positioning, and collimation” — adjudicated: a: critiquing radiograph quality/positioning is an image-quality skill, not examining the animal for illness/injury
+- act 3 · V T 89 · “Demonstrate basic animal nursing” — adjudicated: a: 'demonstrate basic animal nursing' is a topic-level objective without naming medication administration specifically
+- act 1 · V T 57L · “Physical examination” — adjudicated: a: physical examination content heading does not itself state holding/restraint as the performed step
+- act 18 · V T 57L · “Instruction of first-year students in basic principles of facilities management and mainte” — adjudicated: a: facilities management/maintenance care of resident animals is a general husbandry heading without stating feeding specifically
+- act 3 · V T 83B · “Identify the common pharmaceuticals used in veterinary medicine.” — adjudicated: b: identifying common pharmaceuticals is precondition knowledge, not administering them
+- act 16 · V T 85 · “Care and maintenance of emergency equipment and supplies” — adjudicated: d: care/maintenance of emergency equipment matches maintaining equipment, not preparing surgical equipment for surgery
+- act 19 · V T 85 · “Airway access” — adjudicated: d: airway access lab evidences administering emergency treatment, not preparing treatment room supplies
+- act 1 · V T 91 · “Nursing care of a variety of veterinary patients” — adjudicated: a: nursing care of a variety of patients is a topic heading without stating holding/restraint as the performed step
+- act 16 · V T 91 · “Intravenous catheters” — adjudicated: d: IV catheters evidences giving medications/treatment route, not preparing surgical equipment for surgical procedures
+- act 3 · V T 58L · “Demonstrate placement of intravenous catheters” — adjudicated: d: IV catheter placement evidences administering medications route, not giving medications/immunizations itself as the task's core act
+- act 18 · V T 58L · “Perform routine preventive care duties for all program animals” — adjudicated: a: routine preventive care duties is a topic-level phrase not specifically naming feeding
+- act 15 · V T 72 · “Describe principles of pain management in veterinary dentistry.” — adjudicated: b: describing principles of pain management is precondition knowledge, not administering the treatment
+- act 1 · V T 92 · “Nursing care of a variety of veterinary patients” — adjudicated: a: nursing care of a variety of patients is a topic heading without stating holding/restraint as the performed step
+- act 1 · V T 92 · “Contribute to the nursing care of a variety of veterinary patients” — adjudicated: a: contributing to nursing care is a topic-level phrase without naming holding/restraint specifically
+- act 16 · V T 92 · “Intravenous catheters” — adjudicated: d: IV catheters evidences administering medications route, not preparing surgical equipment for surgery
+- act 6 · V T 66 · “Discuss the basic medical concerns (diseases and disorders) of the exotic species.” — adjudicated: b: discussing basic medical concerns/diseases is precondition knowledge, not the examination step
+- act 9 · V T 84L · “Intravenous catheterization” — adjudicated: d: IV catheterization evidences administering medications route, not specimen collection
+- act 6 · V T 86 · “Diseases and conditions” — adjudicated: a: diseases and conditions is a topic heading without a performable examination step named
+- act 10 · V T 86 · “Animal caging systems” — adjudicated: a: animal caging systems is a topic heading, not stated equipment-cleaning content
+- act 1 · V T 93 · “Contribute to the nursing care of all of veterinary patients.” — adjudicated: a: contribute to nursing care is a topic-level phrase without naming holding/restraint specifically
+- act 16 · V T 93 · “complete dental prophylaxis, anesthetic procedures, and complex therapeutics” — adjudicated: d: complex therapeutics/anesthetic procedures description is topic-level program description, not clearly naming equipment preparation for surgery
+- act 17 · V T 93 · “Contributing member of the veterinary medicine team” — adjudicated: c: 'contributing member of the veterinary medicine team' is a generic teamwork phrase, not teaching clients
+- act 1 · PLO · “entry-level clinical skills competency in accordance with accreditation requirements” — adjudicated: b) precondition: general accreditation-required clinical skills competency is a broad credential requirement, not a statement of the specific holding/restraint activity
+- act 6 · PLO · “entry-level competency in the necessary knowledge, skills, and abilities required for the ” — adjudicated: b) precondition: a general statement of program competency in veterinary technology knowledge/skills does not itself state the specific activity of assessing physical conditions to aid diagnosis
+- act 8 · PLO · “entry-level clinical skills competency in accordance with accreditation requirements” — adjudicated: b) precondition: general accreditation-required clinical skills competency does not name the specific activity of assisting practitioners in medical procedures
+- act 9 · PLO · “entry-level clinical skills competency in accordance with accreditation requirements” — adjudicated: b) precondition: general accreditation-required clinical skills competency does not name the specific activity of collecting biological specimens

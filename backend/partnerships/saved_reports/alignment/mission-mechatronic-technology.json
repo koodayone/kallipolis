@@ -1,0 +1,2608 @@
+{
+ "program": "mission-mechatronic-technology",
+ "generated": "2026-09-17",
+ "onet_vintage": "O*NET 31.0 database (August 2026), U.S. Department of Labor",
+ "plates": [
+  {
+   "college": "Mission College",
+   "member_id": "mission",
+   "certificate": "Certificate of Achievement, Mechatronic Technology",
+   "kind": "credit",
+   "top6": "093500",
+   "top_name": "Electro-Mechanical Technology",
+   "paired_soc": "17-3024",
+   "occupation": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+   "crosswalk_socs": [],
+   "pairing_basis": "",
+   "courses": [
+    {
+     "code": "MTT 010",
+     "title": "Introduction to Technology and Careers",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=4e5135a6-db8a-11f0-a49b-d37f508de934",
+     "system": "elumen",
+     "effective": "2026FA",
+     "approved": "2025-10-29",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618811",
+      "status": "Active",
+      "last_updated": "2026-01-22",
+      "outline_date": "2025-10-29",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MTT 012",
+     "title": "Electronic Systems Measurement and Troubleshooting",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=5a823da3-db8a-11f0-a49b-8d96a9f6b547",
+     "system": "elumen",
+     "effective": "2026FA",
+     "approved": "2025-10-29",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618812",
+      "status": "Active",
+      "last_updated": "2026-01-22",
+      "outline_date": "2025-10-29",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "EGR 025",
+     "title": "Engineering Graphics and Design",
+     "units": 4,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=71&uuid=05c8e63a-187f-11ef-84dc-2fb3f52e114f",
+     "system": "elumen",
+     "effective": "2024FA",
+     "approved": "2024-03-20",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000167376",
+      "status": "Active",
+      "last_updated": "2024-05-22",
+      "outline_date": "2024-03-20",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MTT 020",
+     "title": "Programmable Logic Controller (PLC) Process Control Systems",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=67ad84f7-db8a-11f0-a49b-637f73fc657e",
+     "system": "elumen",
+     "effective": "2026FA",
+     "approved": "2025-10-29",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618813",
+      "status": "Active",
+      "last_updated": "2026-01-22",
+      "outline_date": "2025-10-29",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MTT 022",
+     "title": "Programmable Logic Controller (PLC) and Robotic System Components",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=735b0514-db8a-11f0-a49b-a7f1899020b8",
+     "system": "elumen",
+     "effective": "2026FA",
+     "approved": "2025-10-29",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618814",
+      "status": "Active",
+      "last_updated": "2026-01-26",
+      "outline_date": "2025-10-29",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MTT 030",
+     "title": "Electrical Motors and Control Systems",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=817392c1-db8a-11f0-a49b-c50afbed1f33",
+     "system": "elumen",
+     "effective": "2026FA",
+     "approved": "2025-10-29",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618815",
+      "status": "Active",
+      "last_updated": "2026-01-26",
+      "outline_date": "2025-10-29",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MTT 032",
+     "title": "Microcontroller Systems",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=8d1a5c1e-db8a-11f0-a49b-1328374c63e1",
+     "system": "elumen",
+     "effective": "2026FA",
+     "approved": "2025-10-29",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618838",
+      "status": "Active",
+      "last_updated": "2026-01-26",
+      "outline_date": "2025-10-29",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MTT 034",
+     "title": "Fluid Power Systems",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=98bfc5fb-db8a-11f0-a49b-43cf1e445375",
+     "system": "elumen",
+     "effective": "2026FA",
+     "approved": "2025-10-29",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618839",
+      "status": "Active",
+      "last_updated": "2026-01-26",
+      "outline_date": "2025-10-29",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MTT 040",
+     "title": "Analog Circuits and Semiconductor Devices",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=a3abcbf0-db8a-11f0-a49b-6df5880e4f3b",
+     "system": "elumen",
+     "effective": "2026FA",
+     "approved": "2025-10-29",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618840",
+      "status": "Active",
+      "last_updated": "2026-01-26",
+      "outline_date": "2025-10-29",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MTT 042",
+     "title": "Digital Logic Systems",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=af8e65f8-db8a-11f0-a49b-4944b6462869",
+     "system": "elumen",
+     "effective": "2026FA",
+     "approved": "2025-10-29",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618841",
+      "status": "Active",
+      "last_updated": "2026-01-26",
+      "outline_date": "2025-10-29",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MTT 050",
+     "title": "Digital Manufacturing",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=2d9031c9-7e72-11ee-b77a-f169d0ffb04e",
+     "system": "elumen",
+     "effective": "2024FA",
+     "approved": "2023-04-26",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618842",
+      "status": "Active",
+      "last_updated": "2021-01-07",
+      "outline_date": "2023-04-26",
+      "verdict": "outline-newer"
+     }
+    },
+    {
+     "code": "WRK 300MT",
+     "title": "Occupational Work Experience for Mechatronic Technology",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=138&uuid=bf664424-06bc-4c72-9ea4-fd8e74648ad5",
+     "system": "elumen",
+     "effective": "2023FA",
+     "approved": "2023-03-15",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000638226",
+      "status": "Active",
+      "last_updated": "2023-06-06",
+      "outline_date": "2023-03-15",
+      "verdict": "coci-newer"
+     }
+    }
+   ],
+   "program_outcomes": [
+    "Analyze and Integrate electrical, electronic, and mechanical systems and devices.",
+    "Demonstrate written and verbal communication skills through technical documentation and oral presentations.",
+    "Troubleshoot and repair electrical, electronic, and mechanical systems and devices."
+   ],
+   "rows": [
+    {
+     "dwa_id": "4.A.3.b.2.e.1",
+     "dwa": "Design electromechanical equipment or systems.",
+     "task": "Develop, test, or program new robots. · Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning.",
+     "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Analyze and Integrate electrical, electronic, and mechanical systems and devices.",
+         "basis": "PLO states graduates integrate electromechanical systems, directly constitutive of designing such equipment"
+        }
+       ]
+      },
+      "MTT 020": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 020",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Develop and design PLC program from Piping/Process and Instrumentation Diagram",
+         "basis": "designing a control system component (PLC program) to specification"
+        }
+       ]
+      },
+      "EGR 025": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "EGR 025",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Apply the engineering design process to develop creative solutions to engineering problems.",
+         "basis": "engineering design process applied to design of devices/systems"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "MTT 020",
+      "section": "objectives",
+      "quote": "Develop and design PLC program from Piping/Process and Instrumentation Diagram",
+      "reason": "names the specific PLC design procedure rather than the generic engineering design process"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.2.l.2",
+     "dwa": "Test performance of electrical, electronic, mechanical, or integrated systems or equipment.",
+     "task": "Develop, test, or program new robots. · Test performance of electromechanical assemblies, using test instruments such as oscilloscopes, electronic voltmeters, or bridges. · Select and use laboratory, operational, or diagnostic techniques or test equipment to assess electromechanical circuits, equipment, processes, systems, or subsystems. · Operate, test, or maintain robotic equipment used for green production applications, such as waste-to-energy conversion systems, minimization of material waste, or replacement of human operators in dangerous work environments.",
+     "cells": {
+      "MTT 012": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 012",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Compare measured performance to published specifications and identify any performance deficiencies",
+         "basis": "testing performance of electronic systems against specifications"
+        },
+        {
+         "course": "MTT 012",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Connect and configure a mixed-signal oscilloscope to measure complex analog and\ndigital signals",
+         "basis": "use of test instrument (oscilloscope) to assess electronic circuits, matching O*NET task"
+        },
+        {
+         "course": "MTT 012",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Measure DC and AC parameters of simple analog and digital electronic systems and components",
+         "basis": "directly performs performance testing of electronic components with test instruments"
+        }
+       ]
+      },
+      "MTT 022": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 022",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Measure, evaluate, and optimize the open- and closed-loop response of a PID control system.",
+         "basis": "testing performance of an integrated electromechanical control system"
+        },
+        {
+         "course": "MTT 022",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Develop and execute a troubleshooting plan for process control systems",
+         "basis": "diagnostic technique used to assess electromechanical systems/subsystems"
+        }
+       ]
+      },
+      "MTT 010": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 010",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Measuring DC voltage, DC current, and resistance",
+         "basis": "measuring voltage/current/resistance is basic test performance on electrical circuits"
+        }
+       ]
+      },
+      "MTT 020": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 020",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Implement and troubleshoot a basic functional control system using ladder-logic programming",
+         "basis": "students test/troubleshoot a control system's performance, evidencing performance testing of an electromechanical/PLC system"
+        },
+        {
+         "course": "MTT 020",
+         "section": "lab",
+         "level": 1,
+         "quote": "Build and test a basic ladder logic circuit with simulation software",
+         "basis": "lab has students build and test control circuits, a diagnostic technique assessing electromechanical/control systems"
+        }
+       ]
+      },
+      "MTT 030": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 030",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Measure motor output power and input voltage and current under multiple conditions",
+         "basis": "measuring electrical output under test conditions is testing performance of electromechanical assemblies with instruments"
+        },
+        {
+         "course": "MTT 030",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Configure and troubleshoot VFD",
+         "basis": "troubleshooting VFD systems is assessing electromechanical equipment using diagnostic technique"
+        }
+       ]
+      },
+      "MTT 032": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 032",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Use standard test equipment, system documentation, and software program listings to measure and verify timing, inputs, and outputs of a given basic microcontroller system.",
+         "basis": "measuring and verifying microcontroller inputs/outputs with test equipment directly evidences testing performance of electronic systems"
+        },
+        {
+         "course": "MTT 032",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Use test equipment to troubleshoot microprocessor-based electronic systems.",
+         "basis": "use of test equipment to assess electromechanical/electronic circuits matches the test-equipment task directly"
+        }
+       ]
+      },
+      "MTT 034": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 034",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Measure the output flow and pressure of a compressor.",
+         "basis": "measuring compressor output flow/pressure is directly testing performance of an electromechanical component using diagnostic technique"
+        },
+        {
+         "course": "MTT 034",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate how to determine the integrity of a pneumatic and hydraulic actuator.",
+         "basis": "determining actuator integrity is testing performance of a mechanical component/system"
+        },
+        {
+         "course": "MTT 034",
+         "section": "lab",
+         "level": 1,
+         "quote": "Build and test pneumatic systems",
+         "basis": "literal lab activity of testing an electromechanical system"
+        }
+       ]
+      },
+      "MTT 040": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 040",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Measure and compare the performance of a class AB and class D amplifier, including gain, bandwidth, noise, and efficiency.",
+         "basis": "students test performance of electronic amplifier circuits using measurement/lab techniques"
+        },
+        {
+         "course": "MTT 040",
+         "section": "lab",
+         "level": 1,
+         "quote": "Measure and compare the performance of different classes of amplifiers including classes AB and D",
+         "basis": "lab activity requires using test instruments to assess electronic circuit performance"
+        }
+       ]
+      },
+      "MTT 042": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 042",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Use standard test equipment, system documentation, logic diagrams, and VHDL listings to measure and verify timing, inputs, and outputs",
+         "basis": "student directly uses test equipment to assess electromechanical/electronic circuit timing and I/O"
+        },
+        {
+         "course": "MTT 042",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Use test equipment to troubleshoot digital electronic systems.",
+         "basis": "direct use of diagnostic test equipment to assess electronic systems"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "MTT 022",
+      "section": "outcomes",
+      "quote": "Measure, evaluate, and optimize the open- and closed-loop response of a PID control system.",
+      "reason": "SLO explicitly commits to measuring and evaluating closed-loop system performance, matching the activity's performance-testing language most directly"
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.2.b.1",
+     "dwa": "Develop software or computer applications.",
+     "task": "Install or program computer hardware or machine or instrumentation software in microprocessor-based systems.",
+     "cells": {
+      "MTT 032": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 032",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Create simple programs in high-level and assembly language for practical and diagnostic purposes.",
+         "basis": "programming microprocessor-based systems"
+        },
+        {
+         "course": "MTT 032",
+         "section": "lab",
+         "level": 1,
+         "quote": "Assembling and loading a program to a single-chip microprocessor",
+         "basis": "loading a program onto microcontroller hardware evidences installing/programming microprocessor-based systems"
+        }
+       ]
+      },
+      "MTT 042": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 042",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Program in VHDL for diagnostics purposes",
+         "basis": "programming instrumentation/logic hardware software"
+        }
+       ]
+      },
+      "MTT 020": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 020",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Design a PLC program using ladder-logic or function block diagramming using P&ID",
+         "basis": "programming a PLC is installing/programming instrumentation software in a microprocessor-based control system"
+        },
+        {
+         "course": "MTT 020",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Program PLC controller for a specified operation using Piping/Process Instrumentation Diagram (P&ID).",
+         "basis": "students write PLC programs for controller hardware, evidencing programming instrumentation software"
+        }
+       ]
+      },
+      "MTT 022": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 022",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Program a PLC controller to execute a sequential task",
+         "basis": "programming a microprocessor-based controller is developing software for instrumentation systems"
+        },
+        {
+         "course": "MTT 022",
+         "section": "lab",
+         "level": 1,
+         "quote": "Program a Controller with Sensor integration",
+         "basis": "hands-on programming of PLC (microprocessor-based) hardware/software"
+        }
+       ]
+      },
+      "MTT 030": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 030",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Commission a variable frequency drive (VFD) 3-phase motor and program it to operate from remote controls",
+         "basis": "programming a VFD to operate from remote controls is programming instrumentation/control software in a microprocessor-based drive system"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "MTT 032",
+      "section": "objectives",
+      "quote": "Create simple programs in high-level and assembly language for practical and diagnostic purposes.",
+      "reason": "SLO-level objective committing to creating programs in high-level/assembly language for microprocessor systems, matching the task's software development on microprocessor-based systems"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.1.b.8",
+     "dwa": "Review technical documents to plan work.",
+     "task": "Read blueprints, schematics, diagrams, or technical orders to determine methods and sequences of assembly.",
+     "cells": {
+      "MTT 020": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 020",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Read and understand automation symbols, including International Society of Automation (ISA) symbols",
+         "basis": "literal reading of technical diagrams/symbols to determine assembly/process sequence"
+        },
+        {
+         "course": "MTT 020",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Develop and design PLC program from Piping/Process and Instrumentation Diagram",
+         "basis": "using a P&ID technical diagram to plan the sequence/method of programming work evidences reviewing technical documents to plan work"
+        }
+       ]
+      },
+      "MTT 012": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 012",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Troubleshoot using electrical wiring diagram including power distribution and PLC I/O diagrams.",
+         "basis": "reading wiring/PLC diagrams to determine troubleshooting sequence matches reviewing technical documents to plan work"
+        },
+        {
+         "course": "MTT 012",
+         "section": "lab",
+         "level": 1,
+         "quote": "Learn to read Specification sheets",
+         "basis": "reading spec sheets to plan measurement/troubleshooting work matches reviewing technical documents"
+        }
+       ]
+      },
+      "EGR 025": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "EGR 025",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Develop the ability to evaluate engineering drawings and their application to design and fabrication.",
+         "basis": "reading/evaluating engineering drawings to plan design and fabrication work"
+        }
+       ]
+      },
+      "MTT 022": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 022",
+         "section": "content",
+         "level": 1,
+         "quote": "Create and understand electrical plans for advanced process systems",
+         "basis": "reading/creating electrical diagrams to determine assembly/wiring sequence matches reviewing technical documents"
+        },
+        {
+         "course": "MTT 022",
+         "section": "content",
+         "level": 1,
+         "quote": "Discrete Input/Output (I/O) diagrams",
+         "basis": "I/O diagrams are schematic technical documents read to plan PLC wiring/assembly work"
+        }
+       ]
+      },
+      "MTT 032": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 032",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Interpret manufacturers' data sheets and reference documentation and apply principles of digital and microcontroller systems to describe the operation of a given microcontroller system.",
+         "basis": "interpreting manufacturer datasheets/reference documentation to plan understanding of a system matches reviewing technical documents to plan work"
+        },
+        {
+         "course": "MTT 032",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Trace timing, inputs, and outputs of a single-chip microcontroller with appropriate test equipment and schematic diagrams.",
+         "basis": "using schematic diagrams to trace system operation evidences reading schematics to determine methods/sequences"
+        }
+       ]
+      },
+      "MTT 034": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 034",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify the symbols for fluid power and electrical related components from either ANSI or ISO drawings and draw a complete schematic based on given parameters.",
+         "basis": "reading ANSI/ISO schematic symbols to determine circuit design is reviewing technical documents/drawings to plan assembly"
+        }
+       ]
+      },
+      "MTT 042": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 042",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Interpret manufacturers’ data sheets for CPLD devices.",
+         "basis": "reviewing technical documents (datasheets) to plan work on devices"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "MTT 020",
+      "section": "outcomes",
+      "quote": "Read and understand automation symbols, including International Society of Automation (ISA) symbols",
+      "reason": "SLO commits to reading and understanding standardized diagram symbols, the core act of reviewing technical documents"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.5.a.18",
+     "dwa": "Maintain electromechanical equipment.",
+     "task": "Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning. · Repair, rework, or calibrate hydraulic or pneumatic assemblies or systems to meet operational specifications or tolerances. · Operate, test, or maintain robotic equipment used for green production applications, such as waste-to-energy conversion systems, minimization of material waste, or replacement of human operators in dangerous work environments.",
+     "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Troubleshoot and repair electrical, electronic, and mechanical systems and devices.",
+         "basis": "PLO literally states graduates repair mechanical systems, matching maintenance of electromechanical equipment"
+        }
+       ]
+      },
+      "MTT 030": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 030",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Configure, operate, and troubleshoot DC, stepper, and AC motor systems",
+         "basis": "maintaining/repairing electromechanical equipment (motors)"
+        },
+        {
+         "course": "MTT 030",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate effective basic troubleshooting techniques to isolate motor and controller faults",
+         "basis": "isolating motor/controller faults is directly repairing/maintaining electromechanical equipment"
+        }
+       ]
+      },
+      "MTT 034": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 034",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate how to determine the integrity of a pneumatic and hydraulic actuator.",
+         "basis": "calibrating/repairing pneumatic or hydraulic assemblies to meet operational tolerances"
+        },
+        {
+         "course": "MTT 034",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Troubleshoot a given pneumatic control system.",
+         "basis": "troubleshooting a pneumatic control system is maintaining/repairing an electromechanical system to ensure proper functioning"
+        },
+        {
+         "course": "MTT 034",
+         "section": "lab",
+         "level": 1,
+         "quote": "Build and test circuits with electro-hydraulic systems",
+         "basis": "building and testing electro-hydraulic circuits involves repairing/calibrating hydraulic assemblies to meet operational specs"
+        }
+       ]
+      },
+      "MTT 012": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 012",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Develop, present, and execute a logical troubleshooting plan appropriate for the subject system or component",
+         "basis": "developing and executing a troubleshooting plan for electronic systems evidences maintain/repair to ensure proper functioning"
+        },
+        {
+         "course": "MTT 012",
+         "section": "assignments",
+         "level": 1,
+         "quote": "develop an initial troubleshooting plan to logically and effectively isolate the fault",
+         "basis": "fault isolation/troubleshooting plan for a non-functioning system matches maintenance/repair task"
+        }
+       ]
+      },
+      "MTT 020": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 020",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Develop and execute a troubleshooting plan for process control systems.",
+         "basis": "troubleshooting a PLC-based control system is maintaining/repairing an electromechanical system to ensure proper functioning"
+        },
+        {
+         "course": "MTT 020",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Develop and execute a troubleshooting plan for a malfunctioning PLC system.",
+         "basis": "diagnosing and fixing a malfunctioning PLC system evidences maintaining/repairing electromechanical equipment"
+        }
+       ]
+      },
+      "MTT 022": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 022",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "identify logic states during operation, and troubleshoot a PLC-controlled system",
+         "basis": "troubleshooting a controlled system is maintaining electromechanical equipment"
+        },
+        {
+         "course": "MTT 022",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Tune a PID control loop for optimized operation",
+         "basis": "loop tuning to meet operational specifications parallels calibrating assemblies/systems"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "MTT 030",
+      "section": "objectives",
+      "quote": "Demonstrate effective basic troubleshooting techniques to isolate motor and controller faults",
+      "reason": "objective directly commits to troubleshooting technique to isolate motor/mechanical faults, matching maintain electromechanical equipment"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.5.c.4",
+     "dwa": "Maintain electronic equipment.",
+     "task": "Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning.",
+     "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Troubleshoot and repair electrical, electronic, and mechanical systems and devices.",
+         "basis": "PLO literally states graduates repair electronic systems, matching maintenance of electronic equipment"
+        }
+       ]
+      },
+      "MTT 040": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 040",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Develop and execute a troubleshooting plan for a Metal Oxide Semiconductor Field Effect Transistor (MOSFET) oscillator circuit.",
+         "basis": "repairing electronic components/equipment to ensure proper functioning"
+        }
+       ]
+      },
+      "MTT 032": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 032",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Use test equipment to troubleshoot microprocessor-based electronic systems.",
+         "basis": "maintaining/repairing electronic equipment using test instruments"
+        }
+       ]
+      },
+      "MTT 012": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 012",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Compare measured performance to published specifications and identify any performance deficiencies",
+         "basis": "identifying performance deficiencies in electronic equipment is a core step of maintaining/repairing electronic equipment"
+        },
+        {
+         "course": "MTT 012",
+         "section": "lab",
+         "level": 1,
+         "quote": "Develop troubleshooting plan for faulty circuits",
+         "basis": "troubleshooting faulty electronic circuits evidences maintaining electronic equipment"
+        }
+       ]
+      },
+      "MTT 020": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 020",
+         "section": "description",
+         "level": 1,
+         "quote": "This course covers Programmable Logic Controller (PLC) systems, function, interrelationship, and troubleshooting of systems components.",
+         "basis": "troubleshooting PLC electronic system components evidences maintaining electronic equipment"
+        }
+       ]
+      },
+      "MTT 022": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 022",
+         "section": "lab",
+         "level": 1,
+         "quote": "Troubleshooting a PLC-controlled system",
+         "basis": "diagnosing/repairing electronic controller system to ensure proper functioning"
+        }
+       ]
+      },
+      "MTT 042": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 042",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Use test equipment to troubleshoot digital electronic systems.",
+         "basis": "troubleshooting is a diagnostic step directly constitutive of maintaining electronic equipment"
+        },
+        {
+         "course": "MTT 042",
+         "section": "description",
+         "level": 1,
+         "quote": "allows students to develop troubleshooting techniques",
+         "basis": "course scope explicitly covers troubleshooting of electronic systems, part of maintenance"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "MTT 032",
+      "section": "objectives",
+      "quote": "Use test equipment to troubleshoot microprocessor-based electronic systems.",
+      "reason": "objective explicitly commits to using test equipment to troubleshoot microprocessor-based electronic systems, matching maintain electronic equipment most specifically"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.2.f.8",
+     "dwa": "Inspect finished products to locate flaws.",
+     "task": "Inspect parts for surface defects. · Verify part dimensions or clearances to ensure conformance to specifications, using precision measuring instruments.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.3.a.2.t.5",
+     "dwa": "Install instrumentation or electronic equipment or systems.",
+     "task": "Install electrical or electronic parts and hardware in housings or assemblies, using soldering equipment and hand tools.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.3.a.2.d.2",
+     "dwa": "Assemble equipment or components.",
+     "task": "Fabricate or assemble mechanical, electrical, or electronic components or assemblies. · Align, fit, or assemble component parts, using hand or power tools, fixtures, templates, or microscopes.",
+     "cells": {
+      "MTT 034": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 034",
+         "section": "lab",
+         "level": 1,
+         "quote": "Build and test pneumatic systems",
+         "basis": "assembling electromechanical components using hand tools/fixtures"
+        },
+        {
+         "course": "MTT 034",
+         "section": "description",
+         "level": 1,
+         "quote": "Hands-on activities using various pneumatic components are assembled in the lab.",
+         "basis": "literal statement that students assemble pneumatic components using hand tools/fixtures"
+        }
+       ]
+      },
+      "MTT 020": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 020",
+         "section": "lab",
+         "level": 1,
+         "quote": "Build and test circuits with multiple PLC input elements",
+         "basis": "fitting/assembling component parts into a functioning circuit"
+        }
+       ]
+      },
+      "MTT 030": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 030",
+         "section": "lab",
+         "level": 1,
+         "quote": "Implementing controls for and controlling Stepper motors",
+         "basis": "implementing motor control hardware/wiring is assembling electrical/electronic components into a working assembly"
+        }
+       ]
+      },
+      "MTT 040": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 040",
+         "section": "lab",
+         "level": 1,
+         "quote": "Basics of circuits through the creation and simulation of resistor based circuits.",
+         "basis": "building/assembling circuits from components is constitutive of assembling electronic assemblies"
+        }
+       ]
+      },
+      "MTT 050": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 050",
+         "section": "lab",
+         "level": 1,
+         "quote": "Fit tolerances for multiple-part assemblies",
+         "basis": "fitting parts to tolerance is aligning/assembling component parts"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "MTT 034",
+      "section": "description",
+      "quote": "Hands-on activities using various pneumatic components are assembled in the lab.",
+      "reason": "description states components are physically assembled in the lab, the most direct statement of assembling equipment"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.aa.1",
+     "dwa": "Fabricate devices or components.",
+     "task": "Fabricate or assemble mechanical, electrical, or electronic components or assemblies.",
+     "cells": {
+      "MTT 050": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 050",
+         "section": "lab",
+         "level": 1,
+         "quote": "Design and produce individual projects",
+         "basis": "fabricating mechanical/electronic components via 3D printing/manufacturing"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "MTT 050",
+      "section": "lab",
+      "quote": "Design and produce individual projects",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.2.o.8",
+     "dwa": "Create schematic drawings for electronics.",
+     "task": "Produce electrical, electronic, or mechanical drawings or other related documents or graphics necessary for electromechanical design, using computer-aided design (CAD) software.",
+     "cells": {
+      "EGR 025": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "EGR 025",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Apply computer aided graphics techniques to construct engineering designs.",
+         "basis": "producing CAD drawings for design, matching O*NET CAD schematic task"
+        },
+        {
+         "course": "EGR 025",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Construct two-dimensional and three-dimensional drawings of engineering designs using sketching, manual drafting, and computer-aided drafting approaches.",
+         "basis": "students produce electrical/mechanical drawings using CAD as required for electromechanical design documentation"
+        }
+       ]
+      },
+      "MTT 022": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 022",
+         "section": "content",
+         "level": 1,
+         "quote": "Control panel layout diagrams",
+         "basis": "producing electrical schematic drawings necessary for electromechanical design"
+        }
+       ]
+      },
+      "MTT 012": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 012",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Develop electrical wiring diagrams including electrical control panel layout, power distribution, loop drawings, and PLC I/O diagrams",
+         "basis": "producing electrical wiring/control panel diagrams matches producing electrical drawings for electromechanical design"
+        },
+        {
+         "course": "MTT 012",
+         "section": "lab",
+         "level": 1,
+         "quote": "Using industry software to develop electrical wiring diagrams including electrical control panel layout, power distribution, loop drawings, and PLC I/O diagrams",
+         "basis": "use of industry software to produce electrical drawings matches CAD-based schematic production task"
+        }
+       ]
+      },
+      "MTT 034": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 034",
+         "section": "description",
+         "level": 1,
+         "quote": "Basic power and control circuits are developed using computer aided design.",
+         "basis": "developing circuits with CAD is producing electromechanical design drawings using CAD software"
+        }
+       ]
+      },
+      "MTT 040": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 040",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify and draw basic amplifier circuits",
+         "basis": "drawing amplifier circuit schematics is directly constitutive of creating schematic drawings for electronics"
+        }
+       ]
+      },
+      "MTT 050": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 050",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Design project using 2D/3D software, e.g. AutoCAD and SolidWorks",
+         "basis": "designing with CAD software directly evidences creating drawings for electromechanical design"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "MTT 012",
+      "section": "outcomes",
+      "quote": "Develop electrical wiring diagrams including electrical control panel layout, power distribution, loop drawings, and PLC I/O diagrams",
+      "reason": "SLO commits to developing electrical/electronic schematic wiring diagrams, the most specific match to creating schematic drawings"
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.1.j.2",
+     "dwa": "Select project materials.",
+     "task": "Select electromechanical equipment, materials, components, or systems to meet functional specifications.",
+     "cells": {
+      "MTT 022": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 022",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Select sensors, controllers, and actuators appropriate for a given task.",
+         "basis": "literal selection of electromechanical components to meet functional specifications"
+        }
+       ]
+      },
+      "MTT 034": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 034",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Given a set of conditions and process, determine the best pneumatic system for the process.",
+         "basis": "selecting the best pneumatic system for given specifications is selecting electromechanical equipment/materials to meet functional specs"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "MTT 022",
+      "section": "objectives",
+      "quote": "Select sensors, controllers, and actuators appropriate for a given task.",
+      "reason": "objective commits to selecting sensors, controllers, and actuators to meet task specifications, directly matching selecting project materials/components"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.2.f.14",
+     "dwa": "Develop technical methods or processes.",
+     "task": "Establish and maintain inventory, records, or documentation systems.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.3.b.6.h.21",
+     "dwa": "Maintain operational records or records systems.",
+     "task": "Establish and maintain inventory, records, or documentation systems.",
+     "cells": {
+      "MTT 012": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 012",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Organize and present data in tabular and graphic formats using industry-standard software",
+         "basis": "maintaining operational records/documentation of measurement data"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "MTT 012",
+      "section": "objectives",
+      "quote": "Organize and present data in tabular and graphic formats using industry-standard software",
+      "reason": "default: tier, units, catalog order"
+     }
+    }
+   ],
+   "dropped": [
+    {
+     "activity": 11,
+     "course": "MTT 034",
+     "section": "content",
+     "quote": "P&ID",
+     "basis": "P&ID creation content covers producing schematic/mechanical drawings for electromechanical design",
+     "why": "malformed"
+    },
+    {
+     "activity": 4,
+     "course": "MTT 022",
+     "section": "description",
+     "quote": "Process/Piping and Instrumentation Diagram (P&ID)",
+     "basis": "reading technical schematic diagrams to plan control system work",
+     "why": "adjudicated: a: P&ID is named as a topic/heading with no performable reading action stated"
+    },
+    {
+     "activity": 7,
+     "course": "MTT 050",
+     "section": "outcomes",
+     "quote": "Evaluate print quality and determine print parameter optimizations that may improve quality for 2D and 3D manufacturing equipment",
+     "basis": "inspecting finished parts/products for defects and conformance",
+     "why": "adjudicated: d: evaluating print quality/optimization evidences fabrication/quality-improvement, not inspecting finished parts for defects/conformance"
+    },
+    {
+     "activity": 8,
+     "course": "MTT 020",
+     "section": "content",
+     "quote": "Digital inputs",
+     "basis": "installing electronic I/O instrumentation as part of control system assembly work",
+     "why": "adjudicated: a: 'Digital inputs' is a topic heading with no stated installation action"
+    },
+    {
+     "activity": 10,
+     "course": "EGR 025",
+     "section": "lab",
+     "quote": "Component Modeling",
+     "basis": "producing components as part of fabrication/assembly workflow",
+     "why": "adjudicated: a: 'Component Modeling' is a topic heading without stated fabrication/assembly action"
+    },
+    {
+     "activity": 13,
+     "course": "MTT 010",
+     "section": "content",
+     "quote": "Reports using MS Word/Google Docs",
+     "basis": "establishing documentation systems as part of technical method development",
+     "why": "adjudicated: d: reports using Word/Docs evidences general documentation writing, not the technical-methods/inventory-records activity as defined"
+    },
+    {
+     "activity": 2,
+     "course": "MTT 010",
+     "section": "lab",
+     "quote": "Build a simple AC/DC circuit",
+     "basis": "building and presumably testing a basic circuit evidences elementary performance testing",
+     "why": "adjudicated: b: building a circuit precedes any stated testing of its performance"
+    },
+    {
+     "activity": 6,
+     "course": "MTT 020",
+     "section": "content",
+     "quote": "Types of PLCs",
+     "basis": "coursework on PLC hardware and troubleshooting of these electronic control components supports maintaining electronic equipment",
+     "why": "adjudicated: a: 'Types of PLCs' is a topic heading with no stated maintenance/repair action"
+    },
+    {
+     "activity": 1,
+     "course": "MTT 022",
+     "section": "outcomes",
+     "quote": "troubleshoot a PLC-controlled system",
+     "basis": "modifying/repairing a controlled system to ensure proper function evidences maintain/design task",
+     "why": "adjudicated: d: troubleshooting a PLC-controlled system evidences the maintain electromechanical equipment activity, not designing equipment"
+    },
+    {
+     "activity": 1,
+     "course": "MTT 030",
+     "section": "outcomes",
+     "quote": "Configure, operate, and troubleshoot DC, stepper, and AC motor systems",
+     "basis": "configuring and troubleshooting motor systems is maintaining/repairing electromechanical equipment, a design-adjacent core activity",
+     "why": "adjudicated: d: configuring/troubleshooting motor systems evidences maintain electromechanical equipment task, not design"
+    },
+    {
+     "activity": 6,
+     "course": "MTT 032",
+     "section": "content",
+     "quote": "General debugging techniques",
+     "basis": "debugging microcontroller electronic systems is a constitutive component of maintaining/repairing electronic equipment",
+     "why": "adjudicated: a: 'General debugging techniques' is a topic heading with no stated repair action on equipment"
+    },
+    {
+     "activity": 9,
+     "course": "MTT 034",
+     "section": "lab",
+     "quote": "Introduction to pneumatic system components",
+     "basis": "hands-on lab assembling pneumatic components fits fabricating/assembling mechanical component assemblies",
+     "why": "adjudicated: a: 'Introduction to pneumatic system components' is a topic heading with no stated assembly action"
+    },
+    {
+     "activity": 4,
+     "course": "MTT 040",
+     "section": "lab",
+     "quote": "Filters and time constants - including the use of scopes to visualize the impact of the filters.",
+     "basis": "reading circuit schematics with an oscilloscope to determine circuit behavior, constitutive of reviewing technical diagrams",
+     "why": "adjudicated: d: using scopes to visualize filter behavior evidences testing performance, not reading schematics to plan assembly"
+    },
+    {
+     "activity": 11,
+     "course": "MTT 040",
+     "section": "content",
+     "quote": "Schematic",
+     "basis": "course content covers producing/reading op-amp schematic diagrams, constitutive of creating electronic schematics",
+     "why": "adjudicated: a: 'Schematic' is a bare topic heading with no stated drawing-production action"
+    },
+    {
+     "activity": 3,
+     "course": "MTT 042",
+     "section": "content",
+     "quote": "Very-High-Speed-Integrated-Circuit Hardware Description Language (VHDL)",
+     "basis": "course content trains programming of programmable logic devices via VHDL",
+     "why": "adjudicated: a: 'VHDL' is a topic/content heading with no stated programming action performed"
+    },
+    {
+     "activity": 4,
+     "course": "MTT 042",
+     "section": "outcomes",
+     "quote": "Use standard test equipment, system documentation, logic diagrams, and VHDL listings to measure and verify timing, inputs, and outputs",
+     "basis": "reading system documentation and logic diagrams to determine measurement/troubleshooting sequence",
+     "why": "adjudicated: d: using test equipment to measure/verify timing and I/O evidences testing performance, not reviewing documents to plan work"
+    },
+    {
+     "activity": 11,
+     "course": "MTT 050",
+     "section": "content",
+     "quote": "Computer-Aided Drafting (CAD) Design/Drawing",
+     "basis": "CAD design/drawing content covers producing drawings via CAD software",
+     "why": "adjudicated: a: 'Computer-Aided Drafting (CAD) Design/Drawing' is a bare topic heading with no stated action"
+    },
+    {
+     "activity": 9,
+     "course": "MTT 050",
+     "section": "content",
+     "quote": "Assembling Parts",
+     "basis": "explicit assembling of parts evidences assembling components",
+     "why": "adjudicated: a: 'Assembling Parts' is a bare topic heading restating the task without performable specifics"
+    },
+    {
+     "activity": 10,
+     "course": "MTT 050",
+     "section": "content",
+     "quote": "Machining",
+     "basis": "machining parts evidences fabricating mechanical components",
+     "why": "adjudicated: a: 'Machining' is a bare topic heading with no stated fabrication action described"
+    },
+    {
+     "activity": 7,
+     "course": "MTT 050",
+     "section": "outcomes",
+     "quote": "Evaluate print quality and determine print parameter optimizations that may improve quality for 2D and 3D manufacturing equipment",
+     "basis": "evaluating print quality is inspecting finished output for flaws",
+     "why": "adjudicated: d: evaluating print quality/optimization evidences a fabrication-process quality activity, not inspecting finished parts for surface defects/dimensional conformance"
+    },
+    {
+     "activity": 12,
+     "course": "MTT 050",
+     "section": "content",
+     "quote": "Printing materials and characteristics",
+     "basis": "learning material characteristics for print selection evidences selecting project materials",
+     "why": "adjudicated: a: 'Printing materials and characteristics' is a topic heading with no stated selection action performed"
+    }
+   ],
+   "source_note": "Read from Mission College's course outlines of record (elumen); sections present: slo, objective, description, content outline, lab content, assignment.",
+   "role": "",
+   "short_title": "Mechatronic Technology"
+  },
+  {
+   "college": "Mission College",
+   "member_id": "mission",
+   "certificate": "Certificate of Achievement, Mechatronic Technology",
+   "kind": "credit",
+   "top6": "093500",
+   "top_name": "Electro-Mechanical Technology",
+   "paired_soc": "51-9141",
+   "occupation": "Semiconductor Processing Technicians",
+   "crosswalk_socs": [],
+   "pairing_basis": "",
+   "courses": [
+    {
+     "code": "MTT 010",
+     "title": "Introduction to Technology and Careers",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=4e5135a6-db8a-11f0-a49b-d37f508de934",
+     "system": "elumen",
+     "effective": "2026FA",
+     "approved": "2025-10-29",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618811",
+      "status": "Active",
+      "last_updated": "2026-01-22",
+      "outline_date": "2025-10-29",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MTT 012",
+     "title": "Electronic Systems Measurement and Troubleshooting",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=5a823da3-db8a-11f0-a49b-8d96a9f6b547",
+     "system": "elumen",
+     "effective": "2026FA",
+     "approved": "2025-10-29",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618812",
+      "status": "Active",
+      "last_updated": "2026-01-22",
+      "outline_date": "2025-10-29",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "EGR 025",
+     "title": "Engineering Graphics and Design",
+     "units": 4,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=71&uuid=05c8e63a-187f-11ef-84dc-2fb3f52e114f",
+     "system": "elumen",
+     "effective": "2024FA",
+     "approved": "2024-03-20",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000167376",
+      "status": "Active",
+      "last_updated": "2024-05-22",
+      "outline_date": "2024-03-20",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MTT 020",
+     "title": "Programmable Logic Controller (PLC) Process Control Systems",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=67ad84f7-db8a-11f0-a49b-637f73fc657e",
+     "system": "elumen",
+     "effective": "2026FA",
+     "approved": "2025-10-29",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618813",
+      "status": "Active",
+      "last_updated": "2026-01-22",
+      "outline_date": "2025-10-29",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MTT 022",
+     "title": "Programmable Logic Controller (PLC) and Robotic System Components",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=735b0514-db8a-11f0-a49b-a7f1899020b8",
+     "system": "elumen",
+     "effective": "2026FA",
+     "approved": "2025-10-29",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618814",
+      "status": "Active",
+      "last_updated": "2026-01-26",
+      "outline_date": "2025-10-29",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MTT 030",
+     "title": "Electrical Motors and Control Systems",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=817392c1-db8a-11f0-a49b-c50afbed1f33",
+     "system": "elumen",
+     "effective": "2026FA",
+     "approved": "2025-10-29",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618815",
+      "status": "Active",
+      "last_updated": "2026-01-26",
+      "outline_date": "2025-10-29",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MTT 032",
+     "title": "Microcontroller Systems",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=8d1a5c1e-db8a-11f0-a49b-1328374c63e1",
+     "system": "elumen",
+     "effective": "2026FA",
+     "approved": "2025-10-29",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618838",
+      "status": "Active",
+      "last_updated": "2026-01-26",
+      "outline_date": "2025-10-29",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MTT 034",
+     "title": "Fluid Power Systems",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=98bfc5fb-db8a-11f0-a49b-43cf1e445375",
+     "system": "elumen",
+     "effective": "2026FA",
+     "approved": "2025-10-29",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618839",
+      "status": "Active",
+      "last_updated": "2026-01-26",
+      "outline_date": "2025-10-29",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MTT 040",
+     "title": "Analog Circuits and Semiconductor Devices",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=a3abcbf0-db8a-11f0-a49b-6df5880e4f3b",
+     "system": "elumen",
+     "effective": "2026FA",
+     "approved": "2025-10-29",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618840",
+      "status": "Active",
+      "last_updated": "2026-01-26",
+      "outline_date": "2025-10-29",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MTT 042",
+     "title": "Digital Logic Systems",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=af8e65f8-db8a-11f0-a49b-4944b6462869",
+     "system": "elumen",
+     "effective": "2026FA",
+     "approved": "2025-10-29",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618841",
+      "status": "Active",
+      "last_updated": "2026-01-26",
+      "outline_date": "2025-10-29",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "MTT 050",
+     "title": "Digital Manufacturing",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=200&uuid=2d9031c9-7e72-11ee-b77a-f169d0ffb04e",
+     "system": "elumen",
+     "effective": "2024FA",
+     "approved": "2023-04-26",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000618842",
+      "status": "Active",
+      "last_updated": "2021-01-07",
+      "outline_date": "2023-04-26",
+      "verdict": "outline-newer"
+     }
+    },
+    {
+     "code": "WRK 300MT",
+     "title": "Occupational Work Experience for Mechatronic Technology",
+     "units": 2,
+     "source_url": "https://mission.elumenapp.com/public/?orgEntityId=138&uuid=bf664424-06bc-4c72-9ea4-fd8e74648ad5",
+     "system": "elumen",
+     "effective": "2023FA",
+     "approved": "2023-03-15",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": {
+      "control_number": "CCC000638226",
+      "status": "Active",
+      "last_updated": "2023-06-06",
+      "outline_date": "2023-03-15",
+      "verdict": "coci-newer"
+     }
+    }
+   ],
+   "program_outcomes": [
+    "Analyze and Integrate electrical, electronic, and mechanical systems and devices.",
+    "Demonstrate written and verbal communication skills through technical documentation and oral presentations.",
+    "Troubleshoot and repair electrical, electronic, and mechanical systems and devices."
+   ],
+   "rows": [
+    {
+     "dwa_id": "4.A.1.b.3.a.12",
+     "dwa": "Measure dimensions of completed products or workpieces to verify conformance to specifications.",
+     "task": "Inspect materials, components, or products for surface defects and measure circuitry, using electronic test equipment, precision measuring instruments, microscope, and standard procedures.",
+     "cells": {
+      "MTT 012": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 012",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Compare measured performance to published specifications and identify any performance deficiencies",
+         "basis": "measuring and comparing to specifications directly evidences verifying conformance to specs"
+        },
+        {
+         "course": "MTT 012",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Identify and/or describe circuit and equipment elements and specifications that are relevant to performing accurate measurements.",
+         "basis": "measuring and comparing to specifications directly parallels measuring circuitry to verify conformance"
+        }
+       ]
+      },
+      "MTT 032": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 032",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Use standard test equipment, system documentation, and software program listings to measure and verify timing, inputs, and outputs of a given basic microcontroller system.",
+         "basis": "measuring timing/inputs/outputs with test equipment against documentation verifies conformance to specification, directly analogous to measuring circuitry with test equipment"
+        },
+        {
+         "course": "MTT 032",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Trace timing, inputs, and outputs of a single-chip microcontroller with appropriate test equipment and schematic diagrams.",
+         "basis": "using test equipment to measure and verify electronic signals against schematic specifications"
+        }
+       ]
+      },
+      "MTT 042": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 042",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Use standard test equipment, system documentation, logic diagrams, and VHDL listings to measure and verify timing, inputs, and outputs",
+         "basis": "measuring circuit signals with test equipment to verify conformance to specified timing/values"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "MTT 012",
+      "section": "outcomes",
+      "quote": "Identify and/or describe circuit and equipment elements and specifications that are relevant to performing accurate measurements.",
+      "reason": "SLO commits the course to identifying specifications relevant to accurate measurements, most directly mirroring inspecting/measuring against specifications"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.1.b.4",
+     "dwa": "Read work orders or other instructions to determine product specifications or materials requirements.",
+     "task": "Study work orders, instructions, formulas, and processing charts to determine specifications and sequence of operations.",
+     "cells": {
+      "MTT 034": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 034",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Given a set of conditions and process, determine the best pneumatic system for the process.",
+         "basis": "reading specified conditions/requirements to determine process specifications"
+        },
+        {
+         "course": "MTT 034",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify the symbols for fluid power and electrical related components from either ANSI or ISO drawings",
+         "basis": "reading schematic symbols to determine specifications parallels studying instructions/processing charts for specifications"
+        }
+       ]
+      },
+      "MTT 012": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 012",
+         "section": "lab",
+         "level": 1,
+         "quote": "Learn to read Specification sheets",
+         "basis": "reading specification sheets to determine product/component requirements before testing"
+        },
+        {
+         "course": "MTT 012",
+         "section": "content",
+         "level": 1,
+         "quote": "Specification sheets and finding:",
+         "basis": "studying specification sheets to determine device specifications, paralleling reading work orders/specs"
+        }
+       ]
+      },
+      "MTT 020": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 020",
+         "section": "content",
+         "level": 1,
+         "quote": "Understanding Piping/Process and Instrumentation Diagrams",
+         "basis": "P&IDs function as work orders/processing charts specifying sequence of operations"
+        }
+       ]
+      },
+      "MTT 030": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 030",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify applicable National Electric Code (NEC) requirements and appropriate safety policies and procedures for installation and operation of electric motors",
+         "basis": "identifying code requirements to determine correct installation/operation procedures evidences reading instructions to determine specifications"
+        }
+       ]
+      },
+      "MTT 032": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 032",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Interpret manufacturers' data sheets and reference documentation and apply principles of digital and microcontroller systems to describe the operation of a given microcontroller system.",
+         "basis": "reading manufacturer specification documents to determine device/product specifications"
+        },
+        {
+         "course": "MTT 032",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Interpret manufacturers’ data sheets for microprocessor devices.",
+         "basis": "reading technical specification sheets to determine product/device requirements"
+        }
+       ]
+      },
+      "MTT 042": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 042",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Interpret manufacturers’ data sheets for CPLD devices.",
+         "basis": "reading specification documents to determine device requirements directly matches studying instructions/specs"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "MTT 012",
+      "section": "lab",
+      "quote": "Learn to read Specification sheets",
+      "reason": "directly names reading specification sheets, the exact instruction-reading task described"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.1.b.11",
+     "dwa": "Review blueprints or other instructions to determine operational methods or sequences.",
+     "task": "Study work orders, instructions, formulas, and processing charts to determine specifications and sequence of operations.",
+     "cells": {
+      "MTT 020": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 020",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Read and understand automation symbols, including International Society of Automation (ISA) symbols",
+         "basis": "reading standardized diagram symbols to determine operational sequences matches literally"
+        }
+       ]
+      },
+      "MTT 034": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 034",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify the symbols for fluid power and electrical related components from either ANSI or ISO drawings and draw a complete schematic",
+         "basis": "reading standardized schematic symbols to determine operational methods"
+        },
+        {
+         "course": "MTT 034",
+         "section": "objectives",
+         "level": 2,
+         "quote": "draw a complete schematic based on given parameters",
+         "basis": "working from given parameters to produce schematics evidences reviewing instructions to determine operational sequences"
+        }
+       ]
+      },
+      "MTT 022": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 022",
+         "section": "content",
+         "level": 1,
+         "quote": "Control panel layout diagrams",
+         "basis": "studying layout diagrams to determine operational methods/sequences for control systems, analogous to blueprint reading"
+        },
+        {
+         "course": "MTT 022",
+         "section": "content",
+         "level": 1,
+         "quote": "Discrete Input/Output (I/O) diagrams",
+         "basis": "reviewing I/O diagrams to determine operational sequencing of PLC-controlled equipment"
+        }
+       ]
+      },
+      "MTT 030": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 030",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Following the written lab procedure, configure the DC motor and associated controls.",
+         "basis": "following a written procedure to determine operational sequence evidences reviewing instructions to determine operational methods"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "MTT 034",
+      "section": "objectives",
+      "quote": "Identify the symbols for fluid power and electrical related components from either ANSI or ISO drawings and draw a complete schematic",
+      "reason": "objective explicitly covers reading/interpreting drawings (blueprints) to produce a schematic, matching review of blueprints for operational sequence"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.1.h.5",
+     "dwa": "Clean workpieces or finished products.",
+     "task": "Clean semiconductor wafers using cleaning equipment, such as chemical baths, automatic wafer cleaners, or blow-off wands. · Clean and maintain equipment, including replacing etching and rinsing solutions and cleaning bath containers and work area.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.3.b.6.h.3",
+     "dwa": "Record operational or production data.",
+     "task": "Maintain processing, production, and inspection information and reports.",
+     "cells": {
+      "MTT 010": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 010",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Collect, organize, and present measurement data in tabular and graphic form.",
+         "basis": "recording measurement data as production/inspection information matches literally"
+        }
+       ]
+      },
+      "MTT 012": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 012",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Organize and present data in tabular and graphic formats using industry-standard software",
+         "basis": "recording operational/measurement data in industry format matches literally"
+        },
+        {
+         "course": "MTT 012",
+         "section": "description",
+         "level": 1,
+         "quote": "data collection, and reporting results in industry-accepted formats",
+         "basis": "recording operational/measurement data and reporting results"
+        }
+       ]
+      },
+      "MTT 030": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 030",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Measure motor output power and input voltage and current under multiple conditions. Summarize and analyze the measurement data",
+         "basis": "recording and summarizing measurement data evidences recording operational data"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "MTT 010",
+      "section": "outcomes",
+      "quote": "Collect, organize, and present measurement data in tabular and graphic form.",
+      "reason": "SLO commits to collecting, organizing, and presenting measurement data, the clearest statement of recording operational/production data"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.d.4",
+     "dwa": "Assemble precision electronics or optical equipment.",
+     "task": "Place semiconductor wafers in processing containers or equipment holders, using vacuum wand or tweezers. · Etch, lap, polish, or grind wafers or ingots to form circuitry and change conductive properties, using etching, lapping, polishing, or grinding equipment. · Align photo mask pattern on photoresist layer, expose pattern to ultraviolet light, and develop pattern, using specialized equipment.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.3.a.2.f.3",
+     "dwa": "Mount materials or workpieces onto production equipment.",
+     "task": "Place semiconductor wafers in processing containers or equipment holders, using vacuum wand or tweezers.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.3.a.1.f.10",
+     "dwa": "Load materials into production equipment.",
+     "task": "Load and unload equipment chambers and transport finished product to storage or to area for further processing.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.3.a.1.j.11",
+     "dwa": "Move products, materials, or equipment between work areas.",
+     "task": "Load and unload equipment chambers and transport finished product to storage or to area for further processing.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.3.b.1.a.1",
+     "dwa": "Enter commands, instructions, or specifications into equipment.",
+     "task": "Manipulate valves, switches, and buttons, or key commands into control panels to start semiconductor processing cycles.",
+     "cells": {
+      "MTT 020": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 020",
+         "section": "content",
+         "level": 1,
+         "quote": "Rung input: Checkers",
+         "basis": "PLC ladder logic programming is entering commands/instructions into control equipment"
+        },
+        {
+         "course": "MTT 020",
+         "section": "lab",
+         "level": 1,
+         "quote": "Build and test a basic ladder logic circuit with simulation software",
+         "basis": "building/testing ladder logic in simulation directly practices entering PLC commands that key panel commands in real equipment"
+        }
+       ]
+      },
+      "MTT 022": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 022",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Program a PLC controller to execute a sequential task.",
+         "basis": "programming a PLC controller matches entering commands into equipment literally"
+        },
+        {
+         "course": "MTT 022",
+         "section": "lab",
+         "level": 1,
+         "quote": "Program a Controller with Sensor integration",
+         "basis": "lab activity of programming a controller is direct entry of commands/instructions into equipment"
+        }
+       ]
+      },
+      "MTT 030": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 030",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Commission a variable frequency drive (VFD) 3-phase motor and program it to operate from remote controls",
+         "basis": "programming a drive to operate via remote control commands evidences entering commands/instructions into equipment"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "MTT 022",
+      "section": "objectives",
+      "quote": "Program a PLC controller to execute a sequential task.",
+      "reason": "objective states programming a controller to execute a task, matching entering commands/instructions into equipment"
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.1.b.3",
+     "dwa": "Diagnose equipment malfunctions.",
+     "task": "Inspect equipment for leaks, diagnose malfunctions, and request repairs.",
+     "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Troubleshoot and repair electrical, electronic, and mechanical systems and devices",
+         "basis": "troubleshooting equipment is diagnosing equipment malfunctions"
+        }
+       ]
+      },
+      "MTT 012": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 012",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Develop, present, and execute a logical troubleshooting plan appropriate for the subject system or component",
+         "basis": "developing a troubleshooting plan for a malfunctioning system evidences diagnosing malfunctions"
+        },
+        {
+         "course": "MTT 012",
+         "section": "assignments",
+         "level": 1,
+         "quote": "develop an initial troubleshooting plan to logically and effectively isolate the fault",
+         "basis": "isolating the fault via troubleshooting plan evidences diagnosing malfunctions"
+        }
+       ]
+      },
+      "MTT 030": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 030",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Configure, operate, and troubleshoot DC, stepper, and AC motor systems",
+         "basis": "troubleshooting motor systems evidences diagnosing equipment malfunctions"
+        },
+        {
+         "course": "MTT 030",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate effective basic troubleshooting techniques to isolate motor and controller faults",
+         "basis": "isolating faults in motor/controller equipment directly evidences diagnosing equipment malfunctions"
+        },
+        {
+         "course": "MTT 030",
+         "section": "lab",
+         "level": 1,
+         "quote": "Observing DC Motor operation and troubleshooting",
+         "basis": "troubleshooting motor operation evidences diagnosing equipment malfunctions"
+        }
+       ]
+      },
+      "MTT 034": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 034",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Troubleshoot a given pneumatic control system.",
+         "basis": "troubleshooting a fluid power system evidences diagnosing equipment malfunctions"
+        }
+       ]
+      },
+      "MTT 020": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 020",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Develop and execute a troubleshooting plan for process control systems.",
+         "basis": "troubleshooting process control systems is literally diagnosing equipment malfunctions"
+        },
+        {
+         "course": "MTT 020",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Develop and execute a troubleshooting plan for a malfunctioning PLC system.",
+         "basis": "diagnosing a malfunctioning PLC system matches diagnosing equipment malfunctions directly"
+        }
+       ]
+      },
+      "MTT 022": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 022",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Measure inputs and outputs, identify logic states during operation, and troubleshoot a PLC-controlled system",
+         "basis": "troubleshooting a controlled system requires diagnosing equipment malfunctions"
+        },
+        {
+         "course": "MTT 022",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Develop and execute a troubleshooting plan for process control systems",
+         "basis": "explicit development/execution of a troubleshooting plan matches diagnosing equipment malfunctions"
+        }
+       ]
+      },
+      "MTT 032": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 032",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Use test equipment to troubleshoot microprocessor-based electronic systems.",
+         "basis": "troubleshooting electronic systems with test equipment is diagnosing equipment malfunctions"
+        },
+        {
+         "course": "MTT 032",
+         "section": "content",
+         "level": 1,
+         "quote": "General debugging techniques",
+         "basis": "debugging a malfunctioning system is diagnosing equipment malfunctions"
+        }
+       ]
+      },
+      "MTT 042": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 042",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Use test equipment to troubleshoot digital electronic systems.",
+         "basis": "troubleshooting with test equipment is diagnosing equipment malfunctions"
+        },
+        {
+         "course": "MTT 042",
+         "section": "description",
+         "level": 1,
+         "quote": "allows students to develop troubleshooting techniques",
+         "basis": "course scope centers on diagnosing malfunctions in digital circuits"
+        }
+       ]
+      },
+      "MTT 050": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "MTT 050",
+         "section": "content",
+         "level": 1,
+         "quote": "Troubleshooting 2D/3D printing",
+         "basis": "troubleshooting printer issues evidences diagnosing equipment malfunctions"
+        },
+        {
+         "course": "MTT 050",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Troubleshoot 3D printing issue and 3D printer issue.",
+         "basis": "student practice diagnosing printer malfunctions directly evidences the diagnose-malfunction activity"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "MTT 020",
+      "section": "objectives",
+      "quote": "Develop and execute a troubleshooting plan for process control systems.",
+      "reason": "objective commits to developing and executing a troubleshooting plan for process control systems, matching diagnosing equipment malfunctions most specifically"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.2.g.15",
+     "dwa": "Inspect production equipment.",
+     "task": "Inspect equipment for leaks, diagnose malfunctions, and request repairs.",
+     "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Troubleshoot and repair electrical, electronic, and mechanical systems and devices",
+         "basis": "troubleshooting requires inspecting the equipment to locate the fault"
+        }
+       ]
+      },
+      "MTT 034": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 034",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate how to determine the integrity of a pneumatic and hydraulic actuator.",
+         "basis": "determining actuator integrity is inspecting production equipment for defects/leaks"
+        }
+       ]
+      },
+      "MTT 050": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "MTT 050",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate proper alignment and operating procedures for safe and effective operation of the 3D printer",
+         "basis": "checking alignment for safe/effective operation evidences inspecting production equipment before/during use"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "MTT 050",
+      "section": "outcomes",
+      "quote": "Demonstrate proper alignment and operating procedures for safe and effective operation of the 3D printer",
+      "reason": "SLO commits to demonstrating proper alignment and operating procedures for equipment, the clearest statement of inspecting production equipment"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.2.g.2",
+     "dwa": "Notify others of equipment repair or maintenance needs.",
+     "task": "Inspect equipment for leaks, diagnose malfunctions, and request repairs.",
+     "cells": {},
+     "lead": null
+    }
+   ],
+   "dropped": [
+    {
+     "activity": 1,
+     "course": "MTT 040",
+     "section": "outcomes",
+     "quote": "Identify op-amp circuit configurations and calculate gain and impedances for the circuit",
+     "basis": "measuring circuit parameters against expected values evidences conformance verification",
+     "why": "adjudicated: d: calculating op-amp gain/impedance evidences circuit analysis/design, not measuring completed products against specs"
+    },
+    {
+     "activity": 2,
+     "course": "MTT 020",
+     "section": "outcomes",
+     "quote": "Design a PLC program using ladder-logic or function block diagramming using P&ID",
+     "basis": "reading P&ID diagrams to determine specifications and sequence of operations matches literally",
+     "why": "adjudicated: d: designing a PLC program from P&ID evidences programming/design activity, not reading orders to determine specs"
+    },
+    {
+     "activity": 6,
+     "course": "MTT 020",
+     "section": "outcomes",
+     "quote": "Implement and troubleshoot a basic functional control system using ladder-logic programming",
+     "basis": "assembling/wiring precision electronic control components into a functioning system",
+     "why": "adjudicated: d: implementing/troubleshooting a ladder-logic control system evidences programming/diagnosing, not assembling precision electronics"
+    },
+    {
+     "activity": 6,
+     "course": "MTT 022",
+     "section": "outcomes",
+     "quote": "Measure inputs and outputs, identify logic states during operation, and troubleshoot a PLC-controlled system.",
+     "basis": "assembling and integrating sensors/controllers/actuators into precision electronic equipment",
+     "why": "adjudicated: d: measuring inputs/outputs and troubleshooting a PLC system evidences diagnosing malfunctions, not assembling precision equipment"
+    },
+    {
+     "activity": 12,
+     "course": "MTT 022",
+     "section": "objectives",
+     "quote": "Develop and execute a troubleshooting plan for process control systems.",
+     "basis": "process control system troubleshooting requires inspecting the production equipment components",
+     "why": "adjudicated: d: developing a troubleshooting plan evidences diagnosing malfunctions, a different activity than inspecting equipment"
+    },
+    {
+     "activity": 2,
+     "course": "MTT 020",
+     "section": "objectives",
+     "quote": "Develop and design PLC program from Piping/Process and Instrumentation Diagram",
+     "basis": "studying a P&ID to determine specifications/sequence before programming directly evidences reading instructions to determine specifications",
+     "why": "adjudicated: d: developing/designing a PLC program from a P&ID evidences programming activity, not reading orders to determine specs"
+    },
+    {
+     "activity": 3,
+     "course": "MTT 020",
+     "section": "outcomes",
+     "quote": "Design a PLC program using ladder-logic or function block diagramming using P&ID",
+     "basis": "using blueprint-like P&ID to determine the operational sequence for programming is literal blueprint review for method/sequence",
+     "why": "adjudicated: d: designing a PLC program using P&ID evidences programming/design, not reviewing blueprints for sequence"
+    },
+    {
+     "activity": 3,
+     "course": "MTT 020",
+     "section": "assignments",
+     "quote": "Program PLC controller for a specified operation using Piping/Process Instrumentation Diagram (P&ID).",
+     "basis": "applying a P&ID blueprint to determine the operational method/sequence to program",
+     "why": "adjudicated: d: programming a PLC controller for a specified operation evidences programming activity, not reviewing blueprints"
+    },
+    {
+     "activity": 5,
+     "course": "MTT 020",
+     "section": "content",
+     "quote": "Discrete Input/Output (I/O) diagrams",
+     "basis": "creating I/O and interconnection diagrams documents process/operational data about the control system",
+     "why": "adjudicated: a: I/O diagrams named as content with no performable recording activity described"
+    },
+    {
+     "activity": 10,
+     "course": "MTT 020",
+     "section": "outcomes",
+     "quote": "Implement and troubleshoot a basic functional control system using ladder-logic programming",
+     "basis": "implementing ladder-logic programs on a PLC is literally entering commands/instructions into control equipment",
+     "why": "adjudicated: d: implementing/troubleshooting a control system evidences programming/diagnosing, not entering commands into equipment"
+    },
+    {
+     "activity": 2,
+     "course": "MTT 022",
+     "section": "content",
+     "quote": "Create and understand electrical plans for advanced process systems",
+     "basis": "students read/interpret technical plans to determine specifications for process systems, matching reading instructions to determine specifications",
+     "why": "adjudicated: a: creating/understanding electrical plans named as content without clear tie to reading orders for specs"
+    },
+    {
+     "activity": 2,
+     "course": "MTT 022",
+     "section": "objectives",
+     "quote": "Select sensors, controllers, and actuators appropriate for a given task",
+     "basis": "requires interpreting task specifications to determine required components, a form of determining specifications from instructions",
+     "why": "adjudicated: b: selecting appropriate sensors/controllers/actuators precedes reading instructions rather than evidencing it"
+    },
+    {
+     "activity": 2,
+     "course": "MTT 030",
+     "section": "content",
+     "quote": "National Electrical Code Article 430",
+     "basis": "studying code/spec references to determine requirements before operation mirrors reading instructions for specifications",
+     "why": "adjudicated: a: NEC Article 430 named as topic/content with no performable step tied to determining specifications"
+    },
+    {
+     "activity": 10,
+     "course": "MTT 030",
+     "section": "lab",
+     "quote": "Exploring VFD control systems",
+     "basis": "operating VFD control systems involves keying commands into control panels to run motor processing cycles",
+     "why": "adjudicated: a: exploring VFD control systems named as lab topic with no performable command-entry step stated"
+    },
+    {
+     "activity": 12,
+     "course": "MTT 030",
+     "section": "outcomes",
+     "quote": "Configure, operate, and troubleshoot DC, stepper, and AC motor systems",
+     "basis": "troubleshooting requires inspecting the equipment for the source of the fault, evidencing inspecting production equipment",
+     "why": "adjudicated: d: configuring/operating/troubleshooting motor systems evidences diagnosing malfunctions, a different activity than inspecting equipment"
+    },
+    {
+     "activity": 10,
+     "course": "MTT 034",
+     "section": "content",
+     "quote": "Control valve",
+     "basis": "operating control valves in electro-pneumatic/electro-hydraulic systems is manipulating valves/switches as in entering commands into equipment",
+     "why": "adjudicated: a: control valve named as topic/content heading with no performable command-entry step described"
+    },
+    {
+     "activity": 2,
+     "course": "MTT 050",
+     "section": "objectives",
+     "quote": "Identify common 3D file formats, and the sequence of file processing used to create a 3D file for printing",
+     "basis": "identifying required file formats/sequence to determine specifications before processing mirrors studying instructions to determine specifications and sequence of operations",
+     "why": "adjudicated: d: identifying file formats and print-processing sequence evidences additive-manufacturing production steps, not reading work orders for product specs"
+    },
+    {
+     "activity": 3,
+     "course": "MTT 050",
+     "section": "content",
+     "quote": "Equipment Setup, Operating Procedures and Safety",
+     "basis": "following equipment setup/operating procedures evidences reviewing instructions to determine operational methods or sequences",
+     "why": "adjudicated: a: equipment setup/operating procedures/safety named as content heading with no stated instruction-reading step"
+    },
+    {
+     "activity": 6,
+     "course": "MTT 050",
+     "section": "lab",
+     "quote": "3D printing using SolidWorks",
+     "basis": "operating precision 3D printing equipment to construct parts evidences assembling precision equipment/components in a technical production setting",
+     "why": "adjudicated: d: 3D printing lab evidences an additive-manufacturing production task, a different activity than assembling precision electronics/optical equipment"
+    },
+    {
+     "activity": 8,
+     "course": "MTT 050",
+     "section": "lab",
+     "quote": "Discuss 2D/3D printer safety and operating procedures",
+     "basis": "operating printer per procedures involves loading materials/files into the production equipment before a run",
+     "why": "adjudicated: a: discussing printer safety/operating procedures is topic-only with no performable loading step described"
+    },
+    {
+     "activity": 10,
+     "course": "MTT 050",
+     "section": "objectives",
+     "quote": "Design project using 2D/3D software, e.g. AutoCAD and SolidWorks",
+     "basis": "entering design/print parameters into manufacturing software/equipment evidences entering commands or specifications into equipment",
+     "why": "adjudicated: d: designing a project in 2D/3D CAD software evidences design activity, not entering commands into production equipment"
+    }
+   ],
+   "source_note": "Read from Mission College's course outlines of record (elumen); sections present: slo, objective, description, content outline, lab content, assignment.",
+   "role": "",
+   "short_title": "Mechatronic Technology"
+  }
+ ]
+}

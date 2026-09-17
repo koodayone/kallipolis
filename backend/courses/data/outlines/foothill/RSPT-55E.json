@@ -1,0 +1,63 @@
+{
+ "college": "Foothill College",
+ "system": "courseleaf",
+ "code": "RSPT 55E",
+ "title": "Mediated Studies In Respiratory Therapy V",
+ "description": "Fifth of seven courses paralleling content taught in courses in the Respiratory Therapy Program. Designed to develop and reinforce concepts taught in the concurrent lecture and laboratory sessions of the program, with a focus on neonatal diseases, ECG, and hemodynamic monitoring. Media materials, simulations, and videos will provide alternative learning resources to accommodate diverse learning styles. Intended for students in the Respiratory Therapy Program; enrollment is limited to students accepted in the program.",
+ "outcomes": [
+  "Identifies and chooses the correct laboratory tests that lead to proper treatment in the clinical simulation scenarios.",
+  "Student will be able to recognize hemodynamic waveforms."
+ ],
+ "objectives": [
+  "The student will be able to describe and demonstrate the following skills:",
+  "Electrocardiography.",
+  "Hemodynamic monitoring.",
+  "Neonatal respiratory care."
+ ],
+ "content": [
+  "ECGs",
+  "Cardiac electrophysiology",
+  "Basic rhythm recognition",
+  "Advanced rhythm recognition",
+  "Hemodynamic monitoring",
+  "Waveform recognition",
+  "Clinical application",
+  "Continuous SVO2 monitoring",
+  "Neonatal respiratory care",
+  "Using neonatal airway graphics to optimize care in neonatal patients",
+  "Development care in the NICU",
+  "Evolution of RC in the NICU to reduce the use of invasive ventilation",
+  "Neonatal pulmonary disorders",
+  "Caring for the BDP patient",
+  "Mandatory minute ventilation in neonatal care",
+  "Safety in the NICU",
+  "Challenges in neonatal ventilation",
+  "Volume targeted ventilation in neonatal care"
+ ],
+ "lab": [
+  "ECGs",
+  "Cardiac electrophysiology",
+  "Basic rhythm recognition",
+  "Advanced rhythm recognition",
+  "Hemodynamic monitoring",
+  "Waveform recognition",
+  "Clinical application",
+  "Continuous SVO2 monitoring",
+  "Neonatal respiratory care",
+  "Using neonatal airway graphics to optimize care in neonatal patients",
+  "Development care in the NICU",
+  "Evolution of RC in the NICU to reduce the use of invasive ventilation",
+  "Neonatal pulmonary disorders",
+  "Caring for the BDP patient",
+  "Mandatory minute ventilation in neonatal care",
+  "Safety in the NICU",
+  "Challenges in neonatal ventilation",
+  "Volume targeted ventilation in neonatal care"
+ ],
+ "assignments": [],
+ "source_url": "https://catalog.foothill.edu/course-outlines/RSPT-55E/",
+ "effective": "Summer 2025",
+ "approved": "",
+ "retrieved": "2026-09-17",
+ "notes": ""
+}

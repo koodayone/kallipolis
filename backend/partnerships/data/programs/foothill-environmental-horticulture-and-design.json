@@ -1,0 +1,80 @@
+{
+  "college": "Foothill College",
+  "college_key": "foothill",
+  "member_id": "foothill",
+  "certificate": "Certificate of Achievement, Environmental Horticulture and Design",
+  "short_title": "Environmental Horticulture and Design",
+  "kind": "credit",
+  "control_number": "19476",
+  "award": "Certificate of Achievement: 18  or greater semester(or 27  or greater quarter) units",
+  "status": "Active",
+  "top6": "010900",
+  "top_name": "Horticulture",
+  "source": {
+    "system": "courseleaf"
+  },
+  "course_sources": {},
+  "program_description": "Environmental Horticulture and Design is a broad field encompassing the functional, aesthetic, and environmentally sound creation and care of our landscapes. Students learn to combine principles of environmental design, construction, and maintenance practices for urban, rural, and natural landscapes.",
+  "program_outcomes": [
+    "Students will be able to demonstrate skills necessary to design residential landscapes.",
+    "Students will be able to identify plant material."
+  ],
+  "courses": [
+    {
+      "code": "HORT 10",
+      "title": "Environmental Horticulture & The Urban Landscape",
+      "units": 3
+    },
+    {
+      "code": "HORT 15",
+      "title": "Orientation To Environmental Horticulture",
+      "units": 4
+    },
+    {
+      "code": "HORT 21",
+      "title": "Plant Materials I",
+      "units": 3
+    },
+    {
+      "code": "HORT 22",
+      "title": "Plant Materials Ii",
+      "units": 3
+    },
+    {
+      "code": "HORT 30",
+      "title": "Horticultural Practices: Soils",
+      "units": 3
+    },
+    {
+      "code": "HORT 40",
+      "title": "Landscape Design: Graphic Communication",
+      "units": 4
+    },
+    {
+      "code": "HORT 52C",
+      "title": "Horticulture Practices: Plant Installation & Maintenance",
+      "units": 4
+    },
+    {
+      "code": "HORT 54A",
+      "title": "Landscape Construction: General Practices",
+      "units": 4
+    },
+    {
+      "code": "HORT 54B",
+      "title": "Landscape Construction: Technical Practices",
+      "units": 3
+    },
+    {
+      "code": "HORT 54C",
+      "title": "Landscape Construction: Irrigation Practices",
+      "units": 3
+    },
+    {
+      "code": "HORT 60B",
+      "title": "Landscape Design: Theory",
+      "units": null
+    }
+  ],
+  "notes": "Courses = the certificate's CORE courses per catalog.foothill.edu/degrees-certificates/environmental-horticulture-design/ (2026-09-17); the specialization and elective menus (plant materials, plant production, horticultural electives, short courses) are student choices and are left out. The ProgramCourseFile draft listed all 42 active menu courses."
+}

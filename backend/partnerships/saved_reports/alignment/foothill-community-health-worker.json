@@ -1,0 +1,609 @@
+{
+ "program": "foothill-community-health-worker",
+ "generated": "2026-09-17",
+ "onet_vintage": "O*NET 31.0 database (August 2026), U.S. Department of Labor",
+ "plates": [
+  {
+   "college": "Foothill College",
+   "member_id": "foothill",
+   "certificate": "Certificate of Achievement, Community Health Worker",
+   "kind": "credit",
+   "top6": "126100",
+   "top_name": "Community Health Care Worker",
+   "paired_soc": "21-1094",
+   "occupation": "Community Health Workers",
+   "crosswalk_socs": [],
+   "pairing_basis": "",
+   "courses": [
+    {
+     "code": "HLTH 21",
+     "title": "Contemporary Health Concerns",
+     "units": null,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HLTH-21/",
+     "system": "courseleaf",
+     "effective": "Fall 2025",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "HLTH 101",
+     "title": "Introduction To Community Health Work",
+     "units": null,
+     "source_url": "https://catalog.foothill.edu/course-outlines/HLTH-101/",
+     "system": "courseleaf",
+     "effective": "Summer 2022",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "ITRN 52",
+     "title": "Internship",
+     "units": null,
+     "source_url": "https://catalog.foothill.edu/course-outlines/ITRN-52/",
+     "system": "courseleaf",
+     "effective": "Summer 2025",
+     "approved": "",
+     "sections": [
+      "objectives",
+      "description",
+      "content",
+      "lab"
+     ],
+     "notes": "",
+     "currency": null
+    }
+   ],
+   "program_outcomes": [
+    "Students will be able to demonstrate health navigation and care coordination skills when supporting vulnerable individuals, groups, and communities.",
+    "Students will be able to demonstrate the dissemination of culturally competent health education to individuals, groups, and communities.",
+    "Students will be able to demonstrate the ability to assist individuals with applications for social services.",
+    "Students will be able to demonstrate the ability to apply written, verbal, and active listening communication strategies that are professional, courteous, and culturally competent."
+   ],
+   "rows": [
+    {
+     "dwa_id": "4.A.4.b.6.h.3",
+     "dwa": "Recommend legal actions.",
+     "task": "Report incidences of child or elder abuse, neglect, or threats of harm to authorities, as required.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.1.a.2.e.8",
+     "dwa": "Monitor nutrition related activities of individuals or groups.",
+     "task": "Monitor nutrition of children, elderly, or other high-risk groups.",
+     "cells": {
+      "HLTH 21": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HLTH 21",
+         "section": "objectives",
+         "level": 2,
+         "quote": "N. Identify and the relevant health issues in the aged population",
+         "basis": "covers nutrition-related content for high-risk aged group per course G. Nutritional behavior section"
+        },
+        {
+         "course": "HLTH 21",
+         "section": "content",
+         "level": 1,
+         "quote": "G. Nutritional behavior",
+         "basis": "course content covers nutrition and dietary guidelines relevant to monitoring nutrition"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HLTH 21",
+      "section": "content",
+      "quote": "G. Nutritional behavior",
+      "reason": "content line names nutritional behavior directly, matching 'monitor nutrition' more specifically than a general objective on aged health issues"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.6.k.1",
+     "dwa": "Maintain client records.",
+     "task": "Maintain updated client records with plans, notes, appropriate forms, or related information.",
+     "cells": {
+      "HLTH 101": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HLTH 101",
+         "section": "content",
+         "level": 1,
+         "quote": "Documentation skills",
+         "basis": "case management content on maintaining client documentation directly evidences maintaining client records"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HLTH 101",
+      "section": "content",
+      "quote": "Documentation skills",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.1.e.3",
+     "dwa": "Confer with clients to discuss treatment plans or progress.",
+     "task": "Contact clients in person, by phone, or in writing to ensure they have completed required or recommended actions.",
+     "cells": {
+      "HLTH 101": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HLTH 101",
+         "section": "content",
+         "level": 1,
+         "quote": "Client-centered interviewing",
+         "basis": "interviewing content evidences conferring with clients to discuss treatment or care plans"
+        },
+        {
+         "course": "HLTH 101",
+         "section": "content",
+         "level": 1,
+         "quote": "Client-centered health coaching/counseling",
+         "basis": "health coaching/counseling directly evidences conferring with clients on progress and plans"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HLTH 101",
+      "section": "content",
+      "quote": "Client-centered health coaching/counseling",
+      "reason": "coaching/counseling implies ongoing contact to track completion of recommended actions, closer to the task than a general interviewing line"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.2.e.2",
+     "dwa": "Monitor clients to evaluate treatment progress.",
+     "task": "Contact clients in person, by phone, or in writing to ensure they have completed required or recommended actions.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.4.b.6.f.3",
+     "dwa": "Advise clients or community groups on health issues.",
+     "task": "Advise clients or community groups on issues related to self-care, such as diabetes management. · Advise clients or community groups on issues related to improving general health, such as diet or exercise. · Advise clients or community groups on issues related to sanitation or hygiene, such as flossing or hand washing. · Advise clients or community groups on issues related to diagnostic screenings, such as breast cancer screening, pap smears, glaucoma tests, or diabetes screenings. · Advise clients or community groups to ensure parental understanding of the importance of childhood immunizations and how to access immunization services. · Advise clients or community groups on issues related to risk or prevention of conditions, such as lead poisoning, human immunodeficiency virus (HIV), prenatal substance abuse, or domestic violence.",
+     "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "demonstrate the dissemination of culturally competent health education to individuals, groups, and communities",
+         "basis": "health education to individuals/groups is a directly constitutive component of advising clients on health issues"
+        }
+       ]
+      },
+      "HLTH 101": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HLTH 101",
+         "section": "content",
+         "level": 1,
+         "quote": "Group health education vs. individual health education",
+         "basis": "health education content evidences advising clients/groups on health issues"
+        },
+        {
+         "course": "HLTH 101",
+         "section": "content",
+         "level": 1,
+         "quote": "Diabetes",
+         "basis": "chronic disease content under health education topics evidences advising clients on self-care such as diabetes management"
+        },
+        {
+         "course": "HLTH 101",
+         "section": "content",
+         "level": 1,
+         "quote": "Diet: Eating habits, food and water deserts",
+         "basis": "diet content evidences advising clients on general health issues such as diet"
+        }
+       ]
+      },
+      "HLTH 21": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HLTH 21",
+         "section": "objectives",
+         "level": 2,
+         "quote": "H. Explain the role of and apply recommendations to: diet planning, physical activity, physical fitness, and weight management for disease prevention.",
+         "basis": "applying diet/exercise recommendations evidences advising on general health improvement issues"
+        },
+        {
+         "course": "HLTH 21",
+         "section": "content",
+         "level": 1,
+         "quote": "Nutritional guidelines",
+         "basis": "course content on diet guidelines evidences advising on general health/nutrition issues"
+        },
+        {
+         "course": "HLTH 21",
+         "section": "objectives",
+         "level": 2,
+         "quote": "apply recommendations to: diet planning, physical activity, physical fitness, and weight management for disease prevention",
+         "basis": "objective literally has students apply health recommendations akin to advising on self-care/general health"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HLTH 21",
+      "section": "objectives",
+      "quote": "H. Explain the role of and apply recommendations to: diet planning, physical activity, physical fitness, and weight management for disease prevention.",
+      "reason": "objective-tier commitment naming diet, physical activity, and weight management ties directly to advising on self-care and general health"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.5.a.6",
+     "dwa": "Refer clients to community or social service programs.",
+     "task": "Refer community members to needed health services.",
+     "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "demonstrate health navigation and care coordination skills when supporting vulnerable individuals, groups, and communities",
+         "basis": "care coordination for vulnerable clients directly constitutes referring clients to needed services"
+        }
+       ]
+      },
+      "HLTH 101": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HLTH 101",
+         "section": "content",
+         "level": 1,
+         "quote": "211, SNAP, WIC, Daycare, Medicaid, Section 8, etc.",
+         "basis": "listing referral resources evidences referring clients to community/social service programs"
+        },
+        {
+         "course": "HLTH 101",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify and enroll patients in need-based resources within the county, state, and federal levels to mitigate negative health outcomes.",
+         "basis": "enrolling patients in need-based resources is directly referring clients to community/social services"
+        },
+        {
+         "course": "HLTH 101",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Assist clients in completing applications for social services.",
+         "basis": "assisting with social service applications evidences referral to social service programs"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HLTH 101",
+      "section": "objectives",
+      "quote": "Identify and enroll patients in need-based resources within the county, state, and federal levels to mitigate negative health outcomes.",
+      "reason": "objective explicitly commits to identifying and enrolling clients in needed health/social services, the clearest statement of referral"
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.2.n.2",
+     "dwa": "Plan programs to address community health issues.",
+     "task": "Develop plans or formal contracts for individuals, families, or community groups to improve overall health.",
+     "cells": {
+      "HLTH 101": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HLTH 101",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Design a community-level health education and promotion project that demonstrates effective health literacy, communication strategies, and evidence-based health content.",
+         "basis": "designing a community health education/promotion project evidences planning programs to address community health issues"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HLTH 101",
+      "section": "outcomes",
+      "quote": "Design a community-level health education and promotion project that demonstrates effective health literacy, communication strategies, and evidence-based health content.",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.6.a.1",
+     "dwa": "Advocate for individual or community needs.",
+     "task": "Advocate for individual or community health needs with government agencies or health service providers.",
+     "cells": {
+      "HLTH 101": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HLTH 101",
+         "section": "content",
+         "level": 1,
+         "quote": "Building advocacy and capacity in the CHW field",
+         "basis": "advocacy-building content directly evidences advocating for individual or community needs"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HLTH 101",
+      "section": "content",
+      "quote": "Building advocacy and capacity in the CHW field",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.2.a.1.a.4",
+     "dwa": "Assess individual or community needs for educational or social services.",
+     "task": "Identify the particular health care needs of individuals in a community or target area.",
+     "cells": {
+      "HLTH 101": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HLTH 101",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Evaluate patient needs utilizing a cultural humility and social justice lens related to health education, benefit enrollment, and/or care coordination.",
+         "basis": "evaluating patient needs directly evidences assessing individual needs for services"
+        },
+        {
+         "course": "HLTH 101",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify chronic diseases that impact vulnerable populations.",
+         "basis": "identifying health needs of vulnerable populations evidences assessing community health needs"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HLTH 101",
+      "section": "objectives",
+      "quote": "Evaluate patient needs utilizing a cultural humility and social justice lens related to health education, benefit enrollment, and/or care coordination.",
+      "reason": "objective explicitly commits to evaluating patient needs, the core of assessing individual needs for services"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.c.3.c.6",
+     "dwa": "Provide educational materials to community members.",
+     "task": "Teach classes or otherwise disseminate medical or dental health information to school groups, community groups, or targeted families or individuals, in a manner consistent with cultural norms. · Distribute flyers, brochures, or other informational or educational documents to inform members of a targeted community.",
+     "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "demonstrate the dissemination of culturally competent health education to individuals, groups, and communities",
+         "basis": "dissemination of health education literally states providing educational materials/information to community members"
+        }
+       ]
+      },
+      "HLTH 101": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "HLTH 101",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Design a community-level health education and promotion project that demonstrates effective health literacy, communication strategies, and evidence-based health content.",
+         "basis": "designing health education/promotion project directly evidences providing educational materials to community"
+        },
+        {
+         "course": "HLTH 101",
+         "section": "content",
+         "level": 1,
+         "quote": "Group health education vs. individual health education",
+         "basis": "delivering health education to groups/individuals evidences disseminating medical/health information to community members"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HLTH 101",
+      "section": "outcomes",
+      "quote": "Design a community-level health education and promotion project that demonstrates effective health literacy, communication strategies, and evidence-based health content.",
+      "reason": "SLO commits to designing a community-level health education project, most specific to disseminating educational materials to community members"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.4.a.3",
+     "dwa": "Develop working relationships with others to facilitate program activities.",
+     "task": "Attend community meetings or health fairs to understand community issues or build relationships with community members.",
+     "cells": {
+      "HLTH 101": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "HLTH 101",
+         "section": "content",
+         "level": 1,
+         "quote": "Community organizing",
+         "basis": "community organizing content evidences developing working relationships to facilitate program activities"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "HLTH 101",
+      "section": "content",
+      "quote": "Community organizing",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.b.6.e.11",
+     "dwa": "Advise others on ways to improve processes or products.",
+     "task": "Provide feedback to health service providers regarding improving service accessibility or acceptability.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.4.b.6.e.12",
+     "dwa": "Recommend changes or corrective procedures.",
+     "task": "Provide feedback to health service providers regarding improving service accessibility or acceptability.",
+     "cells": {},
+     "lead": null
+    }
+   ],
+   "dropped": [
+    {
+     "activity": 1,
+     "course": "HLTH 101",
+     "section": "content",
+     "quote": "Understanding and navigating patient trauma",
+     "basis": "course addresses recognizing trauma but does not evidence reporting abuse/neglect to authorities",
+     "why": "adjudicated: b: understanding/navigating trauma is knowledge preceding the actual reporting of abuse/neglect to authorities"
+    },
+    {
+     "activity": 3,
+     "course": "HLTH 101",
+     "section": "content",
+     "quote": "Case Management",
+     "basis": "case management content includes maintaining client records and plans",
+     "why": "adjudicated: a: 'Case Management' alone is a topic heading with no performable record-keeping content stated"
+    },
+    {
+     "activity": 5,
+     "course": "HLTH 101",
+     "section": "outcomes",
+     "quote": "Develop care coordination plans using health navigation principles for vulnerable populations.",
+     "basis": "care coordination plans require monitoring client progress toward treatment goals",
+     "why": "adjudicated: d: care coordination planning evidences developing plans, not contacting clients to confirm completed actions"
+    },
+    {
+     "activity": 8,
+     "course": "HLTH 101",
+     "section": "content",
+     "quote": "Health outreach",
+     "basis": "health outreach planning content evidences planning programs to address community health issues",
+     "why": "adjudicated: a: 'Health outreach' alone is a topic heading without stated plan/contract-development content"
+    },
+    {
+     "activity": 11,
+     "course": "HLTH 101",
+     "section": "content",
+     "quote": "Examples of effective and ineffective health campaigns",
+     "basis": "health campaign content evidences disseminating educational materials to community members",
+     "why": "adjudicated: a: examples of effective/ineffective campaigns is analytical/critique content, not disseminating materials"
+    },
+    {
+     "activity": 12,
+     "course": "HLTH 101",
+     "section": "content",
+     "quote": "Professional networks and associations in the CHW field",
+     "basis": "networking content evidences developing working relationships to facilitate program activities",
+     "why": "adjudicated: c: professional networks/associations is a generic workplace networking skill, not program-activity relationship building"
+    },
+    {
+     "activity": 13,
+     "course": "ITRN 52",
+     "section": "objectives",
+     "quote": "Enhance and strengthen employee/supervisor and co-worker communication and working relationship through on-going feedback loop for evaluation.",
+     "basis": "feedback loop with supervisors in workplace touches on improving processes but not specifically service accessibility",
+     "why": "adjudicated: c: employee/supervisor feedback loop is a generic workplace skill, not feedback to health service providers"
+    },
+    {
+     "activity": 14,
+     "course": "ITRN 52",
+     "section": "objectives",
+     "quote": "Demonstrate critical thinking skills in the workplace through conflict resolution, troubleshooting, and team building activities.",
+     "basis": "troubleshooting workplace issues is only a general skill, not specific recommending of corrective health-service procedures",
+     "why": "adjudicated: c: workplace critical thinking/conflict resolution/troubleshooting is a generic skill, not health-service corrective recommendations"
+    },
+    {
+     "activity": 2,
+     "course": "HLTH 21",
+     "section": "content",
+     "quote": "Profile of America's aging population",
+     "basis": "content on elderly population health links to monitoring nutrition/health of high-risk groups, though only tangentially covers monitoring itself",
+     "why": "adjudicated: a: profile of America's aging population is descriptive topic content, not performable monitoring activity"
+    },
+    {
+     "activity": 1,
+     "course": "HLTH 101",
+     "section": "content",
+     "quote": "Understanding and navigating patient trauma",
+     "basis": "content covers recognizing trauma/abuse indicators but does not have students reporting incidences to authorities; excluded as weak evidence",
+     "why": "adjudicated: b: understanding/navigating trauma precedes the actual reporting to authorities"
+    },
+    {
+     "activity": 3,
+     "course": "HLTH 101",
+     "section": "content",
+     "quote": "Professionalism in writing, speaking",
+     "basis": "documentation/case management content supports maintaining updated client records",
+     "why": "adjudicated: c: professionalism in writing/speaking is a generic communication skill, not record maintenance"
+    },
+    {
+     "activity": 4,
+     "course": "HLTH 101",
+     "section": "outcomes",
+     "quote": "Develop care coordination plans using health navigation principles for vulnerable populations.",
+     "basis": "care coordination plan development directly involves discussing plans with clients",
+     "why": "adjudicated: d: care coordination planning evidences developing plans, not contacting clients to confirm completed actions"
+    },
+    {
+     "activity": 11,
+     "course": "HLTH 101",
+     "section": "content",
+     "quote": "Health outreach",
+     "basis": "outreach content evidences distributing informational/educational materials to targeted communities",
+     "why": "adjudicated: a: 'Health outreach' alone is a topic heading without stated distribution/dissemination content"
+    },
+    {
+     "activity": 12,
+     "course": "HLTH 101",
+     "section": "content",
+     "quote": "Professional networks and associations in the CHW field",
+     "basis": "networking content evidences developing working relationships to facilitate program activities",
+     "why": "adjudicated: c: professional networks/associations is a generic workplace networking skill, not program-activity relationship building"
+    },
+    {
+     "activity": 10,
+     "course": "PLO",
+     "section": "program_outcomes",
+     "quote": "demonstrate health navigation and care coordination skills when supporting vulnerable individuals, groups, and communities",
+     "basis": "navigating individuals/groups to services requires identifying their particular health care needs first, stated as a graduate skill",
+     "why": "adjudicated: b: health navigation/care coordination is the downstream activity of connecting people to services, not the needs-assessment step that precedes it"
+    },
+    {
+     "activity": 3,
+     "course": "PLO",
+     "section": "program_outcomes",
+     "quote": "demonstrate the ability to assist individuals with applications for social services",
+     "basis": "assisting with applications is a directly constitutive component of maintaining client records/forms",
+     "why": "adjudicated: d: assisting individuals with applications for social services evidences referring/connecting clients to services, not maintaining client records"
+    }
+   ],
+   "source_note": "Read from Foothill College's course outlines of record (courseleaf); sections present: slo, objective, description, content outline, lab content.",
+   "role": "",
+   "short_title": "Community Health Worker"
+  }
+ ]
+}

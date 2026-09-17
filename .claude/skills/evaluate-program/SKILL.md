@@ -28,9 +28,16 @@ Same substrate (L1 lens → def → `build_report_html`), inverted unit of analy
    is obvious — and leave it to the reader. This is the house posture (*data proposes, human
    confirms*), and it is what makes the document usable inside an institutional process
    rather than something to argue with.
-2. **The destination SOCs are DERIVED, not authored.** In a role report the author picks the
-   SOCs, which silently filters crosswalk junk. Here the program picks them, so the filter
-   must be explicit (below).
+2. **The destination CANDIDATES are DERIVED, not authored.** In a role report the author picks the
+   SOCs, which silently filters crosswalk junk. Here the program picks the candidates, so the
+   filter must be explicit (below). The def's `socs` is then an EDITORIAL SELECTION from that
+   candidate set, with the full derivation and every drop listed in `_comment`. Narrow TOPs
+   derive to one or two occupations and the selection is the set. Broad TOPs do not: 094500
+   (Industrial Systems Technology and Maintenance) derives to ten technician and maintenance
+   occupations, and eleven occupation columns made the Semiconductor Processing draft
+   unreadable. Select the occupations the program's stated purpose and outlines reach —
+   three is a good ceiling — and disclose the rest as candidates. A stated-purpose SOC the
+   crosswalk misses may be ADDED, named as an authored addition in `_comment`.
 
 ## Deriving the destination occupations
 
@@ -54,7 +61,8 @@ Validated 2026-08-27 — it reproduces hand-authored SOC sets exactly:
 new program through it and eyeball the dropped list before trusting the kept one.
 
 If the derived set is EMPTY, that is a finding, not a failure: the program has no middle-skill
-destination in its own sector. Report it plainly.
+destination in its own sector. Report it plainly. If it is LARGE (094500 derives to ten), it is a
+candidate set, not the page: select per hard rule 2.
 
 ## Sections — same evidence as the role report, re-angled
 
@@ -174,7 +182,31 @@ tables read as one throughput story.
 4. **Caption the trend tables** — `award_note` / `enrollment_note` say what the table is and note
    that empty cells mean no data reported. They do NOT narrate the figures (rule 8). The
    throughput finding comes from the two tables sitting next to each other, not from prose.
-5. **Render + review**, then export via `tools/report-render/export.sh` as usual.
+5. **Curriculum alignment** (optional; adds the section that says where the program's courses
+   carry the destination occupations' work activities — see `partnerships/alignment.py` for the
+   rules). The unit is the certificate, not the TOP:
+   1. List the TOP's awards: `awards_for(college_name, TOP6, offered_only=False)` (some are still
+      "Approved"). Pick the certificate(s) under review; note each control number.
+   2. Draft a program record per certificate:
+      `python -m partnerships.alignment scaffold <member> <control_number>` (`--keep-zeros` where
+      the college writes `MTT 020`). The draft's courses come from the state's ProgramCourseFile,
+      which lists every course the award can count — TRIM to the certificate's own requirements
+      (drop GE and "or" alternatives), confirm each course code's spelling against the college's
+      outline system (the code is the key), paste the program outcomes, confirm `source`. If a
+      record for the certificate already exists (a consortium roster cited it), reuse it.
+   3. Write the evaluation roster `partnerships/data/<def slug with _>.json`: `id` = the def slug,
+      `columns: "certificate"`, `occupations` = the def's `socs`, at most three (each costs
+      roughly 2 + courses matcher calls and one adjudication), `programs` = one entry per
+      certificate `{program: <ref>, paired_soc, pairing_basis, reads_against, appendix_socs}`.
+      The roster's occupations MUST come from the def's derived `socs` — one occupation list per
+      document; `run` warns otherwise. If the certificate's stated purpose names a SOC the
+      crosswalk misses, add it to the def's `socs` with a `_comment`, never to the roster alone.
+   4. `python -m partnerships.alignment run <def slug> --new-only` — reads only the (program,
+      occupation) pairs no roster has read yet; readings are saved per program and shared.
+   5. Set `curriculum_alignment: "<def slug>"` and `curriculum_note` on the def. Read the review
+      file (`saved_reports/alignment/<ref>.review.md`) and view the section on the canvas
+      (`uvicorn partnerships.alignment_canvas:app --port 8010`, `?roster=<def slug>`).
+6. **Render + review**, then export via `tools/report-render/export.sh` as usual.
 
 ## Known v2 candidates (deliberately NOT built)
 

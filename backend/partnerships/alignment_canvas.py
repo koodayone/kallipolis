@@ -1,19 +1,20 @@
 """A local canvas for iterating on the Curriculum Alignment section.
 
-The section depends on two files, not on the graph: the saved alignment
-(`saved_reports/<roster>.alignment.json`) and the report definition
-(`saved_reports/<roster>.json`, for the editorial paragraph). So it can be rendered on
-its own, from the branch, without Neo4j — exactly as `report.py` will render it inside
-the full report, same CSS, same builders.
+The section depends on files, not on the graph: the roster (`data/<roster>.json`), its
+program records (`data/programs/<ref>.json`), their saved readings
+(`saved_reports/alignment/<ref>.json`) and the report definition (`saved_reports/<roster>.json`,
+for the editorial paragraph). So it can be rendered on its own, without Neo4j — exactly as
+`report.py` renders it inside the full report, same CSS, same builders. An evaluation's
+roster shares its def slug, so `?roster=<def slug>` shows that evaluation's section.
 
     cd backend && uvicorn partnerships.alignment_canvas:app --reload --port 8010
     open http://localhost:8010/
 
-The page polls `/hash` and reloads itself when the alignment file, the definition, or
-any of the rendering modules change, so an edit to `alignment_plate.py`, a re-run of
-`python -m partnerships.alignment …`, or a hand-edit to the saved alignment shows up
-without touching the browser. `?college=<college_key>` shows one plate;
-`?appendix=0` hides the appendix; `?gaps=1` turns on the internal gap annotations.
+The page polls `/hash` and reloads itself when the roster, a record, a reading, the
+definition, or any of the rendering modules change, so an edit to `alignment_plate.py`, a
+re-run of `python -m partnerships.alignment run …`, or a hand-edit to a saved reading shows
+up without touching the browser. `?college=<college_key>` shows one plate;
+`?appendix=0` hides the outline links; `?gaps=1` turns on the internal gap annotations.
 
 `?clean=1` drops the toolbar, the reload script and the dev byline and titles the page as
 a standalone document — the input for a section-only .docx/.pdf via tools/report-render:
@@ -41,8 +42,13 @@ _WATCH = [_HERE / "alignment.py", _HERE / "alignment_plate.py", _HERE / "report.
 
 
 def _paths(roster: str) -> list[Path]:
-    return _WATCH + [A.SAVED / f"{roster}.alignment.json", A.SAVED / f"{roster}.json",
-                     A.DATA / f"{roster.replace('-', '_')}.json"]
+    ps = _WATCH + [A.SAVED / f"{roster}.json", A.DATA / f"{roster.replace('-', '_')}.json"]
+    try:
+        for e in A.load_roster(roster)["programs"]:
+            ps += [A.PROGRAMS / f"{e['program']}.json", A.STORE / f"{e['program']}.json"]
+    except (OSError, KeyError, ValueError):
+        pass
+    return ps
 
 
 def _hash(roster: str) -> str:
@@ -53,7 +59,25 @@ def _hash(roster: str) -> str:
 
 
 def _rosters() -> list[str]:
-    return sorted(p.name[: -len(".alignment.json")] for p in A.SAVED.glob("*.alignment.json"))
+    out = []
+    for p in sorted(A.DATA.glob("*.json")):
+        try:
+            d = json.loads(p.read_text(encoding="utf-8"))
+        except ValueError:
+            continue
+        if isinstance(d, dict) and "programs" in d and "id" in d:
+            out.append(d["id"])
+    return out
+
+
+def _generated(roster: dict) -> str:
+    """The latest reading date across the roster's programs (the byline)."""
+    dates = []
+    for e in roster["programs"]:
+        p = A.STORE / f"{e['program']}.json"
+        if p.exists():
+            dates.append(json.loads(p.read_text(encoding="utf-8")).get("generated", ""))
+    return max(dates, default="")
 
 
 _TOOLBAR = """
@@ -84,10 +108,13 @@ def hash_(roster: str = "svamp-manufacturing-technician"):
 @app.get("/", response_class=HTMLResponse)
 def canvas(roster: str = "svamp-manufacturing-technician", college: str = "", appendix: int = 1, gaps: int = 0,
            clean: int = 0):
-    al = A.load_alignment(roster)
-    if al is None:
-        return HTMLResponse(f"<p>No saved alignment for <b>{roster}</b>. Run "
-                            f"<code>python -m partnerships.alignment {roster}</code>.</p>", status_code=404)
+    try:
+        roster_d, plates = A.view_roster(roster)
+    except OSError:
+        roster_d, plates = {}, []
+    if not plates:
+        return HTMLResponse(f"<p>No saved readings for <b>{roster}</b>. Run "
+                            f"<code>python -m partnerships.alignment run {roster}</code>.</p>", status_code=404)
     defn = {}
     dp = A.SAVED / f"{roster}.json"
     if dp.exists():
@@ -95,20 +122,15 @@ def canvas(roster: str = "svamp-manufacturing-technician", college: str = "", ap
     spec = R.ReportSpec(org_name=defn.get("title", roster), org_short="", lede="",
                         curriculum_alignment=roster, curriculum_note=defn.get("curriculum_note", ""),
                         curriculum_show_gaps=bool(gaps))
-    # Optionally narrow to one plate by re-using the section builder on a filtered copy.
-    if college:
-        keep = [p for p in al.plates if p.member_id == college or p.college.lower().startswith(college.lower())]
-        al_view = A.Alignment(al.roster_id, al.generated, al.onet_vintage, keep)
-        orig = A.load_alignment
-        A.load_alignment = lambda _r: al_view          # the builder reads through this seam
-        try:
-            parts, appx = R._curriculum_section(spec)
-        finally:
-            A.load_alignment = orig
-    else:
-        parts, appx = R._curriculum_section(spec)
+    # Optionally narrow to one college's plates through the section builder's own seam.
+    keep = ([p for p in plates if p.member_id == college or p.college.lower().startswith(college.lower())]
+            if college else plates)
+    parts, appx, _ = R._curriculum_section(spec, plates=keep)
+    generated = _generated(roster_d)
+    if appendix and appx:
+        appx = ['<h1>Course Outlines of Record</h1>'] + [f'<p class="tnar alg-links">{x}</p>' for x in appx]
     body = "\n".join(parts + (appx if appendix else []))
-    colleges = [("", "all colleges")] + [(p.member_id, p.college) for p in al.plates]
+    colleges = [("", "all colleges")] + list(dict.fromkeys((p.member_id, p.college) for p in plates))
     toolbar = _TOOLBAR.format(
         roster_opts="".join(f'<option value="{r}" {"selected" if r == roster else ""}>{r}</option>' for r in _rosters()),
         college_opts="".join(f'<option value="{k}" {"selected" if k == college else ""}>{v}</option>' for k, v in colleges),
@@ -117,20 +139,20 @@ def canvas(roster: str = "svamp-manufacturing-technician", college: str = "", ap
         # A standalone document: the section as the report would print it, titled like a
         # report, no dev chrome. What tools/report-render turns into a .docx / .pdf.
         from datetime import date as _date
-        gen = _date.fromisoformat(al.generated).strftime("%B %-d, %Y") if al.generated else ""
+        gen = _date.fromisoformat(generated).strftime("%B %-d, %Y") if generated else ""
         org = defn.get("org_name") or defn.get("member", "").upper()
         return HTMLResponse(
             '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
             f'<title>{R._esc(defn.get("title", roster))} · Curriculum Alignment</title><style>{R._CSS}</style></head>'
             f'<body><div class="page" id="page">'
             f'<div class="title">{R._esc(org + " : " if org else "")}{R._esc(defn.get("title", roster))} · Curriculum Alignment</div>'
-            f'<div class="byline">{R._esc(defn.get("author", "Kallipolis"))} · {R._esc(gen)} · {R._esc(al.onet_vintage)}</div>'
+            f'<div class="byline">{R._esc(defn.get("author", "Kallipolis"))} · {R._esc(gen)} · {R._esc(A.ONET_VINTAGE)}</div>'
             f'{body}</div></body></html>')
     return HTMLResponse(
         '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
         f'<title>Curriculum alignment · {roster}</title><style>{R._CSS}</style></head>'
         f'<body>{toolbar}<div class="page" id="page">'
         f'<div class="title">{R._esc(defn.get("title", roster))} · Curriculum Alignment canvas</div>'
-        f'<div class="byline">{R._esc(al.onet_vintage)} · alignment generated {R._esc(al.generated)} · '
-        f'{len(al.plates)} plates · edit alignment_plate.py, report.py or the saved alignment and this page reloads</div>'
+        f'<div class="byline">{R._esc(A.ONET_VINTAGE)} · readings to {R._esc(generated)} · '
+        f'{len(plates)} plates · edit alignment_plate.py, report.py, a record or a saved reading and this page reloads</div>'
         f'{body}</div></body></html>')

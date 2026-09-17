@@ -1,0 +1,42 @@
+{
+  "college": "Foothill College",
+  "college_key": "foothill",
+  "member_id": "foothill",
+  "certificate": "Certificate of Achievement, Community Health Worker",
+  "short_title": "Community Health Worker",
+  "kind": "credit",
+  "control_number": "42889",
+  "award": "Certificate of Achievement requiring 8S/12Q to fewer than 16S/24Q units",
+  "status": "Active",
+  "top6": "126100",
+  "top_name": "Community Health Care Worker",
+  "source": {
+    "system": "courseleaf"
+  },
+  "course_sources": {},
+  "program_description": "CHWs work directly with vulnerable community members through health navigation, education, and/or resource coordination, connecting underserved populations with community, clinic, and/or government services to improve individual health outcomes. CHWs often share similar life experiences, values, and language with the populations they serve, which in turn develops relationships based on a foundation of trust and connection. The Certificate of Achievement in Community Health Worker will serve as a route to employment opportunities for individuals typically underrepresented in the health care industry.",
+  "program_outcomes": [
+    "Students will be able to demonstrate health navigation and care coordination skills when supporting vulnerable individuals, groups, and communities.",
+    "Students will be able to demonstrate the dissemination of culturally competent health education to individuals, groups, and communities.",
+    "Students will be able to demonstrate the ability to assist individuals with applications for social services.",
+    "Students will be able to demonstrate the ability to apply written, verbal, and active listening communication strategies that are professional, courteous, and culturally competent."
+  ],
+  "courses": [
+    {
+      "code": "HLTH 21",
+      "title": "Contemporary Health Concerns",
+      "units": null
+    },
+    {
+      "code": "HLTH 101",
+      "title": "Introduction To Community Health Work",
+      "units": null
+    },
+    {
+      "code": "ITRN 52",
+      "title": "Internship",
+      "units": null
+    }
+  ],
+  "notes": "Courses per catalog.foothill.edu/degrees-certificates/community-health-worker/ (2026-09-17). The ProgramCourseFile draft listed ITRN 50 and CNSL 6 instead of ITRN 52 — the state file lags the catalog."
+}

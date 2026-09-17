@@ -1,0 +1,40 @@
+{
+  "college": "Foothill College",
+  "college_key": "foothill",
+  "member_id": "foothill",
+  "certificate": "Certificate of Achievement, Semiconductor Processing Technician",
+  "short_title": "Semiconductor Processing",
+  "kind": "credit",
+  "control_number": "43983",
+  "award": "Certificate of Achievement requiring 8S/12Q to fewer than 16S/24Q units",
+  "status": "Active",
+  "top6": "094500",
+  "top_name": "Industrial Systems Technology and Maintenance",
+  "source": {
+    "system": "courseleaf"
+  },
+  "program_description": "The Certificate of Achievement in Semiconductor Processing provides foundational knowledge and skills necessary for safely and efficiently moving wafers through the semiconductor processing stages in a cleanroom work environment. This certificate is open to all students with an interest in learning more about semiconductor processing. Students in the apprenticeship pathway will complete the Certificate of Achievement as a part of the apprenticeship program.",
+  "program_outcomes": [],
+  "courses": [
+    {
+      "code": "MATH 40A",
+      "title": "Quantitative Reasoning",
+      "units": 5
+    },
+    {
+      "code": "MATH 240A",
+      "title": "Just-in-Time Support for MATH 40A",
+      "units": 2.5
+    },
+    {
+      "code": "ENGR 61A",
+      "title": "Introduction to Semiconductor Technology",
+      "units": 5
+    },
+    {
+      "code": "ENGR 101A",
+      "title": "Advanced Manufacturing",
+      "units": 5
+    }
+  ]
+}

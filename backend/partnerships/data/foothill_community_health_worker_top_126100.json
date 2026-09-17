@@ -1,0 +1,23 @@
+{
+  "_comment": "Curriculum-alignment roster for the foothill-community-health-worker-top-126100 program evaluation: one program record read against the def's destination occupations; columns are labelled by certificate. Readings are saved per program under saved_reports/alignment/.",
+  "id": "foothill-community-health-worker-top-126100",
+  "onet_release": "31.0",
+  "short_name": "Foothill College",
+  "columns": "certificate",
+  "occupations": [
+    "21-1094"
+  ],
+  "top_n": 5,
+  "programs": [
+    {
+      "program": "foothill-community-health-worker",
+      "paired_soc": "21-1094",
+      "crosswalk_socs": [
+        "21-1094"
+      ],
+      "pairing_basis": "The certificate's stated purpose: preparing Community Health Workers (SOC 21-1094), the one destination TOP 126100's crosswalk reaches.",
+      "reads_against": [],
+      "review_socs": []
+    }
+  ]
+}

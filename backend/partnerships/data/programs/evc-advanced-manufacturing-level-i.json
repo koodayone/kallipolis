@@ -1,0 +1,95 @@
+{
+  "college": "Evergreen Valley College",
+  "college_key": "evc",
+  "member_id": "evc",
+  "certificate": "Certificate of Achievement, Advanced Manufacturing Level 1",
+  "short_title": "Advanced Manufacturing Level I",
+  "kind": "credit",
+  "control_number": "40038",
+  "award": "Certificate of Achievement requiring 16S/24Q to fewer than 30S/45Q units",
+  "status": "Active",
+  "top6": "095600",
+  "top_name": "Manufacturing and Industrial Technology",
+  "source": {
+    "system": "curriqunet",
+    "host": "evc.curriqunet.com",
+    "report_id": 52
+  },
+  "course_sources": {
+    "MFGT 101": {
+      "system": "curriqunet",
+      "host": "evc.curriqunet.com",
+      "entity_id": 5563,
+      "report_id": 52
+    },
+    "MFGT 102": {
+      "system": "curriqunet",
+      "host": "evc.curriqunet.com",
+      "entity_id": 5297,
+      "report_id": 52
+    },
+    "MFGT 103": {
+      "system": "curriqunet",
+      "host": "evc.curriqunet.com",
+      "entity_id": 4452,
+      "report_id": 52
+    },
+    "MFGT 201": {
+      "system": "curriqunet",
+      "host": "evc.curriqunet.com",
+      "entity_id": 5299,
+      "report_id": 52
+    },
+    "MFGT 202": {
+      "system": "curriqunet",
+      "host": "evc.curriqunet.com",
+      "entity_id": 5298,
+      "report_id": 52
+    },
+    "MFGT 203": {
+      "system": "curriqunet",
+      "host": "evc.curriqunet.com",
+      "entity_id": 5295,
+      "report_id": 52
+    }
+  },
+  "program_description": "Provides the relevant knowledge and skills required for entry-level employment or internship for manufacturing technicians and assemblers. The subjects are taught with an emphasis on job related skills required by manufacturing industries, using a practical approach using procedures, and standards used in the manufacturing industry.",
+  "program_outcomes": [
+    "Demonstrate competence in building, servicing, and testing circuits utilizing safe and industry standard practices and procedures.",
+    "Demonstrate how to assemble circuit boards, mechanical systems and electrical systems.",
+    "Perform a material application process that includes material selection, application fabrication techniques, relevant testing, and necessary characterization technique based on the application.",
+    "Demonstrate how to collect, analyze, interpret, and present numerical data to make effective decisions."
+  ],
+  "courses": [
+    {
+      "code": "MFGT 101",
+      "title": "Introduction to Advanced Manufacturing",
+      "units": 2
+    },
+    {
+      "code": "MFGT 102",
+      "title": "Math for Manufacturing",
+      "units": 2
+    },
+    {
+      "code": "MFGT 103",
+      "title": "Introduction to Assembly",
+      "units": 3
+    },
+    {
+      "code": "MFGT 201",
+      "title": "Fundamentals of Electronics for Manufacturing",
+      "units": 3
+    },
+    {
+      "code": "MFGT 202",
+      "title": "Properties of Materials for Manufacturing",
+      "units": 3
+    },
+    {
+      "code": "MFGT 203",
+      "title": "Data Analytics for Manufacturing and Quality Control",
+      "units": 3
+    }
+  ]
+}

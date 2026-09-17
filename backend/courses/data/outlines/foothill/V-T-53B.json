@@ -1,0 +1,41 @@
+{
+ "college": "Foothill College",
+ "system": "courseleaf",
+ "code": "V T 53B",
+ "title": "Medical Calculations For Veterinary Nurses",
+ "description": "Building on foundational mathematics knowledge and skills for application in veterinary settings. Review of calculations involving fractions, decimals, ratios and proportions, unit conversions, and algebraic equations. Clinical medical calculations utilized in preparation and administration of drugs, dosage determinations, intravenous fluid infusion, and prescription dispensing. Intended for students in the Veterinary Technology Program; enrollment is limited to students accepted in the program.",
+ "outcomes": [
+  "Demonstrate the knowledge and ability required to quickly and accurately calculate common drug doseages, intravenous fluid rates and constant rate infusions."
+ ],
+ "objectives": [
+  "Perform common calculations used within the veterinary field.",
+  "Perform conversions including imperial and metric systems, ratios, proportions, and decimals.",
+  "Interpret and prepare medication labels involving capsule and tablet strength, dosages, and oral solution concentrations."
+ ],
+ "content": [
+  "Common calculations",
+  "Dosage calculations",
+  "Fluid calculations",
+  "Energy requirements",
+  "Constant rate infusions",
+  "Blood donation",
+  "Milliequivalent problems",
+  "Reconstitution of powdered drugs",
+  "Dilution and solutions",
+  "Mathematical conversions",
+  "Conversions between decimals, fractions, ratios, and percents",
+  "Conversions within the metric system",
+  "Conversion within the imperial system",
+  "Conversions between imperial and metric systems",
+  "Medication labels",
+  "Doctors' orders and prepare prescription labels",
+  "Appropriate volumes using a variety of syringe sizes"
+ ],
+ "lab": [],
+ "assignments": [],
+ "source_url": "https://catalog.foothill.edu/course-outlines/V-T-53B/",
+ "effective": "Summer 2025",
+ "approved": "",
+ "retrieved": "2026-09-17",
+ "notes": ""
+}

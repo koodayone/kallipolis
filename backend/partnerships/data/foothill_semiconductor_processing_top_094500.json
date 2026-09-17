@@ -1,0 +1,29 @@
+{
+  "_comment": "Curriculum-alignment roster for the Foothill Semiconductor Processing program evaluation (def foothill-semiconductor-processing-top-094500). One program record — the Certificate of Achievement (COCI 43983) — read against the def's three destination occupations; `columns` labels the block columns by certificate so the TOP's other awards can sit beside it later. `paired_soc` is the certificate's stated purpose (moving wafers through semiconductor processing stages); it is in the def's `socs` by the author's addition, noted there. Readings are saved per program under saved_reports/alignment/ and shared with the SVAMP roster, which cites the same record.",
+  "id": "foothill-semiconductor-processing-top-094500",
+  "onet_release": "31.0",
+  "short_name": "Foothill College",
+  "columns": "certificate",
+  "occupations": [
+    "51-9141",
+    "17-3026",
+    "17-3024"
+  ],
+  "top_n": 5,
+  "programs": [
+    {
+      "program": "foothill-semiconductor-processing",
+      "paired_soc": "51-9141",
+      "crosswalk_socs": [
+        "17-3024",
+        "17-3026"
+      ],
+      "pairing_basis": "The certificate's stated purpose: preparing students to move wafers through semiconductor processing stages in a cleanroom. TOP 0945.00 does not reach 51-9141 through the TOP-CIP-SOC crosswalk; the discrepancy is shown, not resolved.",
+      "reads_against": [
+        "17-3026",
+        "17-3024"
+      ],
+      "review_socs": []
+    }
+  ]
+}

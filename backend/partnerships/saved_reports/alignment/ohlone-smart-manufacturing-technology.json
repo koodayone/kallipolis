@@ -1,0 +1,1988 @@
+{
+ "program": "ohlone-smart-manufacturing-technology",
+ "generated": "2026-09-17",
+ "onet_vintage": "O*NET 31.0 database (August 2026), U.S. Department of Labor",
+ "plates": [
+  {
+   "college": "Ohlone College",
+   "member_id": "ohlone",
+   "certificate": "Certificate of Achievement, Smart Manufacturing Technology",
+   "kind": "credit",
+   "top6": "095600",
+   "top_name": "Manufacturing and Industrial Technology",
+   "paired_soc": "17-3024",
+   "occupation": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+   "crosswalk_socs": [],
+   "pairing_basis": "",
+   "courses": [
+    {
+     "code": "CAOT 150",
+     "title": "Excel for the Sciences",
+     "units": 0.5,
+     "source_url": "https://www.curricunet.com/Ohlone/reports/course_outline_report.cfm?courses_id=10258",
+     "system": "curricunet",
+     "effective": "",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "no objectives section in this format; units 0.5",
+     "currency": {
+      "control_number": "CCC000607953",
+      "status": "Active",
+      "last_updated": "2019-10-18",
+      "outline_date": "",
+      "verdict": "no-date"
+     }
+    },
+    {
+     "code": "COMM 113",
+     "title": "Interpersonal Communication (or ENGL C1000 / COMM C1000)",
+     "units": 3,
+     "source_url": "https://www.curricunet.com/Ohlone/reports/course_outline_report.cfm?courses_id=9208",
+     "system": "curricunet",
+     "effective": "",
+     "approved": "03/05/2024",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "no objectives section in this format; units 3",
+     "currency": {
+      "control_number": "CCC000186748",
+      "status": "Active",
+      "last_updated": "2024-10-02",
+      "outline_date": "2024-03-05",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "ENGI 101",
+     "title": "Introduction to Engineering",
+     "units": 3,
+     "source_url": "https://www.curricunet.com/Ohlone/reports/course_outline_report.cfm?courses_id=9932",
+     "system": "curricunet",
+     "effective": "",
+     "approved": "12/03/2025",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "no objectives section in this format; units 3",
+     "currency": {
+      "control_number": "CCC000578272",
+      "status": "Active",
+      "last_updated": "2026-01-07",
+      "outline_date": "2025-12-03",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "ENGI 130",
+     "title": "Electric Circuit Analysis (or ETEC 106)",
+     "units": 4,
+     "source_url": "https://www.curricunet.com/Ohlone/reports/course_outline_report.cfm?courses_id=10273",
+     "system": "curricunet",
+     "effective": "",
+     "approved": "09/15/2026",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "no objectives section in this format; units 4",
+     "currency": {
+      "control_number": "CCC000578268",
+      "status": "Active",
+      "last_updated": "2026-01-07",
+      "outline_date": "2026-09-15",
+      "verdict": "outline-newer"
+     }
+    },
+    {
+     "code": "ENGI 140",
+     "title": "Materials Engineering (or ETEC 107)",
+     "units": 4,
+     "source_url": "https://www.curricunet.com/Ohlone/reports/course_outline_report.cfm?courses_id=9952",
+     "system": "curricunet",
+     "effective": "",
+     "approved": "12/03/2025",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "no objectives section in this format; units 4",
+     "currency": {
+      "control_number": "CCC000578267",
+      "status": "Active",
+      "last_updated": "2026-01-07",
+      "outline_date": "2025-12-03",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "ETEC 113",
+     "title": "Safety in Industry",
+     "units": 1,
+     "source_url": "https://www.curricunet.com/Ohlone/reports/course_outline_report.cfm?courses_id=9937",
+     "system": "curricunet",
+     "effective": "",
+     "approved": "12/03/2025",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "no objectives section in this format; units 1",
+     "currency": {
+      "control_number": "CCC000606543",
+      "status": "Active",
+      "last_updated": "2026-01-07",
+      "outline_date": "2025-12-03",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "ETEC 124",
+     "title": "Introduction to Internet of Things",
+     "units": 1.5,
+     "source_url": "https://www.curricunet.com/Ohlone/reports/course_outline_report.cfm?courses_id=9943",
+     "system": "curricunet",
+     "effective": "",
+     "approved": "12/03/2025",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "no objectives section in this format; units 1.5",
+     "currency": {
+      "control_number": "CCC000599367",
+      "status": "Active",
+      "last_updated": "2026-01-08",
+      "outline_date": "2025-12-03",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "ETEC 126",
+     "title": "Industrial Internet of Things-Industry Standard 4.0",
+     "units": 3,
+     "source_url": "https://www.curricunet.com/Ohlone/reports/course_outline_report.cfm?courses_id=9944",
+     "system": "curricunet",
+     "effective": "",
+     "approved": "12/03/2025",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "no objectives section in this format; units 3",
+     "currency": {
+      "control_number": "CCC000599368",
+      "status": "Active",
+      "last_updated": "2026-01-08",
+      "outline_date": "2025-12-03",
+      "verdict": "coci-newer"
+     }
+    }
+   ],
+   "program_outcomes": [
+    "Apply basic scientific and engineering principles to solve problems in the manufacturing industry.",
+    "Demonstrate ability to work in a team on a project.",
+    "Operate relevant Smart Manufacturing Equipment such as Smart CNC Machines, Industrial Robotic Arms, Smart Factories, and Mechatronic Systems."
+   ],
+   "rows": [
+    {
+     "dwa_id": "4.A.3.b.2.e.1",
+     "dwa": "Design electromechanical equipment or systems.",
+     "task": "Develop, test, or program new robots. · Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.1.b.2.l.2",
+     "dwa": "Test performance of electrical, electronic, mechanical, or integrated systems or equipment.",
+     "task": "Develop, test, or program new robots. · Test performance of electromechanical assemblies, using test instruments such as oscilloscopes, electronic voltmeters, or bridges. · Select and use laboratory, operational, or diagnostic techniques or test equipment to assess electromechanical circuits, equipment, processes, systems, or subsystems. · Operate, test, or maintain robotic equipment used for green production applications, such as waste-to-energy conversion systems, minimization of material waste, or replacement of human operators in dangerous work environments.",
+     "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Operate relevant Smart Manufacturing Equipment such as Smart CNC Machines, Industrial Robotic Arms, Smart Factories, and Mechatronic Systems.",
+         "basis": "operating robotic and mechatronic equipment directly constitutes testing/operating integrated electromechanical systems"
+        }
+       ]
+      },
+      "ENGI 130": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ENGI 130",
+         "section": "content",
+         "level": 1,
+         "quote": "Lab 12: The Oscilloscope and Function Generator",
+         "basis": "using oscilloscopes to test electromechanical/electronic circuits directly evidences test-instrument use"
+        },
+        {
+         "course": "ENGI 130",
+         "section": "content",
+         "level": 1,
+         "quote": "Multi-meter\n    - Oscilloscope\n    - Signal generator",
+         "basis": "use of oscilloscopes and meters to test circuits matches the O*NET task on test instruments"
+        },
+        {
+         "course": "ENGI 130",
+         "section": "content",
+         "level": 1,
+         "quote": "Basic instrumentation and experimental techniques\n    - Multi-meter\n    - Oscilloscope",
+         "basis": "course scope covers using diagnostic test equipment (multimeter, oscilloscope) to assess circuits"
+        }
+       ]
+      },
+      "ETEC 126": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ETEC 126",
+         "section": "lab",
+         "level": 1,
+         "quote": "Trouble shooting to determine Manufacturing efficiency",
+         "basis": "troubleshooting a smart manufacturing system tests performance of an integrated electromechanical system"
+        },
+        {
+         "course": "ETEC 126",
+         "section": "content",
+         "level": 1,
+         "quote": "Trouble shooting systems",
+         "basis": "diagnostic troubleshooting of manufacturing systems evidences testing performance of integrated systems"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ENGI 130",
+      "section": "content",
+      "quote": "Basic instrumentation and experimental techniques\n    - Multi-meter\n    - Oscilloscope",
+      "reason": "SLO/description-tier content line naming oscilloscope-based instrumentation testing, more specific than lab titles or generic troubleshooting lines"
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.2.b.1",
+     "dwa": "Develop software or computer applications.",
+     "task": "Install or program computer hardware or machine or instrumentation software in microprocessor-based systems.",
+     "cells": {
+      "ETEC 126": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ETEC 126",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Program the Production line using Programmable Logic Controllers(PLCs).",
+         "basis": "programming PLC software/hardware for a manufacturing control system is developing/installing computer applications in microprocessor-based systems"
+        },
+        {
+         "course": "ETEC 126",
+         "section": "lab",
+         "level": 1,
+         "quote": "Configuring and Testing PLC and Bus Technology",
+         "basis": "configuring PLC (microprocessor-based) systems is programming machine/instrumentation software"
+        }
+       ]
+      },
+      "ETEC 124": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ETEC 124",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Students are required to design and build IoT systems to meet specified",
+         "basis": "building IoT systems requires programming the embedded computer hardware/software controlling them"
+        },
+        {
+         "course": "ETEC 124",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Use the techniques, skills, and modern engineering tools necessary for engineering practice to construct an IoT based system, component, or process.",
+         "basis": "constructing an IoT-based system requires programming embedded/computer components"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "assignments",
+      "quote": "Program the Production line using Programmable Logic Controllers(PLCs).",
+      "reason": "directly states programming a PLC (microprocessor-based system), matching the task's programming language most specifically"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.1.b.8",
+     "dwa": "Review technical documents to plan work.",
+     "task": "Read blueprints, schematics, diagrams, or technical orders to determine methods and sequences of assembly.",
+     "cells": {
+      "ENGI 130": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGI 130",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Draw and label circuit diagrams and show thorough mathematical solutions.",
+         "basis": "drawing/reading circuit diagrams to determine solution methods evidences reviewing technical schematics to plan work"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ENGI 130",
+      "section": "outcomes",
+      "quote": "Draw and label circuit diagrams and show thorough mathematical solutions.",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.5.a.18",
+     "dwa": "Maintain electromechanical equipment.",
+     "task": "Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning. · Repair, rework, or calibrate hydraulic or pneumatic assemblies or systems to meet operational specifications or tolerances. · Operate, test, or maintain robotic equipment used for green production applications, such as waste-to-energy conversion systems, minimization of material waste, or replacement of human operators in dangerous work environments.",
+     "cells": {
+      "ETEC 126": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ETEC 126",
+         "section": "content",
+         "level": 1,
+         "quote": "Predictive Maintenance",
+         "basis": "predictive maintenance content directly covers maintaining electromechanical equipment"
+        },
+        {
+         "course": "ETEC 126",
+         "section": "lab",
+         "level": 1,
+         "quote": "Scheduling Predictive Maintenance",
+         "basis": "hands-on scheduling of predictive maintenance evidences maintaining electromechanical equipment"
+        },
+        {
+         "course": "ETEC 126",
+         "section": "content",
+         "level": 1,
+         "quote": "Trouble shooting systems",
+         "basis": "troubleshooting production/factory systems evidences maintaining electromechanical equipment"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "content",
+      "quote": "Trouble shooting systems",
+      "reason": "'Trouble shooting systems' most directly names maintaining/repairing electromechanical equipment, broader and more general than the narrower predictive-maintenance scheduling lines"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.5.c.4",
+     "dwa": "Maintain electronic equipment.",
+     "task": "Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning.",
+     "cells": {
+      "ETEC 126": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ETEC 126",
+         "section": "content",
+         "level": 1,
+         "quote": "Trouble shooting systems",
+         "basis": "troubleshooting production-line electronic/control systems evidences maintaining electronic equipment"
+        },
+        {
+         "course": "ETEC 126",
+         "section": "lab",
+         "level": 1,
+         "quote": "Trouble shooting to determine Manufacturing efficiency",
+         "basis": "hands-on troubleshooting of smart-factory electronic systems evidences maintaining electronic equipment"
+        },
+        {
+         "course": "ETEC 126",
+         "section": "lab",
+         "level": 1,
+         "quote": "Configuring and Troubleshooting Links to the ERP",
+         "basis": "troubleshooting electronic networked links in factory systems evidences maintaining electronic equipment"
+        },
+        {
+         "course": "ETEC 126",
+         "section": "lab",
+         "level": 1,
+         "quote": "Configuring and Testing PLC and Bus Technology",
+         "basis": "configuring and testing electronic control/network equipment to ensure proper functioning"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "content",
+      "quote": "Trouble shooting systems",
+      "reason": "'Trouble shooting systems' content line most directly and generally states diagnosing/repairing equipment to ensure proper functioning"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.2.f.8",
+     "dwa": "Inspect finished products to locate flaws.",
+     "task": "Inspect parts for surface defects. · Verify part dimensions or clearances to ensure conformance to specifications, using precision measuring instruments.",
+     "cells": {
+      "ENGI 140": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGI 140",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Measure material properties and/or evaluate processing treatments using standard materials testing equipment and techniques.",
+         "basis": "using precision testing equipment to evaluate material/part properties evidences verifying conformance via precision measuring instruments"
+        },
+        {
+         "course": "ENGI 140",
+         "section": "lab",
+         "level": 1,
+         "quote": "Hardness testing",
+         "basis": "hardness testing with standard measuring equipment evidences inspecting for conformance to specification"
+        },
+        {
+         "course": "ENGI 140",
+         "section": "lab",
+         "level": 1,
+         "quote": "Microstructures analysis of the sample using a Light Microscope.",
+         "basis": "microscopic inspection of material samples for structural flaws parallels inspecting parts for surface defects"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ENGI 140",
+      "section": "outcomes",
+      "quote": "Measure material properties and/or evaluate processing treatments using standard materials testing equipment and techniques.",
+      "reason": "SLO committing the course to measuring material properties and evaluating processing with standard testing equipment, matching inspection for flaws/defects at the highest tier"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.t.5",
+     "dwa": "Install instrumentation or electronic equipment or systems.",
+     "task": "Install electrical or electronic parts and hardware in housings or assemblies, using soldering equipment and hand tools.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.3.a.2.d.2",
+     "dwa": "Assemble equipment or components.",
+     "task": "Fabricate or assemble mechanical, electrical, or electronic components or assemblies. · Align, fit, or assemble component parts, using hand or power tools, fixtures, templates, or microscopes.",
+     "cells": {
+      "ENGI 101": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ENGI 101",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Work on a team to design and build a bridge with specifications including cost and load capacity",
+         "basis": "students physically assemble a mechanical structure from components to meet functional specifications"
+        }
+       ]
+      },
+      "ETEC 124": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ETEC 124",
+         "section": "assignments",
+         "level": 1,
+         "quote": "requirements. Example: Design and Build an IoT System that monitors and",
+         "basis": "building a physical IoT system evidences assembling electrical/electronic components into a working assembly"
+        },
+        {
+         "course": "ETEC 124",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Students are required to design and build IoT systems to meet specified",
+         "basis": "building an IoT system requires assembling electronic/mechanical components into a working assembly"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ENGI 101",
+      "section": "assignments",
+      "quote": "Work on a team to design and build a bridge with specifications including cost and load capacity",
+      "reason": "explicitly names designing and building a physical assembly (bridge) to specifications, matching fabrication/assembly most concretely"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.aa.1",
+     "dwa": "Fabricate devices or components.",
+     "task": "Fabricate or assemble mechanical, electrical, or electronic components or assemblies.",
+     "cells": {
+      "ENGI 101": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ENGI 101",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Submit a design accompanied by a concise explanation for a small vehicle powered by a mousetrap",
+         "basis": "designing and building a small mechanical vehicle evidences fabricating a device"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ENGI 101",
+      "section": "assignments",
+      "quote": "Submit a design accompanied by a concise explanation for a small vehicle powered by a mousetrap",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.2.o.8",
+     "dwa": "Create schematic drawings for electronics.",
+     "task": "Produce electrical, electronic, or mechanical drawings or other related documents or graphics necessary for electromechanical design, using computer-aided design (CAD) software.",
+     "cells": {
+      "ENGI 130": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ENGI 130",
+         "section": "content",
+         "level": 1,
+         "quote": "Circuit simulation",
+         "basis": "circuit simulation and diagram drawing is a directly constitutive component of producing electrical drawings, though CAD is not explicitly named"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ENGI 130",
+      "section": "content",
+      "quote": "Circuit simulation",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.1.j.2",
+     "dwa": "Select project materials.",
+     "task": "Select electromechanical equipment, materials, components, or systems to meet functional specifications.",
+     "cells": {
+      "ENGI 140": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGI 140",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Gather data from reference sources regarding the properties, processing, and performance characteristics of materials, and use it as a basis to recommend appropriate material(s) to meet engineering design criteria.",
+         "basis": "selecting materials against design criteria is literally selecting project materials to meet functional specifications"
+        },
+        {
+         "course": "ENGI 140",
+         "section": "assignments",
+         "level": 1,
+         "quote": "select materials best suited to specific design requirements",
+         "basis": "selecting materials against design requirements directly evidences selecting project materials to meet functional specifications"
+        },
+        {
+         "course": "ENGI 140",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "use it as a basis to recommend appropriate material(s) to meet engineering design criteria.",
+         "basis": "literally selecting materials to meet functional/design specifications"
+        },
+        {
+         "course": "ENGI 140",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "recommend appropriate material(s) to meet engineering design criteria",
+         "basis": "selecting materials against design criteria directly matches selecting materials to meet functional specifications"
+        }
+       ]
+      },
+      "ETEC 124": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ETEC 124",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Design an IoT based system, component, or process to meet desired needs within realistic constraints, such as manufacturability and sustainability",
+         "basis": "designing to constraints requires selecting components/materials to meet functional specifications"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ENGI 140",
+      "section": "assignments",
+      "quote": "select materials best suited to specific design requirements",
+      "reason": "assignment line explicitly states selecting materials best suited to design requirements, the most direct match to the task text"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.2.f.14",
+     "dwa": "Develop technical methods or processes.",
+     "task": "Establish and maintain inventory, records, or documentation systems.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.3.b.6.h.21",
+     "dwa": "Maintain operational records or records systems.",
+     "task": "Establish and maintain inventory, records, or documentation systems.",
+     "cells": {
+      "ETEC 126": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ETEC 126",
+         "section": "lab",
+         "level": 1,
+         "quote": "Setting up a Materials and Inventory management systems for Smart Factories",
+         "basis": "configuring an inventory management system evidences establishing and maintaining inventory/records systems"
+        },
+        {
+         "course": "ETEC 126",
+         "section": "content",
+         "level": 1,
+         "quote": "Inventory management",
+         "basis": "inventory management content evidences maintaining inventory records systems"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "content",
+      "quote": "Inventory management",
+      "reason": "content outline line naming inventory management is the more general, SLO-adjacent statement of maintaining records/inventory systems, over the narrower lab task"
+     }
+    }
+   ],
+   "dropped": [
+    {
+     "activity": 9,
+     "course": "ENGI 101",
+     "section": "assignments",
+     "quote": "Submit a design accompanied by a concise explanation for a small vehicle powered by a mousetrap",
+     "basis": "students fabricate/assemble a small mechanical device as part of the design-build task",
+     "why": "adjudicated: a: quote names only submitting a design/explanation, not a performable build/assembly step"
+    },
+    {
+     "activity": 2,
+     "course": "ENGI 130",
+     "section": "outcomes",
+     "quote": "Analyze DC circuits to find current, voltage, resistance, power, and/or energy.",
+     "basis": "using instrumentation and simulation to assess electrical circuits matches testing performance of electrical systems",
+     "why": "adjudicated: b: analyzing DC circuits mathematically is precondition knowledge, not testing performance with instruments"
+    },
+    {
+     "activity": 3,
+     "course": "ETEC 124",
+     "section": "content",
+     "quote": "The components of embedded systems",
+     "basis": "designing/building IoT systems with embedded components involves programming microprocessor-based hardware or software",
+     "why": "adjudicated: a: naming embedded systems components as a topic, with no performable programming step stated"
+    },
+    {
+     "activity": 2,
+     "course": "ETEC 124",
+     "section": "outcomes",
+     "quote": "Use the techniques, skills, and modern engineering tools necessary for engineering practice to construct an IoT based system, component, or process.",
+     "basis": "constructing and validating an IoT system directly evidences testing performance of an integrated electromechanical/electronic system",
+     "why": "adjudicated: d: constructing a system using engineering tools evidences building/developing rather than testing performance with test instruments"
+    },
+    {
+     "activity": 13,
+     "course": "ETEC 126",
+     "section": "lab",
+     "quote": "Designing and Implementing a Production plan",
+     "basis": "developing a production planning process is developing a technical method/process for manufacturing operations",
+     "why": "adjudicated: d: designing a production plan evidences production/process planning, not establishing inventory or records systems"
+    },
+    {
+     "activity": 13,
+     "course": "ETEC 126",
+     "section": "content",
+     "quote": "Production planning",
+     "basis": "production planning content evidences developing technical processes for manufacturing",
+     "why": "adjudicated: d: production planning content evidences a different activity than establishing records/documentation systems"
+    },
+    {
+     "activity": 1,
+     "course": "PLO",
+     "section": "program_outcomes",
+     "quote": "Apply basic scientific and engineering principles to solve problems in the manufacturing industry.",
+     "basis": "designing electromechanical solutions is a form of applying engineering principles to manufacturing problems",
+     "why": "adjudicated: b) precondition: applying general engineering/scientific principles to manufacturing problems precedes and is broader than designing electromechanical equipment or systems, it does not state the design activity itself"
+    },
+    {
+     "activity": 5,
+     "course": "PLO",
+     "section": "program_outcomes",
+     "quote": "Operate relevant Smart Manufacturing Equipment such as Smart CNC Machines, Industrial Robotic Arms, Smart Factories, and Mechatronic Systems.",
+     "basis": "operating smart manufacturing equipment is directly constitutive of maintaining electromechanical equipment in use",
+     "why": "adjudicated: d) different activity: operating smart manufacturing equipment evidences using/testing equipment, not maintaining, modifying, or repairing it as the listed tasks require"
+    }
+   ],
+   "source_note": "Read from Ohlone College's course outlines of record (curricunet); sections present: slo, description, content outline, lab content, assignment.",
+   "role": "",
+   "short_title": "Smart Manufacturing Technology"
+  },
+  {
+   "college": "Ohlone College",
+   "member_id": "ohlone",
+   "certificate": "Certificate of Achievement, Smart Manufacturing Technology",
+   "kind": "credit",
+   "top6": "095600",
+   "top_name": "Manufacturing and Industrial Technology",
+   "paired_soc": "17-3026",
+   "occupation": "Industrial Engineering Technologists and Technicians",
+   "crosswalk_socs": [],
+   "pairing_basis": "",
+   "courses": [
+    {
+     "code": "CAOT 150",
+     "title": "Excel for the Sciences",
+     "units": 0.5,
+     "source_url": "https://www.curricunet.com/Ohlone/reports/course_outline_report.cfm?courses_id=10258",
+     "system": "curricunet",
+     "effective": "",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "no objectives section in this format; units 0.5",
+     "currency": {
+      "control_number": "CCC000607953",
+      "status": "Active",
+      "last_updated": "2019-10-18",
+      "outline_date": "",
+      "verdict": "no-date"
+     }
+    },
+    {
+     "code": "COMM 113",
+     "title": "Interpersonal Communication (or ENGL C1000 / COMM C1000)",
+     "units": 3,
+     "source_url": "https://www.curricunet.com/Ohlone/reports/course_outline_report.cfm?courses_id=9208",
+     "system": "curricunet",
+     "effective": "",
+     "approved": "03/05/2024",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "no objectives section in this format; units 3",
+     "currency": {
+      "control_number": "CCC000186748",
+      "status": "Active",
+      "last_updated": "2024-10-02",
+      "outline_date": "2024-03-05",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "ENGI 101",
+     "title": "Introduction to Engineering",
+     "units": 3,
+     "source_url": "https://www.curricunet.com/Ohlone/reports/course_outline_report.cfm?courses_id=9932",
+     "system": "curricunet",
+     "effective": "",
+     "approved": "12/03/2025",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "no objectives section in this format; units 3",
+     "currency": {
+      "control_number": "CCC000578272",
+      "status": "Active",
+      "last_updated": "2026-01-07",
+      "outline_date": "2025-12-03",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "ENGI 130",
+     "title": "Electric Circuit Analysis (or ETEC 106)",
+     "units": 4,
+     "source_url": "https://www.curricunet.com/Ohlone/reports/course_outline_report.cfm?courses_id=10273",
+     "system": "curricunet",
+     "effective": "",
+     "approved": "09/15/2026",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "no objectives section in this format; units 4",
+     "currency": {
+      "control_number": "CCC000578268",
+      "status": "Active",
+      "last_updated": "2026-01-07",
+      "outline_date": "2026-09-15",
+      "verdict": "outline-newer"
+     }
+    },
+    {
+     "code": "ENGI 140",
+     "title": "Materials Engineering (or ETEC 107)",
+     "units": 4,
+     "source_url": "https://www.curricunet.com/Ohlone/reports/course_outline_report.cfm?courses_id=9952",
+     "system": "curricunet",
+     "effective": "",
+     "approved": "12/03/2025",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "no objectives section in this format; units 4",
+     "currency": {
+      "control_number": "CCC000578267",
+      "status": "Active",
+      "last_updated": "2026-01-07",
+      "outline_date": "2025-12-03",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "ETEC 113",
+     "title": "Safety in Industry",
+     "units": 1,
+     "source_url": "https://www.curricunet.com/Ohlone/reports/course_outline_report.cfm?courses_id=9937",
+     "system": "curricunet",
+     "effective": "",
+     "approved": "12/03/2025",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "no objectives section in this format; units 1",
+     "currency": {
+      "control_number": "CCC000606543",
+      "status": "Active",
+      "last_updated": "2026-01-07",
+      "outline_date": "2025-12-03",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "ETEC 124",
+     "title": "Introduction to Internet of Things",
+     "units": 1.5,
+     "source_url": "https://www.curricunet.com/Ohlone/reports/course_outline_report.cfm?courses_id=9943",
+     "system": "curricunet",
+     "effective": "",
+     "approved": "12/03/2025",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "no objectives section in this format; units 1.5",
+     "currency": {
+      "control_number": "CCC000599367",
+      "status": "Active",
+      "last_updated": "2026-01-08",
+      "outline_date": "2025-12-03",
+      "verdict": "coci-newer"
+     }
+    },
+    {
+     "code": "ETEC 126",
+     "title": "Industrial Internet of Things-Industry Standard 4.0",
+     "units": 3,
+     "source_url": "https://www.curricunet.com/Ohlone/reports/course_outline_report.cfm?courses_id=9944",
+     "system": "curricunet",
+     "effective": "",
+     "approved": "12/03/2025",
+     "sections": [
+      "outcomes",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "no objectives section in this format; units 3",
+     "currency": {
+      "control_number": "CCC000599368",
+      "status": "Active",
+      "last_updated": "2026-01-08",
+      "outline_date": "2025-12-03",
+      "verdict": "coci-newer"
+     }
+    }
+   ],
+   "program_outcomes": [
+    "Apply basic scientific and engineering principles to solve problems in the manufacturing industry.",
+    "Demonstrate ability to work in a team on a project.",
+    "Operate relevant Smart Manufacturing Equipment such as Smart CNC Machines, Industrial Robotic Arms, Smart Factories, and Mechatronic Systems."
+   ],
+   "rows": [
+    {
+     "dwa_id": "4.A.1.a.2.i.4",
+     "dwa": "Monitor activities affecting environmental quality.",
+     "task": "Adhere to all applicable regulations, policies, and procedures for health, safety, and environmental compliance.",
+     "cells": {
+      "ETEC 113": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ETEC 113",
+         "section": "content",
+         "level": 1,
+         "quote": "Disposal of Hazardous Waste",
+         "basis": "environmental compliance activity in industrial setting"
+        },
+        {
+         "course": "ETEC 113",
+         "section": "assignments",
+         "level": 1,
+         "quote": "The safety plans must detail Cal/OSHA Injury Illness Prevention Plan.",
+         "basis": "adhering to regulations/policies for health and safety compliance"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ETEC 113",
+      "section": "assignments",
+      "quote": "The safety plans must detail Cal/OSHA Injury Illness Prevention Plan.",
+      "reason": "the assignment names the specific Cal/OSHA Injury Illness Prevention Plan compliance task, while the content line only lists a topic heading"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.i.4",
+     "dwa": "Calibrate scientific or technical equipment.",
+     "task": "Calibrate or adjust equipment to ensure quality production, using tools such as calipers, micrometers, height gauges, protractors, or ring gauges. · Monitor and adjust production processes or equipment for quality and productivity.",
+     "cells": {
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Operate relevant Smart Manufacturing Equipment such as Smart CNC Machines, Industrial Robotic Arms",
+         "basis": "operating smart manufacturing equipment involves calibrating/adjusting it for production"
+        }
+       ]
+      },
+      "ENGI 140": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ENGI 140",
+         "section": "lab",
+         "level": 1,
+         "quote": "X-ray diffraction: Measurement Bragg angle using Telexometer",
+         "basis": "calibrating/using precision measurement equipment on materials"
+        }
+       ]
+      },
+      "ENGI 130": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ENGI 130",
+         "section": "content",
+         "level": 1,
+         "quote": "Lab 12: The Oscilloscope and Function Generator",
+         "basis": "using calibrated instrumentation (oscilloscope/signal generator) to make precise measurements is directly constitutive of calibrating technical equipment"
+        }
+       ]
+      },
+      "ETEC 126": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ETEC 126",
+         "section": "lab",
+         "level": 1,
+         "quote": "Scheduling Predictive Maintenance",
+         "basis": "lab practice adjusting equipment maintenance schedules to sustain quality production"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ENGI 140",
+      "section": "lab",
+      "quote": "X-ray diffraction: Measurement Bragg angle using Telexometer",
+      "reason": "measuring Bragg angle with a Telexometer is a specific calibration-with-precision-instrument task matching the activity"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.b.4.j.24",
+     "dwa": "Direct industrial production activities.",
+     "task": "Oversee or inspect production processes.",
+     "cells": {
+      "ETEC 126": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ETEC 126",
+         "section": "lab",
+         "level": 1,
+         "quote": "Trouble shooting to determine Manufacturing efficiency",
+         "basis": "overseeing/inspecting production processes in smart factory"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "lab",
+      "quote": "Trouble shooting to determine Manufacturing efficiency",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.2.c.3",
+     "dwa": "Design industrial equipment.",
+     "task": "Identify opportunities for improvements in quality, cost, or efficiency of automation equipment.",
+     "cells": {
+      "ETEC 124": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ETEC 124",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Design an IoT based system, component, or process to meet desired needs within realistic constraints, such as manufacturability and sustainability",
+         "basis": "designing industrial automation equipment/systems with efficiency constraints"
+        }
+       ]
+      },
+      "ENGI 140": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGI 140",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "recommend appropriate material(s) to meet engineering design criteria",
+         "basis": "recommending materials to meet design criteria evidences identifying improvements in equipment/product design"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ETEC 124",
+      "section": "outcomes",
+      "quote": "Design an IoT based system, component, or process to meet desired needs within realistic constraints, such as manufacturability and sustainability",
+      "reason": "the SLO commits to designing a system within manufacturability/sustainability constraints, directly matching identifying improvement opportunities in equipment design"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.2.f.14",
+     "dwa": "Develop technical methods or processes.",
+     "task": "Develop or implement programs to address problems related to production, materials, safety, or quality. · Assist engineers in developing, building, or testing prototypes or new products, processes, or procedures. · Develop production, inventory, or quality assurance programs.",
+     "cells": {
+      "ETEC 126": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ETEC 126",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Design a system, component, or process to meet desired needs within realistic constraints such as manufacturability, and sustainability, translate into high productivity",
+         "basis": "developing technical processes addressing production/quality problems"
+        },
+        {
+         "course": "ETEC 126",
+         "section": "lab",
+         "level": 1,
+         "quote": "Setting up a Smart Factory",
+         "basis": "implementing a production process/program addressing manufacturing setup"
+        },
+        {
+         "course": "ETEC 126",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Team-based projects to plan the process of manufacturing a component using Smart Advanced Manufacturing Principles.",
+         "basis": "developing a technical production process/method as a project"
+        }
+       ]
+      },
+      "ENGI 140": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGI 140",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Gather data from reference sources regarding the properties, processing, and performance characteristics of materials, and use it as a basis to recommend appropriate material(s) to meet engineering design criteria.",
+         "basis": "developing process/methods for materials selection in production"
+        }
+       ]
+      },
+      "ETEC 124": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ETEC 124",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Design an IoT based system, component, or process to meet desired needs within realistic constraints",
+         "basis": "students develop technical processes/systems addressing production/manufacturing needs"
+        },
+        {
+         "course": "ETEC 124",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Students are required to design and build IoT systems to meet specified requirements",
+         "basis": "builds/tests new system prototypes akin to assisting engineers in developing new processes"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "outcomes",
+      "quote": "Design a system, component, or process to meet desired needs within realistic constraints such as manufacturability, and sustainability, translate into high productivity",
+      "reason": "the SLO explicitly commits to designing a system/process for high productivity, matching developing methods/programs to address production problems"
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.1.i.6",
+     "dwa": "Implement design or process improvements.",
+     "task": "Develop or implement programs to address problems related to production, materials, safety, or quality.",
+     "cells": {
+      "ETEC 126": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ETEC 126",
+         "section": "lab",
+         "level": 1,
+         "quote": "Trouble shooting to determine Manufacturing efficiency",
+         "basis": "implementing process improvement via troubleshooting production efficiency"
+        },
+        {
+         "course": "ETEC 126",
+         "section": "lab",
+         "level": 1,
+         "quote": "Configuring Manufacturing Execution Systems(MES) for Smart Factories",
+         "basis": "implementing a process improvement system addressing production and quality tracking"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "lab",
+      "quote": "Trouble shooting to determine Manufacturing efficiency",
+      "reason": "troubleshooting to determine manufacturing efficiency is the specific lab task implementing a process improvement"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.2.c.2",
+     "dwa": "Test products for functionality or quality.",
+     "task": "Test selected products at specified stages in the production process for performance characteristics or adherence to specifications.",
+     "cells": {
+      "ENGI 140": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGI 140",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Measure material properties and/or evaluate processing treatments using standard materials testing equipment and techniques.",
+         "basis": "testing products/materials for quality against specifications"
+        },
+        {
+         "course": "ENGI 140",
+         "section": "lab",
+         "level": 1,
+         "quote": "Tensile testing",
+         "basis": "testing material product for performance characteristics"
+        },
+        {
+         "course": "ENGI 140",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Measure material properties and/or evaluate processing treatments using standard materials testing equipment",
+         "basis": "measuring/evaluating material properties with testing equipment is testing products for functionality or quality"
+        },
+        {
+         "course": "ENGI 140",
+         "section": "lab",
+         "level": 1,
+         "quote": "Hardness testing",
+         "basis": "hardness testing of material samples is testing product characteristics against specifications"
+        }
+       ]
+      },
+      "ENGI 130": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGI 130",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Analyze DC circuits to find current, voltage, resistance, power, and/or energy.",
+         "basis": "measuring circuit performance characteristics against expected values is testing for functionality/performance"
+        },
+        {
+         "course": "ENGI 130",
+         "section": "content",
+         "level": 1,
+         "quote": "Lab 11: Loading Effects of DC Instruments",
+         "basis": "hands-on testing of circuit performance at specified experimental stages evidences product/process testing for functionality"
+        }
+       ]
+      },
+      "ETEC 126": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ETEC 126",
+         "section": "lab",
+         "level": 1,
+         "quote": "Trouble shooting systems",
+         "basis": "testing production systems at stages of operation for performance/adherence to specification"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ENGI 140",
+      "section": "outcomes",
+      "quote": "Measure material properties and/or evaluate processing treatments using standard materials testing equipment and techniques.",
+      "reason": "the SLO commits to measuring material properties using standard testing equipment/techniques, matching testing products for performance characteristics"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.1.a.4",
+     "dwa": "Explain engineering drawings, specifications, or other technical information.",
+     "task": "Create or interpret engineering drawings, schematic diagrams, formulas, or blueprints for management or engineering staff.",
+     "cells": {
+      "ENGI 130": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGI 130",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Draw and label circuit diagrams and show thorough mathematical solutions.",
+         "basis": "creating/interpreting engineering schematic diagrams"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ENGI 130",
+      "section": "outcomes",
+      "quote": "Draw and label circuit diagrams and show thorough mathematical solutions.",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.2.o.1",
+     "dwa": "Prepare drawings or diagrams of products or services.",
+     "task": "Create or interpret engineering drawings, schematic diagrams, formulas, or blueprints for management or engineering staff.",
+     "cells": {
+      "ENGI 130": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGI 130",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Draw and label circuit diagrams and show thorough mathematical solutions.",
+         "basis": "preparing diagrams of circuits as products/components"
+        }
+       ]
+      },
+      "ETEC 126": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ETEC 126",
+         "section": "lab",
+         "level": 1,
+         "quote": "Designing RFID Systems",
+         "basis": "preparing design layouts/diagrams of industrial system components"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ENGI 130",
+      "section": "outcomes",
+      "quote": "Draw and label circuit diagrams and show thorough mathematical solutions.",
+      "reason": "the SLO commits to drawing and labeling circuit diagrams, directly matching preparing engineering drawings"
+     }
+    },
+    {
+     "dwa_id": "4.A.2.a.1.g.5",
+     "dwa": "Assess product or process usefulness.",
+     "task": "Compile and evaluate statistical data to determine and maintain quality and reliability of products.",
+     "cells": {
+      "CAOT 150": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "CAOT 150",
+         "section": "assignments",
+         "level": 1,
+         "quote": "students will be given a set of data and need to describe the data numerically and graphically",
+         "basis": "compiling and evaluating statistical data"
+        }
+       ]
+      },
+      "ENGI 140": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ENGI 140",
+         "section": "assignments",
+         "level": 1,
+         "quote": "compare various causes of material failure, select materials best suited to specific design requirements",
+         "basis": "evaluating material failure and suitability assesses product/process usefulness"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "CAOT 150",
+      "section": "assignments",
+      "quote": "students will be given a set of data and need to describe the data numerically and graphically",
+      "reason": "the assignment has students numerically and graphically describe data, matching compiling and evaluating statistical data"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.b.6.e.9",
+     "dwa": "Recommend technical design or process changes to improve efficiency, quality, or performance.",
+     "task": "Recommend corrective or preventive actions to assure or improve product quality or reliability.",
+     "cells": {
+      "ENGI 140": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ENGI 140",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Gather data from reference sources regarding the properties, processing, and performance characteristics of materials, and use it as a basis to recommend appropriate material(s) to meet engineering design criteria.",
+         "basis": "recommending material/process changes to meet design performance"
+        },
+        {
+         "course": "ENGI 140",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "use it as a basis to recommend appropriate material(s) to meet engineering design criteria",
+         "basis": "recommending material selection to meet design criteria is recommending a technical design change to improve performance"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ENGI 140",
+      "section": "outcomes",
+      "quote": "Gather data from reference sources regarding the properties, processing, and performance characteristics of materials, and use it as a basis to recommend appropriate material(s) to meet engineering design criteria.",
+      "reason": "the SLO fully states gathering data and recommending materials to meet design criteria, matching recommending corrective/preventive design changes"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.2.k.6",
+     "dwa": "Monitor processes for compliance with standards.",
+     "task": "Read worker logs, product processing sheets, or specification sheets to verify that records adhere to quality assurance specifications. · Evaluate industrial operations for compliance with permits or regulations related to the generation, storage, treatment, transportation, or disposal of hazardous materials or waste.",
+     "cells": {
+      "ETEC 113": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ETEC 113",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Prepare a safety inspection format and conduct a safety inspection of an operational facility.",
+         "basis": "monitoring compliance with safety standards via inspection"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ETEC 113",
+      "section": "outcomes",
+      "quote": "Prepare a safety inspection format and conduct a safety inspection of an operational facility.",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.1.d.3",
+     "dwa": "Determine operational methods.",
+     "task": "Select material quantities or processing methods needed to achieve efficient production.",
+     "cells": {
+      "ENGI 140": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ENGI 140",
+         "section": "assignments",
+         "level": 1,
+         "quote": "select materials best suited to specific design requirements",
+         "basis": "determining operational/material selection methods for efficient production"
+        }
+       ]
+      },
+      "ETEC 126": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ETEC 126",
+         "section": "lab",
+         "level": 1,
+         "quote": "Designing and Implementing a Production plan",
+         "basis": "determining operational/processing methods needed for efficient production"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "lab",
+      "quote": "Designing and Implementing a Production plan",
+      "reason": "designing and implementing a production plan is the specific operational-methods task matching selecting processing methods for efficient production"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.2.b.9",
+     "dwa": "Inspect operational processes.",
+     "task": "Verify that equipment is being operated and maintained according to quality assurance standards by observing worker performance.",
+     "cells": {
+      "ETEC 113": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ETEC 113",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Prepare a safety inspection format and conduct a safety inspection of an operational facility.",
+         "basis": "inspecting operational processes for compliance with standards"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ETEC 113",
+      "section": "outcomes",
+      "quote": "Prepare a safety inspection format and conduct a safety inspection of an operational facility.",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.1.j.2",
+     "dwa": "Select project materials.",
+     "task": "Select material quantities or processing methods needed to achieve efficient production. · Select cleaning materials, tools, or equipment.",
+     "cells": {
+      "ENGI 140": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ENGI 140",
+         "section": "assignments",
+         "level": 1,
+         "quote": "select materials best suited to specific design requirements",
+         "basis": "selecting project materials to achieve efficient production"
+        },
+        {
+         "course": "ENGI 140",
+         "section": "assignments",
+         "level": 1,
+         "quote": "identify appropriate materials for a simple engineering of interest agreed with instructor",
+         "basis": "team project selecting materials for an engineering application evidences project material selection"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ENGI 140",
+      "section": "assignments",
+      "quote": "select materials best suited to specific design requirements",
+      "reason": "the assignment specifically has students select materials best suited to design requirements, directly matching selecting project materials"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.2.b.15",
+     "dwa": "Monitor the productivity or efficiency of industrial operations.",
+     "task": "Monitor and adjust production processes or equipment for quality and productivity.",
+     "cells": {
+      "ETEC 126": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ETEC 126",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Design a system, component, or process to meet desired needs within realistic constraints such as manufacturability, and sustainability, translate into high productivity",
+         "basis": "monitoring/adjusting production for productivity and quality"
+        },
+        {
+         "course": "ETEC 126",
+         "section": "lab",
+         "level": 1,
+         "quote": "Trouble shooting to determine Manufacturing efficiency",
+         "basis": "lab exercise monitoring efficiency of the smart production line"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "lab",
+      "quote": "Trouble shooting to determine Manufacturing efficiency",
+      "reason": "troubleshooting to determine manufacturing efficiency is the specific monitoring task matching monitoring productivity/efficiency"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.2.d.3",
+     "dwa": "Create physical models or prototypes.",
+     "task": "Assist engineers in developing, building, or testing prototypes or new products, processes, or procedures.",
+     "cells": {
+      "ETEC 124": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ETEC 124",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Students are required to design and build IoT systems to meet specified requirements.",
+         "basis": "building prototype systems for new processes/products"
+        },
+        {
+         "course": "ETEC 124",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Design and Build an IoT System that monitors and controls temperature and humidity in a green house",
+         "basis": "students construct a physical prototype system"
+        }
+       ]
+      },
+      "ENGI 101": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ENGI 101",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Work on a team to design and build a bridge with specifications including cost and load capacity.",
+         "basis": "creating physical models/prototypes as design projects"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ENGI 101",
+      "section": "assignments",
+      "quote": "Work on a team to design and build a bridge with specifications including cost and load capacity.",
+      "reason": "designing and building a bridge to specifications is a concrete physical prototype-building task"
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.2.o.21",
+     "dwa": "Create graphical representations of industrial production systems.",
+     "task": "Prepare layouts, drawings, or sketches of machinery or equipment, such as shop tooling, scale layouts, or new equipment design, using drafting equipment or computer-aided design (CAD) software.",
+     "cells": {
+      "ETEC 126": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ETEC 126",
+         "section": "lab",
+         "level": 1,
+         "quote": "Configuring Virtual Factory – Digital Twin",
+         "basis": "creating graphical/digital representation of an industrial production system"
+        },
+        {
+         "course": "ETEC 126",
+         "section": "lab",
+         "level": 1,
+         "quote": "Designing RFID Systems",
+         "basis": "preparing layouts of industrial equipment components using design tools"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "lab",
+      "quote": "Configuring Virtual Factory – Digital Twin",
+      "reason": "configuring a virtual factory/digital twin is a graphical representation of a production system, matching the activity more specifically than an RFID design lab"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.1.t.7",
+     "dwa": "Research human performance or health factors related to engineering or design activities.",
+     "task": "Study time, motion, methods, or speed involved in maintenance, production, or other operations to establish standard production rate or improve efficiency.",
+     "cells": {
+      "ETEC 126": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ETEC 126",
+         "section": "lab",
+         "level": 1,
+         "quote": "Trouble shooting to determine Manufacturing efficiency",
+         "basis": "studying operations to establish/improve production efficiency"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "lab",
+      "quote": "Trouble shooting to determine Manufacturing efficiency",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.b.3.d.2",
+     "dwa": "Train personnel on proper operational procedures.",
+     "task": "Provide advice or training to other technicians.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.2.a.4.e.8",
+     "dwa": "Analyze costs and benefits of proposed designs or projects.",
+     "task": "Analyze, estimate, or report production costs. · Conduct statistical studies to analyze or compare production costs for sustainable and nonsustainable designs.",
+     "cells": {
+      "ENGI 101": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ENGI 101",
+         "section": "assignments",
+         "level": 1,
+         "quote": "design and build a bridge with specifications including cost and load capacity",
+         "basis": "designing to a stated cost specification requires analyzing cost tradeoffs of the proposed design"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ENGI 101",
+      "section": "assignments",
+      "quote": "design and build a bridge with specifications including cost and load capacity",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.3.b.4",
+     "dwa": "Estimate operational costs.",
+     "task": "Analyze, estimate, or report production costs.",
+     "cells": {
+      "ENGI 101": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ENGI 101",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Work on a team to design and build a bridge with specifications including cost and load capacity.",
+         "basis": "estimating operational/project costs as part of design specification"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ENGI 101",
+      "section": "assignments",
+      "quote": "Work on a team to design and build a bridge with specifications including cost and load capacity.",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.6.o.4",
+     "dwa": "Prepare operational reports.",
+     "task": "Prepare production documents, such as standard operating procedures, manufacturing batch records, inventory reports, or productivity reports.",
+     "cells": {
+      "ETEC 124": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ETEC 124",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Students write technical reports on relevant IoT systems.",
+         "basis": "preparing technical/operational documentation on industrial systems"
+        },
+        {
+         "course": "ETEC 124",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Students write lab reports and make entries in lab notebooks detailing experiments, design and construction work completed during lab sessions",
+         "basis": "preparation of documentation records of technical/production work performed"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ETEC 124",
+      "section": "assignments",
+      "quote": "Students write technical reports on relevant IoT systems.",
+      "reason": "writing technical reports on IoT systems is the specific operational-report task, more on point than lab notebook entries"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.c.3.e.3",
+     "dwa": "Purchase materials, equipment, or other resources.",
+     "task": "Coordinate equipment purchases, installations, or transfers.",
+     "cells": {
+      "ETEC 126": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ETEC 126",
+         "section": "content",
+         "level": 1,
+         "quote": "Product planning, purchase",
+         "basis": "coordinating purchases of equipment/materials for production"
+        },
+        {
+         "course": "ETEC 126",
+         "section": "lab",
+         "level": 1,
+         "quote": "Designing and Implementing a Product plan including parts purchase and supply",
+         "basis": "lab covering coordination of equipment/parts purchases within a supply chain plan"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "ETEC 126",
+      "section": "lab",
+      "quote": "Designing and Implementing a Product plan including parts purchase and supply",
+      "reason": "designing and implementing a product plan including parts purchase and supply directly matches purchasing materials/equipment"
+     }
+    }
+   ],
+   "dropped": [
+    {
+     "activity": 16,
+     "course": "Certificate of Achievement, Smart Manufacturing Technology",
+     "section": "program_outcomes",
+     "quote": "Operate relevant Smart Manufacturing Equipment such as Smart CNC Machines, Industrial Robotic Arms, Smart Factories, and Mechatronic Systems.",
+     "basis": "operating smart manufacturing equipment directly evidences monitoring the productivity or efficiency of industrial operations",
+     "why": "unknown course 'Certificate of Achievement, Smart Manufacturing Technology'"
+    },
+    {
+     "activity": 5,
+     "course": "Certificate of Achievement, Smart Manufacturing Technology",
+     "section": "program_outcomes",
+     "quote": "Apply basic scientific and engineering principles to solve problems in the manufacturing industry.",
+     "basis": "applying engineering principles to solve manufacturing problems evidences developing technical methods or processes",
+     "why": "unknown course 'Certificate of Achievement, Smart Manufacturing Technology'"
+    },
+    {
+     "activity": 1,
+     "course": "ETEC 113",
+     "section": "outcomes",
+     "quote": "Develop an awareness of potential safety hazards at home and the work site.",
+     "basis": "monitoring workplace conditions for safety/environmental compliance",
+     "why": "adjudicated: c) generic safety-hazard awareness credited to environmental-quality monitoring, not a technical/regulatory compliance activity"
+    },
+    {
+     "activity": 2,
+     "course": "ENGI 130",
+     "section": "content",
+     "quote": "Lab 3: Electrical Power in DC Circuits",
+     "basis": "using instrumentation to measure/calibrate electrical quantities analogous to equipment calibration",
+     "why": "adjudicated: d) DC circuit power lab evidences electrical measurement/analysis, not calibration of equipment using the named gauge-type tools"
+    },
+    {
+     "activity": 3,
+     "course": "ETEC 126",
+     "section": "content",
+     "quote": "Manufacturing efficiency",
+     "basis": "content on overseeing production process performance",
+     "why": "adjudicated: a) topic-only heading 'Manufacturing efficiency' with no performable oversight/inspection content"
+    },
+    {
+     "activity": 6,
+     "course": "ETEC 113",
+     "section": "outcomes",
+     "quote": "Compare and describe safety implementation programs in various work locations.",
+     "basis": "implementing process improvements for safety",
+     "why": "adjudicated: b) comparing/describing existing safety programs is precondition knowledge, not implementing a process improvement"
+    },
+    {
+     "activity": 10,
+     "course": "ENGI 140",
+     "section": "outcomes",
+     "quote": "Explain the relationship between the internal structure of materials and their macroscopic properties.",
+     "basis": "evaluating material/process properties to assess usefulness for engineering criteria",
+     "why": "adjudicated: b) explaining structure-property relationships is precondition knowledge, not compiling/evaluating statistical data on product quality"
+    },
+    {
+     "activity": 12,
+     "course": "ETEC 113",
+     "section": "content",
+     "quote": "Legal requirements/investigations",
+     "basis": "monitoring compliance with regulations related to hazardous waste/safety",
+     "why": "adjudicated: a) topic-only heading 'Legal requirements/investigations' names a subject with no performable compliance-monitoring content"
+    },
+    {
+     "activity": 15,
+     "course": "ETEC 113",
+     "section": "content",
+     "quote": "Safety when handling and storing materials and tools",
+     "basis": "selecting materials/tools/equipment for safety compliance",
+     "why": "adjudicated: a) topic-only heading naming safety practice with materials/tools, not a performable material-selection activity"
+    },
+    {
+     "activity": 16,
+     "course": "ETEC 126",
+     "section": "content",
+     "quote": "Manufacturing efficiency",
+     "basis": "content directly addressing productivity of industrial operations",
+     "why": "adjudicated: a) topic-only heading 'Manufacturing efficiency' with no performable monitoring content"
+    },
+    {
+     "activity": 20,
+     "course": "ETEC 113",
+     "section": "assignments",
+     "quote": "Report this safety plan with an oral presentation.",
+     "basis": "training/advising personnel on operational safety procedures",
+     "why": "adjudicated: c) generic oral presentation of a safety plan credited to training personnel on operational procedures"
+    },
+    {
+     "activity": 21,
+     "course": "CAOT 150",
+     "section": "content",
+     "quote": "Basic Data Anaylsis in Excel",
+     "basis": "analytical tool content used for cost/benefit analysis of production data",
+     "why": "adjudicated: a) topic-only heading 'Basic Data Analysis in Excel' names a subject with no performable cost/benefit content"
+    },
+    {
+     "activity": 23,
+     "course": "ENGI 140",
+     "section": "outcomes",
+     "quote": "Write laboratory reports that communicate the collection, analysis, and interpretation of experimental data according to professional engineering standards.",
+     "basis": "preparing operational/technical reports documenting production data",
+     "why": "adjudicated: d) writing lab reports on experimental data evidences report-writing on lab work, a different activity than production documents like SOPs or batch records"
+    },
+    {
+     "activity": 9,
+     "course": "ENGI 101",
+     "section": "content",
+     "quote": "Modification/refinement of design plan",
+     "basis": "iterating on a design plan as part of engineering analysis involves preparing or revising diagrams of the design",
+     "why": "adjudicated: a) topic-only heading 'Modification/refinement of design plan' names a subject with no performable drawing/diagram content stated"
+    },
+    {
+     "activity": 1,
+     "course": "ETEC 124",
+     "section": "content",
+     "quote": "Cyber Security Risks and Web applications relevant to IoT devices",
+     "basis": "covers compliance-relevant risk considerations for IoT devices in industrial settings",
+     "why": "adjudicated: d) cybersecurity risk content for IoT/web applications evidences a data-security topic, not environmental-quality/health-safety compliance"
+    },
+    {
+     "activity": 18,
+     "course": "ETEC 124",
+     "section": "content",
+     "quote": "IoT Technology Architecture",
+     "basis": "students work with architectural/system diagrams representing industrial production monitoring systems",
+     "why": "adjudicated: a) topic-only heading 'IoT Technology Architecture' names a subject with no stated drawing/layout performable content"
+    },
+    {
+     "activity": 1,
+     "course": "ETEC 126",
+     "section": "content",
+     "quote": "Green Manufacturing",
+     "basis": "environmental compliance content covering green/sustainable manufacturing practices in production",
+     "why": "adjudicated: a) topic-only heading 'Green Manufacturing' names a subject with no performable environmental-monitoring content stated"
+    },
+    {
+     "activity": 2,
+     "course": "ETEC 126",
+     "section": "content",
+     "quote": "Predictive Maintenance",
+     "basis": "predictive maintenance involves monitoring/adjusting equipment for quality production",
+     "why": "adjudicated: a) topic-only heading 'Predictive Maintenance' names a subject with no performable calibration content, and does not name the specified calibration tools"
+    },
+    {
+     "activity": 12,
+     "course": "ETEC 126",
+     "section": "content",
+     "quote": "SCADA – Data Acquisition",
+     "basis": "monitoring production process data acquisition for compliance with operating specifications",
+     "why": "adjudicated: a) topic-only heading 'SCADA – Data Acquisition' names a subject with no stated compliance-verification content"
+    },
+    {
+     "activity": 16,
+     "course": "ETEC 126",
+     "section": "content",
+     "quote": "Manufacturing efficiency",
+     "basis": "monitoring productivity/efficiency of industrial operations directly named as content topic",
+     "why": "adjudicated: a) topic-only heading 'Manufacturing efficiency' with no performable monitoring content"
+    },
+    {
+     "activity": 23,
+     "course": "ETEC 126",
+     "section": "content",
+     "quote": "Inventory management",
+     "basis": "content on production-related inventory reporting matching operational report preparation",
+     "why": "adjudicated: a) topic-only heading 'Inventory management' names a subject with no stated report-preparation content"
+    },
+    {
+     "activity": 1,
+     "course": "PLO",
+     "section": "program_outcomes",
+     "quote": "Apply basic scientific and engineering principles to solve problems in the manufacturing industry",
+     "basis": "too general; not matched",
+     "why": "adjudicated: c) generic application of basic scientific/engineering principles credited to the specific technical activity of monitoring environmental compliance"
+    }
+   ],
+   "source_note": "Read from Ohlone College's course outlines of record (curricunet); sections present: slo, description, content outline, lab content, assignment.",
+   "role": "",
+   "short_title": "Smart Manufacturing Technology"
+  }
+ ]
+}

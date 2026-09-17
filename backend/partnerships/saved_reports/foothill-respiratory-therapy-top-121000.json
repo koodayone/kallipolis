@@ -11,7 +11,7 @@
   "org_short": "Regional",
   "_comment": "PROGRAM EVALUATION (evaluate-program skill), not a role report. Subject is the PROGRAM (Foothill College x TOP 121000), not a job title. Destination SOCs are DERIVED, not authored: crosswalk(121000) = 4 SOCs, intersected with SECTORS['health'].socs and minus ALL_OTHER/PROMOTION/EXPERIENCE_5YR guards = 1 (29-1126). Dropped: 25-1071 Postsecondary Teachers, 29-2099 Health Technologists All Other, 99-9999. House rule: EVIDENCE-FORWARD, NO VERDICT — the prose states throughput, trend, destination health and peer standing and stops there; it never says 'at risk' or 'underperforming'. live_postings and competencies are reused verbatim from foothill-respiratory-therapist (same SOC, already verified against the O*NET pool and the CareerOneStop scrape).",
   "program_top": "121000",
-  "lede": "This evaluation assembles labor-market supply and demand evidence for Foothill College's Respiratory Therapy program (TOP 121000). It covers regional occupational demand targeted by the program, and the program's award and enrollment trends in the context of other colleges offering the same program in the region.",
+  "lede": "This evaluation assembles labor-market supply and demand evidence for Foothill College's Respiratory Therapy program (TOP 121000). It covers regional occupational demand targeted by the program, and the program's award and enrollment trends in the context of other colleges offering the same program in the region, and how the program's courses align with the work of its destination occupations.",
   "demand_note": "Foothill's Respiratory Therapy program leads to SOC 29-1126 via the TOP–CIP–SOC crosswalk. [According to the Centers of Excellence](https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061), this occupation demands roughly 210 openings a year in the Bay Area region, at a median salary of $132,040.",
   "alignment_note": "The set of colleges offering TOP 121000 in the Bay Area. All of these colleges support SOC 29-1126 via the same TOP code through the TOP–CIP–SOC crosswalk.",
   "competency_note": "",
@@ -61,5 +61,7 @@
         "Medical software"
       ]
     }
-  }
+  },
+  "curriculum_alignment": "foothill-respiratory-therapy-top-121000",
+  "curriculum_note": "O*NET maintains a set of detailed work activities that identify the competencies central to each job. We visualize below how the Respiratory Therapy associate degree supports its destination occupation by mapping its courses to each work activity, based on how each course is described in its Course Outline of Record (COR)."
 }

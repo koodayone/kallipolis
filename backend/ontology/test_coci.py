@@ -24,6 +24,7 @@ Coverage:
   - TOP CODE parses out of COCI's combined label
   - Foothill 121000 surfaces the 2024 Respiratory Care B.S., highest credential first
   - offered_only drops Inactive but keeps Teachout
+  - a control number resolves an award at a college regardless of status, zero-padded or not
 """
 import csv
 import gzip
@@ -31,7 +32,7 @@ import gzip
 import pytest
 
 from ontology.coci import (COCI_VINTAGE, OFFERED_STATUSES, STATUS_TEACHOUT, _COLLEGE_CODE,
-                           _DATA, _top6, award_band, awards_for, coci_award_tier, coci_code)
+                           _DATA, _top6, award_band, award_by_control, awards_for, coci_award_tier, coci_code)
 from ontology.programs import AWARD_TIERS, award_tier
 
 
@@ -144,3 +145,13 @@ def test_teachout_is_kept_not_collapsed():
     assert STATUS_TEACHOUT in OFFERED_STATUSES
     n = sum(1 for r in _rows() if r["STATUS"] == STATUS_TEACHOUT)
     assert n > 500
+
+
+def test_award_by_control_resolves_any_status_and_zero_padding():
+    """The control number is the join to the ProgramCourseFile, which zero-pads it; an award
+    still 'Approved' (Mission's Mechatronic Technology) must resolve too."""
+    a = award_by_control("Foothill College", "43983")
+    assert a.title == "Semiconductor Processing" and a.top6 == "094500" and a.tier == "certificate"
+    assert award_by_control("Foothill College", "043983") == a
+    assert award_by_control("Mission College", "40796").status == "Approved"
+    assert award_by_control("Foothill College", "1") is None and award_by_control("Nowhere College", "43983") is None

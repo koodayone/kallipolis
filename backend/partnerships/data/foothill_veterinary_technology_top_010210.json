@@ -1,0 +1,27 @@
+{
+  "_comment": "Curriculum-alignment roster for the foothill-veterinary-technology-top-010210 program evaluation: one program record read against the def's destination occupations; columns are labelled by certificate. Readings are saved per program under saved_reports/alignment/.",
+  "id": "foothill-veterinary-technology-top-010210",
+  "onet_release": "31.0",
+  "short_name": "Foothill College",
+  "columns": "certificate",
+  "occupations": [
+    "29-2056",
+    "31-9096"
+  ],
+  "top_n": 5,
+  "programs": [
+    {
+      "program": "foothill-veterinary-technology",
+      "paired_soc": "29-2056",
+      "crosswalk_socs": [
+        "29-2056",
+        "31-9096"
+      ],
+      "pairing_basis": "The degree's stated purpose: preparing Registered Veterinary Technicians (SOC 29-2056); TOP 010210's crosswalk also reaches Veterinary Assistants (SOC 31-9096).",
+      "reads_against": [
+        "31-9096"
+      ],
+      "review_socs": []
+    }
+  ]
+}

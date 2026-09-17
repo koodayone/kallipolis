@@ -1,0 +1,51 @@
+{
+ "college": "Foothill College",
+ "system": "courseleaf",
+ "code": "HORT 60B",
+ "title": "Landscape Design: Theory",
+ "description": "Principles of landscape design theory. Intermediate studies in and applications of graphic communication, creative problem solving, design theory, and presentation skills. Residential site analysis and landscape design case studies.",
+ "outcomes": [
+  "Exhibit an understanding of the elements and principles of landscape design theory through class projects."
+ ],
+ "objectives": [
+  "Exhibit an understanding of the elements and principles of landscape design theory through class exercises.",
+  "Demonstrate knowledge of intermediate graphic communication skills as they relate to landscape design problems through a series of projects.",
+  "Discuss and analyze design case studies and/or completed residential landscape projects.",
+  "Understand the cross-cultural nature of landscape design."
+ ],
+ "content": [
+  "Landscape design theory",
+  "Basic elements of design (point, line, plane, form, texture, motion, etc.)",
+  "Principles of organization (unity, harmony, scale, etc.)",
+  "General philosophical concepts",
+  "Specific functional concepts",
+  "Overview of trends in landscape design",
+  "Form development",
+  "Geometric",
+  "Naturalistic",
+  "Case studies and analysis of completed residential landscape projects",
+  "Intermediate graphic communication",
+  "Analysis graphics",
+  "Symbols and symbol palettes",
+  "Functional and analytical bubble diagrams",
+  "Color",
+  "Color wheel",
+  "Palette selection",
+  "Rendering techniques",
+  "The metric system as applied to landscape design",
+  "Cross-cultural applications of landscape design process"
+ ],
+ "lab": [
+  "Basic design composition lab: Utilizing theoretical constructs, apply elements of design to landscape design project",
+  "Garden gate lab: Students will explore the \"garden gate\" as a defining element of the typical garden. Based on research and field work, students will design their own \"ideal garden gate\"",
+  "Color rendering lab: Following the lecture on use and application of color rendering products, students will practice developing these skills in the classroom",
+  "Site analysis lab: Using a real site, students will practice and develop site analysis skills",
+  "Landscape site design lab: Utilizing a real or fictitious site, students will create a landscape design based on a program which has been provided"
+ ],
+ "assignments": [],
+ "source_url": "https://catalog.foothill.edu/course-outlines/HORT-60B/",
+ "effective": "Summer 2022",
+ "approved": "",
+ "retrieved": "2026-09-17",
+ "notes": ""
+}

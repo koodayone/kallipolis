@@ -1,0 +1,41 @@
+{
+ "college": "Foothill College",
+ "system": "courseleaf",
+ "code": "V T 53A",
+ "title": "Veterinary Medical Terminology",
+ "description": "Provides students within the Veterinary Technology Program the foundational skills to communicate within the veterinary field. Builds on the student's knowledge of medical terminology word parts and rules of word construction and applies this knowledge to body systems and to veterinary specific terms. Intended for students in the Veterinary Technology Program; enrollment is limited to students accepted in the program.",
+ "outcomes": [
+  "Acquire a fundamental veterinary medical vocabulary and apply to speaking and writing.",
+  "Analyze and interpret medical words and terminology."
+ ],
+ "objectives": [
+  "Discuss medical terms applying to organ systems, clinical procedures, and clinical scenarios.",
+  "Define medical terms and common vocabulary particular to veterinary medicine.",
+  "Discuss the meaning of medical terms and common vocabulary specific to veterinary medicine."
+ ],
+ "content": [
+  "Medical terms applying to organ systems, procedures, and scenarios",
+  "Use of nouns, adjectives, and verbs",
+  "Introduction to medical terminology",
+  "Rules for word construction",
+  "Accents and pronunciation",
+  "Words commonly used for all body systems",
+  "Words commonly used for all species",
+  "Words commonly used for all medical procedures",
+  "Words commonly used for all disorders and diseases",
+  "Defining medical terms",
+  "Defining medical terms by word analysis",
+  "Word construction and application",
+  "Meaning of medical terms",
+  "Common veterinary disorders and clinical procedures",
+  "Common medical procedures and the role of the RVT",
+  "Communication with clients and colleagues"
+ ],
+ "lab": [],
+ "assignments": [],
+ "source_url": "https://catalog.foothill.edu/course-outlines/V-T-53A/",
+ "effective": "Summer 2025",
+ "approved": "",
+ "retrieved": "2026-09-17",
+ "notes": ""
+}
