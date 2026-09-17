@@ -1,5 +1,5 @@
 {
-  "_comment": "Curriculum-alignment roster for the SVAMP Manufacturing Technician report. Each entry cites a program record (data/programs/<program>.json — the certificate and its courses; edit the courses there) and CONNECTS it to occupations: `paired_soc` is chosen from the program's stated purpose (the crosswalk's verdict is shown beside it, never used to choose); a program is read against an occupation when its pairing or its crosswalk reaches it (`reads_against`), plus any `appendix_socs` (read, shown only in the appendix). `occupations` are the report's play SOCs, each rendered as an occupation block; `columns` names the blocks' columns by college. Readings are saved per program under saved_reports/alignment/ and shared with any other roster that cites the same program.",
+  "_comment": "Curriculum-alignment roster for the SVAMP Manufacturing Technician report. Each entry cites a program record (data/programs/<program>.json — the certificate and its courses; edit the courses there) and CONNECTS it to occupations: `paired_soc` is chosen from the program's stated purpose (the crosswalk's verdict is shown beside it, never used to choose); a program is read against an occupation when its pairing or its crosswalk reaches it (`reads_against`), plus any `review_socs` (read for the review file and the internal evidence tables, never drawn). `occupations` are the report's play SOCs, each rendered as an occupation block; `columns` names the blocks' columns by college. Readings are saved per program under saved_reports/alignment/ and shared with any other roster that cites the same program.",
   "id": "svamp-manufacturing-technician",
   "onet_release": "31.0",
   "short_name": "SVAMP",
@@ -24,7 +24,7 @@
         "51-9141",
         "17-3024"
       ],
-      "appendix_socs": []
+      "review_socs": []
     },
     {
       "program": "ohlone-smart-manufacturing-technology",
@@ -38,7 +38,7 @@
         "17-3026",
         "17-3024"
       ],
-      "appendix_socs": []
+      "review_socs": []
     },
     {
       "program": "mission-mechatronic-technology",
@@ -52,7 +52,7 @@
         "51-9141",
         "17-3024"
       ],
-      "appendix_socs": []
+      "review_socs": []
     },
     {
       "program": "deanza-cnc-machinist",
@@ -66,7 +66,7 @@
         "17-3026",
         "17-3024"
       ],
-      "appendix_socs": [
+      "review_socs": [
         "51-4041"
       ]
     },
@@ -82,7 +82,7 @@
         "17-3026",
         "17-3024"
       ],
-      "appendix_socs": []
+      "review_socs": []
     }
   ]
 }

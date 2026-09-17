@@ -24,7 +24,8 @@ Coverage:
   - a block's non-final elements bind forward; the final one deliberately does not
   - blocks never chain into each other (which would make the document one atom)
   - every table header row repeats on overflow
-  - table interiors stay splittable — the repeated header is what makes that safe
+  - a long table's interior stays splittable — the repeated header is what makes that safe
+  - a short table moves whole, every row but the last binding forward
   - paragraphs inside a block resist breaking through their own middle
   - an oversized block is left unbound and says so, rather than being silently dropped
   - every `.blk` in the source produces a bound group in the output
@@ -69,6 +70,13 @@ CHART_BLOCK = blk(
     '<p class="tnar">Credentials awarded per year across colleges offering this '
     'program, set against regional annual openings for target occupations.</p>',
     '<div class="awchart"><svg></svg></div>')
+
+#: a long table — more rows than the builder will keep whole — which must stay splittable.
+LONG_TABLE_BLOCK = blk(
+    '<p class="tnar">Award trends for each member-college program.</p>',
+    '<table class="trend"><tr><th>College</th><th>2021</th><th>2022</th></tr>'
+    + ''.join(f'<tr><td>College {i}</td><td>{i}</td><td>{i + 1}</td></tr>' for i in range(12))
+    + '</table>')
 
 #: a narration and the table it introduces.
 TABLE_BLOCK = blk(
@@ -213,21 +221,35 @@ def test_a_sentence_does_not_break_through_its_own_middle_inside_a_block(tmp_pat
 
 # ── the judgement, guarded ───────────────────────────────────────────────────
 
-def test_a_table_interior_stays_splittable(tmp_path):
+def test_a_long_table_interior_stays_splittable(tmp_path):
     """NEGATIVE, and the more important half of the design.
 
-    Making tables atomic is the obvious-looking "improvement" and it is wrong: a
-    header row that reprints already makes a split table readable anywhere, so
-    binding the interior buys nothing and costs most of a page of white every time the
-    table doesn't fit. Whitespace is not free — past ~2in a gap reads as a section
-    boundary that isn't there."""
+    Making a LONG table atomic is the obvious-looking "improvement" and it is wrong: a
+    header row that reprints already makes a split table readable anywhere, so binding
+    the interior buys nothing and costs most of a page of white every time the table
+    doesn't fit. Whitespace is not free — past ~2in a gap reads as a section boundary
+    that isn't there. (Word would ignore a chain that tall anyway.)"""
+    xml, _ = build(tmp_path, _page(LONG_TABLE_BLOCK))
+    tbl = next(t for t in body_items(xml) if is_table(t))
+    rows = rows_of(tbl)
+    assert len(rows) > 10, 'fixture needs more rows than keep_whole binds'
+    for i, r in enumerate(rows[:-1]):
+        assert not has(r, 'keepNext'), \
+            f'row {i} binds forward — a long table was made atomic'
+
+
+def test_a_short_table_moves_whole(tmp_path):
+    """The page's `table.dem, table.live, table.trend {break-inside: avoid}`: a table of a
+    few rows moves to the next page whole rather than leaving one row behind under its
+    header. Every row but the last binds forward; the last is left free so the table can
+    still begin a fresh page itself."""
     xml, _ = build(tmp_path, _page(TABLE_BLOCK))
     tbl = next(t for t in body_items(xml) if is_table(t))
     rows = rows_of(tbl)
     assert len(rows) >= 3, 'fixture needs an interior row'
     for i, r in enumerate(rows[:-1]):
-        assert not has(r, 'keepNext'), \
-            f'row {i} binds forward — the table was made atomic'
+        assert has(r, 'keepNext'), f'row {i} of a short table does not bind forward'
+    assert not has(rows[-1], 'keepNext'), 'the last row must stay free'
 
 
 def test_an_oversized_block_is_left_unbound_and_says_so(tmp_path):

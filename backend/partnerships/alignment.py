@@ -18,7 +18,7 @@ THE EDITORIAL RULES (locked 2026-09-16; change them here, not in prose):
   unit        the O*NET detailed work activity; rows = activities anchored to the
               occupation's Core tasks, in O*NET's importance order, no numbers shown
   record      identity lives in the record; a roster only connects it to occupations
-              (paired_soc, reads_against, appendix_socs). A record's course-code spelling
+              (paired_soc, reads_against, review_socs). A record's course-code spelling
               is a KEY: adapters keep it and saved marks are keyed by it, so renaming a
               code orphans its marks
   pairing     CHOSEN from the program's stated purpose (roster `paired_soc`); the
@@ -39,7 +39,9 @@ THE EDITORIAL RULES (locked 2026-09-16; change them here, not in prose):
   lead        per activity, ONE excerpt is chosen as the mark a reviewer points to first:
               a final LLM pass judges which verified excerpt most specifically states the
               activity as the task defines it; tier breaks ties (an SLO or objective over
-              content). Stored on the row; a certificate column shows only the lead
+              content). Stored on the row and KEPT, like a mark, while it is still among
+              the row's excerpts; only rows whose excerpts changed are re-judged on a
+              re-read (`--rerank` re-judges every row). A certificate column shows the lead
   accumulate  a re-run UNIONS with the saved alignment: the proposer is stochastic, so a
               match found once (gated, adjudicated) is kept until a human removes it
               from the saved file; drops are logged, never applied retroactively
@@ -61,12 +63,16 @@ import json
 import logging
 import re
 from dataclasses import asdict, dataclass, field, replace
+from typing import TYPE_CHECKING
 from datetime import date
 from pathlib import Path
 
 from courses.outlines import Outline, retrieve
 from occupations.descriptions import get_title
 from occupations.work_activities import ONET_VINTAGE, WorkActivity, get_work_activities
+
+if TYPE_CHECKING:
+    from ontology.coci import CociAward
 
 logger = logging.getLogger(__name__)
 
@@ -292,7 +298,7 @@ class Plate:
     rows: list[Row]
     dropped: list[dict] = field(default_factory=list)   # gate + adjudication drops, for the review file
     source_note: str = ""
-    role: str = "paired"        # paired | crosswalk | appendix — how the program connects to this occupation (roster's)
+    role: str = ""              # paired | crosswalk | review — how the roster connects the program to this occupation; set by view_roster, never stored
     short_title: str = ""       # the award's COCI title — the column label when a roster's columns are certificates
 
     def counts(self) -> dict:
@@ -304,17 +310,18 @@ class Plate:
 
 
 # ── the run ────────────────────────────────────────────────────────────────────
-def align_program(program: dict, *, soc: str | None = None, refresh: bool = False,
+def align_program(program: dict, *, soc: str, refresh: bool = False,
                   adjudicate: bool = True, complete=None, coci_rows: list[dict] | None = None,
-                  role: str = "paired", units: str = "all") -> Plate:
-    """Read one program against one occupation. `complete` is the LLM seam
-    (llm.claude_cli.complete by default); `coci_rows` the college's COCI course export
+                  units: str = "all") -> Plate:
+    """Read one program RECORD against one occupation. The plate carries what the reading
+    found and nothing of how a roster connects the program to the occupation (role, pairing
+    basis, crosswalk) — `view_roster` is the only writer of those. `complete` is the LLM
+    seam (llm.claude_cli.complete by default); `coci_rows` the college's COCI course export
     if a currency check is wanted. `units="plo"` reads only the certificate's own program
     outcomes — a cheap re-read that unions into the saved plate."""
     if complete is None:
         from llm.claude_cli import complete as _c
         complete = _c
-    soc = soc or program["paired_soc"]
     acts = get_work_activities(soc)
     occ_title = get_title(soc) or soc
     outlines = program_outlines(program, refresh=refresh)
@@ -343,9 +350,8 @@ def align_program(program: dict, *, soc: str | None = None, refresh: bool = Fals
     if not units:
         rows = [Row(a.dwa_id, a.dwa, a.task_text) for a in acts]
         return Plate(program["college"], program["member_id"], program["certificate"], program.get("kind", "credit"),
-                     program.get("top6"), program.get("top_name", ""), soc, occ_title, program.get("crosswalk_socs", []),
-                     program.get("pairing_basis", ""), [], program.get("program_outcomes", []), rows, [], "", role,
-                     short_title=program.get("short_title", ""))
+                     program.get("top6"), program.get("top_name", ""), soc, occ_title, [], "", [],
+                     program.get("program_outcomes", []), rows, short_title=program.get("short_title", ""))
 
     def _match(unit):
         code, text = unit
@@ -410,9 +416,8 @@ def align_program(program: dict, *, soc: str | None = None, refresh: bool = Fals
     note = (f"Read from {program['college']}'s course outlines of record ({outlines[program['courses'][0]['code']].system}); "
             f"sections present: {', '.join(SECTION_LABEL[s].lower() for s in fmt)}.")
     return Plate(program["college"], program["member_id"], program["certificate"], program.get("kind", "credit"),
-                 program.get("top6"), program.get("top_name", ""), soc, occ_title, program.get("crosswalk_socs", []),
-                 program.get("pairing_basis", ""), courses, program.get("program_outcomes", []), rows, dropped, note, role,
-                 short_title=program.get("short_title", ""))
+                 program.get("top6"), program.get("top_name", ""), soc, occ_title, [], "", courses,
+                 program.get("program_outcomes", []), rows, dropped, note, short_title=program.get("short_title", ""))
 
 
 def _union_plate(new: Plate, old: Plate | None) -> Plate:
@@ -420,11 +425,14 @@ def _union_plate(new: Plate, old: Plate | None) -> Plate:
     if old is None or old.paired_soc != new.paired_soc:
         return new
     old_rows = {r.dwa_id: r for r in old.rows}
+    live = {c["code"] for c in new.courses}
     for r in new.rows:
         o = old_rows.get(r.dwa_id)
         if not o:
             continue
         for code, ocell in o.cells.items():
+            if code != PLO and code not in live:        # a course dropped from the record takes its marks with it
+                continue
             cell = r.cells.setdefault(code, Cell(0))
             have = {_norm(e.quote) for e in cell.evidence}
             for e in ocell.evidence:
@@ -452,15 +460,35 @@ def _default_lead(row: Row, plate: Plate) -> dict | None:
     return {"course": e.course, "section": e.section, "quote": e.quote, "reason": "default: tier, units, catalog order"}
 
 
-def rank_leads(plate: Plate, *, complete=None) -> Plate:
-    """Set every row's lead. Rows with one excerpt need no judgment; rows with several go
-    to the ranking pass in one call. Any failure falls back to `_default_lead`."""
+def _lead_valid(row: Row) -> bool:
+    """A stored lead still points at one of the row's excerpts."""
+    ld = row.lead
+    return bool(ld) and any(e.course == ld.get("course") and _norm(e.quote) == _norm(ld.get("quote", ""))
+                            for e in _candidates(row))
+
+
+def lead_for(row: Row, plate: Plate) -> dict | None:
+    """The excerpt a page shows for a row: the stored judgment while it is still among the
+    row's excerpts, else the deterministic default."""
+    return row.lead if _lead_valid(row) else _default_lead(row, plate)
+
+
+def rank_leads(plate: Plate, *, complete=None, rows: set[str] | None = None, force: bool = False) -> Plate:
+    """Set the rows' leads. A stored lead that still points at one of the row's excerpts is
+    KEPT (it is a mark, and may be a curator's) unless `force`; `rows` (dwa_ids) names the
+    rows whose excerpts changed and so want judging again. Rows with one excerpt need no
+    judgment; the rest go to the ranking pass in one call. Any failure keeps the defaults."""
     if complete is None:
         from llm.claude_cli import complete as _c
         complete = _c
+    todo = []
     for r in plate.rows:
-        r.lead = _default_lead(r, plate)
-    multi = [(i, r) for i, r in enumerate(plate.rows) if len(_candidates(r)) > 1]
+        keep = _lead_valid(r) and not force and (rows is None or r.dwa_id not in rows)
+        if not keep:
+            r.lead = _default_lead(r, plate)
+            if len(_candidates(r)) > 1:
+                todo.append(r)
+    multi = [(i, r) for i, r in enumerate(plate.rows) if r in todo]
     if not multi:
         return plate
     ids: dict[tuple[int, int], Evidence] = {}
@@ -484,14 +512,15 @@ def rank_leads(plate: Plate, *, complete=None) -> Plate:
 
 def readings(program: dict) -> list[tuple[str, str]]:
     """The (soc, role) pairs a program is read against: its paired occupation, the play
-    occupations its crosswalk reaches, and any appendix-only occupation."""
+    occupations its crosswalk reaches, and any review-only occupation (read, kept in the
+    review file and the internal evidence tables, never drawn)."""
     out = [(program["paired_soc"], "paired")]
     for soc in program.get("reads_against", []):
         if soc != program["paired_soc"]:
             out.append((soc, "crosswalk"))
-    for soc in program.get("appendix_socs", []):
+    for soc in program.get("review_socs", []):
         if soc not in {x[0] for x in out}:
-            out.append((soc, "appendix"))
+            out.append((soc, "review"))
     return out
 
 
@@ -518,11 +547,10 @@ def load_readings(ref: str) -> dict[str, Plate]:
 
 def save_readings(ref: str, plates: dict[str, Plate], *, generated: str | None = None) -> tuple[Path, Path]:
     """Write a record's readings — the JSON the report renders, plus a Markdown review file
-    listing every mark's quote and every drop, for the human pass. How a program connects
-    to an occupation (role, pairing basis, crosswalk) is the roster's to say, so it is
-    blanked here and set again by `view_roster`."""
+    listing every mark's quote and every drop, for the human pass. A plate carries no
+    roster connection (role, pairing basis, crosswalk); `view_roster` supplies those."""
     STORE.mkdir(parents=True, exist_ok=True)
-    stored = [replace(pl, role="", pairing_basis="", crosswalk_socs=[]) for pl in plates.values()]
+    stored = list(plates.values())
     d = {"program": ref, "generated": generated or date.today().isoformat(), "onet_vintage": ONET_VINTAGE,
          "plates": [asdict(pl) for pl in stored]}
     jp = STORE / f"{ref}.json"
@@ -570,6 +598,8 @@ def read_program(program: dict, socs: list[str], *, refresh: bool = False, adjud
     """Read one resolved record (see `roster_programs`) against each SOC. With `accumulate`
     each fresh reading unions with the saved one; with `new_only` SOCs already saved are not
     re-read. Saved readings for other SOCs always ride along."""
+    if units != "all" and not accumulate:
+        raise ValueError("a partial re-read (units != 'all') must accumulate: without the union it would save a plate holding only that unit's marks")
     prev = load_readings(program["ref"])
     out = dict(prev)
     for soc in socs:
@@ -577,11 +607,22 @@ def read_program(program: dict, socs: list[str], *, refresh: bool = False, adjud
             continue
         plate = align_program(program, soc=soc, refresh=refresh, adjudicate=adjudicate, coci_rows=coci_rows,
                               complete=complete, units=units)
-        if units != "all" and soc in prev:              # a partial re-read keeps the saved plate's course list
-            plate = replace(plate, courses=prev[soc].courses, source_note=prev[soc].source_note,
-                            dropped=prev[soc].dropped + plate.dropped)
-        out[soc] = _union_plate(plate, prev.get(soc)) if accumulate else plate
-        rank_leads(out[soc], complete=complete)
+        old = prev.get(soc)
+        if units != "all" and old is not None:              # a partial re-read keeps the saved plate's course list
+            plate = replace(plate, courses=old.courses, source_note=old.source_note, dropped=old.dropped + plate.dropped)
+        merged = _union_plate(plate, old) if accumulate else plate
+        if old is not None:                                  # carry the saved leads; re-judge only rows whose excerpts changed
+            before = {r.dwa_id: {(e.course, _norm(e.quote)) for e in _candidates(r)} for r in old.rows}
+            leads = {r.dwa_id: r.lead for r in old.rows}
+            changed = set()
+            for r in merged.rows:
+                r.lead = leads.get(r.dwa_id)
+                if {(e.course, _norm(e.quote)) for e in _candidates(r)} != before.get(r.dwa_id, set()):
+                    changed.add(r.dwa_id)
+            rank_leads(merged, complete=complete, rows=changed)
+        else:
+            rank_leads(merged, complete=complete)
+        out[soc] = merged
     return out
 
 
@@ -618,8 +659,10 @@ def run(roster_id: str, *, refresh: bool = False, adjudicate: bool = True, coci:
             saved = load_readings(p["ref"])
             for soc in socs:
                 if soc in saved:
-                    rank_leads(saved[soc])
+                    rank_leads(saved[soc], force=True)
             save_readings(p["ref"], saved)
+            continue
+        if units != "all" and not p.get("program_outcomes"):
             continue
         if new_only and all(soc in load_readings(p["ref"]) for soc in socs):
             continue
@@ -629,8 +672,6 @@ def run(roster_id: str, *, refresh: bool = False, adjudicate: bool = True, coci:
             code = coci_code(p["college"])
             if code:
                 rows = coci_cache.setdefault(code, fetch_course_export(code))
-        if units != "all" and not p.get("program_outcomes"):
-            continue
         plates = read_program(p, socs, refresh=refresh, adjudicate=adjudicate, coci_rows=rows,
                               accumulate=accumulate, new_only=new_only, units=units)
         save_readings(p["ref"], plates)
@@ -663,7 +704,7 @@ def _slug(text: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
 
 
-def scaffold_record(award, pcf_rows: list[dict], *, college: str, college_key: str, source: dict | None,
+def scaffold_record(award: "CociAward", pcf_rows: list[dict], *, college: str, college_key: str, source: dict | None,
                     keep_zeros: bool = False, top_name: str = "") -> dict:
     """A draft program record: identity from the COCI award, courses from the award's Active
     ProgramCourseFile rows. A DRAFT, never read as-is — the file lists every course the
@@ -747,6 +788,8 @@ if __name__ == "__main__":
     sc.add_argument("--keep-zeros", action="store_true", help="keep leading zeros in course numbers (MTT 020)")
     sc.add_argument("--out", type=Path, help="write the draft here instead of data/programs/")
     a = ap.parse_args()
+    if a.cmd == "run" and a.fresh and a.units != "all":
+        ap.error("--fresh cannot be combined with --units plo: a partial re-read must union with the saved plate")
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     if a.cmd == "scaffold":
         print(f"wrote {scaffold(a.college_key, a.control_number, pcf_dir=a.pcf_dir, keep_zeros=a.keep_zeros, out=a.out)}")

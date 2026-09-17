@@ -36,6 +36,7 @@ _STATE_LOCATIONS = f"{_BASE}/states/06/locations"
 HOUSEHOLDS = ("1a0c", "1a1c", "1a2c", "1a3c", "2a1w0c", "2a1w1c", "2a1w2c", "2a1w3c",
               "2a2w0c", "2a2w1c", "2a2w2c", "2a2w3c")
 HEADLINE = "1a0c"          # one adult, no children — the calculator's headline figure
+HOURS_PER_YEAR = 2080      # full-time hours a year, the calculator's own basis for its hourly figures
 
 
 @dataclass(frozen=True)
@@ -50,6 +51,11 @@ class LivingWage:
     @property
     def headline(self) -> float:
         return self.hourly[HEADLINE]
+
+    @property
+    def headline_annual(self) -> float:
+        """The headline figure annualized at the calculator's own 2,080 hours."""
+        return self.headline * HOURS_PER_YEAR
 
     @property
     def url(self) -> str:
@@ -73,7 +79,6 @@ def living_wage(county: str) -> LivingWage | None:
     return _load().get(c)
 
 
-LIVING_WAGE_VINTAGE = "MIT Living Wage Calculator"
 
 
 # ── fetch ──────────────────────────────────────────────────────────────────────
@@ -86,7 +91,7 @@ def _parse_county(page: str) -> tuple[str, str, dict[str, float], float, float]:
         if cells and cells[0] in ("Living Wage", "Poverty Wage", "Minimum Wage"):
             rows[cells[0]] = [float(v.replace("$", "").replace(",", "")) for v in cells[1:] if v.startswith("$")]
     lw = dict(zip(HOUSEHOLDS, rows["Living Wage"]))
-    years = re.findall(r"\b(20[2-3]\d)\b", re.sub(r"<[^>]+>", " ", page))   # not 2080, the hours figure
+    years = [y for y in re.findall(r"\b(20[2-3]\d)\b", re.sub(r"<[^>]+>", " ", page)) if y != str(HOURS_PER_YEAR)]
     vintage = max(years) if years else ""
     return title, vintage, lw, rows["Poverty Wage"][0], rows["Minimum Wage"][0]
 

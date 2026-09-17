@@ -190,11 +190,6 @@ def counties_by_proximity(home: tuple[str, ...], region: str) -> list[str]:
 
     return sorted(COE_REGION_TO_COUNTIES.get(region, []), key=lambda c: (dist(c), c))
 
-
-# College name → COE region for graph loading (occupation + employer region linking).
-# Single string — rural colleges that previously mapped to multiple OEWS metros
-# now map to one COE region (e.g. COS → "CVML" instead of ["Visalia", "Fresno"]).
-# Covers every college currently featured in the state atlas (logoStacked set).
 #: A college's home county — the geography a living wage is quoted for (MIT's calculator
 #: is county-keyed, and so is the state's own living-wage vocabulary). Bay Area colleges
 #: for now; a college absent here gets no living-wage comparison rather than a wrong one.
@@ -210,6 +205,10 @@ COLLEGE_COUNTY: dict[str, str] = {
     "Solano Community College": "Solano", "West Valley College": "Santa Clara",
 }
 
+# College name → COE region for graph loading (occupation + employer region linking).
+# Single string — rural colleges that previously mapped to multiple OEWS metros
+# now map to one COE region (e.g. COS → "CVML" instead of ["Visalia", "Fresno"]).
+# Covers every college currently featured in the state atlas (logoStacked set).
 COLLEGE_COE_REGION: dict[str, str] = {
     # Bay Area
     "Foothill College": "Bay",

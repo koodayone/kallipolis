@@ -21,6 +21,7 @@ be parsed into a native table; run shoot_xwalk_png.cjs first to have it on hand.
 Deps: python-docx, beautifulsoup4.
 """
 import os
+import re
 import sys
 
 import docx
@@ -54,6 +55,7 @@ BYLINE_FONT = 'Days One'  # brand byline face (Google-native; substitutes in Wor
 
 TEAL, BLUE, RED = '2a9d8f', '2e74b5', 'cc3333'
 DARK, BODY, MUT = '2a3450', '33405a', '9099ab'
+CAPTION, KEYGREY, COVER, RULE_LT, TH_BLUE = '5a6577', '6b7686', '7a869a', 'e7eaf1', '4472c4'   # caption grey, key grey, cover-tier shade, hairline, demand header
 HFILL, TOTFILL, SECFILL = 'eef1f6', 'f2f6fc', 'eef1f6'
 SOCCOL = {'lc1': TEAL, 'lc2': BLUE, 'lc3': RED, 'c1h': TEAL, 'c2h': BLUE, 'c3h': RED}
 
@@ -92,7 +94,7 @@ def vcenter(cell):
     va = OxmlElement('w:vAlign'); va.set(qn('w:val'), 'center'); tcPr.append(va)
 
 
-def grid(tbl, hexc='e7eaf1'):
+def grid(tbl, hexc=RULE_LT):
     """Hairline row separators only — the page draws tables as rows, not cells: no vertical
     rules, no outer box. (It was a full grid, which read as a spreadsheet in Word.)"""
     t = tbl._tbl
@@ -279,6 +281,12 @@ def close_block(start):
         # nobody sees is the silent cap it exists to prevent.
         print(f'  note: block ~{h:.1f}in exceeds the {COLUMN_H:.1f}in column — left '
               f'unbound (Word would ignore a chain this tall anyway)', file=sys.stderr)
+        # Declining means declining: a chart title or block head bound itself forward when
+        # it was emitted (they name what follows), and that promise is withdrawn here too,
+        # so an oversized block carries no partial chain Word would silently ignore.
+        for el in items:
+            if el.tag == qn('w:p'):
+                Paragraph(el, None).paragraph_format.keep_with_next = None    # remove, not "0": the element's presence is the promise
         return
     for el in items:
         if el.tag == qn('w:p'):
@@ -421,7 +429,7 @@ def std_table(rows, widths=None, header=True, num_from=2, totalcls='tot'):
             col = MUT if c['text'] in ('—', '-') else ('ffffff' if ishdr else (DARK if istot else BODY))
             run(p, c['text'], size=8.5, bold=(ishdr or istot), color=col)
             if ishdr:
-                shade(cell, '4472c4')
+                shade(cell, TH_BLUE)
             if istot:
                 shade(cell, TOTFILL)
             cellpad(cell)
@@ -501,7 +509,7 @@ def add_live(table):
             p.paragraph_format.space_before = Pt(1); p.paragraph_format.space_after = Pt(1)
             cls = c['cls']
             if ishdr:
-                run(p, c['text'], size=8, bold=True, color='5a6577'); shade(cell, HFILL)
+                run(p, c['text'], size=8, bold=True, color=CAPTION); shade(cell, HFILL)
             elif 'lsoc' in cls:  # occupation + SOC sub (rowspans its postings)
                 txt = c['el'].get_text('\n', strip=True).split('\n')
                 run(p, txt[0], size=9, bold=True, color=DARK)
@@ -590,7 +598,6 @@ def add_alg_table(table):
     HTML (`table.alg-tbl`): header cells carry the college colour in `style="--c:#…"`;
     body cells hold `a.chip` links (one per course) and an optional `b.chip.alg-more`
     overflow marker whose title lists the hidden courses. Empty cells are a dash."""
-    import re as _re
     rows = rows_of(table)
     if not rows:
         return
@@ -599,14 +606,14 @@ def add_alg_table(table):
     tbl = doc.add_table(rows=0, cols=ncol); tbl.alignment = WD_TABLE_ALIGNMENT.CENTER; grid(tbl, 'eef1f6')
     colours = []
     for c in hdr['cells']:
-        m = _re.search(r'--c:\s*#([0-9a-fA-F]{6})', c['el'].get('style', '') or '')
-        colours.append(m.group(1) if m else '5a6577')
+        m = re.search(r'--c:\s*#([0-9a-fA-F]{6})', c['el'].get('style', '') or '')
+        colours.append(m.group(1) if m else CAPTION)
     trow = tbl.add_row(); repeat_header(trow); no_split(trow)
     for ci, c in enumerate(hdr['cells']):
         cell = trow.cells[ci]; p = cell.paragraphs[0]
         p.paragraph_format.space_before = Pt(1); p.paragraph_format.space_after = Pt(1)
         if ci == 0:
-            run(p, 'WORK ACTIVITY', size=7, bold=True, color=DARK); bottom_rule(cell, 'e7eaf1', sz=8)
+            run(p, 'WORK ACTIVITY', size=7, bold=True, color=DARK); bottom_rule(cell, RULE_LT, sz=8)
         else:
             run(p, c['el'].get_text(' ', strip=True), size=9, bold=True, color=DARK); bottom_rule(cell, colours[ci])
         cellpad(cell, 30, 30, 60, 60)
@@ -637,8 +644,8 @@ def add_alg_table(table):
                     if quote is not None:
                         # the excerpt block: caption (the outline section) over the sentence,
                         # a rule down the left in the tier's shade (from the HTML's --t)
-                        m = _re.search(r'--t:\s*#([0-9a-fA-F]{6})', quote.get('style', '') or '')
-                        tier_hex = m.group(1) if m else '7a869a'
+                        m = re.search(r'--t:\s*#([0-9a-fA-F]{6})', quote.get('style', '') or '')
+                        tier_hex = m.group(1) if m else COVER
                         cap = quote.find('span', class_='alg-secx')
                         text = quote.get_text(' ', strip=True)
                         if cap is not None:
@@ -648,7 +655,7 @@ def add_alg_table(table):
                             run(q2, cap.get_text(' ', strip=True).upper(), size=6.5, bold=True, color=MUT)
                         q3 = cell.add_paragraph(); left_rule(q3, tier_hex)
                         q3.paragraph_format.space_before = Pt(0); q3.paragraph_format.space_after = Pt(3)
-                        run(q3, text, size=8, italic=True, color='5a6577')
+                        run(q3, text, size=8, italic=True, color=CAPTION)
             else:
                 first = True
                 for chip_el in c['el'].find_all(['a', 'b']):
@@ -764,7 +771,6 @@ def _xwalk_data(div):
     """Recover the crosswalk graph from the rendered SVG: program nodes (left,
     344-wide rects), SOC occupation nodes (right, 254-wide rects), and the
     program→SOC edges (matched off each bezier's start/end y)."""
-    import re as _re
     sv = div.find('svg') or div
     progy = sorted(float(r.get('y', 0)) for r in sv.find_all('rect') if abs(float(r.get('width', 0)) - 344) < 2)
     occr = sorted(((float(r.get('y', 0)), float(r.get('height', 0))) for r in sv.find_all('rect')
@@ -846,7 +852,7 @@ def add_xwalk_table(div):
     # header: blank label cell + colored SOC columns
     repeat_header(tbl.rows[0]); no_split(tbl.rows[0])
     h0 = tbl.cell(0, 0); h0.width = W0; shade(h0, HFILL); cellpad(h0)
-    run(h0.paragraphs[0], 'College program', size=8, bold=True, color='5a6577')
+    run(h0.paragraphs[0], 'College program', size=8, bold=True, color=CAPTION)
     for si, o in enumerate(occs):
         c = tbl.cell(0, si + 1); c.width = WS; shade(c, accents[si % len(accents)]); vcenter(c)
         cp = c.paragraphs[0]; cp.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -900,35 +906,33 @@ def emit(el):
         elif 'alg-desc' in cls:
             # an alignment block's opening line: the occupation's O*NET description, then its
             # summary link. It introduces the table with the title, so it keeps with what follows.
-            p = para(3, 5); runs_from(el, p, size=9.5, color='5a6577')
+            p = para(3, 5); runs_from(el, p, size=9.5, color=CAPTION)
             p.paragraph_format.keep_with_next = True
         elif 'alg-key' in cls:
             p = para(0, 6); p.paragraph_format.keep_with_next = True
             chip_el = el.find('b', class_='chip')
             if chip_el is not None:
-                import re as _re
-                m = _re.search(r'--c:\s*#([0-9a-fA-F]{6})', chip_el.get('style', '') or '')
-                chip(p, chip_el.get_text(' ', strip=True), m.group(1) if m else '5a6577')
-                run(p, ' ' + t.replace(chip_el.get_text(' ', strip=True), '', 1).strip(), size=8.5, color='6b7686')
+                m = re.search(r'--c:\s*#([0-9a-fA-F]{6})', chip_el.get('style', '') or '')
+                chip(p, chip_el.get_text(' ', strip=True), m.group(1) if m else CAPTION)
+                run(p, ' ' + t.replace(chip_el.get_text(' ', strip=True), '', 1).strip(), size=8.5, color=KEYGREY)
             else:
-                run(p, t, size=8.5, color='6b7686')
+                run(p, t, size=8.5, color=KEYGREY)
         elif 'alg-legend' in cls:
             # the college legend: swatches become the college name set in its colour
-            import re as _re
             p = para(6, 2)
             for sp in el.find_all('span', class_='alg-lg'):
                 sw = sp.find('i'); chip_el = sp.find('b')
-                m = _re.search(r'#([0-9a-fA-F]{6})', (sw.get('style', '') if sw else '') or '')
+                m = re.search(r'#([0-9a-fA-F]{6})', (sw.get('style', '') if sw else '') or '')
                 if m:
                     run(p, sp.get_text(' ', strip=True) + '   ', size=9, bold=True, color=m.group(1))
                 elif chip_el is not None:
-                    chip(p, chip_el.get_text(' ', strip=True), '5a6577')
+                    chip(p, chip_el.get_text(' ', strip=True), CAPTION)
                     run(p, ' ' + sp.get_text(' ', strip=True).replace(chip_el.get_text(' ', strip=True), '', 1).strip(), size=9, color='46536b')
                 elif 'alg-lgnote' in sp.get('class', []):
                     # the certificate view's note on what the COR tags mean — its own line
-                    p = para(2, 2); run(p, sp.get_text(' ', strip=True), size=8.5, color='6b7686')
+                    p = para(2, 2); run(p, sp.get_text(' ', strip=True), size=8.5, color=KEYGREY)
         elif 'tnar' in cls:
-            p = para(4, 2); runs_from(el, p, size=8.5, color='5a6577')
+            p = para(4, 2); runs_from(el, p, size=8.5, color=CAPTION)
         elif 'srcdash' in cls:
             p = para(2, 3); runs_from(el, p, size=9)
         elif 'srcsec' in cls:

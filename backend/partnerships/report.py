@@ -24,11 +24,14 @@ The demand table and crosswalk are general over any N occupations. The KSA grid
 from __future__ import annotations
 
 import html
+import logging
 import re
 import sys
+from typing import TYPE_CHECKING
 from dataclasses import dataclass, field
 
 from occupations.competencies import get_competencies
+from ontology.living_wage import HOURS_PER_YEAR
 from ontology.regions import COE_REGION_DISPLAY, COE_REGION_TO_COUNTIES
 from ontology.supply import COE_DEMAND_VINTAGE
 from partnerships.lens import LensModel, LensOccupation, Play, build_lens
@@ -74,6 +77,11 @@ _LIGHTCAST_METHOD_URL = "https://kb.lightcast.io/en/articles/6957547-job-opening
 #: quarter equivalent. A degree's catalog figure is major coursework, so the units a
 #: student actually completes is at least the major AND at least this floor.
 _DEGREE_FLOOR = {"semester": 60, "quarter": 90}
+
+if TYPE_CHECKING:
+    from ontology.living_wage import LivingWage
+
+logger = logging.getLogger(__name__)
 
 
 def _unit_phrase(units: float, basis: str, cal: str) -> str:
@@ -311,7 +319,7 @@ def _region_name(lens: LensModel) -> str:
     return " and ".join(COE_REGION_DISPLAY.get(r, r) for r in regions)
 
 
-def _demand_provenance(lens: LensModel, living: "LivingWage | None" = None) -> str:
+def _demand_provenance(lens: LensModel, living: LivingWage | None = None) -> str:
     """The geography, vintage and method behind every demand figure, as a caption under
     the demand table — not inline in the prose, where a 12-county list wrecks the sentence.
 
@@ -376,9 +384,6 @@ def _pct(x: float) -> str:
     return f"{'+' if x >= 0 else '−'}{abs(x) * 100:.1f}%"
 
 
-HOURS_PER_YEAR = 2080       # full-time hours, the calculator's own basis
-
-
 def _hourly(annual: int) -> float:
     """The median hourly wage from COE's annual median. COE's own hourly column is rounded
     to whole dollars; the annual figure keeps the cents."""
@@ -391,18 +396,20 @@ def _vs(hourly: float, living: float) -> str:
     return f"{sign}${abs(d):,.2f}"
 
 
-def _demand_table(occs: list[LensOccupation], living: "LivingWage | None" = None) -> str:
+def _demand_table(occs: list[LensOccupation], living: LivingWage | None = None) -> str:
     """The demand table. With a `living` wage (a single college with a known county) the
     salary column becomes the median hourly wage beside its distance from the living wage
     for one adult in that county — the comparison a program reviewer reads the wage for."""
     if living is None:
         wage_head = '<th class="n">Median salary</th>'
-        wage = lambda o: f'<td class="n">${o.median_wage:,}</td>'
+        wage = lambda o: f'<td class="n">${o.median_wage:,}</td>' if o.median_wage else '<td class="n">—</td>'
         tot = '<td class="n">—</td>'
     else:
         wage_head = '<th class="n">Median hourly</th><th class="n">vs. living wage</th>'
-        wage = lambda o: (f'<td class="n">${_hourly(o.median_wage):,.2f}</td>'
-                          f'<td class="n">{_vs(_hourly(o.median_wage), living.headline)}</td>')
+        # No COE wage (the lens stores 0) → dashes, never a fabricated shortfall of the whole living wage.
+        wage = lambda o: ((f'<td class="n">${_hourly(o.median_wage):,.2f}</td>'
+                           f'<td class="n">{_vs(_hourly(o.median_wage), living.headline)}</td>')
+                          if o.median_wage else '<td class="n">—</td><td class="n">—</td>')
         tot = '<td class="n">—</td><td class="n">—</td>'
     rows = "".join(
         f'<tr><td>{_esc(o.soc)}</td><td>{_esc(o.title)}</td>'
@@ -423,7 +430,7 @@ def _demand_table(occs: list[LensOccupation], living: "LivingWage | None" = None
     )
 
 
-def _living_wage_for(lens: LensModel):
+def _living_wage_for(lens: LensModel) -> LivingWage | None:
     """The living wage a single college's report measures wages against: MIT's headline
     figure for the college's own county. None for districts, regions and consortia (many
     counties, one regional wage) and for a college whose county is not on record."""
@@ -433,7 +440,10 @@ def _living_wage_for(lens: LensModel):
     if m.kind != "college":
         return None
     county = COLLEGE_COUNTY.get(m.name)
-    return living_wage(county) if county else None
+    if not county:
+        logger.info("no county on record for %s; the demand table keeps the salary column", m.name)
+        return None
+    return living_wage(county)
 
 
 def _employer_table(occs: list[LensOccupation], postings: dict[str, list[LivePosting]]) -> str:
@@ -1385,7 +1395,8 @@ def _footer(lens: LensModel, extra: list[str]) -> str:
 
 def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
                      title: str, socs: list[str], program_top: str = "", curriculum: bool = False,
-                     outlines: list[str] | None = None, consolidated: bool = False, living=None) -> str:
+                     outlines: list[str] | None = None, consolidated: bool = False,
+                     living: LivingWage | None = None) -> str:
     """Provenance, organized by report section: a tailored dashboard link, then one
     numbered, linked source group per section. Each section's claims trace to named,
     auditable sources — the same audit-trail logic as the clickable program names."""
@@ -1724,7 +1735,7 @@ def select_partner_programs(programs, charter_colleges, min_awards: int = 50):
     return chosen
 
 
-def _wage_section(lens: LensModel, spec: ReportSpec, living=None) -> str:
+def _wage_section(lens: LensModel, spec: ReportSpec, living: LivingWage | None = None) -> str:
     """"Wage Outcomes" — the one section that reports what happened to PEOPLE.
 
     Everything else in the document counts things: awards, enrolments, openings,
@@ -1737,7 +1748,7 @@ def _wage_section(lens: LensModel, spec: ReportSpec, living=None) -> str:
     figure beside newer ones is what makes a reader trust the wrong comparison.
     """
     rows = lens.wages.get(spec.program_top) or []
-    annual = living.headline * HOURS_PER_YEAR if living is not None else None
+    annual = living.headline_annual if living is not None else None
     label = f"Living wage, 1 adult, {living.county}" if living is not None else ""
     chart = _wage_outcomes_svg(rows, spec.program_top, annual, label)
     if not chart:
@@ -1907,7 +1918,8 @@ _CURRICULUM_BLURB = ("O*NET maintains a set of detailed work activities that ide
                      "described in its Course Outline of Record (COR).")
 
 
-def _curriculum_section(spec: ReportSpec, descriptions: dict[str, str] | None = None) -> tuple[list[str], list[str], bool]:
+def _curriculum_section(spec: ReportSpec, descriptions: dict[str, str] | None = None, *,
+                        plates: list | None = None) -> tuple[list[str], list[str], bool]:
     """(section parts, outline link lines for Sources, consolidated) for the roster named by
     spec.curriculum_alignment; the parts are empty when none of its readings has been run.
     The section reads BY OCCUPATION — the roster's SOCs in order, each with its most
@@ -1917,18 +1929,22 @@ def _curriculum_section(spec: ReportSpec, descriptions: dict[str, str] | None = 
     opens with the occupation's O*NET description and summary link and its own one-line
     key, so the report drops the competency grid — the activities and their course
     sentences say what the grid's knowledge, skills and abilities only named. Readings the
-    roster marks appendix-only appear in the appendix alone."""
-    from partnerships.alignment import view_roster
+    roster marks review-only are read but not drawn; they surface in the internal evidence
+    tables. `plates` overrides the roster's view (the canvas narrows to one college)."""
+    from partnerships.alignment import load_roster, view_roster
     from partnerships.alignment_plate import appendix_tables, block_key, college_color, column_legend, occupation_block
 
-    roster, plates = view_roster(spec.curriculum_alignment)
+    if plates is None:
+        roster, plates = view_roster(spec.curriculum_alignment)
+    else:
+        roster = load_roster(spec.curriculum_alignment)
     if not plates:
         return [], [], False
     columns = roster.get("columns", "college")
     consolidated = columns == "certificate"
     socs = roster.get("occupations") or sorted({p.paired_soc for p in plates})
     top_n = int(roster.get("top_n", 10))
-    shown = [p for p in plates if p.role != "appendix"]
+    shown = [p for p in plates if p.role != "review"]
     parts = ['<h1>Curriculum Alignment</h1>',
              f'<p>{_linkify(spec.curriculum_note) if spec.curriculum_note else _esc(_CURRICULUM_BLURB)}</p>']
     if not consolidated:
@@ -1962,8 +1978,8 @@ def _curriculum_section(spec: ReportSpec, descriptions: dict[str, str] | None = 
             for c in pl.courses if c.get("source_url"))
         outlines.append(f'<b>{_esc(_short_college(pl.college))}</b> \u00b7 {_esc(pl.certificate)}: {courses}')
     if spec.curriculum_show_gaps:      # internal review: every quoted sentence, by occupation and college
-        outlines.append('<details class="alg-appx"><summary><b>Evidence tables (internal review)</b></summary>'
-                        f'{appendix_tables(plates)}</details>')
+        parts.append('<details class="alg-appx"><summary><b>Evidence tables (internal review)</b></summary>'
+                     f'{appendix_tables(plates)}</details>')
     return parts, outlines, consolidated
 
 

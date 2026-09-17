@@ -14,7 +14,7 @@ The page polls `/hash` and reloads itself when the roster, a record, a reading, 
 definition, or any of the rendering modules change, so an edit to `alignment_plate.py`, a
 re-run of `python -m partnerships.alignment run …`, or a hand-edit to a saved reading shows
 up without touching the browser. `?college=<college_key>` shows one plate;
-`?appendix=0` hides the appendix; `?gaps=1` turns on the internal gap annotations.
+`?appendix=0` hides the outline links; `?gaps=1` turns on the internal gap annotations.
 
 `?clean=1` drops the toolbar, the reload script and the dev byline and titles the page as
 a standalone document — the input for a section-only .docx/.pdf via tools/report-render:
@@ -122,17 +122,10 @@ def canvas(roster: str = "svamp-manufacturing-technician", college: str = "", ap
     spec = R.ReportSpec(org_name=defn.get("title", roster), org_short="", lede="",
                         curriculum_alignment=roster, curriculum_note=defn.get("curriculum_note", ""),
                         curriculum_show_gaps=bool(gaps))
-    # Optionally narrow to one program's plates by re-using the section builder on a filtered view.
-    if college:
-        keep = [p for p in plates if p.member_id == college or p.college.lower().startswith(college.lower())]
-        orig = A.view_roster
-        A.view_roster = lambda _r: (roster_d, keep)          # the builder reads through this seam
-        try:
-            parts, appx, _ = R._curriculum_section(spec)
-        finally:
-            A.view_roster = orig
-    else:
-        parts, appx, _ = R._curriculum_section(spec)
+    # Optionally narrow to one college's plates through the section builder's own seam.
+    keep = ([p for p in plates if p.member_id == college or p.college.lower().startswith(college.lower())]
+            if college else plates)
+    parts, appx, _ = R._curriculum_section(spec, plates=keep)
     generated = _generated(roster_d)
     if appendix and appx:
         appx = ['<h1>Course Outlines of Record</h1>'] + [f'<p class="tnar alg-links">{x}</p>' for x in appx]

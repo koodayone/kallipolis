@@ -1,0 +1,92 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+*{box-sizing:border-box}
+body{margin:0;background:#e9ebee;font-family:Calibri,"Segoe UI",Arial,sans-serif;color:#202124}
+.page{width:816px;min-height:1056px;margin:28px auto;background:#fff;padding:76px 84px;box-shadow:0 4px 18px rgba(0,0,0,.18)}
+.title{font-size:26px;font-weight:700;color:#1f3864;line-height:1.12;padding-bottom:7px;border-bottom:2px solid #2e74b5;white-space:nowrap}
+.subtitle{font-size:12.5px;color:#3a3f47;margin-top:9px;line-height:1.5}
+h1{font-size:15px;font-weight:700;color:#2e74b5;margin:18px 0 4px}
+p{font-size:12.5px;line-height:1.5;margin:6px 0}
+table{border-collapse:collapse;width:100%;margin:7px 0 3px;font-size:11.5px}
+th{background:#4472c4;color:#fff;font-weight:600;text-align:left;padding:5px 9px}
+td{border:1px solid #bfbfbf;padding:5px 9px;vertical-align:top}
+.dem td.n,.dem th.n{text-align:right;white-space:nowrap}
+tr.tot td{font-weight:700;background:#f3f6fb}
+.live th{background:#eef1f6;color:#5a6577;font-size:8px;letter-spacing:.04em;text-transform:uppercase}
+.live td{border:0;border-bottom:1px solid #eef1f6;vertical-align:middle}
+.live .lsoc{font-weight:700;color:#2a3450}.live .lsoc span{display:block;font-size:7.5px;color:#9099ab}
+.live tr.lc1 td.lsoc{border-left:4px solid #2a9d8f}.live tr.lc2 td.lsoc{border-left:4px solid #2e74b5}.live tr.lc3 td.lsoc{border-left:4px solid #cc3333}
+.live .ltit a{color:#2e74b5;text-decoration:none}
+.cmpgrid{table-layout:fixed}.cmpgrid th{font-size:10px}
+.cmpgrid th.c1h{background:#2a9d8f}.cmpgrid th.c2h{background:#2e74b5}.cmpgrid th.c3h{background:#cc3333}.cmpgrid th.c4h{background:#7a5195}
+.cmpgrid th{text-align:left;vertical-align:top;padding:6px 8px}
+.cmpgrid th .ctitle{font-weight:700;font-size:10px;line-height:1.18;color:#fff}
+.cmpgrid th .ccode{font-weight:400;font-size:8px;opacity:.85;margin-top:2px;color:#fff}
+.cmpgrid td{font-size:10px}.cmpgrid tr.sec td{background:#eef1f6;font-weight:700;font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:#5f6368}
+.cmpgrid tr.descrow td{font-style:italic;color:#5f6368;font-size:11px;line-height:1.35}
+.xwrap{margin:10px 0 4px}.xwrap svg{width:100%;height:auto;display:block}
+.chtitle{font-size:13px;font-weight:700;color:#12203a;margin:14px 0 3px}.awchart{margin:6px 0 2px}.enchart{margin:6px 0 2px}.wgchart{margin:6px 0 2px}.awchart svg{width:100%;height:auto;display:block}.enchart svg{width:100%;height:auto;display:block}.wgchart svg{width:100%;height:auto;display:block}
+.cgap{font-size:11px;color:#7a5230;background:#fdf6ec;border-left:3px solid #e0a458;padding:7px 12px;margin:6px 0 2px;border-radius:0 4px 4px 0}.cgap b{color:#a8641a}
+.srcdash{margin:4px 0 16px;font-size:13px}.srcsec{margin:16px 0 6px;font-size:13px}.srcdash i,.srcsec i{color:#222}
+.srclist{margin:0}.srcitem{font-size:13px;line-height:1.55}.srcitem a,.srcdash a{color:#1155cc;text-decoration:underline}
+.srcnote{font-size:11px;color:#777;margin-top:18px}
+.descrow .onetlink{margin-top:8px}.descrow .onetlink a,.cmpgrid a{color:#1155cc;text-decoration:underline;font-size:11px;font-style:normal}
+p a,.byline a{color:#1155cc;text-decoration:underline}
+.trend{font-size:10px;table-layout:fixed}.trend col.cprog{width:230px}
+.trend th,.trend td{border:1px solid #e7eaf1;padding:2px 4px;text-align:center;vertical-align:middle}
+.trend thead th{background:#eef1f6;color:#5a6577;font-size:9px;font-weight:700}
+.trend th.prog,.trend td.prog{text-align:left;padding-left:6px}
+.trend td.prog b{font-size:10.5px;color:#2a3450}.trend td.prog span{color:#9099ab;font-size:8.5px}
+.trend td.num{font-variant-numeric:tabular-nums;color:#33405a}.trend td.zero{color:#bcc3ce}.trend td.na{color:#ccd2db;font-style:italic}
+.trend tr.tot td{background:#f2f6fc;font-weight:700;border-top:1.5px solid #c8d0de;color:#2a3450}
+.trend tr.sub td{border-bottom:0}
+.trend tr.tier td{border-top:0;background:#fbfcfe}
+.trend tr.tier td.prog{padding-left:20px}
+.trend tr.tier td.prog b{font-weight:400;font-size:9.5px;color:#66708a}
+.trend tr.tier td.num{font-size:10px;color:#66708a}
+.byline{font-size:11px;color:#70757c;margin:5px 0 0}
+.tnar{font-size:11px;color:#46536b;margin:12px 0 3px;line-height:1.4}
+.algplate{margin:6px 0 2px}.algplate svg{width:100%;height:auto;display:block}
+.alg-soc{font-weight:400;color:#8a93a5;font-size:10px;margin-left:6px}
+.alg-tbl{table-layout:fixed;margin:6px 0 2px;font-size:11px}
+.alg-tbl col.alg-actcol{width:196px}
+.alg-tbl th{background:#fff;color:#2a3450;font-size:10px;padding:4px 6px 6px;border:0;border-bottom:2px solid var(--c,#c8d0de);text-align:left;vertical-align:bottom}
+.alg-tbl th.alg-acthd{border-bottom-color:#c8d0de;color:#2a3450;font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:8px}
+.alg-colhd{display:block;font-weight:700}
+.alg-tbl td{border:0;border-bottom:1px solid #eef1f6;padding:4px 5px;vertical-align:top}
+.alg-tbl thead{display:table-header-group}
+.alg-tbl td.alg-act{font-size:11px;color:#2a3450;line-height:1.35;padding-left:0}
+.alg-tbl td.alg-empty{color:#c9d0da;text-align:center;font-size:10px;padding-top:7px}
+.alg-gaprow td.alg-act{color:#8a93a5}
+.alg-gap{display:block;margin-top:2px}
+.alg-chips{display:flex;flex-wrap:wrap;gap:4px 4px;align-items:center}
+.alg-dense .alg-ev{margin:0 0 5px}.alg-dense .alg-ev:last-child{margin-bottom:0}.alg-evhd{display:flex;align-items:center;gap:6px}.alg-ctitle{font-size:10.5px;color:#2a3450;font-weight:600}
+.alg-quote{font-size:10px;color:#5a6577;line-height:1.35;margin-top:2px;padding-left:2px}
+.alg-rule{border-left:2px solid var(--t,#7a869a);padding-left:7px;margin:3px 0 2px 2px}.alg-secx{display:block;font-size:7.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#8a93a5;margin-bottom:1px}
+.alg-lgnote{flex-basis:100%;color:#6b7686;font-size:10px}
+.alg-desc{font-size:10px;color:#5a6577;margin:5px 0 8px;line-height:1.45}.alg-desc a{color:#1155cc;text-decoration:underline;font-size:10px;white-space:nowrap}
+.alg-key{margin:0 0 10px;font-size:10px;color:#6b7686}.alg-key+.alg-tbl{margin-top:0}
+.chip{display:inline-block;font:700 8.5px/1 Helvetica,Arial,sans-serif;letter-spacing:.01em;padding:2.5px 5px;border-radius:3px;border:1.5px solid var(--c);white-space:nowrap}
+.chip{background:var(--c);color:#fff}a.chip{text-decoration:none;color:#fff}a.chip:hover{filter:brightness(1.12)}.chip.alg-more{background:#eef1f6;color:#5a6577;border-color:#eef1f6}
+.alg-gap{font-size:10px;color:#a8641a;font-style:italic}
+.alg-legend{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin:8px 0 4px}
+.alg-lg{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;color:#46536b}.alg-lg i{display:inline-block;width:10px;height:10px;border-radius:2px}
+.alg-appx summary{cursor:pointer;list-style:none}.alg-appx summary h1{display:inline;margin:0}.alg-appx summary::after{content:" ▸ show";font-size:11px;color:#8a93a5}.alg-appx[open] summary::after{content:" ▾ hide"}
+.alg-appx-h{margin:10px 0 2px}
+.print-only{display:none}
+.alg-hd{margin-top:2px}.alg-links a{color:#1155cc;text-decoration:underline}
+.alg-solid{color:#2e74b5}.alg-ring{color:#2e74b5}
+.alg-ev{font-size:9.5px}.alg-ev th{background:#eef1f6;color:#5a6577;font-size:8px;letter-spacing:.04em;text-transform:uppercase;padding:3px 6px}
+.alg-ev td{border:0;border-bottom:1px solid #eef1f6;padding:3px 6px;vertical-align:top;line-height:1.35}
+.footer{margin-top:18px;padding-top:9px;border-top:1px solid #bfbfbf;font-size:9.5px;color:#5f6368;line-height:1.6;font-style:italic}
+.footer b{font-style:normal;color:#202124}
+/* Print: the body's grey is the on-screen "desk" the white .page floats on. The PDF
+   harness renders with printBackground:true, so without resetting it here Chromium
+   faithfully paints that grey wherever .page does not fill the sheet — a grey band
+   below the content on the final page of every exported PDF. */
+@media print{.print-only{display:block}.screen-only{display:none}.alg-tbl tr{break-inside:avoid}.chtitle{break-after:avoid}body{background:#fff}.page{margin:0;box-shadow:none;min-height:0}.awchart,.enchart,.xwrap,.algplate{break-inside:avoid}.blk{break-inside:avoid}h1{break-after:avoid}table.dem,table.live,table.trend{break-inside:avoid}thead{display:table-header-group}tr{break-inside:avoid}}
+</style></head><body><div class="page" id="page"><h1>Regional Occupational Demand</h1><table class="dem"><tbody><tr><th>SOC</th><th>Occupation</th><th class="n">Openings / yr</th><th class="n">5-yr growth</th><th class="n">Median hourly</th><th class="n">vs. living wage</th></tr><tr><td>29-2056</td><td>Veterinary Technologists and Technicians</td><td class="n">310</td><td class="n">+12.7%</td><td class="n">$29.46</td><td class="n">−$8.54</td></tr><tr class="tot"><td></td><td>Total regional demand</td><td class="n">≈ 310</td><td class="n">—</td><td class="n">—</td><td class="n">—</td></tr></tbody></table><h1>Curriculum Alignment</h1><p class="chtitle">Respiratory Therapists <span class="alg-soc">SOC 29-1126</span></p>
+<p class="alg-desc">Assesses patients. <a href="https://www.onetonline.org/link/summary/29-1126.00">O*NET Occupation Summary ↗</a></p><p class="tnar alg-key"><b class="chip" style="--c:#c98a1b">CODE</b> a course whose outline evidences the activity</p>
+<table class="alg-tbl"><colgroup><col class="alg-actcol"><col></colgroup><thead><tr><th class="alg-acthd">Work activity</th><th style="--c:#b1122b"><span class="alg-colhd">Respiratory Therapy</span></th></tr></thead><tbody>
+<tr class=""><td class="alg-act">Diagnose equipment malfunctions</td><td class="alg-dense"><div class="alg-ev"><div class="alg-evhd"><a class="chip" href="https://x/50a" target="_blank" rel="noopener" style="--c:#b1122b">RSPT 50A</a><span class="alg-ctitle">Respiratory Therapy Procedures</span></div><div class="alg-quote alg-rule" style="--t:#2a3450"><span class="alg-secx">Course objective</span>“Demonstrate use of humidity and bland aerosol therapy”</div></div></td></tr>
+<tr class=""><td class="alg-act">Inspect production equipment</td><td class="alg-dense"><div class="alg-ev"><div class="alg-evhd"><a class="chip" href="https://x/70a" target="_blank" rel="noopener" style="--c:#b1122b">RSPT 70A</a><span class="alg-ctitle">Clinical Rotation I</span></div><div class="alg-quote alg-rule" style="--t:#7a869a"><span class="alg-secx">Lab content</span>“Inspect ventilator circuits”</div></div></td></tr>
+</tbody></table></div></body></html>
