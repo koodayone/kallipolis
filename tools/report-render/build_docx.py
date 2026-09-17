@@ -615,7 +615,7 @@ def add_alg_table(table):
     # near a page bottom should carry a few rows with its title rather than a lone header
     # row: bind the header and the first two body rows forward. SVAMP's 17-3026 block
     # broke after one row and the layout check called the title stranded.
-    for trow in tbl.rows[:min(3, len(tbl.rows) - 1)]:
+    for trow in tbl.rows[:min(4, len(tbl.rows) - 1)]:
         for cell in trow.cells:
             for para_ in cell.paragraphs:
                 para_.paragraph_format.keep_with_next = True
@@ -848,10 +848,12 @@ def emit(el):
         elif 'tnote' in cls:
             p = para(1, 4); run(p, t, size=8.5, color=MUT, italic=True)
         elif 'alg-desc' in cls:
-            # an alignment block's opening line: the occupation's O*NET description, then its summary link
+            # an alignment block's opening line: the occupation's O*NET description, then its
+            # summary link. It introduces the table with the title, so it keeps with what follows.
             p = para(3, 5); runs_from(el, p, size=9.5, color='5a6577')
+            p.paragraph_format.keep_with_next = True
         elif 'alg-key' in cls:
-            p = para(0, 6)
+            p = para(0, 6); p.paragraph_format.keep_with_next = True
             chip = el.find('b', class_='chip')
             if chip is not None:
                 import re as _re

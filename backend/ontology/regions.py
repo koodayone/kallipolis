@@ -195,6 +195,21 @@ def counties_by_proximity(home: tuple[str, ...], region: str) -> list[str]:
 # Single string — rural colleges that previously mapped to multiple OEWS metros
 # now map to one COE region (e.g. COS → "CVML" instead of ["Visalia", "Fresno"]).
 # Covers every college currently featured in the state atlas (logoStacked set).
+#: A college's home county — the geography a living wage is quoted for (MIT's calculator
+#: is county-keyed, and so is the state's own living-wage vocabulary). Bay Area colleges
+#: for now; a college absent here gets no living-wage comparison rather than a wrong one.
+COLLEGE_COUNTY: dict[str, str] = {
+    "Berkeley City College": "Alameda", "Cabrillo College": "Santa Cruz", "Cañada College": "San Mateo",
+    "Chabot College": "Alameda", "City College of San Francisco": "San Francisco", "College of Alameda": "Alameda",
+    "College of Marin": "Marin", "College of San Mateo": "San Mateo", "Contra Costa College": "Contra Costa",
+    "De Anza College": "Santa Clara", "Diablo Valley College": "Contra Costa", "Evergreen Valley College": "Santa Clara",
+    "Foothill College": "Santa Clara", "Gavilan College": "Santa Clara", "Laney College": "Alameda",
+    "Las Positas College": "Alameda", "Los Medanos College": "Contra Costa", "Merritt College": "Alameda",
+    "Mission College": "Santa Clara", "Napa Valley College": "Napa", "Ohlone College": "Alameda",
+    "San Jose City College": "Santa Clara", "Santa Rosa Junior College": "Sonoma", "Skyline College": "San Mateo",
+    "Solano Community College": "Solano", "West Valley College": "Santa Clara",
+}
+
 COLLEGE_COE_REGION: dict[str, str] = {
     # Bay Area
     "Foothill College": "Bay",

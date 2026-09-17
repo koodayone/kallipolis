@@ -311,7 +311,7 @@ def _region_name(lens: LensModel) -> str:
     return " and ".join(COE_REGION_DISPLAY.get(r, r) for r in regions)
 
 
-def _demand_provenance(lens: LensModel) -> str:
+def _demand_provenance(lens: LensModel, living: "LivingWage | None" = None) -> str:
     """The geography, vintage and method behind every demand figure, as a caption under
     the demand table — not inline in the prose, where a 12-county list wrecks the sentence.
 
@@ -333,8 +333,13 @@ def _demand_provenance(lens: LensModel) -> str:
     # not only in the back matter. A reader who wants to know where "1,130 openings a
     # year" comes from should not have to go looking for it.
     out = _esc(" ".join(parts))
-    return (f'{out} <a href="{_esc(_OPENINGS_METHOD_URL)}" target="_blank" rel="noopener">'
-            f'How annual openings are calculated</a>.')
+    out = (f'{out} <a href="{_esc(_OPENINGS_METHOD_URL)}" target="_blank" rel="noopener">'
+           f'How annual openings are calculated</a>.')
+    if living is not None:
+        out += (f' Median hourly earnings are the annual median divided by {HOURS_PER_YEAR:,} hours; the living wage is for '
+                f'one adult with no children in {_esc(living.county)}, per the '
+                f'<a href="{_esc(living.url)}" target="_blank" rel="noopener">MIT Living Wage Calculator</a> ({_esc(living.vintage)}).')
+    return out
 
 
 def _short_college(name: str) -> str:
@@ -371,24 +376,64 @@ def _pct(x: float) -> str:
     return f"{'+' if x >= 0 else '−'}{abs(x) * 100:.1f}%"
 
 
-def _demand_table(occs: list[LensOccupation]) -> str:
+HOURS_PER_YEAR = 2080       # full-time hours, the calculator's own basis
+
+
+def _hourly(annual: int) -> float:
+    """The median hourly wage from COE's annual median. COE's own hourly column is rounded
+    to whole dollars; the annual figure keeps the cents."""
+    return annual / HOURS_PER_YEAR
+
+
+def _vs(hourly: float, living: float) -> str:
+    d = hourly - living
+    sign = "+" if d >= 0 else "\u2212"
+    return f"{sign}${abs(d):,.2f}"
+
+
+def _demand_table(occs: list[LensOccupation], living: "LivingWage | None" = None) -> str:
+    """The demand table. With a `living` wage (a single college with a known county) the
+    salary column becomes the median hourly wage beside its distance from the living wage
+    for one adult in that county — the comparison a program reviewer reads the wage for."""
+    if living is None:
+        wage_head = '<th class="n">Median salary</th>'
+        wage = lambda o: f'<td class="n">${o.median_wage:,}</td>'
+        tot = '<td class="n">—</td>'
+    else:
+        wage_head = '<th class="n">Median hourly</th><th class="n">vs. living wage</th>'
+        wage = lambda o: (f'<td class="n">${_hourly(o.median_wage):,.2f}</td>'
+                          f'<td class="n">{_vs(_hourly(o.median_wage), living.headline)}</td>')
+        tot = '<td class="n">—</td><td class="n">—</td>'
     rows = "".join(
         f'<tr><td>{_esc(o.soc)}</td><td>{_esc(o.title)}</td>'
         f'<td class="n">{o.annual_openings:,}</td>'
         f'<td class="n">{_pct(o.growth_rate)}</td>'
-        f'<td class="n">${o.median_wage:,}</td></tr>'
+        f'{wage(o)}</tr>'
         for o in occs
     )
     total = sum(o.annual_openings for o in occs)
     return (
         '<table class="dem"><tbody>'
         '<tr><th>SOC</th><th>Occupation</th><th class="n">Openings / yr</th>'
-        '<th class="n">5-yr growth</th><th class="n">Median salary</th></tr>'
+        f'<th class="n">5-yr growth</th>{wage_head}</tr>'
         f'{rows}'
         f'<tr class="tot"><td></td><td>Total regional demand</td>'
-        f'<td class="n">≈ {total:,}</td><td class="n">—</td><td class="n">—</td></tr>'
+        f'<td class="n">≈ {total:,}</td><td class="n">—</td>{tot}</tr>'
         '</tbody></table>'
     )
+
+
+def _living_wage_for(lens: LensModel):
+    """The living wage a single college's report measures wages against: MIT's headline
+    figure for the college's own county. None for districts, regions and consortia (many
+    counties, one regional wage) and for a college whose county is not on record."""
+    from ontology.living_wage import living_wage
+    from ontology.regions import COLLEGE_COUNTY
+    m = lens.scope.member
+    if m.kind != "college":
+        return None
+    county = COLLEGE_COUNTY.get(m.name)
+    return living_wage(county) if county else None
 
 
 def _employer_table(occs: list[LensOccupation], postings: dict[str, list[LivePosting]]) -> str:
@@ -1316,7 +1361,7 @@ def _footer(lens: LensModel, extra: list[str]) -> str:
 
 def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
                      title: str, socs: list[str], program_top: str = "", curriculum: bool = False,
-                     outlines: list[str] | None = None, consolidated: bool = False) -> str:
+                     outlines: list[str] | None = None, consolidated: bool = False, living=None) -> str:
     """Provenance, organized by report section: a tailored dashboard link, then one
     numbered, linked source group per section. Each section's claims trace to named,
     auditable sources — the same audit-trail logic as the clickable program names."""
@@ -1342,7 +1387,7 @@ def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
              "https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061"),
             ("How Annual Job Openings Are Calculated", _OPENINGS_METHOD_URL),
             ("Lightcast — Job Openings Data (methodology)", _LIGHTCAST_METHOD_URL),
-        ]),
+        ] + ([(f"MIT Living Wage Calculator — {living.county}, California", living.url)] if living is not None else [])),
     ]
     summaries = [(f"O*NET Summary of {soc}", f"https://www.onetonline.org/link/summary/{soc}.00") for soc in socs]
     if not consolidated:
@@ -1688,6 +1733,7 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
     Pass `lens` to reuse a build shared with `propose_spec`."""
     lens = lens or build_lens(member_id, play=play)
     occs = lens.occupations
+    living = _living_wage_for(lens)      # a single college's county, else None
 
     # keep the title on ONE line: shrink from 26px just enough to fit the 648px content
     # width (816 page − 2×84 padding); short titles stay at the full 26px.
@@ -1708,8 +1754,8 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         _wage_section(lens, spec) if spec.program_top else '',
         _block('<h1>Regional Occupational Demand</h1>',
                f'<p>{_linkify(spec.demand_note)}</p>' if spec.demand_note else '',
-               _demand_table(occs),
-               f'<p class="tnar">{_demand_provenance(lens)}</p>'),   # returns HTML: carries a link
+               _demand_table(occs, living),
+               f'<p class="tnar">{_demand_provenance(lens, living)}</p>'),   # returns HTML: carries a link
         # No "under the <role> designation" clause: postings are found by SOC, not by the
         # role title or TOP, so naming the play here overstated what the search did — and it
         # read as role-report copy inside a program evaluation.
@@ -1807,7 +1853,7 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
     sections += [_sources_section(_org_label(lens.scope.member), sec_label, dash_url,
                                   play.title, [o.soc for o in occs], spec.program_top,
                                   curriculum=bool(curriculum_parts), outlines=curriculum_outlines,
-                                  consolidated=consolidated)]
+                                  consolidated=consolidated, living=living)]
     # NO brand colour in the document chrome. Tried three times at widening scope —
     # every heading, then the masthead rule and the Awards Offered accents — and reverted
     # each time for the same reason: colour already carries meaning in this report

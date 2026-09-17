@@ -36,7 +36,7 @@ Selecting a coverage cell drills into the occupation as a deterministic per-(col
 
 - **Executive summary.** Frames the occupation in its sector context, names the multi-employer engagement opportunity the alignment data identifies, and integrates the strongest signals from regional demand and curriculum coverage in compressed form.
 
-- **Occupational demand.** Establishes the regional labor market for the SOC: median annual wage and annual openings in the COE region, drawn directly from the Centers of Excellence published demand profile.
+- **Occupational demand.** Establishes the regional labor market for the SOC: median annual wage and annual openings in the COE region, drawn directly from the Centers of Excellence published demand profile. In a single college's evaluation the table shows the median hourly wage beside its distance from the county's living wage for one adult (MIT Living Wage Calculator), so a reviewer reads each destination's earning potential against the cost of living where the college's students live.
 
 - **Curriculum alignment.** Establishes the institutional pathway from the college's curriculum to the SOC via the Chancellor's Office TOP-CIP-SOC crosswalk — the actual departments and courses whose `PREPARES_FOR` edge maps to the target SOC.
 
