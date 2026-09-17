@@ -6,7 +6,7 @@
     "29-1126"
   ],
   "author": "Dayone Koo",
-  "date": "August 27, 2026",
+  "date": "September 17, 2026",
   "org_name": "Foothill College Program Evaluation",
   "org_short": "Regional",
   "_comment": "PROGRAM EVALUATION (evaluate-program skill), not a role report. Subject is the PROGRAM (Foothill College x TOP 121000), not a job title. Destination SOCs are DERIVED, not authored: crosswalk(121000) = 4 SOCs, intersected with SECTORS['health'].socs and minus ALL_OTHER/PROMOTION/EXPERIENCE_5YR guards = 1 (29-1126). Dropped: 25-1071 Postsecondary Teachers, 29-2099 Health Technologists All Other, 99-9999. House rule: EVIDENCE-FORWARD, NO VERDICT — the prose states throughput, trend, destination health and peer standing and stops there; it never says 'at risk' or 'underperforming'. live_postings and competencies are reused verbatim from foothill-respiratory-therapist (same SOC, already verified against the O*NET pool and the CareerOneStop scrape).",

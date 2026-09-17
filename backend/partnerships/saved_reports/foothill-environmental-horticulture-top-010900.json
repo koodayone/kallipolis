@@ -7,7 +7,7 @@
     "37-1012"
   ],
   "author": "Dayone Koo",
-  "date": "August 27, 2026",
+  "date": "September 17, 2026",
   "org_name": "Foothill College Program Evaluation",
   "org_short": "Regional",
   "_comment": "PROGRAM EVALUATION (evaluate-program skill). Subject is the PROGRAM (Foothill College x TOP 010900), not a job title. Destination SOCs DERIVED: crosswalk(010900) intersected with SECTORS['agwet'].socs minus ALL_OTHER/PROMOTION/EXPERIENCE_5YR = ['37-3012', '37-1012']. Dropped: 11-9013, 25-1041, 25-9021, 37-3011 (below the middle-skill gate), 45-1011, 99-9999. Peer set = top 6 Bay colleges by 5-year awards on THIS TOP (a program evaluation's peers must share the TOP; the role report mixed TOPs). live_postings and competencies reused verbatim from the matching role report (same SOCs, already verified). EVIDENCE-FORWARD, NO VERDICT.",

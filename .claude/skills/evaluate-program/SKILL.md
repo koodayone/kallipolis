@@ -206,7 +206,7 @@ tables read as one throughput story.
    5. Set `curriculum_alignment: "<def slug>"` and `curriculum_note` on the def. Read the review
       file (`saved_reports/alignment/<ref>.review.md`) and view the section on the canvas
       (`uvicorn partnerships.alignment_canvas:app --port 8010`, `?roster=<def slug>`).
-6. **Render + review**, then export via `tools/report-render/export.sh` as usual.
+6. **Render + review**, then export via `tools/report-render/export.sh` as usual. The def's `date` is the edition date the byline prints, not a render timestamp: set it to the day the def was last materially revised, and bump it whenever the content changes (the four August evaluations shipped in September with an August byline until this was noticed).
 
 ## Known v2 candidates (deliberately NOT built)
 

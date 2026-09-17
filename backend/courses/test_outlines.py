@@ -10,13 +10,14 @@ Coverage:
   - CurricUNET index: the Active version of a course is chosen over historical ones
   - eLumen (Mission, De Anza): code normalisation ("DMT D084A." → "DMT 84A"), HTML fields to lists, dates, deep link
   - CurriQunet (Evergreen Valley): content, lab and assignments from the stable trailing block; ILO boilerplate stripped; template-only objectives noted
-  - an Outline round-trips through JSON
+  - an Outline round-trips through JSON, link-check stamps included; an older cache file without them still loads
+  - eLumen: a start term maps to its catalog year, and the catalog course link is built from the record's curriculum id
 """
 
 import json
 
-from courses.outlines import (Outline, parse_courseleaf, parse_curricunet_index, parse_curricunet_outline,
-                              parse_curriqunet_outline, parse_elumen_course, pick_active)
+from courses.outlines import (Outline, elumen_catalog_url, elumen_catalog_year, parse_courseleaf, parse_curricunet_index,
+                              parse_curricunet_outline, parse_curriqunet_outline, parse_elumen_course, pick_active)
 
 COURSELEAF = """
 <h1>ENGR 61A: INTRODUCTION TO SEMICONDUCTOR TECHNOLOGY &lt; Foothill College</h1>
@@ -132,5 +133,21 @@ def test_curriqunet_reads_the_stable_tail_block_and_strips_ilo_noise():
 
 
 def test_outline_round_trips_through_json():
-    o = Outline("C", "elumen", "X 1", "T", "d", ["s"], ["o"], ["c"], ["l"], ["a"], "https://u", "Fall 2026", "2025-01-01", "2026-09-16")
+    o = Outline("C", "elumen", "X 1", "T", "d", ["s"], ["o"], ["c"], ["l"], ["a"], "https://u", "Fall 2026", "2025-01-01", "2026-09-16",
+                link_ok=True, link_checked="2026-09-17")
     assert Outline(**json.loads(json.dumps(o.__dict__))) == o
+    old = {k: v for k, v in o.__dict__.items() if k not in ("link_ok", "link_checked")}      # a cache file from before the check
+    assert Outline(**old).link_ok is None
+
+
+def test_elumen_catalog_year_and_link():
+    assert elumen_catalog_year("Fall 2026") == "2026-2027" and elumen_catalog_year("2026FA") == "2026-2027"
+    assert elumen_catalog_year("Spring 2026") == "2025-2026" and elumen_catalog_year("2026SP") == "2025-2026"
+    assert elumen_catalog_year("Winter 2027") == "2026-2027" and elumen_catalog_year("") == ""
+    d = {"curriculumId": "DMTD084A.", "startTerm": {"name": "Fall 2026"}, "uuid": "u"}
+    assert elumen_catalog_url("deanza.elumenapp.com", d) == "https://deanza.elumenapp.com/catalog/2026-2027/course/dmtd084a"
+    assert elumen_catalog_url("deanza.elumenapp.com", {"uuid": "u"}) == ""                     # no id or term: no catalog link
+    o = parse_elumen_course({**d, "code": "DMT D084A."}, college="De Anza College", host="deanza.elumenapp.com", org_entity_id=8, catalog_link=True)
+    assert o.source_url.endswith("/catalog/2026-2027/course/dmtd084a")
+    o = parse_elumen_course({**d, "code": "DMT D084A."}, college="De Anza College", host="deanza.elumenapp.com", org_entity_id=8)
+    assert o.source_url == "https://deanza.elumenapp.com/public/?orgEntityId=8&uuid=u"          # the default stays the public view
