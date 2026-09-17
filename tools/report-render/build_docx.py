@@ -580,7 +580,7 @@ def add_alg_table(table):
                         q2.paragraph_format.space_before = Pt(0); q2.paragraph_format.space_after = Pt(2)
                         sec = quote.find('span', class_='alg-sec')
                         if sec is not None:
-                            run(q2, sec.get_text(' ', strip=True) + '  ', size=7.5, bold=True, color='6b7686')
+                            run(q2, sec.get_text(' ', strip=True).upper() + '  ', size=6.5, bold=True, color='6b7686')
                         text = quote.get_text(' ', strip=True)
                         if sec is not None:
                             text = text.replace(sec.get_text(' ', strip=True), '', 1).strip()
