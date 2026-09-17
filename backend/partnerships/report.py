@@ -814,7 +814,7 @@ _BAND_FILL = ("#1f3864", "#2e74b5", "#4a90c4", "#7aa6d4", "#2a9d8f", "#93bfb8", 
 
 
 def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
-                       max_bands: int = 6, brand: str = "") -> str:
+                       max_bands: int = 6, brand: str = "", region: str = "") -> str:
     """REGIONAL completions over time, stacked by college, against annual openings.
 
     The reviewer ask this answers: show the need to produce workers. The stack is one
@@ -974,7 +974,7 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
         rise = totals[-1] > totals[0]
         lx_, anc_ = ((PADL + 4, "start") if rise else (W - PADR, "end"))
         p_.append(f'<text x="{lx_}" y="{dy-6:.1f}" font-size="10" font-weight="700" '
-                  f'fill="{_RULE}" text-anchor="{anc_}">{annual_openings:,} openings a year</text>')
+                  f'fill="{_RULE}" text-anchor="{anc_}">{annual_openings:,} openings a year{", " + _esc(region) if region else ""}</text>')
 
     # legend, wrapping onto a second row rather than running off the plate
     lx, ly = PADL, H - PADB + 42
@@ -1735,7 +1735,7 @@ def _wage_section(lens: LensModel, spec: ReportSpec, living=None) -> str:
     if living is not None:
         # A statement of what the line is, nothing more: the geography mismatch between a
         # county threshold and statewide earnings is the reader's to weigh, not ours to gloss.
-        win += (f" The dashed line represents the regional annualized living wage for one adult "
+        win += (f" The dashed line represents the annualized living wage for one adult "
                 f"with no children in {_esc(living.county)}.")
     return _block(
         '<h1>Wage Outcomes</h1>',
@@ -1835,7 +1835,7 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         # document and keeps the neutral ramp.
         brand = _brand_color(lens.scope.member.id) if spec.program_top else ""
         chart = _awards_demand_svg(progs, award_axis,
-                                   sum(o.annual_openings for o in occs), brand=brand)
+                                   sum(o.annual_openings for o in occs), brand=brand, region=_region_name(lens))
         # No caption: the chart carries its own title, axis labels, source line and break
         # label, so a paragraph restating them is noise. Only the report's own curated
         # award_note stays — that is editorial, not chart chrome.
