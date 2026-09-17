@@ -565,6 +565,14 @@ def add_alg_table(table):
                         more = chip.get('title', '')
                         run(p, chip.get_text(' ', strip=True) + (f' ({more})' if more else ''), size=7.5, color=MUT)
             cellpad(cell, 30, 30, 60, 60)
+    # The table is splittable (rows keep, the header reprints), but a block that begins
+    # near a page bottom should carry a few rows with its title rather than a lone header
+    # row: bind the header and the first two body rows forward. SVAMP's 17-3026 block
+    # broke after one row and the layout check called the title stranded.
+    for trow in tbl.rows[:min(3, len(tbl.rows) - 1)]:
+        for cell in trow.cells:
+            for para_ in cell.paragraphs:
+                para_.paragraph_format.keep_with_next = True
     # widths: the activity column takes ~2.6in, the colleges share the rest
     total = CONTENT_W; act = min(2.6, total * 0.4); rest = (total - act) / max(1, ncol - 1)
     for row in tbl.rows:
@@ -785,8 +793,12 @@ def emit(el):
             return
         if 'chtitle' in cls:
             # Chart title: real text now that it lives in HTML rather than inside the
-            # SVG raster, so it is selectable and searchable in the .docx.
+            # SVG raster, so it is selectable and searchable in the .docx. It names the
+            # chart or table that follows, so it keeps with it — a curriculum-alignment
+            # block flows across pages unwrapped, and without this its title stranded at
+            # a page bottom (Foothill 094500 evaluation, page 9).
             p = para(10, 2); run(p, t, size=11, bold=True, color=DARK)
+            p.paragraph_format.keep_with_next = True
         elif 'tnote' in cls:
             p = para(1, 4); run(p, t, size=8.5, color=MUT, italic=True)
         elif 'alg-legend' in cls:
