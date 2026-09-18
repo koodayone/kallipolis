@@ -128,6 +128,15 @@ priority order. They cut roughly half the words without losing a fact.
     the house formula: *"[According to the Centers of Excellence](url), this occupation has
     roughly N openings a year in the {region}."* The wage lives in the demand table, in the
     table's units; do not restate it in the note.
+12. **Draw the crosswalk, then don't narrate it.** Set `crosswalk_chain: true` on the def: the
+    **TOP–CIP–SOC Crosswalk** section renders the TOP, the CIPs that bridge it and the def's
+    occupations right before the demand section (`chain_note` is its one- or two-sentence
+    paragraph, plainly worded — what the code is, what carries it, where it lands). The demand
+    note then keeps only the COE sentence, naming the occupations: *"[According to the Centers of
+    Excellence](url), Respiratory Therapists (SOC 29-1126) have roughly 210 openings a year in the
+    Bay Area."* An occupation added by stated purpose (hard rule 2) draws as a dashed bypass the
+    caption names; nothing about the derivation belongs in prose. The six 2026-09-18 editions are
+    the models.
 
 **The canonical lede**, settled over four rounds of editing — start here rather than composing:
 
