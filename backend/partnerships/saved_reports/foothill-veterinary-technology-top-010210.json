@@ -113,5 +113,5 @@
   "curriculum_alignment": "foothill-veterinary-technology-top-010210",
   "curriculum_note": "O*NET maintains a set of detailed work activities that identify the competencies central to each job. Below, the Veterinary Technology program's courses are mapped to the work activities of its destination occupations, based on how each course is described in its Course Outline of Record (COR).",
   "crosswalk_chain": true,
-  "chain_note": "TOP 0102.10 maps to one federal code, veterinary and animal health technology, which reaches two occupations: the technologists and technicians the licence names, and the assistants and laboratory animal caretakers who work beside them."
+  "chain_note": "TOP 0102.10 maps to one federal code, CIP 01.8301, which reaches two occupations: Veterinary Technologists and Technicians, and Veterinary Assistants and Laboratory Animal Caretakers."
 }
