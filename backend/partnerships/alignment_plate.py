@@ -21,7 +21,9 @@ from partnerships.alignment import LEVEL, PLO, SECTION_LABEL, Plate, lead_for
 
 #: Evergreen Valley's green against Ohlone's. De Anza takes the report's amber accent;
 #: Evergreen Valley keeps its own green, which is dark enough beside Ohlone's lighter one.
-_COLLEGE_FALLBACK = {"deanza": "#c98a1b", "evc": "#1e894a"}
+#: Orange Coast IS orange — the logo extraction kept its navy; this is the brand orange
+#: deepened until white type clears 4.5:1 on it.
+_COLLEGE_FALLBACK = {"deanza": "#c98a1b", "evc": "#1e894a", "orangecoast": "#c2410c"}
 _COLOR_ALIAS = {"evc": "evergreen", "sdmesa": "sandiegomesa"}
 
 

@@ -130,6 +130,26 @@ class LivePosting:
     employer: str
     title: str
     url: str
+    # Where the posting was found. Empty = CareerOneStop (the Labor Department's feed, the
+    # default search). An employer absent from that feed — UCSF's neurodiagnostic roles
+    # never reach it — is searched on its own careers site, and the site's domain is
+    # recorded here so the page can say so beside the row and in the section's intro.
+    source: str = ""
+
+
+#: The Employer Evidence intro when every posting comes from the default feed — kept
+#: verbatim, so a report with only CareerOneStop postings renders as it always has.
+_EMPLOYER_INTRO = ("Live job postings from prominent regional employers, listed on CareerOneStop "
+                   "(U.S. Department of Labor).")
+
+
+def _employer_intro(postings: dict[str, list["LivePosting"]]) -> str:
+    """The section's one sentence, naming the sources the table actually draws on."""
+    sites = list(dict.fromkeys(p.source for plist in postings.values() for p in plist if p and p.source))
+    if not sites:
+        return _EMPLOYER_INTRO
+    return ("Live job postings from prominent regional employers, listed on CareerOneStop "
+            f"(U.S. Department of Labor) and, where marked, on the employer’s own careers site ({_esc(', '.join(sites))}).")
 
 
 @dataclass(frozen=True)
@@ -201,6 +221,10 @@ class ReportSpec:
     planned_awards: tuple[dict, ...] = ()
     wage_note: str = ""
     supply_scope: str = ""
+    #   employer_note: a paragraph under the Employer Evidence table for a partner whose
+    #     relationship to the program the postings alone cannot show (UCSF Health's funding
+    #     and clinical sites), with its trust link inline. Facts and a source, no verdict.
+    employer_note: str = ""
 
 
 # ── Section builders (data from the lens, words from the spec) ─────────────────
@@ -478,6 +502,10 @@ def _employer_table(occs: list[LensOccupation], postings: dict[str, list[LivePos
         for j, post in enumerate(plist):
             cell = (f'<a target="_blank" rel="noopener" href="{_esc(post.url)}">{_esc(post.title)} ↗</a>'
                     if post else "—")
+            if post and post.source:
+                # a posting found off the default feed carries its site under the title —
+                # the same muted sub-line the occupation cell uses for its SOC
+                cell += f'<span class="lsrc" style="display:block;font-size:7.5px;color:#9099ab">{_esc(post.source)}</span>'
             # No posting -> no employer name. The old fallback printed the lens's top-ranked
             # regional hirer (BLS OEWS staffing patterns), which put two different claims in one
             # column — "this employer posted this job" beside "BLS says this employer hires this
@@ -899,24 +927,27 @@ def _chain_svg(top: tuple[str, str], cips: list[tuple[str, str]], soc: tuple[str
     nlines = max([len(top_lines), len(soc_lines)] + [len(l) for l in cip_lines])
     NODE_H = 42 + nlines * LINEH
     col_h = max(NODE_H, len(cips) * NODE_H + max(0, len(cips) - 1) * 12)
-    um_lines = (_wrap_words(f"within SOC {umbrella[0]} · {umbrella[1]}", 46) +
-                _wrap_words("the level at which the Centers of Excellence report demand", 46)) if umbrella else []
-    y0 = PAD + 1
-    H = y0 + col_h + (PAD + 6 + len(um_lines) * 13 + 4 if umbrella else 2)
+    # The umbrella is a dashed frame with the SOC as a small tag on its top edge — nothing
+    # more; the paragraph above says what the category is and the caption names it.
+    y0 = PAD + 8 if umbrella else PAD + 1
+    H = y0 + col_h + (PAD + 4 if umbrella else 2)
     p = [f'<svg viewBox="0 0 {W} {H:.0f}" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica,Arial,sans-serif" '
          'style="width:100%;height:auto;display:block">',
          '<defs><marker id="chain-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">'
          '<path d="M 0 0 L 8 4 L 0 8 z" fill="#9aa1b2"/></marker></defs>']
 
-    def badge(x, y, code, lines, *, filled=False):
+    def badge(x, y, code, lines, *, filled=False, tint=False):
+        # One hue, three steps: the TOP badge neutral, the CIP badge a faint tint of the
+        # occupation's accent, the occupation itself the full accent — the chain arriving.
         if filled:
             p.append(f'<rect x="{x}" y="{y:.0f}" width="{NODE_W}" height="{NODE_H}" rx="7" fill="{_ACCENTS[0]}"/>'
                      f'<text x="{x + 14}" y="{y + 20:.0f}" font-size="10" fill="#fff" opacity="0.92">{_esc(code)}</text>')
             for j, ln in enumerate(lines):
                 p.append(f'<text x="{x + 14}" y="{y + 40 + j * LINEH:.0f}" font-size="13" font-weight="700" fill="#fff">{_esc(ln)}</text>')
         else:
-            p.append(f'<rect x="{x}" y="{y:.0f}" width="{NODE_W}" height="{NODE_H}" rx="6" fill="#f7f8fb" stroke="#d4dae6"/>'
-                     f'<text x="{x + 14}" y="{y + 20:.0f}" font-size="9.5" fill="#9aa1b2">{_esc(code)}</text>')
+            fill, stroke, code_ink = ("#e8f4f2", "#a9d3cc", "#2a9d8f") if tint else ("#f7f8fb", "#d4dae6", "#9aa1b2")
+            p.append(f'<rect x="{x}" y="{y:.0f}" width="{NODE_W}" height="{NODE_H}" rx="6" fill="{fill}" stroke="{stroke}"/>'
+                     f'<text x="{x + 14}" y="{y + 20:.0f}" font-size="9.5" fill="{code_ink}">{_esc(code)}</text>')
             for j, ln in enumerate(lines):
                 p.append(f'<text x="{x + 14}" y="{y + 40 + j * LINEH:.0f}" font-size="12.5" fill="#22304e">{_esc(ln)}</text>')
 
@@ -934,19 +965,24 @@ def _chain_svg(top: tuple[str, str], cips: list[tuple[str, str]], soc: tuple[str
         p.append(f'<text x="{cx:.0f}" y="{top_y + NODE_H / 2 - 7:.0f}" font-size="9" fill="#9aa1b2" text-anchor="middle">{label}</text>')
     badge(xs[0], top_y, f"TOP {_dotted_top(top[0])}", top_lines)
     for (cip, _), cy, lines in zip(cips, cip_ys, cip_lines):
-        badge(xs[1], cy, f"CIP {cip}", lines)
+        badge(xs[1], cy, f"CIP {cip}", lines, tint=True)
     if umbrella:
         p.append(f'<rect x="{xs[2] - PAD}" y="{soc_y - PAD:.0f}" width="{NODE_W + 2 * PAD}" height="{NODE_H + 2 * PAD}" rx="10" '
                  'fill="none" stroke="#9aa1b2" stroke-width="1.2" stroke-dasharray="4 3"/>')
-        for j, ln in enumerate(um_lines):
-            p.append(f'<text x="{xs[2] - PAD}" y="{soc_y + NODE_H + PAD + 14 + j * 13:.0f}" font-size="9.5" fill="#5a6577">{_esc(ln)}</text>')
-    badge(xs[2], soc_y, f"O*NET-SOC {soc[0]}", soc_lines, filled=True)
+        tag = f"SOC {umbrella[0]}"
+        tw = 6 + 5.4 * len(tag)
+        p.append(f'<rect x="{xs[2] + 8}" y="{soc_y - PAD - 6:.0f}" width="{tw:.0f}" height="12" fill="#fff"/>'
+                 f'<text x="{xs[2] + 11}" y="{soc_y - PAD + 3.5:.0f}" font-size="9" fill="#5a6577">{_esc(tag)}</text>')
+    badge(xs[2], soc_y, f"SOC {soc[0]}", soc_lines, filled=True)
     p.append("</svg>")
     return f'<div class="chainfig" style="margin:10px 0 4px">{"".join(p)}</div>'
 
 
 _COE_CROSSWALK_URL = "https://datastudio.google.com/u/0/reporting/62925aaa-3c91-48ab-941b-2473c0e17cb7"
 _NCES_CIP_SOC_URL = "https://nces.ed.gov/ipeds/cipcode/resources.aspx?y=56"
+#: The Chancellor's Office Taxonomy of Programs — the authority that defines each TOP code.
+#: Cited where the report draws the chain itself, because there the TOP is the first claim.
+_TOP_MANUAL_URL = "https://www.cccco.edu/wp-content/uploads/2019/05/TOPmanual6_2009_09corrected_12.5.13_pdf-4007eaa2.pdf"
 
 
 def _chain_data(top6: str, soc: str) -> tuple[tuple[str, str], list[tuple[str, str]], tuple[str, str], tuple[str, str] | None]:
@@ -997,7 +1033,8 @@ _BAND_FILL = ("#1f3864", "#2e74b5", "#4a90c4", "#7aa6d4", "#2a9d8f", "#93bfb8", 
 
 
 def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
-                       max_bands: int = 6, brand: str = "", region: str = "") -> str:
+                       max_bands: int = 6, brand: str = "", region: str = "",
+                       college_colours: dict[str, str] | None = None) -> str:
     """REGIONAL completions over time, stacked by college, against annual openings.
 
     The reviewer ask this answers: show the need to produce workers. The stack is one
@@ -1117,7 +1154,10 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
         pts += " " + " ".join(f"{x_of(i):.1f},{y_of(lower[i]):.1f}" for i in range(n - 1, -1, -1))
         # The member owns the brand colour; peers step down the neutral ramp, so the
         # eye finds "us" in the stack before reading a single legend entry.
-        fill = brand if (bi == 0 and brand and _name in members) else _BAND_FILL[bi % len(_BAND_FILL)]
+        # `college_colours` (a report with no member program, the comparators standing
+        # alone) colours every band by its college instead, as the alignment block does.
+        fill = ((college_colours or {}).get(_name) or
+                (brand if (bi == 0 and brand and _name in members) else _BAND_FILL[bi % len(_BAND_FILL)]))
         p_.append(f'<polygon points="{pts}" fill="{fill}" fill-opacity="0.94"/>')
         lower = upper
 
@@ -1165,7 +1205,8 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
         w = 22 + 5.6 * len(name)
         if lx + w > W - PADR:
             lx, ly = PADL, ly + 13
-        swatch = brand if (bi == 0 and brand and name in members) else _BAND_FILL[bi % len(_BAND_FILL)]
+        swatch = ((college_colours or {}).get(name) or
+                  (brand if (bi == 0 and brand and name in members) else _BAND_FILL[bi % len(_BAND_FILL)]))
         p_.append(f'<rect x="{lx:.1f}" y="{ly}" width="9" height="9" fill="{swatch}"/>')
         p_.append(f'<text x="{lx+13:.1f}" y="{ly+8}" font-size="9" '
                   f'fill="#5a6577">{_esc(name)}</text>')
@@ -1210,7 +1251,7 @@ def _term_axis(lens: LensModel) -> tuple[list[str], list[str]]:
 
 
 def _enrollment_lines_svg(programs, term_keys: list[str], term_heads: list[str],
-                          college_terms: dict, brand: str = "") -> str:
+                          college_terms: dict, brand: str = "", college_colours: dict[str, str] | None = None) -> str:
     """Enrollment over terms, ONE LINE PER COLLEGE. Deliberately not stacked.
 
     A stack is a visual total, and enrollment has no sound cross-college total when
@@ -1268,7 +1309,8 @@ def _enrollment_lines_svg(programs, term_keys: list[str], term_heads: list[str],
                   f'text-anchor="end">{_fmt_tick(v)}</text>')
 
     for si, (college, vals) in enumerate(series):
-        colour = brand if (college in member and brand) else _BAND_FILL[(si + 1) % len(_BAND_FILL)]
+        colour = ((college_colours or {}).get(college) or
+                  (brand if (college in member and brand) else _BAND_FILL[(si + 1) % len(_BAND_FILL)]))
         wide = college in member
         kinds = college_terms.get(college)
         pts_ = [(i, v) for i, key in enumerate(term_keys)
@@ -1298,7 +1340,8 @@ def _enrollment_lines_svg(programs, term_keys: list[str], term_heads: list[str],
 
     lx, ly = PADL, H - PADB + 46
     for si, (college, _v) in enumerate(series):
-        colour = brand if (college in member and brand) else _BAND_FILL[(si + 1) % len(_BAND_FILL)]
+        colour = ((college_colours or {}).get(college) or
+                  (brand if (college in member and brand) else _BAND_FILL[(si + 1) % len(_BAND_FILL)]))
         w = 26 + 5.6 * len(college)
         if lx + w > W - PADR:
             lx, ly = PADL, ly + 13
@@ -1626,6 +1669,7 @@ def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
     ]
     if chain:
         groups.append(("TOP–CIP–SOC Crosswalk", [
+            ("CCCCO Taxonomy of Programs (TOP Code Manual, 6th edition)", _TOP_MANUAL_URL),
             ("Centers of Excellence TOP–CIP–SOC Crosswalk", _COE_CROSSWALK_URL),
             ("NCES CIP 2020 – SOC 2018 Crosswalk", _NCES_CIP_SOC_URL),
             (f"O*NET Summary of {chain}", f"https://www.onetonline.org/link/summary/{_onet_code(chain)}"),
@@ -2014,9 +2058,9 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         # role title or TOP, so naming the play here overstated what the search did — and it
         # read as role-report copy inside a program evaluation.
         _block('<h1>Employer Evidence</h1>',
-               '<p>Live job postings from prominent regional employers, listed on CareerOneStop '
-               '(U.S. Department of Labor).</p>',
-               _employer_table(occs, spec.live_postings)),
+               f'<p>{_employer_intro(spec.live_postings)}</p>',
+               _employer_table(occs, spec.live_postings),
+               f'<p style="margin-top:12px">{_linkify(spec.employer_note)}</p>' if spec.employer_note else ''),
     ]
 
     # Competencies: the Spec OVERRIDES (the curation skill's cut) if present;
@@ -2069,13 +2113,22 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
     # rule — the region's openings against other regions' awards would be the category
     # error the chart's docstring warns of — and no "regional" in the titles.
     statewide = spec.supply_scope == "statewide"
+    # With the comparators standing alone (no member program in the charts), each college
+    # keeps its own colour across the document — the same colour its alignment column wears
+    # — instead of the member-brand-plus-neutral-ramp the regional charts use.
+    college_colours = None
+    if statewide:
+        from partnerships.alignment_plate import college_color
+        from partnerships.members import _catalog
+        keys = {name: rec["key"] for name, rec in _catalog().items()}
+        college_colours = {p.college: college_color(keys.get(p.college, "")) for p in progs}
     if progs and award_axis:
         # Branded only on program evaluations — a role report is not a college's own
         # document and keeps the neutral ramp.
         brand = _brand_color(lens.scope.member.id) if spec.program_top else ""
         chart = _awards_demand_svg(progs, award_axis,
                                    0 if statewide else sum(o.annual_openings for o in occs), brand=brand,
-                                   region="" if statewide else _region_name(lens))
+                                   region="" if statewide else _region_name(lens), college_colours=college_colours)
         # No caption: the chart carries its own title, axis labels, source line and break
         # label, so a paragraph restating them is noise. Only the report's own curated
         # award_note stays — that is editorial, not chart chrome.
@@ -2093,7 +2146,8 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
             _block(f'<p class="chtitle">{"Program Enrollment Trends" if statewide else "Regional Program Enrollment Trends"}</p>',
                    f'<p>{_esc(_ENROLL_BLURB)}</p>',
                    _enrollment_lines_svg(progs, term_keys, term_heads, lens.college_terms,
-                                         brand=_brand_color(lens.scope.member.id) if spec.program_top else "")),
+                                         brand=_brand_color(lens.scope.member.id) if spec.program_top else "",
+                                         college_colours=college_colours)),
             _block(f'<p class="tnar">{_linkify(spec.enrollment_note)}</p>' if spec.enrollment_note else '',
             # No total: see _trend_table. Enrollment across mixed calendars is not a
             # sound cross-college sum, and the old one silently dropped colleges with a

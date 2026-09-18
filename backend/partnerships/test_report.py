@@ -18,6 +18,9 @@ Coverage:
     credential when the Curriculum Inventory has none; statewide supply draws no openings rule and drops "Regional";
     Sources add the chain group and cite the detailed code's O*NET summary; two colleges' certificate columns are prefixed
     with the college
+  - a posting found on an employer's own careers site carries the site under its title and the section's intro names it;
+    postings from the default feed alone render the intro and rows exactly as before
+  - an authored employer note renders under the postings table only when set
 """
 
 import re
@@ -28,9 +31,10 @@ from ontology.living_wage import living_wage
 from partnerships import alignment as A
 from partnerships.alignment import Cell, Evidence, Plate, Row
 from partnerships.lens import LensModel, LensOccupation, LensProgram, LensScope, LensSlice, LensWage, MemberRef, Play
-from partnerships.report import (CompetencyColumn, ReportSpec, _awards_demand_svg, _awards_offered_section, _chain_data,
-                                 _chain_svg, _crosswalk_svg, _demand_provenance, _demand_table, _hourly, _living_wage_for,
-                                 _onet_code, _sources_section, _vs, _wage_outcomes_svg, _wage_section, build_report_html)
+from partnerships.report import (CompetencyColumn, LivePosting, ReportSpec, _awards_demand_svg, _awards_offered_section,
+                                 _chain_data, _chain_svg, _crosswalk_svg, _demand_provenance, _demand_table, _employer_intro,
+                                 _employer_table, _hourly, _living_wage_for, _onet_code, _sources_section, _vs,
+                                 _wage_outcomes_svg, _wage_section, build_report_html)
 
 SC = living_wage("Santa Clara")
 
@@ -152,13 +156,13 @@ def test_chain_figure_names_codes_titles_and_umbrella_without_links():
     assert top == ("121200", "Electro-Neurodiagnostic Technology") and [c for c, _ in cips] == ["51.0903"]
     assert occ == ("29-2099.01", "Neurodiagnostic Technologists") and umbrella[0] == "29-2099"
     svg = _chain_svg(top, cips, occ, umbrella)
-    for s_ in ("TOP 1212.00", "CIP 51.0903", "O*NET-SOC 29-2099.01", "Neurodiagnostic", "within SOC 29-2099",
-               "Health Technologists and", 'class="chainfig"', "CCCCO", "NCES", "stroke-dasharray"):
+    for s_ in ("TOP 1212.00", "CIP 51.0903", "SOC 29-2099.01", "Neurodiagnostic", ">SOC 29-2099<",
+               'class="chainfig"', "CCCCO", "NCES", "stroke-dasharray"):
         assert s_ in svg, s_
     assert "<a" not in svg and "xwrap" not in svg
     assert "Electroencephalographic" in svg and "Electroneurodiagnostic/" in svg      # the CIP title wraps at its slashes
     plain = _chain_svg(top, cips, ("29-2099", "Health Technologists and Technicians, All Other"), None)
-    assert "stroke-dasharray" not in plain and "within SOC" not in plain
+    assert "stroke-dasharray" not in plain and plain.count(">SOC 29-2099<") == 1     # the node's own label; no frame tag
     assert _onet_code("29-2099.01") == "29-2099.01" and _onet_code("29-2099") == "29-2099.00"
 
 
@@ -194,12 +198,14 @@ def test_statewide_supply_draws_no_rule_and_drops_regional(monkeypatch):
     regional = build_report_html("foothill", play, ReportSpec(**base), lens=lens)
     assert "openings a year" not in statewide and ">Annual Awards<" in statewide and "Regional Program Enrollment" not in statewide
     assert "530 openings a year" in regional and "Annual Awards vs. Annual Openings" in regional
+    # comparators standing alone keep their own colours in the awards bands; the regional form keeps the neutral ramp
+    assert 'fill="#c2410c"' in statewide and 'fill="#c2410c"' not in regional
 
 
 def test_sources_add_the_chain_group_and_cite_the_detailed_code():
     html = _sources_section("Foothill College", "Health", "https://d", "Neurodiagnostic Technology", ["29-2099.01"], "121200",
                             chain="29-2099.01")
-    assert "TOP–CIP–SOC Crosswalk Section" in html and "NCES CIP 2020 – SOC 2018 Crosswalk" in html
+    assert "TOP–CIP–SOC Crosswalk Section" in html and "NCES CIP 2020 – SOC 2018 Crosswalk" in html and "TOP Code Manual" in html
     assert "link/summary/29-2099.01" in html and "29-2099.00" not in html
     assert "TOP–CIP–SOC Crosswalk Section" not in _sources_section("F", "H", "https://d", "T", ["29-2099"], "121200")
 
@@ -215,3 +221,27 @@ def test_two_colleges_certificate_columns_are_prefixed_with_the_college():
     assert _col_label(a, "certificate", multi=True).startswith("Orange Coast ·")
     legend = column_legend([a, b], "certificate")
     assert "Orange Coast · Neurodiagnostic Technology" in legend and "San Diego Mesa · Neurodiagnostic Technology" in legend
+
+
+def test_postings_from_an_employers_own_site_are_marked_and_named():
+    default = {"29-2099": [LivePosting("Kaiser Permanente", "Neurodiagnostic Technician II", "https://c1/k")]}
+    mixed = {"29-2099": [LivePosting("UCSF Health", "EEG Technologist, Night Shift", "https://careers.ucsf.edu/x/2958", "careers.ucsf.edu"),
+                         LivePosting("Kaiser Permanente", "Neurodiagnostic Technician II", "https://c1/k")]}
+    occ = [_occ("29-2099", "Health Technologists and Technicians, All Other", 69710, 530)]
+    assert _employer_intro(default) == ("Live job postings from prominent regional employers, listed on CareerOneStop "
+                                        "(U.S. Department of Labor).")
+    assert "own careers site (careers.ucsf.edu)" in _employer_intro(mixed)
+    plain, marked = _employer_table(occ, default), _employer_table(occ, mixed)
+    assert "lsrc" not in plain
+    assert marked.count('class="lsrc"') == 1 and ">careers.ucsf.edu</span>" in marked and 'rowspan="2"' in marked
+
+
+def test_employer_note_renders_under_the_table_only_when_set(monkeypatch):
+    monkeypatch.setattr("partnerships.report._living_wage_for", lambda lens: None)
+    lens = _lens(occs=[_occ("29-2099", "Health Technologists and Technicians, All Other", 69710, 530)])
+    play = Play(id="x", title="Neurodiagnostic Technology", sector="health", socs=("29-2099",))
+    base = dict(org_name="F", org_short="R", lede="l")
+    with_ = build_report_html("foothill", play, ReportSpec(**base, employer_note="UCSF Health is the founding partner. [According to UCSF](https://u/x), it funds it."), lens=lens)
+    without = build_report_html("foothill", play, ReportSpec(**base), lens=lens)
+    i, j = with_.index('<table class="live">'), with_.index("founding partner")
+    assert i < j and 'href="https://u/x"' in with_ and "founding partner" not in without
