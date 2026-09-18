@@ -9,6 +9,7 @@ Coverage:
   - every file-level check agrees with the bundled export
   - a value that drifts is reported: an occupations.json row with a different openings figure fails the values check
   - an authored figure that matches neither an occupation's openings nor their sum is reported stale
+  - the regional totals line reports the nine regions' sum against the statewide row without failing
 """
 import json
 
@@ -38,3 +39,9 @@ def test_a_stale_authored_figure_is_reported(tmp_path, monkeypatch):
     monkeypatch.setattr(DV, "SAVED", tmp_path)
     f = DV.check_authored_figures(x)[0]
     assert not f.ok and "999" in f.detail
+
+
+def test_regional_totals_are_reported_against_the_statewide_row():
+    x = DV.load_export()
+    f, = DV.check_regional_totals(x)
+    assert f.ok and "9 regions sum to" in f.detail and "vs CA" in f.detail and "SCC" in f.detail

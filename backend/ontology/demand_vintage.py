@@ -18,6 +18,7 @@ import csv
 import gzip
 import json
 import re
+from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -73,6 +74,25 @@ def _close(a, b) -> bool:
     if a is None or b is None:
         return a is b
     return abs(float(a) - float(b)) <= 1e-6 * max(1.0, abs(float(b)))
+
+
+def check_regional_totals(x: Export) -> list[Finding]:
+    """Informational: the nine regions partition California's counties, so their jobs should
+    sum to about the statewide row (small-cell rounding leaves a residual). A release that
+    falls well short is missing a county somewhere. The 2024–2029 release summed 5.2% below
+    the CA row; the 2025–2030 release 2.7%, the difference almost entirely South Central
+    Coast, whose jobs doubled between the two. Compare this line across releases."""
+    jobs, openings = Counter(), Counter()
+    for (region, _), r in x.rows.items():
+        jobs[region] += r["employment"] or 0
+        openings[region] += r["annual_openings"] or 0
+    regions = sorted(g for g in x.regions if g != "CA")
+    rj, ro = sum(jobs[g] for g in regions), sum(openings[g] for g in regions)
+    def pct(a, b): return f"{100 * (a - b) / b:+.1f}%" if b else "n/a"
+    shares = ", ".join(f"{g} {jobs[g]:,}" for g in regions)
+    return [Finding("regional totals vs statewide", True,
+                    f"{len(regions)} regions sum to {rj:,} jobs vs CA {jobs['CA']:,} ({pct(rj, jobs['CA'])}), "
+                    f"{ro:,} openings vs {openings['CA']:,} ({pct(ro, openings['CA'])}); {shares}")]
 
 
 def check_occupations_json(x: Export) -> list[Finding]:
@@ -196,7 +216,7 @@ def check_graph(x: Export) -> list[Finding]:
 
 def run_checks(graph: bool = False) -> list[Finding]:
     x = load_export()
-    out = [Finding("export vintage", True, x.vintage)]
+    out = [Finding("export vintage", True, x.vintage)] + check_regional_totals(x)
     for fn in (check_occupations_json, check_sector_socs, check_eval_seed, check_characterization,
                check_authored_figures, check_skill_example):
         out += fn(x)
