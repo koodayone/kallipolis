@@ -620,6 +620,10 @@ _SPEC_OVERRIDE_FIELDS = (
     # Curriculum alignment: the roster id whose saved alignment renders the plates, and
     # the editorial paragraph above them.
     "curriculum_alignment", "curriculum_note",
+    # A program not yet offered (see ReportSpec): the detailed O*NET code its crosswalk
+    # chain ends in, the paragraph under that figure, the wage caption clause, and the
+    # supply scope. `planned_awards` (a list of rows) is handled below.
+    "crosswalk_chain", "chain_note", "wage_note", "supply_scope", "employer_note",
 )
 
 
@@ -652,14 +656,20 @@ def _generated_report_html(slug: str) -> str:
         from partnerships.registry import spec_for
         ps = spec_for(d["partnership"])
         charter = tuple(ps.colleges) if ps else ()
-    lens = build_lens(member, play=play, extra_colleges=charter)
+    # Named comparator colleges (def.extra_colleges) join the supply scope too — a
+    # program not yet offered is read against the colleges that already offer it,
+    # wherever in the state they sit. Not charter: they carry no gap semantics.
+    extra = tuple(d.get("extra_colleges") or ())
+    lens = build_lens(member, play=play, extra_colleges=charter + tuple(c for c in extra if c not in charter))
     spec = propose_spec(member, play, lens=lens,
                         author=d.get("author", "Kallipolis"), date=d.get("date", ""))
     over = {k: d[k] for k in _SPEC_OVERRIDE_FIELDS if d.get(k) is not None}
+    if d.get("planned_awards"):
+        over["planned_awards"] = tuple(d["planned_awards"])
     if d.get("live_postings"):
         # a SOC may carry a single posting (dict) or several (list) — normalize to a list
         over["live_postings"] = {
-            soc: [LivePosting(p["employer"], p["title"], p["url"])
+            soc: [LivePosting(p["employer"], p["title"], p["url"], p.get("source", ""))
                   for p in (plist if isinstance(plist, list) else [plist])]
             for soc, plist in d["live_postings"].items()}
     if d.get("competencies"):

@@ -635,7 +635,9 @@ def _check_against_def(roster: dict) -> None:
     d = json.loads(dp.read_text(encoding="utf-8"))
     if not d.get("socs"):
         return
-    extra = [s for s in roster.get("occupations", []) if s not in d["socs"]]
+    # a roster may read against a detailed O*NET-SOC code ("29-2099.01") whose base SOC is the
+    # def's occupation ("29-2099", the code demand is reported under)
+    extra = [s for s in roster.get("occupations", []) if s not in d["socs"] and s[:7] not in d["socs"]]
     if extra:
         logger.warning("%s: roster occupations %s are not among the def's socs — add them to the def "
                        "(with a _comment) or drop them from the roster", roster["id"], ", ".join(extra))
@@ -750,7 +752,10 @@ def scaffold(college_key: str, control_number: str, *, pcf_dir: Path = PCF_DIR, 
     if award is None:
         raise SystemExit(f"no COCI award with control number {control_number} at {college}")
     catalog_key = next((k for k, n in keys.items() if n == college), college_key)
-    pcf = next((pcf_dir / f"ProgramCourseFile_{k}.csv" for k in dict.fromkeys([college_key, catalog_key])
+    # the state's files are named by catalog key for some colleges ("foothill") and by the
+    # college's name for others ("orange_coast", "san_diego_mesa")
+    name_key = re.sub(r"[^a-z0-9]+", "_", re.sub(r"\s+College$", "", college).lower()).strip("_")
+    pcf = next((pcf_dir / f"ProgramCourseFile_{k}.csv" for k in dict.fromkeys([college_key, catalog_key, name_key])
                 if (pcf_dir / f"ProgramCourseFile_{k}.csv").exists()), None)
     if pcf is None:
         raise SystemExit(f"no ProgramCourseFile for {college_key!r} in {pcf_dir}")

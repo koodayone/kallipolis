@@ -1,0 +1,36 @@
+{
+ "college": "Orange Coast College",
+ "system": "courseleaf",
+ "code": "NDT A191",
+ "title": "EEG Record Review-Normal",
+ "description": "Practice in electroencephalograph (EEG) record review of normal adult and pediatric patients. Technical description of normal EEG patterns. COREQUISITE: NDT A115. Transfer Credit: CSU.",
+ "outcomes": [
+  "List, identify and describe normal EEG patterns in the neonatal, infant, pediatric and adult age groups."
+ ],
+ "objectives": [
+  "1. Identify and describe the four basic EEG rhythms using Frequency (F), Morphology (M), Topography (T), and Reactivity (R).",
+  "2. Identify and describe the FMTR of normal EEG sleep rhythms in the pediatric and adult patient.",
+  "3. Identify and describe the FMTR of normal awake variants of the EEG in the pediatric and adult patient.",
+  "4. Identify and describe the FMTR of normal EEG variants of sleep in the pediatric and adult patient.",
+  "5. Identify and describe the EEG findings during non-REM and REM stages of sleep.",
+  "6. Identify and describe the FMTR of normal EEG patterns elicited by activations.",
+  "7. Identify and describe the FMTR of neonatal patterns including Trace Discontinu, Trace Alternant, Encouche Frontalis, Activite Moyenne, and Delta Brushes."
+ ],
+ "content": [
+  "EEG Description Characteristics of EEG Recordings Frequency Dominant frequency Non-dominant frequencies Other waveforms Amplitude Voltage Distribution/Topography Symmetry Synchrony Waveform Morphology Manner of occurrence (continuous or intermittent, random or rhythmic) Reactivity The EEG and State of Consciousness Basic EEG Waveforms Alpha Beta Theta Delta Normal Wake Variants Slow Alpha Variant Fast Alpha Variant Lambda Rhythm Mu Rhythm Posterior Slow Waves of Youth Shut Eye Waves Sleep Stage I Sleep Vertex waves Hypnagogic Hypersynchrony POSTS (Positive Occipital Sharp Transients of Sleep) RMTD (Rhythmic MidTemporal Theta Discharges) Wicket Spikes BETS Phantom spike and wave 14 6 Hz positive spikes Stage II Sleep Sleep spindles K-Complex Background Stage III Sleep Cone Waves Sail Waves Background REM Sleep Saw tooth Waves Background Rapid Eye Movements Activations HV Build-Up Photomyogenic Response Photic Driving Harmonic Subharmonic Neonatal EEG: Delta Brushes Encouche Frontalis Trace Discontinu Trace Alternant Activite Moyenne Other Waveforms FAR (Frontal Arousal Response) Temporal Slowing in Elderly Theta Rhythm of Ciganek",
+  "SREDA"
+ ],
+ "lab": [],
+ "assignments": [
+  "Required text/instructor handout reading (2 hrs/wk). .",
+  "EEG Atlas portfolio Technical descriptions/impressions of EEG tracings",
+  "EEG portfolio, short essay homework/discussion assignments, technical impressions (2-3 hrs/wk). ."
+ ],
+ "source_url": "https://catalog.cccd.edu/courses/ndt-a191/",
+ "effective": "",
+ "approved": "11/15/2023",
+ "retrieved": "2026-09-17",
+ "notes": "",
+ "link_ok": true,
+ "link_checked": "2026-09-17"
+}

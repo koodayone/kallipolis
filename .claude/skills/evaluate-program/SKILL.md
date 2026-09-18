@@ -212,6 +212,45 @@ tables read as one throughput story.
       (`uvicorn partnerships.alignment_canvas:app --port 8010`, `?roster=<def slug>`).
 6. **Render + review**, then export via `tools/report-render/export.sh` as usual. The def's `date` is the edition date the byline prints, not a render timestamp: set it to the day the def was last materially revised, and bump it whenever the content changes (the four August evaluations shipped in September with an August byline until this was noticed).
 
+## A program not yet offered
+
+An evaluation can be asked for before the program exists — Foothill's neurodiagnostic technology
+A.S. (TOP 121200, with UCSF, first cohort fall 2027) had no Curriculum Inventory award, no
+awards, no enrollment and no courses. The report then evaluates the program's DESIGN: the
+market it enters and the programs already serving it. Same skill, same def, five extra keys
+(all read by `partnerships/api.py`; every other def leaves them out and renders unchanged):
+
+- **Destination.** The derivation rule may reach nothing (121200 → 29-2099 is an ALL_OTHER
+  code). Keep the def's `socs` as the code the graph and COE know — the DEMAND section
+  carries that bucket's COE figure — and set `crosswalk_chain` to the detailed O*NET code the
+  program prepares for (`"29-2099.01"`). That renders the **TOP–CIP–SOC Crosswalk** section:
+  TOP → CIP (from `ontology.crosswalks.top6_to_cips_for_soc`) → the detailed occupation, with
+  the SOC drawn as a dashed umbrella around it. `chain_note` is its paragraph. The
+  `demand_note` carries ONE sentence placing the detailed code inside the umbrella. The
+  `_comment` records that the destination is authored, with the chain as justification.
+- **Awards Offered.** `planned_awards: [{"title", "credential", "units"}]` renders the announced
+  credential when COCI has nothing; the caption names COCI as silent. `units` is prose here
+  ("Program map to be published; first cohort expected fall 2027").
+- **Wage Outcomes.** `wage_note` appends the clause the data cannot say: the statewide cohort
+  predates the college's program.
+- **Comparators.** The colleges already offering the TOP, wherever they sit:
+  `awards_for(college, TOP6)` across the state (COCI), then `extra_colleges: [names]` so the lens
+  reads their programs, `programs: [[college, TOP6], …]` set explicitly (so no charter gap is
+  inferred), and `supply_scope: "statewide"` when they sit outside the member's COE region — the
+  awards chart then draws no regional openings rule and the supply titles drop "Regional". Add
+  the comparators to `program_display_names.json` (find-program-name) so badges and links are right.
+- **Curriculum Alignment.** Read the COMPARATORS' courses against the detailed code: scaffold
+  their records (`scaffold <catalog key> <control number>`; the state's ProgramCourseFile may be
+  named by the college's name — the scaffold tries that too), trim to the major, set their
+  outline `source` (Coast CCD: `{"system": "courseleaf", "host": "catalog.cccd.edu"}`; SDCCD:
+  `{"system": "curriqunet", "host": "sdccd.curriqunet.com", "report_id": 4}` with per-course
+  `entity_id` from `courses.outlines.curriqunet_catalog_courses`). The roster's `occupations`
+  and `paired_soc` may be the detailed code — `run` accepts a code whose base SOC is in the
+  def's `socs` — and its columns are `"certificate"`: with two colleges the column headers are
+  prefixed with the college. `curriculum_note` says whose courses are read and why.
+- **Postings.** `scrape_jobs.cjs "29-2099.01" <zip> <radius>` — a detailed code passes through
+  to CareerOneStop and finds the titled postings the bucket search would bury.
+
 ## Known v2 candidates (deliberately NOT built)
 
 Bare-bones by intent — the use case is early. Worth adding only once real program reviews

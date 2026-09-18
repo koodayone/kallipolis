@@ -1,0 +1,40 @@
+{
+ "college": "Orange Coast College",
+ "system": "courseleaf",
+ "code": "NDT A110",
+ "title": "Basic Electroencephalography",
+ "description": "Fundamentals of EEG, including application of electrodes, basic wave forms, artifacts, and introduction to the EEG machine. All enrollees must be accepted into the Neurodiagnostic program. PREREQUISITE: Acceptance into the Neurodiagnostic Technology program. Transfer Credit: CSU.",
+ "outcomes": [
+  "Identify and define observed basic EEG rhythms, activity, artifacts, and instrument setting effects on the EEG recording.",
+  "Prepare a patient for an EEG recording using the International 10/20 system to accurately measure and apply standard EEG electrodes to a mannequin head according to ACNS guidelines."
+ ],
+ "objectives": [
+  "1. Measure and apply the 21 standard EEG electrodes using the International 10/20 system of electrode placement on a mannequin head accurately (to within 5 mm) and within 45 minutes.",
+  "2. Define and identify on the EEG recording the basic EEG rhythms, activity, and artifacts.",
+  "3. Describe, define, and perform the standard EEG activations used in an EEG routine recording.",
+  "4. Define, describe, and utilize the major instrument controls such as high and low filters, sensitivity, and calibration.",
+  "5. Describe, list, and set up all of the recommended montages used in routine EEG.",
+  "6. Take an accurate and complete patient history.",
+  "7. Apply electrodes using collodion in an acceptable manner to emulate the application process for recording EEG activity for 24 hour recordings or ambulatory EEG studies.",
+  "8. Accurately calibrate an EEG instrument and be able to trouble shoot basic equipment issues.",
+  "9. Describe and perform proper cleaning/disinfection techniques of electrodes and equipment."
+ ],
+ "content": [
+  "Introduction What is EEG? When is an EEG done? Responsibilities of an EEG technologist Terms Basic EEG terminology Neurological terms Basic Rhythms of EEG Configuration Normal wake patterns Normal sleep patterns Abnormal patterns Polarity and Localization Bipolar Referential Waveform Measurements Amplitude Duration Frequency Types of Montages Bipolar Referential Common Average Reference Electrode Application and Types of Electrodes Paste Discs Collodion Needles Other Electrode Equipment Care Proper Cleaning Technique Disinfection Technique Care of Electrodes Types of Artifacts Physiological Nonphysiological Instrumental Environmental Monitoring Parts of the EEG Machine Amplifiers Display Power supply Electrode board and Montage Selection Digital EEG (Analog/Digital Conversion, Digital Filtering) Types of Activations Hyperventilation Photic stimulation Sleep How to Take a Patient History Present illness Past history Reports Observations EEG Controls Gain Sensitivity Display/Paperspeed Filters High frequency filter Low frequency filter Active filters Digital filtering Frequency Response Curves ACNS Guidelines Minimal standards of EEG Electrical Safety"
+ ],
+ "lab": [
+  "1. The International 10-20 System of Electrode Placement A. Practice electrode measurements on Foam head B. Practice electrode measurements on short hair mannequin head C. Practice electrode measurements on long hair mannequin head D. Practice electrode measurements and electrode application on long hair mannequin head. 2. Collodian application technique and practice 3. Disinfection, Cleaning, and Care of EEG Electrodes A. Proper Cleaning Technique B. Disinfection Technique C. Care of Electrodes 4. Introduction to EEG Equipment A. Parts of the EEG Instrument 1. Computer/Monitor 2. Amplifier/Input Box 3. Photic Lamp 4. Electrodes B. EEG Program 1. Montage 2. Impedance Meter 3. Acquisition 4. Intermittent Photic Stimulation 5. Hyperventilation Stimulation C. Amplifier 1. High Frequency Filter 2. Low Frequency Filter 3. Notch Filter 4. Sensitivity and Gain 5. Electrical baseline 6. Lead/Electrode Impedance C. Calibration 1. Square Wave Calibration 2. Bio-Calibration D. Activations 1. Hyperventilation 2. Photic Stimulation 3. Sleep E. ACNS Guidelines 1. Minimal Standards of EEG 2. Electrical Safety"
+ ],
+ "assignments": [
+  "Required Textbook reading (2 hours/week) Required supplemental reading including journal articles and online research. (2 hours/week)",
+  "Research reports demonstrating writing skill and comprehension of topics researched for improving communication skills. (2 hours/week) Homework assignments: including practice in writing technical impressions, measuring/recognition of waveforms and EEG instrumentation concepts (1 hour/week)",
+  "Skills homework - Practice measuring, marking mannequin head. (2 hours/week)"
+ ],
+ "source_url": "https://catalog.cccd.edu/courses/ndt-a110/",
+ "effective": "",
+ "approved": "11/15/2023",
+ "retrieved": "2026-09-17",
+ "notes": "",
+ "link_ok": true,
+ "link_checked": "2026-09-17"
+}

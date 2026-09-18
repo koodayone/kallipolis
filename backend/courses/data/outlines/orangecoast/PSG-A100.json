@@ -1,0 +1,36 @@
+{
+ "college": "Orange Coast College",
+ "system": "courseleaf",
+ "code": "PSG A100",
+ "title": "Polysomnography Basics",
+ "description": "An introduction to fundamentals of sleep technology, the signs, symptoms, treatments, polysomnography recording techniques, and other differences observed in various sleep disorders. Transfer Credit: CSU.",
+ "outcomes": [
+  "Describe and identify the signs, symptoms, treatments, polysomnographic recording techniques, and other differences observed in various sleep disorders."
+ ],
+ "objectives": [
+  "1. Define Polysomnography, past, present and future",
+  "2. Describe sleep across the life span",
+  "3. Differentiate normal as compared to abnormal sleep patterns.",
+  "4. Describe the different types of sleep disorders (knowledge).",
+  "5. Describe the signs and symptoms found in different types of sleep problems(knowledge).",
+  "6. Recognize Excessive daytime sleepiness, insomnia and tips for healthy sleep.",
+  "7. Describe Sleep disorders and disorders that affect sleep.",
+  "8. Define the Sleep technologist role in a sleep center, ethics and professionalism."
+ ],
+ "content": [
+  "Polysomnography past, present and future Sleep across the life cycle Oveview of sleep disorders Normal vs abnormal sleep Signs of sleep problems, signs and symptoms Sleep disorders and the affect on quality of life The role of a sleep technologist Ethics and professionalism"
+ ],
+ "lab": [],
+ "assignments": [
+  "1 1.5 hours per week Reading assignments of recommended sleep articles.",
+  "Overview of sleep diary and sleep questionnaires and good sleep hygiene.",
+  "1 1.5 hours per week Completing handouts, sleep diary and sleep questionnaires."
+ ],
+ "source_url": "https://catalog.cccd.edu/courses/psg-a100/",
+ "effective": "",
+ "approved": "12/06/2017",
+ "retrieved": "2026-09-17",
+ "notes": "",
+ "link_ok": true,
+ "link_checked": "2026-09-17"
+}

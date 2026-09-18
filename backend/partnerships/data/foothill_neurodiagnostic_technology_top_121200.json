@@ -1,0 +1,33 @@
+{
+  "_comment": "Curriculum-alignment roster for the foothill-neurodiagnostic-technology-top-121200 program evaluation. Foothill's program (A.S. with UCSF, first cohort expected fall 2027) has no courses yet, so the roster reads the two California programs under TOP 121200 — Orange Coast's and San Diego Mesa's associate degrees — against the detailed O*NET occupation the def's SOC 29-2099 reports; columns are labelled by certificate with the college prefixed. Readings are saved per program under saved_reports/alignment/.",
+  "id": "foothill-neurodiagnostic-technology-top-121200",
+  "onet_release": "31.0",
+  "short_name": "Foothill College",
+  "columns": "certificate",
+  "occupations": [
+    "29-2099.01"
+  ],
+  "top_n": 5,
+  "programs": [
+    {
+      "program": "orangecoast-neurodiagnostic-technology",
+      "paired_soc": "29-2099.01",
+      "crosswalk_socs": [
+        "29-2099"
+      ],
+      "pairing_basis": "The degree's stated purpose is preparing Neurodiagnostic Technologists (O*NET-SOC 29-2099.01). TOP 121200 crosswalks to CIP 51.0903 (Electroneurodiagnostic/Electroencephalographic Technology) and on to SOC 29-2099, Health Technologists and Technicians, All Other — the code the Centers of Excellence report demand under; 29-2099.01 is the detailed occupation inside it.",
+      "reads_against": [],
+      "review_socs": []
+    },
+    {
+      "program": "sdmesa-neurodiagnostic-technology",
+      "paired_soc": "29-2099.01",
+      "crosswalk_socs": [
+        "29-2099"
+      ],
+      "pairing_basis": "The degree's stated purpose is preparing Neurodiagnostic Technologists (O*NET-SOC 29-2099.01). TOP 121200 crosswalks to CIP 51.0903 (Electroneurodiagnostic/Electroencephalographic Technology) and on to SOC 29-2099, Health Technologists and Technicians, All Other — the code the Centers of Excellence report demand under; 29-2099.01 is the detailed occupation inside it.",
+      "reads_against": [],
+      "review_socs": []
+    }
+  ]
+}

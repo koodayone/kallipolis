@@ -21,8 +21,10 @@ from partnerships.alignment import LEVEL, PLO, SECTION_LABEL, Plate, lead_for
 
 #: Evergreen Valley's green against Ohlone's. De Anza takes the report's amber accent;
 #: Evergreen Valley keeps its own green, which is dark enough beside Ohlone's lighter one.
-_COLLEGE_FALLBACK = {"deanza": "#c98a1b", "evc": "#1e894a"}
-_COLOR_ALIAS = {"evc": "evergreen"}
+#: Orange Coast IS orange — the logo extraction kept its navy; this is the brand orange
+#: deepened until white type clears 4.5:1 on it.
+_COLLEGE_FALLBACK = {"deanza": "#c98a1b", "evc": "#1e894a", "orangecoast": "#c2410c"}
+_COLOR_ALIAS = {"evc": "evergreen", "sdmesa": "sandiegomesa"}
 
 
 def college_color(member_id: str) -> str:
@@ -37,16 +39,26 @@ def _short(college: str) -> str:
     return _short_college(college)
 
 
-def _col_label(pl: Plate, columns: str) -> str:
+def _col_label(pl: Plate, columns: str, *, multi: bool = False) -> str:
     """What a column is called: the college (a consortium roster, one program per college)
-    or the certificate (an evaluation roster, one college's programs side by side)."""
-    return _short(pl.college) if columns == "college" else (pl.short_title or pl.certificate)
+    or the certificate (an evaluation roster, one college's programs side by side). When
+    certificate columns span more than one college (an evaluation reading other colleges'
+    programs), the college is prefixed so two same-named degrees stay apart."""
+    if columns == "college":
+        return _short(pl.college)
+    label = pl.short_title or pl.certificate
+    return f"{_short(pl.college)} · {label}" if multi else label
+
+
+def _multi_college(plates: list[Plate]) -> bool:
+    return len({p.college for p in plates}) > 1
 
 
 def column_legend(plates: list[Plate], columns: str = "college") -> str:
     seen, items = set(), []
+    multi = _multi_college(plates)
     for pl in plates:
-        label = _col_label(pl, columns)
+        label = _col_label(pl, columns, multi=multi)
         if label in seen:
             continue
         seen.add(label)
@@ -102,7 +114,8 @@ def occupation_block(soc: str, plates: list[Plate], *, top_n: int = 10, college_
     rows = [r for r in ranked if evidenced(r)][:top_n] if not show_gaps else ranked[:top_n]
     # How each college connects to the occupation (its pairing or its crosswalk) is
     # provenance, not reading matter: it stays on the viewed Plate, off the page.
-    head = "".join(f'<th style="--c:{college_color(p.member_id)}"><span class="alg-colhd">{escape(_col_label(p, columns))}</span></th>'
+    multi = _multi_college(plates)
+    head = "".join(f'<th style="--c:{college_color(p.member_id)}"><span class="alg-colhd">{escape(_col_label(p, columns, multi=multi))}</span></th>'
                    for p in plates)
     # No method line per block: how rows are chosen and ordered is said once, in the
     # section's opening paragraph (report._curriculum_section).

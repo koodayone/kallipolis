@@ -1,0 +1,158 @@
+# Curriculum alignment review — sdmesa-neurodiagnostic-technology
+Generated 2026-09-17 · O*NET 31.0 database (August 2026), U.S. Department of Labor
+
+## San Diego Mesa College — Associate of Science Degree, Neurodiagnostic Technology → Neurodiagnostic Technologists (SOC 29-2099.01)
+13 of 18 activities at outcome level, 14 with any evidence.
+
+- ● **Collect information about clients.**
+    - NDTE 140 [SLO]: “Student will be able to identify and monitor artifacts with 75% accuracy and identify normal EEG activity with 90% accuracy.” — identifying artifacts on EEG recordings directly evidences indicating interferences on electroneurodiagnostic recordings
+    - NDTE 140 [SLO]: “Student will be able to identify and monitor artifacts with 75% accuracy” — artifact identification on recordings is literally indicating interferences on EEG recordings
+    - NDTE 140 [Content outline]: “Identification of artifacts” — content topic on identifying artifacts in EEG recordings directly evidences the activity
+    - NDTE 101 [SLO]: “Students will be able to identity basic waveforms and artifacts.” — identifying artifacts on EEG recordings evidences indicating interferences derived from outside the brain
+    - NDTE 101 [Objective]: “Define and identify the basic EEG rhythms, activity, and artifacts on the recording.” — identifying artifacts on the EEG recording directly evidences indicating non-cerebral artifacts/interferences
+    - NDTE 101 [Lab content]: “Identification on the Recording of Basic EEG Rhythms, Activity and Artifacts” — lab practice identifying artifacts on the recording evidences indicating artifacts/interferences
+    - NDTE 121 [Objective]: “Identify and assess the basic EEG rhythms/EP waveforms and artifacts on a recording.” — identifying artifacts on recordings directly matches indicating interferences on ND recordings
+    - NDTE 131 [SLO]: “Select and record standard montages, annotate wake, drowsy and/or sleep patterns and electrode artifacts” — annotating electrode artifacts is indicating interference from sources outside the brain on the recording
+    - NDTE 135 [SLO]: “Students will be able to identify the characteristics of EEG recordings in technical terms, frequency, morphology, topography, and reactivity.” — identifying recording characteristics is the basis for spotting non-cerebral artifacts on EEG
+    - NDTE 135 [Objective]: “Compare and contrast normal and abnormal waveforms.” — distinguishing normal from abnormal waveforms is required to flag artifacts/interferences on the recording
+    - NDTE 150 [SLO]: “Student will be able to identify and monitor artifacts with 85% accuracy” — identifying artifacts on EEG recordings is literally indicating interferences outside the brain
+    - NDTE 250 [SLO]: “Student will be able to identify and monitor artifacts with 85% accuracy” — identifying artifacts on EEG recordings is literally indicating interference from outside the brain
+    - NDTE 250 [Objective]: “Identify and monitor artifacts with 100% accuracy.” — directly restates the O*NET task of indicating artifacts/interferences on recordings
+    - NDTE 260 [Objective]: “Identify artifacts with 100% accuracy.” — identifying artifacts on recordings directly matches indicating artifacts/interferences on ND recordings
+    - NDTE 260 [SLO]: “improvements in the recognition of mechanical and physiological artifacts” — recognizing artifacts is the literal act of indicating interferences on recordings
+- ● **Collect medical information from patients, family members, or other medical professionals.**
+    - NDTE 101 [Objective]: “Complete an accurate patient history.” — taking patient history literally evidences collecting medical information to customize tests
+    - NDTE 140 [Objective]: “Gather relevant and valid patient data.” — gathering patient data evidences collecting medical information from patients
+    - NDTE 121 [Objective]: “Complete an accurate and concise patient history.” — collecting patient medical history to customize tests matches literally
+    - NDTE 150 [Assignment]: “Reporting patient's pertinent clinical history, test results and testing parameters.” — collecting and reporting clinical history is collecting medical information from patients
+    - NDTE 150 [Objective]: “Take valid patient data.” — taking patient data is collecting medical information from patients
+    - NDTE 250 [Objective]: “Take valid patient data.” — collecting valid patient data is collecting medical information to customize tests
+    - NDTE 260 [Objective]: “Take valid patient histories.” — collecting patient histories is collecting medical information from patients
+    - NDTE 260 [Objective]: “Take valid patient data.” — collecting patient data to customize tests matches collecting medical information from patients
+- ● **Monitor patient conditions during treatments, procedures, or activities.**
+    - NDTE 260 [SLO]: “monitoring patients in advance clinical settings such as ICU and LTM units.” — monitoring patients during recordings literally matches monitoring patient conditions during procedures
+    - NDTE 250 [Objective]: “Identify and monitor artifacts with 100% accuracy.” — monitoring during EEG recording evidences monitoring patient conditions during the procedure
+    - NDTE 131 [SLO]: “Demonstrate patient observation technique, instruct subject on HV and PS procedures, and post recording demonstrate proper cleaning of subject scalp” — observing the patient during the EEG recording is monitoring patient condition during the test
+- ● **Test patient nervous system functioning.**
+    - NDTE 121 [Objective]: “Perform accurate and interpretable EEG/EP recordings on human volunteers in the classroom lab setting according to ACNS guidelines.” — performing EEG/EP recordings literally matches testing patient nervous system functioning
+    - NDTE 131 [Objective]: “Perform accurate polysomnography (PSG) patient setup, system & patient calibration, and record a 15 minute baseline study.” — performing PSG recording literally matches conducting polysomnography studies
+    - NDTE 131 [Objective]: “Perform and interpret EEG recordings on human volunteers that conform to the Academy of Clinical Neurophysiology Society (ACNS) minimal guidelines.” — performing EEG recordings is directly conducting an EEG test of nervous system function
+    - PLO [Program outcome]: “Perform safe and accurate neurodiagnostic testing within the scope of practice.” — PLO literally states graduates perform neurodiagnostic testing, a directly constitutive component of testing patient nervous system functioning
+    - NDTE 101 [Objective]: “Describe, define and perform the standard EEG activations used in routine recordings.” — performing EEG activations is a constitutive component of conducting EEG testing
+    - NDTE 140 [SLO]: “apply electrodes accurately within 35 minutes and get the patient's test performed in an acceptable time” — literal statement that students conduct EEG tests on patients
+    - NDTE 140 [Objective]: “Identify normal EEG activity with 90% accuracy.” — reading and interpreting EEG activity is a directly constitutive component of conducting EEG studies
+    - NDTE 150 [SLO]: “Students will be able to apply electrodes accurately within 30 minutes and get the patient's test performed in an acceptable time.” — performing EEG testing on clinical patients is directly testing nervous system functioning
+    - NDTE 150 [Content outline]: “EEG's on neonatal pediatric patients, adult patients, intensively ill patients and those with electrocerebral inactivity.” — conducting EEG studies including electrocerebral inactivity evidences nervous system testing
+    - NDTE 250 [Description]: “performance of EEG testing on clinical patients, medical record keeping and clinical history taking” — conducting EEG testing on patients is literally the core diagnostic task
+    - NDTE 250 [Objective]: “Recall the lab protocol including routine montages.” — applying montage protocol is part of conducting EEG studies
+    - NDTE 260 [Description]: “advanced skills in electroencephalographic (EEG) recording and analysis, and more specialized diagnostic testing procedures” — conducting EEG and specialized ND testing is literal nervous system function testing
+    - NDTE 260 [Objective]: “Identify and measure important data from EP waveforms.” — measuring evoked potentials matches measuring EPs to determine responses to stimuli
+- ● **Explain medical procedures or test results to patients or family members.**
+    - NDTE 140 [Objective]: “Relate to patients in a positive manner to encourage patient cooperation and enhance attitude including good communication skills in explaining all procedures and expectations of the patient.” — explaining procedures to patients literally matches explaining medical procedures to patients
+    - NDTE 260 [Objective]: “Explain each test procedure clearly, and obtain optimal patient cooperation.” — explaining test procedure to patient literally matches explaining procedures to patients
+    - NDTE 131 [SLO]: “Demonstrate patient observation technique, instruct subject on HV and PS procedures, and post recording demonstrate proper cleaning of subject scalp” — instructing the subject on testing procedures is explaining the procedure to the patient
+    - NDTE 150 [Objective]: “Relate to patients in a positive manner to encourage patient cooperation and enhance attitude including good communication skills in explaining all procedures and expectations of the patient.” — explaining procedures and expectations to patients is explaining medical procedures to patients
+    - NDTE 250 [Content outline]: “Positive patient communication including appropriate explanation of procedures and expectations of patient” — explaining procedures to patients matches explaining testing procedures to patients
+- ● **Adjust settings or positions of medical equipment.**
+    - NDTE 250 [Objective]: “Use the EEG machine settings to obtain optimal recordings.” — adjusting machine settings literally matches adjusting settings of medical equipment
+    - NDTE 250 [Content outline]: “Appropriate machine settings for optimal recording” — content line evidences adjusting equipment settings during test setup
+    - NDTE 260 [Objective]: “Use machine settings (including filters, sensitivity, etc.) accurately and when necessary.” — adjusting instrument settings literally matches adjusting settings of medical equipment
+    - NDTE 260 [Objective]: “Justify appropriate use of montages with 90% accuracy.” — setting montages matches setting electrical combinations/positions for testing responses
+    - NDTE 101 [Objective]: “Define, describe and utilize the major instrument controls such as high and low filters, sensitivity, and calibration.” — adjusting filters/sensitivity/calibration controls literally evidences adjusting settings of medical equipment
+    - NDTE 101 [Lab content]: “Identification and Utilization of the Major Instrument Controls” — hands-on use of EEG instrument controls evidences adjusting equipment settings
+    - NDTE 121 [Objective]: “Utilize the major instrument controls such as high and low filters, sensitivity, and calibration.” — adjusting filters/sensitivity settings on equipment matches adjusting equipment settings
+    - NDTE 131 [SLO]: “Select and record standard montages, annotate wake, drowsy and/or sleep patterns and electrode artifacts” — selecting and recording montages is setting the electrical combination configuration of the EEG equipment
+    - NDTE 140 [Objective]: “Use appropriate machine settings to provide optimal recording as necessary.” — adjusting machine settings for recording is literally adjusting equipment settings
+    - NDTE 140 [Objective]: “Recall the lab montages.” — recalling and applying montages is setting electrical combinations for testing
+    - NDTE 150 [Objective]: “Use appropriate machine settings to provide optimal recording as necessary.” — adjusting machine settings for optimal recording is adjusting settings of medical equipment
+- ● **Operate diagnostic or therapeutic medical instruments or equipment.**
+    - NDTE 260 [Objective]: “Set up EP equipment to the desired protocols for each modality.” — setting up EP equipment/protocols literally matches setting up montages when testing evoked responses
+    - NDTE 101 [Objective]: “Describe, list and set up all of the recommended montages used in routine EEG.” — setting up montages literally matches operating diagnostic equipment for testing responses
+    - NDTE 121 [Objective]: “Set up all of the recommended montages used in routine EEG/EP.” — setting up montages/electrical combinations matches operating diagnostic instruments task literally
+    - NDTE 131 [SLO]: “Select and record standard montages, annotate wake, drowsy and/or sleep patterns and electrode artifacts” — recording standard montages is operating the EEG diagnostic instrument
+    - NDTE 131 [Objective]: “Perform accurate polysomnography (PSG) patient setup, system & patient calibration, and record a 15 minute baseline study.” — operating PSG system calibration and recording is operating diagnostic medical equipment
+    - NDTE 140 [Content outline]: “Appropriate machine settings for optimal recording” — operating the EEG machine with correct settings evidences operating diagnostic medical equipment
+    - NDTE 150 [Objective]: “Calibrate the machine within 100% accuracy and be able to make all necessary adjustments to the instrument for accurate recordings” — operating and calibrating the EEG instrument is operating diagnostic medical equipment
+    - NDTE 150 [Objective]: “Learn the lab montages.” — using montages during EEG recording is operating diagnostic instruments per O*NET montage task
+    - NDTE 250 [Objective]: “Calibrate and adjust instrument with 100% accuracy including proper calibrations at end of each test” — calibrating and operating the EEG instrument is operating diagnostic medical equipment
+- ● **Prepare medical supplies or equipment for use.**
+    - NDTE 121 [Objective]: “Set up all of the recommended montages used in routine EEG/EP.” — setting up montages/electrical combinations literally matches preparing equipment for testing
+    - NDTE 101 [Objective]: “Set up the International 10/20 system to measure and apply the 21 23 standard EEG electrodes on a mannequin head accurately” — setting up electrode placement system for recording is preparing equipment/supplies for the EEG test
+    - NDTE 131 [Objective]: “Perform accurate polysomnography (PSG) patient setup, system & patient calibration, and record a 15 minute baseline study.” — system and patient calibration prior to recording is preparing equipment for use
+    - NDTE 140 [Objective]: “Calibrate the machine with 100% accuracy and ability to make all necessary adjustments to the instrument for accurate recordings” — calibrating the instrument before use is preparing equipment for use
+    - NDTE 150 [Content outline]: “Application of electrodes in timely and accurate manner” — preparing electrodes and machine for a test is preparing medical equipment for use
+    - NDTE 250 [Content outline]: “Application of electrodes in timely and accurate manner” — preparing and applying electrodes readies equipment/supplies for the EEG test
+    - NDTE 260 [Objective]: “Set up EP equipment to the desired protocols for each modality.” — preparing/setting up equipment for testing matches preparing medical supplies or equipment for use
+- ● **Prepare reports summarizing patient diagnostic or care activities.**
+    - NDTE 140 [Content outline]: “Ability to write description of each EEG performed” — writing a technical description of the EEG literally matches summarizing technical data for diagnosis
+    - NDTE 140 [Assignment]: “Reporting patient's clinical history, test results, and testing parameters.” — literal assignment to report/summarize test results and clinical findings
+    - NDTE 250 [Objective]: “Write an accurate description of EEG's performed with 80% accuracy.” — writing description of recordings evidences preparing reports summarizing diagnostic findings
+    - NDTE 250 [SLO]: “Accurately document all work, including calibrations, instrument settings, clinical findings” — documenting clinical findings is preparing a report of diagnostic activities
+    - NDTE 135 [Assignment]: “Creating an EEG atlas portfolio with examples and written descriptions of normal EEG patterns.” — producing written descriptive summaries of EEG findings evidences preparing diagnostic reports
+    - NDTE 150 [SLO]: “Accurately document all work, including calibrations, instrument settings, clinical findings, modifications to recording, and appropriate patient information.” — documenting clinical findings is preparing a report summarizing diagnostic activities
+    - NDTE 150 [Objective]: “Write a description of each EEG performed with accuracy as determined when reviewed by a technologists.” — writing an EEG description summarizes diagnostic findings for physician review
+    - NDTE 260 [Objective]: “Write a description of each EEG at an acceptable level when reviewed by the technologist.” — writing EEG description summarizing findings matches preparing reports summarizing diagnostic activities
+- ● **Measure the physical or physiological attributes of patients.**
+    - NDTE 101 [Objective]: “Set up the International 10/20 system to measure and apply the 21 23 standard EEG electrodes on a mannequin head accurately” — measuring the head to place electrodes literally matches measuring patients and marking electrode locations
+    - NDTE 101 [SLO]: “Students will be able to demonstrate measurement of electrodes sites according to appropriate standards of clinical practice.” — measuring electrode sites literally evidences measuring patients' body parts and marking electrode locations
+    - NDTE 121 [Objective]: “Measure and apply the 21 23 standard EEG electrodes on a human volunteer accurately (to within 5mm)” — measuring electrode sites on a person literally matches measuring body parts and marking locations
+    - NDTE 121 [Objective]: “Measure and apply the 21 23 standard EEG electrodes on a human volunteer accurately (to within 5mm), under 5k ohms impedance, and within 45 minutes using the International 10/20 system.” — measuring locations on body to place electrodes matches measuring physical attributes and marking locations
+    - NDTE 131 [SLO]: “Students will be able to demonstrate measurement of electrodes sites according to the 10-20 System of Electrode Placement:” — measuring electrode sites on the head is measuring the physical attributes of the patient
+    - NDTE 250 [Objective]: “Apply electrodes accurately to within 5mm of homologous regions, within 25 minutes” — measuring within 5mm of homologous regions is measuring body parts to mark electrode locations
+    - NDTE 260 [SLO]: “measuring and applying EEG electrodes” — measuring for electrode placement matches measuring patients' body parts and marking electrode locations
+- ● **Prepare patients physically for medical procedures.**
+    - NDTE 101 [Objective]: “Apply electrodes using collodion accurately so as to record EEG activity for 24 hour recordings or for an all-night polysomnogram.” — applying electrodes using an adhesive literally matches attaching electrodes using adhesives
+    - NDTE 121 [Objective]: “Apply electrodes using collodion in an acceptable manner so as to record EEG activity for 24 hour recordings or for polysomnography over-night.” — attaching electrodes to patients using adhesives matches literally
+    - NDTE 131 [Assignment]: “Completing four EEG's including one collodion application and one accurate PSG set-up and system-patient calibration.” — collodion application is attaching electrodes to the patient using adhesive
+    - NDTE 131 [SLO]: “Students will be able to demonstrate measurement of electrodes sites according to the 10-20 System of Electrode Placement:” — measuring and marking electrode placement sites is preparing the patient physically for the procedure
+    - NDTE 140 [SLO]: “Students will be able to apply electrodes accurately within 35 minutes” — literal statement that students attach electrodes to patients to prepare them for testing
+    - NDTE 150 [Objective]: “Apply electrodes accurately within 30 minutes, and get the patients test performed in an acceptable time as per the lab schedule.” — applying electrodes to patients is preparing patients physically for the EEG procedure
+    - NDTE 250 [Assignment]: “Applying electrodes accurately to within 5mm of homologous regions, within 25 minutes” — attaching electrodes to patients is literally preparing the patient physically for the procedure
+    - NDTE 260 [Objective]: “Apply electrodes accurately within 20-25 minutes, and get the patients test performed in an acceptable time” — attaching electrodes to patients is literal match to preparing patients physically via electrode attachment
+- ○ **Communicate test or assessment results to medical professionals.**
+    - NDTE 150 [Assignment]: “Reporting patient's pertinent clinical history, test results and testing parameters.” — reporting test results literally matches communicating test results to medical professionals
+    - NDTE 140 [Content outline]: “Ability to write description of each EEG performed” — writing up EEG results is communicating test results, constitutive of reports submitted to physicians
+    - NDTE 250 [Content outline]: “Clinical findings” — documenting clinical findings supports communicating test results, though report routing to physicians is not stated
+- ● **Maintain medical equipment or instruments.**
+    - NDTE 101 [Objective]: “Calibrate an EEG instrument accurately and be able to troubleshoot basic equipment malfunctions.” — calibrating and troubleshooting equipment literally matches maintaining medical equipment
+    - NDTE 250 [Objective]: “Calibrate and adjust instrument with 100% accuracy including proper calibrations at end of each test and recognition of inaccuracies with suggestions for solutions.” — calibrating and correcting instrument inaccuracies literally matches calibrating/troubleshooting equipment
+    - NDTE 250 [Objective]: “recognition of inaccuracies with suggestions for solutions” — recognizing and suggesting fixes for instrument inaccuracies matches troubleshooting/maintaining equipment
+    - NDTE 250 [Content outline]: “Machine calibration” — calibration is a core maintenance task for the recording equipment
+    - NDTE 121 [Objective]: “Accurately calibrate an EEG/EP instrument and be able to troubleshoot basic equipment malfunctions.” — calibrating and troubleshooting equipment matches maintaining medical equipment literally
+    - NDTE 131 [Objective]: “Describe and utilize all of the operational components of the EEG instrument and utilize basic troubleshooting techniques.” — utilizing troubleshooting techniques on the EEG instrument is maintaining medical equipment
+    - NDTE 140 [Objective]: “Calibrate the machine with 100% accuracy and ability to make all necessary adjustments to the instrument for accurate recordings” — literal statement that students calibrate and adjust the instrument, maintaining its accuracy
+    - NDTE 150 [Objective]: “Calibrate the machine within 100% accuracy and be able to make all necessary adjustments to the instrument for accurate recordings” — calibrating and adjusting the instrument is maintaining medical equipment
+    - NDTE 260 [Objective]: “Calibrate the machine with 100% accuracy and ability to make all necessary adjustments to the instrument for accurate recordings” — calibrating and adjusting the instrument is literal maintenance of medical equipment
+- ● **Repair medical facility equipment.**
+    - NDTE 131 [Objective]: “Describe and utilize all of the operational components of the EEG instrument and utilize basic troubleshooting techniques.” — troubleshooting the instrument literally matches repairing/correcting malfunctions in facility equipment
+- · **Operate diagnostic imaging equipment.**
+- · **Train medical providers.**
+- · **Conduct research to increase knowledge about medical issues.**
+- · **Maintain medical or professional knowledge.**
+
+### Dropped
+
+- act 11 · NDTE 131 · “Perform and interpret EEG recordings on human volunteers that conform to the Academy of Cl” — adjudicated: d - performing/interpreting EEG recordings per ACNS guidelines evidences testing nervous system function, not attaching electrodes/preparing patients
+- act 12 · NDTE 260 · “Calculations for physician interpretation” — adjudicated: b - calculations for physician interpretation precede/support the report rather than the submission of reports to physicians
+- act 15 · NDTE 131 · “Cortical recordings” — adjudicated: a - 'Cortical recordings' is a topic heading naming subject matter with no performable adjustment content stated
+- act 16 · NDTE 260 · “progressing toward entry level” — adjudicated: a - 'progressing toward entry level' is a vague description phrase with no performable training content stated
+- act 4 · NDTE 101 · “Students will be able to identify normal and abnormal adult EEG recordings.” — adjudicated: d - identifying normal/abnormal EEG recordings evidences interpretation/collecting information rather than conducting the test itself, though closely related this is reading not testing
+- act 9 · MEDA 115 · “Identify common and significant medical conditions and diseases and their signs, symptoms,” — adjudicated: b - identifying medical conditions/diseases is background knowledge that precedes summarizing technical EEG data for physicians
+- act 4 · MEDA 115 · “Neurological diseases and conditions” — adjudicated: a - 'Neurological diseases and conditions' is a topic heading with no performable testing content stated
+- act 2 · NDTE 131 · “Select and record standard montages, annotate wake, drowsy and/or sleep patterns and elect” — adjudicated: d - annotating electrode artifacts evidences indicating interferences on recordings, not collecting medical information from patients/family
+- act 3 · NDTE 140 · “performance of EEG testing on clinical patients” — adjudicated: d - performing EEG testing on patients evidences conducting the test, not monitoring patient conditions during it
+- act 10 · NDTE 140 · “application of electrodes” — adjudicated: a - 'application of electrodes' alone is a bare topic phrase without the measuring/marking content stated
+- act 4 · NDTE 133 · “Diagram the electrophysiologic characteristics of the neuron relating it to the electrophy” — adjudicated: b - diagramming neuron electrophysiology is background science knowledge that precedes conducting nervous system tests
+- act 4 · NDTE 133 · “Microscopic anatomy, electrophysiology and electroencephalography generation” — adjudicated: a - 'Microscopic anatomy, electrophysiology and electroencephalography generation' is a topic heading naming background science, not the testing activity
+- act 6 · NDTE 133 · “Neurologic exam, tests and history taking” — adjudicated: d - 'Neurologic exam, tests and history taking' evidences a different activity (collecting client info/history) not adjusting equipment settings
+- act 4 · NDTE 135 · “Students will be able to differentiate between normal and abnormal waveforms.” — adjudicated: d - differentiating normal/abnormal waveforms evidences interpreting recordings/collecting information, not conducting the test itself
+- act 4 · NDTE 135 · “Identify and describe the following infective disorders, encephalopathies, space-occupying” — adjudicated: b - identifying/describing disorders is background clinical knowledge preceding EEG test conduct
+- act 9 · NDTE 135 · “Predictive value of serial EEGs” — adjudicated: a - 'Predictive value of serial EEGs' is a topic heading without performable reporting content stated
+- act 3 · NDTE 150 · “Student will be able to identify and monitor artifacts with 85% accuracy and identify norm” — adjudicated: d - identifying/monitoring artifacts and EEG activity evidences collecting information about clients, not monitoring patient conditions during the procedure
+- act 10 · NDTE 150 · “Application of electrodes in timely and accurate manner” — adjudicated: a - 'Application of electrodes in timely and accurate manner' names electrode application generally without stated measuring/marking content
+- act 4 · NDTE 203 · “recognize the clinical signs and electrographic correlations with infectious disorders, br” — adjudicated: b - recognizing clinical signs/electrographic correlations is interpretive knowledge preceding the act of conducting the test
+- act 4 · NDTE 203 · “recognize and identify the various epilepsy syndromes and specific types of seizure disord” — adjudicated: b - recognizing epilepsy syndromes and EEG patterns is clinical knowledge preceding test conduct
+- act 9 · NDTE 203 · “Describe the major diagnostic procedures used for the central nervous system and how they ” — adjudicated: a - describing major diagnostic procedures and their relation to results is topic-level knowledge without stated report-preparation content
+- act 9 · NDTE 203 · “Explain the etiology, clinical manifestations, medications of choice, EEG patterns, and pr” — adjudicated: b - explaining etiology/clinical manifestations/EEG patterns is background clinical knowledge preceding report summarization
+- act 5 · NDTE 203 · “Describe the necessary aid for a patient having a seizure.” — adjudicated: c - describing aid for a seizing patient is a generic patient-safety skill, not explaining testing procedures/results
+- act 15 · NDTE 260 · “Utilization of appropriate stimulus for each modality” — adjudicated: d - utilization of appropriate stimulus per modality evidences conducting/measuring evoked potentials (testing nervous system function), not diagnostic imaging equipment adjustment

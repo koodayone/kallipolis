@@ -1,0 +1,41 @@
+{
+ "college": "Orange Coast College",
+ "system": "courseleaf",
+ "code": "NDT A115",
+ "title": "Advanced Electroencephalography",
+ "description": "Introduction to the abnormal electroencephalogram (EEG), maturational changes, and the basic electronic principles upon which successful electroencephalographic techniques are based. PREREQUISITE: NDT A110. Transfer Credit: CSU.",
+ "outcomes": [
+  "Perform accurate and interpretable EEG recordings according to ACNS minimal guidelines on human volunteers in the classroom lab settings.",
+  "List and identify the normal EEG patterns associated with maturation in the neonatal, term infant, and pediatric (1-16 years) age groups, major EEG abnormal patterns, and EEG effects from most commonly encountered drugs."
+ ],
+ "objectives": [
+  "1. Perform accurate and interpretable EEG recordings on human volunteers in the classroom lab setting. These EEGs are to conform to the ACNS minimal guidelines.",
+  "2. Perform accurate PSG patient setup, system patient calibration, and record a 15 minute baseline study.",
+  "3. Practice and understand electrical safety so as never to risk harm to patient or self.",
+  "4. List and identify the EEG patterns associated with maturation in the neonatal, term infant, and pediatric (1 to 16 years) age groups.",
+  "5. List and identify the major abnormal EEG patterns.",
+  "6. Define basic electronic terminology and correctly calculate voltage, current, and resistance in parallel and series circuits.",
+  "7. Describe and utilize all of the operational components of the EEG instrument and utilize basic troubleshooting techniques.",
+  "8. List and define the common uses and EEG effects from the major drugs seen as an EEG technologist.",
+  "9. List the major historical contributions made to the scientific field of neurodiagnostics.",
+  "10. Report on an NDT related topic both orally and in writing in a clear and concise manner."
+ ],
+ "content": [
+  "History of EEG Before the 20th Century Recent history EEG Normal Overview ACNS Guidelines in EEG Recording (minimum standards) Technical performances of Clinical EEG's EEG Instrumentation and Digital Concepts Differential Amplifier Properties Filter Effects Input Impedance Common Mode Rejection Ratio Field Plotting Sensitivity versus Gain Sample Rates and Aliasing Calibration Square Wave Time Axis Baseline Calibration Voltage Biocalibration Monitoring Techniques Respiration Pulse and EKG Eye movement Tremor/Movement ACNS Guidelines for Pediatric EEG Recording Pediatric Recording Protocols Special Considerations Maturation of the EEG Premature/Neonate Term Infant Pediatric (One to Ten years of age) Adolescence ACNS Guidelines in Suspected Cerebral Death Recording Electrocerebral Silence (ECS) Protocols Special Considerations Recording Outside the Clinical NDT/EEG Lab Intensive/Critical Care Unit Cortical Recording Safety Protocols Infection Control/Safety Measures EEG Equipment Disinfection Procedure Electrical Safety Isolation Precaution Safety procedures inside the clinical EEG laboratory Safety procedures outside the clinical EEG laboratory EEG Equipment Maintenance Abnormal EEG patterns and their significance Theta/Delta Slowing Epileptiform Activity Periodic Complexes Epilepsy Syndromes Seizure Classification Focal Generalized Idiopathic Electronics Related to EEG Ohms Law Series and parallel circuits Principles of Management Record keeping Scheduling Record storage EEG Supplies Pharmacology in Neurology Drug Classifications Drug Characteristics Drug Effects on the EEG"
+ ],
+ "lab": [
+  "EEG Instrumentation Filter Effects Sensitivity Gain Time Display Electrode Impedance Ancillary Equipment Digital Concepts Common Mode Rejection Input Impedance Calibration Square Wave Biocalibration Monitoring Modalities Respiration Monitoring Pulse and EKG Monitoring Eye Movement Monitoring Electromyogram Monitoring Safety Procedures Infection Control Safety Measures Isolation Precautions Safety Procedures in the Clinical EEG Laboratory Safety Procedures in the hospital setting Equipment Maintenance Equipment Disinfection Procedures Electrical Safety Technical Performance of EEG Examination International 10-20 System of Electrode Placement ACNS Guidelines for Routine EEG Examinations Identification and Elimination of Artifact Troubleshooting Techniques Demonstration of Instrumentation Knowledge and Application Perform the International 10-20 System of Electrode Placement on human subjects Perform routine EEG examinations on human subjects according to the ACNS Guidelines"
+ ],
+ "assignments": [
+  "The following reading assignments will require 2-3 hrs/wk: Textbook readings Supplemental NDT articles ACNS Guidelines",
+  "Two reports are to be completed in writing and given orally in summarized fashion. 1. Drug Research Report and 2. NDT Journal Article Review EEG Discussion Threads",
+  "The following assignments will require 3-4 hrs/wk: Research report and article review report EEG electrode application practice EEG Discussion Threads"
+ ],
+ "source_url": "https://catalog.cccd.edu/courses/ndt-a115/",
+ "effective": "",
+ "approved": "02/23/2022",
+ "retrieved": "2026-09-17",
+ "notes": "",
+ "link_ok": true,
+ "link_checked": "2026-09-17"
+}

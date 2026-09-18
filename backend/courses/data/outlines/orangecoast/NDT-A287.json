@@ -1,0 +1,37 @@
+{
+ "college": "Orange Coast College",
+ "system": "courseleaf",
+ "code": "NDT A287",
+ "title": "EEG Record Review-Abnormal",
+ "description": "Continued practice in electroencephalography (EEG) record review of neurological subjects covered in NDT A115. Classification of abnormal EEG patterns with correlation to clinical disorders. COREQUISITE: NDT A115 and NDT A191. Transfer Credit: CSU.",
+ "outcomes": [
+  "Identify and describe abnormal EEG patterns in the neonatal, infant, pediatric and adult age groups correlating the patterns with clinical disorders and clinical signs."
+ ],
+ "objectives": [
+  "I Describe in technical writing basic EEG characteristics based on frequency, morphology, topography and reactivity.",
+  "I. 1. Identify and describe focal abnormal EEG patterns.",
+  "I. 2. Identify and describe generalized abnormal EEG patterns.",
+  "I. 3. Identify and describe unilateral and bilateral abnormal EEG patterns.",
+  "I. 4. Identify and describe abnormal patterns elicited by activations.",
+  "II Correlate EEG patterns with neurologic disorders and their clinical symptoms.",
+  "II. 1. Describe the EEG and clinical signs of focal seizures, generalized seizures and idiopathic seizures.",
+  "II. 2. Describe and correlate EEG patterns associated with convulsive status, non-convulsive status, and secondary bilateral synchrony.",
+  "II. 3. Describe and correlate EEG patterns with severe traumatic events, hypoxia/anoxia, and brain death."
+ ],
+ "content": [
+  "Introduction, class description (handout), and grading criteria Hockaday's classification of EEG records Grading system predictive value of serial EEGs Technical writing of EEG findings Freqency Morphology Topography Reactivity Clinical Signs EEG in Generalized Epilepsy Typical spike and wave Atypical spike and wave Polyspike and wave GPFA EEG in Focal Epilepsy Spikes, sharps Focal rhythmical events BCECTS EEG in Encephalopathic Disorders Toxic Metabolic Inflammatory Hypoxic Degenerative Prion EEG in Focal Structural Lesions/Space Occupying Lesions Cerebral tumor Infarction Hemorrhage Contusion EEG in Severe Head Trauma/Brain Death Burst suppression ECI"
+ ],
+ "lab": [],
+ "assignments": [
+  "Required textbook/handouts reading. (2 hrs/week)",
+  "Brief technical descriptions of electroencephalographs presented in discussions or class homework.",
+  "Research project, homework, discussion questions. (2-3 hrs/week)"
+ ],
+ "source_url": "https://catalog.cccd.edu/courses/ndt-a287/",
+ "effective": "",
+ "approved": "11/15/2023",
+ "retrieved": "2026-09-17",
+ "notes": "",
+ "link_ok": true,
+ "link_checked": "2026-09-17"
+}

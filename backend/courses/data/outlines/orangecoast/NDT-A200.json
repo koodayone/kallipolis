@@ -1,0 +1,41 @@
+{
+ "college": "Orange Coast College",
+ "system": "courseleaf",
+ "code": "NDT A200",
+ "title": "Neurodiagnostic Lab Practice",
+ "description": "Laboratory course for the NDT student to apply foundational technical skills to successfully record routine EEG procedures according to published ACNS guidelines in preparation for first clinical experience. PREREQUISITE: NDT A110. Transfer Credit: CSU.",
+ "outcomes": [
+  "Perform a routine EEG recording using the ACNS minimal guidelines."
+ ],
+ "objectives": [
+  "1. Use the International 10/20 system to measure and apply the 23 standard EEG electrodes on a human volunteer accurately, (to within 5 mm) under 10 kOhms impedance, and within 45 minutes.",
+  "2. Identify basic EEG rhythms/waveforms and artifacts on recording.",
+  "3. Perform the standard EEG activations used in routine recordings.",
+  "4. Utilize the major instrument controls such as high and low filters, sensitivity, and calibration settings.",
+  "5. Set up all of the recommended montages used in a routine EEG.",
+  "6. Take an accurate and complete patient history.",
+  "7. Identify posterior dominant rhythm and normal variant waveforms accurately.",
+  "8. Apply electrodes using collodion in an acceptable manner so as to record EEG activity for 24-hour recordings for ambulatory or polysomnography studies.",
+  "9. Accurately calibrate NDT instrument and troubleshoot basic equipment malfunctions.",
+  "10. Practice electrical safety so as never to risk harm to the patient or self."
+ ],
+ "content": [
+  "This is a lab only course."
+ ],
+ "lab": [
+  "Review ACNS Guidelines Parameters Sensitivity versus Gain Filters Display/Paper Speed Polarity Convention Activations Intermittent Photic Stimulation Hyperventilation Sleep NDT Instrumentation Introduction Calibration requirements Auxillary inputs Sensitivity Controls Filter Controls Display Controls Activation Controls Measurement tools Review application Maintenance Troubleshooting Routine EEG exam Demonstration Patient History Electrode Placement 10/20 International System of Electrode Placement 10/10 International System of Electrode Placement Collodian application (PSG placement) Activations Exam Documentation Troubleshooting Artifact Identification Electrode Physical Chemical Ground Loop Artifact Elimination Techniques Montage modifications Electrode modifications Exam modification EEG Record Review States of Consciousness Wake Stage 1 Stage II Adult and Pediatric Wake rhythms Posterior Dominant Rhythm Normal Wake Variants Sleep architecture Normal Sleep Variants by Stage Abnormal Waves Epileptiform activity Slowing Asymmetry Seizure Professional Etiquette Entering Patient Area Patient Identification Communicating with the patient Taking patient history Explaining exa",
+  "m to a patient Techniques: Eliciting patient cooperation"
+ ],
+ "assignments": [
+  "Review NDT 110 notes and readings. (1 hr/wk)",
+  "Lab assignments with patient history, and written technical impressions.",
+  "Electrode Application practice (1-2 hrs/wk)"
+ ],
+ "source_url": "https://catalog.cccd.edu/courses/ndt-a200/",
+ "effective": "",
+ "approved": "02/09/2022",
+ "retrieved": "2026-09-17",
+ "notes": "",
+ "link_ok": true,
+ "link_checked": "2026-09-17"
+}

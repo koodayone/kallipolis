@@ -1,0 +1,1797 @@
+{
+ "program": "sdmesa-neurodiagnostic-technology",
+ "generated": "2026-09-17",
+ "onet_vintage": "O*NET 31.0 database (August 2026), U.S. Department of Labor",
+ "plates": [
+  {
+   "college": "San Diego Mesa College",
+   "member_id": "sdmesa",
+   "certificate": "Associate of Science Degree, Neurodiagnostic Technology",
+   "kind": "credit",
+   "top6": "121200",
+   "top_name": "Electro-Neurodiagnostic Technology",
+   "paired_soc": "29-2099.01",
+   "occupation": "Neurodiagnostic Technologists",
+   "crosswalk_socs": [],
+   "pairing_basis": "",
+   "courses": [
+    {
+     "code": "HEIT 130",
+     "title": "Basic Pharmacology",
+     "units": 1.0,
+     "source_url": "https://sdccd.curriqunet.com/DynamicReports/AllFieldsReportByEntity/17826?entityType=Course&reportId=4",
+     "system": "curriqunet",
+     "effective": "",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDTE 101",
+     "title": "Basic Electroencephalography",
+     "units": 5.0,
+     "source_url": "https://sdccd.curriqunet.com/DynamicReports/AllFieldsReportByEntity/12830?entityType=Course&reportId=4",
+     "system": "curriqunet",
+     "effective": "",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "MEDA 115",
+     "title": "Pathophysiology",
+     "units": 3.0,
+     "source_url": "https://sdccd.curriqunet.com/DynamicReports/AllFieldsReportByEntity/17834?entityType=Course&reportId=4",
+     "system": "curriqunet",
+     "effective": "",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDTE 121",
+     "title": "Neurodiagnostic Lab Practice",
+     "units": 0.5,
+     "source_url": "https://sdccd.curriqunet.com/DynamicReports/AllFieldsReportByEntity/17906?entityType=Course&reportId=4",
+     "system": "curriqunet",
+     "effective": "",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDTE 131",
+     "title": "Advanced Electroencephalography",
+     "units": 4.0,
+     "source_url": "https://sdccd.curriqunet.com/DynamicReports/AllFieldsReportByEntity/17838?entityType=Course&reportId=4",
+     "system": "curriqunet",
+     "effective": "",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDTE 140",
+     "title": "Directed Clinical Practice I",
+     "units": 2.0,
+     "source_url": "https://sdccd.curriqunet.com/DynamicReports/AllFieldsReportByEntity/17841?entityType=Course&reportId=4",
+     "system": "curriqunet",
+     "effective": "",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDTE 133",
+     "title": "Introduction to Neuroanatomy and Neurophysiology",
+     "units": 3.0,
+     "source_url": "https://sdccd.curriqunet.com/DynamicReports/AllFieldsReportByEntity/17839?entityType=Course&reportId=4",
+     "system": "curriqunet",
+     "effective": "",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDTE 135",
+     "title": "EEG Record Review",
+     "units": 2.5,
+     "source_url": "https://sdccd.curriqunet.com/DynamicReports/AllFieldsReportByEntity/17840?entityType=Course&reportId=4",
+     "system": "curriqunet",
+     "effective": "",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDTE 150",
+     "title": "Directed Clinical Practice II",
+     "units": 2.0,
+     "source_url": "https://sdccd.curriqunet.com/DynamicReports/AllFieldsReportByEntity/17842?entityType=Course&reportId=4",
+     "system": "curriqunet",
+     "effective": "",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDTE 203",
+     "title": "Neurologic Disorders",
+     "units": 3.0,
+     "source_url": "https://sdccd.curriqunet.com/DynamicReports/AllFieldsReportByEntity/17843?entityType=Course&reportId=4",
+     "system": "curriqunet",
+     "effective": "",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDTE 250",
+     "title": "Directed Clinical Practice III",
+     "units": 3.0,
+     "source_url": "https://sdccd.curriqunet.com/DynamicReports/AllFieldsReportByEntity/17847?entityType=Course&reportId=4",
+     "system": "curriqunet",
+     "effective": "",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDTE 260",
+     "title": "Directed Clinical Practice IV",
+     "units": 3.0,
+     "source_url": "https://sdccd.curriqunet.com/DynamicReports/AllFieldsReportByEntity/17848?entityType=Course&reportId=4",
+     "system": "curriqunet",
+     "effective": "",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    }
+   ],
+   "program_outcomes": [
+    "Be provided with knowledge and skills required for an entry level position as a Neurodiagnostic Technologist in a variety of settings including hospitals, out patient clinics, research centers and physician's offices.",
+    "Develop effective communication skills; both verbally and writing, demonstrate knowledge of state and federal regulations.",
+    "Develop professional and ethical conduct as stipulated by the American Society of Electrodiagnostic Technologists (ASET) and American Board of Registration of Electroencephalographic and Evoked Potential Technologists (ABRET).",
+    "Perform safe and accurate neurodiagnostic testing within the scope of practice."
+   ],
+   "rows": [
+    {
+     "dwa_id": "4.A.1.a.1.l.4",
+     "dwa": "Collect information about clients.",
+     "task": "Indicate artifacts or interferences derived from sources outside of the brain, such as poor electrode contact or patient movement, on electroneurodiagnostic recordings.",
+     "cells": {
+      "NDTE 140": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 140",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Student will be able to identify and monitor artifacts with 75% accuracy and identify normal EEG activity with 90% accuracy.",
+         "basis": "identifying artifacts on EEG recordings directly evidences indicating interferences on electroneurodiagnostic recordings"
+        },
+        {
+         "course": "NDTE 140",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Student will be able to identify and monitor artifacts with 75% accuracy",
+         "basis": "artifact identification on recordings is literally indicating interferences on EEG recordings"
+        },
+        {
+         "course": "NDTE 140",
+         "section": "content",
+         "level": 1,
+         "quote": "Identification of artifacts",
+         "basis": "content topic on identifying artifacts in EEG recordings directly evidences the activity"
+        }
+       ]
+      },
+      "NDTE 101": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 101",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Students will be able to identity basic waveforms and artifacts.",
+         "basis": "identifying artifacts on EEG recordings evidences indicating interferences derived from outside the brain"
+        },
+        {
+         "course": "NDTE 101",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Define and identify the basic EEG rhythms, activity, and artifacts on the recording.",
+         "basis": "identifying artifacts on the EEG recording directly evidences indicating non-cerebral artifacts/interferences"
+        },
+        {
+         "course": "NDTE 101",
+         "section": "lab",
+         "level": 1,
+         "quote": "Identification on the Recording of Basic EEG Rhythms, Activity and Artifacts",
+         "basis": "lab practice identifying artifacts on the recording evidences indicating artifacts/interferences"
+        }
+       ]
+      },
+      "NDTE 121": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 121",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify and assess the basic EEG rhythms/EP waveforms and artifacts on a recording.",
+         "basis": "identifying artifacts on recordings directly matches indicating interferences on ND recordings"
+        }
+       ]
+      },
+      "NDTE 131": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 131",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Select and record standard montages, annotate wake, drowsy and/or sleep patterns and electrode artifacts",
+         "basis": "annotating electrode artifacts is indicating interference from sources outside the brain on the recording"
+        }
+       ]
+      },
+      "NDTE 135": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 135",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Students will be able to identify the characteristics of EEG recordings in technical terms, frequency, morphology, topography, and reactivity.",
+         "basis": "identifying recording characteristics is the basis for spotting non-cerebral artifacts on EEG"
+        },
+        {
+         "course": "NDTE 135",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Compare and contrast normal and abnormal waveforms.",
+         "basis": "distinguishing normal from abnormal waveforms is required to flag artifacts/interferences on the recording"
+        }
+       ]
+      },
+      "NDTE 150": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 150",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Student will be able to identify and monitor artifacts with 85% accuracy",
+         "basis": "identifying artifacts on EEG recordings is literally indicating interferences outside the brain"
+        }
+       ]
+      },
+      "NDTE 250": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 250",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Student will be able to identify and monitor artifacts with 85% accuracy",
+         "basis": "identifying artifacts on EEG recordings is literally indicating interference from outside the brain"
+        },
+        {
+         "course": "NDTE 250",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify and monitor artifacts with 100% accuracy.",
+         "basis": "directly restates the O*NET task of indicating artifacts/interferences on recordings"
+        }
+       ]
+      },
+      "NDTE 260": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 260",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify artifacts with 100% accuracy.",
+         "basis": "identifying artifacts on recordings directly matches indicating artifacts/interferences on ND recordings"
+        },
+        {
+         "course": "NDTE 260",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "improvements in the recognition of mechanical and physiological artifacts",
+         "basis": "recognizing artifacts is the literal act of indicating interferences on recordings"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDTE 140",
+      "section": "outcomes",
+      "quote": "Student will be able to identify and monitor artifacts with 75% accuracy",
+      "reason": "SLO commits precisely to identifying/monitoring artifacts, matching the task verbatim"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.1.l.2",
+     "dwa": "Collect medical information from patients, family members, or other medical professionals.",
+     "task": "Indicate artifacts or interferences derived from sources outside of the brain, such as poor electrode contact or patient movement, on electroneurodiagnostic recordings. · Collect patients' medical information needed to customize tests.",
+     "cells": {
+      "NDTE 101": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 101",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Complete an accurate patient history.",
+         "basis": "taking patient history literally evidences collecting medical information to customize tests"
+        }
+       ]
+      },
+      "NDTE 140": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 140",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Gather relevant and valid patient data.",
+         "basis": "gathering patient data evidences collecting medical information from patients"
+        }
+       ]
+      },
+      "NDTE 121": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 121",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Complete an accurate and concise patient history.",
+         "basis": "collecting patient medical history to customize tests matches literally"
+        }
+       ]
+      },
+      "NDTE 150": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 150",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Reporting patient's pertinent clinical history, test results and testing parameters.",
+         "basis": "collecting and reporting clinical history is collecting medical information from patients"
+        },
+        {
+         "course": "NDTE 150",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Take valid patient data.",
+         "basis": "taking patient data is collecting medical information from patients"
+        }
+       ]
+      },
+      "NDTE 250": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 250",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Take valid patient data.",
+         "basis": "collecting valid patient data is collecting medical information to customize tests"
+        }
+       ]
+      },
+      "NDTE 260": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 260",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Take valid patient histories.",
+         "basis": "collecting patient histories is collecting medical information from patients"
+        },
+        {
+         "course": "NDTE 260",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Take valid patient data.",
+         "basis": "collecting patient data to customize tests matches collecting medical information from patients"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDTE 150",
+      "section": "assignments",
+      "quote": "Reporting patient's pertinent clinical history, test results and testing parameters.",
+      "reason": "assignment names reporting the patient's clinical history most specifically matching collecting medical information"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.2.e.7",
+     "dwa": "Monitor patient conditions during treatments, procedures, or activities.",
+     "task": "Monitor patients during tests or surgeries, using electroencephalographs (EEG), evoked potential (EP) instruments, or video recording equipment.",
+     "cells": {
+      "NDTE 260": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 260",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "monitoring patients in advance clinical settings such as ICU and LTM units.",
+         "basis": "monitoring patients during recordings literally matches monitoring patient conditions during procedures"
+        }
+       ]
+      },
+      "NDTE 250": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 250",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify and monitor artifacts with 100% accuracy.",
+         "basis": "monitoring during EEG recording evidences monitoring patient conditions during the procedure"
+        }
+       ]
+      },
+      "NDTE 131": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 131",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate patient observation technique, instruct subject on HV and PS procedures, and post recording demonstrate proper cleaning of subject scalp",
+         "basis": "observing the patient during the EEG recording is monitoring patient condition during the test"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDTE 260",
+      "section": "outcomes",
+      "quote": "monitoring patients in advance clinical settings such as ICU and LTM units.",
+      "reason": "SLO explicitly states monitoring patients in clinical settings, directly matching the task"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.2.a.7",
+     "dwa": "Test patient nervous system functioning.",
+     "task": "Conduct tests or studies such as electroencephalography (EEG), polysomnography (PSG), nerve conduction studies (NCS), electromyography (EMG), and intraoperative monitoring (IOM). · Conduct tests to determine cerebral death, the absence of brain activity, or the probability of recovery from a coma. · Measure visual, auditory, or somatosensory evoked potentials (EPs) to determine responses to stimuli.",
+     "cells": {
+      "NDTE 121": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 121",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Perform accurate and interpretable EEG/EP recordings on human volunteers in the classroom lab setting according to ACNS guidelines.",
+         "basis": "performing EEG/EP recordings literally matches testing patient nervous system functioning"
+        }
+       ]
+      },
+      "NDTE 131": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 131",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Perform accurate polysomnography (PSG) patient setup, system & patient calibration, and record a 15 minute baseline study.",
+         "basis": "performing PSG recording literally matches conducting polysomnography studies"
+        },
+        {
+         "course": "NDTE 131",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Perform and interpret EEG recordings on human volunteers that conform to the Academy of Clinical Neurophysiology Society (ACNS) minimal guidelines.",
+         "basis": "performing EEG recordings is directly conducting an EEG test of nervous system function"
+        }
+       ]
+      },
+      "PLO": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "PLO",
+         "section": "program_outcomes",
+         "level": 2,
+         "quote": "Perform safe and accurate neurodiagnostic testing within the scope of practice.",
+         "basis": "PLO literally states graduates perform neurodiagnostic testing, a directly constitutive component of testing patient nervous system functioning"
+        }
+       ]
+      },
+      "NDTE 101": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 101",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Describe, define and perform the standard EEG activations used in routine recordings.",
+         "basis": "performing EEG activations is a constitutive component of conducting EEG testing"
+        }
+       ]
+      },
+      "NDTE 140": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 140",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "apply electrodes accurately within 35 minutes and get the patient's test performed in an acceptable time",
+         "basis": "literal statement that students conduct EEG tests on patients"
+        },
+        {
+         "course": "NDTE 140",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify normal EEG activity with 90% accuracy.",
+         "basis": "reading and interpreting EEG activity is a directly constitutive component of conducting EEG studies"
+        }
+       ]
+      },
+      "NDTE 150": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 150",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Students will be able to apply electrodes accurately within 30 minutes and get the patient's test performed in an acceptable time.",
+         "basis": "performing EEG testing on clinical patients is directly testing nervous system functioning"
+        },
+        {
+         "course": "NDTE 150",
+         "section": "content",
+         "level": 1,
+         "quote": "EEG's on neonatal pediatric patients, adult patients, intensively ill patients and those with electrocerebral inactivity.",
+         "basis": "conducting EEG studies including electrocerebral inactivity evidences nervous system testing"
+        }
+       ]
+      },
+      "NDTE 250": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 250",
+         "section": "description",
+         "level": 1,
+         "quote": "performance of EEG testing on clinical patients, medical record keeping and clinical history taking",
+         "basis": "conducting EEG testing on patients is literally the core diagnostic task"
+        },
+        {
+         "course": "NDTE 250",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Recall the lab protocol including routine montages.",
+         "basis": "applying montage protocol is part of conducting EEG studies"
+        }
+       ]
+      },
+      "NDTE 260": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 260",
+         "section": "description",
+         "level": 1,
+         "quote": "advanced skills in electroencephalographic (EEG) recording and analysis, and more specialized diagnostic testing procedures",
+         "basis": "conducting EEG and specialized ND testing is literal nervous system function testing"
+        },
+        {
+         "course": "NDTE 260",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify and measure important data from EP waveforms.",
+         "basis": "measuring evoked potentials matches measuring EPs to determine responses to stimuli"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDTE 121",
+      "section": "objectives",
+      "quote": "Perform accurate and interpretable EEG/EP recordings on human volunteers in the classroom lab setting according to ACNS guidelines.",
+      "reason": "objective commits to performing EEG/EP recordings on volunteers, the core testing task"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.1.e.5",
+     "dwa": "Explain medical procedures or test results to patients or family members.",
+     "task": "Explain testing procedures to patients, answering questions or reassuring patients, as needed.",
+     "cells": {
+      "NDTE 140": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 140",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Relate to patients in a positive manner to encourage patient cooperation and enhance attitude including good communication skills in explaining all procedures and expectations of the patient.",
+         "basis": "explaining procedures to patients literally matches explaining medical procedures to patients"
+        }
+       ]
+      },
+      "NDTE 260": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 260",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Explain each test procedure clearly, and obtain optimal patient cooperation.",
+         "basis": "explaining test procedure to patient literally matches explaining procedures to patients"
+        }
+       ]
+      },
+      "NDTE 131": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 131",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Demonstrate patient observation technique, instruct subject on HV and PS procedures, and post recording demonstrate proper cleaning of subject scalp",
+         "basis": "instructing the subject on testing procedures is explaining the procedure to the patient"
+        }
+       ]
+      },
+      "NDTE 150": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 150",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Relate to patients in a positive manner to encourage patient cooperation and enhance attitude including good communication skills in explaining all procedures and expectations of the patient.",
+         "basis": "explaining procedures and expectations to patients is explaining medical procedures to patients"
+        }
+       ]
+      },
+      "NDTE 250": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDTE 250",
+         "section": "content",
+         "level": 1,
+         "quote": "Positive patient communication including appropriate explanation of procedures and expectations of patient",
+         "basis": "explaining procedures to patients matches explaining testing procedures to patients"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDTE 260",
+      "section": "objectives",
+      "quote": "Explain each test procedure clearly, and obtain optimal patient cooperation.",
+      "reason": "objective specifically commits to explaining test procedures clearly to obtain patient cooperation"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.i.9",
+     "dwa": "Adjust settings or positions of medical equipment.",
+     "task": "Set up, program, or record montages or electrical combinations when testing peripheral nerve, spinal cord, subcortical, or cortical responses. · Adjust equipment to optimize viewing of the nervous system.",
+     "cells": {
+      "NDTE 250": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 250",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Use the EEG machine settings to obtain optimal recordings.",
+         "basis": "adjusting machine settings literally matches adjusting settings of medical equipment"
+        },
+        {
+         "course": "NDTE 250",
+         "section": "content",
+         "level": 1,
+         "quote": "Appropriate machine settings for optimal recording",
+         "basis": "content line evidences adjusting equipment settings during test setup"
+        }
+       ]
+      },
+      "NDTE 260": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 260",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Use machine settings (including filters, sensitivity, etc.) accurately and when necessary.",
+         "basis": "adjusting instrument settings literally matches adjusting settings of medical equipment"
+        },
+        {
+         "course": "NDTE 260",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Justify appropriate use of montages with 90% accuracy.",
+         "basis": "setting montages matches setting electrical combinations/positions for testing responses"
+        }
+       ]
+      },
+      "NDTE 101": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 101",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Define, describe and utilize the major instrument controls such as high and low filters, sensitivity, and calibration.",
+         "basis": "adjusting filters/sensitivity/calibration controls literally evidences adjusting settings of medical equipment"
+        },
+        {
+         "course": "NDTE 101",
+         "section": "lab",
+         "level": 1,
+         "quote": "Identification and Utilization of the Major Instrument Controls",
+         "basis": "hands-on use of EEG instrument controls evidences adjusting equipment settings"
+        }
+       ]
+      },
+      "NDTE 121": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 121",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Utilize the major instrument controls such as high and low filters, sensitivity, and calibration.",
+         "basis": "adjusting filters/sensitivity settings on equipment matches adjusting equipment settings"
+        }
+       ]
+      },
+      "NDTE 131": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 131",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Select and record standard montages, annotate wake, drowsy and/or sleep patterns and electrode artifacts",
+         "basis": "selecting and recording montages is setting the electrical combination configuration of the EEG equipment"
+        }
+       ]
+      },
+      "NDTE 140": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 140",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Use appropriate machine settings to provide optimal recording as necessary.",
+         "basis": "adjusting machine settings for recording is literally adjusting equipment settings"
+        },
+        {
+         "course": "NDTE 140",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Recall the lab montages.",
+         "basis": "recalling and applying montages is setting electrical combinations for testing"
+        }
+       ]
+      },
+      "NDTE 150": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 150",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Use appropriate machine settings to provide optimal recording as necessary.",
+         "basis": "adjusting machine settings for optimal recording is adjusting settings of medical equipment"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDTE 260",
+      "section": "objectives",
+      "quote": "Justify appropriate use of montages with 90% accuracy.",
+      "reason": "objective specifically commits to justifying appropriate use of montages, matching the electrical-combination task"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.3.d.3",
+     "dwa": "Operate diagnostic or therapeutic medical instruments or equipment.",
+     "task": "Set up, program, or record montages or electrical combinations when testing peripheral nerve, spinal cord, subcortical, or cortical responses.",
+     "cells": {
+      "NDTE 260": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 260",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Set up EP equipment to the desired protocols for each modality.",
+         "basis": "setting up EP equipment/protocols literally matches setting up montages when testing evoked responses"
+        }
+       ]
+      },
+      "NDTE 101": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 101",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Describe, list and set up all of the recommended montages used in routine EEG.",
+         "basis": "setting up montages literally matches operating diagnostic equipment for testing responses"
+        }
+       ]
+      },
+      "NDTE 121": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 121",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Set up all of the recommended montages used in routine EEG/EP.",
+         "basis": "setting up montages/electrical combinations matches operating diagnostic instruments task literally"
+        }
+       ]
+      },
+      "NDTE 131": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 131",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Select and record standard montages, annotate wake, drowsy and/or sleep patterns and electrode artifacts",
+         "basis": "recording standard montages is operating the EEG diagnostic instrument"
+        },
+        {
+         "course": "NDTE 131",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Perform accurate polysomnography (PSG) patient setup, system & patient calibration, and record a 15 minute baseline study.",
+         "basis": "operating PSG system calibration and recording is operating diagnostic medical equipment"
+        }
+       ]
+      },
+      "NDTE 140": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDTE 140",
+         "section": "content",
+         "level": 1,
+         "quote": "Appropriate machine settings for optimal recording",
+         "basis": "operating the EEG machine with correct settings evidences operating diagnostic medical equipment"
+        }
+       ]
+      },
+      "NDTE 150": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 150",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Calibrate the machine within 100% accuracy and be able to make all necessary adjustments to the instrument for accurate recordings",
+         "basis": "operating and calibrating the EEG instrument is operating diagnostic medical equipment"
+        },
+        {
+         "course": "NDTE 150",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Learn the lab montages.",
+         "basis": "using montages during EEG recording is operating diagnostic instruments per O*NET montage task"
+        }
+       ]
+      },
+      "NDTE 250": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 250",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Calibrate and adjust instrument with 100% accuracy including proper calibrations at end of each test",
+         "basis": "calibrating and operating the EEG instrument is operating diagnostic medical equipment"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDTE 260",
+      "section": "objectives",
+      "quote": "Set up EP equipment to the desired protocols for each modality.",
+      "reason": "objective specifically commits to setting up EP equipment protocols per modality"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.k.1",
+     "dwa": "Prepare medical supplies or equipment for use.",
+     "task": "Set up, program, or record montages or electrical combinations when testing peripheral nerve, spinal cord, subcortical, or cortical responses.",
+     "cells": {
+      "NDTE 121": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 121",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Set up all of the recommended montages used in routine EEG/EP.",
+         "basis": "setting up montages/electrical combinations literally matches preparing equipment for testing"
+        }
+       ]
+      },
+      "NDTE 101": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 101",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Set up the International 10/20 system to measure and apply the 21 23 standard EEG electrodes on a mannequin head accurately",
+         "basis": "setting up electrode placement system for recording is preparing equipment/supplies for the EEG test"
+        }
+       ]
+      },
+      "NDTE 131": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 131",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Perform accurate polysomnography (PSG) patient setup, system & patient calibration, and record a 15 minute baseline study.",
+         "basis": "system and patient calibration prior to recording is preparing equipment for use"
+        }
+       ]
+      },
+      "NDTE 140": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 140",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Calibrate the machine with 100% accuracy and ability to make all necessary adjustments to the instrument for accurate recordings",
+         "basis": "calibrating the instrument before use is preparing equipment for use"
+        }
+       ]
+      },
+      "NDTE 150": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDTE 150",
+         "section": "content",
+         "level": 1,
+         "quote": "Application of electrodes in timely and accurate manner",
+         "basis": "preparing electrodes and machine for a test is preparing medical equipment for use"
+        }
+       ]
+      },
+      "NDTE 250": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDTE 250",
+         "section": "content",
+         "level": 1,
+         "quote": "Application of electrodes in timely and accurate manner",
+         "basis": "preparing and applying electrodes readies equipment/supplies for the EEG test"
+        }
+       ]
+      },
+      "NDTE 260": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 260",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Set up EP equipment to the desired protocols for each modality.",
+         "basis": "preparing/setting up equipment for testing matches preparing medical supplies or equipment for use"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDTE 131",
+      "section": "objectives",
+      "quote": "Perform accurate polysomnography (PSG) patient setup, system & patient calibration, and record a 15 minute baseline study.",
+      "reason": "objective specifically commits to PSG patient setup and system calibration, matching equipment prep task"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.6.f.4",
+     "dwa": "Prepare reports summarizing patient diagnostic or care activities.",
+     "task": "Summarize technical data to assist physicians to diagnose brain, sleep, or nervous system disorders.",
+     "cells": {
+      "NDTE 140": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDTE 140",
+         "section": "content",
+         "level": 1,
+         "quote": "Ability to write description of each EEG performed",
+         "basis": "writing a technical description of the EEG literally matches summarizing technical data for diagnosis"
+        },
+        {
+         "course": "NDTE 140",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Reporting patient's clinical history, test results, and testing parameters.",
+         "basis": "literal assignment to report/summarize test results and clinical findings"
+        }
+       ]
+      },
+      "NDTE 250": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 250",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Write an accurate description of EEG's performed with 80% accuracy.",
+         "basis": "writing description of recordings evidences preparing reports summarizing diagnostic findings"
+        },
+        {
+         "course": "NDTE 250",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Accurately document all work, including calibrations, instrument settings, clinical findings",
+         "basis": "documenting clinical findings is preparing a report of diagnostic activities"
+        }
+       ]
+      },
+      "NDTE 135": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDTE 135",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Creating an EEG atlas portfolio with examples and written descriptions of normal EEG patterns.",
+         "basis": "producing written descriptive summaries of EEG findings evidences preparing diagnostic reports"
+        }
+       ]
+      },
+      "NDTE 150": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 150",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Accurately document all work, including calibrations, instrument settings, clinical findings, modifications to recording, and appropriate patient information.",
+         "basis": "documenting clinical findings is preparing a report summarizing diagnostic activities"
+        },
+        {
+         "course": "NDTE 150",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Write a description of each EEG performed with accuracy as determined when reviewed by a technologists.",
+         "basis": "writing an EEG description summarizes diagnostic findings for physician review"
+        }
+       ]
+      },
+      "NDTE 260": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 260",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Write a description of each EEG at an acceptable level when reviewed by the technologist.",
+         "basis": "writing EEG description summarizing findings matches preparing reports summarizing diagnostic activities"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDTE 250",
+      "section": "objectives",
+      "quote": "Write an accurate description of EEG's performed with 80% accuracy.",
+      "reason": "objective specifically commits to writing an accurate description of EEGs performed, matching report task"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.2.i.5",
+     "dwa": "Measure the physical or physiological attributes of patients.",
+     "task": "Measure patients' body parts and mark locations where electrodes are to be placed.",
+     "cells": {
+      "NDTE 101": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 101",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Set up the International 10/20 system to measure and apply the 21 23 standard EEG electrodes on a mannequin head accurately",
+         "basis": "measuring the head to place electrodes literally matches measuring patients and marking electrode locations"
+        },
+        {
+         "course": "NDTE 101",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Students will be able to demonstrate measurement of electrodes sites according to appropriate standards of clinical practice.",
+         "basis": "measuring electrode sites literally evidences measuring patients' body parts and marking electrode locations"
+        }
+       ]
+      },
+      "NDTE 121": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 121",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Measure and apply the 21 23 standard EEG electrodes on a human volunteer accurately (to within 5mm)",
+         "basis": "measuring electrode sites on a person literally matches measuring body parts and marking locations"
+        },
+        {
+         "course": "NDTE 121",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Measure and apply the 21 23 standard EEG electrodes on a human volunteer accurately (to within 5mm), under 5k ohms impedance, and within 45 minutes using the International 10/20 system.",
+         "basis": "measuring locations on body to place electrodes matches measuring physical attributes and marking locations"
+        }
+       ]
+      },
+      "NDTE 131": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 131",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Students will be able to demonstrate measurement of electrodes sites according to the 10-20 System of Electrode Placement:",
+         "basis": "measuring electrode sites on the head is measuring the physical attributes of the patient"
+        }
+       ]
+      },
+      "NDTE 250": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 250",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Apply electrodes accurately to within 5mm of homologous regions, within 25 minutes",
+         "basis": "measuring within 5mm of homologous regions is measuring body parts to mark electrode locations"
+        }
+       ]
+      },
+      "NDTE 260": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 260",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "measuring and applying EEG electrodes",
+         "basis": "measuring for electrode placement matches measuring patients' body parts and marking electrode locations"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDTE 121",
+      "section": "objectives",
+      "quote": "Measure and apply the 21 23 standard EEG electrodes on a human volunteer accurately (to within 5mm), under 5k ohms impedance, and within 45 minutes using the International 10/20 system.",
+      "reason": "objective most specifically states measuring and applying electrodes to precise accuracy per 10-20 system"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.5.k.7",
+     "dwa": "Prepare patients physically for medical procedures.",
+     "task": "Attach electrodes to patients, using adhesives. · Measure patients' body parts and mark locations where electrodes are to be placed.",
+     "cells": {
+      "NDTE 101": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 101",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Apply electrodes using collodion accurately so as to record EEG activity for 24 hour recordings or for an all-night polysomnogram.",
+         "basis": "applying electrodes using an adhesive literally matches attaching electrodes using adhesives"
+        }
+       ]
+      },
+      "NDTE 121": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 121",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Apply electrodes using collodion in an acceptable manner so as to record EEG activity for 24 hour recordings or for polysomnography over-night.",
+         "basis": "attaching electrodes to patients using adhesives matches literally"
+        }
+       ]
+      },
+      "NDTE 131": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 131",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Completing four EEG's including one collodion application and one accurate PSG set-up and system-patient calibration.",
+         "basis": "collodion application is attaching electrodes to the patient using adhesive"
+        },
+        {
+         "course": "NDTE 131",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Students will be able to demonstrate measurement of electrodes sites according to the 10-20 System of Electrode Placement:",
+         "basis": "measuring and marking electrode placement sites is preparing the patient physically for the procedure"
+        }
+       ]
+      },
+      "NDTE 140": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 140",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Students will be able to apply electrodes accurately within 35 minutes",
+         "basis": "literal statement that students attach electrodes to patients to prepare them for testing"
+        }
+       ]
+      },
+      "NDTE 150": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 150",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Apply electrodes accurately within 30 minutes, and get the patients test performed in an acceptable time as per the lab schedule.",
+         "basis": "applying electrodes to patients is preparing patients physically for the EEG procedure"
+        }
+       ]
+      },
+      "NDTE 250": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDTE 250",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Applying electrodes accurately to within 5mm of homologous regions, within 25 minutes",
+         "basis": "attaching electrodes to patients is literally preparing the patient physically for the procedure"
+        }
+       ]
+      },
+      "NDTE 260": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 260",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Apply electrodes accurately within 20-25 minutes, and get the patients test performed in an acceptable time",
+         "basis": "attaching electrodes to patients is literal match to preparing patients physically via electrode attachment"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDTE 150",
+      "section": "objectives",
+      "quote": "Apply electrodes accurately within 30 minutes, and get the patients test performed in an acceptable time as per the lab schedule.",
+      "reason": "objective specifically commits to applying electrodes within a set time as part of patient prep"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.2.d.4",
+     "dwa": "Communicate test or assessment results to medical professionals.",
+     "task": "Submit reports to physicians summarizing test results.",
+     "cells": {
+      "NDTE 150": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDTE 150",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Reporting patient's pertinent clinical history, test results and testing parameters.",
+         "basis": "reporting test results literally matches communicating test results to medical professionals"
+        }
+       ]
+      },
+      "NDTE 140": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDTE 140",
+         "section": "content",
+         "level": 1,
+         "quote": "Ability to write description of each EEG performed",
+         "basis": "writing up EEG results is communicating test results, constitutive of reports submitted to physicians"
+        }
+       ]
+      },
+      "NDTE 250": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDTE 250",
+         "section": "content",
+         "level": 1,
+         "quote": "Clinical findings",
+         "basis": "documenting clinical findings supports communicating test results, though report routing to physicians is not stated"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDTE 150",
+      "section": "assignments",
+      "quote": "Reporting patient's pertinent clinical history, test results and testing parameters.",
+      "reason": "assignment specifically names reporting test results, matching submitting results to physicians"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.4.f.1",
+     "dwa": "Maintain medical equipment or instruments.",
+     "task": "Calibrate, troubleshoot, or repair equipment and correct malfunctions, as needed.",
+     "cells": {
+      "NDTE 101": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 101",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Calibrate an EEG instrument accurately and be able to troubleshoot basic equipment malfunctions.",
+         "basis": "calibrating and troubleshooting equipment literally matches maintaining medical equipment"
+        }
+       ]
+      },
+      "NDTE 250": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 250",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Calibrate and adjust instrument with 100% accuracy including proper calibrations at end of each test and recognition of inaccuracies with suggestions for solutions.",
+         "basis": "calibrating and correcting instrument inaccuracies literally matches calibrating/troubleshooting equipment"
+        },
+        {
+         "course": "NDTE 250",
+         "section": "objectives",
+         "level": 2,
+         "quote": "recognition of inaccuracies with suggestions for solutions",
+         "basis": "recognizing and suggesting fixes for instrument inaccuracies matches troubleshooting/maintaining equipment"
+        },
+        {
+         "course": "NDTE 250",
+         "section": "content",
+         "level": 1,
+         "quote": "Machine calibration",
+         "basis": "calibration is a core maintenance task for the recording equipment"
+        }
+       ]
+      },
+      "NDTE 121": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 121",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Accurately calibrate an EEG/EP instrument and be able to troubleshoot basic equipment malfunctions.",
+         "basis": "calibrating and troubleshooting equipment matches maintaining medical equipment literally"
+        }
+       ]
+      },
+      "NDTE 131": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 131",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Describe and utilize all of the operational components of the EEG instrument and utilize basic troubleshooting techniques.",
+         "basis": "utilizing troubleshooting techniques on the EEG instrument is maintaining medical equipment"
+        }
+       ]
+      },
+      "NDTE 140": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 140",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Calibrate the machine with 100% accuracy and ability to make all necessary adjustments to the instrument for accurate recordings",
+         "basis": "literal statement that students calibrate and adjust the instrument, maintaining its accuracy"
+        }
+       ]
+      },
+      "NDTE 150": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 150",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Calibrate the machine within 100% accuracy and be able to make all necessary adjustments to the instrument for accurate recordings",
+         "basis": "calibrating and adjusting the instrument is maintaining medical equipment"
+        }
+       ]
+      },
+      "NDTE 260": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 260",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Calibrate the machine with 100% accuracy and ability to make all necessary adjustments to the instrument for accurate recordings",
+         "basis": "calibrating and adjusting the instrument is literal maintenance of medical equipment"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDTE 121",
+      "section": "objectives",
+      "quote": "Accurately calibrate an EEG/EP instrument and be able to troubleshoot basic equipment malfunctions.",
+      "reason": "objective specifically commits to calibrating and troubleshooting equipment malfunctions"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.4.f.4",
+     "dwa": "Repair medical facility equipment.",
+     "task": "Calibrate, troubleshoot, or repair equipment and correct malfunctions, as needed.",
+     "cells": {
+      "NDTE 131": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDTE 131",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Describe and utilize all of the operational components of the EEG instrument and utilize basic troubleshooting techniques.",
+         "basis": "troubleshooting the instrument literally matches repairing/correcting malfunctions in facility equipment"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDTE 131",
+      "section": "objectives",
+      "quote": "Describe and utilize all of the operational components of the EEG instrument and utilize basic troubleshooting techniques.",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.3.d.4",
+     "dwa": "Operate diagnostic imaging equipment.",
+     "task": "Adjust equipment to optimize viewing of the nervous system.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.4.b.3.f.8",
+     "dwa": "Train medical providers.",
+     "task": "Assist in training technicians, medical students, residents, or other staff members.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.1.a.1.s.1",
+     "dwa": "Conduct research to increase knowledge about medical issues.",
+     "task": "Participate in research projects, conferences, or technical meetings.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.2.b.3.a.12",
+     "dwa": "Maintain medical or professional knowledge.",
+     "task": "Participate in research projects, conferences, or technical meetings.",
+     "cells": {},
+     "lead": null
+    }
+   ],
+   "dropped": [
+    {
+     "activity": 11,
+     "course": "NDTE 131",
+     "section": "objectives",
+     "quote": "Perform and interpret EEG recordings on human volunteers that conform to the Academy of Clinical Neurophysiology Society (ACNS) minimal guidelines.",
+     "basis": "electrode application prior to recording literally matches attaching electrodes to patients",
+     "why": "adjudicated: d - performing/interpreting EEG recordings per ACNS guidelines evidences testing nervous system function, not attaching electrodes/preparing patients"
+    },
+    {
+     "activity": 12,
+     "course": "NDTE 260",
+     "section": "content",
+     "quote": "Calculations for physician interpretation",
+     "basis": "making calculations for physician interpretation evidences submitting test results to physicians",
+     "why": "adjudicated: b - calculations for physician interpretation precede/support the report rather than the submission of reports to physicians"
+    },
+    {
+     "activity": 15,
+     "course": "NDTE 131",
+     "section": "content",
+     "quote": "Cortical recordings",
+     "basis": "cortical recording setup requires adjusting equipment to view nervous system activity, matching imaging-equivalent viewing",
+     "why": "adjudicated: a - 'Cortical recordings' is a topic heading naming subject matter with no performable adjustment content stated"
+    },
+    {
+     "activity": 16,
+     "course": "NDTE 260",
+     "section": "description",
+     "quote": "progressing toward entry level",
+     "basis": "not applicable",
+     "why": "adjudicated: a - 'progressing toward entry level' is a vague description phrase with no performable training content stated"
+    },
+    {
+     "activity": 4,
+     "course": "NDTE 101",
+     "section": "outcomes",
+     "quote": "Students will be able to identify normal and abnormal adult EEG recordings.",
+     "basis": "reading/identifying EEG recordings evidences testing patient nervous system functioning via EEG",
+     "why": "adjudicated: d - identifying normal/abnormal EEG recordings evidences interpretation/collecting information rather than conducting the test itself, though closely related this is reading not testing"
+    },
+    {
+     "activity": 9,
+     "course": "MEDA 115",
+     "section": "outcomes",
+     "quote": "Identify common and significant medical conditions and diseases and their signs, symptoms, and etiology.",
+     "basis": "understanding disease presentation underlies summarizing diagnostic data on disorders for physicians",
+     "why": "adjudicated: b - identifying medical conditions/diseases is background knowledge that precedes summarizing technical EEG data for physicians"
+    },
+    {
+     "activity": 4,
+     "course": "MEDA 115",
+     "section": "content",
+     "quote": "Neurological diseases and conditions",
+     "basis": "content on neurological disease categories informs the disorders tested for via EEG/NCS/EMG nervous system studies",
+     "why": "adjudicated: a - 'Neurological diseases and conditions' is a topic heading with no performable testing content stated"
+    },
+    {
+     "activity": 2,
+     "course": "NDTE 131",
+     "section": "outcomes",
+     "quote": "Select and record standard montages, annotate wake, drowsy and/or sleep patterns and electrode artifacts",
+     "basis": "annotating electrode artifacts is indicating interference from sources outside the brain on the recording",
+     "why": "adjudicated: d - annotating electrode artifacts evidences indicating interferences on recordings, not collecting medical information from patients/family"
+    },
+    {
+     "activity": 3,
+     "course": "NDTE 140",
+     "section": "description",
+     "quote": "performance of EEG testing on clinical patients",
+     "basis": "performing EEG testing on patients constitutes monitoring patient conditions during the procedure",
+     "why": "adjudicated: d - performing EEG testing on patients evidences conducting the test, not monitoring patient conditions during it"
+    },
+    {
+     "activity": 10,
+     "course": "NDTE 140",
+     "section": "description",
+     "quote": "application of electrodes",
+     "basis": "electrode application in this course's context requires measuring and marking body locations for placement",
+     "why": "adjudicated: a - 'application of electrodes' alone is a bare topic phrase without the measuring/marking content stated"
+    },
+    {
+     "activity": 4,
+     "course": "NDTE 133",
+     "section": "objectives",
+     "quote": "Diagram the electrophysiologic characteristics of the neuron relating it to the electrophysiology and generation of EEG activity",
+     "basis": "directly addresses EEG electrophysiology underlying nervous system function testing",
+     "why": "adjudicated: b - diagramming neuron electrophysiology is background science knowledge that precedes conducting nervous system tests"
+    },
+    {
+     "activity": 4,
+     "course": "NDTE 133",
+     "section": "content",
+     "quote": "Microscopic anatomy, electrophysiology and electroencephalography generation",
+     "basis": "covers the electrophysiological basis of EEG testing of nervous system function",
+     "why": "adjudicated: a - 'Microscopic anatomy, electrophysiology and electroencephalography generation' is a topic heading naming background science, not the testing activity"
+    },
+    {
+     "activity": 6,
+     "course": "NDTE 133",
+     "section": "content",
+     "quote": "Neurologic exam, tests and history taking",
+     "basis": "topic covers conducting neurologic exams and tests, relating to adjusting exam/equipment approach based on nervous system anatomy",
+     "why": "adjudicated: d - 'Neurologic exam, tests and history taking' evidences a different activity (collecting client info/history) not adjusting equipment settings"
+    },
+    {
+     "activity": 4,
+     "course": "NDTE 135",
+     "section": "outcomes",
+     "quote": "Students will be able to differentiate between normal and abnormal waveforms.",
+     "basis": "EEG record review and waveform differentiation is a core component of conducting/interpreting EEG studies",
+     "why": "adjudicated: d - differentiating normal/abnormal waveforms evidences interpreting recordings/collecting information, not conducting the test itself"
+    },
+    {
+     "activity": 4,
+     "course": "NDTE 135",
+     "section": "objectives",
+     "quote": "Identify and describe the following infective disorders, encephalopathies, space-occupying lesions and generalized epilepsy.",
+     "basis": "reading EEG findings for these disorders is part of the EEG testing/diagnostic activity",
+     "why": "adjudicated: b - identifying/describing disorders is background clinical knowledge preceding EEG test conduct"
+    },
+    {
+     "activity": 9,
+     "course": "NDTE 135",
+     "section": "content",
+     "quote": "Predictive value of serial EEGs",
+     "basis": "evaluating and summarizing EEG data for clinical significance evidences preparing diagnostic summaries",
+     "why": "adjudicated: a - 'Predictive value of serial EEGs' is a topic heading without performable reporting content stated"
+    },
+    {
+     "activity": 3,
+     "course": "NDTE 150",
+     "section": "outcomes",
+     "quote": "Student will be able to identify and monitor artifacts with 85% accuracy and identify normal EEG activity with 95% accuracy.",
+     "basis": "monitoring artifacts and EEG activity during testing is monitoring patient conditions during a procedure",
+     "why": "adjudicated: d - identifying/monitoring artifacts and EEG activity evidences collecting information about clients, not monitoring patient conditions during the procedure"
+    },
+    {
+     "activity": 10,
+     "course": "NDTE 150",
+     "section": "content",
+     "quote": "Application of electrodes in timely and accurate manner",
+     "basis": "electrode placement per O*NET task requires measuring and marking body locations",
+     "why": "adjudicated: a - 'Application of electrodes in timely and accurate manner' names electrode application generally without stated measuring/marking content"
+    },
+    {
+     "activity": 4,
+     "course": "NDTE 203",
+     "section": "outcomes",
+     "quote": "recognize the clinical signs and electrographic correlations with infectious disorders, brain tumors, metabolic and/or toxicencephalopathies",
+     "basis": "identifying electrographic correlations is a direct component of conducting and interpreting EEG testing for these disorders",
+     "why": "adjudicated: b - recognizing clinical signs/electrographic correlations is interpretive knowledge preceding the act of conducting the test"
+    },
+    {
+     "activity": 4,
+     "course": "NDTE 203",
+     "section": "outcomes",
+     "quote": "recognize and identify the various epilepsy syndromes and specific types of seizure disorders with the corresponding electroencephalographic patterns",
+     "basis": "recognizing EEG patterns for seizure disorders is constitutive of testing nervous system functioning via EEG",
+     "why": "adjudicated: b - recognizing epilepsy syndromes and EEG patterns is clinical knowledge preceding test conduct"
+    },
+    {
+     "activity": 9,
+     "course": "NDTE 203",
+     "section": "objectives",
+     "quote": "Describe the major diagnostic procedures used for the central nervous system and how they relate to the results obtained from electroneurodiagnostic testing.",
+     "basis": "relating diagnostic testing results supports summarizing technical data for physicians to diagnose disorders",
+     "why": "adjudicated: a - describing major diagnostic procedures and their relation to results is topic-level knowledge without stated report-preparation content"
+    },
+    {
+     "activity": 9,
+     "course": "NDTE 203",
+     "section": "objectives",
+     "quote": "Explain the etiology, clinical manifestations, medications of choice, EEG patterns, and prognosis of the major seizure disorders and epileptic syndromes.",
+     "basis": "synthesizing EEG findings with clinical data evidences the summarization of technical data used to assist diagnosis",
+     "why": "adjudicated: b - explaining etiology/clinical manifestations/EEG patterns is background clinical knowledge preceding report summarization"
+    },
+    {
+     "activity": 5,
+     "course": "NDTE 203",
+     "section": "objectives",
+     "quote": "Describe the necessary aid for a patient having a seizure.",
+     "basis": "knowing how to assist a patient during a seizure directly supports explaining/managing procedures involving patients",
+     "why": "adjudicated: c - describing aid for a seizing patient is a generic patient-safety skill, not explaining testing procedures/results"
+    },
+    {
+     "activity": 15,
+     "course": "NDTE 260",
+     "section": "content",
+     "quote": "Utilization of appropriate stimulus for each modality",
+     "basis": "adjusting EP stimulus parameters to view nervous system responses matches adjusting imaging equipment for nervous system viewing",
+     "why": "adjudicated: d - utilization of appropriate stimulus per modality evidences conducting/measuring evoked potentials (testing nervous system function), not diagnostic imaging equipment adjustment"
+    }
+   ],
+   "source_note": "Read from San Diego Mesa College's course outlines of record (curriqunet); sections present: slo, objective, description, content outline, lab content, assignment.",
+   "role": "",
+   "short_title": "Neurodiagnostic Technology"
+  }
+ ]
+}

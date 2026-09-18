@@ -1,0 +1,2821 @@
+{
+ "program": "orangecoast-neurodiagnostic-technology",
+ "generated": "2026-09-17",
+ "onet_vintage": "O*NET 31.0 database (August 2026), U.S. Department of Labor",
+ "plates": [
+  {
+   "college": "Orange Coast College",
+   "member_id": "orangecoast",
+   "certificate": "Associate in Science Degree, Neurodiagnostic Technology",
+   "kind": "credit",
+   "top6": "121200",
+   "top_name": "Electro-Neurodiagnostic Technology",
+   "paired_soc": "29-2099.01",
+   "occupation": "Neurodiagnostic Technologists",
+   "crosswalk_socs": [],
+   "pairing_basis": "",
+   "courses": [
+    {
+     "code": "ALH A115",
+     "title": "Patient Care",
+     "units": 2,
+     "source_url": "https://catalog.cccd.edu/courses/alh-a115/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "12/3/2025",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "ALH A120",
+     "title": "Human Diseases",
+     "units": 2,
+     "source_url": "https://catalog.cccd.edu/courses/alh-a120/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "02/09/2022",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDT A110",
+     "title": "Basic Electroencephalography",
+     "units": 5,
+     "source_url": "https://catalog.cccd.edu/courses/ndt-a110/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "11/15/2023",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDT A115",
+     "title": "Advanced Electroencephalography",
+     "units": 4,
+     "source_url": "https://catalog.cccd.edu/courses/ndt-a115/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "02/23/2022",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDT A116",
+     "title": "Clinical Experience 1",
+     "units": 5.5,
+     "source_url": "https://catalog.cccd.edu/courses/ndt-a116/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "11/12/2025",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDT A190",
+     "title": "Introduction to Neuro Anatomy and Physiology",
+     "units": 3,
+     "source_url": "https://catalog.cccd.edu/courses/ndt-a190/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "02/23/2022",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDT A191",
+     "title": "EEG Record Review-Normal",
+     "units": 1,
+     "source_url": "https://catalog.cccd.edu/courses/ndt-a191/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "11/15/2023",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDT A287",
+     "title": "EEG Record Review-Abnormal",
+     "units": 1,
+     "source_url": "https://catalog.cccd.edu/courses/ndt-a287/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "11/15/2023",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDT A117",
+     "title": "Clinical Experience 2",
+     "units": 4.5,
+     "source_url": "https://catalog.cccd.edu/courses/ndt-a117/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "11/12/2025",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDT A280",
+     "title": "Neurologic Disorders",
+     "units": 3,
+     "source_url": "https://catalog.cccd.edu/courses/ndt-a280/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDT A200",
+     "title": "Neurodiagnostic Lab Practice",
+     "units": 1,
+     "source_url": "https://catalog.cccd.edu/courses/ndt-a200/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "02/09/2022",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDT A284",
+     "title": "Introduction to Transcranial Doppler",
+     "units": 1,
+     "source_url": "https://catalog.cccd.edu/courses/ndt-a284/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "02/26/2014",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDT A285",
+     "title": "Introduction to Nerve Conduction Velocity",
+     "units": 1,
+     "source_url": "https://catalog.cccd.edu/courses/ndt-a285/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDT A286",
+     "title": "Clinical Experience 3",
+     "units": 4.5,
+     "source_url": "https://catalog.cccd.edu/courses/ndt-a286/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "11/12/2025",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDT A288",
+     "title": "Evoked Potentials",
+     "units": 4,
+     "source_url": "https://catalog.cccd.edu/courses/ndt-a288/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDT A279",
+     "title": "Pediatric Electroencephalography",
+     "units": 2,
+     "source_url": "https://catalog.cccd.edu/courses/ndt-a279/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "11/12/2025",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDT A282",
+     "title": "NDT ABRET Registry Exam Prep",
+     "units": 1,
+     "source_url": "https://catalog.cccd.edu/courses/ndt-a282/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "12/03/2025",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDT A289",
+     "title": "Clinical Experience 4",
+     "units": 3.5,
+     "source_url": "https://catalog.cccd.edu/courses/ndt-a289/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "11/12/2025",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDT A296",
+     "title": "Introduction to Intraoperative Monitoring",
+     "units": 1.5,
+     "source_url": "https://catalog.cccd.edu/courses/ndt-a296/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "11/15/2023",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDT A297",
+     "title": "Microcomputer Applications in Neurodiagnostics",
+     "units": 1.5,
+     "source_url": "https://catalog.cccd.edu/courses/ndt-a297/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "11/15/2023",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "NDT A298",
+     "title": "Clinical Internship",
+     "units": 2,
+     "source_url": "https://catalog.cccd.edu/courses/ndt-a298/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "10/05/2022",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "lab",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    },
+    {
+     "code": "PSG A100",
+     "title": "Polysomnography Basics",
+     "units": 1,
+     "source_url": "https://catalog.cccd.edu/courses/psg-a100/",
+     "system": "courseleaf",
+     "effective": "",
+     "approved": "12/06/2017",
+     "sections": [
+      "outcomes",
+      "objectives",
+      "description",
+      "content",
+      "assignments"
+     ],
+     "notes": "",
+     "currency": null
+    }
+   ],
+   "program_outcomes": [
+    "To prepare the student for entry-level employment in the Neurodiagnostic field in the knowledge (cognitive), skills (psychomotor), and behavior (affective) learning domains as professional and competent Neurodiagnostic Technologists."
+   ],
+   "rows": [
+    {
+     "dwa_id": "4.A.1.a.1.l.4",
+     "dwa": "Collect information about clients.",
+     "task": "Indicate artifacts or interferences derived from sources outside of the brain, such as poor electrode contact or patient movement, on electroneurodiagnostic recordings.",
+     "cells": {
+      "NDT A116": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A116",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify and monitor artifacts with 60% accuracy in the first 8 weeks and to 75%",
+         "basis": "students directly identify artifacts on recordings"
+        },
+        {
+         "course": "NDT A116",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify and monitor artifacts with 60% accuracy in the first 8 weeks and to 75% by the end of the semester.",
+         "basis": "directly states indicating artifacts on EEG recordings"
+        },
+        {
+         "course": "NDT A116",
+         "section": "lab",
+         "level": 1,
+         "quote": "Identification of artifacts",
+         "basis": "lab content covers identifying artifacts on recordings"
+        }
+       ]
+      },
+      "NDT A200": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A200",
+         "section": "lab",
+         "level": 1,
+         "quote": "Artifact Identification Electrode Physical Chemical Ground Loop Artifact Elimination Techniques",
+         "basis": "students identify sources of artifacts on EEG recordings"
+        },
+        {
+         "course": "NDT A200",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify basic EEG rhythms/waveforms and artifacts on recording.",
+         "basis": "literally states students identify artifacts on recordings"
+        }
+       ]
+      },
+      "NDT A110": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A110",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Define and identify on the EEG recording the basic EEG rhythms, activity, and artifacts.",
+         "basis": "identifying artifacts on EEG recording is literally the task of indicating non-cerebral interferences"
+        },
+        {
+         "course": "NDT A110",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Identify and define observed basic EEG rhythms, activity, artifacts, and instrument setting effects on the EEG recording.",
+         "basis": "identifying artifacts on EEG recording directly evidences indicating non-cerebral interferences"
+        }
+       ]
+      },
+      "NDT A115": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A115",
+         "section": "lab",
+         "level": 1,
+         "quote": "Identification and Elimination of Artifact",
+         "basis": "lab has students identify EEG artifacts from sources outside the brain"
+        }
+       ]
+      },
+      "NDT A117": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A117",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify and monitor artifacts with 85% accuracy.",
+         "basis": "directly evidences indicating artifacts/interferences on EEG recordings"
+        }
+       ]
+      },
+      "NDT A286": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A286",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify and monitor artifacts with 100% accuracy.",
+         "basis": "directly states identifying artifacts on EEG recordings"
+        },
+        {
+         "course": "NDT A286",
+         "section": "lab",
+         "level": 1,
+         "quote": "Identification of artifacts",
+         "basis": "lab practice identifying artifacts derived from outside sources during EEG"
+        }
+       ]
+      },
+      "NDT A288": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A288",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Recognize and remedy artifacts on the EP.",
+         "basis": "identifying artifacts on EP recordings is literally this activity"
+        }
+       ]
+      },
+      "NDT A282": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A282",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Discriminate common EEG artifacts and implement troubleshooting techniques to eliminate or monitor event",
+         "basis": "identifying EEG artifacts directly evidences indicating interferences from sources outside the brain"
+        }
+       ]
+      },
+      "NDT A289": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A289",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify artifact with 100% accuracy.",
+         "basis": "identifying artifact from sources outside the brain on recordings directly matches the task"
+        },
+        {
+         "course": "NDT A289",
+         "section": "lab",
+         "level": 1,
+         "quote": "Identification/elimination/monitoring of artifacts with 100% accuracy",
+         "basis": "lab activity of identifying and eliminating artifacts evidences indicating interferences on recordings"
+        }
+       ]
+      },
+      "NDT A298": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A298",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify, monitor, and or eliminate artifacts recorded, with 100% accuracy.",
+         "basis": "directly states performing artifact identification, a component of collecting client information from recordings"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDT A116",
+      "section": "objectives",
+      "quote": "Identify and monitor artifacts with 60% accuracy in the first 8 weeks and to 75% by the end of the semester.",
+      "reason": "SLO-tier objective states the exact task (identify and monitor artifacts) with full, specific accuracy criteria"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.1.l.2",
+     "dwa": "Collect medical information from patients, family members, or other medical professionals.",
+     "task": "Indicate artifacts or interferences derived from sources outside of the brain, such as poor electrode contact or patient movement, on electroneurodiagnostic recordings. · Collect patients' medical information needed to customize tests.",
+     "cells": {
+      "NDT A110": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A110",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Take an accurate and complete patient history.",
+         "basis": "collecting patient medical information directly stated"
+        },
+        {
+         "course": "NDT A110",
+         "section": "content",
+         "level": 1,
+         "quote": "How to Take a Patient History Present illness Past history",
+         "basis": "content on taking patient history evidences collecting medical information from patients"
+        }
+       ]
+      },
+      "ALH A115": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ALH A115",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Define each vital sign, describe how to assess on a patient, and identify the normal ranges for all",
+         "basis": "assessing and recording patient vital signs is collecting medical information from the patient directly"
+        }
+       ]
+      },
+      "NDT A116": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A116",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Take valid patient data.",
+         "basis": "collecting patient data to customize testing"
+        },
+        {
+         "course": "NDT A116",
+         "section": "lab",
+         "level": 1,
+         "quote": "Patient History",
+         "basis": "lab covers taking patient medical history for tests"
+        }
+       ]
+      },
+      "NDT A117": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A117",
+         "section": "lab",
+         "level": 1,
+         "quote": "Acquiring patient history",
+         "basis": "evidences collecting patients' medical information to customize testing"
+        },
+        {
+         "course": "NDT A117",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Take valid patient data.",
+         "basis": "evidences collecting medical information from patients"
+        }
+       ]
+      },
+      "NDT A200": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A200",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Take an accurate and complete patient history.",
+         "basis": "literally states students collect patient medical information"
+        }
+       ]
+      },
+      "NDT A286": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A286",
+         "section": "objectives",
+         "level": 2,
+         "quote": "*+Take valid patient data.",
+         "basis": "directly states collecting patient data to customize testing"
+        },
+        {
+         "course": "NDT A286",
+         "section": "lab",
+         "level": 1,
+         "quote": "Acquiring patient history",
+         "basis": "lab practice collecting medical history from patients"
+        }
+       ]
+      },
+      "NDT A289": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A289",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Take a valid patient history.",
+         "basis": "taking patient history literally evidences collecting medical information from patients"
+        },
+        {
+         "course": "NDT A289",
+         "section": "lab",
+         "level": 1,
+         "quote": "Patient history",
+         "basis": "lab component on patient history evidences collecting medical information from patients"
+        }
+       ]
+      },
+      "NDT A298": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A298",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Report valid clinical history from patients.",
+         "basis": "states collecting patient medical information for tests"
+        }
+       ]
+      },
+      "PSG A100": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "PSG A100",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Overview of sleep diary and sleep questionnaires and good sleep hygiene.",
+         "basis": "collecting sleep-related patient information via diary and questionnaires customizes testing"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDT A110",
+      "section": "objectives",
+      "quote": "Take an accurate and complete patient history.",
+      "reason": "objective directly commits to taking an accurate, complete patient history, matching the task verbatim"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.a.2.e.7",
+     "dwa": "Monitor patient conditions during treatments, procedures, or activities.",
+     "task": "Monitor patients during tests or surgeries, using electroencephalographs (EEG), evoked potential (EP) instruments, or video recording equipment.",
+     "cells": {
+      "NDT A115": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A115",
+         "section": "content",
+         "level": 1,
+         "quote": "Monitoring Techniques Respiration Pulse and EKG Eye movement Tremor/Movement",
+         "basis": "monitoring patient physiological signals during EEG recording"
+        },
+        {
+         "course": "NDT A115",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Perform accurate PSG patient setup, system patient calibration, and record a 15 minute baseline study",
+         "basis": "recording a study on a patient constitutes monitoring during a procedure"
+        }
+       ]
+      },
+      "NDT A296": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A296",
+         "section": "objectives",
+         "level": 2,
+         "quote": "State the criteria for significant changes during intraoperative monitoring",
+         "basis": "monitoring patient condition during surgery using IOM instruments"
+        },
+        {
+         "course": "NDT A296",
+         "section": "content",
+         "level": 1,
+         "quote": "Introduction to IONM Equipment Recording Settings Parameters Stimulators Settings Parameters",
+         "basis": "monitoring nervous system responses during surgery via IONM equipment is monitoring patients during procedures"
+        }
+       ]
+      },
+      "ALH A115": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "ALH A115",
+         "section": "lab",
+         "level": 1,
+         "quote": "Demonstration and hands on practice in taking a patient's vital signs: 1. Blood Pressure Skill Evaluation",
+         "basis": "taking vital signs during patient care constitutes monitoring patient condition"
+        }
+       ]
+      },
+      "NDT A282": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A282",
+         "section": "content",
+         "level": 1,
+         "quote": "Routine EEG Setup and Performance",
+         "basis": "content covers running EEG recordings which entails monitoring patients during tests"
+        }
+       ]
+      },
+      "NDT A289": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A289",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Monitor artifacts within 100% accuracy.",
+         "basis": "monitoring during EEG recording evidences monitoring patient conditions during testing procedures"
+        }
+       ]
+      },
+      "NDT A298": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A298",
+         "section": "lab",
+         "level": 1,
+         "quote": "Topics covered will vary depending on clinical assignment, but should include (if possible) performing NDT procedures on: Pediatric, Adult, intensive care and/or surgical patients.",
+         "basis": "clinical performance of NDT procedures on patients including surgical monitoring involves monitoring patient conditions during procedures"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDT A115",
+      "section": "content",
+      "quote": "Monitoring Techniques Respiration Pulse and EKG Eye movement Tremor/Movement",
+      "reason": "content line names the specific monitoring parameters (respiration, pulse/EKG, eye movement, tremor) during a procedure"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.2.a.7",
+     "dwa": "Test patient nervous system functioning.",
+     "task": "Conduct tests or studies such as electroencephalography (EEG), polysomnography (PSG), nerve conduction studies (NCS), electromyography (EMG), and intraoperative monitoring (IOM). · Conduct tests to determine cerebral death, the absence of brain activity, or the probability of recovery from a coma. · Measure visual, auditory, or somatosensory evoked potentials (EPs) to determine responses to stimuli.",
+     "cells": {
+      "NDT A115": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A115",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Perform accurate and interpretable EEG recordings according to ACNS minimal guidelines on human volunteers",
+         "basis": "directly conducting EEG testing"
+        },
+        {
+         "course": "NDT A115",
+         "section": "lab",
+         "level": 1,
+         "quote": "Perform routine EEG examinations on human subjects according to the ACNS Guidelines",
+         "basis": "lab exercise directly performs EEG testing"
+        }
+       ]
+      },
+      "NDT A288": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A288",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Perform accurate and interpretable EP recordings according to ACNS minimal guidelines on human volunteers",
+         "basis": "directly conducting evoked potential testing"
+        },
+        {
+         "course": "NDT A288",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate ability to perform evoked potentials in the modalities Visual, Auditory Brainstem, and Somatosensory on volunteer human subjects.",
+         "basis": "measuring visual, auditory, and somatosensory evoked potentials matches the task literally"
+        }
+       ]
+      },
+      "NDT A110": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A110",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Describe, define, and perform the standard EEG activations used in an EEG routine recording.",
+         "basis": "performing EEG activations is literally conducting EEG testing of nervous system function"
+        }
+       ]
+      },
+      "NDT A116": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A116",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Perform a complete routine EEG examination under direct assistance according to ACNS guidelines",
+         "basis": "directly states conducting EEG testing"
+        },
+        {
+         "course": "NDT A116",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify normal EEG activity with 75% accuracy in the first 8 weeks and to 90% by the end of the semester.",
+         "basis": "testing nervous system function via EEG interpretation"
+        }
+       ]
+      },
+      "NDT A191": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A191",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "List, identify and describe normal EEG patterns in the neonatal, infant, pediatric and adult age groups.",
+         "basis": "reading and identifying EEG patterns is a directly constitutive component of conducting/interpreting EEG testing"
+        },
+        {
+         "course": "NDT A191",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify and describe the four basic EEG rhythms using Frequency (F), Morphology (M), Topography (T), and Reactivity (R).",
+         "basis": "identifying EEG rhythm characteristics is core to conducting EEG studies"
+        }
+       ]
+      },
+      "NDT A287": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A287",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Identify and describe abnormal EEG patterns in the neonatal, infant, pediatric and adult age groups correlating the patterns with clinical disorders and clinical signs.",
+         "basis": "Reading and classifying EEG recordings is the core test-interpretation component of conducting EEG studies"
+        },
+        {
+         "course": "NDT A287",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Correlate EEG patterns with neurologic disorders and their clinical symptoms.",
+         "basis": "Correlating EEG findings with disorders is part of testing nervous system functioning via EEG"
+        }
+       ]
+      },
+      "NDT A117": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A117",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Perform a routine EEG with increased efficiency and confidence according to ACNS guidelines",
+         "basis": "literally states performing an EEG, a core nervous system test"
+        },
+        {
+         "course": "NDT A117",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify normal EEG activity with 95% accuracy.",
+         "basis": "evidences conducting and interpreting EEG testing"
+        }
+       ]
+      },
+      "NDT A280": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A280",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Recognize the clinical signs and electroencephalographic correlations with vascular disorders, space occupying lesions, infective disorders",
+         "basis": "reading EEG correlations to diagnose nervous system disorders evidences testing patient nervous system functioning"
+        },
+        {
+         "course": "NDT A280",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Recognize the electroencephalographic correlations with decreased levels of consciousness.",
+         "basis": "interpreting EEG for coma/consciousness directly supports conducting EEG tests including determining probability of recovery from coma"
+        }
+       ]
+      },
+      "NDT A200": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A200",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Perform a routine EEG recording using the ACNS minimal guidelines.",
+         "basis": "literally states students conduct EEG testing"
+        },
+        {
+         "course": "NDT A200",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify posterior dominant rhythm and normal variant waveforms accurately.",
+         "basis": "literally involves testing/interpreting nervous system function via EEG waveforms"
+        }
+       ]
+      },
+      "NDT A284": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A284",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Describe the theory and use of Doppler ultrasound in non-invasive assessment of intracerebral circulation.",
+         "basis": "TCD is a nervous system function test measuring cerebral blood flow"
+        },
+        {
+         "course": "NDT A284",
+         "section": "content",
+         "level": 1,
+         "quote": "Demonstration and practice measuring flow in the PCA, Vertebral Artery and Basilar Artery",
+         "basis": "measuring arterial flow with TCD constitutes testing nervous system (cerebrovascular) function"
+        }
+       ]
+      },
+      "NDT A285": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A285",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Describe and differentiate among the Compound Motor Action Potential (CMAP), Sensory Nerve Potentials, H-Reflex, F-Waves",
+         "basis": "conducting/interpreting NCS is a direct component of testing nervous system functioning"
+        },
+        {
+         "course": "NDT A285",
+         "section": "content",
+         "level": 1,
+         "quote": "Demonstration and practice performing motor and sensory NCV of the median, ulnar and radial nerves in the arms",
+         "basis": "hands-on performance of nerve conduction studies is the core test in this activity"
+        }
+       ]
+      },
+      "NDT A286": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A286",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Perform routine NDT procedures, with emphasis on the routine EEG examination under general supervision",
+         "basis": "directly states conducting EEG testing of nervous system function"
+        },
+        {
+         "course": "NDT A286",
+         "section": "objectives",
+         "level": 2,
+         "quote": "*+Identify normal EEG activity with 100% accuracy.",
+         "basis": "directly states testing/interpreting EEG activity as part of nervous system testing"
+        }
+       ]
+      },
+      "NDT A279": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A279",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Evaluate EEG findings correlating to neurological conditions in the pediatric population.",
+         "basis": "directly evidences conducting/interpreting EEG testing on patients"
+        },
+        {
+         "course": "NDT A279",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Analyze EEG recordings of common epileptic syndromes/diseases in the neonate, infant, and pediatric population.",
+         "basis": "analyzing EEG recordings is a constitutive component of conducting EEG testing"
+        }
+       ]
+      },
+      "NDT A282": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A282",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate comprehension of EEG activities through evaluation/interpretation of EEG tracings and report findings in the neonate, pediatric and adult patients",
+         "basis": "objective directly involves interpreting EEG test results, a nervous system function test"
+        },
+        {
+         "course": "NDT A282",
+         "section": "content",
+         "level": 1,
+         "quote": "EEG Pattern Recognition",
+         "basis": "content covers recognizing EEG patterns central to nervous system function testing"
+        }
+       ]
+      },
+      "NDT A289": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A289",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Perform routine NDT procedures such as Evoked Potentials and EEG exams recognizing normal and abnormal EEG activity consistently",
+         "basis": "performing EEG and evoked potential exams literally matches conducting nervous system tests"
+        },
+        {
+         "course": "NDT A289",
+         "section": "lab",
+         "level": 1,
+         "quote": "performance and observation of evoked potentials in the auditory, visual, and somatosensory modality",
+         "basis": "performing auditory/visual/somatosensory evoked potentials directly matches measuring EPs to determine responses to stimuli"
+        }
+       ]
+      },
+      "NDT A296": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A296",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Explain common indications for intraoperative neurophysiological EEG, evoked potential, and neuromuscular monitoring",
+         "basis": "directly names intraoperative monitoring, EEG, and evoked potential testing of nervous system function"
+        },
+        {
+         "course": "NDT A296",
+         "section": "lab",
+         "level": 1,
+         "quote": "SSEP Setup Recording Parameters Stimulating Parameters TcMEP Setup Recording Parameters Stimulating Parameters",
+         "basis": "hands-on practice setting up and recording evoked potential and motor evoked potential studies"
+        }
+       ]
+      },
+      "NDT A297": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A297",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Review, scan, and identify video EEG recorded events utilizing spike and seizure detection algorithms/software.",
+         "basis": "identifying seizure/spike events in EEG recordings is directly constitutive of testing nervous system functioning via EEG"
+        },
+        {
+         "course": "NDT A297",
+         "section": "content",
+         "level": 1,
+         "quote": "Long Term Epilepsy Monitoring (Video EEG, Telemetry, EMU) Indications for LTM Epileptic Seizures Non-Epileptic Seizures",
+         "basis": "content on conducting long-term EEG monitoring studies evidences testing nervous system functioning"
+        }
+       ]
+      },
+      "NDT A298": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A298",
+         "section": "lab",
+         "level": 1,
+         "quote": "NDT instrumentation Performance Objectives NDT modality electrode application Acquiring accurate and complete patient history",
+         "basis": "clinical training in performing NDT testing modalities constitutes testing patient nervous system functioning"
+        },
+        {
+         "course": "NDT A298",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Identify normal and abnormal recordings with 90% accuracy.",
+         "basis": "identifying normal/abnormal recordings is a direct component of conducting neurodiagnostic tests"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDT A115",
+      "section": "outcomes",
+      "quote": "Perform accurate and interpretable EEG recordings according to ACNS minimal guidelines on human volunteers",
+      "reason": "SLO commits to performing accurate, interpretable EEG recordings per ACNS guidelines, matching the conduct-tests task most specifically"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.1.e.5",
+     "dwa": "Explain medical procedures or test results to patients or family members.",
+     "task": "Explain testing procedures to patients, answering questions or reassuring patients, as needed.",
+     "cells": {
+      "NDT A289": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A289",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Explain each test procedure clearly, and obtain optimal patient cooperation.",
+         "basis": "explains EP test procedures to patients"
+        }
+       ]
+      },
+      "NDT A116": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A116",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Relate to patients in a positive manner to encourage patient cooperation and enhance attitude. This includes good communication skills in explaining all procedures and expectations of the patient.",
+         "basis": "explains procedures to patients directly"
+        }
+       ]
+      },
+      "NDT A200": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A200",
+         "section": "lab",
+         "level": 1,
+         "quote": "Explaining exa m to a patient Techniques: Eliciting patient cooperation",
+         "basis": "lab activity has students explain the EEG procedure to patients"
+        }
+       ]
+      },
+      "NDT A298": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A298",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Explain each test procedure clearly, and relate to patients to obtain optimal cooperation.",
+         "basis": "directly states explaining test procedures to patients"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDT A289",
+      "section": "objectives",
+      "quote": "Explain each test procedure clearly, and obtain optimal patient cooperation.",
+      "reason": "objective states explaining test procedures to patients precisely as the task defines it"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.i.9",
+     "dwa": "Adjust settings or positions of medical equipment.",
+     "task": "Set up, program, or record montages or electrical combinations when testing peripheral nerve, spinal cord, subcortical, or cortical responses. · Adjust equipment to optimize viewing of the nervous system.",
+     "cells": {
+      "NDT A116": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A116",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Use appropriate machine settings to provide optimal recording as necessary.",
+         "basis": "adjusting equipment settings for recording"
+        },
+        {
+         "course": "NDT A116",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Learn the lab montages by the second week.",
+         "basis": "setting montage configurations on equipment"
+        }
+       ]
+      },
+      "NDT A110": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A110",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Describe, list, and set up all of the recommended montages used in routine EEG.",
+         "basis": "programming montages/electrical combinations on equipment"
+        },
+        {
+         "course": "NDT A110",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Define, describe, and utilize the major instrument controls such as high and low filters, sensitivity, and calibration.",
+         "basis": "adjusting instrument controls literally evidences adjusting settings of medical equipment"
+        }
+       ]
+      },
+      "NDT A115": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A115",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Describe and utilize all of the operational components of the EEG instrument and utilize basic troubleshooting techniques",
+         "basis": "utilizing instrument components requires adjusting equipment settings"
+        }
+       ]
+      },
+      "NDT A117": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A117",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Use appropriate machine settings to provide optimal recording as necessary.",
+         "basis": "evidences adjusting equipment settings for recordings"
+        },
+        {
+         "course": "NDT A117",
+         "section": "lab",
+         "level": 1,
+         "quote": "Clinical montages",
+         "basis": "evidences setting montages/electrical combinations for testing"
+        }
+       ]
+      },
+      "NDT A200": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A200",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Utilize the major instrument controls such as high and low filters, sensitivity, and calibration settings.",
+         "basis": "literally states students adjust equipment settings during recording"
+        },
+        {
+         "course": "NDT A200",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Set up all of the recommended montages used in a routine EEG.",
+         "basis": "literally states students set up montages, an equipment configuration task"
+        }
+       ]
+      },
+      "NDT A285": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A285",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate the principles of stimulation and accurate placement of recording electrodes.",
+         "basis": "placing/adjusting recording electrodes for NCS is adjusting equipment settings/positions"
+        }
+       ]
+      },
+      "NDT A286": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A286",
+         "section": "objectives",
+         "level": 2,
+         "quote": "*+Correctly use the EEG machine settings to obtain optimal recordings.",
+         "basis": "directly states adjusting equipment settings during testing"
+        },
+        {
+         "course": "NDT A286",
+         "section": "lab",
+         "level": 1,
+         "quote": "Equipment setting controls/calibration",
+         "basis": "lab practice adjusting equipment settings for optimal viewing"
+        }
+       ]
+      },
+      "NDT A288": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A288",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Set up EP equipment to the desired protocols for each modality.",
+         "basis": "adjusting equipment protocols/settings for testing modalities"
+        }
+       ]
+      },
+      "NDT A289": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A289",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Use machine settings (filters, sensitivity...) accurately and when necessary.",
+         "basis": "adjusting machine settings literally matches adjusting settings of medical equipment"
+        },
+        {
+         "course": "NDT A289",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Set up EP equipment to the desired protocols for each modality.",
+         "basis": "setting up equipment to protocols matches adjusting equipment settings for testing"
+        }
+       ]
+      },
+      "NDT A296": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A296",
+         "section": "lab",
+         "level": 1,
+         "quote": "IONM Equipment Overview Display Amplifer Electrode Inputs Recording Settings Stimulator Settings Ancillary Equipment",
+         "basis": "adjusting amplifier, electrode input, and stimulator settings is adjusting equipment settings"
+        }
+       ]
+      },
+      "NDT A298": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A298",
+         "section": "lab",
+         "level": 1,
+         "quote": "Equipment setting controls/calibration Clinical montages",
+         "basis": "adjusting equipment settings and configuring montages evidences adjusting equipment settings"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDT A116",
+      "section": "objectives",
+      "quote": "Learn the lab montages by the second week.",
+      "reason": "objective specifically commits to learning montages, matching the montage-setup task text"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.3.d.3",
+     "dwa": "Operate diagnostic or therapeutic medical instruments or equipment.",
+     "task": "Set up, program, or record montages or electrical combinations when testing peripheral nerve, spinal cord, subcortical, or cortical responses.",
+     "cells": {
+      "NDT A296": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A296",
+         "section": "lab",
+         "level": 1,
+         "quote": "SSEP Setup Recording Parameters Stimulating Parameters",
+         "basis": "operating IOM instrument by setting recording/stimulating parameters"
+        },
+        {
+         "course": "NDT A296",
+         "section": "lab",
+         "level": 1,
+         "quote": "EMG Setup Recording Parameters Stimulating Parameters BAEP Setup Recording Parameters Stimulating Parameters",
+         "basis": "operating EMG and BAEP diagnostic monitoring instruments and setting their parameters"
+        }
+       ]
+      },
+      "NDT A288": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A288",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Set up EP equipment to the desired protocols for each modality.",
+         "basis": "operating EP diagnostic equipment via protocol setup"
+        },
+        {
+         "course": "NDT A288",
+         "section": "lab",
+         "level": 1,
+         "quote": "Recording Parameters ii. Stimulus Parameters iii. Troubleshooting techniques",
+         "basis": "operating EP diagnostic instruments by setting recording and stimulus parameters"
+        }
+       ]
+      },
+      "NDT A110": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A110",
+         "section": "lab",
+         "level": 1,
+         "quote": "Montage 2. Impedance Meter 3. Acquisition 4. Intermittent Photic Stimulation 5. Hyperventilation Stimulation",
+         "basis": "hands-on montage setup and acquisition on the EEG instrument evidences operating diagnostic equipment"
+        }
+       ]
+      },
+      "NDT A115": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A115",
+         "section": "lab",
+         "level": 1,
+         "quote": "Demonstration of Instrumentation Knowledge and Application",
+         "basis": "lab has students operate the EEG diagnostic instrument"
+        }
+       ]
+      },
+      "NDT A116": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A116",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Calibrate the machine within 100% accuracy. Able to make all necessary adjustments to the instrument for accurate recordings.",
+         "basis": "operating diagnostic EEG instrument including calibration and adjustment"
+        }
+       ]
+      },
+      "NDT A117": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A117",
+         "section": "lab",
+         "level": 1,
+         "quote": "NDT instrumentation",
+         "basis": "evidences operating neurodiagnostic instruments in clinical practice"
+        }
+       ]
+      },
+      "NDT A200": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A200",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Set up all of the recommended montages used in a routine EEG.",
+         "basis": "literally states students set up and record montages on EEG instrument"
+        }
+       ]
+      },
+      "NDT A284": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A284",
+         "section": "content",
+         "level": 1,
+         "quote": "Field trip to hospital vascular lab: demonstration and lab practice",
+         "basis": "hands-on operation of TCD diagnostic instrument"
+        }
+       ]
+      },
+      "NDT A285": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A285",
+         "section": "content",
+         "level": 1,
+         "quote": "Nerve conduction instrumentation",
+         "basis": "operating NCV instrumentation to record nerve responses is operating diagnostic medical equipment"
+        }
+       ]
+      },
+      "NDT A286": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A286",
+         "section": "lab",
+         "level": 1,
+         "quote": "Clinical montages",
+         "basis": "hands-on practice recording montages when testing cortical responses"
+        }
+       ]
+      },
+      "NDT A289": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A289",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Justify appropriate use of montages within 90% accuracy.",
+         "basis": "using montages during testing literally matches recording montages when testing responses"
+        },
+        {
+         "course": "NDT A289",
+         "section": "lab",
+         "level": 1,
+         "quote": "Clinical Montages",
+         "basis": "clinical practice with montages evidences operating diagnostic equipment per montage protocols"
+        }
+       ]
+      },
+      "NDT A298": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A298",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Calibrate equipment used in diagnostic procedures with 100% accuracy",
+         "basis": "operating and calibrating diagnostic equipment during testing"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDT A296",
+      "section": "lab",
+      "quote": "SSEP Setup Recording Parameters Stimulating Parameters",
+      "reason": "lab content names the exact montage/electrical-combination setup (SSEP recording and stimulating parameters) the task describes"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.2.k.1",
+     "dwa": "Prepare medical supplies or equipment for use.",
+     "task": "Set up, program, or record montages or electrical combinations when testing peripheral nerve, spinal cord, subcortical, or cortical responses.",
+     "cells": {
+      "NDT A200": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A200",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Set up all of the recommended montages used in a routine EEG.",
+         "basis": "preparing equipment/montage combinations for use"
+        },
+        {
+         "course": "NDT A200",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Use the International 10/20 system to measure and apply the 23 standard EEG electrodes on a human volunteer accurately",
+         "basis": "literally states students prepare electrodes/equipment for EEG recording"
+        }
+       ]
+      },
+      "NDT A115": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A115",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Perform accurate PSG patient setup, system patient calibration, and record a 15 minute baseline study.",
+         "basis": "preparing equipment (calibration/setup) before recording"
+        },
+        {
+         "course": "NDT A115",
+         "section": "lab",
+         "level": 1,
+         "quote": "Perform the International 10-20 System of Electrode Placement on human subjects",
+         "basis": "electrode placement setup prepares equipment/supplies for the recording"
+        }
+       ]
+      },
+      "NDT A110": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A110",
+         "section": "lab",
+         "level": 1,
+         "quote": "Square Wave Calibration 2. Bio-Calibration",
+         "basis": "calibrating the EEG instrument before use evidences preparing medical equipment for use"
+        }
+       ]
+      },
+      "NDT A116": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A116",
+         "section": "lab",
+         "level": 1,
+         "quote": "Familiarization of NDT instrumentation and settings for optimal recording",
+         "basis": "preparing equipment/montage settings before testing"
+        }
+       ]
+      },
+      "NDT A117": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A117",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Calibrate the machine within 100% accuracy. Able to make all necessary adjustments to the instrument for accurate recordings.",
+         "basis": "evidences preparing equipment (calibration) before testing"
+        }
+       ]
+      },
+      "NDT A285": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A285",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate the principles of stimulation and accurate placement of recording electrodes.",
+         "basis": "setting up stimulating/recording electrodes for NCV is preparing equipment for use"
+        }
+       ]
+      },
+      "NDT A286": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A286",
+         "section": "objectives",
+         "level": 2,
+         "quote": "*+Calibrate and adjust instrument, 100% accurately.",
+         "basis": "directly states preparing/calibrating equipment for use before testing"
+        }
+       ]
+      },
+      "NDT A288": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A288",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Set up EP equipment to the desired protocols for each modality.",
+         "basis": "setting up equipment before testing is preparing equipment for use"
+        }
+       ]
+      },
+      "NDT A289": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A289",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Set up EP equipment to the desired protocols for each modality.",
+         "basis": "setting up EP equipment before testing literally matches preparing medical equipment for use"
+        }
+       ]
+      },
+      "NDT A296": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A296",
+         "section": "content",
+         "level": 1,
+         "quote": "Introduction to IONM Equipment Recording Settings Parameters Stimulators Settings Parameters",
+         "basis": "preparing recording and stimulator settings for IONM equipment prior to use is preparing equipment for use"
+        }
+       ]
+      },
+      "NDT A298": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A298",
+         "section": "lab",
+         "level": 1,
+         "quote": "Proper cleaning/disinfection and disposal of equipment NDT instrumentation",
+         "basis": "preparing/cleaning equipment for use is a component of preparing medical supplies"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDT A115",
+      "section": "objectives",
+      "quote": "Perform accurate PSG patient setup, system patient calibration, and record a 15 minute baseline study.",
+      "reason": "objective commits to complete PSG patient setup and calibration, matching equipment-preparation task most specifically"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.6.f.4",
+     "dwa": "Prepare reports summarizing patient diagnostic or care activities.",
+     "task": "Summarize technical data to assist physicians to diagnose brain, sleep, or nervous system disorders.",
+     "cells": {
+      "NDT A116": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A116",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Write a description of each EEG performed. Each should be reviewed by a technologists, and be at least 50% accurate.",
+         "basis": "summarizing test data as a report of diagnostic activity"
+        },
+        {
+         "course": "NDT A116",
+         "section": "lab",
+         "level": 1,
+         "quote": "Technical Impressions",
+         "basis": "documenting technical impressions summarizing findings"
+        }
+       ]
+      },
+      "NDT A286": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A286",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Write an accurate description of EEG's performed with 80% accuracy.",
+         "basis": "preparing reports summarizing diagnostic recordings"
+        },
+        {
+         "course": "NDT A286",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Required to make written reports of patients clinical history, test results, testing parameters",
+         "basis": "assignment requires preparing reports summarizing patient diagnostic activities"
+        }
+       ]
+      },
+      "NDT A115": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A115",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Two reports are to be completed in writing and given orally in summarized fashion",
+         "basis": "written summarized reports parallel summarizing technical data for diagnosis"
+        }
+       ]
+      },
+      "NDT A191": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A191",
+         "section": "assignments",
+         "level": 1,
+         "quote": "EEG Atlas portfolio Technical descriptions/impressions of EEG tracings",
+         "basis": "producing technical descriptions/impressions of EEG tracings is summarizing technical data for diagnosis"
+        }
+       ]
+      },
+      "NDT A287": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A287",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Describe in technical writing basic EEG characteristics based on frequency, morphology, topography and reactivity.",
+         "basis": "Technical writing of EEG findings evidences summarizing technical data for diagnostic reporting"
+        },
+        {
+         "course": "NDT A287",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Brief technical descriptions of electroencephalographs presented in discussions or class homework.",
+         "basis": "Writing technical descriptions of EEG findings evidences preparing summary reports of diagnostic data"
+        }
+       ]
+      },
+      "NDT A117": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A117",
+         "section": "lab",
+         "level": 1,
+         "quote": "Technical impressions",
+         "basis": "evidences summarizing technical findings for diagnostic reporting"
+        },
+        {
+         "course": "NDT A117",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Write a description of each EEG performed. Each should be reviewed by a technologists, and be at least 70% accurate.",
+         "basis": "evidences preparing a diagnostic summary report of the EEG"
+        }
+       ]
+      },
+      "NDT A200": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A200",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Lab assignments with patient history, and written technical impressions.",
+         "basis": "assignment has students write technical impressions summarizing diagnostic findings"
+        }
+       ]
+      },
+      "NDT A279": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A279",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Analyze EEG recordings of neonatal, infant and pediatric neurological conditions.",
+         "basis": "analyzing recordings to characterize neurological conditions is the technical core of summarizing data to assist diagnosis"
+        }
+       ]
+      },
+      "NDT A282": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A282",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate comprehension of EEG activities through evaluation/interpretation of EEG tracings and report findings in the neonate, pediatric and adult patients",
+         "basis": "objective explicitly requires reporting findings, summarizing diagnostic data"
+        }
+       ]
+      },
+      "NDT A289": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A289",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Written reports of patients clinical history, test results, testing parameters, and required record keeping as per lab protocol.",
+         "basis": "writing reports of test results literally matches preparing diagnostic summary reports"
+        },
+        {
+         "course": "NDT A289",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Students should write a description of each EEG they perform, and each should be reviewed by the technologist.",
+         "basis": "writing descriptions of EEG results matches summarizing patient diagnostic activities"
+        }
+       ]
+      },
+      "NDT A297": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A297",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate competency in manipulating, quantifying, and analyzing neurophysiologic data according to the ACNS guidelines.",
+         "basis": "analyzing neurophysiologic data to summarize technical findings evidences preparing diagnostic summaries"
+        },
+        {
+         "course": "NDT A297",
+         "section": "objectives",
+         "level": 2,
+         "quote": "List appropriate clinical uses of quantitative EEG data for effective patient care and management.",
+         "basis": "clinical use of quantitative data to assist patient management evidences summarizing diagnostic data for physicians"
+        }
+       ]
+      },
+      "NDT A298": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A298",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Write a description of each test performed as per lab requirements and have all results reviewed by the technical staff.",
+         "basis": "directly states preparing written reports summarizing test/diagnostic activities"
+        },
+        {
+         "course": "NDT A298",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Required to make written reports of patients' clinical history, test results, testing parameters, and required record keeping in the lab.",
+         "basis": "written reports of patient test results and history constitute diagnostic reporting"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDT A297",
+      "section": "objectives",
+      "quote": "Demonstrate competency in manipulating, quantifying, and analyzing neurophysiologic data according to the ACNS guidelines.",
+      "reason": "objective specifically commits to analyzing neurophysiologic data to support diagnosis, matching the summarize-for-physicians task"
+     }
+    },
+    {
+     "dwa_id": "4.A.1.b.2.i.5",
+     "dwa": "Measure the physical or physiological attributes of patients.",
+     "task": "Measure patients' body parts and mark locations where electrodes are to be placed.",
+     "cells": {
+      "NDT A110": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A110",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Measure and apply the 21 standard EEG electrodes using the International 10/20 system of electrode placement on a mannequin head accurately (to within 5 mm)",
+         "basis": "measuring body locations for electrode placement"
+        },
+        {
+         "course": "NDT A110",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Measure and apply the 21 standard EEG electrodes using the International 10/20 system of electrode placement on a mannequin head accurately",
+         "basis": "measuring the head to place electrodes literally evidences measuring body parts and marking electrode locations"
+        }
+       ]
+      },
+      "NDT A200": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A200",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Use the International 10/20 system to measure and apply the 23 standard EEG electrodes on a human volunteer accurately, (to within 5 mm)",
+         "basis": "measuring body parts to mark electrode locations"
+        }
+       ]
+      },
+      "ALH A115": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "ALH A115",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Define each vital sign, describe how to assess on a patient, and identify the normal ranges for all: temperature, pulse, respirations, and blood pressure.",
+         "basis": "measuring vital signs is measuring physiological attributes of patients"
+        }
+       ]
+      },
+      "NDT A115": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A115",
+         "section": "lab",
+         "level": 1,
+         "quote": "Perform the International 10-20 System of Electrode Placement on human subjects",
+         "basis": "10-20 system requires measuring the head and marking electrode locations"
+        }
+       ]
+      },
+      "NDT A116": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A116",
+         "section": "lab",
+         "level": 1,
+         "quote": "10/20 EEG placement",
+         "basis": "measuring head to mark electrode placement locations per 10/20 system"
+        }
+       ]
+      },
+      "NDT A117": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A117",
+         "section": "lab",
+         "level": 1,
+         "quote": "EEG electrode application",
+         "basis": "evidences marking measured locations for electrode placement per lab prep"
+        }
+       ]
+      },
+      "NDT A285": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A285",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Demonstrate the principles of stimulation and accurate placement of recording electrodes.",
+         "basis": "accurate electrode placement requires locating/measuring anatomical sites on the patient's limbs"
+        }
+       ]
+      },
+      "NDT A286": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A286",
+         "section": "objectives",
+         "level": 2,
+         "quote": "*Apply electrodes accurately to within 5mm of homologous regions, within 25 minutes",
+         "basis": "measuring precise scalp locations to homologous regions before electrode placement"
+        }
+       ]
+      },
+      "NDT A289": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A289",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Apply electrodes accurately within 20 25 mins.",
+         "basis": "electrode application implies measuring body locations for placement, constitutive of the task"
+        }
+       ]
+      },
+      "NDT A298": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A298",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Apply electrodes accurately with respect to each modality of testing within 5mm.",
+         "basis": "precise electrode placement requires measuring body locations for electrode marking"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDT A110",
+      "section": "objectives",
+      "quote": "Measure and apply the 21 standard EEG electrodes using the International 10/20 system of electrode placement on a mannequin head accurately (to within 5 mm)",
+      "reason": "objective states precise measurement of electrode placement to within 5mm, matching the measure-and-mark task exactly"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.5.k.7",
+     "dwa": "Prepare patients physically for medical procedures.",
+     "task": "Attach electrodes to patients, using adhesives. · Measure patients' body parts and mark locations where electrodes are to be placed.",
+     "cells": {
+      "NDT A110": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A110",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Apply electrodes using collodion in an acceptable manner to emulate the application process for recording EEG activity",
+         "basis": "attaching electrodes to patients using adhesives"
+        },
+        {
+         "course": "NDT A110",
+         "section": "outcomes",
+         "level": 2,
+         "quote": "Prepare a patient for an EEG recording using the International 10/20 system to accurately measure and apply standard EEG electrodes",
+         "basis": "applying electrodes to a patient literally evidences preparing patients physically for procedures"
+        }
+       ]
+      },
+      "NDT A116": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A116",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Apply electrodes accurately within 40 minutes in the first 8 weeks and to 35 minutes by the end of semester",
+         "basis": "attaching electrodes to patients preparing them for testing"
+        }
+       ]
+      },
+      "NDT A115": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A115",
+         "section": "lab",
+         "level": 1,
+         "quote": "Perform the International 10-20 System of Electrode Placement on human subjects",
+         "basis": "electrode placement per 10-20 system is attaching electrodes to prepare patient"
+        }
+       ]
+      },
+      "NDT A117": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A117",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Apply electrodes accurately within 30 minutes, and get the patients test performed in an acceptable time as per the lab schedule.",
+         "basis": "literally states attaching electrodes to prepare patients for testing"
+        }
+       ]
+      },
+      "NDT A200": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A200",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Apply electrodes using collodion in an acceptable manner so as to record EEG activity for 24-hour recordings",
+         "basis": "literally states students attach electrodes to patients using adhesives"
+        }
+       ]
+      },
+      "NDT A286": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A286",
+         "section": "lab",
+         "level": 1,
+         "quote": "EEG Electrode application",
+         "basis": "hands-on practice attaching electrodes to patients"
+        },
+        {
+         "course": "NDT A286",
+         "section": "objectives",
+         "level": 2,
+         "quote": "*Apply electrodes accurately to within 5mm of homologous regions, within 25 minutes, and perform testing",
+         "basis": "directly states applying electrodes to prepare patients for testing"
+        }
+       ]
+      },
+      "NDT A288": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A288",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Apply electrodes accurately with respect to each modality tested.",
+         "basis": "applying electrodes to patients is preparing patients physically for the procedure"
+        }
+       ]
+      },
+      "NDT A289": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A289",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Apply electrodes accurately with respect to each modality tested.",
+         "basis": "applying electrodes to patients literally matches attaching electrodes for medical procedure preparation"
+        },
+        {
+         "course": "NDT A289",
+         "section": "lab",
+         "level": 1,
+         "quote": "NDT modality electrode application 20-25 minutes or under",
+         "basis": "lab electrode application evidences preparing patients physically for procedures"
+        }
+       ]
+      },
+      "NDT A298": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A298",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Apply electrodes accurately with respect to each modality of testing within 5mm.",
+         "basis": "directly states attaching electrodes to patients, a physical preparation step"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDT A110",
+      "section": "outcomes",
+      "quote": "Prepare a patient for an EEG recording using the International 10/20 system to accurately measure and apply standard EEG electrodes",
+      "reason": "SLO commits to preparing a patient via accurate electrode measurement and placement, matching the physical-preparation task"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.a.2.d.4",
+     "dwa": "Communicate test or assessment results to medical professionals.",
+     "task": "Submit reports to physicians summarizing test results.",
+     "cells": {
+      "NDT A117": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A117",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Write a description of each EEG performed. Each should be reviewed by a technologists, and be at least 70% accurate.",
+         "basis": "submitting reports of test results reviewed by technologist"
+        },
+        {
+         "course": "NDT A117",
+         "section": "assignments",
+         "level": 1,
+         "quote": "written reports of patients clinical history, test results, testing parameters, and required record keeping as per lab protocol",
+         "basis": "evidences submitting test result reports as part of clinical record keeping"
+        }
+       ]
+      },
+      "NDT A298": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A298",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Write a description of each test performed as per lab requirements and have all results reviewed by the technical staff.",
+         "basis": "communicating test results to medical professionals for review"
+        }
+       ]
+      },
+      "NDT A116": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A116",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Accurately document all work, including calibrations, instrument settings, clinical findings, modifications to recording, and appropriate patient information.",
+         "basis": "documenting clinical findings for communication to physicians"
+        }
+       ]
+      },
+      "NDT A191": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A191",
+         "section": "assignments",
+         "level": 1,
+         "quote": "EEG portfolio, short essay homework/discussion assignments, technical impressions (2-3 hrs/wk).",
+         "basis": "writing technical impressions of EEG recordings mirrors reporting test results to medical professionals"
+        }
+       ]
+      },
+      "NDT A286": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A286",
+         "section": "objectives",
+         "level": 2,
+         "quote": "*+Properly document clinical and instrument data on EEG's.",
+         "basis": "directly states documenting/communicating test results as part of clinical record"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDT A117",
+      "section": "assignments",
+      "quote": "written reports of patients clinical history, test results, testing parameters, and required record keeping as per lab protocol",
+      "reason": "assignment specifically requires written reports of test results submitted per lab protocol, matching the submit-reports-to-physicians task"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.4.f.1",
+     "dwa": "Maintain medical equipment or instruments.",
+     "task": "Calibrate, troubleshoot, or repair equipment and correct malfunctions, as needed.",
+     "cells": {
+      "NDT A110": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A110",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Accurately calibrate an EEG instrument and be able to trouble shoot basic equipment issues.",
+         "basis": "calibrating/troubleshooting equipment as maintenance"
+        }
+       ]
+      },
+      "NDT A116": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A116",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Calibrate the machine within 100% accuracy. Able to make all necessary adjustments to the instrument for accurate recordings.",
+         "basis": "calibrating equipment to correct malfunctions"
+        },
+        {
+         "course": "NDT A116",
+         "section": "content",
+         "level": 1,
+         "quote": "Troubleshooting",
+         "basis": "maintaining/troubleshooting NDT equipment"
+        }
+       ]
+      },
+      "NDT A115": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A115",
+         "section": "content",
+         "level": 1,
+         "quote": "EEG Equipment Maintenance",
+         "basis": "content covers maintaining EEG equipment"
+        },
+        {
+         "course": "NDT A115",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Describe and utilize all of the operational components of the EEG instrument and utilize basic troubleshooting techniques",
+         "basis": "troubleshooting the instrument evidences equipment maintenance"
+        }
+       ]
+      },
+      "NDT A117": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A117",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Calibrate the machine within 100% accuracy. Able to make all necessary adjustments to the instrument for accurate recordings.",
+         "basis": "literally states calibrating equipment to maintain accurate function"
+        }
+       ]
+      },
+      "NDT A200": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A200",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Accurately calibrate NDT instrument and troubleshoot basic equipment malfunctions.",
+         "basis": "literally states students calibrate and troubleshoot equipment"
+        }
+       ]
+      },
+      "NDT A286": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A286",
+         "section": "lab",
+         "level": 1,
+         "quote": "NDT equipment troubleshooting",
+         "basis": "lab practice troubleshooting equipment to maintain function"
+        },
+        {
+         "course": "NDT A286",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Includes proper calibrations at end of each test and recognition of inaccuracies with suggestions for solutions.",
+         "basis": "directly states calibrating and troubleshooting equipment inaccuracies"
+        }
+       ]
+      },
+      "NDT A288": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A288",
+         "section": "lab",
+         "level": 1,
+         "quote": "Troubleshooting techniques iv. Identification of obligate waveforms v. Calculation analysis of study results",
+         "basis": "troubleshooting EP equipment is maintaining/correcting malfunctions"
+        }
+       ]
+      },
+      "NDT A289": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A289",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Calibrate the machine within 100% accuracy.",
+         "basis": "calibrating the machine literally matches maintaining medical equipment"
+        },
+        {
+         "course": "NDT A289",
+         "section": "lab",
+         "level": 1,
+         "quote": "Troubleshooting techniques",
+         "basis": "troubleshooting lab content matches calibrate/troubleshoot/repair equipment task"
+        }
+       ]
+      },
+      "NDT A296": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A296",
+         "section": "content",
+         "level": 1,
+         "quote": "Troubleshooting in the OR",
+         "basis": "troubleshooting equipment during operation is maintaining medical equipment"
+        }
+       ]
+      },
+      "NDT A298": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A298",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Calibrate equipment used in diagnostic procedures with 100% accuracy",
+         "basis": "directly states calibrating equipment, a maintenance task"
+        },
+        {
+         "course": "NDT A298",
+         "section": "lab",
+         "level": 1,
+         "quote": "Troubleshooting techniques",
+         "basis": "troubleshooting equipment is a maintenance activity"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDT A110",
+      "section": "objectives",
+      "quote": "Accurately calibrate an EEG instrument and be able to trouble shoot basic equipment issues.",
+      "reason": "objective commits to calibrating equipment and troubleshooting, matching the maintain-equipment task exactly"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.b.4.f.4",
+     "dwa": "Repair medical facility equipment.",
+     "task": "Calibrate, troubleshoot, or repair equipment and correct malfunctions, as needed.",
+     "cells": {
+      "NDT A200": {
+       "level": 2,
+       "evidence": [
+        {
+         "course": "NDT A200",
+         "section": "objectives",
+         "level": 2,
+         "quote": "Accurately calibrate NDT instrument and troubleshoot basic equipment malfunctions.",
+         "basis": "repairing/troubleshooting equipment malfunctions"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDT A200",
+      "section": "objectives",
+      "quote": "Accurately calibrate NDT instrument and troubleshoot basic equipment malfunctions.",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.3.a.3.d.4",
+     "dwa": "Operate diagnostic imaging equipment.",
+     "task": "Adjust equipment to optimize viewing of the nervous system.",
+     "cells": {
+      "NDT A284": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A284",
+         "section": "content",
+         "level": 1,
+         "quote": "Demonstration and practice measuring flow in the MCA, ACA and ICA",
+         "basis": "operating TCD imaging equipment to view cerebral circulation"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDT A284",
+      "section": "content",
+      "quote": "Demonstration and practice measuring flow in the MCA, ACA and ICA",
+      "reason": "default: tier, units, catalog order"
+     }
+    },
+    {
+     "dwa_id": "4.A.4.b.3.f.8",
+     "dwa": "Train medical providers.",
+     "task": "Assist in training technicians, medical students, residents, or other staff members.",
+     "cells": {},
+     "lead": null
+    },
+    {
+     "dwa_id": "4.A.1.a.1.s.1",
+     "dwa": "Conduct research to increase knowledge about medical issues.",
+     "task": "Participate in research projects, conferences, or technical meetings.",
+     "cells": {
+      "NDT A280": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A280",
+         "section": "assignments",
+         "level": 1,
+         "quote": "REPORT #2: Neurological Testing Find the following information about each topic area assigned. List all references used in research.",
+         "basis": "conducting research on medical/diagnostic topics"
+        }
+       ]
+      },
+      "NDT A296": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A296",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Research reporting and presentation of an NDT intraoperative neruomonitoring procedure. Review professional journals and survey published literature",
+         "basis": "surveying published literature and reporting on findings is conducting research to increase medical knowledge"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDT A296",
+      "section": "assignments",
+      "quote": "Research reporting and presentation of an NDT intraoperative neruomonitoring procedure. Review professional journals and survey published literature",
+      "reason": "assignment specifically requires research and literature review culminating in presentation, matching the participate-in-research task"
+     }
+    },
+    {
+     "dwa_id": "4.A.2.b.3.a.12",
+     "dwa": "Maintain medical or professional knowledge.",
+     "task": "Participate in research projects, conferences, or technical meetings.",
+     "cells": {
+      "NDT A282": {
+       "level": 1,
+       "evidence": [
+        {
+         "course": "NDT A282",
+         "section": "description",
+         "level": 1,
+         "quote": "Comprehensive review of Neurodiagnostic Technology concepts in preparation for the ABRET National Registry Board Exam",
+         "basis": "maintaining/updating professional knowledge base"
+        },
+        {
+         "course": "NDT A282",
+         "section": "assignments",
+         "level": 1,
+         "quote": "Read assigned texts, journal articles, and ACNS guidelines.",
+         "basis": "engaging with journal articles and guidelines evidences maintaining professional knowledge"
+        }
+       ]
+      }
+     },
+     "lead": {
+      "course": "NDT A282",
+      "section": "assignments",
+      "quote": "Read assigned texts, journal articles, and ACNS guidelines.",
+      "reason": "assignment requires reading journal articles and current guidelines, matching maintain-professional-knowledge task"
+     }
+    }
+   ],
+   "dropped": [
+    {
+     "activity": 2,
+     "course": "NDT A116",
+     "section": "outcomes",
+     "quote": "Objective II. 5. Take valid patient data.",
+     "basis": "student collects patient data as part of testing",
+     "why": "quote not verbatim in that course"
+    },
+    {
+     "activity": 5,
+     "course": "NDT A116",
+     "section": "objectives",
+     "quote": "Relate to patients in a positive manner to encourage patient cooperation... explaining all procedures and expectations of the patient.",
+     "basis": "explains testing procedures to patients",
+     "why": "quote not verbatim in that course"
+    },
+    {
+     "activity": 5,
+     "course": "NDT A117",
+     "section": "objectives",
+     "quote": "Relate to patients in a positive manner to encourage patient cooperation... This includes explaining all procedures and expectations to the patient.",
+     "basis": "literally states explaining procedures to patients",
+     "why": "quote not verbatim in that course"
+    },
+    {
+     "activity": 9,
+     "course": "NDT A280",
+     "section": "assignments",
+     "quote": "REPORT #1: Epilepsy and related topics...5. EEG data; ictally, interictally, and activations6. Prognosis",
+     "basis": "summarizing EEG findings and prognosis in a written report evidences preparing reports summarizing diagnostic data",
+     "why": "quote not verbatim in that course"
+    },
+    {
+     "activity": 15,
+     "course": "NDT A115",
+     "section": "objectives",
+     "quote": "Describe and utilize all of the operational components of the EEG instrument and utilize basic troubleshooting techniques.",
+     "basis": "operating instrumentation to optimize viewing of nervous system activity",
+     "why": "adjudicated: d) quote evidences operating/troubleshooting EEG instrument components, a different activity than diagnostic imaging equipment"
+    },
+    {
+     "activity": 16,
+     "course": "NDT A116",
+     "section": "content",
+     "quote": "Review of weekly case studies",
+     "basis": "insufficient basis removed",
+     "why": "adjudicated: a) reviewing weekly case studies names a topic with no performable training-of-others content"
+    },
+    {
+     "activity": 18,
+     "course": "NDT A115",
+     "section": "objectives",
+     "quote": "List the major historical contributions made to the scientific field of neurodiagnostics.",
+     "basis": "maintaining professional knowledge of the field",
+     "why": "adjudicated: b) listing historical contributions is precondition knowledge, not participating in research/conferences"
+    },
+    {
+     "activity": 1,
+     "course": "ALH A115",
+     "section": "content",
+     "quote": "Importance of correct procedural technique, accuracy, and documentation",
+     "basis": "documenting measurement technique issues parallels indicating artifacts from external sources, but only weakly supports collecting client information generally",
+     "why": "adjudicated: a) generic statement about procedural technique/documentation names no performable artifact-identification content"
+    },
+    {
+     "activity": 5,
+     "course": "ALH A115",
+     "section": "content",
+     "quote": "Components of effective interpersonal communications Listening skills and non-verbal communication",
+     "basis": "communication skills content covers explaining procedures and reassuring patients as needed",
+     "why": "adjudicated: c) generic interpersonal communication/listening skills credited to explaining medical procedures"
+    },
+    {
+     "activity": 11,
+     "course": "ALH A115",
+     "section": "lab",
+     "quote": "Demonstration and hands on practice in lifting and moving a patient: 1. Moving Bed to Gurney Skill Evaluation",
+     "basis": "positioning and moving patients is direct physical preparation of patients for procedures",
+     "why": "adjudicated: d) lifting/moving a patient evidences a different activity (patient transfer/mobility), not attaching electrodes"
+    },
+    {
+     "activity": 13,
+     "course": "ALH A115",
+     "section": "content",
+     "quote": "Equipment used to measure each",
+     "basis": "equipment used for vital sign measurement touches maintenance context but only weakly supports equipment maintenance skill",
+     "why": "adjudicated: a) naming equipment used for vital signs is topic-only with no equipment maintenance content"
+    },
+    {
+     "activity": 1,
+     "course": "NDT A190",
+     "section": "outcomes",
+     "quote": "Identify structures in the nervous system, describe their function and predict the symptoms of pathology within each structure",
+     "basis": "predicting pathology symptoms supports recognizing artifacts/interferences on recordings only incidentally; retained as weakest supporting link",
+     "why": "adjudicated: b) predicting pathology symptoms is precondition knowledge preceding artifact identification, not the activity itself"
+    },
+    {
+     "activity": 4,
+     "course": "NDT A190",
+     "section": "objectives",
+     "quote": "Diagram the electrophysiologic characteristics of the neuron. Relate the electrophysiology to the generation of EEG activity",
+     "basis": "understanding EEG signal generation is foundational scope for conducting EEG testing of nervous system function",
+     "why": "adjudicated: b) understanding neuron electrophysiology is precondition knowledge preceding conducting the test"
+    },
+    {
+     "activity": 4,
+     "course": "NDT A190",
+     "section": "content",
+     "quote": "Neurological Testing",
+     "basis": "dedicated content unit on neurological testing directly addresses conducting tests of nervous system functioning",
+     "why": "adjudicated: a) 'Neurological Testing' as a content heading names a topic with no performable content specified"
+    },
+    {
+     "activity": 5,
+     "course": "NDT A280",
+     "section": "objectives",
+     "quote": "Administer first aid to a patient having a seizure.",
+     "basis": "direct patient-facing response during a medical event is part of explaining/managing procedures for patients, closest matching activity available",
+     "why": "adjudicated: d) administering first aid during a seizure evidences emergency response, a different activity than explaining procedures"
+    },
+    {
+     "activity": 1,
+     "course": "NDT A282",
+     "section": "content",
+     "quote": "Artifacts",
+     "basis": "content topic on artifacts evidences identifying non-brain interference sources on recordings",
+     "why": "adjudicated: a) 'Artifacts' as a bare content heading names a topic with no performable content specified"
+    },
+    {
+     "activity": 2,
+     "course": "NDT A282",
+     "section": "content",
+     "quote": "Patient History",
+     "basis": "content topic on patient history evidences collecting medical information to customize tests",
+     "why": "adjudicated: a) 'Patient History' as a bare content heading names a topic with no performable content specified"
+    },
+    {
+     "activity": 13,
+     "course": "NDT A282",
+     "section": "content",
+     "quote": "Calibration",
+     "basis": "content topic on calibration evidences maintaining equipment per the occupation task",
+     "why": "adjudicated: a) 'Calibration' as a bare content heading names a topic with no performable content specified"
+    },
+    {
+     "activity": 12,
+     "course": "NDT A289",
+     "section": "objectives",
+     "quote": "Make necessary calculations for Physician interpretations.",
+     "basis": "producing calculations for physician interpretation evidences communicating test results to medical professionals",
+     "why": "adjudicated: b) making calculations for physician interpretation is a precondition step, not submitting reports"
+    },
+    {
+     "activity": 9,
+     "course": "PSG A100",
+     "section": "content",
+     "quote": "Signs of sleep problems, signs and symptoms",
+     "basis": "only tangential; not included",
+     "why": "adjudicated: a) 'signs and symptoms' content heading names a topic with no performable reporting content specified"
+    }
+   ],
+   "source_note": "Read from Orange Coast College's course outlines of record (courseleaf); sections present: slo, objective, description, content outline, lab content, assignment.",
+   "role": "",
+   "short_title": "Neurodiagnostic Technology"
+  }
+ ]
+}
