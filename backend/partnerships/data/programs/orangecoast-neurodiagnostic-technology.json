@@ -1,0 +1,135 @@
+{
+  "college": "Orange Coast College",
+  "college_key": "orangecoast",
+  "member_id": "orangecoast",
+  "certificate": "Associate in Science Degree, Neurodiagnostic Technology",
+  "short_title": "Neurodiagnostic Technology",
+  "kind": "credit",
+  "control_number": "08657",
+  "award": "A.S. Degree",
+  "status": "Active",
+  "top6": "121200",
+  "top_name": "Electro-Neurodiagnostic Technology",
+  "source": {
+    "system": "courseleaf",
+    "host": "catalog.cccd.edu"
+  },
+  "course_sources": {},
+  "program_description": "Neurodiagnostic Technology is an allied health specialty for diagnosing patients with neurological disorders such as epilepsy, stroke, coma, multiple sclerosis, and many others. A competent Neurodiagnostic technologist has knowledge of the nervous system and knows how to properly operate many types of sophisticated instruments. Orange Coast College's Neurodiagnostic Technologist program provides theory and clinical experience in Electroencephalography (EEG) and in Evoked Potential (BAEP, PVEP, SSEP) testing as well as an introduction to other neurological testing procedures: Nerve Conduction Studies (NCS), Long-term Monitoring (LTM) for Epilepsy, Intraoperative Neurophysiological Monitoring (IONM), and Transcranial Doppler (TCD) Studies. The program is accredited by CAAHEP and meets the eligibility requirements for the EEG and EP exams of ABRET. It is completed in approximately 22 months (4 semesters and 1 summer); a new group of students begins in the fall semester of even years.",
+  "program_outcomes": [
+    "To prepare the student for entry-level employment in the Neurodiagnostic field in the knowledge (cognitive), skills (psychomotor), and behavior (affective) learning domains as professional and competent Neurodiagnostic Technologists."
+  ],
+  "courses": [
+    {
+      "code": "ALH A115",
+      "title": "Patient Care",
+      "units": 2
+    },
+    {
+      "code": "ALH A120",
+      "title": "Human Diseases",
+      "units": 2
+    },
+    {
+      "code": "NDT A110",
+      "title": "Basic Electroencephalography",
+      "units": 5
+    },
+    {
+      "code": "NDT A115",
+      "title": "Advanced Electroencephalography",
+      "units": 4
+    },
+    {
+      "code": "NDT A116",
+      "title": "Clinical Experience 1",
+      "units": 5.5
+    },
+    {
+      "code": "NDT A190",
+      "title": "Introduction to Neuro Anatomy and Physiology",
+      "units": 3
+    },
+    {
+      "code": "NDT A191",
+      "title": "EEG Record Review-Normal",
+      "units": 1
+    },
+    {
+      "code": "NDT A287",
+      "title": "EEG Record Review-Abnormal",
+      "units": 1
+    },
+    {
+      "code": "NDT A117",
+      "title": "Clinical Experience 2",
+      "units": 4.5
+    },
+    {
+      "code": "NDT A280",
+      "title": "Neurologic Disorders",
+      "units": 3
+    },
+    {
+      "code": "NDT A200",
+      "title": "Neurodiagnostic Lab Practice",
+      "units": 1
+    },
+    {
+      "code": "NDT A284",
+      "title": "Introduction to Transcranial Doppler",
+      "units": 1
+    },
+    {
+      "code": "NDT A285",
+      "title": "Introduction to Nerve Conduction Velocity",
+      "units": 1
+    },
+    {
+      "code": "NDT A286",
+      "title": "Clinical Experience 3",
+      "units": 4.5
+    },
+    {
+      "code": "NDT A288",
+      "title": "Evoked Potentials",
+      "units": 4
+    },
+    {
+      "code": "NDT A279",
+      "title": "Pediatric Electroencephalography",
+      "units": 2
+    },
+    {
+      "code": "NDT A282",
+      "title": "NDT ABRET Registry Exam Prep",
+      "units": 1
+    },
+    {
+      "code": "NDT A289",
+      "title": "Clinical Experience 4",
+      "units": 3.5
+    },
+    {
+      "code": "NDT A296",
+      "title": "Introduction to Intraoperative Monitoring",
+      "units": 1.5
+    },
+    {
+      "code": "NDT A297",
+      "title": "Microcomputer Applications in Neurodiagnostics",
+      "units": 1.5
+    },
+    {
+      "code": "NDT A298",
+      "title": "Clinical Internship",
+      "units": 2
+    },
+    {
+      "code": "PSG A100",
+      "title": "Polysomnography Basics",
+      "units": 1
+    }
+  ],
+  "notes": "Courses = the degree's required courses (62.5 major units) per the catalog program page catalog.cccd.edu/orange-coast/pathways/careers-healthcare/neurodiagnostic-technology/neurodiagnostic-technology-associate-science-degree/ (2026-09-17), in catalog order; the program prerequisites (ALH A010, ALH A111, BIOL A221) and recommended preparation (LIBR A100) are left out. Codes are written as the college writes them (NDT A110); the state file writes NDTA 110. Control number 08657; banner code 1_AS_NDT."
+}

@@ -1,0 +1,61 @@
+{
+ "college": "San Diego Mesa College",
+ "system": "curriqunet",
+ "code": "NDTE 121",
+ "title": "Neurodiagnostic Lab Practice",
+ "description": "This course is an application of basic technical skills to successfully record routine electroencephalographic (EEG) and Evoked Potential (EP) procedures according to published American Clinical Neurophysiology Society's (ACNS) guidelines. This course is designed for students enrolled in the Neurodiagnostic Technology Program.",
+ "outcomes": [
+  "Student will be able to identify electrode locations and anatomical correlation of 10-20 system of electrode placement including anatomical landmarks, planes and percentage of total measurements between electrodes.",
+  "Students will be able to identify LLF, HFF and sensitivity changes on EEG samples.",
+  "Students will be able to identify normal wake, drowsy, sleep and variants on adult EEG recording."
+ ],
+ "objectives": [
+  "Measure and apply the 21 23 standard EEG electrodes on a human volunteer accurately (to within 5mm), under 5k ohms impedance, and within 45 minutes using the International 10/20 system.",
+  "Identify and assess the basic EEG rhythms/EP waveforms and artifacts on a recording.",
+  "Perform the standard EEG activation used in routine recordings.",
+  "Utilize the major instrument controls such as high and low filters, sensitivity, and calibration.",
+  "Set up all of the recommended montages used in routine EEG/EP.",
+  "Complete an accurate and concise patient history.",
+  "Perform accurate and interpretable EEG/EP recordings on human volunteers in the classroom lab setting according to ACNS guidelines.",
+  "Apply electrodes using collodion in an acceptable manner so as to record EEG activity for 24 hour recordings or for polysomnography over-night.",
+  "Accurately calibrate an EEG/EP instrument and be able to troubleshoot basic equipment malfunctions.",
+  "Demonstrate electrical safety so as to prevent harm to patient or self."
+ ],
+ "content": [
+  "Course Lecture Content (Use outline format)",
+  "Review ACNS Guidelines",
+  "Perform routine EEG's",
+  "Measurement and application of EEG electrodes",
+  "Identification of basic EEG rhythms/EP waveforms and artifacts",
+  "Standard EEG activations used in routine recordings",
+  "Instrument controls",
+  "High and low filters",
+  "Sensitivity",
+  "Calibration",
+  "Set-up of recommended montages used in routine EEG/EP",
+  "Completion of patient history",
+  "EEG/EP recordings according to ACNS guidelines",
+  "Application of electrodes using collodion to record EEG activity for 24 hrs or for polysomnography overnight",
+  "Calibration on EEG/EP instrument and trouble-shooting",
+  "Electrical safety"
+ ],
+ "lab": [],
+ "assignments": [
+  "Course textbook readings",
+  "Professional journal articles including Journal of Clinical Neurophysiology and Neurodiagnostic Journal",
+  "Course textbook chapter questions",
+  "Homework assignment completion",
+  "Journal article review/critique",
+  "Course text reading and chapter question completion",
+  "Homework assignment completion",
+  "Completing four complete electroencephalographs/evoked potentials conforming to ACNS minimal guidelines.",
+  "Evaluating EEG testing in various modalities."
+ ],
+ "source_url": "https://sdccd.curriqunet.com/DynamicReports/AllFieldsReportByEntity/17906?entityType=Course&reportId=4",
+ "effective": "",
+ "approved": "",
+ "retrieved": "2026-09-17",
+ "notes": "",
+ "link_ok": true,
+ "link_checked": "2026-09-17"
+}

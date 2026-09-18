@@ -387,6 +387,52 @@
       "verified": "opened",
       "url": "https://www.ohlone.edu/rt",
       "note": "Page title 'Respiratory Therapist Program'; body reads 'Respiratory Therapist Degree — Associate in Science (A.S.) Degree'. Note Ohlone brands the program after the OCCUPATION ('Respiratory Therapist') where Foothill uses 'Respiratory Therapy' and Skyline/Napa use 'Respiratory Care' — all four differ. ohlone.edu 403s to WebFetch's client (bot filtering, not geo — curl with a browser UA returns 200 from both KR and US egress); read live via curl."
+    },
+    "Orange Coast College|121200": {
+      "name": "Neurodiagnostic Technology",
+      "cip": "Electro-Neurodiagnostic Technology",
+      "award_type": "AS",
+      "confidence": "high",
+      "verified": "opened",
+      "url": "https://catalog.cccd.edu/orange-coast/pathways/careers-healthcare/neurodiagnostic-technology/neurodiagnostic-technology-associate-science-degree/",
+      "note": "Catalog heading reads 'Neurodiagnostic Technology, Associate in Science Degree' (control number 08657, banner code 1_AS_NDT); 62.5 major units; CAAHEP-accredited; new cohort in the fall of even years.",
+      "calendar": "semester",
+      "award_units": {
+        "Neurodiagnostic Technology": {
+          "units": 62.5,
+          "basis": "major",
+          "tier": "associate degree"
+        }
+      },
+      "units_verified": "2026-09-17 against the college catalog"
+    },
+    "San Diego Mesa College|121200": {
+      "name": "Neurodiagnostic Technology",
+      "cip": "Electro-Neurodiagnostic Technology",
+      "award_type": "multiple",
+      "confidence": "high",
+      "verified": "opened",
+      "url": "https://sdccd.curriqunet.com/catalog/alias/mesa26-27/iq/17540/programs/17687",
+      "note": "2026-27 Mesa College Catalog: 'Neurodiagnostic Technology - Associate of Science Degree: Mesa' (38642) and 'Certificate of Achievement: Mesa' (38643) share a 32-unit major; 15-month ABRET-recognized program.",
+      "calendar": "semester",
+      "award_units": {
+        "Neurodiagnostic Technology": {
+          "units": 32,
+          "basis": "major",
+          "tier": "associate degree"
+        }
+      },
+      "units_verified": "2026-09-17 against the college catalog"
+    },
+    "Foothill College|121200": {
+      "name": "Neurodiagnostic Technology",
+      "cip": "Electro-Neurodiagnostic Technology",
+      "award_type": "AS",
+      "confidence": "high",
+      "verified": "opened",
+      "url": "https://foothill.edu/neurodiagnostic/index.html",
+      "note": "Program announced July 2026 with UCSF ($170,000 start-up funding); two-year A.S., first cohort expected fall 2027. No COCI award yet; the program page is the college's own announcement.",
+      "calendar": "quarter"
     }
   }
 }

@@ -1,0 +1,92 @@
+{
+  "member": "foothill",
+  "title": "Neurodiagnostic Technology",
+  "sector": "health",
+  "socs": [
+    "29-2099"
+  ],
+  "author": "Dayone Koo",
+  "date": "September 17, 2026",
+  "org_name": "Foothill College Program Evaluation",
+  "org_short": "Regional",
+  "_comment": "PROGRAM EVALUATION of a program NOT YET OFFERED: Foothill College x TOP 121200 (Electro-Neurodiagnostic Technology), a two-year A.S. in partnership with UCSF, first cohort expected fall 2027 (Mountain View Voice, September 2026). Foothill has no COCI award, no awards, no enrollment and no courses for it yet, so this def uses the program-not-yet-offered fields (planned_awards, wage_note, crosswalk_chain, extra_colleges + programs + supply_scope). Destination: crosswalk(121200) = {25-1071, 29-2099, 99-9999}; the derivation rule drops 29-2099 as ALL_OTHER, so the destination is AUTHORED with the CIP chain as justification — TOP 1212.00 -> CIP 51.0903 -> SOC 29-2099, whose detailed O*NET occupation 29-2099.01 Neurodiagnostic Technologists is what the program prepares for. The demand section carries the COE figure for the 29-2099 bucket (Bay: 530 openings/yr) with one sentence placing 29-2099.01 inside it. Comparators are the two California colleges with active awards under the TOP, Orange Coast (A.S. 08657, OC region) and San Diego Mesa (A.S. 38642 + CoA 38643, SD/I region), so the supply section is statewide and draws no regional openings rule. Their courses are read from their Course Outlines of Record (Coast CCD CourseLeaf catalog; SDCCD CurriQunet META All Fields report). live_postings from tools/jobs/scrape_jobs.cjs 29-2099.01 94022 50 (7 hits; the 3 neurodiagnostic-titled ones kept, 4 polysomnography titles set aside). competencies: O*NET 29-2099.01 description; K/S/A from occupations.competencies for 29-2099 (the .01 specialty's ratings).",
+  "program_top": "121200",
+  "crosswalk_chain": "29-2099.01",
+  "chain_note": "Foothill's program is classified under TOP 1212.00. The state's crosswalk carries that code to CIP 51.0903 and on to SOC 29-2099; the occupation the program prepares for is the detailed O*NET code inside that SOC, 29-2099.01 Neurodiagnostic Technologists.",
+  "planned_awards": [
+    {
+      "title": "Neurodiagnostic Technology",
+      "credential": "Associate in Science",
+      "units": "Program map to be published; first cohort expected fall 2027"
+    }
+  ],
+  "wage_note": "Recipients are statewide graduates of the colleges then offering TOP 121200; the cohort predates Foothill's program.",
+  "lede": "This evaluation assembles labor-market supply and demand evidence for Foothill College's planned Neurodiagnostic Technology program (TOP 121200): regional demand for the occupation it is designed for, the award and enrollment trends of the California colleges already offering the program, and how their courses align with the work of that occupation.",
+  "demand_note": "Neurodiagnostic Technologists (O*NET 29-2099.01) are reported within SOC 29-2099, Health Technologists and Technicians, All Other. [According to the Centers of Excellence](https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061), this classification has roughly 530 openings a year in the Bay Area.",
+  "extra_colleges": [
+    "Orange Coast College",
+    "San Diego Mesa College"
+  ],
+  "programs": [
+    [
+      "Orange Coast College",
+      "121200"
+    ],
+    [
+      "San Diego Mesa College",
+      "121200"
+    ]
+  ],
+  "supply_scope": "statewide",
+  "alignment_note": "The two California colleges with active awards under TOP 121200. Each supports SOC 29-2099 through the same TOP–CIP–SOC crosswalk.",
+  "competency_note": "",
+  "award_note": "Awards conferred each year by each college's program. An empty cell means DataMart reported no data.",
+  "enrollment_note": "Enrollment each term in each college's program. An empty cell means DataMart reported no data; n/a marks a term the college's calendar does not have.",
+  "live_postings": {
+    "29-2099": [
+      {
+        "employer": "Kaiser Permanente",
+        "title": "Neurodiagnostic Technician II",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=29-2099.01&location=94022&radius=50&pagesize=250&curPage=1&fc=1&jvid=4c6eb4b04faf4f8e953fcb713b6b1acf8003&detailpage=true"
+      },
+      {
+        "employer": "Stanford Health Care",
+        "title": "Supervisor Neurodiagnostic Tech, Inpatient EEG Neurodiagnostic Labs - Full Time, Days (08HR)",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=29-2099.01&location=94022&radius=50&pagesize=250&curPage=1&fc=1&jvid=5ec66ab09ec94681bb18846a5895fab78003&detailpage=true"
+      },
+      {
+        "employer": "Alameda Health System",
+        "title": "Electroencephalograph/Neurodiagnostic Tech II, Full Time, Benefited, Days, 8hrs, 1.0fte",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=29-2099.01&location=94022&radius=50&pagesize=250&curPage=1&fc=0&jvid=63c53d01c48c40b6bbd785acc83b96278003&detailpage=true"
+      }
+    ]
+  },
+  "competencies": {
+    "29-2099": {
+      "description": "Conducts electroneurodiagnostic (END) tests such as electroencephalograms, evoked potentials, polysomnograms, or electronystagmograms; may perform nerve conduction studies.",
+      "knowledge": [
+        "Medicine and Dentistry",
+        "Biology",
+        "Psychology",
+        "Computers and Electronics"
+      ],
+      "skills": [
+        "Operation and Control",
+        "Operations Monitoring",
+        "Troubleshooting",
+        "Quality Control Analysis"
+      ],
+      "abilities": [
+        "Control Precision",
+        "Finger Dexterity",
+        "Information Ordering",
+        "Inductive Reasoning"
+      ],
+      "technology": [
+        "Medical software"
+      ]
+    }
+  },
+  "curriculum_alignment": "foothill-neurodiagnostic-technology-top-121200",
+  "curriculum_note": "O*NET maintains a set of detailed work activities that identify the competencies central to each job. Foothill's program has no courses yet. Below, the courses of the two California programs under TOP 121200 — Orange Coast College's and San Diego Mesa College's associate degrees — are mapped to the work activities of Neurodiagnostic Technologists, based on how each course is described in its Course Outline of Record (COR)."
+}

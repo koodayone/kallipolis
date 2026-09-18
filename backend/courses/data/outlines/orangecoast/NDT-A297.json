@@ -1,0 +1,41 @@
+{
+ "college": "Orange Coast College",
+ "system": "courseleaf",
+ "code": "NDT A297",
+ "title": "Microcomputer Applications in Neurodiagnostics",
+ "description": "Computer applications in Neurodiagnostic Technology including testing modalities of Electroencephalography, epilepsy monitoring, and automated diagnostic techniques for long term epilepsy monitoring. This course covers epilepsy treatments as well as surgical intervention and the digital applications used in the field. PREREQUISITE: NDT A115. Transfer Credit: CSU.",
+ "outcomes": [
+  "Demonstrate and apply knowledge of the different modalities of long-term monitoring procedures, including surgical monitoring strategies, and utilization of digital EEG analysis in relationship to treatments for epilepsy."
+ ],
+ "objectives": [
+  "1. Demonstrate competency in manipulating, quantifying, and analyzing neurophysiologic data according to the ACNS guidelines.",
+  "2. Review, scan, and identify video EEG recorded events utilizing spike and seizure detection algorithms/software.",
+  "3. Implement basic principles of database management in an END laboratory pertaining to patient information and record keeping.",
+  "4. Apply HIPAA regulations in an END laboratory, protection of electronic health information ePHI, physical and technical safeguards.",
+  "5. List appropriate clinical uses of quantitative EEG data for effective patient care and management.",
+  "6. Contrast current application of digital Electroencephalography with future applications.",
+  "7. Explain indications for long-term monitoring for epilepsy and basic LTM procedures.",
+  "8. Recognize and explain instrumentation for LTM",
+  "9. Explain treatment options for epilepsy",
+  "10. Identify common seizure patterns"
+ ],
+ "content": [
+  "Digital EEG Common applications of EEG in the past and present Guidelines for Digital EEG Digital Video Techniques Networking, Databases, Storage Media and Data Management in the END Laboratory HIPPA Regulations and Record Retention: the Impact in the END Laboratory Instrumentation specifications Digital EEG Applications EEG Brain Mapping (Topographic Mapping) Automated Event Detection Monitoring and Trending Quantitative EEG Signal Analysis Source Analysis Frequency Analysis (FFT) Statistical Analysis Diagnostic Discriminate analysis Comparison to normative values Long Term Epilepsy Monitoring (Video EEG, Telemetry, EMU) Indications for LTM Epileptic Seizures Non-Epileptic Seizures Epilepsy Monitoring Non-Invasive Studies Ambulatory EEG Monitoring Phase 1 Invasive Studies The WADA (Sodium Amytal Test for Speech and Memory Lateralization) The EEG in PET Scan Ictal SPECT Phase 2 Review of Common Seizure Patterns Epilepsy Treatment Options Surgical Therapy for Epilepsy VNS Implantations and DBS Surgical Epilepsy Monitoring Strategies Functional Intra Extra-Operative Brain Mapping (Language Motor) Stereotactic/Intracerebral EEG Electrocorticography Stimulations of Eloquent Cortex (Language Motor) On-Line Specialization Monitoring Techniques EEG During Balloon Test Occlusion, Super Selective Amytal Testing Artificial Embolization Cont",
+  "inuous Monitoring in the Intensive Care Unit (CQEEG) Equipment Software Electrode Technique Trending Software Future Trends"
+ ],
+ "lab": [
+  "Lecture course only."
+ ],
+ "assignments": [
+  "Required textbook/journal/handout reading (2 hrs/wk). .",
+  "Research report and oral presentation.",
+  "Research report, patient case scenarios discussion/assignments. (2-2.5 hrs/wk). ."
+ ],
+ "source_url": "https://catalog.cccd.edu/courses/ndt-a297/",
+ "effective": "",
+ "approved": "11/15/2023",
+ "retrieved": "2026-09-17",
+ "notes": "",
+ "link_ok": true,
+ "link_checked": "2026-09-17"
+}

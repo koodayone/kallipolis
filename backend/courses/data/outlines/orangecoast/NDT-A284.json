@@ -1,0 +1,40 @@
+{
+ "college": "Orange Coast College",
+ "system": "courseleaf",
+ "code": "NDT A284",
+ "title": "Introduction to Transcranial Doppler",
+ "description": "An introduction to Transcranial Doppler (TCD) procedures and recording techniques. PREREQUISITE: NDT A190. Transfer Credit: CSU.",
+ "outcomes": [
+  "Name and identify the cranial “windows,” arteries that can be assessed, changes seen and heard with stenosis or vasospasm and demonstrate familiarity with normal mean velocities observed in various cranial arteries."
+ ],
+ "objectives": [
+  "1. Describe the theory and use of Doppler ultrasound in non-invasive assessment of intracerebral circulation.",
+  "2. Name and identify the three cranial \"windows\" where bone is thin or absent making TCD possible.",
+  "3. Identify which arteries can be assessed through each cranial \"window\".",
+  "4. Describe the changes seen and heard on TCD indicating a stenosis or vasospasm.",
+  "I Demonstrate familiarity with the reference depths and mean velocity of the following arteries:",
+  "I. 1. MCA (M1 & M2)",
+  "I. 2. ACA (A1)",
+  "I. 3. PCA (P1 & P2)",
+  "I. 4. ICA",
+  "I. 5. Ophthalmic Artery",
+  "I. 6. Vertebral Artery",
+  "I. 7. Basilar Artery"
+ ],
+ "content": [
+  "Introduction to Transcranial Doppler The use of Doppler ultrasound in non-invasive assessment of intracerebral circulation The changes seen and heard on TCD indicating a stenosis or vasospasm Intracranial arterial anatomy, blood flow and pathology Location of the MCA (M1 M2), ACA (A1), PCA (P1 P2), ICA, Ophthalmic Artery, Vertebral Artery, and Basilar Artery Vessel identification and cranial windows The three cranial \"windows\" where bone is thin or absent making TCD possible. Which arteries can be assessed through each cranial \"window\" The theory of Doppler ultrasound Doppler effect, Doppler shift, transducers, and piezoelectric crystals Field trip to hospital vascular lab: demonstration and lab practice Demonstration and practice measuring flow in the MCA, ACA and ICA Demonstration and practice measuring flow in the PCA, Vertebral Artery and Basilar Artery"
+ ],
+ "lab": [],
+ "assignments": [
+  ".",
+  "Students will be writing brief descriptions and short answers on examinations.",
+  "."
+ ],
+ "source_url": "https://catalog.cccd.edu/courses/ndt-a284/",
+ "effective": "",
+ "approved": "02/26/2014",
+ "retrieved": "2026-09-17",
+ "notes": "",
+ "link_ok": true,
+ "link_checked": "2026-09-17"
+}

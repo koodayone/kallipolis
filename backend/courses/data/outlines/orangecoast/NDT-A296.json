@@ -1,0 +1,34 @@
+{
+ "college": "Orange Coast College",
+ "system": "courseleaf",
+ "code": "NDT A296",
+ "title": "Introduction to Intraoperative Monitoring",
+ "description": "An introduction to Intraoperative neurophysiologic monitoring recording strategies. Analysis of signal changes during an operation will be correlated with anesthetic agents, metabolic effects, and/or the effects of surgical trauma. Intraoperative monitoring scenarios will be demonstrated and practiced in the classroom laboratory. PREREQUISITE: NDT A288. Transfer Credit: CSU.",
+ "outcomes": [
+  "Demonstrate knowledge regarding common indications, modalities, monitoring setups, and drug/metabolic effects for intraoperative neuromonitoring during neurological surgical procedures."
+ ],
+ "objectives": [
+  "1. Explain common indications for intraoperative neurophysiological EEG, evoked potential, and neuromuscular monitoring",
+  "2. State the criteria for significant changes during intraoperative monitoring",
+  "3. Distinguish between the effects of various anesthetic agents",
+  "4. List the effects of physiological variables on monitoring results"
+ ],
+ "content": [
+  "Introduction to the Surgical Suite/Operating Room OR Etiquette The Surgical Team The Neuromonitoring Team Responsibilities of the IONM Technologist Introduction to IONM Equipment Recording Settings Parameters Stimulators Settings Parameters Intraoperative Applications Somatosensory Evoked Potentials Transcranial Motor Evoked Potentials Trigger vs Free-running EMG Brainstem Auditory Evoked Potentials Facial nerve monitoring Intraoperative EEG Train of Four Warning Criteria Spinal Surgery Indications Types of Spinal Surgeries Modalities Vascular Surgical Procedures Indications Types of Vascular Procedures Modalities Brain Tumors/Skull Based Procedures Indications Types of Skull Based Procedures Modalities Anesthetic Metabolic Effects Inhalation Agents Total Intravenous Anesthesia Physiological Effects Troubleshooting in the OR ACNS Intraoperative Neuro-Monitoring Guidelines Review of Nervous System and Neuromuscular Anatomy and Physiology as it pertains to Neuromonitoring"
+ ],
+ "lab": [
+  "IONM Equipment Overview Display Amplifer Electrode Inputs Recording Settings Stimulator Settings Ancillary Equipment Intraoperative Applications SSEP Setup Recording Parameters Stimulating Parameters TcMEP Setup Recording Parameters Stimulating Parameters EMG Setup Recording Parameters Stimulating Parameters BAEP Setup Recording Parameters Stimulating Parameters EEG Setup Recording Parameters Stimulating Parameters"
+ ],
+ "assignments": [
+  "Required textbook/handout readings (1.5 hrs/week).",
+  "Research reporting and presentation of an NDT intraoperative neruomonitoring procedure. Review professional journals and survey published literature for reporting on intraoperative monitoring application. Intraoperative monitoring case scenarios anaylsis and discussion.",
+  "Reports/presentation, case scenario analysis and discussion questions. (1-2 hrs/week)."
+ ],
+ "source_url": "https://catalog.cccd.edu/courses/ndt-a296/",
+ "effective": "",
+ "approved": "11/15/2023",
+ "retrieved": "2026-09-17",
+ "notes": "",
+ "link_ok": true,
+ "link_checked": "2026-09-17"
+}

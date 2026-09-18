@@ -1,0 +1,238 @@
+# Curriculum alignment review — orangecoast-neurodiagnostic-technology
+Generated 2026-09-17 · O*NET 31.0 database (August 2026), U.S. Department of Labor
+
+## Orange Coast College — Associate in Science Degree, Neurodiagnostic Technology → Neurodiagnostic Technologists (SOC 29-2099.01)
+14 of 18 activities at outcome level, 17 with any evidence.
+
+- ● **Collect information about clients.**
+    - NDT A116 [Objective]: “Identify and monitor artifacts with 60% accuracy in the first 8 weeks and to 75%” — students directly identify artifacts on recordings
+    - NDT A116 [Objective]: “Identify and monitor artifacts with 60% accuracy in the first 8 weeks and to 75% by the end of the semester.” — directly states indicating artifacts on EEG recordings
+    - NDT A116 [Lab content]: “Identification of artifacts” — lab content covers identifying artifacts on recordings
+    - NDT A200 [Lab content]: “Artifact Identification Electrode Physical Chemical Ground Loop Artifact Elimination Techniques” — students identify sources of artifacts on EEG recordings
+    - NDT A200 [Objective]: “Identify basic EEG rhythms/waveforms and artifacts on recording.” — literally states students identify artifacts on recordings
+    - NDT A110 [Objective]: “Define and identify on the EEG recording the basic EEG rhythms, activity, and artifacts.” — identifying artifacts on EEG recording is literally the task of indicating non-cerebral interferences
+    - NDT A110 [SLO]: “Identify and define observed basic EEG rhythms, activity, artifacts, and instrument setting effects on the EEG recording.” — identifying artifacts on EEG recording directly evidences indicating non-cerebral interferences
+    - NDT A115 [Lab content]: “Identification and Elimination of Artifact” — lab has students identify EEG artifacts from sources outside the brain
+    - NDT A117 [Objective]: “Identify and monitor artifacts with 85% accuracy.” — directly evidences indicating artifacts/interferences on EEG recordings
+    - NDT A286 [Objective]: “Identify and monitor artifacts with 100% accuracy.” — directly states identifying artifacts on EEG recordings
+    - NDT A286 [Lab content]: “Identification of artifacts” — lab practice identifying artifacts derived from outside sources during EEG
+    - NDT A288 [Objective]: “Recognize and remedy artifacts on the EP.” — identifying artifacts on EP recordings is literally this activity
+    - NDT A282 [Objective]: “Discriminate common EEG artifacts and implement troubleshooting techniques to eliminate or monitor event” — identifying EEG artifacts directly evidences indicating interferences from sources outside the brain
+    - NDT A289 [Objective]: “Identify artifact with 100% accuracy.” — identifying artifact from sources outside the brain on recordings directly matches the task
+    - NDT A289 [Lab content]: “Identification/elimination/monitoring of artifacts with 100% accuracy” — lab activity of identifying and eliminating artifacts evidences indicating interferences on recordings
+    - NDT A298 [Objective]: “Identify, monitor, and or eliminate artifacts recorded, with 100% accuracy.” — directly states performing artifact identification, a component of collecting client information from recordings
+- ● **Collect medical information from patients, family members, or other medical professionals.**
+    - NDT A110 [Objective]: “Take an accurate and complete patient history.” — collecting patient medical information directly stated
+    - NDT A110 [Content outline]: “How to Take a Patient History Present illness Past history” — content on taking patient history evidences collecting medical information from patients
+    - ALH A115 [Objective]: “Define each vital sign, describe how to assess on a patient, and identify the normal ranges for all” — assessing and recording patient vital signs is collecting medical information from the patient directly
+    - NDT A116 [Objective]: “Take valid patient data.” — collecting patient data to customize testing
+    - NDT A116 [Lab content]: “Patient History” — lab covers taking patient medical history for tests
+    - NDT A117 [Lab content]: “Acquiring patient history” — evidences collecting patients' medical information to customize testing
+    - NDT A117 [Objective]: “Take valid patient data.” — evidences collecting medical information from patients
+    - NDT A200 [Objective]: “Take an accurate and complete patient history.” — literally states students collect patient medical information
+    - NDT A286 [Objective]: “*+Take valid patient data.” — directly states collecting patient data to customize testing
+    - NDT A286 [Lab content]: “Acquiring patient history” — lab practice collecting medical history from patients
+    - NDT A289 [Objective]: “Take a valid patient history.” — taking patient history literally evidences collecting medical information from patients
+    - NDT A289 [Lab content]: “Patient history” — lab component on patient history evidences collecting medical information from patients
+    - NDT A298 [Objective]: “Report valid clinical history from patients.” — states collecting patient medical information for tests
+    - PSG A100 [Assignment]: “Overview of sleep diary and sleep questionnaires and good sleep hygiene.” — collecting sleep-related patient information via diary and questionnaires customizes testing
+- ● **Monitor patient conditions during treatments, procedures, or activities.**
+    - NDT A115 [Content outline]: “Monitoring Techniques Respiration Pulse and EKG Eye movement Tremor/Movement” — monitoring patient physiological signals during EEG recording
+    - NDT A115 [Objective]: “Perform accurate PSG patient setup, system patient calibration, and record a 15 minute baseline study” — recording a study on a patient constitutes monitoring during a procedure
+    - NDT A296 [Objective]: “State the criteria for significant changes during intraoperative monitoring” — monitoring patient condition during surgery using IOM instruments
+    - NDT A296 [Content outline]: “Introduction to IONM Equipment Recording Settings Parameters Stimulators Settings Parameters” — monitoring nervous system responses during surgery via IONM equipment is monitoring patients during procedures
+    - ALH A115 [Lab content]: “Demonstration and hands on practice in taking a patient's vital signs: 1. Blood Pressure Skill Evaluation” — taking vital signs during patient care constitutes monitoring patient condition
+    - NDT A282 [Content outline]: “Routine EEG Setup and Performance” — content covers running EEG recordings which entails monitoring patients during tests
+    - NDT A289 [Objective]: “Monitor artifacts within 100% accuracy.” — monitoring during EEG recording evidences monitoring patient conditions during testing procedures
+    - NDT A298 [Lab content]: “Topics covered will vary depending on clinical assignment, but should include (if possible) performing NDT procedures on: Pediatric, Adult, intensive care and/or surgical patients.” — clinical performance of NDT procedures on patients including surgical monitoring involves monitoring patient conditions during procedures
+- ● **Test patient nervous system functioning.**
+    - NDT A115 [SLO]: “Perform accurate and interpretable EEG recordings according to ACNS minimal guidelines on human volunteers” — directly conducting EEG testing
+    - NDT A115 [Lab content]: “Perform routine EEG examinations on human subjects according to the ACNS Guidelines” — lab exercise directly performs EEG testing
+    - NDT A288 [SLO]: “Perform accurate and interpretable EP recordings according to ACNS minimal guidelines on human volunteers” — directly conducting evoked potential testing
+    - NDT A288 [Objective]: “Demonstrate ability to perform evoked potentials in the modalities Visual, Auditory Brainstem, and Somatosensory on volunteer human subjects.” — measuring visual, auditory, and somatosensory evoked potentials matches the task literally
+    - NDT A110 [Objective]: “Describe, define, and perform the standard EEG activations used in an EEG routine recording.” — performing EEG activations is literally conducting EEG testing of nervous system function
+    - NDT A116 [SLO]: “Perform a complete routine EEG examination under direct assistance according to ACNS guidelines” — directly states conducting EEG testing
+    - NDT A116 [Objective]: “Identify normal EEG activity with 75% accuracy in the first 8 weeks and to 90% by the end of the semester.” — testing nervous system function via EEG interpretation
+    - NDT A191 [SLO]: “List, identify and describe normal EEG patterns in the neonatal, infant, pediatric and adult age groups.” — reading and identifying EEG patterns is a directly constitutive component of conducting/interpreting EEG testing
+    - NDT A191 [Objective]: “Identify and describe the four basic EEG rhythms using Frequency (F), Morphology (M), Topography (T), and Reactivity (R).” — identifying EEG rhythm characteristics is core to conducting EEG studies
+    - NDT A287 [SLO]: “Identify and describe abnormal EEG patterns in the neonatal, infant, pediatric and adult age groups correlating the patterns with clinical disorders and clinical signs.” — Reading and classifying EEG recordings is the core test-interpretation component of conducting EEG studies
+    - NDT A287 [Objective]: “Correlate EEG patterns with neurologic disorders and their clinical symptoms.” — Correlating EEG findings with disorders is part of testing nervous system functioning via EEG
+    - NDT A117 [SLO]: “Perform a routine EEG with increased efficiency and confidence according to ACNS guidelines” — literally states performing an EEG, a core nervous system test
+    - NDT A117 [Objective]: “Identify normal EEG activity with 95% accuracy.” — evidences conducting and interpreting EEG testing
+    - NDT A280 [SLO]: “Recognize the clinical signs and electroencephalographic correlations with vascular disorders, space occupying lesions, infective disorders” — reading EEG correlations to diagnose nervous system disorders evidences testing patient nervous system functioning
+    - NDT A280 [Objective]: “Recognize the electroencephalographic correlations with decreased levels of consciousness.” — interpreting EEG for coma/consciousness directly supports conducting EEG tests including determining probability of recovery from coma
+    - NDT A200 [SLO]: “Perform a routine EEG recording using the ACNS minimal guidelines.” — literally states students conduct EEG testing
+    - NDT A200 [Objective]: “Identify posterior dominant rhythm and normal variant waveforms accurately.” — literally involves testing/interpreting nervous system function via EEG waveforms
+    - NDT A284 [Objective]: “Describe the theory and use of Doppler ultrasound in non-invasive assessment of intracerebral circulation.” — TCD is a nervous system function test measuring cerebral blood flow
+    - NDT A284 [Content outline]: “Demonstration and practice measuring flow in the PCA, Vertebral Artery and Basilar Artery” — measuring arterial flow with TCD constitutes testing nervous system (cerebrovascular) function
+    - NDT A285 [SLO]: “Describe and differentiate among the Compound Motor Action Potential (CMAP), Sensory Nerve Potentials, H-Reflex, F-Waves” — conducting/interpreting NCS is a direct component of testing nervous system functioning
+    - NDT A285 [Content outline]: “Demonstration and practice performing motor and sensory NCV of the median, ulnar and radial nerves in the arms” — hands-on performance of nerve conduction studies is the core test in this activity
+    - NDT A286 [SLO]: “Perform routine NDT procedures, with emphasis on the routine EEG examination under general supervision” — directly states conducting EEG testing of nervous system function
+    - NDT A286 [Objective]: “*+Identify normal EEG activity with 100% accuracy.” — directly states testing/interpreting EEG activity as part of nervous system testing
+    - NDT A279 [SLO]: “Evaluate EEG findings correlating to neurological conditions in the pediatric population.” — directly evidences conducting/interpreting EEG testing on patients
+    - NDT A279 [Objective]: “Analyze EEG recordings of common epileptic syndromes/diseases in the neonate, infant, and pediatric population.” — analyzing EEG recordings is a constitutive component of conducting EEG testing
+    - NDT A282 [Objective]: “Demonstrate comprehension of EEG activities through evaluation/interpretation of EEG tracings and report findings in the neonate, pediatric and adult patients” — objective directly involves interpreting EEG test results, a nervous system function test
+    - NDT A282 [Content outline]: “EEG Pattern Recognition” — content covers recognizing EEG patterns central to nervous system function testing
+    - NDT A289 [SLO]: “Perform routine NDT procedures such as Evoked Potentials and EEG exams recognizing normal and abnormal EEG activity consistently” — performing EEG and evoked potential exams literally matches conducting nervous system tests
+    - NDT A289 [Lab content]: “performance and observation of evoked potentials in the auditory, visual, and somatosensory modality” — performing auditory/visual/somatosensory evoked potentials directly matches measuring EPs to determine responses to stimuli
+    - NDT A296 [Objective]: “Explain common indications for intraoperative neurophysiological EEG, evoked potential, and neuromuscular monitoring” — directly names intraoperative monitoring, EEG, and evoked potential testing of nervous system function
+    - NDT A296 [Lab content]: “SSEP Setup Recording Parameters Stimulating Parameters TcMEP Setup Recording Parameters Stimulating Parameters” — hands-on practice setting up and recording evoked potential and motor evoked potential studies
+    - NDT A297 [Objective]: “Review, scan, and identify video EEG recorded events utilizing spike and seizure detection algorithms/software.” — identifying seizure/spike events in EEG recordings is directly constitutive of testing nervous system functioning via EEG
+    - NDT A297 [Content outline]: “Long Term Epilepsy Monitoring (Video EEG, Telemetry, EMU) Indications for LTM Epileptic Seizures Non-Epileptic Seizures” — content on conducting long-term EEG monitoring studies evidences testing nervous system functioning
+    - NDT A298 [Lab content]: “NDT instrumentation Performance Objectives NDT modality electrode application Acquiring accurate and complete patient history” — clinical training in performing NDT testing modalities constitutes testing patient nervous system functioning
+    - NDT A298 [Objective]: “Identify normal and abnormal recordings with 90% accuracy.” — identifying normal/abnormal recordings is a direct component of conducting neurodiagnostic tests
+- ● **Explain medical procedures or test results to patients or family members.**
+    - NDT A289 [Objective]: “Explain each test procedure clearly, and obtain optimal patient cooperation.” — explains EP test procedures to patients
+    - NDT A116 [Objective]: “Relate to patients in a positive manner to encourage patient cooperation and enhance attitude. This includes good communication skills in explaining all procedures and expectations of the patient.” — explains procedures to patients directly
+    - NDT A200 [Lab content]: “Explaining exa m to a patient Techniques: Eliciting patient cooperation” — lab activity has students explain the EEG procedure to patients
+    - NDT A298 [Objective]: “Explain each test procedure clearly, and relate to patients to obtain optimal cooperation.” — directly states explaining test procedures to patients
+- ● **Adjust settings or positions of medical equipment.**
+    - NDT A116 [Objective]: “Use appropriate machine settings to provide optimal recording as necessary.” — adjusting equipment settings for recording
+    - NDT A116 [Objective]: “Learn the lab montages by the second week.” — setting montage configurations on equipment
+    - NDT A110 [Objective]: “Describe, list, and set up all of the recommended montages used in routine EEG.” — programming montages/electrical combinations on equipment
+    - NDT A110 [Objective]: “Define, describe, and utilize the major instrument controls such as high and low filters, sensitivity, and calibration.” — adjusting instrument controls literally evidences adjusting settings of medical equipment
+    - NDT A115 [Objective]: “Describe and utilize all of the operational components of the EEG instrument and utilize basic troubleshooting techniques” — utilizing instrument components requires adjusting equipment settings
+    - NDT A117 [Objective]: “Use appropriate machine settings to provide optimal recording as necessary.” — evidences adjusting equipment settings for recordings
+    - NDT A117 [Lab content]: “Clinical montages” — evidences setting montages/electrical combinations for testing
+    - NDT A200 [Objective]: “Utilize the major instrument controls such as high and low filters, sensitivity, and calibration settings.” — literally states students adjust equipment settings during recording
+    - NDT A200 [Objective]: “Set up all of the recommended montages used in a routine EEG.” — literally states students set up montages, an equipment configuration task
+    - NDT A285 [Objective]: “Demonstrate the principles of stimulation and accurate placement of recording electrodes.” — placing/adjusting recording electrodes for NCS is adjusting equipment settings/positions
+    - NDT A286 [Objective]: “*+Correctly use the EEG machine settings to obtain optimal recordings.” — directly states adjusting equipment settings during testing
+    - NDT A286 [Lab content]: “Equipment setting controls/calibration” — lab practice adjusting equipment settings for optimal viewing
+    - NDT A288 [Objective]: “Set up EP equipment to the desired protocols for each modality.” — adjusting equipment protocols/settings for testing modalities
+    - NDT A289 [Objective]: “Use machine settings (filters, sensitivity...) accurately and when necessary.” — adjusting machine settings literally matches adjusting settings of medical equipment
+    - NDT A289 [Objective]: “Set up EP equipment to the desired protocols for each modality.” — setting up equipment to protocols matches adjusting equipment settings for testing
+    - NDT A296 [Lab content]: “IONM Equipment Overview Display Amplifer Electrode Inputs Recording Settings Stimulator Settings Ancillary Equipment” — adjusting amplifier, electrode input, and stimulator settings is adjusting equipment settings
+    - NDT A298 [Lab content]: “Equipment setting controls/calibration Clinical montages” — adjusting equipment settings and configuring montages evidences adjusting equipment settings
+- ● **Operate diagnostic or therapeutic medical instruments or equipment.**
+    - NDT A296 [Lab content]: “SSEP Setup Recording Parameters Stimulating Parameters” — operating IOM instrument by setting recording/stimulating parameters
+    - NDT A296 [Lab content]: “EMG Setup Recording Parameters Stimulating Parameters BAEP Setup Recording Parameters Stimulating Parameters” — operating EMG and BAEP diagnostic monitoring instruments and setting their parameters
+    - NDT A288 [Objective]: “Set up EP equipment to the desired protocols for each modality.” — operating EP diagnostic equipment via protocol setup
+    - NDT A288 [Lab content]: “Recording Parameters ii. Stimulus Parameters iii. Troubleshooting techniques” — operating EP diagnostic instruments by setting recording and stimulus parameters
+    - NDT A110 [Lab content]: “Montage 2. Impedance Meter 3. Acquisition 4. Intermittent Photic Stimulation 5. Hyperventilation Stimulation” — hands-on montage setup and acquisition on the EEG instrument evidences operating diagnostic equipment
+    - NDT A115 [Lab content]: “Demonstration of Instrumentation Knowledge and Application” — lab has students operate the EEG diagnostic instrument
+    - NDT A116 [Objective]: “Calibrate the machine within 100% accuracy. Able to make all necessary adjustments to the instrument for accurate recordings.” — operating diagnostic EEG instrument including calibration and adjustment
+    - NDT A117 [Lab content]: “NDT instrumentation” — evidences operating neurodiagnostic instruments in clinical practice
+    - NDT A200 [Objective]: “Set up all of the recommended montages used in a routine EEG.” — literally states students set up and record montages on EEG instrument
+    - NDT A284 [Content outline]: “Field trip to hospital vascular lab: demonstration and lab practice” — hands-on operation of TCD diagnostic instrument
+    - NDT A285 [Content outline]: “Nerve conduction instrumentation” — operating NCV instrumentation to record nerve responses is operating diagnostic medical equipment
+    - NDT A286 [Lab content]: “Clinical montages” — hands-on practice recording montages when testing cortical responses
+    - NDT A289 [Objective]: “Justify appropriate use of montages within 90% accuracy.” — using montages during testing literally matches recording montages when testing responses
+    - NDT A289 [Lab content]: “Clinical Montages” — clinical practice with montages evidences operating diagnostic equipment per montage protocols
+    - NDT A298 [Objective]: “Calibrate equipment used in diagnostic procedures with 100% accuracy” — operating and calibrating diagnostic equipment during testing
+- ● **Prepare medical supplies or equipment for use.**
+    - NDT A200 [Objective]: “Set up all of the recommended montages used in a routine EEG.” — preparing equipment/montage combinations for use
+    - NDT A200 [Objective]: “Use the International 10/20 system to measure and apply the 23 standard EEG electrodes on a human volunteer accurately” — literally states students prepare electrodes/equipment for EEG recording
+    - NDT A115 [Objective]: “Perform accurate PSG patient setup, system patient calibration, and record a 15 minute baseline study.” — preparing equipment (calibration/setup) before recording
+    - NDT A115 [Lab content]: “Perform the International 10-20 System of Electrode Placement on human subjects” — electrode placement setup prepares equipment/supplies for the recording
+    - NDT A110 [Lab content]: “Square Wave Calibration 2. Bio-Calibration” — calibrating the EEG instrument before use evidences preparing medical equipment for use
+    - NDT A116 [Lab content]: “Familiarization of NDT instrumentation and settings for optimal recording” — preparing equipment/montage settings before testing
+    - NDT A117 [Objective]: “Calibrate the machine within 100% accuracy. Able to make all necessary adjustments to the instrument for accurate recordings.” — evidences preparing equipment (calibration) before testing
+    - NDT A285 [Objective]: “Demonstrate the principles of stimulation and accurate placement of recording electrodes.” — setting up stimulating/recording electrodes for NCV is preparing equipment for use
+    - NDT A286 [Objective]: “*+Calibrate and adjust instrument, 100% accurately.” — directly states preparing/calibrating equipment for use before testing
+    - NDT A288 [Objective]: “Set up EP equipment to the desired protocols for each modality.” — setting up equipment before testing is preparing equipment for use
+    - NDT A289 [Objective]: “Set up EP equipment to the desired protocols for each modality.” — setting up EP equipment before testing literally matches preparing medical equipment for use
+    - NDT A296 [Content outline]: “Introduction to IONM Equipment Recording Settings Parameters Stimulators Settings Parameters” — preparing recording and stimulator settings for IONM equipment prior to use is preparing equipment for use
+    - NDT A298 [Lab content]: “Proper cleaning/disinfection and disposal of equipment NDT instrumentation” — preparing/cleaning equipment for use is a component of preparing medical supplies
+- ● **Prepare reports summarizing patient diagnostic or care activities.**
+    - NDT A116 [Objective]: “Write a description of each EEG performed. Each should be reviewed by a technologists, and be at least 50% accurate.” — summarizing test data as a report of diagnostic activity
+    - NDT A116 [Lab content]: “Technical Impressions” — documenting technical impressions summarizing findings
+    - NDT A286 [Objective]: “Write an accurate description of EEG's performed with 80% accuracy.” — preparing reports summarizing diagnostic recordings
+    - NDT A286 [Assignment]: “Required to make written reports of patients clinical history, test results, testing parameters” — assignment requires preparing reports summarizing patient diagnostic activities
+    - NDT A115 [Assignment]: “Two reports are to be completed in writing and given orally in summarized fashion” — written summarized reports parallel summarizing technical data for diagnosis
+    - NDT A191 [Assignment]: “EEG Atlas portfolio Technical descriptions/impressions of EEG tracings” — producing technical descriptions/impressions of EEG tracings is summarizing technical data for diagnosis
+    - NDT A287 [Objective]: “Describe in technical writing basic EEG characteristics based on frequency, morphology, topography and reactivity.” — Technical writing of EEG findings evidences summarizing technical data for diagnostic reporting
+    - NDT A287 [Assignment]: “Brief technical descriptions of electroencephalographs presented in discussions or class homework.” — Writing technical descriptions of EEG findings evidences preparing summary reports of diagnostic data
+    - NDT A117 [Lab content]: “Technical impressions” — evidences summarizing technical findings for diagnostic reporting
+    - NDT A117 [Objective]: “Write a description of each EEG performed. Each should be reviewed by a technologists, and be at least 70% accurate.” — evidences preparing a diagnostic summary report of the EEG
+    - NDT A200 [Assignment]: “Lab assignments with patient history, and written technical impressions.” — assignment has students write technical impressions summarizing diagnostic findings
+    - NDT A279 [Objective]: “Analyze EEG recordings of neonatal, infant and pediatric neurological conditions.” — analyzing recordings to characterize neurological conditions is the technical core of summarizing data to assist diagnosis
+    - NDT A282 [Objective]: “Demonstrate comprehension of EEG activities through evaluation/interpretation of EEG tracings and report findings in the neonate, pediatric and adult patients” — objective explicitly requires reporting findings, summarizing diagnostic data
+    - NDT A289 [Assignment]: “Written reports of patients clinical history, test results, testing parameters, and required record keeping as per lab protocol.” — writing reports of test results literally matches preparing diagnostic summary reports
+    - NDT A289 [Objective]: “Students should write a description of each EEG they perform, and each should be reviewed by the technologist.” — writing descriptions of EEG results matches summarizing patient diagnostic activities
+    - NDT A297 [Objective]: “Demonstrate competency in manipulating, quantifying, and analyzing neurophysiologic data according to the ACNS guidelines.” — analyzing neurophysiologic data to summarize technical findings evidences preparing diagnostic summaries
+    - NDT A297 [Objective]: “List appropriate clinical uses of quantitative EEG data for effective patient care and management.” — clinical use of quantitative data to assist patient management evidences summarizing diagnostic data for physicians
+    - NDT A298 [Objective]: “Write a description of each test performed as per lab requirements and have all results reviewed by the technical staff.” — directly states preparing written reports summarizing test/diagnostic activities
+    - NDT A298 [Assignment]: “Required to make written reports of patients' clinical history, test results, testing parameters, and required record keeping in the lab.” — written reports of patient test results and history constitute diagnostic reporting
+- ● **Measure the physical or physiological attributes of patients.**
+    - NDT A110 [Objective]: “Measure and apply the 21 standard EEG electrodes using the International 10/20 system of electrode placement on a mannequin head accurately (to within 5 mm)” — measuring body locations for electrode placement
+    - NDT A110 [Objective]: “Measure and apply the 21 standard EEG electrodes using the International 10/20 system of electrode placement on a mannequin head accurately” — measuring the head to place electrodes literally evidences measuring body parts and marking electrode locations
+    - NDT A200 [Objective]: “Use the International 10/20 system to measure and apply the 23 standard EEG electrodes on a human volunteer accurately, (to within 5 mm)” — measuring body parts to mark electrode locations
+    - ALH A115 [Objective]: “Define each vital sign, describe how to assess on a patient, and identify the normal ranges for all: temperature, pulse, respirations, and blood pressure.” — measuring vital signs is measuring physiological attributes of patients
+    - NDT A115 [Lab content]: “Perform the International 10-20 System of Electrode Placement on human subjects” — 10-20 system requires measuring the head and marking electrode locations
+    - NDT A116 [Lab content]: “10/20 EEG placement” — measuring head to mark electrode placement locations per 10/20 system
+    - NDT A117 [Lab content]: “EEG electrode application” — evidences marking measured locations for electrode placement per lab prep
+    - NDT A285 [Objective]: “Demonstrate the principles of stimulation and accurate placement of recording electrodes.” — accurate electrode placement requires locating/measuring anatomical sites on the patient's limbs
+    - NDT A286 [Objective]: “*Apply electrodes accurately to within 5mm of homologous regions, within 25 minutes” — measuring precise scalp locations to homologous regions before electrode placement
+    - NDT A289 [Objective]: “Apply electrodes accurately within 20 25 mins.” — electrode application implies measuring body locations for placement, constitutive of the task
+    - NDT A298 [Objective]: “Apply electrodes accurately with respect to each modality of testing within 5mm.” — precise electrode placement requires measuring body locations for electrode marking
+- ● **Prepare patients physically for medical procedures.**
+    - NDT A110 [Objective]: “Apply electrodes using collodion in an acceptable manner to emulate the application process for recording EEG activity” — attaching electrodes to patients using adhesives
+    - NDT A110 [SLO]: “Prepare a patient for an EEG recording using the International 10/20 system to accurately measure and apply standard EEG electrodes” — applying electrodes to a patient literally evidences preparing patients physically for procedures
+    - NDT A116 [Objective]: “Apply electrodes accurately within 40 minutes in the first 8 weeks and to 35 minutes by the end of semester” — attaching electrodes to patients preparing them for testing
+    - NDT A115 [Lab content]: “Perform the International 10-20 System of Electrode Placement on human subjects” — electrode placement per 10-20 system is attaching electrodes to prepare patient
+    - NDT A117 [Objective]: “Apply electrodes accurately within 30 minutes, and get the patients test performed in an acceptable time as per the lab schedule.” — literally states attaching electrodes to prepare patients for testing
+    - NDT A200 [Objective]: “Apply electrodes using collodion in an acceptable manner so as to record EEG activity for 24-hour recordings” — literally states students attach electrodes to patients using adhesives
+    - NDT A286 [Lab content]: “EEG Electrode application” — hands-on practice attaching electrodes to patients
+    - NDT A286 [Objective]: “*Apply electrodes accurately to within 5mm of homologous regions, within 25 minutes, and perform testing” — directly states applying electrodes to prepare patients for testing
+    - NDT A288 [Objective]: “Apply electrodes accurately with respect to each modality tested.” — applying electrodes to patients is preparing patients physically for the procedure
+    - NDT A289 [Objective]: “Apply electrodes accurately with respect to each modality tested.” — applying electrodes to patients literally matches attaching electrodes for medical procedure preparation
+    - NDT A289 [Lab content]: “NDT modality electrode application 20-25 minutes or under” — lab electrode application evidences preparing patients physically for procedures
+    - NDT A298 [Objective]: “Apply electrodes accurately with respect to each modality of testing within 5mm.” — directly states attaching electrodes to patients, a physical preparation step
+- ● **Communicate test or assessment results to medical professionals.**
+    - NDT A117 [Objective]: “Write a description of each EEG performed. Each should be reviewed by a technologists, and be at least 70% accurate.” — submitting reports of test results reviewed by technologist
+    - NDT A117 [Assignment]: “written reports of patients clinical history, test results, testing parameters, and required record keeping as per lab protocol” — evidences submitting test result reports as part of clinical record keeping
+    - NDT A298 [Objective]: “Write a description of each test performed as per lab requirements and have all results reviewed by the technical staff.” — communicating test results to medical professionals for review
+    - NDT A116 [Objective]: “Accurately document all work, including calibrations, instrument settings, clinical findings, modifications to recording, and appropriate patient information.” — documenting clinical findings for communication to physicians
+    - NDT A191 [Assignment]: “EEG portfolio, short essay homework/discussion assignments, technical impressions (2-3 hrs/wk).” — writing technical impressions of EEG recordings mirrors reporting test results to medical professionals
+    - NDT A286 [Objective]: “*+Properly document clinical and instrument data on EEG's.” — directly states documenting/communicating test results as part of clinical record
+- ● **Maintain medical equipment or instruments.**
+    - NDT A110 [Objective]: “Accurately calibrate an EEG instrument and be able to trouble shoot basic equipment issues.” — calibrating/troubleshooting equipment as maintenance
+    - NDT A116 [Objective]: “Calibrate the machine within 100% accuracy. Able to make all necessary adjustments to the instrument for accurate recordings.” — calibrating equipment to correct malfunctions
+    - NDT A116 [Content outline]: “Troubleshooting” — maintaining/troubleshooting NDT equipment
+    - NDT A115 [Content outline]: “EEG Equipment Maintenance” — content covers maintaining EEG equipment
+    - NDT A115 [Objective]: “Describe and utilize all of the operational components of the EEG instrument and utilize basic troubleshooting techniques” — troubleshooting the instrument evidences equipment maintenance
+    - NDT A117 [Objective]: “Calibrate the machine within 100% accuracy. Able to make all necessary adjustments to the instrument for accurate recordings.” — literally states calibrating equipment to maintain accurate function
+    - NDT A200 [Objective]: “Accurately calibrate NDT instrument and troubleshoot basic equipment malfunctions.” — literally states students calibrate and troubleshoot equipment
+    - NDT A286 [Lab content]: “NDT equipment troubleshooting” — lab practice troubleshooting equipment to maintain function
+    - NDT A286 [Objective]: “Includes proper calibrations at end of each test and recognition of inaccuracies with suggestions for solutions.” — directly states calibrating and troubleshooting equipment inaccuracies
+    - NDT A288 [Lab content]: “Troubleshooting techniques iv. Identification of obligate waveforms v. Calculation analysis of study results” — troubleshooting EP equipment is maintaining/correcting malfunctions
+    - NDT A289 [Objective]: “Calibrate the machine within 100% accuracy.” — calibrating the machine literally matches maintaining medical equipment
+    - NDT A289 [Lab content]: “Troubleshooting techniques” — troubleshooting lab content matches calibrate/troubleshoot/repair equipment task
+    - NDT A296 [Content outline]: “Troubleshooting in the OR” — troubleshooting equipment during operation is maintaining medical equipment
+    - NDT A298 [Objective]: “Calibrate equipment used in diagnostic procedures with 100% accuracy” — directly states calibrating equipment, a maintenance task
+    - NDT A298 [Lab content]: “Troubleshooting techniques” — troubleshooting equipment is a maintenance activity
+- ● **Repair medical facility equipment.**
+    - NDT A200 [Objective]: “Accurately calibrate NDT instrument and troubleshoot basic equipment malfunctions.” — repairing/troubleshooting equipment malfunctions
+- ○ **Operate diagnostic imaging equipment.**
+    - NDT A284 [Content outline]: “Demonstration and practice measuring flow in the MCA, ACA and ICA” — operating TCD imaging equipment to view cerebral circulation
+- · **Train medical providers.**
+- ○ **Conduct research to increase knowledge about medical issues.**
+    - NDT A280 [Assignment]: “REPORT #2: Neurological Testing Find the following information about each topic area assigned. List all references used in research.” — conducting research on medical/diagnostic topics
+    - NDT A296 [Assignment]: “Research reporting and presentation of an NDT intraoperative neruomonitoring procedure. Review professional journals and survey published literature” — surveying published literature and reporting on findings is conducting research to increase medical knowledge
+- ○ **Maintain medical or professional knowledge.**
+    - NDT A282 [Description]: “Comprehensive review of Neurodiagnostic Technology concepts in preparation for the ABRET National Registry Board Exam” — maintaining/updating professional knowledge base
+    - NDT A282 [Assignment]: “Read assigned texts, journal articles, and ACNS guidelines.” — engaging with journal articles and guidelines evidences maintaining professional knowledge
+
+### Dropped
+
+- act 2 · NDT A116 · “Objective II. 5. Take valid patient data.” — quote not verbatim in that course
+- act 5 · NDT A116 · “Relate to patients in a positive manner to encourage patient cooperation... explaining all” — quote not verbatim in that course
+- act 5 · NDT A117 · “Relate to patients in a positive manner to encourage patient cooperation... This includes ” — quote not verbatim in that course
+- act 9 · NDT A280 · “REPORT #1: Epilepsy and related topics...5. EEG data; ictally, interictally, and activatio” — quote not verbatim in that course
+- act 15 · NDT A115 · “Describe and utilize all of the operational components of the EEG instrument and utilize b” — adjudicated: d) quote evidences operating/troubleshooting EEG instrument components, a different activity than diagnostic imaging equipment
+- act 16 · NDT A116 · “Review of weekly case studies” — adjudicated: a) reviewing weekly case studies names a topic with no performable training-of-others content
+- act 18 · NDT A115 · “List the major historical contributions made to the scientific field of neurodiagnostics.” — adjudicated: b) listing historical contributions is precondition knowledge, not participating in research/conferences
+- act 1 · ALH A115 · “Importance of correct procedural technique, accuracy, and documentation” — adjudicated: a) generic statement about procedural technique/documentation names no performable artifact-identification content
+- act 5 · ALH A115 · “Components of effective interpersonal communications Listening skills and non-verbal commu” — adjudicated: c) generic interpersonal communication/listening skills credited to explaining medical procedures
+- act 11 · ALH A115 · “Demonstration and hands on practice in lifting and moving a patient: 1. Moving Bed to Gurn” — adjudicated: d) lifting/moving a patient evidences a different activity (patient transfer/mobility), not attaching electrodes
+- act 13 · ALH A115 · “Equipment used to measure each” — adjudicated: a) naming equipment used for vital signs is topic-only with no equipment maintenance content
+- act 1 · NDT A190 · “Identify structures in the nervous system, describe their function and predict the symptom” — adjudicated: b) predicting pathology symptoms is precondition knowledge preceding artifact identification, not the activity itself
+- act 4 · NDT A190 · “Diagram the electrophysiologic characteristics of the neuron. Relate the electrophysiology” — adjudicated: b) understanding neuron electrophysiology is precondition knowledge preceding conducting the test
+- act 4 · NDT A190 · “Neurological Testing” — adjudicated: a) 'Neurological Testing' as a content heading names a topic with no performable content specified
+- act 5 · NDT A280 · “Administer first aid to a patient having a seizure.” — adjudicated: d) administering first aid during a seizure evidences emergency response, a different activity than explaining procedures
+- act 1 · NDT A282 · “Artifacts” — adjudicated: a) 'Artifacts' as a bare content heading names a topic with no performable content specified
+- act 2 · NDT A282 · “Patient History” — adjudicated: a) 'Patient History' as a bare content heading names a topic with no performable content specified
+- act 13 · NDT A282 · “Calibration” — adjudicated: a) 'Calibration' as a bare content heading names a topic with no performable content specified
+- act 12 · NDT A289 · “Make necessary calculations for Physician interpretations.” — adjudicated: b) making calculations for physician interpretation is a precondition step, not submitting reports
+- act 9 · PSG A100 · “Signs of sleep problems, signs and symptoms” — adjudicated: a) 'signs and symptoms' content heading names a topic with no performable reporting content specified

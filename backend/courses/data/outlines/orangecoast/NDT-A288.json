@@ -1,0 +1,47 @@
+{
+ "college": "Orange Coast College",
+ "system": "courseleaf",
+ "code": "NDT A288",
+ "title": "Evoked Potentials",
+ "description": "Concepts, terminology, and techniques of Evoked Potential (EP) recording with testing modalities of visual, auditory, and somatosensory systems to be individually discussed. An overview of EP instrumentation and technical concepts. Analyze the clinical correlations of evoked potential testing and will focus on waveform analysis correlating to common neurological diseases. PREREQUISITE: NDT A115 and NDT A190. Transfer Credit: CSU.",
+ "outcomes": [
+  "Perform accurate and interpretable EP recordings according to ACNS minimal guidelines on human volunteers in the classroom lab setting.",
+  "List and identify normal EP patterns in the infant, pediatric and adult age groups, as well as EP abnormal patterns associated with neurological disorders."
+ ],
+ "objectives": [
+  "1. *Demonstrate understanding of basic computer applications to EP technology.",
+  "2. *Describe theoretical basis of evoked potentials.",
+  "3. *Demonstrate ability to perform evoked potentials in the modalities Visual, Auditory Brainstem, and Somatosensory on volunteer human subjects.",
+  "4. *Demonstrate knowledge of the theoretical basis of EP waveform generation.",
+  "5. *Demonstrate knowledge of the anatomy and physiology of the related test procedures.",
+  "6. *Apply electrodes accurately with respect to each modality tested.",
+  "7. Become familiar with equipment protocols in each of the modalities.",
+  "8. *+Identify and measure important data from EP waveforms.",
+  "9. *+Make necessary calculations of amplitudes, amplitude ratio's, latency, interpeak latencies, and/or conduction velocities, for interpretations.",
+  "10. *+Set up EP equipment to the desired protocols for each modality.",
+  "11. *+Recognize and remedy artifacts on the EP.",
+  "12. *Utilize the appropriate stimulus for each modality.",
+  "13. *Utilize published normative data, for comparison and evaluation of normal versus abnormal.",
+  "14. *+Analyze the complex waveforms seen in neurological disease states and correlate the results to clinically significant findings."
+ ],
+ "content": [
+  "Introduction to EP Instrumentation and Concepts Terminology Computer operation Signal averaging Technical Aspects of Evoked Potentials A/D conversion Signal to noise ratio EP parameters Auditory Evoked Potentials Techniques, troubleshooting, parameters, anatomy and physiology Audiometry application Applications to neurodiagnosis and clinical correlations Labs: Multiple Channel, and Audiometric BAEP's Visual Evoked Response Techniques, troubleshooting, parameters, anatomy and physiology Applications to neurodiagnosis and clinical correlations Electroretinogram (ERG) and field testing Labs: Pattern Reversal Full Field and Flash VEP with ERG Somatosensory Evoked Response (upper and lower) Techniques, troubleshooting, parameters, anatomy and physiology Application to neurodiagnosis and clinical correlations Labs: SSEP upper ext. and SSEP lower ext. Other Related Applications Neonatal EP Normative data collection and analysis of normal vs. abnormal EP's New developing techniques Cognitive EP Journal article critiques and Oral summaries. Review the ACNS guidelines for recording Evoked Potentials Auditory Visual Somatosensory Normative Data and Clinical Significant Abnormalities Neonatal Applications Audiological Screening Waveform Differences and Normative Maturational Changes Congenital Anomalies and Defects Common Neurological Diseases in Neonates Instructor provided waveforms for analysis reviewed Clinical Correlations: Waveform examples will be provided from multimoda",
+  "lity recordings when applicable. Multiple Sclerosis Head Trauma Coma Audiological Applications Ophthalmological Applications Peripheral Neuropathy Brain Death Applications Other Specific Disease Correlations Future Trends Computer Analysis and Automatic Waveform Identifications Long Term Trending in ICU monitoring Evoked Potential Mapping Techniques Equipment"
+ ],
+ "lab": [
+  "A. Introduction to EP Instrumentation and Concepts 1. Equipment components 2. Equipment operation B. Auditory Evoked Potentials (AER) 1. Routine Auditory Evoked Potential (Multiple Channel) i. Recording Parameters ii. Stimulus Parameters iii. Troubleshooting techniques iv. Identification of obligate waveforms v. Calculation analysis of study results 2. Latency/Intensity Function (Audiometric BAEP s) i. Recording Parameters ii. Stimulus Parameters iii. Troubleshooting techniques iv. Identification of obligate waveforms v. Calculation analysis of study results C. Visual Evoked Potentials (VEP) 1. Full-Field Pattern Reversal Evoked Potential i. Recording Parameters ii. Stimulus Parameters iii. Troubleshooting techniques iv. Identification of obligate waveforms v. Calculation analysis of study results 2. Half-Field Pattern Reversal Evoked Potential i. Recording Parameters ii. Stimulus Parameters iii. Troubleshooting techniques iv. Identification of obligate waveforms v. Calculation",
+  "analysis of study results 3. Flash VEP with ERG i. Recording Parameters ii. Stimulus Parameters iii. Troubleshooting techniques iv. Identification of obligate waveforms v. Calculation analysis of study results D. Somatosensory Evoked Potentials (SSEP) 1. Upper Extremity (ueSSEP) Median and Ulnar Nerve i. Recording Parameters ii. Stimulus Parameters iii. Troubleshooting techniques iv. Identification of obligate waveforms v. Calculation analysis of study results 2. Lower Extremity (leSSEP) Posterior Tibial and Superficial Peroneal Nerve i. Recording Parameters ii. Stimulus Parameters iii. Troubleshooting techniques iv. Identification of obligate waveforms v. Calculation analysis of study results"
+ ],
+ "assignments": [
+  "2-3 hurs/week from required textbook, ACNS guidelines (online).",
+  "Article Review and critique requiring research of related Evoked potentional topic. 2 hours/week.",
+  "Lab assignments requiring analysis of in lab study results, appropriate calculations, and measurements. 2 hours/week."
+ ],
+ "source_url": "https://catalog.cccd.edu/courses/ndt-a288/",
+ "effective": "",
+ "approved": "",
+ "retrieved": "2026-09-17",
+ "notes": "",
+ "link_ok": true,
+ "link_checked": "2026-09-17"
+}

@@ -1,0 +1,37 @@
+{
+ "college": "Orange Coast College",
+ "system": "courseleaf",
+ "code": "NDT A285",
+ "title": "Introduction to Nerve Conduction Velocity",
+ "description": "An introduction to nerve conduction velocity (NCV) testing procedures and recording techniques. PREREQUISITE: NDT A190. Transfer Credit: CSU.",
+ "outcomes": [
+  "Describe and differentiate among the Compound Motor Action Potential (CMAP), Sensory Nerve Potentials, H-Reflex, F-Waves and correlate the patterns with clinical disorders."
+ ],
+ "objectives": [
+  "1. Identify a technique for recording the Compound Motor Action Potential (CMAP).",
+  "2. Describe the most common change found in the NCV in an Axonal Neuropathy and in a Demyelinating Neuropathy.",
+  "3. Name specific types or causes of Mononeuropathy and Polyneuropathy.",
+  "4. Describe the Compound Muscle Action Potential and the Sensory Nerve Potential by their descriptors: a. latency b. amplitude c. morphology",
+  "5. Describe the difference among motor and sensory nerve action potentials.",
+  "6. Calculate the Nerve Conduction Velocity using the formula V=D/T.",
+  "7. Compare the \"H - Reflex\" to the \"F\" - response, noting both their similarities and differences.",
+  "8. Describe the clinical syndrome and symptoms of Carpal Tunnel Syndrome.",
+  "9. Demonstrate the principles of stimulation and accurate placement of recording electrodes."
+ ],
+ "content": [
+  "Introduction to Nerve Conduction Velocity (NCV) Motor and sensory nerve action potentials Nerve conduction instrumentation Technique for recording the Compound Motor Action Potential (CMAP) NCV techniques and waveforms The Compound Muscle Action Potential and the Sensory Nerve Potential Nerve Conduction Velocity The \"H - Reflex\" and the \"F\" - response Anatomy, physiology, and pathology of the peripheral nervous system The clinical syndrome and symptoms of Carpal Tunnel Syndrome Mononeuropathy and Polyneuropathy NCV in an Axonal Neuropathy and in a Demyelinating Neuropathy Field trip to hospital lab: demonstration and lab practice Demonstration and practice performing motor and sensory NCV of the median, ulnar and radial nerves in the arms Demonstration and practice performing motor and sensory NCV of the peroneal, tibial, and sural nerves in the legs"
+ ],
+ "lab": [],
+ "assignments": [
+  "Students complete 1-2 hours/week of textbook reading.",
+  "Students will be writing brief descriptions and short answers on examinations. Part of the lab which is completed during the lab hours consists of 1-2 hours/week.",
+  "Lab analysis 1 hour/week."
+ ],
+ "source_url": "https://catalog.cccd.edu/courses/ndt-a285/",
+ "effective": "",
+ "approved": "",
+ "retrieved": "2026-09-17",
+ "notes": "",
+ "link_ok": true,
+ "link_checked": "2026-09-17"
+}

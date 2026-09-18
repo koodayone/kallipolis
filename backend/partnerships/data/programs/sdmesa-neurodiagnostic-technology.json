@@ -1,0 +1,162 @@
+{
+  "college": "San Diego Mesa College",
+  "college_key": "sdmesa",
+  "member_id": "sdmesa",
+  "certificate": "Associate of Science Degree, Neurodiagnostic Technology",
+  "short_title": "Neurodiagnostic Technology",
+  "kind": "credit",
+  "control_number": "38642",
+  "award": "A.S. Degree",
+  "status": "Active",
+  "top6": "121200",
+  "top_name": "Electro-Neurodiagnostic Technology",
+  "source": {
+    "system": "curriqunet",
+    "host": "sdccd.curriqunet.com",
+    "report_id": 4
+  },
+  "course_sources": {
+    "HEIT 130": {
+      "system": "curriqunet",
+      "host": "sdccd.curriqunet.com",
+      "entity_id": 17826,
+      "report_id": 4
+    },
+    "NDTE 101": {
+      "system": "curriqunet",
+      "host": "sdccd.curriqunet.com",
+      "entity_id": 12830,
+      "report_id": 4
+    },
+    "MEDA 115": {
+      "system": "curriqunet",
+      "host": "sdccd.curriqunet.com",
+      "entity_id": 17834,
+      "report_id": 4
+    },
+    "NDTE 121": {
+      "system": "curriqunet",
+      "host": "sdccd.curriqunet.com",
+      "entity_id": 17906,
+      "report_id": 4
+    },
+    "NDTE 131": {
+      "system": "curriqunet",
+      "host": "sdccd.curriqunet.com",
+      "entity_id": 17838,
+      "report_id": 4
+    },
+    "NDTE 140": {
+      "system": "curriqunet",
+      "host": "sdccd.curriqunet.com",
+      "entity_id": 17841,
+      "report_id": 4
+    },
+    "NDTE 133": {
+      "system": "curriqunet",
+      "host": "sdccd.curriqunet.com",
+      "entity_id": 17839,
+      "report_id": 4
+    },
+    "NDTE 135": {
+      "system": "curriqunet",
+      "host": "sdccd.curriqunet.com",
+      "entity_id": 17840,
+      "report_id": 4
+    },
+    "NDTE 150": {
+      "system": "curriqunet",
+      "host": "sdccd.curriqunet.com",
+      "entity_id": 17842,
+      "report_id": 4
+    },
+    "NDTE 203": {
+      "system": "curriqunet",
+      "host": "sdccd.curriqunet.com",
+      "entity_id": 17843,
+      "report_id": 4
+    },
+    "NDTE 250": {
+      "system": "curriqunet",
+      "host": "sdccd.curriqunet.com",
+      "entity_id": 17847,
+      "report_id": 4
+    },
+    "NDTE 260": {
+      "system": "curriqunet",
+      "host": "sdccd.curriqunet.com",
+      "entity_id": 17848,
+      "report_id": 4
+    }
+  },
+  "program_description": "The Neurodiagnostic Technology (NDTE) Associate of Science degree is designed for students working toward (or who have completed) the NDTE Certificate of Achievement who elect to also complete required general education coursework. Neurodiagnostic students complete a 15-month program of professional education that combines in-depth academic study on campus with practical experience in the program's hospital clinical affiliates. The program is an ABRET-recognized program; upon completion graduates are eligible to sit for the national credentialing board exam (ABRET, the American Board of Registration of Electroencephalographic and Evoked Potential Technologists).",
+  "program_outcomes": [
+    "Be provided with knowledge and skills required for an entry level position as a Neurodiagnostic Technologist in a variety of settings including hospitals, out patient clinics, research centers and physician's offices.",
+    "Develop effective communication skills; both verbally and writing, demonstrate knowledge of state and federal regulations.",
+    "Develop professional and ethical conduct as stipulated by the American Society of Electrodiagnostic Technologists (ASET) and American Board of Registration of Electroencephalographic and Evoked Potential Technologists (ABRET).",
+    "Perform safe and accurate neurodiagnostic testing within the scope of practice."
+  ],
+  "courses": [
+    {
+      "code": "HEIT 130",
+      "title": "Basic Pharmacology",
+      "units": 1.0
+    },
+    {
+      "code": "NDTE 101",
+      "title": "Basic Electroencephalography",
+      "units": 5.0
+    },
+    {
+      "code": "MEDA 115",
+      "title": "Pathophysiology",
+      "units": 3.0
+    },
+    {
+      "code": "NDTE 121",
+      "title": "Neurodiagnostic Lab Practice",
+      "units": 0.5
+    },
+    {
+      "code": "NDTE 131",
+      "title": "Advanced Electroencephalography",
+      "units": 4.0
+    },
+    {
+      "code": "NDTE 140",
+      "title": "Directed Clinical Practice I",
+      "units": 2.0
+    },
+    {
+      "code": "NDTE 133",
+      "title": "Introduction to Neuroanatomy and Neurophysiology",
+      "units": 3.0
+    },
+    {
+      "code": "NDTE 135",
+      "title": "EEG Record Review",
+      "units": 2.5
+    },
+    {
+      "code": "NDTE 150",
+      "title": "Directed Clinical Practice II",
+      "units": 2.0
+    },
+    {
+      "code": "NDTE 203",
+      "title": "Neurologic Disorders",
+      "units": 3.0
+    },
+    {
+      "code": "NDTE 250",
+      "title": "Directed Clinical Practice III",
+      "units": 3.0
+    },
+    {
+      "code": "NDTE 260",
+      "title": "Directed Clinical Practice IV",
+      "units": 3.0
+    }
+  ],
+  "notes": "Courses = the degree's 'Courses required for the major' (32 semester units) per the 2026-27 Mesa College Catalog (sdccd.curriqunet.com/catalog/alias/mesa26-27/iq/17540/programs/17687, tab Requirements, 2026-09-17), in catalog order — the same twelve courses the state's ProgramCourseFile lists. Outlines are CurriQunet META 'All Fields' reports (report id 4 on the SDCCD tenant) addressed by the course entity ids the public catalog carries (courses.outlines.curriqunet_catalog_courses). The Certificate of Achievement (38643) shares the major."
+}

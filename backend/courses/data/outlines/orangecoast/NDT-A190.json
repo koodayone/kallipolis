@@ -1,0 +1,58 @@
+{
+ "college": "Orange Coast College",
+ "system": "courseleaf",
+ "code": "NDT A190",
+ "title": "Introduction to Neuro Anatomy and Physiology",
+ "description": "An introduction to the anatomy and physiology of the central and peripheral nervous systems with correlation to related symptoms and pathology as needed by a Neurodiagnostic and/or Polysomnographic technologist. PREREQUISITE: BIOL A221; or BIOL A220 and BIOL A225. Transfer Credit: CSU.",
+ "outcomes": [
+  "Identify structures in the nervous system, describe their function and predict the symptoms of pathology within each structure."
+ ],
+ "objectives": [
+  "1. Identify/describe the function of the vascular design of the nervous system including arterial supply and the venous/sinus system.",
+  "2. Identify the pattern of arterial supply to the major areas of the cerebrum.",
+  "3. Describe the unique blood delivery system called the Blood Brain Barrier.",
+  "4. Have a general understanding of the clinical correlation of Cerebrovascular Accident (Stroke).",
+  "5. Identify and define the function of the bones and sutures of the skull, and the vertebral column.",
+  "6. Identify/describe the anatomy of a typical neuron and its function.",
+  "7. Recall the four supporting cell types found in the nervous system and understand their basic functions.",
+  "8. Diagram the electrophysiologic characteristics of the neuron. Relate the electrophysiology to the generation of EEG activity and with typical neuromuscular activation.",
+  "9. Identify the major structures (Lobes, Gyri, Fissures, Commissures, and \"Deep\" structures) of the cerebrum.",
+  "10. Recall the functional characteristics of the cerebral structures identified.",
+  "11. Correlate common clinical conditions associated with the cerebrum.",
+  "12. Know the order, major functions, and nuclei location of the Cranial Nerves.",
+  "13. Illustrate/describe the external aspect and sectional brainstem, identify locations of the cranial nerves, major sections of the brainstem, and key anatomy within the brainstem.",
+  "14. Discuss the major functional aspects of the brainstem anatomy.",
+  "15. Have a general understanding of the clinical correlations affecting the brainstem and cranial nerves.",
+  "16. Identify the functional and anatomical differences between the sympathetic and parasympathetic control of the autonomic nervous system.",
+  "17. Describe the role of the hypothalamus in the autonomic nervous system.",
+  "18. Describe the functional and anatomical differences of the anterior and posterior lobe of the pituitary gland.",
+  "19. Learn the detailed description of how pupils, sleep, and respiration are controlled by the central nervous system.",
+  "20. Have a general understanding of the clinical conditions which effect the autonomic nervous system.",
+  "21. Illustrate, identify and define the function of the ventricles of the brain as well as the passage route of CSF through the nervous system.",
+  "22. Identify the functional characteristics of the ventricles, CSF, and the formation and excretion of CSF.",
+  "23. Have a general understanding of the clinical conditions of the forms of hydrocephalus.",
+  "24. Illustrate/identify meningeal layers and their spaces.",
+  "25. Describe the functional characteristics of the meningeal layers and their spaces.",
+  "26. Have a general understanding of the clinical conditions of meningitis and meningeal hemorrhage.",
+  "27. Illustrate and identify the major structures of the Visual System. Recall the functional characteristics and common clinical conditions associated with structures identified.",
+  "28. Identify the major structures of the Vestibulocochlear System. Recall the functional characteristics and common clinical conditions associated with structures identified.",
+  "29. Identify the major peripheral nerves. Recall the functional characteristics and common clinical conditions associated with structures identified.",
+  "30. Have a general understanding of Neuroembryology and the clinical conditions which can affect the development of the nervous system."
+ ],
+ "content": [
+  "Introduction Gross Anatomy Neuroembryology Bones of the Vertebral Column and Skull Vasculature of the Nervous System Arteries, Veins, and Ventricles Meninges, and Cerebrospinal Fluid Microscopic Anatomy and Electrophysiology and EEG Generation Peripheral Nerves and Neuromuscular Function Spinal Cord and Pathways Cranial Nerves and Brainstem Cerebral Cortex Basal Ganglia Cerebellum Diencephalon, and the Limbic System Speech, Epilepsy Seizures Visual System Vestibulocochlear System Autonomic System, Hypothalamus, and Pituitary Central Nervous System and Sleep Neurological Testing Neuropathology and the Neurological Exam"
+ ],
+ "lab": [],
+ "assignments": [
+  "Required textbook reading (3hrs/wk).",
+  "Research and report on Current issues (2) - 1-2 hrs/wk",
+  "Students will spend approximately 1-2 hrs/wk with research reporting, written reports, and homework assignments."
+ ],
+ "source_url": "https://catalog.cccd.edu/courses/ndt-a190/",
+ "effective": "",
+ "approved": "02/23/2022",
+ "retrieved": "2026-09-17",
+ "notes": "",
+ "link_ok": true,
+ "link_checked": "2026-09-17"
+}
