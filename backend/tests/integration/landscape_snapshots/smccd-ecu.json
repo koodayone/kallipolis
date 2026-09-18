@@ -9,22 +9,32 @@
         "naics4": "2382",
         "naics_title": "Building Equipment Contractors",
         "name": "Atlas/Pellizzari Electric",
-        "relevance": 34.37,
+        "relevance": 36.19,
         "sector": "Construction",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 4,
+        "soc_count": 9,
         "soc_titles": {
+          "17-3011": "Architectural and Civil Drafters",
+          "17-3022": "Civil Engineering Technologists and Technicians",
           "47-2111": "Electricians",
           "47-2231": "Solar Photovoltaic Installers",
+          "47-4021": "Elevator and Escalator Installers and Repairers",
+          "49-2095": "Electrical and Electronics Repairers, Powerhouse, Substation, and Relay",
+          "49-2098": "Security and Fire Alarm Systems Installers",
           "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
           "49-9051": "Electrical Power-Line Installers and Repairers"
         },
         "socs": [
           "47-2111",
           "49-9021",
+          "47-4021",
+          "49-2098",
           "47-2231",
-          "49-9051"
+          "49-9051",
+          "17-3011",
+          "17-3022",
+          "49-2095"
         ],
         "website": "https://www.atlas-pellizzari.com"
       },
@@ -36,22 +46,32 @@
         "naics4": "2382",
         "naics_title": "Building Equipment Contractors",
         "name": "Bay Area Systems & Solutions",
-        "relevance": 34.37,
+        "relevance": 36.19,
         "sector": "Construction",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 4,
+        "soc_count": 9,
         "soc_titles": {
+          "17-3011": "Architectural and Civil Drafters",
+          "17-3022": "Civil Engineering Technologists and Technicians",
           "47-2111": "Electricians",
           "47-2231": "Solar Photovoltaic Installers",
+          "47-4021": "Elevator and Escalator Installers and Repairers",
+          "49-2095": "Electrical and Electronics Repairers, Powerhouse, Substation, and Relay",
+          "49-2098": "Security and Fire Alarm Systems Installers",
           "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
           "49-9051": "Electrical Power-Line Installers and Repairers"
         },
         "socs": [
           "47-2111",
           "49-9021",
+          "47-4021",
+          "49-2098",
           "47-2231",
-          "49-9051"
+          "49-9051",
+          "17-3011",
+          "17-3022",
+          "49-2095"
         ],
         "website": "https://basselectric.com"
       },
@@ -63,22 +83,32 @@
         "naics4": "2382",
         "naics_title": "Building Equipment Contractors",
         "name": "Decker Electric",
-        "relevance": 34.37,
+        "relevance": 36.19,
         "sector": "Construction",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 4,
+        "soc_count": 9,
         "soc_titles": {
+          "17-3011": "Architectural and Civil Drafters",
+          "17-3022": "Civil Engineering Technologists and Technicians",
           "47-2111": "Electricians",
           "47-2231": "Solar Photovoltaic Installers",
+          "47-4021": "Elevator and Escalator Installers and Repairers",
+          "49-2095": "Electrical and Electronics Repairers, Powerhouse, Substation, and Relay",
+          "49-2098": "Security and Fire Alarm Systems Installers",
           "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
           "49-9051": "Electrical Power-Line Installers and Repairers"
         },
         "socs": [
           "47-2111",
           "49-9021",
+          "47-4021",
+          "49-2098",
           "47-2231",
-          "49-9051"
+          "49-9051",
+          "17-3011",
+          "17-3022",
+          "49-2095"
         ],
         "website": "https://www.deckerelectric.com/"
       },
@@ -90,22 +120,32 @@
         "naics4": "2382",
         "naics_title": "Building Equipment Contractors",
         "name": "Pribuss Engineering",
-        "relevance": 34.37,
+        "relevance": 36.19,
         "sector": "Construction",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 4,
+        "soc_count": 9,
         "soc_titles": {
+          "17-3011": "Architectural and Civil Drafters",
+          "17-3022": "Civil Engineering Technologists and Technicians",
           "47-2111": "Electricians",
           "47-2231": "Solar Photovoltaic Installers",
+          "47-4021": "Elevator and Escalator Installers and Repairers",
+          "49-2095": "Electrical and Electronics Repairers, Powerhouse, Substation, and Relay",
+          "49-2098": "Security and Fire Alarm Systems Installers",
           "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
           "49-9051": "Electrical Power-Line Installers and Repairers"
         },
         "socs": [
           "47-2111",
           "49-9021",
+          "47-4021",
+          "49-2098",
           "47-2231",
-          "49-9051"
+          "49-9051",
+          "17-3011",
+          "17-3022",
+          "49-2095"
         ],
         "website": "https://www.pribuss.com/"
       },
@@ -117,24 +157,537 @@
         "naics4": "2382",
         "naics_title": "Building Equipment Contractors",
         "name": "Tesla Energy",
-        "relevance": 34.37,
+        "relevance": 36.19,
         "sector": "Construction",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 4,
+        "soc_count": 9,
         "soc_titles": {
+          "17-3011": "Architectural and Civil Drafters",
+          "17-3022": "Civil Engineering Technologists and Technicians",
           "47-2111": "Electricians",
           "47-2231": "Solar Photovoltaic Installers",
+          "47-4021": "Elevator and Escalator Installers and Repairers",
+          "49-2095": "Electrical and Electronics Repairers, Powerhouse, Substation, and Relay",
+          "49-2098": "Security and Fire Alarm Systems Installers",
           "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
           "49-9051": "Electrical Power-Line Installers and Repairers"
         },
         "socs": [
           "47-2111",
           "49-9021",
+          "47-4021",
+          "49-2098",
           "47-2231",
-          "49-9051"
+          "49-9051",
+          "17-3011",
+          "17-3022",
+          "49-2095"
         ],
         "website": "https://www.tesla.com"
+      },
+      {
+        "description": "DES is an integrated architecture, interior design, planning, and engineering firm founded in 1973 and headquartered in the San Francisco Bay Area, with over 170 employees across offices in Redwood City, San Francisco, Austin, and Monterey. The firm specializes in technology campuses, life science facilities, healthcare, and education projects, with notable clients including Google, Genentech, Cisco, and UC Irvine. Its in-house disciplines \u2014 architecture, landscape architecture, green building consulting, and digital graphics \u2014 draw architects, engineers, planners, and interior designers locally.",
+        "display_name": null,
+        "lat": 37.4877764,
+        "lng": -122.2323105,
+        "naics4": "5413",
+        "naics_title": "Architectural, Engineering, and Related Services",
+        "name": "DES Architects & Engineers",
+        "relevance": 7.63,
+        "sector": "Professional Services",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 9,
+        "soc_titles": {
+          "17-3011": "Architectural and Civil Drafters",
+          "17-3022": "Civil Engineering Technologists and Technicians",
+          "19-4042": "Environmental Science and Protection Technicians, Including Health",
+          "19-4051": "Nuclear Technicians",
+          "47-2111": "Electricians",
+          "47-2231": "Solar Photovoltaic Installers",
+          "49-2095": "Electrical and Electronics Repairers, Powerhouse, Substation, and Relay",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "51-8013": "Power Plant Operators"
+        },
+        "socs": [
+          "17-3011",
+          "17-3022",
+          "19-4042",
+          "47-2111",
+          "49-9021",
+          "49-2095",
+          "51-8013",
+          "19-4051",
+          "47-2231"
+        ],
+        "website": "https://des-ae.com/"
+      },
+      {
+        "description": "A company name, potentially in environmental consulting or engineering.",
+        "display_name": null,
+        "lat": 37.589071,
+        "lng": -122.3351167,
+        "naics4": "5413",
+        "naics_title": "Architectural, Engineering, and Related Services",
+        "name": "EKI",
+        "relevance": 7.63,
+        "sector": "Professional Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 9,
+        "soc_titles": {
+          "17-3011": "Architectural and Civil Drafters",
+          "17-3022": "Civil Engineering Technologists and Technicians",
+          "19-4042": "Environmental Science and Protection Technicians, Including Health",
+          "19-4051": "Nuclear Technicians",
+          "47-2111": "Electricians",
+          "47-2231": "Solar Photovoltaic Installers",
+          "49-2095": "Electrical and Electronics Repairers, Powerhouse, Substation, and Relay",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "51-8013": "Power Plant Operators"
+        },
+        "socs": [
+          "17-3011",
+          "17-3022",
+          "19-4042",
+          "47-2111",
+          "49-9021",
+          "49-2095",
+          "51-8013",
+          "19-4051",
+          "47-2231"
+        ],
+        "website": "https://www.ekiconsult.com/"
+      },
+      {
+        "description": "Exponent is an engineering and scientific consulting firm founded in 1967 at Stanford that specializes in failure analysis, accident investigation, product safety, and regulatory compliance across industries including electronics, energy, transportation, life sciences, and construction. The firm employs more than 950 consultants spanning 90+ technical disciplines \u2014 including biomechanics, electrical engineering, materials science, and data science \u2014 with over 650 holding Ph.D.s across its 30+ offices in North America, Europe, and Asia. Its Bay Area roots and multi-disciplinary staff make it a strong employer of engineering and applied-science talent from California community college transfer and workforce pathways.",
+        "display_name": null,
+        "lat": 37.4812454,
+        "lng": -122.1755113,
+        "naics4": "5413",
+        "naics_title": "Architectural, Engineering, and Related Services",
+        "name": "Exponent",
+        "relevance": 7.63,
+        "sector": "Professional Services",
+        "size_class": "250-499 employees",
+        "size_rank": 7,
+        "soc_count": 9,
+        "soc_titles": {
+          "17-3011": "Architectural and Civil Drafters",
+          "17-3022": "Civil Engineering Technologists and Technicians",
+          "19-4042": "Environmental Science and Protection Technicians, Including Health",
+          "19-4051": "Nuclear Technicians",
+          "47-2111": "Electricians",
+          "47-2231": "Solar Photovoltaic Installers",
+          "49-2095": "Electrical and Electronics Repairers, Powerhouse, Substation, and Relay",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "51-8013": "Power Plant Operators"
+        },
+        "socs": [
+          "17-3011",
+          "17-3022",
+          "19-4042",
+          "47-2111",
+          "49-9021",
+          "49-2095",
+          "51-8013",
+          "19-4051",
+          "47-2231"
+        ],
+        "website": "https://www.exponent.com/"
+      },
+      {
+        "description": "A global engineering, procurement, and construction company.",
+        "display_name": null,
+        "lat": 37.6501206,
+        "lng": -122.4049634,
+        "naics4": "5413",
+        "naics_title": "Architectural, Engineering, and Related Services",
+        "name": "Fluor Enterprises",
+        "relevance": 7.63,
+        "sector": "Professional Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 9,
+        "soc_titles": {
+          "17-3011": "Architectural and Civil Drafters",
+          "17-3022": "Civil Engineering Technologists and Technicians",
+          "19-4042": "Environmental Science and Protection Technicians, Including Health",
+          "19-4051": "Nuclear Technicians",
+          "47-2111": "Electricians",
+          "47-2231": "Solar Photovoltaic Installers",
+          "49-2095": "Electrical and Electronics Repairers, Powerhouse, Substation, and Relay",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "51-8013": "Power Plant Operators"
+        },
+        "socs": [
+          "17-3011",
+          "17-3022",
+          "19-4042",
+          "47-2111",
+          "49-9021",
+          "49-2095",
+          "51-8013",
+          "19-4051",
+          "47-2231"
+        ],
+        "website": "https://www.fluor.com/"
+      },
+      {
+        "description": "A company name, possibly in fashion, recycling, or creative services.",
+        "display_name": null,
+        "lat": 37.5718729,
+        "lng": -122.3096534,
+        "naics4": "5413",
+        "naics_title": "Architectural, Engineering, and Related Services",
+        "name": "Reincarnate",
+        "relevance": 7.63,
+        "sector": "Professional Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 9,
+        "soc_titles": {
+          "17-3011": "Architectural and Civil Drafters",
+          "17-3022": "Civil Engineering Technologists and Technicians",
+          "19-4042": "Environmental Science and Protection Technicians, Including Health",
+          "19-4051": "Nuclear Technicians",
+          "47-2111": "Electricians",
+          "47-2231": "Solar Photovoltaic Installers",
+          "49-2095": "Electrical and Electronics Repairers, Powerhouse, Substation, and Relay",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "51-8013": "Power Plant Operators"
+        },
+        "socs": [
+          "17-3011",
+          "17-3022",
+          "19-4042",
+          "47-2111",
+          "49-9021",
+          "49-2095",
+          "51-8013",
+          "19-4051",
+          "47-2231"
+        ],
+        "website": "https://reincarnateartificial.com/"
+      },
+      {
+        "description": "SRI International is a nonprofit R&D institute headquartered in Menlo Park, CA, conducting roughly 500 research projects per year across government and commercial clients in areas including AI, quantum computing, biosciences, and defense systems \u2014 with spinouts that include Siri and more than 50 other companies. Their five divisions (Advanced Technology & Systems, Biosciences, Education & Learning, Information & Computing Sciences, and Integrated Systems & Solutions) employ approximately 1,500 researchers, engineers, and scientists. Local technical hiring spans computer science, electrical and systems engineering, biology, and applied physics roles tied to active R&D programs.",
+        "display_name": null,
+        "lat": 37.4537253,
+        "lng": -122.1807201,
+        "naics4": "5413",
+        "naics_title": "Architectural, Engineering, and Related Services",
+        "name": "SRI International",
+        "relevance": 7.63,
+        "sector": "Professional Services",
+        "size_class": "1,000-4,999 employees",
+        "size_rank": 9,
+        "soc_count": 9,
+        "soc_titles": {
+          "17-3011": "Architectural and Civil Drafters",
+          "17-3022": "Civil Engineering Technologists and Technicians",
+          "19-4042": "Environmental Science and Protection Technicians, Including Health",
+          "19-4051": "Nuclear Technicians",
+          "47-2111": "Electricians",
+          "47-2231": "Solar Photovoltaic Installers",
+          "49-2095": "Electrical and Electronics Repairers, Powerhouse, Substation, and Relay",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "51-8013": "Power Plant Operators"
+        },
+        "socs": [
+          "17-3011",
+          "17-3022",
+          "19-4042",
+          "47-2111",
+          "49-9021",
+          "49-2095",
+          "51-8013",
+          "19-4051",
+          "47-2231"
+        ],
+        "website": "https://www.sri.com/"
+      },
+      {
+        "description": "A company name, possibly in services or technology.",
+        "display_name": null,
+        "lat": 37.498843,
+        "lng": -122.2550282,
+        "naics4": "5413",
+        "naics_title": "Architectural, Engineering, and Related Services",
+        "name": "Triplechoice",
+        "relevance": 7.63,
+        "sector": "Professional Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 9,
+        "soc_titles": {
+          "17-3011": "Architectural and Civil Drafters",
+          "17-3022": "Civil Engineering Technologists and Technicians",
+          "19-4042": "Environmental Science and Protection Technicians, Including Health",
+          "19-4051": "Nuclear Technicians",
+          "47-2111": "Electricians",
+          "47-2231": "Solar Photovoltaic Installers",
+          "49-2095": "Electrical and Electronics Repairers, Powerhouse, Substation, and Relay",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "51-8013": "Power Plant Operators"
+        },
+        "socs": [
+          "17-3011",
+          "17-3022",
+          "19-4042",
+          "47-2111",
+          "49-9021",
+          "49-2095",
+          "51-8013",
+          "19-4051",
+          "47-2231"
+        ],
+        "website": "https://triplechoice.com/"
+      },
+      {
+        "description": "The San Francisco Public Utilities Commission (SFPUC) is the city agency that delivers retail drinking water, wastewater/sewer service, and electric power (Hetch Hetchy Power and CleanPowerSF) to San Francisco residents and businesses. It manages the regional Hetch Hetchy water system \u2014 spanning Sierra Nevada watersheds to Bay Area distribution \u2014 along with stormwater infrastructure and large capital improvement programs. The agency employs engineers, utility system operators, watershed managers, construction supervisors, and environmental technicians, and runs apprenticeship and work-experience pathways in the trades.",
+        "display_name": null,
+        "lat": 37.5865829,
+        "lng": -122.3384383,
+        "naics4": "5413",
+        "naics_title": "Architectural, Engineering, and Related Services",
+        "name": "Water Quality Bureau",
+        "relevance": 7.63,
+        "sector": "Professional Services",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 9,
+        "soc_titles": {
+          "17-3011": "Architectural and Civil Drafters",
+          "17-3022": "Civil Engineering Technologists and Technicians",
+          "19-4042": "Environmental Science and Protection Technicians, Including Health",
+          "19-4051": "Nuclear Technicians",
+          "47-2111": "Electricians",
+          "47-2231": "Solar Photovoltaic Installers",
+          "49-2095": "Electrical and Electronics Repairers, Powerhouse, Substation, and Relay",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "51-8013": "Power Plant Operators"
+        },
+        "socs": [
+          "17-3011",
+          "17-3022",
+          "19-4042",
+          "47-2111",
+          "49-9021",
+          "49-2095",
+          "51-8013",
+          "19-4051",
+          "47-2231"
+        ],
+        "website": "SFPUC.ORG"
+      },
+      {
+        "description": "A-A Lock & Alarm is a Bay Area locksmith and security integrator with shops in San Jose and Menlo Park, serving residential and commercial customers across the greater Bay Area for over 60 years. The company installs and services alarm systems, electronic access controls, video surveillance, safes, and a full range of lock hardware, and handles auto locksmith and key duplication including high-security and FOB keys. A fleet of 32 vehicles and a staff of 30 background-checked technicians supports 24/7 on-call dispatch throughout the region.",
+        "display_name": null,
+        "lat": 37.4511812,
+        "lng": -122.1784979,
+        "naics4": "5616",
+        "naics_title": "Investigation and Security Services",
+        "name": "A-A Lock & Alarm",
+        "relevance": 5.29,
+        "sector": "Administrative Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "49-2098": "Security and Fire Alarm Systems Installers"
+        },
+        "socs": [
+          "49-2098",
+          "47-2111"
+        ],
+        "website": "https://www.aalock.com/"
+      },
+      {
+        "description": "ADT provides professionally monitored security systems for residential and commercial customers across the United States, operating 24/7 monitoring centers staffed by human operators who dispatch emergency responders in response to alarms. Their product lines include security cameras, door and window sensors, life safety devices, and smart home integrations, offered through both professional installation (ADT Pro Install) and a self-install option (ADT Blu). The company employs over 13,000 people in more than 150 U.S. locations, with roles spanning alarm monitoring operators, installation and field service technicians, and software engineers supporting their ADT+ mobile platform.",
+        "display_name": null,
+        "lat": 37.6568277,
+        "lng": -122.4176023,
+        "naics4": "5616",
+        "naics_title": "Investigation and Security Services",
+        "name": "ADT",
+        "relevance": 5.29,
+        "sector": "Administrative Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "49-2098": "Security and Fire Alarm Systems Installers"
+        },
+        "socs": [
+          "49-2098",
+          "47-2111"
+        ],
+        "website": "https://www.adt.com/"
+      },
+      {
+        "description": "Anomali develops an Intelligence-Native Agentic SOC Platform that combines a security data lake, threat intelligence, and AI-driven automation in a single system. Its flagship product ThreatStream Next-Gen provides curated access to a large repository of threat intelligence, enabling enterprise security operations centers to detect, investigate, and respond to cyber threats faster. The company serves Fortune 500 companies and government agencies across financial services, healthcare, energy, and manufacturing sectors, employing cybersecurity engineers, data scientists, and threat intelligence analysts.",
+        "display_name": null,
+        "lat": 37.4931239,
+        "lng": -122.2357404,
+        "naics4": "5616",
+        "naics_title": "Investigation and Security Services",
+        "name": "Anomali",
+        "relevance": 5.29,
+        "sector": "Administrative Services",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 2,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "49-2098": "Security and Fire Alarm Systems Installers"
+        },
+        "socs": [
+          "49-2098",
+          "47-2111"
+        ],
+        "website": "https://www.anomali.com/"
+      },
+      {
+        "description": "Check Point Software Technologies develops enterprise cybersecurity software across three flagship platform families: Quantum (network firewalls and SD-WAN), CloudGuard (cloud and web application security), and Harmony (endpoint, email, and mobile protection), all unified under the Infinity platform. Founded in 1993 and headquartered in Tel Aviv with U.S. operations in Redwood City, California, the company protects over 100,000 organizations across enterprise, government, healthcare, and financial services sectors. The Redwood City office draws security engineers, threat researchers, and product development talent from the Bay Area workforce.",
+        "display_name": null,
+        "lat": 37.5073876,
+        "lng": -122.248094,
+        "naics4": "5616",
+        "naics_title": "Investigation and Security Services",
+        "name": "Check Point Software Technologies",
+        "relevance": 5.29,
+        "sector": "Administrative Services",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 2,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "49-2098": "Security and Fire Alarm Systems Installers"
+        },
+        "socs": [
+          "49-2098",
+          "47-2111"
+        ],
+        "website": "https://www.checkpoint.com/"
+      },
+      {
+        "description": "Gladding & Michel Investigative Services is a licensed private investigations firm (CA PI License No. 15321) operating since 1968, offering asset searches, background checks, fraud investigations, corporate due diligence, intellectual property investigations, and witness location services. The firm serves corporate, insurance, and legal clients across California, the broader United States, Central America, Western Europe, and the Middle East from its Los Angeles and San Francisco offices.",
+        "display_name": null,
+        "lat": 37.5978865,
+        "lng": -122.3688784,
+        "naics4": "5616",
+        "naics_title": "Investigation and Security Services",
+        "name": "Glading & Michel",
+        "relevance": 5.29,
+        "sector": "Administrative Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "49-2098": "Security and Fire Alarm Systems Installers"
+        },
+        "socs": [
+          "49-2098",
+          "47-2111"
+        ],
+        "website": "https://www.gladding-michel.com/"
+      },
+      {
+        "description": "Ontinue provides ION MXDR, a 24/7 AI-powered Managed Extended Detection and Response platform built specifically for Microsoft Defender and Sentinel environments, combining automated threat response with a human-led Cyber Defense Center. Their service covers threat detection, incident response, phishing protection, vulnerability mitigation, and IoT/OT security for clients in financial services, healthcare, manufacturing, and other sectors. The company operates globally with offices in Redwood City, Z\u00fcrich, London, and several other cities, employing security operations and AI/ML engineering talent.",
+        "display_name": null,
+        "lat": 37.495044,
+        "lng": -122.2204934,
+        "naics4": "5616",
+        "naics_title": "Investigation and Security Services",
+        "name": "Ontinue",
+        "relevance": 5.29,
+        "sector": "Administrative Services",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 2,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "49-2098": "Security and Fire Alarm Systems Installers"
+        },
+        "socs": [
+          "49-2098",
+          "47-2111"
+        ],
+        "website": "https://www.ontinue.com/"
+      },
+      {
+        "description": "Personal Protective Services (PPS) is a Burlingame, California-based security firm serving the San Francisco Bay Area with armed and unarmed security officers, executive protection, crowd management, and waterborne patrols operated from its own 30-foot marine patrol vessel. It serves Department of Homeland Security critical infrastructure sites, residential facilities, marine and port facilities, and public events, including sustained operations in West Oakland. The company also offers 60-plus security training courses and conducts vulnerability assessments for commercial and residential clients.",
+        "display_name": null,
+        "lat": 37.5883478,
+        "lng": -122.3358474,
+        "naics4": "5616",
+        "naics_title": "Investigation and Security Services",
+        "name": "Personal Protective Services",
+        "relevance": 5.29,
+        "sector": "Administrative Services",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 2,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "49-2098": "Security and Fire Alarm Systems Installers"
+        },
+        "socs": [
+          "49-2098",
+          "47-2111"
+        ],
+        "website": "https://personalprotective.com/"
+      },
+      {
+        "description": "Qualys develops the Enterprise TruRisk Platform, a SaaS suite that consolidates vulnerability management, detection and response, cloud security posture management, endpoint protection, and compliance into a single cloud-native system used by more than 10,000 organizations including a majority of Forbes Global 100 companies. Core products include VMDR (Vulnerability Management, Detection and Response), TruRisk Eliminate for autonomous remediation, and a suite of cloud workload and attack-surface tools spanning containers, IaC, SaaS, and external-facing assets. The company employs security engineers, cloud platform engineers, and data scientists at its Foster City, California headquarters.",
+        "display_name": null,
+        "lat": 37.5511544,
+        "lng": -122.281399,
+        "naics4": "5616",
+        "naics_title": "Investigation and Security Services",
+        "name": "Qualys",
+        "relevance": 5.29,
+        "sector": "Administrative Services",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 2,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "49-2098": "Security and Fire Alarm Systems Installers"
+        },
+        "socs": [
+          "49-2098",
+          "47-2111"
+        ],
+        "website": "https://www.qualys.com/"
+      },
+      {
+        "description": "Vaksman Khalfin PC is a professional legal firm.",
+        "display_name": null,
+        "lat": 37.5700892,
+        "lng": -122.3281434,
+        "naics4": "5616",
+        "naics_title": "Investigation and Security Services",
+        "name": "Vaksman Khalfin PC",
+        "relevance": 5.29,
+        "sector": "Administrative Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "49-2098": "Security and Fire Alarm Systems Installers"
+        },
+        "socs": [
+          "49-2098",
+          "47-2111"
+        ],
+        "website": "https://vk.law/"
       },
       {
         "description": "JMB Construction Inc is a South San Francisco-based civil and utility engineering contractor founded in 1990, specializing in water infrastructure, pump stations, treatment plants, reservoirs, pipelines, and airport civil work, with clients including the San Francisco PUC, Alameda County Water Department, and major general contractors such as Turner Construction and Hensel Phelps. The firm has completed over half a billion dollars in projects ranging from $3M to nearly $9M in value, employing more than 100 workers and maintaining a large equipment fleet. Its workforce draws on civil construction trades including pipefitters, heavy equipment operators, and structural concrete workers.",
@@ -144,20 +697,26 @@
         "naics4": "2362",
         "naics_title": "Nonresidential Building Construction",
         "name": "JMB Construction",
-        "relevance": 1.72,
+        "relevance": 2.14,
         "sector": "Construction",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 3,
+        "soc_count": 6,
         "soc_titles": {
+          "17-3011": "Architectural and Civil Drafters",
+          "17-3022": "Civil Engineering Technologists and Technicians",
           "47-2111": "Electricians",
           "47-2231": "Solar Photovoltaic Installers",
+          "49-2098": "Security and Fire Alarm Systems Installers",
           "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
         },
         "socs": [
           "47-2111",
+          "17-3011",
           "49-9021",
-          "47-2231"
+          "17-3022",
+          "47-2231",
+          "49-2098"
         ],
         "website": "https://jmbconstruction.com"
       },
@@ -169,20 +728,26 @@
         "naics4": "2362",
         "naics_title": "Nonresidential Building Construction",
         "name": "Rudolph & Sletten",
-        "relevance": 1.72,
+        "relevance": 2.14,
         "sector": "Construction",
         "size_class": "500-999 employees",
         "size_rank": 8,
-        "soc_count": 3,
+        "soc_count": 6,
         "soc_titles": {
+          "17-3011": "Architectural and Civil Drafters",
+          "17-3022": "Civil Engineering Technologists and Technicians",
           "47-2111": "Electricians",
           "47-2231": "Solar Photovoltaic Installers",
+          "49-2098": "Security and Fire Alarm Systems Installers",
           "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
         },
         "socs": [
           "47-2111",
+          "17-3011",
           "49-9021",
-          "47-2231"
+          "17-3022",
+          "47-2231",
+          "49-2098"
         ],
         "website": "https://www.rsconstruction.com/"
       },
@@ -194,441 +759,28 @@
         "naics4": "2362",
         "naics_title": "Nonresidential Building Construction",
         "name": "W L Butler Construction",
-        "relevance": 1.72,
+        "relevance": 2.14,
         "sector": "Construction",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 3,
+        "soc_count": 6,
         "soc_titles": {
+          "17-3011": "Architectural and Civil Drafters",
+          "17-3022": "Civil Engineering Technologists and Technicians",
           "47-2111": "Electricians",
           "47-2231": "Solar Photovoltaic Installers",
+          "49-2098": "Security and Fire Alarm Systems Installers",
           "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
         },
         "socs": [
           "47-2111",
+          "17-3011",
           "49-9021",
-          "47-2231"
+          "17-3022",
+          "47-2231",
+          "49-2098"
         ],
         "website": "https://www.wlbutler.com/"
-      },
-      {
-        "description": "The website on record (reacticrestoration.com) resolves to Reactic Restoration, an IICRC-certified property restoration contractor operating 24/7 across the San Francisco Bay Area and Sacramento region, specializing in water damage extraction, mold remediation, fire and smoke damage restoration, and sewage cleanup. It holds California contractor license #937118 and serves residential and commercial clients including institutional accounts such as NASA and Stanford. The \"911 Remediation\" registration and the linked website appear to belong to different entities; the NAICS code Residential Building Construction does not match remediation/restoration specialty trade work.",
-        "display_name": null,
-        "lat": 37.5147541,
-        "lng": -122.2649583,
-        "naics4": "2361",
-        "naics_title": "Residential Building Construction",
-        "name": "911 Remediation",
-        "relevance": 0.77,
-        "sector": "Construction",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 3,
-        "soc_titles": {
-          "47-2111": "Electricians",
-          "47-2231": "Solar Photovoltaic Installers",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
-        },
-        "socs": [
-          "47-2111",
-          "49-9021",
-          "47-2231"
-        ],
-        "website": "https://reacticrestoration.com/"
-      },
-      {
-        "description": "Patrick J. Ruane, Inc. is a South San Francisco\u2013based lath, plaster, and drywall contractor serving commercial and historic preservation projects throughout California. The firm specializes in historic restoration \u2014 including landmark work such as the Palace Hotel recognized by the National Trust for Historic Preservation \u2014 alongside contemporary services including structural fireproofing, metal stud framing, and specialty finishes such as Venetian, Japanese, and acoustical plaster systems. In-house casting operations and documentation services support complex restoration scopes.",
-        "display_name": null,
-        "lat": 37.6464383,
-        "lng": -122.4026932,
-        "naics4": "2361",
-        "naics_title": "Residential Building Construction",
-        "name": "Patrick J Ruane",
-        "relevance": 0.77,
-        "sector": "Construction",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 3,
-        "soc_titles": {
-          "47-2111": "Electricians",
-          "47-2231": "Solar Photovoltaic Installers",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
-        },
-        "socs": [
-          "47-2111",
-          "49-9021",
-          "47-2231"
-        ],
-        "website": "https://www.pjruane.com/"
-      },
-      {
-        "description": "Rountree Plumbing and Heating is a design-build commercial plumbing and heating contractor serving the greater Bay Area, with over 60 years in operation since 1960. They specialize in ground-up construction, tenant improvements, and core-and-shell work for retail grocery chains (Safeway, Albertsons, Trader Joe's, Andronico's) and institutional clients including Stanford and San Jose State. Field roles include licensed commercial plumbers and pipefitters performing concrete work, trenching, permit management, and 24/7 emergency service.",
-        "display_name": null,
-        "lat": 37.5096502,
-        "lng": -122.2545126,
-        "naics4": "2361",
-        "naics_title": "Residential Building Construction",
-        "name": "Rountree Plumbing & Heating",
-        "relevance": 0.77,
-        "sector": "Construction",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 3,
-        "soc_titles": {
-          "47-2111": "Electricians",
-          "47-2231": "Solar Photovoltaic Installers",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
-        },
-        "socs": [
-          "47-2111",
-          "49-9021",
-          "47-2231"
-        ],
-        "website": "https://rountreeinc.com"
-      },
-      {
-        "description": "SDI Insulation is a Bay Area\u2013based insulation and home performance contractor with over 47 years in operation, serving residential and commercial customers across the San Francisco Bay Area and Sacramento region from offices in Burlingame and San Rafael. The firm installs batt, blown-in, and spray foam insulation, performs residential air sealing and duct leakage assessments, and offers high-efficiency fireplace and insert sales and installation. Certified under NAIMA and licensed by the state of California (Lic. #607274), SDI employs insulation technicians and building performance specialists with expertise in energy efficiency upgrades and green construction practices.",
-        "display_name": null,
-        "lat": 37.5871474,
-        "lng": -122.336069,
-        "naics4": "2361",
-        "naics_title": "Residential Building Construction",
-        "name": "SDI Insulation",
-        "relevance": 0.77,
-        "sector": "Construction",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 3,
-        "soc_titles": {
-          "47-2111": "Electricians",
-          "47-2231": "Solar Photovoltaic Installers",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
-        },
-        "socs": [
-          "47-2111",
-          "49-9021",
-          "47-2231"
-        ],
-        "website": "https://sdiinsulation.com"
-      },
-      {
-        "description": "Truebeck Construction is a Bay Area-headquartered general contractor founded in 2007, specializing in complex commercial projects including life sciences laboratories, healthcare facilities, technology offices, and corporate campuses across California and the Pacific Northwest. The firm ranks among the top laboratory construction companies nationally and holds multiple LEED Platinum and Net Zero Energy certifications, employing roughly 600 construction professionals across offices in San Mateo, San Francisco, Sacramento, Seattle, and Portland. Project and field management, construction technology, and safety roles are concentrated in its Bay Area offices.",
-        "display_name": null,
-        "lat": 37.5362273,
-        "lng": -122.3231813,
-        "naics4": "2361",
-        "naics_title": "Residential Building Construction",
-        "name": "Truebeck Construction",
-        "relevance": 0.77,
-        "sector": "Construction",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 3,
-        "soc_titles": {
-          "47-2111": "Electricians",
-          "47-2231": "Solar Photovoltaic Installers",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
-        },
-        "socs": [
-          "47-2111",
-          "49-9021",
-          "47-2231"
-        ],
-        "website": "https://www.truebeck.com"
-      },
-      {
-        "description": "Rheem Manufacturing produces residential and commercial HVAC systems (air conditioners, furnaces, heat pumps, ductless mini-splits) and water heating equipment (tank, tankless, and heat pump water heaters, boilers, pool heaters) sold under brands including Rheem, Ruud, Richmond, and Eemax. Founded in 1925, the company serves contractors, plumbers, and commercial building operators across North America and globally. Manufacturing and field operations draw on sheet-metal fabrication, refrigeration systems, electromechanical assembly, and certified HVAC/plumbing trades workers.",
-        "display_name": null,
-        "lat": 37.4532061,
-        "lng": -122.1823518,
-        "naics4": "3334",
-        "naics_title": "Ventilation, Heating, Air-Conditioning, and Commercial Refrigeration Equipment Manufacturing",
-        "name": "Rheem Manufacturing",
-        "relevance": 0.76,
-        "sector": "Manufacturing",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 2,
-        "soc_titles": {
-          "47-2111": "Electricians",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
-        },
-        "socs": [
-          "49-9021",
-          "47-2111"
-        ],
-        "website": "https://www.rheem.com"
-      },
-      {
-        "description": "American House Cleaning is a locally owned and operated residential cleaning company serving the Bay Area since 1995, with coverage across Menlo Park, Palo Alto, San Mateo, San Francisco, San Jose, and surrounding communities. Services include routine house cleaning, deep cleaning, move-in/move-out cleaning, post-construction cleaning, window washing, carpet cleaning, and upholstery cleaning. The company employs uniformed, background-checked professional cleaners assigned consistently to recurring clients.",
-        "display_name": null,
-        "lat": 37.481527,
-        "lng": -122.1705133,
-        "naics4": "2389",
-        "naics_title": "Other Specialty Trade Contractors",
-        "name": "American House Cleaning",
-        "relevance": 0.61,
-        "sector": "Construction",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 3,
-        "soc_titles": {
-          "47-2111": "Electricians",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9051": "Electrical Power-Line Installers and Repairers"
-        },
-        "socs": [
-          "47-2111",
-          "49-9021",
-          "49-9051"
-        ],
-        "website": "https://americanhousecleaning.com/"
-      },
-      {
-        "description": "The San Francisco Public Utilities Commission (SFPUC), operating as San Francisco Water Power Sewer, delivers drinking water, hydroelectric power, and wastewater/sewer services to San Francisco residents and businesses, drawing on the Hetch Hetchy regional water system that also serves surrounding Bay Area communities. The agency operates water treatment plants, power generation facilities, and an extensive sewer and stormwater network across the city. Technical and skilled-trades roles include water system engineers, power system operators, wastewater treatment specialists, and field maintenance crews, with active apprenticeship and workforce development programs.",
-        "display_name": null,
-        "lat": 37.5975816,
-        "lng": -122.3868334,
-        "naics4": "2213",
-        "naics_title": "Water, Sewage and Other Systems",
-        "name": "San Francisco Water",
-        "relevance": 0.61,
-        "sector": "Utilities",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 2,
-        "soc_titles": {
-          "47-2111": "Electricians",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
-        },
-        "socs": [
-          "47-2111",
-          "49-9021"
-        ],
-        "website": "https://www.sfpuc.org/"
-      },
-      {
-        "description": "An architectural firm likely specializing in building design and construction.",
-        "display_name": null,
-        "lat": 37.6924726,
-        "lng": -122.4064261,
-        "naics4": "3219",
-        "naics_title": "Other Wood Product Manufacturing",
-        "name": "Okeeffes Architectural",
-        "relevance": 0.51,
-        "sector": "Manufacturing",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 2,
-        "soc_titles": {
-          "47-2111": "Electricians",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
-        },
-        "socs": [
-          "47-2111",
-          "49-9021"
-        ],
-        "website": "https://okeeffes.com/"
-      },
-      {
-        "description": "The Belmont Police Department serves the City of Belmont on the San Francisco Peninsula with approximately 50 full-time personnel, including 31 sworn officers organized into Patrol, Traffic, Investigations, K-9, Youth Services, SWAT, and Crisis Negotiation units. The department operates the C.A.R.E. (Crisis Assessment Response and Education) and T.R.A.C. (Tracking and Recovery of Adults and Children) programs, and employs dispatchers, records technicians, code enforcement officers, and community service officers alongside sworn staff.",
-        "display_name": null,
-        "lat": 37.5182829,
-        "lng": -122.2774823,
-        "naics4": "9221",
-        "naics_title": "Justice, Public Order, and Safety Activities",
-        "name": "Belmont Police",
-        "relevance": 0.48,
-        "sector": "Government",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 3,
-        "soc_titles": {
-          "47-2111": "Electricians",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9051": "Electrical Power-Line Installers and Repairers"
-        },
-        "socs": [
-          "47-2111",
-          "49-9051",
-          "49-9021"
-        ],
-        "website": "https://www.belmont.gov/departments/police"
-      },
-      {
-        "description": "The Central County Fire Department provides fire suppression and emergency response services.",
-        "display_name": null,
-        "lat": 37.5865829,
-        "lng": -122.3384383,
-        "naics4": "9221",
-        "naics_title": "Justice, Public Order, and Safety Activities",
-        "name": "Central County Fire Department",
-        "relevance": 0.48,
-        "sector": "Government",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 3,
-        "soc_titles": {
-          "47-2111": "Electricians",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9051": "Electrical Power-Line Installers and Repairers"
-        },
-        "socs": [
-          "47-2111",
-          "49-9051",
-          "49-9021"
-        ],
-        "website": "https://www.ccfd.org/"
-      },
-      {
-        "description": "The Daly City Police Department is responsible for public safety and law enforcement in Daly City.",
-        "display_name": null,
-        "lat": 37.6911085,
-        "lng": -122.4739145,
-        "naics4": "9221",
-        "naics_title": "Justice, Public Order, and Safety Activities",
-        "name": "Daly City Police",
-        "relevance": 0.48,
-        "sector": "Government",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 3,
-        "soc_titles": {
-          "47-2111": "Electricians",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9051": "Electrical Power-Line Installers and Repairers"
-        },
-        "socs": [
-          "47-2111",
-          "49-9051",
-          "49-9021"
-        ],
-        "website": "https://www.dalycity.org/1231/Police"
-      },
-      {
-        "description": "Daly City's Department of Water and Wastewater Resources operates the wastewater treatment and disposal system for the North San Mateo County Sanitation District, managing collection infrastructure, treatment plant operations, and environmental compliance at its facility on Lake Merced Boulevard. The department also administers drinking water supply services and recycles treatment plant byproducts as part of its environmental stewardship mission. Operations employ water and wastewater treatment plant operators, environmental compliance staff, and utility engineers serving the North San Mateo County service area.",
-        "display_name": null,
-        "lat": 37.7076798,
-        "lng": -122.4858219,
-        "naics4": "9241",
-        "naics_title": "Administration of Environmental Quality Programs",
-        "name": "Daly City Wastewater",
-        "relevance": 0.48,
-        "sector": "Government",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 3,
-        "soc_titles": {
-          "47-2111": "Electricians",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9051": "Electrical Power-Line Installers and Repairers"
-        },
-        "socs": [
-          "47-2111",
-          "49-9051",
-          "49-9021"
-        ],
-        "website": "https://www.dalycity.org/1036/Wastewater"
-      },
-      {
-        "description": "The East Palo Alto Police Department is dedicated to serving and protecting the community of East Palo Alto.",
-        "display_name": null,
-        "lat": 37.4746236,
-        "lng": -122.1341991,
-        "naics4": "9221",
-        "naics_title": "Justice, Public Order, and Safety Activities",
-        "name": "East Palo Alto Police",
-        "relevance": 0.48,
-        "sector": "Government",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 3,
-        "soc_titles": {
-          "47-2111": "Electricians",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9051": "Electrical Power-Line Installers and Repairers"
-        },
-        "socs": [
-          "47-2111",
-          "49-9051",
-          "49-9021"
-        ],
-        "website": "https://www.ci.east-palo-alto.ca.us/police"
-      },
-      {
-        "description": "The Foster City Fire Department provides emergency services and fire prevention to Foster City.",
-        "display_name": null,
-        "lat": 37.5511544,
-        "lng": -122.281399,
-        "naics4": "9221",
-        "naics_title": "Justice, Public Order, and Safety Activities",
-        "name": "Foster City Fire Department",
-        "relevance": 0.48,
-        "sector": "Government",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 3,
-        "soc_titles": {
-          "47-2111": "Electricians",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9051": "Electrical Power-Line Installers and Repairers"
-        },
-        "socs": [
-          "47-2111",
-          "49-9051",
-          "49-9021"
-        ],
-        "website": "https://www.fostercity.org/fire"
-      },
-      {
-        "description": "The Kings Mountain Fire Department serves the Kings Mountain community with fire and emergency services.",
-        "display_name": null,
-        "lat": 37.3877721,
-        "lng": -122.2663618,
-        "naics4": "9221",
-        "naics_title": "Justice, Public Order, and Safety Activities",
-        "name": "Kings Mountain Fire Department",
-        "relevance": 0.48,
-        "sector": "Government",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 3,
-        "soc_titles": {
-          "47-2111": "Electricians",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9051": "Electrical Power-Line Installers and Repairers"
-        },
-        "socs": [
-          "47-2111",
-          "49-9051",
-          "49-9021"
-        ],
-        "website": "https://kmfd.org/"
-      },
-      {
-        "description": "The Menlo Park Fire Protection District is an independent special district headquartered in Menlo Park, CA, providing fire suppression, emergency medical services, and community risk reduction across its jurisdiction. The district operates specialized units including California Task Force Three (CA-TF3) for urban search and rescue, swift-water/flood rescue (CA-SFS&R3), wildland firefighting, and Tactical Emergency Medical Support (TEMS). Operational roles span firefighters, paramedics, heavy rescue technicians, and fire prevention personnel across multiple stations.",
-        "display_name": null,
-        "lat": 37.4570961,
-        "lng": -122.1690558,
-        "naics4": "9221",
-        "naics_title": "Justice, Public Order, and Safety Activities",
-        "name": "Menlo Park Fire Protection District",
-        "relevance": 0.48,
-        "sector": "Government",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 3,
-        "soc_titles": {
-          "47-2111": "Electricians",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9051": "Electrical Power-Line Installers and Repairers"
-        },
-        "socs": [
-          "47-2111",
-          "49-9051",
-          "49-9021"
-        ],
-        "website": "https://www.menlofire.gov/"
       }
     ],
     "region": "Bay",
@@ -638,7 +790,7 @@
       "San Mateo"
     ],
     "shown": 25,
-    "total": 303
+    "total": 315
   },
   "/programs": {
     "coverage_awards_only": true,
@@ -646,58 +798,94 @@
     "matrix": {
       "cells": [
         {
-          "awards": 0,
           "college": "College of San Mateo",
           "enrolled": true,
-          "top6": "093400"
+          "projected": 7.7,
+          "top6": "020100"
         },
         {
-          "awards": 4,
           "college": "Skyline College",
-          "enrolled": true,
-          "top6": "093400"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "top6": "093400"
+          "projected": 0.0,
+          "top6": "020100"
         },
         {
-          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "projected": 0.0,
+          "top6": "020100"
+        },
+        {
           "college": "College of San Mateo",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "094610"
         },
         {
-          "awards": 1,
           "college": "Skyline College",
           "enrolled": true,
+          "projected": 11.0,
           "top6": "094610"
         },
         {
-          "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "094610"
         },
         {
-          "awards": 1,
           "college": "College of San Mateo",
           "enrolled": true,
+          "projected": 0.3,
           "top6": "095220"
         },
         {
-          "awards": 0,
           "college": "Skyline College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "095220"
         },
         {
-          "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "095220"
+        },
+        {
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "projected": 3.7,
+          "top6": "095300"
+        },
+        {
+          "college": "Skyline College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "095300"
+        },
+        {
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "095300"
+        },
+        {
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "projected": 13.0,
+          "top6": "095720"
+        },
+        {
+          "college": "Skyline College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "095720"
+        },
+        {
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "095720"
         }
       ],
       "colleges": [
@@ -712,38 +900,53 @@
     "sector": "Energy, Construction & Utilities",
     "tops": [
       {
-        "awards_total": 4,
-        "enrollment_total": 130,
-        "name": "Electronics and Electric Technology",
-        "soc_count": 2,
-        "top6": "093400"
+        "enrollment_total": 125,
+        "name": "Construction Inspection",
+        "projected_supply": 13.0,
+        "soc_count": 1,
+        "top6": "095720"
       },
       {
-        "awards_total": 1,
-        "enrollment_total": 236,
-        "name": "Electrical",
-        "soc_count": 2,
-        "top6": "095220"
-      },
-      {
-        "awards_total": 1,
         "enrollment_total": 23,
         "name": "Energy Systems Technology",
-        "soc_count": 3,
+        "projected_supply": 11.0,
+        "soc_count": 11,
         "top6": "094610"
+      },
+      {
+        "enrollment_total": 248,
+        "name": "Architecture and Architectural Technology",
+        "projected_supply": 7.7,
+        "soc_count": 2,
+        "top6": "020100"
+      },
+      {
+        "enrollment_total": 64,
+        "name": "Drafting Technology",
+        "projected_supply": 3.7,
+        "soc_count": 1,
+        "top6": "095300"
+      },
+      {
+        "enrollment_total": 236,
+        "name": "Electrical",
+        "projected_supply": 0.3,
+        "soc_count": 3,
+        "top6": "095220"
       }
-    ]
+    ],
+    "total_supply": 35.7
   },
   "landscape": {
     "aggregate": {
-      "candidate_employers": 603,
-      "combined_awards": 6,
-      "combined_supply_total": 87.0,
-      "gap": 3323,
+      "candidate_employers": 641,
+      "combined_awards": 32,
+      "combined_supply_total": 35.7,
+      "gap": 3954,
       "n_colleges": 3,
-      "n_occupations": 4,
-      "occupations_taught": 3,
-      "regional_demand_total": 3410
+      "n_occupations": 15,
+      "occupations_taught": 15,
+      "regional_demand_total": 3990
     },
     "award_years": [
       "2020-2021",
@@ -756,14 +959,273 @@
       {
         "cells": [
           {
-            "annual_openings": 2150,
-            "annual_wage": 87520,
+            "annual_openings": 250,
+            "annual_wage": 79190,
+            "awards_recent": 11,
+            "course_count": 13,
+            "enrolled": true,
+            "feeding_awards": 11,
+            "gap": 239,
+            "growth_rate": 0.011704772,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  4,
+                  6,
+                  6,
+                  9,
+                  8
+                ],
+                "awards_recent": 8,
+                "enrollment": [
+                  120,
+                  87,
+                  155,
+                  107,
+                  200,
+                  141,
+                  197,
+                  110,
+                  221
+                ],
+                "name": "Architecture and Architectural Technology",
+                "top6": "020100",
+                "wages": [
+                  {
+                    "n": 104,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 46561,
+                    "wage_after_5": 60317,
+                    "wage_before": 23286,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 68,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 39528,
+                    "wage_after_5": 55767,
+                    "wage_before": 19970,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 18,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 58516,
+                    "wage_after_5": 72220,
+                    "wage_before": 12156,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  7,
+                  2,
+                  7,
+                  1,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  34,
+                  35,
+                  46,
+                  40,
+                  51,
+                  52,
+                  63,
+                  64,
+                  50
+                ],
+                "name": "Drafting Technology",
+                "top6": "095300",
+                "wages": [
+                  {
+                    "n": 140,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 54059,
+                    "wage_after_5": 61002,
+                    "wage_before": 30589,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 100,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 56691,
+                    "wage_after_5": 60317,
+                    "wage_before": 28476,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 59,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 53333,
+                    "wage_after_5": 71159,
+                    "wage_before": 34919,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "17-3011",
+            "supply": 11.33,
+            "title": "Architectural and Civil Drafters"
+          },
+          {
+            "annual_openings": 190,
+            "annual_wage": 97040,
+            "awards_recent": 27,
+            "course_count": 9,
+            "enrolled": true,
+            "feeding_awards": 27,
+            "gap": 169,
+            "growth_rate": 0.021776171,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  4,
+                  6,
+                  6,
+                  9,
+                  8
+                ],
+                "awards_recent": 8,
+                "enrollment": [
+                  120,
+                  87,
+                  155,
+                  107,
+                  200,
+                  141,
+                  197,
+                  110,
+                  221
+                ],
+                "name": "Architecture and Architectural Technology",
+                "top6": "020100",
+                "wages": [
+                  {
+                    "n": 104,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 46561,
+                    "wage_after_5": 60317,
+                    "wage_before": 23286,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 68,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 39528,
+                    "wage_after_5": 55767,
+                    "wage_before": 19970,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 18,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 58516,
+                    "wage_after_5": 72220,
+                    "wage_before": 12156,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  14,
+                  7,
+                  6,
+                  14,
+                  19
+                ],
+                "awards_recent": 19,
+                "enrollment": [
+                  40,
+                  70,
+                  52,
+                  89,
+                  102,
+                  71,
+                  125,
+                  117,
+                  105
+                ],
+                "name": "Construction Inspection",
+                "top6": "095720",
+                "wages": [
+                  {
+                    "n": 49,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 70658,
+                    "wage_after_5": 96289,
+                    "wage_before": 42980,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 83,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 73457,
+                    "wage_after_5": 90114,
+                    "wage_before": 58406,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 42,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 66399,
+                    "wage_after_5": 79104,
+                    "wage_before": 37661,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "17-3022",
+            "supply": 20.67,
+            "title": "Civil Engineering Technologists and Technicians"
+          },
+          {
+            "annual_openings": 170,
+            "annual_wage": 75210,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 170,
+            "growth_rate": 0.010297674,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "19-4042",
+            "supply": 0.0,
+            "title": "Environmental Science and Protection Technicians, Including Health"
+          },
+          {
+            "annual_openings": 40,
+            "annual_wage": 95900,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 40,
+            "growth_rate": 0.004766689,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "19-4051",
+            "supply": 0.0,
+            "title": "Nuclear Technicians"
+          },
+          {
+            "annual_openings": 1900,
+            "annual_wage": 86440,
             "awards_recent": 1,
             "course_count": 0,
             "enrolled": true,
             "feeding_awards": 1,
-            "gap": 2150,
-            "growth_rate": 0.082792793,
+            "gap": 1900,
+            "growth_rate": 0.048817751,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -816,146 +1278,160 @@
               }
             ],
             "soc_code": "47-2111",
-            "supply": 0.0,
+            "supply": 0.33,
             "title": "Electricians"
           },
           {
-            "annual_openings": 290,
-            "annual_wage": 68040,
+            "annual_openings": 160,
+            "annual_wage": 67630,
             "awards_recent": 0,
             "course_count": 0,
-            "enrolled": true,
+            "enrolled": false,
             "feeding_awards": 0,
-            "gap": 290,
-            "growth_rate": 0.210230088,
+            "gap": 160,
+            "growth_rate": 0.19507373,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "47-2231",
+            "supply": 0.0,
+            "title": "Solar Photovoltaic Installers"
+          },
+          {
+            "annual_openings": 40,
+            "annual_wage": 176490,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 40,
+            "growth_rate": 0.013877922,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "47-4021",
+            "supply": 0.0,
+            "title": "Elevator and Escalator Installers and Repairers"
+          },
+          {
+            "annual_openings": 30,
+            "annual_wage": 132920,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 30,
+            "growth_rate": 0.062685083,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "49-2095",
+            "supply": 0.0,
+            "title": "Electrical and Electronics Repairers, Powerhouse, Substation, and Relay"
+          },
+          {
+            "annual_openings": 190,
+            "annual_wage": 76580,
+            "awards_recent": 1,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 1,
+            "gap": 190,
+            "growth_rate": 0.011283258,
+            "in_demand": false,
             "programs": [
               {
                 "awards": [
-                  6,
-                  17,
-                  9,
-                  6,
-                  0
+                  0,
+                  1,
+                  0,
+                  0,
+                  1
                 ],
-                "awards_recent": 0,
+                "awards_recent": 1,
                 "enrollment": [
-                  74,
-                  72,
-                  29,
-                  2,
+                  null,
+                  236,
+                  null,
+                  null,
                   null,
                   null,
                   null,
                   null,
                   null
                 ],
-                "name": "Electronics and Electric Technology",
-                "top6": "093400",
+                "name": "Electrical",
+                "top6": "095220",
                 "wages": [
                   {
-                    "n": 223,
+                    "n": 80,
                     "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 65274,
-                    "wage_after_5": 80497,
-                    "wage_before": 36812,
+                    "wage_after_2": 69094,
+                    "wage_after_5": 92679,
+                    "wage_before": 44853,
                     "window": "2015-2016 to 2019-2020"
                   },
                   {
-                    "n": 353,
+                    "n": 920,
                     "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 69631,
-                    "wage_after_5": 84558,
-                    "wage_before": 42485,
+                    "wage_after_2": 121066,
+                    "wage_after_5": 122314,
+                    "wage_before": 71124,
                     "window": "2015-2016 to 2019-2020"
                   },
                   {
-                    "n": 88,
+                    "n": 94,
                     "recipient_type": "Locally Approved Certificates Recipient",
-                    "wage_after_2": 94249,
-                    "wage_after_5": 94013,
-                    "wage_before": 69348,
+                    "wage_after_2": 88638,
+                    "wage_after_5": 102632,
+                    "wage_before": 49221,
                     "window": "2015-2016 to 2019-2020"
                   }
                 ]
               }
             ],
-            "soc_code": "47-2231",
-            "supply": 0.0,
-            "title": "Solar Photovoltaic Installers"
+            "soc_code": "49-2098",
+            "supply": 0.33,
+            "title": "Security and Fire Alarm Systems Installers"
           },
           {
-            "annual_openings": 780,
-            "annual_wage": 73730,
+            "annual_openings": 790,
+            "annual_wage": 75910,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 780,
-            "growth_rate": 0.039411162,
+            "gap": 790,
+            "growth_rate": 0.029302033,
+            "in_demand": true,
             "programs": [],
             "soc_code": "49-9021",
             "supply": 0.0,
             "title": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
           },
           {
-            "annual_openings": 190,
-            "annual_wage": 113970,
+            "annual_openings": 0,
+            "annual_wage": 76150,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 0,
+            "growth_rate": -0.638041131,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "49-9045",
+            "supply": 0.0,
+            "title": "Refractory Materials Repairers, Except Brickmasons"
+          },
+          {
+            "annual_openings": 160,
+            "annual_wage": 129910,
             "awards_recent": 1,
             "course_count": 0,
             "enrolled": true,
             "feeding_awards": 1,
-            "gap": 190,
-            "growth_rate": 0.042081349,
+            "gap": 160,
+            "growth_rate": 0.043996896,
+            "in_demand": false,
             "programs": [
-              {
-                "awards": [
-                  6,
-                  17,
-                  9,
-                  6,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  74,
-                  72,
-                  29,
-                  2,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null
-                ],
-                "name": "Electronics and Electric Technology",
-                "top6": "093400",
-                "wages": [
-                  {
-                    "n": 223,
-                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 65274,
-                    "wage_after_5": 80497,
-                    "wage_before": 36812,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 353,
-                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 69631,
-                    "wage_after_5": 84558,
-                    "wage_before": 42485,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 88,
-                    "recipient_type": "Locally Approved Certificates Recipient",
-                    "wage_after_2": 94249,
-                    "wage_after_5": 94013,
-                    "wage_before": 69348,
-                    "window": "2015-2016 to 2019-2020"
-                  }
-                ]
-              },
               {
                 "awards": [
                   0,
@@ -1007,8 +1483,53 @@
               }
             ],
             "soc_code": "49-9051",
-            "supply": 0.0,
+            "supply": 0.33,
             "title": "Electrical Power-Line Installers and Repairers"
+          },
+          {
+            "annual_openings": 20,
+            "annual_wage": 64730,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 20,
+            "growth_rate": 0.072411322,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "49-9081",
+            "supply": 0.0,
+            "title": "Wind Turbine Service Technicians"
+          },
+          {
+            "annual_openings": 0,
+            "annual_wage": 129670,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 0,
+            "growth_rate": 0.026808912,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "51-8011",
+            "supply": 0.0,
+            "title": "Nuclear Power Reactor Operators"
+          },
+          {
+            "annual_openings": 50,
+            "annual_wage": 125570,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 50,
+            "growth_rate": 0.044927864,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "51-8013",
+            "supply": 0.0,
+            "title": "Power Plant Operators"
           }
         ],
         "name": "College of San Mateo"
@@ -1016,78 +1537,175 @@
       {
         "cells": [
           {
-            "annual_openings": 2150,
-            "annual_wage": 87520,
+            "annual_openings": 250,
+            "annual_wage": 79190,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 2150,
-            "growth_rate": 0.082792793,
+            "gap": 250,
+            "growth_rate": 0.011704772,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "17-3011",
+            "supply": 0.0,
+            "title": "Architectural and Civil Drafters"
+          },
+          {
+            "annual_openings": 190,
+            "annual_wage": 97040,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 190,
+            "growth_rate": 0.021776171,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "17-3022",
+            "supply": 0.0,
+            "title": "Civil Engineering Technologists and Technicians"
+          },
+          {
+            "annual_openings": 170,
+            "annual_wage": 75210,
+            "awards_recent": 1,
+            "course_count": 4,
+            "enrolled": true,
+            "feeding_awards": 1,
+            "gap": 159,
+            "growth_rate": 0.010297674,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  26,
+                  32,
+                  0,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  4,
+                  null,
+                  null,
+                  null,
+                  10,
+                  23,
+                  null,
+                  18,
+                  null
+                ],
+                "name": "Energy Systems Technology",
+                "top6": "094610",
+                "wages": [
+                  {
+                    "n": 20,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 57539,
+                    "wage_after_5": 71214,
+                    "wage_before": 40258,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 36,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 54002,
+                    "wage_after_5": 111606,
+                    "wage_before": 17248,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "19-4042",
+            "supply": 11.0,
+            "title": "Environmental Science and Protection Technicians, Including Health"
+          },
+          {
+            "annual_openings": 40,
+            "annual_wage": 95900,
+            "awards_recent": 1,
+            "course_count": 4,
+            "enrolled": true,
+            "feeding_awards": 1,
+            "gap": 29,
+            "growth_rate": 0.004766689,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  26,
+                  32,
+                  0,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  4,
+                  null,
+                  null,
+                  null,
+                  10,
+                  23,
+                  null,
+                  18,
+                  null
+                ],
+                "name": "Energy Systems Technology",
+                "top6": "094610",
+                "wages": [
+                  {
+                    "n": 20,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 57539,
+                    "wage_after_5": 71214,
+                    "wage_before": 40258,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 36,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 54002,
+                    "wage_after_5": 111606,
+                    "wage_before": 17248,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "19-4051",
+            "supply": 11.0,
+            "title": "Nuclear Technicians"
+          },
+          {
+            "annual_openings": 1900,
+            "annual_wage": 86440,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 1900,
+            "growth_rate": 0.048817751,
+            "in_demand": true,
             "programs": [],
             "soc_code": "47-2111",
             "supply": 0.0,
             "title": "Electricians"
           },
           {
-            "annual_openings": 290,
-            "annual_wage": 68040,
-            "awards_recent": 5,
+            "annual_openings": 160,
+            "annual_wage": 67630,
+            "awards_recent": 1,
             "course_count": 4,
             "enrolled": true,
-            "feeding_awards": 5,
-            "gap": 261,
-            "growth_rate": 0.210230088,
+            "feeding_awards": 1,
+            "gap": 149,
+            "growth_rate": 0.19507373,
+            "in_demand": false,
             "programs": [
-              {
-                "awards": [
-                  0,
-                  0,
-                  2,
-                  8,
-                  4
-                ],
-                "awards_recent": 4,
-                "enrollment": [
-                  56,
-                  5,
-                  78,
-                  46,
-                  39,
-                  96,
-                  34,
-                  84,
-                  87
-                ],
-                "name": "Electronics and Electric Technology",
-                "top6": "093400",
-                "wages": [
-                  {
-                    "n": 223,
-                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 65274,
-                    "wage_after_5": 80497,
-                    "wage_before": 36812,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 353,
-                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 69631,
-                    "wage_after_5": 84558,
-                    "wage_before": 42485,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 88,
-                    "recipient_type": "Locally Approved Certificates Recipient",
-                    "wage_after_2": 94249,
-                    "wage_after_5": 94013,
-                    "wage_before": 69348,
-                    "window": "2015-2016 to 2019-2020"
-                  }
-                ]
-              },
               {
                 "awards": [
                   0,
@@ -1131,18 +1749,148 @@
               }
             ],
             "soc_code": "47-2231",
-            "supply": 29.0,
+            "supply": 11.0,
             "title": "Solar Photovoltaic Installers"
           },
           {
-            "annual_openings": 780,
-            "annual_wage": 73730,
+            "annual_openings": 40,
+            "annual_wage": 176490,
             "awards_recent": 1,
             "course_count": 4,
             "enrolled": true,
             "feeding_awards": 1,
-            "gap": 751,
-            "growth_rate": 0.039411162,
+            "gap": 29,
+            "growth_rate": 0.013877922,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  26,
+                  32,
+                  0,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  4,
+                  null,
+                  null,
+                  null,
+                  10,
+                  23,
+                  null,
+                  18,
+                  null
+                ],
+                "name": "Energy Systems Technology",
+                "top6": "094610",
+                "wages": [
+                  {
+                    "n": 20,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 57539,
+                    "wage_after_5": 71214,
+                    "wage_before": 40258,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 36,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 54002,
+                    "wage_after_5": 111606,
+                    "wage_before": 17248,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "47-4021",
+            "supply": 11.0,
+            "title": "Elevator and Escalator Installers and Repairers"
+          },
+          {
+            "annual_openings": 30,
+            "annual_wage": 132920,
+            "awards_recent": 1,
+            "course_count": 4,
+            "enrolled": true,
+            "feeding_awards": 1,
+            "gap": 19,
+            "growth_rate": 0.062685083,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  26,
+                  32,
+                  0,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  4,
+                  null,
+                  null,
+                  null,
+                  10,
+                  23,
+                  null,
+                  18,
+                  null
+                ],
+                "name": "Energy Systems Technology",
+                "top6": "094610",
+                "wages": [
+                  {
+                    "n": 20,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 57539,
+                    "wage_after_5": 71214,
+                    "wage_before": 40258,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 36,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 54002,
+                    "wage_after_5": 111606,
+                    "wage_before": 17248,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "49-2095",
+            "supply": 11.0,
+            "title": "Electrical and Electronics Repairers, Powerhouse, Substation, and Relay"
+          },
+          {
+            "annual_openings": 190,
+            "annual_wage": 76580,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 190,
+            "growth_rate": 0.011283258,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "49-2098",
+            "supply": 0.0,
+            "title": "Security and Fire Alarm Systems Installers"
+          },
+          {
+            "annual_openings": 790,
+            "annual_wage": 75910,
+            "awards_recent": 1,
+            "course_count": 4,
+            "enrolled": true,
+            "feeding_awards": 1,
+            "gap": 779,
+            "growth_rate": 0.029302033,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -1187,68 +1935,77 @@
               }
             ],
             "soc_code": "49-9021",
-            "supply": 29.0,
+            "supply": 11.0,
             "title": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
           },
           {
-            "annual_openings": 190,
-            "annual_wage": 113970,
-            "awards_recent": 5,
+            "annual_openings": 0,
+            "annual_wage": 76150,
+            "awards_recent": 1,
             "course_count": 4,
             "enrolled": true,
-            "feeding_awards": 5,
-            "gap": 161,
-            "growth_rate": 0.042081349,
+            "feeding_awards": 1,
+            "gap": -11,
+            "growth_rate": -0.638041131,
+            "in_demand": false,
             "programs": [
               {
                 "awards": [
                   0,
+                  26,
+                  32,
                   0,
-                  2,
-                  8,
-                  4
+                  1
                 ],
-                "awards_recent": 4,
+                "awards_recent": 1,
                 "enrollment": [
-                  56,
-                  5,
-                  78,
-                  46,
-                  39,
-                  96,
-                  34,
-                  84,
-                  87
+                  4,
+                  null,
+                  null,
+                  null,
+                  10,
+                  23,
+                  null,
+                  18,
+                  null
                 ],
-                "name": "Electronics and Electric Technology",
-                "top6": "093400",
+                "name": "Energy Systems Technology",
+                "top6": "094610",
                 "wages": [
                   {
-                    "n": 223,
+                    "n": 20,
                     "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 65274,
-                    "wage_after_5": 80497,
-                    "wage_before": 36812,
+                    "wage_after_2": 57539,
+                    "wage_after_5": 71214,
+                    "wage_before": 40258,
                     "window": "2015-2016 to 2019-2020"
                   },
                   {
-                    "n": 353,
+                    "n": 36,
                     "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 69631,
-                    "wage_after_5": 84558,
-                    "wage_before": 42485,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 88,
-                    "recipient_type": "Locally Approved Certificates Recipient",
-                    "wage_after_2": 94249,
-                    "wage_after_5": 94013,
-                    "wage_before": 69348,
+                    "wage_after_2": 54002,
+                    "wage_after_5": 111606,
+                    "wage_before": 17248,
                     "window": "2015-2016 to 2019-2020"
                   }
                 ]
-              },
+              }
+            ],
+            "soc_code": "49-9045",
+            "supply": 11.0,
+            "title": "Refractory Materials Repairers, Except Brickmasons"
+          },
+          {
+            "annual_openings": 160,
+            "annual_wage": 129910,
+            "awards_recent": 1,
+            "course_count": 4,
+            "enrolled": true,
+            "feeding_awards": 1,
+            "gap": 149,
+            "growth_rate": 0.043996896,
+            "in_demand": false,
+            "programs": [
               {
                 "awards": [
                   0,
@@ -1292,8 +2049,179 @@
               }
             ],
             "soc_code": "49-9051",
-            "supply": 29.0,
+            "supply": 11.0,
             "title": "Electrical Power-Line Installers and Repairers"
+          },
+          {
+            "annual_openings": 20,
+            "annual_wage": 64730,
+            "awards_recent": 1,
+            "course_count": 4,
+            "enrolled": true,
+            "feeding_awards": 1,
+            "gap": 9,
+            "growth_rate": 0.072411322,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  26,
+                  32,
+                  0,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  4,
+                  null,
+                  null,
+                  null,
+                  10,
+                  23,
+                  null,
+                  18,
+                  null
+                ],
+                "name": "Energy Systems Technology",
+                "top6": "094610",
+                "wages": [
+                  {
+                    "n": 20,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 57539,
+                    "wage_after_5": 71214,
+                    "wage_before": 40258,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 36,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 54002,
+                    "wage_after_5": 111606,
+                    "wage_before": 17248,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "49-9081",
+            "supply": 11.0,
+            "title": "Wind Turbine Service Technicians"
+          },
+          {
+            "annual_openings": 0,
+            "annual_wage": 129670,
+            "awards_recent": 1,
+            "course_count": 4,
+            "enrolled": true,
+            "feeding_awards": 1,
+            "gap": -11,
+            "growth_rate": 0.026808912,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  26,
+                  32,
+                  0,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  4,
+                  null,
+                  null,
+                  null,
+                  10,
+                  23,
+                  null,
+                  18,
+                  null
+                ],
+                "name": "Energy Systems Technology",
+                "top6": "094610",
+                "wages": [
+                  {
+                    "n": 20,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 57539,
+                    "wage_after_5": 71214,
+                    "wage_before": 40258,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 36,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 54002,
+                    "wage_after_5": 111606,
+                    "wage_before": 17248,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "51-8011",
+            "supply": 11.0,
+            "title": "Nuclear Power Reactor Operators"
+          },
+          {
+            "annual_openings": 50,
+            "annual_wage": 125570,
+            "awards_recent": 1,
+            "course_count": 4,
+            "enrolled": true,
+            "feeding_awards": 1,
+            "gap": 39,
+            "growth_rate": 0.044927864,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  26,
+                  32,
+                  0,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  4,
+                  null,
+                  null,
+                  null,
+                  10,
+                  23,
+                  null,
+                  18,
+                  null
+                ],
+                "name": "Energy Systems Technology",
+                "top6": "094610",
+                "wages": [
+                  {
+                    "n": 20,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 57539,
+                    "wage_after_5": 71214,
+                    "wage_before": 40258,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 36,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 54002,
+                    "wage_after_5": 111606,
+                    "wage_before": 17248,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "51-8013",
+            "supply": 11.0,
+            "title": "Power Plant Operators"
           }
         ],
         "name": "Skyline College"
@@ -1301,66 +2229,339 @@
       {
         "cells": [
           {
-            "annual_openings": 2150,
-            "annual_wage": 87520,
+            "annual_openings": 250,
+            "annual_wage": 79190,
+            "awards_recent": 0,
+            "course_count": 1,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 250,
+            "growth_rate": 0.011704772,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  31,
+                  29,
+                  33,
+                  47,
+                  26,
+                  57,
+                  24,
+                  49,
+                  27
+                ],
+                "name": "Architecture and Architectural Technology",
+                "top6": "020100",
+                "wages": [
+                  {
+                    "n": 104,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 46561,
+                    "wage_after_5": 60317,
+                    "wage_before": 23286,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 68,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 39528,
+                    "wage_after_5": 55767,
+                    "wage_before": 19970,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 18,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 58516,
+                    "wage_after_5": 72220,
+                    "wage_before": 12156,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "17-3011",
+            "supply": 0.0,
+            "title": "Architectural and Civil Drafters"
+          },
+          {
+            "annual_openings": 190,
+            "annual_wage": 97040,
+            "awards_recent": 0,
+            "course_count": 1,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 190,
+            "growth_rate": 0.021776171,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  31,
+                  29,
+                  33,
+                  47,
+                  26,
+                  57,
+                  24,
+                  49,
+                  27
+                ],
+                "name": "Architecture and Architectural Technology",
+                "top6": "020100",
+                "wages": [
+                  {
+                    "n": 104,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 46561,
+                    "wage_after_5": 60317,
+                    "wage_before": 23286,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 68,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 39528,
+                    "wage_after_5": 55767,
+                    "wage_before": 19970,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 18,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 58516,
+                    "wage_after_5": 72220,
+                    "wage_before": 12156,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "17-3022",
+            "supply": 0.0,
+            "title": "Civil Engineering Technologists and Technicians"
+          },
+          {
+            "annual_openings": 170,
+            "annual_wage": 75210,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 2150,
-            "growth_rate": 0.082792793,
+            "gap": 170,
+            "growth_rate": 0.010297674,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "19-4042",
+            "supply": 0.0,
+            "title": "Environmental Science and Protection Technicians, Including Health"
+          },
+          {
+            "annual_openings": 40,
+            "annual_wage": 95900,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 40,
+            "growth_rate": 0.004766689,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "19-4051",
+            "supply": 0.0,
+            "title": "Nuclear Technicians"
+          },
+          {
+            "annual_openings": 1900,
+            "annual_wage": 86440,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 1900,
+            "growth_rate": 0.048817751,
+            "in_demand": true,
             "programs": [],
             "soc_code": "47-2111",
             "supply": 0.0,
             "title": "Electricians"
           },
           {
-            "annual_openings": 290,
-            "annual_wage": 68040,
+            "annual_openings": 160,
+            "annual_wage": 67630,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 290,
-            "growth_rate": 0.210230088,
+            "gap": 160,
+            "growth_rate": 0.19507373,
+            "in_demand": false,
             "programs": [],
             "soc_code": "47-2231",
             "supply": 0.0,
             "title": "Solar Photovoltaic Installers"
           },
           {
-            "annual_openings": 780,
-            "annual_wage": 73730,
+            "annual_openings": 40,
+            "annual_wage": 176490,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 780,
-            "growth_rate": 0.039411162,
+            "gap": 40,
+            "growth_rate": 0.013877922,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "47-4021",
+            "supply": 0.0,
+            "title": "Elevator and Escalator Installers and Repairers"
+          },
+          {
+            "annual_openings": 30,
+            "annual_wage": 132920,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 30,
+            "growth_rate": 0.062685083,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "49-2095",
+            "supply": 0.0,
+            "title": "Electrical and Electronics Repairers, Powerhouse, Substation, and Relay"
+          },
+          {
+            "annual_openings": 190,
+            "annual_wage": 76580,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 190,
+            "growth_rate": 0.011283258,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "49-2098",
+            "supply": 0.0,
+            "title": "Security and Fire Alarm Systems Installers"
+          },
+          {
+            "annual_openings": 790,
+            "annual_wage": 75910,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 790,
+            "growth_rate": 0.029302033,
+            "in_demand": true,
             "programs": [],
             "soc_code": "49-9021",
             "supply": 0.0,
             "title": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
           },
           {
-            "annual_openings": 190,
-            "annual_wage": 113970,
+            "annual_openings": 0,
+            "annual_wage": 76150,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 190,
-            "growth_rate": 0.042081349,
+            "gap": 0,
+            "growth_rate": -0.638041131,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "49-9045",
+            "supply": 0.0,
+            "title": "Refractory Materials Repairers, Except Brickmasons"
+          },
+          {
+            "annual_openings": 160,
+            "annual_wage": 129910,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 160,
+            "growth_rate": 0.043996896,
+            "in_demand": false,
             "programs": [],
             "soc_code": "49-9051",
             "supply": 0.0,
             "title": "Electrical Power-Line Installers and Repairers"
+          },
+          {
+            "annual_openings": 20,
+            "annual_wage": 64730,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 20,
+            "growth_rate": 0.072411322,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "49-9081",
+            "supply": 0.0,
+            "title": "Wind Turbine Service Technicians"
+          },
+          {
+            "annual_openings": 0,
+            "annual_wage": 129670,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 0,
+            "growth_rate": 0.026808912,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "51-8011",
+            "supply": 0.0,
+            "title": "Nuclear Power Reactor Operators"
+          },
+          {
+            "annual_openings": 50,
+            "annual_wage": 125570,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 50,
+            "growth_rate": 0.044927864,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "51-8013",
+            "supply": 0.0,
+            "title": "Power Plant Operators"
           }
         ],
         "name": "Ca\u00f1ada College"
       }
     ],
     "coverage_awards_only": true,
+    "demand_criteria": {
+      "min_openings": 250,
+      "min_wage": 50000
+    },
     "enrollment_terms": [
       "Fall 2021",
       "Spring 2022",
@@ -1372,7 +2573,7 @@
       "Spring 2025",
       "Fall 2025"
     ],
-    "executive_summary": "This view examines the regional demand landscape across the 4 energy, construction & utilities occupations the San Mateo County CCD \u2014 Energy, Construction & Utilities targets in the Bay Area regional labor market. Regional demand for these occupations totals 3,410 openings per year.",
+    "executive_summary": "This view examines the regional demand landscape across the 15 energy, construction & utilities occupations the San Mateo County CCD \u2014 Energy, Construction & Utilities targets in the Bay Area regional labor market. Regional demand for these occupations totals 3,990 openings per year.",
     "is_sector_priority": false,
     "region": "Bay",
     "region_display": "Bay Area",

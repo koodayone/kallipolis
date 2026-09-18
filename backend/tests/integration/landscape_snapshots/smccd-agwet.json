@@ -23,7 +23,8 @@
     "region": "Bay",
     "region_display": "Bay Area",
     "sector": "Ag, Water & Environmental Technologies",
-    "tops": []
+    "tops": [],
+    "total_supply": 0.0
   },
   "landscape": {
     "aggregate": {
@@ -36,13 +37,7 @@
       "occupations_taught": 0,
       "regional_demand_total": 0
     },
-    "award_years": [
-      "2020-2021",
-      "2021-2022",
-      "2022-2023",
-      "2023-2024",
-      "2024-2025"
-    ],
+    "award_years": [],
     "colleges": [
       {
         "cells": [],
@@ -58,17 +53,11 @@
       }
     ],
     "coverage_awards_only": true,
-    "enrollment_terms": [
-      "Fall 2021",
-      "Spring 2022",
-      "Fall 2022",
-      "Spring 2023",
-      "Fall 2023",
-      "Spring 2024",
-      "Fall 2024",
-      "Spring 2025",
-      "Fall 2025"
-    ],
+    "demand_criteria": {
+      "min_openings": 250,
+      "min_wage": 50000
+    },
+    "enrollment_terms": [],
     "executive_summary": "This view examines the regional demand landscape across the 0 ag, water & environmental technologies occupations the San Mateo County CCD \u2014 Ag, Water & Environmental Technologies targets in the Bay Area regional labor market. Regional demand for these occupations totals 0 openings per year.",
     "is_sector_priority": false,
     "region": "Bay",

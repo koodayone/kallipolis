@@ -2,25 +2,26 @@
   "/employers": {
     "employers": [
       {
-        "description": "Actian, now the Data and Analytic Products Division of HCLSoftware, develops a data intelligence platform combining federated knowledge graphs, data catalog and governance tooling, and AI-powered analytics. Their product portfolio includes the Ingres and HCL Informix relational databases, the DataConnect and DataFlow integration suite, and VectorAI DB, serving 20,000+ customers in financial services, manufacturing, energy, and life sciences. The Santa Clara headquarters draws software engineers, data architects, and product specialists working on data quality, metadata management, and natural language query interfaces.",
+        "description": "Actian Corporation provides data management and analytics solutions.",
         "display_name": null,
         "lat": 37.4899082,
         "lng": -122.2366189,
         "naics4": "5415",
         "naics_title": "Computer Systems Design and Related Services",
         "name": "Actian Corporation",
-        "relevance": 11.42,
+        "relevance": 11.56,
         "sector": "Professional Services",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 6,
+        "soc_count": 7,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "43-9021": "Data Entry Keyers"
         },
         "socs": [
           "15-1232",
@@ -28,30 +29,32 @@
           "15-1231",
           "15-1254",
           "15-1255",
+          "43-9021",
           "27-4011"
         ],
         "website": "https://www.actian.com/"
       },
       {
-        "description": "ASPEN (Advanced Systems for Power Engineering) develops engineering software for electric utilities, with products in service since 1986. Its flagship tools \u2014 OneLiner for short-circuit analysis and relay coordination, DistriView for distribution feeders, and Power Flow \u2014 are used by over 750 clients across 68 countries. The company's software handles transmission networks with over 100,000 buses, serving utility engineers who require high-accuracy fault and protection calculations.",
+        "description": "Aspen is a technology company.",
         "display_name": null,
         "lat": 37.5740747,
         "lng": -122.3346877,
         "naics4": "5415",
         "naics_title": "Computer Systems Design and Related Services",
         "name": "Aspen",
-        "relevance": 11.42,
+        "relevance": 11.56,
         "sector": "Professional Services",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 6,
+        "soc_count": 7,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "43-9021": "Data Entry Keyers"
         },
         "socs": [
           "15-1232",
@@ -59,30 +62,32 @@
           "15-1231",
           "15-1254",
           "15-1255",
+          "43-9021",
           "27-4011"
         ],
         "website": "https://www.aspeninc.com/"
       },
       {
-        "description": "Box builds an AI-powered enterprise content management platform that combines secure file storage, real-time collaboration, e-signatures, and workflow automation across 1,500+ third-party integrations. Its Box AI layer\u2014drawing on models from OpenAI, Anthropic, and Google\u2014extracts structured data from unstructured documents and powers configurable agents for automating complex business processes. The company serves large enterprises and regulated industries including financial services, government, life sciences, and healthcare, employing significant software engineering and platform operations talent at its Redwood City headquarters.",
+        "description": "Box is a cloud content management and file sharing service.",
         "display_name": null,
         "lat": 37.477681,
         "lng": -122.2363095,
         "naics4": "5415",
         "naics_title": "Computer Systems Design and Related Services",
         "name": "Box",
-        "relevance": 11.42,
+        "relevance": 11.56,
         "sector": "Professional Services",
         "size_class": "500-999 employees",
         "size_rank": 8,
-        "soc_count": 6,
+        "soc_count": 7,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "43-9021": "Data Entry Keyers"
         },
         "socs": [
           "15-1232",
@@ -90,30 +95,32 @@
           "15-1231",
           "15-1254",
           "15-1255",
+          "43-9021",
           "27-4011"
         ],
         "website": "https://www.box.com/"
       },
       {
-        "description": "Clario provides digital endpoint technology for clinical trials, offering solutions spanning cardiac safety (ECG monitoring, arrhythmia analysis), eCOA (electronic Clinical Outcomes Assessments including eCOA Swift and eC-SSRS), medical imaging core labs with AI-assisted de-identification, and precision motion monitoring via the Opal wearable sensor system. The company serves pharmaceutical companies, biotechs, and CROs across all clinical trial phases in over 100 countries. Technical roles include clinical scientists, software engineers, imaging specialists, and regulatory affairs professionals supporting drug development evidence generation.",
+        "description": "Clario is a cybersecurity and privacy company.",
         "display_name": null,
         "lat": 37.565918906106,
         "lng": -122.284535112677,
         "naics4": "5415",
         "naics_title": "Computer Systems Design and Related Services",
         "name": "Clario",
-        "relevance": 11.42,
+        "relevance": 11.56,
         "sector": "Professional Services",
         "size_class": "250-499 employees",
         "size_rank": 7,
-        "soc_count": 6,
+        "soc_count": 7,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "43-9021": "Data Entry Keyers"
         },
         "socs": [
           "15-1232",
@@ -121,30 +128,32 @@
           "15-1231",
           "15-1254",
           "15-1255",
+          "43-9021",
           "27-4011"
         ],
         "website": "https://clario.com/"
       },
       {
-        "description": "Collaborative Drug Discovery develops CDD Vault, a cloud-based scientific data management and electronic lab notebook (ELN) platform used by biotech companies, contract research organizations, academic institutions, and agritech firms to register compounds, track assay activity, manage inventory, and run AI/ML-assisted cheminformatics workflows. Founded in 2004 as a spinout from Eli Lilly, the company serves hundreds of organizations including the Bill and Melinda Gates Foundation, Weill Cornell Medicine, and major pharma CROs, and employs lab-trained scientists alongside software engineers to support its platform.",
+        "description": "Collaborative Drug Discovery is a software company for pharmaceutical research.",
         "display_name": null,
         "lat": 37.5927497,
         "lng": -122.3635651,
         "naics4": "5415",
         "naics_title": "Computer Systems Design and Related Services",
         "name": "Collaborative Drug Discovery",
-        "relevance": 11.42,
+        "relevance": 11.56,
         "sector": "Professional Services",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 6,
+        "soc_count": 7,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "43-9021": "Data Entry Keyers"
         },
         "socs": [
           "15-1232",
@@ -152,30 +161,32 @@
           "15-1231",
           "15-1254",
           "15-1255",
+          "43-9021",
           "27-4011"
         ],
         "website": "https://www.collaborativedrug.com/"
       },
       {
-        "description": "Dark Bears is a custom software development firm offering enterprise application development, mobile apps (iOS, Android, Flutter), web and e-commerce solutions, and AI/ML implementations. They serve clients across healthcare, finance, education, and retail, working across cloud platforms including AWS, Azure, and Google Cloud. The company operates from Delaware and Jaipur, India, and engages clients on a dedicated-engineer, fixed-price, or build-operate-transfer basis.",
+        "description": "Dark Bears is a technology company.",
         "display_name": null,
         "lat": 37.5472275,
         "lng": -122.2790843,
         "naics4": "5415",
         "naics_title": "Computer Systems Design and Related Services",
         "name": "Dark Bears",
-        "relevance": 11.42,
+        "relevance": 11.56,
         "sector": "Professional Services",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 6,
+        "soc_count": 7,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "43-9021": "Data Entry Keyers"
         },
         "socs": [
           "15-1232",
@@ -183,30 +194,32 @@
           "15-1231",
           "15-1254",
           "15-1255",
+          "43-9021",
           "27-4011"
         ],
         "website": "https://www.darkbears.com/"
       },
       {
-        "description": "Instabase develops AI Hub, an agentic automation platform that extracts structured data from complex document packets \u2014 emails, scans, spreadsheets, and images \u2014 for financial services, insurance, healthcare, and public-sector clients including AXA, NatWest, and Rocket Mortgage. The platform uses multi-model AI to perform cross-document validation and apply business logic, producing auditable outputs for high-stakes workflows. The company employs machine learning engineers, applied AI researchers, and enterprise software engineers.",
+        "description": "Instabase is a platform for building and deploying AI-powered applications.",
         "display_name": null,
         "lat": 37.4512079,
         "lng": -122.1869488,
         "naics4": "5415",
         "naics_title": "Computer Systems Design and Related Services",
         "name": "Instabase",
-        "relevance": 11.42,
+        "relevance": 11.56,
         "sector": "Professional Services",
         "size_class": "250-499 employees",
         "size_rank": 7,
-        "soc_count": 6,
+        "soc_count": 7,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "43-9021": "Data Entry Keyers"
         },
         "socs": [
           "15-1232",
@@ -214,30 +227,32 @@
           "15-1231",
           "15-1254",
           "15-1255",
+          "43-9021",
           "27-4011"
         ],
         "website": "https://www.instabase.com/"
       },
       {
-        "description": "Learneo is a platform holding company that builds and operates a portfolio of eight learning and productivity brands, including Course Hero, QuillBot, CliffsNotes, LanguageTool, Symbolab, LitCharts, Scribbr, and Bartleby. Its products serve high school and college students, academic writers, and educators globally through AI-powered writing assistance, study guides, textbook solutions, and math problem-solving tools. Engineering, product, data science, and content roles span both the platform layer and the individual brand teams.",
+        "description": "Learneo is an educational technology company.",
         "display_name": null,
         "lat": 37.5078719,
         "lng": -122.2087236,
         "naics4": "5415",
         "naics_title": "Computer Systems Design and Related Services",
         "name": "Learneo",
-        "relevance": 11.42,
+        "relevance": 11.56,
         "sector": "Professional Services",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 6,
+        "soc_count": 7,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "43-9021": "Data Entry Keyers"
         },
         "socs": [
           "15-1232",
@@ -245,30 +260,32 @@
           "15-1231",
           "15-1254",
           "15-1255",
+          "43-9021",
           "27-4011"
         ],
         "website": "https://www.learneo.com/"
       },
       {
-        "description": "LogiGear is a San Mateo-based software testing and development firm founded in 1994, offering manual and automated QA, API, mobile, load, and cloud-based testing alongside end-to-end application development and legacy system modernization. The company publishes TestArchitect, a proprietary keyword-driven test automation platform used for modular test design across web, mobile, and enterprise systems. With roughly 400 employees and delivery centers across multiple locations, LogiGear employs QA engineers, automation developers, and software engineers locally and offshore to serve enterprise and technology clients.",
+        "description": "Logigear provides software testing and quality assurance services.",
         "display_name": null,
         "lat": 37.5469632,
         "lng": -122.3120099,
         "naics4": "5415",
         "naics_title": "Computer Systems Design and Related Services",
         "name": "Logigear",
-        "relevance": 11.42,
+        "relevance": 11.56,
         "sector": "Professional Services",
         "size_class": "500-999 employees",
         "size_rank": 8,
-        "soc_count": 6,
+        "soc_count": 7,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "43-9021": "Data Entry Keyers"
         },
         "socs": [
           "15-1232",
@@ -276,30 +293,32 @@
           "15-1231",
           "15-1254",
           "15-1255",
+          "43-9021",
           "27-4011"
         ],
         "website": "https://www.logigear.com/"
       },
       {
-        "description": "MariaDB develops and supports an open-source relational database management system that originated as a community fork after Oracle acquired MySQL. The company sells MariaDB Enterprise Server, MariaDB Cloud (a fully managed database service), and MaxScale (a database proxy for high availability), serving enterprise customers in financial services, telecommunications, and other sectors. Headquartered in Milpitas, CA, the company employs database engineers, cloud infrastructure, and enterprise support professionals.",
+        "description": "Maria DB Corporation is a database software company.",
         "display_name": null,
         "lat": 37.496195,
         "lng": -122.2362998,
         "naics4": "5415",
         "naics_title": "Computer Systems Design and Related Services",
         "name": "Maria DB Corporation",
-        "relevance": 11.42,
+        "relevance": 11.56,
         "sector": "Professional Services",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 6,
+        "soc_count": 7,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "43-9021": "Data Entry Keyers"
         },
         "socs": [
           "15-1232",
@@ -307,30 +326,32 @@
           "15-1231",
           "15-1254",
           "15-1255",
+          "43-9021",
           "27-4011"
         ],
         "website": "https://mariadb.com/"
       },
       {
-        "description": "PIFD Tech is a San Francisco-based company that develops vehicle-mounted traffic enforcement technology. Its flagship product, Murphy, uses onboard cameras, computer vision, and 5G connectivity to detect and report traffic violations in real time from participating drivers' vehicles. The company sells its data and enforcement services to municipalities and operates a driver incentive program that generates passive income for participants.",
+        "description": "PIFD Technologies is a technology consulting firm.",
         "display_name": null,
         "lat": 37.6602989,
         "lng": -122.4321777,
         "naics4": "5415",
         "naics_title": "Computer Systems Design and Related Services",
         "name": "PIFD Technologies",
-        "relevance": 11.42,
+        "relevance": 11.56,
         "sector": "Professional Services",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 6,
+        "soc_count": 7,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "43-9021": "Data Entry Keyers"
         },
         "socs": [
           "15-1232",
@@ -338,30 +359,32 @@
           "15-1231",
           "15-1254",
           "15-1255",
+          "43-9021",
           "27-4011"
         ],
         "website": "https://pifd-tech.com/"
       },
       {
-        "description": "Secure Data Recovery Services is a specialized data recovery firm founded in 2007 in Los Angeles, operating 150+ locations across the U.S. and labs in North America and the UK. They recover data from hard drives, SSDs, RAID arrays, servers, mobile devices, and tape media using ISO 4 Class 10 certified cleanrooms, and also offer digital forensics, ransomware recovery, and secure media destruction. Clients range from individual consumers to Fortune 500 companies and U.S. government agencies (GSA contractor), with a reported 96% success rate across more than 100,000 cases.",
+        "description": "Secure Data Recovery Services provides data recovery solutions.",
         "display_name": null,
         "lat": 37.5403434,
         "lng": -122.3013013,
         "naics4": "5415",
         "naics_title": "Computer Systems Design and Related Services",
         "name": "Secure Data Recovery Services",
-        "relevance": 11.42,
+        "relevance": 11.56,
         "sector": "Professional Services",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 6,
+        "soc_count": 7,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "43-9021": "Data Entry Keyers"
         },
         "socs": [
           "15-1232",
@@ -369,30 +392,32 @@
           "15-1231",
           "15-1254",
           "15-1255",
+          "43-9021",
           "27-4011"
         ],
         "website": "https://www.securedatarecovery.com/"
       },
       {
-        "description": "Simpplr builds an AI-powered intranet and employee experience platform that combines multichannel internal communications, enterprise search, and AI agents in a single product. Its modules include an AI intranet, Comms AI writing assistant, employee surveys, recognition and rewards, and analytics dashboards; the platform serves more than 1,000 enterprise customers \u2014 including Okta, Hilton, and DocuSign \u2014 across healthcare, manufacturing, government, and technology sectors. The company employs software engineers, AI/ML specialists, and go-to-market professionals; it has earned Gartner, Forrester, G2, and IDC Leader recognition in the intranet and employee-experience space.",
+        "description": "Simpplr is an AI-powered employee communications platform.",
         "display_name": null,
         "lat": 37.5193473,
         "lng": -122.253873,
         "naics4": "5415",
         "naics_title": "Computer Systems Design and Related Services",
         "name": "Simpplr",
-        "relevance": 11.42,
+        "relevance": 11.56,
         "sector": "Professional Services",
         "size_class": "500-999 employees",
         "size_rank": 8,
-        "soc_count": 6,
+        "soc_count": 7,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "43-9021": "Data Entry Keyers"
         },
         "socs": [
           "15-1232",
@@ -400,30 +425,32 @@
           "15-1231",
           "15-1254",
           "15-1255",
+          "43-9021",
           "27-4011"
         ],
         "website": "https://www.simpplr.com/"
       },
       {
-        "description": "Storii is a family memory-preservation platform headquartered in San Mateo, California that automates the capture of personal and family histories via scheduled phone calls \u2014 no smartphone or internet required. Users select from a library of over 1,000 guided questions; the system records, transcribes, and stores responses, which can be downloaded as audiobooks or PDF transcripts and shared with family members. The platform also serves healthcare settings such as hospices and adult day care programs, and sells a physical Storii Gift Box for holiday and occasion gifting.",
+        "description": "Storii is a digital storytelling platform.",
         "display_name": null,
         "lat": 37.5639859,
         "lng": -122.3220736,
         "naics4": "5415",
         "naics_title": "Computer Systems Design and Related Services",
         "name": "Storii",
-        "relevance": 11.42,
+        "relevance": 11.56,
         "sector": "Professional Services",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 6,
+        "soc_count": 7,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "43-9021": "Data Entry Keyers"
         },
         "socs": [
           "15-1232",
@@ -431,6 +458,7 @@
           "15-1231",
           "15-1254",
           "15-1255",
+          "43-9021",
           "27-4011"
         ],
         "website": "https://www.storii.com/"
@@ -443,18 +471,19 @@
         "naics4": "5415",
         "naics_title": "Computer Systems Design and Related Services",
         "name": "Terarecon",
-        "relevance": 11.42,
+        "relevance": 11.56,
         "sector": "Professional Services",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 6,
+        "soc_count": 7,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "43-9021": "Data Entry Keyers"
         },
         "socs": [
           "15-1232",
@@ -462,6 +491,7 @@
           "15-1231",
           "15-1254",
           "15-1255",
+          "43-9021",
           "27-4011"
         ],
         "website": "https://www.terarecon.com/"
@@ -474,18 +504,19 @@
         "naics4": "5415",
         "naics_title": "Computer Systems Design and Related Services",
         "name": "Xtelesis Corporation",
-        "relevance": 11.42,
+        "relevance": 11.56,
         "sector": "Professional Services",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 6,
+        "soc_count": 7,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "43-9021": "Data Entry Keyers"
         },
         "socs": [
           "15-1232",
@@ -493,6 +524,7 @@
           "15-1231",
           "15-1254",
           "15-1255",
+          "43-9021",
           "27-4011"
         ],
         "website": "https://www.xtelesis.com/"
@@ -505,18 +537,19 @@
         "naics4": "5415",
         "naics_title": "Computer Systems Design and Related Services",
         "name": "Xtime",
-        "relevance": 11.42,
+        "relevance": 11.56,
         "sector": "Professional Services",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 6,
+        "soc_count": 7,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "43-9021": "Data Entry Keyers"
         },
         "socs": [
           "15-1232",
@@ -524,6 +557,7 @@
           "15-1231",
           "15-1254",
           "15-1255",
+          "43-9021",
           "27-4011"
         ],
         "website": "https://xtime.com/"
@@ -536,18 +570,19 @@
         "naics4": "5415",
         "naics_title": "Computer Systems Design and Related Services",
         "name": "Y Media Labs",
-        "relevance": 11.42,
+        "relevance": 11.56,
         "sector": "Professional Services",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 6,
+        "soc_count": 7,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "43-9021": "Data Entry Keyers"
         },
         "socs": [
           "15-1232",
@@ -555,224 +590,267 @@
           "15-1231",
           "15-1254",
           "15-1255",
+          "43-9021",
           "27-4011"
         ],
         "website": "https://yml.co/"
       },
       {
-        "description": "AnchorFree was a Redwood City, California-based cybersecurity company best known for developing Hotspot Shield, a consumer VPN product that masked users' IP addresses and encrypted internet traffic. In 2019 the company rebranded as Pango and expanded into a multi-app security suite; in July 2020 Pango was acquired by Aura, a Boston-area digital security conglomerate, and AnchorFree ceased to exist as an independent entity. The anchorfree.com domain now redirects to hotspotshield.com, which Aura continues to operate.",
+        "description": "Anchorfree is a cybersecurity company.",
         "display_name": null,
         "lat": 37.5078719,
         "lng": -122.2087236,
         "naics4": "5182",
         "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services",
         "name": "Anchorfree",
-        "relevance": 9.43,
+        "relevance": 11.15,
         "sector": "Information & Media",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 6,
+        "soc_count": 9,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "27-4014": "Sound Engineering Technicians",
+          "43-9021": "Data Entry Keyers",
+          "43-9031": "Desktop Publishers"
         },
         "socs": [
           "15-1232",
+          "43-9021",
           "15-1244",
           "15-1231",
           "15-1255",
           "15-1254",
-          "27-4011"
+          "27-4011",
+          "43-9031",
+          "27-4014"
         ],
         "website": "https://www.anchorfree.com/"
       },
       {
-        "description": "Delphix built a data virtualization and DevOps data platform that automates test-data provisioning, data masking, and synthetic data generation across 170+ database and cloud sources (AWS, Azure, GCP). The company was acquired by Perforce Software and now operates as the Perforce Delphix product line, no longer as an independent entity. Prior to acquisition, Delphix employed data engineers and platform software engineers at its Redwood City, CA headquarters.",
+        "description": "Delphix Corporation provides data management solutions.",
         "display_name": null,
         "lat": 37.480609,
         "lng": -122.22446,
         "naics4": "5182",
         "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services",
         "name": "Delphix Corporation",
-        "relevance": 9.43,
+        "relevance": 11.15,
         "sector": "Information & Media",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 6,
+        "soc_count": 9,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "27-4014": "Sound Engineering Technicians",
+          "43-9021": "Data Entry Keyers",
+          "43-9031": "Desktop Publishers"
         },
         "socs": [
           "15-1232",
+          "43-9021",
           "15-1244",
           "15-1231",
           "15-1255",
           "15-1254",
-          "27-4011"
+          "27-4011",
+          "43-9031",
+          "27-4014"
         ],
         "website": "https://www.delphix.com/"
       },
       {
-        "description": "Equinix operates a global network of International Business Exchange (IBX) and xScale data centers where enterprises colocate servers and directly interconnect with cloud providers, networks, and business partners. Its software-defined interconnection platform, Equinix Fabric, enables virtual cross-connections across 70+ metros, and Equinix Metal provides on-demand bare-metal compute as a service. The company employs data center technicians, network engineers, and infrastructure operations staff across its U.S. facilities, including in the San Jose and Silicon Valley metro area.",
+        "description": "Equinix is a global data center and interconnection provider.",
         "display_name": null,
         "lat": 37.5275451,
         "lng": -122.2618297,
         "naics4": "5182",
         "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services",
         "name": "Equinix",
-        "relevance": 9.43,
+        "relevance": 11.15,
         "sector": "Information & Media",
         "size_class": "250-499 employees",
         "size_rank": 7,
-        "soc_count": 6,
+        "soc_count": 9,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "27-4014": "Sound Engineering Technicians",
+          "43-9021": "Data Entry Keyers",
+          "43-9031": "Desktop Publishers"
         },
         "socs": [
           "15-1232",
+          "43-9021",
           "15-1244",
           "15-1231",
           "15-1255",
           "15-1254",
-          "27-4011"
+          "27-4011",
+          "43-9031",
+          "27-4014"
         ],
         "website": "https://www.equinix.com/"
       },
       {
-        "description": "Evernote is a note-taking and personal productivity platform \u2014 now owned and operated by Bending Spoons US Inc. following its 2023 acquisition \u2014 that lets individuals, students, and teams capture, organize, and search notes, documents, and web content across desktop, mobile, and web. The platform includes integrated task management, a browser Web Clipper, PDF editing and scanning tools, and AI-assisted features such as transcription, rewriting, and automated meeting notes.",
+        "description": "Evernote Corporation develops productivity and note-taking applications.",
         "display_name": null,
         "lat": 37.4904691,
         "lng": -122.2241529,
         "naics4": "5182",
         "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services",
         "name": "Evernote Corporation",
-        "relevance": 9.43,
+        "relevance": 11.15,
         "sector": "Information & Media",
         "size_class": "250-499 employees",
         "size_rank": 7,
-        "soc_count": 6,
+        "soc_count": 9,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "27-4014": "Sound Engineering Technicians",
+          "43-9021": "Data Entry Keyers",
+          "43-9031": "Desktop Publishers"
         },
         "socs": [
           "15-1232",
+          "43-9021",
           "15-1244",
           "15-1231",
           "15-1255",
           "15-1254",
-          "27-4011"
+          "27-4011",
+          "43-9031",
+          "27-4014"
         ],
         "website": "https://evernote.com/"
       },
       {
-        "description": "EVmatch is a Redwood City-based software and hardware company that operates a shared EV charging network for multi-family housing, commercial properties, and vacation rentals. Their platform lets property managers schedule, monitor, and control charging stations, while drivers use a mobile app to find, reserve, and pay for sessions. The company also makes the EVmatch Adapter \u2014 developed with Argonne National Laboratory \u2014 which adds network connectivity and payment processing to non-networked chargers.",
+        "description": "Evmatch is an electric vehicle charging solutions company.",
         "display_name": null,
         "lat": 37.464221,
         "lng": -122.2366013,
         "naics4": "5182",
         "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services",
         "name": "Evmatch",
-        "relevance": 9.43,
+        "relevance": 11.15,
         "sector": "Information & Media",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 6,
+        "soc_count": 9,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "27-4014": "Sound Engineering Technicians",
+          "43-9021": "Data Entry Keyers",
+          "43-9031": "Desktop Publishers"
         },
         "socs": [
           "15-1232",
+          "43-9021",
           "15-1244",
           "15-1231",
           "15-1255",
           "15-1254",
-          "27-4011"
+          "27-4011",
+          "43-9031",
+          "27-4014"
         ],
         "website": "https://evmatch.com/"
       },
       {
-        "description": "RingCentral develops and operates cloud-based unified communications and contact center platforms, including RingEX (business phone, SMS, chat, and video), RingCX (omnichannel contact center), and an AI Agents suite for automated call handling and customer interaction analytics. The company serves more than 600,000 businesses across healthcare, financial services, education, retail, and government in over 100 countries. Engineering and product development talent includes software engineers, platform developers, and AI/ML specialists supporting its integrations ecosystem and real-time communications infrastructure.",
+        "description": "Ringcentral is a cloud-based communications and collaboration solutions provider.",
         "display_name": null,
         "lat": 37.5110254,
         "lng": -122.3084752,
         "naics4": "5182",
         "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services",
         "name": "Ringcentral",
-        "relevance": 9.43,
+        "relevance": 11.15,
         "sector": "Information & Media",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 6,
+        "soc_count": 9,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "27-4014": "Sound Engineering Technicians",
+          "43-9021": "Data Entry Keyers",
+          "43-9031": "Desktop Publishers"
         },
         "socs": [
           "15-1232",
+          "43-9021",
           "15-1244",
           "15-1231",
           "15-1255",
           "15-1254",
-          "27-4011"
+          "27-4011",
+          "43-9031",
+          "27-4014"
         ],
         "website": "https://www.ringcentral.com/"
       },
       {
-        "description": "Teradata Aster was a multi-genre analytics engine acquired by Teradata in 2011 from Aster Data Systems, bringing SQL-MapReduce, graph analytics, and pattern-matching capabilities into Teradata's portfolio. The Aster brand and its underlying technology were folded into Teradata's Vantage platform in 2018 and no longer operate as a distinct product or named business unit. Teradata (the parent company) continues to sell cloud and on-premises data warehousing and AI analytics to large enterprises in banking, airlines, and telecommunications, employing data engineers, database architects, and cloud platform specialists.",
+        "description": "Teradata Aster is a data analytics platform.",
         "display_name": null,
         "lat": 37.5073876,
         "lng": -122.248094,
         "naics4": "5182",
         "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services",
         "name": "Teradata Aster",
-        "relevance": 9.43,
+        "relevance": 11.15,
         "sector": "Information & Media",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 6,
+        "soc_count": 9,
         "soc_titles": {
           "15-1231": "Computer Network Support Specialists",
           "15-1232": "Computer User Support Specialists",
           "15-1244": "Network and Computer Systems Administrators",
           "15-1254": "Web Developers",
           "15-1255": "Web and Digital Interface Designers",
-          "27-4011": "Audio and Video Technicians"
+          "27-4011": "Audio and Video Technicians",
+          "27-4014": "Sound Engineering Technicians",
+          "43-9021": "Data Entry Keyers",
+          "43-9031": "Desktop Publishers"
         },
         "socs": [
           "15-1232",
+          "43-9021",
           "15-1244",
           "15-1231",
           "15-1255",
           "15-1254",
-          "27-4011"
+          "27-4011",
+          "43-9031",
+          "27-4014"
         ],
         "website": "https://www.teradata.com/"
       }
@@ -784,7 +862,7 @@
       "San Mateo"
     ],
     "shown": 25,
-    "total": 420
+    "total": 408
   },
   "/programs": {
     "coverage_awards_only": true,
@@ -792,201 +870,363 @@
     "matrix": {
       "cells": [
         {
-          "awards": 32,
           "college": "College of San Mateo",
           "enrolled": true,
+          "projected": 0.0,
+          "top6": "051400"
+        },
+        {
+          "college": "Skyline College",
+          "enrolled": true,
+          "projected": 1.0,
+          "top6": "051400"
+        },
+        {
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "projected": 5.7,
+          "top6": "051400"
+        },
+        {
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "projected": 1.0,
+          "top6": "060400"
+        },
+        {
+          "college": "Skyline College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "060400"
+        },
+        {
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "060400"
+        },
+        {
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "projected": 0.0,
+          "top6": "060410"
+        },
+        {
+          "college": "Skyline College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "060410"
+        },
+        {
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "060410"
+        },
+        {
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "projected": 19.3,
+          "top6": "060420"
+        },
+        {
+          "college": "Skyline College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "060420"
+        },
+        {
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "060420"
+        },
+        {
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "projected": 22.3,
           "top6": "061400"
         },
         {
-          "awards": 1,
           "college": "Skyline College",
           "enrolled": true,
+          "projected": 0.3,
           "top6": "061400"
         },
         {
-          "awards": 1,
           "college": "Ca\u00f1ada College",
           "enrolled": true,
+          "projected": 2.0,
           "top6": "061400"
         },
         {
-          "awards": 0,
           "college": "College of San Mateo",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "061410"
         },
         {
-          "awards": 0,
           "college": "Skyline College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "061410"
         },
         {
-          "awards": 13,
           "college": "Ca\u00f1ada College",
           "enrolled": true,
+          "projected": 16.0,
           "top6": "061410"
         },
         {
-          "awards": 0,
           "college": "College of San Mateo",
           "enrolled": false,
+          "projected": 0.0,
+          "top6": "061430"
+        },
+        {
+          "college": "Skyline College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "061430"
+        },
+        {
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "projected": 0.0,
+          "top6": "061430"
+        },
+        {
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "061450"
+        },
+        {
+          "college": "Skyline College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "061450"
+        },
+        {
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "projected": 0.0,
+          "top6": "061450"
+        },
+        {
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "projected": 0.0,
           "top6": "061460"
         },
         {
-          "awards": 0,
           "college": "Skyline College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "061460"
         },
         {
-          "awards": 5,
           "college": "Ca\u00f1ada College",
           "enrolled": true,
+          "projected": 4.0,
           "top6": "061460"
         },
         {
-          "awards": 0,
           "college": "College of San Mateo",
           "enrolled": true,
+          "projected": 0.0,
+          "top6": "070100"
+        },
+        {
+          "college": "Skyline College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "070100"
+        },
+        {
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "070100"
+        },
+        {
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "projected": 0.0,
           "top6": "070200"
         },
         {
-          "awards": 10,
           "college": "Skyline College",
           "enrolled": false,
+          "projected": 7.3,
           "top6": "070200"
         },
         {
-          "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "070200"
         },
         {
-          "awards": 46,
           "college": "College of San Mateo",
           "enrolled": false,
+          "projected": 32.0,
           "top6": "070700"
         },
         {
-          "awards": 0,
           "college": "Skyline College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "070700"
         },
         {
-          "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "070700"
         },
         {
-          "awards": 18,
           "college": "College of San Mateo",
           "enrolled": true,
+          "projected": 11.0,
           "top6": "070710"
         },
         {
-          "awards": 0,
           "college": "Skyline College",
           "enrolled": true,
+          "projected": 0.0,
           "top6": "070710"
         },
         {
-          "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": true,
+          "projected": 0.0,
           "top6": "070710"
         },
         {
-          "awards": 0,
           "college": "College of San Mateo",
           "enrolled": true,
+          "projected": 0.0,
+          "top6": "070720"
+        },
+        {
+          "college": "Skyline College",
+          "enrolled": true,
+          "projected": 0.0,
+          "top6": "070720"
+        },
+        {
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "projected": 0.0,
+          "top6": "070720"
+        },
+        {
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "projected": 0.0,
           "top6": "070800"
         },
         {
-          "awards": 4,
           "college": "Skyline College",
           "enrolled": true,
+          "projected": 1.3,
           "top6": "070800"
         },
         {
-          "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": true,
+          "projected": 0.0,
           "top6": "070800"
         },
         {
-          "awards": 0,
           "college": "College of San Mateo",
           "enrolled": true,
+          "projected": 0.0,
           "top6": "070810"
         },
         {
-          "awards": 21,
           "college": "Skyline College",
           "enrolled": false,
+          "projected": 17.3,
           "top6": "070810"
         },
         {
-          "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "070810"
         },
         {
-          "awards": 0,
           "college": "College of San Mateo",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "070820"
         },
         {
-          "awards": 2,
           "college": "Skyline College",
           "enrolled": false,
+          "projected": 4.3,
           "top6": "070820"
         },
         {
-          "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "070820"
         },
         {
-          "awards": 2,
           "college": "College of San Mateo",
           "enrolled": true,
+          "projected": 0.7,
           "top6": "100500"
         },
         {
-          "awards": 0,
           "college": "Skyline College",
           "enrolled": true,
+          "projected": 0.0,
           "top6": "100500"
         },
         {
-          "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "100500"
         },
         {
-          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "projected": 0.0,
+          "top6": "101200"
+        },
+        {
+          "college": "Skyline College",
+          "enrolled": true,
+          "projected": 0.0,
+          "top6": "101200"
+        },
+        {
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "101200"
+        },
+        {
           "college": "College of San Mateo",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "103000"
         },
         {
-          "awards": 8,
           "college": "Skyline College",
           "enrolled": true,
+          "projected": 2.7,
           "top6": "103000"
         },
         {
-          "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "103000"
         }
       ],
@@ -1002,94 +1242,158 @@
     "sector": "ICT / Digital Media",
     "tops": [
       {
-        "awards_total": 46,
         "enrollment_total": 0,
         "name": "Computer Software Development",
+        "projected_supply": 32.0,
         "soc_count": 4,
         "top6": "070700"
       },
       {
-        "awards_total": 34,
         "enrollment_total": 946,
         "name": "Digital Media",
-        "soc_count": 2,
+        "projected_supply": 24.7,
+        "soc_count": 4,
         "top6": "061400"
       },
       {
-        "awards_total": 21,
+        "enrollment_total": 0,
+        "name": "Television (including combined TV/Film/Video)",
+        "projected_supply": 19.3,
+        "soc_count": 1,
+        "top6": "060420"
+      },
+      {
         "enrollment_total": 34,
         "name": "Computer Networking",
+        "projected_supply": 17.3,
         "soc_count": 5,
         "top6": "070810"
       },
       {
-        "awards_total": 18,
-        "enrollment_total": 855,
-        "name": "Computer Programming",
-        "soc_count": 4,
-        "top6": "070710"
-      },
-      {
-        "awards_total": 13,
         "enrollment_total": 139,
         "name": "Multimedia",
-        "soc_count": 1,
+        "projected_supply": 16.0,
+        "soc_count": 3,
         "top6": "061410"
       },
       {
-        "awards_total": 10,
+        "enrollment_total": 855,
+        "name": "Computer Programming",
+        "projected_supply": 11.0,
+        "soc_count": 5,
+        "top6": "070710"
+      },
+      {
         "enrollment_total": 38,
         "name": "Computer Information Systems",
-        "soc_count": 5,
+        "projected_supply": 7.3,
+        "soc_count": 7,
         "top6": "070200"
       },
       {
-        "awards_total": 8,
+        "enrollment_total": 579,
+        "name": "Office Technology/Office Computer Applications",
+        "projected_supply": 6.7,
+        "soc_count": 2,
+        "top6": "051400"
+      },
+      {
+        "enrollment_total": 0,
+        "name": "Computer Support",
+        "projected_supply": 4.3,
+        "soc_count": 3,
+        "top6": "070820"
+      },
+      {
+        "enrollment_total": 46,
+        "name": "Computer Graphics and Digital Imagery",
+        "projected_supply": 4.0,
+        "soc_count": 3,
+        "top6": "061460"
+      },
+      {
         "enrollment_total": 66,
         "name": "Graphic Art and Design",
+        "projected_supply": 2.7,
         "soc_count": 1,
         "top6": "103000"
       },
       {
-        "awards_total": 5,
-        "enrollment_total": 46,
-        "name": "Computer Graphics and Digital Imagery",
-        "soc_count": 1,
-        "top6": "061460"
-      },
-      {
-        "awards_total": 4,
         "enrollment_total": 227,
         "name": "Computer Infrastructure and Support",
+        "projected_supply": 1.3,
         "soc_count": 4,
         "top6": "070800"
       },
       {
-        "awards_total": 2,
+        "enrollment_total": 0,
+        "name": "Radio and Television",
+        "projected_supply": 1.0,
+        "soc_count": 1,
+        "top6": "060400"
+      },
+      {
         "enrollment_total": 31,
         "name": "Commercial Music",
-        "soc_count": 1,
+        "projected_supply": 0.7,
+        "soc_count": 2,
         "top6": "100500"
       },
       {
-        "awards_total": 2,
-        "enrollment_total": 0,
-        "name": "Computer Support",
-        "soc_count": 3,
-        "top6": "070820"
+        "enrollment_total": 249,
+        "name": "Applied Photography",
+        "projected_supply": 0.0,
+        "soc_count": 2,
+        "top6": "101200"
+      },
+      {
+        "enrollment_total": 139,
+        "name": "Information Technology, General",
+        "projected_supply": 0.0,
+        "soc_count": 4,
+        "top6": "070100"
+      },
+      {
+        "enrollment_total": 80,
+        "name": "Database Design and Administration",
+        "projected_supply": 0.0,
+        "soc_count": 2,
+        "top6": "070720"
+      },
+      {
+        "enrollment_total": 56,
+        "name": "Website Design and Development",
+        "projected_supply": 0.0,
+        "soc_count": 2,
+        "top6": "061430"
+      },
+      {
+        "enrollment_total": 22,
+        "name": "Desktop Publishing",
+        "projected_supply": 0.0,
+        "soc_count": 1,
+        "top6": "061450"
+      },
+      {
+        "enrollment_total": 19,
+        "name": "Radio",
+        "projected_supply": 0.0,
+        "soc_count": 1,
+        "top6": "060410"
       }
-    ]
+    ],
+    "total_supply": 148.3
   },
   "landscape": {
     "aggregate": {
-      "candidate_employers": 808,
-      "combined_awards": 163,
-      "combined_supply_total": 175.01,
-      "gap": 3875,
+      "candidate_employers": 827,
+      "combined_awards": 195,
+      "combined_supply_total": 148.3,
+      "gap": 4212,
       "n_colleges": 3,
-      "n_occupations": 6,
-      "occupations_taught": 6,
-      "regional_demand_total": 4050
+      "n_occupations": 12,
+      "occupations_taught": 12,
+      "regional_demand_total": 4360
     },
     "award_years": [
       "2020-2021",
@@ -1102,14 +1406,15 @@
       {
         "cells": [
           {
-            "annual_openings": 300,
-            "annual_wage": 96480,
+            "annual_openings": 320,
+            "annual_wage": 106060,
             "awards_recent": 64,
             "course_count": 16,
             "enrolled": true,
             "feeding_awards": 64,
-            "gap": 272,
-            "growth_rate": 0.102735988,
+            "gap": 277,
+            "growth_rate": 0.068270983,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -1440,18 +1745,19 @@
               }
             ],
             "soc_code": "15-1231",
-            "supply": 28.34,
+            "supply": 43.0,
             "title": "Computer Network Support Specialists"
           },
           {
-            "annual_openings": 1570,
-            "annual_wage": 82240,
+            "annual_openings": 1410,
+            "annual_wage": 89460,
             "awards_recent": 0,
             "course_count": 1,
             "enrolled": true,
             "feeding_awards": 0,
-            "gap": 1570,
-            "growth_rate": 0.09335463,
+            "gap": 1410,
+            "growth_rate": 0.031406215,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -1647,14 +1953,15 @@
             "title": "Computer User Support Specialists"
           },
           {
-            "annual_openings": 590,
-            "annual_wage": 124990,
+            "annual_openings": 450,
+            "annual_wage": 127750,
             "awards_recent": 64,
             "course_count": 16,
             "enrolled": true,
             "feeding_awards": 64,
-            "gap": 562,
-            "growth_rate": 0.034603618,
+            "gap": 407,
+            "growth_rate": 0.03755526,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -1944,18 +2251,19 @@
               }
             ],
             "soc_code": "15-1244",
-            "supply": 28.34,
+            "supply": 43.0,
             "title": "Network and Computer Systems Administrators"
           },
           {
-            "annual_openings": 360,
-            "annual_wage": 146640,
+            "annual_openings": 210,
+            "annual_wage": 145400,
             "awards_recent": 96,
             "course_count": 35,
             "enrolled": true,
             "feeding_awards": 96,
-            "gap": 311,
-            "growth_rate": 0.033846548,
+            "gap": 145,
+            "growth_rate": 0.030929381,
+            "in_demand": false,
             "programs": [
               {
                 "awards": [
@@ -2245,18 +2553,19 @@
               }
             ],
             "soc_code": "15-1254",
-            "supply": 48.67,
+            "supply": 65.33,
             "title": "Web Developers"
           },
           {
-            "annual_openings": 950,
-            "annual_wage": 159900,
+            "annual_openings": 790,
+            "annual_wage": 174920,
             "awards_recent": 96,
             "course_count": 35,
             "enrolled": true,
             "feeding_awards": 96,
-            "gap": 901,
-            "growth_rate": 0.022862074,
+            "gap": 725,
+            "growth_rate": 0.017700807,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -2595,18 +2904,19 @@
               }
             ],
             "soc_code": "15-1255",
-            "supply": 48.67,
+            "supply": 65.33,
             "title": "Web and Digital Interface Designers"
           },
           {
-            "annual_openings": 280,
-            "annual_wage": 70330,
+            "annual_openings": 200,
+            "annual_wage": 70960,
             "awards_recent": 2,
             "course_count": 3,
             "enrolled": true,
             "feeding_awards": 2,
-            "gap": 280,
-            "growth_rate": 0.03656439,
+            "gap": 199,
+            "growth_rate": 0.032353659,
+            "in_demand": false,
             "programs": [
               {
                 "awards": [
@@ -2708,8 +3018,684 @@
               }
             ],
             "soc_code": "27-4011",
-            "supply": 0.0,
+            "supply": 0.67,
             "title": "Audio and Video Technicians"
+          },
+          {
+            "annual_openings": 70,
+            "annual_wage": 77170,
+            "awards_recent": 21,
+            "course_count": 5,
+            "enrolled": true,
+            "feeding_awards": 21,
+            "gap": 50,
+            "growth_rate": 0.005804783,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  2,
+                  3,
+                  1,
+                  0,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Radio and Television",
+                "top6": "060400",
+                "wages": [
+                  {
+                    "n": 70,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 25482,
+                    "wage_after_5": 42390,
+                    "wage_before": 10344,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 51,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 36096,
+                    "wage_after_5": 50134,
+                    "wage_before": 12890,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 25,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 32979,
+                    "wage_after_5": 48521,
+                    "wage_before": 18491,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  8,
+                  null,
+                  11,
+                  13,
+                  19,
+                  19,
+                  13,
+                  18,
+                  15
+                ],
+                "name": "Radio",
+                "top6": "060410",
+                "wages": [
+                  {
+                    "n": 17,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 27317,
+                    "wage_after_5": 43230,
+                    "wage_before": 12899,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 21,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 21265,
+                    "wage_after_5": 38294,
+                    "wage_before": 11097,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  17,
+                  18,
+                  18,
+                  21,
+                  19
+                ],
+                "awards_recent": 19,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Television (including combined TV/Film/Video)",
+                "top6": "060420",
+                "wages": [
+                  {
+                    "n": 124,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 26901,
+                    "wage_after_5": 39835,
+                    "wage_before": 20502,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 65,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 23897,
+                    "wage_after_5": 41160,
+                    "wage_before": 16888,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 46,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 20635,
+                    "wage_after_5": 38291,
+                    "wage_before": 15251,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  38,
+                  33,
+                  33,
+                  30,
+                  30,
+                  31
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": [
+                  {
+                    "n": 336,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 48190,
+                    "wage_after_5": 62938,
+                    "wage_before": 31485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 121,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48510,
+                    "wage_after_5": 59543,
+                    "wage_before": 30128,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 43128,
+                    "wage_after_5": 70841,
+                    "wage_before": 30350,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "27-4012",
+            "supply": 20.33,
+            "title": "Broadcast Technicians"
+          },
+          {
+            "annual_openings": 70,
+            "annual_wage": 91850,
+            "awards_recent": 2,
+            "course_count": 5,
+            "enrolled": true,
+            "feeding_awards": 2,
+            "gap": 69,
+            "growth_rate": 0.01208679,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  38,
+                  33,
+                  33,
+                  30,
+                  30,
+                  31
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": [
+                  {
+                    "n": 336,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 48190,
+                    "wage_after_5": 62938,
+                    "wage_before": 31485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 121,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48510,
+                    "wage_after_5": 59543,
+                    "wage_before": 30128,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 43128,
+                    "wage_after_5": 70841,
+                    "wage_before": 30350,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  null,
+                  13,
+                  null,
+                  7,
+                  null,
+                  15,
+                  2,
+                  22
+                ],
+                "name": "Commercial Music",
+                "top6": "100500",
+                "wages": [
+                  {
+                    "n": 100,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 40483,
+                    "wage_after_5": 43376,
+                    "wage_before": 15605,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37123,
+                    "wage_after_5": 42276,
+                    "wage_before": 16348,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 45,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 30113,
+                    "wage_after_5": 43152,
+                    "wage_before": 13491,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "27-4014",
+            "supply": 0.67,
+            "title": "Sound Engineering Technicians"
+          },
+          {
+            "annual_openings": 400,
+            "annual_wage": 59710,
+            "awards_recent": 32,
+            "course_count": 20,
+            "enrolled": true,
+            "feeding_awards": 32,
+            "gap": 378,
+            "growth_rate": -0.025985883,
+            "in_demand": true,
+            "programs": [
+              {
+                "awards": [
+                  27,
+                  19,
+                  15,
+                  20,
+                  32
+                ],
+                "awards_recent": 32,
+                "enrollment": [
+                  374,
+                  434,
+                  383,
+                  406,
+                  472,
+                  568,
+                  555,
+                  524,
+                  580
+                ],
+                "name": "Digital Media",
+                "top6": "061400",
+                "wages": [
+                  {
+                    "n": 112,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 32026,
+                    "wage_after_5": 42968,
+                    "wage_before": 14818,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 67,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 26407,
+                    "wage_after_5": 42700,
+                    "wage_before": 15461,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 31788,
+                    "wage_after_5": 49541,
+                    "wage_before": 11220,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  16,
+                  28,
+                  23,
+                  29,
+                  34,
+                  46,
+                  40,
+                  34,
+                  14
+                ],
+                "name": "Applied Photography",
+                "top6": "101200",
+                "wages": [
+                  {
+                    "n": 116,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 27613,
+                    "wage_after_5": 48089,
+                    "wage_before": 19555,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 125,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 31143,
+                    "wage_after_5": 34575,
+                    "wage_before": 18150,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 35,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 41603,
+                    "wage_after_5": 49384,
+                    "wage_before": 39223,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "27-4021",
+            "supply": 22.33,
+            "title": "Photographers"
+          },
+          {
+            "annual_openings": 300,
+            "annual_wage": 50250,
+            "awards_recent": 18,
+            "course_count": 15,
+            "enrolled": true,
+            "feeding_awards": 18,
+            "gap": 289,
+            "growth_rate": -0.075778533,
+            "in_demand": true,
+            "programs": [
+              {
+                "awards": [
+                  2,
+                  3,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  111,
+                  90,
+                  97,
+                  105,
+                  108,
+                  121,
+                  122,
+                  128,
+                  132
+                ],
+                "name": "Office Technology/Office Computer Applications",
+                "top6": "051400",
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  12,
+                  10,
+                  8,
+                  7,
+                  18
+                ],
+                "awards_recent": 18,
+                "enrollment": [
+                  265,
+                  383,
+                  363,
+                  370,
+                  512,
+                  456,
+                  472,
+                  427,
+                  365
+                ],
+                "name": "Computer Programming",
+                "top6": "070710",
+                "wages": [
+                  {
+                    "n": 230,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45800,
+                    "wage_after_5": 75985,
+                    "wage_before": 20501,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 207,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60521,
+                    "wage_after_5": 73039,
+                    "wage_before": 28105,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 87,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64762,
+                    "wage_after_5": 85925,
+                    "wage_before": 39056,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "43-9021",
+            "supply": 11.0,
+            "title": "Data Entry Keyers"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 71460,
+            "awards_recent": 0,
+            "course_count": 1,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 130,
+            "growth_rate": -0.148580681,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  2,
+                  3,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  111,
+                  90,
+                  97,
+                  105,
+                  108,
+                  121,
+                  122,
+                  128,
+                  132
+                ],
+                "name": "Office Technology/Office Computer Applications",
+                "top6": "051400",
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "43-9022",
+            "supply": 0.0,
+            "title": "Word Processors and Typists"
+          },
+          {
+            "annual_openings": 10,
+            "annual_wage": 77500,
+            "awards_recent": 32,
+            "course_count": 19,
+            "enrolled": true,
+            "feeding_awards": 32,
+            "gap": -12,
+            "growth_rate": -0.0675106,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  27,
+                  19,
+                  15,
+                  20,
+                  32
+                ],
+                "awards_recent": 32,
+                "enrollment": [
+                  374,
+                  434,
+                  383,
+                  406,
+                  472,
+                  568,
+                  555,
+                  524,
+                  580
+                ],
+                "name": "Digital Media",
+                "top6": "061400",
+                "wages": [
+                  {
+                    "n": 112,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 32026,
+                    "wage_after_5": 42968,
+                    "wage_before": 14818,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 67,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 26407,
+                    "wage_after_5": 42700,
+                    "wage_before": 15461,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 31788,
+                    "wage_after_5": 49541,
+                    "wage_before": 11220,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "43-9031",
+            "supply": 22.33,
+            "title": "Desktop Publishers"
           }
         ],
         "name": "College of San Mateo"
@@ -2717,14 +3703,15 @@
       {
         "cells": [
           {
-            "annual_openings": 300,
-            "annual_wage": 96480,
+            "annual_openings": 320,
+            "annual_wage": 106060,
             "awards_recent": 37,
             "course_count": 4,
             "enrolled": true,
             "feeding_awards": 37,
-            "gap": 300,
-            "growth_rate": 0.102735988,
+            "gap": 290,
+            "growth_rate": 0.068270983,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -3014,18 +4001,19 @@
               }
             ],
             "soc_code": "15-1231",
-            "supply": 0.0,
+            "supply": 30.33,
             "title": "Computer Network Support Specialists"
           },
           {
-            "annual_openings": 1570,
-            "annual_wage": 82240,
+            "annual_openings": 1410,
+            "annual_wage": 89460,
             "awards_recent": 37,
             "course_count": 1,
             "enrolled": true,
             "feeding_awards": 37,
-            "gap": 1570,
-            "growth_rate": 0.09335463,
+            "gap": 1380,
+            "growth_rate": 0.031406215,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -3266,18 +4254,19 @@
               }
             ],
             "soc_code": "15-1232",
-            "supply": 0.0,
+            "supply": 30.33,
             "title": "Computer User Support Specialists"
           },
           {
-            "annual_openings": 590,
-            "annual_wage": 124990,
+            "annual_openings": 450,
+            "annual_wage": 127750,
             "awards_recent": 37,
             "course_count": 3,
             "enrolled": true,
             "feeding_awards": 37,
-            "gap": 590,
-            "growth_rate": 0.034603618,
+            "gap": 420,
+            "growth_rate": 0.03755526,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -3526,18 +4515,19 @@
               }
             ],
             "soc_code": "15-1244",
-            "supply": 0.0,
+            "supply": 30.33,
             "title": "Network and Computer Systems Administrators"
           },
           {
-            "annual_openings": 360,
-            "annual_wage": 146640,
+            "annual_openings": 210,
+            "annual_wage": 145400,
             "awards_recent": 32,
             "course_count": 5,
             "enrolled": true,
             "feeding_awards": 32,
-            "gap": 360,
-            "growth_rate": 0.033846548,
+            "gap": 185,
+            "growth_rate": 0.030929381,
+            "in_demand": false,
             "programs": [
               {
                 "awards": [
@@ -3737,18 +4727,19 @@
               }
             ],
             "soc_code": "15-1254",
-            "supply": 0.0,
+            "supply": 25.0,
             "title": "Web Developers"
           },
           {
-            "annual_openings": 950,
-            "annual_wage": 159900,
+            "annual_openings": 790,
+            "annual_wage": 174920,
             "awards_recent": 44,
             "course_count": 11,
             "enrolled": true,
             "feeding_awards": 44,
-            "gap": 950,
-            "growth_rate": 0.022862074,
+            "gap": 761,
+            "growth_rate": 0.017700807,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -4046,18 +5037,19 @@
               }
             ],
             "soc_code": "15-1255",
-            "supply": 0.0,
+            "supply": 29.0,
             "title": "Web and Digital Interface Designers"
           },
           {
-            "annual_openings": 280,
-            "annual_wage": 70330,
+            "annual_openings": 200,
+            "annual_wage": 70960,
             "awards_recent": 0,
             "course_count": 3,
             "enrolled": true,
             "feeding_awards": 0,
-            "gap": 280,
-            "growth_rate": 0.03656439,
+            "gap": 200,
+            "growth_rate": 0.032353659,
+            "in_demand": false,
             "programs": [
               {
                 "awards": [
@@ -4161,6 +5153,543 @@
             "soc_code": "27-4011",
             "supply": 0.0,
             "title": "Audio and Video Technicians"
+          },
+          {
+            "annual_openings": 70,
+            "annual_wage": 77170,
+            "awards_recent": 10,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 10,
+            "gap": 63,
+            "growth_rate": 0.005804783,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  16,
+                  11,
+                  6,
+                  6,
+                  10
+                ],
+                "awards_recent": 10,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": [
+                  {
+                    "n": 336,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 48190,
+                    "wage_after_5": 62938,
+                    "wage_before": 31485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 121,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48510,
+                    "wage_after_5": 59543,
+                    "wage_before": 30128,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 43128,
+                    "wage_after_5": 70841,
+                    "wage_before": 30350,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "27-4012",
+            "supply": 7.33,
+            "title": "Broadcast Technicians"
+          },
+          {
+            "annual_openings": 70,
+            "annual_wage": 91850,
+            "awards_recent": 10,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 10,
+            "gap": 63,
+            "growth_rate": 0.01208679,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  16,
+                  11,
+                  6,
+                  6,
+                  10
+                ],
+                "awards_recent": 10,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": [
+                  {
+                    "n": 336,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 48190,
+                    "wage_after_5": 62938,
+                    "wage_before": 31485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 121,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 48510,
+                    "wage_after_5": 59543,
+                    "wage_before": 30128,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 43128,
+                    "wage_after_5": 70841,
+                    "wage_before": 30350,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  5,
+                  10,
+                  8,
+                  10,
+                  9
+                ],
+                "name": "Commercial Music",
+                "top6": "100500",
+                "wages": [
+                  {
+                    "n": 100,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 40483,
+                    "wage_after_5": 43376,
+                    "wage_before": 15605,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37123,
+                    "wage_after_5": 42276,
+                    "wage_before": 16348,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 45,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 30113,
+                    "wage_after_5": 43152,
+                    "wage_before": 13491,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "27-4014",
+            "supply": 7.33,
+            "title": "Sound Engineering Technicians"
+          },
+          {
+            "annual_openings": 400,
+            "annual_wage": 59710,
+            "awards_recent": 1,
+            "course_count": 5,
+            "enrolled": true,
+            "feeding_awards": 1,
+            "gap": 400,
+            "growth_rate": -0.025985883,
+            "in_demand": true,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  88,
+                  108,
+                  111,
+                  104,
+                  138,
+                  230,
+                  154,
+                  141,
+                  322
+                ],
+                "name": "Digital Media",
+                "top6": "061400",
+                "wages": [
+                  {
+                    "n": 112,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 32026,
+                    "wage_after_5": 42968,
+                    "wage_before": 14818,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 67,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 26407,
+                    "wage_after_5": 42700,
+                    "wage_before": 15461,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 31788,
+                    "wage_after_5": 49541,
+                    "wage_before": 11220,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  188,
+                  110,
+                  226,
+                  44,
+                  138,
+                  87,
+                  115,
+                  26,
+                  22
+                ],
+                "name": "Applied Photography",
+                "top6": "101200",
+                "wages": [
+                  {
+                    "n": 116,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 27613,
+                    "wage_after_5": 48089,
+                    "wage_before": 19555,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 125,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 31143,
+                    "wage_after_5": 34575,
+                    "wage_before": 18150,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 35,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 41603,
+                    "wage_after_5": 49384,
+                    "wage_before": 39223,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "27-4021",
+            "supply": 0.33,
+            "title": "Photographers"
+          },
+          {
+            "annual_openings": 300,
+            "annual_wage": 50250,
+            "awards_recent": 3,
+            "course_count": 6,
+            "enrolled": true,
+            "feeding_awards": 3,
+            "gap": 299,
+            "growth_rate": -0.075778533,
+            "in_demand": true,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  170,
+                  197,
+                  156,
+                  249,
+                  172,
+                  222,
+                  175,
+                  221,
+                  168
+                ],
+                "name": "Office Technology/Office Computer Applications",
+                "top6": "051400",
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  71,
+                  66,
+                  92,
+                  80,
+                  95,
+                  81,
+                  177,
+                  148,
+                  127
+                ],
+                "name": "Computer Programming",
+                "top6": "070710",
+                "wages": [
+                  {
+                    "n": 230,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45800,
+                    "wage_after_5": 75985,
+                    "wage_before": 20501,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 207,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60521,
+                    "wage_after_5": 73039,
+                    "wage_before": 28105,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 87,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64762,
+                    "wage_after_5": 85925,
+                    "wage_before": 39056,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "43-9021",
+            "supply": 1.0,
+            "title": "Data Entry Keyers"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 71460,
+            "awards_recent": 3,
+            "course_count": 3,
+            "enrolled": true,
+            "feeding_awards": 3,
+            "gap": 129,
+            "growth_rate": -0.148580681,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  170,
+                  197,
+                  156,
+                  249,
+                  172,
+                  222,
+                  175,
+                  221,
+                  168
+                ],
+                "name": "Office Technology/Office Computer Applications",
+                "top6": "051400",
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "43-9022",
+            "supply": 1.0,
+            "title": "Word Processors and Typists"
+          },
+          {
+            "annual_openings": 10,
+            "annual_wage": 77500,
+            "awards_recent": 1,
+            "course_count": 2,
+            "enrolled": true,
+            "feeding_awards": 1,
+            "gap": 10,
+            "growth_rate": -0.0675106,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  88,
+                  108,
+                  111,
+                  104,
+                  138,
+                  230,
+                  154,
+                  141,
+                  322
+                ],
+                "name": "Digital Media",
+                "top6": "061400",
+                "wages": [
+                  {
+                    "n": 112,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 32026,
+                    "wage_after_5": 42968,
+                    "wage_before": 14818,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 67,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 26407,
+                    "wage_after_5": 42700,
+                    "wage_before": 15461,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 31788,
+                    "wage_after_5": 49541,
+                    "wage_before": 11220,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "43-9031",
+            "supply": 0.33,
+            "title": "Desktop Publishers"
           }
         ],
         "name": "Skyline College"
@@ -4168,14 +5697,15 @@
       {
         "cells": [
           {
-            "annual_openings": 300,
-            "annual_wage": 96480,
+            "annual_openings": 320,
+            "annual_wage": 106060,
             "awards_recent": 0,
             "course_count": 13,
             "enrolled": true,
             "feeding_awards": 0,
-            "gap": 300,
-            "growth_rate": 0.102735988,
+            "gap": 320,
+            "growth_rate": 0.068270983,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -4322,14 +5852,15 @@
             "title": "Computer Network Support Specialists"
           },
           {
-            "annual_openings": 1570,
-            "annual_wage": 82240,
+            "annual_openings": 1410,
+            "annual_wage": 89460,
             "awards_recent": 0,
             "course_count": 3,
             "enrolled": true,
             "feeding_awards": 0,
-            "gap": 1570,
-            "growth_rate": 0.09335463,
+            "gap": 1410,
+            "growth_rate": 0.031406215,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -4427,14 +5958,15 @@
             "title": "Computer User Support Specialists"
           },
           {
-            "annual_openings": 590,
-            "annual_wage": 124990,
+            "annual_openings": 450,
+            "annual_wage": 127750,
             "awards_recent": 0,
             "course_count": 12,
             "enrolled": true,
             "feeding_awards": 0,
-            "gap": 590,
-            "growth_rate": 0.034603618,
+            "gap": 450,
+            "growth_rate": 0.03755526,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -4540,14 +6072,15 @@
             "title": "Network and Computer Systems Administrators"
           },
           {
-            "annual_openings": 360,
-            "annual_wage": 146640,
+            "annual_openings": 210,
+            "annual_wage": 145400,
             "awards_recent": 1,
             "course_count": 15,
             "enrolled": true,
             "feeding_awards": 1,
-            "gap": 358,
-            "growth_rate": 0.033846548,
+            "gap": 208,
+            "growth_rate": 0.030929381,
+            "in_demand": false,
             "programs": [
               {
                 "awards": [
@@ -4698,18 +6231,19 @@
               }
             ],
             "soc_code": "15-1254",
-            "supply": 2.33,
+            "supply": 2.0,
             "title": "Web Developers"
           },
           {
-            "annual_openings": 950,
-            "annual_wage": 159900,
+            "annual_openings": 790,
+            "annual_wage": 174920,
             "awards_recent": 19,
             "course_count": 29,
             "enrolled": true,
             "feeding_awards": 19,
-            "gap": 931,
-            "growth_rate": 0.022862074,
+            "gap": 768,
+            "growth_rate": 0.017700807,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -5007,28 +6541,592 @@
               }
             ],
             "soc_code": "15-1255",
-            "supply": 18.66,
+            "supply": 22.0,
             "title": "Web and Digital Interface Designers"
           },
           {
-            "annual_openings": 280,
-            "annual_wage": 70330,
+            "annual_openings": 200,
+            "annual_wage": 70960,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 280,
-            "growth_rate": 0.03656439,
+            "gap": 200,
+            "growth_rate": 0.032353659,
+            "in_demand": false,
             "programs": [],
             "soc_code": "27-4011",
             "supply": 0.0,
             "title": "Audio and Video Technicians"
+          },
+          {
+            "annual_openings": 70,
+            "annual_wage": 77170,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 70,
+            "growth_rate": 0.005804783,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "27-4012",
+            "supply": 0.0,
+            "title": "Broadcast Technicians"
+          },
+          {
+            "annual_openings": 70,
+            "annual_wage": 91850,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 70,
+            "growth_rate": 0.01208679,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "27-4014",
+            "supply": 0.0,
+            "title": "Sound Engineering Technicians"
+          },
+          {
+            "annual_openings": 400,
+            "annual_wage": 59710,
+            "awards_recent": 19,
+            "course_count": 11,
+            "enrolled": true,
+            "feeding_awards": 19,
+            "gap": 378,
+            "growth_rate": -0.025985883,
+            "in_demand": true,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  2,
+                  3,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  25,
+                  null,
+                  20,
+                  null,
+                  26,
+                  null,
+                  24,
+                  null,
+                  44
+                ],
+                "name": "Digital Media",
+                "top6": "061400",
+                "wages": [
+                  {
+                    "n": 112,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 32026,
+                    "wage_after_5": 42968,
+                    "wage_before": 14818,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 67,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 26407,
+                    "wage_after_5": 42700,
+                    "wage_before": 15461,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 31788,
+                    "wage_after_5": 49541,
+                    "wage_before": 11220,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  14,
+                  13,
+                  18,
+                  17,
+                  13
+                ],
+                "awards_recent": 13,
+                "enrollment": [
+                  112,
+                  104,
+                  139,
+                  97,
+                  128,
+                  104,
+                  137,
+                  104,
+                  135
+                ],
+                "name": "Multimedia",
+                "top6": "061410",
+                "wages": [
+                  {
+                    "n": 115,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 28138,
+                    "wage_after_5": 42909,
+                    "wage_before": 19432,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 89,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 28158,
+                    "wage_after_5": 41817,
+                    "wage_before": 18614,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 17,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 36474,
+                    "wage_after_5": 42240,
+                    "wage_before": 23245,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  2,
+                  2,
+                  0,
+                  7,
+                  5
+                ],
+                "awards_recent": 5,
+                "enrollment": [
+                  30,
+                  46,
+                  44,
+                  36,
+                  29,
+                  30,
+                  33,
+                  20,
+                  25
+                ],
+                "name": "Computer Graphics and Digital Imagery",
+                "top6": "061460",
+                "wages": [
+                  {
+                    "n": 64,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 33283,
+                    "wage_after_5": 43733,
+                    "wage_before": 14711,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 41167,
+                    "wage_after_5": 45782,
+                    "wage_before": 23614,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 27,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 45087,
+                    "wage_after_5": null,
+                    "wage_before": 15854,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "27-4021",
+            "supply": 22.0,
+            "title": "Photographers"
+          },
+          {
+            "annual_openings": 300,
+            "annual_wage": 50250,
+            "awards_recent": 8,
+            "course_count": 20,
+            "enrolled": true,
+            "feeding_awards": 8,
+            "gap": 294,
+            "growth_rate": -0.075778533,
+            "in_demand": true,
+            "programs": [
+              {
+                "awards": [
+                  3,
+                  6,
+                  2,
+                  7,
+                  8
+                ],
+                "awards_recent": 8,
+                "enrollment": [
+                  78,
+                  231,
+                  171,
+                  225,
+                  142,
+                  210,
+                  158,
+                  173,
+                  123
+                ],
+                "name": "Office Technology/Office Computer Applications",
+                "top6": "051400",
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  139,
+                  178,
+                  155,
+                  210,
+                  183,
+                  206,
+                  206,
+                  191,
+                  186
+                ],
+                "name": "Computer Programming",
+                "top6": "070710",
+                "wages": [
+                  {
+                    "n": 230,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45800,
+                    "wage_after_5": 75985,
+                    "wage_before": 20501,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 207,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60521,
+                    "wage_after_5": 73039,
+                    "wage_before": 28105,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 87,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64762,
+                    "wage_after_5": 85925,
+                    "wage_before": 39056,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "43-9021",
+            "supply": 5.67,
+            "title": "Data Entry Keyers"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 71460,
+            "awards_recent": 8,
+            "course_count": 11,
+            "enrolled": true,
+            "feeding_awards": 8,
+            "gap": 124,
+            "growth_rate": -0.148580681,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  3,
+                  6,
+                  2,
+                  7,
+                  8
+                ],
+                "awards_recent": 8,
+                "enrollment": [
+                  78,
+                  231,
+                  171,
+                  225,
+                  142,
+                  210,
+                  158,
+                  173,
+                  123
+                ],
+                "name": "Office Technology/Office Computer Applications",
+                "top6": "051400",
+                "wages": [
+                  {
+                    "n": 484,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34274,
+                    "wage_after_5": 44846,
+                    "wage_before": 18863,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 442,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34164,
+                    "wage_after_5": 42814,
+                    "wage_before": 18630,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 156,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 37632,
+                    "wage_after_5": 49953,
+                    "wage_before": 23507,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "43-9022",
+            "supply": 5.67,
+            "title": "Word Processors and Typists"
+          },
+          {
+            "annual_openings": 10,
+            "annual_wage": 77500,
+            "awards_recent": 19,
+            "course_count": 12,
+            "enrolled": true,
+            "feeding_awards": 19,
+            "gap": -12,
+            "growth_rate": -0.0675106,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  2,
+                  3,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  25,
+                  null,
+                  20,
+                  null,
+                  26,
+                  null,
+                  24,
+                  null,
+                  44
+                ],
+                "name": "Digital Media",
+                "top6": "061400",
+                "wages": [
+                  {
+                    "n": 112,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 32026,
+                    "wage_after_5": 42968,
+                    "wage_before": 14818,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 67,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 26407,
+                    "wage_after_5": 42700,
+                    "wage_before": 15461,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 26,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 31788,
+                    "wage_after_5": 49541,
+                    "wage_before": 11220,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  14,
+                  13,
+                  18,
+                  17,
+                  13
+                ],
+                "awards_recent": 13,
+                "enrollment": [
+                  112,
+                  104,
+                  139,
+                  97,
+                  128,
+                  104,
+                  137,
+                  104,
+                  135
+                ],
+                "name": "Multimedia",
+                "top6": "061410",
+                "wages": [
+                  {
+                    "n": 115,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 28138,
+                    "wage_after_5": 42909,
+                    "wage_before": 19432,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 89,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 28158,
+                    "wage_after_5": 41817,
+                    "wage_before": 18614,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 17,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 36474,
+                    "wage_after_5": 42240,
+                    "wage_before": 23245,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  11,
+                  null,
+                  null,
+                  null,
+                  18,
+                  null,
+                  22,
+                  null
+                ],
+                "name": "Desktop Publishing",
+                "top6": "061450",
+                "wages": []
+              },
+              {
+                "awards": [
+                  2,
+                  2,
+                  0,
+                  7,
+                  5
+                ],
+                "awards_recent": 5,
+                "enrollment": [
+                  30,
+                  46,
+                  44,
+                  36,
+                  29,
+                  30,
+                  33,
+                  20,
+                  25
+                ],
+                "name": "Computer Graphics and Digital Imagery",
+                "top6": "061460",
+                "wages": [
+                  {
+                    "n": 64,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 33283,
+                    "wage_after_5": 43733,
+                    "wage_before": 14711,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 72,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 41167,
+                    "wage_after_5": 45782,
+                    "wage_before": 23614,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 27,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 45087,
+                    "wage_after_5": null,
+                    "wage_before": 15854,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "43-9031",
+            "supply": 22.0,
+            "title": "Desktop Publishers"
           }
         ],
         "name": "Ca\u00f1ada College"
       }
     ],
     "coverage_awards_only": true,
+    "demand_criteria": {
+      "min_openings": 250,
+      "min_wage": 50000
+    },
     "enrollment_terms": [
       "Fall 2021",
       "Spring 2022",
@@ -5040,7 +7138,7 @@
       "Spring 2025",
       "Fall 2025"
     ],
-    "executive_summary": "This view examines the regional demand landscape across the 6 ict / digital media occupations the San Mateo County CCD \u2014 ICT / Digital Media targets in the Bay Area regional labor market. Regional demand for these occupations totals 4,050 openings per year.",
+    "executive_summary": "This view examines the regional demand landscape across the 12 ict / digital media occupations the San Mateo County CCD \u2014 ICT / Digital Media targets in the Bay Area regional labor market. Regional demand for these occupations totals 4,360 openings per year.",
     "is_sector_priority": false,
     "region": "Bay",
     "region_display": "Bay Area",

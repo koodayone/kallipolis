@@ -2,6 +2,114 @@
   "/employers": {
     "employers": [
       {
+        "description": "Kids Connection provides programs and services for children.",
+        "display_name": null,
+        "lat": 37.5472275,
+        "lng": -122.2790843,
+        "naics4": "6244",
+        "naics_title": "Child Care Services",
+        "name": "Kids Connection",
+        "relevance": 60.84,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2011",
+          "39-9011",
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "https://www.kidsconnectionschool.com/"
+      },
+      {
+        "description": "North Hillsborough Preschool is an early childhood education center.",
+        "display_name": null,
+        "lat": 37.5730739,
+        "lng": -122.3639535,
+        "naics4": "6244",
+        "naics_title": "Child Care Services",
+        "name": "North Hillsborough Preschool",
+        "relevance": 60.84,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2011",
+          "39-9011",
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "https://www.hillsboroughrecreation.com/north_preschool/index.php"
+      },
+      {
+        "description": "Turnbull Development Children's Services focuses on child development programs.",
+        "display_name": null,
+        "lat": 37.5765793,
+        "lng": -122.3262945,
+        "naics4": "6244",
+        "naics_title": "Child Care Services",
+        "name": "Turnbull Development Children's Services",
+        "relevance": 60.84,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2011",
+          "39-9011",
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "http://www.turnbullcdc.com/"
+      },
+      {
+        "description": "West Hillsborough Preschool is an early childhood education center.",
+        "display_name": null,
+        "lat": 37.5547311,
+        "lng": -122.3755025,
+        "naics4": "6244",
+        "naics_title": "Child Care Services",
+        "name": "West Hillsborough Preschool",
+        "relevance": 60.84,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2011",
+          "39-9011",
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "https://www.hillsboroughrecreation.com/west_preschool/index.php"
+      },
+      {
         "description": "Half Moon Bay Golf Links is a coastal golf resort in Half Moon Bay, CA, operating two 18-hole championship courses \u2014 the Arnold Palmer-designed Old Course and the Arthur Hills-designed Ocean Course \u2014 both ranked among the top public courses in Northern California. The property includes Mullins Steakhouse, a full-service golf shop, and event facilities for corporate retreats, tournaments, and weddings. Operations employ golf course maintenance, hospitality, food and beverage, and events coordination staff across the San Mateo County coast location.",
         "display_name": null,
         "lat": 37.4332584,
@@ -9,16 +117,20 @@
         "naics4": "7139",
         "naics_title": "Other Amusement and Recreation Industries",
         "name": "Half Moon Bay Golf Links",
-        "relevance": 13.79,
+        "relevance": 15.94,
         "sector": "Arts & Entertainment",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 1,
+        "soc_count": 3,
         "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
           "39-9031": "Exercise Trainers and Group Fitness Instructors"
         },
         "socs": [
-          "39-9031"
+          "39-9031",
+          "39-9011",
+          "25-2011"
         ],
         "website": "https://halfmoonbaygolf.com/"
       },
@@ -30,16 +142,20 @@
         "naics4": "7139",
         "naics_title": "Other Amusement and Recreation Industries",
         "name": "Menlo Circus Club",
-        "relevance": 13.79,
+        "relevance": 15.94,
         "sector": "Arts & Entertainment",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 1,
+        "soc_count": 3,
         "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
           "39-9031": "Exercise Trainers and Group Fitness Instructors"
         },
         "socs": [
-          "39-9031"
+          "39-9031",
+          "39-9011",
+          "25-2011"
         ],
         "website": "https://www.menlocircusclub.com/"
       },
@@ -51,16 +167,20 @@
         "naics4": "7139",
         "naics_title": "Other Amusement and Recreation Industries",
         "name": "Menlo Country Club",
-        "relevance": 13.79,
+        "relevance": 15.94,
         "sector": "Arts & Entertainment",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 1,
+        "soc_count": 3,
         "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
           "39-9031": "Exercise Trainers and Group Fitness Instructors"
         },
         "socs": [
-          "39-9031"
+          "39-9031",
+          "39-9011",
+          "25-2011"
         ],
         "website": "https://www.menlocc.com/"
       },
@@ -72,16 +192,20 @@
         "naics4": "7139",
         "naics_title": "Other Amusement and Recreation Industries",
         "name": "Menlo Park Recreation Center",
-        "relevance": 13.79,
+        "relevance": 15.94,
         "sector": "Arts & Entertainment",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 1,
+        "soc_count": 3,
         "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
           "39-9031": "Exercise Trainers and Group Fitness Instructors"
         },
         "socs": [
-          "39-9031"
+          "39-9031",
+          "39-9011",
+          "25-2011"
         ],
         "website": "https://www.menlopark.gov/Government/Departments/Library-and-Community-Services/Recreation-and-sports"
       },
@@ -93,16 +217,20 @@
         "naics4": "7139",
         "naics_title": "Other Amusement and Recreation Industries",
         "name": "Peninsula Jewish Community Center",
-        "relevance": 13.79,
+        "relevance": 15.94,
         "sector": "Arts & Entertainment",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 1,
+        "soc_count": 3,
         "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
           "39-9031": "Exercise Trainers and Group Fitness Instructors"
         },
         "socs": [
-          "39-9031"
+          "39-9031",
+          "39-9011",
+          "25-2011"
         ],
         "website": "https://pjcc.org/"
       },
@@ -114,417 +242,427 @@
         "naics4": "7139",
         "naics_title": "Other Amusement and Recreation Industries",
         "name": "Prime Time Athletic Club",
-        "relevance": 13.79,
+        "relevance": 15.94,
         "sector": "Arts & Entertainment",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 1,
+        "soc_count": 3,
         "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
           "39-9031": "Exercise Trainers and Group Fitness Instructors"
         },
         "socs": [
-          "39-9031"
+          "39-9031",
+          "39-9011",
+          "25-2011"
         ],
         "website": "https://primetimeathleticclub.com/"
       },
       {
-        "description": "Ann's Nails & Spa is a full-service nail salon and day spa in Palm Desert, CA offering manicures, pedicures, nail enhancements, gel applications, waxing, eyelash extensions, and specialty treatments such as collagen hand therapy. The salon operates six days a week, accepts walk-ins and appointments, and employs licensed nail technicians recognized for detailed nail art and spa services.",
+        "description": "Consular Corps College is an educational institution.",
         "display_name": null,
-        "lat": 37.4532061,
-        "lng": -122.1823518,
-        "naics4": "8121",
-        "naics_title": "Personal Care Services",
-        "name": "Ann's Nails Spa",
-        "relevance": 0.23,
-        "sector": "Other Services",
-        "size_class": "1,000-4,999 employees",
-        "size_rank": 9,
-        "soc_count": 1,
-        "soc_titles": {
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "39-9031"
-        ],
-        "website": "https://annsnailsandspa.com/"
-      },
-      {
-        "description": "Axis Performance Center is a facility focused on physical performance.",
-        "display_name": null,
-        "lat": 37.4533803,
-        "lng": -122.1811254,
-        "naics4": "8121",
-        "naics_title": "Personal Care Services",
-        "name": "Axis Performance Center",
-        "relevance": 0.23,
-        "sector": "Other Services",
+        "lat": 37.5996993,
+        "lng": -122.3909759,
+        "naics4": "6113",
+        "naics_title": "Colleges, Universities, and Professional Schools",
+        "name": "Consular Corps College",
+        "relevance": 4.33,
+        "sector": "Education",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 1,
+        "soc_count": 4,
         "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "25-9044": "Teaching Assistants, Postsecondary",
+          "39-9011": "Childcare Workers",
           "39-9031": "Exercise Trainers and Group Fitness Instructors"
         },
         "socs": [
-          "39-9031"
+          "25-9044",
+          "25-2011",
+          "39-9031",
+          "39-9011"
         ],
-        "website": "https://www.axispt.com/"
+        "website": "https://www.consular-corps-college.org/"
       },
       {
-        "description": "Jumpstartmd offers services related to health and wellness.",
+        "description": "Abbott Middle School is an educational institution for middle school students.",
         "display_name": null,
-        "lat": 37.4933594,
-        "lng": -122.2307364,
-        "naics4": "8121",
-        "naics_title": "Personal Care Services",
-        "name": "Jumpstartmd",
-        "relevance": 0.23,
-        "sector": "Other Services",
+        "lat": 37.5296066,
+        "lng": -122.3086591,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Abbott Middle School",
+        "relevance": 3.39,
+        "sector": "Education",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 1,
+        "soc_count": 4,
         "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
           "39-9031": "Exercise Trainers and Group Fitness Instructors"
         },
         "socs": [
+          "25-2012",
+          "39-9011",
+          "25-2011",
           "39-9031"
         ],
-        "website": "https://jumpstartmd.com/location/redwood-city/"
+        "website": "https://abbott.smfcsd.net/"
       },
       {
-        "description": "Menlo Park Barber Shop is a local barber shop.",
+        "description": "Allen Elementary School is an educational institution for elementary students.",
         "display_name": null,
-        "lat": 37.4294388,
-        "lng": -122.2049813,
-        "naics4": "8121",
-        "naics_title": "Personal Care Services",
-        "name": "Menlo Park Barber Shop",
-        "relevance": 0.23,
-        "sector": "Other Services",
+        "lat": 37.625392,
+        "lng": -122.413994,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Allen Elementary School",
+        "relevance": 3.39,
+        "sector": "Education",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 1,
+        "soc_count": 4,
         "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
           "39-9031": "Exercise Trainers and Group Fitness Instructors"
         },
         "socs": [
+          "25-2012",
+          "39-9011",
+          "25-2011",
           "39-9031"
         ],
-        "website": "http://www.menloparkbarbershop.com/"
+        "website": "https://www.sbpsd.org/o/aes"
       },
       {
-        "description": "Stella & Dot is a direct-to-consumer jewelry and accessories brand selling necklaces, bracelets, earrings, rings, and charms through its e-commerce platform and a network of independent brand ambassadors. Founded by Jessica Herrin and headquartered in the United States, the company combines an online retail storefront with a social-selling model that has paid out over $500 million to ambassadors. Product development, digital marketing, e-commerce operations, and ambassador support functions drive the majority of their employment.",
+        "description": "Alta Loma Middle School is an educational institution for middle school students.",
         "display_name": null,
-        "lat": 37.6760919,
-        "lng": -122.3845587,
-        "naics4": "8121",
-        "naics_title": "Personal Care Services",
-        "name": "Stella & Dot",
-        "relevance": 0.23,
-        "sector": "Other Services",
+        "lat": 37.6594383,
+        "lng": -122.4518117,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Alta Loma Middle School",
+        "relevance": 3.39,
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9011",
+          "25-2011",
+          "39-9031"
+        ],
+        "website": "https://altaloma.ssfusd.org/"
+      },
+      {
+        "description": "Aragon High School is an educational institution for high school students.",
+        "display_name": null,
+        "lat": 37.5293696,
+        "lng": -122.306551,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Aragon High School",
+        "relevance": 3.39,
+        "sector": "Education",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 1,
+        "soc_count": 4,
         "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
           "39-9031": "Exercise Trainers and Group Fitness Instructors"
         },
         "socs": [
+          "25-2012",
+          "39-9011",
+          "25-2011",
           "39-9031"
         ],
-        "website": "https://www.stelladot.com/"
+        "website": "https://ahs.smuhsd.org/"
       },
       {
-        "description": "An unidentified business located in Millbrae.",
+        "description": "Audubon Elementary School is an educational institution for elementary students.",
         "display_name": null,
-        "lat": 37.6046616,
-        "lng": -122.3967628,
-        "naics4": "6213",
-        "naics_title": "Offices of Other Health Practitioners",
-        "name": "Candenc Millbrae",
-        "relevance": 0.22,
-        "sector": "Healthcare",
+        "lat": 37.5664962,
+        "lng": -122.2581318,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Audubon Elementary School",
+        "relevance": 3.39,
+        "sector": "Education",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 1,
+        "soc_count": 4,
         "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
           "39-9031": "Exercise Trainers and Group Fitness Instructors"
         },
         "socs": [
+          "25-2012",
+          "39-9011",
+          "25-2011",
           "39-9031"
         ],
-        "website": "https://cogirusa.com/communities/cadence-millbrae/"
+        "website": "https://audubon.smfcsd.net/"
       },
       {
-        "description": "Peninsula Regent is a licensed Residential Care Facility for the Elderly (RCFE #410508359) located at 1 Baldwin Avenue in San Mateo, California, offering ownership-based condominium residences for active older adults. The community provides hospitality-style services including chef-prepared dining, fitness and wellness programs, and curated social activities within a Mediterranean-style campus. Operational roles span hospitality, culinary, health and wellness, facilities management, and residential services.",
+        "description": "Baden Therapeutic Day School provides therapeutic education.",
         "display_name": null,
-        "lat": 37.5667843,
-        "lng": -122.3259143,
-        "naics4": "6213",
-        "naics_title": "Offices of Other Health Practitioners",
-        "name": "Peninsula Regent",
-        "relevance": 0.22,
-        "sector": "Healthcare",
+        "lat": 37.652027,
+        "lng": -122.4338059,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Baden Therapeutic Day School",
+        "relevance": 3.39,
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9011",
+          "25-2011",
+          "39-9031"
+        ],
+        "website": "https://baden.ssfusd.org/"
+      },
+      {
+        "description": "Bayside Academy is an educational institution.",
+        "display_name": null,
+        "lat": 37.5654204,
+        "lng": -122.3005517,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Bayside Academy",
+        "relevance": 3.39,
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9011",
+          "25-2011",
+          "39-9031"
+        ],
+        "website": "https://bayside.smfcsd.net/"
+      },
+      {
+        "description": "Baywood Elementary School is an educational institution for elementary students.",
+        "display_name": null,
+        "lat": 37.5293696,
+        "lng": -122.306551,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Baywood Elementary School",
+        "relevance": 3.39,
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9011",
+          "25-2011",
+          "39-9031"
+        ],
+        "website": "https://baywood.smfcsd.net/"
+      },
+      {
+        "description": "Beach Park Elementary School is an educational institution for elementary students.",
+        "display_name": null,
+        "lat": 37.5580025,
+        "lng": -122.2704946,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Beach Park Elementary School",
+        "relevance": 3.39,
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9011",
+          "25-2011",
+          "39-9031"
+        ],
+        "website": "https://beachpark.smfcsd.net/"
+      },
+      {
+        "description": "Borel Middle School is an educational institution for middle school students.",
+        "display_name": null,
+        "lat": 37.5525255,
+        "lng": -122.3192481,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Borel Middle School",
+        "relevance": 3.39,
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9011",
+          "25-2011",
+          "39-9031"
+        ],
+        "website": "https://borel.smfcsd.net/"
+      },
+      {
+        "description": "Bowditch Middle School is an educational institution for middle school students.",
+        "display_name": null,
+        "lat": 37.5604187,
+        "lng": -122.2506881,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Bowditch Middle School",
+        "relevance": 3.39,
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9011",
+          "25-2011",
+          "39-9031"
+        ],
+        "website": "https://bowditch.smfcsd.net/"
+      },
+      {
+        "description": "Brewer Island Elementary School is an educational institution for elementary students.",
+        "display_name": null,
+        "lat": 37.5610694,
+        "lng": -122.2603444,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Brewer Island Elementary School",
+        "relevance": 3.39,
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9011",
+          "25-2011",
+          "39-9031"
+        ],
+        "website": "https://brewerisland.smfcsd.net/"
+      },
+      {
+        "description": "Bright Horizon Chinese School offers Chinese language education.",
+        "display_name": null,
+        "lat": 37.5603248,
+        "lng": -122.2743221,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Bright Horizon Chinese School",
+        "relevance": 3.39,
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9011",
+          "25-2011",
+          "39-9031"
+        ],
+        "website": "https://brighthorizonchineseschool.com/"
+      },
+      {
+        "description": "Brittan Acres School is an educational institution.",
+        "display_name": null,
+        "lat": 37.4962749,
+        "lng": -122.2637179,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Brittan Acres School",
+        "relevance": 3.39,
+        "sector": "Education",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 1,
+        "soc_count": 4,
         "soc_titles": {
+          "25-2011": "Preschool Teachers, Except Special Education",
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9011": "Childcare Workers",
           "39-9031": "Exercise Trainers and Group Fitness Instructors"
         },
         "socs": [
+          "25-2012",
+          "39-9011",
+          "25-2011",
           "39-9031"
         ],
-        "website": "https://www.peninsularegent.org/"
-      },
-      {
-        "description": "A healthcare provider in Atherton.",
-        "display_name": null,
-        "lat": 37.4502138,
-        "lng": -122.1840692,
-        "naics4": "6233",
-        "naics_title": "Continuing Care Retirement Communities and Assisted Living Facilities for the Elderly",
-        "name": "Atherton Health Care",
-        "relevance": 0.12,
-        "sector": "Healthcare",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 1,
-        "soc_titles": {
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "39-9031"
-        ],
-        "website": "https://athertonparkpostacute.com/"
-      },
-      {
-        "description": "A senior living community.",
-        "display_name": null,
-        "lat": 37.5590805,
-        "lng": -122.2684188,
-        "naics4": "6233",
-        "naics_title": "Continuing Care Retirement Communities and Assisted Living Facilities for the Elderly",
-        "name": "Atria At Foster Square",
-        "relevance": 0.12,
-        "sector": "Healthcare",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 1,
-        "soc_titles": {
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "39-9031"
-        ],
-        "website": "https://www.atriaseniorliving.com/retirement-communities/atria-at-foster-square-foster-city-ca"
-      },
-      {
-        "description": "A provider of senior living services.",
-        "display_name": null,
-        "lat": 37.5590604,
-        "lng": -122.2969242,
-        "naics4": "6233",
-        "naics_title": "Continuing Care Retirement Communities and Assisted Living Facilities for the Elderly",
-        "name": "Atria Senior Living",
-        "relevance": 0.12,
-        "sector": "Healthcare",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 1,
-        "soc_titles": {
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "39-9031"
-        ],
-        "website": "https://www.atriaseniorliving.com/retirement-communities/atria-san-mateo-san-mateo-ca/"
-      },
-      {
-        "description": "A healthcare center located in Belmont.",
-        "display_name": null,
-        "lat": 37.5101008,
-        "lng": -122.2981577,
-        "naics4": "6233",
-        "naics_title": "Continuing Care Retirement Communities and Assisted Living Facilities for the Elderly",
-        "name": "Belmont Healthcare Center",
-        "relevance": 0.12,
-        "sector": "Healthcare",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 1,
-        "soc_titles": {
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "39-9031"
-        ],
-        "website": "https://belmonthcc.com/"
-      },
-      {
-        "description": "The Belmont Police Department serves the City of Belmont on the San Francisco Peninsula with approximately 50 full-time personnel, including 31 sworn officers organized into Patrol, Traffic, Investigations, K-9, Youth Services, SWAT, and Crisis Negotiation units. The department operates the C.A.R.E. (Crisis Assessment Response and Education) and T.R.A.C. (Tracking and Recovery of Adults and Children) programs, and employs dispatchers, records technicians, code enforcement officers, and community service officers alongside sworn staff.",
-        "display_name": null,
-        "lat": 37.5182829,
-        "lng": -122.2774823,
-        "naics4": "9221",
-        "naics_title": "Justice, Public Order, and Safety Activities",
-        "name": "Belmont Police",
-        "relevance": 0.12,
-        "sector": "Government",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 1,
-        "soc_titles": {
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "39-9031"
-        ],
-        "website": "https://www.belmont.gov/departments/police"
-      },
-      {
-        "description": "Brookdale Redwood City is a licensed assisted living and memory care community at 485 Woodside Road serving up to 75 residents in Redwood City. The community provides assisted living, memory care, independent living, respite, and hospice care, with 24-hour nursing staff, medication management, diabetes care, and on-site therapy coordination. Workforce roles include resident care aides, licensed nurses, medication technicians, and activity and dining staff.",
-        "display_name": null,
-        "lat": 37.4903432,
-        "lng": -122.2117774,
-        "naics4": "6233",
-        "naics_title": "Continuing Care Retirement Communities and Assisted Living Facilities for the Elderly",
-        "name": "Brookdale Redwood City",
-        "relevance": 0.12,
-        "sector": "Healthcare",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 1,
-        "soc_titles": {
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "39-9031"
-        ],
-        "website": "https://www.brookdale.com/en/communities/brookdale-redwood-city.html"
-      },
-      {
-        "description": "The Central County Fire Department provides fire suppression and emergency response services.",
-        "display_name": null,
-        "lat": 37.5865829,
-        "lng": -122.3384383,
-        "naics4": "9221",
-        "naics_title": "Justice, Public Order, and Safety Activities",
-        "name": "Central County Fire Department",
-        "relevance": 0.12,
-        "sector": "Government",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 1,
-        "soc_titles": {
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "39-9031"
-        ],
-        "website": "https://www.ccfd.org/"
-      },
-      {
-        "description": "The Daly City Police Department is responsible for public safety and law enforcement in Daly City.",
-        "display_name": null,
-        "lat": 37.6911085,
-        "lng": -122.4739145,
-        "naics4": "9221",
-        "naics_title": "Justice, Public Order, and Safety Activities",
-        "name": "Daly City Police",
-        "relevance": 0.12,
-        "sector": "Government",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 1,
-        "soc_titles": {
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "39-9031"
-        ],
-        "website": "https://www.dalycity.org/1231/Police"
-      },
-      {
-        "description": "Daly City's Department of Water and Wastewater Resources operates the wastewater treatment and disposal system for the North San Mateo County Sanitation District, managing collection infrastructure, treatment plant operations, and environmental compliance at its facility on Lake Merced Boulevard. The department also administers drinking water supply services and recycles treatment plant byproducts as part of its environmental stewardship mission. Operations employ water and wastewater treatment plant operators, environmental compliance staff, and utility engineers serving the North San Mateo County service area.",
-        "display_name": null,
-        "lat": 37.7076798,
-        "lng": -122.4858219,
-        "naics4": "9241",
-        "naics_title": "Administration of Environmental Quality Programs",
-        "name": "Daly City Wastewater",
-        "relevance": 0.12,
-        "sector": "Government",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 1,
-        "soc_titles": {
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "39-9031"
-        ],
-        "website": "https://www.dalycity.org/1036/Wastewater"
-      },
-      {
-        "description": "The East Palo Alto Police Department is dedicated to serving and protecting the community of East Palo Alto.",
-        "display_name": null,
-        "lat": 37.4746236,
-        "lng": -122.1341991,
-        "naics4": "9221",
-        "naics_title": "Justice, Public Order, and Safety Activities",
-        "name": "East Palo Alto Police",
-        "relevance": 0.12,
-        "sector": "Government",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 1,
-        "soc_titles": {
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "39-9031"
-        ],
-        "website": "https://www.ci.east-palo-alto.ca.us/police"
-      },
-      {
-        "description": "The Foster City Fire Department provides emergency services and fire prevention to Foster City.",
-        "display_name": null,
-        "lat": 37.5511544,
-        "lng": -122.281399,
-        "naics4": "9221",
-        "naics_title": "Justice, Public Order, and Safety Activities",
-        "name": "Foster City Fire Department",
-        "relevance": 0.12,
-        "sector": "Government",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 1,
-        "soc_titles": {
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "39-9031"
-        ],
-        "website": "https://www.fostercity.org/fire"
-      },
-      {
-        "description": "A senior living community.",
-        "display_name": null,
-        "lat": 37.5188101,
-        "lng": -122.2968721,
-        "naics4": "6233",
-        "naics_title": "Continuing Care Retirement Communities and Assisted Living Facilities for the Elderly",
-        "name": "Ivy Park At Belmont",
-        "relevance": 0.12,
-        "sector": "Healthcare",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 1,
-        "soc_titles": {
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "39-9031"
-        ],
-        "website": "https://ivyliving.com/belmont/"
+        "website": "https://brittanacres.scsdk8.org/"
       }
     ],
     "region": "Bay",
@@ -534,7 +672,7 @@
       "San Mateo"
     ],
     "shown": 25,
-    "total": 154
+    "total": 184
   },
   "/programs": {
     "coverage_awards_only": true,
@@ -542,40 +680,112 @@
     "matrix": {
       "cells": [
         {
-          "awards": 23,
           "college": "College of San Mateo",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "080200"
+        },
+        {
+          "college": "Skyline College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "080200"
+        },
+        {
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "projected": 0.3,
+          "top6": "080200"
+        },
+        {
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "projected": 1.0,
+          "top6": "083560"
+        },
+        {
+          "college": "Skyline College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "083560"
+        },
+        {
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "083560"
+        },
+        {
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "130500"
+        },
+        {
+          "college": "Skyline College",
           "enrolled": true,
-          "top6": "083520"
+          "projected": 35.3,
+          "top6": "130500"
         },
         {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "top6": "083520"
-        },
-        {
-          "awards": 0,
           "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "top6": "083520"
+          "enrolled": true,
+          "projected": 37.3,
+          "top6": "130500"
         },
         {
-          "awards": 1,
           "college": "College of San Mateo",
           "enrolled": false,
-          "top6": "083560"
+          "projected": 0.0,
+          "top6": "130520"
         },
         {
-          "awards": 0,
           "college": "Skyline College",
-          "enrolled": false,
-          "top6": "083560"
+          "enrolled": true,
+          "projected": 1.3,
+          "top6": "130520"
         },
         {
-          "awards": 0,
           "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "projected": 8.7,
+          "top6": "130520"
+        },
+        {
+          "college": "College of San Mateo",
           "enrolled": false,
-          "top6": "083560"
+          "projected": 0.0,
+          "top6": "130580"
+        },
+        {
+          "college": "Skyline College",
+          "enrolled": true,
+          "projected": 6.3,
+          "top6": "130580"
+        },
+        {
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "projected": 0.0,
+          "top6": "130580"
+        },
+        {
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "130590"
+        },
+        {
+          "college": "Skyline College",
+          "enrolled": true,
+          "projected": 3.3,
+          "top6": "130590"
+        },
+        {
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "projected": 0.0,
+          "top6": "130590"
         }
       ],
       "colleges": [
@@ -590,31 +800,60 @@
     "sector": "Education & Human Development",
     "tops": [
       {
-        "awards_total": 23,
-        "enrollment_total": 99,
-        "name": "Fitness Trainer",
-        "soc_count": 1,
-        "top6": "083520"
+        "enrollment_total": 868,
+        "name": "Child Development/Early Care and Education",
+        "projected_supply": 72.7,
+        "soc_count": 3,
+        "top6": "130500"
       },
       {
-        "awards_total": 1,
+        "enrollment_total": 114,
+        "name": "Children with Special Needs",
+        "projected_supply": 10.0,
+        "soc_count": 3,
+        "top6": "130520"
+      },
+      {
+        "enrollment_total": 46,
+        "name": "Child Development Administration and Management",
+        "projected_supply": 6.3,
+        "soc_count": 3,
+        "top6": "130580"
+      },
+      {
+        "enrollment_total": 108,
+        "name": "Infants and Toddlers",
+        "projected_supply": 3.3,
+        "soc_count": 3,
+        "top6": "130590"
+      },
+      {
         "enrollment_total": 0,
         "name": "Coaching",
+        "projected_supply": 1.0,
         "soc_count": 1,
         "top6": "083560"
+      },
+      {
+        "enrollment_total": 0,
+        "name": "Educational Aide (Teacher Assistant)",
+        "projected_supply": 0.3,
+        "soc_count": 3,
+        "top6": "080200"
       }
-    ]
+    ],
+    "total_supply": 93.7
   },
   "landscape": {
     "aggregate": {
-      "candidate_employers": 241,
-      "combined_awards": 24,
-      "combined_supply_total": 6.0,
-      "gap": 2944,
+      "candidate_employers": 294,
+      "combined_awards": 102,
+      "combined_supply_total": 93.7,
+      "gap": 14666,
       "n_colleges": 3,
-      "n_occupations": 1,
-      "occupations_taught": 1,
-      "regional_demand_total": 2950
+      "n_occupations": 5,
+      "occupations_taught": 5,
+      "regional_demand_total": 14760
     },
     "award_years": [
       "2020-2021",
@@ -627,56 +866,76 @@
       {
         "cells": [
           {
-            "annual_openings": 2950,
-            "annual_wage": 58610,
-            "awards_recent": 24,
+            "annual_openings": 2300,
+            "annual_wage": 52000,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 2300,
+            "growth_rate": 0.072553921,
+            "in_demand": true,
+            "programs": [],
+            "soc_code": "25-2011",
+            "supply": 0.0,
+            "title": "Preschool Teachers, Except Special Education"
+          },
+          {
+            "annual_openings": 180,
+            "annual_wage": 82180,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 180,
+            "growth_rate": 0.049368925,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "25-2012",
+            "supply": 0.0,
+            "title": "Kindergarten Teachers, Except Special Education"
+          },
+          {
+            "annual_openings": 440,
+            "annual_wage": 45730,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 440,
+            "growth_rate": 0.046293816,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 8830,
+            "annual_wage": 41970,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 8830,
+            "growth_rate": -0.006181485,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "39-9011",
+            "supply": 0.0,
+            "title": "Childcare Workers"
+          },
+          {
+            "annual_openings": 3010,
+            "annual_wage": 59840,
+            "awards_recent": 1,
             "course_count": 8,
-            "enrolled": true,
-            "feeding_awards": 24,
-            "gap": 2944,
-            "growth_rate": 0.100811709,
+            "enrolled": false,
+            "feeding_awards": 1,
+            "gap": 3009,
+            "growth_rate": 0.093726564,
+            "in_demand": true,
             "programs": [
-              {
-                "awards": [
-                  1,
-                  7,
-                  2,
-                  17,
-                  23
-                ],
-                "awards_recent": 23,
-                "enrollment": [
-                  22,
-                  49,
-                  59,
-                  54,
-                  76,
-                  70,
-                  99,
-                  99,
-                  99
-                ],
-                "name": "Fitness Trainer",
-                "top6": "083520",
-                "wages": [
-                  {
-                    "n": 89,
-                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 30476,
-                    "wage_after_5": 37520,
-                    "wage_before": 19460,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 41,
-                    "recipient_type": "Locally Approved Certificates Recipient",
-                    "wage_after_2": 17309,
-                    "wage_after_5": 27848,
-                    "wage_before": 18267,
-                    "window": "2015-2016 to 2019-2020"
-                  }
-                ]
-              },
               {
                 "awards": [
                   1,
@@ -703,7 +962,7 @@
               }
             ],
             "soc_code": "39-9031",
-            "supply": 6.0,
+            "supply": 1.0,
             "title": "Exercise Trainers and Group Fitness Instructors"
           }
         ],
@@ -712,14 +971,642 @@
       {
         "cells": [
           {
-            "annual_openings": 2950,
-            "annual_wage": 58610,
+            "annual_openings": 2300,
+            "annual_wage": 52000,
+            "awards_recent": 56,
+            "course_count": 13,
+            "enrolled": true,
+            "feeding_awards": 56,
+            "gap": 2254,
+            "growth_rate": 0.072553921,
+            "in_demand": true,
+            "programs": [
+              {
+                "awards": [
+                  42,
+                  36,
+                  29,
+                  26,
+                  51
+                ],
+                "awards_recent": 51,
+                "enrollment": [
+                  319,
+                  264,
+                  191,
+                  306,
+                  321,
+                  307,
+                  320,
+                  362,
+                  279
+                ],
+                "name": "Child Development/Early Care and Education",
+                "top6": "130500",
+                "wages": [
+                  {
+                    "n": 1772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 28825,
+                    "wage_after_5": 38696,
+                    "wage_before": 21376,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 1319,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 28599,
+                    "wage_after_5": 37849,
+                    "wage_before": 20594,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 888,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 28834,
+                    "wage_after_5": 33945,
+                    "wage_before": 21738,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  2,
+                  0,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  60,
+                  null,
+                  59,
+                  null,
+                  55,
+                  null,
+                  69,
+                  null
+                ],
+                "name": "Children with Special Needs",
+                "top6": "130520",
+                "wages": [
+                  {
+                    "n": 39,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 28604,
+                    "wage_after_5": 37673,
+                    "wage_before": 20542,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 48,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 28323,
+                    "wage_after_5": 36753,
+                    "wage_before": 20423,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 48,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 21441,
+                    "wage_after_5": 38973,
+                    "wage_before": 18273,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  1,
+                  9,
+                  9,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  37,
+                  null,
+                  27,
+                  null,
+                  31,
+                  null,
+                  32,
+                  null,
+                  25
+                ],
+                "name": "Child Development Administration and Management",
+                "top6": "130580",
+                "wages": [
+                  {
+                    "n": 64,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 32883,
+                    "wage_after_5": 34434,
+                    "wage_before": 24901,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 86,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 39109,
+                    "wage_after_5": 42123,
+                    "wage_before": 24621,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  1,
+                  6,
+                  2,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  60,
+                  null,
+                  68,
+                  null,
+                  66,
+                  null,
+                  72,
+                  null,
+                  71
+                ],
+                "name": "Infants and Toddlers",
+                "top6": "130590",
+                "wages": [
+                  {
+                    "n": 19,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 29100,
+                    "wage_after_5": null,
+                    "wage_before": 23154,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 171,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 31881,
+                    "wage_after_5": 41988,
+                    "wage_before": 22414,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 29844,
+                    "wage_after_5": 37690,
+                    "wage_before": 16423,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "25-2011",
+            "supply": 46.33,
+            "title": "Preschool Teachers, Except Special Education"
+          },
+          {
+            "annual_openings": 180,
+            "annual_wage": 82180,
+            "awards_recent": 56,
+            "course_count": 13,
+            "enrolled": true,
+            "feeding_awards": 56,
+            "gap": 134,
+            "growth_rate": 0.049368925,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  42,
+                  36,
+                  29,
+                  26,
+                  51
+                ],
+                "awards_recent": 51,
+                "enrollment": [
+                  319,
+                  264,
+                  191,
+                  306,
+                  321,
+                  307,
+                  320,
+                  362,
+                  279
+                ],
+                "name": "Child Development/Early Care and Education",
+                "top6": "130500",
+                "wages": [
+                  {
+                    "n": 1772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 28825,
+                    "wage_after_5": 38696,
+                    "wage_before": 21376,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 1319,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 28599,
+                    "wage_after_5": 37849,
+                    "wage_before": 20594,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 888,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 28834,
+                    "wage_after_5": 33945,
+                    "wage_before": 21738,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  2,
+                  0,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  60,
+                  null,
+                  59,
+                  null,
+                  55,
+                  null,
+                  69,
+                  null
+                ],
+                "name": "Children with Special Needs",
+                "top6": "130520",
+                "wages": [
+                  {
+                    "n": 39,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 28604,
+                    "wage_after_5": 37673,
+                    "wage_before": 20542,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 48,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 28323,
+                    "wage_after_5": 36753,
+                    "wage_before": 20423,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 48,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 21441,
+                    "wage_after_5": 38973,
+                    "wage_before": 18273,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  1,
+                  9,
+                  9,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  37,
+                  null,
+                  27,
+                  null,
+                  31,
+                  null,
+                  32,
+                  null,
+                  25
+                ],
+                "name": "Child Development Administration and Management",
+                "top6": "130580",
+                "wages": [
+                  {
+                    "n": 64,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 32883,
+                    "wage_after_5": 34434,
+                    "wage_before": 24901,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 86,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 39109,
+                    "wage_after_5": 42123,
+                    "wage_before": 24621,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  1,
+                  6,
+                  2,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  60,
+                  null,
+                  68,
+                  null,
+                  66,
+                  null,
+                  72,
+                  null,
+                  71
+                ],
+                "name": "Infants and Toddlers",
+                "top6": "130590",
+                "wages": [
+                  {
+                    "n": 19,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 29100,
+                    "wage_after_5": null,
+                    "wage_before": 23154,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 171,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 31881,
+                    "wage_after_5": 41988,
+                    "wage_before": 22414,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 29844,
+                    "wage_after_5": 37690,
+                    "wage_before": 16423,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "25-2012",
+            "supply": 46.33,
+            "title": "Kindergarten Teachers, Except Special Education"
+          },
+          {
+            "annual_openings": 440,
+            "annual_wage": 45730,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 2950,
-            "growth_rate": 0.100811709,
+            "gap": 440,
+            "growth_rate": 0.046293816,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 8830,
+            "annual_wage": 41970,
+            "awards_recent": 56,
+            "course_count": 13,
+            "enrolled": true,
+            "feeding_awards": 56,
+            "gap": 8784,
+            "growth_rate": -0.006181485,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  42,
+                  36,
+                  29,
+                  26,
+                  51
+                ],
+                "awards_recent": 51,
+                "enrollment": [
+                  319,
+                  264,
+                  191,
+                  306,
+                  321,
+                  307,
+                  320,
+                  362,
+                  279
+                ],
+                "name": "Child Development/Early Care and Education",
+                "top6": "130500",
+                "wages": [
+                  {
+                    "n": 1772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 28825,
+                    "wage_after_5": 38696,
+                    "wage_before": 21376,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 1319,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 28599,
+                    "wage_after_5": 37849,
+                    "wage_before": 20594,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 888,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 28834,
+                    "wage_after_5": 33945,
+                    "wage_before": 21738,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  2,
+                  0,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  60,
+                  null,
+                  59,
+                  null,
+                  55,
+                  null,
+                  69,
+                  null
+                ],
+                "name": "Children with Special Needs",
+                "top6": "130520",
+                "wages": [
+                  {
+                    "n": 39,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 28604,
+                    "wage_after_5": 37673,
+                    "wage_before": 20542,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 48,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 28323,
+                    "wage_after_5": 36753,
+                    "wage_before": 20423,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 48,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 21441,
+                    "wage_after_5": 38973,
+                    "wage_before": 18273,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  1,
+                  9,
+                  9,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  37,
+                  null,
+                  27,
+                  null,
+                  31,
+                  null,
+                  32,
+                  null,
+                  25
+                ],
+                "name": "Child Development Administration and Management",
+                "top6": "130580",
+                "wages": [
+                  {
+                    "n": 64,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 32883,
+                    "wage_after_5": 34434,
+                    "wage_before": 24901,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 86,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 39109,
+                    "wage_after_5": 42123,
+                    "wage_before": 24621,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  1,
+                  6,
+                  2,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  60,
+                  null,
+                  68,
+                  null,
+                  66,
+                  null,
+                  72,
+                  null,
+                  71
+                ],
+                "name": "Infants and Toddlers",
+                "top6": "130590",
+                "wages": [
+                  {
+                    "n": 19,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 29100,
+                    "wage_after_5": null,
+                    "wage_before": 23154,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 171,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 31881,
+                    "wage_after_5": 41988,
+                    "wage_before": 22414,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 29844,
+                    "wage_after_5": 37690,
+                    "wage_before": 16423,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "39-9011",
+            "supply": 46.33,
+            "title": "Childcare Workers"
+          },
+          {
+            "annual_openings": 3010,
+            "annual_wage": 59840,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 3010,
+            "growth_rate": 0.093726564,
+            "in_demand": true,
             "programs": [],
             "soc_code": "39-9031",
             "supply": 0.0,
@@ -731,14 +1618,742 @@
       {
         "cells": [
           {
-            "annual_openings": 2950,
-            "annual_wage": 58610,
+            "annual_openings": 2300,
+            "annual_wage": 52000,
+            "awards_recent": 45,
+            "course_count": 16,
+            "enrolled": true,
+            "feeding_awards": 45,
+            "gap": 2254,
+            "growth_rate": 0.072553921,
+            "in_demand": true,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  1,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Educational Aide (Teacher Assistant)",
+                "top6": "080200",
+                "wages": [
+                  {
+                    "n": 19,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 20551,
+                    "wage_after_5": 32502,
+                    "wage_before": 8742,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  75,
+                  64,
+                  44,
+                  30,
+                  38
+                ],
+                "awards_recent": 38,
+                "enrollment": [
+                  395,
+                  490,
+                  494,
+                  429,
+                  504,
+                  384,
+                  548,
+                  449,
+                  565
+                ],
+                "name": "Child Development/Early Care and Education",
+                "top6": "130500",
+                "wages": [
+                  {
+                    "n": 1772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 28825,
+                    "wage_after_5": 38696,
+                    "wage_before": 21376,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 1319,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 28599,
+                    "wage_after_5": 37849,
+                    "wage_before": 20594,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 888,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 28834,
+                    "wage_after_5": 33945,
+                    "wage_before": 21738,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  9,
+                  5,
+                  11,
+                  8,
+                  7
+                ],
+                "awards_recent": 7,
+                "enrollment": [
+                  56,
+                  41,
+                  58,
+                  51,
+                  88,
+                  59,
+                  85,
+                  31,
+                  44
+                ],
+                "name": "Children with Special Needs",
+                "top6": "130520",
+                "wages": [
+                  {
+                    "n": 39,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 28604,
+                    "wage_after_5": 37673,
+                    "wage_before": 20542,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 48,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 28323,
+                    "wage_after_5": 36753,
+                    "wage_before": 20423,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 48,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 21441,
+                    "wage_after_5": 38973,
+                    "wage_before": 18273,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  6,
+                  32,
+                  12,
+                  37,
+                  15,
+                  28,
+                  11,
+                  35,
+                  19
+                ],
+                "name": "Child Development Administration and Management",
+                "top6": "130580",
+                "wages": [
+                  {
+                    "n": 64,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 32883,
+                    "wage_after_5": 34434,
+                    "wage_before": 24901,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 86,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 39109,
+                    "wage_after_5": 42123,
+                    "wage_before": 24621,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  16,
+                  38,
+                  30,
+                  84,
+                  37,
+                  41,
+                  33,
+                  40,
+                  37
+                ],
+                "name": "Infants and Toddlers",
+                "top6": "130590",
+                "wages": [
+                  {
+                    "n": 19,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 29100,
+                    "wage_after_5": null,
+                    "wage_before": 23154,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 171,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 31881,
+                    "wage_after_5": 41988,
+                    "wage_before": 22414,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 29844,
+                    "wage_after_5": 37690,
+                    "wage_before": 16423,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "25-2011",
+            "supply": 46.33,
+            "title": "Preschool Teachers, Except Special Education"
+          },
+          {
+            "annual_openings": 180,
+            "annual_wage": 82180,
+            "awards_recent": 45,
+            "course_count": 16,
+            "enrolled": true,
+            "feeding_awards": 45,
+            "gap": 134,
+            "growth_rate": 0.049368925,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  1,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Educational Aide (Teacher Assistant)",
+                "top6": "080200",
+                "wages": [
+                  {
+                    "n": 19,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 20551,
+                    "wage_after_5": 32502,
+                    "wage_before": 8742,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  75,
+                  64,
+                  44,
+                  30,
+                  38
+                ],
+                "awards_recent": 38,
+                "enrollment": [
+                  395,
+                  490,
+                  494,
+                  429,
+                  504,
+                  384,
+                  548,
+                  449,
+                  565
+                ],
+                "name": "Child Development/Early Care and Education",
+                "top6": "130500",
+                "wages": [
+                  {
+                    "n": 1772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 28825,
+                    "wage_after_5": 38696,
+                    "wage_before": 21376,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 1319,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 28599,
+                    "wage_after_5": 37849,
+                    "wage_before": 20594,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 888,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 28834,
+                    "wage_after_5": 33945,
+                    "wage_before": 21738,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  9,
+                  5,
+                  11,
+                  8,
+                  7
+                ],
+                "awards_recent": 7,
+                "enrollment": [
+                  56,
+                  41,
+                  58,
+                  51,
+                  88,
+                  59,
+                  85,
+                  31,
+                  44
+                ],
+                "name": "Children with Special Needs",
+                "top6": "130520",
+                "wages": [
+                  {
+                    "n": 39,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 28604,
+                    "wage_after_5": 37673,
+                    "wage_before": 20542,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 48,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 28323,
+                    "wage_after_5": 36753,
+                    "wage_before": 20423,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 48,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 21441,
+                    "wage_after_5": 38973,
+                    "wage_before": 18273,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  6,
+                  32,
+                  12,
+                  37,
+                  15,
+                  28,
+                  11,
+                  35,
+                  19
+                ],
+                "name": "Child Development Administration and Management",
+                "top6": "130580",
+                "wages": [
+                  {
+                    "n": 64,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 32883,
+                    "wage_after_5": 34434,
+                    "wage_before": 24901,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 86,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 39109,
+                    "wage_after_5": 42123,
+                    "wage_before": 24621,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  16,
+                  38,
+                  30,
+                  84,
+                  37,
+                  41,
+                  33,
+                  40,
+                  37
+                ],
+                "name": "Infants and Toddlers",
+                "top6": "130590",
+                "wages": [
+                  {
+                    "n": 19,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 29100,
+                    "wage_after_5": null,
+                    "wage_before": 23154,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 171,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 31881,
+                    "wage_after_5": 41988,
+                    "wage_before": 22414,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 29844,
+                    "wage_after_5": 37690,
+                    "wage_before": 16423,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "25-2012",
+            "supply": 46.33,
+            "title": "Kindergarten Teachers, Except Special Education"
+          },
+          {
+            "annual_openings": 440,
+            "annual_wage": 45730,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 2950,
-            "growth_rate": 0.100811709,
+            "gap": 440,
+            "growth_rate": 0.046293816,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  1,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Educational Aide (Teacher Assistant)",
+                "top6": "080200",
+                "wages": [
+                  {
+                    "n": 19,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 20551,
+                    "wage_after_5": 32502,
+                    "wage_before": 8742,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "25-9044",
+            "supply": 0.33,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 8830,
+            "annual_wage": 41970,
+            "awards_recent": 45,
+            "course_count": 16,
+            "enrolled": true,
+            "feeding_awards": 45,
+            "gap": 8784,
+            "growth_rate": -0.006181485,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  75,
+                  64,
+                  44,
+                  30,
+                  38
+                ],
+                "awards_recent": 38,
+                "enrollment": [
+                  395,
+                  490,
+                  494,
+                  429,
+                  504,
+                  384,
+                  548,
+                  449,
+                  565
+                ],
+                "name": "Child Development/Early Care and Education",
+                "top6": "130500",
+                "wages": [
+                  {
+                    "n": 1772,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 28825,
+                    "wage_after_5": 38696,
+                    "wage_before": 21376,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 1319,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 28599,
+                    "wage_after_5": 37849,
+                    "wage_before": 20594,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 888,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 28834,
+                    "wage_after_5": 33945,
+                    "wage_before": 21738,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  9,
+                  5,
+                  11,
+                  8,
+                  7
+                ],
+                "awards_recent": 7,
+                "enrollment": [
+                  56,
+                  41,
+                  58,
+                  51,
+                  88,
+                  59,
+                  85,
+                  31,
+                  44
+                ],
+                "name": "Children with Special Needs",
+                "top6": "130520",
+                "wages": [
+                  {
+                    "n": 39,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 28604,
+                    "wage_after_5": 37673,
+                    "wage_before": 20542,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 48,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 28323,
+                    "wage_after_5": 36753,
+                    "wage_before": 20423,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 48,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 21441,
+                    "wage_after_5": 38973,
+                    "wage_before": 18273,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  6,
+                  32,
+                  12,
+                  37,
+                  15,
+                  28,
+                  11,
+                  35,
+                  19
+                ],
+                "name": "Child Development Administration and Management",
+                "top6": "130580",
+                "wages": [
+                  {
+                    "n": 64,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 32883,
+                    "wage_after_5": 34434,
+                    "wage_before": 24901,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 86,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 39109,
+                    "wage_after_5": 42123,
+                    "wage_before": 24621,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  16,
+                  38,
+                  30,
+                  84,
+                  37,
+                  41,
+                  33,
+                  40,
+                  37
+                ],
+                "name": "Infants and Toddlers",
+                "top6": "130590",
+                "wages": [
+                  {
+                    "n": 19,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 29100,
+                    "wage_after_5": null,
+                    "wage_before": 23154,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 171,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 31881,
+                    "wage_after_5": 41988,
+                    "wage_before": 22414,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 29844,
+                    "wage_after_5": 37690,
+                    "wage_before": 16423,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "39-9011",
+            "supply": 46.0,
+            "title": "Childcare Workers"
+          },
+          {
+            "annual_openings": 3010,
+            "annual_wage": 59840,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 3010,
+            "growth_rate": 0.093726564,
+            "in_demand": true,
             "programs": [],
             "soc_code": "39-9031",
             "supply": 0.0,
@@ -749,6 +2364,10 @@
       }
     ],
     "coverage_awards_only": true,
+    "demand_criteria": {
+      "min_openings": 250,
+      "min_wage": 50000
+    },
     "enrollment_terms": [
       "Fall 2021",
       "Spring 2022",
@@ -760,7 +2379,7 @@
       "Spring 2025",
       "Fall 2025"
     ],
-    "executive_summary": "This view examines the regional demand landscape across the 1 education & human development occupations the San Mateo County CCD \u2014 Education & Human Development targets in the Bay Area regional labor market. Regional demand for these occupations totals 2,950 openings per year.",
+    "executive_summary": "This view examines the regional demand landscape across the 5 education & human development occupations the San Mateo County CCD \u2014 Education & Human Development targets in the Bay Area regional labor market. Regional demand for these occupations totals 14,760 openings per year.",
     "is_sector_priority": false,
     "region": "Bay",
     "region_display": "Bay Area",

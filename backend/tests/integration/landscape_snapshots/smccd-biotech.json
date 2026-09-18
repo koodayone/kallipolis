@@ -2,7 +2,7 @@
   "/employers": {
     "employers": [
       {
-        "description": "Adela Bio develops blood-based cancer diagnostic tests using proprietary methylome analysis of cell-free DNA, with applications in multi-cancer early detection, minimal residual disease monitoring, and immunotherapy response assessment in solid tumor patients. The company is headquartered in Foster City, CA and also operates in Toronto, serving both clinical oncology and biopharma drug-development markets. Technical staff include specialists in cancer epigenomics, liquid biopsy methods, and computational data science.",
+        "description": "Adela is a biotechnology company.",
         "display_name": null,
         "lat": 37.566568,
         "lng": -122.2745248,
@@ -140,7 +140,7 @@
         "website": "https://www.csbio.com/"
       },
       {
-        "description": "Cyara develops automated testing and assurance software for customer experience (CX) systems, with products covering conversational AI validation (Cyara Botium), generative AI trust and hallucination detection (Cyara AI Trust), telecom network assurance across 145+ countries (Cyara Voice Assure), and WebRTC quality monitoring. The platform integrates with contact-center AI engines including Dialogflow, Amazon Lex, IBM Watson, and custom LLM agents, serving enterprise clients in telecom, financial services, healthcare, and technology. Engineering and QA roles at the company center on NLP, cloud infrastructure, and test automation.",
+        "description": "Cyara is a customer experience testing company.",
         "display_name": null,
         "lat": 37.496195,
         "lng": -122.2362998,
@@ -186,30 +186,7 @@
         "website": "https://cytokinetics.com/"
       },
       {
-        "description": "FDB (First Databank) publishes MedKnowledge, a comprehensive drug knowledge database used by EHR systems, pharmacy dispensing platforms, and payer claims processors to deliver medication decision support \u2014 covering drug-drug interactions, allergy checks, duplicate-therapy detection, and drug pricing. Headquartered in South San Francisco and part of the Hearst Health network, FDB employs clinical informaticists, pharmacists, and software engineers to maintain and integrate its drug content across health IT systems serving hospitals, health plans, and retail pharmacy chains.",
-        "display_name": null,
-        "lat": 37.6665608,
-        "lng": -122.3971498,
-        "naics4": "5417",
-        "naics_title": "Scientific Research and Development Services",
-        "name": "First Databank",
-        "relevance": 2.81,
-        "sector": "Professional Services",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 2,
-        "soc_titles": {
-          "19-4021": "Biological Technicians",
-          "49-9062": "Medical Equipment Repairers"
-        },
-        "socs": [
-          "19-4021",
-          "49-9062"
-        ],
-        "website": "FDBHEALTH.COM"
-      },
-      {
-        "description": "Genentech is a biopharmaceutical company headquartered in South San Francisco that discovers and develops medicines for cancer, neurological diseases, and other serious conditions; its portfolio includes widely used oncology drugs such as Herceptin, Avastin, Rituxan, and Tecentriq, plus treatments for multiple sclerosis (Ocrevus), cystic fibrosis (Pulmozyme), and macular degeneration (Vabysmo). A member of the Roche Group since 2009, Genentech operates as an independent research and development unit and serves the U.S. market through its South San Francisco campus. The company employs large numbers of research scientists, bioprocess engineers, regulatory affairs specialists, and clinical operations staff.",
+        "description": "Genentech is a biotechnology company focused on developing and commercializing medicines.",
         "display_name": null,
         "lat": 37.6555686,
         "lng": -122.3849216,
@@ -370,7 +347,7 @@
         "website": "https://standardbio.com/"
       },
       {
-        "description": "Adicet Bio is a clinical-stage biotechnology company headquartered in Redwood City, California that develops allogeneic gamma delta CAR T cell therapies for autoimmune diseases and cancer. Its lead program, prulacabtagene leucel (prula-cel), is a Phase 1 off-the-shelf CAR T therapy targeting CD20-expressing B cells across multiple autoimmune conditions including lupus nephritis and systemic sclerosis, with FDA Fast Track Designation for three indications. The company also has an early-stage armored PSMA-targeting program for metastatic prostate cancer, and employs scientists, clinical development staff, and manufacturing operations professionals across its Redwood City headquarters.",
+        "description": "Adicet Bio is a biotechnology company developing cell therapies.",
         "display_name": null,
         "lat": 37.5381944,
         "lng": -122.2527094,
@@ -393,7 +370,7 @@
         "website": "https://www.adicetbio.com/"
       },
       {
-        "description": "Alumis is a South San Francisco-based biopharmaceutical company advancing targeted small-molecule therapies for immune-mediated diseases, with a pipeline anchored by envudeucitinib, a selective TYK2 inhibitor in Phase 3 trials for plaque psoriasis and systemic lupus erythematosus. Their pipeline also includes lonigutamab, an anti-IGF-1R antibody targeting thyroid eye disease, and an additional preclinical candidate. The company employs drug discovery, clinical development, and technical operations staff at its Bay Area headquarters.",
+        "description": "Alumis is a biotechnology company focused on autoimmune diseases.",
         "display_name": null,
         "lat": 37.6521534,
         "lng": -122.3928729,
@@ -416,7 +393,7 @@
         "website": "https://www.alumis.com/"
       },
       {
-        "description": "Anwita Biosciences is a San Carlos-based biopharmaceutical company developing immunotherapy and oncology treatments, with a pipeline built around targeted cytokine fusion proteins (including lead candidate AWT020), antibody-drug conjugates, and multi-specific T-cell engagers. Their platform combines antibody discovery, cytokine engineering, proprietary toxin-linker chemistry, and AI-assisted protein design to target cancers including non-small cell lung cancer, gastrointestinal cancers, and melanoma. The company employs scientists and engineers in protein engineering, computational biology, and oncology drug development at its headquarters in San Carlos, California.",
+        "description": "Anwita Bioscience is a biotechnology company.",
         "display_name": null,
         "lat": 37.5140218,
         "lng": -122.2636358,
@@ -439,7 +416,7 @@
         "website": "https://www.anwitabio.com/"
       },
       {
-        "description": "Cellares is an Integrated Development and Manufacturing Organization (IDMO) specializing in cell therapy manufacturing, operating the Cell Shuttle \u2014 a fully automated, FDA-designated Advanced Manufacturing Technology platform for end-to-end cGMP cell therapy production. Their Cell Q platform provides automated quality control testing for GMP-compliant cell therapy workflows. The company serves pharmaceutical and biotech partners developing cancer immunotherapies, with smart factory facilities in South San Francisco employing process engineers, automation specialists, and regulatory/CMC professionals.",
+        "description": "Cellares Corporation is a biotechnology company.",
         "display_name": null,
         "lat": 37.6555002,
         "lng": -122.389339,
@@ -462,7 +439,7 @@
         "website": "https://www.cellares.com/"
       },
       {
-        "description": "Day One Biopharmaceuticals developed oncology therapies with a focus on pediatric cancers, most notably OJEMDA (tovorafenib), an FDA-approved oral RAF inhibitor for pediatric low-grade glioma (pLGG). The company employed oncologists, research scientists, and clinical development professionals. In March 2026, Day One was acquired by Servier to expand Servier's rare oncology portfolio, and it no longer operates as an independent entity.",
+        "description": "Day One Biopharmaceuticals is a biopharmaceutical company.",
         "display_name": null,
         "lat": 37.6897794,
         "lng": -122.391832,
@@ -485,7 +462,7 @@
         "website": "https://www.dayonebio.com/"
       },
       {
-        "description": "Geron is a commercial-stage biopharmaceutical company focused on myeloid blood cancers, headquartered in Foster City, California. Their lead product, imetelstat (brand name Rytelo), received FDA approval in 2024 as the first telomerase inhibitor for adults with low- to intermediate-risk myelodysplastic syndromes. The company employs talent across clinical development, regulatory affairs, medical affairs, and commercial operations.",
+        "description": "Geron Corporation is a biopharmaceutical company focused on oncology.",
         "display_name": null,
         "lat": 37.5511544,
         "lng": -122.281399,
@@ -508,7 +485,7 @@
         "website": "https://www.geron.com/"
       },
       {
-        "description": "Lyell Immunopharma is a clinical-stage biopharmaceutical company developing next-generation CAR T-cell therapies for cancer, with lead program ronde-cel (LYL314) \u2014 a dual-targeting CD19/CD20 CAR T candidate \u2014 in pivotal trials for relapsed or refractory large B-cell lymphoma. The company also has programs targeting metastatic colorectal cancer (LYL273, GCC-directed) and undisclosed solid tumors. Lyell owns and operates its own cell therapy manufacturing facility, employing scientists, process development engineers, and manufacturing and quality specialists.",
+        "description": "Lyell Immunopharma is a biotechnology company developing cell therapies.",
         "display_name": null,
         "lat": 37.6486582,
         "lng": -122.3872868,
@@ -531,7 +508,7 @@
         "website": "https://www.lyell.com/"
       },
       {
-        "description": "Mirum Pharmaceuticals develops and commercializes medicines for rare diseases, with an emphasis on rare liver conditions. Their approved portfolio includes LIVMARLI (maralixibat) for Alagille syndrome and progressive familial intrahepatic cholestasis, CHOLBAM, and CTEXLI, all marketed in the U.S. The company also has pipeline programs targeting fibrodysplasia ossificans progressiva and maintains a commercial presence across North America and Europe, employing clinical, regulatory, and commercial operations talent.",
+        "description": "Mirum Pharmaceuticals is a biopharmaceutical company.",
         "display_name": null,
         "lat": 37.55234,
         "lng": -122.2801854,
@@ -554,7 +531,7 @@
         "website": "https://mirumpharma.com/"
       },
       {
-        "description": "Pacira BioSciences develops and commercializes non-opioid pain therapies, with three marketed products: EXPAREL (bupivacaine liposome injectable suspension for post-surgical pain), ZILRETTA (extended-release injectable for musculoskeletal pain), and iovera\u00b0 (cryotherapy-based pain treatment). The company operates through its wholly owned subsidiary Pacira Pharmaceuticals and employs scientists, clinical researchers, and pharmaceutical manufacturing professionals across drug development and commercialization functions.",
+        "description": "Pacira Biosciences is a biopharmaceutical company.",
         "display_name": null,
         "lat": 37.6897794,
         "lng": -122.391832,
@@ -575,6 +552,29 @@
           "49-9062"
         ],
         "website": "https://www.pacira.com/"
+      },
+      {
+        "description": "Revolution Medicines is a clinical-stage precision oncology company.",
+        "display_name": null,
+        "lat": 37.5016138,
+        "lng": -122.2180478,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Revolution Medicines",
+        "relevance": 2.18,
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "19-4021",
+          "49-9062"
+        ],
+        "website": "https://www.revmed.com/"
       }
     ],
     "region": "Bay",
@@ -584,7 +584,7 @@
       "San Mateo"
     ],
     "shown": 25,
-    "total": 163
+    "total": 159
   },
   "/programs": {
     "coverage_awards_only": true,
@@ -592,21 +592,21 @@
     "matrix": {
       "cells": [
         {
-          "awards": 11,
           "college": "College of San Mateo",
           "enrolled": true,
+          "projected": 5.3,
           "top6": "043000"
         },
         {
-          "awards": 3,
           "college": "Skyline College",
           "enrolled": true,
+          "projected": 3.0,
           "top6": "043000"
         },
         {
-          "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "043000"
         }
       ],
@@ -622,24 +622,25 @@
     "sector": "Life Sciences / Biotech",
     "tops": [
       {
-        "awards_total": 14,
         "enrollment_total": 1141,
         "name": "Biotechnology and Biomedical Technology",
+        "projected_supply": 8.3,
         "soc_count": 2,
         "top6": "043000"
       }
-    ]
+    ],
+    "total_supply": 8.3
   },
   "landscape": {
     "aggregate": {
-      "candidate_employers": 275,
+      "candidate_employers": 282,
       "combined_awards": 14,
-      "combined_supply_total": 7.34,
-      "gap": 733,
+      "combined_supply_total": 8.3,
+      "gap": 552,
       "n_colleges": 3,
       "n_occupations": 2,
       "occupations_taught": 2,
-      "regional_demand_total": 740
+      "regional_demand_total": 560
     },
     "award_years": [
       "2020-2021",
@@ -652,14 +653,15 @@
       {
         "cells": [
           {
-            "annual_openings": 610,
-            "annual_wage": 77450,
+            "annual_openings": 440,
+            "annual_wage": 86090,
             "awards_recent": 11,
             "course_count": 0,
             "enrolled": true,
             "feeding_awards": 11,
-            "gap": 610,
-            "growth_rate": 0.070100071,
+            "gap": 435,
+            "growth_rate": 0.042062529,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -712,18 +714,19 @@
               }
             ],
             "soc_code": "19-4021",
-            "supply": 0.0,
+            "supply": 5.33,
             "title": "Biological Technicians"
           },
           {
-            "annual_openings": 130,
-            "annual_wage": 82260,
+            "annual_openings": 120,
+            "annual_wage": 83360,
             "awards_recent": 11,
             "course_count": 0,
             "enrolled": true,
             "feeding_awards": 11,
-            "gap": 130,
-            "growth_rate": 0.046982336,
+            "gap": 115,
+            "growth_rate": 0.04638071,
+            "in_demand": false,
             "programs": [
               {
                 "awards": [
@@ -776,7 +779,7 @@
               }
             ],
             "soc_code": "49-9062",
-            "supply": 0.0,
+            "supply": 5.33,
             "title": "Medical Equipment Repairers"
           }
         ],
@@ -785,14 +788,15 @@
       {
         "cells": [
           {
-            "annual_openings": 610,
-            "annual_wage": 77450,
+            "annual_openings": 440,
+            "annual_wage": 86090,
             "awards_recent": 3,
             "course_count": 8,
             "enrolled": true,
             "feeding_awards": 3,
-            "gap": 606,
-            "growth_rate": 0.070100071,
+            "gap": 437,
+            "growth_rate": 0.042062529,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -845,18 +849,19 @@
               }
             ],
             "soc_code": "19-4021",
-            "supply": 3.67,
+            "supply": 3.0,
             "title": "Biological Technicians"
           },
           {
-            "annual_openings": 130,
-            "annual_wage": 82260,
+            "annual_openings": 120,
+            "annual_wage": 83360,
             "awards_recent": 3,
             "course_count": 8,
             "enrolled": true,
             "feeding_awards": 3,
-            "gap": 126,
-            "growth_rate": 0.046982336,
+            "gap": 117,
+            "growth_rate": 0.04638071,
+            "in_demand": false,
             "programs": [
               {
                 "awards": [
@@ -909,7 +914,7 @@
               }
             ],
             "soc_code": "49-9062",
-            "supply": 3.67,
+            "supply": 3.0,
             "title": "Medical Equipment Repairers"
           }
         ],
@@ -918,28 +923,30 @@
       {
         "cells": [
           {
-            "annual_openings": 610,
-            "annual_wage": 77450,
+            "annual_openings": 440,
+            "annual_wage": 86090,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 610,
-            "growth_rate": 0.070100071,
+            "gap": 440,
+            "growth_rate": 0.042062529,
+            "in_demand": true,
             "programs": [],
             "soc_code": "19-4021",
             "supply": 0.0,
             "title": "Biological Technicians"
           },
           {
-            "annual_openings": 130,
-            "annual_wage": 82260,
+            "annual_openings": 120,
+            "annual_wage": 83360,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 130,
-            "growth_rate": 0.046982336,
+            "gap": 120,
+            "growth_rate": 0.04638071,
+            "in_demand": false,
             "programs": [],
             "soc_code": "49-9062",
             "supply": 0.0,
@@ -950,6 +957,10 @@
       }
     ],
     "coverage_awards_only": true,
+    "demand_criteria": {
+      "min_openings": 250,
+      "min_wage": 50000
+    },
     "enrollment_terms": [
       "Fall 2021",
       "Spring 2022",
@@ -961,7 +972,7 @@
       "Spring 2025",
       "Fall 2025"
     ],
-    "executive_summary": "This view examines the regional demand landscape across the 2 life sciences / biotech occupations the San Mateo County CCD \u2014 Life Sciences / Biotech targets in the Bay Area regional labor market. Regional demand for these occupations totals 740 openings per year.",
+    "executive_summary": "This view examines the regional demand landscape across the 2 life sciences / biotech occupations the San Mateo County CCD \u2014 Life Sciences / Biotech targets in the Bay Area regional labor market. Regional demand for these occupations totals 560 openings per year.",
     "is_sector_priority": false,
     "region": "Bay",
     "region_display": "Bay Area",

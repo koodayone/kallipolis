@@ -380,27 +380,6 @@
         "website": "https://sfocp.com/"
       },
       {
-        "description": "DoubleTree by Hilton Hotel San Francisco Airport is a 395-room full-service hotel in Burlingame, two miles south of SFO, operating under Hilton's DoubleTree brand. The property includes 37 North Restaurant & Bar with California casual dining, over 12,000 square feet of meeting and event space, a bayside fitness trail, and 24-hour complimentary airport shuttle service. Operational roles span front desk, food and beverage, housekeeping, banquet and event services, and facilities management.",
-        "display_name": null,
-        "lat": 37.6897794,
-        "lng": -122.391832,
-        "naics4": "7211",
-        "naics_title": "Traveler Accommodation",
-        "name": "Doubletree By Hilton San Francisco",
-        "relevance": 0.57,
-        "sector": "Hospitality & Food Service",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 1,
-        "soc_titles": {
-          "11-9051": "Food Service Managers"
-        },
-        "socs": [
-          "11-9051"
-        ],
-        "website": "HILTON.COM"
-      },
-      {
         "description": "El Rancho Inn is a 219-room full-service airport hotel in Millbrae, CA, operating under the SureStay Collection by Best Western flag and managed by Springboard Hospitality. The property is three miles from SFO and offers 24-hour airport shuttle service, a complimentary breakfast buffet, outdoor pool, and sleep-and-fly parking packages aimed at business and leisure travelers on the San Francisco Peninsula. Operational roles span front desk, housekeeping, food and beverage, and shuttle operations.",
         "display_name": null,
         "lat": 37.5975816,
@@ -422,7 +401,7 @@
         "website": "ELRANCHOINN.COM"
       },
       {
-        "description": "Embassy Suites San Francisco Airport Waterfront is a 340-room all-suite hotel in Burlingame, CA, situated on the San Francisco Bay about one mile from SFO and operated under Hilton's upscale-select Embassy Suites brand. The property includes the Tap and Tavern restaurant, complimentary cooked-to-order breakfast, an evening reception, and roughly 15,000 sq ft of meeting space across 12 rooms, making it a significant meetings and events venue serving the Bay Area airport corridor. On-property roles span front desk, food and beverage, housekeeping, banquet/event services, and shuttle operations.",
+        "description": "A hotel in the Embassy Suites by Hilton chain located in San Francisco.",
         "display_name": null,
         "lat": 37.5897358,
         "lng": -122.3509508,
@@ -525,6 +504,27 @@
           "11-9051"
         ],
         "website": "https://www.ihg.com/holidayinn/hotels/us/en/san-mateo/sfosm/hoteldetail"
+      },
+      {
+        "description": "A hotel part of the Autograph Collection.",
+        "display_name": null,
+        "lat": 37.4833429,
+        "lng": -122.1775146,
+        "naics4": "7211",
+        "naics_title": "Traveler Accommodation",
+        "name": "Hotel Nia Autograph Collection",
+        "relevance": 0.57,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.hotelnia.com/"
       }
     ],
     "region": "Bay",
@@ -534,7 +534,7 @@
       "San Mateo"
     ],
     "shown": 25,
-    "total": 176
+    "total": 175
   },
   "/programs": {
     "coverage_awards_only": true,
@@ -542,58 +542,58 @@
     "matrix": {
       "cells": [
         {
-          "awards": 6,
-          "college": "College of San Mateo",
-          "enrolled": true,
-          "top6": "130600"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": true,
-          "top6": "130600"
-        },
-        {
-          "awards": 1,
-          "college": "Ca\u00f1ada College",
-          "enrolled": true,
-          "top6": "130600"
-        },
-        {
-          "awards": 0,
           "college": "College of San Mateo",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "130700"
         },
         {
-          "awards": 2,
           "college": "Skyline College",
           "enrolled": true,
+          "projected": 1.0,
           "top6": "130700"
         },
         {
-          "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "130700"
         },
         {
-          "awards": 0,
           "college": "College of San Mateo",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "130710"
         },
         {
-          "awards": 27,
           "college": "Skyline College",
           "enrolled": true,
+          "projected": 29.7,
           "top6": "130710"
         },
         {
-          "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "130710"
+        },
+        {
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "130720"
+        },
+        {
+          "college": "Skyline College",
+          "enrolled": true,
+          "projected": 0.0,
+          "top6": "130720"
+        },
+        {
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "130720"
         }
       ],
       "colleges": [
@@ -608,38 +608,39 @@
     "sector": "Retail, Hospitality & Tourism",
     "tops": [
       {
-        "awards_total": 27,
         "enrollment_total": 290,
         "name": "Restaurant and Food Services and Management",
-        "soc_count": 1,
+        "projected_supply": 29.7,
+        "soc_count": 2,
         "top6": "130710"
       },
       {
-        "awards_total": 7,
-        "enrollment_total": 315,
-        "name": "Nutrition, Foods, and Culinary Arts",
-        "soc_count": 1,
-        "top6": "130600"
-      },
-      {
-        "awards_total": 2,
         "enrollment_total": 658,
         "name": "Hospitality",
-        "soc_count": 1,
+        "projected_supply": 1.0,
+        "soc_count": 3,
         "top6": "130700"
+      },
+      {
+        "enrollment_total": 12,
+        "name": "Lodging Management",
+        "projected_supply": 0.0,
+        "soc_count": 1,
+        "top6": "130720"
       }
-    ]
+    ],
+    "total_supply": 30.7
   },
   "landscape": {
     "aggregate": {
-      "candidate_employers": 303,
-      "combined_awards": 36,
-      "combined_supply_total": 7.83,
-      "gap": 1382,
+      "candidate_employers": 320,
+      "combined_awards": 29,
+      "combined_supply_total": 30.7,
+      "gap": 1409,
       "n_colleges": 3,
-      "n_occupations": 1,
-      "occupations_taught": 1,
-      "regional_demand_total": 1390
+      "n_occupations": 3,
+      "occupations_taught": 3,
+      "regional_demand_total": 1440
     },
     "award_years": [
       "2020-2021",
@@ -652,43 +653,49 @@
       {
         "cells": [
           {
-            "annual_openings": 1390,
-            "annual_wage": 74760,
-            "awards_recent": 6,
+            "annual_openings": 1230,
+            "annual_wage": 81580,
+            "awards_recent": 0,
             "course_count": 2,
-            "enrolled": true,
-            "feeding_awards": 6,
-            "gap": 1386,
-            "growth_rate": 0.039079732,
-            "programs": [
-              {
-                "awards": [
-                  6,
-                  3,
-                  4,
-                  7,
-                  6
-                ],
-                "awards_recent": 6,
-                "enrollment": [
-                  90,
-                  86,
-                  79,
-                  108,
-                  155,
-                  160,
-                  155,
-                  169,
-                  154
-                ],
-                "name": "Nutrition, Foods, and Culinary Arts",
-                "top6": "130600",
-                "wages": []
-              }
-            ],
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 1230,
+            "growth_rate": 0.02991067,
+            "in_demand": true,
+            "programs": [],
             "soc_code": "11-9051",
-            "supply": 4.33,
+            "supply": 0.0,
             "title": "Food Service Managers"
+          },
+          {
+            "annual_openings": 10,
+            "annual_wage": 38140,
+            "awards_recent": 0,
+            "course_count": 2,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 10,
+            "growth_rate": -0.001574725,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "35-2013",
+            "supply": 0.0,
+            "title": "Cooks, Private Household"
+          },
+          {
+            "annual_openings": 200,
+            "annual_wage": 56570,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 200,
+            "growth_rate": 0.05401129,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "41-3041",
+            "supply": 0.0,
+            "title": "Travel Agents"
           }
         ],
         "name": "College of San Mateo"
@@ -696,39 +703,16 @@
       {
         "cells": [
           {
-            "annual_openings": 1390,
-            "annual_wage": 74760,
+            "annual_openings": 1230,
+            "annual_wage": 81580,
             "awards_recent": 29,
-            "course_count": 7,
+            "course_count": 8,
             "enrolled": true,
             "feeding_awards": 29,
-            "gap": 1388,
-            "growth_rate": 0.039079732,
+            "gap": 1199,
+            "growth_rate": 0.02991067,
+            "in_demand": true,
             "programs": [
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  84,
-                  143,
-                  91,
-                  130,
-                  90,
-                  101,
-                  93,
-                  105,
-                  95
-                ],
-                "name": "Nutrition, Foods, and Culinary Arts",
-                "top6": "130600",
-                "wages": []
-              },
               {
                 "awards": [
                   3,
@@ -751,7 +735,24 @@
                 ],
                 "name": "Hospitality",
                 "top6": "130700",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 48,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 40411,
+                    "wage_after_5": 56085,
+                    "wage_before": 22617,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 31,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 27543,
+                    "wage_after_5": 51346,
+                    "wage_before": 19969,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -775,7 +776,32 @@
                 ],
                 "name": "Restaurant and Food Services and Management",
                 "top6": "130710",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 118,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 42505,
+                    "wage_after_5": 51322,
+                    "wage_before": 19903,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 112,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 41211,
+                    "wage_after_5": 49225,
+                    "wage_before": 23301,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 76,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 32611,
+                    "wage_after_5": 40715,
+                    "wage_before": 20207,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -799,12 +825,192 @@
                 ],
                 "name": "Lodging Management",
                 "top6": "130720",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 34,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 44469,
+                    "wage_after_5": 47814,
+                    "wage_before": 25934,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 46,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 45176,
+                    "wage_after_5": 41781,
+                    "wage_before": 23548,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "11-9051",
-            "supply": 2.5,
+            "supply": 30.67,
             "title": "Food Service Managers"
+          },
+          {
+            "annual_openings": 10,
+            "annual_wage": 38140,
+            "awards_recent": 29,
+            "course_count": 6,
+            "enrolled": true,
+            "feeding_awards": 29,
+            "gap": -21,
+            "growth_rate": -0.001574725,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  3,
+                  0,
+                  0,
+                  1,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  411,
+                  657,
+                  460,
+                  98,
+                  432,
+                  658,
+                  159,
+                  397,
+                  132
+                ],
+                "name": "Hospitality",
+                "top6": "130700",
+                "wages": [
+                  {
+                    "n": 48,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 40411,
+                    "wage_after_5": 56085,
+                    "wage_before": 22617,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 31,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 27543,
+                    "wage_after_5": 51346,
+                    "wage_before": 19969,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  3,
+                  0,
+                  62,
+                  27
+                ],
+                "awards_recent": 27,
+                "enrollment": [
+                  190,
+                  55,
+                  262,
+                  28,
+                  290,
+                  9,
+                  127,
+                  59,
+                  118
+                ],
+                "name": "Restaurant and Food Services and Management",
+                "top6": "130710",
+                "wages": [
+                  {
+                    "n": 118,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 42505,
+                    "wage_after_5": 51322,
+                    "wage_before": 19903,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 112,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 41211,
+                    "wage_after_5": 49225,
+                    "wage_before": 23301,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 76,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 32611,
+                    "wage_after_5": 40715,
+                    "wage_before": 20207,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "35-2013",
+            "supply": 30.67,
+            "title": "Cooks, Private Household"
+          },
+          {
+            "annual_openings": 200,
+            "annual_wage": 56570,
+            "awards_recent": 2,
+            "course_count": 3,
+            "enrolled": true,
+            "feeding_awards": 2,
+            "gap": 199,
+            "growth_rate": 0.05401129,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  3,
+                  0,
+                  0,
+                  1,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  411,
+                  657,
+                  460,
+                  98,
+                  432,
+                  658,
+                  159,
+                  397,
+                  132
+                ],
+                "name": "Hospitality",
+                "top6": "130700",
+                "wages": [
+                  {
+                    "n": 48,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 40411,
+                    "wage_after_5": 56085,
+                    "wage_before": 22617,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 31,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 27543,
+                    "wage_after_5": 51346,
+                    "wage_before": 19969,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "41-3041",
+            "supply": 1.0,
+            "title": "Travel Agents"
           }
         ],
         "name": "Skyline College"
@@ -812,49 +1018,59 @@
       {
         "cells": [
           {
-            "annual_openings": 1390,
-            "annual_wage": 74760,
-            "awards_recent": 1,
-            "course_count": 1,
-            "enrolled": true,
-            "feeding_awards": 1,
-            "gap": 1389,
-            "growth_rate": 0.039079732,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  1,
-                  1,
-                  2,
-                  1
-                ],
-                "awards_recent": 1,
-                "enrollment": [
-                  62,
-                  40,
-                  38,
-                  40,
-                  33,
-                  41,
-                  43,
-                  41,
-                  44
-                ],
-                "name": "Nutrition, Foods, and Culinary Arts",
-                "top6": "130600",
-                "wages": []
-              }
-            ],
+            "annual_openings": 1230,
+            "annual_wage": 81580,
+            "awards_recent": 0,
+            "course_count": 2,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 1230,
+            "growth_rate": 0.02991067,
+            "in_demand": true,
+            "programs": [],
             "soc_code": "11-9051",
-            "supply": 1.0,
+            "supply": 0.0,
             "title": "Food Service Managers"
+          },
+          {
+            "annual_openings": 10,
+            "annual_wage": 38140,
+            "awards_recent": 0,
+            "course_count": 1,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 10,
+            "growth_rate": -0.001574725,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "35-2013",
+            "supply": 0.0,
+            "title": "Cooks, Private Household"
+          },
+          {
+            "annual_openings": 200,
+            "annual_wage": 56570,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 200,
+            "growth_rate": 0.05401129,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "41-3041",
+            "supply": 0.0,
+            "title": "Travel Agents"
           }
         ],
         "name": "Ca\u00f1ada College"
       }
     ],
     "coverage_awards_only": true,
+    "demand_criteria": {
+      "min_openings": 250,
+      "min_wage": 50000
+    },
     "enrollment_terms": [
       "Fall 2021",
       "Spring 2022",
@@ -866,7 +1082,7 @@
       "Spring 2025",
       "Fall 2025"
     ],
-    "executive_summary": "This view examines the regional demand landscape across the 1 retail, hospitality & tourism occupations the San Mateo County CCD \u2014 Retail, Hospitality & Tourism targets in the Bay Area regional labor market. Regional demand for these occupations totals 1,390 openings per year.",
+    "executive_summary": "This view examines the regional demand landscape across the 3 retail, hospitality & tourism occupations the San Mateo County CCD \u2014 Retail, Hospitality & Tourism targets in the Bay Area regional labor market. Regional demand for these occupations totals 1,440 openings per year.",
     "is_sector_priority": false,
     "region": "Bay",
     "region_display": "Bay Area",
