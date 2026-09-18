@@ -1,99 +1,6 @@
 {
  "employers": [
   {
-   "description": "Advanced Micro Devices (AMD), headquartered in Santa Clara, California, designs high-performance CPUs, GPUs, and adaptive computing solutions. Serving consumer, commercial, and data center markets, AMD's technology powers PCs, gaming, and AI applications globally, with over 25,000 employees.",
-   "display_name": null,
-   "lat": 37.4,
-   "lng": -122.0,
-   "naics4": "3344",
-   "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
-   "name": "Advanced Micro Devices",
-   "relevance": 10.2,
-   "sector": "Manufacturing",
-   "size_class": null,
-   "size_rank": 0,
-   "soc_count": 6,
-   "soc_titles": {
-    "17-3012": "Electrical and Electronics Drafters",
-    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
-    "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "51-9141": "Semiconductor Processing Technicians"
-   },
-   "socs": [
-    "51-9141",
-    "17-3023",
-    "17-3024",
-    "49-2094",
-    "17-3012",
-    "17-3028"
-   ],
-   "website": "https://www.amd.com/"
-  },
-  {
-   "description": "Alps Electric North America, headquartered in Santa Clara, CA, manufactures electronic components and integrated systems. It develops switches, sensors, and automotive modules, serving global automotive OEMs, consumer electronics, and industrial equipment markets.",
-   "display_name": null,
-   "lat": 37.4,
-   "lng": -122.0,
-   "naics4": "3344",
-   "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
-   "name": "Alps Electric North America",
-   "relevance": 10.2,
-   "sector": "Manufacturing",
-   "size_class": null,
-   "size_rank": 0,
-   "soc_count": 6,
-   "soc_titles": {
-    "17-3012": "Electrical and Electronics Drafters",
-    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
-    "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "51-9141": "Semiconductor Processing Technicians"
-   },
-   "socs": [
-    "51-9141",
-    "17-3023",
-    "17-3024",
-    "49-2094",
-    "17-3012",
-    "17-3028"
-   ],
-   "website": "https://www.alpsalpine.com/"
-  },
-  {
-   "description": "Applied Materials delivers material innovation, specializing in modifying materials at atomic levels on an industrial scale. The company provides products and services for semiconductor, display, and automation software, serving customers globally to advance technology and enable next-gen AI chips.",
-   "display_name": null,
-   "lat": 37.4,
-   "lng": -122.0,
-   "naics4": "3344",
-   "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
-   "name": "Applied Materials",
-   "relevance": 10.2,
-   "sector": "Manufacturing",
-   "size_class": null,
-   "size_rank": 0,
-   "soc_count": 6,
-   "soc_titles": {
-    "17-3012": "Electrical and Electronics Drafters",
-    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
-    "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "51-9141": "Semiconductor Processing Technicians"
-   },
-   "socs": [
-    "51-9141",
-    "17-3023",
-    "17-3024",
-    "49-2094",
-    "17-3012",
-    "17-3028"
-   ],
-   "website": "https://www.appliedmaterials.com/"
-  },
-  {
    "description": "Arm is a global semiconductor and software design company that develops and licenses CPU, GPU, and NPU architectures and IP. It serves diverse markets including cloud and data centers, autonomous machines, mobile and PC, and embedded IoT devices, with over 350 billion Arm-based chips shipped to date.",
    "display_name": null,
    "lat": 37.4,
@@ -154,37 +61,6 @@
     "17-3028"
    ],
    "website": "https://www.cel.com/"
-  },
-  {
-   "description": "Ceremorphic develops energy-efficient AI supercomputing solutions leveraging proprietary quantum-inspired qubit-based processing and 3nm process technology. They serve markets including datacenters, AI training, life sciences, automotive, robotics, and metaverse processing, aiming to transform high-performance AI and drug discovery.",
-   "display_name": null,
-   "lat": 37.4,
-   "lng": -121.9,
-   "naics4": "3344",
-   "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
-   "name": "Ceremorphic",
-   "relevance": 10.2,
-   "sector": "Professional Services",
-   "size_class": null,
-   "size_rank": 0,
-   "soc_count": 6,
-   "soc_titles": {
-    "17-3012": "Electrical and Electronics Drafters",
-    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
-    "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "51-9141": "Semiconductor Processing Technicians"
-   },
-   "socs": [
-    "51-9141",
-    "17-3023",
-    "17-3024",
-    "49-2094",
-    "17-3012",
-    "17-3028"
-   ],
-   "website": "https://ceremorphic.com/"
   },
   {
    "description": "Cirexx International, founded in 1980, is a Silicon Valley-based electronic solutions company specializing in PCB layout, fabrication, and assembly. They provide quick-turn, high-reliability Flex, Rigid-Flex, RF/Microwave, HDI, and Rigid Circuit Boards for industries like military, aerospace, and medical, with all manufacturing in the USA.",
@@ -280,68 +156,6 @@
    "website": "https://www.horizon.auto/"
   },
   {
-   "description": "IXYS, as part of Littelfuse, manufactures and provides circuit protection, power control, and sensing solutions. They offer a unified portfolio of switching solutions, automotive fuse holders, and gate drivers, serving various industries globally with products for safe and efficient electrical energy transfer.",
-   "display_name": null,
-   "lat": 37.4,
-   "lng": -121.9,
-   "naics4": "3344",
-   "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
-   "name": "IXYS",
-   "relevance": 10.2,
-   "sector": "Manufacturing",
-   "size_class": null,
-   "size_rank": 0,
-   "soc_count": 6,
-   "soc_titles": {
-    "17-3012": "Electrical and Electronics Drafters",
-    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
-    "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "51-9141": "Semiconductor Processing Technicians"
-   },
-   "socs": [
-    "51-9141",
-    "17-3023",
-    "17-3024",
-    "49-2094",
-    "17-3012",
-    "17-3028"
-   ],
-   "website": "https://www.littelfuse.com/"
-  },
-  {
-   "description": "Infineon Technologies is a global leader in semiconductor and system solutions, serving automotive, industrial, AI & communication, security, and consumer markets. They develop products like microcontrollers, power semiconductors, and sensors, with 58,000+ employees and approximately \u20ac15 billion in revenue, making life easier, safer, and greener.",
-   "display_name": null,
-   "lat": 37.1,
-   "lng": -121.7,
-   "naics4": "3344",
-   "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
-   "name": "Infineon Technologies",
-   "relevance": 10.2,
-   "sector": "Manufacturing",
-   "size_class": null,
-   "size_rank": 0,
-   "soc_count": 6,
-   "soc_titles": {
-    "17-3012": "Electrical and Electronics Drafters",
-    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
-    "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "51-9141": "Semiconductor Processing Technicians"
-   },
-   "socs": [
-    "51-9141",
-    "17-3023",
-    "17-3024",
-    "49-2094",
-    "17-3012",
-    "17-3028"
-   ],
-   "website": "https://www.infineon.com/"
-  },
-  {
    "description": "Jameco Electronics, headquartered in Belmont, CA since 1974, is an independent distributor of over 70,000 electronic components \u2014 spanning semiconductors, passives, interconnects, power supplies, test equipment, and electromechanical parts \u2014 sourced from more than 500 franchised brands. The company also sells under its own private labels (ValuePro, ReliaPro, BenchPro, KitPro) targeting engineers, educators, and electronics hobbyists. Warehouse, logistics, and technical sales roles are concentrated at the Shoreway Road facility in Belmont.",
    "display_name": null,
    "lat": 37.5,
@@ -402,167 +216,6 @@
     "17-3028"
    ],
    "website": "https://www.leemah.com/"
-  },
-  {
-   "description": "Lenthor Engineering, based in Milpitas, California, designs, manufactures, and assembles flexible and rigid-flex printed circuit boards. Serving defense, aerospace, medical, and semiconductor markets, they provide high-reliability solutions for mission-critical applications, operating from a 63,000 sq ft facility.",
-   "display_name": null,
-   "lat": 37.4,
-   "lng": -121.9,
-   "naics4": "3344",
-   "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
-   "name": "Lenthor Engineering",
-   "relevance": 10.2,
-   "sector": "Wholesale",
-   "size_class": null,
-   "size_rank": 0,
-   "soc_count": 6,
-   "soc_titles": {
-    "17-3012": "Electrical and Electronics Drafters",
-    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
-    "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "51-9141": "Semiconductor Processing Technicians"
-   },
-   "socs": [
-    "51-9141",
-    "17-3023",
-    "17-3024",
-    "49-2094",
-    "17-3012",
-    "17-3028"
-   ],
-   "website": "https://www.lenthor.com/"
-  },
-  {
-   "description": "Synaptics develops human interface technologies, combining IoT and AI to create power-efficient processors, wireless connectivity solutions, and advanced sensing products. They serve diverse markets like PC, automotive, mobile, and smart security, with over 2,600 patents and partnerships with 470+ OEMs, enabling intelligent IoT edge devices.",
-   "display_name": null,
-   "lat": 37.4,
-   "lng": -121.9,
-   "naics4": "3344",
-   "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
-   "name": "Synaptics",
-   "relevance": 10.2,
-   "sector": "Manufacturing",
-   "size_class": null,
-   "size_rank": 0,
-   "soc_count": 6,
-   "soc_titles": {
-    "17-3012": "Electrical and Electronics Drafters",
-    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
-    "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "51-9141": "Semiconductor Processing Technicians"
-   },
-   "socs": [
-    "51-9141",
-    "17-3023",
-    "17-3024",
-    "49-2094",
-    "17-3012",
-    "17-3028"
-   ],
-   "website": "https://www.synaptics.com/"
-  },
-  {
-   "description": "Advantest Corporation develops and manufactures automated test equipment for the semiconductor industry, including SoC and memory test systems, handlers, and metrology tools. They serve customers globally, enabling the development of advanced technologies for a sustainable future.",
-   "display_name": null,
-   "lat": 37.4,
-   "lng": -121.9,
-   "naics4": "3345",
-   "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
-   "name": "Advantest America",
-   "relevance": 2.8,
-   "sector": "Manufacturing",
-   "size_class": null,
-   "size_rank": 0,
-   "soc_count": 7,
-   "soc_titles": {
-    "17-3012": "Electrical and Electronics Drafters",
-    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
-    "17-3028": "Calibration Technologists and Technicians",
-    "49-2092": "Electric Motor, Power Tool, and Related Repairers",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "51-9141": "Semiconductor Processing Technicians"
-   },
-   "socs": [
-    "17-3023",
-    "49-2094",
-    "17-3024",
-    "17-3028",
-    "17-3012",
-    "51-9141",
-    "49-2092"
-   ],
-   "website": "https://www.advantest.com/"
-  },
-  {
-   "description": "Agilent Technologies provides laboratory instruments, software, services, and consumables for life sciences, diagnostics, and applied chemical markets. They serve over 285,000 laboratories across 110 countries, focusing on advancing scientific discovery and innovation, including solutions for cell analysis, spectroscopy, and PFAS testing.",
-   "display_name": null,
-   "lat": 37.3,
-   "lng": -122.0,
-   "naics4": "3345",
-   "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
-   "name": "Agilent Technologies",
-   "relevance": 2.8,
-   "sector": "Manufacturing",
-   "size_class": null,
-   "size_rank": 0,
-   "soc_count": 7,
-   "soc_titles": {
-    "17-3012": "Electrical and Electronics Drafters",
-    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
-    "17-3028": "Calibration Technologists and Technicians",
-    "49-2092": "Electric Motor, Power Tool, and Related Repairers",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "51-9141": "Semiconductor Processing Technicians"
-   },
-   "socs": [
-    "17-3023",
-    "49-2094",
-    "17-3024",
-    "17-3028",
-    "17-3012",
-    "51-9141",
-    "49-2092"
-   ],
-   "website": "https://www.agilent.com"
-  },
-  {
-   "description": "BD Biosciences, now part of Waters Corporation, provides flow cytometry instruments, reagents, and software for clinical diagnostics and life science research. They serve researchers and clinicians in areas like cell biology, immunology, and cancer, offering solutions for single-cell multiomics, drug discovery, and cell therapy development.",
-   "display_name": null,
-   "lat": 37.4,
-   "lng": -121.9,
-   "naics4": "3345",
-   "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
-   "name": "BD Biosciences",
-   "relevance": 2.8,
-   "sector": "Professional Services",
-   "size_class": null,
-   "size_rank": 0,
-   "soc_count": 7,
-   "soc_titles": {
-    "17-3012": "Electrical and Electronics Drafters",
-    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
-    "17-3028": "Calibration Technologists and Technicians",
-    "49-2092": "Electric Motor, Power Tool, and Related Repairers",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "51-9141": "Semiconductor Processing Technicians"
-   },
-   "socs": [
-    "17-3023",
-    "49-2094",
-    "17-3024",
-    "17-3028",
-    "17-3012",
-    "51-9141",
-    "49-2092"
-   ],
-   "website": "https://www.bdbiosciences.com/"
   },
   {
    "description": "BAI, Inc. (Banner Aircraft International) is an aerospace and defense parts distributor supplying certified fasteners, bearings, electrical components, engine parts, and life support systems for military and commercial aircraft platforms including the F-15, F-16, and C-130. The company holds ISO 9001:2015 certification and FAA AC 00-56B compliance, and distributes components from authorized U.S. manufacturers to customers including the Japanese Ministry of Defense. With over 60 years of industry experience, BAI employs staff in logistics, quality assurance, and supply-chain operations supporting aerospace MRO and defense programs.",
@@ -631,39 +284,6 @@
    "website": "https://www.celldom.com/"
   },
   {
-   "description": "Flex is an advanced manufacturing company providing end-to-end solutions across industries like Automotive, Healthcare, and Data Centers. With over 140,000 employees globally, Flex offers design, supply chain, and manufacturing services, enabling customers to bring critical technologies to market.",
-   "display_name": null,
-   "lat": 37.4,
-   "lng": -122.0,
-   "naics4": "3345",
-   "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
-   "name": "Flex",
-   "relevance": 2.8,
-   "sector": "Manufacturing",
-   "size_class": null,
-   "size_rank": 0,
-   "soc_count": 7,
-   "soc_titles": {
-    "17-3012": "Electrical and Electronics Drafters",
-    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
-    "17-3028": "Calibration Technologists and Technicians",
-    "49-2092": "Electric Motor, Power Tool, and Related Repairers",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "51-9141": "Semiconductor Processing Technicians"
-   },
-   "socs": [
-    "17-3023",
-    "49-2094",
-    "17-3024",
-    "17-3028",
-    "17-3012",
-    "51-9141",
-    "49-2092"
-   ],
-   "website": "https://flex.com/"
-  },
-  {
    "description": "Galvanize Therapeutics is a Redwood City medical device company that designs and manufactures pulsed electric field (PEF) ablation systems for soft-tissue surgery, with its flagship Aliya PEF Platform and the FDA-cleared Aliya EX Generator targeting lung tumors and COPD. The company also co-developed RheOx, a bronchoscopic PEF technology for interventional pulmonology. Engineering, regulatory affairs, clinical research, and commercial roles are based at its Redwood City headquarters.",
    "display_name": null,
    "lat": 37.5,
@@ -730,39 +350,6 @@
    "website": "https://www.genrad.com/"
   },
   {
-   "description": "NeuroPace develops the RNS System, an FDA-approved epilepsy device that delivers personalized treatment by responding to abnormal brain activity. It serves adults with drug-resistant focal epilepsy, providing significant seizure reduction and quality of life improvements through personalized treatment and empowering insights from EEG data.",
-   "display_name": null,
-   "lat": 37.4,
-   "lng": -122.0,
-   "naics4": "3345",
-   "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
-   "name": "Neuropace",
-   "relevance": 2.8,
-   "sector": "Manufacturing",
-   "size_class": null,
-   "size_rank": 0,
-   "soc_count": 7,
-   "soc_titles": {
-    "17-3012": "Electrical and Electronics Drafters",
-    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
-    "17-3028": "Calibration Technologists and Technicians",
-    "49-2092": "Electric Motor, Power Tool, and Related Repairers",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "51-9141": "Semiconductor Processing Technicians"
-   },
-   "socs": [
-    "17-3023",
-    "49-2094",
-    "17-3024",
-    "17-3028",
-    "17-3012",
-    "51-9141",
-    "49-2092"
-   ],
-   "website": "https://www.neuropace.com/"
-  },
-  {
    "description": "Northstar Photonics designs and manufactures integrated optic components and modules \u2014 including phase modulators, optical switches, and detector modules \u2014 for navigation and sensing applications in aerospace and defense. The company has operated since 2000, holds ISO 9001:2015 certification, and is ITAR registered, serving both domestic and international defense customers. All products are US-designed and manufactured, supporting roles in precision photonics assembly, test, and engineering.",
    "display_name": null,
    "lat": 37.5,
@@ -794,6 +381,393 @@
     "49-2092"
    ],
    "website": "https://www.northstarphotonics.com/"
+  },
+  {
+   "description": "Soleno Therapeutics is a biopharmaceutical company.",
+   "display_name": null,
+   "lat": 37.5,
+   "lng": -122.3,
+   "naics4": "3345",
+   "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
+   "name": "Soleno Therapeutics",
+   "relevance": 2.8,
+   "sector": "Manufacturing",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 7,
+   "soc_titles": {
+    "17-3012": "Electrical and Electronics Drafters",
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3028": "Calibration Technologists and Technicians",
+    "49-2092": "Electric Motor, Power Tool, and Related Repairers",
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "17-3023",
+    "49-2094",
+    "17-3024",
+    "17-3028",
+    "17-3012",
+    "51-9141",
+    "49-2092"
+   ],
+   "website": "https://soleno.life/"
+  },
+  {
+   "description": "Silicon Valley Power is a municipal electric utility serving residents and businesses in Santa Clara, California. It provides reliable electric service, manages utility accounts, and promotes sustainability through rebates for energy efficiency, electric vehicles, and solar programs.",
+   "display_name": null,
+   "lat": 37.4,
+   "lng": -122.0,
+   "naics4": "2211",
+   "naics_title": "Electric Power Generation, Transmission and Distribution",
+   "name": "Silicon Valley Power",
+   "relevance": 2.2,
+   "sector": "Construction",
+   "size_class": null,
+   "size_rank": 0,
+   "soc_count": 6,
+   "soc_titles": {
+    "17-3012": "Electrical and Electronics Drafters",
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3028": "Calibration Technologists and Technicians",
+    "49-2092": "Electric Motor, Power Tool, and Related Repairers",
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
+   },
+   "socs": [
+    "17-3023",
+    "17-3012",
+    "49-2094",
+    "49-2092",
+    "17-3024",
+    "17-3028"
+   ],
+   "website": "https://www.siliconvalleypower.com/"
+  },
+  {
+   "description": "Aechelon Technology provides simulation and training solutions.",
+   "display_name": null,
+   "lat": 37.7,
+   "lng": -122.4,
+   "naics4": "3341",
+   "naics_title": "Computer and Peripheral Equipment Manufacturing",
+   "name": "Aechelon Technology",
+   "relevance": 1.6,
+   "sector": "Manufacturing",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3012": "Electrical and Electronics Drafters",
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "17-3023",
+    "51-9141",
+    "17-3012",
+    "49-2094",
+    "17-3024"
+   ],
+   "website": "https://aechelon.com/"
+  },
+  {
+   "description": "DES is an integrated architecture, interior design, planning, and engineering firm founded in 1973 and headquartered in the San Francisco Bay Area, with over 170 employees across offices in Redwood City, San Francisco, Austin, and Monterey. The firm specializes in technology campuses, life science facilities, healthcare, and education projects, with notable clients including Google, Genentech, Cisco, and UC Irvine. Its in-house disciplines \u2014 architecture, landscape architecture, green building consulting, and digital graphics \u2014 draw architects, engineers, planners, and interior designers locally.",
+   "display_name": null,
+   "lat": 37.5,
+   "lng": -122.2,
+   "naics4": "5413",
+   "naics_title": "Architectural, Engineering, and Related Services",
+   "name": "DES Architects & Engineers",
+   "relevance": 1.6,
+   "sector": "Professional Services",
+   "size_class": "100-249 employees",
+   "size_rank": 6,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3012": "Electrical and Electronics Drafters",
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3028": "Calibration Technologists and Technicians",
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
+   },
+   "socs": [
+    "17-3023",
+    "17-3012",
+    "17-3028",
+    "17-3024",
+    "49-2094"
+   ],
+   "website": "https://des-ae.com/"
+  },
+  {
+   "description": "A company name, potentially in environmental consulting or engineering.",
+   "display_name": null,
+   "lat": 37.6,
+   "lng": -122.3,
+   "naics4": "5413",
+   "naics_title": "Architectural, Engineering, and Related Services",
+   "name": "EKI",
+   "relevance": 1.6,
+   "sector": "Professional Services",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3012": "Electrical and Electronics Drafters",
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3028": "Calibration Technologists and Technicians",
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
+   },
+   "socs": [
+    "17-3023",
+    "17-3012",
+    "17-3028",
+    "17-3024",
+    "49-2094"
+   ],
+   "website": "https://www.ekiconsult.com/"
+  },
+  {
+   "description": "Exponent is an engineering and scientific consulting firm founded in 1967 at Stanford that specializes in failure analysis, accident investigation, product safety, and regulatory compliance across industries including electronics, energy, transportation, life sciences, and construction. The firm employs more than 950 consultants spanning 90+ technical disciplines \u2014 including biomechanics, electrical engineering, materials science, and data science \u2014 with over 650 holding Ph.D.s across its 30+ offices in North America, Europe, and Asia. Its Bay Area roots and multi-disciplinary staff make it a strong employer of engineering and applied-science talent from California community college transfer and workforce pathways.",
+   "display_name": null,
+   "lat": 37.5,
+   "lng": -122.2,
+   "naics4": "5413",
+   "naics_title": "Architectural, Engineering, and Related Services",
+   "name": "Exponent",
+   "relevance": 1.6,
+   "sector": "Professional Services",
+   "size_class": "250-499 employees",
+   "size_rank": 7,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3012": "Electrical and Electronics Drafters",
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3028": "Calibration Technologists and Technicians",
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
+   },
+   "socs": [
+    "17-3023",
+    "17-3012",
+    "17-3028",
+    "17-3024",
+    "49-2094"
+   ],
+   "website": "https://www.exponent.com/"
+  },
+  {
+   "description": "A global engineering, procurement, and construction company.",
+   "display_name": null,
+   "lat": 37.7,
+   "lng": -122.4,
+   "naics4": "5413",
+   "naics_title": "Architectural, Engineering, and Related Services",
+   "name": "Fluor Enterprises",
+   "relevance": 1.6,
+   "sector": "Professional Services",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3012": "Electrical and Electronics Drafters",
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3028": "Calibration Technologists and Technicians",
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
+   },
+   "socs": [
+    "17-3023",
+    "17-3012",
+    "17-3028",
+    "17-3024",
+    "49-2094"
+   ],
+   "website": "https://www.fluor.com/"
+  },
+  {
+   "description": "A company name, possibly in fashion, recycling, or creative services.",
+   "display_name": null,
+   "lat": 37.6,
+   "lng": -122.3,
+   "naics4": "5413",
+   "naics_title": "Architectural, Engineering, and Related Services",
+   "name": "Reincarnate",
+   "relevance": 1.6,
+   "sector": "Professional Services",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3012": "Electrical and Electronics Drafters",
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3028": "Calibration Technologists and Technicians",
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
+   },
+   "socs": [
+    "17-3023",
+    "17-3012",
+    "17-3028",
+    "17-3024",
+    "49-2094"
+   ],
+   "website": "https://reincarnateartificial.com/"
+  },
+  {
+   "description": "SRI International is a nonprofit R&D institute headquartered in Menlo Park, CA, conducting roughly 500 research projects per year across government and commercial clients in areas including AI, quantum computing, biosciences, and defense systems \u2014 with spinouts that include Siri and more than 50 other companies. Their five divisions (Advanced Technology & Systems, Biosciences, Education & Learning, Information & Computing Sciences, and Integrated Systems & Solutions) employ approximately 1,500 researchers, engineers, and scientists. Local technical hiring spans computer science, electrical and systems engineering, biology, and applied physics roles tied to active R&D programs.",
+   "display_name": null,
+   "lat": 37.5,
+   "lng": -122.2,
+   "naics4": "5413",
+   "naics_title": "Architectural, Engineering, and Related Services",
+   "name": "SRI International",
+   "relevance": 1.6,
+   "sector": "Professional Services",
+   "size_class": "1,000-4,999 employees",
+   "size_rank": 9,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3012": "Electrical and Electronics Drafters",
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3028": "Calibration Technologists and Technicians",
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
+   },
+   "socs": [
+    "17-3023",
+    "17-3012",
+    "17-3028",
+    "17-3024",
+    "49-2094"
+   ],
+   "website": "https://www.sri.com/"
+  },
+  {
+   "description": "A company name, possibly in services or technology.",
+   "display_name": null,
+   "lat": 37.5,
+   "lng": -122.3,
+   "naics4": "5413",
+   "naics_title": "Architectural, Engineering, and Related Services",
+   "name": "Triplechoice",
+   "relevance": 1.6,
+   "sector": "Professional Services",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3012": "Electrical and Electronics Drafters",
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3028": "Calibration Technologists and Technicians",
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
+   },
+   "socs": [
+    "17-3023",
+    "17-3012",
+    "17-3028",
+    "17-3024",
+    "49-2094"
+   ],
+   "website": "https://triplechoice.com/"
+  },
+  {
+   "description": "The San Francisco Public Utilities Commission (SFPUC) is the city agency that delivers retail drinking water, wastewater/sewer service, and electric power (Hetch Hetchy Power and CleanPowerSF) to San Francisco residents and businesses. It manages the regional Hetch Hetchy water system \u2014 spanning Sierra Nevada watersheds to Bay Area distribution \u2014 along with stormwater infrastructure and large capital improvement programs. The agency employs engineers, utility system operators, watershed managers, construction supervisors, and environmental technicians, and runs apprenticeship and work-experience pathways in the trades.",
+   "display_name": null,
+   "lat": 37.6,
+   "lng": -122.3,
+   "naics4": "5413",
+   "naics_title": "Architectural, Engineering, and Related Services",
+   "name": "Water Quality Bureau",
+   "relevance": 1.6,
+   "sector": "Professional Services",
+   "size_class": "100-249 employees",
+   "size_rank": 6,
+   "soc_count": 5,
+   "soc_titles": {
+    "17-3012": "Electrical and Electronics Drafters",
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3028": "Calibration Technologists and Technicians",
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
+   },
+   "socs": [
+    "17-3023",
+    "17-3012",
+    "17-3028",
+    "17-3024",
+    "49-2094"
+   ],
+   "website": "SFPUC.ORG"
+  },
+  {
+   "description": "Elroy Air designs and manufactures the Chaparral, an autonomous electric-hybrid VTOL cargo aircraft built for uncrewed middle-mile logistics missions. The Chaparral carries a detachable cargo pod and has completed flight testing in partnership with the U.S. Air Force, NASA, FedEx, and Lockheed Martin. The company draws on engineers across aerospace, autonomy, defense systems, and advanced manufacturing.",
+   "display_name": null,
+   "lat": 37.7,
+   "lng": -122.4,
+   "naics4": "3364",
+   "naics_title": "Aerospace Product and Parts Manufacturing",
+   "name": "Elroy Air",
+   "relevance": 0.8,
+   "sector": "Manufacturing",
+   "size_class": "100-249 employees",
+   "size_rank": 6,
+   "soc_count": 6,
+   "soc_titles": {
+    "17-3012": "Electrical and Electronics Drafters",
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3028": "Calibration Technologists and Technicians",
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "17-3023",
+    "17-3028",
+    "49-2094",
+    "17-3024",
+    "51-9141",
+    "17-3012"
+   ],
+   "website": "https://elroyair.com/"
+  },
+  {
+   "description": "Aperture Therapeutics is a clinical-stage biotech developing oligonucleotide therapeutics for neurodegenerative diseases, with programs focused on ALS and frontotemporal dementia (FTD). The company uses machine learning to mine large-scale genomic and clinical datasets to identify naturally occurring gene variants that protect against neurodegeneration, then designs therapies that mimic those protective mechanisms. Their team spans computational biologists, neuroscientists, and R&D operations staff.",
+   "display_name": null,
+   "lat": 37.5,
+   "lng": -122.3,
+   "naics4": "5417",
+   "naics_title": "Scientific Research and Development Services",
+   "name": "Aperture Therapeutics",
+   "relevance": 0.7,
+   "sector": "Professional Services",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 6,
+   "soc_titles": {
+    "17-3012": "Electrical and Electronics Drafters",
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3028": "Calibration Technologists and Technicians",
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "17-3023",
+    "17-3024",
+    "49-2094",
+    "17-3028",
+    "17-3012",
+    "51-9141"
+   ],
+   "website": "https://www.aperturetx.com/"
   }
  ],
  "region": "Bay",
@@ -804,5 +778,5 @@
   "Santa Clara"
  ],
  "shown": 25,
- "total": 383
+ "total": 107
 }

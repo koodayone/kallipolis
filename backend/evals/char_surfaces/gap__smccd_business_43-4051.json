@@ -7,7 +7,7 @@
   "region": "Bay Area",
   "sector": "business",
   "sector_label": "Business & Entrepreneurship",
-  "soc": "43-4051",
+  "soc": null,
   "top6": null
  },
  "data": {
@@ -26,9 +26,9 @@
  "licensing": {
   "gates": [
    {
-    "field": "gap",
+    "field": "member_supply",
     "marker": "unavailable",
-    "reason": "San Mateo County CCD runs no active program feeding Customer Service Representatives (43-4051), so a member-anchored gap view has no row for it \u2014 the sector summary is NOT this occupation's figure. See occupation_profile for its regional demand and gap (region-derived; this member's own supply shows as its share, which may be 0)."
+    "reason": "San Mateo County CCD runs no active program feeding this sector's qualifying middle-skill occupations, so a member-anchored gap view is empty. The region may still have unmet demand in this sector \u2014 this view is scoped to occupations the member already serves, not greenfield ones."
    }
   ],
   "licensed": [],
@@ -39,18 +39,18 @@
  "next_moves": [
   {
    "coordinate": {
-    "entity": "43-4051",
+    "entity": "",
     "lens": "",
     "member": "smccd",
     "member_label": "San Mateo County CCD",
-    "region": null,
-    "sector": "",
-    "sector_label": "",
-    "soc": "43-4051",
+    "region": "Bay Area",
+    "sector": "business",
+    "sector_label": "Business & Entrepreneurship",
+    "soc": null,
     "top6": null
    },
-   "form": "navigate",
-   "rationale": "The occupation's regional demand, supply, and gap \u2014 region-derived, not gated to what the member serves."
+   "form": "orient",
+   "rationale": "See which sectors this member actually runs programs in."
   }
  ],
  "provenance": {
@@ -60,8 +60,8 @@
   "vintages": {}
  },
  "view_link": {
-  "note": "",
+  "note": "Opens on the lens with a default selection (view state applies client-side); select the row above to corroborate the figure.",
   "status": "ok",
-  "url": "https://preview.kallipolis.us/smccd-business?lens=occupations&soc=43-4051"
+  "url": "https://preview.kallipolis.us/smccd-business?lens=occupations"
  }
 }

@@ -5,32 +5,11 @@
  "awards_by_college": [],
  "consortium_supply": 0.0,
  "crosswalk": {
-  "cips": [
-   {
-    "active": false,
-    "code": "48.0501",
-    "title": "Machine Tool Technology/Machinist"
-   },
-   {
-    "active": false,
-    "code": "48.0503",
-    "title": "Machine Shop Technology/Assistant"
-   }
-  ],
+  "cips": [],
   "coverage_pct": 0.0,
   "n_taught": 0,
-  "n_total": 1,
-  "tops": [
-   {
-    "cips": [
-     "48.0501",
-     "48.0503"
-    ],
-    "code": "095630",
-    "name": "Machining and Machine Tools",
-    "taught_at_college": false
-   }
-  ]
+  "n_total": 0,
+  "tops": []
  },
  "curriculum_by_college": [
   {

@@ -292,7 +292,7 @@
       "source": "datamart",
       "status": "ok",
       "unit": "completions/yr",
-      "value": 306.0,
+      "value": 292.3,
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "supply_gap": {
@@ -301,7 +301,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 2394,
+      "value": 2408,
       "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      }
     }

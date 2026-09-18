@@ -14,73 +14,22 @@
   "more": {
    "drill": {
     "coordinate": {
-     "entity": "29-2061",
+     "entity": "29-2099",
      "lens": "",
      "member": "deanza",
      "member_label": "De Anza College",
      "region": "Bay",
      "sector": "",
      "sector_label": "",
-     "soc": "29-2061",
+     "soc": "29-2099",
      "top6": null
     },
     "form": "navigate",
-    "rationale": "70 more greenfield occupations; navigate to any surfaced SOC drills into one."
+    "rationale": "21 more greenfield occupations; navigate to any surfaced SOC drills into one."
    },
-   "remaining": 70
+   "remaining": 21
   },
   "rows": [
-   {
-    "label": "43-4051 Customer Service Representatives",
-    "roster": [],
-    "values": {
-     "annual_openings": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 5080,
-      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
-     },
-     "annual_wage": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "USD/yr (occ. median)",
-      "value": 56440,
-      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
-     },
-     "growth_rate": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "5-yr %",
-      "value": 0.0,
-      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
-     },
-     "member_supply": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 0.0,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "typical_education": {
-      "granularity": "SOC 43-4051",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "",
-      "value": "High school diploma or equivalent",
-      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
-     }
-    }
-   },
    {
     "label": "31-1131 Nursing Assistants",
     "roster": [],
@@ -128,210 +77,6 @@
       "status": "ok",
       "unit": "",
       "value": "Postsecondary nondegree award",
-      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
-     }
-    }
-   },
-   {
-    "label": "53-3032 Heavy and Tractor-Trailer Truck Drivers",
-    "roster": [],
-    "values": {
-     "annual_openings": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 3550,
-      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
-     },
-     "annual_wage": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "USD/yr (occ. median)",
-      "value": 64140,
-      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
-     },
-     "growth_rate": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "5-yr %",
-      "value": 0.0,
-      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
-     },
-     "member_supply": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 0.0,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "typical_education": {
-      "granularity": "SOC 53-3032",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "",
-      "value": "Postsecondary nondegree award",
-      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
-     }
-    }
-   },
-   {
-    "label": "39-9031 Exercise Trainers and Group Fitness Instructors",
-    "roster": [],
-    "values": {
-     "annual_openings": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 3010,
-      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
-     },
-     "annual_wage": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "USD/yr (occ. median)",
-      "value": 59840,
-      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
-     },
-     "growth_rate": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "5-yr %",
-      "value": 0.1,
-      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
-     },
-     "member_supply": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 0.0,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "typical_education": {
-      "granularity": "SOC 39-9031",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "",
-      "value": "High school diploma or equivalent",
-      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
-     }
-    }
-   },
-   {
-    "label": "47-2031 Carpenters",
-    "roster": [],
-    "values": {
-     "annual_openings": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 2210,
-      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
-     },
-     "annual_wage": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "USD/yr (occ. median)",
-      "value": 74840,
-      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
-     },
-     "growth_rate": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "5-yr %",
-      "value": -0.0,
-      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
-     },
-     "member_supply": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 0.0,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "typical_education": {
-      "granularity": "SOC 47-2031",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "",
-      "value": "High school diploma or equivalent",
-      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
-     }
-    }
-   },
-   {
-    "label": "47-2111 Electricians",
-    "roster": [],
-    "values": {
-     "annual_openings": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 1900,
-      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
-     },
-     "annual_wage": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "USD/yr (occ. median)",
-      "value": 86440,
-      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
-     },
-     "growth_rate": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "5-yr %",
-      "value": 0.0,
-      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
-     },
-     "member_supply": {
-      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 0.0,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "typical_education": {
-      "granularity": "SOC 47-2111",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "",
-      "value": "High school diploma or equivalent",
       "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      }
     }
@@ -437,6 +182,261 @@
       "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      }
     }
+   },
+   {
+    "label": "29-2061 Licensed Practical and Licensed Vocational Nurses",
+    "roster": [],
+    "values": {
+     "annual_openings": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 1580,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "annual_wage": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "USD/yr (occ. median)",
+      "value": 92510,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "growth_rate": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "5-yr %",
+      "value": 0.1,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "typical_education": {
+      "granularity": "SOC 29-2061",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "",
+      "value": "Postsecondary nondegree award",
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     }
+    }
+   },
+   {
+    "label": "11-9051 Food Service Managers",
+    "roster": [],
+    "values": {
+     "annual_openings": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 1230,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "annual_wage": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "USD/yr (occ. median)",
+      "value": 81580,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "growth_rate": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "5-yr %",
+      "value": 0.0,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "typical_education": {
+      "granularity": "SOC 11-9051",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "",
+      "value": "High school diploma or equivalent",
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     }
+    }
+   },
+   {
+    "label": "35-1011 Chefs and Head Cooks",
+    "roster": [],
+    "values": {
+     "annual_openings": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 1120,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "annual_wage": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "USD/yr (occ. median)",
+      "value": 67090,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "growth_rate": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "5-yr %",
+      "value": 0.0,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "typical_education": {
+      "granularity": "SOC 35-1011",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "",
+      "value": "High school diploma or equivalent",
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     }
+    }
+   },
+   {
+    "label": "29-2052 Pharmacy Technicians",
+    "roster": [],
+    "values": {
+     "annual_openings": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 710,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "annual_wage": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "USD/yr (occ. median)",
+      "value": 62300,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "growth_rate": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "5-yr %",
+      "value": -0.0,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "typical_education": {
+      "granularity": "SOC 29-2052",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "",
+      "value": "High school diploma or equivalent",
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     }
+    }
+   },
+   {
+    "label": "53-2031 Flight Attendants",
+    "roster": [],
+    "values": {
+     "annual_openings": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 610,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "annual_wage": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "USD/yr (occ. median)",
+      "value": 85180,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "growth_rate": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "5-yr %",
+      "value": -0.1,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "typical_education": {
+      "granularity": "SOC 53-2031",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "",
+      "value": "High school diploma or equivalent",
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     }
+    }
    }
   ],
   "sorted_by": {
@@ -461,7 +461,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "occupations",
-    "value": 78,
+    "value": 29,
     "vintage": ""
    }
   }
@@ -488,14 +488,14 @@
  "next_moves": [
   {
    "coordinate": {
-    "entity": "43-4051",
+    "entity": "31-1131",
     "lens": "",
     "member": "deanza",
     "member_label": "De Anza College",
     "region": "Bay",
     "sector": "",
     "sector_label": "",
-    "soc": "43-4051",
+    "soc": "31-1131",
     "top6": null
    },
    "form": "navigate",

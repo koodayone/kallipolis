@@ -21,7 +21,7 @@
     "source": "coe",
     "status": "ok",
     "unit": "USD/yr (occ. median)",
-    "value": 56440,
+    "value": null,
     "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
    },
    "gap": {
@@ -30,7 +30,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 5080,
+    "value": 0,
     "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "member_supply": {
@@ -48,7 +48,7 @@
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 5080,
+    "value": null,
     "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
    },
    "regional_supply": {

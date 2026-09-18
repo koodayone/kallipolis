@@ -1,6 +1,6 @@
 {
  "aggregate": {
-  "candidate_employers": 438,
+  "candidate_employers": 128,
   "combined_awards": 4,
   "combined_supply_total": 4.7,
   "gap": 1085,
@@ -351,7 +351,7 @@
      "annual_openings": 40,
      "annual_wage": 97230,
      "awards_recent": 4,
-     "course_count": 8,
+     "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
      "gap": 35,

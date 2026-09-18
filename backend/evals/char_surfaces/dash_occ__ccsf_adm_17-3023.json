@@ -22,93 +22,11 @@
  ],
  "consortium_supply": 45.3,
  "crosswalk": {
-  "cips": [
-   {
-    "active": true,
-    "code": "15.0000",
-    "title": "Engineering Technologies/Technicians, General"
-   },
-   {
-    "active": true,
-    "code": "15.0303",
-    "title": "Electrical, Electronic, and Communications Engineering Technology/Technician"
-   },
-   {
-    "active": true,
-    "code": "15.0305",
-    "title": "Telecommunications Technology/Technician"
-   },
-   {
-    "active": false,
-    "code": "15.0306",
-    "title": "Integrated Circuit Design Technology/Technician"
-   },
-   {
-    "active": true,
-    "code": "15.0399",
-    "title": "Electrical/Electronic Engineering Technologies/Technicians, Other"
-   },
-   {
-    "active": true,
-    "code": "15.0406",
-    "title": "Automation Engineer Technology/Technician"
-   },
-   {
-    "active": false,
-    "code": "15.1201",
-    "title": "Computer Engineering Technology/Technician"
-   }
-  ],
-  "coverage_pct": 60.0,
-  "n_taught": 3,
-  "n_total": 5,
-  "tops": [
-   {
-    "cips": [
-     "15.0000",
-     "15.0399"
-    ],
-    "code": "092400",
-    "name": "Engineering Technology, General (requires Trigonometry)",
-    "taught_at_college": true
-   },
-   {
-    "cips": [
-     "15.0303",
-     "15.0305",
-     "15.0399"
-    ],
-    "code": "093400",
-    "name": "Electronics and Electric Technology",
-    "taught_at_college": true
-   },
-   {
-    "cips": [
-     "15.0303",
-     "15.0306",
-     "15.1201"
-    ],
-    "code": "093410",
-    "name": "Computer Electronics",
-    "taught_at_college": false
-   },
-   {
-    "cips": [
-     "15.0406"
-    ],
-    "code": "094500",
-    "name": "Industrial Systems Technology and Maintenance",
-    "taught_at_college": false
-   },
-   {
-    "cips": [
-     "15.0406"
-    ],
-    "code": "095600",
-    "name": "Manufacturing and Industrial Technology",
-    "taught_at_college": true
-   }
-  ]
+  "cips": [],
+  "coverage_pct": 0.0,
+  "n_taught": 0,
+  "n_total": 0,
+  "tops": []
  },
  "curriculum_by_college": [
   {

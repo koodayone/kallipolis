@@ -1,30 +1,15 @@
 {
- "annual_openings": 5080,
- "annual_wage": 56440,
+ "annual_openings": null,
+ "annual_wage": null,
  "award_years": [],
  "awards_by_college": [],
  "consortium_supply": 0.0,
  "crosswalk": {
-  "cips": [
-   {
-    "active": false,
-    "code": "52.0411",
-    "title": "Customer Service Support/Call Center/Teleservice Operation"
-   }
-  ],
+  "cips": [],
   "coverage_pct": 0.0,
   "n_taught": 0,
-  "n_total": 1,
-  "tops": [
-   {
-    "cips": [
-     "52.0411"
-    ],
-    "code": "051800",
-    "name": "Customer Service",
-    "taught_at_college": false
-   }
-  ]
+  "n_total": 0,
+  "tops": []
  },
  "curriculum_by_college": [
   {
@@ -40,19 +25,19 @@
    "courses": []
   }
  ],
- "description": "Interact with customers to provide basic or scripted information in response to routine inquiries about products and services. May handle and resolve general complaints. Excludes individuals whose duties are primarily installation, sales, repair, and technical support.",
- "employment": 37310,
+ "description": null,
+ "employment": null,
  "enrollment_by_college": [],
  "enrollment_terms": [],
  "feeding_tops": [],
- "gap": 5080,
- "growth_rate": 0.0,
- "occupational_demand": "According to the Centers of Excellence for Labor Market Research, Customer Service Representatives (SOC 43-4051) earn a median annual wage of $56,440 with 5,080 annual openings in the Bay Area region. 37,310 workers are currently employed in the region with this occupational role, with projected employment growth of +1.4% over a 5-year time span.",
+ "gap": 0,
+ "growth_rate": null,
+ "occupational_demand": "According to the Centers of Excellence for Labor Market Research, no wage or openings figures are published for 43-4051 (SOC 43-4051) in the Bay Area region.",
  "partnership_opportunities": [],
  "partnership_opportunities_narrative": "",
  "region": "Bay",
  "region_display": "Bay Area",
  "sector": "Business & Entrepreneurship",
  "soc_code": "43-4051",
- "title": "Customer Service Representatives"
+ "title": "43-4051"
 }

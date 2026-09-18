@@ -25,9 +25,9 @@
      "top6": "122310"
     },
     "form": "crosswalk",
-    "rationale": "20 more programs to compare."
+    "rationale": "19 more programs to compare."
    },
-   "remaining": 20
+   "remaining": 19
   },
   "rows": [
    {
@@ -145,7 +145,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 6535,
+      "value": 6549,
       "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "award_trend": {
@@ -241,7 +241,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 6535,
+      "value": 6549,
       "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "award_trend": {
@@ -337,7 +337,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 6445,
+      "value": 6459,
       "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "award_trend": {
@@ -812,7 +812,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "programs",
-    "value": 28,
+    "value": 27,
     "vintage": ""
    }
   }

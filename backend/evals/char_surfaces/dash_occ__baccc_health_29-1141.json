@@ -172,34 +172,11 @@
  ],
  "consortium_supply": 688.7,
  "crosswalk": {
-  "cips": [
-   {
-    "active": true,
-    "code": "51.3801",
-    "title": "Registered Nursing/Registered Nurse"
-   }
-  ],
-  "coverage_pct": 100.0,
-  "n_taught": 2,
-  "n_total": 2,
-  "tops": [
-   {
-    "cips": [
-     "51.3801"
-    ],
-    "code": "123000",
-    "name": "Nursing",
-    "taught_at_college": true
-   },
-   {
-    "cips": [
-     "51.3801"
-    ],
-    "code": "123010",
-    "name": "Registered Nursing",
-    "taught_at_college": true
-   }
-  ]
+  "cips": [],
+  "coverage_pct": 0.0,
+  "n_taught": 0,
+  "n_total": 0,
+  "tops": []
  },
  "curriculum_by_college": [
   {
@@ -1518,7 +1495,7 @@
   {
    "college": "De Anza College",
    "vals": [
-    1009,
+    614,
     517,
     542,
     514,
@@ -1539,7 +1516,7 @@
    "college": "Evergreen Valley College",
    "vals": [
     null,
-    541,
+    304,
     216,
     null,
     346,

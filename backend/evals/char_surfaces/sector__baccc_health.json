@@ -25,9 +25,9 @@
      "top6": "122310"
     },
     "form": "crosswalk",
-    "rationale": "20 more programs the member runs; crosswalk on any TOP6 drills into its occupations."
+    "rationale": "19 more programs the member runs; crosswalk on any TOP6 drills into its occupations."
    },
-   "remaining": 20
+   "remaining": 19
   },
   "rows": [
    {
@@ -375,7 +375,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 25416,
+    "value": 25430,
     "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "in_demand_occupations": {
@@ -384,7 +384,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "SOCs",
-    "value": 16,
+    "value": 15,
     "vintage": ""
    },
    "in_demand_openings": {
@@ -402,7 +402,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "TOP6 programs the member runs",
-    "value": 28,
+    "value": 27,
     "vintage": ""
    },
    "member_programs_active": {
@@ -411,7 +411,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "TOP6 programs currently graduating",
-    "value": 26,
+    "value": 25,
     "vintage": ""
    },
    "member_share_of_supply": {
@@ -429,7 +429,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 2433.7,
+    "value": 2420.0,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "regional_demand": {
@@ -447,7 +447,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 2433.7,
+    "value": 2420.0,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "sector_occupations": {
