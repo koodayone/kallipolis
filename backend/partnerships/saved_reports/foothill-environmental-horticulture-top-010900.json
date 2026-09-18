@@ -7,13 +7,13 @@
     "37-1012"
   ],
   "author": "Dayone Koo",
-  "date": "September 17, 2026",
+  "date": "September 18, 2026",
   "org_name": "Foothill College Program Evaluation",
   "org_short": "Regional",
-  "_comment": "PROGRAM EVALUATION (evaluate-program skill). Subject is the PROGRAM (Foothill College x TOP 010900), not a job title. Destination SOCs DERIVED: crosswalk(010900) intersected with SECTORS['agwet'].socs minus ALL_OTHER/PROMOTION/EXPERIENCE_5YR = ['37-3012', '37-1012']. Dropped: 11-9013, 25-1041, 25-9021, 37-3011 (below the middle-skill gate), 45-1011, 99-9999. Peer set = top 6 Bay colleges by 5-year awards on THIS TOP (a program evaluation's peers must share the TOP; the role report mixed TOPs). live_postings and competencies reused verbatim from the matching role report (same SOCs, already verified). EVIDENCE-FORWARD, NO VERDICT.",
+  "_comment": "PROGRAM EVALUATION (evaluate-program skill). Subject is the PROGRAM (Foothill College x TOP 010900), not a job title. Destination SOCs DERIVED: crosswalk(010900) intersected with SECTORS['agwet'].socs minus ALL_OTHER/PROMOTION/EXPERIENCE_5YR = ['37-3012', '37-1012']. Dropped: 11-9013, 25-1041, 25-9021, 37-3011 (below the middle-skill gate), 45-1011, 99-9999. Peer set = top 6 Bay colleges by 5-year awards on THIS TOP (a program evaluation's peers must share the TOP; the role report mixed TOPs). live_postings and competencies reused verbatim from the matching role report (same SOCs, already verified). EVIDENCE-FORWARD, NO VERDICT. EDITION 2026-09-18: crosswalk_chain true — the TOP–CIP–SOC Crosswalk section now argues the destinations; the demand note keeps only the COE sentence.",
   "program_top": "010900",
   "lede": "This evaluation assembles labor-market supply and demand evidence for Foothill College's Environmental Horticulture and Design program (TOP 010900): regional demand for the occupations it leads to, its award and enrollment trends alongside other colleges offering the same program in the region, and how its courses align with the work of those occupations.",
-  "demand_note": "Foothill's Environmental Horticulture and Design program leads to First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers (SOC 37-1012) and Pesticide Handlers, Sprayers, and Applicators, Vegetation (SOC 37-3012) via the TOP–CIP–SOC crosswalk. [According to the Centers of Excellence](https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061), these occupations have roughly 580 openings a year in the Bay Area.",
+  "demand_note": "[According to the Centers of Excellence](https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061), First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers (SOC 37-1012) and Pesticide Handlers, Sprayers, and Applicators, Vegetation (SOC 37-3012) together have roughly 580 openings a year in the Bay Area.",
   "alignment_note": "The colleges offering TOP 010900 in the Bay Area. Each supports SOC 37-1012 and SOC 37-3012 through the same TOP–CIP–SOC crosswalk.",
   "competency_note": "",
   "award_note": "Awards conferred each year by each college's program. An empty cell means DataMart reported no data.",
@@ -111,5 +111,7 @@
     }
   },
   "curriculum_alignment": "foothill-environmental-horticulture-top-010900",
-  "curriculum_note": "O*NET maintains a set of detailed work activities that identify the competencies central to each job. Below, the Environmental Horticulture and Design program's courses are mapped to the work activities of its destination occupations, based on how each course is described in its Course Outline of Record (COR)."
+  "curriculum_note": "O*NET maintains a set of detailed work activities that identify the competencies central to each job. Below, the Environmental Horticulture and Design program's courses are mapped to the work activities of its destination occupations, based on how each course is described in its Course Outline of Record (COR).",
+  "crosswalk_chain": true,
+  "chain_note": "TOP 0109.00 spreads across four federal horticulture codes. Only landscaping and groundskeeping reaches both destination occupations; the other three reach the supervisors."
 }

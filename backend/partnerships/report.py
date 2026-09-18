@@ -206,9 +206,12 @@ class ReportSpec:
     # A program NOT YET OFFERED (an evaluation of a program's design, e.g. Foothill's
     # neurodiagnostic technology A.S. launching fall 2027). Each field is empty on every
     # other def, so the sections it touches render as they always have.
-    #   crosswalk_chain: the detailed O*NET-SOC code the program is designed for ("29-2099.01");
-    #     renders the "TOP–CIP–SOC Crosswalk" section — TOP → CIP → detailed occupation, with the
-    #     SOC the Centers of Excellence report demand under drawn as the umbrella around it.
+    #   crosswalk_chain: renders the "TOP–CIP–SOC Crosswalk" section — the TOP, the CIPs that
+    #     bridge it, the destination occupations — right before the demand for them. `true`
+    #     draws the def's occupations; a detailed O*NET-SOC code ("29-2099.01") draws that one
+    #     specialty with the SOC the Centers of Excellence report demand under as a dashed
+    #     frame around it. An occupation the crosswalk never reaches (an authored addition
+    #     from the program's stated purpose) is drawn with a dashed bypass, and named as such.
     #   chain_note: the editorial paragraph under that heading.
     #   planned_awards: the credential(s) the college has announced, shown in "Awards Offered"
     #     when the Curriculum Inventory has no approved award yet: [{"title", "credential", "units"}].
@@ -216,7 +219,7 @@ class ReportSpec:
     #   supply_scope: "statewide" when the comparator programs sit outside the member's COE
     #     region — the awards chart draws no regional openings rule and the supply titles
     #     drop "regional"; the demand section keeps the member's region.
-    crosswalk_chain: str = ""
+    crosswalk_chain: str | bool = ""
     chain_note: str = ""
     planned_awards: tuple[dict, ...] = ()
     wage_note: str = ""
@@ -897,83 +900,131 @@ def _wrap_words(text: str, width: int) -> list[str]:
             cur = (cur + " " + w).strip()
     if cur:
         lines.append(cur)
-    return lines or [""]
+    # the slash was a break opportunity, not a word boundary: inside a line it closes up again
+    return [l.replace("/ ", "/") for l in lines] or [""]
 
 
 def _dotted_top(top6: str) -> str:
     return f"{top6[:4]}.{top6[4:]}" if len(top6) == 6 and top6.isdigit() else top6
 
 
-def _chain_svg(top: tuple[str, str], cips: list[tuple[str, str]], soc: tuple[str, str],
-               umbrella: tuple[str, str] | None = None) -> str:
-    """TOP → CIP → SOC as one figure: the program's state code on the left, the federal
-    instructional code it maps to in the middle (the hinge of the argument, so it gets a
-    node of its own rather than a grey sub-line), the detailed O*NET occupation on the
-    right in the report's first accent. When that occupation is a detailed code inside a
-    broader SOC — Neurodiagnostic Technologists (29-2099.01) inside Health Technologists
-    and Technicians, All Other (29-2099) — a dashed frame around the right node names the
-    umbrella, because that is the code the demand table reports under.
+def _chain_svg(top: tuple[str, str], cips: list[tuple[str, str]], socs: list[tuple[str, str]],
+               edges: list[tuple[int, int]], umbrellas: dict[int, tuple[str, str]] | None = None,
+               authored: list[int] | None = None) -> str:
+    """TOP → CIPs → SOCs as one figure: the program's state code on the left, the federal
+    instructional codes that bridge it to its occupations in the middle (the hinge of the
+    argument, so they get nodes of their own rather than a grey sub-line), the occupations
+    on the right in the report's per-occupation accents — the colours the demand table
+    below will use. Each column stacks its nodes.
 
-    A fork of the crosswalk funnel for evaluations of a program not yet offered: its own
-    class (`chainfig`), so the docx path treats it as its own figure and `_crosswalk_svg`'s
-    output is untouched. Styles are inline so the shared stylesheet is unchanged."""
-    # three 204px nodes, 61px hops; the dashed frame's 10px padding ends flush at W=744
-    NODE_W, GAP, LINEH, W, PAD = 204, 61, 15, 744, 10
+    Edges are the crosswalk's hops, drawn as the funnel later in the document draws its
+    own: even S-curves between node centres, with a small arrowhead. Because every edge
+    into a node arrives on the same point through the same tangent, a fan-in shows one
+    head, not a pile of them. The TOP–CIP hops are the Chancellor's Office crosswalk, the
+    CIP–SOC hops the NCES crosswalk; the caption names both, so the figure carries no
+    labels of its own.
+
+    An occupation the crosswalk never reaches — added from the program's stated purpose —
+    is drawn with a dashed curve that leaves the TOP, arcs over the CIP column and lands on
+    the occupation, labelled at its apex: the figure says exactly what the def says.
+
+    Where an occupation is a detailed O*NET code inside a broader SOC — Neurodiagnostic
+    Technologists (29-2099.01) inside Health Technologists and Technicians, All Other — a
+    dashed frame tagged with the SOC surrounds its node: the code the demand table reports
+    under. Its own class (`chainfig`) so the docx path treats it as its own figure; styles
+    inline so the shared stylesheet is unchanged; `_crosswalk_svg` is untouched."""
+    NODE_W, GAP, LINEH, W, PAD, G = 204, 61, 15, 744, 10, 12
     xs = [0, NODE_W + GAP, 2 * (NODE_W + GAP)]
+    umbrellas, authored = umbrellas or {}, authored or []
     wrap = 26
     top_lines = _wrap_words(top[1], wrap)
-    cip_lines = [_wrap_words(t, wrap) for _, t in cips] or [[""]]
-    soc_lines = _wrap_words(soc[1], wrap)
-    nlines = max([len(top_lines), len(soc_lines)] + [len(l) for l in cip_lines])
-    NODE_H = 42 + nlines * LINEH
-    col_h = max(NODE_H, len(cips) * NODE_H + max(0, len(cips) - 1) * 12)
-    # The umbrella is a dashed frame with the SOC as a small tag on its top edge — nothing
-    # more; the paragraph above says what the category is and the caption names it.
-    y0 = PAD + 8 if umbrella else PAD + 1
-    H = y0 + col_h + (PAD + 4 if umbrella else 2)
-    p = [f'<svg viewBox="0 0 {W} {H:.0f}" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica,Arial,sans-serif" '
-         'style="width:100%;height:auto;display:block">',
-         '<defs><marker id="chain-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">'
-         '<path d="M 0 0 L 8 4 L 0 8 z" fill="#9aa1b2"/></marker></defs>']
+    cip_lines = [_wrap_words(t, wrap) for _, t in cips]
+    soc_lines = [_wrap_words(t, wrap) for _, t in socs]
 
-    def badge(x, y, code, lines, *, filled=False, tint=False):
-        # One hue, three steps: the TOP badge neutral, the CIP badge a faint tint of the
-        # occupation's accent, the occupation itself the full accent — the chain arriving.
-        if filled:
-            p.append(f'<rect x="{x}" y="{y:.0f}" width="{NODE_W}" height="{NODE_H}" rx="7" fill="{_ACCENTS[0]}"/>'
+    def h(lines):
+        return 42 + len(lines) * LINEH
+
+    top_h, cip_h, soc_h = h(top_lines), [h(l) for l in cip_lines], [h(l) for l in soc_lines]
+    soc_gap = G + (2 * PAD if umbrellas else 0)                  # framed nodes need room for the frame
+    col_cip = sum(cip_h) + G * max(0, len(cips) - 1)
+    col_soc = sum(soc_h) + soc_gap * max(0, len(socs) - 1)
+    col_h = max(top_h, col_cip, col_soc)
+    ARC = 36                                                     # headroom for a routed bypass and its label
+    y0 = PAD + 1 + (8 if umbrellas else 0) + (ARC if authored else 0)
+    H = y0 + col_h + (PAD + 4 if umbrellas else 2)
+    p = [f'<svg viewBox="0 0 {W} {H:.0f}" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica,Arial,sans-serif" '
+         'style="width:100%;height:auto;display:block">']
+
+    def badge(x, y, hh, code, lines, *, fill=None, tint=False):
+        # One hue arriving: the TOP badge neutral, the CIP badges a faint tint of the first
+        # accent, each occupation its own full accent.
+        if fill:
+            p.append(f'<rect x="{x}" y="{y:.0f}" width="{NODE_W}" height="{hh}" rx="7" fill="{fill}"/>'
                      f'<text x="{x + 14}" y="{y + 20:.0f}" font-size="10" fill="#fff" opacity="0.92">{_esc(code)}</text>')
             for j, ln in enumerate(lines):
                 p.append(f'<text x="{x + 14}" y="{y + 40 + j * LINEH:.0f}" font-size="13" font-weight="700" fill="#fff">{_esc(ln)}</text>')
         else:
-            fill, stroke, code_ink = ("#e8f4f2", "#a9d3cc", "#2a9d8f") if tint else ("#f7f8fb", "#d4dae6", "#9aa1b2")
-            p.append(f'<rect x="{x}" y="{y:.0f}" width="{NODE_W}" height="{NODE_H}" rx="6" fill="{fill}" stroke="{stroke}"/>'
-                     f'<text x="{x + 14}" y="{y + 20:.0f}" font-size="9.5" fill="{code_ink}">{_esc(code)}</text>')
+            f, stroke, ink = ("#e8f4f2", "#a9d3cc", "#2a9d8f") if tint else ("#f7f8fb", "#d4dae6", "#9aa1b2")
+            p.append(f'<rect x="{x}" y="{y:.0f}" width="{NODE_W}" height="{hh}" rx="6" fill="{f}" stroke="{stroke}"/>'
+                     f'<text x="{x + 14}" y="{y + 20:.0f}" font-size="9.5" fill="{ink}">{_esc(code)}</text>')
             for j, ln in enumerate(lines):
                 p.append(f'<text x="{x + 14}" y="{y + 40 + j * LINEH:.0f}" font-size="12.5" fill="#22304e">{_esc(ln)}</text>')
 
-    top_y = y0 + (col_h - NODE_H) / 2
-    soc_y = top_y
-    cip_ys = [y0 + (col_h - (len(cips) * NODE_H + max(0, len(cips) - 1) * 12)) / 2 + i * (NODE_H + 12) for i in range(len(cips))]
-    # edges first, behind the nodes: TOP → each CIP → SOC, the crosswalk's authority named over each hop
-    for cy in cip_ys:
-        p.append(f'<line x1="{xs[0] + NODE_W}" y1="{top_y + NODE_H / 2:.0f}" x2="{xs[1] - 3}" y2="{cy + NODE_H / 2:.0f}" '
-                 'stroke="#9aa1b2" stroke-width="1.6" marker-end="url(#chain-arrow)"/>')
-        p.append(f'<line x1="{xs[1] + NODE_W}" y1="{cy + NODE_H / 2:.0f}" x2="{xs[2] - 3}" y2="{soc_y + NODE_H / 2:.0f}" '
-                 'stroke="#9aa1b2" stroke-width="1.6" marker-end="url(#chain-arrow)"/>')
-    for i, label in enumerate(("CCCCO", "NCES")):        # the crosswalk's authority, over each hop
-        cx = xs[i] + NODE_W + GAP / 2
-        p.append(f'<text x="{cx:.0f}" y="{top_y + NODE_H / 2 - 7:.0f}" font-size="9" fill="#9aa1b2" text-anchor="middle">{label}</text>')
-    badge(xs[0], top_y, f"TOP {_dotted_top(top[0])}", top_lines)
-    for (cip, _), cy, lines in zip(cips, cip_ys, cip_lines):
-        badge(xs[1], cy, f"CIP {cip}", lines, tint=True)
-    if umbrella:
-        p.append(f'<rect x="{xs[2] - PAD}" y="{soc_y - PAD:.0f}" width="{NODE_W + 2 * PAD}" height="{NODE_H + 2 * PAD}" rx="10" '
-                 'fill="none" stroke="#9aa1b2" stroke-width="1.2" stroke-dasharray="4 3"/>')
-        tag = f"SOC {umbrella[0]}"
-        tw = 6 + 5.4 * len(tag)
-        p.append(f'<rect x="{xs[2] + 8}" y="{soc_y - PAD - 6:.0f}" width="{tw:.0f}" height="12" fill="#fff"/>'
-                 f'<text x="{xs[2] + 11}" y="{soc_y - PAD + 3.5:.0f}" font-size="9" fill="#5a6577">{_esc(tag)}</text>')
-    badge(xs[2], soc_y, f"SOC {soc[0]}", soc_lines, filled=True)
+    def stack(heights, gap, col_total):
+        ys, y = [], y0 + (col_h - col_total) / 2
+        for hh in heights:
+            ys.append(y)
+            y += hh + gap
+        return ys
+
+    top_y = y0 + (col_h - top_h) / 2
+    cip_ys, soc_ys = stack(cip_h, G, col_cip), stack(soc_h, soc_gap, col_soc)
+
+    STROKE = 'stroke="#9aa1b2" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"'
+    p.append('<defs><marker id="chain-arrow" markerWidth="6" markerHeight="6" refX="5.5" refY="3" orient="auto" markerUnits="userSpaceOnUse">'
+             '<path d="M 0 0.5 L 6 3 L 0 5.5 z" fill="#9aa1b2"/></marker></defs>')
+    cip_mid = [cy + cip_h[i] / 2 for i, cy in enumerate(cip_ys)]
+    soc_mid = [sy + soc_h[j] / 2 for j, sy in enumerate(soc_ys)]
+    top_mid = top_y + top_h / 2
+    x_top_r, x_cip_l, x_cip_r = xs[0] + NODE_W, xs[1] - 2, xs[1] + NODE_W
+
+    def x_soc_l(j):
+        return xs[2] - 2 - (PAD if j in umbrellas else 0)
+
+    def edge(x1, y1, x2, y2):
+        # horizontal tangents and symmetric controls at the halfway x: every edge the same
+        # even S, and edges into one node arrive on one point through one tangent, so their
+        # heads coincide — a fan-in reads as one arrival
+        xm = (x1 + x2) / 2
+        p.append(f'<path d="M {x1} {y1:.1f} C {xm:.1f} {y1:.1f}, {xm:.1f} {y2:.1f}, {x2} {y2:.1f}" {STROKE} marker-end="url(#chain-arrow)"/>')
+
+    for i in range(len(cips)):
+        edge(x_top_r, top_mid, x_cip_l, cip_mid[i])
+    for i, j in edges:
+        edge(x_cip_r, cip_mid[i], x_soc_l(j), soc_mid[j])
+    for j in authored:
+        # the bypass: a dashed arc over the CIP column, its midpoint placed in the headroom
+        # and the cubic's control height solved for it; labelled at that midpoint
+        y1, y2 = top_mid, soc_mid[j]
+        apex = y0 - ARC + 14
+        ctrl = (apex - 0.125 * (y1 + y2)) / 0.75
+        c1x, c2x = xs[1] - 10, xs[1] + NODE_W + 10
+        p.append(f'<path d="M {x_top_r} {y1:.1f} C {c1x} {ctrl:.1f}, {c2x} {ctrl:.1f}, {x_soc_l(j)} {y2:.1f}" '
+                 f'{STROKE} stroke-dasharray="5 4" marker-end="url(#chain-arrow)"/>')
+        p.append(f'<text x="{(x_top_r + x_soc_l(j)) / 2:.0f}" y="{apex - 6:.0f}" font-size="9" fill="#9aa1b2" text-anchor="middle">stated purpose</text>')
+    badge(xs[0], top_y, top_h, f"TOP {_dotted_top(top[0])}", top_lines)
+    for (cip, _), cy, hh, lines in zip(cips, cip_ys, cip_h, cip_lines):
+        badge(xs[1], cy, hh, f"CIP {cip}", lines, tint=True)
+    for j, ((code, _), sy, hh, lines) in enumerate(zip(socs, soc_ys, soc_h, soc_lines)):
+        if j in umbrellas:
+            # a dashed frame with the SOC as a small tag on its top edge — nothing more; the
+            # paragraph above says what the category is and the caption names it
+            p.append(f'<rect x="{xs[2] - PAD}" y="{sy - PAD:.0f}" width="{NODE_W + 2 * PAD}" height="{hh + 2 * PAD}" rx="10" '
+                     'fill="none" stroke="#9aa1b2" stroke-width="1.2" stroke-dasharray="4 3"/>')
+            tag = f"SOC {umbrellas[j][0]}"
+            p.append(f'<rect x="{xs[2] + 8}" y="{sy - PAD - 6:.0f}" width="{6 + 5.4 * len(tag):.0f}" height="12" fill="#fff"/>'
+                     f'<text x="{xs[2] + 11}" y="{sy - PAD + 3.5:.0f}" font-size="9" fill="#5a6577">{_esc(tag)}</text>')
+        badge(xs[2], sy, hh, f"SOC {code}", lines, fill=_ACCENTS[j % len(_ACCENTS)])
     p.append("</svg>")
     return f'<div class="chainfig" style="margin:10px 0 4px">{"".join(p)}</div>'
 
@@ -985,38 +1036,81 @@ _NCES_CIP_SOC_URL = "https://nces.ed.gov/ipeds/cipcode/resources.aspx?y=56"
 _TOP_MANUAL_URL = "https://www.cccco.edu/wp-content/uploads/2019/05/TOPmanual6_2009_09corrected_12.5.13_pdf-4007eaa2.pdf"
 
 
-def _chain_data(top6: str, soc: str) -> tuple[tuple[str, str], list[tuple[str, str]], tuple[str, str], tuple[str, str] | None]:
-    """(TOP, CIPs, occupation, umbrella) for the chain figure, from the ontology: the TOP
-    title from the state's TOP–CIP crosswalk, the CIP(s) that bridge this TOP to the
-    occupation's SOC and their federal titles, the O*NET title of the detailed code, and
-    the base SOC as the umbrella when `soc` is a detailed code."""
+def _chain_data(top6: str, socs: list[str]) -> dict:
+    """The chain figure's data from the ontology, for the def's occupations in order:
+    the TOP title (the state's TOP–CIP crosswalk), the CIPs that bridge the TOP to each
+    occupation's SOC with their federal titles (each once, in first-use order), the
+    occupations with their O*NET titles, the CIP→SOC edges, and an umbrella (base SOC,
+    title) for each occupation given as a detailed O*NET code. `derived` is False when
+    some occupation the crosswalk never reaches is in the list — an authored addition —
+    and the section then does not draw: a node with no path would be a claim the figure
+    cannot support, and the def's comment already carries that justification."""
     from occupations.descriptions import get_title
     from ontology.crosswalks import load_cip_titles, load_top_titles, top6_to_cips_for_soc
-    base = soc[:7]
     cip_titles = load_cip_titles()
-    cips = [(c, cip_titles.get(c, "")) for c in top6_to_cips_for_soc(top6, base)]
-    umbrella = (base, get_title(base) or base) if "." in soc and not soc.endswith(".00") else None
-    return (top6, load_top_titles().get(top6, top6)), cips, (soc, get_title(soc) or soc), umbrella
+    cips: list[str] = []
+    edges: list[tuple[int, int]] = []
+    umbrellas: dict[int, tuple[str, str]] = {}
+    authored: list[int] = []
+    for j, soc in enumerate(socs):
+        base = soc[:7]
+        bridging = top6_to_cips_for_soc(top6, base)
+        if not bridging:
+            authored.append(j)
+        for c in bridging:
+            if c not in cips:
+                cips.append(c)
+            edges.append((cips.index(c), j))
+        if "." in soc and not soc.endswith(".00"):
+            umbrellas[j] = (base, get_title(base) or base)
+    return {"top": (top6, load_top_titles().get(top6, top6)),
+            "cips": [(c, cip_titles.get(c, "")) for c in cips],
+            "socs": [(s, get_title(s) or s) for s in socs],
+            "edges": edges, "umbrellas": umbrellas, "authored": authored, "derived": not authored}
 
 
-def _chain_section(spec: ReportSpec) -> str:
-    """"TOP–CIP–SOC Crosswalk" — the program's destination argued step by step, for an
-    evaluation of a program not yet offered (spec.crosswalk_chain). Links live in the
-    caption, never inside the SVG: the docx keeps the figure as a raster and its links as
-    text, and the link-parity check reads the page's anchors."""
-    soc = spec.crosswalk_chain
-    top, cips, occ, umbrella = _chain_data(spec.program_top, soc)
+def _chain_socs(spec: ReportSpec, occs: list[LensOccupation]) -> list[str]:
+    """The occupations the chain draws: a detailed O*NET code named by the def (a program
+    designed for one specialty), or the def's occupations when the def asks for the chain
+    with `true`. Empty → no section."""
+    v = spec.crosswalk_chain
+    if v is True or (isinstance(v, str) and v.strip().lower() == "true"):
+        return [o.soc for o in occs]
+    return [v] if isinstance(v, str) and v else []
+
+
+def _chain_section(spec: ReportSpec, occs: list[LensOccupation]) -> str:
+    """"TOP–CIP–SOC Crosswalk" — how the program's classification reaches its destination
+    occupations, argued step by step right before the demand for those occupations.
+    Links live in the caption, never inside the SVG: the docx keeps the figure as a raster
+    and its links as text, and the link-parity check reads the page's anchors."""
+    socs = _chain_socs(spec, occs)
+    if not socs:
+        return ""
+    d = _chain_data(spec.program_top, socs)
 
     def a(label, url):
         return f'<a href="{_esc(url)}" target="_blank" rel="noopener">{_esc(label)}</a>'
 
-    cip_txt = " and ".join(f"CIP {c}" for c, _ in cips) or "no CIP"
-    caption = (f'TOP {_esc(_dotted_top(top[0]))} maps to {_esc(cip_txt)} in the {a("Chancellor’s Office TOP–CIP–SOC crosswalk", _COE_CROSSWALK_URL)}, '
-               f'and that CIP to SOC {_esc(umbrella[0] if umbrella else soc[:7])} in the {a("NCES CIP–SOC crosswalk", _NCES_CIP_SOC_URL)}. '
-               f'{a(f"O*NET Summary of {soc}", f"https://www.onetonline.org/link/summary/{_onet_code(soc)}")}.')
+    def lst(items):
+        return items[0] if len(items) == 1 else ", ".join(items[:-1]) + " and " + items[-1]
+
+    cip_codes = [c for c, _ in d["cips"]]
+    base_codes = list(dict.fromkeys(s[:7] for j, s in enumerate(socs) if j not in d["authored"]))   # the crosswalk's own destinations
+    caption = (f'TOP {_esc(_dotted_top(spec.program_top))} maps to {_esc(lst([f"CIP {c}" for c in cip_codes]))} in the '
+               f'{a("Chancellor’s Office TOP–CIP–SOC crosswalk", _COE_CROSSWALK_URL)}, and '
+               f'{"that CIP" if len(cip_codes) == 1 else "those CIPs"} to {_esc(lst([f"SOC {b}" for b in base_codes]))} in the '
+               f'{a("NCES CIP–SOC crosswalk", _NCES_CIP_SOC_URL)}.')
+    if d["authored"]:
+        names = lst([f"SOC {socs[j][:7]}" for j in d["authored"]])
+        verb = "is" if len(d["authored"]) == 1 else "are"
+        caption += f' {_esc(names)} {verb} the program\u2019s stated purpose; the crosswalk does not reach {"it" if len(d["authored"]) == 1 else "them"}.'
+    for j, (base, _) in d["umbrellas"].items():          # a detailed code's own O*NET page, which Sources cannot derive from the lens
+        code = socs[j]
+        caption += f' {a(f"O*NET Summary of {code}", f"https://www.onetonline.org/link/summary/{_onet_code(code)}")}.'
     return _block('<h1>TOP–CIP–SOC Crosswalk</h1>',
                   f'<p>{_linkify(spec.chain_note)}</p>' if spec.chain_note else '',
-                  _chain_svg(top, cips, occ, umbrella),
+                  _chain_svg(d["top"], d["cips"], d["socs"], d["edges"], d["umbrellas"], d["authored"]),
                   f'<p class="tnar">{caption}</p>')
 
 
@@ -1639,7 +1733,7 @@ def _footer(lens: LensModel, extra: list[str]) -> str:
 def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
                      title: str, socs: list[str], program_top: str = "", curriculum: bool = False,
                      outlines: list[str] | None = None, consolidated: bool = False,
-                     living: LivingWage | None = None, chain: str = "") -> str:
+                     living: LivingWage | None = None, chain: list[str] | None = None) -> str:
     """Provenance, organized by report section: a tailored dashboard link, then one
     numbered, linked source group per section. Each section's claims trace to named,
     auditable sources — the same audit-trail logic as the clickable program names."""
@@ -1667,13 +1761,14 @@ def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
             ("Lightcast — Job Openings Data (methodology)", _LIGHTCAST_METHOD_URL),
         ] + ([(f"MIT Living Wage Calculator — {living.county}, California", living.url)] if living is not None else [])),
     ]
-    if chain:
+    if chain is not None:
+        # the chain section's authorities; a detailed O*NET code's own summary page too, which
+        # the lens-derived summaries below cannot name
         groups.append(("TOP–CIP–SOC Crosswalk", [
             ("CCCCO Taxonomy of Programs (TOP Code Manual, 6th edition)", _TOP_MANUAL_URL),
             ("Centers of Excellence TOP–CIP–SOC Crosswalk", _COE_CROSSWALK_URL),
             ("NCES CIP 2020 – SOC 2018 Crosswalk", _NCES_CIP_SOC_URL),
-            (f"O*NET Summary of {chain}", f"https://www.onetonline.org/link/summary/{_onet_code(chain)}"),
-        ]))
+        ] + [(f"O*NET Summary of {c}", f"https://www.onetonline.org/link/summary/{_onet_code(c)}") for c in chain if "." in c]))
     summaries = [(f"O*NET Summary of {soc}", f"https://www.onetonline.org/link/summary/{_onet_code(soc)}") for soc in socs]
     if not consolidated:
         groups.append(("Occupational Competencies", summaries))
@@ -2049,7 +2144,7 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         _wage_section(lens, spec, living) if spec.program_top else '',
         # A program not yet offered argues its destination before showing the market for
         # it: TOP → CIP → the detailed occupation, with the SOC demand is reported under.
-        _chain_section(spec) if spec.crosswalk_chain and spec.program_top else '',
+        _chain_section(spec, occs) if spec.crosswalk_chain and spec.program_top else '',
         _block('<h1>Regional Occupational Demand</h1>',
                f'<p>{_linkify(spec.demand_note)}</p>' if spec.demand_note else '',
                _demand_table(occs, living),
@@ -2165,12 +2260,15 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
     dash_url = spec.dashboard_url or f"https://preview.kallipolis.us/landscape/{member_id}/{play.sector}"
     # Sources cite the O*NET summary of the detailed code where the chain names one for
     # the lens's SOC (the base code is what the graph and COE know the occupation by).
-    chain = spec.crosswalk_chain
-    source_socs = [chain if chain and o.soc == chain[:7] else o.soc for o in occs]
+    chain_socs = _chain_socs(spec, occs) if spec.program_top else []
+    chain_drawn = bool(chain_socs)
+    detail = {s[:7]: s for s in chain_socs if "." in s}
+    source_socs = [detail.get(o.soc, o.soc) for o in occs]
     sections += [_sources_section(_org_label(lens.scope.member), sec_label, dash_url,
                                   play.title, source_socs, spec.program_top,
                                   curriculum=bool(curriculum_parts), outlines=curriculum_outlines,
-                                  consolidated=consolidated, living=living, chain=chain)]
+                                  consolidated=consolidated, living=living,
+                                  chain=chain_socs if chain_drawn else None)]
     # NO brand colour in the document chrome. Tried three times at widening scope —
     # every heading, then the masthead rule and the Awards Offered accents — and reverted
     # each time for the same reason: colour already carries meaning in this report

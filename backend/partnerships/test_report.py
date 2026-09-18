@@ -31,7 +31,7 @@ from ontology.living_wage import living_wage
 from partnerships import alignment as A
 from partnerships.alignment import Cell, Evidence, Plate, Row
 from partnerships.lens import LensModel, LensOccupation, LensProgram, LensScope, LensSlice, LensWage, MemberRef, Play
-from partnerships.report import (CompetencyColumn, LivePosting, ReportSpec, _awards_demand_svg, _awards_offered_section,
+from partnerships.report import (_ACCENTS, CompetencyColumn, LivePosting, ReportSpec, _awards_demand_svg, _awards_offered_section,
                                  _chain_data, _chain_svg, _crosswalk_svg, _demand_provenance, _demand_table, _employer_intro,
                                  _employer_table, _hourly, _living_wage_for, _onet_code, _sources_section, _vs,
                                  _wage_outcomes_svg, _wage_section, build_report_html)
@@ -152,18 +152,50 @@ def test_a_certificate_roster_drops_the_grid_and_a_college_roster_keeps_it(monke
 
 # ── a program not yet offered ─────────────────────────────────────────────────────
 def test_chain_figure_names_codes_titles_and_umbrella_without_links():
-    top, cips, occ, umbrella = _chain_data("121200", "29-2099.01")
-    assert top == ("121200", "Electro-Neurodiagnostic Technology") and [c for c, _ in cips] == ["51.0903"]
-    assert occ == ("29-2099.01", "Neurodiagnostic Technologists") and umbrella[0] == "29-2099"
-    svg = _chain_svg(top, cips, occ, umbrella)
-    for s_ in ("TOP 1212.00", "CIP 51.0903", "SOC 29-2099.01", "Neurodiagnostic", ">SOC 29-2099<",
-               'class="chainfig"', "CCCCO", "NCES", "stroke-dasharray"):
+    d = _chain_data("121200", ["29-2099.01"])
+    assert d["top"] == ("121200", "Electro-Neurodiagnostic Technology") and [c for c, _ in d["cips"]] == ["51.0903"]
+    assert d["socs"] == [("29-2099.01", "Neurodiagnostic Technologists")] and d["umbrellas"] == {0: ("29-2099", "Health Technologists and Technicians, All Other")}
+    assert d["edges"] == [(0, 0)] and d["derived"]
+    svg = _chain_svg(d["top"], d["cips"], d["socs"], d["edges"], d["umbrellas"])
+    for s_ in ("TOP 1212.00", "CIP 51.0903", "SOC 29-2099.01", "Neurodiagnostic", ">SOC 29-2099<", 'class="chainfig"', "stroke-dasharray"):
         assert s_ in svg, s_
-    assert "<a" not in svg and "xwrap" not in svg
+    assert "<a" not in svg and "xwrap" not in svg and "CCCCO" not in svg and "NCES" not in svg   # the caption names the authorities
     assert "Electroencephalographic" in svg and "Electroneurodiagnostic/" in svg      # the CIP title wraps at its slashes
-    plain = _chain_svg(top, cips, ("29-2099", "Health Technologists and Technicians, All Other"), None)
+    plain = _chain_svg(d["top"], d["cips"], [("29-2099", "Health Technologists and Technicians, All Other")], [(0, 0)], {})
     assert "stroke-dasharray" not in plain and plain.count(">SOC 29-2099<") == 1     # the node's own label; no frame tag
+    assert svg.count("marker-end") == 2 and svg.count(" C ") == 2                     # one-to-one-to-one: two even curves
     assert _onet_code("29-2099.01") == "29-2099.01" and _onet_code("29-2099") == "29-2099.00"
+
+
+def test_chain_shapes_across_the_evaluations():
+    """The five shapes the 09-17 evaluations take, from the ontology."""
+    conv = _chain_data("126100", ["21-1094"])                       # two CIPs converge on one occupation
+    assert [c for c, _ in conv["cips"]] == ["51.1504", "51.2208"] and conv["edges"] == [(0, 0), (1, 0)]
+    fan = _chain_data("010210", ["29-2056", "31-9096"])            # one CIP fans out to two
+    assert [c for c, _ in fan["cips"]] == ["01.8301"] and fan["edges"] == [(0, 0), (0, 1)]
+    many = _chain_data("010900", ["37-3012", "37-1012"])           # many to many
+    assert len(many["cips"]) == 4 and (0, 0) in many["edges"] and (0, 1) in many["edges"] and many["derived"]
+    authored = _chain_data("094500", ["51-9141", "17-3026", "17-3024"])
+    assert authored["authored"] == [0] and not authored["derived"]  # 51-9141 is reached by no CIP: a stated-purpose bypass
+    svg = _chain_svg(many["top"], many["cips"], many["socs"], many["edges"], {})
+    assert svg.count("<rect") == 1 + 4 + 2 and svg.count("marker-end") == 4 + len(many["edges"])
+    assert _ACCENTS[0] in svg and _ACCENTS[1] in svg                # each occupation its own accent
+    bypass = _chain_svg(authored["top"], authored["cips"], authored["socs"], authored["edges"], {}, authored["authored"])
+    assert bypass.count("stroke-dasharray") == 1 and "stated purpose" in bypass
+
+
+def test_chain_section_draws_for_true_and_names_an_authored_destination(monkeypatch):
+    monkeypatch.setattr("partnerships.report._living_wage_for", lambda lens: None)
+    base = dict(org_name="F", org_short="R", lede="l", program_top="126100", crosswalk_chain=True)
+    lens = _lens(occs=[_occ("21-1094", "Community Health Workers", 60000, 200)])
+    html = build_report_html("foothill", Play(id="x", title="CHW", sector="health", socs=("21-1094",)), ReportSpec(**base), lens=lens)
+    assert "<h1>TOP–CIP–SOC Crosswalk</h1>" in html and "CIP 51.1504" in html and "TOP–CIP–SOC Crosswalk Section" in html
+    assert html.index("TOP–CIP–SOC Crosswalk</h1>") < html.index("Regional Occupational Demand</h1>")
+    lens2 = _lens(occs=[_occ("51-9141", "Semiconductor Processing Technicians", 60000, 200), _occ("17-3026", "IET", 70000, 100)])
+    html2 = build_report_html("foothill", Play(id="y", title="SP", sector="adm", socs=("51-9141", "17-3026")),
+                              ReportSpec(**{**base, "program_top": "094500"}), lens=lens2)
+    assert "<h1>TOP–CIP–SOC Crosswalk</h1>" in html2 and "SOC 51-9141 is the program’s stated purpose; the crosswalk does not reach it." in html2
+    assert "to SOC 17-3026 in the" in html2 and "to SOC 51-9141" not in html2          # the NCES clause names only the crosswalk's destinations
 
 
 def test_crosswalk_funnel_is_unchanged():
@@ -204,7 +236,7 @@ def test_statewide_supply_draws_no_rule_and_drops_regional(monkeypatch):
 
 def test_sources_add_the_chain_group_and_cite_the_detailed_code():
     html = _sources_section("Foothill College", "Health", "https://d", "Neurodiagnostic Technology", ["29-2099.01"], "121200",
-                            chain="29-2099.01")
+                            chain=["29-2099.01"])
     assert "TOP–CIP–SOC Crosswalk Section" in html and "NCES CIP 2020 – SOC 2018 Crosswalk" in html and "TOP Code Manual" in html
     assert "link/summary/29-2099.01" in html and "29-2099.00" not in html
     assert "TOP–CIP–SOC Crosswalk Section" not in _sources_section("F", "H", "https://d", "T", ["29-2099"], "121200")
