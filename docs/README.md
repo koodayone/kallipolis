@@ -54,6 +54,7 @@ How institutional data enters the graph. The mechanism by which the ontology com
 - [Employer Generation](./pipeline/employer-generation.md) — EDD scraping at the COE region unit, sector scoping, Gemini cleanup, merge semantics
 - [SWP Sector NAICS Composition](./pipeline/swp-sector-naics.md) — The authoritative mapping from NAICS 4-digit codes to Strong Workforce priority sectors, with the full inclusion/exclusion trail
 - [Occupation Generation](./pipeline/occupation-generation.md) — COE demand feed, institutional CTE scope filter (PCAH TOP→CIP→SOC), and the `education_level`-on-node design choice
+- [Refreshing a Bundled Authority](./pipeline/refreshing-a-bundled-authority.md) — The four levels a bundled data file is copied to, the refresh order that reaches all of them, and the one-vintage check that proves it did
 
 ## Conventions
 
