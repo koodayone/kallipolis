@@ -52,6 +52,7 @@ def load_industry(
     driver: Driver,
     occupations: list[dict],
     filtered_soc_codes: Optional[set[str]] = None,
+    vintage: Optional[str] = None,
 ) -> dict:
     """Load Region, Occupation, and relationship data into Neo4j.
 
@@ -63,6 +64,10 @@ def load_industry(
             loadable rows.
         filtered_soc_codes: Optional set of SOC codes to load. If provided,
                   only these occupations are loaded into the graph.
+        vintage: The COE release the demand figures come from
+            (ontology.supply.COE_DEMAND_VINTAGE), stamped on every DEMANDS
+            edge so the graph states its own edition and a graph that lags
+            the bundled file is detectable without comparing values.
     """
     if filtered_soc_codes is not None:
         before = len(occupations)
@@ -125,6 +130,7 @@ def load_industry(
                     "annual_wage": region_data.get("annual_wage"),
                     "growth_rate": region_data.get("growth_rate"),
                     "annual_openings": region_data.get("annual_openings"),
+                    "vintage": vintage,
                 })
                 if len(demand_batch) >= BATCH_SIZE:
                     _create_demands(session, demand_batch)
@@ -161,7 +167,8 @@ def _create_demands(session, batch: list[dict]):
         SET d.employment = row.employment,
             d.annual_wage = row.annual_wage,
             d.growth_rate = row.growth_rate,
-            d.annual_openings = row.annual_openings
+            d.annual_openings = row.annual_openings,
+            d.vintage = row.vintage
         """,
         batch=batch,
     )
@@ -178,9 +185,10 @@ if __name__ == "__main__":
 
     driver = get_driver()
     try:
+        from ontology.supply import COE_DEMAND_VINTAGE
         valid_socs = [o["soc_code"] for o in occupations]
         cleanup_stale_occupations(driver, valid_socs)
-        stats = load_industry(driver, occupations)
+        stats = load_industry(driver, occupations, vintage=COE_DEMAND_VINTAGE)
         logger.info(f"\nComplete: {stats}")
     finally:
         close_driver()

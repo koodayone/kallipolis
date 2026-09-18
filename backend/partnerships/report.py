@@ -1149,8 +1149,8 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
     trend table carries per-tier sub-rows beneath the member's total.
 
     NOTE the two sides have different vintages — the stack is DataMart actuals, the
-    rule is a COE 2024-2029 projection — so the caption says so rather than implying
-    one series predicts the other."""
+    rule is a COE five-year projection (the file's window; ontology.supply.COE_DEMAND_VINTAGE)
+    — so the caption says so rather than implying one series predicts the other."""
     # Per-college series; a college may run several supporting programs in the play.
     by_college: dict[str, dict[str, int]] = {}
     members: set[str] = set()
@@ -1226,9 +1226,9 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
     # vintages, and that the axis is broken — survive as the source line and the break
     # label, not a paragraph.
     # No corner source line. DataMart and COE are both named in Sources, and the COE
-    # vintage is stated in full under the demand table ("2024 base-year employment,
-    # 2024-2029 projection") — the chart corner was restating what the document already
-    # says twice, in the smallest type on the page.
+    # vintage is stated in full under the demand table (the base year and projection
+    # window, derived from the file's header) — the chart corner was restating what the
+    # document already says twice, in the smallest type on the page.
     p_.append(f'<text x="15" y="{PADT + plot_h / 2:.1f}" font-size="10" fill="#5a6577" '
               f'text-anchor="middle" transform="rotate(-90 15 {PADT + plot_h / 2:.1f})">'
               f'Awards conferred a year</text>')

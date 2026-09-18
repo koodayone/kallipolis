@@ -11,6 +11,7 @@ from __future__ import annotations
 import csv
 import logging
 import re
+from dataclasses import dataclass
 from pathlib import Path
 from functools import lru_cache
 
@@ -28,22 +29,73 @@ _DATA_DIR = Path(__file__).parent
 # reconstruct it or, worse, omit it. No behavior change to the loaders.
 
 def _read_header(filename: str) -> list[str]:
-    with open(_DATA_DIR / filename, newline="", encoding="utf-8") as f:
+    with open(_DATA_DIR / filename, newline="", encoding="utf-8-sig") as f:
         return [c.strip() for c in next(csv.reader(f))]
 
 
+@dataclass(frozen=True)
+class DemandColumns:
+    """The COE demand export's columns, resolved from its header by PATTERN rather than
+    by name. Each release renames the year-bearing columns ("2024 Jobs" → "2025 Jobs",
+    "2024 - 2029 % Change" → "2025 - 2030 % Change") and the 2025–2030 release also
+    renamed "Description" to "Occupation Title". Readers that named the columns failed
+    silently on a rename — one wrote null employment for every row, one dropped every
+    row — so every reader resolves its columns here and a missing column is an error."""
+    region: str
+    soc: str
+    title: str
+    education: str
+    jobs: str
+    change: str
+    openings: str
+    hourly: str | None          # not every export carries it, and no reader needs it (hourly derives from annual)
+    annual: str
+    base_year: str
+    end_year: str
+
+    @property
+    def vintage(self) -> str:
+        return f"COE occupational demand — {self.base_year} base-year employment, {self.base_year}–{self.end_year} projection"
+
+
+def coe_demand_columns(header: list[str]) -> DemandColumns:
+    """Resolve the demand export's columns from its header. Raises ValueError naming the
+    first column no pattern matches, so a renamed export fails at load, not downstream."""
+    def find(label: str, pattern: str, required: bool = True) -> str | None:
+        hits = [c for c in header if re.search(pattern, c.strip(), re.I)]
+        if not hits:
+            if not required:
+                return None
+            raise ValueError(f"COE demand export: no column matches {label} ({pattern!r}); header is {header}")
+        return hits[0]
+    jobs = find("base-year jobs", r"^\d{4}\s+Jobs$")
+    change = find("projection window", r"^\d{4}\s*[-–]\s*\d{4}\s*%?\s*Change$")
+    years = re.findall(r"\d{4}", change)
+    return DemandColumns(
+        region=find("region", r"^Region$"), soc=find("SOC", r"^SOC$"),
+        title=find("title", r"^(Description|Occupation Title)$"),
+        education=find("entry education", r"^Typical Entry Level Education$"),
+        jobs=jobs, change=change,
+        openings=find("annual openings", r"^Average Annual Job Openings$"),
+        hourly=find("median hourly", r"^Median Hourly Earnings$", required=False),
+        annual=find("median annual", r"^Median Annual Earnings$"),
+        base_year=re.match(r"\d{4}", jobs).group(0), end_year=years[1],
+    )
+
+
+def _demand_columns() -> DemandColumns | None:
+    try:
+        return coe_demand_columns(_read_header("occupational_demand_middle_skill.csv"))
+    except ValueError:
+        return None
+
+
+#: The bundled export's columns and years, resolved once; None if the header is unreadable.
+COE_DEMAND_COLUMNS: DemandColumns | None = _demand_columns()
+
+
 def _derive_demand_vintage() -> str:
-    base = window = None
-    for col in _read_header("occupational_demand_middle_skill.csv"):
-        m = re.match(r"(\d{4})\s+Jobs$", col)
-        if m:
-            base = m.group(1)
-        m = re.search(r"(\d{4})\s*-\s*(\d{4})", col)
-        if m and "Change" in col:
-            window = f"{m.group(1)}–{m.group(2)}"
-    if base and window:
-        return f"COE occupational demand — {base} base-year employment, {window} projection"
-    return "COE occupational demand — vintage unavailable"
+    return COE_DEMAND_COLUMNS.vintage if COE_DEMAND_COLUMNS else "COE occupational demand — vintage unavailable"
 
 
 def _derive_supply_vintage() -> str:
