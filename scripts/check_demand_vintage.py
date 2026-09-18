@@ -11,7 +11,11 @@ import argparse
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "backend"))
+# the backend package: beside this script in a checkout, at /app inside the backend image
+for _cand in (Path(__file__).resolve().parent.parent / "backend", Path("/app")):
+    if (_cand / "ontology").exists():
+        sys.path.insert(0, str(_cand))
+        break
 
 from ontology.demand_vintage import run_checks  # noqa: E402
 
