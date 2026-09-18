@@ -32,6 +32,16 @@ evidence the role is WEAK for that SOC — maybe the SOC doesn't belong under th
 title is wrong. Report it plainly; it *sharpens* the role selection, it doesn't break the skill.
 NONE verdicts are the methodology's most informative output.
 
+One exception to "CareerOneStop is the search": a NAMED partner employer that the report's
+argument depends on (UCSF for Foothill's neurodiagnostic program) can be absent from the Labor
+Department feed while hiring the role on its own careers site. Check the site directly — a
+browser search of the portal, since these portals refuse plain requests — and carry what you
+find with `source` set to the site's domain (`"source": "careers.ucsf.edu"`). The report then
+marks those rows and names the site in the section's intro; rows without a `source` render as
+they always have. Record in the def's `_comment` that the feed had nothing and how the site
+was searched. Never do this for employers the argument does not name: the feed is the
+methodology, the partner's own site is the one documented exception.
+
 ## Process
 
 1. Take the role (title + SOCs) and the region (zip + radius; default radius 25 mi).

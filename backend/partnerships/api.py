@@ -623,7 +623,7 @@ _SPEC_OVERRIDE_FIELDS = (
     # A program not yet offered (see ReportSpec): the detailed O*NET code its crosswalk
     # chain ends in, the paragraph under that figure, the wage caption clause, and the
     # supply scope. `planned_awards` (a list of rows) is handled below.
-    "crosswalk_chain", "chain_note", "wage_note", "supply_scope",
+    "crosswalk_chain", "chain_note", "wage_note", "supply_scope", "employer_note",
 )
 
 
@@ -669,7 +669,7 @@ def _generated_report_html(slug: str) -> str:
     if d.get("live_postings"):
         # a SOC may carry a single posting (dict) or several (list) — normalize to a list
         over["live_postings"] = {
-            soc: [LivePosting(p["employer"], p["title"], p["url"])
+            soc: [LivePosting(p["employer"], p["title"], p["url"], p.get("source", ""))
                   for p in (plist if isinstance(plist, list) else [plist])]
             for soc, plist in d["live_postings"].items()}
     if d.get("competencies"):
