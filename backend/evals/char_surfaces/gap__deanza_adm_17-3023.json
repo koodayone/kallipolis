@@ -23,8 +23,8 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 30,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+      "value": 50,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "member_supply": {
       "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
@@ -41,8 +41,8 @@
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 430,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "value": 450,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "regional_supply": {
       "granularity": "regional (Bay Area) \u2014 all 26 colleges",
@@ -64,8 +64,8 @@
     "source": "derived",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 4060,
-    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+    "value": 4170,
+    "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "member_supply": {
     "granularity": "institutional \u2014 college (\u03a3 1 colleges)",
@@ -82,8 +82,8 @@
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 4820,
-    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+    "value": 4930,
+    "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
    },
    "regional_supply": {
     "granularity": "regional (Bay Area) \u2014 all 26 colleges",
@@ -167,7 +167,7 @@
    }
   ],
   "vintages": {
-   "demand": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection",
+   "demand": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection",
    "projected_supply": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
   }
  },

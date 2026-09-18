@@ -7,7 +7,7 @@ from occupations.models import OccupationMatch
 
 logger = logging.getLogger(__name__)
 
-OCCUPATION_QUERY_PROMPT = """You are a Cypher query generator for a Neo4j graph database containing California community college labor market data. You translate natural language questions about occupations into valid Cypher queries.
+_OCCUPATION_QUERY_PROMPT_TEMPLATE = """You are a Cypher query generator for a Neo4j graph database containing California community college labor market data. You translate natural language questions about occupations into valid Cypher queries.
 
 SCHEMA:
 
@@ -24,7 +24,7 @@ Relationships:
 - (Region)-[DEMANDS {employment, annual_wage, growth_rate, annual_openings}]->(Occupation)
   employment: integer, number of jobs in the region for this occupation
   annual_wage: integer, regional median annual salary in dollars
-  growth_rate: float, projected 5-year growth rate 2024-2029 (e.g. 0.05 = 5% growth)
+  growth_rate: float, projected 5-year growth rate __WINDOW__ (e.g. 0.05 = 5% growth)
   annual_openings: integer, average annual job openings (new + replacement)
 - (Course)-[:PREPARES_FOR {via_top}]->(Occupation)  // institutional Chancellor's Office TOP-CIP-SOC crosswalk
 - (Department)-[:CONTAINS]->(Course)
@@ -106,6 +106,12 @@ Respond with a JSON object containing two fields:
 2. "interpretation": a single sentence explaining what this query does in plain English, written for a non-technical workforce development coordinator. Be specific about the filtering criteria and mention curriculum alignment or regional demand where relevant.
 
 No markdown code fences. Just the raw JSON object."""
+
+# The projection window the prompt names is the bundled COE export's, not a literal:
+# the model was told "2024-2029" long after the file could have moved on.
+from ontology.supply import COE_DEMAND_COLUMNS as _COLS
+OCCUPATION_QUERY_PROMPT = _OCCUPATION_QUERY_PROMPT_TEMPLATE.replace(
+    "__WINDOW__", f"{_COLS.base_year}-{_COLS.end_year}" if _COLS else "(five-year window)")
 
 
 async def run_occupation_query(question: str, college: str) -> tuple[list[OccupationMatch], str, str]:

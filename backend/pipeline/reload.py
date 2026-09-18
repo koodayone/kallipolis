@@ -136,17 +136,13 @@ def load_industry_data(driver) -> None:
     """Load occupations, regions, and employers."""
     logger.info("Loading industry data...")
 
-    # Occupations
+    # Occupations — the generated universe, loaded whole. (An earlier branch read
+    # an optional coe_data.json here and passed it as load_industry's SOC FILTER;
+    # no such file ever existed, and had one appeared it would have silently
+    # truncated the graph. Removed.)
     occ_path = OCCUPATIONS_DIR / "occupations.json"
     with open(occ_path) as f:
         occupations = json.load(f)
-
-    # Check for COE data
-    coe_path = OCCUPATIONS_DIR / "coe_data.json"
-    coe_data = None
-    if coe_path.exists():
-        with open(coe_path) as f:
-            coe_data = json.load(f)
 
     # Prune Occupation nodes no longer in the set before loading. A no-op on a
     # fresh DB (full reload starts from `docker compose down -v`); load-bearing
@@ -155,7 +151,8 @@ def load_industry_data(driver) -> None:
     # PREPARES_FOR / CROSSWALKS_TO) behind. DETACH DELETE clears the edges too.
     cleanup_stale_occupations(driver, [o["soc_code"] for o in occupations])
 
-    stats = load_industry(driver, occupations, coe_data)
+    from ontology.supply import COE_DEMAND_VINTAGE
+    stats = load_industry(driver, occupations, vintage=COE_DEMAND_VINTAGE)
     logger.info(f"  Occupations: {stats.get('occupations', 0)}, "
                 f"Regions: {stats.get('regions', 0)}, "
                 f"DEMANDS: {stats.get('demands', 0)}")

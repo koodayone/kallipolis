@@ -3,11 +3,11 @@
   "candidate_employers": 171,
   "combined_awards": 185,
   "combined_supply_total": 118.3,
-  "gap": 2582,
+  "gap": 2772,
   "n_colleges": 5,
   "n_occupations": 12,
   "occupations_taught": 12,
-  "regional_demand_total": 2700
+  "regional_demand_total": 2890
  },
  "award_years": [
   "2020-2021",
@@ -20,13 +20,13 @@
   {
    "cells": [
     {
-     "annual_openings": 430,
-     "annual_wage": 89280,
+     "annual_openings": 450,
+     "annual_wage": 93410,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
-     "gap": 430,
+     "gap": 450,
      "growth_rate": -0.0,
      "in_demand": true,
      "programs": [
@@ -91,13 +91,13 @@
      "title": "Electrical and Electronic Engineering Technologists and Technicians"
     },
     {
-     "annual_openings": 80,
-     "annual_wage": 78280,
+     "annual_openings": 70,
+     "annual_wage": 79730,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
-     "gap": 80,
+     "gap": 70,
      "growth_rate": -0.0,
      "in_demand": true,
      "programs": [
@@ -162,14 +162,14 @@
      "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
     },
     {
-     "annual_openings": 150,
-     "annual_wage": 79950,
+     "annual_openings": 220,
+     "annual_wage": 84050,
      "awards_recent": 51,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 51,
-     "gap": 104,
-     "growth_rate": 0.1,
+     "gap": 174,
+     "growth_rate": 0.0,
      "in_demand": true,
      "programs": [
       {
@@ -318,14 +318,14 @@
      "title": "Industrial Engineering Technologists and Technicians"
     },
     {
-     "annual_openings": 110,
-     "annual_wage": 95880,
+     "annual_openings": 120,
+     "annual_wage": 97610,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
-     "gap": 110,
-     "growth_rate": 0.1,
+     "gap": 120,
+     "growth_rate": 0.0,
      "in_demand": true,
      "programs": [
       {
@@ -390,13 +390,13 @@
     },
     {
      "annual_openings": 40,
-     "annual_wage": 77930,
+     "annual_wage": 97230,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
      "gap": 40,
-     "growth_rate": 0.1,
+     "growth_rate": 0.0,
      "in_demand": true,
      "programs": [],
      "soc_code": "17-3028",
@@ -404,13 +404,13 @@
      "title": "Calibration Technologists and Technicians"
     },
     {
-     "annual_openings": 220,
-     "annual_wage": 89990,
+     "annual_openings": 180,
+     "annual_wage": 84530,
      "awards_recent": 10,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 10,
-     "gap": 205,
+     "gap": 165,
      "growth_rate": 0.0,
      "in_demand": true,
      "programs": [
@@ -522,13 +522,13 @@
      "title": "Engineering Technologists and Technicians, Except Drafters, All Other"
     },
     {
-     "annual_openings": 550,
-     "annual_wage": 80760,
+     "annual_openings": 540,
+     "annual_wage": 82920,
      "awards_recent": 10,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 10,
-     "gap": 535,
+     "gap": 525,
      "growth_rate": 0.1,
      "in_demand": true,
      "programs": [
@@ -641,13 +641,13 @@
     },
     {
      "annual_openings": 70,
-     "annual_wage": 70750,
+     "annual_wage": 73870,
      "awards_recent": 10,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 10,
      "gap": 55,
-     "growth_rate": 0.1,
+     "growth_rate": 0.0,
      "in_demand": true,
      "programs": [
       {
@@ -758,13 +758,13 @@
      "title": "Maintenance Workers, Machinery"
     },
     {
-     "annual_openings": 510,
-     "annual_wage": 63130,
+     "annual_openings": 410,
+     "annual_wage": 63840,
      "awards_recent": 49,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 49,
-     "gap": 466,
+     "gap": 366,
      "growth_rate": 0.0,
      "in_demand": true,
      "programs": [
@@ -829,13 +829,13 @@
      "title": "Machinists"
     },
     {
-     "annual_openings": 180,
-     "annual_wage": 49340,
+     "annual_openings": 320,
+     "annual_wage": 49560,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 180,
+     "gap": 320,
      "growth_rate": 0.0,
      "in_demand": true,
      "programs": [],
@@ -844,13 +844,13 @@
      "title": "Semiconductor Processing Technicians"
     },
     {
-     "annual_openings": 300,
-     "annual_wage": 59180,
+     "annual_openings": 400,
+     "annual_wage": 59360,
      "awards_recent": 49,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 49,
-     "gap": 256,
+     "gap": 356,
      "growth_rate": -0.0,
      "in_demand": true,
      "programs": [
@@ -915,14 +915,14 @@
      "title": "Computer Numerically Controlled Tool Operators"
     },
     {
-     "annual_openings": 60,
-     "annual_wage": 94890,
+     "annual_openings": 70,
+     "annual_wage": 99420,
      "awards_recent": 49,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 49,
-     "gap": 16,
-     "growth_rate": 0.1,
+     "gap": 26,
+     "growth_rate": 0.0,
      "in_demand": true,
      "programs": [
       {
@@ -991,13 +991,13 @@
   {
    "cells": [
     {
-     "annual_openings": 430,
-     "annual_wage": 89280,
+     "annual_openings": 450,
+     "annual_wage": 93410,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
-     "gap": 430,
+     "gap": 450,
      "growth_rate": -0.0,
      "in_demand": true,
      "programs": [
@@ -1109,13 +1109,13 @@
      "title": "Electrical and Electronic Engineering Technologists and Technicians"
     },
     {
-     "annual_openings": 80,
-     "annual_wage": 78280,
+     "annual_openings": 70,
+     "annual_wage": 79730,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
-     "gap": 80,
+     "gap": 70,
      "growth_rate": -0.0,
      "in_demand": true,
      "programs": [
@@ -1227,259 +1227,8 @@
      "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
     },
     {
-     "annual_openings": 150,
-     "annual_wage": 79950,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": true,
-     "feeding_awards": 0,
-     "gap": 150,
-     "growth_rate": 0.1,
-     "in_demand": true,
-     "programs": [
-      {
-       "awards": [
-        0,
-        0,
-        0,
-        0,
-        0
-       ],
-       "awards_recent": 0,
-       "enrollment": [
-        null,
-        27,
-        27,
-        null,
-        28,
-        28,
-        null,
-        31,
-        30,
-        null,
-        24,
-        31,
-        null,
-        33,
-        33
-       ],
-       "name": "Engineering Technology, General (requires Trigonometry)",
-       "top6": "092400",
-       "wages": [
-        {
-         "n": 59,
-         "recipient_type": "Associate or Baccalaureate Degree Recipient",
-         "wage_after_2": 64498,
-         "wage_after_5": 88963,
-         "wage_before": 25967,
-         "window": "2015-2016 to 2019-2020"
-        },
-        {
-         "n": 21,
-         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-         "wage_after_2": 61485,
-         "wage_after_5": 76163,
-         "wage_before": 36610,
-         "window": "2015-2016 to 2019-2020"
-        }
-       ]
-      },
-      {
-       "awards": [
-        0,
-        0,
-        0,
-        0,
-        0
-       ],
-       "awards_recent": 0,
-       "enrollment": [
-        null,
-        24,
-        16,
-        null,
-        5,
-        10,
-        null,
-        44,
-        37,
-        null,
-        74,
-        39,
-        null,
-        34,
-        28
-       ],
-       "name": "Manufacturing and Industrial Technology",
-       "top6": "095600",
-       "wages": [
-        {
-         "n": 54,
-         "recipient_type": "Associate or Baccalaureate Degree Recipient",
-         "wage_after_2": 54092,
-         "wage_after_5": 73636,
-         "wage_before": 26272,
-         "window": "2015-2016 to 2019-2020"
-        },
-        {
-         "n": 85,
-         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-         "wage_after_2": 60922,
-         "wage_after_5": 72654,
-         "wage_before": 36476,
-         "window": "2015-2016 to 2019-2020"
-        },
-        {
-         "n": 38,
-         "recipient_type": "Locally Approved Certificates Recipient",
-         "wage_after_2": 64897,
-         "wage_after_5": 75071,
-         "wage_before": 54280,
-         "window": "2015-2016 to 2019-2020"
-        }
-       ]
-      }
-     ],
-     "soc_code": "17-3026",
-     "supply": 0.0,
-     "title": "Industrial Engineering Technologists and Technicians"
-    },
-    {
-     "annual_openings": 110,
-     "annual_wage": 95880,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": true,
-     "feeding_awards": 0,
-     "gap": 110,
-     "growth_rate": 0.1,
-     "in_demand": true,
-     "programs": [
-      {
-       "awards": [
-        0,
-        0,
-        0,
-        0,
-        0
-       ],
-       "awards_recent": 0,
-       "enrollment": [
-        null,
-        27,
-        27,
-        null,
-        28,
-        28,
-        null,
-        31,
-        30,
-        null,
-        24,
-        31,
-        null,
-        33,
-        33
-       ],
-       "name": "Engineering Technology, General (requires Trigonometry)",
-       "top6": "092400",
-       "wages": [
-        {
-         "n": 59,
-         "recipient_type": "Associate or Baccalaureate Degree Recipient",
-         "wage_after_2": 64498,
-         "wage_after_5": 88963,
-         "wage_before": 25967,
-         "window": "2015-2016 to 2019-2020"
-        },
-        {
-         "n": 21,
-         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-         "wage_after_2": 61485,
-         "wage_after_5": 76163,
-         "wage_before": 36610,
-         "window": "2015-2016 to 2019-2020"
-        }
-       ]
-      },
-      {
-       "awards": [
-        0,
-        0,
-        0,
-        0,
-        0
-       ],
-       "awards_recent": 0,
-       "enrollment": [
-        null,
-        24,
-        16,
-        null,
-        5,
-        10,
-        null,
-        44,
-        37,
-        null,
-        74,
-        39,
-        null,
-        34,
-        28
-       ],
-       "name": "Manufacturing and Industrial Technology",
-       "top6": "095600",
-       "wages": [
-        {
-         "n": 54,
-         "recipient_type": "Associate or Baccalaureate Degree Recipient",
-         "wage_after_2": 54092,
-         "wage_after_5": 73636,
-         "wage_before": 26272,
-         "window": "2015-2016 to 2019-2020"
-        },
-        {
-         "n": 85,
-         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-         "wage_after_2": 60922,
-         "wage_after_5": 72654,
-         "wage_before": 36476,
-         "window": "2015-2016 to 2019-2020"
-        },
-        {
-         "n": 38,
-         "recipient_type": "Locally Approved Certificates Recipient",
-         "wage_after_2": 64897,
-         "wage_after_5": 75071,
-         "wage_before": 54280,
-         "window": "2015-2016 to 2019-2020"
-        }
-       ]
-      }
-     ],
-     "soc_code": "17-3027",
-     "supply": 0.0,
-     "title": "Mechanical Engineering Technologists and Technicians"
-    },
-    {
-     "annual_openings": 40,
-     "annual_wage": 77930,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 40,
-     "growth_rate": 0.1,
-     "in_demand": true,
-     "programs": [],
-     "soc_code": "17-3028",
-     "supply": 0.0,
-     "title": "Calibration Technologists and Technicians"
-    },
-    {
      "annual_openings": 220,
-     "annual_wage": 89990,
+     "annual_wage": 84050,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": true,
@@ -1591,18 +1340,269 @@
        ]
       }
      ],
+     "soc_code": "17-3026",
+     "supply": 0.0,
+     "title": "Industrial Engineering Technologists and Technicians"
+    },
+    {
+     "annual_openings": 120,
+     "annual_wage": 97610,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 0,
+     "gap": 120,
+     "growth_rate": 0.0,
+     "in_demand": true,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        27,
+        27,
+        null,
+        28,
+        28,
+        null,
+        31,
+        30,
+        null,
+        24,
+        31,
+        null,
+        33,
+        33
+       ],
+       "name": "Engineering Technology, General (requires Trigonometry)",
+       "top6": "092400",
+       "wages": [
+        {
+         "n": 59,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 64498,
+         "wage_after_5": 88963,
+         "wage_before": 25967,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 21,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 61485,
+         "wage_after_5": 76163,
+         "wage_before": 36610,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      },
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        24,
+        16,
+        null,
+        5,
+        10,
+        null,
+        44,
+        37,
+        null,
+        74,
+        39,
+        null,
+        34,
+        28
+       ],
+       "name": "Manufacturing and Industrial Technology",
+       "top6": "095600",
+       "wages": [
+        {
+         "n": 54,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 54092,
+         "wage_after_5": 73636,
+         "wage_before": 26272,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 85,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 60922,
+         "wage_after_5": 72654,
+         "wage_before": 36476,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 38,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 64897,
+         "wage_after_5": 75071,
+         "wage_before": 54280,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
+     "soc_code": "17-3027",
+     "supply": 0.0,
+     "title": "Mechanical Engineering Technologists and Technicians"
+    },
+    {
+     "annual_openings": 40,
+     "annual_wage": 97230,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 40,
+     "growth_rate": 0.0,
+     "in_demand": true,
+     "programs": [],
+     "soc_code": "17-3028",
+     "supply": 0.0,
+     "title": "Calibration Technologists and Technicians"
+    },
+    {
+     "annual_openings": 180,
+     "annual_wage": 84530,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": true,
+     "feeding_awards": 0,
+     "gap": 180,
+     "growth_rate": 0.0,
+     "in_demand": true,
+     "programs": [
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        27,
+        27,
+        null,
+        28,
+        28,
+        null,
+        31,
+        30,
+        null,
+        24,
+        31,
+        null,
+        33,
+        33
+       ],
+       "name": "Engineering Technology, General (requires Trigonometry)",
+       "top6": "092400",
+       "wages": [
+        {
+         "n": 59,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 64498,
+         "wage_after_5": 88963,
+         "wage_before": 25967,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 21,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 61485,
+         "wage_after_5": 76163,
+         "wage_before": 36610,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      },
+      {
+       "awards": [
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "awards_recent": 0,
+       "enrollment": [
+        null,
+        24,
+        16,
+        null,
+        5,
+        10,
+        null,
+        44,
+        37,
+        null,
+        74,
+        39,
+        null,
+        34,
+        28
+       ],
+       "name": "Manufacturing and Industrial Technology",
+       "top6": "095600",
+       "wages": [
+        {
+         "n": 54,
+         "recipient_type": "Associate or Baccalaureate Degree Recipient",
+         "wage_after_2": 54092,
+         "wage_after_5": 73636,
+         "wage_before": 26272,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 85,
+         "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+         "wage_after_2": 60922,
+         "wage_after_5": 72654,
+         "wage_before": 36476,
+         "window": "2015-2016 to 2019-2020"
+        },
+        {
+         "n": 38,
+         "recipient_type": "Locally Approved Certificates Recipient",
+         "wage_after_2": 64897,
+         "wage_after_5": 75071,
+         "wage_before": 54280,
+         "window": "2015-2016 to 2019-2020"
+        }
+       ]
+      }
+     ],
      "soc_code": "17-3029",
      "supply": 0.0,
      "title": "Engineering Technologists and Technicians, Except Drafters, All Other"
     },
     {
-     "annual_openings": 550,
-     "annual_wage": 80760,
+     "annual_openings": 540,
+     "annual_wage": 82920,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
-     "gap": 550,
+     "gap": 540,
      "growth_rate": 0.1,
      "in_demand": true,
      "programs": [
@@ -1668,13 +1668,13 @@
     },
     {
      "annual_openings": 70,
-     "annual_wage": 70750,
+     "annual_wage": 73870,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
      "gap": 70,
-     "growth_rate": 0.1,
+     "growth_rate": 0.0,
      "in_demand": true,
      "programs": [
       {
@@ -1738,13 +1738,13 @@
      "title": "Maintenance Workers, Machinery"
     },
     {
-     "annual_openings": 510,
-     "annual_wage": 63130,
+     "annual_openings": 410,
+     "annual_wage": 63840,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 510,
+     "gap": 410,
      "growth_rate": 0.0,
      "in_demand": true,
      "programs": [],
@@ -1753,13 +1753,13 @@
      "title": "Machinists"
     },
     {
-     "annual_openings": 180,
-     "annual_wage": 49340,
+     "annual_openings": 320,
+     "annual_wage": 49560,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 180,
+     "gap": 320,
      "growth_rate": 0.0,
      "in_demand": true,
      "programs": [],
@@ -1768,13 +1768,13 @@
      "title": "Semiconductor Processing Technicians"
     },
     {
-     "annual_openings": 300,
-     "annual_wage": 59180,
+     "annual_openings": 400,
+     "annual_wage": 59360,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 300,
+     "gap": 400,
      "growth_rate": -0.0,
      "in_demand": true,
      "programs": [],
@@ -1783,14 +1783,14 @@
      "title": "Computer Numerically Controlled Tool Operators"
     },
     {
-     "annual_openings": 60,
-     "annual_wage": 94890,
+     "annual_openings": 70,
+     "annual_wage": 99420,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 60,
-     "growth_rate": 0.1,
+     "gap": 70,
+     "growth_rate": 0.0,
      "in_demand": true,
      "programs": [],
      "soc_code": "51-9162",
@@ -1803,13 +1803,13 @@
   {
    "cells": [
     {
-     "annual_openings": 430,
-     "annual_wage": 89280,
+     "annual_openings": 450,
+     "annual_wage": 93410,
      "awards_recent": 17,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 17,
-     "gap": 421,
+     "gap": 441,
      "growth_rate": -0.0,
      "in_demand": true,
      "programs": [
@@ -1866,13 +1866,13 @@
      "title": "Electrical and Electronic Engineering Technologists and Technicians"
     },
     {
-     "annual_openings": 80,
-     "annual_wage": 78280,
+     "annual_openings": 70,
+     "annual_wage": 79730,
      "awards_recent": 17,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 17,
-     "gap": 71,
+     "gap": 61,
      "growth_rate": -0.0,
      "in_demand": true,
      "programs": [
@@ -1929,14 +1929,14 @@
      "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
     },
     {
-     "annual_openings": 150,
-     "annual_wage": 79950,
+     "annual_openings": 220,
+     "annual_wage": 84050,
      "awards_recent": 17,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 17,
-     "gap": 141,
-     "growth_rate": 0.1,
+     "gap": 211,
+     "growth_rate": 0.0,
      "in_demand": true,
      "programs": [
       {
@@ -1992,14 +1992,14 @@
      "title": "Industrial Engineering Technologists and Technicians"
     },
     {
-     "annual_openings": 110,
-     "annual_wage": 95880,
+     "annual_openings": 120,
+     "annual_wage": 97610,
      "awards_recent": 17,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 17,
-     "gap": 101,
-     "growth_rate": 0.1,
+     "gap": 111,
+     "growth_rate": 0.0,
      "in_demand": true,
      "programs": [
       {
@@ -2056,13 +2056,13 @@
     },
     {
      "annual_openings": 40,
-     "annual_wage": 77930,
+     "annual_wage": 97230,
      "awards_recent": 17,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 17,
      "gap": 31,
-     "growth_rate": 0.1,
+     "growth_rate": 0.0,
      "in_demand": true,
      "programs": [
       {
@@ -2118,13 +2118,13 @@
      "title": "Calibration Technologists and Technicians"
     },
     {
-     "annual_openings": 220,
-     "annual_wage": 89990,
+     "annual_openings": 180,
+     "annual_wage": 84530,
      "awards_recent": 37,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 37,
-     "gap": 200,
+     "gap": 160,
      "growth_rate": 0.0,
      "in_demand": true,
      "programs": [
@@ -2275,13 +2275,13 @@
      "title": "Engineering Technologists and Technicians, Except Drafters, All Other"
     },
     {
-     "annual_openings": 550,
-     "annual_wage": 80760,
+     "annual_openings": 540,
+     "annual_wage": 82920,
      "awards_recent": 37,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 37,
-     "gap": 530,
+     "gap": 520,
      "growth_rate": 0.1,
      "in_demand": true,
      "programs": [
@@ -2386,13 +2386,13 @@
     },
     {
      "annual_openings": 70,
-     "annual_wage": 70750,
+     "annual_wage": 73870,
      "awards_recent": 37,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 37,
      "gap": 50,
-     "growth_rate": 0.1,
+     "growth_rate": 0.0,
      "in_demand": true,
      "programs": [
       {
@@ -2495,13 +2495,13 @@
      "title": "Maintenance Workers, Machinery"
     },
     {
-     "annual_openings": 510,
-     "annual_wage": 63130,
+     "annual_openings": 410,
+     "annual_wage": 63840,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 510,
+     "gap": 410,
      "growth_rate": 0.0,
      "in_demand": true,
      "programs": [],
@@ -2510,13 +2510,13 @@
      "title": "Machinists"
     },
     {
-     "annual_openings": 180,
-     "annual_wage": 49340,
+     "annual_openings": 320,
+     "annual_wage": 49560,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 180,
+     "gap": 320,
      "growth_rate": 0.0,
      "in_demand": true,
      "programs": [],
@@ -2525,13 +2525,13 @@
      "title": "Semiconductor Processing Technicians"
     },
     {
-     "annual_openings": 300,
-     "annual_wage": 59180,
+     "annual_openings": 400,
+     "annual_wage": 59360,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 300,
+     "gap": 400,
      "growth_rate": -0.0,
      "in_demand": true,
      "programs": [],
@@ -2540,14 +2540,14 @@
      "title": "Computer Numerically Controlled Tool Operators"
     },
     {
-     "annual_openings": 60,
-     "annual_wage": 94890,
+     "annual_openings": 70,
+     "annual_wage": 99420,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 60,
-     "growth_rate": 0.1,
+     "gap": 70,
+     "growth_rate": 0.0,
      "in_demand": true,
      "programs": [],
      "soc_code": "51-9162",
@@ -2560,13 +2560,13 @@
   {
    "cells": [
     {
-     "annual_openings": 430,
-     "annual_wage": 89280,
+     "annual_openings": 450,
+     "annual_wage": 93410,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 430,
+     "gap": 450,
      "growth_rate": -0.0,
      "in_demand": true,
      "programs": [],
@@ -2575,13 +2575,13 @@
      "title": "Electrical and Electronic Engineering Technologists and Technicians"
     },
     {
-     "annual_openings": 80,
-     "annual_wage": 78280,
+     "annual_openings": 70,
+     "annual_wage": 79730,
      "awards_recent": 10,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 10,
-     "gap": 75,
+     "gap": 65,
      "growth_rate": -0.0,
      "in_demand": true,
      "programs": [
@@ -2621,53 +2621,8 @@
      "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
     },
     {
-     "annual_openings": 150,
-     "annual_wage": 79950,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 150,
-     "growth_rate": 0.1,
-     "in_demand": true,
-     "programs": [],
-     "soc_code": "17-3026",
-     "supply": 0.0,
-     "title": "Industrial Engineering Technologists and Technicians"
-    },
-    {
-     "annual_openings": 110,
-     "annual_wage": 95880,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 110,
-     "growth_rate": 0.1,
-     "in_demand": true,
-     "programs": [],
-     "soc_code": "17-3027",
-     "supply": 0.0,
-     "title": "Mechanical Engineering Technologists and Technicians"
-    },
-    {
-     "annual_openings": 40,
-     "annual_wage": 77930,
-     "awards_recent": 0,
-     "course_count": 0,
-     "enrolled": false,
-     "feeding_awards": 0,
-     "gap": 40,
-     "growth_rate": 0.1,
-     "in_demand": true,
-     "programs": [],
-     "soc_code": "17-3028",
-     "supply": 0.0,
-     "title": "Calibration Technologists and Technicians"
-    },
-    {
      "annual_openings": 220,
-     "annual_wage": 89990,
+     "annual_wage": 84050,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
@@ -2676,18 +2631,63 @@
      "growth_rate": 0.0,
      "in_demand": true,
      "programs": [],
+     "soc_code": "17-3026",
+     "supply": 0.0,
+     "title": "Industrial Engineering Technologists and Technicians"
+    },
+    {
+     "annual_openings": 120,
+     "annual_wage": 97610,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 120,
+     "growth_rate": 0.0,
+     "in_demand": true,
+     "programs": [],
+     "soc_code": "17-3027",
+     "supply": 0.0,
+     "title": "Mechanical Engineering Technologists and Technicians"
+    },
+    {
+     "annual_openings": 40,
+     "annual_wage": 97230,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 40,
+     "growth_rate": 0.0,
+     "in_demand": true,
+     "programs": [],
+     "soc_code": "17-3028",
+     "supply": 0.0,
+     "title": "Calibration Technologists and Technicians"
+    },
+    {
+     "annual_openings": 180,
+     "annual_wage": 84530,
+     "awards_recent": 0,
+     "course_count": 0,
+     "enrolled": false,
+     "feeding_awards": 0,
+     "gap": 180,
+     "growth_rate": 0.0,
+     "in_demand": true,
+     "programs": [],
      "soc_code": "17-3029",
      "supply": 0.0,
      "title": "Engineering Technologists and Technicians, Except Drafters, All Other"
     },
     {
-     "annual_openings": 550,
-     "annual_wage": 80760,
+     "annual_openings": 540,
+     "annual_wage": 82920,
      "awards_recent": 10,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 10,
-     "gap": 545,
+     "gap": 535,
      "growth_rate": 0.1,
      "in_demand": true,
      "programs": [
@@ -2728,13 +2728,13 @@
     },
     {
      "annual_openings": 70,
-     "annual_wage": 70750,
+     "annual_wage": 73870,
      "awards_recent": 10,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 10,
      "gap": 65,
-     "growth_rate": 0.1,
+     "growth_rate": 0.0,
      "in_demand": true,
      "programs": [
       {
@@ -2773,13 +2773,13 @@
      "title": "Maintenance Workers, Machinery"
     },
     {
-     "annual_openings": 510,
-     "annual_wage": 63130,
+     "annual_openings": 410,
+     "annual_wage": 63840,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 510,
+     "gap": 410,
      "growth_rate": 0.0,
      "in_demand": true,
      "programs": [],
@@ -2788,13 +2788,13 @@
      "title": "Machinists"
     },
     {
-     "annual_openings": 180,
-     "annual_wage": 49340,
+     "annual_openings": 320,
+     "annual_wage": 49560,
      "awards_recent": 10,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 10,
-     "gap": 175,
+     "gap": 315,
      "growth_rate": 0.0,
      "in_demand": true,
      "programs": [
@@ -2834,13 +2834,13 @@
      "title": "Semiconductor Processing Technicians"
     },
     {
-     "annual_openings": 300,
-     "annual_wage": 59180,
+     "annual_openings": 400,
+     "annual_wage": 59360,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 300,
+     "gap": 400,
      "growth_rate": -0.0,
      "in_demand": true,
      "programs": [],
@@ -2849,14 +2849,14 @@
      "title": "Computer Numerically Controlled Tool Operators"
     },
     {
-     "annual_openings": 60,
-     "annual_wage": 94890,
+     "annual_openings": 70,
+     "annual_wage": 99420,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 60,
-     "growth_rate": 0.1,
+     "gap": 70,
+     "growth_rate": 0.0,
      "in_demand": true,
      "programs": [],
      "soc_code": "51-9162",
@@ -2869,13 +2869,13 @@
   {
    "cells": [
     {
-     "annual_openings": 430,
-     "annual_wage": 89280,
+     "annual_openings": 450,
+     "annual_wage": 93410,
      "awards_recent": 77,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 77,
-     "gap": 398,
+     "gap": 418,
      "growth_rate": -0.0,
      "in_demand": true,
      "programs": [
@@ -3042,13 +3042,13 @@
      "title": "Electrical and Electronic Engineering Technologists and Technicians"
     },
     {
-     "annual_openings": 80,
-     "annual_wage": 78280,
+     "annual_openings": 70,
+     "annual_wage": 79730,
      "awards_recent": 77,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 77,
-     "gap": 48,
+     "gap": 38,
      "growth_rate": -0.0,
      "in_demand": true,
      "programs": [
@@ -3215,14 +3215,14 @@
      "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
     },
     {
-     "annual_openings": 150,
-     "annual_wage": 79950,
+     "annual_openings": 220,
+     "annual_wage": 84050,
      "awards_recent": 77,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 77,
-     "gap": 119,
-     "growth_rate": 0.1,
+     "gap": 189,
+     "growth_rate": 0.0,
      "in_demand": true,
      "programs": [
       {
@@ -3333,14 +3333,14 @@
      "title": "Industrial Engineering Technologists and Technicians"
     },
     {
-     "annual_openings": 110,
-     "annual_wage": 95880,
+     "annual_openings": 120,
+     "annual_wage": 97610,
      "awards_recent": 77,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 77,
-     "gap": 79,
-     "growth_rate": 0.1,
+     "gap": 89,
+     "growth_rate": 0.0,
      "in_demand": true,
      "programs": [
       {
@@ -3452,13 +3452,13 @@
     },
     {
      "annual_openings": 40,
-     "annual_wage": 77930,
+     "annual_wage": 97230,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
      "gap": 40,
-     "growth_rate": 0.1,
+     "growth_rate": 0.0,
      "in_demand": true,
      "programs": [
       {
@@ -3522,13 +3522,13 @@
      "title": "Calibration Technologists and Technicians"
     },
     {
-     "annual_openings": 220,
-     "annual_wage": 89990,
+     "annual_openings": 180,
+     "annual_wage": 84530,
      "awards_recent": 77,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 77,
-     "gap": 188,
+     "gap": 148,
      "growth_rate": 0.0,
      "in_demand": true,
      "programs": [
@@ -3725,13 +3725,13 @@
      "title": "Engineering Technologists and Technicians, Except Drafters, All Other"
     },
     {
-     "annual_openings": 550,
-     "annual_wage": 80760,
+     "annual_openings": 540,
+     "annual_wage": 82920,
      "awards_recent": 77,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 77,
-     "gap": 519,
+     "gap": 509,
      "growth_rate": 0.1,
      "in_demand": true,
      "programs": [
@@ -3797,13 +3797,13 @@
     },
     {
      "annual_openings": 70,
-     "annual_wage": 70750,
+     "annual_wage": 73870,
      "awards_recent": 77,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 77,
      "gap": 39,
-     "growth_rate": 0.1,
+     "growth_rate": 0.0,
      "in_demand": true,
      "programs": [
       {
@@ -3867,13 +3867,13 @@
      "title": "Maintenance Workers, Machinery"
     },
     {
-     "annual_openings": 510,
-     "annual_wage": 63130,
+     "annual_openings": 410,
+     "annual_wage": 63840,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 510,
+     "gap": 410,
      "growth_rate": 0.0,
      "in_demand": true,
      "programs": [],
@@ -3882,13 +3882,13 @@
      "title": "Machinists"
     },
     {
-     "annual_openings": 180,
-     "annual_wage": 49340,
+     "annual_openings": 320,
+     "annual_wage": 49560,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
-     "gap": 180,
+     "gap": 320,
      "growth_rate": 0.0,
      "in_demand": true,
      "programs": [
@@ -3953,13 +3953,13 @@
      "title": "Semiconductor Processing Technicians"
     },
     {
-     "annual_openings": 300,
-     "annual_wage": 59180,
+     "annual_openings": 400,
+     "annual_wage": 59360,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 300,
+     "gap": 400,
      "growth_rate": -0.0,
      "in_demand": true,
      "programs": [],
@@ -3968,14 +3968,14 @@
      "title": "Computer Numerically Controlled Tool Operators"
     },
     {
-     "annual_openings": 60,
-     "annual_wage": 94890,
+     "annual_openings": 70,
+     "annual_wage": 99420,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 60,
-     "growth_rate": 0.1,
+     "gap": 70,
+     "growth_rate": 0.0,
      "in_demand": true,
      "programs": [],
      "soc_code": "51-9162",
@@ -4005,7 +4005,7 @@
   "Spring 2025",
   "Fall 2025"
  ],
- "executive_summary": "This view examines the regional demand landscape across the 12 advanced manufacturing occupations the Silicon Valley Advanced Manufacturing Partnership targets in the Bay Area regional labor market. Regional demand for these occupations totals 2,700 openings per year.",
+ "executive_summary": "This view examines the regional demand landscape across the 12 advanced manufacturing occupations the Silicon Valley Advanced Manufacturing Partnership targets in the Bay Area regional labor market. Regional demand for these occupations totals 2,890 openings per year.",
  "is_sector_priority": true,
  "region": "Bay",
  "region_display": "Bay Area",

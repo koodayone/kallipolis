@@ -1,6 +1,6 @@
 {
  "builder": {
-  "annual_openings": 220,
+  "annual_openings": 180,
   "consortium_supply": 66.7,
   "feeding_tops": [
    "092400",
@@ -11,7 +11,7 @@
    "095420",
    "095600"
   ],
-  "gap": 153
+  "gap": 113
  },
  "canonical": {
   "active_feeders": [

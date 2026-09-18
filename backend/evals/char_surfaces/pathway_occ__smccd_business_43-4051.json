@@ -22,7 +22,7 @@
     "status": "ok",
     "unit": "USD/yr (occ. median)",
     "value": null,
-    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+    "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
    },
    "gap": {
     "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
@@ -31,7 +31,7 @@
     "status": "ok",
     "unit": "openings/yr",
     "value": 0,
-    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+    "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "member_supply": {
     "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
@@ -49,7 +49,7 @@
     "status": "ok",
     "unit": "openings/yr",
     "value": null,
-    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+    "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
    },
    "regional_supply": {
     "granularity": "regional (Bay Area) \u2014 all 26 colleges",
@@ -132,7 +132,7 @@
    }
   ],
   "vintages": {
-   "demand": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection",
+   "demand": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection",
    "projected_supply": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
   }
  },

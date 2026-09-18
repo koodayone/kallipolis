@@ -17,6 +17,7 @@ from pathlib import Path
 
 import pytest
 
+from ontology.supply import coe_demand_columns
 from occupations.generate import (
     _parse_float,
     _parse_int,
@@ -203,3 +204,33 @@ class TestGenerateFromCoe:
         result = generate_from_coe(csv_path)
         by_soc = {o["soc_code"]: o for o in result}
         assert by_soc["47-2111"]["education_level"] == "High school diploma or equivalent"
+
+
+class TestHeaderResolution:
+    """The export renames its year-bearing columns every release (and renamed "Description"
+    to "Occupation Title" in 2025–2030); readers resolve columns from the header by pattern
+    and a missing column is an error, never a silent null."""
+
+    def test_the_2025_2030_header_parses_to_the_same_metrics(self):
+        row = {"SOC": "29-2056", "Region": "Bay", "Occupation Title": "Veterinary Technologists and Technicians",
+               "Typical Entry Level Education": "Associate's degree", "2025 Jobs": "3390", "2025 - 2030 % Change": "0.0619",
+               "Average Annual Job Openings": "280", "Median Hourly Earnings": "31.61", "Median Annual Earnings": "65740"}
+        soc, region, shell, metrics = _parse_row(row)
+        assert (soc, region, shell["title"]) == ("29-2056", "Bay", "Veterinary Technologists and Technicians")
+        assert metrics == {"employment": 3390, "annual_wage": 65740, "growth_rate": 0.0619, "annual_openings": 280}
+
+    def test_columns_and_vintage_from_either_release(self):
+        old = coe_demand_columns(["Region", "SOC", "Description", "Typical Entry Level Education", "2024 Jobs",
+                                  "2024 - 2029 % Change", "Average Annual Job Openings", "Median Hourly Earnings", "Median Annual Earnings"])
+        new = coe_demand_columns(["Region", "SOC", "Occupation Title", "Typical Entry Level Education", "2025 Jobs",
+                                  "2025 – 2030 % Change", "Average Annual Job Openings", "Median Hourly Earnings", "Median Annual Earnings"])
+        assert (old.title, old.jobs, old.change) == ("Description", "2024 Jobs", "2024 - 2029 % Change")
+        assert (new.title, new.jobs, new.change) == ("Occupation Title", "2025 Jobs", "2025 – 2030 % Change")   # an en-dash window parses too
+        assert old.vintage.endswith("2024 base-year employment, 2024–2029 projection")
+        assert new.vintage.endswith("2025 base-year employment, 2025–2030 projection")
+
+    def test_a_missing_column_is_an_error_not_a_null(self):
+        import pytest
+        with pytest.raises(ValueError, match="base-year jobs"):
+            coe_demand_columns(["Region", "SOC", "Occupation Title", "Typical Entry Level Education",
+                                "2025 - 2030 % Change", "Average Annual Job Openings", "Median Hourly Earnings", "Median Annual Earnings"])

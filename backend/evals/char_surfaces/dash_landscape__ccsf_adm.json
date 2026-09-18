@@ -3,11 +3,11 @@
   "candidate_employers": 171,
   "combined_awards": 96,
   "combined_supply_total": 47.0,
-  "gap": 3453,
+  "gap": 3683,
   "n_colleges": 1,
   "n_occupations": 24,
   "occupations_taught": 24,
-  "regional_demand_total": 3500
+  "regional_demand_total": 3730
  },
  "award_years": [
   "2020-2021",
@@ -20,14 +20,14 @@
   {
    "cells": [
     {
-     "annual_openings": 80,
-     "annual_wage": 92390,
+     "annual_openings": 70,
+     "annual_wage": 94380,
      "awards_recent": 93,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 93,
-     "gap": 35,
-     "growth_rate": 0.0,
+     "gap": 25,
+     "growth_rate": -0.0,
      "in_demand": false,
      "programs": [
       {
@@ -175,13 +175,13 @@
      "title": "Electrical and Electronics Drafters"
     },
     {
-     "annual_openings": 90,
-     "annual_wage": 93900,
+     "annual_openings": 70,
+     "annual_wage": 93420,
      "awards_recent": 1,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 1,
-     "gap": 89,
+     "gap": 69,
      "growth_rate": -0.0,
      "in_demand": false,
      "programs": [
@@ -305,13 +305,13 @@
      "title": "Mechanical Drafters"
     },
     {
-     "annual_openings": 430,
-     "annual_wage": 89280,
+     "annual_openings": 450,
+     "annual_wage": 93410,
      "awards_recent": 93,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 93,
-     "gap": 385,
+     "gap": 405,
      "growth_rate": -0.0,
      "in_demand": true,
      "programs": [
@@ -460,13 +460,13 @@
      "title": "Electrical and Electronic Engineering Technologists and Technicians"
     },
     {
-     "annual_openings": 80,
-     "annual_wage": 78280,
+     "annual_openings": 70,
+     "annual_wage": 79730,
      "awards_recent": 93,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 93,
-     "gap": 35,
+     "gap": 25,
      "growth_rate": -0.0,
      "in_demand": false,
      "programs": [
@@ -615,14 +615,14 @@
      "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
     },
     {
-     "annual_openings": 150,
-     "annual_wage": 79950,
+     "annual_openings": 220,
+     "annual_wage": 84050,
      "awards_recent": 4,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
-     "gap": 147,
-     "growth_rate": 0.1,
+     "gap": 217,
+     "growth_rate": 0.0,
      "in_demand": false,
      "programs": [
       {
@@ -770,14 +770,14 @@
      "title": "Industrial Engineering Technologists and Technicians"
     },
     {
-     "annual_openings": 110,
-     "annual_wage": 95880,
+     "annual_openings": 120,
+     "annual_wage": 97610,
      "awards_recent": 1,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 1,
-     "gap": 109,
-     "growth_rate": 0.1,
+     "gap": 119,
+     "growth_rate": 0.0,
      "in_demand": false,
      "programs": [
       {
@@ -877,13 +877,13 @@
     },
     {
      "annual_openings": 40,
-     "annual_wage": 77930,
+     "annual_wage": 97230,
      "awards_recent": 92,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 92,
      "gap": -4,
-     "growth_rate": 0.1,
+     "growth_rate": 0.0,
      "in_demand": false,
      "programs": [
       {
@@ -941,14 +941,14 @@
      "title": "Calibration Technologists and Technicians"
     },
     {
-     "annual_openings": 50,
-     "annual_wage": 75070,
+     "annual_openings": 20,
+     "annual_wage": 70130,
      "awards_recent": 92,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 92,
-     "gap": 6,
-     "growth_rate": -0.1,
+     "gap": -24,
+     "growth_rate": 0.0,
      "in_demand": false,
      "programs": [
       {
@@ -1006,14 +1006,14 @@
      "title": "Electric Motor, Power Tool, and Related Repairers"
     },
     {
-     "annual_openings": 90,
-     "annual_wage": 93390,
+     "annual_openings": 120,
+     "annual_wage": 110470,
      "awards_recent": 92,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 92,
-     "gap": 46,
-     "growth_rate": 0.0,
+     "gap": 76,
+     "growth_rate": -0.0,
      "in_demand": false,
      "programs": [
       {
@@ -1071,14 +1071,14 @@
      "title": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
     },
     {
-     "annual_openings": 100,
-     "annual_wage": 110120,
+     "annual_openings": 110,
+     "annual_wage": 122150,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 100,
-     "growth_rate": 0.0,
+     "gap": 110,
+     "growth_rate": 0.1,
      "in_demand": false,
      "programs": [
       {
@@ -1136,13 +1136,13 @@
      "title": "Control and Valve Installers and Repairers, Except Mechanical Door"
     },
     {
-     "annual_openings": 550,
-     "annual_wage": 80760,
+     "annual_openings": 540,
+     "annual_wage": 82920,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 550,
+     "gap": 540,
      "growth_rate": 0.1,
      "in_demand": true,
      "programs": [
@@ -1202,13 +1202,13 @@
     },
     {
      "annual_openings": 70,
-     "annual_wage": 70750,
+     "annual_wage": 73870,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
      "gap": 70,
-     "growth_rate": 0.1,
+     "growth_rate": 0.0,
      "in_demand": false,
      "programs": [
       {
@@ -1266,14 +1266,14 @@
      "title": "Maintenance Workers, Machinery"
     },
     {
-     "annual_openings": 60,
-     "annual_wage": 99070,
+     "annual_openings": 70,
+     "annual_wage": 102910,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 60,
-     "growth_rate": 0.1,
+     "gap": 70,
+     "growth_rate": 0.0,
      "in_demand": false,
      "programs": [
       {
@@ -1332,13 +1332,13 @@
     },
     {
      "annual_openings": 130,
-     "annual_wage": 53870,
+     "annual_wage": 53890,
      "awards_recent": 3,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 3,
      "gap": 128,
-     "growth_rate": 0.0,
+     "growth_rate": -0.0,
      "in_demand": false,
      "programs": [
       {
@@ -1445,13 +1445,13 @@
      "title": "Cutting, Punching, and Press Machine Setters, Operators, and Tenders, Metal and Plastic"
     },
     {
-     "annual_openings": 20,
-     "annual_wage": 47800,
+     "annual_openings": 10,
+     "annual_wage": 51310,
      "awards_recent": 3,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 3,
-     "gap": 18,
+     "gap": 8,
      "growth_rate": -0.1,
      "in_demand": false,
      "programs": [
@@ -1511,7 +1511,7 @@
     },
     {
      "annual_openings": 150,
-     "annual_wage": 48420,
+     "annual_wage": 48880,
      "awards_recent": 3,
      "course_count": 0,
      "enrolled": true,
@@ -1575,13 +1575,13 @@
      "title": "Grinding, Lapping, Polishing, and Buffing Machine Tool Setters, Operators, and Tenders, Metal and Plastic"
     },
     {
-     "annual_openings": 50,
-     "annual_wage": 54850,
+     "annual_openings": 60,
+     "annual_wage": 65700,
      "awards_recent": 3,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 3,
-     "gap": 48,
+     "gap": 58,
      "growth_rate": -0.1,
      "in_demand": false,
      "programs": [
@@ -1640,13 +1640,13 @@
      "title": "Lathe and Turning Machine Tool Setters, Operators, and Tenders, Metal and Plastic"
     },
     {
-     "annual_openings": 50,
-     "annual_wage": 60510,
+     "annual_openings": 40,
+     "annual_wage": 70470,
      "awards_recent": 3,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 3,
-     "gap": 48,
+     "gap": 38,
      "growth_rate": -0.1,
      "in_demand": false,
      "programs": [
@@ -1705,13 +1705,13 @@
      "title": "Milling and Planing Machine Setters, Operators, and Tenders, Metal and Plastic"
     },
     {
-     "annual_openings": 510,
-     "annual_wage": 63130,
+     "annual_openings": 410,
+     "annual_wage": 63840,
      "awards_recent": 3,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 3,
-     "gap": 508,
+     "gap": 408,
      "growth_rate": 0.0,
      "in_demand": true,
      "programs": [
@@ -1770,14 +1770,14 @@
      "title": "Machinists"
     },
     {
-     "annual_openings": 120,
-     "annual_wage": 48160,
+     "annual_openings": 130,
+     "annual_wage": 49020,
      "awards_recent": 3,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 3,
-     "gap": 118,
-     "growth_rate": 0.2,
+     "gap": 128,
+     "growth_rate": 0.1,
      "in_demand": false,
      "programs": [
       {
@@ -1835,13 +1835,13 @@
      "title": "Multiple Machine Tool Setters, Operators, and Tenders, Metal and Plastic"
     },
     {
-     "annual_openings": 30,
-     "annual_wage": 81930,
+     "annual_openings": 40,
+     "annual_wage": 94620,
      "awards_recent": 3,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 3,
-     "gap": 28,
+     "gap": 38,
      "growth_rate": 0.1,
      "in_demand": false,
      "programs": [
@@ -1900,13 +1900,13 @@
      "title": "Tool and Die Makers"
     },
     {
-     "annual_openings": 180,
-     "annual_wage": 49340,
+     "annual_openings": 320,
+     "annual_wage": 49560,
      "awards_recent": 92,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 92,
-     "gap": 136,
+     "gap": 276,
      "growth_rate": 0.0,
      "in_demand": false,
      "programs": [
@@ -1965,13 +1965,13 @@
      "title": "Semiconductor Processing Technicians"
     },
     {
-     "annual_openings": 300,
-     "annual_wage": 59180,
+     "annual_openings": 400,
+     "annual_wage": 59360,
      "awards_recent": 3,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 3,
-     "gap": 298,
+     "gap": 398,
      "growth_rate": -0.0,
      "in_demand": true,
      "programs": [
@@ -2030,14 +2030,14 @@
      "title": "Computer Numerically Controlled Tool Operators"
     },
     {
-     "annual_openings": 60,
-     "annual_wage": 94890,
+     "annual_openings": 70,
+     "annual_wage": 99420,
      "awards_recent": 3,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 3,
-     "gap": 58,
-     "growth_rate": 0.1,
+     "gap": 68,
+     "growth_rate": 0.0,
      "in_demand": false,
      "programs": [
       {
@@ -2114,7 +2114,7 @@
   "Spring 2025",
   "Fall 2025"
  ],
- "executive_summary": "This view examines the regional demand landscape across the 24 advanced manufacturing occupations the City College of San Francisco \u2014 Advanced Manufacturing targets in the Bay Area regional labor market. Regional demand for these occupations totals 3,500 openings per year.",
+ "executive_summary": "This view examines the regional demand landscape across the 24 advanced manufacturing occupations the City College of San Francisco \u2014 Advanced Manufacturing targets in the Bay Area regional labor market. Regional demand for these occupations totals 3,730 openings per year.",
  "is_sector_priority": true,
  "region": "Bay",
  "region_display": "Bay Area",

@@ -133,7 +133,7 @@ priority order. They cut roughly half the words without losing a fact.
     occupations right before the demand section (`chain_note` is its one- or two-sentence
     paragraph, plainly worded — what the code is, what carries it, where it lands). The demand
     note then keeps only the COE sentence, naming the occupations: *"[According to the Centers of
-    Excellence](url), Respiratory Therapists (SOC 29-1126) have roughly 210 openings a year in the
+    Excellence](url), Respiratory Therapists (SOC 29-1126) have roughly 240 openings a year in the
     Bay Area."* An occupation added by stated purpose (hard rule 2) draws as a dashed bypass the
     caption names; nothing about the derivation belongs in prose. The six 2026-09-18 editions are
     the models.
@@ -154,7 +154,7 @@ Worked example — 61 words to 32, same facts:
 > ~~Foothill's Respiratory Therapy program leads to a single middle-skill destination occupation in
 > the Centers of Excellence middle-skill universe. The crosswalk from TOP 121000 also reaches
 > Postsecondary Teachers and a residual "all other" classification; both fall outside that universe
-> and are excluded here. The destination market is growing and high-wage: 210 openings a year in the
+> and are excluded here. The destination market is growing and high-wage: 240 openings a year in the
 > Bay Area at a $132,040 median, the highest median of any occupation in Foothill's
 > advanced-manufacturing, agriculture or health evaluations to date.~~
 >

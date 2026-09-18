@@ -3,11 +3,11 @@
   "candidate_employers": 131,
   "combined_awards": 4,
   "combined_supply_total": 10.0,
-  "gap": 1290,
+  "gap": 1490,
   "n_colleges": 3,
   "n_occupations": 10,
   "occupations_taught": 10,
-  "regional_demand_total": 1300
+  "regional_demand_total": 1500
  },
  "award_years": [
   "2020-2021",
@@ -20,14 +20,14 @@
   {
    "cells": [
     {
-     "annual_openings": 80,
-     "annual_wage": 92390,
+     "annual_openings": 70,
+     "annual_wage": 94380,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
-     "gap": 75,
-     "growth_rate": 0.0,
+     "gap": 65,
+     "growth_rate": -0.0,
      "in_demand": false,
      "programs": [
       {
@@ -126,13 +126,13 @@
      "title": "Electrical and Electronics Drafters"
     },
     {
-     "annual_openings": 90,
-     "annual_wage": 93900,
+     "annual_openings": 70,
+     "annual_wage": 93420,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 90,
+     "gap": 70,
      "growth_rate": -0.0,
      "in_demand": false,
      "programs": [
@@ -183,13 +183,13 @@
      "title": "Mechanical Drafters"
     },
     {
-     "annual_openings": 430,
-     "annual_wage": 89280,
+     "annual_openings": 450,
+     "annual_wage": 93410,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
-     "gap": 425,
+     "gap": 445,
      "growth_rate": -0.0,
      "in_demand": true,
      "programs": [
@@ -289,13 +289,13 @@
      "title": "Electrical and Electronic Engineering Technologists and Technicians"
     },
     {
-     "annual_openings": 80,
-     "annual_wage": 78280,
+     "annual_openings": 70,
+     "annual_wage": 79730,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
-     "gap": 75,
+     "gap": 65,
      "growth_rate": -0.0,
      "in_demand": false,
      "programs": [
@@ -395,14 +395,14 @@
      "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
     },
     {
-     "annual_openings": 150,
-     "annual_wage": 79950,
+     "annual_openings": 220,
+     "annual_wage": 84050,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
-     "gap": 150,
-     "growth_rate": 0.1,
+     "gap": 220,
+     "growth_rate": 0.0,
      "in_demand": false,
      "programs": [
       {
@@ -501,14 +501,14 @@
      "title": "Industrial Engineering Technologists and Technicians"
     },
     {
-     "annual_openings": 110,
-     "annual_wage": 95880,
+     "annual_openings": 120,
+     "annual_wage": 97610,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 110,
-     "growth_rate": 0.1,
+     "gap": 120,
+     "growth_rate": 0.0,
      "in_demand": false,
      "programs": [
       {
@@ -559,13 +559,13 @@
     },
     {
      "annual_openings": 40,
-     "annual_wage": 77930,
+     "annual_wage": 97230,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
      "gap": 35,
-     "growth_rate": 0.1,
+     "growth_rate": 0.0,
      "in_demand": false,
      "programs": [
       {
@@ -623,14 +623,14 @@
      "title": "Calibration Technologists and Technicians"
     },
     {
-     "annual_openings": 50,
-     "annual_wage": 75070,
+     "annual_openings": 20,
+     "annual_wage": 70130,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
-     "gap": 45,
-     "growth_rate": -0.1,
+     "gap": 15,
+     "growth_rate": 0.0,
      "in_demand": false,
      "programs": [
       {
@@ -688,14 +688,14 @@
      "title": "Electric Motor, Power Tool, and Related Repairers"
     },
     {
-     "annual_openings": 90,
-     "annual_wage": 93390,
+     "annual_openings": 120,
+     "annual_wage": 110470,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
-     "gap": 85,
-     "growth_rate": 0.0,
+     "gap": 115,
+     "growth_rate": -0.0,
      "in_demand": false,
      "programs": [
       {
@@ -802,13 +802,13 @@
      "title": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
     },
     {
-     "annual_openings": 180,
-     "annual_wage": 49340,
+     "annual_openings": 320,
+     "annual_wage": 49560,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 0,
-     "gap": 175,
+     "gap": 315,
      "growth_rate": 0.0,
      "in_demand": false,
      "programs": [
@@ -921,14 +921,14 @@
   {
    "cells": [
     {
-     "annual_openings": 80,
-     "annual_wage": 92390,
+     "annual_openings": 70,
+     "annual_wage": 94380,
      "awards_recent": 4,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
-     "gap": 75,
-     "growth_rate": 0.0,
+     "gap": 65,
+     "growth_rate": -0.0,
      "in_demand": false,
      "programs": [
       {
@@ -1035,13 +1035,13 @@
      "title": "Electrical and Electronics Drafters"
     },
     {
-     "annual_openings": 90,
-     "annual_wage": 93900,
+     "annual_openings": 70,
+     "annual_wage": 93420,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 90,
+     "gap": 70,
      "growth_rate": -0.0,
      "in_demand": false,
      "programs": [
@@ -1100,13 +1100,13 @@
      "title": "Mechanical Drafters"
     },
     {
-     "annual_openings": 430,
-     "annual_wage": 89280,
+     "annual_openings": 450,
+     "annual_wage": 93410,
      "awards_recent": 4,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
-     "gap": 425,
+     "gap": 445,
      "growth_rate": -0.0,
      "in_demand": true,
      "programs": [
@@ -1214,13 +1214,13 @@
      "title": "Electrical and Electronic Engineering Technologists and Technicians"
     },
     {
-     "annual_openings": 80,
-     "annual_wage": 78280,
+     "annual_openings": 70,
+     "annual_wage": 79730,
      "awards_recent": 4,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
-     "gap": 75,
+     "gap": 65,
      "growth_rate": -0.0,
      "in_demand": false,
      "programs": [
@@ -1328,14 +1328,14 @@
      "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
     },
     {
-     "annual_openings": 150,
-     "annual_wage": 79950,
+     "annual_openings": 220,
+     "annual_wage": 84050,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 150,
-     "growth_rate": 0.1,
+     "gap": 220,
+     "growth_rate": 0.0,
      "in_demand": false,
      "programs": [
       {
@@ -1393,14 +1393,14 @@
      "title": "Industrial Engineering Technologists and Technicians"
     },
     {
-     "annual_openings": 110,
-     "annual_wage": 95880,
+     "annual_openings": 120,
+     "annual_wage": 97610,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 110,
-     "growth_rate": 0.1,
+     "gap": 120,
+     "growth_rate": 0.0,
      "in_demand": false,
      "programs": [
       {
@@ -1459,13 +1459,13 @@
     },
     {
      "annual_openings": 40,
-     "annual_wage": 77930,
+     "annual_wage": 97230,
      "awards_recent": 4,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
      "gap": 35,
-     "growth_rate": 0.1,
+     "growth_rate": 0.0,
      "in_demand": false,
      "programs": [
       {
@@ -1523,14 +1523,14 @@
      "title": "Calibration Technologists and Technicians"
     },
     {
-     "annual_openings": 50,
-     "annual_wage": 75070,
+     "annual_openings": 20,
+     "annual_wage": 70130,
      "awards_recent": 4,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
-     "gap": 45,
-     "growth_rate": -0.1,
+     "gap": 15,
+     "growth_rate": 0.0,
      "in_demand": false,
      "programs": [
       {
@@ -1588,14 +1588,14 @@
      "title": "Electric Motor, Power Tool, and Related Repairers"
     },
     {
-     "annual_openings": 90,
-     "annual_wage": 93390,
+     "annual_openings": 120,
+     "annual_wage": 110470,
      "awards_recent": 4,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
-     "gap": 85,
-     "growth_rate": 0.0,
+     "gap": 115,
+     "growth_rate": -0.0,
      "in_demand": false,
      "programs": [
       {
@@ -1653,13 +1653,13 @@
      "title": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
     },
     {
-     "annual_openings": 180,
-     "annual_wage": 49340,
+     "annual_openings": 320,
+     "annual_wage": 49560,
      "awards_recent": 4,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
-     "gap": 175,
+     "gap": 315,
      "growth_rate": 0.0,
      "in_demand": false,
      "programs": [
@@ -1723,14 +1723,14 @@
   {
    "cells": [
     {
-     "annual_openings": 80,
-     "annual_wage": 92390,
+     "annual_openings": 70,
+     "annual_wage": 94380,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 80,
-     "growth_rate": 0.0,
+     "gap": 70,
+     "growth_rate": -0.0,
      "in_demand": false,
      "programs": [],
      "soc_code": "17-3012",
@@ -1738,13 +1738,13 @@
      "title": "Electrical and Electronics Drafters"
     },
     {
-     "annual_openings": 90,
-     "annual_wage": 93900,
+     "annual_openings": 70,
+     "annual_wage": 93420,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 90,
+     "gap": 70,
      "growth_rate": -0.0,
      "in_demand": false,
      "programs": [],
@@ -1753,13 +1753,13 @@
      "title": "Mechanical Drafters"
     },
     {
-     "annual_openings": 430,
-     "annual_wage": 89280,
+     "annual_openings": 450,
+     "annual_wage": 93410,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 430,
+     "gap": 450,
      "growth_rate": -0.0,
      "in_demand": true,
      "programs": [],
@@ -1768,13 +1768,13 @@
      "title": "Electrical and Electronic Engineering Technologists and Technicians"
     },
     {
-     "annual_openings": 80,
-     "annual_wage": 78280,
+     "annual_openings": 70,
+     "annual_wage": 79730,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 80,
+     "gap": 70,
      "growth_rate": -0.0,
      "in_demand": false,
      "programs": [],
@@ -1783,14 +1783,14 @@
      "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
     },
     {
-     "annual_openings": 150,
-     "annual_wage": 79950,
+     "annual_openings": 220,
+     "annual_wage": 84050,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 150,
-     "growth_rate": 0.1,
+     "gap": 220,
+     "growth_rate": 0.0,
      "in_demand": false,
      "programs": [],
      "soc_code": "17-3026",
@@ -1798,14 +1798,14 @@
      "title": "Industrial Engineering Technologists and Technicians"
     },
     {
-     "annual_openings": 110,
-     "annual_wage": 95880,
+     "annual_openings": 120,
+     "annual_wage": 97610,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 110,
-     "growth_rate": 0.1,
+     "gap": 120,
+     "growth_rate": 0.0,
      "in_demand": false,
      "programs": [],
      "soc_code": "17-3027",
@@ -1814,13 +1814,13 @@
     },
     {
      "annual_openings": 40,
-     "annual_wage": 77930,
+     "annual_wage": 97230,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
      "gap": 40,
-     "growth_rate": 0.1,
+     "growth_rate": 0.0,
      "in_demand": false,
      "programs": [],
      "soc_code": "17-3028",
@@ -1828,14 +1828,14 @@
      "title": "Calibration Technologists and Technicians"
     },
     {
-     "annual_openings": 50,
-     "annual_wage": 75070,
+     "annual_openings": 20,
+     "annual_wage": 70130,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 50,
-     "growth_rate": -0.1,
+     "gap": 20,
+     "growth_rate": 0.0,
      "in_demand": false,
      "programs": [],
      "soc_code": "49-2092",
@@ -1843,14 +1843,14 @@
      "title": "Electric Motor, Power Tool, and Related Repairers"
     },
     {
-     "annual_openings": 90,
-     "annual_wage": 93390,
+     "annual_openings": 120,
+     "annual_wage": 110470,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 90,
-     "growth_rate": 0.0,
+     "gap": 120,
+     "growth_rate": -0.0,
      "in_demand": false,
      "programs": [],
      "soc_code": "49-2094",
@@ -1858,13 +1858,13 @@
      "title": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
     },
     {
-     "annual_openings": 180,
-     "annual_wage": 49340,
+     "annual_openings": 320,
+     "annual_wage": 49560,
      "awards_recent": 0,
      "course_count": 0,
      "enrolled": false,
      "feeding_awards": 0,
-     "gap": 180,
+     "gap": 320,
      "growth_rate": 0.0,
      "in_demand": false,
      "programs": [],
@@ -1892,7 +1892,7 @@
   "Spring 2025",
   "Fall 2025"
  ],
- "executive_summary": "This view examines the regional demand landscape across the 10 advanced manufacturing occupations the San Mateo County CCD \u2014 Advanced Manufacturing targets in the Bay Area regional labor market. Regional demand for these occupations totals 1,300 openings per year.",
+ "executive_summary": "This view examines the regional demand landscape across the 10 advanced manufacturing occupations the San Mateo County CCD \u2014 Advanced Manufacturing targets in the Bay Area regional labor market. Regional demand for these occupations totals 1,500 openings per year.",
  "is_sector_priority": true,
  "region": "Bay",
  "region_display": "Bay Area",

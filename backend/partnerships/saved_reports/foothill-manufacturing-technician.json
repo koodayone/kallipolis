@@ -8,8 +8,8 @@
     "17-3024"
   ],
   "author": "Dayone Koo",
-  "date": "June 21, 2026",
-  "_comment": "Dialectical surface for the Foothill MT report. Edit this file; the /report/saved/ endpoint re-renders on refresh. Fields mirror ReportSpec overrides (lede, *_note, live_postings).",
+  "date": "September 18, 2026",
+  "_comment": "Dialectical surface for the Foothill MT report. Edit this file; the /report/saved/ endpoint re-renders on refresh. Fields mirror ReportSpec overrides (lede, *_note, live_postings). DEMAND VINTAGE 2025–2030: demand figures re-read against the Centers of Excellence 2025–2030 release (2026-09-18 refresh).",
   "live_postings": {
     "51-9141": {
       "employer": "Intel",
@@ -28,7 +28,7 @@
     }
   },
   "lede": "Foothill College is committed to training students to fill critical roles in the region's advanced manufacturing sector. This report examines how Foothill College programs support the Manufacturing Technician role and how those programs align with other schools in the BACCC to meet regional labor-market demand.",
-  "demand_note": "The U.S. Department of Labor's O*NET system [maps the title Manufacturing Technician to these standard occupational classifications](https://www.onetonline.org/find/quick?s=Manufacturing+Technician), supported by Foothill College programs. [According to the Centers of Excellence](https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061), these occupations roughly represent 410 openings a year in the Bay Area labor market.",
+  "demand_note": "The U.S. Department of Labor's O*NET system [maps the title Manufacturing Technician to these standard occupational classifications](https://www.onetonline.org/find/quick?s=Manufacturing+Technician), supported by Foothill College programs. [According to the Centers of Excellence](https://datastudio.google.com/u/0/reporting/c01114ab-6bc3-4529-bace-e933fe293b86/page/1v72D), these occupations roughly represent 610 openings a year in the Bay Area labor market.",
   "competency_note": "The three occupations share a core set of competencies — knowledge of production processes, proficiency with industrial system operations, and the ability to reason through complex technical problems in the advanced manufacturing space. Workers should be familiar with a modern software stack that supports manufacturing functions including data analytics, control systems, and computer-aided design. Layering artificial intelligence onto these core competencies would be a natural curriculum development opportunity for SVAMP colleges given rapid AI-driven innovation in the identified competency areas.",
   "competencies": {
     "51-9141": {

@@ -8,12 +8,12 @@
     "17-3024"
   ],
   "author": "Dayone Koo",
-  "date": "September 17, 2026",
+  "date": "September 18, 2026",
   "partnership": "svamp",
   "partner_min_awards": 50,
-  "_comment": "SVAMP consortium report for the Manufacturing Technician role. Curriculum alignment reads each member's certificate from its course outlines of record against the paired occupation's core work activities (partnerships/alignment.py; roster partnerships/data/svamp_manufacturing_technician.json).",
+  "_comment": "SVAMP consortium report for the Manufacturing Technician role. Curriculum alignment reads each member's certificate from its course outlines of record against the paired occupation's core work activities (partnerships/alignment.py; roster partnerships/data/svamp_manufacturing_technician.json). DEMAND VINTAGE 2025–2030: demand figures re-read against the Centers of Excellence 2025–2030 release (2026-09-18 refresh).",
   "lede": "The Silicon Valley Advanced Manufacturing Partnership trains students for critical roles in the region's advanced manufacturing sector. This report examines how each member college's program supports the Manufacturing Technician role, how the programs align with one another across the consortium, and what each certificate's course outlines commit students to being able to do.",
-  "demand_note": "The U.S. Department of Labor's O*NET system [maps the title Manufacturing Technician to these standard occupational classifications](https://www.onetonline.org/find/quick?s=Manufacturing+Technician), which SVAMP member programs support. [According to the Centers of Excellence](https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061), these occupations account for roughly 410 openings a year in the Bay Area.",
+  "demand_note": "The U.S. Department of Labor's O*NET system [maps the title Manufacturing Technician to these standard occupational classifications](https://www.onetonline.org/find/quick?s=Manufacturing+Technician), which SVAMP member programs support. [According to the Centers of Excellence](https://datastudio.google.com/u/0/reporting/c01114ab-6bc3-4529-bace-e933fe293b86/page/1v72D), these occupations account for roughly 610 openings a year in the Bay Area.",
   "live_postings": {
     "51-9141": {
       "employer": "Intel",

@@ -68,7 +68,10 @@ class TestSectorRegistry:
         # 314 sectored, 1:1, no orphans). (Was 312: the two "Below Middle Skill"
         # driving occupations the universe keeps but the sector-file skill filter
         # dropped were added back under atl.)
-        assert sum(len(v) for v in _load_sector_socs().values()) == 314
+        import json
+        from pathlib import Path
+        universe = json.loads((Path(__file__).resolve().parent.parent / "occupations" / "occupations.json").read_text())
+        assert sum(len(v) for v in _load_sector_socs().values()) == len(universe)   # the universe's size, whatever the release says
 
     def test_sector_socs_is_the_universe_baccc_join(self):
         # The defensible methodology, pinned: sector_socs.csv == the JOIN of the two

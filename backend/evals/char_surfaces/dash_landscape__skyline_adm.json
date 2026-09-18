@@ -3,11 +3,11 @@
   "candidate_employers": 128,
   "combined_awards": 4,
   "combined_supply_total": 4.7,
-  "gap": 945,
+  "gap": 1085,
   "n_colleges": 1,
   "n_occupations": 7,
   "occupations_taught": 7,
-  "regional_demand_total": 950
+  "regional_demand_total": 1090
  },
  "award_years": [
   "2022-2023",
@@ -18,14 +18,14 @@
   {
    "cells": [
     {
-     "annual_openings": 80,
-     "annual_wage": 92390,
+     "annual_openings": 70,
+     "annual_wage": 94380,
      "awards_recent": 4,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
-     "gap": 75,
-     "growth_rate": 0.0,
+     "gap": 65,
+     "growth_rate": -0.0,
      "in_demand": false,
      "programs": [
       {
@@ -128,13 +128,13 @@
      "title": "Electrical and Electronics Drafters"
     },
     {
-     "annual_openings": 430,
-     "annual_wage": 89280,
+     "annual_openings": 450,
+     "annual_wage": 93410,
      "awards_recent": 4,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
-     "gap": 425,
+     "gap": 445,
      "growth_rate": -0.0,
      "in_demand": true,
      "programs": [
@@ -238,13 +238,13 @@
      "title": "Electrical and Electronic Engineering Technologists and Technicians"
     },
     {
-     "annual_openings": 80,
-     "annual_wage": 78280,
+     "annual_openings": 70,
+     "annual_wage": 79730,
      "awards_recent": 4,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
-     "gap": 75,
+     "gap": 65,
      "growth_rate": -0.0,
      "in_demand": false,
      "programs": [
@@ -349,13 +349,13 @@
     },
     {
      "annual_openings": 40,
-     "annual_wage": 77930,
+     "annual_wage": 97230,
      "awards_recent": 4,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
      "gap": 35,
-     "growth_rate": 0.1,
+     "growth_rate": 0.0,
      "in_demand": false,
      "programs": [
       {
@@ -411,14 +411,14 @@
      "title": "Calibration Technologists and Technicians"
     },
     {
-     "annual_openings": 50,
-     "annual_wage": 75070,
+     "annual_openings": 20,
+     "annual_wage": 70130,
      "awards_recent": 4,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
-     "gap": 45,
-     "growth_rate": -0.1,
+     "gap": 15,
+     "growth_rate": 0.0,
      "in_demand": false,
      "programs": [
       {
@@ -474,14 +474,14 @@
      "title": "Electric Motor, Power Tool, and Related Repairers"
     },
     {
-     "annual_openings": 90,
-     "annual_wage": 93390,
+     "annual_openings": 120,
+     "annual_wage": 110470,
      "awards_recent": 4,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
-     "gap": 85,
-     "growth_rate": 0.0,
+     "gap": 115,
+     "growth_rate": -0.0,
      "in_demand": false,
      "programs": [
       {
@@ -537,13 +537,13 @@
      "title": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
     },
     {
-     "annual_openings": 180,
-     "annual_wage": 49340,
+     "annual_openings": 320,
+     "annual_wage": 49560,
      "awards_recent": 4,
      "course_count": 0,
      "enrolled": true,
      "feeding_awards": 4,
-     "gap": 175,
+     "gap": 315,
      "growth_rate": 0.0,
      "in_demand": false,
      "programs": [
@@ -619,7 +619,7 @@
   "Spring 2025",
   "Fall 2025"
  ],
- "executive_summary": "This view examines the regional demand landscape across the 7 advanced manufacturing occupations the Skyline College \u2014 Advanced Manufacturing targets in the Bay Area regional labor market. Regional demand for these occupations totals 950 openings per year.",
+ "executive_summary": "This view examines the regional demand landscape across the 7 advanced manufacturing occupations the Skyline College \u2014 Advanced Manufacturing targets in the Bay Area regional labor market. Regional demand for these occupations totals 1,090 openings per year.",
  "is_sector_priority": true,
  "region": "Bay",
  "region_display": "Bay Area",

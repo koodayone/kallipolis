@@ -260,32 +260,38 @@ def _load_cip_to_soc() -> dict[str, set[str]]:
 def _load_coe_demand() -> dict[str, dict[str, dict]]:
     """Load COE occupational demand projections.
 
-    Returns: {region: {soc_code: {annual_openings, growth_rate, median_wage, jobs}}}
+    Returns: {region: {soc_code: {annual_openings, growth_rate, median_wage, jobs, title, education}}}
+    (`jobs` is the base-year employment; the year itself is the file's vintage, ontology.supply.COE_DEMAND_VINTAGE).
     """
     global _coe_demand
     if _coe_demand is not None:
         return _coe_demand
 
+    from ontology.supply import coe_demand_columns
     data: dict[str, dict[str, dict]] = {}
-    with open(COE_DEMAND_PATH, newline="") as f:
+    skipped = 0
+    with open(COE_DEMAND_PATH, newline="", encoding="utf-8-sig") as f:
         reader = csv.DictReader(f)
+        cols = coe_demand_columns(reader.fieldnames or [])      # a renamed column fails here, loudly
         for row in reader:
-            region = row["Region"]
-            soc = row["SOC"]
+            region = row[cols.region].strip()
+            soc = row[cols.soc].strip()
             try:
                 data.setdefault(region, {})[soc] = {
-                    "annual_openings": int(row["Average Annual Job Openings"]),
-                    "growth_rate": float(row["2024 - 2029 % Change"]),
-                    "median_wage": int(row["Median Annual Earnings"]),
-                    "jobs_2024": int(row["2024 Jobs"]),
-                    "title": row["Description"],
-                    "education": row["Typical Entry Level Education"],
+                    "annual_openings": int(float(row[cols.openings])),
+                    "growth_rate": float(row[cols.change]),
+                    "median_wage": int(float(row[cols.annual])),
+                    "jobs": int(float(row[cols.jobs])),
+                    "title": row[cols.title].strip(),
+                    "education": row[cols.education].strip(),
                 }
-            except (ValueError, KeyError):
+            except ValueError:                                   # an empty or suppressed cell: that row only
+                skipped += 1
                 continue
 
     _coe_demand = data
-    logger.info(f"Loaded COE demand: {len(data)} regions, {sum(len(v) for v in data.values())} entries")
+    logger.info(f"Loaded COE demand: {len(data)} regions, {sum(len(v) for v in data.values())} entries"
+                + (f", {skipped} rows skipped for empty cells" if skipped else ""))
     return data
 
 
@@ -705,7 +711,7 @@ def build_demand_profile(
             "annual_openings": demand["annual_openings"],
             "growth_rate": demand["growth_rate"],
             "median_wage": demand["median_wage"],
-            "jobs_2024": demand["jobs_2024"],
+            "jobs": demand["jobs"],
             "education": demand["education"],
             "enrollment_weight": enrollment_weight,
             "top6_sources": soc_top6_sources.get(soc, []),

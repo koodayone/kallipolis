@@ -29,6 +29,7 @@ import sys
 from pathlib import Path
 
 from ontology.crosswalks import COE_DEMAND_PATH
+from ontology.supply import DemandColumns, coe_demand_columns
 
 logger = logging.getLogger(__name__)
 
@@ -39,6 +40,10 @@ logger = logging.getLogger(__name__)
 COE_CSV_DEFAULT = COE_DEMAND_PATH
 OUTPUT_PATH = Path(__file__).parent / "occupations.json"
 EXISTING_PATH = Path(__file__).parent / "occupations.json"
+#: The generated file's provenance, beside it: which export it came from and that
+#: export's vintage, so a stale occupations.json is detectable without comparing
+#: values (the JSON itself stays a bare list — every loader reads it as one).
+META_PATH = Path(__file__).parent / "occupations.meta.json"
 
 
 def _parse_int(value) -> int | None:
@@ -61,12 +66,15 @@ def _parse_float(value) -> float | None:
         return None
 
 
-def _parse_row(row: dict) -> tuple[str, str, dict, dict]:
-    """Extract (soc, region, occupation_shell, region_metrics) from a CSV row."""
-    soc = row["SOC"].strip()
-    region = row["Region"].strip()
-    title = row["Description"].strip()
-    education = row["Typical Entry Level Education"].strip()
+def _parse_row(row: dict, cols: DemandColumns | None = None) -> tuple[str, str, dict, dict]:
+    """Extract (soc, region, occupation_shell, region_metrics) from a CSV row. `cols` are
+    the export's columns resolved from its header (ontology.supply.coe_demand_columns);
+    resolved from the row's own keys when not given."""
+    cols = cols or coe_demand_columns(list(row.keys()))
+    soc = row[cols.soc].strip()
+    region = row[cols.region].strip()
+    title = row[cols.title].strip()
+    education = row[cols.education].strip()
 
     occupation_shell = {
         "soc_code": soc,
@@ -78,10 +86,10 @@ def _parse_row(row: dict) -> tuple[str, str, dict, dict]:
     }
 
     region_metrics = {
-        "employment": _parse_int(row.get("2024 Jobs")),
-        "annual_wage": _parse_int(row.get("Median Annual Earnings")),
-        "growth_rate": _parse_float(row.get("2024 - 2029 % Change")),
-        "annual_openings": _parse_int(row.get("Average Annual Job Openings")),
+        "employment": _parse_int(row.get(cols.jobs)),
+        "annual_wage": _parse_int(row.get(cols.annual)),
+        "growth_rate": _parse_float(row.get(cols.change)),
+        "annual_openings": _parse_int(row.get(cols.openings)),
     }
 
     return soc, region, occupation_shell, region_metrics
@@ -91,10 +99,11 @@ def generate_from_coe(csv_path: Path) -> list[dict]:
     """Parse COE CSV and produce occupations list for the pipeline."""
     occupations: dict[str, dict] = {}
 
-    with open(csv_path, newline="") as f:
+    with open(csv_path, newline="", encoding="utf-8-sig") as f:
         reader = csv.DictReader(f)
+        cols = coe_demand_columns(reader.fieldnames or [])
         for row in reader:
-            soc, region, shell, metrics = _parse_row(row)
+            soc, region, shell, metrics = _parse_row(row, cols)
 
             if soc not in occupations:
                 occupations[soc] = shell
@@ -138,3 +147,12 @@ if __name__ == "__main__":
     with open(OUTPUT_PATH, "w") as f:
         json.dump(result, f, indent=2)
     print(f"Wrote {len(result)} occupations to {OUTPUT_PATH}")
+
+    from datetime import date
+    with open(csv_path, newline="", encoding="utf-8-sig") as f:
+        cols = coe_demand_columns([c.strip() for c in next(csv.reader(f))])
+    meta = {"source_file": csv_path.name, "vintage": cols.vintage, "base_year": cols.base_year,
+            "projection_end": cols.end_year, "generated": date.today().isoformat(),
+            "occupations": len(result), "regions": sorted({r for o in result for r in o["regions"]})}
+    META_PATH.write_text(json.dumps(meta, indent=2) + "\n")
+    print(f"Wrote provenance to {META_PATH}: {meta['vintage']}")

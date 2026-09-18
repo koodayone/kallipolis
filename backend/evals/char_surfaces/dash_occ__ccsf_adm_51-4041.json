@@ -1,6 +1,6 @@
 {
- "annual_openings": 510,
- "annual_wage": 63130,
+ "annual_openings": 410,
+ "annual_wage": 63840,
  "award_years": [
   "2023-2024",
   "2024-2025"
@@ -37,7 +37,7 @@
   }
  ],
  "description": "Set up and operate a variety of machine tools to produce precision parts and instruments out of metal. Includes precision instrument makers who fabricate, modify, or repair mechanical instruments. May also fabricate and modify parts to make or repair machine tools or maintain industrial machines, applying knowledge of mechanics, mathematics, metal properties, layout, and machining procedures.",
- "employment": 4700,
+ "employment": 3910,
  "enrollment_by_college": [
   {
    "college": "City College of San Francisco",
@@ -64,9 +64,9 @@
    "top6": "095630"
   }
  ],
- "gap": 508,
+ "gap": 408,
  "growth_rate": 0.0,
- "occupational_demand": "According to the Centers of Excellence for Labor Market Research, Machinists (SOC 51-4041) earn a median annual wage of $63,130 with 510 annual openings in the Bay Area region. 4,700 workers are currently employed in the region with this occupational role, with projected employment growth of +2.8% over a 5-year time span.",
+ "occupational_demand": "According to the Centers of Excellence for Labor Market Research, Machinists (SOC 51-4041) earn a median annual wage of $63,840 with 410 annual openings in the Bay Area region. 3,910 workers are currently employed in the region with this occupational role, with projected employment growth of +2.4% over a 5-year time span.",
  "partnership_opportunities": [],
  "partnership_opportunities_narrative": "",
  "region": "Bay",
