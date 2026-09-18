@@ -3,8 +3,8 @@
  "gated": false,
  "member": "svamp",
  "ranked": [
-  "095600 Manufacturing and Industrial Technology",
   "095630 Machining and Machine Tools",
+  "095600 Manufacturing and Industrial Technology",
   "094500 Industrial Systems Technology and Maintenance",
   "093500 Electro-Mechanical Technology",
   "093400 Electronics and Electric Technology",
@@ -16,8 +16,8 @@
  "unit_type": "program",
  "values": {
   "092400 Engineering Technology, General (requires Trigonometry)": {
-   "addressable_demand": 1200,
-   "addressable_gap": 349,
+   "addressable_demand": 1210,
+   "addressable_gap": 359,
    "award_trend": null,
    "completions": 0.0,
    "enrollment": 22.0,
@@ -28,8 +28,8 @@
    "wage_lift": 38531
   },
   "093400 Electronics and Electric Technology": {
-   "addressable_demand": 1170,
-   "addressable_gap": 490,
+   "addressable_demand": 1270,
+   "addressable_gap": 590,
    "award_trend": 0.0,
    "completions": 0.3,
    "enrollment": 113.3,
@@ -40,8 +40,8 @@
    "wage_lift": 27146
   },
   "093500 Electro-Mechanical Technology": {
-   "addressable_demand": 1260,
-   "addressable_gap": 791,
+   "addressable_demand": 1390,
+   "addressable_gap": 921,
    "award_trend": 1.89,
    "completions": 5.3,
    "enrollment": 84.7,
@@ -52,8 +52,8 @@
    "wage_lift": null
   },
   "094500 Industrial Systems Technology and Maintenance": {
-   "addressable_demand": 1930,
-   "addressable_gap": 1079,
+   "addressable_demand": 1970,
+   "addressable_gap": 1119,
    "award_trend": 1.89,
    "completions": 9.0,
    "enrollment": 14.0,
@@ -64,8 +64,8 @@
    "wage_lift": 35410
   },
   "094610 Energy Systems Technology": {
-   "addressable_demand": 1000,
-   "addressable_gap": 343,
+   "addressable_demand": 970,
+   "addressable_gap": 313,
    "award_trend": 1.15,
    "completions": 26.0,
    "enrollment": 92.7,
@@ -76,8 +76,8 @@
    "wage_lift": 36754
   },
   "095600 Manufacturing and Industrial Technology": {
-   "addressable_demand": 1980,
-   "addressable_gap": 1129,
+   "addressable_demand": 2000,
+   "addressable_gap": 1149,
    "award_trend": 2.46,
    "completions": 31.3,
    "enrollment": 461.3,
@@ -88,8 +88,8 @@
    "wage_lift": 24446
   },
   "095630 Machining and Machine Tools": {
-   "addressable_demand": 1610,
-   "addressable_gap": 1098,
+   "addressable_demand": 1680,
+   "addressable_gap": 1168,
    "award_trend": 1.12,
    "completions": 43.7,
    "enrollment": 0.0,
@@ -100,8 +100,8 @@
    "wage_lift": 20298
   },
   "095690 Digital Fabrication Technician": {
-   "addressable_demand": 150,
-   "addressable_gap": -236,
+   "addressable_demand": 220,
+   "addressable_gap": -166,
    "award_trend": 0.74,
    "completions": 2.7,
    "enrollment": 0.0,

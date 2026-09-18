@@ -1,12 +1,12 @@
 {
  "builder": {
-  "annual_openings": 5160,
+  "annual_openings": 5180,
   "consortium_supply": 688.7,
   "feeding_tops": [
    "123000",
    "123010"
   ],
-  "gap": 4471
+  "gap": 4491
  },
  "canonical": {
   "active_feeders": [
@@ -57,7 +57,7 @@
     "n_with_program": 16
    }
   },
-  "sector_supply_over_socs": 2371.7,
+  "sector_supply_over_socs": 2385.3,
   "supply_1yr": 701.0,
   "supply_3yr": 688.7
  },

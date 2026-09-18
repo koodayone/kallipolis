@@ -11,53 +11,1035 @@
   "top6": null
  },
  "data": {
-  "more": null,
-  "rows": [],
+  "more": {
+   "drill": {
+    "coordinate": {
+     "entity": "",
+     "lens": "coverage",
+     "member": "smccd",
+     "member_label": "San Mateo County CCD",
+     "region": null,
+     "sector": "business",
+     "sector_label": "Business & Entrepreneurship",
+     "soc": null,
+     "top6": null
+    },
+    "form": "navigate",
+    "rationale": "5 more rows; re-call navigate scoped to one row to drill in."
+   },
+   "remaining": 5
+  },
+  "rows": [
+   {
+    "label": "050500 Business Administration",
+    "roster": [
+     {
+      "label": "College of San Mateo",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 129.0,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Skyline College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 102.7,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Ca\u00f1ada College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "partial",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 46.7,
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (recent)",
+      "value": 3,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 3,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 59,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 1,
+      "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 278.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "300700 Cosmetology and Barbering",
+    "roster": [
+     {
+      "label": "Skyline College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 140.3,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "College of San Mateo",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 45.3,
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (recent)",
+      "value": 2,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 2,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 781,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 5,
+      "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 185.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "050200 Accounting",
+    "roster": [
+     {
+      "label": "College of San Mateo",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 42.0,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Ca\u00f1ada College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 20.7,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Skyline College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 14.7,
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (recent)",
+      "value": 3,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 3,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 1524,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 6,
+      "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 77.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "051100 Real Estate",
+    "roster": [
+     {
+      "label": "College of San Mateo",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 24.3,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Skyline College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 0.0,
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (recent)",
+      "value": 1,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 2,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 232,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 2,
+      "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 24.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "050600 Business Management",
+    "roster": [
+     {
+      "label": "College of San Mateo",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 10.0,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Ca\u00f1ada College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 8.0,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Skyline College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 0.0,
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (recent)",
+      "value": 2,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 3,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 234,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 2,
+      "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 18.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "050900 Marketing and Distribution",
+    "roster": [
+     {
+      "label": "Ca\u00f1ada College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 6.0,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "College of San Mateo",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 2.0,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Skyline College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "gap",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 0.0,
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (recent)",
+      "value": 2,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 3,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 273,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 2,
+      "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 8.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "050640 Small Business and Entrepreneurship",
+    "roster": [
+     {
+      "label": "Ca\u00f1ada College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 4.0,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "College of San Mateo",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 1.3,
+        "vintage": ""
+       }
+      }
+     },
+     {
+      "label": "Skyline College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 1.3,
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (recent)",
+      "value": 3,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 3,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 264,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 6,
+      "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 6.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   },
+   {
+    "label": "125500 Mortuary Science",
+    "roster": [
+     {
+      "label": "Ca\u00f1ada College",
+      "roster": [],
+      "values": {
+       "coverage": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "",
+        "value": "covered",
+        "vintage": ""
+       },
+       "projected_supply": {
+        "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+        "parent_vintages": [],
+        "source": "datamart",
+        "status": "ok",
+        "unit": "completions/yr",
+        "value": 0.7,
+        "vintage": ""
+       }
+      }
+     }
+    ],
+    "values": {
+     "colleges_actively_awarding": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges (recent)",
+      "value": 1,
+      "vintage": ""
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 1,
+      "vintage": ""
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled",
+      "value": 77,
+      "vintage": ""
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 2,
+      "vintage": ""
+     },
+     "projected_supply": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     }
+    }
+   }
+  ],
   "sorted_by": null,
-  "summary": {}
+  "summary": {
+   "covered_cells": {
+    "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+    "parent_vintages": [],
+    "source": "datamart",
+    "status": "ok",
+    "unit": "college\u00d7program cells",
+    "value": 16,
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+   },
+   "gap_cells": {
+    "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+    "parent_vintages": [],
+    "source": "datamart",
+    "status": "ok",
+    "unit": "college\u00d7program cells",
+    "value": 22,
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+   },
+   "member_colleges": {
+    "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+    "parent_vintages": [],
+    "source": "derived",
+    "status": "ok",
+    "unit": "colleges",
+    "value": 3,
+    "vintage": ""
+   },
+   "partial_cells": {
+    "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+    "parent_vintages": [],
+    "source": "datamart",
+    "status": "ok",
+    "unit": "college\u00d7program cells",
+    "value": 1,
+    "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+   },
+   "programs": {
+    "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+    "parent_vintages": [],
+    "source": "derived",
+    "status": "ok",
+    "unit": "TOP6 programs",
+    "value": 13,
+    "vintage": ""
+   }
+  }
  },
  "form": "coverage",
  "framing": {
   "meaning": "Coverage classifies each (college, occupation) as Covered / Partial / Gap by whether a feeding program both enrolls and awards. It is the institutional legibility of the gap across the member's colleges.",
-  "salience": [
-   "member-anchored: a generated member\u00d7sector view covers only occupations the member already serves with an active program \u2014 it does NOT surface greenfield demand in occupations the member does not yet serve. Absence here is not absence of regional demand."
-  ]
+  "salience": []
  },
  "licensing": {
-  "gates": [
-   {
-    "field": "member_supply",
-    "marker": "unavailable",
-    "reason": "San Mateo County CCD runs no active program feeding this sector's qualifying middle-skill occupations, so a member-anchored coverage view is empty. The region may still have unmet demand in this sector \u2014 this view is scoped to occupations the member already serves, not greenfield ones."
-   }
+  "gates": [],
+  "licensed": [
+   "Covered / Partial / Gap classification of each (college, program) cell."
   ],
-  "licensed": [],
   "not_licensed": [
-   "The Covered/Partial/Gap thresholds are an explicit classification (enrolled AND awarded = covered; exactly one = partial; neither = gap), not an implied score."
+   "The Covered/Partial/Gap thresholds are an explicit classification (enrolled AND awarded = covered; exactly one = partial; neither = gap), not an implied score.",
+   "A 'gap' cell is no realized supply \u2014 not a claim about need or intent."
   ]
  },
  "next_moves": [
   {
    "coordinate": {
     "entity": "",
-    "lens": "",
+    "lens": "gaps",
     "member": "smccd",
     "member_label": "San Mateo County CCD",
-    "region": "Bay Area",
+    "region": null,
     "sector": "business",
     "sector_label": "Business & Entrepreneurship",
     "soc": null,
     "top6": null
    },
-   "form": "orient",
-   "rationale": "See which sectors this member actually runs programs in."
+   "form": "navigate",
+   "rationale": "Size the shortfall behind the coverage picture."
+  },
+  {
+   "coordinate": {
+    "entity": "",
+    "lens": "",
+    "member": "smccd",
+    "member_label": "San Mateo County CCD",
+    "region": null,
+    "sector": "business",
+    "sector_label": "Business & Entrepreneurship",
+    "soc": null,
+    "top6": null
+   },
+   "form": "crosswalk",
+   "rationale": "Trace the selected program to the occupations it prepares for."
   }
  ],
  "provenance": {
-  "field_authority": {},
-  "scope_granularity": "",
-  "sources": [],
-  "vintages": {}
+  "field_authority": {
+   "coverage": "datamart",
+   "enrollment": "datamart",
+   "projected_supply": "datamart"
+  },
+  "scope_granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+  "sources": [
+   {
+    "authority": "CCCCO DataMart",
+    "id": "datamart",
+    "role": "program awards, enrollment, and graduate wage outcomes"
+   }
+  ],
+  "vintages": {
+   "projected_supply": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+  }
  },
  "view_link": {
   "note": "Opens on the lens with a default selection (view state applies client-side); select the row above to corroborate the figure.",

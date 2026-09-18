@@ -11,10 +11,27 @@
   "top6": null
  },
  "data": {
-  "more": null,
+  "more": {
+   "drill": {
+    "coordinate": {
+     "entity": "49-9052",
+     "lens": "",
+     "member": "baccc",
+     "member_label": "Bay Area Community College Consortium",
+     "region": null,
+     "sector": "",
+     "sector_label": "",
+     "soc": "49-9052",
+     "top6": null
+    },
+    "form": "navigate",
+    "rationale": "9 more greenfield occupations; navigate to any surfaced SOC drills into one."
+   },
+   "remaining": 9
+  },
   "rows": [
    {
-    "label": "21-1093 Social and Human Service Assistants",
+    "label": "43-4051 Customer Service Representatives",
     "roster": [],
     "values": {
      "annual_openings": {
@@ -23,8 +40,8 @@
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 1640,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "value": 5080,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "annual_wage": {
       "granularity": "regional (Bay Area)",
@@ -32,8 +49,8 @@
       "source": "coe",
       "status": "ok",
       "unit": "USD/yr (occ. median)",
-      "value": 56610,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "value": 56440,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "growth_rate": {
       "granularity": "regional (Bay Area)",
@@ -41,8 +58,8 @@
       "source": "coe",
       "status": "ok",
       "unit": "5-yr %",
-      "value": 0.1,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "value": 0.0,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "member_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
@@ -54,13 +71,115 @@
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "typical_education": {
-      "granularity": "SOC 21-1093",
+      "granularity": "SOC 43-4051",
       "parent_vintages": [],
       "source": "coe",
       "status": "ok",
       "unit": "",
       "value": "High school diploma or equivalent",
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     }
+    }
+   },
+   {
+    "label": "51-2028 Electrical, Electronic, and Electromechanical Assemblers, Except Coil Winders, Tapers, and Finishers",
+    "roster": [],
+    "values": {
+     "annual_openings": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 1400,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "annual_wage": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "USD/yr (occ. median)",
+      "value": 54950,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "growth_rate": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "5-yr %",
+      "value": 0.0,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "typical_education": {
+      "granularity": "SOC 51-2028",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "",
+      "value": "High school diploma or equivalent",
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     }
+    }
+   },
+   {
+    "label": "43-5061 Production, Planning, and Expediting Clerks",
+    "roster": [],
+    "values": {
+     "annual_openings": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 1140,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "annual_wage": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "USD/yr (occ. median)",
+      "value": 74350,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "growth_rate": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "5-yr %",
+      "value": -0.0,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "typical_education": {
+      "granularity": "SOC 43-5061",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "",
+      "value": "High school diploma or equivalent",
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      }
     }
    },
@@ -75,7 +194,7 @@
       "status": "ok",
       "unit": "openings/yr",
       "value": 610,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "annual_wage": {
       "granularity": "regional (Bay Area)",
@@ -83,8 +202,8 @@
       "source": "coe",
       "status": "ok",
       "unit": "USD/yr (occ. median)",
-      "value": 70110,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "value": 85180,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "growth_rate": {
       "granularity": "regional (Bay Area)",
@@ -93,7 +212,7 @@
       "status": "ok",
       "unit": "5-yr %",
       "value": -0.1,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "member_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
@@ -111,12 +230,12 @@
       "status": "ok",
       "unit": "",
       "value": "High school diploma or equivalent",
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      }
     }
    },
    {
-    "label": "51-5112 Printing Press Operators",
+    "label": "39-7018 Tour and Travel Guides",
     "roster": [],
     "values": {
      "annual_openings": {
@@ -125,8 +244,8 @@
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 210,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "value": 540,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "annual_wage": {
       "granularity": "regional (Bay Area)",
@@ -134,8 +253,8 @@
       "source": "coe",
       "status": "ok",
       "unit": "USD/yr (occ. median)",
-      "value": 50870,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "value": 53710,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "growth_rate": {
       "granularity": "regional (Bay Area)",
@@ -143,8 +262,8 @@
       "source": "coe",
       "status": "ok",
       "unit": "5-yr %",
-      "value": -0.1,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "value": 0.0,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "member_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
@@ -156,18 +275,18 @@
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "typical_education": {
-      "granularity": "SOC 51-5112",
+      "granularity": "SOC 39-7018",
       "parent_vintages": [],
       "source": "coe",
       "status": "ok",
       "unit": "",
       "value": "High school diploma or equivalent",
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      }
     }
    },
    {
-    "label": "29-2057 Ophthalmic Medical Technicians",
+    "label": "43-4031 Court, Municipal, and License Clerks",
     "roster": [],
     "values": {
      "annual_openings": {
@@ -176,8 +295,8 @@
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 160,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "value": 370,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "annual_wage": {
       "granularity": "regional (Bay Area)",
@@ -185,8 +304,8 @@
       "source": "coe",
       "status": "ok",
       "unit": "USD/yr (occ. median)",
-      "value": 52010,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "value": 73770,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "growth_rate": {
       "granularity": "regional (Bay Area)",
@@ -195,7 +314,7 @@
       "status": "ok",
       "unit": "5-yr %",
       "value": 0.1,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "member_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
@@ -207,18 +326,69 @@
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "typical_education": {
-      "granularity": "SOC 29-2057",
+      "granularity": "SOC 43-4031",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "",
+      "value": "High school diploma or equivalent",
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     }
+    }
+   },
+   {
+    "label": "49-2022 Telecommunications Equipment Installers and Repairers, Except Line Installers",
+    "roster": [],
+    "values": {
+     "annual_openings": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 330,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "annual_wage": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "USD/yr (occ. median)",
+      "value": 89890,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "growth_rate": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "5-yr %",
+      "value": -0.1,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "typical_education": {
+      "granularity": "SOC 49-2022",
       "parent_vintages": [],
       "source": "coe",
       "status": "ok",
       "unit": "",
       "value": "Postsecondary nondegree award",
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      }
     }
    },
    {
-    "label": "29-2081 Opticians, Dispensing",
+    "label": "43-5031 Public Safety Telecommunicators",
     "roster": [],
     "values": {
      "annual_openings": {
@@ -227,8 +397,8 @@
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 150,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "value": 240,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "annual_wage": {
       "granularity": "regional (Bay Area)",
@@ -236,8 +406,8 @@
       "source": "coe",
       "status": "ok",
       "unit": "USD/yr (occ. median)",
-      "value": 61770,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "value": 100440,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "growth_rate": {
       "granularity": "regional (Bay Area)",
@@ -245,8 +415,8 @@
       "source": "coe",
       "status": "ok",
       "unit": "5-yr %",
-      "value": 0.0,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "value": 0.1,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "member_supply": {
       "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
@@ -258,115 +428,13 @@
       "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "typical_education": {
-      "granularity": "SOC 29-2081",
+      "granularity": "SOC 43-5031",
       "parent_vintages": [],
       "source": "coe",
       "status": "ok",
       "unit": "",
       "value": "High school diploma or equivalent",
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     }
-    }
-   },
-   {
-    "label": "51-9071 Jewelers and Precious Stone and Metal Workers",
-    "roster": [],
-    "values": {
-     "annual_openings": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 110,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     },
-     "annual_wage": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "USD/yr (occ. median)",
-      "value": 56340,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     },
-     "growth_rate": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "5-yr %",
-      "value": -0.0,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     },
-     "member_supply": {
-      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 0.0,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "typical_education": {
-      "granularity": "SOC 51-9071",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "",
-      "value": "High school diploma or equivalent",
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     }
-    }
-   },
-   {
-    "label": "31-2011 Occupational Therapy Assistants",
-    "roster": [],
-    "values": {
-     "annual_openings": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 100,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     },
-     "annual_wage": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "USD/yr (occ. median)",
-      "value": 92550,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     },
-     "growth_rate": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "5-yr %",
-      "value": 0.2,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     },
-     "member_supply": {
-      "granularity": "institutional \u2014 consortium (\u03a3 26 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 0.0,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "typical_education": {
-      "granularity": "SOC 31-2011",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "",
-      "value": "Associate's degree",
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      }
     }
    }
@@ -393,7 +461,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "occupations",
-    "value": 7,
+    "value": 17,
     "vintage": ""
    }
   }
@@ -420,14 +488,14 @@
  "next_moves": [
   {
    "coordinate": {
-    "entity": "21-1093",
+    "entity": "43-4051",
     "lens": "",
     "member": "baccc",
     "member_label": "Bay Area Community College Consortium",
     "region": null,
     "sector": "",
     "sector_label": "",
-    "soc": "21-1093",
+    "soc": "43-4051",
     "top6": null
    },
    "form": "navigate",
@@ -456,7 +524,7 @@
    }
   ],
   "vintages": {
-   "demand": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection",
+   "demand": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection",
    "projected_supply": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
   }
  },

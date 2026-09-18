@@ -10,8 +10,8 @@
  "unit_type": "program",
  "values": {
   "092400 Engineering Technology, General (requires Trigonometry)": {
-   "addressable_demand": 1200,
-   "addressable_gap": 437,
+   "addressable_demand": 1210,
+   "addressable_gap": 447,
    "award_trend": 0.0,
    "completions": 0.3,
    "enrollment": 0.0,
@@ -22,8 +22,8 @@
    "wage_lift": 38531
   },
   "093400 Electronics and Electric Technology": {
-   "addressable_demand": 1170,
-   "addressable_gap": 620,
+   "addressable_demand": 1270,
+   "addressable_gap": 720,
    "award_trend": 0.41,
    "completions": 9.7,
    "enrollment": 57.0,

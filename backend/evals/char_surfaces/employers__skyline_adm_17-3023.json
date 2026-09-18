@@ -31,6 +31,78 @@
   },
   "rows": [
    {
+    "label": "Advanced Micro Devices",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 10.2,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 6,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Alps Electric North America",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 10.2,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 6,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Applied Materials",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 10.2,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 6,
+      "vintage": ""
+     }
+    }
+   },
+   {
     "label": "Arm",
     "roster": [],
     "values": {
@@ -56,6 +128,30 @@
    },
    {
     "label": "California Eastern Lab",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 10.2,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 6,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Ceremorphic",
     "roster": [],
     "values": {
      "employer_relevance": {
@@ -125,102 +221,6 @@
       "vintage": ""
      }
     }
-   },
-   {
-    "label": "Horizon Robotics",
-    "roster": [],
-    "values": {
-     "employer_relevance": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "graph_bls",
-      "status": "ok",
-      "unit": "\u03a3 OES staffing share",
-      "value": 10.2,
-      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
-     },
-     "occupations_hired": {
-      "granularity": "BLS OES",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "target SOCs",
-      "value": 6,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "Jameco Electronics",
-    "roster": [],
-    "values": {
-     "employer_relevance": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "graph_bls",
-      "status": "ok",
-      "unit": "\u03a3 OES staffing share",
-      "value": 10.2,
-      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
-     },
-     "occupations_hired": {
-      "granularity": "BLS OES",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "target SOCs",
-      "value": 6,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "Leemah Electronics",
-    "roster": [],
-    "values": {
-     "employer_relevance": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "graph_bls",
-      "status": "ok",
-      "unit": "\u03a3 OES staffing share",
-      "value": 10.2,
-      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
-     },
-     "occupations_hired": {
-      "granularity": "BLS OES",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "target SOCs",
-      "value": 6,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "Bai",
-    "roster": [],
-    "values": {
-     "employer_relevance": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "graph_bls",
-      "status": "ok",
-      "unit": "\u03a3 OES staffing share",
-      "value": 2.8,
-      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
-     },
-     "occupations_hired": {
-      "granularity": "BLS OES",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "target SOCs",
-      "value": 7,
-      "vintage": ""
-     }
-    }
    }
   ],
   "sorted_by": null,
@@ -231,7 +231,7 @@
     "source": "graph_bls",
     "status": "ok",
     "unit": "employers",
-    "value": 107,
+    "value": 383,
     "vintage": "BLS OEWS Industry-Occupation staffing matrix"
    },
    "shown": {

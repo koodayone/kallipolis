@@ -25,9 +25,9 @@
      "top6": null
     },
     "form": "navigate",
-    "rationale": "16 more rows; re-call navigate scoped to one row to drill in."
+    "rationale": "17 more rows; re-call navigate scoped to one row to drill in."
    },
-   "remaining": 16
+   "remaining": 17
   },
   "rows": [
    {
@@ -151,7 +151,7 @@
     }
    },
    {
-    "label": "Elroy Air",
+    "label": "Archer Aviation",
     "roster": [],
     "values": {
      "employer_relevance": {
@@ -175,7 +175,7 @@
     }
    },
    {
-    "label": "Arm",
+    "label": "BAE Systems",
     "roster": [],
     "values": {
      "employer_relevance": {
@@ -193,13 +193,13 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 19,
+      "value": 20,
       "vintage": ""
      }
     }
    },
    {
-    "label": "California Eastern Lab",
+    "label": "Elroy Air",
     "roster": [],
     "values": {
      "employer_relevance": {
@@ -217,7 +217,7 @@
       "source": "derived",
       "status": "ok",
       "unit": "target SOCs",
-      "value": 19,
+      "value": 20,
       "vintage": ""
      }
     }
@@ -231,7 +231,7 @@
     "source": "graph_bls",
     "status": "ok",
     "unit": "employers",
-    "value": 167,
+    "value": 575,
     "vintage": "BLS OEWS Industry-Occupation staffing matrix"
    },
    "shown": {
@@ -240,7 +240,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "employers plotted",
-    "value": 24,
+    "value": 25,
     "vintage": ""
    }
   }

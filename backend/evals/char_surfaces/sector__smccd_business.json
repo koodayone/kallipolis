@@ -11,8 +11,362 @@
   "top6": null
  },
  "data": {
-  "more": null,
-  "rows": [],
+  "more": {
+   "drill": {
+    "coordinate": {
+     "entity": "300700",
+     "lens": "",
+     "member": "smccd",
+     "member_label": "San Mateo County CCD",
+     "region": null,
+     "sector": "business",
+     "sector_label": "Business & Entrepreneurship",
+     "soc": null,
+     "top6": "300700"
+    },
+    "form": "crosswalk",
+    "rationale": "5 more programs the member runs; crosswalk on any TOP6 drills into its occupations."
+   },
+   "remaining": 5
+  },
+  "rows": [
+   {
+    "label": "050100 Business and Commerce, General",
+    "roster": [],
+    "values": {
+     "addressable_demand": {
+      "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 18540,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 3,
+      "vintage": ""
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 8,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "050630 Management Development and Supervision",
+    "roster": [],
+    "values": {
+     "addressable_demand": {
+      "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 18540,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 2,
+      "vintage": ""
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 8,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "050200 Accounting",
+    "roster": [],
+    "values": {
+     "addressable_demand": {
+      "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 13690,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 3,
+      "vintage": ""
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 77.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 9,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "050640 Small Business and Entrepreneurship",
+    "roster": [],
+    "values": {
+     "addressable_demand": {
+      "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 13690,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 3,
+      "vintage": ""
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 6.7,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 9,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "050900 Marketing and Distribution",
+    "roster": [],
+    "values": {
+     "addressable_demand": {
+      "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 10740,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 3,
+      "vintage": ""
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 8.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "050600 Business Management",
+    "roster": [],
+    "values": {
+     "addressable_demand": {
+      "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 8680,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 3,
+      "vintage": ""
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 18.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 5,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "050500 Business Administration",
+    "roster": [],
+    "values": {
+     "addressable_demand": {
+      "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 8420,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 3,
+      "vintage": ""
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 278.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 4,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "050400 Banking and Finance",
+    "roster": [],
+    "values": {
+     "addressable_demand": {
+      "granularity": "regional (Bay Area) \u2014 the occupations this program feeds",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 7680,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "colleges_with_program": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "colleges",
+      "value": 3,
+      "vintage": ""
+     },
+     "member_supply": {
+      "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 0.0,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "occupations_fed": {
+      "granularity": "TOP\u2192CIP\u2192SOC crosswalk",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "SOCs",
+      "value": 6,
+      "vintage": ""
+     }
+    }
+   }
+  ],
   "sorted_by": null,
   "summary": {
    "gap": {
@@ -21,8 +375,8 @@
     "source": "derived",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 0,
-    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+    "value": 48544,
+    "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "in_demand_occupations": {
     "granularity": "in a real, quality market (regional openings + near-living-wage + non-declining)",
@@ -30,7 +384,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "SOCs",
-    "value": 0,
+    "value": 21,
     "vintage": ""
    },
    "in_demand_openings": {
@@ -39,8 +393,8 @@
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 0,
-    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+    "value": 32650,
+    "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
    },
    "member_programs": {
     "granularity": "institutional \u2014 district (\u03a3 3 colleges) \u00b7 on-the-books (registered \u2229 in_scope)",
@@ -48,7 +402,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "TOP6 programs the member runs",
-    "value": 0,
+    "value": 13,
     "vintage": ""
    },
    "member_programs_active": {
@@ -57,16 +411,16 @@
     "source": "derived",
     "status": "ok",
     "unit": "TOP6 programs currently graduating",
-    "value": 0,
+    "value": 8,
     "vintage": ""
    },
    "member_share_of_supply": {
     "granularity": "institutional \u2014 district (\u03a3 3 colleges)",
     "parent_vintages": [],
-    "source": "",
-    "status": "unavailable",
+    "source": "derived",
+    "status": "ok",
     "unit": "fraction of regional supply",
-    "value": null,
+    "value": 0.1,
     "vintage": ""
    },
    "member_supply": {
@@ -75,7 +429,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 0.0,
+    "value": 599.0,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "regional_demand": {
@@ -84,8 +438,8 @@
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 0,
-    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+    "value": 53970,
+    "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
    },
    "regional_supply": {
     "granularity": "regional (Bay Area) \u2014 all 26 colleges",
@@ -93,7 +447,7 @@
     "source": "datamart",
     "status": "ok",
     "unit": "completions/yr",
-    "value": 0.0,
+    "value": 5425.7,
     "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
    },
    "sector_occupations": {
@@ -111,7 +465,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "SOCs",
-    "value": 0,
+    "value": 25,
     "vintage": ""
    },
    "served_openings": {
@@ -120,8 +474,8 @@
     "source": "coe",
     "status": "ok",
     "unit": "openings/yr",
-    "value": 0,
-    "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+    "value": 21890,
+    "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
    }
   }
  },
@@ -145,7 +499,7 @@
  "next_moves": [
   {
    "coordinate": {
-    "entity": "",
+    "entity": "050100",
     "lens": "",
     "member": "smccd",
     "member_label": "San Mateo County CCD",
@@ -153,10 +507,10 @@
     "sector": "business",
     "sector_label": "Business & Entrepreneurship",
     "soc": null,
-    "top6": null
+    "top6": "050100"
    },
    "form": "crosswalk",
-   "rationale": "Drill into a program for the occupations it prepares students for."
+   "rationale": "Drill into a program \u2014 e.g. 050100 Business and Commerce, General \u2014 for the occupations it prepares students for and their demand."
   },
   {
    "coordinate": {
@@ -209,7 +563,7 @@
    }
   ],
   "vintages": {
-   "demand": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection",
+   "demand": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection",
    "projected_supply": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
   }
  },

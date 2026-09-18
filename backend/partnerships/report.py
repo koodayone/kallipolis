@@ -1756,7 +1756,7 @@ def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
             (f'O*NET "{title}" Occupations Search Results',
              f"https://www.onetonline.org/find/quick?s={quote(title)}"),
             ("Centers of Excellence Occupational Demand Lookup",
-             "https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061"),
+             "https://datastudio.google.com/u/0/reporting/c01114ab-6bc3-4529-bace-e933fe293b86/page/1v72D"),
             ("How Annual Job Openings Are Calculated", _OPENINGS_METHOD_URL),
             ("Lightcast — Job Openings Data (methodology)", _LIGHTCAST_METHOD_URL),
         ] + ([(f"MIT Living Wage Calculator — {living.county}, California", living.url)] if living is not None else [])),
@@ -1994,7 +1994,7 @@ def propose_spec(member_id: str, play: Play, *, lens: LensModel | None = None,
         demand_note=f"The U.S. Department of Labor's O*NET system maps the title "
                     f"**{title}** to {socn}, supported by member-college programs. "
                     f"[According to the Centers of Excellence]"
-                    f"(https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061), "
+                    f"(https://datastudio.google.com/u/0/reporting/c01114ab-6bc3-4529-bace-e933fe293b86/page/1v72D), "
                     f"{occ_demands} roughly **{total_openings:,} openings a year** in the "
                     f"{_region_name(lens)} labor market.",
         alignment_note=f"How member-college programs across the consortium support "

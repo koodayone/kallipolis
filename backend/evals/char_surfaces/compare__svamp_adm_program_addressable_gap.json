@@ -31,102 +31,6 @@
   },
   "rows": [
    {
-    "label": "095600 Manufacturing and Industrial Technology",
-    "roster": [],
-    "values": {
-     "addressable_demand": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "coe",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 1980,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
-     },
-     "addressable_gap": {
-      "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "openings/yr",
-      "value": 1129,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "award_trend": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "ratio",
-      "value": 2.5,
-      "vintage": "DataMart completions \u2014 2024-2025 \u00f7 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "completions": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "completions/yr",
-      "value": 31.3,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "enrollment": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "enrolled/term",
-      "value": 461.3,
-      "vintage": "Fall 2025"
-     },
-     "enrollment_trend": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "ratio",
-      "value": 1.6,
-      "vintage": "Fall 2025 \u00f7 prior Falls"
-     },
-     "supply_share": {
-      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges) \u00f7 regional (Bay Area) \u2014 all 26 colleges",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "fraction",
-      "value": 0.4,
-      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
-     },
-     "wage_after_2": {
-      "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "$/yr",
-      "value": 60922,
-      "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
-     },
-     "wage_after_5": {
-      "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
-      "parent_vintages": [],
-      "source": "datamart",
-      "status": "ok",
-      "unit": "$/yr",
-      "value": 72654,
-      "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
-     },
-     "wage_lift": {
-      "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "$/yr",
-      "value": 24446,
-      "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
-     }
-    }
-   },
-   {
     "label": "095630 Machining and Machine Tools",
     "roster": [],
     "values": {
@@ -136,8 +40,8 @@
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 1610,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "value": 1680,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "addressable_gap": {
       "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
@@ -145,8 +49,8 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 1098,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+      "value": 1168,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "award_trend": {
       "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
@@ -223,6 +127,102 @@
     }
    },
    {
+    "label": "095600 Manufacturing and Industrial Technology",
+    "roster": [],
+    "values": {
+     "addressable_demand": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "coe",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 2000,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
+     },
+     "addressable_gap": {
+      "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "openings/yr",
+      "value": 1149,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "award_trend": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "ratio",
+      "value": 2.5,
+      "vintage": "DataMart completions \u2014 2024-2025 \u00f7 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "completions": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "completions/yr",
+      "value": 31.3,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "enrollment": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "enrolled/term",
+      "value": 461.3,
+      "vintage": "Fall 2025"
+     },
+     "enrollment_trend": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "ratio",
+      "value": 1.6,
+      "vintage": "Fall 2025 \u00f7 prior Falls"
+     },
+     "supply_share": {
+      "granularity": "institutional \u2014 consortium (\u03a3 5 colleges) \u00f7 regional (Bay Area) \u2014 all 26 colleges",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "fraction",
+      "value": 0.4,
+      "vintage": "3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+     },
+     "wage_after_2": {
+      "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "$/yr",
+      "value": 60922,
+      "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
+     },
+     "wage_after_5": {
+      "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
+      "parent_vintages": [],
+      "source": "datamart",
+      "status": "ok",
+      "unit": "$/yr",
+      "value": 72654,
+      "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
+     },
+     "wage_lift": {
+      "granularity": "statewide \u2014 pooled TOP6 award cohort (largest recipient type); not this member's own graduates",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "$/yr",
+      "value": 24446,
+      "vintage": "pooled graduate wages, award years 2015-2016 to 2019-2020"
+     }
+    }
+   },
+   {
     "label": "094500 Industrial Systems Technology and Maintenance",
     "roster": [],
     "values": {
@@ -232,8 +232,8 @@
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 1930,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "value": 1970,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "addressable_gap": {
       "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
@@ -241,8 +241,8 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 1079,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+      "value": 1119,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "award_trend": {
       "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
@@ -328,8 +328,8 @@
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 1260,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "value": 1390,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "addressable_gap": {
       "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
@@ -337,8 +337,8 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 791,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+      "value": 921,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "award_trend": {
       "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
@@ -424,8 +424,8 @@
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 1170,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "value": 1270,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "addressable_gap": {
       "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
@@ -433,8 +433,8 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 490,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+      "value": 590,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "award_trend": {
       "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
@@ -520,8 +520,8 @@
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 1200,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "value": 1210,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "addressable_gap": {
       "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
@@ -529,8 +529,8 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 349,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+      "value": 359,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "award_trend": {
       "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
@@ -616,8 +616,8 @@
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 1000,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "value": 970,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "addressable_gap": {
       "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
@@ -625,8 +625,8 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 343,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+      "value": 313,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "award_trend": {
       "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
@@ -712,8 +712,8 @@
       "source": "coe",
       "status": "ok",
       "unit": "openings/yr",
-      "value": 150,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection"
+      "value": 220,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection"
      },
      "addressable_gap": {
       "granularity": "regional (Bay Area) \u2212 regional (Bay Area) \u2014 all 26 colleges",
@@ -721,8 +721,8 @@
       "source": "derived",
       "status": "ok",
       "unit": "openings/yr",
-      "value": -236,
-      "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
+      "value": -166,
+      "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection vs 3-yr avg DataMart completions (2022-2023\u20262024-2025)"
      },
      "award_trend": {
       "granularity": "institutional \u2014 consortium (\u03a3 5 colleges)",
@@ -837,7 +837,7 @@
  "next_moves": [
   {
    "coordinate": {
-    "entity": "095600",
+    "entity": "095630",
     "lens": "",
     "member": "svamp",
     "member_label": "Silicon Valley Advanced Manufacturing Partnership",
@@ -845,10 +845,10 @@
     "sector": "adm",
     "sector_label": "Advanced Manufacturing",
     "soc": null,
-    "top6": "095600"
+    "top6": "095630"
    },
    "form": "crosswalk",
-   "rationale": "Drill into 095600 Manufacturing and Industrial Technology \u2014 the occupations it feeds and their demand."
+   "rationale": "Drill into 095630 Machining and Machine Tools \u2014 the occupations it feeds and their demand."
   }
  ],
  "provenance": {
@@ -878,7 +878,7 @@
    }
   ],
   "vintages": {
-   "demand": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection",
+   "demand": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection",
    "projected_supply": "3-yr avg DataMart completions (2022-2023\u20262024-2025)",
    "wage_outcomes": "pooled graduate wages, award years 2015-2016 to 2019-2020"
   }

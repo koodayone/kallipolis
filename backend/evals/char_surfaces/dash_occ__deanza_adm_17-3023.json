@@ -1,6 +1,6 @@
 {
- "annual_openings": 430,
- "annual_wage": 89280,
+ "annual_openings": 450,
+ "annual_wage": 93410,
  "award_years": [
   "2020-2021"
  ],
@@ -14,11 +14,93 @@
  ],
  "consortium_supply": 0.0,
  "crosswalk": {
-  "cips": [],
-  "coverage_pct": 0.0,
-  "n_taught": 0,
-  "n_total": 0,
-  "tops": []
+  "cips": [
+   {
+    "active": false,
+    "code": "15.0000",
+    "title": "Engineering Technologies/Technicians, General"
+   },
+   {
+    "active": false,
+    "code": "15.0303",
+    "title": "Electrical, Electronic, and Communications Engineering Technology/Technician"
+   },
+   {
+    "active": false,
+    "code": "15.0305",
+    "title": "Telecommunications Technology/Technician"
+   },
+   {
+    "active": false,
+    "code": "15.0306",
+    "title": "Integrated Circuit Design Technology/Technician"
+   },
+   {
+    "active": false,
+    "code": "15.0399",
+    "title": "Electrical/Electronic Engineering Technologies/Technicians, Other"
+   },
+   {
+    "active": true,
+    "code": "15.0406",
+    "title": "Automation Engineer Technology/Technician"
+   },
+   {
+    "active": false,
+    "code": "15.1201",
+    "title": "Computer Engineering Technology/Technician"
+   }
+  ],
+  "coverage_pct": 20.0,
+  "n_taught": 1,
+  "n_total": 5,
+  "tops": [
+   {
+    "cips": [
+     "15.0000",
+     "15.0399"
+    ],
+    "code": "092400",
+    "name": "Engineering Technology, General (requires Trigonometry)",
+    "taught_at_college": false
+   },
+   {
+    "cips": [
+     "15.0303",
+     "15.0305",
+     "15.0399"
+    ],
+    "code": "093400",
+    "name": "Electronics and Electric Technology",
+    "taught_at_college": false
+   },
+   {
+    "cips": [
+     "15.0303",
+     "15.0306",
+     "15.1201"
+    ],
+    "code": "093410",
+    "name": "Computer Electronics",
+    "taught_at_college": false
+   },
+   {
+    "cips": [
+     "15.0406"
+    ],
+    "code": "094500",
+    "name": "Industrial Systems Technology and Maintenance",
+    "taught_at_college": false
+   },
+   {
+    "cips": [
+     "15.0406"
+    ],
+    "code": "095600",
+    "name": "Manufacturing and Industrial Technology",
+    "taught_at_college": true
+   }
+  ]
  },
  "curriculum_by_college": [
   {
@@ -203,7 +285,7 @@
   }
  ],
  "description": "Apply electrical and electronic theory and related knowledge, usually under the direction of engineering staff, to design, build, repair, adjust, and modify electrical components, circuitry, controls, and machinery for subsequent evaluation and use by engineering staff in making engineering design decisions.",
- "employment": 4510,
+ "employment": 5020,
  "enrollment_by_college": [
   {
    "college": "De Anza College",
@@ -250,9 +332,9 @@
    "top6": "095600"
   }
  ],
- "gap": 430,
+ "gap": 450,
  "growth_rate": -0.0,
- "occupational_demand": "According to the Centers of Excellence for Labor Market Research, Electrical and Electronic Engineering Technologists and Technicians (SOC 17-3023) earn a median annual wage of $89,280 with 430 annual openings in the Bay Area region. 4,510 workers are currently employed in the region with this occupational role, with projected employment growth of -0.6% over a 5-year time span.",
+ "occupational_demand": "According to the Centers of Excellence for Labor Market Research, Electrical and Electronic Engineering Technologists and Technicians (SOC 17-3023) earn a median annual wage of $93,410 with 450 annual openings in the Bay Area region. 5,020 workers are currently employed in the region with this occupational role, with projected employment growth of -2.9% over a 5-year time span.",
  "partnership_opportunities": [],
  "partnership_opportunities_narrative": "",
  "region": "Bay",

@@ -25,9 +25,9 @@
      "top6": null
     },
     "form": "navigate",
-    "rationale": "5 more rows; re-call navigate scoped to one row to drill in."
+    "rationale": "17 more rows; re-call navigate scoped to one row to drill in."
    },
-   "remaining": 5
+   "remaining": 17
   },
   "rows": [
    {
@@ -50,6 +50,78 @@
       "status": "ok",
       "unit": "target SOCs",
       "value": 9,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Advanced Micro Devices",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 16.3,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 12,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Alps Electric North America",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 16.3,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 12,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "Applied Materials",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 16.3,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 12,
       "vintage": ""
      }
     }
@@ -103,6 +175,30 @@
     }
    },
    {
+    "label": "Ceremorphic",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 16.3,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 12,
+      "vintage": ""
+     }
+    }
+   },
+   {
     "label": "Cirexx International",
     "roster": [],
     "values": {
@@ -125,102 +221,6 @@
       "vintage": ""
      }
     }
-   },
-   {
-    "label": "Coherent",
-    "roster": [],
-    "values": {
-     "employer_relevance": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "graph_bls",
-      "status": "ok",
-      "unit": "\u03a3 OES staffing share",
-      "value": 16.3,
-      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
-     },
-     "occupations_hired": {
-      "granularity": "BLS OES",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "target SOCs",
-      "value": 12,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "Horizon Robotics",
-    "roster": [],
-    "values": {
-     "employer_relevance": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "graph_bls",
-      "status": "ok",
-      "unit": "\u03a3 OES staffing share",
-      "value": 16.3,
-      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
-     },
-     "occupations_hired": {
-      "granularity": "BLS OES",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "target SOCs",
-      "value": 12,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "MASS Precision",
-    "roster": [],
-    "values": {
-     "employer_relevance": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "graph_bls",
-      "status": "ok",
-      "unit": "\u03a3 OES staffing share",
-      "value": 14.4,
-      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
-     },
-     "occupations_hired": {
-      "granularity": "BLS OES",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "target SOCs",
-      "value": 11,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "Milgard Manufacturing",
-    "roster": [],
-    "values": {
-     "employer_relevance": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "graph_bls",
-      "status": "ok",
-      "unit": "\u03a3 OES staffing share",
-      "value": 14.4,
-      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
-     },
-     "occupations_hired": {
-      "granularity": "BLS OES",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "target SOCs",
-      "value": 11,
-      "vintage": ""
-     }
-    }
    }
   ],
   "sorted_by": null,
@@ -231,7 +231,7 @@
     "source": "graph_bls",
     "status": "ok",
     "unit": "employers",
-    "value": 23,
+    "value": 224,
     "vintage": "BLS OEWS Industry-Occupation staffing matrix"
    },
    "shown": {
@@ -240,7 +240,7 @@
     "source": "derived",
     "status": "ok",
     "unit": "employers plotted",
-    "value": 13,
+    "value": 25,
     "vintage": ""
    }
   }

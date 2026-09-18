@@ -830,6 +830,43 @@
    "website": "https://www.tosohsmd.com/"
   },
   {
+   "description": "Adela is a biotechnology company.",
+   "display_name": null,
+   "lat": 37.6,
+   "lng": -122.3,
+   "naics4": "5417",
+   "naics_title": "Scientific Research and Development Services",
+   "name": "Adela",
+   "relevance": 1.6,
+   "sector": "Professional Services",
+   "size_class": "50-99 employees",
+   "size_rank": 5,
+   "soc_count": 9,
+   "soc_titles": {
+    "17-3012": "Electrical and Electronics Drafters",
+    "17-3013": "Mechanical Drafters",
+    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "17-3026": "Industrial Engineering Technologists and Technicians",
+    "17-3027": "Mechanical Engineering Technologists and Technicians",
+    "17-3028": "Calibration Technologists and Technicians",
+    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+    "51-9141": "Semiconductor Processing Technicians"
+   },
+   "socs": [
+    "17-3027",
+    "17-3023",
+    "17-3026",
+    "17-3024",
+    "17-3013",
+    "49-2094",
+    "17-3028",
+    "17-3012",
+    "51-9141"
+   ],
+   "website": "https://www.adelabio.com/"
+  },
+  {
    "description": "Aperture Therapeutics is a clinical-stage biotech developing oligonucleotide therapeutics for neurodegenerative diseases, with programs focused on ALS and frontotemporal dementia (FTD). The company uses machine learning to mine large-scale genomic and clinical datasets to identify naturally occurring gene variants that protect against neurodegeneration, then designs therapies that mimic those protective mechanisms. Their team spans computational biologists, neuroscientists, and R&D operations staff.",
    "display_name": null,
    "lat": 37.5,
@@ -865,43 +902,6 @@
     "51-9141"
    ],
    "website": "https://www.aperturetx.com/"
-  },
-  {
-   "description": "Arsenalbio is a biotechnology company.",
-   "display_name": null,
-   "lat": 37.7,
-   "lng": -122.4,
-   "naics4": "5417",
-   "naics_title": "Scientific Research and Development Services",
-   "name": "Arsenalbio",
-   "relevance": 1.6,
-   "sector": "Professional Services",
-   "size_class": "50-99 employees",
-   "size_rank": 5,
-   "soc_count": 9,
-   "soc_titles": {
-    "17-3012": "Electrical and Electronics Drafters",
-    "17-3013": "Mechanical Drafters",
-    "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-    "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
-    "17-3026": "Industrial Engineering Technologists and Technicians",
-    "17-3027": "Mechanical Engineering Technologists and Technicians",
-    "17-3028": "Calibration Technologists and Technicians",
-    "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-    "51-9141": "Semiconductor Processing Technicians"
-   },
-   "socs": [
-    "17-3027",
-    "17-3023",
-    "17-3026",
-    "17-3024",
-    "17-3013",
-    "49-2094",
-    "17-3028",
-    "17-3012",
-    "51-9141"
-   ],
-   "website": "https://arsenalbio.com/"
   }
  ],
  "region": "Bay",
@@ -911,5 +911,5 @@
   "San Mateo"
  ],
  "shown": 25,
- "total": 87
+ "total": 203
 }

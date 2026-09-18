@@ -1,8 +1,8 @@
 {
   "source_file": "occupational_demand_middle_skill.csv",
-  "vintage": "COE occupational demand \u2014 2024 base-year employment, 2024\u20132029 projection",
-  "base_year": "2024",
-  "projection_end": "2029",
+  "vintage": "COE occupational demand \u2014 2025 base-year employment, 2025\u20132030 projection",
+  "base_year": "2025",
+  "projection_end": "2030",
   "generated": "2026-09-18",
   "occupations": 314,
   "regions": [

@@ -127,6 +127,54 @@
     }
    },
    {
+    "label": "Archer Aviation",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 15.3,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 20,
+      "vintage": ""
+     }
+    }
+   },
+   {
+    "label": "BAE Systems",
+    "roster": [],
+    "values": {
+     "employer_relevance": {
+      "granularity": "regional (Bay Area)",
+      "parent_vintages": [],
+      "source": "graph_bls",
+      "status": "ok",
+      "unit": "\u03a3 OES staffing share",
+      "value": 15.3,
+      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
+     },
+     "occupations_hired": {
+      "granularity": "BLS OES",
+      "parent_vintages": [],
+      "source": "derived",
+      "status": "ok",
+      "unit": "target SOCs",
+      "value": 20,
+      "vintage": ""
+     }
+    }
+   },
+   {
     "label": "Elroy Air",
     "roster": [],
     "values": {
@@ -151,55 +199,7 @@
     }
    },
    {
-    "label": "Arm",
-    "roster": [],
-    "values": {
-     "employer_relevance": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "graph_bls",
-      "status": "ok",
-      "unit": "\u03a3 OES staffing share",
-      "value": 15.3,
-      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
-     },
-     "occupations_hired": {
-      "granularity": "BLS OES",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "target SOCs",
-      "value": 19,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "California Eastern Lab",
-    "roster": [],
-    "values": {
-     "employer_relevance": {
-      "granularity": "regional (Bay Area)",
-      "parent_vintages": [],
-      "source": "graph_bls",
-      "status": "ok",
-      "unit": "\u03a3 OES staffing share",
-      "value": 15.3,
-      "vintage": "BLS OEWS Industry-Occupation staffing matrix"
-     },
-     "occupations_hired": {
-      "granularity": "BLS OES",
-      "parent_vintages": [],
-      "source": "derived",
-      "status": "ok",
-      "unit": "target SOCs",
-      "value": 19,
-      "vintage": ""
-     }
-    }
-   },
-   {
-    "label": "Cirexx International",
+    "label": "Advanced Micro Devices",
     "roster": [],
     "values": {
      "employer_relevance": {
@@ -231,7 +231,7 @@
     "source": "graph_bls",
     "status": "ok",
     "unit": "employers",
-    "value": 167,
+    "value": 575,
     "vintage": "BLS OEWS Industry-Occupation staffing matrix"
    },
    "shown": {

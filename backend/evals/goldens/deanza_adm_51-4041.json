@@ -1,11 +1,11 @@
 {
  "builder": {
-  "annual_openings": 510,
+  "annual_openings": 410,
   "consortium_supply": 43.7,
   "feeding_tops": [
    "095630"
   ],
-  "gap": 466
+  "gap": 366
  },
  "canonical": {
   "active_feeders": [
