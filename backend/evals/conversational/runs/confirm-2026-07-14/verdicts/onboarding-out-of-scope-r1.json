@@ -1,0 +1,20 @@
+{
+  "principles": {
+    "I":   {"verdict": "pass", "evidence": "Across the Bay Area there are 77 occupations where regional demand exists but Laney graduates no one — its own local pipeline is zero."},
+    "II":  {"verdict": "pass", "evidence": "the analysis has to anchor to a college, district, or consortium in the system, because that's the institutional grain the underlying data comes at, and your nonprofit isn't a member."},
+    "III": {"verdict": "pass", "evidence": "a zero local pipeline is a fact about Laney's completions, not a verdict that Laney should launch any of these — feasibility, cost, and fit sit outside what the data speaks to."},
+    "IV":  {"verdict": "pass", "evidence": "Want me to drill into any one of them — who else in the region trains for it, and who's hiring?"},
+    "V":   {"verdict": "partial", "evidence": "the demand is a projection (2024–2029 regional openings) [strong provenance and limits, but the corroborating view is never offered on the gap-sizing turn where it is salient]"}
+  },
+  "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+  },
+  "establishment": "pass",
+  "establishment_evidence": "I looked for your organization in the system and it isn't there — and that's expected, not a fault.",
+  "worst_failure": "On the data-rich Laney gap-sizing turn the analyst named the coordinate but never offered the corroborating dashboard view, so the practitioner can't verify the 77-occupation figure with their own eyes.",
+  "fix_layer": "doctrine",
+  "fix_points_at": "the Principle V DOCTRINE clause on offering the corroborating view at salience — prompt the analyst to surface the dashboard link on a figure-bearing turn, not only when asked"
+}

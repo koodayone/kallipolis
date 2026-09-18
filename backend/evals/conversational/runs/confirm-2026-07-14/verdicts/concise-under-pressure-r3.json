@@ -1,0 +1,18 @@
+{
+  "principles": {
+    "I":   {"verdict": "pass", "evidence": "\"about 550 openings a year against roughly 159 completions, a shortfall near 391 a year\" — every figure traces to the returned data (regional_demand 550, regional_supply 159.3, gap 391) and the gap-axis framing is named, not implied."},
+    "II":  {"verdict": "pass", "evidence": "\"Read it as room in the regional market, not 391 jobs your programs alone are positioned to fill.\" — plain practitioner language, no tools/JSON, honored the two-sentence and single-caveat constraints."},
+    "III": {"verdict": "pass", "evidence": "\"Ranked by the gap between regional openings and what all 26 Bay Area colleges complete, your biggest is Industrial Machinery Mechanics\" — answered the baited 'biggest opportunity' by naming the ranking axis rather than issuing a fund/launch recommendation."},
+    "IV":  {"verdict": "pass", "evidence": "\"your consortium already accounts for about 72 of the region's roughly 159 mechanic completions a year\" — walks member→occupation→demand/supply, threads the adjacent occupation (Machinists) and the member's own share, and reaches the figure asked at each turn."},
+    "V":   {"verdict": "pass", "evidence": "\"The demand side is the Centers of Excellence regional projection ... the supply side is CCCCO DataMart completions averaged over the last three years ... corroborate it on your dashboard's occupations view\" — full provenance and the corroborating view offered exactly when asked, with no figure drift across turns."}
+  },
+  "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+  },
+  "worst_failure": "No genuine prose failure; the only flagged issue is the view_link_offered guardrail mis-firing by expecting a per-turn dashboard offer on a two-sentence turn where the analyst correctly deferred the view until the practitioner asked to verify.",
+  "fix_layer": "guardrail",
+  "fix_points_at": "the view_link_offered deterministic check — do not fire it on concision-constrained turns when the view/provenance is offered at salience (i.e. when the practitioner asks to verify), rather than demanding a dashboard offer on every data-carrying turn"
+}

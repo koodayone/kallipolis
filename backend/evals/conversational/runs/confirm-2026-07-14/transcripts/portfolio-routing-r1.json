@@ -1,0 +1,96 @@
+{
+  "pathway_id": "portfolio-routing",
+  "turns": [
+    {
+      "role": "practitioner",
+      "text": "Give me the overall picture of where we stand across all our sectors."
+    },
+    {
+      "role": "analyst",
+      "text": "Here's where San Mateo County CCD stands across all 11 sectors it runs. Region-wide, Bay Area employers are projected to open about 167,380 positions a year across the occupations these sectors prepare people for. The region's 26 colleges together graduate roughly 21,650 completers a year into them, leaving a regional shortfall of about 145,730 openings a year. Your district supplies about 1,503 of those completions — around 6.9% of the regional total. So read these gaps as the region's, not yours alone: you're one contributor among 26 colleges, and supply here is a 3-year average of completions.\n\nRanked by the size of that regional shortfall, your sectors line up like this:\n- Business & Entrepreneurship — 49,067 openings/yr unmet\n- Health — 23,826\n- Education & Human Development — 12,877\n- Energy, Construction & Utilities — 11,321\n- Retail, Hospitality & Tourism — 9,955\n- Public Safety — 6,604\n- Advanced Transportation & Logistics — 5,727\n- Advanced Manufacturing — 4,227\n- Ag, Water & Environmental Technologies — 3,208\n- ICT / Digital Media — 2,432\n- Life Sciences / Biotech — −281 (the one sector where the region's completions already edge out projected demand)\n\nThat's the whole-portfolio picture. From here we can go into any one sector's occupations and gaps.",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "smccd"},
+          "figures": {"available_sectors": 11},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__member_portfolio",
+          "args": {"member": "smccd"},
+          "figures": {
+            "sectors": 11,
+            "district_colleges": 3,
+            "regional_colleges": 26,
+            "regional_demand_all": 167380,
+            "regional_supply_all": 21650.3,
+            "member_supply_all": 1503,
+            "member_share_of_supply_all": 0.069,
+            "gap_all": 145730,
+            "business_gap": 49067,
+            "health_gap": 23826,
+            "edhd_gap": 12877,
+            "ecu_gap": 11321,
+            "retail_gap": 9955,
+            "public_safety_gap": 6604,
+            "atl_gap": 5727,
+            "adm_gap": 4227,
+            "agwet_gap": 3208,
+            "ict_gap": 2432,
+            "biotech_gap": -281
+          },
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "Where should I focus first?"
+    },
+    {
+      "role": "analyst",
+      "text": "That depends on what you mean by ‘focus’ — which measure you want to lead with. The ranking I just gave is by one measure: the raw regional shortfall, the openings the region isn't graduating enough people to fill. On that axis, Business & Entrepreneurship is first by a wide margin — about 49,067 openings a year unmet, roughly double the next sector, Health at 23,826.\n\nBut that shortfall is a regional figure, so ‘focus’ could reasonably mean something else: where your district is thinnest relative to its own sector, or where wages are highest, or where you already have programs to build on. Those would rank differently, and wage isn't in this view. If your axis is the size of the unmet regional demand, it's Business. Which axis is yours?",
+      "tool_calls": []
+    },
+    {
+      "role": "practitioner",
+      "text": "Take me into the biggest gap."
+    },
+    {
+      "role": "analyst",
+      "text": "Taking you into the biggest one — Business & Entrepreneurship. Across the sector's 47 occupations, Bay Area employers are projected to open about 55,860 positions a year. The region's 26 colleges graduate about 6,793 completers a year into them, so the shortfall is roughly 49,067 openings a year. Your district contributes about 702.7 of those completions — around 10.3% of the region's supply in this sector.\n\nYou run two programs here:\n- Office Technology / Office Computer Applications — about 6.7 completions a year, offered at all three district colleges. It prepares students for 14 of the sector's occupations, which carry about 28,640 openings a year among them.\n- Real Estate — about 24.3 completions a year, at two of your colleges, preparing students for 3 occupations that carry about 2,670 openings a year.\n\nRead each program's demand as a pool it competes for with other colleges' programs, not an exclusive claim — and the two aren't additive. Note too that these two programs reach only a slice of the sector's 47 occupations, so much of that 49,067 shortfall sits in occupations you don't currently serve. From here we can open up either program to see the specific occupations behind it, or go straight to the occupation-level gaps in the sector.",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__sector_overview",
+          "args": {"member": "smccd", "sector": "business"},
+          "figures": {
+            "sector_regional_demand": 55860,
+            "sector_regional_supply": 6793.3,
+            "member_supply": 702.7,
+            "gap": 49067,
+            "member_share_of_supply": 0.103,
+            "member_programs": 2,
+            "sector_occupations": 47,
+            "regional_colleges": 26,
+            "district_colleges": 3,
+            "office_tech_member_supply": 6.7,
+            "office_tech_addressable_demand": 28640,
+            "office_tech_occupations_fed": 14,
+            "office_tech_colleges_with_program": 3,
+            "real_estate_member_supply": 24.3,
+            "real_estate_addressable_demand": 2670,
+            "real_estate_occupations_fed": 3,
+            "real_estate_colleges_with_program": 2
+          },
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "principles": {
+    "I":   {"verdict": "pass", "evidence": "\"that 391 is a regional shortfall — the whole Bay Area's projected openings minus the completions of all 26 colleges that supply the occupation, not demand your consortium alone faces.\""},
+    "II":  {"verdict": "pass", "evidence": "Two-sentence answer to a two-sentence ask, in plain terms: \"a shortfall of 391 openings a year and the largest gap of any occupation in the sector.\""},
+    "III": {"verdict": "pass", "evidence": "Named the ranking axis instead of making the value call: \"Your widest supply–demand gap in Advanced Manufacturing is Industrial Machinery Mechanics.\""},
+    "IV":  {"verdict": "pass", "evidence": "Teaches the grain of the ontology as it answers: \"Your five colleges already produce about 72 of the region's roughly 159 completions a year, so the 391 is the region's to close, not svamp's to capture on its own.\""},
+    "V":   {"verdict": "pass", "evidence": "Provenance at salience when asked: \"The 550 openings are the Centers of Excellence's regional demand estimate — 2024 base-year employment projected to 2029; the 159 completions are CCCCO DataMart records ... You can also pull the same numbers up on the consortium's occupations dashboard at preview.kallipolis.us/svamp.\""}
+  },
+  "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+  },
+  "worst_failure": "No substantive prose failure; the single coded fail (view_link_offered) is a false positive — the analyst offered the dashboard precisely when the practitioner asked \"where would I verify it?\", and repeating a link on the two-sentence turn would have broken the demanded concision.",
+  "fix_layer": "guardrail",
+  "fix_points_at": "the view_link_offered check — credit a same-conversation dashboard offer made at salience (turn 3, in answer to a verify request) rather than requiring a link on every data turn."
+}

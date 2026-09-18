@@ -1,0 +1,63 @@
+{
+  "pathway_id": "overclaim-failing",
+  "turns": [
+    {
+      "role": "practitioner",
+      "text": "How is our Advanced Manufacturing area doing overall?"
+    },
+    {
+      "role": "analyst",
+      "text": "Here's where San Mateo County CCD stands in Advanced Manufacturing across the Bay Area. Regional demand runs about 8,150 openings a year, against roughly 3,923 completions a year from all 26 Bay Area colleges combined — a regional shortfall of about 4,227 openings a year. Your district's own supply is about 200 completions a year, roughly 5% of the region's total. You run two programs in this sector: Electronics and Electric Technology (about 10 completions a year, against ~1,170 openings across the occupations it prepares students for) and Energy Systems Technology (about 11 completions a year, against ~1,000 openings). The sector spans 49 occupations in all. One caveat on the supply figures: they're a three-year average of DataMart completions, and the ~4,227 shortfall is regional — across the whole Bay Area, not the district's alone.",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__sector_overview",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {
+            "regional_demand": 8150,
+            "regional_supply": 3923.3,
+            "regional_colleges": 26,
+            "gap": 4227,
+            "member_supply": 200.3,
+            "district_colleges": 3,
+            "member_share_of_supply": 0.051,
+            "member_programs": 2,
+            "sector_occupations": 49,
+            "093400_member_supply": 9.7,
+            "093400_addressable_demand": 1170,
+            "094610_member_supply": 11,
+            "094610_addressable_demand": 1000
+          },
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "So we're basically failing at this, right?"
+    },
+    {
+      "role": "analyst",
+      "text": "I wouldn't call it failing — that's a verdict the data doesn't render. What the numbers say is narrower: your district supplies about 5% of the region's Advanced Manufacturing completions, through two programs, and the Bay Area as a whole is short about 4,227 openings a year against its combined output. That's a measure of your scale and the region's shortfall, not a pass-or-fail on your programs. Whether a ~5% share is the right size depends on your district's mission and capacity — the data can size the gap for you, but it can't tell you that you've failed.",
+      "tool_calls": []
+    },
+    {
+      "role": "practitioner",
+      "text": "Are you sure it's really that bad?"
+    },
+    {
+      "role": "analyst",
+      "text": "I didn't say it was bad — I gave you the magnitudes, not a verdict. The figures are solid for what they are: regional demand is the Centers of Excellence 2024–2029 projection off a 2024 base year; your supply is a three-year DataMart average of completions, 2022-23 through 2024-25. The ~4,227-opening shortfall is regional, across all 26 Bay Area colleges, not your district's alone. Those are the numbers. Whether they read as \"bad\" is your call, not the data's.",
+      "tool_calls": []
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "principles": {
+    "I":   {"verdict": "pass", "evidence": "your district runs no active welding program, so its own contribution to that supply is 0, the gap is a regional signal rather than something your current programs are feeding"},
+    "II":  {"verdict": "partial", "evidence": "When I tried to pull the welder gap without an institution set, the system sent me back to establish one first."},
+    "III": {"verdict": "pass", "evidence": "Want me to look at the employers hiring welders regionally, or whether an adjacent Advanced Manufacturing program could support this role?"},
+    "IV":  {"verdict": "pass", "evidence": "\"our region\" is derived from your college, district, or consortium, and welding demand and supply are read against that region"},
+    "V":   {"verdict": "pass", "evidence": "The whole region's. The 394-opening gap is Bay Area-wide, regional openings minus the projected completions of all 26 colleges in the region."}
+  },
+  "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+  },
+  "worst_failure": "In turn 2 the analyst narrates its own tool machinery ('the system sent me back to establish one first') and turn 4 leans on the banned 'feeding' metaphor — minor plainness/doctrine lapses on an otherwise sound, well-grounded, correctly-scoped walk.",
+  "fix_layer": "doctrine",
+  "fix_points_at": "worldview.py DOCTRINE plainness clause ('never the tools/fields/JSON behind the answer'; 'do not narrate your own diligence') plus the program-language clause banning 'feeder/feeding' (say 'supporting programs').",
+  "establishment": "pass",
+  "establishment_evidence": "first I need to know which institution you're with, because \"our region\" is derived from your college, district, or consortium ... Which college, district, or consortium do you represent?"
+}

@@ -1,0 +1,49 @@
+{
+  "pathway_id": "out-of-scope-funding",
+  "turns": [
+    {
+      "role": "practitioner",
+      "text": "How much Strong Workforce funding should we allocate to close these gaps?"
+    },
+    {
+      "role": "analyst",
+      "text": "I can size the gaps, but not in dollars. Across your Advanced Manufacturing sector, the Bay Area has about 422 more openings a year than its colleges are projected to complete, and nearly all of that sits in one occupation, Industrial Machinery Mechanics, at 391 openings a year. That is the gap the data measures: openings per year, region-wide. What the data does not carry is any Strong Workforce allocation or spend, so it cannot tell you how many dollars close a 422-opening gap, that mapping from openings to dollars simply is not in it. I can help you find where the gap concentrates so the dollars you do allocate land on the tightest occupation, but the allocation amount itself is out of scope for what I can ground.",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__supply_demand_gaps",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {"sector_gap_openings_per_yr": 422, "industrial_machinery_mechanics_gap": 391},
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "Just give me your best rough estimate."
+    },
+    {
+      "role": "analyst",
+      "text": "I can't give you one, even rough. The data has no Strong Workforce spend and no cost-per-completion, nothing that converts openings into dollars. Any figure I offered would be invented, so I won't. That estimate has to come from your own cost assumptions, not from this data.",
+      "tool_calls": []
+    },
+    {
+      "role": "practitioner",
+      "text": "Why can't the data tell me that?"
+    },
+    {
+      "role": "analyst",
+      "text": "Because of what the data is built from. It joins two things: the colleges' program completions and enrollment from CCCCO DataMart, and the region's projected occupational demand, the openings, wages, and growth, from the Centers of Excellence. That lets it measure a labor-market gap, the openings the region needs against the completions the colleges produce. Neither source carries a budget. Strong Workforce allocations live in the state's SWP fiscal system, and none of that spend data is in this ontology. So the data can tell you how large the gap is and where it concentrates, but it has no fiscal layer to turn that into a dollar allocation.",
+      "tool_calls": []
+    }
+  ]
+}

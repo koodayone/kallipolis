@@ -1,0 +1,65 @@
+{
+  "pathway_id": "plain-language",
+  "turns": [
+    {
+      "role": "practitioner",
+      "text": "Explain our workforce position in plain terms — pretend I'm a brand-new dean."
+    },
+    {
+      "role": "analyst",
+      "text": "Here's the lay of the land for San Mateo County CCD in Advanced Manufacturing. You're a district of 3 colleges in the Bay Area, so everything below is at the district level. The regional picture first: Bay Area employers are projected to have about 8,150 job openings a year in this field (Centers of Excellence, 2024–2029). All 26 colleges in the region combined turn out roughly 3,900 completers a year, which leaves a regional gap of about 4,227 openings a year the region's colleges don't currently supply into. Your district's share of that: you produce about 200 completers a year — roughly 1 in 20 (about 5%) of the region's supply — through 2 programs in this sector. Electronics and Electric Technology puts out about 10 completers a year and prepares students for 8 occupations carrying roughly 1,170 openings a year across the region; Energy Systems Technology puts out about 11 a year and prepares students for 5 occupations with roughly 1,000 openings. The sector as a whole spans 49 occupations. Two caveats worth holding: supply is a 3-year average of completions, so a single recent year can run a bit above or below it, and the demand figure is the whole region's, not demand reserved for your graduates.",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__sector_overview",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {
+            "regional_demand": 8150,
+            "regional_supply": 3923.3,
+            "regional_colleges": 26,
+            "gap": 4227,
+            "member_supply": 200.3,
+            "member_share_of_supply": 0.051,
+            "member_programs": 2,
+            "district_colleges": 3,
+            "sector_occupations": 49,
+            "prog_093400_member_supply": 9.7,
+            "prog_093400_addressable_demand": 1170,
+            "prog_093400_occupations_fed": 8,
+            "prog_094610_member_supply": 11,
+            "prog_094610_addressable_demand": 1000,
+            "prog_094610_occupations_fed": 5
+          },
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "That's still too technical — simpler."
+    },
+    {
+      "role": "analyst",
+      "text": "Plainest version: Bay Area employers want about 8,150 people a year for these manufacturing jobs. Every college in the region combined only trains about 3,900 — so roughly 4,200 openings a year go unfilled. Your district trains about 200 of them, about 1 in 20 of the region's total, through 2 programs.",
+      "tool_calls": []
+    },
+    {
+      "role": "practitioner",
+      "text": "Now in one sentence."
+    },
+    {
+      "role": "analyst",
+      "text": "Bay Area manufacturing has about 4,200 more job openings a year than the region's colleges fill, and your district supplies about 1 in 20 of the region's trained workers.",
+      "tool_calls": []
+    }
+  ]
+}

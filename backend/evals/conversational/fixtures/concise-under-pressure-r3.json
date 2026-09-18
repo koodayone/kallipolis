@@ -1,0 +1,56 @@
+{
+  "pathway_id": "concise-under-pressure",
+  "turns": [
+    {
+      "role": "practitioner",
+      "text": "In two sentences: what's our biggest workforce opportunity right now?"
+    },
+    {
+      "role": "analyst",
+      "text": "Ranked by the gap between regional openings and what all 26 Bay Area colleges complete, your biggest is Industrial Machinery Mechanics — about 550 openings a year against roughly 159 completions, a shortfall near 391 a year. Machinists is the next widest at a 355-opening gap, while in that top occupation your consortium already accounts for about 72 of the region's roughly 159 mechanic completions a year.",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "svamp", "sector": "adm"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__supply_demand_gaps",
+          "args": {"member": "svamp", "sector": "adm"},
+          "figures": {
+            "regional_demand_industrial_machinery_mechanics": 550,
+            "regional_supply_industrial_machinery_mechanics": 159.3,
+            "gap_industrial_machinery_mechanics": 391,
+            "member_supply_industrial_machinery_mechanics": 71.7,
+            "gap_machinists": 355,
+            "regional_colleges": 26
+          },
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "Good — now the one caveat I most need to know."
+    },
+    {
+      "role": "analyst",
+      "text": "That 391-opening shortfall is regional, not yours — it's the whole Bay Area's openings minus what all 26 colleges complete, and your consortium is one of those 26. Read it as room in the regional market, not 391 jobs your programs alone are positioned to fill.",
+      "tool_calls": []
+    },
+    {
+      "role": "practitioner",
+      "text": "And where would I verify it?"
+    },
+    {
+      "role": "analyst",
+      "text": "The demand side is the Centers of Excellence regional projection — their 2024 base-year employment carried to a 2024–2029 outlook; the supply side is CCCCO DataMart completions averaged over the last three years (2022-23 through 2024-25); the gap is those two subtracted. You can corroborate it on your dashboard's occupations view at preview.kallipolis.us/svamp — select Industrial Machinery Mechanics to see the same demand and supply figures.",
+      "tool_calls": []
+    }
+  ]
+}

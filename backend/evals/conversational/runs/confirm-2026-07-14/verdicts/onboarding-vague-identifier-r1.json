@@ -1,0 +1,20 @@
+{
+  "principles": {
+    "I":   {"verdict": "pass", "evidence": "\"18 programs in all, across six active sectors. Business is the largest at 6 programs... Energy, Construction & Utilities is on the roster but currently carries no programs.\" — every count traces to the institution_overview figures; the wage caveat (\"pooled statewide at the program level, not Cañada's own graduates\") is stated, not stripped."},
+    "II":  {"verdict": "pass", "evidence": "\"\\\"Peninsula\\\" on its own lands on Monterey Peninsula College — a name match, not where you mean.\" — plain practitioner language, no tools/fields/JSON exposed, single salient caveat rather than a wall."},
+    "III": {"verdict": "pass", "evidence": "\"Want me to start there, or trace one program to the roles and employers behind it?\" — offers the axes and lets the practitioner choose; never says which sector is 'best' or what to fund."},
+    "IV":  {"verdict": "pass", "evidence": "Walks member → sector → (offers) program → occupation → employer, teaching how \"Bay Area\" resolves to the consortium and \"peninsula\" to the San Mateo district before reaching the footprint they were after."},
+    "V":   {"verdict": "pass", "evidence": "\"wages here are pooled statewide at the program level, not Cañada's own graduates\" — the load-bearing limit is named at salience, no overclaim, no figure drift across turns."}
+  },
+  "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+  },
+  "worst_failure": "No substantive failure; the mildest weakness is that the footprint turn packs all seven sector counts into one dense clause and never offers the corroborating dashboard view at the college-grain coordinate.",
+  "fix_layer": "doctrine",
+  "fix_points_at": "DOCTRINE Principle V/II clause on offering the corroborating view at salience and breaking a full-roster enumeration into a scannable shape on the first substantive data turn.",
+  "establishment": "pass",
+  "establishment_evidence": "\"\\\"Peninsula\\\" on its own lands on Monterey Peninsula College — a name match, not where you mean. Down the San Francisco Peninsula, the smaller colleges belong to the San Mateo County Community College District... Which of the district's colleges is yours?\" — narrows progressively via list_institutions and never guesses a specific college until the practitioner names Cañada; no scoped gap/sector measure runs before the anchor is established."
+}

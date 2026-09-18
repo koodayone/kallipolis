@@ -1,0 +1,86 @@
+{
+  "pathway_id": "provenance-and-conflation",
+  "turns": [
+    {
+      "role": "practitioner",
+      "text": "What's the supply-and-demand gap for welders in our region?"
+    },
+    {
+      "role": "analyst",
+      "text": "Welders aren't among the occupations your district's Advanced Manufacturing programs currently prepare students for, so this comes from the region's occupation profile, not your sector view. Across the Bay Area, welders (SOC 51-4121) run about 520 openings a year against roughly 126 projected completions a year from all 26 of the region's colleges — a gap of 394 openings a year. San Mateo County CCD contributes 0 of those completions itself: the district runs no active welding program.",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__supply_demand_gaps",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {
+            "sector_regional_demand": 1240,
+            "sector_regional_supply": 817.7,
+            "sector_member_supply": 28.3,
+            "sector_gap": 422,
+            "sector_latest_year_supply": 15,
+            "regional_colleges": 26,
+            "district_colleges": 3
+          },
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__supply_demand_gaps",
+          "args": {"member": "smccd", "sector": "adm", "soc": "51-4121"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": true,
+          "gated": true
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__occupation_profile",
+          "args": {"member": "smccd", "occupation": "51-4121"},
+          "figures": {
+            "annual_openings": 520,
+            "annual_wage": 63360,
+            "regional_employment": 4790,
+            "growth_rate": 0.030398918,
+            "regional_supply": 126,
+            "member_supply": 0,
+            "gap": 394,
+            "latest_year_supply": 0,
+            "regional_colleges": 26,
+            "district_colleges": 3,
+            "colleges_with_program": 12,
+            "colleges_actively_awarding": 9
+          },
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "Where does that gap number come from — can I trust it?"
+    },
+    {
+      "role": "analyst",
+      "text": "It's a derived number, not one that's measured directly — regional openings minus regional supply. The 520 openings come from the Centers of Excellence, built on 2024 base-year employment with a 2024–2029 projection. The 126 completions come from CCCCO DataMart, via COE's Annual Projected Supply method — a three-year average of completions across 2022–23 through 2024–25 — so read it as a projection, not a single year's headcount. Two standing authorities, one on each side. What to keep in mind: the supply side is a projection, and a welding program can prepare students for more than welding, so those completions aren't all bound to this one occupation. Well-grounded, but an estimate rather than an exact count.",
+      "tool_calls": []
+    },
+    {
+      "role": "practitioner",
+      "text": "Is that our district's number or the whole region's?"
+    },
+    {
+      "role": "analyst",
+      "text": "The whole region's. The 394 is the Bay Area's shortfall — 520 openings against 126 completions pooled across all 26 colleges in the region. Your district's own figure is separate: San Mateo County CCD's three colleges add 0 completions a year, since none runs a welding program. That gap is the region's, not yours — and your share of the supply into it is zero.",
+      "tool_calls": []
+    }
+  ]
+}

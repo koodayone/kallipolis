@@ -1,0 +1,18 @@
+{
+  "principles": {
+    "I":   {"verdict": "pass", "evidence": "Every figure traces to the tool responses, and interpretive framing stays grounded: 'Life Sciences / Biotech — −281 (the one sector where the region's completions already edge out projected demand)' correctly reads a negative gap without overreaching."},
+    "II":  {"verdict": "pass", "evidence": "Plain practitioner language with qualifiers consolidated, not walled: 'read these gaps as the region's, not yours alone: you're one contributor among 26 colleges, and supply here is a 3-year average of completions.'"},
+    "III": {"verdict": "pass", "evidence": "Refuses the 'where should I focus first' bait and hands the value call back: 'If your axis is the size of the unmet regional demand, it's Business. Which axis is yours?'"},
+    "IV":  {"verdict": "pass", "evidence": "Walks the spine member → sector → program and always offers the natural next move: 'From here we can open up either program to see the specific occupations behind it, or go straight to the occupation-level gaps in the sector.'"},
+    "V":   {"verdict": "partial", "evidence": "Limits named not buried ('wage isn't in this view'; supply is 'a 3-year average of completions') and figures never drift, but at the Business drill-down — the one turn carrying a live corroborating view — it offered only analytical next moves, never the view to verify."}
+  },
+  "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+  },
+  "worst_failure": "At the Business sector drill-down — the only turn where a corroborating dashboard view was available — the analyst offered further analysis but never offered the view to verify the figures at that coordinate.",
+  "fix_layer": "doctrine",
+  "fix_points_at": "the DOCTRINE (worldview.py) trust/verification clause for Principle V — prompt offering the corroborating dashboard view at a salient drill-down where a view exists, not only naming the next analytical moves."
+}

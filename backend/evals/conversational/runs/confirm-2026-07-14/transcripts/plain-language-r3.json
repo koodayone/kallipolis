@@ -1,0 +1,59 @@
+{
+  "pathway_id": "plain-language",
+  "turns": [
+    {
+      "role": "practitioner",
+      "text": "Explain our workforce position in plain terms — pretend I'm a brand-new dean."
+    },
+    {
+      "role": "analyst",
+      "text": "Here's the lay of the land for Advanced Manufacturing across your district. Employers around the Bay Area are hiring for about 8,150 of these jobs a year. All 26 colleges in the region together graduate about 3,923 people a year into them — so regional demand runs ahead of regional supply by roughly 4,227 a year. Your district — the three colleges together — produces about 200 of those graduates a year, a little over 5% of the region's total. You run two programs in the sector, Electronics and Electric Technology and Energy Systems Technology, and the sector as a whole spans 49 different occupations. One note on the graduate figures: they're a three-year average of completions, so any single recent year can run a bit above or below.",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__sector_overview",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {
+            "regional_demand": 8150,
+            "regional_supply": 3923.3,
+            "gap": 4227,
+            "member_supply": 200.3,
+            "member_share_of_supply": 0.051,
+            "member_programs": 2,
+            "sector_occupations": 49,
+            "regional_colleges": 26,
+            "district_colleges": 3
+          },
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "That's still too technical — simpler."
+    },
+    {
+      "role": "analyst",
+      "text": "Simpler: the Bay Area needs about 8,150 advanced-manufacturing workers a year. Every college in the region combined graduates only about 3,900 — leaving a shortfall of roughly 4,200 a year. Your district trains about 200 of them, a small share of the region.",
+      "tool_calls": []
+    },
+    {
+      "role": "practitioner",
+      "text": "Now in one sentence."
+    },
+    {
+      "role": "analyst",
+      "text": "The Bay Area comes up about 4,200 advanced-manufacturing workers short each year, and your district produces roughly 200 of the region's graduates.",
+      "tool_calls": []
+    }
+  ]
+}

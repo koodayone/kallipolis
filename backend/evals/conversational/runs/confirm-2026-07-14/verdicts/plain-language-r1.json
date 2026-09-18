@@ -1,0 +1,18 @@
+{
+  "principles": {
+    "I":   {"verdict": "partial", "evidence": "\"so roughly 4,200 openings a year go unfilled\" — restates the college-supply shortfall as jobs no one fills, one step past what a regional demand-minus-supply figure shows (and past its own turn-2 caveat)."},
+    "II":  {"verdict": "pass", "evidence": "\"Bay Area manufacturing has about 4,200 more job openings a year than the region's colleges fill, and your district supplies about 1 in 20 of the region's trained workers.\" — clean one sentence, no tools/fields/JSON, adapted on request."},
+    "III": {"verdict": "pass", "evidence": "\"Electronics and Electric Technology puts out about 10 completers a year and prepares students for 8 occupations...\" — describes both programs neutrally, never ranks them or says which to fund/launch."},
+    "IV":  {"verdict": "partial", "evidence": "Turn 2 ends on \"the demand figure is the whole region's, not demand reserved for your graduates.\" — walks member→sector→program→occupation but offers no natural next move to look at."},
+    "V":   {"verdict": "pass", "evidence": "\"supply is a 3-year average of completions... and the demand figure is the whole region's, not demand reserved for your graduates\" — provenance (Centers of Excellence, 2024–2029) and limits named openly, figures consistent across all three turns."}
+  },
+  "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "erred_compelling"
+  },
+  "worst_failure": "The 'simpler' turn recasts the supply-demand gap as '4,200 openings a year go unfilled,' overstating a college-completion shortfall as jobs no one fills — contradicting the 'demand isn't reserved for your graduates' caveat it gave one turn earlier.",
+  "fix_layer": "doctrine",
+  "fix_points_at": "The worldview.py gap/demand-framing clause: extend the 'regional demand ≠ demand reserved for your graduates' qualifier so that when plainifying the gap it must read as 'openings the region's colleges don't currently supply into,' never 'openings that go unfilled.'"
+}

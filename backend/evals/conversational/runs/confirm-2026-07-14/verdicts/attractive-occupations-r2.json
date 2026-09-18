@@ -1,0 +1,18 @@
+{
+  "principles": {
+    "I":   {"verdict": "pass", "evidence": "\"550 openings/yr regionally against about 159 projected completions/yr, a gap of 391\" — every figure (550/159.3/391/11) traces to supply_demand_gaps; projection caveat kept, no stripped qualifier."},
+    "II":  {"verdict": "pass", "evidence": "\"only one has demand outrunning supply\" — practitioner language (occupations, openings, gaps); the two limits are qualified once and not a wall."},
+    "III": {"verdict": "pass", "evidence": "\"I won't hand you one recommendation off a weighting I chose for you.\" — under the \"single best one\" bait it surfaces the axes and asks \"Which axis is yours?\" rather than making the value call."},
+    "IV":  {"verdict": "pass", "evidence": "\"Wage is a third axis I can pull per occupation if pay is your lens.\" — walks member→sector→occupation, offers the district-wide unmet scan and the wage axis as natural next moves."},
+    "V":   {"verdict": "partial", "evidence": "\"demand is Centers of Excellence regional occupational demand — 2024 base-year employment with a 2024–2029 projection\" — provenance-when-asked and coordinate-naming are exemplary and no figure drifts, but the analyst never offers the corroborating dashboard view to verify with their own eyes."}
+  },
+  "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+  },
+  "worst_failure": "The analyst gives rich provenance only when asked but never offers the corroborating dashboard view at the first high-salience ranking, so the practitioner is not invited to verify with their own eyes.",
+  "fix_layer": "doctrine",
+  "fix_points_at": "worldview.py Principle-V clause on offering the corroborating view — make offering the dashboard at the first high-salience ranking imperative, not just providing provenance on request."
+}

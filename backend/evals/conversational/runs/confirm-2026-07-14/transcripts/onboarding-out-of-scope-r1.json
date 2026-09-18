@@ -1,0 +1,90 @@
+{
+  "pathway_id": "onboarding-out-of-scope",
+  "turns": [
+    {
+      "role": "practitioner",
+      "text": "We're a workforce-training nonprofit in Oakland — can you size our labor-market gaps?"
+    },
+    {
+      "role": "analyst",
+      "text": "I looked for your organization in the system and it isn't there — and that's expected, not a fault. This model is built on California's community colleges: their programs, awards, and enrollment, joined to regional labor-market demand. It spans 140 institutions — the individual colleges, their districts, and the regional consortia — and a workforce-training nonprofit isn't one of them, so I can't size gaps for your organization as an institution in its own right. What I can do is anchor the analysis to the colleges that serve the same Oakland labor market. Oakland sits in the Peralta district — Laney, Merritt, College of Alameda, and Berkeley City College — any of which I can ground the gap analysis in, and the regional demand those colleges are measured against is the same labor market your trainees enter. Want me to start with one of them?",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__list_institutions",
+          "args": {"filter": "Oakland"},
+          "figures": {"oakland_matches": 0},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "workforce-training nonprofit in Oakland"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": true
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__list_institutions",
+          "args": {"filter": ""},
+          "figures": {"institution_count": 140},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "So you can't help unless we're a community college?"
+    },
+    {
+      "role": "analyst",
+      "text": "Right — the analysis has to anchor to a college, district, or consortium in the system, because that's the institutional grain the underlying data comes at, and your nonprofit isn't a member. But you still get the answer you're after by anchoring to the Oakland colleges that serve your region — the regional demand they're measured against is the same one your trainees face.",
+      "tool_calls": []
+    },
+    {
+      "role": "practitioner",
+      "text": "Okay — what about Laney College then?"
+    },
+    {
+      "role": "analyst",
+      "text": "Laney works — it's a Bay Area college, fully in the system, so I can anchor to it. Here's the size of the gap. Across the Bay Area there are 77 occupations where regional demand exists but Laney graduates no one — its own local pipeline is zero. Filtered to living-wage roles a community college can train for, and ranked by annual openings, the largest are: Customer Service Representatives, about 5,450 openings a year at roughly $55,440 median pay; Medical Assistants, about 4,160 openings at ~$59,410; Heavy and Tractor-Trailer Truck Drivers, about 3,680 openings at ~$62,140; and Nursing Assistants, about 3,570 openings at ~$52,770. If you weight pay over volume instead, Electricians stand out — about 2,150 openings a year at ~$87,520. Those are the top of the list; 69 more sit below them. Two things to read these honestly: the demand is a projection (2024–2029 regional openings), and a zero local pipeline is a fact about Laney's completions, not a verdict that Laney should launch any of these — feasibility, cost, and fit sit outside what the data speaks to. Want me to drill into any one of them — who else in the region trains for it, and who's hiring?",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "laney"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__unmet_demand",
+          "args": {"member": "laney"},
+          "figures": {
+            "unmet_occupations": 77,
+            "member_supply": 0,
+            "customer_service_reps_openings": 5450,
+            "customer_service_reps_wage": 55440,
+            "medical_assistants_openings": 4160,
+            "medical_assistants_wage": 59410,
+            "truck_drivers_openings": 3680,
+            "truck_drivers_wage": 62140,
+            "nursing_assistants_openings": 3570,
+            "nursing_assistants_wage": 52770,
+            "electricians_openings": 2150,
+            "electricians_wage": 87520,
+            "remaining": 69,
+            "demand_projection_start": 2024,
+            "demand_projection_end": 2029
+          },
+          "sorted_by": "annual_openings",
+          "view_link": false,
+          "gated": false
+        }
+      ]
+    }
+  ]
+}

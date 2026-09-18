@@ -1,0 +1,94 @@
+{
+  "pathway_id": "onboarding-vague-identifier",
+  "turns": [
+    {
+      "role": "practitioner",
+      "text": "I run CTE programs at a community college here in the Bay Area — how do we look against the labor market?"
+    },
+    {
+      "role": "analyst",
+      "text": "Glad to look at how your programs stack up against your regional labor market — but I have to pin down which college is yours first, since the whole analysis is grounded in one institution's programs and its region. \"Bay Area\" comes back as the Bay Area Community College Consortium, spanning 11 industry sectors across many member colleges — not a single college. Which college do you run CTE programs at?",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__list_institutions",
+          "args": {"filter": "Bay Area"},
+          "figures": {"bay_area_sectors": 11},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "One of the smaller ones down the peninsula."
+    },
+    {
+      "role": "analyst",
+      "text": "\"Peninsula\" on its own lands on Monterey Peninsula College — a name match, not where you mean. Down the San Francisco Peninsula, the smaller colleges belong to the San Mateo County Community College District; College of San Mateo turns up there alongside the district itself. Which of the district's colleges is yours?",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__list_institutions",
+          "args": {"filter": "peninsula"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__list_institutions",
+          "args": {"filter": "San Mateo"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "Cañada College."
+    },
+    {
+      "role": "analyst",
+      "text": "Got it — Cañada College, a Bay Area college in the San Mateo County district. Here's its CTE footprint to weigh against the labor market: 18 programs in all, across six active sectors. Business is the largest at 6 programs, then Health and ICT / Digital Media at 4 each, Education & Human Development at 2, and one apiece in Ag, Water & Environmental Technologies and in Retail, Hospitality & Tourism; Energy, Construction & Utilities is on the roster but currently carries no programs. One thing to keep in mind before we size demand: wages here are pooled statewide at the program level, not Cañada's own graduates. Your question — how do you look against the labor market — points straight at which of those sectors has the widest gap between regional demand and supply. Want me to start there, or trace one program to the roles and employers behind it?",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "Cañada College"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": true
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__list_institutions",
+          "args": {"filter": "Cañada"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "canada"},
+          "figures": {
+            "available_sectors": 7,
+            "sectors_with_programs": 6,
+            "total_programs": 18,
+            "business_programs": 6,
+            "health_programs": 4,
+            "ict_programs": 4,
+            "edhd_programs": 2,
+            "agwet_programs": 1,
+            "retail_programs": 1,
+            "ecu_programs": 0
+          },
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        }
+      ]
+    }
+  ]
+}

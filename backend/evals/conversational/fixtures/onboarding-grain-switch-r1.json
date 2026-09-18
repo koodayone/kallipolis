@@ -1,0 +1,126 @@
+{
+  "pathway_id": "onboarding-grain-switch",
+  "turns": [
+    {
+      "role": "practitioner",
+      "text": "How's Skyline College doing in advanced manufacturing?"
+    },
+    {
+      "role": "analyst",
+      "text": "Skyline College is a Bay Area college, and Advanced Manufacturing is one of its sectors. Here's where it stands. Across the region, Advanced Manufacturing shows about 8,150 openings a year in demand against roughly 3,923 completions a year from all 26 Bay Area colleges — a regional shortfall of about 4,227 openings a year. Skyline runs 2 programs in the sector and produces about 101 completions a year, which is roughly 2.6% of the region's supply. Those two programs are Electronics and Electric Technology (about 4.7 completions a year, supporting 8 occupations that together show 1,170 openings a year) and Energy Systems Technology (11 completions a year, supporting 5 occupations with about 1,000 openings a year). Two notes on reading these: the demand figures are the Centers of Excellence 2024–2029 projection, and supply is a 3-year average of DataMart completions, so the most recent single year can run higher or lower. Want to go to the occupation level to see where the gaps concentrate?",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "Skyline College", "sector": "advanced manufacturing"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__list_institutions",
+          "args": {"filter": "Skyline"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "skyline", "sector": "adm"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__sector_overview",
+          "args": {"member": "skyline", "sector": "adm"},
+          "figures": {
+            "regional_demand": 8150,
+            "regional_supply": 3923.3,
+            "regional_colleges": 26,
+            "gap": 4227,
+            "member_programs": 2,
+            "member_supply": 101,
+            "member_share_of_supply": 0.026,
+            "electronics_supply": 4.7,
+            "electronics_occupations_fed": 8,
+            "electronics_addressable_demand": 1170,
+            "energy_supply": 11,
+            "energy_occupations_fed": 5,
+            "energy_addressable_demand": 1000
+          },
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "Actually I oversee the whole district, not just Skyline — San Mateo County CCD."
+    },
+    {
+      "role": "analyst",
+      "text": "Understood — let me switch the frame from Skyline alone to the whole district. San Mateo County CCD is the district-level view; it spans its colleges (Skyline is one of them) and sits in the same Bay Area labor market, with the same sectors available. Advanced Manufacturing is there at the district grain, so I can carry your question up to it. What would you like to see for the district?",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__list_institutions",
+          "args": {"filter": "San Mateo"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "Does moving up to the district change the gap numbers?"
+    },
+    {
+      "role": "analyst",
+      "text": "No — the gap number itself doesn't change. That shortfall is a regional figure: about 8,150 openings a year in demand against roughly 3,923 completions a year from all 26 Bay Area colleges, leaving a gap of about 4,227 openings a year. It's a property of the regional market, so it reads the same whether you look through Skyline or the whole district. What moving up to the district changes is your own footprint in that market. Skyline on its own supplies about 101 completions a year — roughly 2.6% of regional supply. The full district, its three colleges together, supplies about 200.3 a year — roughly 5.1%. So at the district grain you account for about twice the supply and twice the share, but the regional gap you're working against holds at 4,227 openings a year. If you want a number that does move with the district, that's the occupation-level gap view — I can pull the district's supply–demand gaps by occupation next.",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__sector_overview",
+          "args": {"member": "smccd", "sector": "adm"},
+          "figures": {
+            "regional_demand": 8150,
+            "regional_supply": 3923.3,
+            "regional_colleges": 26,
+            "gap": 4227,
+            "member_supply": 200.3,
+            "member_share_of_supply": 0.051,
+            "district_colleges": 3
+          },
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__sector_overview",
+          "args": {"member": "skyline", "sector": "adm"},
+          "figures": {
+            "gap": 4227,
+            "member_supply": 101,
+            "member_share_of_supply": 0.026,
+            "skyline_colleges": 1
+          },
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        }
+      ]
+    }
+  ]
+}

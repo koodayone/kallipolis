@@ -1,0 +1,56 @@
+{
+  "pathway_id": "concise-under-pressure",
+  "turns": [
+    {
+      "role": "practitioner",
+      "text": "In two sentences: what's our biggest workforce opportunity right now?"
+    },
+    {
+      "role": "analyst",
+      "text": "Your widest supply–demand gap in Advanced Manufacturing is Industrial Machinery Mechanics — the Bay Area projects about 550 openings a year against roughly 159 completions from all 26 colleges that supply the region, a shortfall of 391 openings a year and the largest gap of any occupation in the sector. Your consortium's five colleges account for about 72 of those regional completions.",
+      "tool_calls": [
+        {
+          "name": "mcp__claude_ai_Kallipolis__institution_overview",
+          "args": {"member": "svamp", "sector": "adm"},
+          "figures": {"program_count": 10},
+          "sorted_by": null,
+          "view_link": false,
+          "gated": false
+        },
+        {
+          "name": "mcp__claude_ai_Kallipolis__supply_demand_gaps",
+          "args": {"member": "svamp", "sector": "adm"},
+          "figures": {
+            "imm_regional_demand": 550,
+            "imm_regional_supply": 159.3,
+            "regional_colleges": 26,
+            "imm_gap": 391,
+            "imm_member_supply": 71.7,
+            "consortium_colleges": 5
+          },
+          "sorted_by": null,
+          "view_link": true,
+          "gated": false
+        }
+      ]
+    },
+    {
+      "role": "practitioner",
+      "text": "Good — now the one caveat I most need to know."
+    },
+    {
+      "role": "analyst",
+      "text": "The one to hold onto: that 391 is a regional shortfall — the whole Bay Area's projected openings minus the completions of all 26 colleges that supply the occupation, not demand your consortium alone faces. Your five colleges already produce about 72 of the region's roughly 159 completions a year, so the 391 is the region's to close, not svamp's to capture on its own.",
+      "tool_calls": []
+    },
+    {
+      "role": "practitioner",
+      "text": "And where would I verify it?"
+    },
+    {
+      "role": "analyst",
+      "text": "Two authorities sit behind it. The 550 openings are the Centers of Excellence's regional demand estimate — 2024 base-year employment projected to 2029; the 159 completions are CCCCO DataMart records, a three-year average from 2022–23 through 2024–25 across all awards, assembled the way the COE builds its Annual Projected Supply, and the 391 gap is simply the first minus the second. You can also pull the same numbers up on the consortium's occupations dashboard at preview.kallipolis.us/svamp and select the Industrial Machinery Mechanics row to check them yourself.",
+      "tool_calls": []
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "principles": {
+    "I":   {"verdict": "partial", "evidence": "\"roughly 126 projected completions a year from all 26 of the region's colleges\" — but the data shows colleges_actively_awarding=9, so attributing the pooled supply to \"all 26\" (repeated in turn 3 as \"pooled across all 26 colleges\") subtly conflates the region's college COUNT with the count of colleges that actually contribute welding supply."},
+    "II":  {"verdict": "pass", "evidence": "\"It's a derived number, not one that's measured directly — regional openings minus regional supply.\" — a technical point rendered in plain practitioner language; the method terms (COE, DataMart, base-year/projection) appear only because the practitioner asked for provenance, not as gratuitous machinery."},
+    "III": {"verdict": "pass", "evidence": "\"That gap is the region's, not yours — and your share of the supply into it is zero.\" — states the coordinate distinction without any value call, recommendation, or hidden pick."},
+    "IV":  {"verdict": "partial", "evidence": "\"San Mateo County CCD contributes 0 of those completions itself: the district runs no active welding program.\" — reaches the figure and teaches the regional-vs-district grain well, but never offers the natural next move (e.g., the 9 of 26 colleges actively awarding welding credentials, a thread the occupation_profile already returned)."},
+    "V":   {"verdict": "pass", "evidence": "\"Well-grounded, but an estimate rather than an exact count.\" — full provenance delivered exactly when asked (whose method, whose data, as-of years), limits named (projection, welding programs prepare for more than welding), confidence calibrated, and 520/126/394 held consistent with no figure-drift across all three turns."}
+  },
+  "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+  },
+  "worst_failure": "On a pathway that specifically stresses conflation, the analyst attributes the 126 regional completions to \"all 26 of the region's colleges\" when only 9 actively award welding credentials, slightly overstating the breadth of the supply base.",
+  "fix_layer": "doctrine",
+  "fix_points_at": "DOCTRINE supply-side phrasing clause — when relaying regional supply, name the contributing colleges (colleges_actively_awarding) rather than the region's total college count, so \"pooled across the region's 26 colleges\" does not imply all 26 contribute."
+}

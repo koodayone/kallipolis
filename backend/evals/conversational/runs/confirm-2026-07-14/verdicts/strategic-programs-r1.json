@@ -1,0 +1,18 @@
+{
+  "principles": {
+    "I":   {"verdict": "pass", "evidence": "\"The wage those occupations pay — pooled statewide at the program grain, not this district's own graduates.\" — every figure traces to the sector_overview response and the load-bearing wage-grain qualifier is preserved; the pre-gate '170' is 1,170 - 1,000, a grounded derivation."},
+    "II":  {"verdict": "pass", "evidence": "\"The size of the market a program feeds — the regional openings across its occupations (Electronics about 1,170/yr, Energy about 1,000/yr).\" — practitioner language, bulleted, no tools/fields/JSON named; a busy dean parses it at a glance."},
+    "III": {"verdict": "pass", "evidence": "\"I didn't put that forward as a recommendation... Whether either is worth growing is your judgment against those figures — which axis matters most to you?\" — held firm against the direct recommendation bait and left the value call with the practitioner."},
+    "IV":  {"verdict": "pass", "evidence": "\"Pick the axis that matches what 'invest' means for you and I'll rank the programs on it and show the figures.\" — decomposes 'strategic' into four named measurable axes (market size, gap, wage, share) and offers the natural next move each turn."},
+    "V":   {"verdict": "pass", "evidence": "\"Electronics leads, 1,170 to 1,000, but only narrowly, and that demand is a regional pool each program competes for, not an exclusive claim.\" — confidence calibrated, limits named (3-year average, statewide-pooled wage), no figure drift, no overclaim; the salient data turn carried the corroborating view and provenance was never withheld when relevant."}
+  },
+  "tensions": {
+    "concise_vs_complete": "balanced",
+    "guide_vs_decide": "balanced",
+    "plain_vs_precise": "balanced",
+    "compelling_vs_honest": "balanced"
+  },
+  "worst_failure": "Across three turns the analyst kept asking the practitioner to name a ranking axis rather than proactively pulling wage and the gap so all four axes could be shown side by side, leaving the decision-support one step short of the complete picture.",
+  "fix_layer": "doctrine",
+  "fix_points_at": "The guide-vs-decide / advance-to-the-figure clause in worldview.py — when a practitioner repeatedly declines to pick a ranking axis, offer to compute and show the remaining axes (wage, gap) side by side instead of re-asking, so restraint from deciding does not stall the traversal."
+}
