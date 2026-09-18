@@ -13,6 +13,11 @@ Coverage:
   - the awards chart's openings label names the region
   - Sources merges the O*NET summaries into the Curriculum Alignment group when the grid is dropped, numbers outline lines after the links, and links the MIT county page only with a living wage
   - a certificate-column roster drops the competency grid from the report; a college-column roster keeps it
+  - a program not yet offered: the TOP–CIP–SOC chain figure names the codes, titles and the umbrella SOC and carries no
+    links or `xwrap` class; the crosswalk funnel is byte-identical to its pinned hash; Awards Offered renders the announced
+    credential when the Curriculum Inventory has none; statewide supply draws no openings rule and drops "Regional";
+    Sources add the chain group and cite the detailed code's O*NET summary; two colleges' certificate columns are prefixed
+    with the college
 """
 
 import re
@@ -23,9 +28,9 @@ from ontology.living_wage import living_wage
 from partnerships import alignment as A
 from partnerships.alignment import Cell, Evidence, Plate, Row
 from partnerships.lens import LensModel, LensOccupation, LensProgram, LensScope, LensSlice, LensWage, MemberRef, Play
-from partnerships.report import (CompetencyColumn, ReportSpec, _awards_demand_svg, _demand_provenance, _demand_table,
-                                 _hourly, _living_wage_for, _sources_section, _vs, _wage_outcomes_svg, _wage_section,
-                                 build_report_html)
+from partnerships.report import (CompetencyColumn, ReportSpec, _awards_demand_svg, _awards_offered_section, _chain_data,
+                                 _chain_svg, _crosswalk_svg, _demand_provenance, _demand_table, _hourly, _living_wage_for,
+                                 _onet_code, _sources_section, _vs, _wage_outcomes_svg, _wage_section, build_report_html)
 
 SC = living_wage("Santa Clara")
 
@@ -139,3 +144,74 @@ def test_a_certificate_roster_drops_the_grid_and_a_college_roster_keeps_it(monke
     monkeypatch.setattr(A, "view_roster", roster("college"))
     html = build_report_html("foothill", play, spec, lens=_lens(occs=[occ]))
     assert "<h1>Occupational Competencies</h1>" in html and '<table class="cmpgrid"' in html and '<p class="alg-desc">' not in html
+
+
+# ── a program not yet offered ─────────────────────────────────────────────────────
+def test_chain_figure_names_codes_titles_and_umbrella_without_links():
+    top, cips, occ, umbrella = _chain_data("121200", "29-2099.01")
+    assert top == ("121200", "Electro-Neurodiagnostic Technology") and [c for c, _ in cips] == ["51.0903"]
+    assert occ == ("29-2099.01", "Neurodiagnostic Technologists") and umbrella[0] == "29-2099"
+    svg = _chain_svg(top, cips, occ, umbrella)
+    for s_ in ("TOP 1212.00", "CIP 51.0903", "O*NET-SOC 29-2099.01", "Neurodiagnostic", "within SOC 29-2099",
+               "Health Technologists and", 'class="chainfig"', "CCCCO", "NCES", "stroke-dasharray"):
+        assert s_ in svg, s_
+    assert "<a" not in svg and "xwrap" not in svg
+    assert "Electroencephalographic" in svg and "Electroneurodiagnostic/" in svg      # the CIP title wraps at its slashes
+    plain = _chain_svg(top, cips, ("29-2099", "Health Technologists and Technicians, All Other"), None)
+    assert "stroke-dasharray" not in plain and "within SOC" not in plain
+    assert _onet_code("29-2099.01") == "29-2099.01" and _onet_code("29-2099") == "29-2099.00"
+
+
+def test_crosswalk_funnel_is_unchanged():
+    import hashlib
+    prog = LensProgram("Foothill College", "010210", "Veterinary Technology", True, ["29-2056"], {"2021": 10}, {"Fall 2021": 40}, {})
+    svg = _crosswalk_svg([prog], [_occ()])
+    assert hashlib.sha256(svg.encode()).hexdigest() == "8a7b15d9fc20a226b3ea3e17512bb6a65d5df9be1472aaf8469401ce6600bd20"
+
+
+def test_awards_offered_renders_the_announced_credential_when_coci_has_none():
+    planned = ({"title": "Neurodiagnostic Technology", "credential": "Associate in Science", "units": "Program map to be published"},)
+    html = _awards_offered_section("Foothill College", "121200", planned)
+    assert "<h1>Awards Offered</h1>" in html and 'class="lc1"' in html and "Associate in Science" in html
+    assert "lists no approved award under TOP 121200 at Foothill College" in html
+    assert _awards_offered_section("Foothill College", "121200") == ""                  # no announced award: nothing, as before
+
+
+def _prog(college, awards):
+    return LensProgram(college, "121200", "Electro-Neurodiagnostic Technology", False, ["29-2099"], awards, {},
+                       {"associate degree": awards})
+
+
+def test_statewide_supply_draws_no_rule_and_drops_regional(monkeypatch):
+    monkeypatch.setattr("partnerships.report._living_wage_for", lambda lens: None)
+    progs = [_prog("Orange Coast College", {"2021": 11, "2022": 16}), _prog("San Diego Mesa College", {"2021": 0, "2022": 28})]
+    occ = _occ("29-2099", "Health Technologists and Technicians, All Other", 69710, 530)
+    lens = _lens(occs=[occ], programs=progs)
+    base = dict(org_name="Foothill College Program Evaluation", org_short="Regional", lede="l", program_top="121200",
+                programs=(("Orange Coast College", "121200"), ("San Diego Mesa College", "121200")))
+    play = Play(id="x", title="Neurodiagnostic Technology", sector="health", socs=("29-2099",))
+    statewide = build_report_html("foothill", play, ReportSpec(**base, supply_scope="statewide"), lens=lens)
+    regional = build_report_html("foothill", play, ReportSpec(**base), lens=lens)
+    assert "openings a year" not in statewide and ">Annual Awards<" in statewide and "Regional Program Enrollment" not in statewide
+    assert "530 openings a year" in regional and "Annual Awards vs. Annual Openings" in regional
+
+
+def test_sources_add_the_chain_group_and_cite_the_detailed_code():
+    html = _sources_section("Foothill College", "Health", "https://d", "Neurodiagnostic Technology", ["29-2099.01"], "121200",
+                            chain="29-2099.01")
+    assert "TOP–CIP–SOC Crosswalk Section" in html and "NCES CIP 2020 – SOC 2018 Crosswalk" in html
+    assert "link/summary/29-2099.01" in html and "29-2099.00" not in html
+    assert "TOP–CIP–SOC Crosswalk Section" not in _sources_section("F", "H", "https://d", "T", ["29-2099"], "121200")
+
+
+def test_two_colleges_certificate_columns_are_prefixed_with_the_college():
+    from partnerships.alignment_plate import _col_label, column_legend
+    def plate(college, key, cert):
+        return Plate(college, key, cert, "credit", "121200", "Electro-Neurodiagnostic Technology", "29-2099.01",
+                     "Neurodiagnostic Technologists", ["29-2099"], "", [], [], [], short_title="Neurodiagnostic Technology")
+    a = plate("Orange Coast College", "orangecoast", "Associate in Science Degree, Neurodiagnostic Technology")
+    b = plate("San Diego Mesa College", "sdmesa", "Associate of Science Degree, Neurodiagnostic Technology")
+    assert _col_label(a, "certificate") == "Neurodiagnostic Technology"
+    assert _col_label(a, "certificate", multi=True).startswith("Orange Coast ·")
+    legend = column_legend([a, b], "certificate")
+    assert "Orange Coast · Neurodiagnostic Technology" in legend and "San Diego Mesa · Neurodiagnostic Technology" in legend

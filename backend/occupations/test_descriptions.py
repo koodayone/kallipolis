@@ -13,11 +13,14 @@ Coverage:
   - Unknown SOCs and empty input return None
   - Loader indexes the full BLS detailed code set (~867 codes) and
     returns non-empty descriptions for every entry
+  - A detailed O*NET-SOC code ("29-2099.01") resolves to its own title and
+    description while its base keeps the .00 row's
 """
 
 from occupations.descriptions import (
     _load_soc_descriptions,
     get_description,
+    get_title,
 )
 
 
@@ -65,3 +68,16 @@ class TestLoaderShape:
         for soc, desc in _load_soc_descriptions().items():
             assert desc, f"SOC {soc} has empty description"
             assert len(desc) > 20, f"SOC {soc} has implausibly short description: {desc!r}"
+
+
+class TestDetailedOnetSocCodes:
+    def test_detailed_code_has_its_own_title_and_description(self):
+        assert get_title("29-2099.01") == "Neurodiagnostic Technologists"
+        assert get_title("29-2099") == "Health Technologists and Technicians, All Other"
+        detail, base = get_description("29-2099.01"), get_description("29-2099")
+        assert detail and base and detail != base
+        assert "neuro" in detail.lower() or "electroencephalogra" in detail.lower()
+
+    def test_base_lookups_still_prefer_the_00_row(self):
+        assert get_title("17-3024") == get_title("17-3024.00")
+        assert get_description("17-3024") == get_description("17-3024.00")

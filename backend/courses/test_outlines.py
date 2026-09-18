@@ -12,12 +12,18 @@ Coverage:
   - CurriQunet (Evergreen Valley): content, lab and assignments from the stable trailing block; ILO boilerplate stripped; template-only objectives noted
   - an Outline round-trips through JSON, link-check stamps included; an older cache file without them still loads
   - eLumen: a start term maps to its catalog year, and the catalog course link is built from the record's curriculum id
+  - CourseLeaf (Coast CCD / Orange Coast): the same parser under the host's heading profile — state COR field names,
+    approval date, assignments from three headings, a broken "&nbsp;" rejoined, titles not re-cased
+  - CurriQunet (San Diego CCD / Mesa): outcomes and objectives from "Outcome Text" / "Objective Text" pairs, lecture and
+    laboratory content from the tail's subdivided blocks, assignments from the body with its field labels dropped
+  - CurriQunet catalog page: a subject page's course entity ids, keyed by course code, inactive rows dropped
 """
 
 import json
 
 from courses.outlines import (Outline, elumen_catalog_url, elumen_catalog_year, parse_courseleaf, parse_curricunet_index,
-                              parse_curricunet_outline, parse_curriqunet_outline, parse_elumen_course, pick_active)
+                              parse_curricunet_outline, parse_curriqunet_catalog_courses, parse_curriqunet_outline,
+                              parse_elumen_course, pick_active)
 
 COURSELEAF = """
 <h1>ENGR 61A: INTRODUCTION TO SEMICONDUCTOR TECHNOLOGY &lt; Foothill College</h1>
@@ -151,3 +157,85 @@ def test_elumen_catalog_year_and_link():
     assert o.source_url.endswith("/catalog/2026-2027/course/dmtd084a")
     o = parse_elumen_course({**d, "code": "DMT D084A."}, college="De Anza College", host="deanza.elumenapp.com", org_entity_id=8)
     assert o.source_url == "https://deanza.elumenapp.com/public/?orgEntityId=8&uuid=u"          # the default stays the public view
+
+
+COURSELEAF_COAST = """
+<h1>NDT A110: Basic Electroencephalography</h1>
+<table><tr><td>Curriculum Committee Approval Date</td><td>11/15/2023</td></tr><tr><td>Top Code</td><td>121200 - Electro-Neurodiagnostic Technology</td></tr></table>
+<h2>Course Description</h2><p>Fundamentals of EEG, including application of electrodes.</p>
+<h2>Course Level Student Learning Outcome(s)</h2><ol><li>Identify and define observed basic EEG rhythms.</li><li>Prepare a patient for an EEG recording.</li></ol>
+<h2>Course Objectives</h2><ol><li>1. Measure and apply the 21 standard EEG electrodes.</li><li>I *Scans Competencies</li><li>II +Scans Foundations</li></ol>
+<h2>Lecture Content</h2><p>Introduction What is EEG? Basic Rhythms of EEG</p>
+<h2>Lab Content</h2><p>1. Square Wave Calibration nb</p><p>sp; 2. Bio-Calibration</p>
+<h2>Method(s) of Instruction</h2><p>Lecture (02)</p>
+<h2>Reading Assignments</h2><p>Required textbook reading (2 hours/week)</p>
+<h2>Writing Assignments</h2><p>Research reports.</p>
+<h2>Out-of-class Assignments</h2><p>Skills homework.</p>
+<h2>Demonstration of Critical Thinking</h2><p>Homework assignments.</p>
+"""
+
+
+def test_courseleaf_coast_profile_reads_state_cor_headings():
+    o = parse_courseleaf(COURSELEAF_COAST, college="Orange Coast College", code="NDT A110",
+                         url="https://catalog.cccd.edu/courses/ndt-a110/", host="catalog.cccd.edu")
+    assert o.title == "Basic Electroencephalography" and o.approved == "11/15/2023" and o.effective == ""
+    assert o.description == "Fundamentals of EEG, including application of electrodes."
+    assert o.outcomes == ["Identify and define observed basic EEG rhythms.", "Prepare a patient for an EEG recording."]
+    assert o.objectives == ["1. Measure and apply the 21 standard EEG electrodes."]
+    assert o.content == ["Introduction What is EEG? Basic Rhythms of EEG"]
+    assert o.lab == ["1. Square Wave Calibration 2. Bio-Calibration"]
+    assert o.assignments == ["Required textbook reading (2 hours/week)", "Research reports.", "Skills homework."]
+
+
+def test_courseleaf_foothill_profile_is_the_default():
+    o = parse_courseleaf(COURSELEAF, college="Foothill College", code="ENGR 61A", url="u")
+    assert o.title == "Introduction To Semiconductor Technology" and o.assignments == []
+
+
+CURRIQUNET_SDCCD = """
+<div>All Fields</div><div>NDTE 101 - Basic Electroencephalography</div><div>Cover</div>
+<div>Course Number</div><div>101</div><div>Subject</div><div>NDTE</div><div>Course Title</div><div>Basic Electroencephalography</div>
+<div>Catalog Description</div><div>This course covers the fundamentals of electroencephalography (EEG).</div><div>Short Desc (100 Characters or Less)</div><div>Fundamentals.</div>
+<div>Student Learning Outcomes</div><div>Learning Outcomes</div><div>Group Title</div><div>Mesa</div>
+<div>Outcome Text</div><div>Students will be able to identify anatomical landmarks.</div>
+<div>This SLO maps to the following Institutional Learning Outcomes (ILOs), please check all that apply:</div>
+<div>Outcome Text</div><div>Students will be able to identify basic waveforms and artifacts.</div>
+<div>Student Learning Objectives</div><div>Upon successful completion of the course the student will be able to:</div>
+<div>Objective Text</div><div>Set up the International 10/20 system.</div><div>Objective Text</div><div>Complete an accurate patient history.</div>
+<div>Disciplines</div><div>Minimum Qualification</div>
+<div>Content</div><div>Course Lecture Content (Use outline format)</div><div>Lecture Content</div><div>Introduction</div><div>EEG defined</div>
+<div>Laboratory Content</div><div>Introduction to EEG Equipment</div><div>Course Lab/Activity Content</div>
+<div>Assignments</div><div>Reading Assignments</div><div>Optional Text</div><div>Assignments</div><div>Course textbook</div>
+<div>Writing Assignments</div><div>Optional Text</div><div>Assignments</div><div>Homework assignment completion</div>
+<div>Appropriate Assignments that Demonstrate Critical Thinking</div><div>Optional Text</div><div>Assignments</div><div>Lab practicums on a mannequin head.</div>
+<div>Methods of Evaluation</div><div>Evaluation Method</div>
+<div>ASSIST Preview</div><div>Prefix NDTE</div><div>Course Number 101</div>
+<div>Content The following topics are included in the framework of the course.</div>
+<div>Lecture Content</div><div>Introduction</div><div>EEG defined</div>
+<div>Laboratory Content</div><div>Introduction to EEG Equipment</div><div>Lab Content</div>
+<div>Course Description</div><div>This course covers the fundamentals of electroencephalography (EEG).</div>
+<div>Outline Approval Date</div><div>Outline Effective Date</div><div>Prerequisites</div><div>Objectives</div><div>Assignments</div><div>Other Information</div>
+"""
+
+
+def test_curriqunet_sdccd_report_layout():
+    o = parse_curriqunet_outline(CURRIQUNET_SDCCD, college="San Diego Mesa College", url="u")
+    assert o.code == "NDTE 101" and o.title == "Basic Electroencephalography"
+    assert o.description == "This course covers the fundamentals of electroencephalography (EEG)."
+    assert o.outcomes == ["Students will be able to identify anatomical landmarks.",
+                          "Students will be able to identify basic waveforms and artifacts."]
+    assert o.objectives == ["Set up the International 10/20 system.", "Complete an accurate patient history."] and o.notes == ""
+    assert o.content == ["Introduction", "EEG defined"] and o.lab == ["Introduction to EEG Equipment"]
+    assert o.assignments == ["Course textbook", "Homework assignment completion", "Lab practicums on a mannequin head."]
+    assert o.approved == "" and o.effective == ""
+
+
+def test_curriqunet_catalog_page_yields_course_entity_ids():
+    text = ('<div class="container-fluid course-summary-wrapper" data-course-id="12830"><b class="course-subject-code">NDTE </b>'
+            '<b class="course-number">101 </b><b class="course-title">Basic Electroencephalography</b>'
+            '<span data-catalog-status-base="Active"></span><span class="course-description">Fundamentals of EEG.</span></div>'
+            '<div class="container-fluid course-summary-wrapper" data-course-id="99"><b class="course-subject-code">NDTE </b>'
+            '<b class="course-number">090 </b><b class="course-title">Old</b><span data-catalog-status-base="Historical"></span></div>')
+    page = {"body": [{"presentationtype": "richtext", "text": "<h1>NDTE</h1>"}, {"presentationtype": "curriculum", "text": text}]}
+    assert parse_curriqunet_catalog_courses(page) == {
+        "NDTE 101": {"entity_id": 12830, "title": "Basic Electroencephalography", "description": "Fundamentals of EEG."}}

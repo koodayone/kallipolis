@@ -53,6 +53,7 @@ def _load_soc_descriptions() -> dict[str, str]:
 
     primary: dict[str, str] = {}  # .00 hits
     fallback: dict[str, str] = {}  # first specialty seen, used only if no .00
+    exact: dict[str, str] = {}     # every O*NET-SOC row under its own 8-digit code
 
     with open(ONET_TSV_PATH, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f, delimiter="\t")
@@ -63,22 +64,26 @@ def _load_soc_descriptions() -> dict[str, str]:
             description = row["Description"].strip()
             if not description:
                 continue
+            exact[code] = description
             if suffix == "00":
                 primary[base] = description
             elif base not in fallback:
                 fallback[base] = description
 
-    merged = {**fallback, **primary}
+    # Base codes resolve to the .00 row (else the first specialty); a detailed O*NET-SOC
+    # code ("29-2099.01") resolves to its own row. The two key shapes never collide.
+    merged = {**fallback, **primary, **exact}
     _soc_to_description = merged
     logger.info(
-        f"Loaded SOC 2018 definitions: {len(merged)} SOCs "
-        f"({len(primary)} primary, {len(merged) - len(primary)} via specialty fallback)"
+        f"Loaded SOC 2018 definitions: {len(primary) + len(fallback)} SOCs "
+        f"({len(primary)} primary, {len(fallback)} via specialty fallback) and {len(exact)} O*NET-SOC rows"
     )
     return merged
 
 
 def get_description(soc_code: str) -> str | None:
-    """Return the BLS SOC 2018 definition for a SOC, or None if unknown."""
+    """The definition for a SOC ("29-2099": the BLS SOC 2018 definition) or for a detailed
+    O*NET-SOC code ("29-2099.01": O*NET's own description of the specialty). None if unknown."""
     return _load_soc_descriptions().get(soc_code)
 
 
@@ -86,21 +91,28 @@ _soc_to_title: dict[str, str] | None = None
 
 
 def get_title(soc_code: str) -> str | None:
-    """The O*NET occupation title for a base SOC (the `.00` row, else the first
-    specialty) — the name a plate prints beside the code."""
+    """The O*NET occupation title — for a base SOC the `.00` row's title (else the first
+    specialty's), for a detailed O*NET-SOC code that row's own title ("Neurodiagnostic
+    Technologists" for 29-2099.01, where the base reads "…, All Other"). The name a plate
+    prints beside the code.
+
+    The work-activities bundle (occupations.work_activities) still keys by base SOC and keeps
+    one O*NET-SOC per base; a rebuild that keeps every detailed code needs the O*NET text
+    database and is deferred until a reading needs a specialty the bundle dropped."""
     global _soc_to_title
     if _soc_to_title is None:
-        primary, fallback = {}, {}
+        primary, fallback, exact = {}, {}, {}
         with open(ONET_TSV_PATH, newline="", encoding="utf-8") as f:
             for row in csv.DictReader(f, delimiter="\t"):
                 code = row["O*NET-SOC Code"]
                 base, suffix = code[:7], code[8:]
+                exact[code] = row["Title"].strip()
                 if suffix == "00":
                     primary[base] = row["Title"].strip()
                 elif base not in fallback:
                     fallback[base] = row["Title"].strip()
-        _soc_to_title = {**fallback, **primary}
-    return _soc_to_title.get(soc_code[:7])
+        _soc_to_title = {**fallback, **primary, **exact}
+    return _soc_to_title.get(soc_code) or _soc_to_title.get(soc_code[:7])
 
 
 def update_descriptions() -> None:

@@ -183,6 +183,24 @@ class ReportSpec:
     # the report: absence of evidence is the method's weakest claim and a college's to
     # confirm first. The canvas turns them on for internal review.
     curriculum_show_gaps: bool = False
+    # A program NOT YET OFFERED (an evaluation of a program's design, e.g. Foothill's
+    # neurodiagnostic technology A.S. launching fall 2027). Each field is empty on every
+    # other def, so the sections it touches render as they always have.
+    #   crosswalk_chain: the detailed O*NET-SOC code the program is designed for ("29-2099.01");
+    #     renders the "TOP–CIP–SOC Crosswalk" section — TOP → CIP → detailed occupation, with the
+    #     SOC the Centers of Excellence report demand under drawn as the umbrella around it.
+    #   chain_note: the editorial paragraph under that heading.
+    #   planned_awards: the credential(s) the college has announced, shown in "Awards Offered"
+    #     when the Curriculum Inventory has no approved award yet: [{"title", "credential", "units"}].
+    #   wage_note: a clause appended to the Wage Outcomes paragraph (the cohort predates the program).
+    #   supply_scope: "statewide" when the comparator programs sit outside the member's COE
+    #     region — the awards chart draws no regional openings rule and the supply titles
+    #     drop "regional"; the demand section keeps the member's region.
+    crosswalk_chain: str = ""
+    chain_note: str = ""
+    planned_awards: tuple[dict, ...] = ()
+    wage_note: str = ""
+    supply_scope: str = ""
 
 
 # ── Section builders (data from the lens, words from the spec) ─────────────────
@@ -204,6 +222,9 @@ def _fmt_tick(v: float) -> str:
 #: restates the title above it is not worth the vertical space.
 _SUPPLY_BLURB = ("Credentials awarded each year by colleges offering this program, against the region's "
                  "annual openings in the target occupations.")
+#: The statewide form (spec.supply_scope == "statewide"): the comparator colleges sit in
+#: other COE regions, so no regional openings rule is drawn and none is described.
+_SUPPLY_BLURB_STATEWIDE = "Credentials awarded each year by the California colleges offering this program."
 _ENROLL_BLURB = ("Enrollment by term at the colleges that run this program. Summer terms, which run "
                  "low by design, are excluded.")
 
@@ -582,7 +603,7 @@ def _program_display(college: str, top6: str):
     return _DISPLAY_NAMES.get(f"{college}|{top6}")
 
 
-def _awards_offered_section(college: str, top6: str) -> str:
+def _awards_offered_section(college: str, top6: str, planned: tuple[dict, ...] = ()) -> str:
     """"Awards Offered" — the credential menu for ONE program, from COCI.
 
     Answers the reviewer ask the rest of the report structurally cannot: every other
@@ -622,9 +643,28 @@ def _awards_offered_section(college: str, top6: str) -> str:
     from ontology.coci import awards_for
 
     awards = awards_for(college, top6)
+    disp = _program_display(college, top6)
+    if not awards and planned:
+        # A program the college has announced but the state has not yet approved: the
+        # same table, from the def's `planned_awards`, and a caption that says which
+        # authority is silent. The Curriculum Inventory stays in Sources — it is the
+        # source of the "no approved award" statement.
+        body = [f'<tr class="lc{(i % 3) + 1}"><td class="lsoc">{_esc(p.get("title", ""))}</td>'
+                f'<td class="lemp">{_esc(p.get("credential", ""))}</td><td class="ltit">{_esc(p.get("units") or "—")}</td></tr>'
+                for i, p in enumerate(planned)]
+        link = ""
+        if disp and disp.get("url"):
+            link = (f' <a target="_blank" rel="noopener" href="{_esc(disp["url"])}">{_esc(college)} program page ↗</a>')
+        return _block(
+            '<h1>Awards Offered</h1>'
+            '<table class="live"><colgroup><col style="width:44%"><col style="width:22%">'
+            '<col style="width:34%"></colgroup><thead><tr>'
+            '<th class="lsoc">Award</th><th>Credential</th><th>Units</th>'
+            f'</tr></thead><tbody>{"".join(body)}</tbody></table>'
+            f'<p class="tnar">The Curriculum Inventory lists no approved award under TOP {_esc(top6)} at {_esc(college)}; '
+            f'the credential shown is the college\'s announced program.{link}</p>')
     if not awards:
         return ""
-    disp = _program_display(college, top6)
     body = []
     curated = (disp or {}).get("award_units") or {}
     cal = (disp or {}).get("calendar") or ""
@@ -809,6 +849,139 @@ def _crosswalk_svg(programs, occs: list[LensOccupation]) -> str:
         )
     parts.append("</svg>")
     return f'<div class="xwrap">{"".join(parts)}</div>'
+
+
+def _onet_code(soc: str) -> str:
+    """The O*NET-SOC code a summary page is addressed by: a detailed code as given
+    ("29-2099.01"), a base SOC with the `.00` parent suffix."""
+    return soc if "." in soc else f"{soc}.00"
+
+
+def _wrap_words(text: str, width: int) -> list[str]:
+    """Greedy word wrap to `width` characters. A slash is a break opportunity too — CIP
+    titles run "Electroneurodiagnostic/Electroencephalographic Technology/Technologist"."""
+    words, lines, cur = (text or "").replace("/", "/ ").split(), [], ""
+    for w in words:
+        if cur and len(cur) + 1 + len(w) > width:
+            lines.append(cur)
+            cur = w
+        else:
+            cur = (cur + " " + w).strip()
+    if cur:
+        lines.append(cur)
+    return lines or [""]
+
+
+def _dotted_top(top6: str) -> str:
+    return f"{top6[:4]}.{top6[4:]}" if len(top6) == 6 and top6.isdigit() else top6
+
+
+def _chain_svg(top: tuple[str, str], cips: list[tuple[str, str]], soc: tuple[str, str],
+               umbrella: tuple[str, str] | None = None) -> str:
+    """TOP → CIP → SOC as one figure: the program's state code on the left, the federal
+    instructional code it maps to in the middle (the hinge of the argument, so it gets a
+    node of its own rather than a grey sub-line), the detailed O*NET occupation on the
+    right in the report's first accent. When that occupation is a detailed code inside a
+    broader SOC — Neurodiagnostic Technologists (29-2099.01) inside Health Technologists
+    and Technicians, All Other (29-2099) — a dashed frame around the right node names the
+    umbrella, because that is the code the demand table reports under.
+
+    A fork of the crosswalk funnel for evaluations of a program not yet offered: its own
+    class (`chainfig`), so the docx path treats it as its own figure and `_crosswalk_svg`'s
+    output is untouched. Styles are inline so the shared stylesheet is unchanged."""
+    # three 204px nodes, 61px hops; the dashed frame's 10px padding ends flush at W=744
+    NODE_W, GAP, LINEH, W, PAD = 204, 61, 15, 744, 10
+    xs = [0, NODE_W + GAP, 2 * (NODE_W + GAP)]
+    wrap = 26
+    top_lines = _wrap_words(top[1], wrap)
+    cip_lines = [_wrap_words(t, wrap) for _, t in cips] or [[""]]
+    soc_lines = _wrap_words(soc[1], wrap)
+    nlines = max([len(top_lines), len(soc_lines)] + [len(l) for l in cip_lines])
+    NODE_H = 42 + nlines * LINEH
+    col_h = max(NODE_H, len(cips) * NODE_H + max(0, len(cips) - 1) * 12)
+    um_lines = (_wrap_words(f"within SOC {umbrella[0]} · {umbrella[1]}", 46) +
+                _wrap_words("the level at which the Centers of Excellence report demand", 46)) if umbrella else []
+    y0 = PAD + 1
+    H = y0 + col_h + (PAD + 6 + len(um_lines) * 13 + 4 if umbrella else 2)
+    p = [f'<svg viewBox="0 0 {W} {H:.0f}" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica,Arial,sans-serif" '
+         'style="width:100%;height:auto;display:block">',
+         '<defs><marker id="chain-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">'
+         '<path d="M 0 0 L 8 4 L 0 8 z" fill="#9aa1b2"/></marker></defs>']
+
+    def badge(x, y, code, lines, *, filled=False):
+        if filled:
+            p.append(f'<rect x="{x}" y="{y:.0f}" width="{NODE_W}" height="{NODE_H}" rx="7" fill="{_ACCENTS[0]}"/>'
+                     f'<text x="{x + 14}" y="{y + 20:.0f}" font-size="10" fill="#fff" opacity="0.92">{_esc(code)}</text>')
+            for j, ln in enumerate(lines):
+                p.append(f'<text x="{x + 14}" y="{y + 40 + j * LINEH:.0f}" font-size="13" font-weight="700" fill="#fff">{_esc(ln)}</text>')
+        else:
+            p.append(f'<rect x="{x}" y="{y:.0f}" width="{NODE_W}" height="{NODE_H}" rx="6" fill="#f7f8fb" stroke="#d4dae6"/>'
+                     f'<text x="{x + 14}" y="{y + 20:.0f}" font-size="9.5" fill="#9aa1b2">{_esc(code)}</text>')
+            for j, ln in enumerate(lines):
+                p.append(f'<text x="{x + 14}" y="{y + 40 + j * LINEH:.0f}" font-size="12.5" fill="#22304e">{_esc(ln)}</text>')
+
+    top_y = y0 + (col_h - NODE_H) / 2
+    soc_y = top_y
+    cip_ys = [y0 + (col_h - (len(cips) * NODE_H + max(0, len(cips) - 1) * 12)) / 2 + i * (NODE_H + 12) for i in range(len(cips))]
+    # edges first, behind the nodes: TOP → each CIP → SOC, the crosswalk's authority named over each hop
+    for cy in cip_ys:
+        p.append(f'<line x1="{xs[0] + NODE_W}" y1="{top_y + NODE_H / 2:.0f}" x2="{xs[1] - 3}" y2="{cy + NODE_H / 2:.0f}" '
+                 'stroke="#9aa1b2" stroke-width="1.6" marker-end="url(#chain-arrow)"/>')
+        p.append(f'<line x1="{xs[1] + NODE_W}" y1="{cy + NODE_H / 2:.0f}" x2="{xs[2] - 3}" y2="{soc_y + NODE_H / 2:.0f}" '
+                 'stroke="#9aa1b2" stroke-width="1.6" marker-end="url(#chain-arrow)"/>')
+    for i, label in enumerate(("CCCCO", "NCES")):        # the crosswalk's authority, over each hop
+        cx = xs[i] + NODE_W + GAP / 2
+        p.append(f'<text x="{cx:.0f}" y="{top_y + NODE_H / 2 - 7:.0f}" font-size="9" fill="#9aa1b2" text-anchor="middle">{label}</text>')
+    badge(xs[0], top_y, f"TOP {_dotted_top(top[0])}", top_lines)
+    for (cip, _), cy, lines in zip(cips, cip_ys, cip_lines):
+        badge(xs[1], cy, f"CIP {cip}", lines)
+    if umbrella:
+        p.append(f'<rect x="{xs[2] - PAD}" y="{soc_y - PAD:.0f}" width="{NODE_W + 2 * PAD}" height="{NODE_H + 2 * PAD}" rx="10" '
+                 'fill="none" stroke="#9aa1b2" stroke-width="1.2" stroke-dasharray="4 3"/>')
+        for j, ln in enumerate(um_lines):
+            p.append(f'<text x="{xs[2] - PAD}" y="{soc_y + NODE_H + PAD + 14 + j * 13:.0f}" font-size="9.5" fill="#5a6577">{_esc(ln)}</text>')
+    badge(xs[2], soc_y, f"O*NET-SOC {soc[0]}", soc_lines, filled=True)
+    p.append("</svg>")
+    return f'<div class="chainfig" style="margin:10px 0 4px">{"".join(p)}</div>'
+
+
+_COE_CROSSWALK_URL = "https://datastudio.google.com/u/0/reporting/62925aaa-3c91-48ab-941b-2473c0e17cb7"
+_NCES_CIP_SOC_URL = "https://nces.ed.gov/ipeds/cipcode/resources.aspx?y=56"
+
+
+def _chain_data(top6: str, soc: str) -> tuple[tuple[str, str], list[tuple[str, str]], tuple[str, str], tuple[str, str] | None]:
+    """(TOP, CIPs, occupation, umbrella) for the chain figure, from the ontology: the TOP
+    title from the state's TOP–CIP crosswalk, the CIP(s) that bridge this TOP to the
+    occupation's SOC and their federal titles, the O*NET title of the detailed code, and
+    the base SOC as the umbrella when `soc` is a detailed code."""
+    from occupations.descriptions import get_title
+    from ontology.crosswalks import load_cip_titles, load_top_titles, top6_to_cips_for_soc
+    base = soc[:7]
+    cip_titles = load_cip_titles()
+    cips = [(c, cip_titles.get(c, "")) for c in top6_to_cips_for_soc(top6, base)]
+    umbrella = (base, get_title(base) or base) if "." in soc and not soc.endswith(".00") else None
+    return (top6, load_top_titles().get(top6, top6)), cips, (soc, get_title(soc) or soc), umbrella
+
+
+def _chain_section(spec: ReportSpec) -> str:
+    """"TOP–CIP–SOC Crosswalk" — the program's destination argued step by step, for an
+    evaluation of a program not yet offered (spec.crosswalk_chain). Links live in the
+    caption, never inside the SVG: the docx keeps the figure as a raster and its links as
+    text, and the link-parity check reads the page's anchors."""
+    soc = spec.crosswalk_chain
+    top, cips, occ, umbrella = _chain_data(spec.program_top, soc)
+
+    def a(label, url):
+        return f'<a href="{_esc(url)}" target="_blank" rel="noopener">{_esc(label)}</a>'
+
+    cip_txt = " and ".join(f"CIP {c}" for c, _ in cips) or "no CIP"
+    caption = (f'TOP {_esc(_dotted_top(top[0]))} maps to {_esc(cip_txt)} in the {a("Chancellor’s Office TOP–CIP–SOC crosswalk", _COE_CROSSWALK_URL)}, '
+               f'and that CIP to SOC {_esc(umbrella[0] if umbrella else soc[:7])} in the {a("NCES CIP–SOC crosswalk", _NCES_CIP_SOC_URL)}. '
+               f'{a(f"O*NET Summary of {soc}", f"https://www.onetonline.org/link/summary/{_onet_code(soc)}")}.')
+    return _block('<h1>TOP–CIP–SOC Crosswalk</h1>',
+                  f'<p>{_linkify(spec.chain_note)}</p>' if spec.chain_note else '',
+                  _chain_svg(top, cips, occ, umbrella),
+                  f'<p class="tnar">{caption}</p>')
 
 
 def _fmt_year(y: str) -> str:
@@ -1423,7 +1596,7 @@ def _footer(lens: LensModel, extra: list[str]) -> str:
 def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
                      title: str, socs: list[str], program_top: str = "", curriculum: bool = False,
                      outlines: list[str] | None = None, consolidated: bool = False,
-                     living: LivingWage | None = None) -> str:
+                     living: LivingWage | None = None, chain: str = "") -> str:
     """Provenance, organized by report section: a tailored dashboard link, then one
     numbered, linked source group per section. Each section's claims trace to named,
     auditable sources — the same audit-trail logic as the clickable program names."""
@@ -1451,7 +1624,13 @@ def _sources_section(org_label: str, sector_label: str, dashboard_url: str,
             ("Lightcast — Job Openings Data (methodology)", _LIGHTCAST_METHOD_URL),
         ] + ([(f"MIT Living Wage Calculator — {living.county}, California", living.url)] if living is not None else [])),
     ]
-    summaries = [(f"O*NET Summary of {soc}", f"https://www.onetonline.org/link/summary/{soc}.00") for soc in socs]
+    if chain:
+        groups.append(("TOP–CIP–SOC Crosswalk", [
+            ("Centers of Excellence TOP–CIP–SOC Crosswalk", _COE_CROSSWALK_URL),
+            ("NCES CIP 2020 – SOC 2018 Crosswalk", _NCES_CIP_SOC_URL),
+            (f"O*NET Summary of {chain}", f"https://www.onetonline.org/link/summary/{_onet_code(chain)}"),
+        ]))
+    summaries = [(f"O*NET Summary of {soc}", f"https://www.onetonline.org/link/summary/{_onet_code(soc)}") for soc in socs]
     if not consolidated:
         groups.append(("Occupational Competencies", summaries))
     if curriculum:
@@ -1788,6 +1967,8 @@ def _wage_section(lens: LensModel, spec: ReportSpec, living: LivingWage | None =
         win += (f" The dashed line represents the annualized living wage for one adult "
                 f"with no children in {_esc(living.county)}: ${annual:,.0f} a year, "
                 f"${living.headline:,.2f} an hour at {HOURS_PER_YEAR:,} hours.")
+    if spec.wage_note:
+        win += f" {_linkify(spec.wage_note)}"
     return _block(
         '<h1>Wage Outcomes</h1>',
         f'<p>{_WAGE_BLURB}{win}</p>',
@@ -1816,12 +1997,15 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         f'<div class="subtitle">{_esc(spec.lede)}</div>',
         # Program evaluations open with the program's own credential menu — the subject of
         # the document. Role reports leave `program_top` empty and this renders nothing.
-        _awards_offered_section(lens.scope.member.name, spec.program_top) if spec.program_top else '',
+        _awards_offered_section(lens.scope.member.name, spec.program_top, spec.planned_awards) if spec.program_top else '',
         # Wage outcomes sit directly under the credential menu: here is what the
         # program grants, here is what recipients went on to earn. Evaluations only —
         # the data is TOP6-grain, and a role report spanning several TOPs would need
         # one plate per TOP or an invalid merge.
         _wage_section(lens, spec, living) if spec.program_top else '',
+        # A program not yet offered argues its destination before showing the market for
+        # it: TOP → CIP → the detailed occupation, with the SOC demand is reported under.
+        _chain_section(spec) if spec.crosswalk_chain and spec.program_top else '',
         _block('<h1>Regional Occupational Demand</h1>',
                f'<p>{_linkify(spec.demand_note)}</p>' if spec.demand_note else '',
                _demand_table(occs, living),
@@ -1881,18 +2065,23 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
     award_axis = lens.award_years[-5:]
     term_keys, term_heads = _term_axis(lens)
     total_label = "All College Programs"
+    # Statewide supply (comparators outside the member's region): no regional openings
+    # rule — the region's openings against other regions' awards would be the category
+    # error the chart's docstring warns of — and no "regional" in the titles.
+    statewide = spec.supply_scope == "statewide"
     if progs and award_axis:
         # Branded only on program evaluations — a role report is not a college's own
         # document and keeps the neutral ramp.
         brand = _brand_color(lens.scope.member.id) if spec.program_top else ""
         chart = _awards_demand_svg(progs, award_axis,
-                                   sum(o.annual_openings for o in occs), brand=brand, region=_region_name(lens))
+                                   0 if statewide else sum(o.annual_openings for o in occs), brand=brand,
+                                   region="" if statewide else _region_name(lens))
         # No caption: the chart carries its own title, axis labels, source line and break
         # label, so a paragraph restating them is noise. Only the report's own curated
         # award_note stays — that is editorial, not chart chrome.
         sections += [
-            _block('<p class="chtitle">Annual Awards vs. Annual Openings</p>',
-                   f'<p>{_esc(_SUPPLY_BLURB)}</p>', chart),
+            _block(f'<p class="chtitle">{"Annual Awards" if statewide else "Annual Awards vs. Annual Openings"}</p>',
+                   f'<p>{_esc(_SUPPLY_BLURB_STATEWIDE if statewide else _SUPPLY_BLURB)}</p>', chart),
             _block(f'<p class="tnar">{_linkify(spec.award_note)}</p>' if spec.award_note else '',
                    _trend_table(progs, award_axis, [_fmt_year(y) for y in award_axis],
                                 "awards", total_label)),
@@ -1901,7 +2090,7 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
         sections += [
             # Chart first: it carries its own title. The note and the legend belong to
             # the TABLE and sit with it, so neither reads as a caption for the chart.
-            _block('<p class="chtitle">Regional Program Enrollment Trends</p>',
+            _block(f'<p class="chtitle">{"Program Enrollment Trends" if statewide else "Regional Program Enrollment Trends"}</p>',
                    f'<p>{_esc(_ENROLL_BLURB)}</p>',
                    _enrollment_lines_svg(progs, term_keys, term_heads, lens.college_terms,
                                          brand=_brand_color(lens.scope.member.id) if spec.program_top else "")),
@@ -1920,10 +2109,14 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
     from partnerships.sectors import SECTORS
     sec_label = SECTORS[play.sector].label if play.sector in SECTORS else play.sector.upper()
     dash_url = spec.dashboard_url or f"https://preview.kallipolis.us/landscape/{member_id}/{play.sector}"
+    # Sources cite the O*NET summary of the detailed code where the chain names one for
+    # the lens's SOC (the base code is what the graph and COE know the occupation by).
+    chain = spec.crosswalk_chain
+    source_socs = [chain if chain and o.soc == chain[:7] else o.soc for o in occs]
     sections += [_sources_section(_org_label(lens.scope.member), sec_label, dash_url,
-                                  play.title, [o.soc for o in occs], spec.program_top,
+                                  play.title, source_socs, spec.program_top,
                                   curriculum=bool(curriculum_parts), outlines=curriculum_outlines,
-                                  consolidated=consolidated, living=living)]
+                                  consolidated=consolidated, living=living, chain=chain)]
     # NO brand colour in the document chrome. Tried three times at widening scope —
     # every heading, then the masthead rule and the Awards Offered accents — and reverted
     # each time for the same reason: colour already carries meaning in this report
@@ -1981,10 +2174,11 @@ def _curriculum_section(spec: ReportSpec, descriptions: dict[str, str] | None = 
     for soc in socs:
         intro = ""
         if consolidated:
-            desc = (descriptions or {}).get(soc, "")
-            link = (f'<a href="https://www.onetonline.org/link/summary/{_esc(soc)}.00" target="_blank" rel="noopener">'
+            desc = (descriptions or {}).get(soc) or (descriptions or {}).get(soc[:7], "")   # a detailed code's description sits under its base SOC
+            link = (f'<a href="https://www.onetonline.org/link/summary/{_esc(_onet_code(soc))}" target="_blank" rel="noopener">'
                     'O*NET Occupation Summary \u2197</a>')
-            key = block_key(college_color(shown[0].member_id) if shown else "#5a6577")   # the chip in the college's colour, as in the table
+            # the chip in the college's colour, as in the table; neutral when the columns are several colleges'
+            key = block_key(college_color(shown[0].member_id) if len({p.member_id for p in shown}) == 1 else "#5a6577")
             intro = (f'<p class="alg-desc">{_esc(desc)} {link}</p>' if desc else f'<p class="alg-desc">{link}</p>') + key
         block = occupation_block(soc, [p for p in shown if p.paired_soc == soc], top_n=top_n, college_order=member_order,
                                  show_gaps=spec.curriculum_show_gaps, columns=columns, intro=intro)

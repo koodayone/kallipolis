@@ -14,7 +14,9 @@ control codes only — so the outline lives in each college's curriculum system,
 module has one adapter per vendor:
 
   courseleaf   Foothill publishes outlines as plain HTML pages under its CourseLeaf
-               catalog (catalog.foothill.edu/course-outlines/<CODE>/).
+               catalog (catalog.foothill.edu/course-outlines/<CODE>/); Coast CCD does the
+               same for Orange Coast (catalog.cccd.edu/courses/<code>/) under the state's
+               COR field names — one parser, a heading profile per host.
   curricunet   Ohlone's CurricUNET exposes a public course index and a per-course
                outline REPORT (a PDF) once the active `courses_id` is known.
   elumen       Mission and De Anza run eLumen. Its "Curriculum Public View" is an
@@ -23,7 +25,9 @@ module has one adapter per vendor:
                (authenticate → department courses → course) and reads the JSON.
   curriqunet   Evergreen Valley runs CurriQunet META with search disabled; its
                "All Fields" report answers anonymously by numeric entity id, and a
-               cheaper companion report lets us scan ids for a discipline.
+               cheaper companion report lets us scan ids for a discipline. San Diego CCD
+               (Mesa) runs the same product with a public catalog whose subject pages
+               carry each course's entity id (curriqunet_catalog_courses), so no scan.
 
 Each adapter returns the same `Outline`: the sections we read (outcomes, objectives,
 description, content, lab, assignments), the dates the college printed on it, and the
@@ -123,35 +127,93 @@ def _today() -> str:
     return date.today().isoformat()
 
 
-# ── courseleaf (Foothill) ──────────────────────────────────────────────────────
+def _get(url: str, **kw) -> httpx.Response:
+    """One GET, retried once on a dropped connection — catalog servers close idle keep-alive
+    connections between a program's courses and the pooled client learns it the hard way."""
+    try:
+        return _client.get(url, **kw)
+    except (httpx.RemoteProtocolError, httpx.ReadError):
+        return _client.get(url, **kw)
+
+
+# ── courseleaf (Foothill; Coast CCD) ───────────────────────────────────────────
 FOOTHILL_URL = "https://catalog.foothill.edu/course-outlines/{code}/"
+#: Each CourseLeaf catalog prints the outline under its own section headings. A profile
+#: names the host's page template, how a code becomes a URL slug, and which heading holds
+#: which section; the parser is the same. Foothill (the default) writes titles in capitals
+#: and is title-cased on read; Coast CCD's headings are the state's COR field names.
+_COURSELEAF = {
+    "catalog.foothill.edu": {
+        "url": FOOTHILL_URL, "slug": lambda code: code.replace(" ", "-"), "titlecase": True,
+        "outcomes": "Student Learning Outcomes", "description": "Description", "objectives": "Course Objectives",
+        "content": "Course Content", "lab": "Lab Content", "assignments": (),
+        "heads": {"Student Learning Outcomes", "Description", "Course Objectives", "Course Content",
+                  "Lab Content", "Special Facilities and/or Equipment", "Method(s) of Evaluation"},
+        "effective": "Effective Term:", "approved": "",
+    },
+    "catalog.cccd.edu": {
+        "url": "https://catalog.cccd.edu/courses/{code}/", "slug": lambda code: code.lower().replace(" ", "-"), "titlecase": False,
+        "outcomes": "Course Level Student Learning Outcome(s)", "description": "Course Description", "objectives": "Course Objectives",
+        "content": "Lecture Content", "lab": "Lab Content",
+        "assignments": ("Reading Assignments", "Writing Assignments", "Out-of-class Assignments"),
+        "heads": {"Course Description", "Course Level Student Learning Outcome(s)", "Course Objectives", "Lecture Content",
+                  "Lab Content", "Method(s) of Instruction", "Instructional Techniques", "Reading Assignments",
+                  "Writing Assignments", "Out-of-class Assignments", "Demonstration of Critical Thinking",
+                  "Required Writing, Problem Solving, Skills Demonstration", "Eligible Disciplines", "Textbooks Resources"},
+        "effective": "", "approved": "Curriculum Committee Approval Date",
+    },
+}
+_COURSELEAF_NOISE = {"The student will be able to:", "Not applicable.", "I *Scans Competencies", "II +Scans Foundations"}
 
 
-def parse_courseleaf(html: str, *, college: str, code: str, url: str) -> Outline:
+def parse_courseleaf(html: str, *, college: str, code: str, url: str, host: str = "catalog.foothill.edu") -> Outline:
+    P = _COURSELEAF[host]
     L = _lines(html)
     title = next((l for l in L if re.match(rf"^{re.escape(code)}:", l)), code)
     title = title.split(":", 1)[1].strip() if ":" in title else title
-    title = title.split(" < ")[0].strip().title()
-    heads = {"Student Learning Outcomes", "Description", "Course Objectives", "Course Content",
-             "Lab Content", "Special Facilities and/or Equipment", "Method(s) of Evaluation"}
-    slo = [l for l in _between(L, "Student Learning Outcomes", heads)]
-    desc = " ".join(_between(L, "Description", heads))
-    obj = [l for l in _between(L, "Course Objectives", heads) if l != "The student will be able to:"]
-    content = _between(L, "Course Content", heads)
-    lab = [l for l in _between(L, "Lab Content", heads) if l != "Not applicable."]
-    eff = next((l.split(":", 1)[1].strip() for l in L if l.startswith("Effective Term:")), "")
-    if not eff:  # CourseLeaf renders the field label and value on separate lines
-        i = next((k for k, l in enumerate(L) if l == "Effective Term:"), None)
-        eff = L[i + 1] if i is not None and i + 1 < len(L) else ""
-    return Outline(college, "courseleaf", code, title, desc, slo, obj, content, lab, [],
-                   url, eff, "", _today())
+    title = title.split(" < ")[0].strip()
+    if P["titlecase"]:
+        title = title.title()
+    heads = P["heads"]
+
+    def section(head):
+        out = []
+        for l in _between(L, head, heads):
+            if l in _COURSELEAF_NOISE:
+                continue
+            # Coast CCD breaks "&nbsp;" across a tag: the line ends in "nb" and the next begins "sp;"
+            if l.startswith("sp;") and out and out[-1].endswith(" nb"):
+                out[-1] = out[-1][:-3].rstrip() + " " + l[3:].strip()
+                continue
+            out.append(l)
+        return out
+
+    slo = section(P["outcomes"])
+    desc = " ".join(section(P["description"]))
+    obj = section(P["objectives"])
+    content = section(P["content"])
+    lab = section(P["lab"])
+    assign = [l for head in P["assignments"] for l in section(head)]
+    eff = ""
+    if P["effective"]:
+        eff = next((l.split(":", 1)[1].strip() for l in L if l.startswith(P["effective"])), "")
+        if not eff:  # CourseLeaf renders the field label and value on separate lines
+            i = next((k for k, l in enumerate(L) if l == P["effective"]), None)
+            eff = L[i + 1] if i is not None and i + 1 < len(L) else ""
+    approved = ""
+    if P["approved"]:
+        i = next((k for k, l in enumerate(L) if l == P["approved"]), None)
+        approved = L[i + 1] if i is not None and i + 1 < len(L) and re.match(r"^\d{1,2}/\d{1,2}/\d{4}$", L[i + 1]) else ""
+    return Outline(college, "courseleaf", code, title, desc, slo, obj, content, lab, assign,
+                   url, eff, approved, _today())
 
 
-def fetch_courseleaf(code: str, *, college: str = "Foothill College") -> Outline:
-    url = FOOTHILL_URL.format(code=code.replace(" ", "-"))
-    r = _client.get(url)
+def fetch_courseleaf(code: str, *, college: str = "Foothill College", host: str = "catalog.foothill.edu") -> Outline:
+    P = _COURSELEAF[host]
+    url = P["url"].format(code=P["slug"](code))
+    r = _get(url)
     r.raise_for_status()
-    return parse_courseleaf(r.text, college=college, code=code, url=url)
+    return parse_courseleaf(r.text, college=college, code=code, url=url, host=host)
 
 
 # ── curricunet (Ohlone) ────────────────────────────────────────────────────────
@@ -386,18 +448,38 @@ def parse_curriqunet_outline(html: str, *, college: str, url: str) -> Outline:
 
     tail_stops = {"Content", "Assignments", "Lab Content", "Course Description", "Lecture Hours", "Lab Hours",
                   "Outline Approval Date", "Outline Effective Date", "Prerequisites", "Corequisites", "Advisories",
-                  "Objectives", "Instruction Methods", "Evaluation Methods"}
-    disc, num = g("Main Course Discipline"), g("Course Number")
+                  "Objectives", "Instruction Methods", "Evaluation Methods", "Lecture Content", "Laboratory Content",
+                  "Course Lab/Activity Content", "Other Information"}
+
+    def value_of(label, n=120):
+        """A field's value: on the label's line (Evergreen Valley) or the next line (San Diego CCD)."""
+        v = g(label, n)
+        if v:
+            return v
+        i = next((k for k, l in enumerate(L) if l == label), None)
+        return L[i + 1][:n] if i is not None and i + 1 < len(L) else ""
+
+    def tagged(tag):
+        """Repeated `<tag>` / value pairs — how San Diego CCD's report lists outcomes and objectives."""
+        return [L[k + 1] for k, l in enumerate(L) if l == tag and k + 1 < len(L)]
+
+    disc, num = g("Main Course Discipline") or g("Prefix"), g("Course Number")
     code = f"{disc} {num}".strip()
-    title = g("Course Title", 120).split(" Short Title")[0].strip()
-    desc = " ".join(_between(L, "Catalog Description", ["Short Schedule Description"]))
-    lecture = [_strip_enum(re.sub(r"^[IVX]+\)\s*", "", l)) for l in tail_block("Content", tail_stops)]
-    lab = [_strip_enum(l) for l in tail_block("Lab Content", tail_stops)]
+    title = value_of("Course Title").split(" Short Title")[0].strip()
+    desc = " ".join(_between(L, "Catalog Description", ["Short"], prefix=True))
+    # Lecture content: the ASSIST tail's "Content" block (Evergreen Valley) or, where the
+    # report subdivides it, its "Lecture Content" / "Laboratory Content" blocks (San Diego CCD).
+    lecture_raw = tail_block("Lecture Content", tail_stops) or tail_block("Content", tail_stops)
+    lecture = [_strip_enum(re.sub(r"^[IVX]+\)\s*", "", l)) for l in lecture_raw]
+    lab = [_strip_enum(l) for l in tail_block("Laboratory Content", tail_stops) or tail_block("Lab Content", tail_stops)]
     assign = tail_block("Assignments", tail_stops)
-    obj = [l for l in _between(L, "Objectives", ["Student Learning Outcomes"])
-           if l != "Objectives" and not l.startswith(("Objectives are small steps", "Objectives need to be"))]
-    slo = [l for l in _between(L, "Student Learning Outcomes", ["Methods of Evaluation and Examination"])
-           if l not in _EVC_SLO_NOISE and not l.startswith(_EVC_SLO_NOISE_PREFIX) and len(l) > 25]
+    if not assign:  # no ASSIST assignments block: the body's Assignments section, its field labels dropped
+        assign = [l for l in _between(L, "Assignments", ["Methods of Evaluation"])
+                  if l != "Optional Text" and not l.endswith("Assignments") and not l.startswith("Appropriate ")]
+    obj = tagged("Objective Text") or [l for l in _between(L, "Objectives", ["Student Learning Outcomes"])
+                                       if l != "Objectives" and not l.startswith(("Objectives are small steps", "Objectives need to be"))]
+    slo = tagged("Outcome Text") or [l for l in _between(L, "Student Learning Outcomes", ["Methods of Evaluation and Examination"])
+                                     if l not in _EVC_SLO_NOISE and not l.startswith(_EVC_SLO_NOISE_PREFIX) and len(l) > 25]
     notes = "objectives field holds template text only" if not obj else ""
     return Outline(college, "curriqunet", code, title, desc, slo, obj, lecture, lab, assign, url,
                    after("Outline Effective Date"), after("Outline Approval Date") or after("Revision Date"),
@@ -407,9 +489,42 @@ def parse_curriqunet_outline(html: str, *, college: str, url: str) -> Outline:
 def fetch_curriqunet(entity_id: int, *, host: str = "evc.curriqunet.com", college: str = "Evergreen Valley College",
                      report_id: int = EVC_ALL_FIELDS) -> Outline:
     url = CURRIQUNET_REPORT.format(host=host, eid=entity_id, rid=report_id)
-    r = _client.get(url)
+    r = _get(url)
     r.raise_for_status()
     return parse_curriqunet_outline(r.text, college=college, url=url)
+
+
+CURRIQUNET_CATALOG_PAGE = "https://{host}/Catalog/_getPage?catalogId={catalog_id}&id={page_id}"
+
+
+def parse_curriqunet_catalog_courses(page: dict) -> dict[str, dict]:
+    """{code: {"entity_id", "title", "description"}} from a CurriQunet META catalog subject page
+    (the JSON behind `catalog/alias/<catalog>/iq/<page_id>`). The page's curriculum block
+    renders one `course-summary-wrapper` per course carrying its entity id — the key the
+    "All Fields" report is addressed by. Only status Active rows are returned."""
+    out: dict[str, dict] = {}
+    for block in page.get("body", []):
+        if block.get("presentationtype") != "curriculum":
+            continue
+        for m in re.finditer(r'<div class="[^"]*course-summary-wrapper[^"]*" data-course-id="(\d+)"(.*?)(?=<div class="[^"]*course-summary-wrapper|$)',
+                             block.get("text") or "", re.S):
+            eid, body = int(m.group(1)), m.group(2)
+            status = re.search(r'data-catalog-status-base="([^"]*)"', body)
+            if status and status.group(1) != "Active":
+                continue
+            field = lambda cls: htmllib.unescape(re.sub(r"<[^>]+>", "", (re.search(rf'class="{cls}"[^>]*>(.*?)</', body, re.S) or [None, ""])[1])).strip()
+            code = f'{field("course-subject-code")} {field("course-number")}'.strip()
+            if code:
+                out[code] = {"entity_id": eid, "title": field("course-title"), "description": field("course-description")}
+    return out
+
+
+def curriqunet_catalog_courses(host: str, catalog_id: int, page_id: int) -> dict[str, dict]:
+    """Fetch and parse one catalog subject page (see parse_curriqunet_catalog_courses)."""
+    r = _get(CURRIQUNET_CATALOG_PAGE.format(host=host, catalog_id=catalog_id, page_id=page_id),
+             headers={"Accept": "application/json"})
+    r.raise_for_status()
+    return parse_curriqunet_catalog_courses(r.json())
 
 
 def scan_curriqunet(discipline: str, id_range: range, *, host: str = "evc.curriqunet.com",
@@ -447,7 +562,7 @@ def load(college_key: str, code: str) -> Outline | None:
 def retrieve(source: dict, code: str, *, college: str, college_key: str, refresh: bool = False,
              title: str = "") -> Outline:
     """Fetch (or load from cache) one outline. `source` is the roster's adapter spec:
-      {"system": "courseleaf"}
+      {"system": "courseleaf"}                                   (Foothill; or "host": "catalog.cccd.edu")
       {"system": "curricunet", "site": "Ohlone"}
       {"system": "elumen", "host": "mission.elumenapp.com", "org_entity_id": 200}
       {"system": "curriqunet", "host": "evc.curriqunet.com", "entity_id": 5299, "report_id": 52}
@@ -458,7 +573,7 @@ def retrieve(source: dict, code: str, *, college: str, college_key: str, refresh
             return cached
     sysname = source["system"]
     if sysname == "courseleaf":
-        o = fetch_courseleaf(code, college=college)
+        o = fetch_courseleaf(code, college=college, host=source.get("host", "catalog.foothill.edu"))
     elif sysname == "curricunet":
         o = CurricunetSite(source.get("site", "Ohlone"), college).fetch(code)
     elif sysname == "elumen":
@@ -509,7 +624,7 @@ def check_link(o: Outline) -> tuple[bool, str]:
             if "Session Expired" in text:
                 return False, "session expired: the public view cannot be deep-linked"
         else:
-            r = _client.get(o.source_url)
+            r = _get(o.source_url)
             if r.status_code != 200:
                 return False, f"HTTP {r.status_code}"
             if "pdf" in r.headers.get("content-type", ""):

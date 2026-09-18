@@ -46,6 +46,9 @@ XWALK = sys.argv[3] if len(sys.argv) > 3 else '/tmp/crosswalk.png'
 AWCHART = sys.argv[4] if len(sys.argv) > 4 else '/tmp/awchart.png'
 ENCHART = sys.argv[5] if len(sys.argv) > 5 else '/tmp/enchart.png'
 WGCHART = sys.argv[6] if len(sys.argv) > 6 else '/tmp/wgchart.png'
+# The TOP–CIP–SOC chain figure (a program not yet offered): a raster too, and its own
+# class so the crosswalk branch's SVG scraping never sees it.
+CHCHART = sys.argv[7] if len(sys.argv) > 7 else '/tmp/chchart.png'
 #: Render the crosswalk as the native program x SOC table instead of the raster
 #: figure. Off by default so the .docx matches the .pdf; see the `xwrap` branch.
 XWALK_NATIVE = os.environ.get('XWALK_NATIVE', '') not in ('', '0', 'false')
@@ -750,6 +753,14 @@ def add_wgchart_image():
     doc.add_picture(WGCHART, width=Inches(CONTENT_W))
 
 
+def add_chchart_image():
+    """The TOP–CIP–SOC chain figure. Raster like the charts; its links live in the caption
+    paragraph under it, which the `tnar` handler emits as hyperlinks."""
+    if not os.path.exists(CHCHART):
+        return
+    doc.add_picture(CHCHART, width=Inches(CONTENT_W))
+
+
 def add_xwalk_legend(div):
     """Fallback only (used when the crosswalk renders as a rasterized funnel PNG):
     one quiet centered line of the per-college program links, which are otherwise
@@ -950,6 +961,8 @@ def emit(el):
             add_trend(el)
         elif 'alg-tbl' in cls:
             add_alg_table(el)
+    elif 'chainfig' in cls:
+        add_chchart_image()
     elif 'wgchart' in cls:
         add_wgchart_image()
     elif 'enchart' in cls:
