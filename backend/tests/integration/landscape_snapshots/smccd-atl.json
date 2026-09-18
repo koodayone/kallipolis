@@ -2,23 +2,25 @@
   "/employers": {
     "employers": [
       {
-        "description": "Eco Soft Touch Car Wash is a full-service car wash in Daly City, CA that operates touchless washing using their proprietary Neoglide technology, designed to be gentle on vehicle finishes while minimizing chemical use. The business emphasizes eco-conscious product formulations across all wash departments under what they call their \"Eco-Soft policy.\" Operational roles include wash technicians and customer service staff managing the automated and detailing service lines.",
+        "description": "An environmentally friendly car wash service.",
         "display_name": null,
         "lat": 37.6938484,
         "lng": -122.4864797,
         "naics4": "8111",
         "naics_title": "Automotive Repair and Maintenance",
         "name": "Westlake Eco Soft Touch Car Wash",
-        "relevance": 23.66,
+        "relevance": 23.71,
         "sector": "Other Services",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 1,
+        "soc_count": 2,
         "soc_titles": {
+          "49-2096": "Electronic Equipment Installers and Repairers, Motor Vehicles",
           "49-3023": "Automotive Service Technicians and Mechanics"
         },
         "socs": [
-          "49-3023"
+          "49-3023",
+          "49-2096"
         ],
         "website": "https://www.ecosofttouch.com/"
       },
@@ -387,21 +389,25 @@
         "naics4": "4231",
         "naics_title": "Motor Vehicle and Motor Vehicle Parts and Supplies Merchant Wholesalers",
         "name": "Parts Warehouse Distributor",
-        "relevance": 3.35,
+        "relevance": 3.46,
         "sector": "Wholesale",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 1,
+        "soc_count": 3,
         "soc_titles": {
+          "49-2093": "Electrical and Electronics Installers and Repairers, Transportation Equipment",
+          "49-2096": "Electronic Equipment Installers and Repairers, Motor Vehicles",
           "49-3023": "Automotive Service Technicians and Mechanics"
         },
         "socs": [
-          "49-3023"
+          "49-3023",
+          "49-2096",
+          "49-2093"
         ],
         "website": "CITYAUTOSUPPLY.COM"
       },
       {
-        "description": "ABC Worldwide Transportation is a Bay Area executive ground transportation company headquartered in San Mateo, CA, operating one of the region's largest fleets \u2014 corporate sedans, SUVs, executive sprinters, and 27\u201340-seat motor coaches. They serve airport transfers (SFO, OAK, SJC), corporate meetings, and special events for clients such as Salesforce, HP, and Applied Materials, with 24/7 operations and an international affiliate network for worldwide bookings. With over 30 years in business, the company employs professional drivers and dispatchers and maintains TCP and DOT licensing for regulated charter and livery operations.",
+        "description": "A global transportation and logistics company.",
         "display_name": null,
         "lat": 37.5685576,
         "lng": -122.3110699,
@@ -422,7 +428,7 @@
         "website": "https://abctrans.com/"
       },
       {
-        "description": "Carey International is a global provider of premium chauffeured ground transportation, operating locally as Carey Limousine S.F., Inc. out of South San Francisco (1098 San Mateo Ave). The San Francisco operation covers the greater Bay Area \u2014 including Silicon Valley, Oakland, and Napa Valley \u2014 serving corporate clients, roadshows, meetings and events, and VIP executive transfers. Locally employed roles center on professional chauffeurs who hold California TCP Class A certification and undergo Carey's proprietary background and safety certification program.",
+        "description": "A luxury transportation service offering limousine rentals.",
         "display_name": null,
         "lat": 37.6474278,
         "lng": -122.4160641,
@@ -443,7 +449,7 @@
         "website": "https://www.carey.com/san-francisco/"
       },
       {
-        "description": "Caltrain is a regional commuter rail system operating a 77-mile corridor with approximately 32 stations from San Francisco south through the Peninsula to San Jose and Gilroy, governed by the Peninsula Corridor Joint Powers Board since 1992. The agency recently completed a major infrastructure modernization replacing its diesel fleet with electric multiple unit (EMU) trains, enabling faster and more frequent service. It employs train operators, maintenance technicians, civil and electrical engineers, and administrative staff at facilities along the Peninsula, with headquarters at Millbrae Station.",
+        "description": "The governing body for the Caltrain commuter rail line.",
         "display_name": null,
         "lat": 37.5059999,
         "lng": -122.2618964,
@@ -464,7 +470,7 @@
         "website": "https://www.caltrain.com/"
       },
       {
-        "description": "Airline Coach Service (ACS) is a ground transportation company specializing in aviation-industry clients, with services that include airline crew transfers, airport and hotel shuttles, fixed-route employee shuttles, private and corporate charters, and university campus transit. The company operates a mixed fleet of buses, mini-buses, vans, and SUVs \u2014 approximately 90% running on alternative clean fuels \u2014 and supports operations with passenger and manager mobile apps. Drivers, fleet technicians, and dispatch personnel are the core operational workforce.",
+        "description": "A service providing coach transportation, possibly related to airlines.",
         "display_name": null,
         "lat": 37.599928,
         "lng": -122.3719583,
@@ -485,7 +491,7 @@
         "website": "https://www.airlinecoach.com/"
       },
       {
-        "description": "Avalon Transportation is a luxury chauffeured ground transportation company founded in Los Angeles in 1990, operating across 500 cities nationwide with offices from Los Angeles to New York and an international affiliate network. Services include airport transfers, point-to-point rides, hourly charters, event transportation, and road show logistics, targeting corporate clients and business travelers. Locally based drivers, dispatch coordinators, and account management staff support California operations out of the Los Angeles market.",
+        "description": "A transportation company offering various transit solutions.",
         "display_name": null,
         "lat": 37.5883478,
         "lng": -122.3358474,
@@ -506,7 +512,7 @@
         "website": "https://avalontrans.com/"
       },
       {
-        "description": "Gateway Global is a Burlingame-based chauffeured transportation company operating since 1979, with service across 450+ cities in the U.S., Europe, and Asia-Pacific. They provide airport transfers, corporate event transportation, hotel and employee shuttles, and valet and parking services, with a fleet ranging from luxury sedans to 56-passenger motor coaches including ADA-accessible vehicles. Their local operations employ chauffeurs, shuttle drivers, and dispatch and coordination staff supporting Bay Area corporate and leisure clients.",
+        "description": "A company involved in international trade and logistics.",
         "display_name": null,
         "lat": 37.5980629,
         "lng": -122.3727054,
@@ -534,7 +540,7 @@
       "San Mateo"
     ],
     "shown": 25,
-    "total": 235
+    "total": 236
   },
   "/programs": {
     "coverage_awards_only": true,
@@ -542,21 +548,21 @@
     "matrix": {
       "cells": [
         {
-          "awards": 0,
           "college": "College of San Mateo",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "094800"
         },
         {
-          "awards": 119,
           "college": "Skyline College",
           "enrolled": true,
+          "projected": 53.0,
           "top6": "094800"
         },
         {
-          "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "094800"
         }
       ],
@@ -572,24 +578,25 @@
     "sector": "Advanced Transportation & Logistics",
     "tops": [
       {
-        "awards_total": 119,
         "enrollment_total": 410,
         "name": "Automotive Technology",
-        "soc_count": 1,
+        "projected_supply": 53.0,
+        "soc_count": 3,
         "top6": "094800"
       }
-    ]
+    ],
+    "total_supply": 53.0
   },
   "landscape": {
     "aggregate": {
-      "candidate_employers": 433,
+      "candidate_employers": 460,
       "combined_awards": 119,
-      "combined_supply_total": 10.67,
-      "gap": 1389,
+      "combined_supply_total": 53.0,
+      "gap": 1417,
       "n_colleges": 3,
-      "n_occupations": 1,
-      "occupations_taught": 1,
-      "regional_demand_total": 1400
+      "n_occupations": 3,
+      "occupations_taught": 3,
+      "regional_demand_total": 1470
     },
     "award_years": [
       "2020-2021",
@@ -602,14 +609,45 @@
       {
         "cells": [
           {
-            "annual_openings": 1400,
-            "annual_wage": 70310,
+            "annual_openings": 50,
+            "annual_wage": 115970,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 1400,
-            "growth_rate": 0.013224144,
+            "gap": 50,
+            "growth_rate": -0.004876187,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "49-2093",
+            "supply": 0.0,
+            "title": "Electrical and Electronics Installers and Repairers, Transportation Equipment"
+          },
+          {
+            "annual_openings": 10,
+            "annual_wage": 54190,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 10,
+            "growth_rate": -0.169801731,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "49-2096",
+            "supply": 0.0,
+            "title": "Electronic Equipment Installers and Repairers, Motor Vehicles"
+          },
+          {
+            "annual_openings": 1410,
+            "annual_wage": 70590,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 1410,
+            "growth_rate": 0.025692604,
+            "in_demand": true,
             "programs": [],
             "soc_code": "49-3023",
             "supply": 0.0,
@@ -621,14 +659,211 @@
       {
         "cells": [
           {
-            "annual_openings": 1400,
-            "annual_wage": 70310,
+            "annual_openings": 50,
+            "annual_wage": 115970,
             "awards_recent": 119,
             "course_count": 2,
             "enrolled": true,
             "feeding_awards": 119,
-            "gap": 1389,
-            "growth_rate": 0.013224144,
+            "gap": -3,
+            "growth_rate": -0.004876187,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  8,
+                  9,
+                  13,
+                  27,
+                  119
+                ],
+                "awards_recent": 119,
+                "enrollment": [
+                  250,
+                  350,
+                  379,
+                  334,
+                  367,
+                  399,
+                  332,
+                  410,
+                  383
+                ],
+                "name": "Automotive Technology",
+                "top6": "094800",
+                "wages": [
+                  {
+                    "n": 530,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 50020,
+                    "wage_after_5": 64735,
+                    "wage_before": 23838,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 808,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 45472,
+                    "wage_after_5": 58950,
+                    "wage_before": 21845,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 233,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 42436,
+                    "wage_after_5": 58236,
+                    "wage_before": 22312,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  7,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  15,
+                  null,
+                  null
+                ],
+                "name": "Alternative Fuels and Advanced Transportation Technology",
+                "top6": "094840",
+                "wages": [
+                  {
+                    "n": 29,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 73943,
+                    "wage_after_5": 74451,
+                    "wage_before": 32256,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "49-2093",
+            "supply": 53.0,
+            "title": "Electrical and Electronics Installers and Repairers, Transportation Equipment"
+          },
+          {
+            "annual_openings": 10,
+            "annual_wage": 54190,
+            "awards_recent": 119,
+            "course_count": 2,
+            "enrolled": true,
+            "feeding_awards": 119,
+            "gap": -43,
+            "growth_rate": -0.169801731,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  8,
+                  9,
+                  13,
+                  27,
+                  119
+                ],
+                "awards_recent": 119,
+                "enrollment": [
+                  250,
+                  350,
+                  379,
+                  334,
+                  367,
+                  399,
+                  332,
+                  410,
+                  383
+                ],
+                "name": "Automotive Technology",
+                "top6": "094800",
+                "wages": [
+                  {
+                    "n": 530,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 50020,
+                    "wage_after_5": 64735,
+                    "wage_before": 23838,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 808,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 45472,
+                    "wage_after_5": 58950,
+                    "wage_before": 21845,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 233,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 42436,
+                    "wage_after_5": 58236,
+                    "wage_before": 22312,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  7,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  15,
+                  null,
+                  null
+                ],
+                "name": "Alternative Fuels and Advanced Transportation Technology",
+                "top6": "094840",
+                "wages": [
+                  {
+                    "n": 29,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 73943,
+                    "wage_after_5": 74451,
+                    "wage_before": 32256,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "49-2096",
+            "supply": 53.0,
+            "title": "Electronic Equipment Installers and Repairers, Motor Vehicles"
+          },
+          {
+            "annual_openings": 1410,
+            "annual_wage": 70590,
+            "awards_recent": 119,
+            "course_count": 2,
+            "enrolled": true,
+            "feeding_awards": 119,
+            "gap": 1357,
+            "growth_rate": 0.025692604,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -714,7 +949,7 @@
               }
             ],
             "soc_code": "49-3023",
-            "supply": 10.67,
+            "supply": 53.0,
             "title": "Automotive Service Technicians and Mechanics"
           }
         ],
@@ -723,14 +958,45 @@
       {
         "cells": [
           {
-            "annual_openings": 1400,
-            "annual_wage": 70310,
+            "annual_openings": 50,
+            "annual_wage": 115970,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 1400,
-            "growth_rate": 0.013224144,
+            "gap": 50,
+            "growth_rate": -0.004876187,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "49-2093",
+            "supply": 0.0,
+            "title": "Electrical and Electronics Installers and Repairers, Transportation Equipment"
+          },
+          {
+            "annual_openings": 10,
+            "annual_wage": 54190,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 10,
+            "growth_rate": -0.169801731,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "49-2096",
+            "supply": 0.0,
+            "title": "Electronic Equipment Installers and Repairers, Motor Vehicles"
+          },
+          {
+            "annual_openings": 1410,
+            "annual_wage": 70590,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 1410,
+            "growth_rate": 0.025692604,
+            "in_demand": true,
             "programs": [],
             "soc_code": "49-3023",
             "supply": 0.0,
@@ -741,6 +1007,10 @@
       }
     ],
     "coverage_awards_only": true,
+    "demand_criteria": {
+      "min_openings": 250,
+      "min_wage": 50000
+    },
     "enrollment_terms": [
       "Fall 2021",
       "Spring 2022",
@@ -752,7 +1022,7 @@
       "Spring 2025",
       "Fall 2025"
     ],
-    "executive_summary": "This view examines the regional demand landscape across the 1 advanced transportation & logistics occupations the San Mateo County CCD \u2014 Advanced Transportation & Logistics targets in the Bay Area regional labor market. Regional demand for these occupations totals 1,400 openings per year.",
+    "executive_summary": "This view examines the regional demand landscape across the 3 advanced transportation & logistics occupations the San Mateo County CCD \u2014 Advanced Transportation & Logistics targets in the Bay Area regional labor market. Regional demand for these occupations totals 1,470 openings per year.",
     "is_sector_priority": false,
     "region": "Bay",
     "region_display": "Bay Area",

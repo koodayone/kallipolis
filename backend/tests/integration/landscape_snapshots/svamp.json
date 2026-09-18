@@ -1077,669 +1077,309 @@
     "total": 224
   },
   "/programs": {
-    "coverage_awards_only": false,
+    "coverage_awards_only": true,
     "latest_award_year": "2024-2025",
     "matrix": {
       "cells": [
         {
-          "awards": 0,
           "college": "De Anza College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "092400"
         },
         {
-          "awards": 0,
           "college": "Evergreen Valley College",
           "enrolled": true,
+          "projected": 0.0,
           "top6": "092400"
         },
         {
-          "awards": 0,
           "college": "Foothill College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "092400"
         },
         {
-          "awards": 0,
           "college": "Mission College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "092400"
         },
         {
-          "awards": 0,
           "college": "Ohlone College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "092400"
         },
         {
-          "awards": 0,
           "college": "De Anza College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "093400"
         },
         {
-          "awards": 0,
           "college": "Evergreen Valley College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "093400"
         },
         {
-          "awards": 0,
           "college": "Foothill College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "093400"
         },
         {
-          "awards": 0,
           "college": "Mission College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "093400"
         },
         {
-          "awards": 0,
           "college": "Ohlone College",
           "enrolled": true,
+          "projected": 0.3,
           "top6": "093400"
         },
         {
-          "awards": 0,
           "college": "De Anza College",
           "enrolled": false,
-          "top6": "093410"
-        },
-        {
-          "awards": 0,
-          "college": "Evergreen Valley College",
-          "enrolled": false,
-          "top6": "093410"
-        },
-        {
-          "awards": 0,
-          "college": "Foothill College",
-          "enrolled": false,
-          "top6": "093410"
-        },
-        {
-          "awards": 0,
-          "college": "Mission College",
-          "enrolled": false,
-          "top6": "093410"
-        },
-        {
-          "awards": 0,
-          "college": "Ohlone College",
-          "enrolled": false,
-          "top6": "093410"
-        },
-        {
-          "awards": 0,
-          "college": "De Anza College",
-          "enrolled": false,
-          "top6": "093420"
-        },
-        {
-          "awards": 0,
-          "college": "Evergreen Valley College",
-          "enrolled": false,
-          "top6": "093420"
-        },
-        {
-          "awards": 0,
-          "college": "Foothill College",
-          "enrolled": false,
-          "top6": "093420"
-        },
-        {
-          "awards": 0,
-          "college": "Mission College",
-          "enrolled": false,
-          "top6": "093420"
-        },
-        {
-          "awards": 0,
-          "college": "Ohlone College",
-          "enrolled": false,
-          "top6": "093420"
-        },
-        {
-          "awards": 0,
-          "college": "De Anza College",
-          "enrolled": false,
-          "top6": "093430"
-        },
-        {
-          "awards": 0,
-          "college": "Evergreen Valley College",
-          "enrolled": false,
-          "top6": "093430"
-        },
-        {
-          "awards": 0,
-          "college": "Foothill College",
-          "enrolled": false,
-          "top6": "093430"
-        },
-        {
-          "awards": 0,
-          "college": "Mission College",
-          "enrolled": false,
-          "top6": "093430"
-        },
-        {
-          "awards": 0,
-          "college": "Ohlone College",
-          "enrolled": false,
-          "top6": "093430"
-        },
-        {
-          "awards": 0,
-          "college": "De Anza College",
-          "enrolled": false,
-          "top6": "093460"
-        },
-        {
-          "awards": 0,
-          "college": "Evergreen Valley College",
-          "enrolled": false,
-          "top6": "093460"
-        },
-        {
-          "awards": 0,
-          "college": "Foothill College",
-          "enrolled": false,
-          "top6": "093460"
-        },
-        {
-          "awards": 0,
-          "college": "Mission College",
-          "enrolled": false,
-          "top6": "093460"
-        },
-        {
-          "awards": 0,
-          "college": "Ohlone College",
-          "enrolled": false,
-          "top6": "093460"
-        },
-        {
-          "awards": 0,
-          "college": "De Anza College",
-          "enrolled": false,
-          "top6": "093470"
-        },
-        {
-          "awards": 0,
-          "college": "Evergreen Valley College",
-          "enrolled": false,
-          "top6": "093470"
-        },
-        {
-          "awards": 0,
-          "college": "Foothill College",
-          "enrolled": false,
-          "top6": "093470"
-        },
-        {
-          "awards": 0,
-          "college": "Mission College",
-          "enrolled": false,
-          "top6": "093470"
-        },
-        {
-          "awards": 0,
-          "college": "Ohlone College",
-          "enrolled": false,
-          "top6": "093470"
-        },
-        {
-          "awards": 0,
-          "college": "De Anza College",
-          "enrolled": false,
-          "top6": "093480"
-        },
-        {
-          "awards": 0,
-          "college": "Evergreen Valley College",
-          "enrolled": false,
-          "top6": "093480"
-        },
-        {
-          "awards": 0,
-          "college": "Foothill College",
-          "enrolled": false,
-          "top6": "093480"
-        },
-        {
-          "awards": 0,
-          "college": "Mission College",
-          "enrolled": false,
-          "top6": "093480"
-        },
-        {
-          "awards": 0,
-          "college": "Ohlone College",
-          "enrolled": false,
-          "top6": "093480"
-        },
-        {
-          "awards": 0,
-          "college": "De Anza College",
-          "enrolled": false,
+          "projected": 0.0,
           "top6": "093500"
         },
         {
-          "awards": 0,
           "college": "Evergreen Valley College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "093500"
         },
         {
-          "awards": 0,
           "college": "Foothill College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "093500"
         },
         {
-          "awards": 10,
           "college": "Mission College",
           "enrolled": true,
+          "projected": 5.3,
           "top6": "093500"
         },
         {
-          "awards": 0,
           "college": "Ohlone College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "093500"
         },
         {
-          "awards": 0,
           "college": "De Anza College",
           "enrolled": false,
-          "top6": "094300"
-        },
-        {
-          "awards": 0,
-          "college": "Evergreen Valley College",
-          "enrolled": false,
-          "top6": "094300"
-        },
-        {
-          "awards": 0,
-          "college": "Foothill College",
-          "enrolled": false,
-          "top6": "094300"
-        },
-        {
-          "awards": 0,
-          "college": "Mission College",
-          "enrolled": false,
-          "top6": "094300"
-        },
-        {
-          "awards": 0,
-          "college": "Ohlone College",
-          "enrolled": false,
-          "top6": "094300"
-        },
-        {
-          "awards": 0,
-          "college": "De Anza College",
-          "enrolled": false,
+          "projected": 0.0,
           "top6": "094500"
         },
         {
-          "awards": 0,
           "college": "Evergreen Valley College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "094500"
         },
         {
-          "awards": 17,
           "college": "Foothill College",
           "enrolled": true,
+          "projected": 9.0,
           "top6": "094500"
         },
         {
-          "awards": 0,
           "college": "Mission College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "094500"
         },
         {
-          "awards": 0,
           "college": "Ohlone College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "094500"
         },
         {
-          "awards": 10,
           "college": "De Anza College",
           "enrolled": true,
+          "projected": 15.3,
           "top6": "094610"
         },
         {
-          "awards": 0,
           "college": "Evergreen Valley College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "094610"
         },
         {
-          "awards": 20,
           "college": "Foothill College",
           "enrolled": false,
+          "projected": 10.7,
           "top6": "094610"
         },
         {
-          "awards": 0,
           "college": "Mission College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "094610"
         },
         {
-          "awards": 0,
           "college": "Ohlone College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "094610"
         },
         {
-          "awards": 0,
           "college": "De Anza College",
           "enrolled": false,
-          "top6": "095050"
-        },
-        {
-          "awards": 0,
-          "college": "Evergreen Valley College",
-          "enrolled": false,
-          "top6": "095050"
-        },
-        {
-          "awards": 0,
-          "college": "Foothill College",
-          "enrolled": false,
-          "top6": "095050"
-        },
-        {
-          "awards": 0,
-          "college": "Mission College",
-          "enrolled": false,
-          "top6": "095050"
-        },
-        {
-          "awards": 0,
-          "college": "Ohlone College",
-          "enrolled": false,
-          "top6": "095050"
-        },
-        {
-          "awards": 0,
-          "college": "De Anza College",
-          "enrolled": false,
+          "projected": 0.0,
           "top6": "095200"
         },
         {
-          "awards": 0,
           "college": "Evergreen Valley College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "095200"
         },
         {
-          "awards": 0,
           "college": "Foothill College",
           "enrolled": true,
+          "projected": 0.0,
           "top6": "095200"
         },
         {
-          "awards": 0,
           "college": "Mission College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "095200"
         },
         {
-          "awards": 0,
           "college": "Ohlone College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "095200"
         },
         {
-          "awards": 0,
           "college": "De Anza College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "095420"
         },
         {
-          "awards": 0,
           "college": "Evergreen Valley College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "095420"
         },
         {
-          "awards": 0,
           "college": "Foothill College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "095420"
         },
         {
-          "awards": 0,
           "college": "Mission College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "095420"
         },
         {
-          "awards": 0,
           "college": "Ohlone College",
           "enrolled": true,
+          "projected": 0.0,
           "top6": "095420"
         },
         {
-          "awards": 0,
           "college": "De Anza College",
           "enrolled": true,
+          "projected": 0.0,
           "top6": "095600"
         },
         {
-          "awards": 0,
           "college": "Evergreen Valley College",
           "enrolled": true,
+          "projected": 0.0,
           "top6": "095600"
         },
         {
-          "awards": 0,
           "college": "Foothill College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "095600"
         },
         {
-          "awards": 0,
           "college": "Mission College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "095600"
         },
         {
-          "awards": 77,
           "college": "Ohlone College",
           "enrolled": true,
+          "projected": 31.3,
           "top6": "095600"
         },
         {
-          "awards": 49,
           "college": "De Anza College",
           "enrolled": false,
+          "projected": 43.7,
           "top6": "095630"
         },
         {
-          "awards": 0,
           "college": "Evergreen Valley College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "095630"
         },
         {
-          "awards": 0,
           "college": "Foothill College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "095630"
         },
         {
-          "awards": 0,
           "college": "Mission College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "095630"
         },
         {
-          "awards": 0,
           "college": "Ohlone College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "095630"
         },
         {
-          "awards": 0,
           "college": "De Anza College",
           "enrolled": false,
-          "top6": "095650"
-        },
-        {
-          "awards": 0,
-          "college": "Evergreen Valley College",
-          "enrolled": false,
-          "top6": "095650"
-        },
-        {
-          "awards": 0,
-          "college": "Foothill College",
-          "enrolled": false,
-          "top6": "095650"
-        },
-        {
-          "awards": 0,
-          "college": "Mission College",
-          "enrolled": false,
-          "top6": "095650"
-        },
-        {
-          "awards": 0,
-          "college": "Ohlone College",
-          "enrolled": false,
-          "top6": "095650"
-        },
-        {
-          "awards": 0,
-          "college": "De Anza College",
-          "enrolled": false,
-          "top6": "095670"
-        },
-        {
-          "awards": 0,
-          "college": "Evergreen Valley College",
-          "enrolled": false,
-          "top6": "095670"
-        },
-        {
-          "awards": 0,
-          "college": "Foothill College",
-          "enrolled": false,
-          "top6": "095670"
-        },
-        {
-          "awards": 0,
-          "college": "Mission College",
-          "enrolled": false,
-          "top6": "095670"
-        },
-        {
-          "awards": 0,
-          "college": "Ohlone College",
-          "enrolled": false,
-          "top6": "095670"
-        },
-        {
-          "awards": 2,
-          "college": "De Anza College",
-          "enrolled": false,
+          "projected": 2.7,
           "top6": "095690"
         },
         {
-          "awards": 0,
           "college": "Evergreen Valley College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "095690"
         },
         {
-          "awards": 0,
           "college": "Foothill College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "095690"
         },
         {
-          "awards": 0,
           "college": "Mission College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "095690"
         },
         {
-          "awards": 0,
           "college": "Ohlone College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "095690"
-        },
-        {
-          "awards": 0,
-          "college": "De Anza College",
-          "enrolled": false,
-          "top6": "095900"
-        },
-        {
-          "awards": 0,
-          "college": "Evergreen Valley College",
-          "enrolled": false,
-          "top6": "095900"
-        },
-        {
-          "awards": 0,
-          "college": "Foothill College",
-          "enrolled": false,
-          "top6": "095900"
-        },
-        {
-          "awards": 0,
-          "college": "Mission College",
-          "enrolled": false,
-          "top6": "095900"
-        },
-        {
-          "awards": 0,
-          "college": "Ohlone College",
-          "enrolled": false,
-          "top6": "095900"
-        },
-        {
-          "awards": 0,
-          "college": "De Anza College",
-          "enrolled": false,
-          "top6": "099900"
-        },
-        {
-          "awards": 0,
-          "college": "Evergreen Valley College",
-          "enrolled": false,
-          "top6": "099900"
-        },
-        {
-          "awards": 0,
-          "college": "Foothill College",
-          "enrolled": false,
-          "top6": "099900"
-        },
-        {
-          "awards": 0,
-          "college": "Mission College",
-          "enrolled": false,
-          "top6": "099900"
-        },
-        {
-          "awards": 0,
-          "college": "Ohlone College",
-          "enrolled": false,
-          "top6": "099900"
         }
       ],
       "colleges": [
@@ -1756,171 +1396,88 @@
     "sector": "Advanced Manufacturing",
     "tops": [
       {
-        "awards_total": 77,
-        "enrollment_total": 646,
-        "name": "Manufacturing and Industrial Technology",
-        "soc_count": 6,
-        "top6": "095600"
-      },
-      {
-        "awards_total": 49,
         "enrollment_total": 0,
         "name": "Machining and Machine Tools",
+        "projected_supply": 43.7,
         "soc_count": 4,
         "top6": "095630"
       },
       {
-        "awards_total": 30,
+        "enrollment_total": 646,
+        "name": "Manufacturing and Industrial Technology",
+        "projected_supply": 31.3,
+        "soc_count": 7,
+        "top6": "095600"
+      },
+      {
         "enrollment_total": 147,
         "name": "Energy Systems Technology",
+        "projected_supply": 26.0,
         "soc_count": 3,
         "top6": "094610"
       },
       {
-        "awards_total": 17,
         "enrollment_total": 22,
         "name": "Industrial Systems Technology and Maintenance",
-        "soc_count": 7,
+        "projected_supply": 9.0,
+        "soc_count": 8,
         "top6": "094500"
       },
       {
-        "awards_total": 10,
         "enrollment_total": 144,
         "name": "Electro-Mechanical Technology",
+        "projected_supply": 5.3,
         "soc_count": 4,
         "top6": "093500"
       },
       {
-        "awards_total": 2,
         "enrollment_total": 0,
         "name": "Digital Fabrication Technician",
+        "projected_supply": 2.7,
         "soc_count": 1,
         "top6": "095690"
       },
       {
-        "awards_total": 0,
         "enrollment_total": 195,
         "name": "Electronics and Electric Technology",
-        "soc_count": 4,
+        "projected_supply": 0.3,
+        "soc_count": 5,
         "top6": "093400"
       },
       {
-        "awards_total": 0,
         "enrollment_total": 62,
         "name": "Plastics and Composites",
+        "projected_supply": 0.0,
         "soc_count": 1,
         "top6": "095420"
       },
       {
-        "awards_total": 0,
         "enrollment_total": 50,
         "name": "Construction Crafts Technology",
+        "projected_supply": 0.0,
         "soc_count": 1,
         "top6": "095200"
       },
       {
-        "awards_total": 0,
         "enrollment_total": 33,
         "name": "Engineering Technology, General (requires Trigonometry)",
+        "projected_supply": 0.0,
         "soc_count": 5,
         "top6": "092400"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "name": "Computer Electronics",
-        "soc_count": 4,
-        "top6": "093410"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "name": "Industrial Electronics",
-        "soc_count": 2,
-        "top6": "093420"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "name": "Biomedical Instrumentation",
-        "soc_count": 2,
-        "top6": "093460"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "name": "Electron Microscopy",
-        "soc_count": 2,
-        "top6": "093470"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "name": "Instrumentation Technology",
-        "soc_count": 2,
-        "top6": "094300"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "name": "Telecommunications Technology",
-        "soc_count": 1,
-        "top6": "093430"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "name": "Laser and Optical Technology",
-        "soc_count": 1,
-        "top6": "093480"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "name": "Aircraft Fabrication",
-        "soc_count": 1,
-        "top6": "095050"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "name": "Welding Technology",
-        "soc_count": 1,
-        "top6": "095650"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "name": "Industrial and Occupational Safety and Health",
-        "soc_count": 1,
-        "top6": "095670"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "name": "Marine Technology",
-        "soc_count": 1,
-        "top6": "095900"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "name": "Other Engineering and Related Industrial Technologies",
-        "soc_count": 1,
-        "top6": "099900"
       }
-    ]
+    ],
+    "total_supply": 118.3
   },
   "landscape": {
     "aggregate": {
-      "candidate_employers": 535,
+      "candidate_employers": 544,
       "combined_awards": 185,
-      "combined_supply_total": 110.99,
-      "gap": 2589,
+      "combined_supply_total": 118.3,
+      "gap": 2772,
       "n_colleges": 5,
       "n_occupations": 12,
-      "occupations_taught": 9,
-      "regional_demand_total": 2700
+      "occupations_taught": 12,
+      "regional_demand_total": 2890
     },
     "award_years": [
       "2020-2021",
@@ -1933,28 +1490,86 @@
       {
         "cells": [
           {
-            "annual_openings": 430,
-            "annual_wage": 89280,
+            "annual_openings": 450,
+            "annual_wage": 93410,
             "awards_recent": 0,
-            "course_count": 4,
-            "enrolled": false,
+            "course_count": 46,
+            "enrolled": true,
             "feeding_awards": 0,
-            "gap": 430,
-            "growth_rate": -0.006011416,
-            "programs": [],
+            "gap": 450,
+            "growth_rate": -0.028531818,
+            "in_demand": true,
+            "programs": [
+              {
+                "awards": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  142,
+                  126,
+                  175,
+                  202,
+                  179,
+                  194,
+                  204,
+                  198,
+                  null,
+                  180,
+                  166,
+                  212,
+                  235,
+                  151,
+                  223
+                ],
+                "name": "Manufacturing and Industrial Technology",
+                "top6": "095600",
+                "wages": [
+                  {
+                    "n": 54,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 54092,
+                    "wage_after_5": 73636,
+                    "wage_before": 26272,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 85,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60922,
+                    "wage_after_5": 72654,
+                    "wage_before": 36476,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 38,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64897,
+                    "wage_after_5": 75071,
+                    "wage_before": 54280,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
             "soc_code": "17-3023",
             "supply": 0.0,
             "title": "Electrical and Electronic Engineering Technologists and Technicians"
           },
           {
-            "annual_openings": 80,
-            "annual_wage": 78280,
+            "annual_openings": 70,
+            "annual_wage": 79730,
             "awards_recent": 0,
-            "course_count": 29,
+            "course_count": 25,
             "enrolled": true,
             "feeding_awards": 0,
-            "gap": 76,
-            "growth_rate": -0.013784232,
+            "gap": 70,
+            "growth_rate": -0.031175203,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -2013,18 +1628,19 @@
               }
             ],
             "soc_code": "17-3024",
-            "supply": 4.5,
+            "supply": 0.0,
             "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
           },
           {
-            "annual_openings": 150,
-            "annual_wage": 79950,
+            "annual_openings": 220,
+            "annual_wage": 84050,
             "awards_recent": 51,
             "course_count": 25,
             "enrolled": true,
             "feeding_awards": 51,
-            "gap": 146,
-            "growth_rate": 0.075924651,
+            "gap": 174,
+            "growth_rate": 0.015377845,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -2168,18 +1784,19 @@
               }
             ],
             "soc_code": "17-3026",
-            "supply": 4.5,
+            "supply": 46.33,
             "title": "Industrial Engineering Technologists and Technicians"
           },
           {
-            "annual_openings": 110,
-            "annual_wage": 95880,
+            "annual_openings": 120,
+            "annual_wage": 97610,
             "awards_recent": 0,
-            "course_count": 25,
+            "course_count": 80,
             "enrolled": true,
             "feeding_awards": 0,
-            "gap": 106,
-            "growth_rate": 0.056307128,
+            "gap": 120,
+            "growth_rate": 0.014876506,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -2238,32 +1855,34 @@
               }
             ],
             "soc_code": "17-3027",
-            "supply": 4.5,
+            "supply": 0.0,
             "title": "Mechanical Engineering Technologists and Technicians"
           },
           {
             "annual_openings": 40,
-            "annual_wage": 77930,
+            "annual_wage": 97230,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
             "gap": 40,
-            "growth_rate": 0.051413947,
+            "growth_rate": 0.011505205,
+            "in_demand": true,
             "programs": [],
             "soc_code": "17-3028",
             "supply": 0.0,
             "title": "Calibration Technologists and Technicians"
           },
           {
-            "annual_openings": 220,
-            "annual_wage": 89990,
+            "annual_openings": 180,
+            "annual_wage": 84530,
             "awards_recent": 10,
-            "course_count": 36,
+            "course_count": 112,
             "enrolled": true,
             "feeding_awards": 10,
-            "gap": 197,
-            "growth_rate": 0.043073706,
+            "gap": 165,
+            "growth_rate": 0.025695019,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -2369,18 +1988,19 @@
               }
             ],
             "soc_code": "17-3029",
-            "supply": 22.83,
+            "supply": 15.33,
             "title": "Engineering Technologists and Technicians, Except Drafters, All Other"
           },
           {
-            "annual_openings": 550,
-            "annual_wage": 80760,
+            "annual_openings": 540,
+            "annual_wage": 82920,
             "awards_recent": 10,
             "course_count": 36,
             "enrolled": true,
             "feeding_awards": 10,
-            "gap": 527,
-            "growth_rate": 0.10237203,
+            "gap": 525,
+            "growth_rate": 0.092296619,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -2486,18 +2106,19 @@
               }
             ],
             "soc_code": "49-9041",
-            "supply": 22.83,
+            "supply": 15.33,
             "title": "Industrial Machinery Mechanics"
           },
           {
             "annual_openings": 70,
-            "annual_wage": 70750,
+            "annual_wage": 73870,
             "awards_recent": 10,
             "course_count": 36,
             "enrolled": true,
             "feeding_awards": 10,
-            "gap": 47,
-            "growth_rate": 0.094348312,
+            "gap": 55,
+            "growth_rate": 0.010857778,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -2603,18 +2224,19 @@
               }
             ],
             "soc_code": "49-9043",
-            "supply": 22.83,
+            "supply": 15.33,
             "title": "Maintenance Workers, Machinery"
           },
           {
-            "annual_openings": 510,
-            "annual_wage": 63130,
+            "annual_openings": 410,
+            "annual_wage": 63840,
             "awards_recent": 49,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 49,
-            "gap": 510,
-            "growth_rate": 0.027551377,
+            "gap": 366,
+            "growth_rate": 0.024211955,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -2673,32 +2295,34 @@
               }
             ],
             "soc_code": "51-4041",
-            "supply": 0.0,
+            "supply": 43.67,
             "title": "Machinists"
           },
           {
-            "annual_openings": 180,
-            "annual_wage": 49340,
+            "annual_openings": 320,
+            "annual_wage": 49560,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 180,
-            "growth_rate": 0.031747068,
+            "gap": 320,
+            "growth_rate": 0.001340606,
+            "in_demand": true,
             "programs": [],
             "soc_code": "51-9141",
             "supply": 0.0,
             "title": "Semiconductor Processing Technicians"
           },
           {
-            "annual_openings": 300,
-            "annual_wage": 59180,
+            "annual_openings": 400,
+            "annual_wage": 59360,
             "awards_recent": 49,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 49,
-            "gap": 300,
-            "growth_rate": -0.030609016,
+            "gap": 356,
+            "growth_rate": -0.047780725,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -2757,18 +2381,19 @@
               }
             ],
             "soc_code": "51-9161",
-            "supply": 0.0,
+            "supply": 43.67,
             "title": "Computer Numerically Controlled Tool Operators"
           },
           {
-            "annual_openings": 60,
-            "annual_wage": 94890,
+            "annual_openings": 70,
+            "annual_wage": 99420,
             "awards_recent": 49,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 49,
-            "gap": 60,
-            "growth_rate": 0.069974332,
+            "gap": 26,
+            "growth_rate": 0.04671486,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -2827,7 +2452,7 @@
               }
             ],
             "soc_code": "51-9162",
-            "supply": 0.0,
+            "supply": 43.67,
             "title": "Computer Numerically Controlled Tool Programmers"
           }
         ],
@@ -2836,14 +2461,15 @@
       {
         "cells": [
           {
-            "annual_openings": 430,
-            "annual_wage": 89280,
+            "annual_openings": 450,
+            "annual_wage": 93410,
             "awards_recent": 0,
-            "course_count": 7,
+            "course_count": 12,
             "enrolled": true,
             "feeding_awards": 0,
-            "gap": 430,
-            "growth_rate": -0.006011416,
+            "gap": 450,
+            "growth_rate": -0.028531818,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -2891,6 +2517,61 @@
                     "window": "2015-2016 to 2019-2020"
                   }
                 ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  24,
+                  16,
+                  null,
+                  5,
+                  10,
+                  null,
+                  44,
+                  37,
+                  null,
+                  74,
+                  39,
+                  null,
+                  34,
+                  28
+                ],
+                "name": "Manufacturing and Industrial Technology",
+                "top6": "095600",
+                "wages": [
+                  {
+                    "n": 54,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 54092,
+                    "wage_after_5": 73636,
+                    "wage_before": 26272,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 85,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60922,
+                    "wage_after_5": 72654,
+                    "wage_before": 36476,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 38,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64897,
+                    "wage_after_5": 75071,
+                    "wage_before": 54280,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "17-3023",
@@ -2898,14 +2579,15 @@
             "title": "Electrical and Electronic Engineering Technologists and Technicians"
           },
           {
-            "annual_openings": 80,
-            "annual_wage": 78280,
+            "annual_openings": 70,
+            "annual_wage": 79730,
             "awards_recent": 0,
-            "course_count": 13,
+            "course_count": 7,
             "enrolled": true,
             "feeding_awards": 0,
-            "gap": 80,
-            "growth_rate": -0.013784232,
+            "gap": 70,
+            "growth_rate": -0.031175203,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -3015,14 +2697,15 @@
             "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
           },
           {
-            "annual_openings": 150,
-            "annual_wage": 79950,
+            "annual_openings": 220,
+            "annual_wage": 84050,
             "awards_recent": 0,
             "course_count": 7,
             "enrolled": true,
             "feeding_awards": 0,
-            "gap": 150,
-            "growth_rate": 0.075924651,
+            "gap": 220,
+            "growth_rate": 0.015377845,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -3132,14 +2815,15 @@
             "title": "Industrial Engineering Technologists and Technicians"
           },
           {
-            "annual_openings": 110,
-            "annual_wage": 95880,
+            "annual_openings": 120,
+            "annual_wage": 97610,
             "awards_recent": 0,
-            "course_count": 7,
+            "course_count": 30,
             "enrolled": true,
             "feeding_awards": 0,
-            "gap": 110,
-            "growth_rate": 0.056307128,
+            "gap": 120,
+            "growth_rate": 0.014876506,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -3250,27 +2934,29 @@
           },
           {
             "annual_openings": 40,
-            "annual_wage": 77930,
+            "annual_wage": 97230,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
             "gap": 40,
-            "growth_rate": 0.051413947,
+            "growth_rate": 0.011505205,
+            "in_demand": true,
             "programs": [],
             "soc_code": "17-3028",
             "supply": 0.0,
             "title": "Calibration Technologists and Technicians"
           },
           {
-            "annual_openings": 220,
-            "annual_wage": 89990,
+            "annual_openings": 180,
+            "annual_wage": 84530,
             "awards_recent": 0,
-            "course_count": 7,
+            "course_count": 35,
             "enrolled": true,
             "feeding_awards": 0,
-            "gap": 220,
-            "growth_rate": 0.043073706,
+            "gap": 180,
+            "growth_rate": 0.025695019,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -3380,14 +3066,15 @@
             "title": "Engineering Technologists and Technicians, Except Drafters, All Other"
           },
           {
-            "annual_openings": 550,
-            "annual_wage": 80760,
+            "annual_openings": 540,
+            "annual_wage": 82920,
             "awards_recent": 0,
             "course_count": 6,
             "enrolled": true,
             "feeding_awards": 0,
-            "gap": 550,
-            "growth_rate": 0.10237203,
+            "gap": 540,
+            "growth_rate": 0.092296619,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -3451,13 +3138,14 @@
           },
           {
             "annual_openings": 70,
-            "annual_wage": 70750,
+            "annual_wage": 73870,
             "awards_recent": 0,
             "course_count": 6,
             "enrolled": true,
             "feeding_awards": 0,
             "gap": 70,
-            "growth_rate": 0.094348312,
+            "growth_rate": 0.010857778,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -3520,56 +3208,60 @@
             "title": "Maintenance Workers, Machinery"
           },
           {
-            "annual_openings": 510,
-            "annual_wage": 63130,
+            "annual_openings": 410,
+            "annual_wage": 63840,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 510,
-            "growth_rate": 0.027551377,
+            "gap": 410,
+            "growth_rate": 0.024211955,
+            "in_demand": true,
             "programs": [],
             "soc_code": "51-4041",
             "supply": 0.0,
             "title": "Machinists"
           },
           {
-            "annual_openings": 180,
-            "annual_wage": 49340,
+            "annual_openings": 320,
+            "annual_wage": 49560,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 180,
-            "growth_rate": 0.031747068,
+            "gap": 320,
+            "growth_rate": 0.001340606,
+            "in_demand": true,
             "programs": [],
             "soc_code": "51-9141",
             "supply": 0.0,
             "title": "Semiconductor Processing Technicians"
           },
           {
-            "annual_openings": 300,
-            "annual_wage": 59180,
+            "annual_openings": 400,
+            "annual_wage": 59360,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 300,
-            "growth_rate": -0.030609016,
+            "gap": 400,
+            "growth_rate": -0.047780725,
+            "in_demand": true,
             "programs": [],
             "soc_code": "51-9161",
             "supply": 0.0,
             "title": "Computer Numerically Controlled Tool Operators"
           },
           {
-            "annual_openings": 60,
-            "annual_wage": 94890,
+            "annual_openings": 70,
+            "annual_wage": 99420,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 60,
-            "growth_rate": 0.069974332,
+            "gap": 70,
+            "growth_rate": 0.04671486,
+            "in_demand": true,
             "programs": [],
             "soc_code": "51-9162",
             "supply": 0.0,
@@ -3581,28 +3273,78 @@
       {
         "cells": [
           {
-            "annual_openings": 430,
-            "annual_wage": 89280,
-            "awards_recent": 0,
-            "course_count": 5,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 430,
-            "growth_rate": -0.006011416,
-            "programs": [],
+            "annual_openings": 450,
+            "annual_wage": 93410,
+            "awards_recent": 17,
+            "course_count": 2,
+            "enrolled": true,
+            "feeding_awards": 17,
+            "gap": 441,
+            "growth_rate": -0.028531818,
+            "in_demand": true,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  10,
+                  17
+                ],
+                "awards_recent": 17,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  16,
+                  14,
+                  16,
+                  17,
+                  3,
+                  22
+                ],
+                "name": "Industrial Systems Technology and Maintenance",
+                "top6": "094500",
+                "wages": [
+                  {
+                    "n": 24,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 100246,
+                    "wage_after_5": 108130,
+                    "wage_before": 44248,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 181,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 78626,
+                    "wage_after_5": 105182,
+                    "wage_before": 43216,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
             "soc_code": "17-3023",
-            "supply": 0.0,
+            "supply": 9.0,
             "title": "Electrical and Electronic Engineering Technologists and Technicians"
           },
           {
-            "annual_openings": 80,
-            "annual_wage": 78280,
+            "annual_openings": 70,
+            "annual_wage": 79730,
             "awards_recent": 17,
-            "course_count": 7,
+            "course_count": 2,
             "enrolled": true,
             "feeding_awards": 17,
-            "gap": 80,
-            "growth_rate": -0.013784232,
+            "gap": 61,
+            "growth_rate": -0.031175203,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -3653,18 +3395,19 @@
               }
             ],
             "soc_code": "17-3024",
-            "supply": 0.0,
+            "supply": 9.0,
             "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
           },
           {
-            "annual_openings": 150,
-            "annual_wage": 79950,
+            "annual_openings": 220,
+            "annual_wage": 84050,
             "awards_recent": 17,
             "course_count": 2,
             "enrolled": true,
             "feeding_awards": 17,
-            "gap": 150,
-            "growth_rate": 0.075924651,
+            "gap": 211,
+            "growth_rate": 0.015377845,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -3715,18 +3458,19 @@
               }
             ],
             "soc_code": "17-3026",
-            "supply": 0.0,
+            "supply": 9.0,
             "title": "Industrial Engineering Technologists and Technicians"
           },
           {
-            "annual_openings": 110,
-            "annual_wage": 95880,
+            "annual_openings": 120,
+            "annual_wage": 97610,
             "awards_recent": 17,
             "course_count": 2,
             "enrolled": true,
             "feeding_awards": 17,
-            "gap": 110,
-            "growth_rate": 0.056307128,
+            "gap": 111,
+            "growth_rate": 0.014876506,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -3777,18 +3521,19 @@
               }
             ],
             "soc_code": "17-3027",
-            "supply": 0.0,
+            "supply": 9.0,
             "title": "Mechanical Engineering Technologists and Technicians"
           },
           {
             "annual_openings": 40,
-            "annual_wage": 77930,
+            "annual_wage": 97230,
             "awards_recent": 17,
             "course_count": 2,
             "enrolled": true,
             "feeding_awards": 17,
-            "gap": 40,
-            "growth_rate": 0.051413947,
+            "gap": 31,
+            "growth_rate": 0.011505205,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -3839,18 +3584,19 @@
               }
             ],
             "soc_code": "17-3028",
-            "supply": 0.0,
+            "supply": 9.0,
             "title": "Calibration Technologists and Technicians"
           },
           {
-            "annual_openings": 220,
-            "annual_wage": 89990,
+            "annual_openings": 180,
+            "annual_wage": 84530,
             "awards_recent": 37,
-            "course_count": 2,
+            "course_count": 77,
             "enrolled": true,
             "feeding_awards": 37,
-            "gap": 220,
-            "growth_rate": 0.043073706,
+            "gap": 160,
+            "growth_rate": 0.025695019,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -3995,18 +3741,19 @@
               }
             ],
             "soc_code": "17-3029",
-            "supply": 0.0,
+            "supply": 19.67,
             "title": "Engineering Technologists and Technicians, Except Drafters, All Other"
           },
           {
-            "annual_openings": 550,
-            "annual_wage": 80760,
+            "annual_openings": 540,
+            "annual_wage": 82920,
             "awards_recent": 37,
             "course_count": 2,
             "enrolled": true,
             "feeding_awards": 37,
-            "gap": 550,
-            "growth_rate": 0.10237203,
+            "gap": 520,
+            "growth_rate": 0.092296619,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -4104,18 +3851,19 @@
               }
             ],
             "soc_code": "49-9041",
-            "supply": 0.0,
+            "supply": 19.67,
             "title": "Industrial Machinery Mechanics"
           },
           {
             "annual_openings": 70,
-            "annual_wage": 70750,
+            "annual_wage": 73870,
             "awards_recent": 37,
             "course_count": 2,
             "enrolled": true,
             "feeding_awards": 37,
-            "gap": 70,
-            "growth_rate": 0.094348312,
+            "gap": 50,
+            "growth_rate": 0.010857778,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -4213,60 +3961,64 @@
               }
             ],
             "soc_code": "49-9043",
-            "supply": 0.0,
+            "supply": 19.67,
             "title": "Maintenance Workers, Machinery"
           },
           {
-            "annual_openings": 510,
-            "annual_wage": 63130,
+            "annual_openings": 410,
+            "annual_wage": 63840,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 510,
-            "growth_rate": 0.027551377,
+            "gap": 410,
+            "growth_rate": 0.024211955,
+            "in_demand": true,
             "programs": [],
             "soc_code": "51-4041",
             "supply": 0.0,
             "title": "Machinists"
           },
           {
-            "annual_openings": 180,
-            "annual_wage": 49340,
+            "annual_openings": 320,
+            "annual_wage": 49560,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 180,
-            "growth_rate": 0.031747068,
+            "gap": 320,
+            "growth_rate": 0.001340606,
+            "in_demand": true,
             "programs": [],
             "soc_code": "51-9141",
             "supply": 0.0,
             "title": "Semiconductor Processing Technicians"
           },
           {
-            "annual_openings": 300,
-            "annual_wage": 59180,
+            "annual_openings": 400,
+            "annual_wage": 59360,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 300,
-            "growth_rate": -0.030609016,
+            "gap": 400,
+            "growth_rate": -0.047780725,
+            "in_demand": true,
             "programs": [],
             "soc_code": "51-9161",
             "supply": 0.0,
             "title": "Computer Numerically Controlled Tool Operators"
           },
           {
-            "annual_openings": 60,
-            "annual_wage": 94890,
+            "annual_openings": 70,
+            "annual_wage": 99420,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 60,
-            "growth_rate": 0.069974332,
+            "gap": 70,
+            "growth_rate": 0.04671486,
+            "in_demand": true,
             "programs": [],
             "soc_code": "51-9162",
             "supply": 0.0,
@@ -4278,28 +4030,30 @@
       {
         "cells": [
           {
-            "annual_openings": 430,
-            "annual_wage": 89280,
+            "annual_openings": 450,
+            "annual_wage": 93410,
             "awards_recent": 0,
-            "course_count": 6,
+            "course_count": 5,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 430,
-            "growth_rate": -0.006011416,
+            "gap": 450,
+            "growth_rate": -0.028531818,
+            "in_demand": true,
             "programs": [],
             "soc_code": "17-3023",
             "supply": 0.0,
             "title": "Electrical and Electronic Engineering Technologists and Technicians"
           },
           {
-            "annual_openings": 80,
-            "annual_wage": 78280,
+            "annual_openings": 70,
+            "annual_wage": 79730,
             "awards_recent": 10,
-            "course_count": 17,
+            "course_count": 11,
             "enrolled": true,
             "feeding_awards": 10,
-            "gap": 76,
-            "growth_rate": -0.013784232,
+            "gap": 65,
+            "growth_rate": -0.031175203,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -4333,32 +4087,34 @@
               }
             ],
             "soc_code": "17-3024",
-            "supply": 4.0,
+            "supply": 5.33,
             "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
           },
           {
-            "annual_openings": 150,
-            "annual_wage": 79950,
+            "annual_openings": 220,
+            "annual_wage": 84050,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 150,
-            "growth_rate": 0.075924651,
+            "gap": 220,
+            "growth_rate": 0.015377845,
+            "in_demand": true,
             "programs": [],
             "soc_code": "17-3026",
             "supply": 0.0,
             "title": "Industrial Engineering Technologists and Technicians"
           },
           {
-            "annual_openings": 110,
-            "annual_wage": 95880,
+            "annual_openings": 120,
+            "annual_wage": 97610,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 110,
-            "growth_rate": 0.056307128,
+            "gap": 120,
+            "growth_rate": 0.014876506,
+            "in_demand": true,
             "programs": [],
             "soc_code": "17-3027",
             "supply": 0.0,
@@ -4366,41 +4122,44 @@
           },
           {
             "annual_openings": 40,
-            "annual_wage": 77930,
+            "annual_wage": 97230,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
             "gap": 40,
-            "growth_rate": 0.051413947,
+            "growth_rate": 0.011505205,
+            "in_demand": true,
             "programs": [],
             "soc_code": "17-3028",
             "supply": 0.0,
             "title": "Calibration Technologists and Technicians"
           },
           {
-            "annual_openings": 220,
-            "annual_wage": 89990,
+            "annual_openings": 180,
+            "annual_wage": 84530,
             "awards_recent": 0,
-            "course_count": 0,
+            "course_count": 13,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 220,
-            "growth_rate": 0.043073706,
+            "gap": 180,
+            "growth_rate": 0.025695019,
+            "in_demand": true,
             "programs": [],
             "soc_code": "17-3029",
             "supply": 0.0,
             "title": "Engineering Technologists and Technicians, Except Drafters, All Other"
           },
           {
-            "annual_openings": 550,
-            "annual_wage": 80760,
+            "annual_openings": 540,
+            "annual_wage": 82920,
             "awards_recent": 10,
             "course_count": 11,
             "enrolled": true,
             "feeding_awards": 10,
-            "gap": 546,
-            "growth_rate": 0.10237203,
+            "gap": 535,
+            "growth_rate": 0.092296619,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -4434,18 +4193,19 @@
               }
             ],
             "soc_code": "49-9041",
-            "supply": 4.0,
+            "supply": 5.33,
             "title": "Industrial Machinery Mechanics"
           },
           {
             "annual_openings": 70,
-            "annual_wage": 70750,
+            "annual_wage": 73870,
             "awards_recent": 10,
             "course_count": 11,
             "enrolled": true,
             "feeding_awards": 10,
-            "gap": 66,
-            "growth_rate": 0.094348312,
+            "gap": 65,
+            "growth_rate": 0.010857778,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -4479,32 +4239,34 @@
               }
             ],
             "soc_code": "49-9043",
-            "supply": 4.0,
+            "supply": 5.33,
             "title": "Maintenance Workers, Machinery"
           },
           {
-            "annual_openings": 510,
-            "annual_wage": 63130,
+            "annual_openings": 410,
+            "annual_wage": 63840,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 510,
-            "growth_rate": 0.027551377,
+            "gap": 410,
+            "growth_rate": 0.024211955,
+            "in_demand": true,
             "programs": [],
             "soc_code": "51-4041",
             "supply": 0.0,
             "title": "Machinists"
           },
           {
-            "annual_openings": 180,
-            "annual_wage": 49340,
+            "annual_openings": 320,
+            "annual_wage": 49560,
             "awards_recent": 10,
             "course_count": 11,
             "enrolled": true,
             "feeding_awards": 10,
-            "gap": 176,
-            "growth_rate": 0.031747068,
+            "gap": 315,
+            "growth_rate": 0.001340606,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -4538,32 +4300,34 @@
               }
             ],
             "soc_code": "51-9141",
-            "supply": 4.0,
+            "supply": 5.33,
             "title": "Semiconductor Processing Technicians"
           },
           {
-            "annual_openings": 300,
-            "annual_wage": 59180,
+            "annual_openings": 400,
+            "annual_wage": 59360,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 300,
-            "growth_rate": -0.030609016,
+            "gap": 400,
+            "growth_rate": -0.047780725,
+            "in_demand": true,
             "programs": [],
             "soc_code": "51-9161",
             "supply": 0.0,
             "title": "Computer Numerically Controlled Tool Operators"
           },
           {
-            "annual_openings": 60,
-            "annual_wage": 94890,
+            "annual_openings": 70,
+            "annual_wage": 99420,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 60,
-            "growth_rate": 0.069974332,
+            "gap": 70,
+            "growth_rate": 0.04671486,
+            "in_demand": true,
             "programs": [],
             "soc_code": "51-9162",
             "supply": 0.0,
@@ -4575,14 +4339,15 @@
       {
         "cells": [
           {
-            "annual_openings": 430,
-            "annual_wage": 89280,
-            "awards_recent": 0,
-            "course_count": 9,
+            "annual_openings": 450,
+            "annual_wage": 93410,
+            "awards_recent": 77,
+            "course_count": 21,
             "enrolled": true,
-            "feeding_awards": 0,
-            "gap": 429,
-            "growth_rate": -0.006011416,
+            "feeding_awards": 77,
+            "gap": 418,
+            "growth_rate": -0.028531818,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -4685,21 +4450,77 @@
                     "window": "2015-2016 to 2019-2020"
                   }
                 ]
+              },
+              {
+                "awards": [
+                  0,
+                  1,
+                  1,
+                  16,
+                  77
+                ],
+                "awards_recent": 77,
+                "enrollment": [
+                  null,
+                  23,
+                  21,
+                  null,
+                  29,
+                  65,
+                  null,
+                  75,
+                  409,
+                  null,
+                  273,
+                  218,
+                  null,
+                  318,
+                  395
+                ],
+                "name": "Manufacturing and Industrial Technology",
+                "top6": "095600",
+                "wages": [
+                  {
+                    "n": 54,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 54092,
+                    "wage_after_5": 73636,
+                    "wage_before": 26272,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 85,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60922,
+                    "wage_after_5": 72654,
+                    "wage_before": 36476,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 38,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64897,
+                    "wage_after_5": 75071,
+                    "wage_before": 54280,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "17-3023",
-            "supply": 1.0,
+            "supply": 31.67,
             "title": "Electrical and Electronic Engineering Technologists and Technicians"
           },
           {
-            "annual_openings": 80,
-            "annual_wage": 78280,
+            "annual_openings": 70,
+            "annual_wage": 79730,
             "awards_recent": 77,
-            "course_count": 18,
+            "course_count": 13,
             "enrolled": true,
             "feeding_awards": 77,
-            "gap": 78,
-            "growth_rate": -0.013784232,
+            "gap": 38,
+            "growth_rate": -0.031175203,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -4860,18 +4681,19 @@
               }
             ],
             "soc_code": "17-3024",
-            "supply": 2.5,
+            "supply": 31.67,
             "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
           },
           {
-            "annual_openings": 150,
-            "annual_wage": 79950,
+            "annual_openings": 220,
+            "annual_wage": 84050,
             "awards_recent": 77,
             "course_count": 9,
             "enrolled": true,
             "feeding_awards": 77,
-            "gap": 148,
-            "growth_rate": 0.075924651,
+            "gap": 189,
+            "growth_rate": 0.015377845,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -4977,18 +4799,19 @@
               }
             ],
             "soc_code": "17-3026",
-            "supply": 1.5,
+            "supply": 31.33,
             "title": "Industrial Engineering Technologists and Technicians"
           },
           {
-            "annual_openings": 110,
-            "annual_wage": 95880,
+            "annual_openings": 120,
+            "annual_wage": 97610,
             "awards_recent": 77,
             "course_count": 9,
             "enrolled": true,
             "feeding_awards": 77,
-            "gap": 108,
-            "growth_rate": 0.056307128,
+            "gap": 89,
+            "growth_rate": 0.014876506,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -5094,18 +4917,19 @@
               }
             ],
             "soc_code": "17-3027",
-            "supply": 1.5,
+            "supply": 31.33,
             "title": "Mechanical Engineering Technologists and Technicians"
           },
           {
             "annual_openings": 40,
-            "annual_wage": 77930,
+            "annual_wage": 97230,
             "awards_recent": 0,
-            "course_count": 4,
+            "course_count": 19,
             "enrolled": true,
             "feeding_awards": 0,
-            "gap": 39,
-            "growth_rate": 0.051413947,
+            "gap": 40,
+            "growth_rate": 0.011505205,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -5164,18 +4988,19 @@
               }
             ],
             "soc_code": "17-3028",
-            "supply": 1.0,
+            "supply": 0.33,
             "title": "Calibration Technologists and Technicians"
           },
           {
-            "annual_openings": 220,
-            "annual_wage": 89990,
+            "annual_openings": 180,
+            "annual_wage": 84530,
             "awards_recent": 77,
-            "course_count": 14,
+            "course_count": 39,
             "enrolled": true,
             "feeding_awards": 77,
-            "gap": 218,
-            "growth_rate": 0.043073706,
+            "gap": 148,
+            "growth_rate": 0.025695019,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -5366,18 +5191,19 @@
               }
             ],
             "soc_code": "17-3029",
-            "supply": 2.5,
+            "supply": 31.67,
             "title": "Engineering Technologists and Technicians, Except Drafters, All Other"
           },
           {
-            "annual_openings": 550,
-            "annual_wage": 80760,
+            "annual_openings": 540,
+            "annual_wage": 82920,
             "awards_recent": 77,
             "course_count": 9,
             "enrolled": true,
             "feeding_awards": 77,
-            "gap": 548,
-            "growth_rate": 0.10237203,
+            "gap": 509,
+            "growth_rate": 0.092296619,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -5436,18 +5262,19 @@
               }
             ],
             "soc_code": "49-9041",
-            "supply": 1.5,
+            "supply": 31.33,
             "title": "Industrial Machinery Mechanics"
           },
           {
             "annual_openings": 70,
-            "annual_wage": 70750,
+            "annual_wage": 73870,
             "awards_recent": 77,
             "course_count": 9,
             "enrolled": true,
             "feeding_awards": 77,
-            "gap": 68,
-            "growth_rate": 0.094348312,
+            "gap": 39,
+            "growth_rate": 0.010857778,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -5506,60 +5333,120 @@
               }
             ],
             "soc_code": "49-9043",
-            "supply": 1.5,
+            "supply": 31.33,
             "title": "Maintenance Workers, Machinery"
           },
           {
-            "annual_openings": 510,
-            "annual_wage": 63130,
+            "annual_openings": 410,
+            "annual_wage": 63840,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 510,
-            "growth_rate": 0.027551377,
+            "gap": 410,
+            "growth_rate": 0.024211955,
+            "in_demand": true,
             "programs": [],
             "soc_code": "51-4041",
             "supply": 0.0,
             "title": "Machinists"
           },
           {
-            "annual_openings": 180,
-            "annual_wage": 49340,
+            "annual_openings": 320,
+            "annual_wage": 49560,
             "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
+            "course_count": 4,
+            "enrolled": true,
             "feeding_awards": 0,
-            "gap": 180,
-            "growth_rate": 0.031747068,
-            "programs": [],
+            "gap": 320,
+            "growth_rate": 0.001340606,
+            "in_demand": true,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  1,
+                  1,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  6,
+                  47,
+                  null,
+                  15,
+                  85,
+                  null,
+                  52,
+                  164,
+                  null,
+                  178,
+                  145,
+                  null,
+                  145,
+                  195
+                ],
+                "name": "Electronics and Electric Technology",
+                "top6": "093400",
+                "wages": [
+                  {
+                    "n": 223,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 65274,
+                    "wage_after_5": 80497,
+                    "wage_before": 36812,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 353,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 69631,
+                    "wage_after_5": 84558,
+                    "wage_before": 42485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 94249,
+                    "wage_after_5": 94013,
+                    "wage_before": 69348,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
             "soc_code": "51-9141",
-            "supply": 0.0,
+            "supply": 0.33,
             "title": "Semiconductor Processing Technicians"
           },
           {
-            "annual_openings": 300,
-            "annual_wage": 59180,
+            "annual_openings": 400,
+            "annual_wage": 59360,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 300,
-            "growth_rate": -0.030609016,
+            "gap": 400,
+            "growth_rate": -0.047780725,
+            "in_demand": true,
             "programs": [],
             "soc_code": "51-9161",
             "supply": 0.0,
             "title": "Computer Numerically Controlled Tool Operators"
           },
           {
-            "annual_openings": 60,
-            "annual_wage": 94890,
+            "annual_openings": 70,
+            "annual_wage": 99420,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 60,
-            "growth_rate": 0.069974332,
+            "gap": 70,
+            "growth_rate": 0.04671486,
+            "in_demand": true,
             "programs": [],
             "soc_code": "51-9162",
             "supply": 0.0,
@@ -5569,7 +5456,8 @@
         "name": "Ohlone College"
       }
     ],
-    "coverage_awards_only": false,
+    "coverage_awards_only": true,
+    "demand_criteria": null,
     "enrollment_terms": [
       "Winter 2021",
       "Spring 2021",
@@ -5587,7 +5475,7 @@
       "Spring 2025",
       "Fall 2025"
     ],
-    "executive_summary": "This view examines the regional demand landscape across the 12 advanced manufacturing occupations the Silicon Valley Advanced Manufacturing Partnership targets in the Bay Area regional labor market. Regional demand for these occupations totals 2,700 openings per year.",
+    "executive_summary": "This view examines the regional demand landscape across the 12 advanced manufacturing occupations the Silicon Valley Advanced Manufacturing Partnership targets in the Bay Area regional labor market. Regional demand for these occupations totals 2,890 openings per year.",
     "is_sector_priority": true,
     "region": "Bay",
     "region_display": "Bay Area",

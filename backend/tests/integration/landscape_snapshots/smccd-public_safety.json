@@ -2,21 +2,23 @@
   "/employers": {
     "employers": [
       {
-        "description": "The Belmont Police Department serves the City of Belmont on the San Francisco Peninsula with approximately 50 full-time personnel, including 31 sworn officers organized into Patrol, Traffic, Investigations, K-9, Youth Services, SWAT, and Crisis Negotiation units. The department operates the C.A.R.E. (Crisis Assessment Response and Education) and T.R.A.C. (Tracking and Recovery of Adults and Children) programs, and employs dispatchers, records technicians, code enforcement officers, and community service officers alongside sworn staff.",
+        "description": "The Belmont Police Department is responsible for law enforcement in Belmont.",
         "display_name": null,
         "lat": 37.5182829,
         "lng": -122.2774823,
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "Belmont Police",
-        "relevance": 12.9,
+        "relevance": 13.08,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 4,
+        "soc_count": 6,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
           "33-2011": "Firefighters",
+          "33-2022": "Forest Fire Inspectors and Prevention Specialists",
+          "33-3011": "Bailiffs",
           "33-3012": "Correctional Officers and Jailers",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
@@ -24,7 +26,9 @@
           "33-3051",
           "33-3012",
           "33-2011",
-          "19-4092"
+          "19-4092",
+          "33-3011",
+          "33-2022"
         ],
         "website": "https://www.belmont.gov/departments/police"
       },
@@ -36,14 +40,16 @@
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "Central County Fire Department",
-        "relevance": 12.9,
+        "relevance": 13.08,
         "sector": "Government",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 4,
+        "soc_count": 6,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
           "33-2011": "Firefighters",
+          "33-2022": "Forest Fire Inspectors and Prevention Specialists",
+          "33-3011": "Bailiffs",
           "33-3012": "Correctional Officers and Jailers",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
@@ -51,7 +57,9 @@
           "33-3051",
           "33-3012",
           "33-2011",
-          "19-4092"
+          "19-4092",
+          "33-3011",
+          "33-2022"
         ],
         "website": "https://www.ccfd.org/"
       },
@@ -63,14 +71,16 @@
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "Daly City Police",
-        "relevance": 12.9,
+        "relevance": 13.08,
         "sector": "Government",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 4,
+        "soc_count": 6,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
           "33-2011": "Firefighters",
+          "33-2022": "Forest Fire Inspectors and Prevention Specialists",
+          "33-3011": "Bailiffs",
           "33-3012": "Correctional Officers and Jailers",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
@@ -78,26 +88,30 @@
           "33-3051",
           "33-3012",
           "33-2011",
-          "19-4092"
+          "19-4092",
+          "33-3011",
+          "33-2022"
         ],
         "website": "https://www.dalycity.org/1231/Police"
       },
       {
-        "description": "Daly City's Department of Water and Wastewater Resources operates the wastewater treatment and disposal system for the North San Mateo County Sanitation District, managing collection infrastructure, treatment plant operations, and environmental compliance at its facility on Lake Merced Boulevard. The department also administers drinking water supply services and recycles treatment plant byproducts as part of its environmental stewardship mission. Operations employ water and wastewater treatment plant operators, environmental compliance staff, and utility engineers serving the North San Mateo County service area.",
+        "description": "The municipal department responsible for wastewater management in Daly City.",
         "display_name": null,
         "lat": 37.7076798,
         "lng": -122.4858219,
         "naics4": "9241",
         "naics_title": "Administration of Environmental Quality Programs",
         "name": "Daly City Wastewater",
-        "relevance": 12.9,
+        "relevance": 13.08,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 4,
+        "soc_count": 6,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
           "33-2011": "Firefighters",
+          "33-2022": "Forest Fire Inspectors and Prevention Specialists",
+          "33-3011": "Bailiffs",
           "33-3012": "Correctional Officers and Jailers",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
@@ -105,7 +119,9 @@
           "33-3051",
           "33-3012",
           "33-2011",
-          "19-4092"
+          "19-4092",
+          "33-3011",
+          "33-2022"
         ],
         "website": "https://www.dalycity.org/1036/Wastewater"
       },
@@ -117,14 +133,16 @@
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "East Palo Alto Police",
-        "relevance": 12.9,
+        "relevance": 13.08,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 4,
+        "soc_count": 6,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
           "33-2011": "Firefighters",
+          "33-2022": "Forest Fire Inspectors and Prevention Specialists",
+          "33-3011": "Bailiffs",
           "33-3012": "Correctional Officers and Jailers",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
@@ -132,7 +150,9 @@
           "33-3051",
           "33-3012",
           "33-2011",
-          "19-4092"
+          "19-4092",
+          "33-3011",
+          "33-2022"
         ],
         "website": "https://www.ci.east-palo-alto.ca.us/police"
       },
@@ -144,14 +164,16 @@
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "Foster City Fire Department",
-        "relevance": 12.9,
+        "relevance": 13.08,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 4,
+        "soc_count": 6,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
           "33-2011": "Firefighters",
+          "33-2022": "Forest Fire Inspectors and Prevention Specialists",
+          "33-3011": "Bailiffs",
           "33-3012": "Correctional Officers and Jailers",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
@@ -159,7 +181,9 @@
           "33-3051",
           "33-3012",
           "33-2011",
-          "19-4092"
+          "19-4092",
+          "33-3011",
+          "33-2022"
         ],
         "website": "https://www.fostercity.org/fire"
       },
@@ -171,14 +195,16 @@
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "Kings Mountain Fire Department",
-        "relevance": 12.9,
+        "relevance": 13.08,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 4,
+        "soc_count": 6,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
           "33-2011": "Firefighters",
+          "33-2022": "Forest Fire Inspectors and Prevention Specialists",
+          "33-3011": "Bailiffs",
           "33-3012": "Correctional Officers and Jailers",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
@@ -186,26 +212,30 @@
           "33-3051",
           "33-3012",
           "33-2011",
-          "19-4092"
+          "19-4092",
+          "33-3011",
+          "33-2022"
         ],
         "website": "https://kmfd.org/"
       },
       {
-        "description": "The Menlo Park Fire Protection District is an independent special district headquartered in Menlo Park, CA, providing fire suppression, emergency medical services, and community risk reduction across its jurisdiction. The district operates specialized units including California Task Force Three (CA-TF3) for urban search and rescue, swift-water/flood rescue (CA-SFS&R3), wildland firefighting, and Tactical Emergency Medical Support (TEMS). Operational roles span firefighters, paramedics, heavy rescue technicians, and fire prevention personnel across multiple stations.",
+        "description": "The Menlo Park Fire Protection District provides fire and emergency medical services.",
         "display_name": null,
         "lat": 37.4570961,
         "lng": -122.1690558,
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "Menlo Park Fire Protection District",
-        "relevance": 12.9,
+        "relevance": 13.08,
         "sector": "Government",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 4,
+        "soc_count": 6,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
           "33-2011": "Firefighters",
+          "33-2022": "Forest Fire Inspectors and Prevention Specialists",
+          "33-3011": "Bailiffs",
           "33-3012": "Correctional Officers and Jailers",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
@@ -213,7 +243,9 @@
           "33-3051",
           "33-3012",
           "33-2011",
-          "19-4092"
+          "19-4092",
+          "33-3011",
+          "33-2022"
         ],
         "website": "https://www.menlofire.gov/"
       },
@@ -225,14 +257,16 @@
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "North County Fire Authority",
-        "relevance": 12.9,
+        "relevance": 13.08,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 4,
+        "soc_count": 6,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
           "33-2011": "Firefighters",
+          "33-2022": "Forest Fire Inspectors and Prevention Specialists",
+          "33-3011": "Bailiffs",
           "33-3012": "Correctional Officers and Jailers",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
@@ -240,7 +274,9 @@
           "33-3051",
           "33-3012",
           "33-2011",
-          "19-4092"
+          "19-4092",
+          "33-3011",
+          "33-2022"
         ],
         "website": "https://northcountyfire.gov/"
       },
@@ -252,14 +288,16 @@
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "Redwood City Fire Department",
-        "relevance": 12.9,
+        "relevance": 13.08,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 4,
+        "soc_count": 6,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
           "33-2011": "Firefighters",
+          "33-2022": "Forest Fire Inspectors and Prevention Specialists",
+          "33-3011": "Bailiffs",
           "33-3012": "Correctional Officers and Jailers",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
@@ -267,26 +305,30 @@
           "33-3051",
           "33-3012",
           "33-2011",
-          "19-4092"
+          "19-4092",
+          "33-3011",
+          "33-2022"
         ],
         "website": "https://www.redwoodcity.org/departments/fire-department"
       },
       {
-        "description": "The Redwood City Police Department is a municipal law enforcement agency policing a 19-square-mile urban service area in San Mateo County, staffed by approximately 96 sworn officers and 36 civilian employees organized into Patrol, Investigations, and Administrative Services divisions. Civilian roles include parking enforcement, abandoned vehicle abatement, traffic control, and subpoena service. The department is a partner agency for criminal justice and public safety workforce pipelines at local community colleges.",
+        "description": "The Redwood City Police Department is responsible for law enforcement and public safety.",
         "display_name": null,
         "lat": 37.495044,
         "lng": -122.2204934,
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "Redwood City Police",
-        "relevance": 12.9,
+        "relevance": 13.08,
         "sector": "Government",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 4,
+        "soc_count": 6,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
           "33-2011": "Firefighters",
+          "33-2022": "Forest Fire Inspectors and Prevention Specialists",
+          "33-3011": "Bailiffs",
           "33-3012": "Correctional Officers and Jailers",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
@@ -294,26 +336,30 @@
           "33-3051",
           "33-3012",
           "33-2011",
-          "19-4092"
+          "19-4092",
+          "33-3011",
+          "33-2022"
         ],
         "website": "https://www.redwoodcity.org/departments/police-department"
       },
       {
-        "description": "The San Bruno Fire Department (SBFD) is a municipal fire agency serving the City of San Bruno, operating two stations (Station 51 at El Camino Real and Station 52 at Earl Avenue) with services spanning fire suppression, advanced life support, and hazardous materials response. Beyond emergency response, the department conducts annual business inspections, public fire prevention education, and community training programs including CPR certification, CERT training, and smoke alarm installation. The department employs firefighters and paramedics trained in emergency medical services, hazmat operations, and fire prevention.",
+        "description": "The San Bruno Fire Department provides fire suppression and emergency response services.",
         "display_name": null,
         "lat": 37.6206209,
         "lng": -122.4110521,
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "San Bruno Fire Department",
-        "relevance": 12.9,
+        "relevance": 13.08,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 4,
+        "soc_count": 6,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
           "33-2011": "Firefighters",
+          "33-2022": "Forest Fire Inspectors and Prevention Specialists",
+          "33-3011": "Bailiffs",
           "33-3012": "Correctional Officers and Jailers",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
@@ -321,7 +367,9 @@
           "33-3051",
           "33-3012",
           "33-2011",
-          "19-4092"
+          "19-4092",
+          "33-3011",
+          "33-2022"
         ],
         "website": "https://www.sanbruno.ca.gov/294/Fire"
       },
@@ -333,14 +381,16 @@
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "San Bruno Police",
-        "relevance": 12.9,
+        "relevance": 13.08,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 4,
+        "soc_count": 6,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
           "33-2011": "Firefighters",
+          "33-2022": "Forest Fire Inspectors and Prevention Specialists",
+          "33-3011": "Bailiffs",
           "33-3012": "Correctional Officers and Jailers",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
@@ -348,26 +398,30 @@
           "33-3051",
           "33-3012",
           "33-2011",
-          "19-4092"
+          "19-4092",
+          "33-3011",
+          "33-2022"
         ],
         "website": "https://www.sanbruno.ca.gov/472/Police"
       },
       {
-        "description": "The San Carlos Fire Department operates two stations (Station 13 on Laurel Street and Station 16 on Alameda de las Pulgas) under a shared-services partnership with the Redwood City Fire Department, covering fire suppression, emergency medical response, hazardous materials incidents, and disaster mitigation for the City of San Carlos. The department also delivers community fire-safety education, wildfire preparedness outreach, and code enforcement. Operational roles include firefighters, paramedics/EMTs, and hazmat-trained personnel.",
+        "description": "The San Carlos Fire Department provides fire suppression and emergency medical services.",
         "display_name": null,
         "lat": 37.4774799,
         "lng": -122.2199034,
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "San Carlos Fire Department",
-        "relevance": 12.9,
+        "relevance": 13.08,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 4,
+        "soc_count": 6,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
           "33-2011": "Firefighters",
+          "33-2022": "Forest Fire Inspectors and Prevention Specialists",
+          "33-3011": "Bailiffs",
           "33-3012": "Correctional Officers and Jailers",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
@@ -375,26 +429,30 @@
           "33-3051",
           "33-3012",
           "33-2011",
-          "19-4092"
+          "19-4092",
+          "33-3011",
+          "33-2022"
         ],
         "website": "https://www.cityofsancarlos.org/city_hall/departments_and_divisions/fire/index.php"
       },
       {
-        "description": "San Carlos Police Services is a dedicated bureau of the San Mateo County Sheriff's Office that provides full municipal law enforcement for the City of San Carlos under a contract policing arrangement. The bureau handles patrol, violent crime investigation, crime prevention, parking enforcement, and youth engagement programs for a city of approximately 30,000 residents. Operational staff includes sworn sheriff's deputies assigned to San Carlos, supported by county-level administrative and investigative resources.",
+        "description": "The San Carlos Police Department is responsible for law enforcement and public safety.",
         "display_name": null,
         "lat": 37.4959658,
         "lng": -122.2517307,
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "San Carlos Police",
-        "relevance": 12.9,
+        "relevance": 13.08,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 4,
+        "soc_count": 6,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
           "33-2011": "Firefighters",
+          "33-2022": "Forest Fire Inspectors and Prevention Specialists",
+          "33-3011": "Bailiffs",
           "33-3012": "Correctional Officers and Jailers",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
@@ -402,7 +460,9 @@
           "33-3051",
           "33-3012",
           "33-2011",
-          "19-4092"
+          "19-4092",
+          "33-3011",
+          "33-2022"
         ],
         "website": "https://www.cityofsancarlos.org/city_hall/departments_and_divisions/sheriffs_office/index.php"
       },
@@ -414,14 +474,16 @@
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "San Francisco Police",
-        "relevance": 12.9,
+        "relevance": 13.08,
         "sector": "Government",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 4,
+        "soc_count": 6,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
           "33-2011": "Firefighters",
+          "33-2022": "Forest Fire Inspectors and Prevention Specialists",
+          "33-3011": "Bailiffs",
           "33-3012": "Correctional Officers and Jailers",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
@@ -429,26 +491,30 @@
           "33-3051",
           "33-3012",
           "33-2011",
-          "19-4092"
+          "19-4092",
+          "33-3011",
+          "33-2022"
         ],
         "website": "https://www.sanfranciscopolice.org/"
       },
       {
-        "description": "San Mateo Consolidated Fire Department is a consolidated municipal fire agency serving Belmont, Foster City, and San Mateo through nine strategically positioned fire stations. All firefighters hold State-certified Firefighter II credentials and EMT certification, with at least one State-licensed paramedic on each Engine Company for advanced life support. Specialized capabilities include hazmat response, water and beach rescue, vehicle extrication, and wildland fire deployment, supported by a Fire Prevention and Life Safety Bureau and an Office of Emergency Services.",
+        "description": "The San Mateo Consolidated Fire Department provides fire and emergency medical services.",
         "display_name": null,
         "lat": 37.5219843,
         "lng": -122.2721324,
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "San Mateo Consolidated Fire Department",
-        "relevance": 12.9,
+        "relevance": 13.08,
         "sector": "Government",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 4,
+        "soc_count": 6,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
           "33-2011": "Firefighters",
+          "33-2022": "Forest Fire Inspectors and Prevention Specialists",
+          "33-3011": "Bailiffs",
           "33-3012": "Correctional Officers and Jailers",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
@@ -456,26 +522,30 @@
           "33-3051",
           "33-3012",
           "33-2011",
-          "19-4092"
+          "19-4092",
+          "33-3011",
+          "33-2022"
         ],
         "website": "https://www.smcfire.org/"
       },
       {
-        "description": "San Mateo County Fire Department operates under a CAL FIRE partnership, providing fire suppression, emergency medical services, and rescue operations across the unincorporated areas of San Mateo County from five fire stations. The department runs a Fire Marshal office for code enforcement and defensible space inspections, and conducts prescribed burning operations for wildfire fuel reduction. It employs career firefighters, EMTs, fire prevention officers, and support staff, and also maintains a volunteer program.",
+        "description": "The San Mateo County Fire Department provides fire suppression and emergency response.",
         "display_name": null,
         "lat": 37.512732,
         "lng": -122.3350045,
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "San Mateo County Fire Department",
-        "relevance": 12.9,
+        "relevance": 13.08,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 4,
+        "soc_count": 6,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
           "33-2011": "Firefighters",
+          "33-2022": "Forest Fire Inspectors and Prevention Specialists",
+          "33-3011": "Bailiffs",
           "33-3012": "Correctional Officers and Jailers",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
@@ -483,7 +553,9 @@
           "33-3051",
           "33-3012",
           "33-2011",
-          "19-4092"
+          "19-4092",
+          "33-3011",
+          "33-2022"
         ],
         "website": "https://www.smcgov.org/san-mateo-county-fire"
       },
@@ -652,7 +724,7 @@
       "San Mateo"
     ],
     "shown": 25,
-    "total": 128
+    "total": 124
   },
   "/programs": {
     "coverage_awards_only": true,
@@ -660,58 +732,112 @@
     "matrix": {
       "cells": [
         {
-          "awards": 45,
           "college": "College of San Mateo",
           "enrolled": true,
+          "projected": 44.7,
           "top6": "210500"
         },
         {
-          "awards": 15,
           "college": "Skyline College",
           "enrolled": true,
+          "projected": 18.7,
           "top6": "210500"
         },
         {
-          "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "210500"
         },
         {
-          "awards": 5,
           "college": "College of San Mateo",
           "enrolled": true,
-          "top6": "210550"
+          "projected": 0.0,
+          "top6": "210540"
         },
         {
-          "awards": 0,
           "college": "Skyline College",
           "enrolled": false,
-          "top6": "210550"
+          "projected": 0.0,
+          "top6": "210540"
         },
         {
-          "awards": 0,
           "college": "Ca\u00f1ada College",
           "enrolled": false,
-          "top6": "210550"
+          "projected": 0.0,
+          "top6": "210540"
         },
         {
-          "awards": 29,
           "college": "College of San Mateo",
           "enrolled": true,
-          "top6": "213300"
+          "projected": 6.7,
+          "top6": "210550"
         },
         {
-          "awards": 0,
           "college": "Skyline College",
           "enrolled": false,
+          "projected": 0.0,
+          "top6": "210550"
+        },
+        {
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "210550"
+        },
+        {
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "projected": 20.0,
           "top6": "213300"
         },
         {
-          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "213300"
+        },
+        {
           "college": "Ca\u00f1ada College",
           "enrolled": false,
+          "projected": 0.0,
           "top6": "213300"
+        },
+        {
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "projected": 0.0,
+          "top6": "213310"
+        },
+        {
+          "college": "Skyline College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "213310"
+        },
+        {
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "213310"
+        },
+        {
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "projected": 0.0,
+          "top6": "213350"
+        },
+        {
+          "college": "Skyline College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "213350"
+        },
+        {
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "projected": 0.0,
+          "top6": "213350"
         }
       ],
       "colleges": [
@@ -726,38 +852,60 @@
     "sector": "Public Safety",
     "tops": [
       {
-        "awards_total": 60,
         "enrollment_total": 481,
         "name": "Administration of Justice",
-        "soc_count": 3,
+        "projected_supply": 63.3,
+        "soc_count": 4,
         "top6": "210500"
       },
       {
-        "awards_total": 29,
         "enrollment_total": 221,
         "name": "Fire Technology",
-        "soc_count": 1,
+        "projected_supply": 20.0,
+        "soc_count": 2,
         "top6": "213300"
       },
       {
-        "awards_total": 5,
         "enrollment_total": 10,
         "name": "Police Academy",
-        "soc_count": 1,
+        "projected_supply": 6.7,
+        "soc_count": 2,
         "top6": "210550"
+      },
+      {
+        "enrollment_total": 59,
+        "name": "Fire Academy",
+        "projected_supply": 0.0,
+        "soc_count": 2,
+        "top6": "213350"
+      },
+      {
+        "enrollment_total": 34,
+        "name": "Wildland Fire Technology",
+        "projected_supply": 0.0,
+        "soc_count": 2,
+        "top6": "213310"
+      },
+      {
+        "enrollment_total": 30,
+        "name": "Forensics, Evidence, and Investigation",
+        "projected_supply": 0.0,
+        "soc_count": 3,
+        "top6": "210540"
       }
-    ]
+    ],
+    "total_supply": 90.0
   },
   "landscape": {
     "aggregate": {
-      "candidate_employers": 196,
+      "candidate_employers": 201,
       "combined_awards": 94,
-      "combined_supply_total": 248.35,
-      "gap": 2302,
+      "combined_supply_total": 90.0,
+      "gap": 2550,
       "n_colleges": 3,
-      "n_occupations": 4,
-      "occupations_taught": 4,
-      "regional_demand_total": 2550
+      "n_occupations": 6,
+      "occupations_taught": 6,
+      "regional_demand_total": 2640
     },
     "award_years": [
       "2020-2021",
@@ -770,14 +918,15 @@
       {
         "cells": [
           {
-            "annual_openings": 100,
-            "annual_wage": 110690,
+            "annual_openings": 80,
+            "annual_wage": 113030,
             "awards_recent": 45,
             "course_count": 8,
             "enrolled": true,
             "feeding_awards": 45,
-            "gap": 49,
-            "growth_rate": 0.080999603,
+            "gap": 35,
+            "growth_rate": 0.085696816,
+            "in_demand": false,
             "programs": [
               {
                 "awards": [
@@ -871,18 +1020,19 @@
               }
             ],
             "soc_code": "19-4092",
-            "supply": 51.0,
+            "supply": 44.67,
             "title": "Forensic Science Technicians"
           },
           {
-            "annual_openings": 590,
-            "annual_wage": 112800,
+            "annual_openings": 640,
+            "annual_wage": 105440,
             "awards_recent": 29,
             "course_count": 6,
             "enrolled": true,
             "feeding_awards": 29,
-            "gap": 575,
-            "growth_rate": 0.057271564,
+            "gap": 620,
+            "growth_rate": 0.060554393,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -1000,18 +1150,304 @@
               }
             ],
             "soc_code": "33-2011",
-            "supply": 15.34,
+            "supply": 20.0,
             "title": "Firefighters"
           },
           {
-            "annual_openings": 600,
-            "annual_wage": 102500,
+            "annual_openings": 10,
+            "annual_wage": 78700,
+            "awards_recent": 29,
+            "course_count": 6,
+            "enrolled": true,
+            "feeding_awards": 29,
+            "gap": -10,
+            "growth_rate": 0.112278111,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  19,
+                  16,
+                  11,
+                  20,
+                  29
+                ],
+                "awards_recent": 29,
+                "enrollment": [
+                  193,
+                  125,
+                  203,
+                  165,
+                  180,
+                  151,
+                  209,
+                  195,
+                  221
+                ],
+                "name": "Fire Technology",
+                "top6": "213300",
+                "wages": [
+                  {
+                    "n": 354,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 61486,
+                    "wage_after_5": 87489,
+                    "wage_before": 28246,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 189,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 63960,
+                    "wage_after_5": 96372,
+                    "wage_before": 30804,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 130,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 68532,
+                    "wage_after_5": 96701,
+                    "wage_before": 33692,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  16,
+                  null,
+                  34,
+                  null,
+                  27,
+                  null,
+                  34,
+                  15
+                ],
+                "name": "Wildland Fire Technology",
+                "top6": "213310",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  37,
+                  22,
+                  21,
+                  30,
+                  28,
+                  38,
+                  39,
+                  42,
+                  59
+                ],
+                "name": "Fire Academy",
+                "top6": "213350",
+                "wages": [
+                  {
+                    "n": 147,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 59065,
+                    "wage_after_5": 98029,
+                    "wage_before": 26495,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 84,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 56884,
+                    "wage_after_5": 78955,
+                    "wage_before": 27676,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "33-2022",
+            "supply": 20.0,
+            "title": "Forest Fire Inspectors and Prevention Specialists"
+          },
+          {
+            "annual_openings": 0,
+            "annual_wage": 58290,
+            "awards_recent": 50,
+            "course_count": 8,
+            "enrolled": true,
+            "feeding_awards": 50,
+            "gap": -51,
+            "growth_rate": 0.613998299,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  60,
+                  53,
+                  40,
+                  49,
+                  45
+                ],
+                "awards_recent": 45,
+                "enrollment": [
+                  266,
+                  160,
+                  197,
+                  244,
+                  236,
+                  213,
+                  254,
+                  272,
+                  305
+                ],
+                "name": "Administration of Justice",
+                "top6": "210500",
+                "wages": [
+                  {
+                    "n": 1879,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 40524,
+                    "wage_after_5": 55643,
+                    "wage_before": 23631,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 347,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 55311,
+                    "wage_after_5": 70728,
+                    "wage_before": 25831,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 2422,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 115847,
+                    "wage_after_5": 119045,
+                    "wage_before": 105187,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  21,
+                  null,
+                  26,
+                  null,
+                  30,
+                  null,
+                  24,
+                  null,
+                  29
+                ],
+                "name": "Forensics, Evidence, and Investigation",
+                "top6": "210540",
+                "wages": [
+                  {
+                    "n": 52,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 33371,
+                    "wage_after_5": 62105,
+                    "wage_before": 23236,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 70,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34484,
+                    "wage_after_5": 63605,
+                    "wage_before": 26134,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  9,
+                  6,
+                  5
+                ],
+                "awards_recent": 5,
+                "enrollment": [
+                  7,
+                  5,
+                  10,
+                  null,
+                  null,
+                  null,
+                  null,
+                  3,
+                  null
+                ],
+                "name": "Police Academy",
+                "top6": "210550",
+                "wages": [
+                  {
+                    "n": 45,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 89278,
+                    "wage_after_5": 97887,
+                    "wage_before": 47341,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 1142,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 110161,
+                    "wage_after_5": 129019,
+                    "wage_before": 41654,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 57,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 71280,
+                    "wage_after_5": 81449,
+                    "wage_before": 37523,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "33-3011",
+            "supply": 51.33,
+            "title": "Bailiffs"
+          },
+          {
+            "annual_openings": 630,
+            "annual_wage": 102260,
             "awards_recent": 45,
             "course_count": 7,
             "enrolled": true,
             "feeding_awards": 45,
-            "gap": 549,
-            "growth_rate": 0.03714757,
+            "gap": 585,
+            "growth_rate": 0.037957329,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -1064,18 +1500,19 @@
               }
             ],
             "soc_code": "33-3012",
-            "supply": 51.0,
+            "supply": 44.67,
             "title": "Correctional Officers and Jailers"
           },
           {
-            "annual_openings": 1260,
-            "annual_wage": 131420,
+            "annual_openings": 1280,
+            "annual_wage": 130630,
             "awards_recent": 50,
             "course_count": 8,
             "enrolled": true,
             "feeding_awards": 50,
-            "gap": 1209,
-            "growth_rate": 0.054455689,
+            "gap": 1229,
+            "growth_rate": 0.059838079,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -1218,7 +1655,7 @@
               }
             ],
             "soc_code": "33-3051",
-            "supply": 51.0,
+            "supply": 51.33,
             "title": "Police and Sheriff's Patrol Officers"
           }
         ],
@@ -1227,14 +1664,15 @@
       {
         "cells": [
           {
-            "annual_openings": 100,
-            "annual_wage": 110690,
+            "annual_openings": 80,
+            "annual_wage": 113030,
             "awards_recent": 15,
             "course_count": 8,
             "enrolled": true,
             "feeding_awards": 15,
-            "gap": 73,
-            "growth_rate": 0.080999603,
+            "gap": 61,
+            "growth_rate": 0.085696816,
+            "in_demand": false,
             "programs": [
               {
                 "awards": [
@@ -1287,32 +1725,114 @@
               }
             ],
             "soc_code": "19-4092",
-            "supply": 26.67,
+            "supply": 18.67,
             "title": "Forensic Science Technicians"
           },
           {
-            "annual_openings": 590,
-            "annual_wage": 112800,
+            "annual_openings": 640,
+            "annual_wage": 105440,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 590,
-            "growth_rate": 0.057271564,
+            "gap": 640,
+            "growth_rate": 0.060554393,
+            "in_demand": true,
             "programs": [],
             "soc_code": "33-2011",
             "supply": 0.0,
             "title": "Firefighters"
           },
           {
-            "annual_openings": 600,
-            "annual_wage": 102500,
+            "annual_openings": 10,
+            "annual_wage": 78700,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 10,
+            "growth_rate": 0.112278111,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "33-2022",
+            "supply": 0.0,
+            "title": "Forest Fire Inspectors and Prevention Specialists"
+          },
+          {
+            "annual_openings": 0,
+            "annual_wage": 58290,
             "awards_recent": 15,
             "course_count": 8,
             "enrolled": true,
             "feeding_awards": 15,
-            "gap": 573,
-            "growth_rate": 0.03714757,
+            "gap": -19,
+            "growth_rate": 0.613998299,
+            "in_demand": false,
+            "programs": [
+              {
+                "awards": [
+                  34,
+                  21,
+                  25,
+                  16,
+                  15
+                ],
+                "awards_recent": 15,
+                "enrollment": [
+                  107,
+                  163,
+                  148,
+                  193,
+                  191,
+                  172,
+                  165,
+                  160,
+                  176
+                ],
+                "name": "Administration of Justice",
+                "top6": "210500",
+                "wages": [
+                  {
+                    "n": 1879,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 40524,
+                    "wage_after_5": 55643,
+                    "wage_before": 23631,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 347,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 55311,
+                    "wage_after_5": 70728,
+                    "wage_before": 25831,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 2422,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 115847,
+                    "wage_after_5": 119045,
+                    "wage_before": 105187,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "33-3011",
+            "supply": 18.67,
+            "title": "Bailiffs"
+          },
+          {
+            "annual_openings": 630,
+            "annual_wage": 102260,
+            "awards_recent": 15,
+            "course_count": 8,
+            "enrolled": true,
+            "feeding_awards": 15,
+            "gap": 611,
+            "growth_rate": 0.037957329,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -1365,18 +1885,19 @@
               }
             ],
             "soc_code": "33-3012",
-            "supply": 26.67,
+            "supply": 18.67,
             "title": "Correctional Officers and Jailers"
           },
           {
-            "annual_openings": 1260,
-            "annual_wage": 131420,
+            "annual_openings": 1280,
+            "annual_wage": 130630,
             "awards_recent": 15,
             "course_count": 8,
             "enrolled": true,
             "feeding_awards": 15,
-            "gap": 1233,
-            "growth_rate": 0.054455689,
+            "gap": 1261,
+            "growth_rate": 0.059838079,
+            "in_demand": true,
             "programs": [
               {
                 "awards": [
@@ -1429,7 +1950,7 @@
               }
             ],
             "soc_code": "33-3051",
-            "supply": 26.67,
+            "supply": 18.67,
             "title": "Police and Sheriff's Patrol Officers"
           }
         ],
@@ -1438,56 +1959,90 @@
       {
         "cells": [
           {
-            "annual_openings": 100,
-            "annual_wage": 110690,
+            "annual_openings": 80,
+            "annual_wage": 113030,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 100,
-            "growth_rate": 0.080999603,
+            "gap": 80,
+            "growth_rate": 0.085696816,
+            "in_demand": false,
             "programs": [],
             "soc_code": "19-4092",
             "supply": 0.0,
             "title": "Forensic Science Technicians"
           },
           {
-            "annual_openings": 590,
-            "annual_wage": 112800,
+            "annual_openings": 640,
+            "annual_wage": 105440,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 590,
-            "growth_rate": 0.057271564,
+            "gap": 640,
+            "growth_rate": 0.060554393,
+            "in_demand": true,
             "programs": [],
             "soc_code": "33-2011",
             "supply": 0.0,
             "title": "Firefighters"
           },
           {
-            "annual_openings": 600,
-            "annual_wage": 102500,
+            "annual_openings": 10,
+            "annual_wage": 78700,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 600,
-            "growth_rate": 0.03714757,
+            "gap": 10,
+            "growth_rate": 0.112278111,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "33-2022",
+            "supply": 0.0,
+            "title": "Forest Fire Inspectors and Prevention Specialists"
+          },
+          {
+            "annual_openings": 0,
+            "annual_wage": 58290,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 0,
+            "growth_rate": 0.613998299,
+            "in_demand": false,
+            "programs": [],
+            "soc_code": "33-3011",
+            "supply": 0.0,
+            "title": "Bailiffs"
+          },
+          {
+            "annual_openings": 630,
+            "annual_wage": 102260,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 630,
+            "growth_rate": 0.037957329,
+            "in_demand": true,
             "programs": [],
             "soc_code": "33-3012",
             "supply": 0.0,
             "title": "Correctional Officers and Jailers"
           },
           {
-            "annual_openings": 1260,
-            "annual_wage": 131420,
+            "annual_openings": 1280,
+            "annual_wage": 130630,
             "awards_recent": 0,
             "course_count": 0,
             "enrolled": false,
             "feeding_awards": 0,
-            "gap": 1260,
-            "growth_rate": 0.054455689,
+            "gap": 1280,
+            "growth_rate": 0.059838079,
+            "in_demand": true,
             "programs": [],
             "soc_code": "33-3051",
             "supply": 0.0,
@@ -1498,6 +2053,10 @@
       }
     ],
     "coverage_awards_only": true,
+    "demand_criteria": {
+      "min_openings": 250,
+      "min_wage": 50000
+    },
     "enrollment_terms": [
       "Fall 2021",
       "Spring 2022",
@@ -1509,7 +2068,7 @@
       "Spring 2025",
       "Fall 2025"
     ],
-    "executive_summary": "This view examines the regional demand landscape across the 4 public safety occupations the San Mateo County CCD \u2014 Public Safety targets in the Bay Area regional labor market. Regional demand for these occupations totals 2,550 openings per year.",
+    "executive_summary": "This view examines the regional demand landscape across the 6 public safety occupations the San Mateo County CCD \u2014 Public Safety targets in the Bay Area regional labor market. Regional demand for these occupations totals 2,640 openings per year.",
     "is_sector_priority": true,
     "region": "Bay",
     "region_display": "Bay Area",
