@@ -32,12 +32,33 @@ direction, as-of)? Is the routing **stable under the rephrasing follow-up**? Did
 `ok` = the offered link lands at the answered coordinate; `coarser` = a broader lens/selection only;
 `absent` = none offered)?
 
+## Seam-specific interpretive residue — the part the deterministic checks cannot see
+Read the probe's `seam`; grade only what code left open. The deterministic pre-gate already settled the
+call-shape and the metamorphic relations — you grade the *framing*:
+- **`forward_reverse`** — the membership (⊇) is checked deterministically. YOUR job is the looseness
+  flag: did the analyst surface that the program↔occupation crosswalk is **many-to-many and lossy** — a
+  graduate "can lead to" / "is qualified across" these occupations, **not assigned to one**
+  (`catalog.SAL_LOSSY_CROSSWALK`) — rather than implying an exact or exclusive mapping? A reverse read
+  presented as tight/exact is the failure. Set `crosswalk_looseness_flagged`.
+- **`coordinate_identity`** — the two paths (e.g. `occupation_profile` vs a `compare` row) must land the
+  SAME figure; the runner checks equality. YOUR job: was the answer stated so a practitioner sees it is
+  the *same* coordinate reached two ways (the **two-window** invariant — the dashboard is the second
+  window), not two coincidentally-close numbers? A silent divergence the runner flagged INCOMPLETE (a
+  figure not captured) is `model-nondeterminism`, not a misroute.
+- **`absence_zero`** — a member's zero must be named as a **structural zero** (no program feeding it — a
+  verifiable fact) OR as **unknown** (a gated/blank field), never conflated, and never a blank read as 0.
+  Set `absence_framed`.
+- **`comparison_class` / `non_summable`** — did it route to the right comparison class (colleges vs
+  programs) and name the axis, and did it REFUSE to sum overlapping addressable pools (they double-count)?
+
 ## Output — JSON only
 ```json
 {
   "classification": {"verdict": "pass|partial|fail", "evidence": "...",
                      "misroute": "none|wrong_form|wrong_grain|wrong_direction|wrong_unit_type"},
   "seam_handling": "named_both|picked_silently|n/a",
+  "crosswalk_looseness_flagged": "yes|no|n/a",
+  "absence_framed": "structural_zero|unknown|read_as_zero|n/a",
   "defensibility": {"verdict": "pass|partial|fail", "evidence": "...",
                     "coordinate_named": true, "stable_under_rephrase": true,
                     "view_addresses_coordinate": "ok|coarser|absent"},

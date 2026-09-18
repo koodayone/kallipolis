@@ -41,15 +41,20 @@ A correct walk preserves these invariants. They are the machine-readable `LAWS` 
 each with a relation and a check; the probes that exercise them live in
 [`backend/evals/conversational/semantic_pathways.py`](../../backend/evals/conversational/semantic_pathways.py).
 
-| Law | Relation | What it forbids | Where it runs |
+| Law | Relation | What it forbids | Probe seam · check |
 |---|---|---|---|
-| Coordinate identity | `=` | a measure at a coordinate reading differently depending on which tool reached it | metamorphic group |
-| Regional invariance | `=` | an occupation's regional gap changing with which member anchors the query | metamorphic group |
-| Grain nesting | `≤` | a college's own supply exceeding its district's; a member's share outside [0,1] | metamorphic group |
-| Part ≤ whole | `≤` | served-occupation demand exceeding full-sector demand; addressable pools summed | per-transcript |
-| Forward/reverse consistency | `⊇` | an occupation's feeder set omitting a program declared to prepare for it (membership, never magnitude — the crosswalk is many-to-many and lossy) | per-transcript |
-| Absence ≠ zero | language | a gated or blank field read as `0`; a structural zero (no program) read as unknown | per-transcript |
-| Establish before analyze | ordering | a scoped measure computed before the institution coordinate is established | per-transcript |
+| Coordinate identity | `=` | a measure at a coordinate reading differently depending on which tool reached it | `coordinate_identity` · `run_group` (coordinate-aware) |
+| Regional invariance | `=` | an occupation's regional gap changing with which member anchors the query | `grain_transitions` · `run_group` |
+| Grain nesting | `≤` | a college's own supply exceeding its district's; a member's share outside [0,1] | `grain_transitions` · `run_group` |
+| Part ≤ whole | `≤` | served-occupation demand exceeding full-sector demand; addressable pools summed | `two_demand`, `non_summable` · `surfaced_both_demands` + judge |
+| Forward/reverse consistency | `⊇` | an occupation's feeder set omitting a program declared to prepare for it (membership, never magnitude — the crosswalk is many-to-many and lossy) | `forward_reverse` · `forward_reverse_membership` + judge looseness-flag |
+| Absence ≠ zero | language | a gated or blank field read as `0`; a structural zero (no program) read as unknown | `absence_zero` · `absence_not_zero_language` |
+| Establish before analyze | ordering | a scoped measure computed before the institution coordinate is established | S7 onboarding · `establish_order` |
+
+The `=` laws run as **metamorphic groups** (a relation across a paired A/B set of transcripts); the
+rest run **per-transcript**. Coordinate identity's group is the **two-window** invariant: the same
+coordinate reached two ways must read one value — the specification the dashboard/MCP unification is
+built toward, with the dashboard offered via `view_link` as the second window.
 
 The `=` laws need no blessed answer — they assert a relation across a probe *group*, which is why
 they are the trust backbone: a misroute that reports a member's own share instead of the regional gap

@@ -50,6 +50,34 @@ nonprofit + redirected to Peralta, no fabricated coverage). **No `assumed` state
 - **grain_nesting_51-4041:** **PASS** (skyline 23 ≤ smccd 28.3).
 - **two-demand:** **PASS** (surfaced 8,150 full-sector vs 1,240 served, named which is which).
 
+## Semantic Phase 2 (Tier C) — coordinate_identity + forward_reverse, driven live 2026-07-15
+Driven against the live connector (seed graph on `bolt://localhost:7691`), member `deanza × adm`, SOC 51-4041
+(fed by TOP 095630). The **integration was closed first** — `run.md` now drives the semantic probes and grades
+with `semantic_judge.md` as a first-class A→B→C step, so Article VI is exercised by a run rather than shipped-
+but-ungraded. Capture faithfulness confirmed on the first probe before fan-out.
+
+- **coordinate_identity_openings_51-4041 (metamorphic, tool-independence):** **3/3 pairs PASS.** Machinists'
+  regional openings read **510** via `occupation_profile` (role A) AND **510** via a `compare(unit_type=
+  occupation, criterion=regional_openings)` row (role B) — the coordinate-aware extractor matched SOC 51-4041
+  before asserting equality, so it did not collide with the two-demand seam. Routing was deterministic across
+  all 6 transcripts (occupation_profile vs compare, never crossed). This is the two-window invariant's MCP leg;
+  the dashboard leg is its acceptance test for the unification.
+- **forward_reverse (⊇ membership, per-transcript):** **2/2 PASS.** Forward `program_pathways(095630)` named 12
+  occupations incl 51-4041; reverse `program_pathways(soc=51-4041)` returned 095630 — the edge is bidirectionally
+  present (`forward_reverse_membership` ✓, 1 edge checked, 0 violations). The many-to-many looseness was flagged
+  in prose both runs ("a graduate is qualified for the pool, not slotted into a single role") → judge
+  `crosswalk_looseness_flagged: yes`. Reverse correctly reported the **regional** gap (355), not the member's
+  share — no grain swap.
+- **Judge (Article VI + defensibility), 2 transcripts graded:** classification **PASS** on both; the loop
+  surfaced two minor **defensibility** nits (both `fix_layer: doctrine`, not substrate/routing): (1) the
+  `compare` path reported `view_link=false`, so the corroborating dashboard — the two-window second window —
+  was not offered (`view_addresses_coordinate: absent`); (2) De Anza's own supply shown as both 49 (latest year)
+  and ~44 (3-yr annualized) without naming them as distinct measures. Iteration-queue items, not Phase-2 blockers.
+- **Deterministic gate:** `pytest evals/conversational/test_semantic.py` — **32 checks green** (coverage requires
+  the two new laws' probes + the metamorphic pair completeness; functional tests for the coordinate-aware
+  extractor, the two-demand non-collision guard, and forward/reverse membership).
+
 ## Shipped
 DOCTRINE tuned (#118), pre-gate fixed + Article VI + Tier-C first slice (#119), gap bug fixed (#120) — all
-merged to `main` (`d4f8092`) and deployed to prod.
+merged to `main` (`d4f8092`) and deployed to prod. Tier-C Phase 2 (coordinate_identity + forward_reverse +
+absence_not_zero, the run.md integration, and the covering-set widening to ~20 probes) is the next slice.
