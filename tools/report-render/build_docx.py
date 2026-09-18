@@ -311,6 +311,59 @@ def no_split(row):
     row._tr.get_or_add_trPr().append(OxmlElement('w:cantSplit'))
 
 
+def wrap_unsplittable(items):
+    """Move already-emitted body elements into ONE borderless table cell whose row cannot
+    split across pages.
+
+    keepNext is the right OOXML for "a heading stays with what it names", and Word and
+    LibreOffice honour it — but Google Docs, where these files are read, ignores the
+    flag when the next element is a picture or a table, and left the chain figure, the
+    awards chart and an alignment block's title at page feet with their content overleaf.
+    The one page-keeping mechanism Google Docs does honour on import is a table row it
+    may not break, so a figure block becomes a single such row: heading, framing sentence
+    and picture travel to the next page together. Invisible: no borders, no cell margins,
+    the content width. Blocks taller than a column are left alone (nothing could keep them)."""
+    if not items or est_height_in(items) > COLUMN_H:
+        return False
+    tbl = doc.add_table(rows=1, cols=1)
+    tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
+    items[0].addprevious(tbl._tbl)
+    tc = tbl.rows[0].cells[0]._tc
+    for p_el in tc.findall(qn('w:p')):
+        tc.remove(p_el)
+    for el in items:
+        tc.append(el)
+    # Inside the row the keep flags are moot (the row cannot split) and keepNext on its
+    # paragraphs would chain the row to whatever FOLLOWS the block — so clear them, and
+    # keep each sentence whole for renderers that honour keepLines inside a cell.
+    for p_el in tc.iter(qn('w:p')):
+        pf = Paragraph(p_el, None).paragraph_format
+        pf.keep_with_next = None
+        pf.keep_together = True
+    no_split(tbl.rows[0])
+    tbl.rows[0].cells[0].width = Inches(CONTENT_W)
+    tblPr = tbl._tbl.tblPr
+    borders = OxmlElement('w:tblBorders')
+    for side in ('top', 'left', 'bottom', 'right', 'insideH', 'insideV'):
+        b = OxmlElement(f'w:{side}'); b.set(qn('w:val'), 'nil'); borders.append(b)
+    tblPr.append(borders)
+    mar = OxmlElement('w:tblCellMar')
+    for side in ('top', 'left', 'bottom', 'right'):
+        m = OxmlElement(f'w:{side}'); m.set(qn('w:w'), '0'); m.set(qn('w:type'), 'dxa'); mar.append(m)
+    tblPr.append(mar)
+    return True
+
+
+def has_picture(items):
+    return any(el.tag == qn('w:p') and any(True for _ in el.iter(qn('wp:extent'))) for el in items)
+
+
+#: The body index of the alignment block title just emitted, when its next sibling is
+#: the block's description — the head (title, description, key) is wrapped whole when
+#: the block's table arrives.
+ALG_HEAD = [None]
+
+
 def keep_whole(tbl, max_rows=10):
     """A short table moves to the next page whole rather than splitting — the page's
     `table.dem, table.live, table.trend {break-inside: avoid}`. Word has no table-level
@@ -449,8 +502,15 @@ def add_trend(table):
     # into a .docx that still looked plausible.
     ncols = len(rows[0]['cells']) if rows else 6
     tbl = doc.add_table(rows=0, cols=ncols); tbl.alignment = WD_TABLE_ALIGNMENT.CENTER; grid(tbl)
+    # The label column carries a college name over its TOP sub-line and needs the room the
+    # page gives it; equal columns wrapped "Orange Coast College" onto three lines beside
+    # nine near-empty term cells. fill_width reads these proportions from the first row.
+    label_w = min(2.0, CONTENT_W * 0.3)
+    val_w = (CONTENT_W - label_w) / max(1, ncols - 1)
     for ri, r in enumerate(rows):
         trow = tbl.add_row(); cells = trow.cells
+        for ci_, cell_ in enumerate(cells):
+            cell_.width = Inches(label_w if ci_ == 0 else val_w)
         istot = 'tot' in r['cls']; ishdr = ri == 0
         no_split(trow)
         if ishdr:
@@ -527,6 +587,10 @@ def add_live(table):
                 a = c['el'].find('a')
                 if a:
                     hyperlink(p, a.get('href', ''), a.get_text(' ', strip=True).replace('↗', '').strip() + '  ↗', size=9)
+                    src = c['el'].find('span', class_='lsrc')   # the posting's own site, when not the default feed
+                    if src is not None:
+                        p2 = cell.add_paragraph(); p2.paragraph_format.space_before = Pt(0); p2.paragraph_format.space_after = Pt(0)
+                        run(p2, src.get_text(' ', strip=True), size=7.5, color=MUT)
                 else:
                     run(p, c['text'], size=9, color=BODY)
             cellpad(cell)
@@ -912,6 +976,9 @@ def emit(el):
             # a page bottom (Foothill 094500 evaluation, page 9).
             p = para(9, 2); run(p, t, size=10.5, bold=True, color=DARK)
             p.paragraph_format.keep_with_next = True
+            nxt = el.find_next_sibling()
+            if nxt is not None and 'alg-desc' in (nxt.get('class') or []):
+                ALG_HEAD[0] = len(body_blocks()) - 1
         elif 'tnote' in cls:
             p = para(1, 4); run(p, t, size=8.5, color=MUT, italic=True)
         elif 'alg-desc' in cls:
@@ -950,6 +1017,13 @@ def emit(el):
             p = para(6, 2); runs_from(el, p, size=9)
         else:
             p = para(2, 4); runs_from(el, p, size=9.5)
+            # The sentence that frames an UNWRAPPED section (Curriculum Alignment's intro
+            # follows its heading outside any `.blk`) keeps with what it introduces, as a
+            # block's framing sentence does — else heading and sentence fit at a page foot
+            # and the first alignment block opens overleaf (the 121200 evaluation, page 2).
+            prev = el.find_previous_sibling()
+            if prev is not None and prev.name == 'h1':
+                p.paragraph_format.keep_with_next = True
     elif nm == 'table':
         if 'dem' in cls:
             std_table(rows_of(el))
@@ -960,6 +1034,13 @@ def emit(el):
         elif 'trend' in cls:
             add_trend(el)
         elif 'alg-tbl' in cls:
+            if ALG_HEAD[0] is not None:
+                # the block's title, description and key travel as one unsplittable row;
+                # the table itself may still open overleaf, but never leaves its title behind alone
+                head = body_blocks()[ALG_HEAD[0]:]
+                if wrap_unsplittable(head):
+                    bind_forward(body_blocks()[-1])
+                ALG_HEAD[0] = None
             add_alg_table(el)
     elif 'chainfig' in cls:
         add_chchart_image()
@@ -1009,7 +1090,12 @@ def emit(el):
         start = len(body_blocks())
         for ch in el.children:
             emit(ch)
-        close_block(start)
+        items = body_blocks()[start:]
+        # A block around a picture (a chart or figure) is kept as one unsplittable cell,
+        # which Google Docs honours where it ignores keepNext; text-and-table blocks keep
+        # the keepNext chain, which every renderer honours and which lets a long table split.
+        if not (has_picture(items) and wrap_unsplittable(items)):
+            close_block(start)
     elif 'demstat' in cls:
         pass
     else:
@@ -1020,8 +1106,24 @@ def emit(el):
 for child in page.children:
     emit(child)
 
-for _t in doc.tables:  # full-bleed every table
+# Two tables back to back (a trend table, then a wrapped chart block) render as one in
+# LibreOffice and Word — the first table's header reprinted above the second on a new
+# page. A minimal paragraph between them keeps them apart.
+_body = doc.element.body
+for _el in list(_body):
+    _nxt = _el.getnext()
+    if _el.tag == qn('w:tbl') and _nxt is not None and _nxt.tag == qn('w:tbl'):
+        _sp = OxmlElement('w:p'); _pPr = OxmlElement('w:pPr'); _sz = OxmlElement('w:rPr')
+        _s = OxmlElement('w:sz'); _s.set(qn('w:val'), '2'); _sz.append(_s); _pPr.append(_sz)
+        _spc = OxmlElement('w:spacing'); _spc.set(qn('w:before'), '0'); _spc.set(qn('w:after'), '0'); _spc.set(qn('w:line'), '20'); _spc.set(qn('w:lineRule'), 'exact')
+        _pPr.append(_spc); _sp.append(_pPr); _el.addnext(_sp)
+
+for _t in doc.tables:  # full-bleed every table, the ones inside an unsplittable wrapper cell included
     fill_width(_t)
+    for _row in _t.rows:
+        for _cell in _row.cells:
+            for _nt in _cell.tables:
+                fill_width(_nt)
 
 doc.save(OUT)
 print('saved', OUT)

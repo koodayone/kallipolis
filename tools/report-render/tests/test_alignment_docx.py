@@ -73,7 +73,10 @@ def test_block_head_binds_forward(built):
 
 def test_tables_are_hairline_rows_with_repeating_headers(built):
     root, _ = built
-    tbls = list(root.iter(f'{W}tbl'))
+    # the alignment block's head (title, description, key) rides in a borderless unsplittable
+    # wrapper row; the data tables are the ones with hairline rules
+    tbls = [t for t in root.iter(f'{W}tbl')
+            if {e.get(f'{W}val') for e in t.find(f'{W}tblPr/{W}tblBorders')} != {'nil'}]
     assert len(tbls) == 2
     for tbl in tbls:
         b = {e.tag.split('}')[1]: e.get(f'{W}val') for e in tbl.find(f'{W}tblPr/{W}tblBorders')}

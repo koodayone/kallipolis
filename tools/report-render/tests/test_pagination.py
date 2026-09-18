@@ -158,22 +158,33 @@ def text_of(el):
 
 # ── the promises ─────────────────────────────────────────────────────────────
 
+def wrapper_cell(el):
+    """A chart block is emitted as ONE unsplittable table row (Google Docs ignores keepNext
+    before a picture, but honours a row it may not break); return that row's cell."""
+    assert is_table(el), 'a chart block is not wrapped in a table'
+    rows = rows_of(el)
+    assert len(rows) == 1 and has(rows[0], 'cantSplit'), 'the wrapper row may split'
+    return rows[0].find(f'{W}tc')
+
+
 def test_a_heading_is_never_stranded_from_what_it_names(tmp_path):
     """THE defect this file exists for. "Wage Outcomes" sat at the foot of a page with
     its chart overleaf, because the `.blk` boundary was walked straight through and
-    the grouping lost."""
+    the grouping lost. A block around a picture now travels as one unsplittable row:
+    heading, sentence and picture inside a single cell that cannot break."""
     xml, _ = build(tmp_path, _page(CHART_BLOCK))
     items = body_items(xml)
-    assert len(items) >= 2, 'the fixture block did not emit'
-    for i, it in enumerate(items[:-1]):
-        assert binds_forward(it), f'element {i} of the block does not bind to the next'
+    assert len(items) == 1, 'the fixture block did not emit as one wrapper'
+    cell = wrapper_cell(items[0])
+    kids = [el for el in cell if el.tag in (f'{W}p', f'{W}tbl')]
+    assert len(kids) >= 2 and any(el.find(f'.//{W}drawing') is not None for el in kids), 'heading and picture are not together in the cell'
 
 
 def test_the_last_element_of_a_block_is_deliberately_left_unbound(tmp_path):
-    """Subtle and load-bearing. If the final element bound forward too, every block
-    would chain into the next and the whole document would become ONE atom — which
-    Word, being taller than a page, would then ignore in its entirety. The fix would
-    silently undo itself."""
+    """Subtle and load-bearing. If the block bound forward too, every block would chain
+    into the next and the whole document would become ONE atom — which Word, being
+    taller than a page, would then ignore in its entirety. The wrapper row carries no
+    keepNext, so a legal break follows it."""
     xml, _ = build(tmp_path, _page(CHART_BLOCK))
     assert not binds_forward(body_items(xml)[-1]), \
         'the block chains into whatever follows it'
@@ -209,10 +220,12 @@ def test_a_row_never_splits_through_its_own_middle(tmp_path):
 def test_a_sentence_does_not_break_through_its_own_middle_inside_a_block(tmp_path):
     """keepNext binds the LAST line of a paragraph to the FIRST of the next, so it
     alone would still let a three-line narration split 1/2 — heading and chart
-    correctly together, and the sentence introducing them cut in half. `break-inside:
-    avoid` means both properties; expressing one leaves the gap half-closed."""
+    correctly together, and the sentence introducing them cut in half. Inside the
+    unsplittable row nothing can split, and each sentence also carries keepLines for
+    renderers that read the cell's paragraphs on their own."""
     xml, _ = build(tmp_path, _page(CHART_BLOCK))
-    texty = [p for p in body_items(xml) if not is_table(p) and text_of(p).strip()]
+    cell = wrapper_cell(body_items(xml)[0])
+    texty = [p for p in cell.findall(f'{W}p') if text_of(p).strip()]
     assert texty, 'no text paragraphs in the block'
     for p in texty:
         assert has(p, 'keepLines'), \
