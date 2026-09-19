@@ -31,7 +31,7 @@ from ontology.living_wage import living_wage
 from partnerships import alignment as A
 from partnerships.alignment import Cell, Evidence, Plate, Row
 from partnerships.lens import LensModel, LensOccupation, LensProgram, LensScope, LensSlice, LensWage, MemberRef, Play
-from partnerships.report import (_ACCENTS, CompetencyColumn, LivePosting, ReportSpec, _awards_demand_svg, _awards_offered_section,
+from partnerships.report import (_ACCENTS, CompetencyColumn, LivePosting, ReportSpec, _awards_demand_svg, _awards_offered_section, _trend_table,
                                  _chain_data, _chain_svg, _crosswalk_svg, _demand_provenance, _demand_table, _employer_intro,
                                  _employer_table, _hourly, _living_wage_for, _onet_code, _sources_section, _vs,
                                  _wage_outcomes_svg, _wage_section, build_report_html)
@@ -277,3 +277,59 @@ def test_employer_note_renders_under_the_table_only_when_set(monkeypatch):
     without = build_report_html("foothill", play, ReportSpec(**base), lens=lens)
     i, j = with_.index('<table class="live">'), with_.index("founding partner")
     assert i < j and 'href="https://u/x"' in with_ and "founding partner" not in without
+
+
+# ── Unreported is not zero ───────────────────────────────────────────────────────
+# DataMart's blank cell is "not reported" and the loader keeps it absent (no key). The
+# awards chart keeps its stacked shape either way, but prints a total only for years
+# some college actually reported — a "0" at an unreported year would contradict the
+# "—" the trend table prints beneath it, which is where absence is explained.
+
+def _total_labels(svg: str) -> list[str]:
+    return re.findall(r'font-weight="700" fill="#0f1d33" text-anchor="\w+">([\d,]+)<', svg)
+
+
+_NDT_AXIS = ["2020-2021", "2021-2022", "2022-2023", "2023-2024", "2024-2025"]
+
+
+def _ndt_programs():
+    occ = LensProgram("Orange Coast College", "121200", "NDT", False, ["29-2099"],
+                      {"2021-2022": 11, "2023-2024": 16}, {}, {"Degree": {"2021-2022": 11, "2023-2024": 16}})
+    mesa = LensProgram("San Diego Mesa College", "121200", "NDT", False, ["29-2099"],
+                       {"2022-2023": 16, "2023-2024": 28}, {},
+                       {"Degree": {"2022-2023": 11, "2023-2024": 14}, "Certificate": {"2022-2023": 5, "2023-2024": 14}})
+    return [occ, mesa]
+
+
+def test_awards_chart_labels_no_total_at_a_year_nobody_reported():
+    svg = _awards_demand_svg(_ndt_programs(), _NDT_AXIS, 0)
+    assert _total_labels(svg) == ["11", "16", "44"]                      # no "0" at 2020–21 or 2024–25
+    assert ">2020–21<" in svg and ">2024–25<" in svg                      # every year keeps its axis tick
+    line, = re.findall(r'<polyline points="([^"]+)" fill="none" stroke="#0f1d33"', svg)
+    assert len(line.split()) == 5                                         # the shape is unchanged: one line over the axis
+
+
+def test_awards_chart_partial_year_totals_only_what_was_reported():
+    svg = _awards_demand_svg(_ndt_programs(), _NDT_AXIS, 0)
+    assert "16" in _total_labels(svg)                                     # 2022–23: Mesa 16, Orange Coast unreported
+
+
+def test_awards_chart_labels_a_reported_zero_as_zero():
+    prog = LensProgram("Foothill College", "121000", "RT", True, ["29-1126"],
+                       {"2021-2022": 0, "2022-2023": 5}, {}, {"Degree": {"2021-2022": 0, "2022-2023": 5}})
+    assert _total_labels(_awards_demand_svg([prog], ["2021-2022", "2022-2023"], 0)) == ["0", "5"]
+
+
+def test_awards_chart_skips_the_label_at_a_mid_series_gap():
+    axis = ["2020-2021", "2021-2022", "2022-2023", "2023-2024"]
+    prog = LensProgram("Foothill College", "121000", "RT", True, ["29-1126"],
+                       {"2020-2021": 3, "2021-2022": 4, "2023-2024": 5}, {},
+                       {"Degree": {"2020-2021": 3, "2021-2022": 4, "2023-2024": 5}})
+    assert _total_labels(_awards_demand_svg([prog], axis, 0)) == ["3", "4", "5"]
+
+
+def test_trend_table_prints_a_reported_zero_and_dashes_only_the_unreported():
+    prog = LensProgram("Foothill College", "121000", "RT", True, [], {"2021-2022": 0, "2023-2024": 7}, {}, {})
+    html = _trend_table([prog], ["2021-2022", "2022-2023", "2023-2024"], ["21–22", "22–23", "23–24"], "awards", "All")
+    cells = re.findall(r'<td class="num[^"]*">([^<]*)</td>', html)
+    assert cells == ["0", "—", "7", "0", "—", "7"]                        # the program row, then the total row
