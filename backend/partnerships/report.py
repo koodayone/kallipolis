@@ -1258,7 +1258,15 @@ def _awards_demand_svg(programs, award_axis: list[str], annual_openings: int,
     # the regional total, drawn on top — the trend the chart exists to show
     tl = " ".join(f"{x_of(i):.1f},{y_of(totals[i]):.1f}" for i in range(n))
     p_.append(f'<polyline points="{tl}" fill="none" stroke="#0f1d33" stroke-width="1.8"/>')
+    # No total label at a year no college REPORTED. DataMart's blank cell is "not
+    # reported", never zero (the exports carry no literal zeros and the loader keeps
+    # blanks absent), so a "0" there states a fact not in evidence and contradicts the
+    # "—" the trend table prints for the same year. The shape is left alone: the table
+    # beneath is where absence is explained, and the chart claims nothing about why a
+    # year is blank. A reported 0, should one arrive, is labelled "0" as before.
     for i, t in enumerate(totals):
+        if not any(award_axis[i] in s for _, s in bands):
+            continue
         anc = "start" if i == 0 else ("end" if i == n - 1 else "middle")
         dx = 3 if i == 0 else (-3 if i == n - 1 else 0)
         p_.append(f'<text x="{x_of(i)+dx:.1f}" y="{y_of(t)-6:.1f}" font-size="9.5" '
@@ -1663,7 +1671,11 @@ def _trend_table(programs, axis: list[str], headers: list[str], value_attr: str,
     are not in evidence:
       value  the college reported this term
       n/a    the college has no such term at all — a semester college has no Winter
-      —      the term exists for this college and the figure is absent or zero
+      —      the term exists for this college and no figure was reported
+
+    A reported 0 is a value and prints as "0" — DataMart's exports carry no literal
+    zeros today (a blank cell is "not reported", and the loader keeps it absent), so
+    the distinction is held here for the day one arrives rather than folded away.
 
     `total_label` empty renders NO total row. The enrollment table passes empty: summing
     enrollment across colleges on different calendars adds a quarter college's Fall to a
@@ -1673,18 +1685,19 @@ def _trend_table(programs, axis: list[str], headers: list[str], value_attr: str,
 
     Column count is derived by build_docx from the header row, not fixed at 6."""
     head = "".join(f"<th>{_esc(h)}</th>" for h in headers)
-    rows, totals = [], [0] * len(axis)
+    rows, totals = [], [None] * len(axis)
     for p in programs:
         series = getattr(p, value_attr)
         cells = []
         kinds = (college_terms or {}).get(p.college)
         for i, k in enumerate(axis):
-            v = series.get(k) or 0
-            totals[i] += v
-            if not v and kinds is not None and k.split()[0] not in kinds:
+            v = series.get(k)
+            if v is not None:
+                totals[i] = (totals[i] or 0) + v
+            if v is None and kinds is not None and k.split()[0] not in kinds:
                 cells.append('<td class="num na">n/a</td>')      # no such term, not a gap
             else:
-                cells.append('<td class="num zero">—</td>' if not v else f'<td class="num">{v:,}</td>')
+                cells.append('<td class="num zero">—</td>' if v is None else f'<td class="num">{v:,}</td>')
         # Credential-mix sub-rows: the MEMBER college's award series decomposed by
         # tier, and only when there is more than one tier to show (a single-tier
         # program's breakdown just repeats its total). Peers keep one line each, so
@@ -1700,7 +1713,7 @@ def _trend_table(programs, axis: list[str], headers: list[str], value_attr: str,
         if expand:
             for tier, tseries in tiers.items():
                 tcells = "".join(
-                    '<td class="num zero">—</td>' if not (tv := tseries.get(k) or 0)
+                    '<td class="num zero">—</td>' if (tv := tseries.get(k)) is None
                     else f'<td class="num">{tv:,}</td>'
                     for k in axis
                 )
@@ -1709,7 +1722,7 @@ def _trend_table(programs, axis: list[str], headers: list[str], value_attr: str,
                 )
     tot = ""
     if total_label:
-        cells_ = "".join('<td class="num zero">—</td>' if not t else f'<td class="num">{t:,}</td>'
+        cells_ = "".join('<td class="num zero">—</td>' if t is None else f'<td class="num">{t:,}</td>'
                          for t in totals)
         tot = f'<tr class="tot"><td class="prog">{_esc(total_label)}</td>{cells_}</tr>'
     cols = '<col class="cprog">' + "<col>" * len(axis)

@@ -89,9 +89,9 @@ def program_award_series(session, colleges: Sequence[str], tops: Sequence[str]) 
         return []
     return session.run(
         "MATCH (pr:Program)-[a:AWARDED]->(ay:AcademicYear) "
-        "WHERE pr.college IN $c AND pr.top6 IN $t "
+        "WHERE pr.college IN $c AND pr.top6 IN $t AND a.count IS NOT NULL "
         "RETURN pr.college AS college, pr.top6 AS top6, ay.year AS year, "
-        "toInteger(sum(coalesce(a.count, 0))) AS awards",
+        "toInteger(sum(a.count)) AS awards",
         c=list(colleges), t=list(tops),
     ).data()
 
@@ -105,14 +105,20 @@ def program_award_series_by_type(session, colleges: Sequence[str], tops: Sequenc
     what keeps the report's trend numbers from drifting from the dashboard's. This
     one adds detail for the report's credential-mix rows without touching it.
     Summing ``awards`` here over award_type reproduces it exactly.
-    Rows: ``{college, top6, year, award_type, awards}``."""
+    Rows: ``{college, top6, year, award_type, awards}``.
+
+    Neither read coerces an absent count to 0. An ``AWARDED`` edge exists only for a
+    (program, year, type) DataMart reported — the loader drops blank cells — so a year
+    with no edge is "not reported" and stays out of the series; a reported 0, should
+    the export ever carry one, comes through as 0. An earlier version filtered
+    ``count > 0`` here, which would have folded that 0 into "not reported"."""
     if not colleges or not tops:
         return []
     return session.run(
         "MATCH (pr:Program)-[a:AWARDED]->(ay:AcademicYear) "
-        "WHERE pr.college IN $c AND pr.top6 IN $t AND coalesce(a.count, 0) > 0 "
+        "WHERE pr.college IN $c AND pr.top6 IN $t AND a.count IS NOT NULL "
         "RETURN pr.college AS college, pr.top6 AS top6, ay.year AS year, "
-        "a.award_type AS award_type, toInteger(coalesce(a.count, 0)) AS awards",
+        "a.award_type AS award_type, toInteger(a.count) AS awards",
         c=list(colleges), t=list(tops),
     ).data()
 
@@ -148,7 +154,7 @@ def program_enrollment_series(session, colleges: Sequence[str], tops: Sequence[s
         return []
     return session.run(
         "MATCH (pr:Program)-[e:ENROLLED]->(t:Term) "
-        "WHERE pr.college IN $c AND pr.top6 IN $t "
+        "WHERE pr.college IN $c AND pr.top6 IN $t AND e.count IS NOT NULL "
         "RETURN pr.college AS college, pr.top6 AS top6, t.term AS term, "
         "toInteger(sum(e.count)) AS count",
         c=list(colleges), t=list(tops),
